@@ -24,7 +24,7 @@ define( function( require ) {
   var iconPlaygroundNavbar = require( 'image!ENERGY_SKATE_PARK/icon-playground-navbar.png' );
 
   // strings
-  var energySkateParkBasicsTitleString = require( 'string!ENERGY_SKATE_PARK/energy-skate-park-basics.title' );
+  var energySkateParkTitleString = require( 'string!ENERGY_SKATE_PARK/energy-skate-park.title' );
   var screenFrictionString = require( 'string!ENERGY_SKATE_PARK/screen.friction' );
   var screenIntroductionString = require( 'string!ENERGY_SKATE_PARK/screen.introduction' );
   var screenTrackPlaygroundString = require( 'string!ENERGY_SKATE_PARK/screen.trackPlayground' );
@@ -46,7 +46,7 @@ define( function( require ) {
       showSaveAndLoad: EnergySkateParkBasicsQueryParameters.showSaveAndLoad
     };
 
-    Sim.call( this, energySkateParkBasicsTitleString, [
+    Sim.call( this, energySkateParkTitleString, [
       new EnergySkateParkBasicsScreen( screenIntroductionString, iconIntroHomescreen, iconIntroNavbar, false, false, tandem.createTandem( 'introScreen' ) ),
       new EnergySkateParkBasicsScreen( screenFrictionString, iconFrictionHomescreen, iconFrictionNavbar, false, true, tandem.createTandem( 'frictionScreen' ) ),
       new EnergySkateParkBasicsScreen( screenTrackPlaygroundString, iconPlaygroundHomescreen, iconPlaygroundNavbar, true, true, tandem.createTandem( 'playgroundScreen' ) )
