@@ -11,7 +11,7 @@ define( function( require ) {
 
   // modules
   var DerivedProperty = require( 'AXON/DerivedProperty' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -104,7 +104,7 @@ define( function( require ) {
     barGraphVisibleProperty.linkAttribute( this, 'visible' );
   }
 
-  energySkateParkBasics.register( 'BarGraphForeground', BarGraphForeground );
+  energySkatePark.register( 'BarGraphForeground', BarGraphForeground );
 
   return inherit( Node, BarGraphForeground );
 } );

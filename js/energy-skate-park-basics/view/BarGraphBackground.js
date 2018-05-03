@@ -12,7 +12,7 @@ define( function( require ) {
   // modules
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
   var ClearThermalButton = require( 'SCENERY_PHET/ClearThermalButton' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Line = require( 'SCENERY/nodes/Line' );
@@ -135,7 +135,7 @@ define( function( require ) {
     barGraphVisibleProperty.linkAttribute( this, 'visible' );
   }
 
-  energySkateParkBasics.register( 'BarGraphBackground', BarGraphBackground );
+  energySkatePark.register( 'BarGraphBackground', BarGraphBackground );
 
   return inherit( Panel, BarGraphBackground );
 } );

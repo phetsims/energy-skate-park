@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LinearGradient = require( 'SCENERY/util/LinearGradient' );
@@ -60,7 +60,7 @@ define( function( require ) {
     }
   }
 
-  energySkateParkBasics.register( 'BackgroundNode', BackgroundNode );
+  energySkatePark.register( 'BackgroundNode', BackgroundNode );
 
   return inherit( Node, BackgroundNode, {
 

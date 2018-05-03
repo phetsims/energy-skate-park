@@ -11,7 +11,7 @@ define( function( require ) {
 
   // modules
   var dot = require( 'DOT/dot' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
   // constants
   var FastArray = dot.FastArray;
@@ -69,7 +69,7 @@ define( function( require ) {
 
   var SplineEvaluation = { atNumber: atNumber, atArray: atArray };
 
-  energySkateParkBasics.register( 'SplineEvaluation', SplineEvaluation );
+  energySkatePark.register( 'SplineEvaluation', SplineEvaluation );
 
   return SplineEvaluation;
 } );

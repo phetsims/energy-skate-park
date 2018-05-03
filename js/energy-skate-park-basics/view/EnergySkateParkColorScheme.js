@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var Color = require( 'SCENERY/util/Color' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
   var EnergySkateParkColorScheme = {
 
@@ -21,7 +21,7 @@ define( function( require ) {
     totalEnergy: new Color( '#B4B400' )// dirty yellow
   };
 
-  energySkateParkBasics.register( 'EnergySkateParkColorScheme', EnergySkateParkColorScheme );
+  energySkatePark.register( 'EnergySkateParkColorScheme', EnergySkateParkColorScheme );
 
   return EnergySkateParkColorScheme;
 } );

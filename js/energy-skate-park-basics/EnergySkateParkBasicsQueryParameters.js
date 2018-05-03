@@ -7,7 +7,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
   var EnergySkateParkBasicsQueryParameters = QueryStringMachine.getAll( {
 
@@ -34,7 +34,7 @@ define( function( require ) {
     }
   } );
 
-  energySkateParkBasics.register( 'EnergySkateParkBasicsQueryParameters', EnergySkateParkBasicsQueryParameters );
+  energySkatePark.register( 'EnergySkateParkBasicsQueryParameters', EnergySkateParkBasicsQueryParameters );
 
   return EnergySkateParkBasicsQueryParameters;
 } );

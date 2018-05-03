@@ -11,7 +11,7 @@ define( function( require ) {
 
   // modules
   var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/BackgroundNode' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Path = require( 'SCENERY/nodes/Path' );
@@ -58,7 +58,7 @@ define( function( require ) {
     this.createdTexts = [];
   }
 
-  energySkateParkBasics.register( 'GridNode', GridNode );
+  energySkatePark.register( 'GridNode', GridNode );
 
   return inherit( Node, GridNode, {
 

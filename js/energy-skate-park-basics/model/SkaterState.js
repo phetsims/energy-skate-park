@@ -13,7 +13,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Vector2 = require( 'DOT/Vector2' );
 
@@ -31,7 +31,7 @@ define( function( require ) {
     phetAllocation && phetAllocation( 'SkaterState' );
   }
 
-  energySkateParkBasics.register( 'SkaterState', SkaterState );
+  energySkatePark.register( 'SkaterState', SkaterState );
 
   var getValue = function( key, source, overrides ) {
     return key in overrides ? overrides[ key ] :

@@ -13,7 +13,7 @@ define( function( require ) {
   var Circle = require( 'SCENERY/nodes/Circle' );
   var ControlPointUI = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/ControlPointUI' );
   var Emitter = require( 'AXON/Emitter' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
@@ -240,7 +240,7 @@ define( function( require ) {
     self.addInputListener( inputListener );
   }
 
-  energySkateParkBasics.register( 'ControlPointNode', ControlPointNode );
+  energySkatePark.register( 'ControlPointNode', ControlPointNode );
 
   return inherit( Circle, ControlPointNode );
 } );

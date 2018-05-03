@@ -12,7 +12,7 @@ define( function( require ) {
   // modules
   var Bounds2 = require( 'DOT/Bounds2' );
   var Circle = require( 'SCENERY/nodes/Circle' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -161,7 +161,7 @@ define( function( require ) {
     } );
   }
 
-  energySkateParkBasics.register( 'PieChartNode', PieChartNode );
+  energySkatePark.register( 'PieChartNode', PieChartNode );
 
   return inherit( Node, PieChartNode );
 } );

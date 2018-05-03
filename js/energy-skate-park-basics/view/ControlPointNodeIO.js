@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var NodeIO = require( 'SCENERY/nodes/NodeIO' );
   
   // phet-io modules
@@ -33,7 +33,7 @@ define( function( require ) {
     documentation: 'The view element for a control point.'
   } );
 
-  energySkateParkBasics.register( 'ControlPointNodeIO', ControlPointNodeIO );
+  energySkatePark.register( 'ControlPointNodeIO', ControlPointNodeIO );
 
   return ControlPointNodeIO;
 } );

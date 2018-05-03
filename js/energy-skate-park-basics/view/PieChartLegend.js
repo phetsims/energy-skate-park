@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var ClearThermalButton = require( 'SCENERY_PHET/ClearThermalButton' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var HStrut = require( 'SCENERY/nodes/HStrut' );
@@ -126,7 +126,7 @@ define( function( require ) {
     pieChartVisibleProperty.linkAttribute( this, 'visible' );
   }
 
-  energySkateParkBasics.register( 'PieChartLegend', PieChartLegend );
+  energySkatePark.register( 'PieChartLegend', PieChartLegend );
 
   return inherit( Panel, PieChartLegend );
 } );

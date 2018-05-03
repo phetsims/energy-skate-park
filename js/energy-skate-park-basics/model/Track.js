@@ -12,7 +12,7 @@ define( function( require ) {
   // modules
   var dot = require( 'DOT/dot' );
   var Emitter = require( 'AXON/Emitter' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetioObject = require( 'TANDEM/PhetioObject' );
   var Property = require( 'AXON/Property' );
@@ -151,7 +151,7 @@ define( function( require ) {
     };
   }
 
-  energySkateParkBasics.register( 'Track', Track );
+  energySkatePark.register( 'Track', Track );
 
   return inherit( PhetioObject, Track, {
 

@@ -13,7 +13,7 @@ define( function( require ) {
   // modules
   var ControlPointNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/ControlPointNode' );
   var dot = require( 'DOT/dot' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LineStyles = require( 'KITE/util/LineStyles' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -110,7 +110,7 @@ define( function( require ) {
     } );
   }
 
-  energySkateParkBasics.register( 'TrackNode', TrackNode );
+  energySkatePark.register( 'TrackNode', TrackNode );
 
   return inherit( Node, TrackNode, {
 

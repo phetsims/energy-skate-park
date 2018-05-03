@@ -12,7 +12,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Matrix3 = require( 'DOT/Matrix3' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -83,7 +83,7 @@ define( function( require ) {
     this.mutate( options );
   }
 
-  energySkateParkBasics.register( 'GaugeNeedleNode', GaugeNeedleNode );
+  energySkatePark.register( 'GaugeNeedleNode', GaugeNeedleNode );
 
   return inherit( Node, GaugeNeedleNode );
 } );

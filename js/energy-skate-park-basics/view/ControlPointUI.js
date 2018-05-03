@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var Color = require( 'SCENERY/util/Color' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var FontAwesomeNode = require( 'SUN/FontAwesomeNode' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LinearFunction = require( 'DOT/LinearFunction' );
@@ -113,7 +113,7 @@ define( function( require ) {
     };
   }
 
-  energySkateParkBasics.register( 'ControlPointUI', ControlPointUI );
+  energySkatePark.register( 'ControlPointUI', ControlPointUI );
 
   return inherit( Node, ControlPointUI, {
 

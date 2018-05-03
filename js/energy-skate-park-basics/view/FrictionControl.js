@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/Constants' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var HSlider = require( 'SUN/HSlider' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -53,7 +53,7 @@ define( function( require ) {
     } );
   }
 
-  energySkateParkBasics.register( 'FrictionControl', FrictionControl );
+  energySkatePark.register( 'FrictionControl', FrictionControl );
 
   return inherit( VBox, FrictionControl );
 } );

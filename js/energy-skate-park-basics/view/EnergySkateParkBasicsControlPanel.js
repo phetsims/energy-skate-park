@@ -11,7 +11,7 @@ define( function( require ) {
   // modules
   var Checkbox = require( 'SUN/Checkbox' );
   var Circle = require( 'SCENERY/nodes/Circle' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
   var FrictionControl = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/FrictionControl' );
   var GaugeNode = require( 'SCENERY_PHET/GaugeNode' );
@@ -119,7 +119,7 @@ define( function( require ) {
     } );
   }
 
-  energySkateParkBasics.register( 'EnergySkateParkBasicsControlPanel', EnergySkateParkBasicsControlPanel );
+  energySkatePark.register( 'EnergySkateParkBasicsControlPanel', EnergySkateParkBasicsControlPanel );
 
   return inherit( Panel, EnergySkateParkBasicsControlPanel, {
 

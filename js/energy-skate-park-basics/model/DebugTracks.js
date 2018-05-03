@@ -11,7 +11,7 @@ define( function( require ) {
 
   // modules
   var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/ControlPoint' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/Track' );
@@ -23,7 +23,7 @@ define( function( require ) {
   function DebugTracks() {
   }
 
-  energySkateParkBasics.register( 'DebugTracks', DebugTracks );
+  energySkatePark.register( 'DebugTracks', DebugTracks );
 
   return inherit( Object, DebugTracks, {}, {
 

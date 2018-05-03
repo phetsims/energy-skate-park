@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkBasicsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/EnergySkateParkBasicsModel' );
   var EnergySkateParkBasicsScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkBasicsScreenView' );
   var Image = require( 'SCENERY/nodes/Image' );
@@ -49,7 +49,7 @@ define( function( require ) {
       options );
   }
 
-  energySkateParkBasics.register( 'EnergySkateParkBasicsScreen', EnergySkateParkBasicsScreen );
+  energySkatePark.register( 'EnergySkateParkBasicsScreen', EnergySkateParkBasicsScreen );
 
   return inherit( Screen, EnergySkateParkBasicsScreen );
 } );

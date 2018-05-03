@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var AquaRadioButton = require( 'SUN/AquaRadioButton' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Text = require( 'SCENERY/nodes/Text' );
@@ -60,7 +60,7 @@ define( function( require ) {
     } );
   }
 
-  energySkateParkBasics.register( 'PlaybackSpeedControl', PlaybackSpeedControl );
+  energySkatePark.register( 'PlaybackSpeedControl', PlaybackSpeedControl );
 
   return inherit( VBox, PlaybackSpeedControl );
 } );

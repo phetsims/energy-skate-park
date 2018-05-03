@@ -10,7 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
   // phet-io modules
   var assertInstanceOf = require( 'ifphetio!PHET_IO/assertInstanceOf' );
@@ -57,7 +57,7 @@ define( function( require ) {
     }
   } );
 
-  energySkateParkBasics.register( 'ControlPointIO', ControlPointIO );
+  energySkatePark.register( 'ControlPointIO', ControlPointIO );
 
   return ControlPointIO;
 } );

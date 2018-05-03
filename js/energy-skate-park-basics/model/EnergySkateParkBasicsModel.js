@@ -31,7 +31,7 @@ define( function( require ) {
   var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/ControlPoint' );
   var DebugTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/DebugTracks' );
   var Emitter = require( 'AXON/Emitter' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkBasicsModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/EnergySkateParkBasicsModelIO' );
   var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -285,7 +285,7 @@ define( function( require ) {
     } );
   }
 
-  energySkateParkBasics.register( 'EnergySkateParkBasicsModel', EnergySkateParkBasicsModel );
+  energySkatePark.register( 'EnergySkateParkBasicsModel', EnergySkateParkBasicsModel );
 
   return inherit( PhetioObject, EnergySkateParkBasicsModel, {
 

@@ -11,7 +11,7 @@ define( function( require ) {
   // modules
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetioObject = require( 'TANDEM/PhetioObject' );
   var Property = require( 'AXON/Property' );
@@ -77,7 +77,7 @@ define( function( require ) {
     };
   }
 
-  energySkateParkBasics.register( 'ControlPoint', ControlPoint );
+  energySkatePark.register( 'ControlPoint', ControlPoint );
 
   return inherit( PhetioObject, ControlPoint, {
 

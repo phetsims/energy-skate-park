@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
@@ -73,7 +73,7 @@ define( function( require ) {
     SimpleDragHandler.call( this, trackSegmentDragHandlerOptions );
   }
 
-  energySkateParkBasics.register( 'TrackDragHandler', TrackDragHandler );
+  energySkatePark.register( 'TrackDragHandler', TrackDragHandler );
 
   return inherit( SimpleDragHandler, TrackDragHandler, {
 
