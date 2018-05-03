@@ -24,7 +24,7 @@ define( function( require ) {
    * @constructor
    */
   function ControlPointIO( controlPoint, phetioID ) {
-    assert && assertInstanceOf( controlPoint, phet.energySkateParkBasics.ControlPoint );
+    assert && assertInstanceOf( controlPoint, phet.energySkatePark.ControlPoint );
     ObjectIO.call( this, controlPoint, phetioID );
   }
 
@@ -37,7 +37,7 @@ define( function( require ) {
      * @returns {Object}
      */
     toStateObject: function( controlPoint ) {
-      assert && assertInstanceOf( controlPoint, phet.energySkateParkBasics.ControlPoint );
+      assert && assertInstanceOf( controlPoint, phet.energySkatePark.ControlPoint );
       return controlPoint ? controlPoint.tandem.phetioID : 'null';
     },
 

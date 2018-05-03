@@ -22,7 +22,7 @@ define( function( require ) {
    * @constructor
    */
   function ControlPointNodeIO( controlPointNode, phetioID ) {
-    assert && assertInstanceOf( controlPointNode, phet.energySkateParkBasics.ControlPointNode );
+    assert && assertInstanceOf( controlPointNode, phet.energySkatePark.ControlPointNode );
     NodeIO.call( this, controlPointNode, phetioID );
   }
 

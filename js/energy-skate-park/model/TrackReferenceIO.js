@@ -24,13 +24,13 @@ define( function( require ) {
    * @constructor
    */
   function TrackReferenceIO( track, phetioID ) {
-    assert && assertInstanceOf( track, phet.energySkateParkBasics.Track );
+    assert && assertInstanceOf( track, phet.energySkatePark.Track );
     ObjectIO.call( this, track, phetioID );
   }
 
   phetioInherit( ObjectIO, 'TrackReferenceIO', TrackReferenceIO, {}, {
     toStateObject: function( track ) {
-      assert && assertInstanceOf( track, phet.energySkateParkBasics.Track );
+      assert && assertInstanceOf( track, phet.energySkatePark.Track );
       return track ? track.trackTandem.phetioID : null;
     },
     fromStateObject: function( stateObject ) {

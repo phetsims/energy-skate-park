@@ -23,7 +23,7 @@ define( function( require ) {
    * @constructor
    */
   function EnergySkateParkBasicsModelIO( energySkateParkBasicsModel, phetioID ) {
-    assert && assertInstanceOf( energySkateParkBasicsModel, phet.energySkateParkBasics.EnergySkateParkBasicsModel );
+    assert && assertInstanceOf( energySkateParkBasicsModel, phet.energySkatePark.EnergySkateParkBasicsModel );
     ObjectIO.call( this, energySkateParkBasicsModel, phetioID );
   }
 
@@ -38,7 +38,7 @@ define( function( require ) {
      * @param {EnergySkateParkBasicsModel} energySkateParkBasicsModel
      */
     clearChildInstances: function( energySkateParkBasicsModel ) {
-      assert && assertInstanceOf( energySkateParkBasicsModel, phet.energySkateParkBasics.EnergySkateParkBasicsModel );
+      assert && assertInstanceOf( energySkateParkBasicsModel, phet.energySkatePark.EnergySkateParkBasicsModel );
       energySkateParkBasicsModel.removeAllTracks();
     },
 
@@ -50,7 +50,7 @@ define( function( require ) {
      * @param {Object} stateObject
      */
     addChildInstance: function( energySkateParkBasicsModel, tandem, stateObject ) {
-      assert && assertInstanceOf( energySkateParkBasicsModel, phet.energySkateParkBasics.EnergySkateParkBasicsModel );
+      assert && assertInstanceOf( energySkateParkBasicsModel, phet.energySkatePark.EnergySkateParkBasicsModel );
       var isControlPoint = tandem.phetioID.indexOf( 'model.controlPoint' ) >= 0;
 
       // Control Points are already being created when the tracks are made, so if the tandem is a controlPoint it's a no-op

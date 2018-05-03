@@ -23,7 +23,7 @@ define( function( require ) {
    * @constructor
    */
   function TrackIO( track, phetioID ) {
-    assert && assertInstanceOf( track, phet.energySkateParkBasics.Track );
+    assert && assertInstanceOf( track, phet.energySkatePark.Track );
     ObjectIO.call( this, track, phetioID );
   }
 
@@ -34,8 +34,8 @@ define( function( require ) {
     documentation: 'A skate track.',
 
     toStateObject: function( track ) {
-      assert && assertInstanceOf( track, phet.energySkateParkBasics.Track );
-      if ( track instanceof phet.energySkateParkBasics.Track || track === null ) {
+      assert && assertInstanceOf( track, phet.energySkatePark.Track );
+      if ( track instanceof phet.energySkatePark.Track || track === null ) {
 
         // Since skater.trackProperty is of type Property.<Track|null>, we must support null here.
         if ( !track ) {
