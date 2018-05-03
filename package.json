@@ -1,16 +1,16 @@
 {
-  "name": "energy-skate-park-basics",
+  "name": "energy-skate-park",
   "version": "1.4.0-dev.0",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phetsims/energy-skate-park-basics.git"
+    "url": "https://github.com/phetsims/energy-skate-park.git"
   },
   "devDependencies": {
     "grunt": "~1.0.0"
   },
   "phet": {
-    "requirejsNamespace": "ENERGY_SKATE_PARK_BASICS",
+    "requirejsNamespace": "ENERGY_SKATE_PARK",
     "preload": [
       "../sherpa/lib/numeric-1.2.6.js"
     ],
