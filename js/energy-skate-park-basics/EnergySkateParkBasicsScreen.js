@@ -9,9 +9,9 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
-  var EnergySkateParkBasicsModel = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/EnergySkateParkBasicsModel' );
-  var EnergySkateParkBasicsScreenView = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/EnergySkateParkBasicsScreenView' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var EnergySkateParkBasicsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/EnergySkateParkBasicsModel' );
+  var EnergySkateParkBasicsScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkBasicsScreenView' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Screen = require( 'JOIST/Screen' );

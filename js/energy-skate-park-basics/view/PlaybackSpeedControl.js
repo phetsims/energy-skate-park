@@ -10,15 +10,15 @@ define( function( require ) {
 
   // modules
   var AquaRadioButton = require( 'SUN/AquaRadioButton' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Text = require( 'SCENERY/nodes/Text' );
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var normalString = require( 'string!ENERGY_SKATE_PARK_BASICS/normal' );
-  var slowMotionString = require( 'string!ENERGY_SKATE_PARK_BASICS/slow.motion' );
+  var normalString = require( 'string!ENERGY_SKATE_PARK/normal' );
+  var slowMotionString = require( 'string!ENERGY_SKATE_PARK/slow.motion' );
 
   // constants
   var X_DILATION = 5;

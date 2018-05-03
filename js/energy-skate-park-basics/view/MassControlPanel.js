@@ -9,8 +9,8 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Constants = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/Constants' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/Constants' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
   var HSlider = require( 'SUN/HSlider' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -19,9 +19,9 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var controlsMassString = require( 'string!ENERGY_SKATE_PARK_BASICS/controls.mass' );
-  var largeString = require( 'string!ENERGY_SKATE_PARK_BASICS/large' );
-  var smallString = require( 'string!ENERGY_SKATE_PARK_BASICS/small' );
+  var controlsMassString = require( 'string!ENERGY_SKATE_PARK/controls.mass' );
+  var largeString = require( 'string!ENERGY_SKATE_PARK/large' );
+  var smallString = require( 'string!ENERGY_SKATE_PARK/small' );
 
   /**
    * @param {Property.<number>} massProperty axon Property indicating the skater mass

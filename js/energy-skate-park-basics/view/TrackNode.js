@@ -11,16 +11,16 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ControlPointNode = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/ControlPointNode' );
+  var ControlPointNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/ControlPointNode' );
   var dot = require( 'DOT/dot' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LineStyles = require( 'KITE/util/LineStyles' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Path = require( 'SCENERY/nodes/Path' );
   var Shape = require( 'KITE/Shape' );
-  var SplineEvaluation = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/SplineEvaluation' );
-  var TrackDragHandler = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/TrackDragHandler' );
+  var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/SplineEvaluation' );
+  var TrackDragHandler = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/TrackDragHandler' );
 
   // constants
   var FastArray = dot.FastArray;

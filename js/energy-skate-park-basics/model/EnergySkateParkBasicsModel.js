@@ -28,12 +28,12 @@ define( function( require ) {
   // modules
   var Bounds2 = require( 'DOT/Bounds2' );
   var Bounds2IO = require( 'DOT/Bounds2IO' );
-  var ControlPoint = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/ControlPoint' );
-  var DebugTracks = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/DebugTracks' );
+  var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/ControlPoint' );
+  var DebugTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/DebugTracks' );
   var Emitter = require( 'AXON/Emitter' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
-  var EnergySkateParkBasicsModelIO = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/EnergySkateParkBasicsModelIO' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var EnergySkateParkBasicsModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/EnergySkateParkBasicsModelIO' );
+  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var NumberProperty = require( 'AXON/NumberProperty' );
   var ObservableArray = require( 'AXON/ObservableArray' );
@@ -42,11 +42,11 @@ define( function( require ) {
   var Property = require( 'AXON/Property' );
   var PropertyIO = require( 'AXON/PropertyIO' );
   var Range = require( 'DOT/Range' );
-  var Skater = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/Skater' );
-  var SkaterState = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/SkaterState' );
+  var Skater = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/Skater' );
+  var SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/SkaterState' );
   var Tandem = require( 'TANDEM/Tandem' );
-  var Track = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/Track' );
-  var TrackIO = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/TrackIO' );
+  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/Track' );
+  var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/TrackIO' );
   var Util = require( 'DOT/Util' );
   var Vector2 = require( 'DOT/Vector2' );
 

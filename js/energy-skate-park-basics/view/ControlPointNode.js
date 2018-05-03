@@ -11,15 +11,15 @@ define( function( require ) {
 
   // modules
   var Circle = require( 'SCENERY/nodes/Circle' );
-  var ControlPointUI = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/ControlPointUI' );
+  var ControlPointUI = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/ControlPointUI' );
   var Emitter = require( 'AXON/Emitter' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
 
   // phet-io modules
-  var ControlPointNodeIO = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/ControlPointNodeIO' );
+  var ControlPointNodeIO = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/ControlPointNodeIO' );
 
   /**
    * @param {TrackNode} trackNode

@@ -10,8 +10,8 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var BackgroundNode = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/BackgroundNode' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/BackgroundNode' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Path = require( 'SCENERY/nodes/Path' );
@@ -20,7 +20,7 @@ define( function( require ) {
   var Text = require( 'SCENERY/nodes/Text' );
 
   // strings
-  var zeroMetersString = require( 'string!ENERGY_SKATE_PARK_BASICS/zeroMeters' );
+  var zeroMetersString = require( 'string!ENERGY_SKATE_PARK/zeroMeters' );
 
   // constants
   var FONT = new PhetFont( 16 );

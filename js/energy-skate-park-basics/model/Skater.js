@@ -11,17 +11,17 @@ define( function( require ) {
 
   // modules
   var BooleanProperty = require( 'AXON/BooleanProperty' );
-  var Constants = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/Constants' );
+  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/Constants' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
   var Emitter = require( 'AXON/Emitter' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
   var NumberProperty = require( 'AXON/NumberProperty' );
   var Property = require( 'AXON/Property' );
   var PropertyIO = require( 'AXON/PropertyIO' );
   var Range = require( 'DOT/Range' );
-  var TrackReferenceIO = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/TrackReferenceIO' );
+  var TrackReferenceIO = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/TrackReferenceIO' );
   var Util = require( 'DOT/Util' );
   var Vector2 = require( 'DOT/Vector2' );
   var Vector2IO = require( 'DOT/Vector2IO' );

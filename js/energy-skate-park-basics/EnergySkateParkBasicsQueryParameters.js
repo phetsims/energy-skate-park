@@ -7,7 +7,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
 
   var EnergySkateParkBasicsQueryParameters = QueryStringMachine.getAll( {
 

@@ -9,44 +9,44 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var AttachDetachToggleButtons = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/AttachDetachToggleButtons' );
-  var BackgroundNode = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/BackgroundNode' );
-  var BarGraphBackground = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/BarGraphBackground' );
-  var BarGraphForeground = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/BarGraphForeground' );
+  var AttachDetachToggleButtons = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/AttachDetachToggleButtons' );
+  var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/BackgroundNode' );
+  var BarGraphBackground = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/BarGraphBackground' );
+  var BarGraphForeground = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/BarGraphForeground' );
   var Bounds2 = require( 'DOT/Bounds2' );
   var Color = require( 'SCENERY/util/Color' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DotRectangle = require( 'DOT/Rectangle' ); // eslint-disable-line require-statement-match
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
-  var EnergySkateParkBasicsControlPanel = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/EnergySkateParkBasicsControlPanel' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var EnergySkateParkBasicsControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkBasicsControlPanel' );
+  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
+  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
   var EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
-  var GaugeNeedleNode = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/GaugeNeedleNode' );
+  var GaugeNeedleNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/GaugeNeedleNode' );
   var GaugeNode = require( 'SCENERY_PHET/GaugeNode' );
-  var GridNode = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/GridNode' );
+  var GridNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/GridNode' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Path = require( 'SCENERY/nodes/Path' );
-  var PieChartLegend = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/PieChartLegend' );
-  var PieChartNode = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/PieChartNode' );
-  var PieChartWebGLNode = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/PieChartWebGLNode' );
-  var PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/PlaybackSpeedControl' );
+  var PieChartLegend = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/PieChartLegend' );
+  var PieChartNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/PieChartNode' );
+  var PieChartWebGLNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/PieChartWebGLNode' );
+  var PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/PlaybackSpeedControl' );
   var PlayPauseButton = require( 'SCENERY_PHET/buttons/PlayPauseButton' );
   var Property = require( 'AXON/Property' );
   var PropertyIO = require( 'AXON/PropertyIO' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
-  var SceneSelectionPanel = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/SceneSelectionPanel' );
+  var SceneSelectionPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/SceneSelectionPanel' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var Shape = require( 'KITE/Shape' );
-  var SkaterNode = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/SkaterNode' );
+  var SkaterNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/SkaterNode' );
   var StepForwardButton = require( 'SCENERY_PHET/buttons/StepForwardButton' );
   var Text = require( 'SCENERY/nodes/Text' );
-  var TrackNode = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/TrackNode' );
+  var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/TrackNode' );
   var Util = require( 'SCENERY/util/Util' );
   var Vector2 = require( 'DOT/Vector2' );
 
@@ -54,11 +54,11 @@ define( function( require ) {
   var BooleanIO = require( 'ifphetio!PHET_IO/types/BooleanIO' );
 
   // strings
-  var controlsRestartSkaterString = require( 'string!ENERGY_SKATE_PARK_BASICS/controls.restart-skater' );
-  var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK_BASICS/properties.speed' );
+  var controlsRestartSkaterString = require( 'string!ENERGY_SKATE_PARK/controls.restart-skater' );
+  var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
 
   // images
-  var skaterIconImage = require( 'image!ENERGY_SKATE_PARK_BASICS/skater-icon.png' );
+  var skaterIconImage = require( 'image!ENERGY_SKATE_PARK/skater-icon.png' );
 
   // Debug flag to show the view bounds, the region within which the skater can move
   var showAvailableBounds = false;

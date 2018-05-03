@@ -9,25 +9,25 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
-  var EnergySkateParkBasicsScreen = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/EnergySkateParkBasicsScreen' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
+  var EnergySkateParkBasicsScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsScreen' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Sim = require( 'JOIST/Sim' );
 
   // images
-  var iconFrictionHomescreen = require( 'image!ENERGY_SKATE_PARK_BASICS/icon-friction-homescreen.png' );
-  var iconFrictionNavbar = require( 'image!ENERGY_SKATE_PARK_BASICS/icon-friction-navbar.png' );
-  var iconIntroHomescreen = require( 'image!ENERGY_SKATE_PARK_BASICS/icon-intro-homescreen.png' );
-  var iconIntroNavbar = require( 'image!ENERGY_SKATE_PARK_BASICS/icon-intro-navbar.png' );
-  var iconPlaygroundHomescreen = require( 'image!ENERGY_SKATE_PARK_BASICS/icon-playground-homescreen.png' );
-  var iconPlaygroundNavbar = require( 'image!ENERGY_SKATE_PARK_BASICS/icon-playground-navbar.png' );
+  var iconFrictionHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-friction-homescreen.png' );
+  var iconFrictionNavbar = require( 'image!ENERGY_SKATE_PARK/icon-friction-navbar.png' );
+  var iconIntroHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-intro-homescreen.png' );
+  var iconIntroNavbar = require( 'image!ENERGY_SKATE_PARK/icon-intro-navbar.png' );
+  var iconPlaygroundHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-playground-homescreen.png' );
+  var iconPlaygroundNavbar = require( 'image!ENERGY_SKATE_PARK/icon-playground-navbar.png' );
 
   // strings
-  var energySkateParkBasicsTitleString = require( 'string!ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics.title' );
-  var screenFrictionString = require( 'string!ENERGY_SKATE_PARK_BASICS/screen.friction' );
-  var screenIntroductionString = require( 'string!ENERGY_SKATE_PARK_BASICS/screen.introduction' );
-  var screenTrackPlaygroundString = require( 'string!ENERGY_SKATE_PARK_BASICS/screen.trackPlayground' );
+  var energySkateParkBasicsTitleString = require( 'string!ENERGY_SKATE_PARK/energy-skate-park-basics.title' );
+  var screenFrictionString = require( 'string!ENERGY_SKATE_PARK/screen.friction' );
+  var screenIntroductionString = require( 'string!ENERGY_SKATE_PARK/screen.introduction' );
+  var screenTrackPlaygroundString = require( 'string!ENERGY_SKATE_PARK/screen.trackPlayground' );
 
   /**
    * @constructor

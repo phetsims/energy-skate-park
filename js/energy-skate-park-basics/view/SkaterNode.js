@@ -12,8 +12,8 @@ define( function( require ) {
 
   // modules
   var Circle = require( 'SCENERY/nodes/Circle' );
-  var Constants = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/Constants' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/Constants' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LinearFunction = require( 'DOT/LinearFunction' );
@@ -22,8 +22,8 @@ define( function( require ) {
   var SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
 
   // images
-  var skaterLeftImage = require( 'image!ENERGY_SKATE_PARK_BASICS/skater-left.png' );
-  var skaterRightImage = require( 'image!ENERGY_SKATE_PARK_BASICS/skater-right.png' );
+  var skaterLeftImage = require( 'image!ENERGY_SKATE_PARK/skater-left.png' );
+  var skaterRightImage = require( 'image!ENERGY_SKATE_PARK/skater-right.png' );
 
   // Map from mass(kg) to the amount to scale the image
   var centerMassValue = (Constants.MIN_MASS + Constants.MAX_MASS) / 2;

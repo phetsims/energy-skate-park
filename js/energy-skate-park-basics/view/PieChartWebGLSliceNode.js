@@ -12,7 +12,7 @@ define( function( require ) {
   // modules
   var Bounds2 = require( 'DOT/Bounds2' );
   var Color = require( 'SCENERY/util/Color' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
   var ShaderProgram = require( 'SCENERY/util/ShaderProgram' );
   var Shape = require( 'KITE/Shape' );

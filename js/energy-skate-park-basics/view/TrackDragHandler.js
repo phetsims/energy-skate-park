@@ -9,8 +9,8 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
 

@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
   var LinearGradient = require( 'SCENERY/util/LinearGradient' );
@@ -18,8 +18,8 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
 
   // images
-  var cementImg = require( 'image!ENERGY_SKATE_PARK_BASICS/cement-texture-dark.jpg' );
-  var mountainImage = require( 'image!ENERGY_SKATE_PARK_BASICS/mountains.png' );
+  var cementImg = require( 'image!ENERGY_SKATE_PARK/cement-texture-dark.jpg' );
+  var mountainImage = require( 'image!ENERGY_SKATE_PARK/mountains.png' );
 
   // constants
   var earthHeight = 70;

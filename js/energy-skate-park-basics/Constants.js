@@ -9,7 +9,7 @@ define( function( require ) {
 
   // modules
   var Dimension2 = require( 'DOT/Dimension2' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
 
   var minMass = 25;// kg
   var maxMass = 100;

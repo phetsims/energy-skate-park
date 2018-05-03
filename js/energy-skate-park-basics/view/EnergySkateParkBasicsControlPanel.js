@@ -11,14 +11,14 @@ define( function( require ) {
   // modules
   var Checkbox = require( 'SUN/Checkbox' );
   var Circle = require( 'SCENERY/nodes/Circle' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
-  var FrictionControl = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/FrictionControl' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
+  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
+  var FrictionControl = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/FrictionControl' );
   var GaugeNode = require( 'SCENERY_PHET/GaugeNode' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Line = require( 'SCENERY/nodes/Line' );
-  var MassControlPanel = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/view/MassControlPanel' );
+  var MassControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/MassControlPanel' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Panel = require( 'SUN/Panel' );
   var Path = require( 'SCENERY/nodes/Path' );
@@ -30,10 +30,10 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var controlsShowGridString = require( 'string!ENERGY_SKATE_PARK_BASICS/controls.show-grid' );
-  var pieChartString = require( 'string!ENERGY_SKATE_PARK_BASICS/pieChart' );
-  var plotsBarGraphString = require( 'string!ENERGY_SKATE_PARK_BASICS/plots.bar-graph' );
-  var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK_BASICS/properties.speed' );
+  var controlsShowGridString = require( 'string!ENERGY_SKATE_PARK/controls.show-grid' );
+  var pieChartString = require( 'string!ENERGY_SKATE_PARK/pieChart' );
+  var plotsBarGraphString = require( 'string!ENERGY_SKATE_PARK/plots.bar-graph' );
+  var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
 
   /**
    * @param {EnergySkateParkBasicsModel} model

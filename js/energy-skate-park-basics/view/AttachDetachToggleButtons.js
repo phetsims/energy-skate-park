@@ -10,7 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Panel = require( 'SUN/Panel' );
@@ -18,8 +18,8 @@ define( function( require ) {
 
 
   // images
-  var attachIcon = require( 'image!ENERGY_SKATE_PARK_BASICS/attach.png' );
-  var detachIcon = require( 'image!ENERGY_SKATE_PARK_BASICS/detach.png' );
+  var attachIcon = require( 'image!ENERGY_SKATE_PARK/attach.png' );
+  var detachIcon = require( 'image!ENERGY_SKATE_PARK/detach.png' );
 
   /**
    * Constructor for the AttachDetachToggleButtons

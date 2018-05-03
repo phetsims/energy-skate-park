@@ -11,7 +11,7 @@ define( function( require ) {
 
   // modules
   var dot = require( 'DOT/dot' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
 
   // constants
   var FastArray = dot.FastArray;

@@ -12,14 +12,14 @@ define( function( require ) {
   // modules
   var dot = require( 'DOT/dot' );
   var Emitter = require( 'AXON/Emitter' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetioObject = require( 'TANDEM/PhetioObject' );
   var Property = require( 'AXON/Property' );
   var PropertyIO = require( 'AXON/PropertyIO' );
-  var SplineEvaluation = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/SplineEvaluation' );
+  var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/SplineEvaluation' );
   var Tandem = require( 'TANDEM/Tandem' );
-  var TrackIO = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/TrackIO' );
+  var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/TrackIO' );
   var Vector2 = require( 'DOT/Vector2' );
 
   // phet-io modules

@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var Color = require( 'SCENERY/util/Color' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
 
   var EnergySkateParkColorScheme = {
 

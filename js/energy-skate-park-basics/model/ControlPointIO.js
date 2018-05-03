@@ -10,7 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
 
   // phet-io modules
   var assertInstanceOf = require( 'ifphetio!PHET_IO/assertInstanceOf' );

@@ -11,7 +11,7 @@ define( function( require ) {
   // modules
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
-  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK_BASICS/energySkateParkBasics' );
+  var energySkateParkBasics = require( 'ENERGY_SKATE_PARK/energySkateParkBasics' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetioObject = require( 'TANDEM/PhetioObject' );
   var Property = require( 'AXON/Property' );
@@ -19,7 +19,7 @@ define( function( require ) {
   var Tandem = require( 'TANDEM/Tandem' );
   var Vector2 = require( 'DOT/Vector2' );
   var Vector2IO = require( 'DOT/Vector2IO' );
-  var ControlPointIO = require( 'ENERGY_SKATE_PARK_BASICS/energy-skate-park-basics/model/ControlPointIO' );
+  var ControlPointIO = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/ControlPointIO' );
 
   // phet-io modules
   var NullableIO = require( 'ifphetio!PHET_IO/types/NullableIO' );
