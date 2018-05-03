@@ -9,9 +9,11 @@ energy-skate-park the repo that maintains sim implementation while energy-skate-
 full version with particular settings.
 
 After the `git --mirror` we had to rename files and directories with `git mv`, but this made history difficult to find.
-It is possible to use the GitHub UI at https://github.com/phetsims/energy-skate-park/commits/master to "Browse the
-repository at this point in history" and check out old SHAs. But `git log` shows no history prior to the `git mv`, and
-history cannot be seen directly in editors or the GitHub UI.
+`git log` shows no history prior to the `git mv`, and history cannot be seen directly in editors or the GitHub UI.
+However, it is possible to find git history a few ways:
+ - Use `git log --follow ./path/to/file` to see file history prior to `git mv`
+ - Check out an old SHA and browse locally.
+ - Use the GitHub UI at https://github.com/phetsims/energy-skate-park/commits/master to "Browse the repository at this point in history".
 
 `git --mirror` was done on 5/2/18, which may be helpful if you need to find code prior to this set up.
 
