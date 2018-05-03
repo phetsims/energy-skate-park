@@ -2,7 +2,7 @@
 
 This document contains notes that will be helpful to developers and future maintainers of this simulation.
 
-## IMPLEMENTATION HISTORY NOTES
+## IMPLEMENTATION HISTORY
 HTML5 version of energy-skate-park-basics was created before energy-skate-park, and so the "basics" repo was created
 before the full version as well. We decided to `git --mirror` energy-skate-park-basics into energy-skate-park, and make
 energy-skate-park the repo that maintains sim implementation while energy-skate-park-basics was a  "thin shell" running
