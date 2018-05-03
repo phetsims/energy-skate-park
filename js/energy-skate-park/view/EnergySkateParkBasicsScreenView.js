@@ -19,7 +19,7 @@ define( function( require ) {
   var DotRectangle = require( 'DOT/Rectangle' ); // eslint-disable-line require-statement-match
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkBasicsControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkBasicsControlPanel' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkBasicsQueryParameters' );
+  var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
   var GaugeNeedleNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/GaugeNeedleNode' );
@@ -473,7 +473,7 @@ define( function( require ) {
       this.availableViewBounds = new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) );
 
       // Float the control panel to the right (but not arbitrarily far because it could get too far from the play area)
-      var maxFloatAmount = EnergySkateParkBasicsQueryParameters.controlPanelLocation === 'fixed' ? 890 : Number.MAX_VALUE;
+      var maxFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? 890 : Number.MAX_VALUE;
       this.controlPanel.right = Math.min( maxFloatAmount, this.availableViewBounds.maxX ) - 5;
 
       if ( this.attachDetachToggleButtons ) {
@@ -492,7 +492,7 @@ define( function( require ) {
       this.availableModelBounds = this.modelViewTransform.viewToModelBounds( this.availableViewBounds );
       this.availableModelBoundsProperty.value = this.availableModelBounds;
 
-      if ( EnergySkateParkBasicsQueryParameters.controlPanelLocation === 'floating' ) {
+      if ( EnergySkateParkQueryParameters.controlPanelLocation === 'floating' ) {
         this.barGraphBackground.x = this.availableViewBounds.minX + 5;
         this.barGraphForeground.x = this.availableViewBounds.minX + 19;
       }

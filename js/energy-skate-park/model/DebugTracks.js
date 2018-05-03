@@ -12,7 +12,7 @@ define( function( require ) {
   // modules
   var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/ControlPoint' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkBasicsQueryParameters' );
+  var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/Track' );
   var Vector2 = require( 'DOT/Vector2' );
@@ -44,7 +44,7 @@ define( function( require ) {
 
         var controlPoints = null;
         var track = null;
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 1 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 1 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -58,7 +58,7 @@ define( function( require ) {
         }
 
         // Skater stutters and slows going over the hump
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 2 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 2 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -72,7 +72,7 @@ define( function( require ) {
         }
 
         // Tricky one--handled OK
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 3 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 3 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -86,7 +86,7 @@ define( function( require ) {
         }
 
         // Wide loop, OK
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 4 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 4 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -100,7 +100,7 @@ define( function( require ) {
         }
 
         // Flickering return skater button, PROBLEM
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 5 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 5 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -114,7 +114,7 @@ define( function( require ) {
         }
 
         // Passes through track, PROBLEM
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 6 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 6 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -128,7 +128,7 @@ define( function( require ) {
         }
 
         // Falls through bottom, PROBLEM
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 7 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 7 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -142,7 +142,7 @@ define( function( require ) {
         }
 
         // Falls through loop, PROBLEM
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 8 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 8 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -156,7 +156,7 @@ define( function( require ) {
         }
 
         // Pops upside down in loop, PROBLEM
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 9 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 9 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -170,7 +170,7 @@ define( function( require ) {
           model.tracks.add( track );
         }
 
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 10 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 10 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -184,7 +184,7 @@ define( function( require ) {
           model.tracks.add( track );
         }
 
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 11 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 11 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -198,7 +198,7 @@ define( function( require ) {
           model.tracks.add( track );
         }
 
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 12 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 12 ) {
 
           model.detachableProperty.value = true;
           // The skater falls through model track
@@ -212,7 +212,7 @@ define( function( require ) {
           model.tracks.add( track );
         }
 
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 13 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 13 ) {
 
           model.detachableProperty.value = false;
           // The skater falls through model track
@@ -226,7 +226,7 @@ define( function( require ) {
           model.tracks.add( track );
         }
 
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 14 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 14 ) {
           model.detachableProperty.value = true;
           model.skater.positionProperty.set( new Vector2( -6.698445595854922, 6.5278756476683935 ) );
           model.skater.released( 0, 0 );
@@ -263,7 +263,7 @@ define( function( require ) {
         }
 
         //Test decrease in thermal energy, see https://github.com/phetsims/energy-skate-park-basics/issues/141#issuecomment-59395426
-        if ( EnergySkateParkBasicsQueryParameters.testTrackIndex === 15 ) {
+        if ( EnergySkateParkQueryParameters.testTrackIndex === 15 ) {
           model.detachableProperty.value = true;
           model.skater.positionProperty.set( new Vector2( -6.698445595854922, 6.5278756476683935 ) );
           model.skater.released( 0, 0 );

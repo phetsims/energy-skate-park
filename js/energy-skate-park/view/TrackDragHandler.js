@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkBasicsQueryParameters' );
+  var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
 
@@ -234,7 +234,7 @@ define( function( require ) {
           model.joinTracks( track ); // Track will be joined to compatible track, then both will be disposed, and new track created.
         }
 
-        if ( EnergySkateParkBasicsQueryParameters.debugTrack ) {
+        if ( EnergySkateParkQueryParameters.debugTrack ) {
           console.log( track.getDebugString() );
         }
         this.startedDrag = false;

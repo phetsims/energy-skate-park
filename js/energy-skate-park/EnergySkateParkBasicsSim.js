@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkBasicsQueryParameters' );
+  var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var EnergySkateParkBasicsScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkBasicsScreen' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Sim = require( 'JOIST/Sim' );
@@ -43,7 +43,7 @@ define( function( require ) {
         qualityAssurance: 'Steele Dalton, Oliver Orejola, Arnab Purkayastha, Bryan Yoelin'
       },
 
-      showSaveAndLoad: EnergySkateParkBasicsQueryParameters.showSaveAndLoad
+      showSaveAndLoad: EnergySkateParkQueryParameters.showSaveAndLoad
     };
 
     Sim.call( this, energySkateParkTitleString, [

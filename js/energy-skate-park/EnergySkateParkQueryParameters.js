@@ -9,7 +9,7 @@ define( function( require ) {
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
-  var EnergySkateParkBasicsQueryParameters = QueryStringMachine.getAll( {
+  var EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
 
     // Print out console messages related to the physics
     debugLog: { type: 'flag' },
@@ -34,7 +34,7 @@ define( function( require ) {
     }
   } );
 
-  energySkatePark.register( 'EnergySkateParkBasicsQueryParameters', EnergySkateParkBasicsQueryParameters );
+  energySkatePark.register( 'EnergySkateParkQueryParameters', EnergySkateParkQueryParameters );
 
-  return EnergySkateParkBasicsQueryParameters;
+  return EnergySkateParkQueryParameters;
 } );

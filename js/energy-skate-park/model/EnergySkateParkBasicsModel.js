@@ -33,7 +33,7 @@ define( function( require ) {
   var Emitter = require( 'AXON/Emitter' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkBasicsModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/EnergySkateParkBasicsModelIO' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkBasicsQueryParameters' );
+  var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var NumberProperty = require( 'AXON/NumberProperty' );
   var ObservableArray = require( 'AXON/ObservableArray' );
@@ -62,10 +62,10 @@ define( function( require ) {
   var thrust = new Vector2();
 
   // Flag to enable debugging for physics issues
-  var debug = EnergySkateParkBasicsQueryParameters.debugLog ? function() {
+  var debug = EnergySkateParkQueryParameters.debugLog ? function() {
     console.log.apply( console, arguments );
   } : null;
-  var debugAttachDetach = EnergySkateParkBasicsQueryParameters.debugAttachDetach ? function() {
+  var debugAttachDetach = EnergySkateParkQueryParameters.debugAttachDetach ? function() {
     console.log.apply( console, arguments );
   } : null;
 
@@ -166,7 +166,7 @@ define( function( require ) {
       phetioType: PropertyIO( Bounds2IO )
     } );
 
-    if ( EnergySkateParkBasicsQueryParameters.debugTrack ) {
+    if ( EnergySkateParkQueryParameters.debugTrack ) {
       this.frictionProperty.debug( 'friction' );
     }
 
@@ -275,7 +275,7 @@ define( function( require ) {
       this.addDraggableTracks();
     }
 
-    if ( EnergySkateParkBasicsQueryParameters.debugTrack ) {
+    if ( EnergySkateParkQueryParameters.debugTrack ) {
       DebugTracks.init( this, tandem.createGroupTandem( 'debugTrackControlPoint' ), tandem.createGroupTandem( 'track' ) );
     }
     PhetioObject.call( this, {
