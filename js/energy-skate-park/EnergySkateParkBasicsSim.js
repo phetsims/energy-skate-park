@@ -10,8 +10,8 @@ define( function( require ) {
 
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
-  var EnergySkateParkBasicsScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsScreen' );
+  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkBasicsQueryParameters' );
+  var EnergySkateParkBasicsScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkBasicsScreen' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Sim = require( 'JOIST/Sim' );
 

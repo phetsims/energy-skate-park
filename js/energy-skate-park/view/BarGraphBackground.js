@@ -13,7 +13,7 @@ define( function( require ) {
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
   var ClearThermalButton = require( 'SCENERY_PHET/ClearThermalButton' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
+  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Line = require( 'SCENERY/nodes/Line' );
   var Panel = require( 'SUN/Panel' );

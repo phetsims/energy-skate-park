@@ -10,11 +10,11 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/ControlPoint' );
+  var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/ControlPoint' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsQueryParameters' );
+  var EnergySkateParkBasicsQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkBasicsQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/Track' );
+  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/Track' );
   var Vector2 = require( 'DOT/Vector2' );
 
   /**

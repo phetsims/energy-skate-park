@@ -8,7 +8,7 @@
 define( function( require ) {
   'use strict';
 
-  var EnergySkateParkBasicsSim = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/EnergySkateParkBasicsSim' );
+  var EnergySkateParkBasicsSim = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkBasicsSim' );
   var SimLauncher = require( 'JOIST/SimLauncher' );
   var Tandem = require( 'TANDEM/Tandem' );
 

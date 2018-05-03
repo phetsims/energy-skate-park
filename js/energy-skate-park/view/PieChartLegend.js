@@ -11,7 +11,7 @@ define( function( require ) {
   // modules
   var ClearThermalButton = require( 'SCENERY_PHET/ClearThermalButton' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
+  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var HStrut = require( 'SCENERY/nodes/HStrut' );
   var inherit = require( 'PHET_CORE/inherit' );

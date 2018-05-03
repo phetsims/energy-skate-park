@@ -9,14 +9,14 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/BackgroundNode' );
+  var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BackgroundNode' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Panel = require( 'SUN/Panel' );
   var Property = require( 'AXON/Property' );
   var RadioButtonGroup = require( 'SUN/buttons/RadioButtonGroup' );
-  var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/TrackNode' );
+  var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackNode' );
 
   /**
    * Construct a SceneSelectionPanel.  Pass the entire model since it is used to create TrackNode

@@ -12,13 +12,13 @@ define( function( require ) {
   var Checkbox = require( 'SUN/Checkbox' );
   var Circle = require( 'SCENERY/nodes/Circle' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/EnergySkateParkColorScheme' );
-  var FrictionControl = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/FrictionControl' );
+  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
+  var FrictionControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/FrictionControl' );
   var GaugeNode = require( 'SCENERY_PHET/GaugeNode' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Line = require( 'SCENERY/nodes/Line' );
-  var MassControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/MassControlPanel' );
+  var MassControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/MassControlPanel' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Panel = require( 'SUN/Panel' );
   var Path = require( 'SCENERY/nodes/Path' );

@@ -17,9 +17,9 @@ define( function( require ) {
   var PhetioObject = require( 'TANDEM/PhetioObject' );
   var Property = require( 'AXON/Property' );
   var PropertyIO = require( 'AXON/PropertyIO' );
-  var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/SplineEvaluation' );
+  var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/SplineEvaluation' );
   var Tandem = require( 'TANDEM/Tandem' );
-  var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/TrackIO' );
+  var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/TrackIO' );
   var Vector2 = require( 'DOT/Vector2' );
 
   // phet-io modules

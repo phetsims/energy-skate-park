@@ -11,7 +11,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ControlPointNode = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/ControlPointNode' );
+  var ControlPointNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/ControlPointNode' );
   var dot = require( 'DOT/dot' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -19,8 +19,8 @@ define( function( require ) {
   var Node = require( 'SCENERY/nodes/Node' );
   var Path = require( 'SCENERY/nodes/Path' );
   var Shape = require( 'KITE/Shape' );
-  var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/model/SplineEvaluation' );
-  var TrackDragHandler = require( 'ENERGY_SKATE_PARK/energy-skate-park-basics/view/TrackDragHandler' );
+  var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/SplineEvaluation' );
+  var TrackDragHandler = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackDragHandler' );
 
   // constants
   var FastArray = dot.FastArray;
