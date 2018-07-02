@@ -31,7 +31,7 @@ define( function( require ) {
   /**
    * Model for a track, which has a fixed number of points.  If you added a point to a Track, you need a new track.
    * 
-   * @param {Events} events event source for sending messages
+   * @param {EnergySkateParkBasicsModel} model
    * @param {ObservableArray<Track>} modelTracks all model tracks, so this track can add/remove others when joined/split
    * @param {Array<ControlPoint>} controlPoints
    * @param {boolean} interactive
@@ -42,7 +42,7 @@ define( function( require ) {
    * @param {Object} options - required for tandem
    * @constructor
    */
-  function Track( events, modelTracks, controlPoints, interactive, parents, availableModelBoundsProperty, options ) {
+  function Track( model, modelTracks, controlPoints, interactive, parents, availableModelBoundsProperty, options ) {
 
     options = _.extend( {
       tandem: Tandem.required,
@@ -51,7 +51,7 @@ define( function( require ) {
 
     var tandem = options.tandem;
     var self = this;
-    this.events = events;
+    this.model = model;
     this.parents = parents;
     this.modelTracks = modelTracks;
 
@@ -108,7 +108,7 @@ define( function( require ) {
       phetioType: PropertyIO( BooleanIO )
     } );
 
-    var trackChangedListener = function() { events.trackChangedEmitter.emit(); };
+    var trackChangedListener = function() { model.trackChangedEmitter.emit(); };
     this.physicalProperty.link( trackChangedListener );
 
     this.controlPoints = controlPoints;
@@ -137,8 +137,8 @@ define( function( require ) {
     phet.phetIo && phet.phetIo.phetio.setStateEmitter && phet.phetIo.phetio.setStateEmitter.addListener( function() {
       self.updateLinSpace();
       self.updateSplines();
-      events.trackChangedEmitter.emit();
-      events.updateEmitter.emit();
+      model.trackChangedEmitter.emit();
+      model.updateEmitter.emit();
     } );
 
     // when available bounds change, make sure that control points are within - must be disposed
