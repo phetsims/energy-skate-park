@@ -1,7 +1,7 @@
 // Copyright 2014-2017, University of Colorado Boulder
 
 /**
- * Debug tracks, which can be enabled using the query parameter 'DebugTracks' with the index of the track to debug.
+ * Debug tracks, which can be enabled using the query parameter 'debugTrack' with the index of the track to debug.
  * There is no automated testing, you have to launch the track and see if the behavior looks correct.
  *
  * @author Sam Reid
