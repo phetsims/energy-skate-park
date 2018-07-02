@@ -20,21 +20,17 @@ define( function( require ) {
    *
    * @param name
    * @param homescreenIcon
-   * @param navbarIcon
    * @param draggableTracks
    * @param friction
    * @param {Tandem} tandem
    * @constructor
    */
-  function EnergySkateParkBasicsScreen( name, homescreenIcon, navbarIcon, draggableTracks, friction, tandem ) {
+  function EnergySkateParkBasicsScreen( name, homescreenIcon, draggableTracks, friction, tandem ) {
 
     var options = {
       name: name,
       homeScreenIcon: new Image( homescreenIcon, {
         tandem: tandem.createTandem( 'homescreenIcon' )
-      } ),
-      navigationBarIcon: new Image( navbarIcon, {
-        tandem: tandem.createTandem( 'navbarIcon' )
       } ),
       tandem: tandem
     };
