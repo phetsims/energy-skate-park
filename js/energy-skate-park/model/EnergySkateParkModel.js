@@ -1,7 +1,7 @@
 // Copyright 2013-2017, University of Colorado Boulder
 
 /**
- * Model for the Energy Skate Park: Basics sim, including model values for the view settings, such as whether the grid
+ * Model for the Energy Skate Park sim, including model values for the view settings, such as whether the grid
  * is visible. All units are in mks.
  *
  * The step functions focus on making computations up front and applying changes to the skater at the end of each
@@ -64,7 +64,7 @@ define( function( require ) {
   var curvatureTemp = { r: 1, x: 0, y: 0 };
   var curvatureTemp2 = { r: 1, x: 0, y: 0 };
 
-  // Thrust is not currently implemented in Energy Skate Park: Basics but may be used in a future version, so left here
+  // Thrust is not currently implemented in Energy Skate Park but may be used in a future version, so left here
   var thrust = new Vector2();
 
   // Flag to enable debugging for physics issues
