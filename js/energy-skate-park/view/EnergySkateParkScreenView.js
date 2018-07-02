@@ -1,7 +1,7 @@
 // Copyright 2013-2017, University of Colorado Boulder
 
 /**
- * Scenery node for the energy skate park basics view (includes everything you see)
+ * Scenery node for the Energy Skate Park view (includes everything you see)
  *
  * @author Sam Reid
  */
@@ -68,7 +68,7 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function EnergySkateParkBasicsScreenView( model, tandem ) {
+  function EnergySkateParkScreenView( model, tandem ) {
 
     var trackNodeGroupTandem = tandem.createGroupTandem( 'trackNode' );
 
@@ -442,11 +442,11 @@ define( function( require ) {
     }
   }
 
-  energySkatePark.register( 'EnergySkateParkBasicsScreenView', EnergySkateParkBasicsScreenView );
+  energySkatePark.register( 'EnergySkateParkScreenView', EnergySkateParkScreenView );
 
-  return inherit( ScreenView, EnergySkateParkBasicsScreenView, {
+  return inherit( ScreenView, EnergySkateParkScreenView, {
 
-    // Layout the EnergySkateParkBasicsScreenView, scaling it up and down with the size of the screen to ensure a
+    // Layout the EnergySkateParkScreenView, scaling it up and down with the size of the screen to ensure a
     // minimially visible area, but keeping it centered at the bottom of the screen, so there is more area in the +y
     // direction to build tracks and move the skater
     layout: function( width, height ) {

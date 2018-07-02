@@ -33,7 +33,7 @@ define( function( require ) {
    * SkaterNode constructor
    *
    * @param {Skater} skater
-   * @param {EnergySkateParkBasicsScreenView} view
+   * @param {EnergySkateParkScreenView} view
    * @param {ModelViewTransform} modelViewTransform
    * @param {function} getClosestTrackAndPositionAndParameter function that gets the closest track properties, used when
    * the skater is being dragged close to the track
