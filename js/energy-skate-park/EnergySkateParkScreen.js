@@ -25,7 +25,7 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function EnergySkateParkBasicsScreen( name, homescreenIcon, draggableTracks, friction, tandem ) {
+  function EnergySkateParkScreen( name, homescreenIcon, draggableTracks, friction, tandem ) {
 
     var options = {
       name: name,
@@ -45,7 +45,7 @@ define( function( require ) {
       options );
   }
 
-  energySkatePark.register( 'EnergySkateParkBasicsScreen', EnergySkateParkBasicsScreen );
+  energySkatePark.register( 'EnergySkateParkScreen', EnergySkateParkScreen );
 
-  return inherit( Screen, EnergySkateParkBasicsScreen );
+  return inherit( Screen, EnergySkateParkScreen );
 } );
