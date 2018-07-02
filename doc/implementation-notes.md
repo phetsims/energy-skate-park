@@ -1,4 +1,4 @@
-# Hooke's Law - Implementation Notes
+# Energy Skate Park - Implementation Notes
 
 This document contains notes that will be helpful to developers and future maintainers of this simulation.
 
