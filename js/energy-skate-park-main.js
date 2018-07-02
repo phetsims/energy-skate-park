@@ -1,7 +1,7 @@
 // Copyright 2013-2017, University of Colorado Boulder
 
 /**
- * Entry point for PhET Interactive Simulation's Energy Skate Park: Basics application.
+ * Entry point for PhET Interactive Simulation's Energy Skate Park application.
  *
  * @author Sam Reid
  */
