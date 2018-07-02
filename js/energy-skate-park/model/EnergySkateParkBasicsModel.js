@@ -58,6 +58,12 @@ define( function( require ) {
   // Reuse empty object for creating SkaterStates to avoid allocations
   var EMPTY_OBJECT = {};
 
+
+  // Use a separate pooled curvature variable to reduce memory allocations - object values
+  // will be modified as the skater moves
+  var curvatureTemp = { r: 1, x: 0, y: 0 };
+  var curvatureTemp2 = { r: 1, x: 0, y: 0 };
+
   // Thrust is not currently implemented in Energy Skate Park: Basics but may be used in a future version, so left here
   var thrust = new Vector2();
 
@@ -813,9 +819,6 @@ define( function( require ) {
       }
     },
 
-    // Use a separate pooled curvature variable - this value will be modified as the skater moves
-    curvatureTemp2: { r: 1, x: 0, y: 0 },
-
     /**
      * Get the normal force (Newtons) on the skater.
      *
@@ -823,12 +826,12 @@ define( function( require ) {
      * @return {number}
      */
     getNormalForce: function( skaterState ) {
-      skaterState.getCurvature( this.curvatureTemp2 );
-      var radiusOfCurvature = Math.min( this.curvatureTemp2.r, 100000 );
+      skaterState.getCurvature( curvatureTemp2 );
+      var radiusOfCurvature = Math.min( curvatureTemp2.r, 100000 );
       var netForceRadial = new Vector2();
 
       netForceRadial.addXY( 0, skaterState.mass * skaterState.gravity );// gravity
-      var curvatureDirection = this.getCurvatureDirection( this.curvatureTemp2, skaterState.positionX, skaterState.positionY );
+      var curvatureDirection = this.getCurvatureDirection( curvatureTemp2, skaterState.positionX, skaterState.positionY );
 
       // On a flat surface, just use the radial component of the net force for the normal, see #344
       if ( isNaN( curvatureDirection.x ) || isNaN( curvatureDirection.y ) ) {
@@ -935,8 +938,6 @@ define( function( require ) {
       }
     },
 
-    curvatureTemp: { r: 1, x: 0, y: 0 },
-
     /**
      * Update the skater as it moves along the track, and fly off the track if it  goes over a jump off the track's end.
      *
@@ -946,10 +947,10 @@ define( function( require ) {
      */
     stepTrack: function( dt, skaterState ) {
 
-      skaterState.getCurvature( this.curvatureTemp );
+      skaterState.getCurvature( curvatureTemp );
 
-      var curvatureDirectionX = this.getCurvatureDirectionX( this.curvatureTemp, skaterState.positionX, skaterState.positionY );
-      var curvatureDirectionY = this.getCurvatureDirectionY( this.curvatureTemp, skaterState.positionX, skaterState.positionY );
+      var curvatureDirectionX = this.getCurvatureDirectionX( curvatureTemp, skaterState.positionX, skaterState.positionY );
+      var curvatureDirectionY = this.getCurvatureDirectionY( curvatureTemp, skaterState.positionX, skaterState.positionY );
 
       var track = skaterState.track;
       var sideVectorX = skaterState.onTopSideOfTrack ? track.getUnitNormalVector( skaterState.parametricPosition ).x :
@@ -961,7 +962,7 @@ define( function( require ) {
       var outsideCircle = sideVectorX * curvatureDirectionX + sideVectorY * curvatureDirectionY < 0;
 
       // compare a to v/r^2 to see if it leaves the track
-      var r = Math.abs( this.curvatureTemp.r );
+      var r = Math.abs( curvatureTemp.r );
       var centripetalForce = skaterState.mass * skaterState.parametricSpeed * skaterState.parametricSpeed / r;
 
       var netForceWithoutNormalX = this.getNetForceWithoutNormalX( skaterState );
