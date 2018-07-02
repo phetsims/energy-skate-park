@@ -30,7 +30,7 @@ define( function( require ) {
    * @constructor
    * @param {Tandem} tandem
    */
-  function EnergySkateParkBasicsSim( tandem ) {
+  function EnergySkateParkSim( tandem ) {
     var options = {
       credits: {
         leadDesign: 'Ariel Paul, Noah Podolefsky, Sam Reid',
@@ -50,7 +50,7 @@ define( function( require ) {
     ], options );
   }
 
-  energySkatePark.register( 'EnergySkateParkBasicsSim', EnergySkateParkBasicsSim );
+  energySkatePark.register( 'EnergySkateParkSim', EnergySkateParkSim );
 
-  return inherit( Sim, EnergySkateParkBasicsSim );
+  return inherit( Sim, EnergySkateParkSim );
 } );

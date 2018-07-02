@@ -8,7 +8,7 @@
 define( function( require ) {
   'use strict';
 
-  var EnergySkateParkBasicsSim = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkBasicsSim' );
+  var EnergySkateParkSim = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkSim' );
   var SimLauncher = require( 'JOIST/SimLauncher' );
   var Tandem = require( 'TANDEM/Tandem' );
 
@@ -19,6 +19,6 @@ define( function( require ) {
   var tandem = Tandem.rootTandem;
 
   SimLauncher.launch( function() {
-    new EnergySkateParkBasicsSim( tandem ).start();
+    new EnergySkateParkSim( tandem ).start();
   } );
 } );
