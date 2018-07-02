@@ -1,7 +1,7 @@
 // Copyright 2013-2017, University of Colorado Boulder
 
 /**
- * A single screen for the Energy Skate Park: Basics sim.
+ * A single screen for the Energy Skate Park sim.
  *
  * @author Sam Reid
  */
