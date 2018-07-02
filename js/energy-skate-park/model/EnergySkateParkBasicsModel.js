@@ -176,9 +176,6 @@ define( function( require ) {
       this.frictionProperty.debug( 'friction' );
     }
 
-    // @private {number} - elapsed time in the sim, in seconds.
-    this.time = 0;
-
     // @public {Skater} - the skater model instance
     this.skater = new Skater( tandem.createTandem( 'skater' ) );
 
@@ -1290,8 +1287,6 @@ define( function( require ) {
      * @return {SkaterState}
      */
     stepModel: function( dt, skaterState ) {
-      this.time += dt;
-
       return skaterState.dragging ? skaterState : // User is dragging the skater, nothing to update here
              !skaterState.track && skaterState.positionY <= 0 ? this.stepGround( dt, skaterState ) :
              !skaterState.track && skaterState.positionY > 0 ? this.stepFreeFall( dt, skaterState, false ) :
