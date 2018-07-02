@@ -31,7 +31,7 @@ define( function( require ) {
   /**
    * Model for a track, which has a fixed number of points.  If you added a point to a Track, you need a new track.
    * 
-   * @param {EnergySkateParkBasicsModel} model
+   * @param {EnergySkateParkModel} model
    * @param {ObservableArray<Track>} modelTracks all model tracks, so this track can add/remove others when joined/split
    * @param {Array<ControlPoint>} controlPoints
    * @param {boolean} interactive

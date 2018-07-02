@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkBasicsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/EnergySkateParkBasicsModel' );
+  var EnergySkateParkModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/EnergySkateParkModel' );
   var EnergySkateParkBasicsScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkBasicsScreenView' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -37,7 +37,7 @@ define( function( require ) {
 
     Screen.call( this,
       function() {
-        return new EnergySkateParkBasicsModel( draggableTracks, friction, tandem.createTandem( 'model' ) );
+        return new EnergySkateParkModel( draggableTracks, friction, tandem.createTandem( 'model' ) );
       },
       function( model ) {
         return new EnergySkateParkBasicsScreenView( model, tandem.createTandem( 'view' ) );

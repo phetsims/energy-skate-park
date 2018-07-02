@@ -20,7 +20,7 @@ define( function( require ) {
 
   /**
    * Construct a SceneSelectionPanel.  Pass the entire model since it is used to create TrackNode
-   * @param {EnergySkateParkBasicsModel} model the main model for the entire screen
+   * @param {EnergySkateParkModel} model the main model for the entire screen
    * @param {EnergySkateParkBasicsView} view the main view for the entire screen
    * @param {ModelViewTransform2} transform the model view transform
    * @param {Tandem} tandem

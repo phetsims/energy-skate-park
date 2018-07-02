@@ -27,7 +27,7 @@ define( function( require ) {
 
   /**
    * Constructor for TrackNode
-   * @param {EnergySkateParkBasicsModel} model the entire model.  Not absolutely necessary, but so many methods are called on it for joining and
+   * @param {EnergySkateParkModel} model the entire model.  Not absolutely necessary, but so many methods are called on it for joining and
    * splitting tracks that we pass the entire model anyways.
    * @param {Track} track the track for this track node
    * @param {ModelViewTransform} modelViewTransform the model view transform for the view

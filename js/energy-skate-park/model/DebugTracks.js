@@ -31,7 +31,7 @@ define( function( require ) {
      * Initialize the debugging tool. Only done when debug query parameter debugTrack is used. Modifies the model that
      * is passed in.
      *
-     * @param {EnergySkateParkBasicsModel} model
+     * @param {EnergySkateParkModel} model
      * @param {Tandem} controlPointGroupTandem
      * @param {Tandem} trackGroupTandem
      */

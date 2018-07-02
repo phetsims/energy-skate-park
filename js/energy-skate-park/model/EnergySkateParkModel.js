@@ -32,7 +32,7 @@ define( function( require ) {
   var DebugTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/DebugTracks' );
   var Emitter = require( 'AXON/Emitter' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkBasicsModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/EnergySkateParkBasicsModelIO' );
+  var EnergySkateParkModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/EnergySkateParkModelIO' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var NumberProperty = require( 'AXON/NumberProperty' );
@@ -83,14 +83,14 @@ define( function( require ) {
   var modelIterations = 0;
 
   /**
-   * Main constructor for the EnergySkateParkBasicsModel
+   * Main constructor for the EnergySkateParkModel
    *
    * @param {boolean} draggableTracks True in screen 3 where the user can drag the tracks
    * @param {boolean} frictionAllowed True if this is screen 2-3, where friction is allowed to be on or off
    * @param {Tandem} tandem
    * @constructor
    */
-  function EnergySkateParkBasicsModel( draggableTracks, frictionAllowed, tandem ) {
+  function EnergySkateParkModel( draggableTracks, frictionAllowed, tandem ) {
 
     // @public (read-only)
     this.draggableTracks = draggableTracks;
@@ -282,15 +282,15 @@ define( function( require ) {
       DebugTracks.init( this, tandem.createGroupTandem( 'debugTrackControlPoint' ), tandem.createGroupTandem( 'track' ) );
     }
     PhetioObject.call( this, {
-      phetioType: EnergySkateParkBasicsModelIO,
+      phetioType: EnergySkateParkModelIO,
       tandem: tandem,
       phetioState: false
     } );
   }
 
-  energySkatePark.register( 'EnergySkateParkBasicsModel', EnergySkateParkBasicsModel );
+  energySkatePark.register( 'EnergySkateParkModel', EnergySkateParkModel );
 
-  return inherit( PhetioObject, EnergySkateParkBasicsModel, {
+  return inherit( PhetioObject, EnergySkateParkModel, {
 
     // Add the tracks that will be in the track toolbox for the "Playground" screen
     addDraggableTracks: function() {
@@ -1672,7 +1672,7 @@ define( function( require ) {
 
     /**
      * Add a track, called by phet-io in setState (to restore a state).
-     * TODO: this code should be called by EnergySkateParkBasicsModel too.
+     * TODO: this code should be called by EnergySkateParkModel too.
      * @param {Tandem} tandem
      * @param {boolean} interactive - whether the track can be dragged.
      * @param controlPointTandemIDs

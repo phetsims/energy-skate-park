@@ -64,7 +64,7 @@ define( function( require ) {
   var showAvailableBounds = false;
 
   /**
-   * @param {EnergySkateParkBasicsModel} model
+   * @param {EnergySkateParkModel} model
    * @param {Tandem} tandem
    * @constructor
    */

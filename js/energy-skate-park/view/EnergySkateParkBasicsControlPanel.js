@@ -36,7 +36,7 @@ define( function( require ) {
   var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
 
   /**
-   * @param {EnergySkateParkBasicsModel} model
+   * @param {EnergySkateParkModel} model
    * @param {Tandem} tandem
    * @constructor
    */
