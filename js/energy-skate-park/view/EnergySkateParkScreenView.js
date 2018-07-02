@@ -18,7 +18,7 @@ define( function( require ) {
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DotRectangle = require( 'DOT/Rectangle' ); // eslint-disable-line require-statement-match
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkBasicsControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkBasicsControlPanel' );
+  var EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkControlPanel' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
@@ -106,7 +106,7 @@ define( function( require ) {
     );
     this.addChild( this.pieChartLegend );
 
-    this.controlPanel = new EnergySkateParkBasicsControlPanel( model, tandem.createTandem( 'controlPanel' ) );
+    this.controlPanel = new EnergySkateParkControlPanel( model, tandem.createTandem( 'controlPanel' ) );
     this.addChild( this.controlPanel );
     this.controlPanel.right = this.layoutBounds.width - 5;
     this.controlPanel.top = 5;

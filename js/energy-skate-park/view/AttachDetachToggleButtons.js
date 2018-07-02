@@ -32,7 +32,7 @@ define( function( require ) {
    */
   function AttachDetachToggleButtons( detachableProperty, enabledProperty, contentWidth, tandem, options ) {
 
-    // Match the style of the EnergySkateParkBasicsControlPanel
+    // Match the style of the EnergySkateParkControlPanel
     options = _.extend( {
       fill: '#F0F0F0',
       stroke: null,

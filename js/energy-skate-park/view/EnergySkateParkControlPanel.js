@@ -40,7 +40,7 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function EnergySkateParkBasicsControlPanel( model, tandem ) {
+  function EnergySkateParkControlPanel( model, tandem ) {
 
     // @private
     this.tempTandem = tandem;
@@ -119,9 +119,9 @@ define( function( require ) {
     } );
   }
 
-  energySkatePark.register( 'EnergySkateParkBasicsControlPanel', EnergySkateParkBasicsControlPanel );
+  energySkatePark.register( 'EnergySkateParkControlPanel', EnergySkateParkControlPanel );
 
-  return inherit( Panel, EnergySkateParkBasicsControlPanel, {
+  return inherit( Panel, EnergySkateParkControlPanel, {
 
     // Create an icon for the bar graph checkbox
     createBarGraphIcon: function( tandem ) {
