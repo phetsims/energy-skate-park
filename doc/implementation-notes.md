@@ -14,6 +14,7 @@ However, it is possible to find git history a few ways:
  - Use `git log --follow ./path/to/file` to see file history prior to `git mv`
  - Check out an old SHA and browse locally.
  - Use the GitHub UI at https://github.com/phetsims/energy-skate-park/commits/master to "Browse the repository at this point in history".
+ - Use IntelliJ IDEA or WebStorm UI and press Git => Show History
 
 `git --mirror` was done on 5/2/18, which may be helpful if you need to find code prior to this set up.
 
