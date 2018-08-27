@@ -23,7 +23,7 @@ define( function( require ) {
    * @constructor
    */
   function EnergySkateParkModelIO( energySkateParkModel, phetioID ) {
-    assert && assertInstanceOf( energySkateParkModel, phet.energySkatePark.energySkateParkModel );
+    assert && assertInstanceOf( energySkateParkModel, phet.energySkatePark.EnergySkateParkModel );
     ObjectIO.call( this, energySkateParkModel, phetioID );
   }
 
