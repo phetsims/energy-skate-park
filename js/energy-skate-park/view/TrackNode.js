@@ -19,7 +19,7 @@ define( function( require ) {
   var Node = require( 'SCENERY/nodes/Node' );
   var Path = require( 'SCENERY/nodes/Path' );
   var Shape = require( 'KITE/Shape' );
-  var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/SplineEvaluation' );
+  var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SplineEvaluation' );
   var TrackDragHandler = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackDragHandler' );
 
   // constants
