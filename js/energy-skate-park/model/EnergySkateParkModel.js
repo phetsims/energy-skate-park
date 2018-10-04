@@ -29,7 +29,7 @@ define( function( require ) {
   var Bounds2 = require( 'DOT/Bounds2' );
   var Bounds2IO = require( 'DOT/Bounds2IO' );
   var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
-  var DebugTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/DebugTracks' );
+  var DebugTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/DebugTracks' );
   var Emitter = require( 'AXON/Emitter' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/EnergySkateParkModelIO' );
