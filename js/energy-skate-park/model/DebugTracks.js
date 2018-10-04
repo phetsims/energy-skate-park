@@ -10,7 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/ControlPoint' );
+  var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
