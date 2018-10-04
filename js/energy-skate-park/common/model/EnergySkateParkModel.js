@@ -45,8 +45,8 @@ define( function( require ) {
   var Skater = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Skater' );
   var SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
   var Tandem = require( 'TANDEM/Tandem' );
-  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/Track' );
-  var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/TrackIO' );
+  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
+  var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackIO' );
   var Util = require( 'DOT/Util' );
   var Vector2 = require( 'DOT/Vector2' );
 

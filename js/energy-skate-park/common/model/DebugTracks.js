@@ -14,7 +14,7 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/Track' );
+  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
   var Vector2 = require( 'DOT/Vector2' );
 
   /**
