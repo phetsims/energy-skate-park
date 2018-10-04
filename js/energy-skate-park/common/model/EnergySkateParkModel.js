@@ -42,8 +42,8 @@ define( function( require ) {
   var Property = require( 'AXON/Property' );
   var PropertyIO = require( 'AXON/PropertyIO' );
   var Range = require( 'DOT/Range' );
-  var Skater = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/Skater' );
-  var SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/SkaterState' );
+  var Skater = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Skater' );
+  var SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
   var Tandem = require( 'TANDEM/Tandem' );
   var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/Track' );
   var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/TrackIO' );
