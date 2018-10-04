@@ -32,7 +32,7 @@ define( function( require ) {
   var DebugTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/DebugTracks' );
   var Emitter = require( 'AXON/Emitter' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/model/EnergySkateParkModelIO' );
+  var EnergySkateParkModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModelIO' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var NumberProperty = require( 'AXON/NumberProperty' );
