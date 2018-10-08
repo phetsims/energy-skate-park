@@ -87,6 +87,13 @@ define( function( require ) {
       range: { min: -100, max: 1E-6 }
     } );
 
+    // @public {number} - reference height for potential energy, 0 is at the ground
+    this.referenceHeightProperty = new NumberProperty( 0, {
+      tandem: tandem.createTandem( 'referenceHeightProperty' ),
+      units: 'meters'
+      // range: { } // TODO?
+    } );
+
     // @public {Vector2} - the position of the skater
     this.positionProperty = new Property( new Vector2( 3.5, 0 ), {
       tandem: tandem.createTandem( 'positionProperty' ),
@@ -284,6 +291,7 @@ define( function( require ) {
       this.parametricSpeedProperty.reset();
       this.onTopSideOfTrackProperty.reset();
       this.gravityProperty.reset();
+      this.referenceHeightProperty.reset();
       this.positionProperty.reset();
       this.massProperty.reset();
       this.directionProperty.reset();
