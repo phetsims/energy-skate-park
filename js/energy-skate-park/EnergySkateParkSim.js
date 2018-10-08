@@ -11,19 +11,15 @@ define( function( require ) {
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
-  var EnergySkateParkScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkScreen' );
   var IntroScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/IntroScreen' );
+  var GraphsScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsScreen' );
+  var LabScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/LabScreen' );
+  var MeasureScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/MeasureScreen' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Sim = require( 'JOIST/Sim' );
 
-  // images
-  var iconFrictionHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-friction-homescreen.png' );
-  var iconPlaygroundHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-playground-homescreen.png' );
-
   // strings
   var energySkateParkTitleString = require( 'string!ENERGY_SKATE_PARK/energy-skate-park.title' );
-  var screenFrictionString = require( 'string!ENERGY_SKATE_PARK/screen.friction' );
-  var screenTrackPlaygroundString = require( 'string!ENERGY_SKATE_PARK/screen.trackPlayground' );
 
   /**
    * @constructor
@@ -44,8 +40,9 @@ define( function( require ) {
 
     Sim.call( this, energySkateParkTitleString, [
       new IntroScreen( tandem.createTandem( 'introScreen' ) ),
-      new EnergySkateParkScreen( screenFrictionString, iconFrictionHomescreen, false, true, tandem.createTandem( 'frictionScreen' ) ),
-      new EnergySkateParkScreen( screenTrackPlaygroundString, iconPlaygroundHomescreen, true, true, tandem.createTandem( 'playgroundScreen' ) )
+      new MeasureScreen( tandem.createTandem( 'measureScreen' ) ),
+      new GraphsScreen( tandem.createTandem( 'graphsScreen' ) ),
+      new LabScreen( tandem.createTandem( 'labScreen' ) )
     ], options );
   }
 

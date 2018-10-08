@@ -67,5 +67,14 @@
   },
   "zeroMeters": {
     "value": "0 meters"
+  },
+  "screen.graphs": {
+    "value": "Graphs"
+  },
+  "screen.lab": {
+    "value": "Lab"
+  },
+  "screen.measure": {
+    "value": "Measure"
   }
 }

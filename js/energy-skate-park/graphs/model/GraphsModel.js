@@ -1,7 +1,7 @@
 // Copyright 2017, University of Colorado Boulder
 
 /**
- * Model for the Intro screen in Energy Skate Park.
+ * Model for the Graphs screen in Energy Skate Park.
  * @author Jesse Greenberg
  */
 
@@ -14,13 +14,13 @@ define( function( require ) {
   var EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
 
   // constants
-  function IntroModel( tandem ) {
+  function GraphsModel( tandem ) {
 
     // track set model with no friction
-    EnergySkateParkTrackSetModel.call( this, false, tandem.createTandem( 'introModel' ) );
+    EnergySkateParkTrackSetModel.call( this, false, tandem.createTandem( 'graphsModel' ) );
   }
 
-  energySkatePark.register( 'IntroModel', IntroModel );
+  energySkatePark.register( 'GraphsModel', GraphsModel );
 
-  return inherit( EnergySkateParkTrackSetModel, IntroModel, {} );
+  return inherit( EnergySkateParkTrackSetModel, GraphsModel, {} );
 } );

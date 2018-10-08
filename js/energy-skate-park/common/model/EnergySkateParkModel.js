@@ -52,7 +52,6 @@ define( function( require ) {
 
   // ifphetio
   var BooleanIO = require( 'ifphetio!PHET_IO/types/BooleanIO' );
-  var NumberIO = require( 'ifphetio!PHET_IO/types/NumberIO' );
   var StringIO = require( 'ifphetio!PHET_IO/types/StringIO' );
 
   // Reuse empty object for creating SkaterStates to avoid allocations
@@ -101,7 +100,7 @@ define( function( require ) {
     var controlPointGroupTandem = tandem.createGroupTandem( 'controlPoint' );
     var trackGroupTandem = tandem.createGroupTandem( 'track' );
 
-    // @private
+    // @protected
     this.controlPointGroupTandem = controlPointGroupTandem;
 
     // @public
@@ -214,69 +213,6 @@ define( function( require ) {
     this.trackChangedEmitter = new Emitter();
     this.updateEmitter = new Emitter();
     this.trackChangedEmitter.addListener( updateTrackEditingButtonProperties );
-
-    if ( !draggableTracks ) {
-
-      // For screens 1-2, the index of the selected scene (and track) within the screen
-      this.sceneProperty = new Property( 0, {
-        tandem: tandem.createTandem( 'sceneProperty' ),
-        validValues: [ 0, 1, 2 ],
-        phetioType: PropertyIO( NumberIO )// TODO: automatically get the number of tracks
-      } );
-
-      // Shape types
-      // For the double well, move the left well up a bit since the interpolation moves it down by that much, and we
-      // don't want the skater to go to y<0 while on the track.  Numbers determined by trial and error.
-      var parabola = [
-        new ControlPoint( -4, 6, { tandem: controlPointGroupTandem.createNextTandem() } ),
-        new ControlPoint( 0, 0, { tandem: controlPointGroupTandem.createNextTandem() } ),
-        new ControlPoint( 4, 6, { tandem: controlPointGroupTandem.createNextTandem() } )
-      ];
-      var slope = [
-        new ControlPoint( -4, 6, { tandem: controlPointGroupTandem.createNextTandem() } ),
-        new ControlPoint( -2, 1.2, { tandem: controlPointGroupTandem.createNextTandem() } ),
-        new ControlPoint( 2, 0, { tandem: controlPointGroupTandem.createNextTandem() } )
-      ];
-      var doubleWell = [
-        new ControlPoint( -4, 5, { tandem: controlPointGroupTandem.createNextTandem() } ),
-        new ControlPoint( -2, 0.0166015, { tandem: controlPointGroupTandem.createNextTandem() } ),
-        new ControlPoint( 0, 2, { tandem: controlPointGroupTandem.createNextTandem() } ),
-        new ControlPoint( 2, 1, { tandem: controlPointGroupTandem.createNextTandem() } ),
-        new ControlPoint( 4, 5, { tandem: controlPointGroupTandem.createNextTandem() } )
-      ];
-
-      var parabolaTrack = new Track( this, this.tracks, parabola, false, null, this.availableModelBoundsProperty, {
-        tandem: tandem.createTandem( 'parabolaTrack' )
-      } );
-      var slopeTrack = new Track( this, this.tracks, slope, false, null, this.availableModelBoundsProperty, {
-        tandem: tandem.createTandem( 'slopeTrack' )
-      } );
-      var doubleWellTrack = new Track( this, this.tracks, doubleWell, false, null, this.availableModelBoundsProperty, {
-        tandem: tandem.createTandem( 'doubleWellTrack' )
-      } );
-
-      // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
-      // see #164
-      slopeTrack.slopeToGround = true;
-
-      this.tracks.addAll( [ parabolaTrack, slopeTrack, doubleWellTrack ] );
-
-      // When the scene changes, also change the tracks.
-      this.sceneProperty.link( function( scene ) {
-        for ( var i = 0; i < self.tracks.length; i++ ) {
-          self.tracks.get( i ).physicalProperty.value = ( i === scene );
-
-          // Reset the skater when the track is changed, see #179
-          self.skater.returnToInitialPosition();
-        }
-
-        // The skater should detach from track when the scene changes.  Code elsewhere also resets the location of the skater.
-        self.skater.trackProperty.value = null;
-      } );
-    }
-    else {
-      this.addDraggableTracks();
-    }
 
     if ( EnergySkateParkQueryParameters.debugTrack ) {
       DebugTracks.init( this, tandem.createGroupTandem( 'debugTrackControlPoint' ), tandem.createGroupTandem( 'track' ) );

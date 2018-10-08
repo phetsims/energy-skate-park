@@ -1,7 +1,7 @@
 // Copyright 2017, University of Colorado Boulder
 
 /**
- * Model for the Intro screen in Energy Skate Park.
+ * Type Documentation
  * @author Jesse Greenberg
  */
 
@@ -14,13 +14,13 @@ define( function( require ) {
   var EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
 
   // constants
-  function IntroModel( tandem ) {
+  function MeasureModel( tandem ) {
 
-    // track set model with no friction
-    EnergySkateParkTrackSetModel.call( this, false, tandem.createTandem( 'introModel' ) );
+    // a track set model, with friction allowed
+    EnergySkateParkTrackSetModel.call( this, true, tandem );
   }
 
-  energySkatePark.register( 'IntroModel', IntroModel );
+  energySkatePark.register( 'MeasureModel', MeasureModel );
 
-  return inherit( EnergySkateParkTrackSetModel, IntroModel, {} );
+  return inherit( EnergySkateParkTrackSetModel, MeasureModel, {} );
 } );
