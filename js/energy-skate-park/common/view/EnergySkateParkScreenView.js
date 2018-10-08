@@ -40,7 +40,7 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
-  var SceneSelectionPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/SceneSelectionPanel' );
+  var SceneSelectionPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SceneSelectionPanel' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var Shape = require( 'KITE/Shape' );
   var SkaterNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/SkaterNode' );
