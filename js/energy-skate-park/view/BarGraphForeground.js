@@ -40,24 +40,17 @@ define( function( require ) {
       // However, do not floor for values less than 1 otherwise a nonzero value will show up as zero, see #159
       var barHeightProperty = new DerivedProperty( [ property ], function( value ) {
         var result = value / 30;
-
-        var answer;
+        var absResult = Math.abs( result );
 
         // Floor and protect against duplicates.
         // Make sure that nonzero values
         // For thermal and total energy, make sure they are big enough to be visible, see #307
         // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
         //   "The kinetic energy is zero at the top of the trajectory (turning point)
-        if ( showSmallValuesAsZero ) {
-          answer = result > 1 ? Math.floor( result ) :
-                   result < 1 ? 0 :
-                   1;
-        }
-        else {
-          answer = result > 1 ? Math.floor( result ) :
-                   result < 1E-6 ? 0 :
-                   1;
-        }
+        var smallValueThreshold = showSmallValuesAsZero ? 1 : 1E-6;
+        var answer = absResult > 1 ? Math.floor( result ) :
+                     absResult < smallValueThreshold ? 0 :
+                     1;
 
         return answer;
       } );

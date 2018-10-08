@@ -88,10 +88,10 @@ define( function( require ) {
     } );
 
     // @public {number} - reference height for potential energy, 0 is at the ground
-    this.referenceHeightProperty = new NumberProperty( 0, {
+    this.referenceHeightProperty = new NumberProperty( 2, {
       tandem: tandem.createTandem( 'referenceHeightProperty' ),
-      units: 'meters'
-      // range: { } // TODO?
+      units: 'meters',
+      range: { min: 0, max: 8 } // TODO: arbitrary, what is the ideal range?
     } );
 
     // @public {Vector2} - the position of the skater
@@ -397,7 +397,7 @@ define( function( require ) {
      */
     updateEnergy: function() {
       this.kineticEnergyProperty.value = 0.5 * this.massProperty.value * this.velocityProperty.value.magnitudeSquared();
-      this.potentialEnergyProperty.value = -this.massProperty.value * this.positionProperty.value.y * this.gravityProperty.value;
+      this.potentialEnergyProperty.value = -this.massProperty.value * ( this.positionProperty.value.y - this.referenceHeightProperty.value ) * this.gravityProperty.value;
       this.totalEnergyProperty.value = this.kineticEnergyProperty.value + this.potentialEnergyProperty.value + this.thermalEnergyProperty.value;
 
       // Signal that energies have changed for coarse-grained listeners like PieChartNode that should not get updated

@@ -72,6 +72,7 @@ define( function( require ) {
       // This code is called many times from the physics loop, so must be optimized for speed and memory
       // Special handling for values that can be null, false or zero
       this.gravity = getValue( 'gravity', source, overrides );
+      this.referenceHeight = getValue( 'referenceHeight', source, overrides );
       this.mass = getValue( 'mass', source, overrides );
       this.track = getValue( 'track', source, overrides );
       this.angle = getValue( 'angle', source, overrides );
@@ -117,7 +118,7 @@ define( function( require ) {
      * @return {number}
      */
     getPotentialEnergy: function() {
-      return -this.mass * this.gravity * this.positionY;
+      return -this.mass * this.gravity * ( this.positionY - this.referenceHeight );
     },
 
     /**
