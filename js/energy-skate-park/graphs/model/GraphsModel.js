@@ -11,16 +11,16 @@ define( function( require ) {
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
+  var EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
 
   // constants
   function GraphsModel( tandem ) {
 
     // track set model with no friction
-    EnergySkateParkTrackSetModel.call( this, false, tandem.createTandem( 'graphsModel' ) );
+    EnergySkateParkFullTrackSetModel.call( this, false, tandem.createTandem( 'graphsModel' ) );
   }
 
   energySkatePark.register( 'GraphsModel', GraphsModel );
 
-  return inherit( EnergySkateParkTrackSetModel, GraphsModel, {} );
+  return inherit( EnergySkateParkFullTrackSetModel, GraphsModel, {} );
 } );

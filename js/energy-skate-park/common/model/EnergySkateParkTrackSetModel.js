@@ -8,19 +8,19 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModel' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
   var Property = require( 'AXON/Property' );
   var PropertyIO = require( 'AXON/PropertyIO' );
-  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
 
   // phetio types
   var NumberIO = require( 'ifphetio!PHET_IO/types/NumberIO' );
 
   /**
    * @constructor
+   * @param {Array.<Track>} tracks - the tracks for the set
    * @param {boolean} frictionAllowed - Whether or not friction is allowed in this model.
    */
   function EnergySkateParkTrackSetModel( frictionAllowed, tandem ) {
@@ -32,64 +32,98 @@ define( function( require ) {
     // to pass this in as a param
     this.sceneProperty = new Property( 0, {
       tandem: tandem.createTandem( 'sceneProperty' ),
-      validValues: [ 0, 1, 2 ],
-      phetioType: PropertyIO( NumberIO )// TODO: automatically get the number of tracks
+      validValues: [ 0, 1, 2, 3 ],
+      phetioType: PropertyIO( NumberIO ) // TODO: automatically get the number of tracks
     } );
-
-    // TODO: Create a type that manages the ControlPointSet
-    // Shape types
-    // For the double well, move the left well up a bit since the interpolation moves it down by that much, and we
-    // don't want the skater to go to y<0 while on the track.  Numbers determined by trial and error.
-    var parabola = [
-      new ControlPoint( -4, 6, { tandem: this.controlPointGroupTandem.createNextTandem() } ),
-      new ControlPoint( 0, 0, { tandem: this.controlPointGroupTandem.createNextTandem() } ),
-      new ControlPoint( 4, 6, { tandem: this.controlPointGroupTandem.createNextTandem() } )
-    ];
-    var slope = [
-      new ControlPoint( -4, 6, { tandem: this.controlPointGroupTandem.createNextTandem() } ),
-      new ControlPoint( -2, 1.2, { tandem: this.controlPointGroupTandem.createNextTandem() } ),
-      new ControlPoint( 2, 0, { tandem: this.controlPointGroupTandem.createNextTandem() } )
-    ];
-    var doubleWell = [
-      new ControlPoint( -4, 5, { tandem: this.controlPointGroupTandem.createNextTandem() } ),
-      new ControlPoint( -2, 0.0166015, { tandem: this.controlPointGroupTandem.createNextTandem() } ),
-      new ControlPoint( 0, 2, { tandem: this.controlPointGroupTandem.createNextTandem() } ),
-      new ControlPoint( 2, 1, { tandem: this.controlPointGroupTandem.createNextTandem() } ),
-      new ControlPoint( 4, 5, { tandem: this.controlPointGroupTandem.createNextTandem() } )
-    ];
-
-    var parabolaTrack = new Track( this, this.tracks, parabola, false, null, this.availableModelBoundsProperty, {
-      tandem: tandem.createTandem( 'parabolaTrack' )
-    } );
-    var slopeTrack = new Track( this, this.tracks, slope, false, null, this.availableModelBoundsProperty, {
-      tandem: tandem.createTandem( 'slopeTrack' )
-    } );
-    var doubleWellTrack = new Track( this, this.tracks, doubleWell, false, null, this.availableModelBoundsProperty, {
-      tandem: tandem.createTandem( 'doubleWellTrack' )
-    } );
-
-    // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
-    // see #164
-    slopeTrack.slopeToGround = true;
-
-    this.tracks.addAll( [ parabolaTrack, slopeTrack, doubleWellTrack ] );
 
     // When the scene changes, also change the tracks.
-    var self = this;
-    this.sceneProperty.link( function( scene ) {
-      for ( var i = 0; i < self.tracks.length; i++ ) {
-        self.tracks.get( i ).physicalProperty.value = ( i === scene );
-
-        // Reset the skater when the track is changed, see #179
-        self.skater.returnToInitialPosition();
-      }
-
-      // The skater should detach from track when the scene changes.  Code elsewhere also resets the location of the skater.
-      self.skater.trackProperty.value = null;
-    } );
+    this.sceneProperty.link( this.sceneListener.bind( this ) );
   }
 
   energySkatePark.register( 'EnergySkateParkTrackSetModel', EnergySkateParkTrackSetModel );
 
-  return inherit( EnergySkateParkModel, EnergySkateParkTrackSetModel, {} );
+  return inherit( EnergySkateParkModel, EnergySkateParkTrackSetModel, {
+
+    /**
+     * When the scene changes or tracks are added to the track set, update which track is visible and physically
+     * interactive.
+     * 
+     * @private
+     */
+    sceneListener: function( scene ) {
+      for ( var i = 0; i < this.tracks.length; i++ ) {
+        this.tracks.get( i ).physicalProperty.value = ( i === scene );
+
+        // Reset the skater when the track is changed, see #179
+        this.skater.returnToInitialPosition();
+      }
+
+      // The skater should detach from track when the scene changes.  Code elsewhere also resets the location of the skater.
+      this.skater.trackProperty.value = null;
+    },
+
+    /**
+     * Add all tracks in the set. In addition to adding all to the ObservbleArray, this will initialize which track
+     * should be visible, physical, and interactive depending on the model sceneProperty.
+     * @param {Array.<Track>} tracks
+     */
+    addTrackSet: function ( tracks ) {
+      this.tracks.addAll( tracks );
+      this.sceneListener( this.sceneProperty.get() );
+    }
+  }, {
+
+    /**
+     * In "basics" screens, the track set includes the parabola, slope, and double well.
+     *
+     * @public
+     * @param {EnergySkateParkModel} model
+     * @return {Array.<Track>}
+     */
+    createBasicsTrackSet: function( model, tandem ) {
+
+      var parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem );
+      var parabolaTrack = PremadeTracks.createTrack( model, model.tracks, parabolaControlPoints, model.availableModelBoundsProperty, {
+        tandem: tandem.createTandem( 'parabolaTrack' )
+      } );
+
+      var slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem );
+      var slopeTrack = PremadeTracks.createTrack( model, model.tracks, slopeControlPoints, model.availableModelBoundsProperty, {
+        tandem: tandem.createTandem( 'slopeTrack' )
+      } );
+
+      // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
+      // see #164
+      slopeTrack.slopeToGround = true;
+
+      var doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem );
+      var doubleWellTrack = PremadeTracks.createTrack( model, model.tracks, doubleWellControlPoints, model.availableModelBoundsProperty, {
+        tandem: tandem.createTandem( 'doubleWellTrack' )
+      } );
+
+      return [ parabolaTrack, slopeTrack, doubleWellTrack ];
+    },
+
+    /**
+     * The "full" version of Energy Skate Park has four tracks in the set - a parabola, slope, double well, and loop.
+     * Other screns or versions of this sim may not use this.
+     * 
+     * @public
+     * @param {EnergySkateParkModel} model
+     * @return {Array.<Track>}
+     */
+    createFullTrackSet: function( model, tandem ) {
+
+      // TODO: add a loop to the set.
+      var basicSet = EnergySkateParkTrackSetModel.createBasicsTrackSet( model, tandem );
+
+      var loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem );
+      var loopTrack = PremadeTracks.createTrack( model, model.tracks, loopControlPoints, model.availableModelBoundsProperty, {
+        tandem: tandem.createTandem( 'loopTrack' )
+      } );
+
+      basicSet.push( loopTrack );
+      return basicSet;
+    }
+  } );
 } );

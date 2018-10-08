@@ -252,10 +252,11 @@ define( function( require ) {
         trackLayer.addChild( trackNode );
       } );
 
+      // TODO: Could we link the track PhysicalProperty directly to visible? Through linkAttribute or something?
       model.sceneProperty.link( function( scene ) {
-        trackNodes[ 0 ].visible = ( scene === 0 );
-        trackNodes[ 1 ].visible = ( scene === 1 );
-        trackNodes[ 2 ].visible = ( scene === 2 );
+        _.forEach( model.tracks, function( track, i ) {
+          trackNodes[ i ].visible = scene === i;
+        } );
       } );
     }
     else {

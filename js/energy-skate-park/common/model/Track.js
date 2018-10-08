@@ -35,7 +35,7 @@ define( function( require ) {
    * @param {ObservableArray<Track>} modelTracks all model tracks, so this track can add/remove others when joined/split
    * @param {Array<ControlPoint>} controlPoints
    * @param {boolean} interactive
-   * @param {Array<Track>} parents the original tracks that were used to make this track (if any) so they can be
+   * @param {null|Array<Track>} parents the original tracks that were used to make this track (if any) so they can be
    * broken apart when dragged back to control panel
    * @param {Property<Bounds2>} availableModelBoundsProperty function that provides the visible model bounds, to prevent the
    * adjusted control point from going offscreen, see #195

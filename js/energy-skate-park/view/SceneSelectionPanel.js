@@ -46,23 +46,16 @@ define( function( require ) {
       return contentNode;
     };
 
-    var content = new RadioButtonGroup( model.sceneProperty, [
-      {
-        value: 0,
-        node: createNode( 0 ),
-        tandemName: 'scene1RadioButton'
-      },
-      {
-        value: 1,
-        node: createNode( 1 ),
-        tandemName: 'scene2RadioButton'
-      },
-      {
-        value: 2,
-        node: createNode( 2 ),
-        tandemName: 'scene3RadioButton'
-      }
-    ], {
+    var radioButtonContent = [];
+    model.tracks.forEach( function( item, i ) {
+      radioButtonContent.push( {
+        value: i,
+        node: createNode( i ),
+        tandemName: 'scene' + ( i + 1 ) + 'RadioButton'
+      } );
+    } );
+
+    var content = new RadioButtonGroup( model.sceneProperty, radioButtonContent, {
       orientation: 'vertical',
       buttonContentXMargin: 0,
       buttonContentYMargin: 0,
