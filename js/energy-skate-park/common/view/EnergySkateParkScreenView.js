@@ -40,7 +40,7 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
-  var SceneSelectionPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SceneSelectionPanel' );
+  var SceneSelectionRadioButtonGroup = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SceneSelectionRadioButtonGroup' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var Shape = require( 'KITE/Shape' );
   var SkaterNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/SkaterNode' );
@@ -145,8 +145,8 @@ define( function( require ) {
     if ( !model.draggableTracks ) {
 
       // layout done in layout bounds
-      this.sceneSelectionPanel = new SceneSelectionPanel( model, this, modelViewTransform, tandem.createTandem( 'sceneSelectionPanel' ) );
-      this.addChild( this.sceneSelectionPanel );
+      this.sceneSelectionRadioButtonGroup = new SceneSelectionRadioButtonGroup( model, this, modelViewTransform, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) );
+      this.addChild( this.sceneSelectionRadioButtonGroup );
     }
 
     var playingProperty = new Property( !model.pausedProperty.value, {
@@ -484,11 +484,13 @@ define( function( require ) {
         this.attachDetachToggleButtons.centerX = this.controlPanel.centerX;
       }
 
-      if ( this.sceneSelectionPanel ) {
-        var panelAbove = this.attachDetachToggleButtons || this.controlPanel;
-        this.sceneSelectionPanel.centerX = panelAbove.centerX;
-        this.sceneSelectionPanel.top = panelAbove.bottom + 5;
+      if ( this.sceneSelectionRadioButtonGroup ) {
+
+        // symmetrical with the right edge of the reset all button
+        this.sceneSelectionRadioButtonGroup.left = this.availableViewBounds.minX + 5;
+        this.sceneSelectionRadioButtonGroup.bottom = this.resetAllButton.bottom;
       }
+
       this.resetAllButton.right = this.controlPanel.right;
       this.returnSkaterButton.right = this.resetAllButton.left - 10;
 
