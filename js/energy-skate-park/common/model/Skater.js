@@ -291,7 +291,6 @@ define( function( require ) {
       this.parametricSpeedProperty.reset();
       this.onTopSideOfTrackProperty.reset();
       this.gravityProperty.reset();
-      this.referenceHeightProperty.reset();
       this.positionProperty.reset();
       this.massProperty.reset();
       this.directionProperty.reset();
@@ -314,7 +313,7 @@ define( function( require ) {
     },
 
     /**
-     * Move the skater to her initial position, but leave the friction and mass the same, see #237
+     * Move the skater to her initial position, but leave the reference height, friction, and mass the same, see #237
      * @public
      */
     resetPosition: function() {

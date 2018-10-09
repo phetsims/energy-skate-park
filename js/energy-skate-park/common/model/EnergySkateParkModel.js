@@ -269,6 +269,7 @@ define( function( require ) {
       this.barGraphVisibleProperty.reset();
       this.gridVisibleProperty.reset();
       this.speedometerVisibleProperty.reset();
+      this.referenceHeightVisibleProperty.reset();
       this.editButtonEnabledProperty.reset();
       this.clearButtonEnabledProperty.reset();
       this.pausedProperty.reset();
