@@ -20,6 +20,7 @@ define( function( require ) {
   var pieChartString = require( 'string!ENERGY_SKATE_PARK/pieChart' );
   var plotsBarGraphString = require( 'string!ENERGY_SKATE_PARK/plots.bar-graph' );
   var controlsReferenceHeightString = require( 'string!ENERGY_SKATE_PARK/controls.referenceHeight' );
+  var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
   
   /**
    * @constructor
@@ -48,11 +49,11 @@ define( function( require ) {
         controlsShowGridString,
         EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ) ),
         itemAlignGroup,
-        model.barGraphVisibleProperty,
+        model.gridVisibleProperty,
         tandem
       ),
       new EnergySkateParkCheckboxItem(
-        controlsShowGridString,
+        propertiesSpeedString,
         EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ) ),
         itemAlignGroup,
         model.speedometerVisibleProperty,
