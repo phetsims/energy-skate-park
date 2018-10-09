@@ -129,6 +129,10 @@ define( function( require ) {
       tandem: tandem.createTandem( 'speedometerVisibleProperty' ),
       phetioType: PropertyIO( BooleanIO )
     } );
+    this.referenceHeightVisibleProperty = new Property( false, {
+      tandem: tandem.createTandem( 'referenceHeightVisibleProperty' ),
+      phetioType: PropertyIO( BooleanIO )
+    } );
 
     // @public - enabled/disabled for the track editing buttons
     this.editButtonEnabledProperty = new Property( false, {
