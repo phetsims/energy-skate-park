@@ -73,16 +73,17 @@ define( function( require ) {
       return text;
     };
 
-    var kineticLabel = createLabel( 0, energyKineticString, EnergySkateParkColorScheme.kineticEnergy, 'kineticEnergyLabel' );
-    var potentialLabel = createLabel( 1, energyPotentialString, EnergySkateParkColorScheme.potentialEnergy, 'potentialEnergyLabel' );
-    var thermalLabel = createLabel( 2, energyThermalString, EnergySkateParkColorScheme.thermalEnergy, 'thermalEnergyLabel' );
-    var totalLabel = createLabel( 3, energyTotalString, EnergySkateParkColorScheme.totalEnergy, 'totalEnergyLabel' );
+    // @private {Node}
+    this.kineticLabel = createLabel( 0, energyKineticString, EnergySkateParkColorScheme.kineticEnergy, 'kineticEnergyLabel' );
+    this.potentialLabel = createLabel( 1, energyPotentialString, EnergySkateParkColorScheme.potentialEnergy, 'potentialEnergyLabel' );
+    this.thermalLabel = createLabel( 2, energyThermalString, EnergySkateParkColorScheme.thermalEnergy, 'thermalEnergyLabel' );
+    this.totalLabel = createLabel( 3, energyTotalString, EnergySkateParkColorScheme.totalEnergy, 'totalEnergyLabel' );
 
     var clearThermalButton = new ClearThermalButton( {
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: clearThermal,
-      centerX: thermalLabel.centerX,
-      y: thermalLabel.bottom + 12
+      centerX: this.thermalLabel.centerX,
+      y: this.thermalLabel.bottom + 12
     } );
     skater.allowClearingThermalEnergyProperty.link( function( allowClearingThermalEnergy ) {
       clearThermalButton.enabled = allowClearingThermalEnergy;
@@ -108,10 +109,10 @@ define( function( require ) {
           stroke: 'gray',
           pickable: false
         } ),
-        kineticLabel,
-        potentialLabel,
-        thermalLabel,
-        totalLabel,
+        this.kineticLabel,
+        this.potentialLabel,
+        this.thermalLabel,
+        this.totalLabel,
         clearThermalButton
       ]
     } );
@@ -137,5 +138,35 @@ define( function( require ) {
 
   energySkatePark.register( 'BarGraphBackground', BarGraphBackground );
 
-  return inherit( Panel, BarGraphBackground );
+  return inherit( Panel, BarGraphBackground, {
+
+    /**
+     * Return the height of the label, referenced by index. For negative energies, we need to adjust alpha for a section
+     * of the bar rectangle of this height.
+     *
+     * @public
+     * @return {number}
+     */
+    getLabelHeight: function( index ) {
+      var height;
+      switch( index ) {
+        case 0:
+          height = this.kineticLabel.height;
+          break;
+        case 1:
+          height = this.potentialLabel.height;
+          break;
+        case 2:
+          height = this.thermalLabel.height;
+          break;
+        case 3:
+          height = this.totalLabel.height;
+          break;
+        default:
+          throw new Error( 'height should be defined and non-zero, you might have provided a bad index' );
+      }
+
+      return height;
+    }
+  } );
 } );

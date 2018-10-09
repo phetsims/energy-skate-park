@@ -88,7 +88,7 @@ define( function( require ) {
     } );
 
     // @public {number} - reference height for potential energy, 0 is at the ground
-    this.referenceHeightProperty = new NumberProperty( 2, {
+    this.referenceHeightProperty = new NumberProperty( 4, {
       tandem: tandem.createTandem( 'referenceHeightProperty' ),
       units: 'meters',
       range: { min: 0, max: 8 } // TODO: arbitrary, what is the ideal range?

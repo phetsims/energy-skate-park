@@ -33,8 +33,12 @@ define( function( require ) {
     var getBarX = barGraphBackground.getBarX;
     var originY = barGraphBackground.originY;
 
-    // Create an energy bar that animates as the skater moves
+    // Create an energy bar that animates as the skater moves. Composed of 2 rectangles, one solid and one that
+    // is semi-transparent in case energy is negative. The semi transparent rectangle will extend up to the width
+    // of the bar label.
+    // @return {Node}
     var createBar = function( index, color, property, showSmallValuesAsZero ) {
+      var bar = new Node();
 
       // Convert to graph coordinates
       // However, do not floor for values less than 1 otherwise a nonzero value will show up as zero, see #159
@@ -55,7 +59,12 @@ define( function( require ) {
         return answer;
       } );
       var barX = getBarX( index );
-      var bar = new Rectangle( barX, 0, barWidth, 100, { fill: color, pickable: false, renderer: barRenderer } );
+      var solidBar = new Rectangle( barX, 0, barWidth, 100, { fill: color, pickable: false, renderer: barRenderer } );
+      var transparentBar = new Rectangle( barX, 0, barWidth, 0, { fill: color.withAlpha( 0.3 ), pickable: false, renderer: barRenderer } );
+
+      // height of the bar label, for negative values we will need the rectangle up to this height to be
+      // semi-transparent so the label is still visible
+      var labelHeight = barGraphBackground.getLabelHeight( index ) + 4; // 2 * offset from bottom
 
       // update the bars when the graph becomes visible, and skip update when they are invisible
       Property.multilink( [ barHeightProperty, barGraphVisibleProperty ], function( barHeight, visible ) {
@@ -63,13 +72,21 @@ define( function( require ) {
           // PERFORMANCE/ALLOCATION: Possible performance improvement to avoid allocations in Rectangle.setRect
 
           if ( barHeight >= 0 ) {
-            bar.setRect( barX, originY - barHeight, barWidth, barHeight );
+            solidBar.setRect( barX, originY - barHeight, barWidth, barHeight );
+            transparentBar.setRect( 0, 0, 0, 0 ); // make sure the transparent bar is removed
           }
           else {
-            bar.setRect( barX, originY, barWidth, -barHeight );
+            var transparentHeight = Math.min( -barHeight, labelHeight );
+            var solidOriginY = originY + transparentHeight;
+            var solidHeight = -barHeight - transparentHeight;
+            transparentBar.setRect( barX, originY, barWidth, transparentHeight );
+            solidBar.setRect( barX, solidOriginY, barWidth, solidHeight ); 
+            // solidBar.setRect( barX, originY + labelHeight, barWidth, -barHeight + labelHeight );
           }
         }
       } );
+
+      bar.children = [ solidBar, transparentBar ];
       return bar;
     };
 
