@@ -29,7 +29,7 @@ define( function( require ) {
    * @param {NumberProperty} referenceHeightProperty
    * @param {object} options
    */
-  function ReferenceHeightLine( modelViewTransform, referenceHeightProperty, options ) {
+  function ReferenceHeightLine( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, options ) {
 
     options = _.extend( {}, options );
     assert && assert( options.children === undefined, 'ReferenceHeightLine sets its own children' );
@@ -63,6 +63,14 @@ define( function( require ) {
 
       // position the reference height line, model value in meters
       self.y = modelViewTransform.modelToViewY( height );
+    } );
+
+    // update visibility with model Property and reset reference height when node is no longer visible to avoid
+    // confusion
+    referenceHeightVisibleProperty.link( function( visible ) {
+      referenceHeightProperty.reset();
+
+      self.visible = visible;
     } );
 
     // add a drag listener to the laser pointer to allow user to drag it vertically

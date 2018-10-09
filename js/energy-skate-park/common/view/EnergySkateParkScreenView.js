@@ -99,7 +99,7 @@ define( function( require ) {
     this.addChild( this.gridNode );
 
     // layout managed in layout function
-    this.referenceHeightLine = new ReferenceHeightLine( modelViewTransform, model.skater.referenceHeightProperty );
+    this.referenceHeightLine = new ReferenceHeightLine( modelViewTransform, model.skater.referenceHeightProperty, model.referenceHeightVisibleProperty );
     this.addChild( this.referenceHeightLine );
 
     // @private - node that shows the energy legend for the pie chart
