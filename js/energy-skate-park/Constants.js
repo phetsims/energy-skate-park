@@ -10,6 +10,7 @@ define( function( require ) {
   // modules
   var Dimension2 = require( 'DOT/Dimension2' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  var Range = require( 'DOT/Range' );
 
   var minMass = 25;// kg
   var maxMass = 100;
@@ -23,7 +24,9 @@ define( function( require ) {
 
     DEFAULT_MASS: (minMass + maxMass) / 2,
     MIN_MASS: minMass,
-    MAX_MASS: maxMass
+    MAX_MASS: maxMass,
+
+    REFERENCE_HEIGHT_RANGE: new Range( 0, 8 ) // in meters
   };
 
   energySkatePark.register( 'Constants', Constants );

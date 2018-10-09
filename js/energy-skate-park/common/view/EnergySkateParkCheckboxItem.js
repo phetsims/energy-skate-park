@@ -59,7 +59,7 @@ define( function( require ) {
 
     HBox.call( this, {
       children: [ checkbox, icon ],
-      spacing: 20
+      spacing: 10
     } );
   }
 

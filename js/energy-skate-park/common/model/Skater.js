@@ -88,10 +88,10 @@ define( function( require ) {
     } );
 
     // @public {number} - reference height for potential energy, 0 is at the ground
-    this.referenceHeightProperty = new NumberProperty( 4, {
+    this.referenceHeightProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'referenceHeightProperty' ),
       units: 'meters',
-      range: { min: 0, max: 8 } // TODO: arbitrary, what is the ideal range?
+      range: Constants.REFERENCE_HEIGHT_RANGE
     } );
 
     // @public {Vector2} - the position of the skater

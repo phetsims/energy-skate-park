@@ -21,7 +21,7 @@ define( function( require ) {
   var plotsBarGraphString = require( 'string!ENERGY_SKATE_PARK/plots.bar-graph' );
   var controlsReferenceHeightString = require( 'string!ENERGY_SKATE_PARK/controls.referenceHeight' );
   var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
-  
+
   /**
    * @constructor
    * @param {Array.<EnergySkateParkCheckboxItem>} checkboxItems
@@ -70,7 +70,7 @@ define( function( require ) {
     VBox.call( this, {
       children: checkboxItems,
       align: 'left',
-      spacing: 10
+      spacing: 6
     } );
   }
 

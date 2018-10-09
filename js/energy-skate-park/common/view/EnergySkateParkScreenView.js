@@ -49,6 +49,7 @@ define( function( require ) {
   var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackNode' );
   var Util = require( 'SCENERY/util/Util' );
   var Vector2 = require( 'DOT/Vector2' );
+  var ReferenceHeightLine = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ReferenceHeightLine' );
 
   // ifphetio
   var BooleanIO = require( 'ifphetio!PHET_IO/types/BooleanIO' );
@@ -96,6 +97,10 @@ define( function( require ) {
 
     this.gridNode = new GridNode( model.gridVisibleProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
     this.addChild( this.gridNode );
+
+    // layout managed in layout function
+    this.referenceHeightLine = new ReferenceHeightLine( modelViewTransform, model.skater.referenceHeightProperty );
+    this.addChild( this.referenceHeightLine );
 
     // @private - node that shows the energy legend for the pie chart
     this.pieChartLegend = new PieChartLegend(
@@ -479,6 +484,9 @@ define( function( require ) {
       // Float the control panel to the right (but not arbitrarily far because it could get too far from the play area)
       var maxFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? 890 : Number.MAX_VALUE;
       this.controlPanel.right = Math.min( maxFloatAmount, this.availableViewBounds.maxX ) - 5;
+
+      // float reference height laser pointer to the controls
+      this.referenceHeightLine.right = this.controlPanel.left - 5;
 
       if ( this.attachDetachToggleButtons ) {
         this.attachDetachToggleButtons.centerX = this.controlPanel.centerX;
