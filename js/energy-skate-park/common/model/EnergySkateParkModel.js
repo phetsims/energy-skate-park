@@ -597,7 +597,7 @@ define( function( require ) {
         var newSpeed = newVelocity.magnitude();
         var newKineticEnergy = 0.5 * skaterState.mass * newVelocity.magnitudeSquared();
         var newPosition = track.getPoint( parametricPosition );
-        var newPotentialEnergy = -skaterState.mass * skaterState.gravity * newPosition.y;
+        var newPotentialEnergy = -skaterState.mass * skaterState.gravity * ( newPosition.y - skaterState.referenceHeight );
         var newThermalEnergy = initialEnergy - newKineticEnergy - newPotentialEnergy;
 
         // Sometimes (depending on dt) the thermal energy can go negative by the above calculation, see #141
