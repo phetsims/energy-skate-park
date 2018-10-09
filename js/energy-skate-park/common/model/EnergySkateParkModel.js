@@ -430,7 +430,7 @@ define( function( require ) {
 
       // Make sure energy perfectly conserved when falling to the ground.
       var newKineticEnergy = 0.5 * newSpeed * newSpeed * skaterState.mass;
-      var newPotentialEnergy = 0;
+      var newPotentialEnergy = ( -1 ) * skaterState.mass * skaterState.gravity * ( 0 - skaterState.referenceHeight );
       var newThermalEnergy = initialEnergy - newKineticEnergy - newPotentialEnergy;
 
       if ( !isFinite( newThermalEnergy ) ) { throw new Error( 'not finite' ); }
@@ -667,7 +667,7 @@ define( function( require ) {
     continueFreeFall: function( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt ) {
 
       // make up for the difference by changing the y value
-      var y = ( initialEnergy - 0.5 * skaterState.mass * proposedVelocity.magnitudeSquared() - skaterState.thermalEnergy ) / ( -1 * skaterState.mass * skaterState.gravity );
+      var y = ( initialEnergy - 0.5 * skaterState.mass * proposedVelocity.magnitudeSquared() - skaterState.thermalEnergy ) / ( -1 * skaterState.mass * skaterState.gravity ) + skaterState.referenceHeight;
       if ( y <= 0 ) {
         // When falling straight down, stop completely and convert all energy to thermal
         return skaterState.strikeGround( initialEnergy, proposedPosition.x );

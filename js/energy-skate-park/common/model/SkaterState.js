@@ -100,7 +100,7 @@ define( function( require ) {
      * @return {number}
      */
     getTotalEnergy: function() {
-      return 0.5 * this.mass * (this.velocityX * this.velocityX + this.velocityY * this.velocityY) - this.mass * this.gravity * this.positionY + this.thermalEnergy;
+      return 0.5 * this.mass * (this.velocityX * this.velocityX + this.velocityY * this.velocityY) - this.mass * this.gravity * ( this.positionY - this.referenceHeight ) + this.thermalEnergy;
     },
 
     /**
@@ -363,7 +363,7 @@ define( function( require ) {
      * @param {number} positionX
      * @param {number} positionY
      *
-     * @return {[type]} [description]
+     * @return {SkaterState}
      */
     continueFreeFall: function( velocityX, velocityY, positionX, positionY ) {
       var state = new SkaterState( this, EMPTY_OBJECT );
