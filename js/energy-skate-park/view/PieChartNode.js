@@ -26,8 +26,15 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function PieChartNode( skater, pieChartVisibleProperty, modelViewTransform, tandem ) {
+  function PieChartNode( skater, pieChartVisibleProperty, modelViewTransform, tandem, options ) {
     var self = this;
+
+    options = _.extend( {
+
+      // {boolean} - Whether or not to represent negative energy. When true, when one of the energies is negative
+      // the pie chart will only show total energy, a solid circle with the color for total energy
+      showNegativeEnergy: true
+    }, options );
 
     var kineticEnergySlice = new Path( null, {
       fill: EnergySkateParkColorScheme.kineticEnergy,
@@ -42,9 +49,22 @@ define( function( require ) {
       tandem: tandem.createTandem( 'potentialEnergySlicePath' )
     } );
 
+    // @private {boolean} - whether or not negative potential energy will be represented by the pie chart or it should
+    // be invisible in this case
+    this.showNegativeEnergy = options.showNegativeEnergy;
+
     // Skip bounds computation to improve performance, see #245
     kineticEnergySlice.computeShapeBounds = function() {return new Bounds2( 0, 0, 0, 0 );};
     potentialEnergySlice.computeShapeBounds = function() {return new Bounds2( 0, 0, 0, 0 );};
+
+    // total energy representation is a full circle, so it can use the optimized version.
+    var totalEnergyCircle = new Circle( 1, {
+      fill: EnergySkateParkColorScheme.totalEnergy,
+      stroke: 'black',
+      lineWidth: 1,
+      lineDash: [ 2, 2 ],
+      opacity: 0.5
+    } );
 
     // Back layer is always a circle, so use the optimized version.
     var thermalEnergySlice = new Circle( 1, {
@@ -54,7 +74,7 @@ define( function( require ) {
     } );
     Node.call( this, {
       tandem: tandem,
-      children: [ thermalEnergySlice, potentialEnergySlice, kineticEnergySlice ],
+      children: [ thermalEnergySlice, potentialEnergySlice, kineticEnergySlice, totalEnergyCircle ],
       pickable: false
     } );
 
@@ -91,15 +111,29 @@ define( function( require ) {
       var THRESHOLD = 1E-4;
 
       // if only one component of pie chart, then show as a circle so there are no seams
-      var numberComponents = (skater.potentialEnergyProperty.value > THRESHOLD ? 1 : 0) +
-                             (skater.kineticEnergyProperty.value > THRESHOLD ? 1 : 0) +
-                             (skater.thermalEnergyProperty.value > THRESHOLD ? 1 : 0);
+      var numberComponents = ( skater.potentialEnergyProperty.value > THRESHOLD ? 1 : 0 ) +
+                             ( skater.kineticEnergyProperty.value > THRESHOLD ? 1 : 0 ) +
+                             ( skater.thermalEnergyProperty.value > THRESHOLD ? 1 : 0 );
 
       // Don't show the pie chart if energies are zero, or if potential energy is negative (underground skater), see #189
-      if ( numberComponents === 0 || skater.potentialEnergyProperty.value < 0 ) {
+      var energyNegative = skater.potentialEnergyProperty.value < 0;
+      if ( energyNegative && self.showNegativeEnergy ) {
+
+        // energy is negative and we want to represent it with a full yellow circle
         potentialEnergySlice.visible = false;
         kineticEnergySlice.visible = false;
         thermalEnergySlice.visible = false;
+        totalEnergyCircle.visible = true;
+
+        // round to nearest int so that graphics update only happens every pixel change or more
+        console.log( 'showing negative energy');
+        totalEnergyCircle.radius = Math.round( radius );
+      }
+      else if ( numberComponents === 0 || energyNegative ) {
+        potentialEnergySlice.visible = false;
+        kineticEnergySlice.visible = false;
+        thermalEnergySlice.visible = false;
+        totalEnergyCircle.visible = false;
       }
       else if ( numberComponents === 1 ) {
         var selectedSlice = skater.potentialEnergyProperty.value > THRESHOLD ? potentialEnergySlice :
@@ -108,6 +142,7 @@ define( function( require ) {
         potentialEnergySlice.visible = false;
         thermalEnergySlice.visible = false;
         kineticEnergySlice.visible = false;
+        totalEnergyCircle.visible = false;
         selectedSlice.visible = true;
 
         // Performance optimization for background circle
@@ -124,6 +159,7 @@ define( function( require ) {
         potentialEnergySlice.visible = true;
         kineticEnergySlice.visible = true;
         thermalEnergySlice.visible = true;
+        totalEnergyCircle.visible = false;
         var fractionPotential = skater.potentialEnergyProperty.value / skater.totalEnergyProperty.value;
         var fractionKinetic = skater.kineticEnergyProperty.value / skater.totalEnergyProperty.value;
 

@@ -353,6 +353,7 @@ define( function( require ) {
     // and https://github.com/phetsims/scenery/issues/285
     var webGLSupported = Util.isWebGLSupported && phet.chipper.queryParameters.webgl;
     var renderer = webGLSupported ? 'webgl' : null;
+    renderer = null; // to test pie chart node without webgl support
 
     var skaterNode = new SkaterNode(
       model.skater,
