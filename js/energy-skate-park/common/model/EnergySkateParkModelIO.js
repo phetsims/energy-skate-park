@@ -38,7 +38,7 @@ define( function( require ) {
      * @param {EnergySkateParkModel} energySkateParkModel
      */
     clearChildInstances: function( energySkateParkModel ) {
-      assert && assertInstanceOf( energySkateParkModel, phet.energySkatePark.energySkateParkModel );
+      assert && assertInstanceOf( energySkateParkModel, phet.energySkatePark.EnergySkateParkModel );
       energySkateParkModel.removeAllTracks();
     },
 
