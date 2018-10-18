@@ -123,7 +123,7 @@ define( function( require ) {
     var innerRadius = 0.46;
 
     var fullCircle = Math.PI * 2;
-    var numSections = 32;
+    var numSections = 40;
     var delta = fullCircle / numSections;
 
     // samples used to create a smooth looking circle
@@ -154,7 +154,7 @@ define( function( require ) {
         this.vertices.push( y );
       }
       else {
-        
+
         // duplicate of the innner radius to produce stroke of 0 height along the parts where we don't want to see
         // a dash
         this.vertices.push( x );
