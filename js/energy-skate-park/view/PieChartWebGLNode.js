@@ -43,9 +43,10 @@ define( function( require ) {
       }
     } );
 
-    // Make the radius proportional to the square root of the energy so that the area will grow linearly with energy
+    // Make the radius proportional to the square root of the energy so that the area will grow linearly with energy,
+    // taking the absolute value to handle when skater is below the potential energy reference line
     var pieChartRadiusProperty = new DerivedProperty( [ skater.totalEnergyProperty ], function( totalEnergy ) {
-      return 0.4 * Math.sqrt( totalEnergy );
+      return 0.4 * Math.sqrt( Math.abs( totalEnergy ) );
     } );
 
     var potentialEnergyProportion = new DerivedProperty( [ skater.potentialEnergyProperty, skater.totalEnergyProperty ], function( potentialEnergy, totalEnergy ) {
