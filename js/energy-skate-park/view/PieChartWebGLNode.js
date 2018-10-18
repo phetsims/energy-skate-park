@@ -15,6 +15,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PieChartWebGLSliceNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/PieChartWebGLSliceNode' );
+  var CircularOutlineWebGLNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/CircularOutlineWebGLNode' );
   var Property = require( 'AXON/Property' );
 
   /**
@@ -95,7 +96,7 @@ define( function( require ) {
       }
     } );
 
-    // Render the stroke as a larger black circle behind the pie chart
+    // // Render the stroke as a larger black circle behind the pie chart
     var outline = new PieChartWebGLSliceNode(
       'black',
       outlineRadiusProperty,
@@ -120,10 +121,13 @@ define( function( require ) {
       plus( plus( kineticEnergyProportion, thermalEnergyProportion ), potentialEnergyProportion )
     );
 
+    var circularOutline = new CircularOutlineWebGLNode( 'black', outlineRadiusProperty );
+
     this.addChild( outline );
     this.addChild( potentialEnergyPiece );
     this.addChild( kineticEnergyPiece );
     this.addChild( thermalEnergyPiece );
+    this.addChild( circularOutline );
 
     pieChartVisibleProperty.linkAttribute( this, 'visible' );
   }
