@@ -99,13 +99,9 @@ define( function( require ) {
       }
       var totalEnergy = skater.totalEnergyProperty.value;
 
-      // Guard against negative total energy, which could occur of the user is dragging the track underground, see #166
-      if ( totalEnergy < 0 ) {
-        totalEnergy = 0;
-      }
-
-      // Make the radius proportional to the square root of the energy so that the area will grow linearly with energy
-      var radius = 0.4 * Math.sqrt( totalEnergy );
+      // Make the radius proportional to the square root of the energy so that the area will grow linearly with energy,
+      // handling negative energy in case skater is below potential energy reference line
+      var radius = 0.4 * Math.sqrt( Math.abs( totalEnergy ) );
 
       // If any value is too low, then don't show it, see #136
       var THRESHOLD = 1E-4;
