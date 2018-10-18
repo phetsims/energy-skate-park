@@ -52,7 +52,7 @@ define( function( require ) {
   var ReferenceHeightLine = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ReferenceHeightLine' );
 
   // ifphetio
-  var BooleanIO = require( 'ifphetio!PHET_IO/types/BooleanIO' );
+  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
 
   // strings
   var controlsRestartSkaterString = require( 'string!ENERGY_SKATE_PARK/controls.restart-skater' );

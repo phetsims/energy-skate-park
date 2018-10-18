@@ -22,7 +22,7 @@ define( function( require ) {
   var ControlPointIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPointIO' );
 
   // ifphetio
-  var NullableIO = require( 'ifphetio!PHET_IO/types/NullableIO' );
+  var NullableIO = require( 'TANDEM/types/NullableIO' );
 
   /**
    *
