@@ -122,12 +122,12 @@ define( function( require ) {
     );
 
     var totalEnergyPiece = new PieChartWebGLSliceNode(
-      EnergySkateParkColorScheme.totalEnergy,
+      EnergySkateParkColorScheme.totalEnergy.withAlpha( 0.5 ),
       pieChartRadiusProperty,
       new Property( Math.PI * 2 )
     );
 
-    var circularOutline = new CircularOutlineWebGLNode( 'black', outlineRadiusProperty );
+    var circularOutline = new CircularOutlineWebGLNode( 'rgba(0,0,0,0.5)', outlineRadiusProperty );
 
     // energy pieces need to be on top of the "outlines"
     this.addChild( outline );

@@ -1,10 +1,9 @@
 // Copyright 2018, University of Colorado Boulder
 
 /**
- * Dashed outline for a circle using WebGLNode. The dashed portion is meant to be behind the rest of the circle
- * being outlined, because we draw full triangles from the center of the circle using gl.TRIANGLES. Other portions
- * of this file are quite similar to PieChartWebGLSliceNode, so we could consider turning into a single type in the
- * near future. (Like adding a glLineDash option to that node and moving the implementation there?)
+ * Dashed outline for a circle using WebGLNode. Many portions of this file are quite similar to PieChartWebGLSliceNode,
+ * so we could consider turning into a single type in the near future. (Like adding a glLineDash option to that node
+ * and moving the implementation there?)
  * 
  * @author Jesse Greenberg
  */
@@ -106,7 +105,7 @@ define( function( require ) {
 
       // Returns the color from the vertex shader
       'void main( void ) {',
-      '  gl_FragColor = vec4( 0.0, 0.0, 0.0, 1.0 );',
+      '  gl_FragColor = vColor;',
       '}'
     ].join( '\n' );
 
@@ -119,21 +118,25 @@ define( function( require ) {
 
     // we will use  gl.TRIANGLES to draw sections of triangles that create
     // a dashed outline
-    var centerX =  0;
-    var centerY = 0;
-    var radius = 0.5;
+    var outerRadius = 0.5;
+    var innerRadius = 0.46;
 
     var fullCircle = Math.PI * 2;
-    var numSections = 32;
+    var numSections = 16;
     var delta = fullCircle / numSections;
 
     // samples used to create a smooth looking circle
     var numSamples = 100;
 
     this.vertices = [];
-
     for ( var i = 0; i < numSamples - 1; i = i + 1 ) {
       var angle = fullCircle / numSamples * i;
+
+      // vertex to the inner radius
+      var x = innerRadius * Math.cos( angle );
+      var y = innerRadius * Math.sin( angle );
+      this.vertices.push( x );
+      this.vertices.push( y );
 
       // round angle to nearest section
       var section = Math.floor( angle / delta ) * delta;
@@ -143,23 +146,18 @@ define( function( require ) {
 
       if ( evenSection ) {
 
-        // back to center position
-        this.vertices.push( centerX );
-        this.vertices.push( centerY );
-
-        // x and y should be updated
-        var x = radius * Math.cos( angle );
-        var y = radius * Math.sin( angle );
+        // vertex to the outer radius
+        x = outerRadius * Math.cos( angle );
+        y = outerRadius * Math.sin( angle );
         this.vertices.push( x );
         this.vertices.push( y );
+      }
+      else {
 
-        // draw to the next sample point
-        var nextAngle = fullCircle / numSamples * ( i + 1 );
-        x = radius * Math.cos( nextAngle );
-        y = radius * Math.sin( nextAngle );
+        // duplicate of the innner radius to produce stroke of 0 height along the parts where we don't want to see
+        // a dash
         this.vertices.push( x );
         this.vertices.push( y );
-
       }
     }
 
@@ -195,7 +193,7 @@ define( function( require ) {
       gl.uniform4f( shaderProgram.uniformLocations.uColor, color.r / 255, color.g / 255, color.b / 255, color.a );
 
       // draw, one triangle per vertex and subtract one triangle so we don't overflow
-      gl.drawArrays( gl.TRIANGLES, 0, ( this.vertices.length / POINTS_PER_VERTEX ) );
+      gl.drawArrays( gl.TRIANGLE_STRIP, 0, ( this.vertices.length / POINTS_PER_VERTEX ) );
       shaderProgram.unuse();
 
       return WebGLNode.PAINTED_SOMETHING;
