@@ -17,6 +17,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var ShaderProgram = require( 'SCENERY/util/ShaderProgram' );
+  var Util = require( 'DOT/Util' );
   var WebGLNode = require( 'SCENERY/nodes/WebGLNode' );
 
   // constants
@@ -122,7 +123,7 @@ define( function( require ) {
     var innerRadius = 0.46;
 
     var fullCircle = Math.PI * 2;
-    var numSections = 16;
+    var numSections = 32;
     var delta = fullCircle / numSections;
 
     // samples used to create a smooth looking circle
@@ -142,7 +143,7 @@ define( function( require ) {
       var section = Math.floor( angle / delta ) * delta;
 
       // determine if section is even out of the total sections - if so we will include this triangle
-      var evenSection = ( ( section / fullCircle ) * numSections ) % 2 === 0;
+      var evenSection = Util.roundSymmetric( ( section / fullCircle ) * numSections ) % 2 === 0;
 
       if ( evenSection ) {
 
@@ -153,7 +154,7 @@ define( function( require ) {
         this.vertices.push( y );
       }
       else {
-
+        
         // duplicate of the innner radius to produce stroke of 0 height along the parts where we don't want to see
         // a dash
         this.vertices.push( x );
