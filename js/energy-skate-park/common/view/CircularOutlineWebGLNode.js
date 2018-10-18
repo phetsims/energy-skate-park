@@ -124,7 +124,7 @@ define( function( require ) {
     var radius = 0.5;
 
     var fullCircle = Math.PI * 2;
-    var numSections = 16;
+    var numSections = 32;
     var delta = fullCircle / numSections;
 
     // samples used to create a smooth looking circle

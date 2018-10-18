@@ -121,15 +121,40 @@ define( function( require ) {
       plus( plus( kineticEnergyProportion, thermalEnergyProportion ), potentialEnergyProportion )
     );
 
+    var totalEnergyPiece = new PieChartWebGLSliceNode(
+      EnergySkateParkColorScheme.totalEnergy,
+      pieChartRadiusProperty,
+      new Property( Math.PI * 2 )
+    );
+
     var circularOutline = new CircularOutlineWebGLNode( 'black', outlineRadiusProperty );
 
+    // energy pieces need to be on top of the "outlines"
     this.addChild( outline );
+    this.addChild( circularOutline );
+
     this.addChild( potentialEnergyPiece );
     this.addChild( kineticEnergyPiece );
     this.addChild( thermalEnergyPiece );
-    this.addChild( circularOutline );
+    this.addChild( totalEnergyPiece );
 
     pieChartVisibleProperty.linkAttribute( this, 'visible' );
+
+    // when potential energy is negative, we will show the total energy as a transparent circle since pie charts
+    // don't easily represent negative values
+    skater.potentialEnergyProperty.link( function( potentialEnergy ) {
+
+      var energyPositive = potentialEnergy > 0;
+
+      outline.visible = energyPositive;
+      potentialEnergyPiece.visible =  energyPositive;
+      kineticEnergyPiece.visible =  energyPositive;
+      thermalEnergyPiece.visible =  energyPositive;
+
+      circularOutline.visible = !energyPositive;
+      totalEnergyPiece.visible = !energyPositive;
+
+    } );
   }
 
   energySkatePark.register( 'PieChartWebGLNode', PieChartWebGLNode );
