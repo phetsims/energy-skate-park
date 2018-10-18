@@ -20,6 +20,7 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
+  var ZoomButton = require( 'SCENERY_PHET/buttons/ZoomButton' );
 
   // strings
   var energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
@@ -90,6 +91,17 @@ define( function( require ) {
       clearThermalButton.enabled = allowClearingThermalEnergy;
     } );
 
+    var zoomInButton = new ZoomButton( {
+      in: true,
+      leftTop: clearThermalButton.rightBottom.plusXY( 10, 5 ),
+      scale: 0.4
+    } );
+    var zoomOutButton = new ZoomButton( {
+      in: false,
+      leftCenter: zoomInButton.rightCenter.plusXY( 10, 0 ),
+      scale: 0.4
+    } );
+
     var titleNode = new Text( energyEnergyString, {
       tandem: tandem.createTandem( 'titleNode' ),
       x: 5,
@@ -114,7 +126,9 @@ define( function( require ) {
         this.potentialLabel,
         this.thermalLabel,
         this.totalLabel,
-        clearThermalButton
+        clearThermalButton,
+        zoomInButton,
+        zoomOutButton
       ]
     } );
 
