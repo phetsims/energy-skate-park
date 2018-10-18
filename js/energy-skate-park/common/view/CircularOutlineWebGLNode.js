@@ -126,10 +126,10 @@ define( function( require ) {
     var delta = fullCircle / numSections;
 
     // samples used to create a smooth looking circle
-    var numSamples = 100;
+    var numSamples = 400;
 
     this.vertices = [];
-    for ( var i = 0; i < numSamples - 1; i = i + 1 ) {
+    for ( var i = 0; i < numSamples; i++ ) {
       var angle = fullCircle / numSamples * i;
 
       // vertex to the inner radius
