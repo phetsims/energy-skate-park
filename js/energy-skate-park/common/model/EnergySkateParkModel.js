@@ -134,6 +134,11 @@ define( function( require ) {
       phetioType: PropertyIO( BooleanIO )
     } );
 
+    // @public {number} - scale applied to graphs to determine relative height, making this larger will "zoom out"
+    this.graphScaleProperty = new NumberProperty( 1 / 30, {
+      tandem: tandem.createTandem( 'graphScaleProperty' )
+    } );
+
     // @public - enabled/disabled for the track editing buttons
     this.editButtonEnabledProperty = new Property( false, {
       tandem: tandem.createTandem( 'editButtonEnabledProperty' ),

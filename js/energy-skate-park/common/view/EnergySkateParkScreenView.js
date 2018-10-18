@@ -376,7 +376,12 @@ define( function( require ) {
     this.addChild( gaugeNeedleNode );
 
     // @private - the foreground of the bar graph (split up to use WebGL)
-    this.barGraphForeground = new BarGraphForeground( model.skater, this.barGraphBackground, model.barGraphVisibleProperty, renderer,
+    this.barGraphForeground = new BarGraphForeground(
+      model.skater,
+      this.barGraphBackground,
+      model.barGraphVisibleProperty,
+      model.graphScaleProperty,
+      renderer,
       tandem.createTandem( 'barGraphForeground' )
     );
     this.addChild( this.barGraphForeground );

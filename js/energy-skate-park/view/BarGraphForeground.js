@@ -27,7 +27,7 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function BarGraphForeground( skater, barGraphBackground, barGraphVisibleProperty, barRenderer, tandem ) {
+  function BarGraphForeground( skater, barGraphBackground, barGraphVisibleProperty, graphScaleProperty, barRenderer, tandem ) {
 
     var barWidth = barGraphBackground.barWidth;
     var getBarX = barGraphBackground.getBarX;
@@ -42,8 +42,8 @@ define( function( require ) {
 
       // Convert to graph coordinates
       // However, do not floor for values less than 1 otherwise a nonzero value will show up as zero, see #159
-      var barHeightProperty = new DerivedProperty( [ property ], function( value ) {
-        var result = value / 30;
+      var barHeightProperty = new DerivedProperty( [ property, graphScaleProperty ], function( value, scale ) {
+        var result = value * scale;
         var absResult = Math.abs( result );
 
         // Floor and protect against duplicates.
