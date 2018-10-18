@@ -98,7 +98,7 @@ define( function( require ) {
     } );
     var zoomOutButton = new ZoomButton( {
       in: false,
-      leftCenter: zoomInButton.rightCenter.plusXY( 10, 0 ),
+      leftCenter: zoomInButton.rightCenter.plusXY( 5, 0 ),
       scale: 0.4
     } );
 
