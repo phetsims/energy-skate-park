@@ -126,7 +126,6 @@ define( function( require ) {
         totalEnergyCircle.visible = true;
 
         // round to nearest int so that graphics update only happens every pixel change or more
-        console.log( 'showing negative energy');
         totalEnergyCircle.radius = Math.round( radius );
       }
       else if ( numberComponents === 0 || energyNegative ) {

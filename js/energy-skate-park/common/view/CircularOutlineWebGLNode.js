@@ -199,7 +199,6 @@ define( function( require ) {
       return WebGLNode.PAINTED_SOMETHING;
     },
 
-
     /**
      * Clear the painter and WebGL resources.
      */
