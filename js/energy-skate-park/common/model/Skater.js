@@ -11,7 +11,7 @@ define( function( require ) {
 
   // modules
   var BooleanProperty = require( 'AXON/BooleanProperty' );
-  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/Constants' );
+  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
   var Emitter = require( 'AXON/Emitter' );

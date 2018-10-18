@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/Constants' );
+  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var HSlider = require( 'SUN/HSlider' );
   var inherit = require( 'PHET_CORE/inherit' );

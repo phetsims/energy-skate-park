@@ -13,7 +13,7 @@ define( function( require ) {
 
   // modules
   var BooleanProperty = require( 'AXON/BooleanProperty' );
-  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/Constants' );
+  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   var DragListener = require( 'SCENERY/listeners/DragListener' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );

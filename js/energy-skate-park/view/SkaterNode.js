@@ -12,7 +12,7 @@ define( function( require ) {
 
   // modules
   var Circle = require( 'SCENERY/nodes/Circle' );
-  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/Constants' );
+  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
