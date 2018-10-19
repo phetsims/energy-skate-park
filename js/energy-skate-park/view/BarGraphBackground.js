@@ -204,6 +204,11 @@ define( function( require ) {
       tandem: tandem
     } );
 
+    graphScaleProperty.link( function( scale ) {
+      self.zoomInButton.enabled = scale < Constants.MAX_ZOOM_FACTOR;
+      self.zoomOutButton.enabled = scale > Constants.MIN_ZOOM_FACTOR;
+    } );
+
     // When the bar graph is shown, update the bars (because they do not get updated when invisible for performance reasons)
     barGraphVisibleProperty.linkAttribute( this, 'visible' );
   }

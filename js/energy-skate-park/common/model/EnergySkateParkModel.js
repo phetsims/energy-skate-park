@@ -277,6 +277,7 @@ define( function( require ) {
       this.referenceHeightVisibleProperty.reset();
       this.editButtonEnabledProperty.reset();
       this.clearButtonEnabledProperty.reset();
+      this.graphScaleProperty.reset();
       this.pausedProperty.reset();
       this.speedProperty.reset();
       this.frictionProperty.reset();
