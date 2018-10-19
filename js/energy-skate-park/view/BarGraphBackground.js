@@ -136,6 +136,27 @@ define( function( require ) {
     this.totalEnergyUpArrow = this.createArrowNode( 3, true );
     this.totalEnergyDownArrow = this.createArrowNode( 3, false );
 
+    // @private - map index to arrow node, then map positive and negative arrows. null entries where negative energy
+    // not supported, if we try to access a node on these we will error
+    this.arrowNodeMap = {
+      0: {
+        POSITIVE: this.kineticEnergyUpArrow,
+        NEGATIVE: null 
+      },
+      1: {
+        POSITIVE: this.potentialEnergyUpArrow,
+        NEGATIVE: this.potentialEnergyDownArrow
+      },
+      2: {
+        POSITIVE: this.thermalEnergyUpArrow,
+        NEGATIVE: null
+      },
+      3: {
+        POSITIVE: this.totalEnergyUpArrow,
+        NEGATIVE: this.totalEnergyDownArrow
+      }
+    };
+
     var titleNode = new Text( energyEnergyString, {
       tandem: tandem.createTandem( 'titleNode' ),
       x: 5,
@@ -222,6 +243,20 @@ define( function( require ) {
       }
 
       return height;
+    },
+
+    /**
+     * Returns an arrow node on the background, associated with index (related to physical value) and whether or not
+     * we should use the up or down arrow.
+     * 
+     * @param  {number} index
+     * @return {boolean} useUp - should the arrow point up?
+     */
+    getArrowNode: function( index, useUp ) {
+      var positive = useUp ? 'POSITIVE' : 'NEGATIVE';
+      var arrowNode = this.arrowNodeMap[ index ][ positive ];
+
+      return arrowNode;
     },
 
     /**

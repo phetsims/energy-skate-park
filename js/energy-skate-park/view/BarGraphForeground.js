@@ -73,21 +73,21 @@ define( function( require ) {
         if ( visible ) {
           // PERFORMANCE/ALLOCATION: Possible performance improvement to avoid allocations in Rectangle.setRect
 
-          // max height of the bar graph, in view coordinates
+          // // max height of the bar graph, in view coordinates
+          var absBarHeight = Math.abs( barHeight );
           var maxHeight = barGraphBackground.getMaximumBarHeight( index, barHeight >= 0 );
+          var limitHeight = Math.min( absBarHeight, maxHeight );
 
-          var limitHeight;
+          // var positiveArrow = barGraphBackground.getArrowNode( index, barHeight > 0 ).visible = absBarHeight > limitHeight;
+          // var negativeArrow = barGraphBackground.getArrowNode( index ,)
+
+          // var limitHeight;
           if ( barHeight >= 0 ) {
-
-            // limit height and include arrows if large enough
-            // upArrow.visible = barHeight > maxHeight;
-            limitHeight = Math.min( barHeight, maxHeight );
 
             solidBar.setRect( barX, originY - limitHeight, barWidth, limitHeight );
             transparentBar.setRect( 0, 0, 0, 0 ); // make sure the transparent bar is removed
           }
           else {
-            limitHeight = Math.min( -barHeight, maxHeight );
 
             // height limit for the transparent bar, up to the height of the label
             var transparentHeight = Math.min( -barHeight, labelHeight );
