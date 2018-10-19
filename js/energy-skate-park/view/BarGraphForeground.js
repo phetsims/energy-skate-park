@@ -34,7 +34,7 @@ define( function( require ) {
     var originY = barGraphBackground.originY;
 
     // max height of the bar graph, in view coordinates
-    var maxHeight = barGraphBackground.getYArrowHeight();
+    var maxHeight = barGraphBackground.getMaximumBarHeight();
 
     // Create an energy bar that animates as the skater moves. Composed of 2 rectangles, one solid and one that
     // is semi-transparent in case energy is negative. The semi transparent rectangle will extend up to the width

@@ -27,6 +27,14 @@ define( function( require ) {
   // constants - height of the arrow that extends a bar if it goes outside of the graph axis
   var ARROW_HEIGHT = 15;
 
+  // maps index from of bar to its color
+  var COLOR_INDEX_MAP = {
+    0: EnergySkateParkColorScheme.kineticEnergy,
+    1: EnergySkateParkColorScheme.potentialEnergy,
+    2: EnergySkateParkColorScheme.thermalEnergy,
+    3: EnergySkateParkColorScheme.totalEnergy
+  };
+
   // strings
   var energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
   var energyKineticString = require( 'string!ENERGY_SKATE_PARK/energy.kinetic' );
@@ -65,10 +73,10 @@ define( function( require ) {
     this.getBarX = function( barIndex ) { return insetX + spaceBetweenAxisAndBar + self.barWidth * barIndex + spaceBetweenBars * barIndex; };
 
     // Create a label that appears under one of the bars
-    var createLabel = function( index, title, color, tandemName ) {
+    var createLabel = function( index, title, tandemName ) {
       var text = new Text( title, {
         tandem: tandem.createTandem( tandemName ),
-        fill: color,
+        fill: COLOR_INDEX_MAP[ index ],
         font: new PhetFont( 14 ),
         pickable: false,
         maxWidth: 90 // selected by requiring that the bar chart not overlap with the track toolbox, see #337
@@ -81,10 +89,10 @@ define( function( require ) {
     };
 
     // @private {Node}
-    this.kineticLabel = createLabel( 0, energyKineticString, EnergySkateParkColorScheme.kineticEnergy, 'kineticEnergyLabel' );
-    this.potentialLabel = createLabel( 1, energyPotentialString, EnergySkateParkColorScheme.potentialEnergy, 'potentialEnergyLabel' );
-    this.thermalLabel = createLabel( 2, energyThermalString, EnergySkateParkColorScheme.thermalEnergy, 'thermalEnergyLabel' );
-    this.totalLabel = createLabel( 3, energyTotalString, EnergySkateParkColorScheme.totalEnergy, 'totalEnergyLabel' );
+    this.kineticLabel = createLabel( 0, energyKineticString, 'kineticEnergyLabel' );
+    this.potentialLabel = createLabel( 1, energyPotentialString, 'potentialEnergyLabel' );
+    this.thermalLabel = createLabel( 2, energyThermalString, 'thermalEnergyLabel' );
+    this.totalLabel = createLabel( 3, energyTotalString, 'totalEnergyLabel' );
 
     var clearThermalButton = new ClearThermalButton( {
       tandem: tandem.createTandem( 'clearThermalButton' ),
@@ -97,28 +105,32 @@ define( function( require ) {
       clearThermalButton.enabled = allowClearingThermalEnergy;
     } );
 
-    var zoomInButton = new ZoomButton( {
+    // @private
+    this.zoomInButton = new ZoomButton( {
       in: true,
-      leftTop: clearThermalButton.rightBottom.plusXY( 10, 5 ),
+      leftTop: clearThermalButton.centerBottom.plusXY( 0, 5 ),
       scale: 0.4,
       listener: function() {
         graphScaleProperty.set( Math.min( graphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
       }
     } );
-    var zoomOutButton = new ZoomButton( {
+    this.zoomOutButton = new ZoomButton( {
       in: false,
-      leftCenter: zoomInButton.rightCenter.plusXY( 5, 0 ),
+      leftCenter: this.zoomInButton.rightCenter.plusXY( 5, 0 ),
       scale: 0.4,
       listener: function() {
         graphScaleProperty.set( Math.max( graphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
       }
     } );
 
-    // arrows that will appear when a particular bar gets too high or low
-    this.kineticUpArrow = new ArrowNode( 0, 0, 0, -ARROW_HEIGHT, {
-      fill: EnergySkateParkColorScheme.kineticEnergy,
-      centerBottom: new Vector2( this.getBarX( 0 ) + this.barWidth / 2, this.insetY )
-    } );
+    // @public (to update visibility in background) - Arrows that will appear when a particular bar gets too high or
+    // low. Only potential and total energy support negative values
+    this.kineticEnergyUpArrow = this.createArrowNode( 0, true );
+    this.potentialEnergyUpArrow = this.createArrowNode( 1, true );
+    this.potentialEnergyDownArrow = this.createArrowNode( 1, false );
+    this.thermalEnergyUpArrow = this.createArrowNode( 2, true );
+    this.totalEnergyUpArrow = this.createArrowNode( 3, true );
+    this.totalEnergyDownArrow = this.createArrowNode( 3, false );
 
     var titleNode = new Text( energyEnergyString, {
       tandem: tandem.createTandem( 'titleNode' ),
@@ -145,9 +157,14 @@ define( function( require ) {
         this.thermalLabel,
         this.totalLabel,
         clearThermalButton,
-        zoomInButton,
-        zoomOutButton,
-        this.kineticUpArrow
+        this.zoomInButton,
+        this.zoomOutButton,
+        this.kineticEnergyUpArrow,
+        this.potentialEnergyUpArrow,
+        this.potentialEnergyDownArrow,
+        this.thermalEnergyUpArrow,
+        this.totalEnergyUpArrow,
+        this.totalEnergyDownArrow
       ]
     } );
 
@@ -172,7 +189,7 @@ define( function( require ) {
 
   energySkatePark.register( 'BarGraphBackground', BarGraphBackground );
 
-  return inherit( Panel, BarGraphBackground, {
+  inherit( Panel, BarGraphBackground, {
 
     /**
      * Return the height of the label, referenced by index. For negative energies, we need to adjust alpha for a section
@@ -204,12 +221,46 @@ define( function( require ) {
     },
 
     /**
-     * Returns the height of the y axis, so the foreground can scale the bars.
+     * Returns the maximum height of a bar for this graph, so the foreground can scale the bars correctly, and keep
+     * them within the graph. Padding is added so that when too large, an arrow can fit in that indicates the graph
+     * will extend beyond what is shown by the bar.
      * @public
      * @return {number}
      */
-    getYArrowHeight: function() {
-      return this.originY - this.insetY;
+    getMaximumBarHeight: function() {
+      return this.originY - this.insetY - ARROW_HEIGHT - 2;
+    },
+
+    /**
+     * Creates an arrow node that will be made visible when the bar graph is large enough to show that the value
+     * extends beyond the height of the graph.
+     * @private
+     * 
+     * @param {number} index - used to determine which physical value this arrow will represent.
+     * @return {Node}
+     */
+    createArrowNode: function( index, forPositive ) {
+      var node = new ArrowNode( 0, 0, 0, -ARROW_HEIGHT, {
+        fill: COLOR_INDEX_MAP[ index ]
+      } );
+
+      // handle positioning, depending on whether the arrow will represent more positive or more negative value
+      var centerX = this.getBarX( index ) + this.barWidth / 2;
+      if ( forPositive ) {
+        node.centerBottom = new Vector2( centerX, this.insetY + ARROW_HEIGHT );
+      }
+      else {
+        node.rotation = Math.PI;
+
+        // if negative, position of arrow will depend on physical value because total energy bar can only extend to the
+        // top zoom buttons - others can extend to bottom of zoom buttons
+        var bottomY = index === 3 ? this.zoomInButton.top : this.zoomInButton.bottom;
+        node.centerBottom = new Vector2( centerX, bottomY );
+      }
+
+      return node;
     }
   } );
+
+  return BarGraphBackground;
 } );
