@@ -15,12 +15,20 @@ define( function( require ) {
   var minMass = 25;// kg
   var maxMass = 100;
 
+  // for zoom buttons for bar graphs, pressing button will increase/decrease scale by this much
+  var ZOOM_FACTOR_DELTA = 1 / 60;
+
   var Constants = {
     SLIDER_OPTIONS: {
       thumbSize: new Dimension2( 13, 30 ),
       tickLabelSpacing: 0,
       majorTickLength: 15
     },
+
+    // for the bar graphs, factors multiplied by physical values to produce heights in view coordinates
+    ZOOM_FACTOR_DELTA: ZOOM_FACTOR_DELTA,
+    MAX_ZOOM_FACTOR: 2 * ZOOM_FACTOR_DELTA,
+    MIN_ZOOM_FACTOR: ZOOM_FACTOR_DELTA / 3,
 
     DEFAULT_MASS: (minMass + maxMass) / 2,
     MIN_MASS: minMass,

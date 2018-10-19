@@ -143,7 +143,7 @@ define( function( require ) {
     } );
 
     // @private - background for the bar graph (split up to use WebGL for the foreground)
-    this.barGraphBackground = new BarGraphBackground( model.skater, model.barGraphVisibleProperty,
+    this.barGraphBackground = new BarGraphBackground( model.skater, model.barGraphVisibleProperty, model.graphScaleProperty,
       model.clearThermal.bind( model ), tandem.createTandem( 'barGraphBackground' ) );
     this.addChild( this.barGraphBackground );
 

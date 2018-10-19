@@ -12,6 +12,7 @@ define( function( require ) {
   // modules
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
   var ClearThermalButton = require( 'SCENERY_PHET/ClearThermalButton' );
+  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -33,11 +34,12 @@ define( function( require ) {
    * Constructor for the BarGraph
    * @param {Skater} skater the model's skater model
    * @param {Property<Boolean>} barGraphVisibleProperty property that indicates whether the bar graph is visible
+   * @param {NumberProperty} graphScaleProperty
    * @param {Function} clearThermal function to be called when the user presses the clear thermal button.
    * @param {Tandem} tandem
    * @constructor
    */
-  function BarGraphBackground( skater, barGraphVisibleProperty, clearThermal, tandem ) {
+  function BarGraphBackground( skater, barGraphVisibleProperty, graphScaleProperty, clearThermal, tandem ) {
 
     var self = this;
 
@@ -94,12 +96,18 @@ define( function( require ) {
     var zoomInButton = new ZoomButton( {
       in: true,
       leftTop: clearThermalButton.rightBottom.plusXY( 10, 5 ),
-      scale: 0.4
+      scale: 0.4,
+      listener: function() {
+        graphScaleProperty.set( Math.min( graphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
+      }
     } );
     var zoomOutButton = new ZoomButton( {
       in: false,
       leftCenter: zoomInButton.rightCenter.plusXY( 5, 0 ),
-      scale: 0.4
+      scale: 0.4,
+      listener: function() {
+        graphScaleProperty.set( Math.max( graphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
+      }
     } );
 
     var titleNode = new Text( energyEnergyString, {
