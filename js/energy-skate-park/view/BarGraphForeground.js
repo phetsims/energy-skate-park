@@ -33,6 +33,9 @@ define( function( require ) {
     var getBarX = barGraphBackground.getBarX;
     var originY = barGraphBackground.originY;
 
+    // max height of the bar graph, in view coordinates
+    var maxHeight = barGraphBackground.getYArrowHeight();
+
     // Create an energy bar that animates as the skater moves. Composed of 2 rectangles, one solid and one that
     // is semi-transparent in case energy is negative. The semi transparent rectangle will extend up to the width
     // of the bar label.
@@ -72,7 +75,12 @@ define( function( require ) {
           // PERFORMANCE/ALLOCATION: Possible performance improvement to avoid allocations in Rectangle.setRect
 
           if ( barHeight >= 0 ) {
-            solidBar.setRect( barX, originY - barHeight, barWidth, barHeight );
+
+            // limit height and include arrows if large enough
+            var limitHeight = Math.min( barHeight, maxHeight );
+            // upArrow.visible = barHeight > maxHeight;
+
+            solidBar.setRect( barX, originY - limitHeight, barWidth, limitHeight );
             transparentBar.setRect( 0, 0, 0, 0 ); // make sure the transparent bar is removed
           }
           else {

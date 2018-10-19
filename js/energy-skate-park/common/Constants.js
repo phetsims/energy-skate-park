@@ -27,7 +27,7 @@ define( function( require ) {
 
     // for the bar graphs, factors multiplied by physical values to produce heights in view coordinates
     ZOOM_FACTOR_DELTA: ZOOM_FACTOR_DELTA,
-    MAX_ZOOM_FACTOR: 2 * ZOOM_FACTOR_DELTA,
+    MAX_ZOOM_FACTOR: 8 * ZOOM_FACTOR_DELTA,
     MIN_ZOOM_FACTOR: ZOOM_FACTOR_DELTA / 3,
 
     DEFAULT_MASS: (minMass + maxMass) / 2,

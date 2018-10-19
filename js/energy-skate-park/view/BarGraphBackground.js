@@ -22,6 +22,10 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
   var ZoomButton = require( 'SCENERY_PHET/buttons/ZoomButton' );
+  var Vector2 = require( 'DOT/Vector2' );
+
+  // constants - height of the arrow that extends a bar if it goes outside of the graph axis
+  var ARROW_HEIGHT = 15;
 
   // strings
   var energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
@@ -47,7 +51,7 @@ define( function( require ) {
     var contentWidth = 110;
     var contentHeight = 325;
     var insetX = 2;
-    var insetY = 25;
+    this.insetY = 25; // @private
 
     var numBars = 4;
     var spaceBetweenBars = 10;
@@ -55,7 +59,7 @@ define( function( require ) {
     var spaceBetweenRightSideAndBar = 5;
     this.barWidth = (contentWidth - insetX * 2 - (numBars - 1) * spaceBetweenBars - spaceBetweenAxisAndBar - spaceBetweenRightSideAndBar) / numBars;
 
-    this.originY = contentHeight - insetY;
+    this.originY = contentHeight - this.insetY;
 
     // The x-coordinate of a bar chart bar
     this.getBarX = function( barIndex ) { return insetX + spaceBetweenAxisAndBar + self.barWidth * barIndex + spaceBetweenBars * barIndex; };
@@ -110,6 +114,12 @@ define( function( require ) {
       }
     } );
 
+    // arrows that will appear when a particular bar gets too high or low
+    this.kineticUpArrow = new ArrowNode( 0, 0, 0, -ARROW_HEIGHT, {
+      fill: EnergySkateParkColorScheme.kineticEnergy,
+      centerBottom: new Vector2( this.getBarX( 0 ) + this.barWidth / 2, this.insetY )
+    } );
+
     var titleNode = new Text( energyEnergyString, {
       tandem: tandem.createTandem( 'titleNode' ),
       x: 5,
@@ -120,7 +130,7 @@ define( function( require ) {
     } );
     var contentNode = new Rectangle( 0, 0, contentWidth, contentHeight, {
       children: [
-        new ArrowNode( insetX, this.originY, insetX, insetY, {
+        new ArrowNode( insetX, this.originY, insetX, this.insetY, {
           pickable: false,
           tandem: tandem.createTandem( 'arrowNode' )
         } ),
@@ -136,7 +146,8 @@ define( function( require ) {
         this.totalLabel,
         clearThermalButton,
         zoomInButton,
-        zoomOutButton
+        zoomOutButton,
+        this.kineticUpArrow
       ]
     } );
 
@@ -190,6 +201,15 @@ define( function( require ) {
       }
 
       return height;
+    },
+
+    /**
+     * Returns the height of the y axis, so the foreground can scale the bars.
+     * @public
+     * @return {number}
+     */
+    getYArrowHeight: function() {
+      return this.originY - this.insetY;
     }
   } );
 } );
