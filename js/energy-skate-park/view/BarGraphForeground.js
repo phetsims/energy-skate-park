@@ -76,12 +76,17 @@ define( function( require ) {
           // // max height of the bar graph, in view coordinates
           var absBarHeight = Math.abs( barHeight );
           var maxHeight = barGraphBackground.getMaximumBarHeight( index, barHeight >= 0 );
+
+          // update visibility of arrow nodes if bar goes beyond graph
+          barGraphBackground.getUpArrowNode( index ).visible = barHeight > maxHeight;
+
+          // down arrow nodes only  only supported for potential and total energies, so only do this for indices
+          // that correspond to those energy types. TODO: Can we reference by enum or something else?
+          if ( index === 1 || index === 3 ) {
+            barGraphBackground.getDownArrowNode( index ).visible = absBarHeight > maxHeight && barHeight < 0;
+          }
+
           var limitHeight = Math.min( absBarHeight, maxHeight );
-
-          // var positiveArrow = barGraphBackground.getArrowNode( index, barHeight > 0 ).visible = absBarHeight > limitHeight;
-          // var negativeArrow = barGraphBackground.getArrowNode( index ,)
-
-          // var limitHeight;
           if ( barHeight >= 0 ) {
 
             solidBar.setRect( barX, originY - limitHeight, barWidth, limitHeight );

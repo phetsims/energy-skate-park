@@ -8,6 +8,9 @@
  * extension of the bar graphs, and maximum heights of the bar graphs are dependent on the positioning of the zoom
  * buttons below the graph.
  *
+ * TODO: We get a lot of information from the bar graph by index, but it seems a bit fragile. Perhaps we should collect
+ * information into a type or some other way to handle?
+ *
  * @author Sam Reid
  */
 define( function( require ) {
@@ -136,25 +139,18 @@ define( function( require ) {
     this.totalEnergyUpArrow = this.createArrowNode( 3, true );
     this.totalEnergyDownArrow = this.createArrowNode( 3, false );
 
-    // @private - map index to arrow node, then map positive and negative arrows. null entries where negative energy
-    // not supported, if we try to access a node on these we will error
-    this.arrowNodeMap = {
-      0: {
-        POSITIVE: this.kineticEnergyUpArrow,
-        NEGATIVE: null 
-      },
-      1: {
-        POSITIVE: this.potentialEnergyUpArrow,
-        NEGATIVE: this.potentialEnergyDownArrow
-      },
-      2: {
-        POSITIVE: this.thermalEnergyUpArrow,
-        NEGATIVE: null
-      },
-      3: {
-        POSITIVE: this.totalEnergyUpArrow,
-        NEGATIVE: this.totalEnergyDownArrow
-      }
+    // @private - map index to arrow node
+    this.upArrowNodeMap = {
+      0: this.kineticEnergyUpArrow,
+      1: this.potentialEnergyUpArrow,
+      2: this.thermalEnergyUpArrow,
+      3: this.totalEnergyUpArrow
+    };
+
+    // @private - map index to down arrow node, only potential and total will have negative energies
+    this.downArrowNodeMap = {
+      1: this.potentialEnergyDownArrow,
+      3: this.totalEnergyDownArrow
     };
 
     var titleNode = new Text( energyEnergyString, {
@@ -246,16 +242,23 @@ define( function( require ) {
     },
 
     /**
-     * Returns an arrow node on the background, associated with index (related to physical value) and whether or not
-     * we should use the up or down arrow.
-     * 
+     * Get the up arrow node for a particular bar by index.
      * @param  {number} index
-     * @return {boolean} useUp - should the arrow point up?
+     * @return {ArrowNode}
      */
-    getArrowNode: function( index, useUp ) {
-      var positive = useUp ? 'POSITIVE' : 'NEGATIVE';
-      var arrowNode = this.arrowNodeMap[ index ][ positive ];
+    getUpArrowNode: function( index ) {
+      return this.upArrowNodeMap[ index ];
+    },
 
+    /**
+     * Get the down arrow node for this graph, by index. Only potential and total energies support negative values,
+     * so arrow nodes don't exist for thermal and kinetic.
+     * @param  {number} index
+     * @return      
+     */
+    getDownArrowNode: function( index ) {
+      var arrowNode = this.downArrowNodeMap[ index ];
+      assert && assert( arrowNode, 'down arrow node does not exist for index ' + index );
       return arrowNode;
     },
 
