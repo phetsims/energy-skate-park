@@ -4,6 +4,10 @@
  * Scenery node that shows static background for the bar graph, including the title, axes, labels and clear thermal
  * button. This was split into separate layers in order to keep the animation fast (while still looking crisp) on iPad.
  *
+ * The layout handled in this file is very specific to the buttons in this background. Arrows that represent the
+ * extension of the bar graphs, and maximum heights of the bar graphs are dependent on the positioning of the zoom
+ * buttons below the graph.
+ *
  * @author Sam Reid
  */
 define( function( require ) {
@@ -224,11 +228,24 @@ define( function( require ) {
      * Returns the maximum height of a bar for this graph, so the foreground can scale the bars correctly, and keep
      * them within the graph. Padding is added so that when too large, an arrow can fit in that indicates the graph
      * will extend beyond what is shown by the bar.
+     *
+     * Depends on value and index, because max depends on whether value is positive or negative, and if negative,
+     * the height is limited by the zoom buttons for total energy.
      * @public
+     *
+     * @param {number} index
+     * @param {boolean} heightPositive - will the height extend above or below the x axis?
      * @return {number}
      */
-    getMaximumBarHeight: function() {
-      return this.originY - this.insetY - ARROW_HEIGHT - 2;
+    getMaximumBarHeight: function( index, heightPositive ) {
+      if ( !heightPositive ) {
+        var arrowSpace = ARROW_HEIGHT + 2;
+        var bottomY = index === 3 ? this.zoomInButton.top : this.zoomInButton.bottom; 
+        return bottomY - arrowSpace - this.originY;
+      }
+      else {
+        return this.originY - this.insetY - ARROW_HEIGHT - 2;
+      }
     },
 
     /**
