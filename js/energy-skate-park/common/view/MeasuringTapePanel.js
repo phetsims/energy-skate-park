@@ -49,7 +49,7 @@ define( require => {
       }, { allowTouchSnag: true } ) );
 
       // icon is only visible when measuring tape is hidden
-      const iconVisibleProperty = new DerivedProperty( [ model.measuringTapeVisibleProperty ], function( isVisible ) {
+      const iconVisibleProperty = new DerivedProperty( [ model.measuringTapeVisibleProperty ], isVisible => {
         return !isVisible;
       } );
       iconVisibleProperty.linkAttribute( measuringTapeIcon, 'visible' );

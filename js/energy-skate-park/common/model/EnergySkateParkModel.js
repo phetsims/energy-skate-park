@@ -172,14 +172,14 @@ define( function( require ) {
       tandem: tandem.createTandem( 'frictionProperty' )
     } );
 
-    // @public {Property.<Vector2>} - Changing this will move both the base AND the tip of the measuring tape, but
-    // will generally only be changed when dragging the base
+    // @public {Property.<Vector2>}
     this.measuringTapeBasePositionProperty = new Property( new Vector2( 0, 0 ), {
       tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' ),
       phetioType: PropertyIO( Vector2IO )
     } );
 
-    this.measuringTapeTipPositionProperty = new Property( new Vector2( 0, 1 ), {
+    // @public {Property.<Vector2>}
+    this.measuringTapeTipPositionProperty = new Property( new Vector2( 0, 0 ), {
       tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' ),
       phetioType: PropertyIO( Vector2IO )
     } );
