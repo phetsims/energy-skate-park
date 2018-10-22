@@ -105,7 +105,7 @@ define( function( require ) {
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: clearThermal,
       centerX: this.thermalLabel.centerX,
-      y: this.thermalLabel.bottom + 12,
+      y: this.thermalLabel.bottom + 5,
       scale: 0.7
     } );
     skater.allowClearingThermalEnergyProperty.link( function( allowClearingThermalEnergy ) {
