@@ -16,8 +16,8 @@ define( function( require ) {
   // constants
   function IntroModel( tandem ) {
 
-    // track set model with no friction
-    EnergySkateParkFullTrackSetModel.call( this, false, tandem.createTandem( 'introModel' ) );
+    // track set model with friction
+    EnergySkateParkFullTrackSetModel.call( this, true, tandem.createTandem( 'introModel' ) );
   }
 
   energySkatePark.register( 'IntroModel', IntroModel );
