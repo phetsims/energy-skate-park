@@ -119,7 +119,7 @@ define( function( require ) {
     this.zoomInButton = new ZoomButton( {
       in: true,
       leftTop: new Vector2( -10, this.originY + ZOOM_BUTTON_VERTICAL_SPACING ),
-      scale: 0.4,
+      scale: 0.3,
       listener: function() {
         graphScaleProperty.set( Math.min( graphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
       }
@@ -127,7 +127,7 @@ define( function( require ) {
     this.zoomOutButton = new ZoomButton( {
       in: false,
       leftCenter: this.zoomInButton.rightCenter.plusXY( 5, 0 ),
-      scale: 0.4,
+      scale: 0.3,
       listener: function() {
         graphScaleProperty.set( Math.max( graphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
       }
