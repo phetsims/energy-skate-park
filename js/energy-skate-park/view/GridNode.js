@@ -4,6 +4,9 @@
  * Scenery node that shows the grid lines and labels, when enabled in the control panel.
  * Every other horizontal line is labeled and highlighted to make it easy to count.
  *
+ * The grid will translate with the potential energy reference line, so that "0" line always aligns with
+ * 0 potential energy.
+ *
  * @author Sam Reid
  */
 define( function( require ) {
@@ -25,22 +28,44 @@ define( function( require ) {
   // constants
   var FONT = new PhetFont( 16 );
 
+  // in meters, the grid will extend this far into the earth so that when potential energy reference line is moved the
+  // grid can translte this far up
+  var NEGATIVE_HEIGHT = 10;
+
   /**
    * @param {Property.<boolean>} gridVisibleProperty the axon property indicating whether the grid should be visible
+   * @param {NumberProperty} referenceHeightProperty - Property in meters for height of zero potential energy
    * @param {ModelViewTransform2} modelViewTransform the main model-view transform
    * @param {Tandem} tandem
    * @constructor
    */
-  function GridNode( gridVisibleProperty, modelViewTransform, tandem ) {
+  function GridNode( gridVisibleProperty, referenceHeightProperty, modelViewTransform, tandem ) {
 
-    // @private
-    this.gridNodeTandem = tandem;
-
-    this.modelViewTransform = modelViewTransform;
     Node.call( this, {
       pickable: false,
       tandem: tandem
     } );
+
+    // @private
+    this.gridNodeTandem = tandem;
+    this.referenceHeightProperty = referenceHeightProperty;
+    this.modelViewTransform = modelViewTransform;
+
+    // @private {Node} - will contain the gridParent, and therefore most children of the grid except for the
+    // "0 meters" label (which must be outside of the clip area). The clip area is everything above the earth, updated
+    // in layout()
+    this.clipParent = new Node();
+    this.addChild( this.clipParent );
+
+    // @private {Node} - will contain most children of the grid node (lines, text, and others), so that this node
+    // can be transformed without moving the clip area.
+    this.gridParent = new Node();
+    this.clipParent.addChild( this.gridParent );
+
+    // @private {Node} - parent for the "0 meters" label, outside of the clipParent because we want this text to
+    // always be visible, even if outside of the clip shape (under the ground).
+    this.zeroLabelParent = new Node();
+    this.addChild( this.zeroLabelParent );
 
     gridVisibleProperty.linkAttribute( this, 'visible' );
 
@@ -55,18 +80,43 @@ define( function( require ) {
       lineWidth: 1.8,
       tandem: tandem.createTandem( 'thickLinePath' )
     } );
+
+    // @private - keep references to all text created so that they can be disposed and removed from scene graph
+    // when layout changes
     this.createdTexts = [];
+
+    var self = this;
+    referenceHeightProperty.lazyLink( function( height, oldHeight ) {
+      var viewDelta = modelViewTransform.modelToViewDeltaY( height - oldHeight );
+
+      // apply transform to grid and "0 meters" label, without translating the clip shape
+      self.gridParent.translate( 0, viewDelta );
+      self.zeroLabelParent.translate( 0, viewDelta );
+    } );
   }
 
   energySkatePark.register( 'GridNode', GridNode );
 
   return inherit( Node, GridNode, {
 
-    // Exactly fit the geometry to the screen so no matter what aspect ratio it will always show something.  Perhaps it
-    // will improve performance too? Could performance optimize by using visible instead of add/remove child if necessary
-    // (would only change performance on screen size change). For more performance improvements on screen size change,
-    // only update when the graph is visible, then again when it becomes visible.
+
+    /**
+     * Exactly fit the geometry to the screen so no matter what aspect ratio, the grid will fill the entire screen.
+     * Perhaps it will improve performance too? Could performance optimize by using visible instead of add/remove child
+     * if necessary (would only change performance on screen size change). For more performance improvements on screen size change,
+     * only update when the graph is visible, then again when it becomes visible.
+     * 
+     * @param  {number} offsetX - offset applied to center horizontally
+     * @param  {number} offsetY - offset applied to place bottom along the navigation bar
+     * @param  {number} width - width of view, before any layout scale
+     * @param  {number} height - height of view, before any layout scale
+     * @param  {number} layoutScale - vertical or horizontal scale for sim, whichever is more limiting
+     */
     layout: function( offsetX, offsetY, width, height, layoutScale ) {
+      var scaledHeight = height / layoutScale; // height of the view
+
+      var clipHeight = scaledHeight - BackgroundNode.earthHeight;
+      this.clipParent.clipArea = Shape.rectangle( -offsetX, -offsetY, width / layoutScale, clipHeight );
 
       for ( var k = 0; k < this.createdTexts.length; k++ ) {
         this.createdTexts[ k ].dispose();
@@ -76,7 +126,7 @@ define( function( require ) {
       var thickLines = [];
       var thinLines = [];
       var texts = [];
-      var lineHeight = height / layoutScale - BackgroundNode.earthHeight;
+      var lineHeight = height / layoutScale - BackgroundNode.earthHeight - this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
       for ( var x = 0; x < 100; x++ ) {
         var viewXPositive = this.modelViewTransform.modelToViewX( x );
         var viewXNegative = this.modelViewTransform.modelToViewX( -x );
@@ -89,8 +139,11 @@ define( function( require ) {
         }
       }
 
+      // will replace the "0 meters" label at that height
+      var replacementText;
+
       var separation = width / layoutScale;
-      for ( var y = 0; y < 100; y++ ) {
+      for ( var y = -NEGATIVE_HEIGHT; y < 100; y++ ) {
         var originX = this.modelViewTransform.modelToViewX( -4 );
         var viewY = this.modelViewTransform.modelToViewY( y );
         if ( viewY < -offsetY ) {
@@ -115,14 +168,14 @@ define( function( require ) {
           // For the "0 meters" readout, we still need the 0 to line up perfectly (while still using a single
           // internationalizable string), so use the 0 text bounds
           // And shift it down a bit so it isn't touching the concrete, see #134
+          // It won't be added as a child of the gridParent because we don't want it to be clipped
           if ( y === 0 ) {
-            var replacementText = new Text( zeroMetersString, {
+            replacementText = new Text( zeroMetersString, {
               tandem: this.gridNodeTandem.createTandem( 'zeroMetersStringText' ),
               font: FONT,
               top: viewY + 2,
               x: gridLineLabel.x
             } );
-            texts.push( replacementText );
             this.createdTexts.push( replacementText );
           }
           else {
@@ -145,10 +198,14 @@ define( function( require ) {
       }
       this.thinLinePath.setShape( thinLineShape );
       this.thickLinePath.setShape( thickLineShape );
-      this.children = [
+      this.gridParent.children = [
         this.thinLinePath,
         this.thickLinePath
       ].concat( texts );
+
+
+      assert && assert( replacementText, 'at 0 height, a label should have been created' );
+      this.zeroLabelParent.addChild( replacementText );
     }
   } );
 } );

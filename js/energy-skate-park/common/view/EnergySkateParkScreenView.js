@@ -95,7 +95,7 @@ define( function( require ) {
     this.backgroundNode = new BackgroundNode( this.layoutBounds, tandem.createTandem( 'backgroundNode' ) );
     this.addChild( this.backgroundNode );
 
-    this.gridNode = new GridNode( model.gridVisibleProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
+    this.gridNode = new GridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
     this.addChild( this.gridNode );
 
     // layout managed in layout function
