@@ -17,8 +17,10 @@ define( function( require ) {
     // Use color instances here to prevent parsing these values multiple times
     kineticEnergy: new Color( '#00cc1a' ),
     potentialEnergy: new Color( '#3282D7' ),
-    thermalEnergy: new Color( '#FF5500' ),// red colorblind
-    totalEnergy: new Color( '#B4B400' )// dirty yellow
+    thermalEnergy: new Color( '#FF5500' ), // red colorblind
+    totalEnergy: new Color( '#B4B400' ), // dirty yellow
+
+    panelFill: '#F0F0F0'
   };
 
   energySkatePark.register( 'EnergySkateParkColorScheme', EnergySkateParkColorScheme );

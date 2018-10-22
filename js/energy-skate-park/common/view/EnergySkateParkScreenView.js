@@ -27,6 +27,7 @@ define( function( require ) {
   var GridNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/GridNode' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var MeasuringTapePanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MeasuringTapePanel' );
   var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Path = require( 'SCENERY/nodes/Path' );
@@ -115,6 +116,12 @@ define( function( require ) {
     this.addChild( this.controlPanel );
     this.controlPanel.right = this.layoutBounds.width - 5;
     this.controlPanel.top = 5;
+
+    // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
+    this.measuringTapePanel = new MeasuringTapePanel();
+    this.addChild( this.measuringTapePanel );
+    this.measuringTapePanel.top = this.controlPanel.bottom + 5;
+
 
     // For the playground screen, show attach/detach toggle buttons
     if ( model.draggableTracks ) {
@@ -506,6 +513,8 @@ define( function( require ) {
 
       this.resetAllButton.right = this.controlPanel.right;
       this.returnSkaterButton.right = this.resetAllButton.left - 10;
+
+      this.measuringTapePanel.right = this.controlPanel.right;
 
       // Compute the visible model bounds so we will know when a model object like the skater has gone offscreen
       this.availableModelBounds = this.modelViewTransform.viewToModelBounds( this.availableViewBounds );

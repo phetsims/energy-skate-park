@@ -11,6 +11,7 @@ define( function( require ) {
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EnergySkateParkVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkVisibilityControls' );
   var FrictionControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/FrictionControl' );
   var MassControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/MassControlPanel' );
@@ -43,7 +44,7 @@ define( function( require ) {
     Panel.call( this, content, {
       xMargin: 10,
       yMargin: 5,
-      fill: '#F0F0F0',
+      fill: EnergySkateParkColorScheme.panelFill,
       stroke: null,
       resize: false,
       tandem: tandem
