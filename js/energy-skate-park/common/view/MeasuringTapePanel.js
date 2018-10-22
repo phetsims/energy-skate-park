@@ -37,7 +37,7 @@ define( require => {
         if ( !model.measuringTapeVisibleProperty.get() ) {
           model.measuringTapeVisibleProperty.set( true );
 
-          var modelPosition = modelViewTransform.viewToModelPosition( this.globalToParentPoint( event.pointer.point ) );
+          const modelPosition = modelViewTransform.viewToModelPosition( this.globalToParentPoint( event.pointer.point ) );
           model.measuringTapeBasePositionProperty.set( modelPosition );
           model.measuringTapeTipPositionProperty.set( modelPosition.plusXY( 1, 0 ) );
 
