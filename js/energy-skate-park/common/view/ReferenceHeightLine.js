@@ -46,7 +46,8 @@ define( function( require ) {
     var laserPointerNode = new LaserPointerNode( new BooleanProperty( false ), {
       hasButton: false,
       topColor: EnergySkateParkColorScheme.potentialEnergy,
-      bottomColor: EnergySkateParkColorScheme.potentialEnergy
+      bottomColor: EnergySkateParkColorScheme.potentialEnergy,
+      cursor: 'pointer'
     } );
 
     // pointing to the left, with shading maintained, made a bit more narrow vertically
