@@ -36,7 +36,7 @@ define( function( require ) {
 
     // in m/s^2, including direction (naming aligned with magnitude for readability at usages)
     MAX_GRAVITY: -15,
-    MIN_GRAVITY: -0.1,
+    MIN_GRAVITY: -1,
 
     REFERENCE_HEIGHT_RANGE: new Range( 0, 8 ) // in meters
   };
