@@ -24,6 +24,7 @@ define( function( require ) {
   var smallString = require( 'string!ENERGY_SKATE_PARK/small' );
   var controlsFrictionTitleString = require( 'string!ENERGY_SKATE_PARK/controls.friction.title' );
   var controlsGravityString = require( 'string!ENERGY_SKATE_PARK/controls.gravity' );
+  var controlsValueTinyString = require( 'string!ENERGY_SKATE_PARK/controls.value.tiny' );
 
   /**
    * @param {EnergySkateParkModel} model
@@ -69,7 +70,9 @@ define( function( require ) {
         model.skater.gravityMagnitudeProperty,
         new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ),
         controlsGravityString,
-        tandem.createTandem( 'gravityPhysicalControl' )
+        tandem.createTandem( 'gravityPhysicalControl' ), {
+          minLabel: controlsValueTinyString
+        }
       ) );
     }
 

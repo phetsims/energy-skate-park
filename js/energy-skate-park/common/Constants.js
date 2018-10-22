@@ -40,7 +40,7 @@ define( function( require ) {
     DEFAULT_FRICTION: 0.05,
 
     // in m/s^2, including direction (naming aligned with magnitude for readability at usages)
-    MAX_GRAVITY: -15,
+    MAX_GRAVITY: -20,
     MIN_GRAVITY: -1,
 
     REFERENCE_HEIGHT_RANGE: new Range( 0, 8 ) // in meters
