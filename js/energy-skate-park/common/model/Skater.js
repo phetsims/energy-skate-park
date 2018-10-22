@@ -112,7 +112,7 @@ define( function( require ) {
       phetioType: PropertyIO( Vector2IO )
     } );
 
-    // @private {number} - Start in the middle of the MassControlPanel range
+    // @private {number} - Start in the middle of the mass PhysicalControl range
     this.massProperty = new NumberProperty( Constants.DEFAULT_MASS, {
       range: new Range( Constants.MIN_MASS, Constants.MAX_MASS ),
       tandem: tandem.createTandem( 'massProperty' ),

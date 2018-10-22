@@ -28,6 +28,7 @@ define( function( require ) {
   // modules
   var Bounds2 = require( 'DOT/Bounds2' );
   var Bounds2IO = require( 'DOT/Bounds2IO' );
+  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
   var DebugTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/DebugTracks' );
   var Emitter = require( 'AXON/Emitter' );
@@ -167,8 +168,8 @@ define( function( require ) {
     } );
 
     // @public {number} - Coefficient of friction (unitless) between skater and track
-    this.frictionProperty = new NumberProperty( frictionAllowed ? 0.05 : 0, {
-      range: new Range( 0, 0.05 * 2 ), // TODO: duplicated with FrictionControl
+    this.frictionProperty = new NumberProperty( frictionAllowed ? Constants.DEFAULT_FRICTION : 0, {
+      range: new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ),
       tandem: tandem.createTandem( 'frictionProperty' )
     } );
 

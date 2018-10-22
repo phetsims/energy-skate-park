@@ -34,6 +34,11 @@ define( function( require ) {
     MIN_MASS: minMass,
     MAX_MASS: maxMass,
 
+    // coefficients of friction, default values are not common
+    MIN_FRICTION: 0,
+    MAX_FRICTION: 0.05 * 2,
+    DEFAULT_FRICTION: 0.05,
+
     // in m/s^2, including direction (naming aligned with magnitude for readability at usages)
     MAX_GRAVITY: -15,
     MIN_GRAVITY: -1,

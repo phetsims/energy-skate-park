@@ -42,7 +42,6 @@ define( function( require ) {
     var visibilityControls = new EnergySkateParkVisibilityControls( model, tandem );
     var children = [ visibilityControls ];
 
-    // slider that changes the mass, wrapped in a panel
     if ( options.includeMass ) {
       children.push( new PhysicalControl(
         model.skater.massProperty,
@@ -63,8 +62,6 @@ define( function( require ) {
         controlsFrictionTitleString,
         tandem.createTandem( 'frictionPhysicalControl' )
       ) );
-
-      // children.push( new FrictionControl( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ) );
     }
 
     if ( options.includeGravity ) {
