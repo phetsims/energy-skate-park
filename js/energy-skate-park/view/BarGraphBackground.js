@@ -116,22 +116,23 @@ define( function( require ) {
     } );
 
     // @private - buttons shifted to the left so they are out of the way of bars for negative energy
+    this.zoomOutButton = new ZoomButton( {
+      in: false,
+      scale: 0.3,
+      leftTop: new Vector2( -10, this.originY + ZOOM_BUTTON_VERTICAL_SPACING ),
+      listener: function() {
+        graphScaleProperty.set( Math.max( graphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
+      }
+    } );
     this.zoomInButton = new ZoomButton( {
       in: true,
-      leftTop: new Vector2( -10, this.originY + ZOOM_BUTTON_VERTICAL_SPACING ),
+      leftCenter: this.zoomOutButton.rightCenter.plusXY( 5, 0 ),
       scale: 0.3,
       listener: function() {
         graphScaleProperty.set( Math.min( graphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
       }
     } );
-    this.zoomOutButton = new ZoomButton( {
-      in: false,
-      leftCenter: this.zoomInButton.rightCenter.plusXY( 5, 0 ),
-      scale: 0.3,
-      listener: function() {
-        graphScaleProperty.set( Math.max( graphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
-      }
-    } );
+
 
     // @public (to update visibility in background) - Arrows that will appear when a particular bar gets too high or
     // low. Only potential and total energy support negative values
