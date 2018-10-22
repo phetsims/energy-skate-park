@@ -305,7 +305,10 @@ define( function( require ) {
      */
     createArrowNode: function( index, forPositive ) {
       var node = new ArrowNode( 0, 0, 0, -ARROW_HEIGHT, {
-        fill: COLOR_INDEX_MAP[ index ]
+        fill: COLOR_INDEX_MAP[ index ],
+        headWidth: 15,
+        headHeight: 8,
+        tailWidth: 8
       } );
 
       // handle positioning, depending on whether the arrow will represent more positive or more negative value
