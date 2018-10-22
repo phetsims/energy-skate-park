@@ -34,6 +34,9 @@ define( function( require ) {
   // constants - height of the arrow that extends a bar if it goes outside of the graph axis
   var ARROW_HEIGHT = 15;
 
+  // amount of vertical spacing between x axis and zoom buttons, to give room for negative bars
+  var ZOOM_BUTTON_VERTICAL_SPACING = 130;
+
   // maps index from of bar to its color
   var COLOR_INDEX_MAP = {
     0: EnergySkateParkColorScheme.kineticEnergy,
@@ -64,7 +67,7 @@ define( function( require ) {
 
     // Free layout parameters
     var contentWidth = 110;
-    var contentHeight = 325;
+    var contentHeight = 280;
     var insetX = 2;
     this.insetY = 25; // @private
 
@@ -112,10 +115,10 @@ define( function( require ) {
       clearThermalButton.enabled = allowClearingThermalEnergy;
     } );
 
-    // @private
+    // @private - buttons shifted to the left so they are out of the way of bars for negative energy
     this.zoomInButton = new ZoomButton( {
       in: true,
-      leftTop: clearThermalButton.centerBottom.plusXY( 0, 5 ),
+      leftTop: new Vector2( -10, this.originY + ZOOM_BUTTON_VERTICAL_SPACING ),
       scale: 0.4,
       listener: function() {
         graphScaleProperty.set( Math.min( graphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
@@ -195,7 +198,7 @@ define( function( require ) {
     Panel.call( this, contentNode, {
       x: 10,
       y: 10,
-      xMargin: 10,
+      xMargin: 5,
       yMargin: 5,
       fill: 'white',
       stroke: 'gray',
@@ -283,7 +286,7 @@ define( function( require ) {
     getMaximumBarHeight: function( index, heightPositive ) {
       if ( !heightPositive ) {
         var arrowSpace = ARROW_HEIGHT + 2;
-        var bottomY = index === 3 ? this.zoomInButton.top : this.zoomInButton.bottom; 
+        var bottomY = this.zoomInButton.top;
         return bottomY - arrowSpace - this.originY;
       }
       else {
@@ -314,7 +317,7 @@ define( function( require ) {
 
         // if negative, position of arrow will depend on physical value because total energy bar can only extend to the
         // top zoom buttons - others can extend to bottom of zoom buttons
-        var bottomY = index === 3 ? this.zoomInButton.top : this.zoomInButton.bottom;
+        var bottomY = this.zoomInButton.top;
         node.centerBottom = new Vector2( centerX, bottomY );
       }
 
