@@ -10,7 +10,7 @@ define( require => {
   'use strict';
 
   // modules
-  // const DragListener = require( 'SCENERY/listeners/DragListener' );
+  const DragListener = require( 'SCENERY/listeners/DragListener' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const MeasuringTapeNode = require( 'SCENERY_PHET/MeasuringTapeNode' );
@@ -19,16 +19,32 @@ define( require => {
   class MeasuringTapePanel extends Panel {
 
     /**
-     * @param {Object} options
+     * @param  {MeasuringTapeNode} measuringTapeNode - used in a view and receives a forwarded event from icon
+     * @param  {BooleanProperty}
+     * @param  {Object} options
      */
-    constructor( measuringTapeNode, measuringTapeVisibleProperty, options ) {
-      // TODO: remove?
+    constructor( model, measuringTapeNode, modelViewTransform, forwardCallback, options ) {
+
       options = _.extend( {
         lineWidth: 0,
         fill: EnergySkateParkColorScheme.panelFill
       }, options );
 
       let measuringTapeIcon = MeasuringTapeNode.createIcon( { scale: 0.75 } );
+
+      // forwarding listener, so the measuring tape can be dragged right out of the panel by clicking the icon
+      measuringTapeIcon.addInputListener( DragListener.createForwardingListener( event => {
+        if ( !model.measuringTapeVisibleProperty.get() ) {
+          model.measuringTapeVisibleProperty.set( true );
+
+          var modelPosition = modelViewTransform.viewToModelPosition( this.globalToParentPoint( event.pointer.point ) );
+          model.measuringTapeBasePositionProperty.set( modelPosition );
+          model.measuringTapeTipPositionProperty.set( modelPosition.plusXY( 1, 0 ) );
+
+          measuringTapeNode.startBaseDrag( event );
+        }
+
+      }, { allowTouchSnag: true } ) );
 
       super( measuringTapeIcon, options );
     }

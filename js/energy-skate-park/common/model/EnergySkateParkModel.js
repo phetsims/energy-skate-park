@@ -49,6 +49,7 @@ define( function( require ) {
   var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackIO' );
   var Util = require( 'DOT/Util' );
   var Vector2 = require( 'DOT/Vector2' );
+  var Vector2IO = require( 'DOT/Vector2IO' );
 
   // ifphetio
   var BooleanIO = require( 'TANDEM/types/BooleanIO' );
@@ -133,6 +134,10 @@ define( function( require ) {
       tandem: tandem.createTandem( 'referenceHeightVisibleProperty' ),
       phetioType: PropertyIO( BooleanIO )
     } );
+    this.measuringTapeVisibleProperty = new Property( false, {
+      tandem: tandem.createTandem( 'measuringTapeVisibleProperty' ),
+      phetioType: PropertyIO( BooleanIO )
+    } );
 
     // @public {number} - scale applied to graphs to determine relative height, making this larger will "zoom out"
     this.graphScaleProperty = new NumberProperty( 1 / 30, {
@@ -165,6 +170,18 @@ define( function( require ) {
     this.frictionProperty = new NumberProperty( frictionAllowed ? 0.05 : 0, {
       range: new Range( 0, 0.05 * 2 ), // TODO: duplicated with FrictionControl
       tandem: tandem.createTandem( 'frictionProperty' )
+    } );
+
+    // @public {Property.<Vector2>} - Changing this will move both the base AND the tip of the measuring tape, but
+    // will generally only be changed when dragging the base
+    this.measuringTapeBasePositionProperty = new Property( new Vector2( 0, 0 ), {
+      tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' ),
+      phetioType: PropertyIO( Vector2IO )
+    } );
+
+    this.measuringTapeTipPositionProperty = new Property( new Vector2( 0, 1 ), {
+      tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' ),
+      phetioType: PropertyIO( Vector2IO )
     } );
 
     // @public {boolean} - Whether the skater should stick to the track like a roller coaster, or be able to fly off like a street

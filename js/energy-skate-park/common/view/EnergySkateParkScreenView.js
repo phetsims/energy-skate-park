@@ -27,6 +27,7 @@ define( function( require ) {
   var GridNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/GridNode' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var MeasuringTapeNode = require( 'SCENERY_PHET/MeasuringTapeNode' );
   var MeasuringTapePanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MeasuringTapePanel' );
   var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   var Node = require( 'SCENERY/nodes/Node' );
@@ -117,11 +118,18 @@ define( function( require ) {
     this.controlPanel.right = this.layoutBounds.width - 5;
     this.controlPanel.top = 5;
 
+    var unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
+    this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
+      basePositionProperty: model.measuringTapeBasePositionProperty,
+      tipPositionProperty: model.measuringTapeTipPositionProperty,
+      modelViewTransform: modelViewTransform,
+      dragBounds: this.availableModelBoundsProperty.get()
+    } );
+
     // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
-    this.measuringTapePanel = new MeasuringTapePanel();
+    this.measuringTapePanel = new MeasuringTapePanel( model, this.measuringTapeNode, modelViewTransform );
     this.addChild( this.measuringTapePanel );
     this.measuringTapePanel.top = this.controlPanel.bottom + 5;
-
 
     // For the playground screen, show attach/detach toggle buttons
     if ( model.draggableTracks ) {
@@ -428,6 +436,8 @@ define( function( require ) {
     this.addChild( returnSkaterToPreviousStartingPositionButton );
     this.addChild( returnSkaterToGroundButton );
 
+    this.addChild( this.measuringTapeNode );
+
     // When the skater goes off screen, make the "return skater" button big
     onscreenProperty.link( function( skaterOnscreen ) {
       var buttonsVisible = !skaterOnscreen;
@@ -519,6 +529,9 @@ define( function( require ) {
       // Compute the visible model bounds so we will know when a model object like the skater has gone offscreen
       this.availableModelBounds = this.modelViewTransform.viewToModelBounds( this.availableViewBounds );
       this.availableModelBoundsProperty.value = this.availableModelBounds;
+
+      // keep the measuring tape in the avaialable bounds
+      this.measuringTapeNode.setDragBounds( this.availableModelBounds );
 
       if ( EnergySkateParkQueryParameters.controlPanelLocation === 'floating' ) {
         this.barGraphBackground.x = this.availableViewBounds.minX + 5;
