@@ -292,6 +292,9 @@ define( function( require ) {
       this.gridVisibleProperty.reset();
       this.speedometerVisibleProperty.reset();
       this.referenceHeightVisibleProperty.reset();
+      this.measuringTapeVisibleProperty.reset();
+      this.measuringTapeTipPositionProperty.reset();
+      this.measuringTapeBasePositionProperty.reset();
       this.editButtonEnabledProperty.reset();
       this.clearButtonEnabledProperty.reset();
       this.graphScaleProperty.reset();
