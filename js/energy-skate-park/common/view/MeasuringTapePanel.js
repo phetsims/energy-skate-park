@@ -10,6 +10,7 @@ define( require => {
   'use strict';
 
   // modules
+  const DerivedProperty = require( 'AXON/DerivedProperty' );
   const DragListener = require( 'SCENERY/listeners/DragListener' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
@@ -31,6 +32,7 @@ define( require => {
       }, options );
 
       let measuringTapeIcon = MeasuringTapeNode.createIcon( { scale: 0.75 } );
+      super( measuringTapeIcon, options );
 
       // forwarding listener, so the measuring tape can be dragged right out of the panel by clicking the icon
       measuringTapeIcon.addInputListener( DragListener.createForwardingListener( event => {
@@ -46,7 +48,11 @@ define( require => {
 
       }, { allowTouchSnag: true } ) );
 
-      super( measuringTapeIcon, options );
+      // icon is only visible when measuring tape is hidden
+      const iconVisibleProperty = new DerivedProperty( [ model.measuringTapeVisibleProperty ], function( isVisible ) {
+        return !isVisible;
+      } );
+      iconVisibleProperty.linkAttribute( measuringTapeIcon, 'visible' );
     }
   }
 
