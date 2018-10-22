@@ -123,7 +123,12 @@ define( function( require ) {
       basePositionProperty: model.measuringTapeBasePositionProperty,
       tipPositionProperty: model.measuringTapeTipPositionProperty,
       modelViewTransform: modelViewTransform,
-      dragBounds: this.availableModelBoundsProperty.get()
+      dragBounds: this.availableModelBoundsProperty.get(),
+      baseDragEnded: function() {
+        if ( self.measuringTapeNode.getLocalBaseBounds().intersectsBounds( self.measuringTapePanel.bounds ) ) {
+          model.measuringTapeVisibleProperty.set( false );
+        }
+      }
     } );
 
     // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
