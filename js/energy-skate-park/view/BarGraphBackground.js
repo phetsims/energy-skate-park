@@ -37,6 +37,9 @@ define( function( require ) {
   // amount of vertical spacing between x axis and zoom buttons, to give room for negative bars
   var ZOOM_BUTTON_VERTICAL_SPACING = 130;
 
+  // spacing between the thermal button and the label
+  var THERMAL_BUTTON_SPACING = 5;
+
   // maps index from of bar to its color
   var COLOR_INDEX_MAP = {
     0: EnergySkateParkColorScheme.kineticEnergy,
@@ -82,39 +85,6 @@ define( function( require ) {
     // The x-coordinate of a bar chart bar
     this.getBarX = function( barIndex ) { return insetX + spaceBetweenAxisAndBar + self.barWidth * barIndex + spaceBetweenBars * barIndex; };
 
-    // Create a label that appears under one of the bars
-    var createLabel = function( index, title, tandemName ) {
-      var text = new Text( title, {
-        tandem: tandem.createTandem( tandemName ),
-        fill: COLOR_INDEX_MAP[ index ],
-        font: new PhetFont( 14 ),
-        pickable: false,
-        maxWidth: 90 // selected by requiring that the bar chart not overlap with the track toolbox, see #337
-      } );
-      text.rotate( -Math.PI / 2 );
-      text.centerX = self.getBarX( index ) + self.barWidth / 2;
-      text.top = self.originY + 2;
-
-      return text;
-    };
-
-    // @private {Node}
-    this.kineticLabel = createLabel( 0, energyKineticString, 'kineticEnergyLabel' );
-    this.potentialLabel = createLabel( 1, energyPotentialString, 'potentialEnergyLabel' );
-    this.thermalLabel = createLabel( 2, energyThermalString, 'thermalEnergyLabel' );
-    this.totalLabel = createLabel( 3, energyTotalString, 'totalEnergyLabel' );
-
-    var clearThermalButton = new ClearThermalButton( {
-      tandem: tandem.createTandem( 'clearThermalButton' ),
-      listener: clearThermal,
-      centerX: this.thermalLabel.centerX,
-      y: this.thermalLabel.bottom + 5,
-      scale: 0.7
-    } );
-    skater.allowClearingThermalEnergyProperty.link( function( allowClearingThermalEnergy ) {
-      clearThermalButton.enabled = allowClearingThermalEnergy;
-    } );
-
     // @private - buttons shifted to the left so they are out of the way of bars for negative energy
     this.zoomOutButton = new ZoomButton( {
       in: false,
@@ -133,6 +103,40 @@ define( function( require ) {
       }
     } );
 
+    // Create a label that appears under one of the bars
+    var createLabel = function( index, title, tandemName ) {
+      var text = new Text( title, {
+        tandem: tandem.createTandem( tandemName ),
+        fill: COLOR_INDEX_MAP[ index ],
+        font: new PhetFont( 14 ),
+        pickable: false,
+
+        // i18n, chosen so that label allows space for arrows and thermal energy button
+        maxWidth: ZOOM_BUTTON_VERTICAL_SPACING - ARROW_HEIGHT - 2 * THERMAL_BUTTON_SPACING
+      } );
+      text.rotate( -Math.PI / 2 );
+      text.centerX = self.getBarX( index ) + self.barWidth / 2;
+      text.top = self.originY + 2;
+
+      return text;
+    };
+
+    // @private {Node}
+    this.kineticLabel = createLabel( 0, energyKineticString, 'kineticEnergyLabel' );
+    this.potentialLabel = createLabel( 1, energyPotentialString, 'potentialEnergyLabel' );
+    this.thermalLabel = createLabel( 2, energyThermalString, 'thermalEnergyLabel' );
+    this.totalLabel = createLabel( 3, energyTotalString, 'totalEnergyLabel' );
+
+    var clearThermalButton = new ClearThermalButton( {
+      tandem: tandem.createTandem( 'clearThermalButton' ),
+      listener: clearThermal,
+      centerX: this.thermalLabel.centerX,
+      y: this.thermalLabel.bottom + THERMAL_BUTTON_SPACING,
+      scale: 0.7
+    } );
+    skater.allowClearingThermalEnergyProperty.link( function( allowClearingThermalEnergy ) {
+      clearThermalButton.enabled = allowClearingThermalEnergy;
+    } );
 
     // @public (to update visibility in background) - Arrows that will appear when a particular bar gets too high or
     // low. Only potential and total energy support negative values
