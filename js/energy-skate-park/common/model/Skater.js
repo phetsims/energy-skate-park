@@ -80,12 +80,24 @@ define( function( require ) {
       phetioType: PropertyIO( BooleanIO )
     } );
 
+    // @public {number} - Gravity magnitude, without direction, which is easier to set with controls (like sliders) because
+    // conceptual minimum value is less than maximum value.
+    this.gravityMagnitudeProperty = new NumberProperty( 9.8, {
+      tandem: tandem.createTandem( 'gravityMagnitudeProperty' ),
+      units: 'meters/second/second',
+      range: { min: 1E-6, max: 100 }
+    } );
+
     // @public {number} - Gravity magnitude and direction
-    this.gravityProperty = new NumberProperty( -9.8, {
-      tandem: tandem.createTandem( 'gravityProperty' ),
+    this.gravityProperty = new DerivedProperty( [ this.gravityMagnitudeProperty ], function( gravity ) {
+      var gravityWithDirection = -gravity;
+      assert && assert( gravityWithDirection <= 0, 'this sim only supports negative or 0 gravity' );
+      return gravityWithDirection;      
+    }, {
       units: 'meters/second/second',
       range: { min: -100, max: 1E-6 }
     } );
+
 
     // @public {number} - reference height for potential energy, 0 is at the ground
     this.referenceHeightProperty = new NumberProperty( 0, {
@@ -290,7 +302,7 @@ define( function( require ) {
       this.parametricPositionProperty.reset();
       this.parametricSpeedProperty.reset();
       this.onTopSideOfTrackProperty.reset();
-      this.gravityProperty.reset();
+      this.gravityMagnitudeProperty.reset();
       this.positionProperty.reset();
       this.massProperty.reset();
       this.directionProperty.reset();
@@ -327,7 +339,7 @@ define( function( require ) {
       this.parametricPositionProperty.reset();
       this.parametricSpeedProperty.reset();
       this.onTopSideOfTrackProperty.reset();
-      this.gravityProperty.reset();
+      this.gravityMagnitudeProperty.reset();
       this.positionProperty.reset();
       this.massProperty.reset();
       this.directionProperty.reset();

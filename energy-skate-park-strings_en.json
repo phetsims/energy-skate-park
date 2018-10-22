@@ -38,6 +38,15 @@
   "controls.gravity.lots": {
     "value": "Lots"
   },
+  "controls.value.lots": {
+    "value": "Lots"
+  },
+  "controls.value.none": {
+    "value": "None"
+  },
+  "controls.gravity": {
+    "value": "Gravity"
+  },
   "energy.kinetic": {
     "value": "Kinetic"
   },
