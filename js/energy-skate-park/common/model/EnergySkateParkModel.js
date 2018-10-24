@@ -89,7 +89,21 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function EnergySkateParkModel( draggableTracks, frictionAllowed, tandem ) {
+  function EnergySkateParkModel( draggableTracks, frictionAllowed, tandem, options ) {
+
+    options = _.extend( {
+
+      // passed to Skater
+      skaterOptions: {}
+    }, options );
+
+    options.skaterOptions = _.extend( {
+
+      // initial mass for the skater
+      // TODO: In the future, we may have many skaters and this won't apply
+      // Or maybe we will only have one skater, and change the visual representation by value
+      defaultMass: Constants.DEFAULT_MASS
+    }, options.skaterOptions );
 
     // @public (read-only)
     this.draggableTracks = draggableTracks;
@@ -201,7 +215,7 @@ define( function( require ) {
     }
 
     // @public {Skater} - the skater model instance
-    this.skater = new Skater( tandem.createTandem( 'skater' ) );
+    this.skater = new Skater( tandem.createTandem( 'skater' ), options.skaterOptions );
 
     // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
     // TODO: Can this me moved into Skater.js?

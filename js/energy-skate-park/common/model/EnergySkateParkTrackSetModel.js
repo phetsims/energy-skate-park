@@ -22,11 +22,12 @@ define( function( require ) {
    * @constructor
    * @param {Array.<Track>} tracks - the tracks for the set
    * @param {boolean} frictionAllowed - Whether or not friction is allowed in this model.
+   * @param {Object} options
    */
-  function EnergySkateParkTrackSetModel( frictionAllowed, tandem ) {
+  function EnergySkateParkTrackSetModel( frictionAllowed, tandem, options ) {
 
     var draggableTracks = false; // TODO: Can we get rid of this?
-    EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem.createTandem( 'trackSetModel' ));
+    EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem.createTandem( 'trackSetModel' ), options );
 
     // @public {number} - Indicatest the currently selected scene. There can be any number of scenes, do we need
     // to pass this in as a param

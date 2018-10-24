@@ -110,6 +110,7 @@ define( function( require ) {
     );
     this.addChild( this.pieChartLegend );
 
+    // @protected (for layout in subtypes)
     this.controlPanel = new EnergySkateParkControlPanel( model, this, modelViewTransform, tandem.createTandem( 'controlPanel' ), {
       includeFriction: model.frictionAllowed,
 

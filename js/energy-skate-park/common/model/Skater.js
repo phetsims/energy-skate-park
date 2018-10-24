@@ -49,7 +49,12 @@ define( function( require ) {
    * @constructor
    * @param {Tandem} tandem
    */
-  function Skater( tandem ) {
+  function Skater( tandem, options ) {
+
+    options = _.extend( {
+      defaultMass: Constants.DEFAULT_MASS
+    }, options );
+
     var self = this;
 
     // @public - The track the skater is on, or null if free-falling
@@ -111,7 +116,7 @@ define( function( require ) {
     } );
 
     // @private {number} - Start in the middle of the mass PhysicalControl range
-    this.massProperty = new NumberProperty( Constants.DEFAULT_MASS, {
+    this.massProperty = new NumberProperty( options.defaultMass, {
       range: new Range( Constants.MIN_MASS, Constants.MAX_MASS ),
       tandem: tandem.createTandem( 'massProperty' ),
       units: 'kilograms'

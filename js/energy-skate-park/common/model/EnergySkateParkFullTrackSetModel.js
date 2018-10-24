@@ -18,9 +18,10 @@ define( function( require ) {
    * @constructor
    * @param {boolean} frictionAllowed
    * @param {Tandem} tandem
+   * @param {Object} options
    */
-  function EnergySkateParkFullTrackSetModel( frictionAllowed, tandem ) {
-    EnergySkateParkTrackSetModel.call( this, frictionAllowed, tandem );
+  function EnergySkateParkFullTrackSetModel( frictionAllowed, tandem, options ) {
+    EnergySkateParkTrackSetModel.call( this, frictionAllowed, tandem, options );
 
     // NOTE: It would have been nice to pass the tracks to EnergySkateParkTrackSetModel, but tracks require knowledge
     // of the model they are being added to so this isn't possible.
