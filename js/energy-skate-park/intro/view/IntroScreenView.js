@@ -22,9 +22,11 @@ define( function( require ) {
   function IntroScreenView( model, tandem ) {
     EnergySkateParkScreenView.call( this, model, tandem.createTandem( 'introScreenView' ) );
 
-    // @private {ComboBox} - OK that this is on top 
+    // @private (for layout) {ComboBox} 
     this.massComboBox = new MassComboBox( model.skater.massProperty, this );
-    this.addChild( this.massComboBox );
+
+    // add the combo box to the back layer so it is behind the skater
+    this.addToBottomLayer( this.massComboBox );
     this.massComboBox.bottom = this.layoutBounds.height - BackgroundNode.earthHeight - 5;
   }
 
@@ -41,7 +43,6 @@ define( function( require ) {
      */
     layout: function( width, height ) {
       EnergySkateParkScreenView.prototype.layout.call( this, width, height );
-
       this.massComboBox.right = this.controlPanel.right;
     }
   } );

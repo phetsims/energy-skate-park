@@ -83,6 +83,14 @@ define( function( require ) {
       tandem: tandem
     } );
 
+    // @private {Node} - layers for the screen view, for performance and memory reasons. Nodes will be added to one
+    // of these layers. There is a bottom layer (which shouldn't use WebGL), a middle layer which should only use
+    // WebGL, and a top layer (which shouldn't use WebGL).
+    this.bottomLayer = new Node();
+    this.webGLLayer = new Node();
+    this.topLayer = new Node();
+    this.children = [ this.bottomLayer, this.webGLLayer, this.topLayer ];
+
     var modelPoint = new Vector2( 0, 0 );
     // earth is 70px high in stage coordinates
     var viewPoint = new Vector2( this.layoutBounds.width / 2, this.layoutBounds.height - BackgroundNode.earthHeight );
@@ -97,14 +105,14 @@ define( function( require ) {
 
     // The background
     this.backgroundNode = new BackgroundNode( this.layoutBounds, tandem.createTandem( 'backgroundNode' ) );
-    this.addChild( this.backgroundNode );
+    this.bottomLayer.addChild( this.backgroundNode );
 
     this.gridNode = new GridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
-    this.addChild( this.gridNode );
+    this.bottomLayer.addChild( this.gridNode );
 
     // layout managed in layout function
     this.referenceHeightLine = new ReferenceHeightLine( modelViewTransform, model.skater.referenceHeightProperty, model.referenceHeightVisibleProperty );
-    this.addChild( this.referenceHeightLine );
+    this.bottomLayer.addChild( this.referenceHeightLine );
 
     // @private - node that shows the energy legend for the pie chart
     this.pieChartLegend = new PieChartLegend(
@@ -113,7 +121,7 @@ define( function( require ) {
       model.pieChartVisibleProperty,
       tandem.createTandem( 'pieChartLegend' )
     );
-    this.addChild( this.pieChartLegend );
+    this.bottomLayer.addChild( this.pieChartLegend );
 
     // @protected (for layout in subtypes)
     this.controlPanel = new EnergySkateParkControlPanel( model, this, modelViewTransform, tandem.createTandem( 'controlPanel' ), {
@@ -123,7 +131,7 @@ define( function( require ) {
       // TODO: this might not be the case for screens
       includeTrackSelection: !model.draggableTracks
     } );
-    this.addChild( this.controlPanel );
+    this.bottomLayer.addChild( this.controlPanel );
     this.controlPanel.right = this.layoutBounds.width - 5;
     this.controlPanel.top = 5;
 
@@ -142,7 +150,7 @@ define( function( require ) {
 
     // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
     this.measuringTapePanel = new MeasuringTapePanel( model, this.measuringTapeNode, modelViewTransform );
-    this.addChild( this.measuringTapePanel );
+    this.bottomLayer.addChild( this.measuringTapePanel );
     this.measuringTapePanel.top = this.controlPanel.bottom + 5;
 
     // For the playground screen, show attach/detach toggle buttons
@@ -153,7 +161,7 @@ define( function( require ) {
         top: this.controlPanel.bottom + 5,
         centerX: this.controlPanel.centerX
       } );
-      this.addChild( this.attachDetachToggleButtons );
+      this.bottomLayer.addChild( this.attachDetachToggleButtons );
     }
 
     var containsAbove = function( bounds, x, y ) {
@@ -174,14 +182,7 @@ define( function( require ) {
     // @private - background for the bar graph (split up to use WebGL for the foreground)
     this.barGraphBackground = new BarGraphBackground( model.skater, model.barGraphVisibleProperty, model.graphScaleProperty,
       model.clearThermal.bind( model ), tandem.createTandem( 'barGraphBackground' ) );
-    this.addChild( this.barGraphBackground );
-
-    // if ( !model.draggableTracks ) {
-
-      // layout done in layout bounds
-      // this.sceneSelectionRadioButtonGroup = new SceneSelectionRadioButtonGroup( model, this, modelViewTransform, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) );
-      // this.addChild( this.sceneSelectionRadioButtonGroup );
-    // }
+    this.bottomLayer.addChild( this.barGraphBackground );
 
     var playingProperty = new Property( !model.pausedProperty.value, {
       tandem: tandem.createTandem( 'playingProperty' ),
@@ -213,11 +214,11 @@ define( function( require ) {
     stepButton.mutate( { scale: playPauseButton.height / stepButton.height } );
     model.pausedProperty.linkAttribute( stepButton, 'enabled' );
 
-    this.addChild( playPauseButton.mutate( {
+    this.bottomLayer.addChild( playPauseButton.mutate( {
       centerX: this.layoutBounds.centerX,
       bottom: this.layoutBounds.maxY - 15
     } ) );
-    this.addChild( stepButton.mutate( { left: playPauseButton.right + 15, centerY: playPauseButton.centerY } ) );
+    this.bottomLayer.addChild( stepButton.mutate( { left: playPauseButton.right + 15, centerY: playPauseButton.centerY } ) );
 
     this.resetAllButton = new ResetAllButton( {
       listener: model.reset.bind( model ),
@@ -229,7 +230,7 @@ define( function( require ) {
 
       tandem: tandem.createTandem( 'resetAllButton' )
     } );
-    this.addChild( this.resetAllButton );
+    this.bottomLayer.addChild( this.resetAllButton );
 
     // The button to return the skater
     this.returnSkaterButton = new RectangularPushButton( {
@@ -245,9 +246,9 @@ define( function( require ) {
 
     // Disable the return skater button when the skater is already at his initial coordinates
     model.skater.movedProperty.linkAttribute( self.returnSkaterButton, 'enabled' );
-    this.addChild( this.returnSkaterButton );
+    this.bottomLayer.addChild( this.returnSkaterButton );
 
-    this.addChild( new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ) ).mutate( {
+    this.bottomLayer.addChild( new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ) ).mutate( {
       left: stepButton.right + 20,
       centerY: playPauseButton.centerY
     } ) );
@@ -268,7 +269,7 @@ define( function( require ) {
     model.speedometerVisibleProperty.linkAttribute( speedometerNode, 'visible' );
     speedometerNode.centerX = this.layoutBounds.centerX;
     speedometerNode.top = this.layoutBounds.minY + 5;
-    this.addChild( speedometerNode );
+    this.bottomLayer.addChild( speedometerNode );
 
     // Layer which will contain all of the tracks
     var trackLayer = new Node( {
@@ -376,16 +377,16 @@ define( function( require ) {
       this.addChild( clearButton.mutate( { left: 5, centerY: trackCreationPanel.centerY } ) );
     }
 
-    this.addChild( trackLayer );
+    this.bottomLayer.addChild( trackLayer );
 
-    //--------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------
     // BEGIN WEBGL LAYER
     // Nodes in this block will be rendered with webgl where possible, but not
     // IE due to https://github.com/phetsims/energy-skate-park-basics/issues/277
     // and https://github.com/phetsims/scenery/issues/285. Nodes in this block
     // shoudl ONLY be rendered with WebGL, so that scenery can combine all of the
     // webgl content into a single canvas element, reducing the memory consumption.
-    //--------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
     var webGLSupported = Util.isWebGLSupported && phet.chipper.queryParameters.webgl;
     var renderer = webGLSupported ? 'webgl' : null;
 
@@ -408,7 +409,7 @@ define( function( require ) {
     model.speedometerVisibleProperty.linkAttribute( gaugeNeedleNode, 'visible' );
     gaugeNeedleNode.x = speedometerNode.x;
     gaugeNeedleNode.y = speedometerNode.y;
-    this.addChild( gaugeNeedleNode );
+    this.webGLLayer.addChild( gaugeNeedleNode );
 
     // @private - the foreground of the bar graph (split up to use WebGL)
     this.barGraphForeground = new BarGraphForeground(
@@ -419,14 +420,14 @@ define( function( require ) {
       renderer,
       tandem.createTandem( 'barGraphForeground' )
     );
-    this.addChild( this.barGraphForeground );
+    this.webGLLayer.addChild( this.barGraphForeground );
 
-    this.addChild( skaterNode );
+    this.webGLLayer.addChild( skaterNode );
 
     var pieChartNode = renderer === 'webgl' ?
                        new PieChartWebGLNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) ) :
                        new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) );
-    this.addChild( pieChartNode );
+    this.webGLLayer.addChild( pieChartNode );
 
     //---------------------------------------------------------------------------
     // END WEBGL LAYER
@@ -457,10 +458,10 @@ define( function( require ) {
       tandem: tandem.createTandem( 'returnSkaterToGroundButton' )
     } );
 
-    this.addChild( returnSkaterToPreviousStartingPositionButton );
-    this.addChild( returnSkaterToGroundButton );
+    this.topLayer.addChild( returnSkaterToPreviousStartingPositionButton );
+    this.topLayer.addChild( returnSkaterToGroundButton );
 
-    this.addChild( this.measuringTapeNode );
+    this.topLayer.addChild( this.measuringTapeNode );
 
     // When the skater goes off screen, make the "return skater" button big
     onscreenProperty.link( function( skaterOnscreen ) {
@@ -490,7 +491,7 @@ define( function( require ) {
         lineWidth: 10,
         tandem: tandem.createTandem( 'viewBoundsPath' )
       } );
-      this.addChild( this.viewBoundsPath );
+      this.topLayer.addChild( this.viewBoundsPath );
     }
   }
 
@@ -569,6 +570,16 @@ define( function( require ) {
       if ( showAvailableBounds ) {
         this.viewBoundsPath.shape = Shape.bounds( this.availableViewBounds );
       }
+    },
+
+    /**
+     * Add a node to the front of the back layer (the end of this.backLayer children array). For memory and performance
+     * reasons, this node had better not be using WebGL.
+     *
+     * @protected
+     */
+    addToBottomLayer: function( node ) {
+      this.bottomLayer.addChild( node );
     }
   } );
 } );
