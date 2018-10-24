@@ -43,7 +43,9 @@ define( function( require ) {
         tandem: tandem.createTandem( 'contentNode' + index ),
         children: [ background, trackNode ]
       } );
-      contentNode.scale( 45 / contentNode.height );
+
+      // scalar chosen so that buttons are appropriately sized in the control panel
+      contentNode.scale( 20 / contentNode.height );
       return contentNode;
     };
 

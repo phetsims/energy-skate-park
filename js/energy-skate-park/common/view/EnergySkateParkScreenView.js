@@ -42,7 +42,6 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
-  var SceneSelectionRadioButtonGroup = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SceneSelectionRadioButtonGroup' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var Shape = require( 'KITE/Shape' );
   var SkaterNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/SkaterNode' );
@@ -111,8 +110,12 @@ define( function( require ) {
     );
     this.addChild( this.pieChartLegend );
 
-    this.controlPanel = new EnergySkateParkControlPanel( model, tandem.createTandem( 'controlPanel' ), {
-      includeFriction: model.frictionAllowed
+    this.controlPanel = new EnergySkateParkControlPanel( model, this, modelViewTransform, tandem.createTandem( 'controlPanel' ), {
+      includeFriction: model.frictionAllowed,
+
+      // right now, draggable tracks and track selection are mutually exclusive
+      // TODO: this might not be the case for screens
+      includeTrackSelection: !model.draggableTracks
     } );
     this.addChild( this.controlPanel );
     this.controlPanel.right = this.layoutBounds.width - 5;
@@ -167,12 +170,12 @@ define( function( require ) {
       model.clearThermal.bind( model ), tandem.createTandem( 'barGraphBackground' ) );
     this.addChild( this.barGraphBackground );
 
-    if ( !model.draggableTracks ) {
+    // if ( !model.draggableTracks ) {
 
       // layout done in layout bounds
-      this.sceneSelectionRadioButtonGroup = new SceneSelectionRadioButtonGroup( model, this, modelViewTransform, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) );
-      this.addChild( this.sceneSelectionRadioButtonGroup );
-    }
+      // this.sceneSelectionRadioButtonGroup = new SceneSelectionRadioButtonGroup( model, this, modelViewTransform, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) );
+      // this.addChild( this.sceneSelectionRadioButtonGroup );
+    // }
 
     var playingProperty = new Property( !model.pausedProperty.value, {
       tandem: tandem.createTandem( 'playingProperty' ),
