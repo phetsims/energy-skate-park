@@ -20,8 +20,6 @@ define( function( require ) {
   var Vector2 = require( 'DOT/Vector2' );
   var Vector2IO = require( 'DOT/Vector2IO' );
   var ControlPointIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPointIO' );
-
-  // ifphetio
   var NullableIO = require( 'TANDEM/types/NullableIO' );
 
   /**

@@ -52,8 +52,6 @@ define( function( require ) {
   var Util = require( 'SCENERY/util/Util' );
   var Vector2 = require( 'DOT/Vector2' );
   var ReferenceHeightLine = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ReferenceHeightLine' );
-
-  // ifphetio
   var BooleanIO = require( 'TANDEM/types/BooleanIO' );
 
   // strings

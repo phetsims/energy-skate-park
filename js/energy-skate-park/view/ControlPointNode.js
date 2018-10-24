@@ -17,8 +17,6 @@ define( function( require ) {
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
   var SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
-
-  // ifphetio
   var ControlPointNodeIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/ControlPointNodeIO' );
 
   /**
