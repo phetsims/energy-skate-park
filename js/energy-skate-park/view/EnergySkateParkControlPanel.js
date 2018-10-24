@@ -34,7 +34,7 @@ define( function( require ) {
   function EnergySkateParkControlPanel( model, tandem, options ) {
 
     options = _.extend( {
-      includeMass: true, // include a slider that changes mass?
+      includeMass: false, // include a slider that changes mass?
       includeGravity: true, // include a slider that changes gravity?
       includeFriction: false // include a slider that changes friction?
     }, options );
