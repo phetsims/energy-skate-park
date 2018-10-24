@@ -56,19 +56,21 @@ define( function( require ) {
 
       // top of the left and right endpoints of the loop, higher than loopTop so that it is easy for the skater to go
       // all the way around the loop
-      var trackTop = 7;
+      var trackTop = 5;
 
       var trackBottom = 0.08; // bottom points, so that the skater doesn't go below y = 0
-      var loopTop = 5; // adjust to make the loop top point higher or lower
-      var loopWidth = 10; // adjust to make the loop more or less wide
+      var loopTop = 3; // adjust to make the loop top point higher or lower
+      var loopWidth = 6; // adjust to make the loop more or less wide
+      var innerLoopWidth = 1; // roughly adjusts the width of the innerloop
+      var innerLoopHeight = 1.5; // roughly adjust inner loop height (for control points, actual loop will be higher)
 
       return [
         new ControlPoint( -loopWidth / 2, trackTop, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( -2, trackBottom, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( 2, 2.5, { tandem: groupTandem.createNextTandem() } ),
+        new ControlPoint( -innerLoopWidth, trackBottom, { tandem: groupTandem.createNextTandem() } ),
+        new ControlPoint( innerLoopWidth, innerLoopHeight, { tandem: groupTandem.createNextTandem() } ),
         new ControlPoint( 0, loopTop, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( -2, 2.5, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( 2, trackBottom, { tandem: groupTandem.createNextTandem() } ),
+        new ControlPoint( -innerLoopWidth, innerLoopHeight, { tandem: groupTandem.createNextTandem() } ),
+        new ControlPoint( innerLoopWidth, trackBottom, { tandem: groupTandem.createNextTandem() } ),
         new ControlPoint( loopWidth / 2, trackTop, { tandem: groupTandem.createNextTandem() } )
       ];
     },

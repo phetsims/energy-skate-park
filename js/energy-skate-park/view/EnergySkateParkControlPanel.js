@@ -14,10 +14,12 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EnergySkateParkVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkVisibilityControls' );
+  var HSeparator = require( 'SUN/HSeparator' );
   var PhysicalControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PhysicalControl' );
   var Panel = require( 'SUN/Panel' );
   var Range = require( 'DOT/Range' );
   var VBox = require( 'SCENERY/nodes/VBox' );
+  var SceneSelectionRadioButtonGroup = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SceneSelectionRadioButtonGroup' );
 
   // strings
   var controlsMassString = require( 'string!ENERGY_SKATE_PARK/controls.mass' );
@@ -28,20 +30,31 @@ define( function( require ) {
 
   /**
    * @param {EnergySkateParkModel} model
+   * @param {EnergySkateParkScreenView} screenView
    * @param {Tandem} tandem
    * @constructor
    */
-  function EnergySkateParkControlPanel( model, tandem, options ) {
+  function EnergySkateParkControlPanel( model, screenView, modelViewTransform, tandem, options ) {
 
     options = _.extend( {
       includeMass: false, // include a slider that changes mass?
       includeGravity: true, // include a slider that changes gravity?
-      includeFriction: false // include a slider that changes friction?
+      includeFriction: false, // include a slider that changes friction?
+      includeTrackSelection: false
     }, options );
 
     // controls that change visibility of items in the screen
     var visibilityControls = new EnergySkateParkVisibilityControls( model, tandem );
     var children = [ visibilityControls ];
+
+    // separator between visibility controls and track selection buttons
+    var separatorWidth = visibilityControls.width;
+    children.push( new HSeparator( separatorWidth ) );
+
+    if ( options.includeTrackSelection ) {
+      children.push( new SceneSelectionRadioButtonGroup( model, screenView, modelViewTransform, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) ) );
+      children.push( new HSeparator( separatorWidth ) );
+    }
 
     if ( options.includeMass ) {
       children.push( new PhysicalControl(
