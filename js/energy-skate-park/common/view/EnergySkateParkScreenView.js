@@ -378,8 +378,14 @@ define( function( require ) {
 
     this.addChild( trackLayer );
 
-    // Use WebGL where available, but not on IE, due to https://github.com/phetsims/energy-skate-park-basics/issues/277
-    // and https://github.com/phetsims/scenery/issues/285
+    //--------------------------------------------------------------------------
+    // BEGIN WEBGL LAYER
+    // Nodes in this block will be rendered with webgl where possible, but not
+    // IE due to https://github.com/phetsims/energy-skate-park-basics/issues/277
+    // and https://github.com/phetsims/scenery/issues/285. Nodes in this block
+    // shoudl ONLY be rendered with WebGL, so that scenery can combine all of the
+    // webgl content into a single canvas element, reducing the memory consumption.
+    //--------------------------------------------------------------------------
     var webGLSupported = Util.isWebGLSupported && phet.chipper.queryParameters.webgl;
     var renderer = webGLSupported ? 'webgl' : null;
 
@@ -421,6 +427,10 @@ define( function( require ) {
                        new PieChartWebGLNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) ) :
                        new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) );
     this.addChild( pieChartNode );
+
+    //---------------------------------------------------------------------------
+    // END WEBGL LAYER
+    //---------------------------------------------------------------------------
 
     // Buttons to return the skater when she is offscreen, see #219
     var iconScale = 0.4;
