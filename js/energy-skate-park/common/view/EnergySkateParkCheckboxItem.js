@@ -23,6 +23,7 @@ define( function( require ) {
   var HBox = require( 'SCENERY/nodes/HBox' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Property = require( 'AXON/Property' );
+  var Range = require( 'DOT/Range' );
   var Text = require( 'SCENERY/nodes/Text' );
 
   // constants
@@ -121,7 +122,7 @@ define( function( require ) {
 
     // Create an icon for the speedometer checkbox
     createSpeedometerIcon: function( tandem ) {
-      var node = new GaugeNode( new Property( 0 ), propertiesSpeedString, { min: 0, max: 10 },
+      var node = new GaugeNode( new Property( 0 ), propertiesSpeedString, new Range( 0, 10 ),
         { pickable: false,
           tandem: tandem.createTandem( 'gaugeNode')
         } );
