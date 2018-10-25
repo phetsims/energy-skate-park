@@ -12,11 +12,11 @@ define( function( require ) {
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
+  var phetioInherit = require( 'TANDEM/phetioInherit' );
 
   // ifphetio
   var assertInstanceOf = require( 'ifphetio!PHET_IO/assertInstanceOf' );
   var phetio = require( 'ifphetio!PHET_IO/phetio' );
-  var phetioInherit = require( 'ifphetio!PHET_IO/phetioInherit' );
 
   /**
    * @param {Track} track

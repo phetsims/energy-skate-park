@@ -11,10 +11,10 @@ define( function( require ) {
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var NodeIO = require( 'SCENERY/nodes/NodeIO' );
+  var phetioInherit = require( 'TANDEM/phetioInherit' );
 
   // ifphetio
   var assertInstanceOf = require( 'ifphetio!PHET_IO/assertInstanceOf' );
-  var phetioInherit = require( 'ifphetio!PHET_IO/phetioInherit' );
 
   /**
    * @param {ControlPointNode} controlPointNode
