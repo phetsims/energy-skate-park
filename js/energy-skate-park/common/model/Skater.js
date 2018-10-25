@@ -88,7 +88,7 @@ define( function( require ) {
     this.gravityMagnitudeProperty = new NumberProperty( 9.8, {
       tandem: tandem.createTandem( 'gravityMagnitudeProperty' ),
       units: 'meters/second/second',
-      range: { min: 1E-6, max: 100 }
+      range: new Range( 1E-6, 100 )
     } );
 
     // @public {number} - Gravity magnitude and direction
@@ -98,7 +98,7 @@ define( function( require ) {
       return gravityWithDirection;      
     }, {
       units: 'meters/second/second',
-      range: { min: -100, max: 1E-6 }
+      range: new Range( -100, 1E-6 )
     } );
 
 
