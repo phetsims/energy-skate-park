@@ -28,8 +28,8 @@ define( function( require ) {
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Text = require( 'SCENERY/nodes/Text' );
-  var ZoomButton = require( 'SCENERY_PHET/buttons/ZoomButton' );
   var Vector2 = require( 'DOT/Vector2' );
+  var ZoomButton = require( 'SCENERY_PHET/buttons/ZoomButton' );
 
   // constants - height of the arrow that extends a bar if it goes outside of the graph axis
   var ARROW_HEIGHT = 15;

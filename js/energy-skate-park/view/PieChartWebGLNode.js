@@ -9,13 +9,13 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var CircularOutlineWebGLNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/CircularOutlineWebGLNode' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var PieChartWebGLSliceNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/PieChartWebGLSliceNode' );
-  var CircularOutlineWebGLNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/CircularOutlineWebGLNode' );
   var Property = require( 'AXON/Property' );
 
   /**

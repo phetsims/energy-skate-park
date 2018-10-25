@@ -26,6 +26,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
   var Bounds2 = require( 'DOT/Bounds2' );
   var Bounds2IO = require( 'DOT/Bounds2IO' );
   var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
@@ -45,14 +46,13 @@ define( function( require ) {
   var Range = require( 'DOT/Range' );
   var Skater = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Skater' );
   var SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
+  var StringIO = require( 'TANDEM/types/StringIO' );
   var Tandem = require( 'TANDEM/Tandem' );
   var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
   var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackIO' );
   var Util = require( 'DOT/Util' );
   var Vector2 = require( 'DOT/Vector2' );
   var Vector2IO = require( 'DOT/Vector2IO' );
-  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
-  var StringIO = require( 'TANDEM/types/StringIO' );
 
   // Reuse empty object for creating SkaterStates to avoid allocations
   var EMPTY_OBJECT = {};

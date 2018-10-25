@@ -18,14 +18,15 @@ define( function( require ) {
   var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BackgroundNode' );
   var BarGraphBackground = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BarGraphBackground' );
   var BarGraphForeground = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BarGraphForeground' );
+  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
   var Bounds2 = require( 'DOT/Bounds2' );
   var Color = require( 'SCENERY/util/Color' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DotRectangle = require( 'DOT/Rectangle' ); // eslint-disable-line require-statement-match
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkControlPanel' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
   var GaugeNeedleNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/GaugeNeedleNode' );
   var GaugeNode = require( 'SCENERY_PHET/GaugeNode' );
@@ -47,6 +48,7 @@ define( function( require ) {
   var Range = require( 'DOT/Range' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
+  var ReferenceHeightLine = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ReferenceHeightLine' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var Shape = require( 'KITE/Shape' );
@@ -56,8 +58,6 @@ define( function( require ) {
   var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackNode' );
   var Util = require( 'SCENERY/util/Util' );
   var Vector2 = require( 'DOT/Vector2' );
-  var ReferenceHeightLine = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ReferenceHeightLine' );
-  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
 
   // strings
   var controlsRestartSkaterString = require( 'string!ENERGY_SKATE_PARK/controls.restart-skater' );

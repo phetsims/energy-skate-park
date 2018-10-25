@@ -10,16 +10,16 @@ define( function( require ) {
 
   // modules
   var AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
-  var inherit = require( 'PHET_CORE/inherit' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkCheckboxItem = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkCheckboxItem' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
+  var controlsReferenceHeightString = require( 'string!ENERGY_SKATE_PARK/controls.referenceHeight' );
   var controlsShowGridString = require( 'string!ENERGY_SKATE_PARK/controls.show-grid' );
   var pieChartString = require( 'string!ENERGY_SKATE_PARK/pieChart' );
   var plotsBarGraphString = require( 'string!ENERGY_SKATE_PARK/plots.bar-graph' );
-  var controlsReferenceHeightString = require( 'string!ENERGY_SKATE_PARK/controls.referenceHeight' );
   var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
 
   /**

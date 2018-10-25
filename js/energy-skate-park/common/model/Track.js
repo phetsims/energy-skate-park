@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
   var dot = require( 'DOT/dot' );
   var Emitter = require( 'AXON/Emitter' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
@@ -21,7 +22,6 @@ define( function( require ) {
   var Tandem = require( 'TANDEM/Tandem' );
   var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackIO' );
   var Vector2 = require( 'DOT/Vector2' );
-  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
 
   // constants
   var FastArray = dot.FastArray;

@@ -10,23 +10,23 @@ define( function( require ) {
 
   // modules
   var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
-  var inherit = require( 'PHET_CORE/inherit' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EnergySkateParkVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkVisibilityControls' );
   var HSeparator = require( 'SUN/HSeparator' );
-  var PhysicalControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PhysicalControl' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var Panel = require( 'SUN/Panel' );
+  var PhysicalControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PhysicalControl' );
   var Range = require( 'DOT/Range' );
-  var VBox = require( 'SCENERY/nodes/VBox' );
   var SceneSelectionRadioButtonGroup = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SceneSelectionRadioButtonGroup' );
+  var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var controlsMassString = require( 'string!ENERGY_SKATE_PARK/controls.mass' );
-  var smallString = require( 'string!ENERGY_SKATE_PARK/small' );
   var controlsFrictionTitleString = require( 'string!ENERGY_SKATE_PARK/controls.friction.title' );
   var controlsGravityString = require( 'string!ENERGY_SKATE_PARK/controls.gravity' );
+  var controlsMassString = require( 'string!ENERGY_SKATE_PARK/controls.mass' );
   var controlsValueTinyString = require( 'string!ENERGY_SKATE_PARK/controls.value.tiny' );
+  var smallString = require( 'string!ENERGY_SKATE_PARK/small' );
 
   /**
    * @param {EnergySkateParkModel} model
