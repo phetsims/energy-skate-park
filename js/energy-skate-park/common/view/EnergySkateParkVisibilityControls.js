@@ -33,28 +33,28 @@ define( function( require ) {
     var checkboxItems = [
       new EnergySkateParkCheckboxItem(
         pieChartString,
-        EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ) ),
+        EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.pieChartVisibleProperty,
         tandem
       ),
       new EnergySkateParkCheckboxItem(
         plotsBarGraphString,
-        EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ) ),
+        EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale:0.8 } ),
         itemAlignGroup,
         model.barGraphVisibleProperty,
         tandem
       ),
       new EnergySkateParkCheckboxItem( 
         controlsShowGridString,
-        EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ) ),
+        EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.gridVisibleProperty,
         tandem
       ),
       new EnergySkateParkCheckboxItem(
         propertiesSpeedString,
-        EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ) ),
+        EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.speedometerVisibleProperty,
         tandem
@@ -70,7 +70,7 @@ define( function( require ) {
     VBox.call( this, {
       children: checkboxItems,
       align: 'left',
-      spacing: 2.7
+      spacing: 6.5
     } );
   }
 

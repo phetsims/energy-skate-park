@@ -58,6 +58,8 @@ define( function( require ) {
 
     var checkbox = new Checkbox( textBox, property, checkboxItemOptions );
 
+    console.log( icon.height );
+
     HBox.call( this, {
       children: [ checkbox, icon ],
       spacing: 10
@@ -69,7 +71,11 @@ define( function( require ) {
   return inherit( HBox, EnergySkateParkCheckboxItem, {}, {
 
     // Create an icon for the bar graph checkbox
-    createBarGraphIcon: function( tandem ) {
+    createBarGraphIcon: function( tandem, options ) {
+      options = _.extend( {
+        scale: 1
+      }, options );
+
       return new Node( {
         tandem: tandem,
         children: [
@@ -84,12 +90,18 @@ define( function( require ) {
             stroke: 'black',
             lineWidth: 0.5
           } )
-        ]
+        ],
+
+        scale: options.scale
       } );
     },
 
     // Create an icon for the pie chart checkbox
-    createPieChartIcon: function( tandem ) {
+    createPieChartIcon: function( tandem, options ) {
+      options = _.extend( {
+        scale: 1
+      }, options );
+
       var radius = 10;
       var x = new Shape().moveTo( 0, 0 ).ellipticalArc( 0, 0, radius, radius, 0, -Math.PI / 2, 0, false ).lineTo( 0, 0 );
       return new Node( {
@@ -100,12 +112,16 @@ define( function( require ) {
             tandem: tandem.createTandem( 'path' ), // TODO: What is this path for
             fill: EnergySkateParkColorScheme.kineticEnergy, lineWidth: 0.5, stroke: 'black'
           } )
-        ]
+        ],
+        scale: options.scale
       } );
     },
 
     // Create an icon for the grid checkbox
-    createGridIcon: function( tandem ) {
+    createGridIcon: function( tandem, options ) {
+      options = _.extend( {
+        scale: 1
+      }, options );
       return new Node( {
         tandem: tandem,
         children: [
@@ -116,17 +132,21 @@ define( function( require ) {
           new Line( 10, 0, 10, 20, { stroke: 'black', lineWidth: 1 } ),
           new Line( 5, 0, 5, 20, { stroke: 'black', lineWidth: 0.5 } ),
           new Line( 15, 0, 15, 20, { stroke: 'black', lineWidth: 0.5 } )
-        ]
+        ],
+        scale: options.scale
       } );
     },
 
     // Create an icon for the speedometer checkbox
-    createSpeedometerIcon: function( tandem ) {
+    createSpeedometerIcon: function( tandem, options ) {
+      options = _.extend( {
+        scale: 1
+      }, options );
       var node = new GaugeNode( new Property( 0 ), propertiesSpeedString, new Range( 0, 10 ),
         { pickable: false,
           tandem: tandem.createTandem( 'gaugeNode')
         } );
-      node.scale( 20 / node.width );
+      node.scale( ( 20 / node.width ) * options.scale );
       return node;
     },
 
