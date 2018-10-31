@@ -35,11 +35,23 @@ define( function( require ) {
     options = _.extend( {}, options );
     assert && assert( options.children === undefined, 'ReferenceHeightLine sets its own children' );
 
-    // the line will extend from 
-    var lineWidth = 500;
-    var referenceLine = new Line( new Vector2( 0, 0 ), new Vector2( lineWidth, 0 ), {
+    // line will extend 10 meters through along the grid in model coordinates
+    var lineLength = modelViewTransform.modelToViewDeltaX( 10 );
+
+    // the line will be composed of two lines on top of each other to assist with line visibility - taller blue in
+    // back, shorter black in front
+    var lineDash = [ 10, 10 ];
+    var lineStart = new Vector2( 0, 0 );
+    var lineEnd = new Vector2( lineLength, 0 );
+    var backLine = new Line( lineStart, lineEnd, {
+      lineWidth: 5,
+      lineDash: lineDash,
+      stroke: 'rgb(74,133,208)'
+    } );
+
+    var frontLine = new Line( lineStart, lineEnd, {
       lineWidth: 2,
-      lineDash: [ 2, 2 ],
+      lineDash: lineDash,
       stroke: 'black'
     } );
 
@@ -57,10 +69,10 @@ define( function( require ) {
 
     // pointing to the left, with shading maintained
     laserPointerNode.setScaleMagnitude( -1, 1 );
-    laserPointerNode.setLeft( lineWidth );
+    laserPointerNode.setLeft( lineLength );
 
     Node.call( this, {
-      children: [ referenceLine, laserPointerNode ]
+      children: [ backLine, frontLine, laserPointerNode ]
     } );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
