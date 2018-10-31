@@ -27,45 +27,79 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function SceneSelectionRadioButtonGroup( model, view, transform, tandem ) {
+  function SceneSelectionRadioButtonGroup( model, view, transform, tandem, options ) {
+
+    options = _.extend( {
+
+      // specific and passed to RadioButtonGroup
+      orientation: 'horizontal',
+      buttonContentXMargin: 3,
+      buttonContentYMargin: 3,
+      cornerRadius: 2,
+      spacing: 5,
+      selectedStroke: 'rgb(87,178,226)',
+      baseColor: 'white',
+      tandem: tandem,
+
+      // {boolean} - should mountains, background, and sky be included in the icon for track buttons?
+      includeBackground: false
+    }, options );
 
     // Create a button with a scene like the track in the index
     var createNode = function( index ) {
+      var children = [];
+
+      if ( options.includeBackground ) {
+        var background = new BackgroundNode( view.layoutBounds, tandem.createTandem( 'backgroundNode' + index ) );
+        background.layout( 0, 0, view.layoutBounds.width, view.layoutBounds.height, 1 );
+        children.push( background );
+      }
+
       var track = model.tracks.get( index );
-      var background = new BackgroundNode( view.layoutBounds, tandem.createTandem( 'backgroundNode' + index ) );
-      background.layout( 0, 0, view.layoutBounds.width, view.layoutBounds.height, 1 );
       var trackNode = new TrackNode( model, track, transform, new Property(), tandem.createTandem( 'trackNode' + index ) );
+      children.push( trackNode );
 
       // Fixes: Cursor turns into a hand over the track in the track selection panel, see #204
       trackNode.pickable = false;
 
       var contentNode = new Node( {
         tandem: tandem.createTandem( 'contentNode' + index ),
-        children: [ background, trackNode ]
+        children: children
       } );
 
-      // scalar chosen so that buttons are appropriately sized in the control panel
-      contentNode.scale( 20 / contentNode.height );
       return contentNode;
     };
 
+    // create the contents for the radio buttons
+    var contents = [];
+    _.forEach( model.tracks, function( track, i ) {
+      var contentNode = createNode( i );
+      contents.push( contentNode );
+    } );
+
+    var minWidth = _.minBy( contents, function( node ) { return node.width; } ).width;
+
     var radioButtonContent = [];
-    model.tracks.forEach( function( item, i ) {
+    _.forEach( contents, function( node, i ) {
+
+      // scalar chosen so that buttons are appropriately sized in the control panel
+      var contentScale = ( 22 / minWidth );
+
+      // if there isn't a background, scale the tracks horizontally so that they are all the same width
+      if ( !options.includeBackground ) {
+        node.setScaleMagnitude( contentScale * ( minWidth / node.width ), contentScale );
+      }
+      else {
+        node.scale( contentScale );
+      }
       radioButtonContent.push( {
         value: i,
-        node: createNode( i ),
+        node: node,
         tandemName: 'scene' + ( i + 1 ) + 'RadioButton'
       } );
     } );
 
-    RadioButtonGroup.call( this, model.sceneProperty, radioButtonContent, {
-      orientation: 'horizontal',
-      buttonContentXMargin: 0,
-      buttonContentYMargin: 0,
-      cornerRadius: 0,
-      selectedLineWidth: 3,
-      tandem: tandem
-    } );
+    RadioButtonGroup.call( this, model.sceneProperty, radioButtonContent, options );
   }
 
   energySkatePark.register( 'SceneSelectionRadioButtonGroup', SceneSelectionRadioButtonGroup );
