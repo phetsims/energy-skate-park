@@ -143,7 +143,7 @@ define( function( require ) {
       tandem: tandem.createTandem( 'speedometerVisibleProperty' ),
       phetioType: PropertyIO( BooleanIO )
     } );
-    this.referenceHeightVisibleProperty = new Property( false, {
+    this.referenceHeightVisibleProperty = new Property( true, {
       tandem: tandem.createTandem( 'referenceHeightVisibleProperty' ),
       phetioType: PropertyIO( BooleanIO )
     } );

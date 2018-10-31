@@ -103,7 +103,7 @@ define( function( require ) {
 
 
     // @public {number} - reference height for potential energy, 0 is at the ground
-    this.referenceHeightProperty = new NumberProperty( 0, {
+    this.referenceHeightProperty = new NumberProperty( 5, {
       tandem: tandem.createTandem( 'referenceHeightProperty' ),
       units: 'meters',
       range: Constants.REFERENCE_HEIGHT_RANGE

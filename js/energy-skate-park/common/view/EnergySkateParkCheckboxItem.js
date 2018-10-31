@@ -58,8 +58,6 @@ define( function( require ) {
 
     var checkbox = new Checkbox( textBox, property, checkboxItemOptions );
 
-    console.log( icon.height );
-
     HBox.call( this, {
       children: [ checkbox, icon ],
       spacing: 10

@@ -14,6 +14,7 @@ define( function( require ) {
   // modules
   var BooleanProperty = require( 'AXON/BooleanProperty' );
   var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
+  var Dimension2 = require( 'DOT/Dimension2' );
   var DragListener = require( 'SCENERY/listeners/DragListener' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
@@ -44,14 +45,18 @@ define( function( require ) {
 
     // the draggable part looks like a laser pointer body, shooting the reference height line across the view    
     var laserPointerNode = new LaserPointerNode( new BooleanProperty( false ), {
+      bodySize: new Dimension2( 27.5, 14 ),
+      nozzleSize: new Dimension2( 5, 10 ),
       hasButton: false,
       topColor: EnergySkateParkColorScheme.potentialEnergy,
       bottomColor: EnergySkateParkColorScheme.potentialEnergy,
+      highlightColor: 'rgb(170,201,236)',
+      cornerRadius: 1,
       cursor: 'pointer'
     } );
 
-    // pointing to the left, with shading maintained, made a bit more narrow vertically
-    laserPointerNode.setScaleMagnitude( -0.25, 0.15 );
+    // pointing to the left, with shading maintained
+    laserPointerNode.setScaleMagnitude( -1, 1 );
     laserPointerNode.setLeft( lineWidth );
 
     Node.call( this, {
