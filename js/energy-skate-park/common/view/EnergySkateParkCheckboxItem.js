@@ -32,24 +32,24 @@ define( function( require ) {
   var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
   
   /**
-   * [EnergySkateParkCheckboxItem description]
-   * @param {[type]} label          [description]
-   * @param {[type]} icon           [description]
-   * @param {[type]} textAlignGroup [description]
-   * @param {[type]} property       [description]
-   * @param {[type]} options        [description]
+   * @constructor
+   * @param {string} label         
+   * @param {Node} icon          
+   * @param {AlignGroup} textAlignGroup
+   * @param {Property} property - the checkbox will update this Property
+   * @param {Object} options
    */
   function EnergySkateParkCheckboxItem( label, icon, textAlignGroup, property, tandem, options ) {
     assert && assert( textAlignGroup.matchHorizontal === true, 'text content in check boxes must align' );
     assert && assert( textAlignGroup.matchVertical === true, 'text content for checkboxes in group must align' );
 
     var textOptions = {
-      font: new PhetFont( 14 ),
+      font: new PhetFont( 11 ),
       maxWidth: 134 // selected by choosing the length of widest English string in ?stringTest=double
     };
 
     var checkboxItemOptions = {
-      boxWidth: 18
+      boxWidth: 14
     };
 
     // create text and an align box for it so that all text in a group of items is aligned

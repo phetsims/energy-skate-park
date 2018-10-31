@@ -70,7 +70,7 @@ define( function( require ) {
     VBox.call( this, {
       children: checkboxItems,
       align: 'left',
-      spacing: 6
+      spacing: 2.7
     } );
   }
 
