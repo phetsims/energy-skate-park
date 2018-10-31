@@ -306,6 +306,7 @@ define( function( require ) {
       this.parametricSpeedProperty.reset();
       this.onTopSideOfTrackProperty.reset();
       this.gravityMagnitudeProperty.reset();
+      this.referenceHeightProperty.reset();
       this.positionProperty.reset();
       this.massProperty.reset();
       this.directionProperty.reset();
