@@ -85,6 +85,8 @@ define( function( require ) {
     // when layout changes
     this.createdTexts = [];
 
+    // transform the grid with the reference line - this should be faster than redrawing the grid every time it needs
+    // to translate
     var self = this;
     referenceHeightProperty.lazyLink( function( height, oldHeight ) {
       var viewDelta = modelViewTransform.modelToViewDeltaY( height - oldHeight );
