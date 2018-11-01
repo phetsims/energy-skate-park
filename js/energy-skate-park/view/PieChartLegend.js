@@ -102,8 +102,7 @@ define( function( require ) {
 
     children.push( new VStrut( 1 ) );
 
-    var contentNode = new VBox( {
-      spacing: 10, align: 'left', children: children } );
+    var contentNode = new VBox( { spacing: 5, align: 'left', children: children } );
 
     var titleNode = new Text( energyEnergyString, {
       tandem: tandem.createTandem( 'titleNode' ),
