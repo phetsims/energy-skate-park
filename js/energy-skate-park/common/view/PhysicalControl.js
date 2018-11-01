@@ -15,9 +15,9 @@ define( require => {
   const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const VBox = require( 'SCENERY/nodes/VBox' );
-  var HSlider = require( 'SUN/HSlider' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Text = require( 'SCENERY/nodes/Text' );
+  const HSlider = require( 'SUN/HSlider' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Text = require( 'SCENERY/nodes/Text' );
 
   // strings
   const controlsValueLotsString = require( 'string!ENERGY_SKATE_PARK/controls.value.lots' );
@@ -36,7 +36,7 @@ define( require => {
       }, options );
 
       const tickFont = new PhetFont( 10 );
-      var textOptions = {
+      const textOptions = {
         font: tickFont,
         maxWidth: 54 // selected by choosing the length of widest English string in ?stringTest=double
       };
@@ -45,7 +45,7 @@ define( require => {
       slider.addMajorTick( valueRange.max, new Text( options.maxLabel, _.extend( { tandem: tandem.createTandem( 'maxLabel' ) }, textOptions ) ) );
 
       // Space the label above the tick labels so that it won't overlap for i18n
-      var text = new Text( titleString, {
+      const text = new Text( titleString, {
         tandem: tandem.createTandem( 'titleString' ),
         font: new PhetFont( { weight: 'bold', size: 13 } ),
         maxWidth: 100 // selected by choosing the length of widest English string in ?stringTest=double
