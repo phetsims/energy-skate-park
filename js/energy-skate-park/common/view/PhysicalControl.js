@@ -47,14 +47,14 @@ define( require => {
       // Space the label above the tick labels so that it won't overlap for i18n
       const text = new Text( titleString, {
         tandem: tandem.createTandem( 'titleString' ),
-        font: new PhetFont( { weight: 'bold', size: 13 } ),
+        font: new PhetFont( { weight: 'bold', size: 12 } ),
         maxWidth: 100 // selected by choosing the length of widest English string in ?stringTest=double
       } );
 
       super( {
         children: [ text, slider ],
         resize: false,
-        spacing: -3
+        spacing: -5
       } );
     }
   }

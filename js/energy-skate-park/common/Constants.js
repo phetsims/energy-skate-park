@@ -20,9 +20,10 @@ define( function( require ) {
 
   var Constants = {
     SLIDER_OPTIONS: {
-      thumbSize: new Dimension2( 13, 30 ),
+      thumbSize: new Dimension2( 10, 22 ),
+      trackSize: new Dimension2( 100, 4 ),
       tickLabelSpacing: 0,
-      majorTickLength: 15
+      majorTickLength: 10
     },
 
     // for the bar graphs, factors multiplied by physical values to produce heights in view coordinates
