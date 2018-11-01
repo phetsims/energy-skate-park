@@ -13,10 +13,10 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
   var HSlider = require( 'SUN/HSlider' );
-  var inherit = require( 'PHET_CORE/inherit' );
   var Image = require( 'SCENERY/nodes/Image' );
-  var Property = require( 'AXON/Property' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var MassComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/view/MassComboBox' );
+  var Property = require( 'AXON/Property' );
   var Range = require( 'DOT/Range' );
 
   // images

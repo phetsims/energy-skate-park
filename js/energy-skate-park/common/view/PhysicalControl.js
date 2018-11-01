@@ -14,10 +14,10 @@ define( require => {
   // modules
   const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const VBox = require( 'SCENERY/nodes/VBox' );
   const HSlider = require( 'SUN/HSlider' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Text = require( 'SCENERY/nodes/Text' );
+  const VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
   const controlsValueLotsString = require( 'string!ENERGY_SKATE_PARK/controls.value.lots' );
