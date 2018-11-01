@@ -20,7 +20,10 @@ define( function( require ) {
     thermalEnergy: new Color( '#FF5500' ), // red colorblind
     totalEnergy: new Color( '#B4B400' ), // dirty yellow
 
-    panelFill: '#F0F0F0'
+    panelFill: '#F0F0F0',
+
+    // surrounds text for better visibility
+    transparentPanelFill: 'rgba(255,255,255,0.5)'
   };
 
   energySkatePark.register( 'EnergySkateParkColorScheme', EnergySkateParkColorScheme );

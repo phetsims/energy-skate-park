@@ -22,7 +22,11 @@ define( function( require ) {
   var LaserPointerNode = require( 'SCENERY_PHET/LaserPointerNode' );
   var Line = require( 'SCENERY/nodes/Line' );
   var Node = require( 'SCENERY/nodes/Node' );
+  var TextPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TextPanel' );
   var Vector2 = require( 'DOT/Vector2' );
+
+  // strings
+  var heightEqualsZeroString = require( 'string!ENERGY_SKATE_PARK/heightEqualsZero' );
 
   /**
    * @constructor
@@ -67,12 +71,17 @@ define( function( require ) {
       cursor: 'pointer'
     } );
 
+    // label for the reference line, surround by a transparent panel for better visibility
+    var textPanel = new TextPanel( heightEqualsZeroString );
+
     // pointing to the left, with shading maintained
     laserPointerNode.setScaleMagnitude( -1, 1 );
     laserPointerNode.setLeft( lineLength );
 
+    textPanel.setRightBottom( laserPointerNode.rightTop );
+
     Node.call( this, {
-      children: [ backLine, frontLine, laserPointerNode ]
+      children: [ backLine, frontLine, laserPointerNode, textPanel ]
     } );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed

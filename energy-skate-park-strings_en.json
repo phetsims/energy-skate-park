@@ -91,5 +91,8 @@
   },
   "controls.referenceHeight": {
     "value": "Reference Height"
+  },
+  "heightEqualsZero": {
+    "value": "Height = 0"  
   }
 }
