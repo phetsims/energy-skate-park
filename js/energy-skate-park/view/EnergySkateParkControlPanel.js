@@ -48,7 +48,7 @@ define( function( require ) {
     var children = [ visibilityControls ];
 
     // separator between visibility controls and track selection buttons
-    var separatorWidth = visibilityControls.width;
+    var separatorWidth = visibilityControls.width - 10;
     children.push( new HSeparator( separatorWidth ) );
 
     if ( options.includeTrackSelection ) {
@@ -89,7 +89,7 @@ define( function( require ) {
       ) );
     }
 
-    var content = new VBox( { resize: false, spacing: 6, children: children } );
+    var content = new VBox( { resize: false, spacing: 10, children: children } );
 
     this.contentWidth = content.width;
     Panel.call( this, content, {
