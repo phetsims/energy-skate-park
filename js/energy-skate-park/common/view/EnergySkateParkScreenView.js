@@ -111,10 +111,6 @@ define( function( require ) {
     this.gridNode = new GridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
     this.bottomLayer.addChild( this.gridNode );
 
-    // layout managed in layout function
-    this.referenceHeightLine = new ReferenceHeightLine( modelViewTransform, model.skater.referenceHeightProperty, model.referenceHeightVisibleProperty );
-    this.bottomLayer.addChild( this.referenceHeightLine );
-
     // @private - node that shows the energy legend for the pie chart
     this.pieChartLegend = new PieChartLegend(
       model.skater,
@@ -425,6 +421,13 @@ define( function( require ) {
     //---------------------------------------------------------------------------
     // END WEBGL LAYER
     //---------------------------------------------------------------------------
+    
+    // layout managed in layout function
+    this.referenceHeightLine = new ReferenceHeightLine( modelViewTransform, model.skater.referenceHeightProperty, model.referenceHeightVisibleProperty );
+    this.bottomLayer.addChild( this.referenceHeightLine );
+
+    // relative to the control panel, but this will not float with the layout
+    this.referenceHeightLine.right = this.controlPanel.left - 5;
 
     // Buttons to return the skater when she is offscreen, see #219
     var iconScale = 0.4;
@@ -524,9 +527,6 @@ define( function( require ) {
       // Float the control panel to the right (but not arbitrarily far because it could get too far from the play area)
       var maxFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? 890 : Number.MAX_VALUE;
       this.controlPanel.right = Math.min( maxFloatAmount, this.availableViewBounds.maxX ) - 5;
-
-      // float reference height laser pointer to the controls
-      this.referenceHeightLine.right = this.controlPanel.left - 5;
 
       if ( this.attachDetachToggleButtons ) {
         this.attachDetachToggleButtons.centerX = this.controlPanel.centerX;

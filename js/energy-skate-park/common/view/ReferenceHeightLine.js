@@ -35,8 +35,8 @@ define( function( require ) {
     options = _.extend( {}, options );
     assert && assert( options.children === undefined, 'ReferenceHeightLine sets its own children' );
 
-    // line will extend 10 meters through along the grid in model coordinates
-    var lineLength = modelViewTransform.modelToViewDeltaX( 10 );
+    // line will extend 9 meters through along the grid in model coordinates
+    var lineLength = modelViewTransform.modelToViewDeltaX( 9.5 );
 
     // the line will be composed of two lines on top of each other to assist with line visibility - taller blue in
     // back, shorter black in front
