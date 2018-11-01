@@ -181,42 +181,6 @@ define( function( require ) {
       model.clearThermal.bind( model ), tandem.createTandem( 'barGraphBackground' ) );
     this.bottomLayer.addChild( this.barGraphBackground );
 
-    var playingProperty = new Property( !model.pausedProperty.value, {
-      tandem: tandem.createTandem( 'playingProperty' ),
-      phetioType: PropertyIO( BooleanIO )
-    } );
-    model.pausedProperty.link( function( paused ) {
-      playingProperty.set( !paused );
-    } );
-    playingProperty.link( function( playing ) {
-      model.pausedProperty.set( !playing );
-    } );
-    var playPauseButton = new PlayPauseButton( playingProperty, {
-      tandem: tandem.createTandem( 'playPauseButton' )
-    } ).mutate( { scale: 0.6 } );
-
-    // Make the Play/Pause button bigger when it is showing the pause button, see #298
-    var pauseSizeIncreaseFactor = 1.35;
-    playingProperty.lazyLink( function( isPlaying ) {
-      playPauseButton.scale( isPlaying ? ( 1 / pauseSizeIncreaseFactor ) : pauseSizeIncreaseFactor );
-    } );
-
-    var stepButton = new StepForwardButton( {
-      isPlayingProperty: playingProperty,
-      listener: function() { model.manualStep(); },
-      tandem: tandem.createTandem( 'stepButton' )
-    } );
-
-    // Make the step button the same size as the pause button.
-    stepButton.mutate( { scale: playPauseButton.height / stepButton.height } );
-    model.pausedProperty.linkAttribute( stepButton, 'enabled' );
-
-    this.bottomLayer.addChild( playPauseButton.mutate( {
-      centerX: this.layoutBounds.centerX,
-      bottom: this.layoutBounds.maxY - 15
-    } ) );
-    this.bottomLayer.addChild( stepButton.mutate( { left: playPauseButton.right + 15, centerY: playPauseButton.centerY } ) );
-
     this.resetAllButton = new ResetAllButton( {
       listener: model.reset.bind( model ),
       scale: 0.85,
@@ -244,11 +208,6 @@ define( function( require ) {
     // Disable the return skater button when the skater is already at his initial coordinates
     model.skater.movedProperty.linkAttribute( self.returnSkaterButton, 'enabled' );
     this.bottomLayer.addChild( this.returnSkaterButton );
-
-    this.bottomLayer.addChild( new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ) ).mutate( {
-      left: stepButton.right + 20,
-      centerY: playPauseButton.centerY
-    } ) );
 
     var speedometerNode = new GaugeNode(
       // Hide the needle in for the background of the GaugeNode
@@ -458,6 +417,53 @@ define( function( require ) {
     this.topLayer.addChild( returnSkaterToGroundButton );
 
     this.topLayer.addChild( this.measuringTapeNode );
+
+    // has all of the play, pause, and step controls for layout purposes
+    var playControls = new Node();
+
+    var playingProperty = new Property( !model.pausedProperty.value, {
+      tandem: tandem.createTandem( 'playingProperty' ),
+      phetioType: PropertyIO( BooleanIO )
+    } );
+    model.pausedProperty.link( function( paused ) {
+      playingProperty.set( !paused );
+    } );
+    playingProperty.link( function( playing ) {
+      model.pausedProperty.set( !playing );
+    } );
+    var playPauseButton = new PlayPauseButton( playingProperty, {
+      tandem: tandem.createTandem( 'playPauseButton' )
+    } ).mutate( { scale: 0.6 } );
+
+    // Make the Play/Pause button bigger when it is showing the pause button, see #298
+    var pauseSizeIncreaseFactor = 1.35;
+    playingProperty.lazyLink( function( isPlaying ) {
+      playPauseButton.scale( isPlaying ? ( 1 / pauseSizeIncreaseFactor ) : pauseSizeIncreaseFactor );
+    } );
+
+    var stepButton = new StepForwardButton( {
+      isPlayingProperty: playingProperty,
+      listener: function() { model.manualStep(); },
+      tandem: tandem.createTandem( 'stepButton' ),
+      leftCenter: playPauseButton.rightCenter.plusXY( 8, 0 )
+    } );
+
+    var speedControl = new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ), {
+      leftCenter: stepButton.rightCenter.plusXY( 15, 0 )
+    } );
+
+    // Make the step button the same size as the pause button.
+    stepButton.mutate( { scale: playPauseButton.height / stepButton.height } );
+    model.pausedProperty.linkAttribute( stepButton, 'enabled' );
+
+    playControls.addChild( playPauseButton );
+    playControls.addChild( stepButton );
+    this.topLayer.addChild( speedControl );
+    this.topLayer.addChild( playControls );
+
+    var speedControlSpacing = 15;
+    speedControl.setLeftBottom( this.layoutBounds.centerBottom.plusXY( speedControlSpacing, -15 ) );
+    playControls.setRightBottom( this.layoutBounds.centerBottom.minusXY( speedControlSpacing, 15 ) );
 
     // When the skater goes off screen, make the "return skater" button big
     onscreenProperty.link( function( skaterOnscreen ) {
