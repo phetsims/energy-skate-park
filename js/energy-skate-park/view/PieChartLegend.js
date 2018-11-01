@@ -27,6 +27,7 @@ define( function( require ) {
   var energyKineticString = require( 'string!ENERGY_SKATE_PARK/energy.kinetic' );
   var energyPotentialString = require( 'string!ENERGY_SKATE_PARK/energy.potential' );
   var energyThermalString = require( 'string!ENERGY_SKATE_PARK/energy.thermal' );
+  var energyTotalString = require( 'string!ENERGY_SKATE_PARK/energy.total' );
 
   /**
    * @param {Skater} skater the model for the skater
@@ -35,7 +36,13 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function PieChartLegend( skater, clearThermal, pieChartVisibleProperty, tandem ) {
+  function PieChartLegend( skater, clearThermal, pieChartVisibleProperty, tandem, options ) {
+
+    options = _.extend( {
+
+      // {boolean} - whether or not to include total energy in the legend, will the pie chart show total energy?
+      includeTotal: true
+    }, options );
 
     // The x-coordinate of a bar chart bar
     var createLabel = function( index, title, color, tandemName ) {
@@ -59,10 +66,12 @@ define( function( require ) {
     var kineticBar = createBar( 0, EnergySkateParkColorScheme.kineticEnergy );
     var potentialBar = createBar( 1, EnergySkateParkColorScheme.potentialEnergy );
     var thermalBar = createBar( 2, EnergySkateParkColorScheme.thermalEnergy );
+    var totalBar = createBar( 3, EnergySkateParkColorScheme.totalEnergy );
 
     var kineticLabel = createLabel( 0, energyKineticString, EnergySkateParkColorScheme.kineticEnergy, 'kineticEnergyLabel' );
     var potentialLabel = createLabel( 1, energyPotentialString, EnergySkateParkColorScheme.potentialEnergy, 'potentialEnergyLabel' );
     var thermalLabel = createLabel( 2, energyThermalString, EnergySkateParkColorScheme.thermalEnergy, 'thermalEnergyLabel' );
+    var totalLabel = createLabel( 3, energyTotalString, EnergySkateParkColorScheme.totalEnergy, 'totalEnergyLabel' );
 
     var clearThermalButton = new ClearThermalButton( {
       tandem: tandem.createTandem( 'clearThermalButton' ),
@@ -78,17 +87,23 @@ define( function( require ) {
     // get the width right, then add the undo button later
     var clearThermalButtonStrut = new Rectangle( 0, 0, clearThermalButton.width, 1, {} );
 
+    var children = [
+      new HBox( { spacing: 4, children: [ kineticBar, kineticLabel ] } ),
+      new HBox( { spacing: 4, children: [ potentialBar, potentialLabel ] } ),
+      new HBox( {
+        spacing: 4,
+        children: [ thermalBar, thermalLabel, new HStrut( 1 ), clearThermalButtonStrut, new HStrut( 3 ) ]
+      } )
+    ];
+
+    if ( options.includeTotal ) {
+      children.push( new HBox( { spacing: 4, children: [ totalBar, totalLabel ] } ) );
+    }
+
+    children.push( new VStrut( 1 ) );
+
     var contentNode = new VBox( {
-      spacing: 10, align: 'left', children: [
-        new HBox( { spacing: 4, children: [ kineticBar, kineticLabel ] } ),
-        new HBox( { spacing: 4, children: [ potentialBar, potentialLabel ] } ),
-        new HBox( {
-          spacing: 4,
-          children: [ thermalBar, thermalLabel, new HStrut( 1 ), clearThermalButtonStrut, new HStrut( 3 ) ]
-        } ),
-        new VStrut( 1 )
-      ]
-    } );
+      spacing: 10, align: 'left', children: children } );
 
     var titleNode = new Text( energyEnergyString, {
       tandem: tandem.createTandem( 'titleNode' ),
