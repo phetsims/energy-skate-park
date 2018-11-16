@@ -40,7 +40,15 @@ define( function( require ) {
     // of the bar label.
     // @return {Node}
     var createBar = function( index, color, property, showSmallValuesAsZero ) {
-      var bar = new Node();
+      var bar = new Node( { renderer: barRenderer } );
+
+      var label = barGraphBackground.labelMap[ index ];
+
+      // wrap with a rounded rectangle with some opacity so that it shows up on top of the bar
+      var outlineRectangle = new Rectangle( label.bounds.dilated( 2 ), { fill: EnergySkateParkColorScheme.transparentPanelFill } );
+      outlineRectangle.addChild( label );
+
+      var imageNode = outlineRectangle.rasterized( { resolution: 8, wrap: false } );
 
       // Convert to graph coordinates
       // However, do not floor for values less than 1 otherwise a nonzero value will show up as zero, see #159
@@ -61,12 +69,7 @@ define( function( require ) {
         return answer;
       } );
       var barX = getBarX( index );
-      var solidBar = new Rectangle( barX, 0, barWidth, 100, { fill: color, pickable: false, renderer: barRenderer } );
-      var transparentBar = new Rectangle( barX, 0, barWidth, 0, { fill: color.withAlpha( 0.3 ), pickable: false, renderer: barRenderer } );
-
-      // height of the bar label, for negative values we will need the rectangle up to this height to be
-      // semi-transparent so the label is still visible
-      var labelHeight = barGraphBackground.getLabelHeight( index ) + 4; // 2 * offset from bottom
+      var solidBar = new Rectangle( barX, 0, barWidth, 100, { fill: color, pickable: false, stroke: 'black', lineWidth: 0.5 } );
 
       // update the bars when the graph becomes visible, and skip update when they are invisible
       Property.multilink( [ barHeightProperty, barGraphVisibleProperty ], function( barHeight, visible ) {
@@ -88,25 +91,16 @@ define( function( require ) {
 
           var limitHeight = Math.min( absBarHeight, maxHeight );
           if ( barHeight >= 0 ) {
-
             solidBar.setRect( barX, originY - limitHeight, barWidth, limitHeight );
-            transparentBar.setRect( 0, 0, 0, 0 ); // make sure the transparent bar is removed
           }
           else {
-
-            // height limit for the transparent bar, up to the height of the label
-            var transparentHeight = Math.min( -barHeight, labelHeight );
-
-            var solidHeight = limitHeight - transparentHeight;
-            var solidOriginY = originY + transparentHeight;
-
-            transparentBar.setRect( barX, originY, barWidth, transparentHeight );
-            solidBar.setRect( barX, solidOriginY, barWidth, solidHeight ); 
+            var solidHeight = limitHeight;
+            solidBar.setRect( barX, originY, barWidth, solidHeight ); 
           }
         }
       } );
 
-      bar.children = [ solidBar, transparentBar ];
+      bar.children = [ solidBar, imageNode ];
       return bar;
     };
 

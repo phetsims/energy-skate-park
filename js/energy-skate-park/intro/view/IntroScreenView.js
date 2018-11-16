@@ -38,7 +38,7 @@ define( function( require ) {
 
     // Show the mock-up and a slider to change its transparency
     // TODO: temporary, just to do some pixel polishing
-    var mockupOpacityProperty = new Property( 0.2 );
+    var mockupOpacityProperty = new Property( 0 );
     var image = new Image( mockupImage, {
       pickable: false,
       scale: this.layoutBounds.width / mockupImage.width

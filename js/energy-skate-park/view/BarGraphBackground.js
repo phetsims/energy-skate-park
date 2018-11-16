@@ -108,7 +108,7 @@ define( function( require ) {
       var text = new Text( title, {
         tandem: tandem.createTandem( tandemName ),
         fill: COLOR_INDEX_MAP[ index ],
-        font: new PhetFont( 14 ),
+        font: new PhetFont( 12 ),
         pickable: false,
 
         // i18n, chosen so that label allows space for arrows and thermal energy button
@@ -116,7 +116,7 @@ define( function( require ) {
       } );
       text.rotate( -Math.PI / 2 );
       text.centerX = self.getBarX( index ) + self.barWidth / 2;
-      text.top = self.originY + 2;
+      text.top = self.originY + 4;
 
       return text;
     };
@@ -161,6 +161,14 @@ define( function( require ) {
       3: this.totalEnergyDownArrow
     };
 
+    // @public - maps the label, made public for layout with the other layers of the bar graph
+    this.labelMap = {
+      0: this.kineticLabel,
+      1: this.potentialLabel,
+      2: this.thermalLabel,
+      3: this.totalLabel
+    };
+
     var titleNode = new Text( energyEnergyString, {
       tandem: tandem.createTandem( 'titleNode' ),
       x: 5,
@@ -181,10 +189,6 @@ define( function( require ) {
           stroke: 'gray',
           pickable: false
         } ),
-        this.kineticLabel,
-        this.potentialLabel,
-        this.thermalLabel,
-        this.totalLabel,
         clearThermalButton,
         this.zoomInButton,
         this.zoomOutButton,
@@ -224,35 +228,6 @@ define( function( require ) {
   energySkatePark.register( 'BarGraphBackground', BarGraphBackground );
 
   inherit( Panel, BarGraphBackground, {
-
-    /**
-     * Return the height of the label, referenced by index. For negative energies, we need to adjust alpha for a section
-     * of the bar rectangle of this height.
-     *
-     * @public
-     * @return {number}
-     */
-    getLabelHeight: function( index ) {
-      var height;
-      switch( index ) {
-        case 0:
-          height = this.kineticLabel.height;
-          break;
-        case 1:
-          height = this.potentialLabel.height;
-          break;
-        case 2:
-          height = this.thermalLabel.height;
-          break;
-        case 3:
-          height = this.totalLabel.height;
-          break;
-        default:
-          throw new Error( 'height should be defined and non-zero, you might have provided a bad index' );
-      }
-
-      return height;
-    },
 
     /**
      * Get the up arrow node for a particular bar by index.
