@@ -43,12 +43,12 @@ define( function( require ) {
       var label = barGraphBackground.labelMap[ index ];
 
       // semi-transparent rectangle, so that the label is visible when the bar goes negative
-      var outlineRectangle = new Rectangle( label.bounds.dilated( 2 ), { fill: EnergySkateParkColorScheme.transparentPanelFill } );
-      outlineRectangle.addChild( label );
+      var labelRectangle = new Rectangle( label.bounds.dilated( 2 ), { fill: EnergySkateParkColorScheme.transparentPanelFill } );
+      labelRectangle.addChild( label );
 
       // label text image includes the background rectangle to reduce the number of nodes using WebGL as a renderer,
       // resolution high enough to improve text quality, but not consume too many resources
-      var imageNode = outlineRectangle.rasterized( { resolution: 8, wrap: false } );
+      var imageNode = labelRectangle.rasterized( { resolution: 8, wrap: false } );
 
       // Convert to graph coordinates
       // However, do not floor for values less than 1 otherwise a nonzero value will show up as zero, see #159
