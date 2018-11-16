@@ -42,9 +42,12 @@ define( function( require ) {
 
       var label = barGraphBackground.labelMap[ index ];
 
-      // wrap with a rounded rectangle with some opacity so that it shows up on top of the bar
+      // semi-transparent rectangle, so that the label is visible when the bar goes negative
       var outlineRectangle = new Rectangle( label.bounds.dilated( 2 ), { fill: EnergySkateParkColorScheme.transparentPanelFill } );
       outlineRectangle.addChild( label );
+
+      // label text image includes the background rectangle to reduce the number of nodes using WebGL as a renderer,
+      // resolution high enough to improve text quality, but not consume too many resources
       var imageNode = outlineRectangle.rasterized( { resolution: 8, wrap: false } );
 
       // Convert to graph coordinates
