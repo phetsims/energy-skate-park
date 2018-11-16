@@ -33,8 +33,6 @@ define( function( require ) {
     var getBarX = barGraphBackground.getBarX;
     var originY = barGraphBackground.originY;
 
-    // var maxHeight = barGraphBackground.getMaximumBarHeight();
-
     // Create an energy bar that animates as the skater moves. Composed of 2 rectangles, one solid and one that
     // is semi-transparent in case energy is negative. The semi transparent rectangle will extend up to the width
     // of the bar label.
@@ -47,7 +45,6 @@ define( function( require ) {
       // wrap with a rounded rectangle with some opacity so that it shows up on top of the bar
       var outlineRectangle = new Rectangle( label.bounds.dilated( 2 ), { fill: EnergySkateParkColorScheme.transparentPanelFill } );
       outlineRectangle.addChild( label );
-
       var imageNode = outlineRectangle.rasterized( { resolution: 8, wrap: false } );
 
       // Convert to graph coordinates
@@ -120,7 +117,11 @@ define( function( require ) {
         potentialBar,
         thermalBar,
         totalBar
-      ]
+      ],
+
+      // fixes a bug where adding strokes to the bars in the graph cause the webgl rectangles to jiggle as values
+      // change, see https://github.com/phetsims/energy-skate-park/issues/39, but also for general performance
+      preventFit: true
     } );
 
     // When the bar graph is shown, update the bars (because they do not get updated when invisible for performance reasons)
