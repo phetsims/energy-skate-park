@@ -13,7 +13,7 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
   var phetioInherit = require( 'TANDEM/phetioInherit' );
-  var Track = require( 'ENERGY_SKATE_PARK/model/Track' );
+  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
 
   // ifphetio
   var assertInstanceOf = require( 'ifphetio!PHET_IO/assertInstanceOf' );
