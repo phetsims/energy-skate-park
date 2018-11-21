@@ -75,7 +75,6 @@ define( function( require ) {
           if ( this.timeSinceSave > SAVE_REFRESH_RATE ) {
             this.timeSinceSave = 0;
             this.skaterSamples.add( new SkaterSample( updatedState ) );
-            console.log( this.skaterSamples.length );
           }
         }
       }
