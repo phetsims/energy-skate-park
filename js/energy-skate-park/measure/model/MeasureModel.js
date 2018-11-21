@@ -14,6 +14,7 @@ define( function( require ) {
   var BooleanProperty = require( 'AXON/BooleanProperty' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
+  var Property = require( 'AXON/Property' ); 
   var SkaterSample = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterSample' );
   var ObservableArray = require( 'AXON/ObservableArray' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -41,10 +42,9 @@ define( function( require ) {
     // @private {number} - in seconds, time elapsed since the last time we saved a sample
     this.timeSinceSave = 0;
 
-    // when the skater changes directions, all samples are cleared so that more than a half period of samples
-    // don't occlude each other
+    // TODO: Probably more Properties here
     var self = this;
-    this.skater.directionProperty.link( function() {
+    Property.multilink( [ this.skater.directionProperty, this.skater.trackProperty, this.skater.referenceHeightProperty ], function() {
       self.skaterSamples.clear();
     } );
   }
