@@ -64,7 +64,15 @@ define( function( require ) {
       this.timeSinceSave =  0;
     },
 
-
+    /**
+     * Updates a SkaterState object with a time step, but also saves a sample of the skaterSate under the right
+     * conditions. The individual sample is stored for later inspection.
+     *
+     * @param {number} dt
+     * @param {SkaterSate} skaterState - modified by this function
+     *
+     * @return {SkaterState} - returned, may update the model Skater
+     */
     stepModel: function( dt, skaterState ) {
       var updatedState = EnergySkateParkFullTrackSetModel.prototype.stepModel.call( this, dt, skaterState );
 
