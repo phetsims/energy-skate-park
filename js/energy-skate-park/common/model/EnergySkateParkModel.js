@@ -131,7 +131,7 @@ define( function( require ) {
       tandem: tandem.createTandem( 'pieChartVisibleProperty' ),
       phetioType: PropertyIO( BooleanIO )
     } );
-    this.barGraphVisibleProperty = new Property( true, {
+    this.barGraphVisibleProperty = new Property( false, {
       tandem: tandem.createTandem( 'barGraphVisibleProperty' ),
       phetioType: PropertyIO( BooleanIO )
     } );

@@ -20,7 +20,10 @@ define( function( require ) {
    * @param {Tandem} tandem
    */
   function MeasureScreenView( model, tandem ) {
-    EnergySkateParkScreenView.call( this, model, tandem );
+    EnergySkateParkScreenView.call( this, model, tandem, {
+      includeSamplesCheckbox: true,
+      includeBarGraphCheckbox: false
+    } );
 
     // TODO: Does it matter which layer?
     this.addToTopLayer( new SkaterSamplesNode( model, this.modelViewTransform ) );

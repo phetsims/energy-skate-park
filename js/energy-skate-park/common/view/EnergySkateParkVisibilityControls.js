@@ -31,13 +31,28 @@ define( function( require ) {
   function EnergySkateParkVisibilityControls( model, tandem, options ) {
 
     options = _.extend( {
-
-      // include a checkbox that enables/disables samples? If true, this is the first checkbox in the set
-      includeSamplesCheckbox: false
+      includeSamplesCheckbox: false,
+      includeBarGraphCheckbox: true
     }, options );
 
     var itemAlignGroup = new AlignGroup();
-    var checkboxItems = [
+    var checkboxItems = [];
+
+    if ( options.includeSamplesCheckbox ) {
+      assert && assert( model.sampleSkaterProperty, 'no Property for measuring samples, add to model or don\'t use options' );
+
+      checkboxItems.push(
+        new EnergySkateParkCheckboxItem(
+          controlsPathString,
+          EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) ),
+          itemAlignGroup,
+          model.sampleSkaterProperty,
+          tandem
+        )
+      );
+    }
+
+    checkboxItems.push(
       new EnergySkateParkCheckboxItem(
         pieChartString,
         EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } ),
@@ -45,13 +60,19 @@ define( function( require ) {
         model.pieChartVisibleProperty,
         tandem
       ),
-      new EnergySkateParkCheckboxItem(
+    );
+
+    if ( options.includeBarGraphCheckbox ) {
+      checkboxItems.push( new EnergySkateParkCheckboxItem(
         plotsBarGraphString,
         EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale:0.8 } ),
         itemAlignGroup,
         model.barGraphVisibleProperty,
         tandem
-      ),
+      ), );
+    }
+
+    checkboxItems = checkboxItems.concat( [
       new EnergySkateParkCheckboxItem( 
         controlsShowGridString,
         EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } ),
@@ -73,21 +94,7 @@ define( function( require ) {
         model.referenceHeightVisibleProperty,
         tandem
       )
-    ];
-
-    if ( options.includeSamplesCheckbox ) {
-      assert && assert( model.sampleSkaterProperty, 'no Property for measuring samples, add to model or don\'t use options' );
-
-      checkboxItems.unshift(
-        new EnergySkateParkCheckboxItem(
-          controlsPathString,
-          EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) ),
-          itemAlignGroup,
-          model.sampleSkaterProperty,
-          tandem
-        )
-      );
-    }
+    ] );
 
     VBox.call( this, {
       children: checkboxItems,

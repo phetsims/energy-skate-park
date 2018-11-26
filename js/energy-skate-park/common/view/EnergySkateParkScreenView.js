@@ -74,7 +74,14 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function EnergySkateParkScreenView( model, tandem ) {
+  function EnergySkateParkScreenView( model, tandem, options ) {
+
+    options = _.extend( {
+
+      // options for visibility controls
+      includeBarGraphCheckbox: true,
+      includeSamplesCheckbox: false
+    }, options );
 
     var trackNodeGroupTandem = tandem.createGroupTandem( 'trackNode' );
 
@@ -131,7 +138,8 @@ define( function( require ) {
       visibilityControlsOptions: {
 
         // include samples if model supports it
-        includeSamplesCheckbox: !!model.sampleSkaterProperty
+        includeSamplesCheckbox: options.includeSamplesCheckbox,
+        includeBarGraphCheckbox: options.includeBarGraphCheckbox
       }
     } );
     this.bottomLayer.addChild( this.controlPanel );
