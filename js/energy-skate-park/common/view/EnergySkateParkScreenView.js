@@ -574,11 +574,23 @@ define( function( require ) {
     /**
      * Add a node to the front of the back layer (the end of this.backLayer children array). For memory and performance
      * reasons, this node had better not be using WebGL.
-     *
      * @protected
+     *
+     * @param {Node} node
      */
     addToBottomLayer: function( node ) {
       this.bottomLayer.addChild( node );
+    },
+
+    /**
+     * Add a node to the front of the top layer (the end of this.topLayer children array). For memory and
+     * performance reasons, this node and its sub tree had better not be using WebGL.
+     * @protected
+     *
+     * @param {node} node
+     */
+    addToTopLayer: function( node ) {
+      this.topLayer.addChild( node );
     }
   } );
 } );

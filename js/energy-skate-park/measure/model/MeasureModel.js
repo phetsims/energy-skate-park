@@ -21,7 +21,7 @@ define( function( require ) {
 
   // constants
   // in seconds, how frequently we will sample the state of the skater and add to teh list of SkaterSamples.
-  var SAVE_REFRESH_RATE = 0.5;
+  var SAVE_REFRESH_RATE = 0.1;
 
   /**
    * @constructor

@@ -11,8 +11,8 @@ define( function( require ) {
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
+  var SkaterSamplesNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterSamplesNode' );
   var inherit = require( 'PHET_CORE/inherit' );
-
 
   /**
    * @constructor
@@ -21,6 +21,9 @@ define( function( require ) {
    */
   function MeasureScreenView( model, tandem ) {
     EnergySkateParkScreenView.call( this, model, tandem );
+
+    // TODO: Does it matter which layer?
+    this.addToTopLayer( new SkaterSamplesNode( model, this.modelViewTransform ) );
   }
 
   energySkatePark.register( 'MeasureScreenView', MeasureScreenView );
