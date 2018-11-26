@@ -126,7 +126,13 @@ define( function( require ) {
 
       // right now, draggable tracks and track selection are mutually exclusive
       // TODO: this might not be the case for screens
-      includeTrackSelection: !model.draggableTracks
+      includeTrackSelection: !model.draggableTracks,
+
+      visibilityControlsOptions: {
+
+        // include samples if model supports it
+        includeSamplesCheckbox: !!model.sampleSkaterProperty
+      }
     } );
     this.bottomLayer.addChild( this.controlPanel );
     this.controlPanel.right = this.layoutBounds.width - 5;

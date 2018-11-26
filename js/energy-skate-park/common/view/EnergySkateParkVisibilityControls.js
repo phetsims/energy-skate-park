@@ -16,6 +16,7 @@ define( function( require ) {
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
+  var controlsPathString = require( 'string!ENERGY_SKATE_PARK/controls.path' );
   var controlsReferenceHeightString = require( 'string!ENERGY_SKATE_PARK/controls.referenceHeight' );
   var controlsShowGridString = require( 'string!ENERGY_SKATE_PARK/controls.show-grid' );
   var pieChartString = require( 'string!ENERGY_SKATE_PARK/pieChart' );
@@ -27,7 +28,13 @@ define( function( require ) {
    * @param {Array.<EnergySkateParkCheckboxItem>} checkboxItems
    * @param {object} options
    */
-  function EnergySkateParkVisibilityControls( model, tandem ) {
+  function EnergySkateParkVisibilityControls( model, tandem, options ) {
+
+    options = _.extend( {
+
+      // include a checkbox that enables/disables samples? If true, this is the first checkbox in the set
+      includeSamplesCheckbox: false
+    }, options );
 
     var itemAlignGroup = new AlignGroup();
     var checkboxItems = [
@@ -67,6 +74,21 @@ define( function( require ) {
         tandem
       )
     ];
+
+    if ( options.includeSamplesCheckbox ) {
+      assert && assert( model.sampleSkaterProperty, 'no Property for measuring samples, add to model or don\'t use options' );
+
+      checkboxItems.unshift(
+        new EnergySkateParkCheckboxItem(
+          controlsPathString,
+          EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) ),
+          itemAlignGroup,
+          model.sampleSkaterProperty,
+          tandem
+        )
+      );
+    }
+
     VBox.call( this, {
       children: checkboxItems,
       align: 'left',

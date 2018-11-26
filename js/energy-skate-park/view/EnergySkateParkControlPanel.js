@@ -40,11 +40,16 @@ define( function( require ) {
       includeMass: false, // include a slider that changes mass?
       includeGravity: true, // include a slider that changes gravity?
       includeFriction: false, // include a slider that changes friction?
-      includeTrackSelection: false
+      includeTrackSelection: false,
+
+      // passed to EnergySkateParkVisibilityControls, see that type for supported options
+      visibilityControlsOptions: {}
     }, options );
 
+    options.visibilityControlsOptions = _.extend( {}, options.visibilityControlsOptions );
+
     // controls that change visibility of items in the screen
-    var visibilityControls = new EnergySkateParkVisibilityControls( model, tandem );
+    var visibilityControls = new EnergySkateParkVisibilityControls( model, tandem, options.visibilityControlsOptions );
     var children = [ visibilityControls ];
 
     // separator between visibility controls and track selection buttons

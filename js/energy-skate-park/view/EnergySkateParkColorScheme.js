@@ -20,6 +20,10 @@ define( function( require ) {
     thermalEnergy: new Color( '#FF5500' ), // red colorblind
     totalEnergy: new Color( '#B4B400' ), // dirty yellow
 
+    // fill of circles that show the skater path
+    pathFill: new Color( 220, 175, 250 ),
+    pathStroke: 'black',
+
     panelFill: '#F0F0F0',
 
     // surrounds text for better visibility

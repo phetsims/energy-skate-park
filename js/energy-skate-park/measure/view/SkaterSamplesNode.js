@@ -16,14 +16,10 @@ define( function( require ) {
 
   // modules
   var Circle = require( 'SCENERY/nodes/Circle' );
-  var Color = require( 'SCENERY/util/Color' );
+  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
-
-  // constants
-  var FILL_COLOR = new Color( 220, 175, 250 );
-  var STROKE_COLOR = 'black';
 
   /**
    * @constructor
@@ -39,7 +35,12 @@ define( function( require ) {
       var viewY = modelViewTransform.modelToViewY( addedSample.positionY );
 
       // this should probably be a new type with knowledge of how to show probe data and such
-      var sampleCircle = new Circle( 3, { fill: FILL_COLOR, stroke: STROKE_COLOR, x: viewX, y: viewY } );
+      var sampleCircle = new Circle( 3, {
+        fill: EnergySkateParkColorScheme.pathFill,
+        stroke: EnergySkateParkColorScheme.pathStroke,
+        x: viewX,
+        y: viewY
+      } );
       self.addChild( sampleCircle );
 
       model.skaterSamples.addItemRemovedListener( function removalListener( removedSample ) {

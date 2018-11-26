@@ -94,5 +94,8 @@
   },
   "heightEqualsZero": {
     "value": "Height = 0"  
+  },
+  "controls.path": {
+    "value": "Path"
   }
 }

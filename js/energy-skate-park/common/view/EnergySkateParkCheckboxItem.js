@@ -25,6 +25,7 @@ define( function( require ) {
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Shape = require( 'KITE/Shape' );
   var Text = require( 'SCENERY/nodes/Text' );
+  var Vector2 = require( 'DOT/Vector2' );
 
   // constants
   // 
@@ -158,6 +159,39 @@ define( function( require ) {
       return new Path( shape, {
         fill: 'black'
       } );
+    },
+
+    // create an icon for the "Path" checkbox, three circles connected by a line in the shape of "U".
+    createSamplesIcon: function( tandem ) {
+
+      var circleRadius = 3;
+
+      // positions of circles, for circles and path
+      var pointDistance = 3 * circleRadius;
+      var firstCenter = new Vector2( -pointDistance, -pointDistance );
+      var secondCenter = new Vector2( 0, 0 );
+      var thirdCenter = new Vector2( pointDistance, -pointDistance );
+
+      // create three circles
+      var circleShape = new Shape();
+      circleShape.circle( firstCenter, circleRadius ).newSubpath()
+        .circle( secondCenter, circleRadius ).newSubpath()
+        .circle( thirdCenter, circleRadius );
+      var circlesPath = new Path( circleShape, {
+        fill: EnergySkateParkColorScheme.pathFill,
+        stroke: EnergySkateParkColorScheme.pathStroke
+      } );
+
+      // line connecting each circle
+      var lineShape = new Shape().moveToPoint( firstCenter )
+        .quadraticCurveToPoint( firstCenter.plusXY( 0, pointDistance ), secondCenter )
+        .quadraticCurveToPoint( thirdCenter.plusXY( 0, pointDistance ), thirdCenter );
+      var linePath = new Path( lineShape, {
+        stroke: EnergySkateParkColorScheme.pathStroke,
+        lineWidth: 2
+      } );
+
+      return new Node( { children: [ linePath, circlesPath ] } );
     }
   } );
 } );
