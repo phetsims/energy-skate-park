@@ -43,8 +43,15 @@ define( function( require ) {
     this.timeSinceSave = 0;
 
     // TODO: Probably more Properties here
+    var resetSamplesProperties = [
+      this.skater.directionProperty,
+      this.skater.trackProperty,
+      this.skater.referenceHeightProperty,
+      this.sampleSkaterProperty
+    ];
+
     var self = this;
-    Property.multilink( [ this.skater.directionProperty, this.skater.trackProperty, this.skater.referenceHeightProperty ], function() {
+    Property.multilink( resetSamplesProperties, function() {
       self.skaterSamples.clear();
     } );
   }
