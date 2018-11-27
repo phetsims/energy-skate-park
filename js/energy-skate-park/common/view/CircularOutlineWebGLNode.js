@@ -4,7 +4,7 @@
  * Dashed outline for a circle using WebGLNode. Many portions of this file are quite similar to PieChartWebGLSliceNode,
  * so we could consider turning into a single type in the near future. (Like adding a glLineDash option to that node
  * and moving the implementation there?)
- * 
+ *
  * @author Jesse Greenberg
  */
 
@@ -107,6 +107,9 @@ define( function( require ) {
       // Returns the color from the vertex shader
       'void main( void ) {',
       '  gl_FragColor = vColor;',
+
+      // Use premultipled alpha, see https://github.com/phetsims/energy-skate-park/issues/39
+      '  gl_FragColor.rgb *= gl_FragColor.a;',
       '}'
     ].join( '\n' );
 
