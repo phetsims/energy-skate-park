@@ -97,5 +97,8 @@
   },
   "controls.path": {
     "value": "Path"
+  },
+  "energyJoulesPattern": {
+    "value": "{{value}} J"
   }
 }

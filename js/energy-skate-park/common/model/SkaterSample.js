@@ -12,6 +12,7 @@ define( function( require ) {
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  var Vector2 = require( 'DOT/Vector2' );
 
   /**
    * @constructor
@@ -24,11 +25,10 @@ define( function( require ) {
     this.speed = skaterState.getSpeed();
     this.kineticEnergy = skaterState.getKineticEnergy();
     this.potentialEnergy = skaterState.getPotentialEnergy();
-    this.thermalEnergyProperty = skaterState.thermalEnergy;
-    this.totalEnergyProperty = skaterState.getTotalEnergy();
+    this.thermalEnergy = skaterState.thermalEnergy;
+    this.totalEnergy = skaterState.getTotalEnergy();
     this.referenceHeight = skaterState.referenceHeight;
-    this.positionX = skaterState.positionX;
-    this.positionY = skaterState.positionY;
+    this.position = new Vector2( skaterState.positionX, skaterState.positionY );
   }
 
   energySkatePark.register( 'SkaterSample', SkaterSample  );

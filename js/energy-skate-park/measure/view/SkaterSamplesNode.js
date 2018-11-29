@@ -15,11 +15,11 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var Circle = require( 'SCENERY/nodes/Circle' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Node = require( 'SCENERY/nodes/Node' );
+  const Circle = require( 'SCENERY/nodes/Circle' );
+  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Node = require( 'SCENERY/nodes/Node' );
 
   /**
    * @constructor
@@ -31,15 +31,11 @@ define( function( require ) {
     var self = this;
     model.skaterSamples.addItemAddedListener( function( addedSample ) {
 
-      var viewX = modelViewTransform.modelToViewX( addedSample.positionX );
-      var viewY = modelViewTransform.modelToViewY( addedSample.positionY );
-
       // this should probably be a new type with knowledge of how to show probe data and such
       var sampleCircle = new Circle( 3, {
         fill: EnergySkateParkColorScheme.pathFill,
         stroke: EnergySkateParkColorScheme.pathStroke,
-        x: viewX,
-        y: viewY
+        center: modelViewTransform.modelToViewPosition( addedSample.position )
       } );
       self.addChild( sampleCircle );
 
