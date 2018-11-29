@@ -144,9 +144,8 @@ define( require => {
         // position the node
         probeNode.translation = modelViewTransform.modelToViewPosition( modelPosition );
 
-        // compare the center of the 
+        // compare the center of the crosshairs in the probe node
         const modelProbeCenter = modelViewTransform.viewToModelPosition( probeNode.getCenter() );
-
         for ( let i = 0; i < samples.length; i++ ) {
           if ( modelProbeCenter.equalsEpsilon( samples.get( i ).position, 0.5 ) ) {
             this.displayState( samples.get( i ) );
