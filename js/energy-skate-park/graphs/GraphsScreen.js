@@ -13,10 +13,13 @@ define( function( require ) {
   var GraphsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/model/GraphsModel' );
   var GraphsScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/GraphsScreenView' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var Image = require( 'SCENERY/nodes/Image' );
   var Screen = require( 'JOIST/Screen' );
 
   // images
   // TODO: navigation bar/home screen images
+  var iconFrictionHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-friction-homescreen.png' );
+  var iconFrictionNavbar = require( 'image!ENERGY_SKATE_PARK/icon-friction-navbar.png' );
 
   // strings
   var screenGraphsString = require( 'string!ENERGY_SKATE_PARK/screen.graphs' );
@@ -29,6 +32,9 @@ define( function( require ) {
 
     var options = _.extend( {
       name: screenGraphsString,
+      homeScreenIcon: new Image( iconFrictionHomescreen ),
+      navigationBarIcon: new Image( iconFrictionNavbar ),
+
       tandem: tandem
     }, options );
 

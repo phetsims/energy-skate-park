@@ -13,11 +13,13 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var LabModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/model/LabModel' );
   var LabScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/view/LabScreenView' );
+  var Image = require( 'SCENERY/nodes/Image' );
   var Screen = require( 'JOIST/Screen' );
 
   // images
   // TODO: navigation bar/home screen images
-  
+  var iconPlaygroundHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-playground-homescreen.png' );
+  var iconPlaygroundNavbar = require( 'image!ENERGY_SKATE_PARK/icon-playground-navbar.png' );
 
   // strings
   var screenLabString = require( 'string!ENERGY_SKATE_PARK/screen.lab' );
@@ -30,6 +32,9 @@ define( function( require ) {
 
     var options = _.extend( {
       name: screenLabString,
+      homeScreenIcon: new Image( iconPlaygroundHomescreen ),
+      navigationBarIcon: new Image( iconPlaygroundNavbar ),
+
       tandem: tandem
     }, options );
 
