@@ -1,7 +1,8 @@
 // Copyright 2013-2018, University of Colorado Boulder
 
 /**
- * A single screen for the Energy Skate Park sim.
+ * Simulation for Energy Skate Park. Also meant to be extended by Energy Skate Park: Basics
+ * because this has sim specific options that help the Energy Skate Park sims run better on iPad2.
  *
  * @author Sam Reid
  */
@@ -11,39 +12,30 @@ define( function( require ) {
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
-  var GraphsScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsScreen' );
+  var platform = require( 'PHET_CORE/platform' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var IntroScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/IntroScreen' );
-  var LabScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/LabScreen' );
-  var MeasureScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/MeasureScreen' );
   var Sim = require( 'JOIST/Sim' );
-
-  // strings
-  var energySkateParkTitleString = require( 'string!ENERGY_SKATE_PARK/energy-skate-park.title' );
 
   /**
    * @constructor
+   * @param {string} titleString - title for the simulation
+   * @param {Array.<Screen>} screens
+   * @param {Object} options
    * @param {Tandem} tandem
    */
-  function EnergySkateParkSim( tandem ) {
-    var options = {
-      credits: {
-        leadDesign: 'Ariel Paul, Noah Podolefsky, Sam Reid',
-        softwareDevelopment: 'Sam Reid',
-        team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Emily B. Moore, Kathy Perkins',
-        graphicArts: 'Sharon Siman-Tov, Amanda McGarry',
-        qualityAssurance: 'Steele Dalton, Oliver Orejola, Arnab Purkayastha, Bryan Yoelin'
-      },
+  function EnergySkateParkSim( titleString, screens, tandem, options ) {
 
-      showSaveAndLoad: EnergySkateParkQueryParameters.showSaveAndLoad
-    };
+    options = _.extend( {
+      showSaveAndLoad: EnergySkateParkQueryParameters.showSaveAndLoad,
 
-    Sim.call( this, energySkateParkTitleString, [
-      new IntroScreen( tandem.createTandem( 'introScreen' ) ),
-      new MeasureScreen( tandem.createTandem( 'measureScreen' ) ),
-      new GraphsScreen( tandem.createTandem( 'graphsScreen' ) ),
-      new LabScreen( tandem.createTandem( 'labScreen' ) )
-    ], options );
+      // if running the sim on an ipad, do not use the "backing scale" technique
+      // for antialiasing because this method takes up too much memory, see
+      // https://github.com/phetsims/scenery/issues/859 and
+      // https://github.com/phetsims/energy-skate-park-basics/issues/435
+      allowBackingScaleAntialiasing: !platform.mobileSafari
+    }, options );
+
+    Sim.call( this, titleString, screens, options );
   }
 
   energySkatePark.register( 'EnergySkateParkSim', EnergySkateParkSim );
