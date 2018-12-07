@@ -37,9 +37,9 @@ define( function( require ) {
   function EnergySkateParkControlPanel( model, screenView, modelViewTransform, tandem, options ) {
 
     options = _.extend( {
-      includeMass: false, // include a slider that changes mass?
-      includeGravity: true, // include a slider that changes gravity?
-      includeFriction: false, // include a slider that changes friction?
+      includeMassSlider: false, // include a slider that changes mass?
+      includeGravitySlider: true, // include a slider that changes gravity?
+      includeFrictionSlider: false, // include a slider that changes friction?
       includeTrackSelection: false,
 
       // passed to EnergySkateParkVisibilityControls, see that type for supported options
@@ -61,10 +61,10 @@ define( function( require ) {
       children.push( new HSeparator( separatorWidth ) );
     }
 
-    if ( options.includeMass ) {
+    if ( options.includeMassSlider ) {
       children.push( new PhysicalControl(
         model.skater.massProperty,
-        new Range( Constants.MIN_MASS, Constants.MAX_MASS ),
+        model.skater.massRange,
         controlsMassString,
         tandem.createTandem( 'massPhysicalControl' ), {
           minLabel: smallString
@@ -72,7 +72,7 @@ define( function( require ) {
       ) );
     }
 
-    if ( options.includeFriction ) {
+    if ( options.includeFrictionSlider ) {
       assert && assert( model.frictionProperty.value > 0, 'if including friction, it must have non-zero initial value' );
 
       children.push( new PhysicalControl(
@@ -83,7 +83,7 @@ define( function( require ) {
       ) );
     }
 
-    if ( options.includeGravity ) {
+    if ( options.includeGravitySlider ) {
       children.push( new PhysicalControl(
         model.skater.gravityMagnitudeProperty,
         new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ),

@@ -79,8 +79,16 @@ define( function( require ) {
     options = _.extend( {
 
       // options for visibility controls
+      // TODO: Break into a sub options object for visibility controls?
       includeBarGraphCheckbox: true,
-      includeSamplesCheckbox: false
+      includeSamplesCheckbox: false,
+      includeReferenceHeightCheckbox: true,
+
+      // iptions for slider controls
+      includeGravitySlider: true,
+      includeMassSlider: false,
+
+      includeMeasuringTapePanel: true
     }, options );
 
     var trackNodeGroupTandem = tandem.createGroupTandem( 'trackNode' );
@@ -129,7 +137,9 @@ define( function( require ) {
 
     // @protected (for layout in subtypes)
     this.controlPanel = new EnergySkateParkControlPanel( model, this, modelViewTransform, tandem.createTandem( 'controlPanel' ), {
-      includeFriction: model.frictionAllowed,
+      includeFrictionSlider: model.frictionAllowed,
+      includeMassSlider: options.includeMassSlider,
+      includeGravitySlider: options.includeGravitySlider,
 
       // right now, draggable tracks and track selection are mutually exclusive
       // TODO: this might not be the case for screens
@@ -139,7 +149,8 @@ define( function( require ) {
 
         // include samples if model supports it
         includeSamplesCheckbox: options.includeSamplesCheckbox,
-        includeBarGraphCheckbox: options.includeBarGraphCheckbox
+        includeBarGraphCheckbox: options.includeBarGraphCheckbox,
+        includeReferenceHeightCheckbox: options.includeReferenceHeightCheckbox
       }
     } );
     this.bottomLayer.addChild( this.controlPanel );
@@ -161,8 +172,12 @@ define( function( require ) {
 
     // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
     this.measuringTapePanel = new MeasuringTapePanel( model, this.measuringTapeNode, modelViewTransform );
-    this.bottomLayer.addChild( this.measuringTapePanel );
     this.measuringTapePanel.top = this.controlPanel.bottom + 5;
+
+    // TODO: Put all code related to the measuring tape in this conditional
+    if ( options.includeMeasuringTapePanel ) {
+      this.bottomLayer.addChild( this.measuringTapePanel );
+    }
 
     // For the playground screen, show attach/detach toggle buttons
     if ( model.draggableTracks ) {
@@ -430,6 +445,7 @@ define( function( require ) {
     this.topLayer.addChild( returnSkaterToPreviousStartingPositionButton );
     this.topLayer.addChild( returnSkaterToGroundButton );
 
+    // TODO: This should be removed with includeMeasuringTape options like the above TODO
     this.topLayer.addChild( this.measuringTapeNode );
 
     // has all of the play, pause, and step controls for layout purposes

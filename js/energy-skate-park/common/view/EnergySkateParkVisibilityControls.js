@@ -3,6 +3,9 @@
 /**
  * Checkboxes that control visibility of items in energy-skate-park, including the pie chart, bar graph, grid,
  * speedometer, and reference height control.
+ *
+ * At the moment, order of checkboxes cannot be controlled.
+ * 
  * @author Jesse Greenberg
  */
 define( function( require ) {
@@ -32,7 +35,8 @@ define( function( require ) {
 
     options = _.extend( {
       includeSamplesCheckbox: false,
-      includeBarGraphCheckbox: true
+      includeBarGraphCheckbox: true,
+      includeReferenceHeightCheckbox: false
     }, options );
 
     var itemAlignGroup = new AlignGroup();
@@ -86,15 +90,21 @@ define( function( require ) {
         itemAlignGroup,
         model.speedometerVisibleProperty,
         tandem
-      ),
-      new EnergySkateParkCheckboxItem(
-        controlsReferenceHeightString,
-        EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) ),
-        itemAlignGroup,
-        model.referenceHeightVisibleProperty,
-        tandem
       )
     ] );
+
+    if ( options.includeReferenceHeightCheckbox ) {
+      checkboxItems.push(
+        new EnergySkateParkCheckboxItem(
+          controlsReferenceHeightString,
+          EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) ),
+          itemAlignGroup,
+          model.referenceHeightVisibleProperty,
+          tandem
+        )
+      );
+    }
+
 
     VBox.call( this, {
       children: checkboxItems,

@@ -12,7 +12,6 @@ define( function( require ) {
 
   // modules
   var Circle = require( 'SCENERY/nodes/Circle' );
-  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -24,10 +23,6 @@ define( function( require ) {
   // images
   var skaterLeftImage = require( 'image!ENERGY_SKATE_PARK/skater-left.png' );
   var skaterRightImage = require( 'image!ENERGY_SKATE_PARK/skater-right.png' );
-
-  // Map from mass(kg) to the amount to scale the image
-  var centerMassValue = (Constants.MIN_MASS + Constants.MAX_MASS) / 2;
-  var massToScale = new LinearFunction( centerMassValue, Constants.MAX_MASS, 0.34, 0.43 );
 
   /**
    * SkaterNode constructor
@@ -70,6 +65,10 @@ define( function( require ) {
 
     var imageWidth = this.width;
     var imageHeight = this.height;
+
+    // @private - Map from mass(kg) to the amount to scale the image
+    var centerMassValue = skater.massRange.getCenter();
+    var massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.34, 0.43 );
 
     // Update the position and angle.  Normally the angle would only change if the position has also changed, so no need
     // for a duplicate callback there.  Uses pooling to avoid allocations, see #50

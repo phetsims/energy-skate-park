@@ -34,6 +34,7 @@ define( function( require ) {
     DEFAULT_MASS: (minMass + maxMass) / 2,
     MIN_MASS: minMass,
     MAX_MASS: maxMass,
+    MASS_RANGE: new Range( minMass, maxMass ),
 
     // coefficients of friction, default values are not common
     MIN_FRICTION: 0,

@@ -76,7 +76,7 @@ define( function( require ) {
 
     /**
      * In "basics" screens, the track set includes the parabola, slope, and double well.
-     *
+     * 
      * @public
      * @param {EnergySkateParkModel} model
      * @return {Array.<Track>}

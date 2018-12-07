@@ -52,10 +52,14 @@ define( function( require ) {
   function Skater( tandem, options ) {
 
     options = _.extend( {
-      defaultMass: Constants.DEFAULT_MASS
+      defaultMass: Constants.DEFAULT_MASS,
+      massRange: Constants.MASS_RANGE
     }, options );
 
     var self = this;
+
+    // @private {Range}
+    this.massRange = options.massRange;
 
     // @public - The track the skater is on, or null if free-falling
     this.trackProperty = new Property( null, {
@@ -117,7 +121,7 @@ define( function( require ) {
 
     // @private {number} - Start in the middle of the mass PhysicalControl range
     this.massProperty = new NumberProperty( options.defaultMass, {
-      range: new Range( Constants.MIN_MASS, Constants.MAX_MASS ),
+      range: options.massRange,
       tandem: tandem.createTandem( 'massProperty' ),
       units: 'kilograms'
     } );
@@ -431,7 +435,7 @@ define( function( require ) {
 
       // Center pie chart over skater's head not his feet so it doesn't look awkward when skating in a parabola
       // Note this has been tuned independently of SkaterNode.massToScale, which also accounts for the image dimensions
-      var skaterHeight = Util.linear( Constants.MIN_MASS, Constants.MAX_MASS, 1.65, 2.4, this.massProperty.value );
+      var skaterHeight = Util.linear( this.massRange.min, this.massRange.max, 1.65, 2.4, this.massProperty.value );
 
       var vectorX = skaterHeight * Math.cos( this.angleProperty.value - Math.PI / 2 );
       var vectorY = skaterHeight * Math.sin( this.angleProperty.value - Math.PI / 2 );
