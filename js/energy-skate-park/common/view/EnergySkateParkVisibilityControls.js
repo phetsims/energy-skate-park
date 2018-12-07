@@ -105,7 +105,6 @@ define( function( require ) {
       );
     }
 
-
     VBox.call( this, {
       children: checkboxItems,
       align: 'left',

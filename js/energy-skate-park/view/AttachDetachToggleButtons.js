@@ -16,10 +16,12 @@ define( function( require ) {
   var Panel = require( 'SUN/Panel' );
   var RadioButtonGroup = require( 'SUN/buttons/RadioButtonGroup' );
 
-
   // images
   var attachIcon = require( 'image!ENERGY_SKATE_PARK/attach.png' );
   var detachIcon = require( 'image!ENERGY_SKATE_PARK/detach.png' );
+
+  // constants
+  var SELECTED_LINE_WIDTH = 2.3;
 
   /**
    * Constructor for the AttachDetachToggleButtons
@@ -65,15 +67,18 @@ define( function( require ) {
       }
     ];
 
+    var buttonSpacing = contentWidth - ( options.xMargin * 2 ) - ( radioButtonsContent[ 0 ].node.width * 2 ) - SELECTED_LINE_WIDTH * 2; 
+    assert && assert( buttonSpacing > 0, 'buttons must have non zero spacing' );
+
     var radioButtons = new RadioButtonGroup( detachableProperty, radioButtonsContent,
       {
         buttonContentXMargin: 0,
         buttonContentYMargin: 0,
         baseColor: 'white',
         disabledBaseColor: 'rgba(255,255,255,0.5)',
-        spacing: 20,
+        spacing: buttonSpacing,
         cornerRadius: 6,
-        selectedLineWidth: 2.3,
+        selectedLineWidth: SELECTED_LINE_WIDTH,
         selectedStroke: '#3291b8',
         deselectedStroke: 'gray',
         orientation: 'horizontal',
