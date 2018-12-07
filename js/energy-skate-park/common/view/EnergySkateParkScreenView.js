@@ -312,7 +312,7 @@ define( function( require ) {
           fill: 'white',
           stroke: 'black'
         } );
-      this.addChild( trackCreationPanel );
+      this.bottomLayer.addChild( trackCreationPanel );
 
       model.tracks.addItemAddedListener( addTrackNode );
 
@@ -354,7 +354,7 @@ define( function( require ) {
       clearButtonEnabledProperty.linkAttribute( clearButton, 'enabled' );
       clearButton.addListener( function() {model.clearTracks();} );
 
-      this.addChild( clearButton.mutate( { left: 5, centerY: trackCreationPanel.centerY } ) );
+      this.bottomLayer.addChild( clearButton.mutate( { left: 5, centerY: trackCreationPanel.centerY } ) );
     }
 
     this.bottomLayer.addChild( trackLayer );
