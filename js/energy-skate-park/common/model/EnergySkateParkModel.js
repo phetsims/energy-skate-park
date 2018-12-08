@@ -288,9 +288,20 @@ define( function( require ) {
       // eyeballing it for now.
       var offset = new Vector2( -5.1, -0.85 );
       var controlPoints = [
-        new ControlPoint( offset.x - 1, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } ),
-        new ControlPoint( offset.x, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } ),
-        new ControlPoint( offset.x + 1, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } )
+
+        // Control points only participate in the state if they are draggable (on the lab screens)
+        new ControlPoint( offset.x - 1, offset.y, {
+          tandem: controlPointGroupTandem.createNextTandem(),
+          phetioState: this.draggableTracks
+        } ),
+        new ControlPoint( offset.x, offset.y, {
+          tandem: controlPointGroupTandem.createNextTandem(),
+          phetioState: this.draggableTracks
+        } ),
+        new ControlPoint( offset.x + 1, offset.y, {
+          tandem: controlPointGroupTandem.createNextTandem(),
+          phetioState: this.draggableTracks
+        } )
       ];
       this.tracks.add( new Track( this, this.tracks, controlPoints, true, null, this.availableModelBoundsProperty, {
           tandem: trackGroupTandem.createNextTandem()
@@ -598,7 +609,7 @@ define( function( require ) {
      * @param {number} dt
      * @param {Vector2} proposedVelocity
      *
-     * @return {SkaterState} 
+     * @return {SkaterState}
      */
     interactWithTracksWhileFalling: function( physicalTracks, skaterState, proposedPosition, initialEnergy, dt, proposedVelocity ) {
 
@@ -779,7 +790,7 @@ define( function( require ) {
      * The only other force on the object in the direction of motion is the gravity force
      * Component-wise to reduce allocations, see #50
      * @private
-     * 
+     *
      * @param {SkaterState} skaterState
      * @return {number}
      */
@@ -1278,7 +1289,7 @@ define( function( require ) {
     /**
      * Return to the place he was last released by the user. Also restores the track the skater was on so the initial
      * conditions are the same as the previous release.
-     * 
+     *
      * @return {SkaterState}
      */
     returnSkater: function() {

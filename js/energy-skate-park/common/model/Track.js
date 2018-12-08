@@ -44,7 +44,8 @@ define( function( require ) {
 
     options = _.extend( {
       tandem: Tandem.required,
-      phetioType: TrackIO
+      phetioType: TrackIO,
+      phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
     }, options );
 
     var tandem = options.tandem;
@@ -81,26 +82,30 @@ define( function( require ) {
     // the play area
     this.physicalProperty = new Property( false, {
       tandem: tandem.createTandem( 'physicalProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+      phetioType: PropertyIO( BooleanIO ),
+      phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
     // @private {boolean} - Flag that shows whether the track has been dragged fully out of the panel
     this.leftThePanelProperty = new Property( false, {
       tandem: tandem.createTandem( 'leftThePanelProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+      phetioType: PropertyIO( BooleanIO ),
+      phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
     // @public - Keep track of whether the track is dragging, so performance can be optimized while dragging
     this.draggingProperty = new Property( false, {
       tandem: tandem.createTandem( 'draggingProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+      phetioType: PropertyIO( BooleanIO ),
+      phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
     // @public {boolean} - Flag to indicate whether the user has dragged the track out of the toolbox.  If dragging from the toolbox,
     // then dragging translates the entire track instead of just a point.
     this.droppedProperty = new Property( false, {
       tandem: tandem.createTandem( 'droppedProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+      phetioType: PropertyIO( BooleanIO ),
+      phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
     var trackChangedListener = function() { model.trackChangedEmitter.emit(); };

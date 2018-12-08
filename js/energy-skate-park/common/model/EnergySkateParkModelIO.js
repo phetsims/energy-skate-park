@@ -39,7 +39,9 @@ define( function( require ) {
      */
     clearChildInstances: function( energySkateParkModel ) {
       assert && assertInstanceOf( energySkateParkModel, phet.energySkatePark.EnergySkateParkModel );
-      energySkateParkModel.removeAllTracks();
+      if ( energySkateParkModel.draggableTracks ) {
+        energySkateParkModel.removeAllTracks();
+      }
     },
 
     /**

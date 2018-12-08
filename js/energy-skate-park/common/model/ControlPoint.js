@@ -34,7 +34,8 @@ define( function( require ) {
 
     options = _.extend( {
       tandem: Tandem.required,
-      phetioType: ControlPointIO
+      phetioType: ControlPointIO,
+      phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
     }, options );
     var tandem = options.tandem;
 
@@ -44,13 +45,15 @@ define( function( require ) {
     // Where it would be if it hadn't snapped to another point during dragging
     this.sourcePositionProperty = new Property( new Vector2( x, y ), {
       tandem: tandem.createTandem( 'sourcePositionProperty' ),
-      phetioType: PropertyIO( Vector2IO )
+      phetioType: PropertyIO( Vector2IO ),
+      phetioState: options.phetioState // in state only if parent is
     } );
 
     // @public {ControlPoint} - Another ControlPoint that this ControlPoint is going to 'snap' to if released.
     this.snapTargetProperty = new Property( null, {
       tandem: tandem.createTandem( 'snapTargetProperty' ),
-      phetioType: PropertyIO( NullableIO( ControlPointIO ) )
+      phetioType: PropertyIO( NullableIO( ControlPointIO ) ),
+      phetioState: options.phetioState // in state only if parent is
     } );
 
     // Where it is shown on the screen.  Same as sourcePosition (if not snapped) or snapTarget.position (if snapped).
@@ -62,7 +65,8 @@ define( function( require ) {
         return snapTarget ? snapTarget.positionProperty.value : sourcePosition;
       }, {
         tandem: tandem.createTandem( 'positionProperty' ),
-        phetioType: DerivedPropertyIO( Vector2IO )
+        phetioType: DerivedPropertyIO( Vector2IO ),
+        phetioState: options.phetioState
       } );
 
     PhetioObject.call( this, options );

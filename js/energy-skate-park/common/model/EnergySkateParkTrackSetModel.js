@@ -48,7 +48,7 @@ define( function( require ) {
     /**
      * When the scene changes or tracks are added to the track set, update which track is visible and physically
      * interactive.
-     * 
+     *
      * @private
      */
     sceneListener: function( scene ) {
@@ -68,7 +68,7 @@ define( function( require ) {
      * should be visible, physical, and interactive depending on the model sceneProperty.
      * @param {Array.<Track>} tracks
      */
-    addTrackSet: function ( tracks ) {
+    addTrackSet: function( tracks ) {
       this.tracks.addAll( tracks );
       this.sceneListener( this.sceneProperty.get() );
     }
@@ -76,7 +76,7 @@ define( function( require ) {
 
     /**
      * In "basics" screens, the track set includes the parabola, slope, and double well.
-     * 
+     *
      * @public
      * @param {EnergySkateParkModel} model
      * @return {Array.<Track>}
@@ -85,12 +85,14 @@ define( function( require ) {
 
       var parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem );
       var parabolaTrack = PremadeTracks.createTrack( model, model.tracks, parabolaControlPoints, model.availableModelBoundsProperty, {
-        tandem: tandem.createTandem( 'parabolaTrack' )
+        tandem: tandem.createTandem( 'parabolaTrack' ),
+        phetioState: false
       } );
 
       var slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem );
       var slopeTrack = PremadeTracks.createTrack( model, model.tracks, slopeControlPoints, model.availableModelBoundsProperty, {
-        tandem: tandem.createTandem( 'slopeTrack' )
+        tandem: tandem.createTandem( 'slopeTrack' ),
+        phetioState: false
       } );
 
       // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
@@ -99,7 +101,8 @@ define( function( require ) {
 
       var doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem );
       var doubleWellTrack = PremadeTracks.createTrack( model, model.tracks, doubleWellControlPoints, model.availableModelBoundsProperty, {
-        tandem: tandem.createTandem( 'doubleWellTrack' )
+        tandem: tandem.createTandem( 'doubleWellTrack' ),
+        phetioState: false
       } );
 
       return [ parabolaTrack, slopeTrack, doubleWellTrack ];
@@ -108,7 +111,7 @@ define( function( require ) {
     /**
      * The "full" version of Energy Skate Park has four tracks in the set - a parabola, slope, double well, and loop.
      * Other screns or versions of this sim may not use this.
-     * 
+     *
      * @public
      * @param {EnergySkateParkModel} model
      * @return {Array.<Track>}

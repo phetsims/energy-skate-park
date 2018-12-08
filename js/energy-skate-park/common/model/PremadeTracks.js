@@ -24,18 +24,18 @@ define( function( require ) {
     // create a set of control points which create a parabola shaped track
     createParabolaControlPoints: function( groupTandem ) {
       return [
-        new ControlPoint( -4, 6, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( 0, 0, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( 4, 6, { tandem: groupTandem.createNextTandem() } )
+        new ControlPoint( -4, 6, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( 0, 0, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( 4, 6, { tandem: groupTandem.createNextTandem(), phetioState: false } )
       ];
     },
 
     // create a set of control points which create a slope shaped track
     createSlopeControlPoints: function( groupTandem ) {
       return [
-        new ControlPoint( -4, 6, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( -2, 1.2, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( 2, 0, { tandem: groupTandem.createNextTandem() } )
+        new ControlPoint( -4, 6, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( -2, 1.2, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( 2, 0, { tandem: groupTandem.createNextTandem(), phetioState: false } )
       ];
     },
 
@@ -44,11 +44,11 @@ define( function( require ) {
     // don't want the skater to go to y<0 while on the track.  Numbers determined by trial and error.
     createDoubleWellControlPoints: function( groupTandem ) {
       return [
-        new ControlPoint( -4, 5, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( -2, 0.0166015, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( 0, 2, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( 2, 1, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( 4, 5, { tandem: groupTandem.createNextTandem() } )
+        new ControlPoint( -4, 5, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( -2, 0.0166015, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( 0, 2, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( 2, 1, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( 4, 5, { tandem: groupTandem.createNextTandem(), phetioState: false } )
       ];
     },
 
@@ -65,13 +65,22 @@ define( function( require ) {
       var innerLoopHeight = 1.5; // roughly adjust inner loop height (for control points, actual loop will be higher)
 
       return [
-        new ControlPoint( -loopWidth / 2, trackTop, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( -innerLoopWidth, trackBottom, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( innerLoopWidth, innerLoopHeight, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( 0, loopTop, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( -innerLoopWidth, innerLoopHeight, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( innerLoopWidth, trackBottom, { tandem: groupTandem.createNextTandem() } ),
-        new ControlPoint( loopWidth / 2, trackTop, { tandem: groupTandem.createNextTandem() } )
+        new ControlPoint( -loopWidth / 2, trackTop, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( -innerLoopWidth, trackBottom, {
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } ),
+        new ControlPoint( innerLoopWidth, innerLoopHeight, {
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } ),
+        new ControlPoint( 0, loopTop, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( -innerLoopWidth, innerLoopHeight, {
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } ),
+        new ControlPoint( innerLoopWidth, trackBottom, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( loopWidth / 2, trackTop, { tandem: groupTandem.createNextTandem(), phetioState: false } )
       ];
     },
 
