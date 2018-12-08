@@ -96,7 +96,6 @@ define( function( require ) {
 
     var content = new VBox( { resize: false, spacing: 10, children: children } );
 
-    this.contentWidth = content.width;
     Panel.call( this, content, {
       xMargin: 10,
       yMargin: 5,
