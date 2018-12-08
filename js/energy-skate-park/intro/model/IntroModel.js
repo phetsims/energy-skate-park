@@ -18,7 +18,7 @@ define( function( require ) {
   function IntroModel( tandem ) {
 
     // track set model with friction
-    EnergySkateParkFullTrackSetModel.call( this, true, tandem.createTandem( 'introModel' ), {
+    EnergySkateParkFullTrackSetModel.call( this, true, tandem, {
       skaterOptions: {
         defaultMass: IntroConstants.PHET_SKATER_MASS
       }

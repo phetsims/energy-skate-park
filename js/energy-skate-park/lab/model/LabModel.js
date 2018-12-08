@@ -17,7 +17,7 @@ define( function( require ) {
   function LabModel( tandem ) {
 
     // Playground model, with friction
-    EnergySkateParkPlaygroundModel.call( this, true, tandem.createTandem( 'introModel' ) );
+    EnergySkateParkPlaygroundModel.call( this, true, tandem );
   }
 
   energySkatePark.register( 'LabModel', LabModel );
