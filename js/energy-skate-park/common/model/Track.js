@@ -53,9 +53,6 @@ define( function( require ) {
     this.parents = parents;
     this.modelTracks = modelTracks;
 
-    // @public
-    this.trackDisposed = false;
-
     // @public (phet-io), see TrackReferenceIO
     this.trackTandem = tandem;
     this.availableModelBoundsProperty = availableModelBoundsProperty;
@@ -149,7 +146,6 @@ define( function( require ) {
 
     // @private - make the Track eligible for garbage collection
     this.disposeTrack = function() {
-      tandem.removeInstance( self );
       self.physicalProperty.dispose();
       self.leftThePanelProperty.dispose();
       self.draggingProperty.dispose();
@@ -840,7 +836,6 @@ define( function( require ) {
     },
 
     dispose: function() {
-      this.trackDisposed = true;
       this.disposeTrack();
       PhetioObject.prototype.dispose.call( this );
     },
