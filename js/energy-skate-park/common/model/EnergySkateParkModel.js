@@ -500,7 +500,8 @@ define( function( require ) {
         newSpeed,
         newKineticEnergy,
         newPotentialEnergy,
-        newThermalEnergy
+        newThermalEnergy,
+        referenceHeight: skaterState.referenceHeight
       } ) );
 
       if ( !isFinite( newThermalEnergy ) ) { throw new Error( 'not finite' ); }
