@@ -502,7 +502,7 @@ define( function( require ) {
         newPotentialEnergy,
         newThermalEnergy,
         referenceHeight: skaterState.referenceHeight
-      } ) );
+      } + ', tracked in https://github.com/phetsims/energy-skate-park/issues/45' ) );
 
       if ( !isFinite( newThermalEnergy ) ) { throw new Error( 'not finite' ); }
       return skaterState.switchToGround( newThermalEnergy, newSpeed, 0, proposedPosition.x, proposedPosition.y );
