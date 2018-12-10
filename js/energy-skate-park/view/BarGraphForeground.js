@@ -18,6 +18,9 @@ define( function( require ) {
   var Property = require( 'AXON/Property' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
 
+  // constants
+  var LINE_WIDTH = 0.5; // line width for stroke of bars in the foreground
+
   /**
    * Constructor for the BarGraph
    * @param {Skater} skater the model's skater model
@@ -69,7 +72,11 @@ define( function( require ) {
         return answer;
       } );
       var barX = getBarX( index );
-      var solidBar = new Rectangle( barX, 0, barWidth, 100, { fill: color, pickable: false, stroke: 'black', lineWidth: 0.5 } );
+      var solidBar = new Rectangle( barX, 0, barWidth, 100, { fill: color, pickable: false } );
+
+      // renderer: webgl doesn't support stroked rectangles, so we emulate a stroke by creating a solid rectangle
+      // behind the bar with the right dimensions, see https://github.com/phetsims/energy-skate-park/issues/40
+      var strokeRectangle = new Rectangle( barX - LINE_WIDTH, -LINE_WIDTH, barWidth + LINE_WIDTH, 100 + LINE_WIDTH, { fill: 'black' } );
 
       // update the bars when the graph becomes visible, and skip update when they are invisible
       Property.multilink( [ barHeightProperty, barGraphVisibleProperty ], function( barHeight, visible ) {
@@ -92,15 +99,17 @@ define( function( require ) {
           var limitHeight = Math.min( absBarHeight, maxHeight );
           if ( barHeight >= 0 ) {
             solidBar.setRect( barX, originY - limitHeight, barWidth, limitHeight );
+            strokeRectangle.setRect( barX - LINE_WIDTH, originY - limitHeight - LINE_WIDTH, barWidth + 2 * LINE_WIDTH, limitHeight );
           }
           else {
             var solidHeight = limitHeight;
-            solidBar.setRect( barX, originY, barWidth, solidHeight ); 
+            solidBar.setRect( barX, originY, barWidth, solidHeight );
+            strokeRectangle.setRect( barX - LINE_WIDTH, originY, barWidth + 2 * LINE_WIDTH, solidHeight + LINE_WIDTH );
           }
         }
       } );
 
-      bar.children = [ solidBar, imageNode ];
+      bar.children = [ strokeRectangle, solidBar, imageNode ];
       return bar;
     };
 
