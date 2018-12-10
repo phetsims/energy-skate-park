@@ -107,13 +107,15 @@ define( function( require ) {
     track.updateEmitter.addListener( this.updateTrackShape.bind( this ) );
 
     // In the state wrapper, when the state changes, we must update the skater node
-    phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.setStateEmitter && phet.phetIo.phetioEngine.setStateEmitter.addListener( function() {
+    const stateListener = function() {
       self.updateTrackShape();
-    } );
+    };
+    phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.setStateEmitter && phet.phetIo.phetioEngine.setStateEmitter.addListener( stateListener );
 
     // @private - only called by dispose
     this.disposeTrackNode = function() {
       model.detachableProperty.unlink( detachableListener );
+      phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.setStateEmitter && phet.phetIo.phetioEngine.setStateEmitter.removeListener( stateListener );
       for ( var i = 0; i < self.children.length; i++ ) {
         var child = self.children[ i ];
         if ( child instanceof ControlPointNode ) {

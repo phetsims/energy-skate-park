@@ -134,12 +134,13 @@ define( function( require ) {
     PhetioObject.call( this, options );
 
     // In the state wrapper, when the state changes, we must update the skater node
-    phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.setStateEmitter && phet.phetIo.phetioEngine.setStateEmitter.addListener( function() {
+    const stateListener = function() {
       self.updateLinSpace();
       self.updateSplines();
       model.trackChangedEmitter.emit();
       model.updateEmitter.emit();
-    } );
+    };
+    phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.setStateEmitter && phet.phetIo.phetioEngine.setStateEmitter.addListener( stateListener );
 
     // when available bounds change, make sure that control points are within - must be disposed
     var boundsListener = function( bounds ) {
@@ -151,6 +152,10 @@ define( function( require ) {
 
     // @private - make the Track eligible for garbage collection
     this.disposeTrack = function() {
+      phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.setStateEmitter && phet.phetIo.phetioEngine.setStateEmitter.removeListener( stateListener );
+      if ( self.parents ) {
+        self.parents.length = 0;
+      }
       self.physicalProperty.dispose();
       self.leftThePanelProperty.dispose();
       self.draggingProperty.dispose();
