@@ -51,7 +51,7 @@ define( function( require ) {
 
       // label text image includes the background rectangle to reduce the number of nodes using WebGL as a renderer,
       // resolution high enough to improve text quality, but not consume too many resources
-      var imageNode = labelRectangle.rasterized( { resolution: 8, wrap: false } );
+      // var imageNode = labelRectangle.rasterized( { resolution: 8, wrap: false } );
 
       // Convert to graph coordinates
       // However, do not floor for values less than 1 otherwise a nonzero value will show up as zero, see #159
@@ -74,9 +74,11 @@ define( function( require ) {
       var barX = getBarX( index );
       var solidBar = new Rectangle( barX, 0, barWidth, 100, { fill: color, pickable: false } );
 
-      // renderer: webgl doesn't support stroked rectangles, so we emulate a stroke by creating a solid rectangle
-      // behind the bar with the right dimensions, see https://github.com/phetsims/energy-skate-park/issues/40
-      var strokeRectangle = new Rectangle( barX - LINE_WIDTH, -LINE_WIDTH, barWidth + LINE_WIDTH, 100 + LINE_WIDTH, { fill: 'black' } );
+      // renderer: webgl doesn't support stroked rectangles, so we emulate a stroke by creating three solid rectangles
+      // around the bar with the right dimensions, see https://github.com/phetsims/energy-skate-park/issues/40
+      var leftStrokeRectangle = new Rectangle( 0, 0, 0, 0, { fill: 'black' } );
+      var rightStrokeRectangle = new Rectangle( 0, 0, 0, 0, { fill: 'black' } );
+      var topStrokeRectangle = new Rectangle( 0, 0, 0, 0, { fill: 'black' } );
 
       // update the bars when the graph becomes visible, and skip update when they are invisible
       Property.multilink( [ barHeightProperty, barGraphVisibleProperty ], function( barHeight, visible ) {
@@ -99,17 +101,23 @@ define( function( require ) {
           var limitHeight = Math.min( absBarHeight, maxHeight );
           if ( barHeight >= 0 ) {
             solidBar.setRect( barX, originY - limitHeight, barWidth, limitHeight );
-            strokeRectangle.setRect( barX - LINE_WIDTH, originY - limitHeight - LINE_WIDTH, barWidth + 2 * LINE_WIDTH, limitHeight );
+            leftStrokeRectangle.setRect( barX - LINE_WIDTH, originY - limitHeight - LINE_WIDTH, LINE_WIDTH, limitHeight );
+            rightStrokeRectangle.setRect( barX + barWidth, originY - limitHeight - LINE_WIDTH, LINE_WIDTH, limitHeight );
+
+            var topStrokeHeight = barHeight > 0 ? LINE_WIDTH : 0;
+            topStrokeRectangle.setRect( barX - LINE_WIDTH, originY - limitHeight - LINE_WIDTH, barWidth + LINE_WIDTH, topStrokeHeight );
           }
           else {
             var solidHeight = limitHeight;
             solidBar.setRect( barX, originY, barWidth, solidHeight );
-            strokeRectangle.setRect( barX - LINE_WIDTH, originY, barWidth + 2 * LINE_WIDTH, solidHeight + LINE_WIDTH );
+            leftStrokeRectangle.setRect( barX - LINE_WIDTH, originY, LINE_WIDTH, solidHeight + LINE_WIDTH );
+            rightStrokeRectangle.setRect( barX + barWidth, originY, LINE_WIDTH, solidHeight + LINE_WIDTH );
+            topStrokeRectangle.setRect( barX - LINE_WIDTH, originY + solidHeight, barWidth + LINE_WIDTH, LINE_WIDTH );
           }
         }
       } );
 
-      bar.children = [ strokeRectangle, solidBar, imageNode ];
+      bar.children = [ leftStrokeRectangle, rightStrokeRectangle, topStrokeRectangle, solidBar ];
       return bar;
     };
 
