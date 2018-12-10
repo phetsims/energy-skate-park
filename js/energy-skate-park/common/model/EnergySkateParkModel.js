@@ -489,6 +489,20 @@ define( function( require ) {
       var newPotentialEnergy = ( -1 ) * skaterState.mass * skaterState.gravity * ( 0 - skaterState.referenceHeight );
       var newThermalEnergy = initialEnergy - newKineticEnergy - newPotentialEnergy;
 
+      // Supply information about a very rare problem that occurs when thermal energy goes negative,
+      // see https://github.com/phetsims/energy-skate-park/issues/45
+      assert && assert( newThermalEnergy >= 0, 'Thermal energy should be non-negative: ' + JSON.stringify( {
+        skaterState,
+        initialEnergy,
+        proposedPosition,
+        proposedVelocity,
+        dt,
+        newSpeed,
+        newKineticEnergy,
+        newPotentialEnergy,
+        newThermalEnergy
+      } ) );
+
       if ( !isFinite( newThermalEnergy ) ) { throw new Error( 'not finite' ); }
       return skaterState.switchToGround( newThermalEnergy, newSpeed, 0, proposedPosition.x, proposedPosition.y );
     },
