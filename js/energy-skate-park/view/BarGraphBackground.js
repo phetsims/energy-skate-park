@@ -19,6 +19,7 @@ define( function( require ) {
   // modules
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
   var ClearThermalButton = require( 'SCENERY_PHET/ClearThermalButton' );
+  var ColorConstants = require( 'SUN/ColorConstants' );
   var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
@@ -89,6 +90,7 @@ define( function( require ) {
     this.zoomOutButton = new ZoomButton( {
       in: false,
       scale: 0.3,
+      baseColor: ColorConstants.LIGHT_BLUE,
       leftTop: new Vector2( -10, this.originY + ZOOM_BUTTON_VERTICAL_SPACING ),
       listener: function() {
         graphScaleProperty.set( Math.max( graphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
@@ -98,6 +100,7 @@ define( function( require ) {
       in: true,
       leftCenter: this.zoomOutButton.rightCenter.plusXY( 5, 0 ),
       scale: 0.3,
+      baseColor: ColorConstants.LIGHT_BLUE,
       listener: function() {
         graphScaleProperty.set( Math.min( graphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
       }
