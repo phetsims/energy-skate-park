@@ -69,8 +69,8 @@ define( function( require ) {
       var transparentBar = new Rectangle( barX, 0, barWidth, 0, { fill: color.withAlpha( 0.3 ), pickable: false } );
 
       // height of the bar label, for negative values we will need the rectangle up to this height to be
-      // semi-transparent so the label is still visible
-      var labelHeight = barGraphBackground.getLabelHeight( index ) + 4; // 2 * offset from bottom
+      // semi-transparent so the label is still visible (getLabelHeight includes some padding)
+      var labelHeight = barGraphBackground.getLabelHeight( index );
 
       // renderer: webgl doesn't support stroked rectangles, so we emulate a stroke by creating three solid rectangles
       // around the bar with the right dimensions, see https://github.com/phetsims/energy-skate-park/issues/40

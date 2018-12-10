@@ -285,14 +285,14 @@ define( function( require ) {
 
     /**
      * Return the height of the label, referenced by index. For negative energies, we need to adjust alpha for a section
-     * of the bar rectangle of this height.
+     * of the bar rectangle of this height. Includes some extra padding for visibility.
      *
      * @public
      * @return {number}
      */
     getLabelHeight: function( index ) {
       assert && assert( this.labelMap[ index ], 'index out of range for label map' );
-      return this.labelMap[ index ].height;
+      return this.labelMap[ index ].height + 8; // extra padding for better visibility
     },
 
     /**
