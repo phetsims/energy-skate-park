@@ -43,16 +43,6 @@ define( function( require ) {
     var createBar = function( index, color, property, showSmallValuesAsZero ) {
       var bar = new Node( { renderer: barRenderer } );
 
-      var label = barGraphBackground.labelMap[ index ];
-
-      // semi-transparent rectangle, so that the label is visible when the bar goes negative
-      var labelRectangle = new Rectangle( label.bounds.dilated( 2 ), { fill: EnergySkateParkColorScheme.transparentPanelFill } );
-      labelRectangle.addChild( label );
-
-      // label text image includes the background rectangle to reduce the number of nodes using WebGL as a renderer,
-      // resolution high enough to improve text quality, but not consume too many resources
-      // var imageNode = labelRectangle.rasterized( { resolution: 8, wrap: false } );
-
       // Convert to graph coordinates
       // However, do not floor for values less than 1 otherwise a nonzero value will show up as zero, see #159
       var barHeightProperty = new DerivedProperty( [ property, graphScaleProperty ], function( value, scale ) {
@@ -71,8 +61,16 @@ define( function( require ) {
 
         return answer;
       } );
+
       var barX = getBarX( index );
       var solidBar = new Rectangle( barX, 0, barWidth, 100, { fill: color, pickable: false } );
+
+      // when bar overlaps label, this rectangle will be shown to avoid occlusion
+      var transparentBar = new Rectangle( barX, 0, barWidth, 0, { fill: color.withAlpha( 0.3 ), pickable: false } );
+
+      // height of the bar label, for negative values we will need the rectangle up to this height to be
+      // semi-transparent so the label is still visible
+      var labelHeight = barGraphBackground.getLabelHeight( index ) + 4; // 2 * offset from bottom
 
       // renderer: webgl doesn't support stroked rectangles, so we emulate a stroke by creating three solid rectangles
       // around the bar with the right dimensions, see https://github.com/phetsims/energy-skate-park/issues/40
@@ -101,23 +99,31 @@ define( function( require ) {
           var limitHeight = Math.min( absBarHeight, maxHeight );
           if ( barHeight >= 0 ) {
             solidBar.setRect( barX, originY - limitHeight, barWidth, limitHeight );
-            leftStrokeRectangle.setRect( barX - LINE_WIDTH, originY - limitHeight - LINE_WIDTH, LINE_WIDTH, limitHeight );
-            rightStrokeRectangle.setRect( barX + barWidth, originY - limitHeight - LINE_WIDTH, LINE_WIDTH, limitHeight );
 
             var topStrokeHeight = barHeight > 0 ? LINE_WIDTH : 0;
             topStrokeRectangle.setRect( barX - LINE_WIDTH, originY - limitHeight - LINE_WIDTH, barWidth + LINE_WIDTH, topStrokeHeight );
+            leftStrokeRectangle.setRect( barX - LINE_WIDTH, originY - limitHeight - LINE_WIDTH, LINE_WIDTH, limitHeight );
+            rightStrokeRectangle.setRect( barX + barWidth, originY - limitHeight - LINE_WIDTH, LINE_WIDTH, limitHeight );
+
+            // make sure the transparent bar is removed
+            transparentBar.setRect( 0, 0, 0, 0 );
           }
           else {
-            var solidHeight = limitHeight;
-            solidBar.setRect( barX, originY, barWidth, solidHeight );
-            leftStrokeRectangle.setRect( barX - LINE_WIDTH, originY, LINE_WIDTH, solidHeight + LINE_WIDTH );
-            rightStrokeRectangle.setRect( barX + barWidth, originY, LINE_WIDTH, solidHeight + LINE_WIDTH );
-            topStrokeRectangle.setRect( barX - LINE_WIDTH, originY + solidHeight, barWidth + LINE_WIDTH, LINE_WIDTH );
+            var transparentHeight = Math.min( -barHeight, labelHeight );
+            transparentBar.setRect( barX, originY, barWidth, transparentHeight );
+
+            var solidOriginY = originY + transparentHeight;
+            var solidHeight = limitHeight - transparentHeight;
+            solidBar.setRect( barX, solidOriginY, barWidth, solidHeight );
+
+            leftStrokeRectangle.setRect( barX - LINE_WIDTH, originY, LINE_WIDTH, limitHeight + LINE_WIDTH );
+            rightStrokeRectangle.setRect( barX + barWidth, originY, LINE_WIDTH, limitHeight + LINE_WIDTH );
+            topStrokeRectangle.setRect( barX - LINE_WIDTH, originY + limitHeight, barWidth + LINE_WIDTH, LINE_WIDTH );
           }
         }
       } );
 
-      bar.children = [ leftStrokeRectangle, rightStrokeRectangle, topStrokeRectangle, solidBar ];
+      bar.children = [ leftStrokeRectangle, rightStrokeRectangle, topStrokeRectangle, transparentBar, solidBar ];
       return bar;
     };
 
@@ -137,11 +143,7 @@ define( function( require ) {
         potentialBar,
         thermalBar,
         totalBar
-      ],
-
-      // fixes a bug where adding strokes to the bars in the graph cause the webgl rectangles to jiggle as values
-      // change, see https://github.com/phetsims/energy-skate-park/issues/39, but also for general performance
-      preventFit: true
+      ]
     } );
 
     // When the bar graph is shown, update the bars (because they do not get updated when invisible for performance reasons)

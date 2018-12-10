@@ -189,6 +189,10 @@ define( function( require ) {
           stroke: 'gray',
           pickable: false
         } ),
+        this.kineticLabel,
+        this.potentialLabel,
+        this.thermalLabel,
+        this.totalLabel,
         clearThermalButton,
         this.zoomInButton,
         this.zoomOutButton,
@@ -213,6 +217,11 @@ define( function( require ) {
       stroke: 'gray',
       lineWidth: 1,
       resize: false,
+
+      // fixes a bug where adding strokes to the bars in the graph cause the webgl rectangles to jiggle as values
+      // change, see https://github.com/phetsims/energy-skate-park/issues/39, but also for general performance
+      preventFit: true,
+
       tandem: tandem
     } );
 
@@ -260,7 +269,7 @@ define( function( require ) {
      * @public
      *
      * @param {number} index
-     * @param {boolean} heightPositive - will the height extend above or below the x axis?
+     * @param {boolean} heightPositive - true if the height will extend above the x axis
      * @return {number}
      */
     getMaximumBarHeight: function( index, heightPositive ) {
@@ -272,6 +281,18 @@ define( function( require ) {
       else {
         return this.originY - this.insetY - ARROW_HEIGHT - 2;
       }
+    },
+
+    /**
+     * Return the height of the label, referenced by index. For negative energies, we need to adjust alpha for a section
+     * of the bar rectangle of this height.
+     *
+     * @public
+     * @return {number}
+     */
+    getLabelHeight: function( index ) {
+      assert && assert( this.labelMap[ index ], 'index out of range for label map' );
+      return this.labelMap[ index ].height;
     },
 
     /**
