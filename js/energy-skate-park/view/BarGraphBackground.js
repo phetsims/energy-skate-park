@@ -63,11 +63,21 @@ define( function( require ) {
    * @param {NumberProperty} graphScaleProperty
    * @param {Function} clearThermal function to be called when the user presses the clear thermal button.
    * @param {Tandem} tandem
+   * @param {Object} [options]
    * @constructor
    */
-  function BarGraphBackground( skater, barGraphVisibleProperty, graphScaleProperty, clearThermal, tandem ) {
+  function BarGraphBackground( skater, barGraphVisibleProperty, graphScaleProperty, clearThermal, tandem, options ) {
 
     var self = this;
+
+    options = _.extend( {
+
+      // include buttons that increase/decrease the scale of the graph?
+      includeZoomButtons: true  
+    }, options );
+
+    // @private {boolean}
+    this.includeZoomButtons= options.includeZoomButtons;
 
     // Free layout parameters
     var contentWidth = 110;
@@ -180,41 +190,49 @@ define( function( require ) {
       pickable: false,
       maxWidth: 93 // selected by choosing the length of English string in ?stringTest=double
     } );
+
+    var contentChildren = [
+      new ArrowNode( insetX, this.originY, insetX, this.insetY, {
+        pickable: false,
+        tandem: tandem.createTandem( 'arrowNode' )
+      } ),
+      titleNode,
+      new Line( insetX, this.originY, contentWidth - insetX, this.originY, {
+        lineWidth: 1,
+        stroke: 'gray',
+        pickable: false
+      } ),
+      this.kineticLabel,
+      this.potentialLabel,
+      this.thermalLabel,
+      this.totalLabel,
+      clearThermalButton,
+      this.kineticEnergyUpArrow,
+      this.potentialEnergyUpArrow,
+      this.potentialEnergyDownArrow,
+      this.thermalEnergyUpArrow,
+      this.totalEnergyUpArrow,
+      this.totalEnergyDownArrow
+    ];
+
+    if ( options.includeZoomButtons ) {
+      contentChildren.push( this.zoomInButton, this.zoomOutButton );
+    }
+
     var contentNode = new Rectangle( 0, 0, contentWidth, contentHeight, {
-      children: [
-        new ArrowNode( insetX, this.originY, insetX, this.insetY, {
-          pickable: false,
-          tandem: tandem.createTandem( 'arrowNode' )
-        } ),
-        titleNode,
-        new Line( insetX, this.originY, contentWidth - insetX, this.originY, {
-          lineWidth: 1,
-          stroke: 'gray',
-          pickable: false
-        } ),
-        this.kineticLabel,
-        this.potentialLabel,
-        this.thermalLabel,
-        this.totalLabel,
-        clearThermalButton,
-        this.zoomInButton,
-        this.zoomOutButton,
-        this.kineticEnergyUpArrow,
-        this.potentialEnergyUpArrow,
-        this.potentialEnergyDownArrow,
-        this.thermalEnergyUpArrow,
-        this.totalEnergyUpArrow,
-        this.totalEnergyDownArrow
-      ]
+      children: contentChildren
     } );
 
     // Center the bar chart title, see #62
     titleNode.centerX = contentNode.centerX;
 
+    // less padding if zoom buttons are included since they extend to the left of the rest of the content
+    var xMargin = this.includeZoomButtons ? 5 : 10;
+
     Panel.call( this, contentNode, {
       x: 10,
       y: 10,
-      xMargin: 5,
+      xMargin: xMargin,
       yMargin: 5,
       fill: 'white',
       stroke: 'gray',
@@ -228,10 +246,12 @@ define( function( require ) {
       tandem: tandem
     } );
 
-    graphScaleProperty.link( function( scale ) {
-      self.zoomInButton.enabled = scale < Constants.MAX_ZOOM_FACTOR;
-      self.zoomOutButton.enabled = scale > Constants.MIN_ZOOM_FACTOR;
-    } );
+    if ( this.includeZoomButtons ) {
+      graphScaleProperty.link( function( scale ) {
+        self.zoomInButton.enabled = scale < Constants.MAX_ZOOM_FACTOR;
+        self.zoomOutButton.enabled = scale > Constants.MIN_ZOOM_FACTOR;
+      } );
+    }
 
     // When the bar graph is shown, update the bars (because they do not get updated when invisible for performance reasons)
     barGraphVisibleProperty.linkAttribute( this, 'visible' );

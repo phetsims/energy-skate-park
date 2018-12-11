@@ -88,8 +88,15 @@ define( function( require ) {
       includeGravitySlider: true,
       includeMassSlider: false,
 
+      // options for the bar graph, see composite type options below
+      barGraphOptions: {},
+
       includeMeasuringTapePanel: true
     }, options );
+
+    options.barGraphOptions = _.extend( {
+      includeZoomButtons: true
+    }, options.barGraphOptions );
 
     var trackNodeGroupTandem = tandem.createGroupTandem( 'trackNode' );
 
@@ -207,7 +214,7 @@ define( function( require ) {
 
     // @private - background for the bar graph (split up to use WebGL for the foreground)
     this.barGraphBackground = new BarGraphBackground( model.skater, model.barGraphVisibleProperty, model.graphScaleProperty,
-      model.clearThermal.bind( model ), tandem.createTandem( 'barGraphBackground' ) );
+      model.clearThermal.bind( model ), tandem.createTandem( 'barGraphBackground' ), options.barGraphOptions );
     this.bottomLayer.addChild( this.barGraphBackground );
 
     this.resetAllButton = new ResetAllButton( {
