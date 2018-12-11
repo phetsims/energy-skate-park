@@ -251,6 +251,7 @@ define( function( require ) {
         // enable/disable updates based on whether the speedometer is visible
         updateEnabledProperty: model.speedometerVisibleProperty,
         pickable: false,
+        radius: 67,
         tandem: tandem.createTandem( 'speedometerNode' )
       } );
     model.speedometerVisibleProperty.linkAttribute( speedometerNode, 'visible' );
