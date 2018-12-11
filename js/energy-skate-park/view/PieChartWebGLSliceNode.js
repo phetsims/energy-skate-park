@@ -18,6 +18,9 @@ define( function( require ) {
   var Shape = require( 'KITE/Shape' );
   var WebGLNode = require( 'SCENERY/nodes/WebGLNode' );
 
+  // constants
+  var scratchFloatArray = new Float32Array( 9 );
+
   /**
    * @param {Color} color
    * @param {Property<Number>} radiusProperty
@@ -149,8 +152,8 @@ define( function( require ) {
 
       shaderProgram.use();
 
-      gl.uniformMatrix3fv( shaderProgram.uniformLocations.uModelViewMatrix, false, modelViewMatrix.entries );
-      gl.uniformMatrix3fv( shaderProgram.uniformLocations.uProjectionMatrix, false, projectionMatrix.entries );
+      gl.uniformMatrix3fv( shaderProgram.uniformLocations.uModelViewMatrix, false, modelViewMatrix.copyToArray( scratchFloatArray ) );
+      gl.uniformMatrix3fv( shaderProgram.uniformLocations.uProjectionMatrix, false, projectionMatrix.copyToArray( scratchFloatArray ) );
 
       gl.bindBuffer( gl.ARRAY_BUFFER, this.vertexBuffer );
       gl.vertexAttribPointer( shaderProgram.attributeLocations.aPosition, 2, gl.FLOAT, false, 0, 0 );
