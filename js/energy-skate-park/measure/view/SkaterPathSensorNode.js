@@ -35,10 +35,13 @@ define( require => {
   const energyThermalString = require( 'string!ENERGY_SKATE_PARK/energy.thermal' );
   const energyTotalString = require( 'string!ENERGY_SKATE_PARK/energy.total' );
   const energyJoulesPatternString = require( 'string!ENERGY_SKATE_PARK/energyJoulesPattern' );
+  const heightMetersPatternString = require( 'string!ENERGY_SKATE_PARK/heightMetersPattern' );
+  const speedMetersPerSecondPatternString = require( 'string!ENERGY_SKATE_PARK/speedMetersPerSecondPattern' );
 
   // constants
   const VALUE_RIGHT_SPACING = 5;
   const TITLE_CONTENT_SPACING = 4;
+  const PROBE_READOUT_SPACING = 5; // spacing between the probe and the height/speed readouts
   const LAYOUT_SPACING = 2;
   const TEXT_COLOR = 'white';
   const TITLE_FONT = new PhetFont( 13 );
@@ -63,12 +66,12 @@ define( require => {
       const totalLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyTotalString );
 
       // label for the probe
-      var energyLabel = new Text( energyEnergyString, {
+      const energyLabel = new Text( energyEnergyString, {
         font: TITLE_FONT,
         fill: TEXT_COLOR
       } );
 
-      // value readouts
+      // value readouts for the body of the sensor
       this.kineticRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup );
       this.kineticReadout = new Text( '' );
       this.kineticRectangleBox.addChild( this.kineticReadout );
@@ -84,6 +87,21 @@ define( require => {
       this.totalRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup );
       this.totalReadout = new Text( '' );
       this.totalRectangleBox.addChild( this.totalReadout );
+
+      // @private - Height and speed are read to the right of the probe in a transparent panel for enhanced
+      // visibility. We want the panel to resize as the text changes for different skater samples
+      this.heightReadout = new Text( '' );
+      this.speedReadout = new Text( '' );
+      this.heightSpeedVBox = new VBox( {
+        children: [ this.heightReadout, this.speedReadout ],
+        align: 'left'
+      } );
+
+      // TODO: Can this be a rectangle?
+      this.heightSpeedRectangle = new Rectangle( this.heightSpeedVBox.bounds, {
+        fill: EnergySkateParkColorScheme.transparentPanelFill
+      } );
+      this.heightSpeedRectangle.addChild( this.heightSpeedVBox );
 
       // layout - labels horizontally aligned with readouts in a VBox
       const content = new VBox( {
@@ -102,6 +120,9 @@ define( require => {
         ], spacing: TITLE_CONTENT_SPACING
       } );
 
+      // layout - height and speed aligned in a vbox
+
+
       // the body is a rounded rectangle
       const body = new Rectangle( content.bounds.dilated( 5 ), 5, 5, {
         fill: 'rgb(63,72,204)',
@@ -111,7 +132,7 @@ define( require => {
       body.addChild( content );
 
       // the probe
-      const probeNode = new ProbeNode( {
+      this.probeNode = new ProbeNode( {
         scale: 0.40,
         rotation: Math.PI / 2,
         sensorTypeFunction: ProbeNode.crosshairs(),
@@ -126,7 +147,7 @@ define( require => {
 
         // calculate the left of the probe in view coordinates
         const viewPosition = modelViewTransform.modelToViewPosition( sensorPosition );
-        const viewWidth = probeNode.width;
+        const viewWidth = this.probeNode.width;
         return viewPosition.minusXY( viewWidth / 2, 0 );
       } );
 
@@ -136,16 +157,17 @@ define( require => {
 
       this.addChild( body );
       this.addChild( wireNode );
-      this.addChild( probeNode );
+      this.addChild( this.probeNode );
+      this.addChild( this.heightSpeedRectangle );
 
       // position the node and update readouts if probe is on top of a sample
       sensorPositionProperty.link( ( modelPosition ) => {
 
         // position the node
-        probeNode.translation = modelViewTransform.modelToViewPosition( modelPosition );
+        this.probeNode.translation = modelViewTransform.modelToViewPosition( modelPosition );
 
         // compare the center of the crosshairs in the probe node
-        const modelProbeCenter = modelViewTransform.viewToModelPosition( probeNode.getCenter() );
+        const modelProbeCenter = modelViewTransform.viewToModelPosition( this.probeNode.getCenter() );
         for ( let i = 0; i < samples.length; i++ ) {
           if ( modelProbeCenter.equalsEpsilon( samples.get( i ).position, 0.5 ) ) {
             this.displayState( samples.get( i ) );
@@ -158,7 +180,7 @@ define( require => {
       } );
 
       // add a drag listener to the probe body
-      probeNode.addInputListener( new DragListener( {
+      this.probeNode.addInputListener( new DragListener( {
         transform: modelViewTransform,
         drag: ( event, listener ) => {
           let pMouse = this.globalToParentPoint( event.pointer.point );
@@ -174,10 +196,20 @@ define( require => {
      * @param  {SkaterSample} skaterSample
      */
     displayState( skaterSample ) {
-      this.kineticReadout.text = this.formatValue( skaterSample.kineticEnergy );
-      this.potentialReadout.text = this.formatValue( skaterSample.potentialEnergy );
-      this.thermalReadout.text = this.formatValue( skaterSample.thermalEnergy );
-      this.totalReadout.text = this.formatValue( skaterSample.totalEnergy );
+      this.kineticReadout.text = this.formatEnergyValue( skaterSample.kineticEnergy );
+      this.potentialReadout.text = this.formatEnergyValue( skaterSample.potentialEnergy );
+      this.thermalReadout.text = this.formatEnergyValue( skaterSample.thermalEnergy );
+      this.totalReadout.text = this.formatEnergyValue( skaterSample.totalEnergy );
+
+      this.heightReadout.text = StringUtils.fillIn( heightMetersPatternString, {
+        value: this.formatValue( skaterSample.position.y - skaterSample.referenceHeight )
+      } );
+
+      this.speedReadout.text = StringUtils.fillIn( speedMetersPerSecondPatternString, {
+        value: this.formatValue( skaterSample.speed )
+      } );
+
+      this.heightSpeedRectangle.visible = true;
 
       this.positionReadouts();
     }
@@ -185,6 +217,10 @@ define( require => {
     /**
      * Position the value text in the body/display. The readout rectangles use AlignGroup/HBox, so we need to
      * get the right of the boxes in the local coordinate frame to align correctly.
+     *
+     * Also positions and sizes the height/speed readout which appears to the right of the probe unless a panel would
+     * cover it.
+     * 
      * @private
      */
     positionReadouts() {
@@ -192,22 +228,34 @@ define( require => {
       this.potentialReadout.rightCenter = this.potentialRectangleBox.parentToLocalPoint( this.potentialRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 ); 
       this.thermalReadout.rightCenter = this.thermalRectangleBox.parentToLocalPoint( this.thermalRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 ); 
       this.totalReadout.rightCenter = this.totalRectangleBox.parentToLocalPoint( this.totalRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 ); 
+
+      this.heightSpeedRectangle.setRectBounds( this.heightSpeedVBox.bounds );
+      this.heightSpeedRectangle.leftCenter = this.probeNode.rightCenter.plusXY( PROBE_READOUT_SPACING, 0 );
     }
 
     /**
-     * Format a value for readout in the sensor display, each value having one decimal point.
+     * Format a value for readout in the sensor display, each value having one decimal point, followed by units in J.
      * @private
      * @param  {number} value
      * @return {string}
      */
-    formatValue( value ) {
+    formatEnergyValue( value ) {
       return StringUtils.fillIn( energyJoulesPatternString, {
-        value: Util.toFixed( value, 1 )
+        value: this.formatValue( value )
       } ); 
     }
 
     /**
-     * Clear all values in the display.
+     * Each value in this readout will be as precise as one decimal.
+     * @param  {number} value
+     * @return {string}
+     */
+    formatValue( value ) {
+      return Util.toFixed( value, 1 );
+    }
+
+    /**
+     * Clear all values in the displays.
      * @private
      * @return {}
      */
@@ -216,6 +264,8 @@ define( require => {
       this.potentialReadout.text = '';
       this.thermalReadout.text = '';
       this.totalReadout.text = '';
+
+      this.heightSpeedRectangle.visible = false;
     }
 
     /**
