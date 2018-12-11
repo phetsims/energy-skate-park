@@ -24,11 +24,12 @@ define( function( require ) {
    * @constructor
    * @param {boolean} frictionAllowed - is friction allowed in this model?
    * @param {Tandem} tandem
+   * @param {Object} options
    */
-  function EnergySkateParkPlaygroundModel( frictionAllowed, tandem ) {
+  function EnergySkateParkPlaygroundModel( frictionAllowed, tandem, options ) {
 
     var draggableTracks = true; // TODO: Get rid of this param?
-    EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem );
+    EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem, options );
 
     // add all of the possible draggable tracks
     this.addDraggableTracks();
