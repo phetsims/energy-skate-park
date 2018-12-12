@@ -51,7 +51,8 @@ define( function( require ) {
       this.skater.directionProperty,
       this.skater.trackProperty,
       this.skater.referenceHeightProperty,
-      this.sampleSkaterProperty
+      this.sampleSkaterProperty,
+      this.skater.draggingProperty
     ];
 
     var self = this;
