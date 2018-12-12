@@ -183,8 +183,8 @@ define( require => {
       this.probeNode.addInputListener( new DragListener( {
         transform: modelViewTransform,
         drag: ( event, listener ) => {
-          let pMouse = this.globalToParentPoint( event.pointer.point );
-          let modelMouse = modelViewTransform.viewToModelPosition( pMouse );
+          const pMouse = this.globalToParentPoint( event.pointer.point );
+          const modelMouse = modelViewTransform.viewToModelPosition( pMouse );
           sensorPositionProperty.set( modelMouse );
         }
       } ) );

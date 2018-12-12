@@ -31,7 +31,7 @@ define( require => {
         fill: EnergySkateParkColorScheme.panelFill
       }, options );
 
-      let measuringTapeIcon = MeasuringTapeNode.createIcon();
+      const measuringTapeIcon = MeasuringTapeNode.createIcon();
 
       // set scale of measuring tape icon, but don't pas to createIcon because it makes the icon generated with
       // Node.toImage look too aliased, see https://github.com/phetsims/energy-skate-park/issues/27
