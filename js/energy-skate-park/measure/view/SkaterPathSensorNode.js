@@ -50,6 +50,9 @@ define( require => {
   // offset so that the center of the probe aligns with sample locations
   const PROBE_CENTER_OFFSET = new Vector2( 5.5, 0 );
 
+  // max distance between sample and probe center for the sample to be displayed, in view coordinates
+  const PROBE_THRESHOLD_DISTANCE = 10;
+
   class SkaterPathSensorNode extends Node {
     constructor( samples, sensorPositionProperty, modelViewTransform, options ) {
       options = _.extend( {}, options );
@@ -160,18 +163,29 @@ define( require => {
       // wihtout looping through all samples
       this.inspectedSample = null;
 
-      // position the node and update readouts if probe is on top of a sample
+      // display the sample that is close to the sample of the probe - find the closest one in case multiple samples
+      // are near the probe center
       sensorPositionProperty.link( ( modelPosition ) => {
+
+        // clear the previous sample
         this.inspectedSample && this.clearDisplay( this.inspectedSample );
 
+        // {SkaterSample|null} - the sample closest to the exact center of the probe and within threshold distance
+        let sampleToDisplay = null;
+
         const viewProbePoint = this.localToParentPoint( this.probeNode.getCenter().plus( PROBE_CENTER_OFFSET ) );
+        let minDistance = Number.POSITIVE_INFINITY;
         for ( let i = 0; i < samples.length; i++ ) {
           const sampleViewPoint = modelViewTransform.modelToViewPosition( samples.get( i ).position );
-          if ( viewProbePoint.equalsEpsilon( sampleViewPoint, 10 ) ) {
-            this.displayState( samples.get( i ) );
-            break;
+          const distanceToSample = Vector2.getDistanceBetweenVectors( sampleViewPoint, viewProbePoint );
+
+          if ( distanceToSample < PROBE_THRESHOLD_DISTANCE && distanceToSample < minDistance ) {
+            sampleToDisplay = samples.get( i );
+            minDistance = distanceToSample;
           }
         }
+
+        sampleToDisplay && this.displayState( sampleToDisplay );
       } );
 
       // add a drag listener to the probe body
