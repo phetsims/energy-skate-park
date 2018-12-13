@@ -3,6 +3,7 @@
 /**
  * A collection of physical values associated with the skater at a given time. Taken from the skaterState,
  * which will be up to date when this is generated (at some sample rate in the model step).
+ * 
  * @author Jesse Greenberg
  */
 
@@ -12,6 +13,7 @@ define( function( require ) {
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  var BooleanProperty = require( 'AXON/BooleanProperty' );
   var Vector2 = require( 'DOT/Vector2' );
 
   /**
@@ -29,6 +31,9 @@ define( function( require ) {
     this.totalEnergy = skaterState.getTotalEnergy();
     this.referenceHeight = skaterState.referenceHeight;
     this.position = new Vector2( skaterState.positionX, skaterState.positionY );
+
+    // @public - whether or not this sample is being inspected by the probe
+    this.inspectedProperty = new BooleanProperty( false );
   }
 
   energySkatePark.register( 'SkaterSample', SkaterSample  );

@@ -31,18 +31,22 @@ define( function( require ) {
     var self = this;
     model.skaterSamples.addItemAddedListener( function( addedSample ) {
 
+      var sampleNode = new SampleNode( modelViewTransform.modelToViewPosition( addedSample.position ), addedSample.inspectedProperty );
+
       // this should probably be a new type with knowledge of how to show probe data and such
-      var sampleCircle = new Circle( 3, {
-        fill: EnergySkateParkColorScheme.pathFill,
-        stroke: EnergySkateParkColorScheme.pathStroke,
-        center: modelViewTransform.modelToViewPosition( addedSample.position )
-      } );
-      self.addChild( sampleCircle );
+      // var sampleCircle = new Circle( 3, {
+      //   fill: EnergySkateParkColorScheme.pathFill,
+      //   stroke: EnergySkateParkColorScheme.pathStroke,
+      //   center: modelViewTransform.modelToViewPosition( addedSample.position )
+      // } );
+      self.addChild( sampleNode );
 
       model.skaterSamples.addItemRemovedListener( function removalListener( removedSample ) {
         if ( addedSample === removedSample ) {
-          self.removeChild( sampleCircle );
           model.skaterSamples.removeItemRemovedListener( removalListener );
+
+          // this will detach the node from the scene graph
+          sampleNode.dispose();
         }
       } );
     } );
@@ -50,5 +54,54 @@ define( function( require ) {
 
   energySkatePark.register( 'SkaterSamplesNode', SkaterSamplesNode );
 
-  return inherit( Node, SkaterSamplesNode, {} );
+  inherit( Node, SkaterSamplesNode, {} );
+
+  /**
+   * A single sample along the path. When the sample is being inspected by a probe, a highlight shows up underneath
+   * the sample to indicate that it is selected.
+   * @param {Vector2} center - center for this node in view coordinates
+   * @param {BooleanProperty} inspectedProperty - emits an event when a probe is over this sample
+   */
+  function SampleNode( center, inspectedProperty ) {
+
+    // @private {Emitter}
+    this.inspectedProperty = inspectedProperty;
+
+    const sampleCircle = new Circle( 3, {
+      fill: EnergySkateParkColorScheme.pathFill,
+      stroke: EnergySkateParkColorScheme.pathStroke
+    } );
+
+    const haloCircle = new Circle( 7, {
+      fill: EnergySkateParkColorScheme.haloFill,
+      visible: false
+    } );
+
+    Node.call( this, {
+      center: center,
+      children: [ haloCircle, sampleCircle ]
+    } );
+
+    // @private - to be removed on dispose
+    this.inspectedListener = ( inspected ) => {
+      haloCircle.visible = inspected;
+    };
+    this.inspectedProperty.link( this.inspectedListener );
+  }
+
+  inherit( Node, SampleNode, {
+
+    /**
+     * Make eligible for garbage collection.
+     * @public
+     */
+    dispose: function() {
+      this.inspectedProperty.unlink( this.inspectedListener );
+      Node.prototype.dispose.call( this );
+    }
+  } );
+
+  energySkatePark.register( 'SkaterSamplesNode.SampleNode', SkaterSamplesNode );
+
+  return SkaterSamplesNode;
 } );

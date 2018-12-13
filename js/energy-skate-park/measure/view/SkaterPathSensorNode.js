@@ -48,8 +48,7 @@ define( require => {
   const LABEL_FONT = new PhetFont( 11 );
 
   // offset so that the center of the probe aligns with sample locations
-  const PROBE_CENTER_OFFSET = new Vector2( -25, 37 );
-
+  const PROBE_CENTER_OFFSET = new Vector2( 5.5, 0 );
 
   class SkaterPathSensorNode extends Node {
     constructor( samples, sensorPositionProperty, modelViewTransform, options ) {
@@ -120,9 +119,6 @@ define( require => {
         ], spacing: TITLE_CONTENT_SPACING
       } );
 
-      // layout - height and speed aligned in a vbox
-
-
       // the body is a rounded rectangle
       const body = new Rectangle( content.bounds.dilated( 5 ), 5, 5, {
         fill: 'rgb(63,72,204)',
@@ -136,7 +132,7 @@ define( require => {
         scale: 0.40,
         rotation: Math.PI / 2,
         sensorTypeFunction: ProbeNode.crosshairs(),
-        center: PROBE_CENTER_OFFSET
+        center: new Vector2( 0, 0 )
       } );
 
       // points and control points for the wire
@@ -160,21 +156,20 @@ define( require => {
       this.addChild( this.probeNode );
       this.addChild( this.heightSpeedRectangle );
 
+      // @private - {SkaterSample|null} - the skater sample currently being inspected, reference so we can un-inspect
+      // wihtout looping through all samples
+      this.inspectedSample = null;
+
       // position the node and update readouts if probe is on top of a sample
       sensorPositionProperty.link( ( modelPosition ) => {
+        this.inspectedSample && this.clearDisplay( this.inspectedSample );
 
-        // position the node
-        this.probeNode.translation = modelViewTransform.modelToViewPosition( modelPosition );
-
-        // compare the center of the crosshairs in the probe node
-        const modelProbeCenter = modelViewTransform.viewToModelPosition( this.probeNode.getCenter() );
+        const viewProbePoint = this.localToParentPoint( this.probeNode.getCenter().plus( PROBE_CENTER_OFFSET ) );
         for ( let i = 0; i < samples.length; i++ ) {
-          if ( modelProbeCenter.equalsEpsilon( samples.get( i ).position, 0.5 ) ) {
+          const sampleViewPoint = modelViewTransform.modelToViewPosition( samples.get( i ).position );
+          if ( viewProbePoint.equalsEpsilon( sampleViewPoint, 10 ) ) {
             this.displayState( samples.get( i ) );
             break;
-          }
-          else {
-            this.clearDisplay();
           }
         }
       } );
@@ -182,11 +177,8 @@ define( require => {
       // add a drag listener to the probe body
       this.probeNode.addInputListener( new DragListener( {
         transform: modelViewTransform,
-        drag: ( event, listener ) => {
-          const pMouse = this.globalToParentPoint( event.pointer.point );
-          const modelMouse = modelViewTransform.viewToModelPosition( pMouse );
-          sensorPositionProperty.set( modelMouse );
-        }
+        locationProperty: sensorPositionProperty,
+        translateNode: true
       } ) );
     }
 
@@ -196,6 +188,10 @@ define( require => {
      * @param  {SkaterSample} skaterSample
      */
     displayState( skaterSample ) {
+      this.inspectedSample = skaterSample;
+
+      skaterSample.inspectedProperty.set( true );
+
       this.kineticReadout.text = this.formatEnergyValue( skaterSample.kineticEnergy );
       this.potentialReadout.text = this.formatEnergyValue( skaterSample.potentialEnergy );
       this.thermalReadout.text = this.formatEnergyValue( skaterSample.thermalEnergy );
@@ -257,14 +253,19 @@ define( require => {
     /**
      * Clear all values in the displays.
      * @private
+     * 
+     * @param {SkaterSample} skaterSample
      * @return {}
      */
-    clearDisplay() {
+    clearDisplay( skaterSample ) {
       this.kineticReadout.text = '';
       this.potentialReadout.text = '';
       this.thermalReadout.text = '';
       this.totalReadout.text = '';
 
+      this.inspectedSample = null;
+
+      skaterSample.inspectedProperty.set( false );
       this.heightSpeedRectangle.visible = false;
     }
 

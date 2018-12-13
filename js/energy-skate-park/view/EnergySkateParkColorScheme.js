@@ -23,6 +23,7 @@ define( function( require ) {
     // fill of circles that show the skater path
     pathFill: new Color( 220, 175, 250 ),
     pathStroke: 'black',
+    haloFill: new Color( 225, 231, 86, 0.75 ),
 
     panelFill: '#F0F0F0',
 
