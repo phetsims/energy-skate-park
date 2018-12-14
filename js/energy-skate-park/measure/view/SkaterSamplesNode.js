@@ -11,96 +11,95 @@
  * 
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( ( require ) => {
   'use strict';
 
   // modules
   const Circle = require( 'SCENERY/nodes/Circle' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const Node = require( 'SCENERY/nodes/Node' );
 
-  /**
-   * @constructor
-   */
-  function SkaterSamplesNode( model, modelViewTransform ) {
+  class SkaterSamplesNode extends Node {
 
-    Node.call( this );
+    /**
+     * @param  {MeasureModel} model
+     * @param  {ModelViewTransform} modelViewTransform
+     */
+    constructor( model, modelViewTransform ) {
+      super();
 
-    var self = this;
-    model.skaterSamples.addItemAddedListener( function( addedSample ) {
+      model.skaterSamples.addItemAddedListener( ( addedSample ) => {
 
-      var sampleNode = new SampleNode( modelViewTransform.modelToViewPosition( addedSample.position ), addedSample.inspectedProperty, addedSample.opacityProperty );
-      self.addChild( sampleNode );
+        const sampleNode = new SampleNode( modelViewTransform.modelToViewPosition( addedSample.position ), addedSample.inspectedProperty, addedSample.opacityProperty );
+        this.addChild( sampleNode );
 
-      model.skaterSamples.addItemRemovedListener( function removalListener( removedSample ) {
-        if ( addedSample === removedSample ) {
-          model.skaterSamples.removeItemRemovedListener( removalListener );
+        model.skaterSamples.addItemRemovedListener( function removalListener( removedSample ) {
+          if ( addedSample === removedSample ) {
+            model.skaterSamples.removeItemRemovedListener( removalListener );
 
-          // this will detach the node from the scene graph
-          sampleNode.dispose();
-        }
+            // this will detach the node from the scene graph
+            sampleNode.dispose();
+          }
       } );
     } );
+    }
   }
 
   energySkatePark.register( 'SkaterSamplesNode', SkaterSamplesNode );
 
-  inherit( Node, SkaterSamplesNode, {} );
+  class SampleNode extends Node {
 
-  /**
-   * A single sample along the path. When the sample is being inspected by a probe, a highlight shows up underneath
-   * the sample to indicate that it is selected.
-   * @param {Vector2} center - center for this node in view coordinates
-   * @param {BooleanProperty} inspectedProperty - whether or not this SkaterSample is being inspected
-   * @param {NumberProperty} opacityProperty
-   */
-  function SampleNode( center, inspectedProperty, opacityProperty ) {
+    /**
+     * A single sample along the path. When the sample is being inspected by a probe, a highlight shows up underneath
+     * the sample to indicate that it is selected.
+     * @param {Vector2} center - center for this node in view coordinates
+     * @param {BooleanProperty} inspectedProperty - whether or not this SkaterSample is being inspected
+     * @param {NumberProperty} opacityProperty
+     */
+    constructor( center, inspectedProperty, opacityProperty ) {
 
-    // @private
-    this.inspectedProperty = inspectedProperty;
-    this.opacityProperty = opacityProperty;
+      const sampleCircle = new Circle( 3, {
+        fill: EnergySkateParkColorScheme.pathFill,
+        stroke: EnergySkateParkColorScheme.pathStroke
+      } );
 
-    const sampleCircle = new Circle( 3, {
-      fill: EnergySkateParkColorScheme.pathFill,
-      stroke: EnergySkateParkColorScheme.pathStroke
-    } );
+      const haloCircle = new Circle( 7, {
+        fill: EnergySkateParkColorScheme.haloFill,
+        visible: false
+      } );
 
-    const haloCircle = new Circle( 7, {
-      fill: EnergySkateParkColorScheme.haloFill,
-      visible: false
-    } );
+      super( {
+        center: center,
+        children: [ haloCircle, sampleCircle ]
+      } );
 
-    Node.call( this, {
-      center: center,
-      children: [ haloCircle, sampleCircle ]
-    } );
+      // @private
+      this.inspectedProperty = inspectedProperty;
+      this.opacityProperty = opacityProperty;
 
-    // @private - to be removed on dispose
-    this.inspectedListener = ( inspected ) => {
-      haloCircle.visible = inspected;
-    };
-    this.inspectedProperty.link( this.inspectedListener );
+      // @private - listeners to be removed on disposal
+      this.inspectedListener = ( inspected ) => {
+        haloCircle.visible = inspected;
+      };
+      this.inspectedProperty.link( this.inspectedListener );
 
-    this.opacityListener = ( opacity ) => {
-      this.opacity = opacity;
-    };
-    this.opacityProperty.link( this.opacityListener );
-  }
-
-  inherit( Node, SampleNode, {
+      this.opacityListener = ( opacity ) => {
+        this.opacity = opacity;
+      };
+      this.opacityProperty.link( this.opacityListener );
+    }
 
     /**
      * Make eligible for garbage collection.
      * @public
      */
-    dispose: function() {
+    dispose() {
       this.inspectedProperty.unlink( this.inspectedListener );
       this.opacityProperty.unlink( this.opacityListener );
       Node.prototype.dispose.call( this );
     }
-  } );
+  }
 
   energySkatePark.register( 'SkaterSamplesNode.SampleNode', SkaterSamplesNode );
 
