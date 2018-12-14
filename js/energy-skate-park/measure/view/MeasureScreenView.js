@@ -28,6 +28,8 @@ define( function( require ) {
 
     // @private - for layout
     this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorPositionProperty, this.modelViewTransform );
+    this.pathSensor.top = this.modelViewTransform.modelToViewDeltaY( -2 );
+
 
     // TODO: Does it matter which layer?
     this.addToTopLayer( new SkaterSamplesNode( model, this.modelViewTransform ) );
@@ -41,8 +43,10 @@ define( function( require ) {
     layout: function( width, height ) {
       EnergySkateParkScreenView.prototype.layout.call( this, width, height );
 
-      this.pathSensor.left = this.availableViewBounds.left + 5;
-      this.pathSensor.top = this.controlPanel.top;
+      // in the measure screen the legend is in the top left of the screen
+      this.pieChartLegend.mutate( { top: this.controlPanel.top, left: this.availableViewBounds.minX + 5 } );
+
+      this.pathSensor.leftTop = this.pieChartLegend.leftBottom.plusXY( 0, 10 );
     }
   } );
 } );

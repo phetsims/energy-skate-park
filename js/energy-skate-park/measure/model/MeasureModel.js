@@ -38,7 +38,7 @@ define( function( require ) {
     this.sampleSkaterProperty = new BooleanProperty( true );
 
     // @public - the position of the sensor, in model coordinates (meters)
-    this.sensorPositionProperty = new Property( new Vector2( 0, 0 ) );
+    this.sensorPositionProperty = new Property( new Vector2( -4, 5 ) );
 
     // @public {ObservableArray.<SkaterSample>} - list of all samples of skater physical values at a particular time
     this.skaterSamples = new ObservableArray();

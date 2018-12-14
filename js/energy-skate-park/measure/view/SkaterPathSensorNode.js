@@ -39,8 +39,9 @@ define( require => {
   const speedMetersPerSecondPatternString = require( 'string!ENERGY_SKATE_PARK/speedMetersPerSecondPattern' );
 
   // constants
-  const VALUE_RIGHT_SPACING = 5;
-  const TITLE_CONTENT_SPACING = 4;
+  const VALUE_RIGHT_SPACING = 5; // spacing between value text and its containing rectangle
+  const TITLE_CONTENT_SPACING = 4; // spacing between the "Energy" title and the rest of the content
+  const LABEL_VALUE_SPACING = 8; // spacing between label text and the value readout rectangle
   const PROBE_READOUT_SPACING = 5; // spacing between the probe and the height/speed readouts
   const LAYOUT_SPACING = 2;
   const TEXT_COLOR = 'white';
@@ -121,7 +122,8 @@ define( require => {
               new VBox( { children: [
                 this.kineticRectangleBox, this.potentialRectangleBox, this.thermalRectangleBox, this.totalRectangleBox
               ], spacing: LAYOUT_SPACING } )
-            ]
+            ],
+            spacing: LABEL_VALUE_SPACING
           } )
         ], spacing: TITLE_CONTENT_SPACING
       } );
@@ -139,7 +141,7 @@ define( require => {
         scale: 0.40,
         rotation: Math.PI / 2,
         sensorTypeFunction: ProbeNode.crosshairs(),
-        center: new Vector2( 0, 0 ),
+        center: modelViewTransform.modelToViewPosition( sensorPositionProperty.get() ),
         cursor: 'pointer'
       } );
 
