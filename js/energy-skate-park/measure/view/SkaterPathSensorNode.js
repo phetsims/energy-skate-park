@@ -139,7 +139,8 @@ define( require => {
         scale: 0.40,
         rotation: Math.PI / 2,
         sensorTypeFunction: ProbeNode.crosshairs(),
-        center: new Vector2( 0, 0 )
+        center: new Vector2( 0, 0 ),
+        cursor: 'pointer'
       } );
 
       // points and control points for the wire
