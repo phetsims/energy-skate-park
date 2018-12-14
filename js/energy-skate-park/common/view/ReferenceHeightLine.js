@@ -2,8 +2,8 @@
 
 /**
  * A node that shows the potential energy reference height in energy-skate-park. The line is a dashed
- * line that extends horizontally across the screen. The line can be dragged by clicking on a "laser pointer" that is
- * shooting the line into the view like a laser. The origin for this node is t the left edge of the line
+ * line that extends horizontally across the screen. The line can be dragged by clicking on a double headed arrow.
+ * The origin for this node is the left edge of the line.
  * 
  * @author Jesse Greenberg
  */
@@ -12,14 +12,12 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var BooleanProperty = require( 'AXON/BooleanProperty' );
+  var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
   var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
-  var Dimension2 = require( 'DOT/Dimension2' );
   var DragListener = require( 'SCENERY/listeners/DragListener' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var LaserPointerNode = require( 'SCENERY_PHET/LaserPointerNode' );
   var Line = require( 'SCENERY/nodes/Line' );
   var Node = require( 'SCENERY/nodes/Node' );
   var TextPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TextPanel' );
@@ -39,7 +37,7 @@ define( function( require ) {
     options = _.extend( {}, options );
     assert && assert( options.children === undefined, 'ReferenceHeightLine sets its own children' );
 
-    // line will extend 9 meters through along the grid in model coordinates
+    // line will extend 9.5 meters through along the grid in model coordinates
     var lineLength = modelViewTransform.modelToViewDeltaX( 9.5 );
 
     // the line will be composed of two lines on top of each other to assist with line visibility - taller blue in
@@ -59,29 +57,24 @@ define( function( require ) {
       stroke: 'black'
     } );
 
-    // the draggable part looks like a laser pointer body, shooting the reference height line across the view    
-    var laserPointerNode = new LaserPointerNode( new BooleanProperty( false ), {
-      bodySize: new Dimension2( 27.5, 14 ),
-      nozzleSize: new Dimension2( 5, 10 ),
-      hasButton: false,
-      topColor: EnergySkateParkColorScheme.potentialEnergy,
-      bottomColor: EnergySkateParkColorScheme.potentialEnergy,
-      highlightColor: 'rgb(170,201,236)',
-      cornerRadius: 1,
-      cursor: 'pointer'
+    // double headed arrow indicates this line is draggable
+    var doubleArrowNode = new ArrowNode( 0, -12, 0, 12, {
+      doubleHead: true,
+      headWidth: 13,
+      tailWidth: 5,
+
+      left: 30,
+      cursor: 'pointer',
+      fill: EnergySkateParkColorScheme.referenceArrowFill 
     } );
 
     // label for the reference line, surround by a transparent panel for better visibility
     var textPanel = new TextPanel( heightEqualsZeroString );
 
-    // pointing to the left, with shading maintained
-    laserPointerNode.setScaleMagnitude( -1, 1 );
-    laserPointerNode.setLeft( lineLength );
-
-    textPanel.setRightBottom( laserPointerNode.rightTop );
+    textPanel.setLeftCenter( doubleArrowNode.rightTop );
 
     Node.call( this, {
-      children: [ backLine, frontLine, laserPointerNode, textPanel ]
+      children: [ backLine, frontLine, doubleArrowNode, textPanel ]
     } );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
@@ -100,8 +93,7 @@ define( function( require ) {
       self.visible = visible;
     } );
 
-    // add a drag listener to the laser pointer to allow user to drag it vertically
-    laserPointerNode.addInputListener( new DragListener( {
+    this.addInputListener( new DragListener( {
       transform: modelViewTransform,
       drag: function( event, listener ) {
 

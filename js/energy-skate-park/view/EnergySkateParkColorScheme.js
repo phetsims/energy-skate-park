@@ -25,6 +25,9 @@ define( function( require ) {
     pathStroke: 'black',
     haloFill: new Color( 225, 231, 86, 0.75 ),
 
+    // color for the reference line arrow
+    referenceArrowFill: 'rgb(254,240,53)',
+
     panelFill: '#F0F0F0',
 
     // surrounds text for better visibility
