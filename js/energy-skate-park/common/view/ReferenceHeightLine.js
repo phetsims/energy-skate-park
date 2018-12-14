@@ -40,19 +40,18 @@ define( function( require ) {
     // line will extend 9.5 meters through along the grid in model coordinates
     var lineLength = modelViewTransform.modelToViewDeltaX( 9.5 );
 
-    // the line will be composed of two lines on top of each other to assist with line visibility - taller blue in
-    // back, shorter black in front
-    var lineDash = [ 10, 10 ];
+    // the line will be composed of two lines on top of each other to assist with line visibility but still look like
+    // a dashed line - a taller black line to mimic stroke behind a shorter blue line
+    var lineDash = [ 10, 8 ];
     var lineStart = new Vector2( 0, 0 );
     var lineEnd = new Vector2( lineLength, 0 );
-    var backLine = new Line( lineStart, lineEnd, {
-      lineWidth: 5,
+    var frontLine = new Line( lineStart, lineEnd, {
+      lineWidth: 3,
       lineDash: lineDash,
       stroke: 'rgb(74,133,208)'
     } );
-
-    var frontLine = new Line( lineStart, lineEnd, {
-      lineWidth: 2,
+    var backLine = new Line( lineStart, lineEnd, {
+      lineWidth: 5,
       lineDash: lineDash,
       stroke: 'black'
     } );
