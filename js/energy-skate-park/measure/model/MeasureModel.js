@@ -21,7 +21,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
 
   // constants
-  // in seconds, how frequently we will sample the state of the skater and add to teh list of SkaterSamples.
+  // in seconds, how frequently we will sample the state of the skater and add to the list of SkaterSamples.
   var SAVE_REFRESH_RATE = 0.1;
 
   /**
@@ -57,7 +57,11 @@ define( function( require ) {
 
     var self = this;
     Property.multilink( resetSamplesProperties, function() {
-      self.skaterSamples.clear();
+      for ( var i = 0; i < self.skaterSamples.length; i++ ) {
+        if ( !self.skaterSamples.get( i ).removeInitiated ) {
+          self.skaterSamples.get( i ).initiateRemove();
+        }
+      }
     } );
   }
 
@@ -94,10 +98,26 @@ define( function( require ) {
 
           if ( this.timeSinceSave > SAVE_REFRESH_RATE ) {
             this.timeSinceSave = 0;
-            this.skaterSamples.add( new SkaterSample( updatedState ) );
+            var newSample = new SkaterSample( updatedState );
+
+            // add a listener that removes this sample from the list - removes this listener on removal as well
+            var self = this;
+            var removalListener = function() {
+              newSample.removalEmitter.removeListener( removalListener );
+              self.skaterSamples.remove( newSample );
+            };
+            newSample.removalEmitter.addListener( removalListener );
+
+            this.skaterSamples.add( newSample );
           }
         }
       }
+
+      // determine if it is time fo any skater samples to be removed - use forEach to do on a copy of the array
+      // because this may involve array modification
+      this.skaterSamples.forEach( function( sample ) {
+        sample.step( dt );
+      } );
 
       return updatedState;
     }

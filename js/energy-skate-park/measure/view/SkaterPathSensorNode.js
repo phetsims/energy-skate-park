@@ -55,8 +55,12 @@ define( require => {
 
   class SkaterPathSensorNode extends Node {
     constructor( samples, sensorPositionProperty, modelViewTransform, options ) {
-      options = _.extend( {}, options );
-      super();
+      options = _.extend( {
+
+        // prevent block fitting so that things don't jiggle as the probe moves, see 
+        preventFit: true
+      }, options );
+      super( options );
 
       // labels and value rectangles are in the same align group so that all entries have same width and height for
       // layout

@@ -31,14 +31,7 @@ define( function( require ) {
     var self = this;
     model.skaterSamples.addItemAddedListener( function( addedSample ) {
 
-      var sampleNode = new SampleNode( modelViewTransform.modelToViewPosition( addedSample.position ), addedSample.inspectedProperty );
-
-      // this should probably be a new type with knowledge of how to show probe data and such
-      // var sampleCircle = new Circle( 3, {
-      //   fill: EnergySkateParkColorScheme.pathFill,
-      //   stroke: EnergySkateParkColorScheme.pathStroke,
-      //   center: modelViewTransform.modelToViewPosition( addedSample.position )
-      // } );
+      var sampleNode = new SampleNode( modelViewTransform.modelToViewPosition( addedSample.position ), addedSample.inspectedProperty, addedSample.opacityProperty );
       self.addChild( sampleNode );
 
       model.skaterSamples.addItemRemovedListener( function removalListener( removedSample ) {
@@ -60,12 +53,14 @@ define( function( require ) {
    * A single sample along the path. When the sample is being inspected by a probe, a highlight shows up underneath
    * the sample to indicate that it is selected.
    * @param {Vector2} center - center for this node in view coordinates
-   * @param {BooleanProperty} inspectedProperty - emits an event when a probe is over this sample
+   * @param {BooleanProperty} inspectedProperty - whether or not this SkaterSample is being inspected
+   * @param {NumberProperty} opacityProperty
    */
-  function SampleNode( center, inspectedProperty ) {
+  function SampleNode( center, inspectedProperty, opacityProperty ) {
 
-    // @private {Emitter}
+    // @private
     this.inspectedProperty = inspectedProperty;
+    this.opacityProperty = opacityProperty;
 
     const sampleCircle = new Circle( 3, {
       fill: EnergySkateParkColorScheme.pathFill,
@@ -87,6 +82,11 @@ define( function( require ) {
       haloCircle.visible = inspected;
     };
     this.inspectedProperty.link( this.inspectedListener );
+
+    this.opacityListener = ( opacity ) => {
+      this.opacity = opacity;
+    };
+    this.opacityProperty.link( this.opacityListener );
   }
 
   inherit( Node, SampleNode, {
@@ -97,6 +97,7 @@ define( function( require ) {
      */
     dispose: function() {
       this.inspectedProperty.unlink( this.inspectedListener );
+      this.opacityProperty.unlink( this.opacityListener );
       Node.prototype.dispose.call( this );
     }
   } );
