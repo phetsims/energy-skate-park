@@ -2,7 +2,7 @@
 
 /**
  * Scenery node for the Energy Skate Park view (includes everything you see).
- * 
+ *
  * This view is layered in a very particular way to reduce memory usage. There are three layers - layer of Nodes
  * rendered with SVG, then a WebGL layer (which scenery combines into a single canvas), then another layer for
  * everything on top. Nodes in the WebGL layer shoudl ONLY use WebGL, or else a canvas will be created for every
@@ -72,6 +72,7 @@ define( function( require ) {
   /**
    * @param {EnergySkateParkModel} model
    * @param {Tandem} tandem
+   * @param {Object} [options]
    * @constructor
    */
   function EnergySkateParkScreenView( model, tandem, options ) {
@@ -174,7 +175,8 @@ define( function( require ) {
         if ( self.measuringTapeNode.getLocalBaseBounds().intersectsBounds( self.measuringTapePanel.bounds ) ) {
           model.measuringTapeVisibleProperty.set( false );
         }
-      }
+      },
+      tandem: tandem.createTandem( 'measuringTapeNode' )
     } );
 
     // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
@@ -417,9 +419,14 @@ define( function( require ) {
     //---------------------------------------------------------------------------
     // END WEBGL LAYER
     //---------------------------------------------------------------------------
-    
+
     // layout managed in layout function
-    this.referenceHeightLine = new ReferenceHeightLine( modelViewTransform, model.skater.referenceHeightProperty, model.referenceHeightVisibleProperty );
+    this.referenceHeightLine = new ReferenceHeightLine(
+      modelViewTransform,
+      model.skater.referenceHeightProperty,
+      model.referenceHeightVisibleProperty,
+      tandem.createTandem( 'referenceHeightLine' )
+    );
     this.bottomLayer.addChild( this.referenceHeightLine );
 
     // relative to the control panel, but this will not float with the layout

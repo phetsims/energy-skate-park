@@ -31,13 +31,14 @@ define( function( require ) {
   // 
   // strings
   var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
-  
+
   /**
    * @constructor
-   * @param {string} label         
-   * @param {Node} icon          
+   * @param {string} label
+   * @param {Node} icon
    * @param {AlignGroup} textAlignGroup
    * @param {Property} property - the checkbox will update this Property
+   * @param {Tandem} tandem
    * @param {Object} options
    */
   function EnergySkateParkCheckboxItem( label, icon, textAlignGroup, property, tandem, options ) {
@@ -50,7 +51,8 @@ define( function( require ) {
     };
 
     var checkboxItemOptions = {
-      boxWidth: 14
+      boxWidth: 14,
+      tandem: tandem
     };
 
     // create text and an align box for it so that all text in a group of items is aligned
@@ -142,8 +144,9 @@ define( function( require ) {
         scale: 1
       }, options );
       var node = new GaugeNode( new Property( 0 ), propertiesSpeedString, new Range( 0, 10 ),
-        { pickable: false,
-          tandem: tandem.createTandem( 'gaugeNode')
+        {
+          pickable: false,
+          tandem: tandem.createTandem( 'gaugeNode' )
         } );
       node.scale( ( 20 / node.width ) * options.scale );
       return node;

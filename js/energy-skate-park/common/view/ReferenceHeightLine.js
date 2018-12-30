@@ -4,7 +4,7 @@
  * A node that shows the potential energy reference height in energy-skate-park. The line is a dashed
  * line that extends horizontally across the screen. The line can be dragged by clicking on a double headed arrow.
  * The origin for this node is the left edge of the line.
- * 
+ *
  * @author Jesse Greenberg
  */
 
@@ -30,11 +30,11 @@ define( function( require ) {
    * @constructor
    * @param {ModelViewTransform2} modelViewTransform
    * @param {NumberProperty} referenceHeightProperty
-   * @param {object} options
+   * @param {Tandem} tandem
    */
-  function ReferenceHeightLine( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, options ) {
+  function ReferenceHeightLine( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, tandem ) {
 
-    options = _.extend( {}, options );
+    var options = {};
     assert && assert( options.children === undefined, 'ReferenceHeightLine sets its own children' );
 
     // line will extend 9.5 meters through along the grid in model coordinates
@@ -64,7 +64,7 @@ define( function( require ) {
 
       left: 30,
       cursor: 'pointer',
-      fill: EnergySkateParkColorScheme.referenceArrowFill 
+      fill: EnergySkateParkColorScheme.referenceArrowFill
     } );
 
     // label for the reference line, surround by a transparent panel for better visibility
@@ -106,7 +106,8 @@ define( function( require ) {
         var modelY = modelMouse.y;
         var constrainedValue = Constants.REFERENCE_HEIGHT_RANGE.constrainValue( modelY );
         referenceHeightProperty.set( constrainedValue );
-      }
+      },
+      tandem: tandem.createTandem( 'dragListener' )
     } ) );
   }
 

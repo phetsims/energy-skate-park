@@ -62,7 +62,7 @@ define( function( require ) {
         EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.pieChartVisibleProperty,
-        tandem
+        tandem.createTandem( 'pieChartCheckbox' )
       ),
     );
 
@@ -72,7 +72,7 @@ define( function( require ) {
         EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale:0.8 } ),
         itemAlignGroup,
         model.barGraphVisibleProperty,
-        tandem
+        tandem.createTandem( 'barGraphCheckbox' )
       ), );
     }
 
@@ -82,14 +82,14 @@ define( function( require ) {
         EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.gridVisibleProperty,
-        tandem
+        tandem.createTandem( 'gridCheckbox' )
       ),
       new EnergySkateParkCheckboxItem(
         propertiesSpeedString,
         EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.speedometerVisibleProperty,
-        tandem
+        tandem.createTandem( 'speedometerCheckbox' )
       )
     ] );
 
@@ -100,7 +100,7 @@ define( function( require ) {
           EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) ),
           itemAlignGroup,
           model.referenceHeightVisibleProperty,
-          tandem
+          tandem.createTandem( 'referenceHeightCheckbox' )
         )
       );
     }

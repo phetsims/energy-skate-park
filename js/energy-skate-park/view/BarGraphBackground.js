@@ -104,7 +104,8 @@ define( function( require ) {
       leftTop: new Vector2( -10, this.originY + ZOOM_BUTTON_VERTICAL_SPACING ),
       listener: function() {
         graphScaleProperty.set( Math.max( graphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
-      }
+      },
+      tandem: tandem.createTandem( 'zoomOutButton' )
     } );
     this.zoomInButton = new ZoomButton( {
       in: true,
@@ -113,7 +114,8 @@ define( function( require ) {
       baseColor: ColorConstants.LIGHT_BLUE,
       listener: function() {
         graphScaleProperty.set( Math.min( graphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
-      }
+      },
+      tandem: tandem.createTandem( 'zoomInButton' )
     } );
 
     // Create a label that appears under one of the bars
