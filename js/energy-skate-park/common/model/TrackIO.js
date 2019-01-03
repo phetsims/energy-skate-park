@@ -34,6 +34,7 @@ define( function( require ) {
     documentation: 'A skate track.',
 
     toStateObject: function( track ) {
+      assert && assert( track !== undefined, 'track should be defined' );
       assert && assertInstanceOf( track, phet.energySkatePark.Track );
       if ( track instanceof phet.energySkatePark.Track || track === null ) {
 

@@ -224,7 +224,9 @@ define( function( require ) {
 
     // @public
     this.tracks = new ObservableArray( {
-      phetioType: ObservableArrayIO( TrackIO ),
+      phetioType: ObservableArrayIO( TrackIO, {
+        isReferenceType: false // because this is using "value type" serialization
+      } ),
       tandem: tandem.createTandem( 'tracks' )
     } );
 

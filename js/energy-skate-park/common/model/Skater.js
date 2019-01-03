@@ -202,7 +202,7 @@ define( function( require ) {
 
     // @public {Vector2} - Position of the skater's head, for positioning the pie chart.
     // TODO: Could this be a derived Property?
-    this.headPositionProperty = new Property( new Vector2( 0, 0 ), {
+    this.headPositionProperty = new Property( this.getHeadPosition(), {
       tandem: tandem.createTandem( 'headPositionProperty' ),
       phetioType: PropertyIO( Vector2IO ),
       phetioReadOnly: true
@@ -424,14 +424,7 @@ define( function( require ) {
       this.energyChangedEmitter.emit();
     },
 
-    /**
-     * Update the head position for showing the pie chart. Doesn't depend on "up" because it already depends on the
-     * angle of the skater. Would be better if headPosition were a derived property, but created too many allocations,
-     * see #50
-     *
-     * @private
-     */
-    updateHeadPosition: function() {
+    getHeadPosition: function() {
 
       // Center pie chart over skater's head not his feet so it doesn't look awkward when skating in a parabola
       // Note this has been tuned independently of SkaterNode.massToScale, which also accounts for the image dimensions
@@ -440,9 +433,22 @@ define( function( require ) {
       var vectorX = skaterHeight * Math.cos( this.angleProperty.value - Math.PI / 2 );
       var vectorY = skaterHeight * Math.sin( this.angleProperty.value - Math.PI / 2 );
 
+      return new Vector2( this.positionProperty.value.x + vectorX, this.positionProperty.value.y - vectorY );
+    },
+
+    /**
+     * Update the head position for showing the pie chart. Doesn't depend on "up" because it already depends on the
+     * angle of the skater. Would be better if headPosition were a derived property, but created too many allocations,
+     * see #50
+     *
+     * @private
+     */
+    updateHeadPosition: function() {
+      var headPosition = this.getHeadPosition();
+
       // Manually trigger notifications to avoid allocations, see #50
-      this.headPositionProperty.value.x = this.positionProperty.value.x + vectorX;
-      this.headPositionProperty.value.y = this.positionProperty.value.y - vectorY;
+      this.headPositionProperty.value.x = headPosition.x;
+      this.headPositionProperty.value.y = headPosition.y;
       this.headPositionProperty.notifyListenersStatic();
     },
 
