@@ -101,7 +101,7 @@ define( ( require ) => {
     }
   }
 
-  energySkatePark.register( 'SkaterSamplesNode.SampleNode', SkaterSamplesNode );
+  energySkatePark.register( 'SkaterSamplesNode.SampleNode', SampleNode );
 
   return SkaterSamplesNode;
 } );
