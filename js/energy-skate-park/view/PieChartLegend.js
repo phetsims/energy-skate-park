@@ -9,12 +9,12 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ClearThermalButton = require( 'SCENERY_PHET/ClearThermalButton' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var HStrut = require( 'SCENERY/nodes/HStrut' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var MoveToTrashButton = require( 'SCENERY_PHET/MoveToTrashButton' );
   var Panel = require( 'SUN/Panel' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
@@ -73,7 +73,7 @@ define( function( require ) {
     var thermalLabel = createLabel( 2, energyThermalString, EnergySkateParkColorScheme.thermalEnergy, 'thermalEnergyLabel' );
     var totalLabel = createLabel( 3, energyTotalString, EnergySkateParkColorScheme.totalEnergy, 'totalEnergyLabel' );
 
-    var clearThermalButton = new ClearThermalButton( {
+    var clearThermalButton = new MoveToTrashButton( {
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: clearThermal,
       centerX: thermalLabel.centerX,
@@ -84,7 +84,7 @@ define( function( require ) {
       clearThermalButton.enabled = allowClearingThermalEnergy;
     } );
 
-    // Don't let the ClearThermalButton participate in the layout since it is too big vertically.  Just use a strut to
+    // Don't let the MoveToTrashButton participate in the layout since it is too big vertically.  Just use a strut to
     // get the width right, then add the undo button later
     var clearThermalButtonStrut = new Rectangle( 0, 0, clearThermalButton.width, 1, {} );
 

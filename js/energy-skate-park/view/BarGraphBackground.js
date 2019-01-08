@@ -18,13 +18,13 @@ define( function( require ) {
 
   // modules
   var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
-  var ClearThermalButton = require( 'SCENERY_PHET/ClearThermalButton' );
   var ColorConstants = require( 'SUN/ColorConstants' );
   var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Line = require( 'SCENERY/nodes/Line' );
+  var MoveToTrashButton = require( 'SCENERY_PHET/MoveToTrashButton' );
   var Panel = require( 'SUN/Panel' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
@@ -142,7 +142,7 @@ define( function( require ) {
     this.thermalLabel = createLabel( 2, energyThermalString, 'thermalEnergyLabel' );
     this.totalLabel = createLabel( 3, energyTotalString, 'totalEnergyLabel' );
 
-    var clearThermalButton = new ClearThermalButton( {
+    var clearThermalButton = new MoveToTrashButton( {
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: clearThermal,
       centerX: this.thermalLabel.centerX,
