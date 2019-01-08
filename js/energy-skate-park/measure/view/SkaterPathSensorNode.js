@@ -254,7 +254,7 @@ define( require => {
      * Format a value for readout in the sensor display, each value having one decimal point, followed by units in J.
      * @private
      * @param  {number} value
-     * @return {string}
+     * @returns {string}
      */
     formatEnergyValue( value ) {
       return StringUtils.fillIn( energyJoulesPatternString, {
@@ -265,7 +265,7 @@ define( require => {
     /**
      * Each value in this readout will be as precise as one decimal.
      * @param  {number} value
-     * @return {string}
+     * @returns {string}
      */
     formatValue( value ) {
       return Util.toFixed( value, 1 );
@@ -276,7 +276,7 @@ define( require => {
      * @private
      * 
      * @param {SkaterSample} skaterSample
-     * @return {}
+     * @returns {}
      */
     clearDisplay( skaterSample ) {
       this.kineticReadout.text = '';
@@ -295,8 +295,8 @@ define( require => {
      * @private
      * 
      * @param  {AlignGroup} alignGroup  
-     * @param  {string} labelString 
-     * @return {AlignBox}             
+     * @param  {string} labelString
+     * @returns {AlignBox}
      */
     static createLabelBox( alignGroup, labelString ) {
       const labelText = new Text( labelString, { fill: TEXT_COLOR, font: LABEL_FONT } );
@@ -309,7 +309,7 @@ define( require => {
      * @private
      * 
      * @param  {AlignGroup} alignGroup
-     * @return {AlignBox}
+     * @returns {AlignBox}
      */
     static createReadoutBox( alignGroup ) {
       const rectangle = new Rectangle( 0, 0, 50, 15, 3, 3, { fill: EnergySkateParkColorScheme.panelFill, stroke: 'black' } );

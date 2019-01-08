@@ -90,8 +90,8 @@ define( function( require ) {
      * @param  {Array.<Track>} modelTracks
      * @param  {Array.<ControlPoint>} controlPoints
      * @param  {Property.<Bounds2>} availableBoundsProperty 
-     * @param  {object} options              
-     * @return {Track}                         
+     * @param  {object} options
+     * @returns {Track}
      */
     createTrack:function( model, modelTracks, controlPoints, availableBoundsProperty, options ) {
       return new Track( model, modelTracks, controlPoints, PREMADE_INTERACTIVE, PARENT_TRACKS, availableBoundsProperty, options );

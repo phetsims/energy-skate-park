@@ -46,7 +46,7 @@ define( function( require ) {
      * Decodes a ControlPoint from a state object. Supports null.
      *
      * @param {Object} stateObject
-     * @return {ControlPoint}
+     * @returns {ControlPoint}
      * @override
      */
     fromStateObject: function( stateObject ) {

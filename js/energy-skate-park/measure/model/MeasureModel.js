@@ -87,7 +87,7 @@ define( function( require ) {
      * @param {number} dt
      * @param {SkaterSate} skaterState - modified by this function
      *
-     * @return {SkaterState} - returned, may update the model Skater
+     * @returns {SkaterState} - returned, may update the model Skater
      */
     stepModel: function( dt, skaterState ) {
       var updatedState = EnergySkateParkFullTrackSetModel.prototype.stepModel.call( this, dt, skaterState );

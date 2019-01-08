@@ -76,8 +76,8 @@ define( function( require ) {
     /**
      * Indicate that this skater sample is about to be removed. Opacity immediately is reduced, and after a short time
      * this sample will be completedly removed.
-     * 
-     * @return {}
+     *
+     * @returns {}
      */
     initiateRemove: function() {
       assert && assert( !this._initiateRemove, 'removal should only be initiated once' );

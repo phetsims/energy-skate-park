@@ -180,7 +180,7 @@ define( function( require ) {
      * @param {Matrix3} modelViewMatrix
      * @param {Matrix3} projectionMatrix
      *
-     * @return {number} - flag describing purpose of this function.
+     * @returns {number} - flag describing purpose of this function.
      */
     paint: function( modelViewMatrix, projectionMatrix ) {
       var gl = this.gl;

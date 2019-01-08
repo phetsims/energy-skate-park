@@ -266,7 +266,7 @@ define( function( require ) {
     /**
      * Get the up arrow node for a particular bar by index.
      * @param  {number} index
-     * @return {ArrowNode}
+     * @returns {ArrowNode}
      */
     getUpArrowNode: function( index ) {
       return this.upArrowNodeMap[ index ];
@@ -276,7 +276,7 @@ define( function( require ) {
      * Get the down arrow node for this graph, by index. Only potential and total energies support negative values,
      * so arrow nodes don't exist for thermal and kinetic.
      * @param  {number} index
-     * @return      
+     * @returns {Node}
      */
     getDownArrowNode: function( index ) {
       var arrowNode = this.downArrowNodeMap[ index ];
@@ -295,7 +295,7 @@ define( function( require ) {
      *
      * @param {number} index
      * @param {boolean} heightPositive - true if the height will extend above the x axis
-     * @return {number}
+     * @returns {number}
      */
     getMaximumBarHeight: function( index, heightPositive ) {
       if ( !heightPositive ) {
@@ -313,7 +313,7 @@ define( function( require ) {
      * of the bar rectangle of this height. Includes some extra padding for visibility.
      *
      * @public
-     * @return {number}
+     * @returns {number}
      */
     getLabelHeight: function( index ) {
       assert && assert( this.labelMap[ index ], 'index out of range for label map' );
@@ -326,7 +326,7 @@ define( function( require ) {
      * @private
      * 
      * @param {number} index - used to determine which physical value this arrow will represent.
-     * @return {Node}
+     * @returns {Node}
      */
     createArrowNode: function( index, forPositive ) {
       var node = new ArrowNode( 0, 0, 0, -ARROW_HEIGHT, {

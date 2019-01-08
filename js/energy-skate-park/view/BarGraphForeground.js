@@ -39,7 +39,7 @@ define( function( require ) {
     // Create an energy bar that animates as the skater moves. Composed of 2 rectangles, one solid and one that
     // is semi-transparent in case energy is negative. The semi transparent rectangle will extend up to the width
     // of the bar label.
-    // @return {Node}
+    // @returns {Node}
     var createBar = function( index, color, property, showSmallValuesAsZero ) {
       var bar = new Node( { renderer: barRenderer } );
 

@@ -283,7 +283,7 @@ define( function( require ) {
      * Get x location at the parametric position.
      * @public
      * @param {number} parametricPosition
-     * @return {number}
+     * @returns {number}
      */
     getX: function( parametricPosition ) { return SplineEvaluation.atNumber( this.xSpline, parametricPosition ); },
 
@@ -291,7 +291,7 @@ define( function( require ) {
      * Get y location at the parametric position.
      * @public
      * @param {number}
-     * @return {number}
+     * @returns {number}
      */
     getY: function( parametricPosition ) { return SplineEvaluation.atNumber( this.ySpline, parametricPosition ); },
 
@@ -299,7 +299,7 @@ define( function( require ) {
      * Get the model location at the parametric position.
      * @public
      * @param {number} parametricPosition
-     * @return {Vector2}
+     * @returns {Vector2}
      */
     getPoint: function( parametricPosition ) {
       var x = SplineEvaluation.atNumber( this.xSpline, parametricPosition );
@@ -334,7 +334,7 @@ define( function( require ) {
      * values, this is called every step while animating on the track, so it was optimized to avoid new allocations.
      * @public
      * @param {number} parametricPosition
-     * @return {number}
+     * @returns {number}
      */
     getViewAngleAt: function( parametricPosition ) {
       if ( this.xSplineDiff === null ) {
@@ -348,7 +348,7 @@ define( function( require ) {
      * Get the model angle at the specified position on the track.
      * @public
      * @param {number} parametricPosition
-     * @return {number}
+     * @returns {number}
      */
     getModelAngleAt: function( parametricPosition ) {
 
@@ -364,7 +364,7 @@ define( function( require ) {
      * Get the model unit vector at the specified position on the track.
      * @public
      * @param {number} parametricPosition
-     * @return {number}
+     * @returns {number}
      */
     getUnitNormalVector: function( parametricPosition ) {
 

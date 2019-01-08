@@ -79,7 +79,7 @@ define( function( require ) {
      *
      * @public
      * @param {EnergySkateParkModel} model
-     * @return {Array.<Track>}
+     * @returns {Array.<Track>}
      */
     createBasicsTrackSet: function( model, tandem ) {
 
@@ -114,7 +114,7 @@ define( function( require ) {
      *
      * @public
      * @param {EnergySkateParkModel} model
-     * @return {Array.<Track>}
+     * @returns {Array.<Track>}
      */
     createFullTrackSet: function( model, tandem ) {
 

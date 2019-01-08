@@ -443,7 +443,7 @@ define( function( require ) {
      * @param {number} dt
      * @param {SkaterState} skaterState
      *
-     * @return {SkaterState}
+     * @returns {SkaterState}
      */
     stepGround: function( dt, skaterState ) {
       var x0 = skaterState.positionX;
@@ -479,7 +479,7 @@ define( function( require ) {
      * @param {Vector2} proposedVelocity
      * @param {number} dt
      *
-     * @return {SkaterState}
+     * @returns {SkaterState}
      */
     switchToGround: function( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt ) {
       var segment = new Vector2( 1, 0 );
@@ -557,7 +557,7 @@ define( function( require ) {
      * @param {Vector2} position
      * @param {[].Track} physicalTracks
      *
-     * @return {Object|null} - collection of { track: {Track}, parametricPosition: {Vector2}, point: {Vector2} }, or null
+     * @returns {Object|null} - collection of { track: {Track}, parametricPosition: {Vector2}, point: {Vector2} }, or null
      */
     getClosestTrackAndPositionAndParameter: function( position, physicalTracks ) {
       var closestTrack = null;
@@ -593,7 +593,7 @@ define( function( require ) {
      * @param {number} afterX
      * @param {number} afterY
      *
-     * @return {boolean}
+     * @returns {boolean}
      */
     crossedTrack: function( closestTrackAndPositionAndParameter, physicalTracks, beforeX, beforeY, afterX, afterY ) {
       var track = closestTrackAndPositionAndParameter.track;
@@ -626,7 +626,7 @@ define( function( require ) {
      * @param {number} dt
      * @param {Vector2} proposedVelocity
      *
-     * @return {SkaterState}
+     * @returns {SkaterState}
      */
     interactWithTracksWhileFalling: function( physicalTracks, skaterState, proposedPosition, initialEnergy, dt, proposedVelocity ) {
 
@@ -735,7 +735,7 @@ define( function( require ) {
      * @param {Vector2} proposedVelocity
      * @param {number} dt
      *
-     * @return {SkaterState}
+     * @returns {SkaterState}
      */
     continueFreeFall: function( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt ) {
 
@@ -784,7 +784,7 @@ define( function( require ) {
      *
      * @param {SkaterState} skaterState
      *
-     * @return {number}
+     * @returns {number}
      */
     getFrictionForceX: function( skaterState ) {
 
@@ -809,7 +809,7 @@ define( function( require ) {
      * @private
      *
      * @param {SkaterState} skaterState
-     * @return {number}
+     * @returns {number}
      */
     getFrictionForceY: function( skaterState ) {
 
@@ -829,7 +829,7 @@ define( function( require ) {
      * Get the normal force (Newtons) on the skater.
      *
      * @param {SkaterState} skaterState
-     * @return {number}
+     * @returns {number}
      */
     getNormalForce: function( skaterState ) {
       skaterState.getCurvature( curvatureTemp2 );
@@ -859,7 +859,7 @@ define( function( require ) {
      * @param {number} dt
      * @param {SkaterState} skaterState
      *
-     * @return {SkaterState}
+     * @returns {SkaterState}
      */
     stepEuler: function( dt, skaterState ) {
       var track = skaterState.track;
@@ -949,7 +949,7 @@ define( function( require ) {
      *
      * @param {number} dt
      * @param {SkaterState} skaterState
-     * @return {SkaterState}
+     * @returns {SkaterState}
      */
     stepTrack: function( dt, skaterState ) {
 
@@ -1048,7 +1048,7 @@ define( function( require ) {
      * @param {number} sideVectorY
      * @param {number} sign
      *
-     * @return {Skater}
+     * @returns {Skater}
      */
     nudge: function( freeSkater, sideVectorX, sideVectorY, sign ) {
 
@@ -1082,7 +1082,7 @@ define( function( require ) {
      * @param {SkaterState} skaterState
      * @param {SkaterState} targetState
      *
-     * @return {SkaterState}
+     * @returns {SkaterState}
      */
     correctEnergyReduceVelocity: function( skaterState, targetState ) {
 
@@ -1124,7 +1124,7 @@ define( function( require ) {
      * @param {number} e0
      * @param {number} numSteps
      *
-     * @return {number}
+     * @returns {number}
      */
     searchSplineForEnergy: function( skaterState, u0, u1, e0, numSteps ) {
       var da = ( u1 - u0 ) / numSteps;
@@ -1151,7 +1151,7 @@ define( function( require ) {
      * @param {SkaterState} skaterState
      * @param {SkaterState} newState
      *
-     * @return {SkaterState}
+     * @returns {SkaterState}
      */
     correctEnergy: function( skaterState, newState ) {
       if ( this.trackChangePending ) {
@@ -1293,7 +1293,7 @@ define( function( require ) {
      *
      * @param {number} dt
      * @param {SkaterState}
-     * @return {SkaterState}
+     * @returns {SkaterState}
      */
     stepModel: function( dt, skaterState ) {
       return skaterState.dragging ? skaterState : // User is dragging the skater, nothing to update here
@@ -1307,7 +1307,7 @@ define( function( require ) {
      * Return to the place he was last released by the user. Also restores the track the skater was on so the initial
      * conditions are the same as the previous release.
      *
-     * @return {SkaterState}
+     * @returns {SkaterState}
      */
     returnSkater: function() {
 
@@ -1340,7 +1340,7 @@ define( function( require ) {
     /**
      * Get all tracks that the skater cannot interact with.
      *
-     * @return {[].Track}
+     * @returns {[].Track}
      */
     getNonPhysicalTracks: function() {
 
@@ -1442,7 +1442,7 @@ define( function( require ) {
      * @param {[type]} controlPointIndex [description]
      * @param {[type]} modelAngle [description]
      *
-     * @return {[type]} [description]
+     * @returns {[type]} [description]
      */
     splitControlPoint: function( track, controlPointIndex, modelAngle ) {
       var controlPointToSplit = track.controlPoints[ controlPointIndex ];
