@@ -143,6 +143,7 @@ define( function( require ) {
     this.totalLabel = createLabel( 3, energyTotalString, 'totalEnergyLabel' );
 
     var clearThermalButton = new MoveToTrashButton( {
+      arrowColor: EnergySkateParkColorScheme.thermalEnergy,
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: clearThermal,
       centerX: this.thermalLabel.centerX,

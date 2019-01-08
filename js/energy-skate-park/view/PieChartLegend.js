@@ -74,6 +74,7 @@ define( function( require ) {
     var totalLabel = createLabel( 3, energyTotalString, EnergySkateParkColorScheme.totalEnergy, 'totalEnergyLabel' );
 
     var clearThermalButton = new MoveToTrashButton( {
+      arrowColor: EnergySkateParkColorScheme.thermalEnergy,
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: clearThermal,
       centerX: thermalLabel.centerX,
