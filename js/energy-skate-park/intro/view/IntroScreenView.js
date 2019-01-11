@@ -30,7 +30,9 @@ define( function( require ) {
     EnergySkateParkScreenView.call( this, model, tandem.createTandem( 'introScreenView' ) );
 
     // @private (for layout) {ComboBox} 
-    this.massComboBox = new MassComboBox( model.skater.massProperty, this );
+    this.massComboBox = new MassComboBox( model.skater.massProperty, this, {
+      tandem: tandem.createTandem( 'massComboBox' )
+    } );
 
     // add the combo box to the back layer so it is behind the skater
     this.addToBottomLayer( this.massComboBox );
@@ -45,7 +47,11 @@ define( function( require ) {
     } );
     mockupOpacityProperty.linkAttribute( image, 'opacity' );
     this.addChild( image );
-    this.addChild( new HSlider( mockupOpacityProperty, new Range( 0, 1 ), { top: 10, left: 500 } ) );
+    this.addChild( new HSlider( mockupOpacityProperty, new Range( 0, 1 ), {
+      top: 10,
+      left: 500,
+      tandem: tandem.createTandem( 'mockupOpacitySlider' )
+    } ) );
   }
 
   energySkatePark.register( 'IntroScreenView', IntroScreenView );

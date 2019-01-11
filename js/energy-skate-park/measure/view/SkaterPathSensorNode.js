@@ -3,7 +3,7 @@
 /**
  * The sensor that reads information from the samples along the skater path. Includes the body, wire, and sensor. The
  * body is stationary and the beter can be dragged to sample locations.
- * 
+ *
  * @author Jesse Greenberg
  */
 define( require => {
@@ -12,7 +12,7 @@ define( require => {
   // modules
   const AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
   const DerivedProperty = require( 'AXON/DerivedProperty' );
-  const DragListener= require( 'SCENERY/listeners/DragListener' );
+  const DragListener = require( 'SCENERY/listeners/DragListener' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const HBox = require( 'SCENERY/nodes/HBox' );
@@ -116,12 +116,16 @@ define( require => {
           energyLabel,
           new HBox( {
             children: [
-              new VBox( { children: [
-                kineticLabelBox, potentialLabelBox, thermalLabelBox, totalLabelBox
-              ], spacing: LAYOUT_SPACING } ),
-              new VBox( { children: [
-                this.kineticRectangleBox, this.potentialRectangleBox, this.thermalRectangleBox, this.totalRectangleBox
-              ], spacing: LAYOUT_SPACING } )
+              new VBox( {
+                children: [
+                  kineticLabelBox, potentialLabelBox, thermalLabelBox, totalLabelBox
+                ], spacing: LAYOUT_SPACING
+              } ),
+              new VBox( {
+                children: [
+                  this.kineticRectangleBox, this.potentialRectangleBox, this.thermalRectangleBox, this.totalRectangleBox
+                ], spacing: LAYOUT_SPACING
+              } )
             ],
             spacing: LABEL_VALUE_SPACING
           } )
@@ -199,7 +203,8 @@ define( require => {
       this.probeNode.addInputListener( new DragListener( {
         transform: modelViewTransform,
         locationProperty: sensorPositionProperty,
-        translateNode: true
+        translateNode: true,
+        tandem: options.tandem.createTandem( 'dragListener' )
       } ) );
     }
 
@@ -237,14 +242,14 @@ define( require => {
      *
      * Also positions and sizes the height/speed readout which appears to the right of the probe unless a panel would
      * cover it.
-     * 
+     *
      * @private
      */
     positionReadouts() {
-      this.kineticReadout.rightCenter = this.kineticRectangleBox.parentToLocalPoint( this.kineticRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 ); 
-      this.potentialReadout.rightCenter = this.potentialRectangleBox.parentToLocalPoint( this.potentialRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 ); 
-      this.thermalReadout.rightCenter = this.thermalRectangleBox.parentToLocalPoint( this.thermalRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 ); 
-      this.totalReadout.rightCenter = this.totalRectangleBox.parentToLocalPoint( this.totalRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 ); 
+      this.kineticReadout.rightCenter = this.kineticRectangleBox.parentToLocalPoint( this.kineticRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 );
+      this.potentialReadout.rightCenter = this.potentialRectangleBox.parentToLocalPoint( this.potentialRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 );
+      this.thermalReadout.rightCenter = this.thermalRectangleBox.parentToLocalPoint( this.thermalRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 );
+      this.totalReadout.rightCenter = this.totalRectangleBox.parentToLocalPoint( this.totalRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 );
 
       this.heightSpeedRectangle.setRectBounds( this.heightSpeedVBox.bounds );
       this.heightSpeedRectangle.leftCenter = this.probeNode.rightCenter.plusXY( PROBE_READOUT_SPACING, 0 );
@@ -259,7 +264,7 @@ define( require => {
     formatEnergyValue( value ) {
       return StringUtils.fillIn( energyJoulesPatternString, {
         value: this.formatValue( value )
-      } ); 
+      } );
     }
 
     /**
@@ -274,7 +279,7 @@ define( require => {
     /**
      * Clear all values in the displays.
      * @private
-     * 
+     *
      * @param {SkaterSample} skaterSample
      * @returns {}
      */
@@ -293,8 +298,8 @@ define( require => {
     /**
      * Create label text and wrap with an AlignBox so that all labels and readouts have the same dimensions for layout.
      * @private
-     * 
-     * @param  {AlignGroup} alignGroup  
+     *
+     * @param  {AlignGroup} alignGroup
      * @param  {string} labelString
      * @returns {AlignBox}
      */
@@ -307,12 +312,15 @@ define( require => {
      * Create a rectangle to contain value readouts, wrapped in an align box so that labels and this rectangle all
      * have the same dimensions for layout purposes.
      * @private
-     * 
+     *
      * @param  {AlignGroup} alignGroup
      * @returns {AlignBox}
      */
     static createReadoutBox( alignGroup ) {
-      const rectangle = new Rectangle( 0, 0, 50, 15, 3, 3, { fill: EnergySkateParkColorScheme.panelFill, stroke: 'black' } );
+      const rectangle = new Rectangle( 0, 0, 50, 15, 3, 3, {
+        fill: EnergySkateParkColorScheme.panelFill,
+        stroke: 'black'
+      } );
       return alignGroup.createBox( rectangle, { xAlign: 'right' } );
     }
   }

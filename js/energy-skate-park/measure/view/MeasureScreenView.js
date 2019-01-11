@@ -27,7 +27,9 @@ define( function( require ) {
     } );
 
     // @private - for layout
-    this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorPositionProperty, this.modelViewTransform );
+    this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorPositionProperty, this.modelViewTransform, {
+      tandem: tandem.createTandem( 'pathSensor' )
+    } );
     this.pathSensor.top = this.modelViewTransform.modelToViewDeltaY( -2 );
 
 
