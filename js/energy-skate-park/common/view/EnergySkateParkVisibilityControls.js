@@ -5,7 +5,7 @@
  * speedometer, and reference height control.
  *
  * At the moment, order of checkboxes cannot be controlled.
- * 
+ *
  * @author Jesse Greenberg
  */
 define( function( require ) {
@@ -51,7 +51,7 @@ define( function( require ) {
           EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) ),
           itemAlignGroup,
           model.sampleSkaterProperty,
-          tandem
+          tandem.createTandem( 'pathCheckBox' )
         )
       );
     }
@@ -69,7 +69,7 @@ define( function( require ) {
     if ( options.includeBarGraphCheckbox ) {
       checkboxItems.push( new EnergySkateParkCheckboxItem(
         plotsBarGraphString,
-        EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale:0.8 } ),
+        EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.barGraphVisibleProperty,
         tandem.createTandem( 'barGraphCheckbox' )
@@ -77,7 +77,7 @@ define( function( require ) {
     }
 
     checkboxItems = checkboxItems.concat( [
-      new EnergySkateParkCheckboxItem( 
+      new EnergySkateParkCheckboxItem(
         controlsShowGridString,
         EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } ),
         itemAlignGroup,

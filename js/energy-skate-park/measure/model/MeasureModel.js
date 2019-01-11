@@ -3,7 +3,7 @@
 /**
  * Model for the "Measure" screen of this sim. The measure screen allows the user to inspect physical values
  * of the skater through time.
- * 
+ *
  * @author Jesse Greenberg
  */
 
@@ -14,7 +14,7 @@ define( function( require ) {
   var BooleanProperty = require( 'AXON/BooleanProperty' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
-  var Property = require( 'AXON/Property' ); 
+  var Property = require( 'AXON/Property' );
   var SkaterSample = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterSample' );
   var ObservableArray = require( 'AXON/ObservableArray' );
   var Vector2 = require( 'DOT/Vector2' );
@@ -35,7 +35,7 @@ define( function( require ) {
     EnergySkateParkFullTrackSetModel.call( this, true, tandem );
 
     // @public - whether or not the model should store samples of skater data as the skater moves along the track
-    this.sampleSkaterProperty = new BooleanProperty( true );
+    this.sampleSkaterProperty = new BooleanProperty( true, { tandem: tandem.createTandem( 'sampleSkaterProperty' ) } );
 
     // @public - the position of the sensor, in model coordinates (meters)
     this.sensorPositionProperty = new Property( new Vector2( -4, 5 ) );
@@ -77,7 +77,7 @@ define( function( require ) {
       EnergySkateParkFullTrackSetModel.prototype.reset.call( this );
 
       this.skaterSamples.clear();
-      this.timeSinceSave =  0;
+      this.timeSinceSave = 0;
     },
 
     /**
