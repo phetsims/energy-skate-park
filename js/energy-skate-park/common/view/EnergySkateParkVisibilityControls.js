@@ -51,7 +51,7 @@ define( function( require ) {
           EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) ),
           itemAlignGroup,
           model.sampleSkaterProperty,
-          tandem.createTandem( 'pathCheckBox' )
+          tandem.createTandem( 'pathCheckbox' )
         )
       );
     }
