@@ -49,7 +49,7 @@ define( function( require ) {
     options.visibilityControlsOptions = _.extend( {}, options.visibilityControlsOptions );
 
     // controls that change visibility of items in the screen
-    var visibilityControls = new EnergySkateParkVisibilityControls( model, tandem, options.visibilityControlsOptions );
+    var visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), options.visibilityControlsOptions );
     var children = [ visibilityControls ];
 
     // separator between visibility controls and track selection buttons
