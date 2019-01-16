@@ -145,15 +145,15 @@ define( function( require ) {
     // don't easily represent negative values
     skater.potentialEnergyProperty.link( function( potentialEnergy ) {
 
-      var energyPositive = potentialEnergy > 0;
+      var energyNonnegative = potentialEnergy >= 0;
 
-      outline.visible = energyPositive;
-      potentialEnergyPiece.visible =  energyPositive;
-      kineticEnergyPiece.visible =  energyPositive;
-      thermalEnergyPiece.visible =  energyPositive;
+      outline.visible = energyNonnegative;
+      potentialEnergyPiece.visible =  energyNonnegative;
+      kineticEnergyPiece.visible =  energyNonnegative;
+      thermalEnergyPiece.visible =  energyNonnegative;
 
-      circularOutline.visible = !energyPositive;
-      totalEnergyPiece.visible = !energyPositive;
+      circularOutline.visible = !energyNonnegative;
+      totalEnergyPiece.visible = !energyNonnegative;
 
     } );
   }
