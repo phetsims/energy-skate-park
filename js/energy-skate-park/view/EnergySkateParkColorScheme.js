@@ -1,7 +1,7 @@
 // Copyright 2013-2018, University of Colorado Boulder
 
 /**
- * Colors used in Energy Skate Park, based on the original Java sim colors.
+ * Colors used in Energy Skate Park, using PhetColorScheme to color energies.
  *
  * @author Sam Reid
  */
@@ -11,27 +11,29 @@ define( function( require ) {
   // modules
   var Color = require( 'SCENERY/util/Color' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  var PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
 
   var EnergySkateParkColorScheme = {
 
-    // Use color instances here to prevent parsing these values multiple times
-    kineticEnergy: new Color( '#00cc1a' ),
-    potentialEnergy: new Color( '#3282D7' ),
-    thermalEnergy: new Color( '#FF5500' ), // red colorblind
-    totalEnergy: new Color( '#B4B400' ), // dirty yellow
+    // Use color instances here to prevent parsing these values multiple times, luckily PhetColorScheme also
+    // uses Color instances
+    kineticEnergy: PhetColorScheme.KINETIC_ENERGY,
+    potentialEnergy: PhetColorScheme.GRAVITATIONAL_POTENTIAL_ENERGY,
+    thermalEnergy: PhetColorScheme.HEAT_THERMAL_ENERGY,
+    totalEnergy: PhetColorScheme.TOTAL_ENERGY,
 
     // fill of circles that show the skater path
     pathFill: new Color( 220, 175, 250 ),
-    pathStroke: 'black',
+    pathStroke: new Color( 'black' ),
     haloFill: new Color( 225, 231, 86, 0.75 ),
 
     // color for the reference line arrow
-    referenceArrowFill: 'rgb(254,240,53)',
+    referenceArrowFill: new Color( 254, 240, 53 ),
 
-    panelFill: '#F0F0F0',
+    panelFill: new Color( '#F0F0F0' ),
 
     // surrounds text for better visibility
-    transparentPanelFill: 'rgba(255,255,255,0.5)'
+    transparentPanelFill: new Color( 255, 255, 255, 0.5 )
   };
 
   energySkatePark.register( 'EnergySkateParkColorScheme', EnergySkateParkColorScheme );
