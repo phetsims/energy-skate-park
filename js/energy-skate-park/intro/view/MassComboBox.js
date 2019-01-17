@@ -18,6 +18,7 @@ define( require => {
 
   // modules
   const ComboBox = require( 'SUN/ComboBox' );
+  const ComboBoxItem = require( 'SUN/ComboBoxItem' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const IntroConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/IntroConstants' );
   const Text = require( 'SCENERY/nodes/Text' );
@@ -42,7 +43,7 @@ define( require => {
         IntroConstants.BALL_MASS
       ];
       for ( var i = 0; i < possibleMasses.length; i++ ) {
-        items.push( ComboBox.createItem(
+        items.push( new ComboBoxItem(
           // TODO: This text will be replaced with an image, see https://github.com/phetsims/tasks/issues/962
           new Text( possibleMasses[ i ] + ' kg' ),
           possibleMasses[ i ]
