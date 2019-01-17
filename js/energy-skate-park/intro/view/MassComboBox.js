@@ -1,7 +1,7 @@
 // Copyright 2018, University of Colorado Boulder
 
 /**
- * A combobox that can be used to change the masses in Energy Skate Park.
+ * A combo box that can be used to change the masses in Energy Skate Park.
  *
  * NOTE: This type is for initial exploration about the functionality of the mass range. The combo box for mass might
  * need to change entirely to support 2D layouts, see
