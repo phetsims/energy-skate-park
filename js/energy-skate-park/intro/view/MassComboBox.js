@@ -32,7 +32,7 @@ define( require => {
      */
     constructor( massProperty, listParent, options ) {
 
-      // array of items with the signature of ComboBox.createItem
+      // {ComboBoxItem[]}
       var items = [];
 
       var possibleMasses = [
