@@ -51,6 +51,8 @@ define( require => {
       }
 
       super( items, massProperty, listParent, _.extend( {
+        xMargin: 10,
+        yMargin: 6,
         listPosition: 'above'
       }, options ) );
     }
