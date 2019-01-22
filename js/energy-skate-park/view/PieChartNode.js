@@ -18,6 +18,7 @@ define( function( require ) {
   var Node = require( 'SCENERY/nodes/Node' );
   var Path = require( 'SCENERY/nodes/Path' );
   var Shape = require( 'KITE/Shape' );
+  var Util = require( 'DOT/Util' );
 
   /**
    * @param {Skater} skater the skater model
@@ -122,7 +123,7 @@ define( function( require ) {
         totalEnergyCircle.visible = true;
 
         // round to nearest int so that graphics update only happens every pixel change or more
-        totalEnergyCircle.radius = Math.round( radius );
+        totalEnergyCircle.radius = Util.roundSymmetric( radius );
       }
       else if ( numberComponents === 0 || energyNegative ) {
         potentialEnergySlice.visible = false;
@@ -144,7 +145,7 @@ define( function( require ) {
         if ( selectedSlice instanceof Circle ) {
 
           // Round the radius so it will only update the graphics when it changed by a px or more
-          selectedSlice.radius = Math.round( radius );
+          selectedSlice.radius = Util.roundSymmetric( radius );
         }
         else {
           selectedSlice.shape = Shape.circle( 0, 0, radius );
@@ -160,7 +161,7 @@ define( function( require ) {
 
         // Show one of them in the background instead of pieces for each one for performance
         // Round the radius so it will only update the graphics when it changed by a px or more
-        thermalEnergySlice.radius = Math.round( radius );
+        thermalEnergySlice.radius = Util.roundSymmetric( radius );
 
         // Start thermal at the right and wind counter clockwise, see #133
         // Order is thermal (in the background), kinetic, potential

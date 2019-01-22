@@ -16,6 +16,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var ShaderProgram = require( 'SCENERY/util/ShaderProgram' );
   var Shape = require( 'KITE/Shape' );
+  var Util = require( 'DOT/Util' );
   var WebGLNode = require( 'SCENERY/nodes/WebGLNode' );
 
   // constants
@@ -166,12 +167,12 @@ define( function( require ) {
       //Round to the nearest angle to prevent seams, see #263
       var startAngle = 0;
       var unroundedEndAngle = this.node.extentProperty.value;
-      var endAngle = Math.round( unroundedEndAngle / angleBetweenSlices ) * angleBetweenSlices;
+      var endAngle = Util.roundSymmetric( unroundedEndAngle / angleBetweenSlices ) * angleBetweenSlices;
 
       var extent = endAngle - startAngle;
 
       // To cut out a piece from the pie, just select the appropriate start/end vertices, then the call is still static.
-      var numToDraw = Math.round( 2 + ( this.vertices.length / 2 - 2 ) * extent / ( 2 * Math.PI ) ); // linear between 2 and the maximum
+      var numToDraw = Util.roundSymmetric( 2 + ( this.vertices.length / 2 - 2 ) * extent / ( 2 * Math.PI ) ); // linear between 2 and the maximum
 
       // Make sure to show non-zero energy if the value is above the threshold, see #307
       if ( numToDraw === 2 && this.node.extentProperty.get() > 1E-6 ) {
