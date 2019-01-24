@@ -16,7 +16,7 @@ define( function( require ) {
   var HSeparator = require( 'SUN/HSeparator' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Panel = require( 'SUN/Panel' );
-  var PhysicalControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PhysicalControl' );
+  var PhysicalSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PhysicalSlider' );
   var Range = require( 'DOT/Range' );
   var SceneSelectionRadioButtonGroup = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SceneSelectionRadioButtonGroup' );
   var VBox = require( 'SCENERY/nodes/VBox' );
@@ -62,11 +62,11 @@ define( function( require ) {
     }
 
     if ( options.includeMassSlider ) {
-      children.push( new PhysicalControl(
+      children.push( new PhysicalSlider(
         model.skater.massProperty,
         model.skater.massRange,
         controlsMassString,
-        tandem.createTandem( 'massPhysicalControl' ), {
+        tandem.createTandem( 'massPhysicalSlider' ), {
           minLabel: smallString
         }
       ) );
@@ -75,20 +75,20 @@ define( function( require ) {
     if ( options.includeFrictionSlider ) {
       assert && assert( model.frictionProperty.value > 0, 'if including friction, it must have non-zero initial value' );
 
-      children.push( new PhysicalControl(
+      children.push( new PhysicalSlider(
         model.frictionProperty,
         new Range( 0, model.frictionProperty.value * 2 ),
         controlsFrictionTitleString,
-        tandem.createTandem( 'frictionPhysicalControl' )
+        tandem.createTandem( 'frictionPhysicalSlider' )
       ) );
     }
 
     if ( options.includeGravitySlider ) {
-      children.push( new PhysicalControl(
+      children.push( new PhysicalSlider(
         model.skater.gravityMagnitudeProperty,
         new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ),
         controlsGravityString,
-        tandem.createTandem( 'gravityPhysicalControl' ), {
+        tandem.createTandem( 'gravityPhysicalSlider' ), {
           minLabel: controlsValueTinyString
         }
       ) );

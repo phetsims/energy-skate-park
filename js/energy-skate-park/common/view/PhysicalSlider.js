@@ -23,7 +23,7 @@ define( require => {
   const controlsValueLotsString = require( 'string!ENERGY_SKATE_PARK/controls.value.lots' );
   const controlsValueNoneString = require( 'string!ENERGY_SKATE_PARK/controls.value.none' );
 
-  class PhysicalControl extends VBox {
+  class PhysicalSlider extends VBox {
 
     /**
      * @param  {Object} options
@@ -59,5 +59,5 @@ define( require => {
     }
   }
 
-  return energySkatePark.register( 'PhysicalControl', PhysicalControl );
+  return energySkatePark.register( 'PhysicalSlider', PhysicalSlider );
 } );
