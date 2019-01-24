@@ -379,6 +379,7 @@ define( function( require ) {
     //------------------------------------------------------------------------------
     var webGLSupported = Util.isWebGLSupported && phet.chipper.queryParameters.webgl;
     var renderer = webGLSupported ? 'webgl' : null;
+    console.log( renderer );
 
     var skaterNode = new SkaterNode(
       model.skater,
