@@ -13,7 +13,7 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var Range = require( 'DOT/Range' );
 
-  var minMass = 0.2;// kg
+  var minMass = 5;// kg
   var maxMass = 100;
 
   // for zoom buttons for bar graphs, pressing button will increase/decrease scale by this much
