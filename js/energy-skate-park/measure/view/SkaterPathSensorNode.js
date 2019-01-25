@@ -83,7 +83,7 @@ define( require => {
         fill: TEXT_COLOR
       } );
 
-      // @private {Property.<number|null> for the NumberDisplays, null unless 
+      // @private {Property.<number|null> for the NumberDisplays, null unless probe is over a skater sample
       this.kineticValueProperty = new Property( null );
       this.potentialValueProperty = new Property( null );
       this.thermalValueProperty = new Property( null );
