@@ -8,6 +8,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Dimension2 = require( 'DOT/Dimension2' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var Range = require( 'DOT/Range' );
@@ -24,6 +25,13 @@ define( function( require ) {
       trackSize: new Dimension2( 100, 4 ),
       tickLabelSpacing: 0,
       majorTickLength: 10
+    },
+
+    // font for labels of physical controls
+    CONTROL_TITLE_FONT: new PhetFont( { weight: 'bold', size: 12 } ),
+    CONTROL_TICK_LABEL_OPTIONS: {
+      font: new PhetFont( 10 ),
+      maxWidth: 54 // selected by choosing the length of widest English string in ?stringTest=doubl
     },
 
     // for the bar graphs, factors multiplied by physical values to produce heights in view coordinates

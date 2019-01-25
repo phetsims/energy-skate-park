@@ -15,7 +15,6 @@ define( require => {
   const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const HSlider = require( 'SUN/HSlider' );
-  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Text = require( 'SCENERY/nodes/Text' );
   const VBox = require( 'SCENERY/nodes/VBox' );
 
@@ -35,19 +34,14 @@ define( require => {
         minLabel: controlsValueNoneString
       }, options );
 
-      const tickFont = new PhetFont( 10 );
-      const textOptions = {
-        font: tickFont,
-        maxWidth: 54 // selected by choosing the length of widest English string in ?stringTest=double
-      };
       const slider = new HSlider( property, valueRange, _.extend( { tandem: tandem }, Constants.SLIDER_OPTIONS ) );
-      slider.addMajorTick( valueRange.min, new Text( options.minLabel, _.extend( { tandem: tandem.createTandem( 'minLabel' ) }, textOptions ) ) );
-      slider.addMajorTick( valueRange.max, new Text( options.maxLabel, _.extend( { tandem: tandem.createTandem( 'maxLabel' ) }, textOptions ) ) );
+      slider.addMajorTick( valueRange.min, new Text( options.minLabel, _.extend( { tandem: tandem.createTandem( 'minLabel' ) }, Constants.CONTROL_TICK_LABEL_OPTIONS ) ) );
+      slider.addMajorTick( valueRange.max, new Text( options.maxLabel, _.extend( { tandem: tandem.createTandem( 'maxLabel' ) }, Constants.CONTROL_TICK_LABEL_OPTIONS ) ) );
 
       // Space the label above the tick labels so that it won't overlap for i18n
       const text = new Text( titleString, {
         tandem: tandem.createTandem( 'titleString' ),
-        font: new PhetFont( { weight: 'bold', size: 12 } ),
+        font: Constants.CONTROL_TITLE_FONT,
         maxWidth: 100 // selected by choosing the length of widest English string in ?stringTest=double
       } );
 

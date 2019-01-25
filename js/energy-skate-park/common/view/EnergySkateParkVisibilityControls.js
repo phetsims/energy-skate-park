@@ -36,7 +36,7 @@ define( function( require ) {
     options = _.extend( {
       includeSamplesCheckbox: false,
       includeBarGraphCheckbox: true,
-      includeReferenceHeightCheckbox: false
+      includeReferenceHeightCheckbox: true
     }, options );
 
     var itemAlignGroup = new AlignGroup();

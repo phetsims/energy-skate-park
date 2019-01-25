@@ -27,7 +27,7 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function SceneSelectionRadioButtonGroup( model, view, transform, tandem, options ) {
+  function SceneSelectionRadioButtonGroup( model, view, tandem, options ) {
 
     options = _.extend( {
 
@@ -56,7 +56,7 @@ define( function( require ) {
       }
 
       var track = model.tracks.get( index );
-      var trackNode = new TrackNode( model, track, transform, new Property(), tandem.createTandem( 'trackNode' + index ) );
+      var trackNode = new TrackNode( model, track, view.modelViewTransform, new Property(), tandem.createTandem( 'trackNode' + index ) );
       children.push( trackNode );
 
       // Fixes: Cursor turns into a hand over the track in the track selection panel, see #204

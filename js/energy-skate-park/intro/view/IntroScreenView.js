@@ -11,7 +11,10 @@ define( function( require ) {
   // modules
   var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BackgroundNode' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  var EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkControlPanel' );
   var EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
+  var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
+  var GravitySlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravitySlider' );
   var HSlider = require( 'SUN/HSlider' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -33,6 +36,15 @@ define( function( require ) {
     this.massComboBox = new MassComboBox( model.skater.massProperty, this, {
       tandem: tandem.createTandem( 'massComboBox' )
     } );
+
+    var introControls = [
+      new GravitySlider( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) ),
+      new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) )
+    ];
+    this.controlPanel = new EnergySkateParkControlPanel( model, this, introControls, tandem.createTandem( 'controlPanel' ), {
+      includeTrackSelection: true
+    } );
+    this.addToBottomLayer( this.controlPanel );
 
     // add the combo box to the back layer so it is behind the skater
     this.addToBottomLayer( this.massComboBox );

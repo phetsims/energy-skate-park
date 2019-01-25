@@ -25,7 +25,6 @@ define( function( require ) {
   var DotRectangle = require( 'DOT/Rectangle' ); // eslint-disable-line require-statement-match
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
-  var EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkControlPanel' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
   var GaugeNeedleNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/GaugeNeedleNode' );
@@ -143,27 +142,27 @@ define( function( require ) {
     );
     this.bottomLayer.addChild( this.pieChartLegend );
 
-    // @protected (for layout in subtypes)
-    this.controlPanel = new EnergySkateParkControlPanel( model, this, modelViewTransform, tandem.createTandem( 'controlPanel' ), {
-      includeFrictionSlider: model.frictionAllowed,
-      includeMassSlider: options.includeMassSlider,
-      includeGravitySlider: options.includeGravitySlider,
+    // // @protected (for layout in subtypes)
+    // this.controlPanel = new EnergySkateParkControlPanel( model, this, modelViewTransform, tandem.createTandem( 'controlPanel' ), {
+    //   includeFrictionSlider: model.frictionAllowed,
+    //   includeMassSlider: options.includeMassSlider,
+    //   includeGravitySlider: options.includeGravitySlider,
 
-      // right now, draggable tracks and track selection are mutually exclusive
-      // TODO: this might not be the case for screens
-      includeTrackSelection: !model.draggableTracks,
+    //   // right now, draggable tracks and track selection are mutually exclusive
+    //   // TODO: this might not be the case for screens
+    //   includeTrackSelection: !model.draggableTracks,
 
-      visibilityControlsOptions: {
+    //   visibilityControlsOptions: {
 
-        // include samples if model supports it
-        includeSamplesCheckbox: options.includeSamplesCheckbox,
-        includeBarGraphCheckbox: options.includeBarGraphCheckbox,
-        includeReferenceHeightCheckbox: options.includeReferenceHeightCheckbox
-      }
-    } );
-    this.bottomLayer.addChild( this.controlPanel );
-    this.controlPanel.right = this.layoutBounds.width - 5;
-    this.controlPanel.top = 5;
+    //     // include samples if model supports it
+    //     includeSamplesCheckbox: options.includeSamplesCheckbox,
+    //     includeBarGraphCheckbox: options.includeBarGraphCheckbox,
+    //     includeReferenceHeightCheckbox: options.includeReferenceHeightCheckbox
+    //   }
+    // } );
+    // this.bottomLayer.addChild( this.controlPanel );
+    // this.controlPanel.right = this.layoutBounds.width - 5;
+    // this.controlPanel.top = 5;
 
     var unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
     this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
@@ -181,7 +180,7 @@ define( function( require ) {
 
     // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
     this.measuringTapePanel = new MeasuringTapePanel( model, this.measuringTapeNode, modelViewTransform );
-    this.measuringTapePanel.top = this.controlPanel.bottom + 5;
+    // this.measuringTapePanel.top = this.controlPanel.bottom + 5;
 
     // TODO: Put all code related to the measuring tape in this conditional
     if ( options.includeMeasuringTapePanel ) {
@@ -192,10 +191,7 @@ define( function( require ) {
     if ( model.draggableTracks ) {
       var property = model.draggableTracks ? new Property( true ) :
                      new DerivedProperty( [ model.sceneProperty ], function( scene ) { return scene === 2; } );
-      this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.detachableProperty, property, this.controlPanel.width, tandem.createTandem( 'attachDetachToggleButtons' ), {
-        top: this.controlPanel.bottom + 5,
-        centerX: this.controlPanel.centerX
-      } );
+      this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.detachableProperty, property, 150, tandem.createTandem( 'attachDetachToggleButtons' ) );
       this.bottomLayer.addChild( this.attachDetachToggleButtons );
     }
 
@@ -222,7 +218,6 @@ define( function( require ) {
     this.resetAllButton = new ResetAllButton( {
       listener: model.reset.bind( model ),
       scale: 0.85,
-      centerX: this.controlPanel.centerX,
 
       // Align vertically with other controls, see #134
       centerY: ( modelViewTransform.modelToViewY( 0 ) + this.layoutBounds.maxY ) / 2 + 8,
@@ -431,7 +426,7 @@ define( function( require ) {
     this.bottomLayer.addChild( this.referenceHeightLine );
 
     // relative to the control panel, but this will not float with the layout
-    this.referenceHeightLine.right = this.controlPanel.left - 5;
+    this.referenceHeightLine.centerX = this.centerX;
 
     // Buttons to return the skater when she is offscreen, see #219
     var iconScale = 0.4;
@@ -551,6 +546,7 @@ define( function( require ) {
     // minimially visible area, but keeping it centered at the bottom of the screen, so there is more area in the +y
     // direction to build tracks and move the skater
     layout: function( width, height ) {
+      assert && assert( this.controlPanel, 'much of component layout based on control panel, subtype should create one.' );
 
       this.resetTransform();
 
@@ -581,6 +577,7 @@ define( function( require ) {
       this.controlPanel.right = Math.min( maxFloatAmount, this.availableViewBounds.maxX ) - 5;
 
       if ( this.attachDetachToggleButtons ) {
+        this.attachDetachToggleButtons.top = this.controlPanel.bottom + 5;
         this.attachDetachToggleButtons.centerX = this.controlPanel.centerX;
       }
 
@@ -594,6 +591,7 @@ define( function( require ) {
       this.resetAllButton.right = this.controlPanel.right;
       this.returnSkaterButton.right = this.resetAllButton.left - 10;
 
+      this.measuringTapePanel.top = this.controlPanel.bottom + 5;
       this.measuringTapePanel.right = this.controlPanel.right;
 
       // Compute the visible model bounds so we will know when a model object like the skater has gone offscreen
