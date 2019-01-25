@@ -25,10 +25,7 @@ define( function( require ) {
    * @param {Tandem} tandem
    */
   function MeasureScreenView( model, tandem ) {
-    EnergySkateParkScreenView.call( this, model, tandem, {
-      includeSamplesCheckbox: true,
-      includeBarGraphCheckbox: false
-    } );
+    EnergySkateParkScreenView.call( this, model, tandem );
 
     var measureControls = [
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),

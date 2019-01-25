@@ -78,16 +78,6 @@ define( function( require ) {
 
     options = _.extend( {
 
-      // options for visibility controls
-      // TODO: Break into a sub options object for visibility controls?
-      includeBarGraphCheckbox: true,
-      includeSamplesCheckbox: false,
-      includeReferenceHeightCheckbox: true,
-
-      // iptions for slider controls
-      includeGravitySlider: true,
-      includeMassSlider: false,
-
       // options for the bar graph, see composite type options below
       barGraphOptions: {},
 
@@ -141,28 +131,6 @@ define( function( require ) {
       tandem.createTandem( 'pieChartLegend' )
     );
     this.bottomLayer.addChild( this.pieChartLegend );
-
-    // // @protected (for layout in subtypes)
-    // this.controlPanel = new EnergySkateParkControlPanel( model, this, modelViewTransform, tandem.createTandem( 'controlPanel' ), {
-    //   includeFrictionSlider: model.frictionAllowed,
-    //   includeMassSlider: options.includeMassSlider,
-    //   includeGravitySlider: options.includeGravitySlider,
-
-    //   // right now, draggable tracks and track selection are mutually exclusive
-    //   // TODO: this might not be the case for screens
-    //   includeTrackSelection: !model.draggableTracks,
-
-    //   visibilityControlsOptions: {
-
-    //     // include samples if model supports it
-    //     includeSamplesCheckbox: options.includeSamplesCheckbox,
-    //     includeBarGraphCheckbox: options.includeBarGraphCheckbox,
-    //     includeReferenceHeightCheckbox: options.includeReferenceHeightCheckbox
-    //   }
-    // } );
-    // this.bottomLayer.addChild( this.controlPanel );
-    // this.controlPanel.right = this.layoutBounds.width - 5;
-    // this.controlPanel.top = 5;
 
     var unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
     this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
@@ -574,6 +542,7 @@ define( function( require ) {
 
       // Float the control panel to the right (but not arbitrarily far because it could get too far from the play area)
       var maxFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? 890 : Number.MAX_VALUE;
+      this.controlPanel.top = 5;
       this.controlPanel.right = Math.min( maxFloatAmount, this.availableViewBounds.maxX ) - 5;
 
       if ( this.attachDetachToggleButtons ) {

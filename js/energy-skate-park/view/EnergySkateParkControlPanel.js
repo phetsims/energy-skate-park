@@ -33,9 +33,6 @@ define( function( require ) {
     assert && assert( controls.length > 0, 'control panel must include additional physical controls' );
 
     options = _.extend( {
-      includeMassSlider: false, // include a slider that changes mass?
-      includeGravitySlider: true, // include a slider that changes gravity?
-      includeFrictionSlider: false, // include a slider that changes friction?
       includeTrackSelection: false, // include radio buttons that select default tracks?
 
       // passed to EnergySkateParkVisibilityControls, see that type for supported options
