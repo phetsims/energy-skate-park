@@ -33,7 +33,7 @@ define( function( require ) {
     assert && assert( controls.length > 0, 'control panel must include additional physical controls' );
 
     options = _.extend( {
-      includeTrackSelection: false, // include radio buttons that select default tracks?
+      includeTrackSelection: true, // include radio buttons that select default tracks?
 
       // passed to EnergySkateParkVisibilityControls, see that type for supported options
       visibilityControlsOptions: {}
