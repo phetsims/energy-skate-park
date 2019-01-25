@@ -80,8 +80,11 @@ define( function( require ) {
 
     options = _.extend( {
 
+      // {*|null} - passed to the EnergySkateParkControlPanel
+      controlPanelOptions: null,
+
       // options for the bar graph, see composite type options below
-      barGraphOptions: {},
+      barGraphOptions: null,
 
       includeMeasuringTapePanel: true
     }, options );
