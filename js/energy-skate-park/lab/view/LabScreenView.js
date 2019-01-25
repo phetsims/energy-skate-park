@@ -21,7 +21,11 @@ define( function( require ) {
       new GravitySlider( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) ),
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) )
     ];
-    EnergySkateParkScreenView.call( this, model, labControls, tandem.createTandem( 'graphsScreenView' ) );
+    EnergySkateParkScreenView.call( this, model, labControls, tandem.createTandem( 'graphsScreenView' ), {
+      controlPanelOptions: {
+        includeTrackSelection: false
+      }
+    } );
   }
 
   energySkatePark.register( 'LabScreenView', LabScreenView );
