@@ -399,7 +399,7 @@ define( function( require ) {
     this.bottomLayer.addChild( this.referenceHeightLine );
 
     // relative to the control panel, but this will not float with the layout
-    this.referenceHeightLine.centerX = this.centerX;
+    this.referenceHeightLine.centerX = this.layoutBounds.centerX;
 
     // Buttons to return the skater when she is offscreen, see #219
     var iconScale = 0.4;
