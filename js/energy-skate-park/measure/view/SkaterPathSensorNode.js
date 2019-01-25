@@ -312,7 +312,7 @@ define( require => {
      */
     static createReadoutBox( alignGroup, valueProperty  ) {
 
-      var numberDisplay = new NumberDisplay( valueProperty, ENERGY_RANGE, {
+      const numberDisplay = new NumberDisplay( valueProperty, ENERGY_RANGE, {
         backgroundStroke: 'black',
         backgroundFill: EnergySkateParkColorScheme.panelFill,
         cornerRadius: 5,
