@@ -13,7 +13,6 @@ define( function( require ) {
   var EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
   var GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
-  var EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkControlPanel' );
   var MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
   var SkaterSamplesNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterSamplesNode' );
   var SkaterPathSensorNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterPathSensorNode' );
@@ -25,17 +24,13 @@ define( function( require ) {
    * @param {Tandem} tandem
    */
   function MeasureScreenView( model, tandem ) {
-    EnergySkateParkScreenView.call( this, model, tandem );
 
     var measureControls = [
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
       new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ), { decimalPlaces: 1 } ),
       new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) )
     ];
-    this.controlPanel = new EnergySkateParkControlPanel( model, this, measureControls, tandem.createTandem( 'controlPanel' ), {
-      includeTrackSelection: true
-    } );
-    this.addToBottomLayer( this.controlPanel );
+    EnergySkateParkScreenView.call( this, model, measureControls, tandem );
 
     // @private - for layout
     this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorPositionProperty, this.modelViewTransform, {

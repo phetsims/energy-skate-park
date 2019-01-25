@@ -24,6 +24,7 @@ define( function( require ) {
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DotRectangle = require( 'DOT/Rectangle' ); // eslint-disable-line require-statement-match
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  var EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkControlPanel' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
@@ -70,11 +71,12 @@ define( function( require ) {
 
   /**
    * @param {EnergySkateParkModel} model
+   * @param {Array.<PhysicalSlider|PhysicalNumberControl} physicalControls
    * @param {Tandem} tandem
    * @param {Object} [options]
    * @constructor
    */
-  function EnergySkateParkScreenView( model, tandem, options ) {
+  function EnergySkateParkScreenView( model, physicalControls, tandem, options ) {
 
     options = _.extend( {
 
@@ -122,6 +124,9 @@ define( function( require ) {
 
     this.gridNode = new GridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
     this.bottomLayer.addChild( this.gridNode );
+
+    this.controlPanel = new EnergySkateParkControlPanel( model, this, physicalControls, tandem.createTandem( 'controlPanel' ), options.controlPanelOptions );
+    this.bottomLayer.addChild( this.controlPanel );
 
     // @private - node that shows the energy legend for the pie chart
     this.pieChartLegend = new PieChartLegend(
