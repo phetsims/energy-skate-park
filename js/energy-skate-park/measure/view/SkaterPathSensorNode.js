@@ -17,8 +17,11 @@ define( require => {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const HBox = require( 'SCENERY/nodes/HBox' );
   const Node = require( 'SCENERY/nodes/Node' );
+  const NumberDisplay = require( 'SCENERY_PHET/NumberDisplay' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const ProbeNode = require( 'SCENERY_PHET/ProbeNode' );
   const Property = require( 'AXON/Property' );
+  const Range = require( 'DOT/Range' );
   const Rectangle = require( 'SCENERY/nodes/Rectangle' );
   const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const Text = require( 'SCENERY/nodes/Text' );
@@ -26,27 +29,29 @@ define( require => {
   const VBox = require( 'SCENERY/nodes/VBox' );
   const Vector2 = require( 'DOT/Vector2' );
   const WireNode = require( 'SCENERY_PHET/WireNode' );
-  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
 
   // strings
   const energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
+  const energyJoulesPatternString = require( 'string!ENERGY_SKATE_PARK/energyJoulesPattern' );
   const energyKineticString = require( 'string!ENERGY_SKATE_PARK/energy.kinetic' );
   const energyPotentialString = require( 'string!ENERGY_SKATE_PARK/energy.potential' );
   const energyThermalString = require( 'string!ENERGY_SKATE_PARK/energy.thermal' );
   const energyTotalString = require( 'string!ENERGY_SKATE_PARK/energy.total' );
-  const energyJoulesPatternString = require( 'string!ENERGY_SKATE_PARK/energyJoulesPattern' );
   const heightMetersPatternString = require( 'string!ENERGY_SKATE_PARK/heightMetersPattern' );
   const speedMetersPerSecondPatternString = require( 'string!ENERGY_SKATE_PARK/speedMetersPerSecondPattern' );
 
   // constants
-  const VALUE_RIGHT_SPACING = 5; // spacing between value text and its containing rectangle
   const TITLE_CONTENT_SPACING = 4; // spacing between the "Energy" title and the rest of the content
-  const LABEL_VALUE_SPACING = 8; // spacing between label text and the value readout rectangle
+  const LABEL_VALUE_SPACING = 4; // spacing between label text and the value readout rectangle
   const PROBE_READOUT_SPACING = 5; // spacing between the probe and the height/speed readouts
   const LAYOUT_SPACING = 2;
   const TEXT_COLOR = 'white';
   const TITLE_FONT = new PhetFont( 13 );
   const LABEL_FONT = new PhetFont( 11 );
+
+  // arbitrary range for energies, but required so that this can use NumberDisplay. With this value, the width of the
+  // NumberDisplay looks good and if released from within dev bounds, the energy will never get this large.
+  const ENERGY_RANGE = new Range( -20000, 20000 );
 
   // offset so that the center of the probe aligns with sample locations
   const PROBE_CENTER_OFFSET = new Vector2( 5.5, 0 );
@@ -78,22 +83,17 @@ define( require => {
         fill: TEXT_COLOR
       } );
 
-      // value readouts for the body of the sensor
-      this.kineticRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup );
-      this.kineticReadout = new Text( '' );
-      this.kineticRectangleBox.addChild( this.kineticReadout );
+      // @private {Property.<number|null> for the NumberDisplays, null unless 
+      this.kineticValueProperty = new Property( null );
+      this.potentialValueProperty = new Property( null );
+      this.thermalValueProperty = new Property( null );
+      this.totalValueProperty = new Property( null );
 
-      this.potentialRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup );
-      this.potentialReadout = new Text( '' );
-      this.potentialRectangleBox.addChild( this.potentialReadout );
-
-      this.thermalRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup );
-      this.thermalReadout = new Text( '' );
-      this.thermalRectangleBox.addChild( this.thermalReadout );
-
-      this.totalRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup );
-      this.totalReadout = new Text( '' );
-      this.totalRectangleBox.addChild( this.totalReadout );
+      // NumberDisplays for the body of the sensor, wrapped in an AlignBox
+      this.kineticRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup, this.kineticValueProperty );
+      this.potentialRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup, this.potentialValueProperty );
+      this.thermalRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup, this.thermalValueProperty );
+      this.totalRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup, this.totalValueProperty );
 
       // @private - Height and speed are read to the right of the probe in a transparent panel for enhanced
       // visibility. We want the panel to resize as the text changes for different skater samples
@@ -134,7 +134,7 @@ define( require => {
 
       // the body is a rounded rectangle
       const body = new Rectangle( content.bounds.dilated( 5 ), 5, 5, {
-        fill: 'rgb(63,72,204)',
+        fill: 'rgb(47,64,113)',
         stroke: 'rgb(210,210,210)',
         lineWidth: 2
       } );
@@ -218,10 +218,10 @@ define( require => {
 
       skaterSample.inspectedProperty.set( true );
 
-      this.kineticReadout.text = this.formatEnergyValue( skaterSample.kineticEnergy );
-      this.potentialReadout.text = this.formatEnergyValue( skaterSample.potentialEnergy );
-      this.thermalReadout.text = this.formatEnergyValue( skaterSample.thermalEnergy );
-      this.totalReadout.text = this.formatEnergyValue( skaterSample.totalEnergy );
+      this.kineticValueProperty.value = skaterSample.kineticEnergy;
+      this.potentialValueProperty.value = skaterSample.potentialEnergy;
+      this.thermalValueProperty.value = skaterSample.thermalEnergy;
+      this.totalValueProperty.value = skaterSample.totalEnergy;
 
       this.heightReadout.text = StringUtils.fillIn( heightMetersPatternString, {
         value: this.formatValue( skaterSample.position.y - skaterSample.referenceHeight )
@@ -237,20 +237,12 @@ define( require => {
     }
 
     /**
-     * Position the value text in the body/display. The readout rectangles use AlignGroup/HBox, so we need to
-     * get the right of the boxes in the local coordinate frame to align correctly.
-     *
-     * Also positions and sizes the height/speed readout which appears to the right of the probe unless a panel would
+     * Position and sizes the height/speed readout which appears to the right of the probe unless a panel would
      * cover it.
      *
      * @private
      */
     positionReadouts() {
-      this.kineticReadout.rightCenter = this.kineticRectangleBox.parentToLocalPoint( this.kineticRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 );
-      this.potentialReadout.rightCenter = this.potentialRectangleBox.parentToLocalPoint( this.potentialRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 );
-      this.thermalReadout.rightCenter = this.thermalRectangleBox.parentToLocalPoint( this.thermalRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 );
-      this.totalReadout.rightCenter = this.totalRectangleBox.parentToLocalPoint( this.totalRectangleBox.rightCenter ).minusXY( VALUE_RIGHT_SPACING, 0 );
-
       this.heightSpeedRectangle.setRectBounds( this.heightSpeedVBox.bounds );
       this.heightSpeedRectangle.leftCenter = this.probeNode.rightCenter.plusXY( PROBE_READOUT_SPACING, 0 );
     }
@@ -284,10 +276,12 @@ define( require => {
      * @returns {}
      */
     clearDisplay( skaterSample ) {
-      this.kineticReadout.text = '';
-      this.potentialReadout.text = '';
-      this.thermalReadout.text = '';
-      this.totalReadout.text = '';
+
+      // setting Properties to null will show MathSymbols.NO_VALUE in NumberDisplay
+      this.kineticValueProperty.value = null;
+      this.potentialValueProperty.value = null;
+      this.thermalValueProperty.value = null;
+      this.totalValueProperty.value = null;
 
       this.inspectedSample = null;
 
@@ -316,12 +310,18 @@ define( require => {
      * @param  {AlignGroup} alignGroup
      * @returns {AlignBox}
      */
-    static createReadoutBox( alignGroup ) {
-      const rectangle = new Rectangle( 0, 0, 50, 15, 3, 3, {
-        fill: EnergySkateParkColorScheme.panelFill,
-        stroke: 'black'
+    static createReadoutBox( alignGroup, valueProperty  ) {
+
+      var numberDisplay = new NumberDisplay( valueProperty, ENERGY_RANGE, {
+        backgroundStroke: 'black',
+        backgroundFill: EnergySkateParkColorScheme.panelFill,
+        cornerRadius: 5,
+        font: LABEL_FONT,
+        minBackgroundWidth: 55, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
+        valuePattern: energyJoulesPatternString
       } );
-      return alignGroup.createBox( rectangle, { xAlign: 'right' } );
+
+      return alignGroup.createBox( numberDisplay, { xAlign: 'right' } );
     }
   }
 
