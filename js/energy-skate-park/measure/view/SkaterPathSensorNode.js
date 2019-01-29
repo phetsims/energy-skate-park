@@ -318,7 +318,9 @@ define( require => {
         cornerRadius: 5,
         font: LABEL_FONT,
         minBackgroundWidth: 55, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
-        valuePattern: energyJoulesPatternString
+        valuePattern: energyJoulesPatternString,
+        noValuePattern: NumberDisplay.DEFAULT_VALUE_PATTERN,
+        noValueAlign: 'center'
       } );
 
       return alignGroup.createBox( numberDisplay, { xAlign: 'right' } );
