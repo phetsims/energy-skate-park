@@ -71,7 +71,10 @@ define( function( require ) {
         new ControlPoint( offset.x, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } ),
         new ControlPoint( offset.x + 1, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } )
       ];
-      this.tracks.add( new Track( this, this.tracks, controlPoints, true, null, this.availableModelBoundsProperty, {
+      this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, {
+          draggable: true,
+          configurable: true,
+
           tandem: trackGroupTandem.createNextTandem()
         }
       ) );

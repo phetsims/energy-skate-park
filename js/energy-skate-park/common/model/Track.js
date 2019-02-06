@@ -32,7 +32,6 @@ define( function( require ) {
    * @param {EnergySkateParkModel} model
    * @param {ObservableArray<Track>} modelTracks all model tracks, so this track can add/remove others when joined/split
    * @param {Array<ControlPoint>} controlPoints
-   * @param {boolean} interactive
    * @param {null|Array<Track>} parents the original tracks that were used to make this track (if any) so they can be
    * broken apart when dragged back to control panel
    * @param {Property<Bounds2>} availableModelBoundsProperty function that provides the visible model bounds, to prevent the
@@ -40,9 +39,16 @@ define( function( require ) {
    * @param {Object} options - required for tandem
    * @constructor
    */
-  function Track( model, modelTracks, controlPoints, interactive, parents, availableModelBoundsProperty, options ) {
+  function Track( model, modelTracks, controlPoints, parents, availableModelBoundsProperty, options ) {
 
     options = _.extend( {
+
+      // {boolean} - can this track be dragged and moved in the play area?
+      draggable: false,
+
+      // {boolean} - can this track be changed by dragging control points?
+      configurable: false,
+
       tandem: Tandem.required,
       phetioType: TrackIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
@@ -57,6 +63,10 @@ define( function( require ) {
     // @public (phet-io), see TrackReferenceIO
     this.trackTandem = tandem;
     this.availableModelBoundsProperty = availableModelBoundsProperty;
+
+    // @public (read-only)
+    this.draggable = options.draggable;
+    this.configurable = options.configurable;
 
     // @public
     this.translatedEmitter = new Emitter();
@@ -113,9 +123,6 @@ define( function( require ) {
 
     this.controlPoints = controlPoints;
     assert && assert( this.controlPoints, 'control points should be defined' );
-
-    // @public {boolean}
-    this.interactive = interactive;
 
     // @public {FastArray<number>}
     this.parametricPosition = new FastArray( this.controlPoints.length );

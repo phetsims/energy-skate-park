@@ -20,7 +20,6 @@ define( function( require ) {
 
   /**
    * @constructor
-   * @param {Array.<Track>} tracks - the tracks for the set
    * @param {boolean} frictionAllowed - Whether or not friction is allowed in this model.
    * @param {Object} options
    */

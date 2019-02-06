@@ -44,7 +44,7 @@ define( function( require ) {
 
     this.road = new Path( null, {
       fill: 'gray',
-      cursor: track.interactive ? 'pointer' : 'default'
+      cursor: track.draggable ? 'pointer' : 'default'
     } );
     this.centerLine = new Path( null, {
       stroke: 'black',
@@ -74,17 +74,16 @@ define( function( require ) {
     this.linSpace = numeric.linspace( 0, this.lastPoint, 20 * ( track.controlPoints.length - 1 ) );
     this.lengthForLinSpace = track.controlPoints.length;
 
-    //If the track is interactive, make it draggable and make the control points visible and draggable
-    if ( track.interactive ) {
-
+    if ( track.draggable ) {
       var trackDragHandler = new TrackDragHandler( this, tandem.createTandem( 'trackDragHandler' ) );
       this.road.addInputListener( trackDragHandler );
+    }
 
+    if ( track.configurable ) {
       for ( var i = 0; i < track.controlPoints.length; i++ ) {
         var isEndPoint = i === 0 || i === track.controlPoints.length - 1;
         var controlPointNode = new ControlPointNode( this, trackDragHandler, i, isEndPoint, tandem.createTandem( 'controlPointNode' + i ) );
         self.addChild( controlPointNode );
-
       }
     }
 

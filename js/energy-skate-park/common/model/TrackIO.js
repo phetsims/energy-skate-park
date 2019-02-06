@@ -44,7 +44,8 @@ define( function( require ) {
         }
         assert && assert( track.controlPoints, 'control points should be defined' );
         return {
-          interactive: track.interactive,
+          draggable: track.draggable,
+          configurable: track.configurable,
           controlPointTandemIDs: track.controlPoints.map( function( controlPoint ) {
             return controlPoint.controlPointTandem.phetioID;
           } )

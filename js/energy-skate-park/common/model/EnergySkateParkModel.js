@@ -305,7 +305,7 @@ define( function( require ) {
           phetioState: this.draggableTracks
         } )
       ];
-      this.tracks.add( new Track( this, this.tracks, controlPoints, true, null, this.availableModelBoundsProperty, {
+      this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, {
           tandem: trackGroupTandem.createNextTandem()
         }
       ) );
@@ -1395,7 +1395,7 @@ define( function( require ) {
         var controlPointToDelete = track.controlPoints[ controlPointIndex ];
         var points = _.without( track.controlPoints, controlPointToDelete );
         controlPointToDelete.dispose();
-        var newTrack = new Track( this, this.tracks, points, true, track.getParentsOrSelf(), this.availableModelBoundsProperty, {
+        var newTrack = new Track( this, this.tracks, points, track.getParentsOrSelf(), this.availableModelBoundsProperty, {
             tandem: trackGroupTandem.createNextTandem()
           }
         );
@@ -1467,12 +1467,12 @@ define( function( require ) {
       points1.push( newPoint1 );
       points2.unshift( newPoint2 );
 
-      var newTrack1 = new Track( this, this.tracks, points1, true, track.getParentsOrSelf(), this.availableModelBoundsProperty, {
+      var newTrack1 = new Track( this, this.tracks, points1, track.getParentsOrSelf(), this.availableModelBoundsProperty, {
         tandem: trackGroupTandem.createNextTandem()
       } );
       newTrack1.physicalProperty.value = true;
       newTrack1.droppedProperty.value = true;
-      var newTrack2 = new Track( this, this.tracks, points2, true, track.getParentsOrSelf(), this.availableModelBoundsProperty, {
+      var newTrack2 = new Track( this, this.tracks, points2, track.getParentsOrSelf(), this.availableModelBoundsProperty, {
         tandem: trackGroupTandem.createNextTandem()
       } );
       newTrack2.physicalProperty.value = true;
@@ -1568,7 +1568,7 @@ define( function( require ) {
         secondTrackBackward();
       }
 
-      var newTrack = new Track( this, this.tracks, points, true, a.getParentsOrSelf().concat( b.getParentsOrSelf() ), this.availableModelBoundsProperty, {
+      var newTrack = new Track( this, this.tracks, points, a.getParentsOrSelf().concat( b.getParentsOrSelf() ), this.availableModelBoundsProperty, {
         tandem: trackGroupTandem.createNextTandem()
       } );
       newTrack.physicalProperty.value = true;
@@ -1693,7 +1693,7 @@ define( function( require ) {
       var controlPoints = controlPointTandemIDs.map( function( id, index ) {
         return new ControlPoint( index, 0, { tandem: new Tandem( id ) } ); // TODO: create with correct initial x & y values.
       } );
-      var newTrack = new Track( this, this.tracks, controlPoints, interactive, [], this.availableModelBoundsProperty, { tandem: tandem } );
+      var newTrack = new Track( this, this.tracks, controlPoints, [], this.availableModelBoundsProperty, { tandem: tandem } );
       this.tracks.add( newTrack );
       return newTrack;
     }

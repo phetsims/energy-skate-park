@@ -16,7 +16,6 @@ define( function( require ) {
   var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
 
   // constants
-  var PREMADE_INTERACTIVE = false;
   var PARENT_TRACKS = null;
 
   var PremadeTracks = {
@@ -94,7 +93,7 @@ define( function( require ) {
      * @returns {Track}
      */
     createTrack:function( model, modelTracks, controlPoints, availableBoundsProperty, options ) {
-      return new Track( model, modelTracks, controlPoints, PREMADE_INTERACTIVE, PARENT_TRACKS, availableBoundsProperty, options );
+      return new Track( model, modelTracks, controlPoints, PARENT_TRACKS, availableBoundsProperty, options );
     }
   };
 
