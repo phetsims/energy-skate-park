@@ -110,12 +110,12 @@ define( function( require ) {
     const stateListener = function() {
       self.updateTrackShape();
     };
-    phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.setStateEmitter && phet.phetIo.phetioEngine.setStateEmitter.addListener( stateListener );
+    phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.phetioStateEngine.setStateEmitter && phet.phetIo.phetioEngine.phetioStateEngine.setStateEmitter.addListener( stateListener );
 
     // @private - only called by dispose
     this.disposeTrackNode = function() {
       model.detachableProperty.unlink( detachableListener );
-      phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.setStateEmitter && phet.phetIo.phetioEngine.setStateEmitter.removeListener( stateListener );
+      phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.phetioStateEngine.setStateEmitter && phet.phetIo.phetioEngine.phetioStateEngine.setStateEmitter.removeListener( stateListener );
       for ( var i = 0; i < self.children.length; i++ ) {
         var child = self.children[ i ];
         if ( child instanceof ControlPointNode ) {
