@@ -21,7 +21,7 @@ define( function( require ) {
 
   /**
    * @param {TrackNode} trackNode
-   * @param {TrackDragHandler} trackDragHandler
+   * @param {TrackDragHandler|null} trackDragHandler - so dragging a ControlPointNode can initiate dragging a track
    * @param {number} i
    * @param {boolean} isEndPoint
    * @param {Tandem} tandem
@@ -83,7 +83,7 @@ define( function( require ) {
           // Only start a track drag if nothing else was dragging the track (which caused a flicker), see #282
           if ( track.dragSource === null ) {
             track.dragSource = inputListener;
-            trackDragHandler.trackDragStarted( event );
+            trackDragHandler && trackDragHandler.trackDragStarted( event );
           }
           return;
         }
@@ -100,7 +100,7 @@ define( function( require ) {
 
           // Only drag a track if nothing else was dragging the track (which caused a flicker), see #282
           if ( track.dragSource === inputListener ) {
-            trackDragHandler.trackDragged( event );
+            trackDragHandler && trackDragHandler.trackDragged( event );
           }
           return;
         }
@@ -169,7 +169,7 @@ define( function( require ) {
 
           // Only drop a track if nothing else was dragging the track (which caused a flicker), see #282
           if ( track.dragSource === inputListener ) {
-            trackDragHandler.trackDragEnded( event );
+            trackDragHandler && trackDragHandler.trackDragEnded( event );
           }
           return;
         }

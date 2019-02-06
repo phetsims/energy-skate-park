@@ -74,8 +74,10 @@ define( function( require ) {
     this.linSpace = numeric.linspace( 0, this.lastPoint, 20 * ( track.controlPoints.length - 1 ) );
     this.lengthForLinSpace = track.controlPoints.length;
 
+    // created and passed to ControlPointNodes so that dragging a control point can initiate dragging a track
+    var trackDragHandler = null;
     if ( track.draggable ) {
-      var trackDragHandler = new TrackDragHandler( this, tandem.createTandem( 'trackDragHandler' ) );
+      trackDragHandler = new TrackDragHandler( this, tandem.createTandem( 'trackDragHandler' ) );
       this.road.addInputListener( trackDragHandler );
     }
 
