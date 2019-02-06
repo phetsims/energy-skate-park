@@ -118,7 +118,6 @@ define( function( require ) {
      */
     createFullTrackSet: function( model, tandem ) {
 
-      // TODO: add a loop to the set.
       var basicSet = EnergySkateParkTrackSetModel.createBasicsTrackSet( model, tandem );
 
       var loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem );
