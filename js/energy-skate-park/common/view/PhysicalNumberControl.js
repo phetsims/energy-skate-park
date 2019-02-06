@@ -34,10 +34,22 @@ define( require => {
 
       // slider options are passed directly to the Slider in NumberControl
       options = _.extend( {
-        decimalPlaces: 0
-      }, Constants.SLIDER_OPTIONS, options );
+        
+        // {*|null} - passed to the Slider of NumberControl
+        sliderOptions: null,
 
-      // look and feel for all PhysicalNumberControls
+        // {*|null} - passed to the NumberDisplay of NumberControl
+        numerDisplayOptions: null
+      }, options );
+
+      options.sliderOptions = _.extend( Constants.SLIDER_OPTIONS, options.sliderOptions );
+
+      options.numberDisplayOptions = _.extend( {
+        decimalPlaces: 0
+      }, options.numberDisplayOptions );
+
+      // look and feel for all PhysicalNumberControls (not set in normal options extend call because they cannot be
+      // chaned with options!)
       _.extend( options, {
         arrowButtonOptions: {
           scale: 0.5

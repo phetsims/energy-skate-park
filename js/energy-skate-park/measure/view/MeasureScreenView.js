@@ -27,7 +27,11 @@ define( function( require ) {
 
     var measureControls = [
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
-      new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ), { decimalPlaces: 1 } ),
+      new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ), {
+        numberDisplayOptions: {
+          decimalPlaces: 1
+        }
+      } ),
       new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) )
     ];
     EnergySkateParkScreenView.call( this, model, measureControls, tandem );
