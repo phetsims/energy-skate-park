@@ -61,7 +61,7 @@ define( function( require ) {
       }
 
       // If it isn't a ControlPoint, then it is a Track
-      return EnergySkateParkModel.addTrack( tandem, stateObject.controlPointTandemIDs );
+      return EnergySkateParkModel.addTrack( tandem, stateObject.draggable, stateObject.configurable, stateObject.controlPointTandemIDs );
     }
   } );
 

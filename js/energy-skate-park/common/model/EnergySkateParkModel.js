@@ -1685,13 +1685,17 @@ define( function( require ) {
      * @param {Tandem} tandem
      * @param controlPointTandemIDs
      */
-    addTrack: function( tandem, controlPointTandemIDs ) {
+    addTrack: function( tandem, draggable, configurable, controlPointTandemIDs ) {
 
       assert && assert( controlPointTandemIDs, 'controlPointTandemIDs should exist' );
       var controlPoints = controlPointTandemIDs.map( function( id, index ) {
         return new ControlPoint( index, 0, { tandem: new Tandem( id ) } ); // TODO: create with correct initial x & y values.
       } );
-      var newTrack = new Track( this, this.tracks, controlPoints, [], this.availableModelBoundsProperty, { tandem: tandem } );
+      var newTrack = new Track( this, this.tracks, controlPoints, [], this.availableModelBoundsProperty, {
+        draggable: draggable,
+        configurable: configurable,
+        tandem: tandem
+      } );
       this.tracks.add( newTrack );
       return newTrack;
     }
