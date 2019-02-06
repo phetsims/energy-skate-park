@@ -122,7 +122,10 @@ define( function( require ) {
           i--; // Child is removed, we must decrement index so wo don't miss the next child
         }
       }
-      trackDragHandler.dispose();
+
+      if ( track.draggable ) {
+        trackDragHandler.dispose();
+      }
     };
   }
 

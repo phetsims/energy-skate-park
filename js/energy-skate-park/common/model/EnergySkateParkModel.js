@@ -1683,13 +1683,11 @@ define( function( require ) {
      * Add a track, called by phet-io in setState (to restore a state).
      * TODO: this code should be called by EnergySkateParkModel too.
      * @param {Tandem} tandem
-     * @param {boolean} interactive - whether the track can be dragged.
      * @param controlPointTandemIDs
      */
-    addTrack: function( tandem, interactive, controlPointTandemIDs ) {
+    addTrack: function( tandem, controlPointTandemIDs ) {
 
       assert && assert( controlPointTandemIDs, 'controlPointTandemIDs should exist' );
-      // function Track( events, modelTracks, controlPoints, interactive, parents, availableModelBoundsProperty, tandem ) {
       var controlPoints = controlPointTandemIDs.map( function( id, index ) {
         return new ControlPoint( index, 0, { tandem: new Tandem( id ) } ); // TODO: create with correct initial x & y values.
       } );
