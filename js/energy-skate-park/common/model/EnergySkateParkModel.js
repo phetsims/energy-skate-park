@@ -84,6 +84,7 @@ define( function( require ) {
   /**
    * Main constructor for the EnergySkateParkModel
    *
+   * TODO: Remove draggableTracks!
    * @param {boolean} draggableTracks True in screen 3 where the user can drag the tracks
    * @param {boolean} frictionAllowed True if this is screen 2-3, where friction is allowed to be on or off
    * @param {Tandem} tandem
@@ -92,6 +93,12 @@ define( function( require ) {
   function EnergySkateParkModel( draggableTracks, frictionAllowed, tandem, options ) {
 
     options = _.extend( {
+
+      // {boolean} - if true, tracks can be dragged around the play area
+      tracksDraggable: false,
+
+      // {boolean} - if true, track control points can be dragged and track shapes can change
+      tracksConfigurable: false,
 
       // passed to Skater
       skaterOptions: {}
@@ -107,8 +114,10 @@ define( function( require ) {
     }, options.skaterOptions );
 
     // @public (read-only)
-    this.draggableTracks = draggableTracks;
+    this.draggableTracks = draggableTracks; // TODO: REmove this in favor of tracksDraggable option
     this.frictionAllowed = frictionAllowed;
+    this.tracksDraggable = options.tracksDraggable;
+    this.tracksConfigurable = options.tracksConfigurable;
 
     var self = this;
 
@@ -294,15 +303,15 @@ define( function( require ) {
         // Control points only participate in the state if they are draggable (on the lab screens)
         new ControlPoint( offset.x - 1, offset.y, {
           tandem: controlPointGroupTandem.createNextTandem(),
-          phetioState: this.draggableTracks
+          phetioState: this.tracksDraggable
         } ),
         new ControlPoint( offset.x, offset.y, {
           tandem: controlPointGroupTandem.createNextTandem(),
-          phetioState: this.draggableTracks
+          phetioState: this.tracksDraggable
         } ),
         new ControlPoint( offset.x + 1, offset.y, {
           tandem: controlPointGroupTandem.createNextTandem(),
-          phetioState: this.draggableTracks
+          phetioState: this.tracksDraggable
         } )
       ];
       this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, {
@@ -343,7 +352,7 @@ define( function( require ) {
     clearTracks: function() {
 
       // For the first two screens, make the default track physical
-      if ( this.draggableTracks ) {
+      if ( this.tracksDraggable ) {
         this.tracks.forEach( function( track ) {
           track.disposeControlPoints();
         } );

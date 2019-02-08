@@ -32,7 +32,9 @@ define( function( require ) {
   function MeasureModel( tandem ) {
 
     // a track set model, with friction allowed
-    EnergySkateParkFullTrackSetModel.call( this, true, tandem );
+    EnergySkateParkFullTrackSetModel.call( this, true, tandem, {
+      tracksConfigurable: true
+    } );
 
     // @public - whether or not the model should store samples of skater data as the skater moves along the track
     this.sampleSkaterProperty = new BooleanProperty( true, { tandem: tandem.createTandem( 'sampleSkaterProperty' ) } );

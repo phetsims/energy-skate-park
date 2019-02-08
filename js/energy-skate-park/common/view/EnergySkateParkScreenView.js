@@ -164,8 +164,8 @@ define( function( require ) {
     }
 
     // For the playground screen, show attach/detach toggle buttons
-    if ( model.draggableTracks ) {
-      var property = model.draggableTracks ? new Property( true ) :
+    if ( model.tracksDraggable ) {
+      var property = model.tracksDraggable ? new Property( true ) :
                      new DerivedProperty( [ model.sceneProperty ], function( scene ) { return scene === 2; } );
       this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.detachableProperty, property, 150, tandem.createTandem( 'attachDetachToggleButtons' ) );
       this.bottomLayer.addChild( this.attachDetachToggleButtons );
@@ -238,7 +238,7 @@ define( function( require ) {
     } );
 
     // Switch between selectable tracks
-    if ( !model.draggableTracks ) {
+    if ( !model.tracksDraggable ) {
 
       var trackNodes = model.tracks.getArray().map( function( track ) {
         return new TrackNode( model, track, modelViewTransform, self.availableModelBoundsProperty, trackNodeGroupTandem.createNextTandem() );

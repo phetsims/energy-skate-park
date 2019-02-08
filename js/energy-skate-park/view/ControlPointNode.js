@@ -17,6 +17,7 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
 
   /**
@@ -63,6 +64,20 @@ define( function( require ) {
       self.lineDash = [ 4, 5 ];
     }
 
+    this.boundsRectangle = null;
+    if ( controlPoint.limitBounds ) {
+
+      this.boundsRectangle = new Rectangle( modelViewTransform.modelToViewBounds( controlPoint.limitBounds ), 3, 3, {
+        stroke: 'black',
+        lineDash: [ 4, 5 ]
+      } );
+
+      var boundsVisibilityListener = dragging => {
+        this.boundsRectangle.visible = dragging;
+      };
+      controlPoint.draggingProperty.link( boundsVisibilityListener );
+    }
+
     controlPoint.positionProperty.link( function( position ) {
       self.translation = modelViewTransform.modelToViewPosition( position );
     } );
@@ -78,7 +93,7 @@ define( function( require ) {
         trackNode.moveToFront();
 
         // If control point dragged out of the control panel, translate the entire track, see #130
-        if ( !track.physicalProperty.value || !track.droppedProperty.value ) {
+        if ( !track.physicalProperty.value || ( !track.droppedProperty.value && track.draggable ) ) {
 
           // Only start a track drag if nothing else was dragging the track (which caused a flicker), see #282
           if ( track.dragSource === null ) {
@@ -87,6 +102,7 @@ define( function( require ) {
           }
           return;
         }
+        controlPoint.draggingProperty.value = true;
         track.draggingProperty.value = true;
         dragEvents = 0;
       },
@@ -96,7 +112,7 @@ define( function( require ) {
         if ( !model.containsTrack( track ) ) { return; }
 
         // If control point dragged out of the control panel, translate the entire track, see #130
-        if ( !track.physicalProperty.value || !track.droppedProperty.value ) {
+        if ( !track.physicalProperty.value || ( !track.droppedProperty.value && track.draggable ) ) {
 
           // Only drag a track if nothing else was dragging the track (which caused a flicker), see #282
           if ( track.dragSource === inputListener ) {
@@ -105,6 +121,7 @@ define( function( require ) {
           return;
         }
         dragEvents++;
+        controlPoint.draggingProperty.value = true;
         track.draggingProperty.value = true;
         var globalPoint = self.globalToParentPoint( event.pointer.point );
 
@@ -114,13 +131,16 @@ define( function( require ) {
         // Constrain the control points to remain in y>0, see #71
         pt.y = Math.max( pt.y, 0 );
 
-        if ( availableBoundsProperty.value ) {
-          var availableBounds = availableBoundsProperty.value;
+        // Constrain the control point to the limited bounds, this should be more more strict than
+        // availableBoundsProperty so this is done first to avoid multiple checks
+        var dragBounds = controlPoint.limitBounds || availableBoundsProperty.value;
+        if ( dragBounds ) {
+          pt = dragBounds.closestPointTo( pt );
+        }
 
-          // Constrain the control points to be onscreen, see #94
-          pt.x = Math.max( pt.x, availableBounds.minX );
-          pt.x = Math.min( pt.x, availableBounds.maxX );
-          pt.y = Math.min( pt.y, availableBounds.maxY );
+        if ( assert && availableBoundsProperty.value ) {
+          assert( availableBoundsProperty.value.containsPoint( pt ),
+            'point should be in sim bounds, are your limiting bounds correct?' );
         }
 
         controlPoint.sourcePositionProperty.value = pt;
@@ -165,7 +185,7 @@ define( function( require ) {
         if ( !model.containsTrack( track ) ) { return; }
 
         // If control point dragged out of the control panel, translate the entire track, see #130
-        if ( !track.physicalProperty.value || !track.droppedProperty.value ) {
+        if ( !track.physicalProperty.value || ( !track.droppedProperty.value && track.draggable ) ) {
 
           // Only drop a track if nothing else was dragging the track (which caused a flicker), see #282
           if ( track.dragSource === inputListener ) {
@@ -185,6 +205,7 @@ define( function( require ) {
         if ( track.isDisposed ) { return; }
 
         track.bumpAboveGround();
+        controlPoint.draggingProperty.value = false;
         track.draggingProperty.value = false;
 
         // Show the 'control point editing' ui, but only if the user didn't drag the control point.

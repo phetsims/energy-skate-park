@@ -9,6 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  const BooleanProperty = require( 'AXON/BooleanProperty' );
   var ControlPointIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPointIO' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
@@ -33,11 +34,18 @@ define( function( require ) {
     var self = this;
 
     options = _.extend( {
+
+      // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging
+      limitBounds: null,
+
       tandem: Tandem.required,
       phetioType: ControlPointIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
     }, options );
     var tandem = options.tandem;
+
+    // @private {Bounds2|null} - see option for information
+    this.limitBounds = options.limitBounds;
 
     // @public (phet-io)
     this.controlPointTandem = tandem;
@@ -68,6 +76,11 @@ define( function( require ) {
         phetioType: DerivedPropertyIO( Vector2IO ),
         phetioState: options.phetioState
       } );
+
+    // @public {BooleanProperty} - whether the control point is currently being dragged
+    this.draggingProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'draggingProperty' )
+    } );
 
     PhetioObject.call( this, options );
 

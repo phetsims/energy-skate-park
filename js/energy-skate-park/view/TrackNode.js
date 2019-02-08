@@ -18,6 +18,7 @@ define( function( require ) {
   var LineStyles = require( 'KITE/util/LineStyles' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Path = require( 'SCENERY/nodes/Path' );
+  // var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Shape = require( 'KITE/Shape' );
   var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SplineEvaluation' );
   var TrackDragHandler = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackDragHandler' );
@@ -86,6 +87,17 @@ define( function( require ) {
         var isEndPoint = i === 0 || i === track.controlPoints.length - 1;
         var controlPointNode = new ControlPointNode( this, trackDragHandler, i, isEndPoint, tandem.createTandem( 'controlPointNode' + i ) );
         self.addChild( controlPointNode );
+
+        var controlPoint = track.controlPoints[ i ];
+        if ( controlPoint.limitBounds ) {
+          assert && assert( controlPointNode.boundsRectangle, 'bounds are limited but there is no bounding Rectangle' );
+          self.addChild( controlPointNode.boundsRectangle );
+
+          // var boundsVisibilityListener = dragging => {
+            // boundsRectangle.visible = dragging;
+          // };
+          // controlPoint.draggingProperty.link( boundsVisibilityListener );
+        }
       }
     }
 

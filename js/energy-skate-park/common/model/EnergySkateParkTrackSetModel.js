@@ -25,6 +25,13 @@ define( function( require ) {
    */
   function EnergySkateParkTrackSetModel( frictionAllowed, tandem, options ) {
 
+    options = _.extend( {
+
+      // of true, tracks created with PremadeTracks will have limiting bounds for dragging (assuming that
+      // points are configurable)
+      limitPointBounds: false
+    }, options );
+
     var draggableTracks = false; // TODO: Can we get rid of this?
     EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem.createTandem( 'trackSetModel' ), options );
 
@@ -77,19 +84,27 @@ define( function( require ) {
      * In "basics" screens, the track set includes the parabola, slope, and double well.
      *
      * @public
-     * @param {EnergySkateParkModel} model
+     * @param {EnergySkateParkTrackSetModel} model
      * @returns {Array.<Track>}
      */
     createBasicsTrackSet: function( model, tandem ) {
+      assert && assert( model instanceof EnergySkateParkTrackSetModel, 'PremadeTracks should be used with an EnergySkateParkTrackSetModel' );
+      assert && assert( model.tracksDraggable === false, 'tracks should not be draggable in EnergySkateParkTrackSetModels' );
 
-      var parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem );
+      var parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem, {
+        limitPointBounds: model.limitPointBounds
+      } );
       var parabolaTrack = PremadeTracks.createTrack( model, model.tracks, parabolaControlPoints, model.availableModelBoundsProperty, {
+        configurable: model.tracksConfigurable,
         tandem: tandem.createTandem( 'parabolaTrack' ),
         phetioState: false
       } );
 
-      var slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem );
+      var slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem, {
+        limitPointBounds: model.limitPointBounds
+      } );
       var slopeTrack = PremadeTracks.createTrack( model, model.tracks, slopeControlPoints, model.availableModelBoundsProperty, {
+        configurable: model.tracksConfigurable,
         tandem: tandem.createTandem( 'slopeTrack' ),
         phetioState: false
       } );
@@ -98,8 +113,11 @@ define( function( require ) {
       // see #164
       slopeTrack.slopeToGround = true;
 
-      var doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem );
+      var doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem, {
+        limitPointBounds: model.limitPointBounds
+      } );
       var doubleWellTrack = PremadeTracks.createTrack( model, model.tracks, doubleWellControlPoints, model.availableModelBoundsProperty, {
+        configurable: model.tracksConfigurable,
         tandem: tandem.createTandem( 'doubleWellTrack' ),
         phetioState: false
       } );
@@ -112,15 +130,20 @@ define( function( require ) {
      * Other screns or versions of this sim may not use this.
      *
      * @public
-     * @param {EnergySkateParkModel} model
+     * @param {EnergySkateParkTrackSetModel} model
      * @returns {Array.<Track>}
      */
     createFullTrackSet: function( model, tandem ) {
+      assert && assert( model instanceof EnergySkateParkTrackSetModel, 'PremadeTracks should be used with an EnergySkateParkTrackSetModel' );
 
       var basicSet = EnergySkateParkTrackSetModel.createBasicsTrackSet( model, tandem );
 
-      var loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem );
+      var loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem, {
+        limitPointBounds: model.limitPointBounds
+      } );
       var loopTrack = PremadeTracks.createTrack( model, model.tracks, loopControlPoints, model.availableModelBoundsProperty, {
+        configurable: model.tracksConfigurable,
+        draggable: model.tracksDraggable,
         tandem: tandem.createTandem( 'loopTrack' )
       } );
 

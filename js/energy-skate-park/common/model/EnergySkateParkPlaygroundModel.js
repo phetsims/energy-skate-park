@@ -27,6 +27,13 @@ define( function( require ) {
    * @param {Object} options
    */
   function EnergySkateParkPlaygroundModel( frictionAllowed, tandem, options ) {
+    options = options || {};
+
+    assert && assert( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
+    options.tracksDraggable = true;
+
+    assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
+    options.tracksConfigurable = true;
 
     var draggableTracks = true; // TODO: Get rid of this param?
     EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem, options );
