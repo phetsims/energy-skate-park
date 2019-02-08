@@ -60,8 +60,10 @@ define( function( require ) {
     } );
 
     // Show a dotted line for the exterior track points, which can be connected to other track
-    if ( i === 0 || i === track.controlPoints.length - 1 ) {
-      self.lineDash = [ 4, 5 ];
+    if ( track.attachable ) {
+      if ( i === 0 || i === track.controlPoints.length - 1 ) {
+        self.lineDash = [ 4, 5 ];
+      }
     }
 
     this.boundsRectangle = null;

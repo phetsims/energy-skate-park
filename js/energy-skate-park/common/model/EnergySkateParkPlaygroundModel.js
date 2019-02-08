@@ -82,6 +82,7 @@ define( function( require ) {
           draggable: true,
           configurable: true,
           splittable: true,
+          attachable: true,
 
           tandem: trackGroupTandem.createNextTandem()
         }

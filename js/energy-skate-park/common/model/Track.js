@@ -52,6 +52,9 @@ define( function( require ) {
       // {boolean} - can this track be changed or broken by removing control points?
       splittable: false,
 
+      // {boolean} - can this track be attached with another track by dragging track or control points?
+      attachable: false,
+
       tandem: Tandem.required,
       phetioType: TrackIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
@@ -67,10 +70,11 @@ define( function( require ) {
     this.trackTandem = tandem;
     this.availableModelBoundsProperty = availableModelBoundsProperty;
 
-    // @public (read-only)
+    // @public (read-only) - see options
     this.draggable = options.draggable;
     this.configurable = options.configurable;
     this.splittable = options.splittable;
+    this.attachable = options.attachable;
 
     // @public
     this.translatedEmitter = new Emitter();
