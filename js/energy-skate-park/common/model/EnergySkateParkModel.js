@@ -1257,6 +1257,7 @@ define( function( require ) {
         else {
           if ( !isFinite( newState.getTotalEnergy() ) ) { throw new Error( 'not finite' );}
           debug && debug( 'Energy too low' );
+          assert && assert( newState.track, 'newState must be still have a track for this energy correction' );
 
           // increasing the kinetic energy
           // Choose the exact velocity in the same direction as current velocity to ensure total energy conserved.
