@@ -319,6 +319,9 @@ define( require => {
         font: LABEL_FONT,
         minBackgroundWidth: 55, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
         valuePattern: energyJoulesPatternString,
+
+        // when there is no value, show now units
+        noValuePattern: NumberDisplay.DEFAULT_VALUE_PATTERN,
         noValueAlign: 'center'
       } );
 
