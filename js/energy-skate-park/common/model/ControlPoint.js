@@ -89,6 +89,7 @@ define( function( require ) {
       self.positionProperty.dispose();
       self.sourcePositionProperty.dispose();
       self.snapTargetProperty.dispose();
+      self.draggingProperty.dispose();
     };
   }
 
