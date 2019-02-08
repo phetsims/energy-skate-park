@@ -44,7 +44,7 @@ define( function( require ) {
     }, options );
     var tandem = options.tandem;
 
-    // @private {Bounds2|null} - see option for information
+    // @public (read-only) {Bounds2|null} - see option for information
     this.limitBounds = options.limitBounds;
 
     // @public (phet-io)
@@ -102,6 +102,12 @@ define( function( require ) {
     dispose: function() {
       this.disposeControlPoint();
       PhetioObject.prototype.dispose.call( this );
+    },
+
+    reset: function() {
+      this.sourcePositionProperty.reset();
+      this.snapTargetProperty.reset();
+      this.draggingProperty.reset();
     },
 
     copy: function( tandem ) {

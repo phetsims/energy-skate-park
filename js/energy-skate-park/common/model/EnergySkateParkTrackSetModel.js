@@ -44,7 +44,7 @@ define( function( require ) {
     } );
 
     // When the scene changes, also change the tracks.
-    this.sceneProperty.link( this.sceneListener.bind( this ) );
+    this.sceneProperty.link( this.updateActiveTrack.bind( this ) );
   }
 
   energySkatePark.register( 'EnergySkateParkTrackSetModel', EnergySkateParkTrackSetModel );
@@ -57,7 +57,7 @@ define( function( require ) {
      *
      * @private
      */
-    sceneListener: function( scene ) {
+    updateActiveTrack: function( scene ) {
       for ( var i = 0; i < this.tracks.length; i++ ) {
         this.tracks.get( i ).physicalProperty.value = ( i === scene );
 
@@ -76,7 +76,22 @@ define( function( require ) {
      */
     addTrackSet: function( tracks ) {
       this.tracks.addAll( tracks );
-      this.sceneListener( this.sceneProperty.get() );
+      this.updateActiveTrack( this.sceneProperty.get() );
+    },
+
+    /**
+     * Reset all of the tracks in this model's track set, if they are configurable. Otherwise, identical to
+     * super function.
+     */
+    reset: function() {
+      EnergySkateParkModel.prototype.reset.call( this );
+      this.tracks.forEach( track => {
+        if ( track.configurable ) {
+          track.reset();
+        }
+      } );
+
+      this.updateActiveTrack( this.sceneProperty.get() );
     }
   }, {
 
