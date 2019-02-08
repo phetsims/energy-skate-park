@@ -57,10 +57,13 @@ define( function( require ) {
 
       var track = model.tracks.get( index );
       var trackNode = new TrackNode( model, track, view.modelViewTransform, new Property(), tandem.createTandem( 'trackNode' + index ) );
-      children.push( trackNode );
+
+      // use a rasterized version of the node so that the icon doesn't change with the model for configurable tracks
+      var iconNode = trackNode.rasterized();
+      children.push( iconNode );
 
       // Fixes: Cursor turns into a hand over the track in the track selection panel, see #204
-      trackNode.pickable = false;
+      iconNode.pickable = false;
 
       var contentNode = new Node( {
         tandem: tandem.createTandem( 'contentNode' + index ),
