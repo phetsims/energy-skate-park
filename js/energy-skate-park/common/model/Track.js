@@ -49,6 +49,9 @@ define( function( require ) {
       // {boolean} - can this track be changed by dragging control points?
       configurable: false,
 
+      // {boolean} - can this track be changed or broken by removing control points?
+      splittable: false,
+
       tandem: Tandem.required,
       phetioType: TrackIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
@@ -67,6 +70,7 @@ define( function( require ) {
     // @public (read-only)
     this.draggable = options.draggable;
     this.configurable = options.configurable;
+    this.splittable = options.splittable;
 
     // @public
     this.translatedEmitter = new Emitter();

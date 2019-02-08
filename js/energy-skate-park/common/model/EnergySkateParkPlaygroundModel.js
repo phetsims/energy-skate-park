@@ -81,6 +81,7 @@ define( function( require ) {
       this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, {
           draggable: true,
           configurable: true,
+          splittable: true,
 
           tandem: trackGroupTandem.createNextTandem()
         }

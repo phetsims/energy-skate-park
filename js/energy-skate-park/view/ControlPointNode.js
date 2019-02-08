@@ -211,32 +211,34 @@ define( function( require ) {
         // Show the 'control point editing' ui, but only if the user didn't drag the control point.
         // Threshold at a few drag events in case the user didn't mean to drag it but accidentally moved it a few pixels.
         // Make sure the track hasn't recently detached (was seen twice in ?fuzz&fuzzRate=100 testing)
-        if ( dragEvents <= 3 && trackNode.parents.length > 0 ) {
+        if ( track.splittable ) {
+          if ( dragEvents <= 3 && trackNode.parents.length > 0 ) {
+            controlPointUIShownEmitter.emit();
 
-          controlPointUIShownEmitter.emit();
-
-          lastControlPointUI && lastControlPointUI.dispose();
-
-          lastControlPointUI = new ControlPointUI(
-            model,
-            track,
-            i,
-            modelViewTransform,
-            trackNode.parents[ 0 ],
-            tandem.createTandem( 'controlPointUI' )
-          );
-
-          // If the track was removed, get rid of the buttons
-          var removalListener = function() {
             lastControlPointUI && lastControlPointUI.dispose();
-            lastControlPointUI = null;
-          };
-          track.removeEmitter.addListener( removalListener );
 
-          // If the track has translated, hide the buttons, see #272
-          track.translatedEmitter.addListener( removalListener );
+            lastControlPointUI = new ControlPointUI(
+              model,
+              track,
+              i,
+              modelViewTransform,
+              trackNode.parents[ 0 ],
+              tandem.createTandem( 'controlPointUI' )
+            );
 
-          trackNode.parents[ 0 ].addChild( lastControlPointUI );
+            // If the track was removed, get rid of the buttons
+            var removalListener = function() {
+              lastControlPointUI && lastControlPointUI.dispose();
+              lastControlPointUI = null;
+            };
+            track.removeEmitter.addListener( removalListener );
+
+            // If the track has translated, hide the buttons, see #272
+            track.translatedEmitter.addListener( removalListener );
+
+            trackNode.parents[ 0 ].addChild( lastControlPointUI );
+          }
+
         }
 
         if ( EnergySkateParkQueryParameters.debugTrack ) {

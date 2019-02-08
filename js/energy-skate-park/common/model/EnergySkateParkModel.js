@@ -1447,13 +1447,12 @@ define( function( require ) {
      * The user has pressed the "delete" button for the specified track's specified control point, and it should be
      * deleted. It should be an inner point of a track (not an endpoint).
      *
-     * @param {[type]} track [description]
-     * @param {[type]} controlPointIndex [description]
-     * @param {[type]} modelAngle [description]
-     *
-     * @returns {[type]} [description]
+     * @param {Track} track
+     * @param {number} controlPointIndex - integer
+     * @param {number} modelAngle
      */
     splitControlPoint: function( track, controlPointIndex, modelAngle ) {
+      assert && assert( track.splittable, 'trying to split a track that is not splittable!' );
       var controlPointToSplit = track.controlPoints[ controlPointIndex ];
 
       var trackGroupTandem = this.trackGroupTandem;
