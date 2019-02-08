@@ -314,9 +314,9 @@ define( function( require ) {
           phetioState: this.tracksDraggable
         } )
       ];
-      this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, {
-          tandem: trackGroupTandem.createNextTandem()
-        }
+      this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, _.extend( {
+        tandem: trackGroupTandem.createNextTandem()
+      }, Track.FULLY_INTERACTIVE_OPTIONS )
       ) );
     },
 
@@ -1408,9 +1408,8 @@ define( function( require ) {
         var points = _.without( track.controlPoints, controlPointToDelete );
         controlPointToDelete.dispose();
         var newTrack = new Track( this, this.tracks, points, track.getParentsOrSelf(), this.availableModelBoundsProperty, {
-            tandem: trackGroupTandem.createNextTandem()
-          }
-        );
+          tandem: trackGroupTandem.createNextTandem()
+        }, Track.FULLY_INTERACTIVE_OPTIONS );
         newTrack.physicalProperty.value = true;
         newTrack.droppedProperty.value = true;
 
@@ -1478,14 +1477,14 @@ define( function( require ) {
       points1.push( newPoint1 );
       points2.unshift( newPoint2 );
 
-      var newTrack1 = new Track( this, this.tracks, points1, track.getParentsOrSelf(), this.availableModelBoundsProperty, {
+      var newTrack1 = new Track( this, this.tracks, points1, track.getParentsOrSelf(), this.availableModelBoundsProperty, _.extend( {
         tandem: trackGroupTandem.createNextTandem()
-      } );
+      }, Track.FULLY_INTERACTIVE_OPTIONS ) );
       newTrack1.physicalProperty.value = true;
       newTrack1.droppedProperty.value = true;
-      var newTrack2 = new Track( this, this.tracks, points2, track.getParentsOrSelf(), this.availableModelBoundsProperty, {
+      var newTrack2 = new Track( this, this.tracks, points2, track.getParentsOrSelf(), this.availableModelBoundsProperty, _.extend( {
         tandem: trackGroupTandem.createNextTandem()
-      } );
+      }, Track.FULLY_INTERACTIVE_OPTIONS ) );
       newTrack2.physicalProperty.value = true;
       newTrack2.droppedProperty.value = true;
 
@@ -1579,9 +1578,9 @@ define( function( require ) {
         secondTrackBackward();
       }
 
-      var newTrack = new Track( this, this.tracks, points, a.getParentsOrSelf().concat( b.getParentsOrSelf() ), this.availableModelBoundsProperty, {
+      var newTrack = new Track( this, this.tracks, points, a.getParentsOrSelf().concat( b.getParentsOrSelf() ), this.availableModelBoundsProperty, _.extend( {
         tandem: trackGroupTandem.createNextTandem()
-      } );
+      }, Track.FULLY_INTERACTIVE_OPTIONS ) );
       newTrack.physicalProperty.value = true;
       newTrack.droppedProperty.value = true;
 

@@ -26,6 +26,15 @@ define( function( require ) {
   // constants
   var FastArray = dot.FastArray;
 
+  // options for a track that is fully interactive - it can be dragged, control points can be moved, broken into
+  // different tracks, and combined with another track
+  var FULLY_INTERACTIVE_OPTIONS = {
+    draggable: true,
+    configurable: true,
+    splittable: true,
+    attachable: true
+  };
+
   /**
    * Model for a track, which has a fixed number of points.  If you added a point to a Track, you need a new track.
    *
@@ -874,5 +883,8 @@ define( function( require ) {
         controlPoint.dispose();
       } );
     }
+  }, {
+
+    FULLY_INTERACTIVE_OPTIONS: FULLY_INTERACTIVE_OPTIONS
   } );
 } );
