@@ -2,7 +2,11 @@
 
 /**
  * A collection of traks used in the EnergySkateParkTrackSet models of energy-skate-park and energy-skate-park-basics.
- * Premade tracks are not interactive, and are isolated so they have no parent tracks.
+ * Premade tracks are not draggable but they can sometimes be "configurable", meaning that control points can be moved.
+ * For configurable premade tracks, the control points can only be dragged within a smaller set of bounds. These
+ * bounds are specified for all premade tracks, but will only apply to the track if the model tracks are "configurable".
+ * 
+ * Premade tracks are all isolated so they have no "parent" tracks, see Track.js for definition of parent.
  * 
  * @author Jesse Greenberg
  */
@@ -11,7 +15,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  const Vector2 = require( 'DOT/Vector2' );
+  var Vector2 = require( 'DOT/Vector2' );
   var Bounds2 = require( 'DOT/Bounds2' );
   var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
@@ -20,12 +24,40 @@ define( function( require ) {
   // constants
   var PARENT_TRACKS = null;
 
+  // limiting bounds for dragging control points
+  var END_BOUNDS_WIDTH = 2;
+  var END_BOUNDS_HEIGHT = END_BOUNDS_WIDTH;
+
   var CREATOR_OPTIONS = {
 
     // {boolean} - premade tracks can have draggable control points, and setting this to true will limit
     // the drag bounds of control points for each track. Each control point can have unique bounds so limiting
     // bounds are created in each creator function
     limitPointBounds: false
+  };
+
+  /**
+   * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the
+   * CENTER of the limiting bounds.
+   * @param  {Vector2} point - location of control point, CENTER of the bounds 
+   * @param  {number} width
+   * @param  {number} height
+   * @returns {Bounds2}       
+   */
+  var createCenteredLimitBounds = function( point, width, height ) {
+    return new Bounds2( point.x - width / 2, point.y - height / 2, point.x + width / 2, point.y + height / 2 );
+  };
+
+  /**
+   * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the BOTTOM
+   * CENTER of the limiting bounds
+   * @param  {Vector2} point - location of control point, BOTTOM CENTER of the bounds 
+   * @param  {number} width
+   * @param  {number} height
+   * @returns {Bounds2}       
+   */
+  var createBottomLimitBounds = function( point, width, height ) {
+    return new Bounds2( point.x - width / 2, point.y, point.x + width / 2, point.y + height );
   };
 
   var PremadeTracks = {
@@ -38,13 +70,9 @@ define( function( require ) {
       var p2 = new Vector2( 0, 0 );
       var p3 = new Vector2( 4, 6 );
 
-      // limiting dimensions for the end points
-      var endHalfWidth = 0.5;
-      var endHalfHeight = 0.5;
-
-      var p1Bounds = new Bounds2( p1.x - endHalfWidth, p1.y - endHalfHeight, p1.x + endHalfWidth, p1.y + endHalfHeight );
-      var p2Bounds = new Bounds2( -2, 0, 2, 2 );
-      var p3Bounds = new Bounds2( p3.x - endHalfWidth, p3.y - endHalfHeight, p3.x + endHalfWidth, p3.y + endHalfHeight );
+      var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      var p2Bounds = createBottomLimitBounds( p2, 4, 2 );
+      var p3Bounds = createCenteredLimitBounds( p3, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       return [
         new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
@@ -57,10 +85,20 @@ define( function( require ) {
     createSlopeControlPoints: function( groupTandem, options ) {
       options = _.extend( CREATOR_OPTIONS, options );
 
+      var p1 = new Vector2( -4, 6 );
+      var p2 = new Vector2( -2, 1.2 );
+      var p3 = new Vector2( 2, 0 );
+
+      var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+
+      // createBottomLimitBounds because dragging any lower will cause track to go below ground
+      var p2Bounds = createBottomLimitBounds( p2, 2, 2 );
+      var p3Bounds = createBottomLimitBounds( p3, 1, 1 );
+
       return [
-        new ControlPoint( -4, 6, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( -2, 1.2, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( 2, 0, { tandem: groupTandem.createNextTandem(), phetioState: false } )
+        new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( p2.x, p2.y, { limitBounds: p2Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( p3.x, p3.y, { limitBounds: p3Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } )
       ];
     },
 
@@ -70,12 +108,24 @@ define( function( require ) {
     createDoubleWellControlPoints: function( groupTandem, options ) {
       options = _.extend( CREATOR_OPTIONS, options );
 
+      var p1 = new Vector2( -4, 5 );
+      var p2 = new Vector2( -2, 0.0166015 );
+      var p3 = new Vector2( 0, 2 );
+      var p4 = new Vector2( 2, 1 );
+      var p5 = new Vector2( 4, 5 );
+
+      var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      var p2Bounds = createBottomLimitBounds( p2, 1, 1 );
+      var p3Bounds = createCenteredLimitBounds( p3, 1, 1 );
+      var p4Bounds = createCenteredLimitBounds( p4, 1, 1 );
+      var p5Bounds = createCenteredLimitBounds( p5, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+
       return [
-        new ControlPoint( -4, 5, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( -2, 0.0166015, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( 0, 2, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( 2, 1, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( 4, 5, { tandem: groupTandem.createNextTandem(), phetioState: false } )
+        new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( p2.x, p2.y, { limitBounds: p2Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( p3.x, p3.y, { limitBounds: p3Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( p4.x, p4.y, { limitBounds: p4Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( p5.x, p5.y, { limitBounds: p5Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } )
       ];
     },
 
@@ -93,27 +143,45 @@ define( function( require ) {
 
       var trackBottom = 0.08; // bottom points, so that the skater doesn't go below y = 0
       var loopTop = 3; // adjust to make the loop top point higher or lower
-      var loopWidth = 6; // adjust to make the loop more or less wide
+      var loopWidth = 7; // adjust to make the loop more or less wide
       var innerLoopWidth = 1; // roughly adjusts the width of the innerloop
       var innerLoopHeight = 1.5; // roughly adjust inner loop height (for control points, actual loop will be higher)
 
+      var p1 = new Vector2( -loopWidth / 2, trackTop );
+      var p2 = new Vector2( -innerLoopWidth, trackBottom );
+      var p3 = new Vector2( innerLoopWidth, innerLoopHeight );
+      var p4 = new Vector2( 0, loopTop );
+      var p5 = new Vector2( -innerLoopWidth, innerLoopHeight );
+      var p6 = new Vector2( innerLoopWidth, trackBottom );
+      var p7 = new Vector2( loopWidth / 2, trackTop );
+
+      var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      var p2Bounds = createBottomLimitBounds( p2, 0.5, 0.5 );
+      var p3Bounds = createCenteredLimitBounds( p3, 1, 1 );
+      var p4Bounds = createCenteredLimitBounds( p4, 1, 1 );
+      var p5Bounds = createCenteredLimitBounds( p5, 1, 1 );
+      var p6Bounds = createBottomLimitBounds( p6, 0.5, 0.5 );
+      var p7Bounds = createCenteredLimitBounds( p7, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+
       return [
-        new ControlPoint( -loopWidth / 2, trackTop, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( -innerLoopWidth, trackBottom, {
+        new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( p2.x, p2.y, {
+          limitBounds: p2Bounds,
           tandem: groupTandem.createNextTandem(),
           phetioState: false
         } ),
-        new ControlPoint( innerLoopWidth, innerLoopHeight, {
+        new ControlPoint( p3.x, p3.y, {
+          limitBounds: p3Bounds,
           tandem: groupTandem.createNextTandem(),
           phetioState: false
         } ),
-        new ControlPoint( 0, loopTop, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( -innerLoopWidth, innerLoopHeight, {
+        new ControlPoint( p4.x, p4.y, { limitBounds: p4Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( p5.x, p5.y, { limitBounds: p5Bounds,
           tandem: groupTandem.createNextTandem(),
           phetioState: false
         } ),
-        new ControlPoint( innerLoopWidth, trackBottom, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( loopWidth / 2, trackTop, { tandem: groupTandem.createNextTandem(), phetioState: false } )
+        new ControlPoint( p6.x, p6.y, { limitBounds: p6Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( p7.x, p7.y, { limitBounds: p7Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } )
       ];
     },
 
