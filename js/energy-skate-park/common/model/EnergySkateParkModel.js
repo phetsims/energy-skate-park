@@ -1408,9 +1408,9 @@ define( function( require ) {
         var controlPointToDelete = track.controlPoints[ controlPointIndex ];
         var points = _.without( track.controlPoints, controlPointToDelete );
         controlPointToDelete.dispose();
-        var newTrack = new Track( this, this.tracks, points, track.getParentsOrSelf(), this.availableModelBoundsProperty, {
+        var newTrack = new Track( this, this.tracks, points, track.getParentsOrSelf(), this.availableModelBoundsProperty, _.extend( {
           tandem: trackGroupTandem.createNextTandem()
-        }, Track.FULLY_INTERACTIVE_OPTIONS );
+        }, Track.FULLY_INTERACTIVE_OPTIONS ) );
         newTrack.physicalProperty.value = true;
         newTrack.droppedProperty.value = true;
 
