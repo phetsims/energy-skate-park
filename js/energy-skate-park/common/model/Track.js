@@ -95,8 +95,14 @@ define( function( require ) {
     // two sources, which causes a flicker, see #282
     this.dragSource = null;
 
-    // @public - Flag to indicate whether the skater transitions from the right edge of this track directly to the ground, see #164
-    this.slopeToGround = false;
+    // @private - Flag to indicate whether the skater transitions from the right edge of this track directly to the
+    // ground, if set to true, additional corrections to skater energy will be applied so that energy is conserved in
+    // this case - see phetsims/energy-skate-park-basics#164. Also see the getters/setters for this below.
+    this._slopeToGround = false;
+
+    // @private {boolean} - if slopeToGround is set, and we disable the energy corrections when a control point moves,
+    // the "slope to ground" energy corrections should be applied again once the track is reset
+    this._restoreSlopeToGroundOnReset = false;
 
     // @private - Use an arbitrary position for translating the track during dragging.  Only used for deltas in relative
     // positioning and translation, so an exact "position" is irrelevant, see #260
@@ -220,6 +226,12 @@ define( function( require ) {
       this.droppedProperty.reset();
       for ( var i = 0; i < this.controlPoints.length; i++ ) {
         this.controlPoints[ i ].reset();
+      }
+
+      // if track is configurable, "slope to ground" energy corrections are disabled when control points move - on reset
+      // reapply those corrections
+      if ( this._restoreSlopeToGroundOnReset ) {
+        this.slopeToGround = true;
       }
 
       // Broadcast message so that TrackNode can update the shape
@@ -348,9 +360,35 @@ define( function( require ) {
     },
 
     /**
+     * Set whether or not this Track slopes to the ground, and corrects energy on the transition from track to ground.
+     * If the track is configurable, we do NOT want to maintain this correction when the control points move. But when
+     * this track is reset, we should reapply this correction.
+     * @public
+     * 
+     * @param {boolean} slopeToGround
+     */
+    setSlopeToGround: function( slopeToGround ) {
+      this._slopeToGround = slopeToGround;
+      this._restoreSlopeToGroundOnReset = true;
+    },
+    set slopeToGround( slopeToGround ) { this.setSlopeToGround( slopeToGround ); },
+    
+    /**
+     * Get whether or not the track "slopes to the ground", and skater energy state should apply additional corrections.
+     * @public
+     * 
+     * @returns {boolean}
+     */
+    getSlopeToGround: function() {
+      return this._slopeToGround;
+    },
+    get slopeToGround() { return this.getSlopeToGround(); },  
+
+    /**
      * For purposes of showing the skater angle, get the view angle of the track here. Note this means inverting the y
      * values, this is called every step while animating on the track, so it was optimized to avoid new allocations.
      * @public
+     * 
      * @param {number} parametricPosition
      * @returns {number}
      */
@@ -365,6 +403,7 @@ define( function( require ) {
     /**
      * Get the model angle at the specified position on the track.
      * @public
+     * 
      * @param {number} parametricPosition
      * @returns {number}
      */

@@ -107,6 +107,9 @@ define( function( require ) {
         controlPoint.draggingProperty.value = true;
         track.draggingProperty.value = true;
         dragEvents = 0;
+
+        // when a control point moves, any additional heuristics to correct energy for premade tracks no longer apply
+        track.slopeToGround = false;
       },
       drag: function( event ) {
 

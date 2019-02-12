@@ -1247,6 +1247,7 @@ define( function( require ) {
         else {
           if ( !isFinite( newState.getTotalEnergy() ) ) { throw new Error( 'not finite' );}
           debug && debug( 'Energy too low' );
+          assert && assert( newState.track, 'newState must be still have a track for this energy correction' );
 
           // increasing the kinetic energy
           // Choose the exact velocity in the same direction as current velocity to ensure total energy conserved.
@@ -1397,9 +1398,9 @@ define( function( require ) {
         var controlPointToDelete = track.controlPoints[ controlPointIndex ];
         var points = _.without( track.controlPoints, controlPointToDelete );
         controlPointToDelete.dispose();
-        var newTrack = new Track( this, this.tracks, points, track.getParentsOrSelf(), this.availableModelBoundsProperty, {
+        var newTrack = new Track( this, this.tracks, points, track.getParentsOrSelf(), this.availableModelBoundsProperty, _.extend( {
           tandem: trackGroupTandem.createNextTandem()
-        }, Track.FULLY_INTERACTIVE_OPTIONS );
+        }, Track.FULLY_INTERACTIVE_OPTIONS ) );
         newTrack.physicalProperty.value = true;
         newTrack.droppedProperty.value = true;
 
