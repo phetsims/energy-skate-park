@@ -26,7 +26,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
+  var BooleanProperty = require( 'AXON/BooleanProperty' );
   var Bounds2 = require( 'DOT/Bounds2' );
   var Bounds2IO = require( 'DOT/Bounds2IO' );
   var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
@@ -137,29 +137,23 @@ define( function( require ) {
     this.trackChangePending = false;
 
     // @public - model for visibility of various view parameters
-    this.pieChartVisibleProperty = new Property( false, {
-      tandem: tandem.createTandem( 'pieChartVisibleProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.pieChartVisibleProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'pieChartVisibleProperty' )
     } );
-    this.barGraphVisibleProperty = new Property( false, {
-      tandem: tandem.createTandem( 'barGraphVisibleProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.barGraphVisibleProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'barGraphVisibleProperty' )
     } );
-    this.gridVisibleProperty = new Property( false, {
-      tandem: tandem.createTandem( 'gridVisibleProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.gridVisibleProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'gridVisibleProperty' )
     } );
-    this.speedometerVisibleProperty = new Property( false, {
-      tandem: tandem.createTandem( 'speedometerVisibleProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.speedometerVisibleProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'speedometerVisibleProperty' )
     } );
-    this.referenceHeightVisibleProperty = new Property( false, {
-      tandem: tandem.createTandem( 'referenceHeightVisibleProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.referenceHeightVisibleProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'referenceHeightVisibleProperty' )
     } );
-    this.measuringTapeVisibleProperty = new Property( false, {
-      tandem: tandem.createTandem( 'measuringTapeVisibleProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.measuringTapeVisibleProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'measuringTapeVisibleProperty' )
     } );
 
     // @public {number} - scale applied to graphs to determine relative height, making this larger will "zoom out"
@@ -168,19 +162,16 @@ define( function( require ) {
     } );
 
     // @public - enabled/disabled for the track editing buttons
-    this.editButtonEnabledProperty = new Property( false, {
-      tandem: tandem.createTandem( 'editButtonEnabledProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.editButtonEnabledProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'editButtonEnabledProperty' )
     } );
-    this.clearButtonEnabledProperty = new Property( false, {
-      tandem: tandem.createTandem( 'clearButtonEnabledProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.clearButtonEnabledProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'clearButtonEnabledProperty' )
     } );
 
     // Whether the sim is paused or running
-    this.pausedProperty = new Property( false, {
-      tandem: tandem.createTandem( 'pausedProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.pausedProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'pausedProperty' )
     } );
 
     // @public {string} - speed of the model, either 'normal' or 'slow'
@@ -208,9 +199,8 @@ define( function( require ) {
     } );
 
     // @public {boolean} - Whether the skater should stick to the track like a roller coaster, or be able to fly off like a street
-    this.detachableProperty = new Property( false, {
-      tandem: tandem.createTandem( 'detachableProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.detachableProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'detachableProperty' )
     } );
 
     // @public - Will be filled in by the view, used to prevent control points from moving outside the visible model bounds when

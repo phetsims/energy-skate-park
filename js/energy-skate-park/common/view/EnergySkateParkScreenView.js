@@ -18,7 +18,7 @@ define( function( require ) {
   var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BackgroundNode' );
   var BarGraphBackground = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BarGraphBackground' );
   var BarGraphForeground = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BarGraphForeground' );
-  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
+  var BooleanProperty = require( 'AXON/BooleanProperty' );
   var Bounds2 = require( 'DOT/Bounds2' );
   var Color = require( 'SCENERY/util/Color' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
@@ -44,7 +44,6 @@ define( function( require ) {
   var PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/PlaybackSpeedControl' );
   var PlayPauseButton = require( 'SCENERY_PHET/buttons/PlayPauseButton' );
   var Property = require( 'AXON/Property' );
-  var PropertyIO = require( 'AXON/PropertyIO' );
   var Range = require( 'DOT/Range' );
   var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
@@ -438,9 +437,8 @@ define( function( require ) {
     // has all of the play, pause, and step controls for layout purposes
     var playControls = new Node();
 
-    var playingProperty = new Property( !model.pausedProperty.value, {
-      tandem: tandem.createTandem( 'playingProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    var playingProperty = new BooleanProperty( !model.pausedProperty.value, {
+      tandem: tandem.createTandem( 'playingProperty' )
     } );
     model.pausedProperty.link( function( paused ) {
       playingProperty.set( !paused );

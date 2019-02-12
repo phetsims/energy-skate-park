@@ -10,14 +10,12 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
+  var BooleanProperty = require( 'AXON/BooleanProperty' );
   var dot = require( 'DOT/dot' );
   var Emitter = require( 'AXON/Emitter' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
   var PhetioObject = require( 'TANDEM/PhetioObject' );
-  var Property = require( 'AXON/Property' );
-  var PropertyIO = require( 'AXON/PropertyIO' );
   var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SplineEvaluation' );
   var Tandem = require( 'TANDEM/Tandem' );
   var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackIO' );
@@ -107,31 +105,27 @@ define( function( require ) {
     // @public {boolean} - True if the track can be interacted with.  For screens 1-2 only one track will be physical
     // (and hence visible). For screen 3, tracks in the control panel are visible but non-physical until dragged to
     // the play area
-    this.physicalProperty = new Property( false, {
+    this.physicalProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'physicalProperty' ),
-      phetioType: PropertyIO( BooleanIO ),
       phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
     // @private {boolean} - Flag that shows whether the track has been dragged fully out of the panel
-    this.leftThePanelProperty = new Property( false, {
+    this.leftThePanelProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'leftThePanelProperty' ),
-      phetioType: PropertyIO( BooleanIO ),
       phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
     // @public - Keep track of whether the track is dragging, so performance can be optimized while dragging
-    this.draggingProperty = new Property( false, {
+    this.draggingProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'draggingProperty' ),
-      phetioType: PropertyIO( BooleanIO ),
       phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
     // @public {boolean} - Flag to indicate whether the user has dragged the track out of the toolbox.  If dragging from the toolbox,
     // then dragging translates the entire track instead of just a point.
-    this.droppedProperty = new Property( false, {
+    this.droppedProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'droppedProperty' ),
-      phetioType: PropertyIO( BooleanIO ),
       phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 

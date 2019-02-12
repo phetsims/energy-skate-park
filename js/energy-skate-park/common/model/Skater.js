@@ -82,9 +82,8 @@ define( function( require ) {
     } );
 
     // @public - True if the skater is pointing up on the track, false if attached to underside of track
-    this.onTopSideOfTrackProperty = new Property( true, {
-      tandem: tandem.createTandem( 'onTopSideOfTrackProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.onTopSideOfTrackProperty = new BooleanProperty( true, {
+      tandem: tandem.createTandem( 'onTopSideOfTrackProperty' )
     } );
 
     // @public {number} - Gravity magnitude, without direction, which is easier to set with controls (like sliders) because
@@ -140,9 +139,8 @@ define( function( require ) {
     } );
 
     // @public {boolean} - True if the user is dragging the skater with a pointer
-    this.draggingProperty = new Property( false, {
-      tandem: tandem.createTandem( 'draggingProperty' ),
-      phetioType: PropertyIO( BooleanIO )
+    this.draggingProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'draggingProperty' )
     } );
 
     // @public {numbere} - Energies are in Joules
