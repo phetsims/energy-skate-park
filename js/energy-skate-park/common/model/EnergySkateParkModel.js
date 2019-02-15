@@ -795,7 +795,7 @@ define( function( require ) {
       }
       else {
         var magnitude = this.frictionProperty.value * this.getNormalForce( skaterState ).magnitude();
-        var angleComponent = Math.cos( skaterState.getVelocity().angle() + Math.PI );
+        var angleComponent = Math.cos( skaterState.getVelocity().angle + Math.PI );
         assert && assert( isFinite( magnitude ), 'magnitude should be finite' );
         assert && assert( isFinite( angleComponent ), 'angleComponent should be finite' );
         return magnitude * angleComponent;
@@ -820,7 +820,7 @@ define( function( require ) {
       }
       else {
         var magnitude = this.frictionProperty.value * this.getNormalForce( skaterState ).magnitude();
-        return magnitude * Math.sin( skaterState.getVelocity().angle() + Math.PI );
+        return magnitude * Math.sin( skaterState.getVelocity().angle + Math.PI );
       }
     },
 
@@ -845,7 +845,7 @@ define( function( require ) {
       var normalForce = skaterState.mass * skaterState.getSpeed() * skaterState.getSpeed() / Math.abs( radiusOfCurvature ) - netForceRadial.dot( curvatureDirection );
       debug && debug( normalForce );
 
-      var n = Vector2.createPolar( normalForce, curvatureDirection.angle() );
+      var n = Vector2.createPolar( normalForce, curvatureDirection.angle );
       assert && assert( isFinite( n.x ), 'n.x should be finite' );
       assert && assert( isFinite( n.y ), 'n.y should be finite' );
       return n;
