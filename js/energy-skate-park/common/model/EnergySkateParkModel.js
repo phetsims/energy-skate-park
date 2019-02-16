@@ -64,7 +64,7 @@ define( function( require ) {
   var curvatureTemp2 = { r: 1, x: 0, y: 0 };
 
   // Thrust is not currently implemented in Energy Skate Park but may be used in a future version, so left here
-  var thrust = new Vector2();
+  var thrust = new Vector2( 0, 0 );
 
   // Flag to enable debugging for physics issues
   var debug = EnergySkateParkQueryParameters.debugLog ? function() {
@@ -833,7 +833,7 @@ define( function( require ) {
     getNormalForce: function( skaterState ) {
       skaterState.getCurvature( curvatureTemp2 );
       var radiusOfCurvature = Math.min( curvatureTemp2.r, 100000 );
-      var netForceRadial = new Vector2();
+      var netForceRadial = new Vector2( 0, 0 );
 
       netForceRadial.addXY( 0, skaterState.mass * skaterState.gravity );// gravity
       var curvatureDirection = this.getCurvatureDirection( curvatureTemp2, skaterState.positionX, skaterState.positionY );
