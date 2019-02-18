@@ -1,4 +1,4 @@
-// Copyright 2018, University of Colorado Boulder
+// Copyright 2018-2019, University of Colorado Boulder
 
 /**
  * A model for Energy Skate Park that can have tracks that are buildable and draggable. Doesn't have a set of 

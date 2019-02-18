@@ -1,4 +1,4 @@
-// Copyright 2018, University of Colorado Boulder
+// Copyright 2018-2019, University of Colorado Boulder
 
 /**
  * Dashed outline for a circle using WebGLNode. Many portions of this file are quite similar to PieChartWebGLSliceNode,

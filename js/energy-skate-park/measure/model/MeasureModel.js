@@ -1,4 +1,4 @@
-// Copyright 2018, University of Colorado Boulder
+// Copyright 2018-2019, University of Colorado Boulder
 
 /**
  * Model for the "Measure" screen of this sim. The measure screen allows the user to inspect physical values

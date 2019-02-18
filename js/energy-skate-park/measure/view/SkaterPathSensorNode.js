@@ -1,4 +1,4 @@
-// Copyright 2018, University of Colorado Boulder
+// Copyright 2018-2019, University of Colorado Boulder
 
 /**
  * The sensor that reads information from the samples along the skater path. Includes the body, wire, and sensor. The

@@ -1,4 +1,4 @@
-// Copyright 2013-2018, University of Colorado Boulder
+// Copyright 2013-2019, University of Colorado Boulder
 
 /**
  * Scenery node that shows animating bar chart bars as rectangles.  Should be shown in front of the
