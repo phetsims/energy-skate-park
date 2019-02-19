@@ -212,7 +212,7 @@ define( function( require ) {
 
     // @public {number}
     this.speedProperty = new DerivedProperty( [ this.velocityProperty ], function( velocity ) {
-      return velocity.magnitude();
+      return velocity.magnitude;
     }, {
       tandem: tandem.createTandem( 'speedProperty' ),
       units: 'meters/second',

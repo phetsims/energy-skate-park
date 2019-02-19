@@ -666,7 +666,7 @@ define( function( require ) {
 
         // If crossed the track, attach to it.
         var newVelocity = segment.times( segment.dot( proposedVelocity ) );
-        var newSpeed = newVelocity.magnitude();
+        var newSpeed = newVelocity.magnitude;
         var newKineticEnergy = 0.5 * skaterState.mass * newVelocity.magnitudeSquared();
         var newPosition = track.getPoint( parametricPosition );
         var newPotentialEnergy = -skaterState.mass * skaterState.gravity * ( newPosition.y - skaterState.referenceHeight );
@@ -794,7 +794,7 @@ define( function( require ) {
         return 0;
       }
       else {
-        var magnitude = this.frictionProperty.value * this.getNormalForce( skaterState ).magnitude();
+        var magnitude = this.frictionProperty.value * this.getNormalForce( skaterState ).magnitude;
         var angleComponent = Math.cos( skaterState.getVelocity().angle + Math.PI );
         assert && assert( isFinite( magnitude ), 'magnitude should be finite' );
         assert && assert( isFinite( angleComponent ), 'angleComponent should be finite' );
@@ -819,7 +819,7 @@ define( function( require ) {
         return 0;
       }
       else {
-        var magnitude = this.frictionProperty.value * this.getNormalForce( skaterState ).magnitude();
+        var magnitude = this.frictionProperty.value * this.getNormalForce( skaterState ).magnitude;
         return magnitude * Math.sin( skaterState.getVelocity().angle + Math.PI );
       }
     },
@@ -913,7 +913,7 @@ define( function( require ) {
         var newTotalEnergy = newState.getTotalEnergy() + therm;
 
         // Conserve energy, but only if the user is not adding energy, see #135
-        if ( thrust.magnitude() === 0 && !this.trackChangePending ) {
+        if ( thrust.magnitude === 0 && !this.trackChangePending ) {
           if ( newTotalEnergy < origEnergy ) {
             thermalEnergy += Math.abs( newTotalEnergy - origEnergy );// add some thermal to exactly match
             if ( Math.abs( newTotalEnergy - origEnergy ) > 1E-6 ) {
@@ -1055,10 +1055,10 @@ define( function( require ) {
       // Nudge the velocity in the 'up' direction so the skater won't pass through the track, see #207
       var velocity = new Vector2( freeSkater.velocityX, freeSkater.velocityY );
       var upVector = new Vector2( sideVectorX, sideVectorY );
-      if ( velocity.magnitude() > 0 ) {
+      if ( velocity.magnitude > 0 ) {
         var blended = velocity.normalized().blend( upVector, 0.01 * sign );
-        if ( blended.magnitude() > 0 ) {
-          var revisedVelocity = blended.normalized().times( velocity.magnitude() );
+        if ( blended.magnitude > 0 ) {
+          var revisedVelocity = blended.normalized().times( velocity.magnitude );
           freeSkater = freeSkater.updateUDVelocity( 0, revisedVelocity.x, revisedVelocity.y );
 
           // Nudge the position away from the track, slightly since it was perfectly centered on the track, see #212
