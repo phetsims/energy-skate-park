@@ -14,9 +14,9 @@ define( function( require ) {
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
   var phetioInherit = require( 'TANDEM/phetioInherit' );
   var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
+  var validate = require( 'AXON/validate' );
 
   // ifphetio
-  var assertInstanceOf = require( 'ifphetio!PHET_IO/assertInstanceOf' );
   var phetioEngine = require( 'ifphetio!PHET_IO/phetioEngine' );
 
   /**
@@ -25,13 +25,13 @@ define( function( require ) {
    * @constructor
    */
   function TrackReferenceIO( track, phetioID ) {
-    assert && assertInstanceOf( track, Track );
     ObjectIO.call( this, track, phetioID );
   }
 
   phetioInherit( ObjectIO, 'TrackReferenceIO', TrackReferenceIO, {}, {
+    validator: { valueType: Track },
     toStateObject: function( track ) {
-      assert && assertInstanceOf( track, Track );
+      validate( track, this.validator );
       return track ? track.trackTandem.phetioID : null;
     },
     fromStateObject: function( stateObject ) {

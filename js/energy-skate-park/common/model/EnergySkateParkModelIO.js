@@ -13,9 +13,7 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
   var phetioInherit = require( 'TANDEM/phetioInherit' );
-
-  // ifphetio
-  var assertInstanceOf = require( 'ifphetio!PHET_IO/assertInstanceOf' );
+  var validate = require( 'AXON/validate' );
 
   /**
    * @param {EnergySkateParkModel} energySkateParkModel
@@ -23,12 +21,12 @@ define( function( require ) {
    * @constructor
    */
   function EnergySkateParkModelIO( energySkateParkModel, phetioID ) {
-    assert && assertInstanceOf( energySkateParkModel, phet.energySkatePark.EnergySkateParkModel );
     ObjectIO.call( this, energySkateParkModel, phetioID );
   }
 
   phetioInherit( ObjectIO, 'EnergySkateParkModelIO', EnergySkateParkModelIO, {}, {
     documentation: 'The model for the Skate Park.',
+    validator: { isValidValue: v => v instanceof phet.energySkatePark.EnergySkateParkModel },
 
     /**
      * Remove all instances of the model's dynamic children.
@@ -38,7 +36,7 @@ define( function( require ) {
      * @param {EnergySkateParkModel} energySkateParkModel
      */
     clearChildInstances: function( energySkateParkModel ) {
-      assert && assertInstanceOf( energySkateParkModel, phet.energySkatePark.EnergySkateParkModel );
+      validate( energySkateParkModel, this.validator );
       if ( energySkateParkModel.draggableTracks ) {
         energySkateParkModel.removeAllTracks();
       }
@@ -47,12 +45,12 @@ define( function( require ) {
     /**
      * Adds a Track as specified by the phetioID and state.
      * A Track will create its own ControlPoints
-     * @param {EnergySkateParkModel} EnergySkateParkModel
+     * @param {EnergySkateParkModel} energySkateParkModel
      * @param {Tandem} tandem
      * @param {Object} stateObject
      */
-    addChildInstance: function( EnergySkateParkModel, tandem, stateObject ) {
-      assert && assertInstanceOf( EnergySkateParkModel, phet.energySkatePark.EnergySkateParkModel );
+    addChildInstance: function( energySkateParkModel, tandem, stateObject ) {
+      validate( energySkateParkModel, this.validator );
       var isControlPoint = tandem.phetioID.indexOf( '.controlPoint' ) >= 0;
 
       // Control Points are already being created when the tracks are made, so if the tandem is a controlPoint it's a no-op
@@ -61,7 +59,7 @@ define( function( require ) {
       }
 
       // If it isn't a ControlPoint, then it is a Track
-      return EnergySkateParkModel.addTrack( tandem, stateObject.draggable, stateObject.configurable, stateObject.controlPointTandemIDs );
+      return energySkateParkModel.addTrack( tandem, stateObject.draggable, stateObject.configurable, stateObject.controlPointTandemIDs );
     }
   } );
 

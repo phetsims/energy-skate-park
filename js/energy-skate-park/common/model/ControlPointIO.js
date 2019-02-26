@@ -13,9 +13,9 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
   var phetioInherit = require( 'TANDEM/phetioInherit' );
+  var validate = require( 'AXON/validate' );
 
   // ifphetio
-  var assertInstanceOf = require( 'ifphetio!PHET_IO/assertInstanceOf' );
   var phetioEngine = require( 'ifphetio!PHET_IO/phetioEngine' );
 
   /**
@@ -24,12 +24,12 @@ define( function( require ) {
    * @constructor
    */
   function ControlPointIO( controlPoint, phetioID ) {
-    assert && assertInstanceOf( controlPoint, phet.energySkatePark.ControlPoint );
     ObjectIO.call( this, controlPoint, phetioID );
   }
 
   phetioInherit( ObjectIO, 'ControlPointIO', ControlPointIO, {}, {
     documentation: 'A control point that can manipulate the track.',
+    validator: { isValidValue: v => v instanceof phet.energySkatePark.ControlPoint },
 
     /**
      * Encodes a ControlPoint instance to a state.
@@ -38,7 +38,7 @@ define( function( require ) {
      * @override
      */
     toStateObject: function( controlPoint ) {
-      assert && assertInstanceOf( controlPoint, phet.energySkatePark.ControlPoint );
+      validate( controlPoint, this.validator );
       return controlPoint ? controlPoint.tandem.phetioID : 'null';
     },
 

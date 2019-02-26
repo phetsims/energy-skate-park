@@ -13,9 +13,7 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
   var phetioInherit = require( 'TANDEM/phetioInherit' );
-
-  // ifphetio
-  var assertInstanceOf = require( 'ifphetio!PHET_IO/assertInstanceOf' );
+  var validate = require( 'AXON/validate' );
 
   /**
    * @param {Track} track
@@ -23,7 +21,6 @@ define( function( require ) {
    * @constructor
    */
   function TrackIO( track, phetioID ) {
-    assert && assertInstanceOf( track, phet.energySkatePark.Track );
     ObjectIO.call( this, track, phetioID );
   }
 
@@ -32,10 +29,10 @@ define( function( require ) {
    */
   phetioInherit( ObjectIO, 'TrackIO', TrackIO, {}, {
     documentation: 'A skate track.',
+    validator: { isValidValue: v => v instanceof phet.energySkatePark.Track },
 
     toStateObject: function( track ) {
-      assert && assert( track !== undefined, 'track should be defined' );
-      assert && assertInstanceOf( track, phet.energySkatePark.Track );
+      validate( track, this.validator );
       if ( track instanceof phet.energySkatePark.Track || track === null ) {
 
         // Since skater.trackProperty is of type Property.<Track|null>, we must support null here.

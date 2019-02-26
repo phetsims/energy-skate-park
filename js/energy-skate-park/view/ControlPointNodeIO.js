@@ -1,7 +1,7 @@
 // Copyright 2017-2018, University of Colorado Boulder
 
 /**
- * IO type for ControlPointNode
+ * IO type for ControlPointNode.  TODO: This file seems like it doesn't add anything valuable, can it be deleted?
  *
  * @author Sam Reid (PhET Interactive Simulations)
  */
@@ -13,16 +13,12 @@ define( function( require ) {
   var NodeIO = require( 'SCENERY/nodes/NodeIO' );
   var phetioInherit = require( 'TANDEM/phetioInherit' );
 
-  // ifphetio
-  var assertInstanceOf = require( 'ifphetio!PHET_IO/assertInstanceOf' );
-
   /**
    * @param {ControlPointNode} controlPointNode
    * @param {string} phetioID
    * @constructor
    */
   function ControlPointNodeIO( controlPointNode, phetioID ) {
-    assert && assertInstanceOf( controlPointNode, phet.energySkatePark.ControlPointNode );
     NodeIO.call( this, controlPointNode, phetioID );
   }
 
@@ -30,7 +26,8 @@ define( function( require ) {
    * Control point or null
    */
   phetioInherit( NodeIO, 'ControlPointNodeIO', ControlPointNodeIO, {}, {
-    documentation: 'The view element for a control point.'
+    documentation: 'The view element for a control point.',
+    validator: { isValidValue: v => v instanceof phet.energySkatePark.ControlPointNode }
   } );
 
   energySkatePark.register( 'ControlPointNodeIO', ControlPointNodeIO );
