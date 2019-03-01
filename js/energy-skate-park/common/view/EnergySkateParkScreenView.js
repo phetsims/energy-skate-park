@@ -305,7 +305,7 @@ define( function( require ) {
         var headWidth = 10;
         var headHeight = 10;
         var directionUnitVector = Vector2.createPolar( 1, angle );
-        var orthogonalUnitVector = directionUnitVector.perpendicular();
+        var orthogonalUnitVector = directionUnitVector.perpendicular;
         var tip = directionUnitVector.times( headHeight ).plus( tail );
         return new Path( new Shape().moveToPoint( tail ).lineToPoint( tail.plus( orthogonalUnitVector.times( headWidth / 2 ) ) ).lineToPoint( tip ).lineToPoint( tail.plus( orthogonalUnitVector.times( -headWidth / 2 ) ) ).lineToPoint( tail ).close(), {
           fill: 'black',

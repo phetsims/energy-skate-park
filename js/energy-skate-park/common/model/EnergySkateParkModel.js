@@ -660,7 +660,7 @@ define( function( require ) {
       if ( crossed ) {
         debugAttachDetach && debugAttachDetach( 'attaching' );
         var normal = track.getUnitNormalVector( parametricPosition );
-        var segment = normal.perpendicular();
+        var segment = normal.perpendicular;
 
         var beforeVector = skaterState.getPosition().minus( trackPoint );
 
