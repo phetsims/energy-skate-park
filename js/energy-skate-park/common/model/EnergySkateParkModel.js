@@ -665,7 +665,7 @@ define( function( require ) {
         // If crossed the track, attach to it.
         var newVelocity = segment.times( segment.dot( proposedVelocity ) );
         var newSpeed = newVelocity.magnitude;
-        var newKineticEnergy = 0.5 * skaterState.mass * newVelocity.magnitudeSquared();
+        var newKineticEnergy = 0.5 * skaterState.mass * newVelocity.magnitudeSquared;
         var newPosition = track.getPoint( parametricPosition );
         var newPotentialEnergy = -skaterState.mass * skaterState.gravity * ( newPosition.y - skaterState.referenceHeight );
         var newThermalEnergy = initialEnergy - newKineticEnergy - newPotentialEnergy;
@@ -737,7 +737,7 @@ define( function( require ) {
     continueFreeFall: function( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt ) {
 
       // make up for the difference by changing the y value
-      var y = ( initialEnergy - 0.5 * skaterState.mass * proposedVelocity.magnitudeSquared() - skaterState.thermalEnergy ) / ( -1 * skaterState.mass * skaterState.gravity ) + skaterState.referenceHeight;
+      var y = ( initialEnergy - 0.5 * skaterState.mass * proposedVelocity.magnitudeSquared - skaterState.thermalEnergy ) / ( -1 * skaterState.mass * skaterState.gravity ) + skaterState.referenceHeight;
       if ( y <= 0 ) {
         // When falling straight down, stop completely and convert all energy to thermal
         return skaterState.strikeGround( initialEnergy, proposedPosition.x );
