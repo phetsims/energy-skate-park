@@ -28,7 +28,7 @@ define( function( require ) {
   var TrackReferenceIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackReferenceIO' );
   var Util = require( 'DOT/Util' );
   var Vector2 = require( 'DOT/Vector2' );
-  var Vector2IO = require( 'DOT/Vector2IO' );
+  var Vector2Property = require( 'DOT/Vector2Property' );
 
   // Compare two arrays, whose elements have 'equals' methods for comparison
   var arrayEquals = function( a, b ) {
@@ -113,9 +113,8 @@ define( function( require ) {
     } );
 
     // @public {Vector2} - the position of the skater
-    this.positionProperty = new Property( new Vector2( 3.5, 0 ), {
-      tandem: tandem.createTandem( 'positionProperty' ),
-      phetioType: PropertyIO( Vector2IO )
+    this.positionProperty = new Vector2Property( new Vector2( 3.5, 0 ), {
+      tandem: tandem.createTandem( 'positionProperty' )
     } );
 
     // @private {number} - Start in the middle of the mass PhysicalControl range
@@ -133,9 +132,8 @@ define( function( require ) {
     } );
 
     // @public {vector2}
-    this.velocityProperty = new Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'velocityProperty' ),
-      phetioType: PropertyIO( Vector2IO )
+    this.velocityProperty = new Vector2Property( new Vector2( 0, 0 ), {
+      tandem: tandem.createTandem( 'velocityProperty' )
     } );
 
     // @public {boolean} - True if the user is dragging the skater with a pointer
@@ -179,9 +177,8 @@ define( function( require ) {
     } );
 
     // @public {Vector2} - Returns to this point when pressing "return skater"
-    this.startingPositionProperty = new Property( new Vector2( 3.5, 0 ), {
-      tandem: tandem.createTandem( 'startingPositionProperty' ),
-      phetioType: PropertyIO( Vector2IO )
+    this.startingPositionProperty = new Vector2Property( new Vector2( 3.5, 0 ), {
+      tandem: tandem.createTandem( 'startingPositionProperty' )
     } );
 
     // @public {number} - Returns to this parametric position along the track when pressing "return skater"
@@ -200,9 +197,8 @@ define( function( require ) {
 
     // @public {Vector2} - Position of the skater's head, for positioning the pie chart.
     // TODO: Could this be a derived Property?
-    this.headPositionProperty = new Property( this.getHeadPosition(), {
+    this.headPositionProperty = new Vector2Property( this.getHeadPosition(), {
       tandem: tandem.createTandem( 'headPositionProperty' ),
-      phetioType: PropertyIO( Vector2IO ),
       phetioReadOnly: true
     } );
 

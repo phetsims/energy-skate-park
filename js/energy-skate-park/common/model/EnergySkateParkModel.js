@@ -52,7 +52,7 @@ define( function( require ) {
   var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackIO' );
   var Util = require( 'DOT/Util' );
   var Vector2 = require( 'DOT/Vector2' );
-  var Vector2IO = require( 'DOT/Vector2IO' );
+  var Vector2Property = require( 'DOT/Vector2Property' );
 
   // Reuse empty object for creating SkaterStates to avoid allocations
   var EMPTY_OBJECT = {};
@@ -187,15 +187,13 @@ define( function( require ) {
     } );
 
     // @public {Property.<Vector2>}
-    this.measuringTapeBasePositionProperty = new Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' ),
-      phetioType: PropertyIO( Vector2IO )
+    this.measuringTapeBasePositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
+      tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' )
     } );
 
     // @public {Property.<Vector2>}
-    this.measuringTapeTipPositionProperty = new Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' ),
-      phetioType: PropertyIO( Vector2IO )
+    this.measuringTapeTipPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
+      tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' )
     } );
 
     // @public {boolean} - Whether the skater should stick to the track like a roller coaster, or be able to fly off like a street

@@ -22,6 +22,7 @@ define( function( require ) {
   var Tandem = require( 'TANDEM/Tandem' );
   var Vector2 = require( 'DOT/Vector2' );
   var Vector2IO = require( 'DOT/Vector2IO' );
+  var Vector2Property = require( 'DOT/Vector2Property' );
 
   /**
    *
@@ -51,9 +52,8 @@ define( function( require ) {
     this.controlPointTandem = tandem;
 
     // Where it would be if it hadn't snapped to another point during dragging
-    this.sourcePositionProperty = new Property( new Vector2( x, y ), {
+    this.sourcePositionProperty = new Vector2Property( new Vector2( x, y ), {
       tandem: tandem.createTandem( 'sourcePositionProperty' ),
-      phetioType: PropertyIO( Vector2IO ),
       phetioState: options.phetioState // in state only if parent is
     } );
 
