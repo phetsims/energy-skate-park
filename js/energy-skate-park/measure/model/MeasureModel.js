@@ -18,6 +18,7 @@ define( function( require ) {
   var SkaterSample = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterSample' );
   var ObservableArray = require( 'AXON/ObservableArray' );
   var Vector2 = require( 'DOT/Vector2' );
+  var Vector2Property = require( 'DOT/Vector2Property' );
   var inherit = require( 'PHET_CORE/inherit' );
 
   // constants
@@ -40,7 +41,7 @@ define( function( require ) {
     this.sampleSkaterProperty = new BooleanProperty( true, { tandem: tandem.createTandem( 'sampleSkaterProperty' ) } );
 
     // @public - the position of the sensor, in model coordinates (meters)
-    this.sensorPositionProperty = new Property( new Vector2( -4, 5 ) );
+    this.sensorPositionProperty = new Vector2Property( new Vector2( -4, 5 ) );
 
     // @public {ObservableArray.<SkaterSample>} - list of all samples of skater physical values at a particular time
     this.skaterSamples = new ObservableArray();

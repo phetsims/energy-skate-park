@@ -28,6 +28,7 @@ define( require => {
   const Util = require( 'DOT/Util' );
   const VBox = require( 'SCENERY/nodes/VBox' );
   const Vector2 = require( 'DOT/Vector2' );
+  const Vector2Property = require( 'DOT/Vector2Property' );
   const WireNode = require( 'SCENERY_PHET/WireNode' );
 
   // strings
@@ -150,8 +151,8 @@ define( require => {
       } );
 
       // points and control points for the wire
-      const normal1Property = new Property( new Vector2( 0, 200 ) );
-      const normal2Property = new Property( new Vector2( -150, 0 ) );
+      const normal1Property = new Vector2Property( new Vector2( 0, 200 ) );
+      const normal2Property = new Vector2Property( new Vector2( -150, 0 ) );
       const p1Property = new Property( body.getCenterBottom() );
       const p2Property = new DerivedProperty( [ sensorPositionProperty ], ( sensorPosition ) => {
 
