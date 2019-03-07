@@ -186,12 +186,12 @@ define( function( require ) {
       tandem: tandem.createTandem( 'frictionProperty' )
     } );
 
-    // @public {Property.<Vector2>}
+    // @public
     this.measuringTapeBasePositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
       tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' )
     } );
 
-    // @public {Property.<Vector2>}
+    // @public
     this.measuringTapeTipPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
       tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' )
     } );
