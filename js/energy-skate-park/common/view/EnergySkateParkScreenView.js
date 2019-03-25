@@ -221,7 +221,7 @@ define( function( require ) {
       // Hide the needle in for the background of the GaugeNode
       new Property( null ), propertiesSpeedString, new Range( 0, 20 ), {
         // enable/disable updates based on whether the speedometer is visible
-        updateEnabledProperty: model.speedometerVisibleProperty,
+        enabledProperty: model.speedometerVisibleProperty,
         pickable: false,
         radius: 67,
         tandem: tandem.createTandem( 'speedometerNode' )
