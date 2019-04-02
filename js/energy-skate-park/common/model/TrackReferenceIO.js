@@ -39,7 +39,7 @@ define( function( require ) {
         return null;
       }
       if ( phetioEngine.hasInstance( stateObject ) ) {
-        return phetioEngine.getInstance( stateObject );
+        return phetioEngine.getPhetioObject( stateObject );
       }
       else {
         throw new Error( 'fromStateObject failed' );
