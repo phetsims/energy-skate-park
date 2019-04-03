@@ -303,8 +303,8 @@ define( function( require ) {
         } )
       ];
       this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, _.extend( {
-        tandem: trackGroupTandem.createNextTandem()
-      }, Track.FULLY_INTERACTIVE_OPTIONS )
+          tandem: trackGroupTandem.createNextTandem()
+        }, Track.FULLY_INTERACTIVE_OPTIONS )
       ) );
     },
 
@@ -1688,7 +1688,7 @@ define( function( require ) {
 
       assert && assert( controlPointTandemIDs, 'controlPointTandemIDs should exist' );
       var controlPoints = controlPointTandemIDs.map( function( id, index ) {
-        return new ControlPoint( index, 0, { tandem: new Tandem( id ) } ); // TODO: create with correct initial x & y values.
+        return new ControlPoint( index, 0, { tandem: new Tandem( null, id ) } ); // TODO: create with correct initial x & y values.
       } );
       var newTrack = new Track( this, this.tracks, controlPoints, [], this.availableModelBoundsProperty, {
         draggable: draggable,
