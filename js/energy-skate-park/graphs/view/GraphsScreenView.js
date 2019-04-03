@@ -13,6 +13,7 @@ define( function( require ) {
   var EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
   var GravitySlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravitySlider' );
+  var TestGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/TestGraph' );
   var inherit = require( 'PHET_CORE/inherit' );
 
   /**
@@ -27,6 +28,10 @@ define( function( require ) {
     ];
 
     EnergySkateParkScreenView.call( this, model, graphsControls, tandem.createTandem( 'graphsScreenView' ) );
+
+    var testGraph = new TestGraph( model.sampleIndexProperty, model.pausedProperty, model.skaterSamples, this.width, this.height / 2 );
+    testGraph.centerBottom = this.layoutBounds.centerTop;
+    this.addChild( testGraph );
   }
 
   energySkatePark.register( 'GraphsScreenView', GraphsScreenView );
