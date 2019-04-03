@@ -23,6 +23,9 @@
     "simulation": true
   },
   "eslintConfig": {
-    "extends": "../chipper/eslint/sim_eslintrc.js"
+    "extends": "../chipper/eslint/sim_eslintrc.js",
+    "globals": {
+      "numeric": false
+    }
   }
 }
