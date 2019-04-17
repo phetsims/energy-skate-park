@@ -40,14 +40,12 @@ define( function( require ) {
     var kineticEnergySlice = new Path( null, {
       fill: EnergySkateParkColorScheme.kineticEnergy,
       stroke: 'black',
-      lineWidth: 1,
-      tandem: tandem.createTandem( 'kineticEnergySlicePath' )
+      lineWidth: 1
     } );
     var potentialEnergySlice = new Path( null, {
       fill: EnergySkateParkColorScheme.potentialEnergy,
       stroke: 'black',
-      lineWidth: 1,
-      tandem: tandem.createTandem( 'potentialEnergySlicePath' )
+      lineWidth: 1
     } );
 
     // @private {boolean} - whether or not negative potential energy will be represented by the pie chart or it should
