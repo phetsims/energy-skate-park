@@ -24,6 +24,7 @@ define( require => {
   const Range = require( 'DOT/Range' );
   const Rectangle = require( 'SCENERY/nodes/Rectangle' );
   const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
+  const SunConstants = require( 'SUN/SunConstants' );
   const Text = require( 'SCENERY/nodes/Text' );
   const Util = require( 'DOT/Util' );
   const VBox = require( 'SCENERY/nodes/VBox' );
@@ -321,8 +322,8 @@ define( require => {
         minBackgroundWidth: 55, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
         valuePattern: energyJoulesPatternString,
 
-        // when there is no value, show now units
-        noValuePattern: NumberDisplay.DEFAULT_VALUE_PATTERN,
+        // when there are no values, hide units
+        noValuePattern: SunConstants.VALUE_NAMED_PLACEHOLDER,
         noValueAlign: 'center'
       } );
 
