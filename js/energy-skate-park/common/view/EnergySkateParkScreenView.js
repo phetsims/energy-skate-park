@@ -363,7 +363,6 @@ define( function( require ) {
       this.barGraphBackground,
       model.barGraphVisibleProperty,
       model.graphScaleProperty,
-      renderer,
       tandem.createTandem( 'barGraphForeground' )
     );
     this.webGLLayer.addChild( this.barGraphForeground );

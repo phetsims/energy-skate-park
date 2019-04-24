@@ -26,11 +26,10 @@ define( function( require ) {
    * @param {Skater} skater the model's skater model
    * @param {Node} barGraphBackground - the background for the Bar Graph, to coordinate locations
    * @param {Property<Boolean>} barGraphVisibleProperty property that indicates whether the bar graph is visible
-   * @param {string} barRenderer the renderer type to use for the bars.  For some reason it is not currently inherited.
    * @param {Tandem} tandem
    * @constructor
    */
-  function BarGraphForeground( skater, barGraphBackground, barGraphVisibleProperty, graphScaleProperty, barRenderer, tandem ) {
+  function BarGraphForeground( skater, barGraphBackground, barGraphVisibleProperty, graphScaleProperty, tandem ) {
 
     var barWidth = barGraphBackground.barWidth;
     var getBarX = barGraphBackground.getBarX;
@@ -41,7 +40,7 @@ define( function( require ) {
     // of the bar label.
     // @returns {Node}
     var createBar = function( index, color, property, showSmallValuesAsZero ) {
-      var bar = new Node( { renderer: barRenderer } );
+      var bar = new Node();
 
       // Convert to graph coordinates
       // However, do not floor for values less than 1 otherwise a nonzero value will show up as zero, see #159
@@ -74,6 +73,7 @@ define( function( require ) {
 
       // renderer: webgl doesn't support stroked rectangles, so we emulate a stroke by creating three solid rectangles
       // around the bar with the right dimensions, see https://github.com/phetsims/energy-skate-park/issues/40
+      // TODO: Use griddle instead and this workaround can be removed, see #66
       var leftStrokeRectangle = new Rectangle( 0, 0, 0, 0, { fill: 'black' } );
       var rightStrokeRectangle = new Rectangle( 0, 0, 0, 0, { fill: 'black' } );
       var topStrokeRectangle = new Rectangle( 0, 0, 0, 0, { fill: 'black' } );
