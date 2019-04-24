@@ -40,7 +40,6 @@ define( function( require ) {
   var Path = require( 'SCENERY/nodes/Path' );
   var PieChartLegend = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/PieChartLegend' );
   var PieChartNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/PieChartNode' );
-  var PieChartWebGLNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/PieChartWebGLNode' );
   var PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/PlaybackSpeedControl' );
   var PlayPauseButton = require( 'SCENERY_PHET/buttons/PlayPauseButton' );
   var Property = require( 'AXON/Property' );
@@ -55,7 +54,6 @@ define( function( require ) {
   var StepForwardButton = require( 'SCENERY_PHET/buttons/StepForwardButton' );
   var Text = require( 'SCENERY/nodes/Text' );
   var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackNode' );
-  var Util = require( 'SCENERY/util/Util' );
   var Vector2 = require( 'DOT/Vector2' );
 
   // strings
@@ -339,17 +337,8 @@ define( function( require ) {
 
     this.bottomLayer.addChild( trackLayer );
 
-    //-----------------------------------------------------------------------------
-    // BEGIN WEBGL LAYER
-    // Nodes in this block will be rendered with webgl where possible, but not
-    // IE due to https://github.com/phetsims/energy-skate-park-basics/issues/277
-    // and https://github.com/phetsims/scenery/issues/285. Nodes in this block
-    // shoudl ONLY be rendered with WebGL, so that scenery can combine all of the
-    // webgl content into a single canvas element, reducing the memory consumption.
-    //------------------------------------------------------------------------------
-    var webGLSupported = Util.isWebGLSupported && phet.chipper.queryParameters.webgl;
-    var renderer = webGLSupported ? 'webgl' : null;
-    console.log( renderer );
+    // TODO: this should be removed as an arg from nodes that were previously using this
+    const renderer = 'svg';
 
     var skaterNode = new SkaterNode(
       model.skater,
@@ -382,14 +371,8 @@ define( function( require ) {
 
     this.webGLLayer.addChild( skaterNode );
 
-    var pieChartNode = renderer === 'webgl' ?
-                       new PieChartWebGLNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) ) :
-                       new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) );
+    const pieChartNode = new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) );
     this.webGLLayer.addChild( pieChartNode );
-
-    //---------------------------------------------------------------------------
-    // END WEBGL LAYER
-    //---------------------------------------------------------------------------
 
     // layout managed in layout function
     this.referenceHeightLine = new ReferenceHeightLine(
