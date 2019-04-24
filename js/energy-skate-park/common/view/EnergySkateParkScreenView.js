@@ -28,7 +28,6 @@ define( function( require ) {
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
-  var GaugeNeedleNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/GaugeNeedleNode' );
   var GaugeNode = require( 'SCENERY_PHET/GaugeNode' );
   var GridNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/GridNode' );
   var Image = require( 'SCENERY/nodes/Image' );
@@ -217,7 +216,7 @@ define( function( require ) {
 
     var speedometerNode = new GaugeNode(
       // Hide the needle in for the background of the GaugeNode
-      new Property( null ), propertiesSpeedString, new Range( 0, 20 ), {
+      model.skater.speedProperty, propertiesSpeedString, new Range( 0, 20 ), {
         // enable/disable updates based on whether the speedometer is visible
         enabledProperty: model.speedometerVisibleProperty,
         pickable: false,
@@ -337,9 +336,6 @@ define( function( require ) {
 
     this.bottomLayer.addChild( trackLayer );
 
-    // TODO: this should be removed as an arg from nodes that were previously using this
-    const renderer = 'svg';
-
     var skaterNode = new SkaterNode(
       model.skater,
       this,
@@ -348,14 +344,6 @@ define( function( require ) {
       model.getPhysicalTracks.bind( model ),
       tandem.createTandem( 'skaterNode' )
     );
-
-    var gaugeNeedleNode = new GaugeNeedleNode( model.skater.speedProperty, new Range( 0, 20 ), {
-      renderer: renderer
-    } );
-    model.speedometerVisibleProperty.linkAttribute( gaugeNeedleNode, 'visible' );
-    gaugeNeedleNode.x = speedometerNode.x;
-    gaugeNeedleNode.y = speedometerNode.y;
-    this.webGLLayer.addChild( gaugeNeedleNode );
 
     // @private - the foreground of the bar graph (split up to use WebGL)
     this.barGraphForeground = new BarGraphForeground(
