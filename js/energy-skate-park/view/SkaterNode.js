@@ -34,11 +34,10 @@ define( function( require ) {
    * the skater is being dragged close to the track
    * @param {function} getPhysicalTracks function that returns the physical tracks in the model, so the skater can try
    * to attach to them while dragging
-   * @param {string} renderer - root renderer for this node, see Node.setRenderer for values
    * @param {Tandem} tandem
    * @constructor
    */
-  function SkaterNode( skater, view, modelViewTransform, getClosestTrackAndPositionAndParameter, getPhysicalTracks, renderer, tandem ) {
+  function SkaterNode( skater, view, modelViewTransform, getClosestTrackAndPositionAndParameter, getPhysicalTracks, tandem ) {
     this.skater = skater;
     var self = this;
 
@@ -54,7 +53,6 @@ define( function( require ) {
 
     Node.call( this, {
       children: [ leftSkaterImageNode, rightSkaterImageNode ],
-      renderer: renderer,
       tandem: tandem
     } );
 
@@ -103,9 +101,6 @@ define( function( require ) {
 
     // Show a red dot in the bottom center as the important particle model coordinate
     var circle = new Circle( 8, { fill: 'red', x: imageWidth / 2, y: imageHeight } );
-    if ( renderer === 'webgl' ) {
-      circle = circle.toCanvasNodeSynchronous();
-    }
     this.addChild( circle );
 
     var targetTrack = null;

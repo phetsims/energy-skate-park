@@ -346,7 +346,6 @@ define( function( require ) {
       modelViewTransform,
       model.getClosestTrackAndPositionAndParameter.bind( model ),
       model.getPhysicalTracks.bind( model ),
-      renderer,
       tandem.createTandem( 'skaterNode' )
     );
 
