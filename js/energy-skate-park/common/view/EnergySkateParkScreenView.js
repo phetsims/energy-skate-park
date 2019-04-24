@@ -3,11 +3,6 @@
 /**
  * Scenery node for the Energy Skate Park view (includes everything you see).
  *
- * This view is layered in a very particular way to reduce memory usage. There are three layers - layer of Nodes
- * rendered with SVG, then a WebGL layer (which scenery combines into a single canvas), then another layer for
- * everything on top. Nodes in the WebGL layer shoudl ONLY use WebGL, or else a canvas will be created for every
- * WebGL layer, which takes up too much memory.
- *
  * @author Sam Reid
  */
 define( function( require ) {
