@@ -11,8 +11,7 @@ define( function( require ) {
   // modules
   var AttachDetachToggleButtons = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/AttachDetachToggleButtons' );
   var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BackgroundNode' );
-  var BarGraphBackground = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BarGraphBackground' );
-  var BarGraphForeground = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BarGraphForeground' );
+  var EnergyBarGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraph' );
   var BooleanProperty = require( 'AXON/BooleanProperty' );
   var Bounds2 = require( 'DOT/Bounds2' );
   var Color = require( 'SCENERY/util/Color' );
@@ -101,6 +100,7 @@ define( function( require ) {
     this.children = [ this.bottomLayer, this.webGLLayer, this.topLayer ];
 
     var modelPoint = new Vector2( 0, 0 );
+
     // earth is 70px high in stage coordinates
     var viewPoint = new Vector2( this.layoutBounds.width / 2, this.layoutBounds.height - BackgroundNode.earthHeight );
     var scale = 50;
@@ -177,10 +177,10 @@ define( function( require ) {
       return self.availableModelBounds && containsAbove( self.availableModelBounds, position.x, position.y );
     } );
 
-    // @private - background for the bar graph (split up to use WebGL for the foreground)
-    this.barGraphBackground = new BarGraphBackground( model.skater, model.barGraphVisibleProperty, model.graphScaleProperty,
-      model.clearThermal.bind( model ), tandem.createTandem( 'barGraphBackground' ), options.barGraphOptions );
-    this.bottomLayer.addChild( this.barGraphBackground );
+    // @private - the bar chart showing energy distribution
+    this.energyBarGraph = new EnergyBarGraph( model.skater, model.graphScaleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
+    this.energyBarGraph.leftTop = new Vector2( 5, 5 );
+    this.bottomLayer.addChild( this.energyBarGraph );
 
     this.resetAllButton = new ResetAllButton( {
       listener: model.reset.bind( model ),
@@ -339,16 +339,6 @@ define( function( require ) {
       model.getPhysicalTracks.bind( model ),
       tandem.createTandem( 'skaterNode' )
     );
-
-    // @private - the foreground of the bar graph (split up to use WebGL)
-    this.barGraphForeground = new BarGraphForeground(
-      model.skater,
-      this.barGraphBackground,
-      model.barGraphVisibleProperty,
-      model.graphScaleProperty,
-      tandem.createTandem( 'barGraphForeground' )
-    );
-    this.webGLLayer.addChild( this.barGraphForeground );
 
     this.webGLLayer.addChild( skaterNode );
 
@@ -541,12 +531,11 @@ define( function( require ) {
       this.measuringTapeNode.setDragBounds( this.availableModelBounds );
 
       if ( EnergySkateParkQueryParameters.controlPanelLocation === 'floating' ) {
-        this.barGraphBackground.x = this.availableViewBounds.minX + 5;
-        this.barGraphForeground.x = this.availableViewBounds.minX + 19;
+        this.energyBarGraph.x = this.availableViewBounds.minX + 5;
       }
 
       // Put the pie chart legend to the right of the bar chart, see #60, #192
-      this.pieChartLegend.mutate( { top: this.barGraphBackground.top, left: this.barGraphBackground.right + 8 } );
+      this.pieChartLegend.mutate( { top: this.energyBarGraph.top, left: this.energyBarGraph.right + 8 } );
 
       // Show it for debugging
       if ( showAvailableBounds ) {

@@ -30,6 +30,7 @@ require.config( {
     BRAND: '../../brand/' + phet.chipper.brand + '/js',
     DOT: '../../dot/js',
     ENERGY_SKATE_PARK: '.',
+    GRIDDLE: '../../griddle/js',
     JOIST: '../../joist/js',
     KITE: '../../kite/js',
     PHETCOMMON: '../../phetcommon/js',

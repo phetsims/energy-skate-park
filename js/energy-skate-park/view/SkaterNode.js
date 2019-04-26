@@ -53,6 +53,7 @@ define( function( require ) {
 
     Node.call( this, {
       children: [ leftSkaterImageNode, rightSkaterImageNode ],
+      renderer: 'canvas',
       tandem: tandem
     } );
 
