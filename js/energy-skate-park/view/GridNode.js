@@ -175,7 +175,6 @@ define( function( require ) {
           // It won't be added as a child of the gridParent because we don't want it to be clipped
           if ( y === 0 ) {
             replacementText = new Text( zeroMetersString, {
-              tandem: this.gridNodeTandem.createTandem( 'zeroMetersStringText' ),
               font: FONT,
               top: viewY + 2,
               x: gridLineLabel.x
