@@ -1688,7 +1688,7 @@ define( function( require ) {
 
       assert && assert( controlPointTandemIDs, 'controlPointTandemIDs should exist' );
       var controlPoints = controlPointTandemIDs.map( function( id, index ) {
-        return new ControlPoint( index, 0, { tandem: new Tandem( null, id ) } ); // TODO: create with correct initial x & y values.
+        return new ControlPoint( index, 0, { tandem: Tandem.createFromPhetioID( id ) } ); // TODO: create with correct initial x & y values.
       } );
       var newTrack = new Track( this, this.tracks, controlPoints, [], this.availableModelBoundsProperty, {
         draggable: draggable,

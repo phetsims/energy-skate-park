@@ -56,7 +56,8 @@ define( function( require ) {
       cursor: 'pointer',
       translation: modelViewTransform.modelToViewPosition( controlPoint.positionProperty.value ),
       tandem: tandem,
-      phetioType: ControlPointNodeIO
+      phetioType: ControlPointNodeIO,
+      phetioComponentOptions: { phetioState: false }
     } );
 
     // Show a dotted line for the exterior track points, which can be connected to other track

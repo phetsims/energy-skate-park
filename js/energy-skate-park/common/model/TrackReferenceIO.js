@@ -38,7 +38,7 @@ define( function( require ) {
       if ( stateObject === null ) {
         return null;
       }
-      if ( phetioEngine.hasInstance( stateObject ) ) {
+      if ( phetioEngine.hasPhetioObject( stateObject ) ) {
         return phetioEngine.getPhetioObject( stateObject );
       }
       else {

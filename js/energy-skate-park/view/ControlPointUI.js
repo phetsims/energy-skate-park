@@ -53,7 +53,8 @@ define( function( require ) {
 
     Node.call( this, {
       tandem: tandem,
-      phetioState: false
+      phetioState: false,
+      phetioComponentOptions: { phetioState: false }
     } );
 
     var isEndPoint = controlPointIndex === 0 || controlPointIndex === track.controlPoints.length - 1;
@@ -70,6 +71,8 @@ define( function( require ) {
       var cutButton = new RoundPushButton( {
         tandem: tandem.createTandem( 'cutButton' ),
         phetioState: false,
+        phetioComponentOptions: { phetioState: false },
+
         content: scissorNode,
         listener: function() {
           model.splitControlPoint( track, controlPointIndex, modelAngle );
@@ -90,6 +93,8 @@ define( function( require ) {
     var deleteButton = new RoundPushButton( {
       tandem: tandem.createTandem( 'deleteButton' ),
       phetioState: false,
+      phetioComponentOptions: { phetioState: false },
+
       listener: function() {
         model.deleteControlPoint( track, controlPointIndex );
       },

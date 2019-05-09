@@ -61,7 +61,8 @@ define( function( require ) {
 
     Node.call( this, {
       children: [ this.road, this.centerLine ],
-      tandem: tandem
+      tandem: tandem,
+      phetioComponentOptions: { phetioState: false }
     } );
 
     // Reuse arrays to save allocations and prevent garbage collections, see #38
@@ -94,7 +95,7 @@ define( function( require ) {
           self.addChild( controlPointNode.boundsRectangle );
 
           // var boundsVisibilityListener = dragging => {
-            // boundsRectangle.visible = dragging;
+          // boundsRectangle.visible = dragging;
           // };
           // controlPoint.draggingProperty.link( boundsVisibilityListener );
         }
