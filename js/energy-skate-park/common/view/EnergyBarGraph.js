@@ -60,10 +60,28 @@ define( require => {
       // extend bars at default scale
       const graphRangeProperty = new Property( new Range( -80, 285 ) );
 
-      const kineticEntry = { property: skater.kineticEnergyProperty, color: EnergySkateParkColorScheme.kineticEnergy };
-      const potentialEntry = { property: skater.potentialEnergyProperty, color: EnergySkateParkColorScheme.potentialEnergy };
-      const thermalEntry = { property: skater.thermalEnergyProperty, color: EnergySkateParkColorScheme.thermalEnergy };
-      const totalEntry = { property: skater.totalEnergyProperty, color: EnergySkateParkColorScheme.totalEnergy };
+      // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
+      const hideSmallValues = ( value, scale ) => {
+        const height = value * scale;
+        if ( height < 1 ) {
+          return 0;
+        }
+        return height;  
+      };
+
+      // For thermal and total energy, make sure they are big enough to be visible, see #307
+      const showSmallValues = ( value, scale ) => {
+        let height = value * scale;
+        if ( height < 1 && height > 1E-6 ) {
+          height = 1;
+        }
+        return height;
+      };
+
+      const kineticEntry = { property: skater.kineticEnergyProperty, color: EnergySkateParkColorScheme.kineticEnergy, modifyBarHeight: hideSmallValues };
+      const potentialEntry = { property: skater.potentialEnergyProperty, color: EnergySkateParkColorScheme.potentialEnergy, modifyBarHeight: hideSmallValues };
+      const thermalEntry = { property: skater.thermalEnergyProperty, color: EnergySkateParkColorScheme.thermalEnergy, modifyBarHeight: showSmallValues };
+      const totalEntry = { property: skater.totalEnergyProperty, color: EnergySkateParkColorScheme.totalEnergy, modifyBarHeight: showSmallValues };
 
       this.barChartNode = new BarChartNode( [
         { entries: [ kineticEntry ], labelString: energyKineticString },

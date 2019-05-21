@@ -54,10 +54,13 @@ define( function( require ) {
         // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
         //   "The kinetic energy is zero at the top of the trajectory (turning point)
         var smallValueThreshold = showSmallValuesAsZero ? 1 : 1E-6;
+
+        // if scaled value is greater than  1, floor result (for WebGL purposes)
+        // else if result is smaller than the smallValueThreshold, don't show anything
+        // else show 1
         var answer = absResult > 1 ? Math.floor( result ) :
                      absResult < smallValueThreshold ? 0 :
                      1;
-
         return answer;
       } );
 
