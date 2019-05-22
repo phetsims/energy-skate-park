@@ -62,7 +62,7 @@ define( require => {
       // the range for the visible portion of the graph, in joules - note this is somewhat arbitrary because
       // the bars will have difference scales, but size should be about 1.5 times larger than the energy would
       // extend bars at default scale
-      const graphRangeProperty = new Property( new Range( -80, 285 ) );
+      const graphRangeProperty = new Property( new Range( -100, 265 ) );
 
       // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
       //   "The kinetic energy is zero at the top of the trajectory (turning point)
