@@ -15,6 +15,7 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const HBox = require( 'SCENERY/nodes/HBox' );
+  const MoveToTrashButton = require( 'SCENERY_PHET/MoveToTrashButton' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Panel = require( 'SUN/Panel' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -25,6 +26,9 @@ define( require => {
   const ZoomButton = require( 'SCENERY_PHET/buttons/ZoomButton' );
 
   // constants
+  // spacing between the thermal button and the label
+  var THERMAL_BUTTON_SPACING = 5;
+  
   // strings
   const energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
   const energyKineticString = require( 'string!ENERGY_SKATE_PARK/energy.kinetic' );
@@ -152,12 +156,29 @@ define( require => {
       const containingPanel = new Panel( content );
       this.addChild( containingPanel );
 
+      // add the clear thermal button separately on top of the panel, it is separate from panel layout
+      let thermalLabelBottom = this.barChartNode.getBarLabelLocation( 2, 'centerBottom' );
+      thermalLabelBottom = containingPanel.globalToLocalPoint( self.barChartNode.localToGlobalPoint( thermalLabelBottom ) );
+
+      const clearThermalButton = new MoveToTrashButton( {
+        arrowColor: EnergySkateParkColorScheme.thermalEnergy,
+        tandem: tandem.createTandem( 'clearThermalButton' ),
+        listener: skater.clearThermal.bind( skater ),
+        centerX: thermalLabelBottom.x,
+        y: thermalLabelBottom.y + THERMAL_BUTTON_SPACING,
+        scale: 0.7
+      } );
+
+      this.addChild( clearThermalButton );
+
       // attach listeners - bar chart exists for life of sim, no need to dispose
-      skater.updatedEmitter.addListener( () => {
+      skater.energyChangedEmitter.addListener( () => {
         this.barChartNode.update();
       } );
 
-
+      skater.allowClearingThermalEnergyProperty.link( function( allowClearingThermalEnergy ) {
+        clearThermalButton.enabled = allowClearingThermalEnergy;
+      } );
     }
   }
 
