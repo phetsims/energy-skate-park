@@ -31,8 +31,9 @@ define( ( require ) => {
    * @param {} samples - ObservableArray
    * @param {} width - width of the graph in view coordinates
    * @param {} height - height of the graph in view coordinates
+   * @param {Tandem} tandem
    */
-  function TestGraph( indexProperty, pausedProperty, samples, width, height ) {
+  function TestGraph( indexProperty, pausedProperty, samples, width, height, tandem ) {
     Node.call( this );
 
     // @private
@@ -65,6 +66,7 @@ define( ( require ) => {
 
     let pausedOnDrag = false;
     indexLine.addInputListener( new DragListener( {
+      tandem: tandem.createTandem( 'dragListener' ),
       start: ( listener ) => {
         if ( samples.length > 0 ) {
           if ( !pausedProperty.get() ) {

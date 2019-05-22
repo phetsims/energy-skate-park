@@ -29,7 +29,8 @@ define( function( require ) {
 
     EnergySkateParkScreenView.call( this, model, graphsControls, tandem.createTandem( 'graphsScreenView' ) );
 
-    var testGraph = new TestGraph( model.sampleIndexProperty, model.pausedProperty, model.skaterSamples, this.width, this.height / 2 );
+    const graphTandem = tandem.createTandem( 'testGraph' );
+    var testGraph = new TestGraph( model.sampleIndexProperty, model.pausedProperty, model.skaterSamples, this.width, this.height / 2, graphTandem );
     testGraph.centerBottom = this.layoutBounds.centerTop;
     this.addChild( testGraph );
   }

@@ -7492,6 +7492,39 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
+    "energySkatePark.graphsScreen.graphsScreenView.testGraph.dragListener.dragAction": {
+      "phetioDocumentation": "Emits whenever a drag occurs with an EventIO argument.",
+      "phetioEventType": "user",
+      "phetioFeatured": false,
+      "phetioHighFrequency": true,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ActionIO.<EventIO>"
+    },
+    "energySkatePark.graphsScreen.graphsScreenView.testGraph.dragListener.pressAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
+      "phetioEventType": "user",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
+    },
+    "energySkatePark.graphsScreen.graphsScreenView.testGraph.dragListener.releaseAction": {
+      "phetioDocumentation": "Executes whenever a release occurs.",
+      "phetioEventType": "user",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ActionIO.<NullableIO.<EventIO>, VoidIO>"
+    },
     "energySkatePark.homeScreen.activeProperty": {
       "phetioDocumentation": "Indicates whether the screen is active.  For single-screen simulations, the screen is always active.",
       "phetioEventType": "model",
