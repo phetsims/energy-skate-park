@@ -61,6 +61,7 @@ define( require => {
       const graphRangeProperty = new Property( new Range( -80, 285 ) );
 
       // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
+      //   "The kinetic energy is zero at the top of the trajectory (turning point)
       const hideSmallValues = ( value, scale ) => {
         const height = value * scale;
         if ( height < 1 ) {
