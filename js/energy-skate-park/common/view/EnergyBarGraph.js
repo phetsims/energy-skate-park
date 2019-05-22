@@ -152,6 +152,8 @@ define( require => {
           zoomInButton.enabled = scale < Constants.MAX_ZOOM_FACTOR;
           zoomOutButton.enabled = scale > Constants.MIN_ZOOM_FACTOR;
         } );
+
+        graphScaleProperty.link( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
       }
       else {
         content = labelledChart;
@@ -176,19 +178,23 @@ define( require => {
       this.addChild( clearThermalButton );
 
       // attach listeners - bar chart exists for life of sim, no need to dispose
-      const updateWhenVisible = ( visible ) => {
-        if ( visible ) {
-          this.barChartNode.update();
-        }
-      };
-      skater.energyChangedEmitter.addListener( () => {
-        updateWhenVisible( barGraphVisibleProperty.value );
-      } );
-      barGraphVisibleProperty.link( updateWhenVisible );
+      skater.energyChangedEmitter.addListener( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
+      barGraphVisibleProperty.link( this.updateWhenVisible.bind( this ) );
 
       skater.allowClearingThermalEnergyProperty.link( function( allowClearingThermalEnergy ) {
         clearThermalButton.enabled = allowClearingThermalEnergy;
       } );
+    }
+
+    /**
+     * If model indicates that graph is visible, redraw the graph.
+     *
+     * @param {boolean} visible
+     */
+    updateWhenVisible( visible ) {
+      if ( visible ) {
+        this.barChartNode.update();
+      }
     }
   }
 
