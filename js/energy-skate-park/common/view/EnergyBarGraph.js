@@ -68,7 +68,8 @@ define( require => {
       //   "The kinetic energy is zero at the top of the trajectory (turning point)
       const hideSmallValues = ( value, scale ) => {
         const height = value * scale;
-        if ( height < 1 ) {
+        const absHeight = Math.abs( height );
+        if ( absHeight < 1 ) {
           return 0;
         }
         return height;  
@@ -76,11 +77,14 @@ define( require => {
 
       // For thermal and total energy, make sure they are big enough to be visible, see #307
       const showSmallValues = ( value, scale ) => {
+        const valueSign = value < 0 ? -1 : 1; 
+
         let height = value * scale;
-        if ( height < 1 && height > 1E-6 ) {
+        const absHeight = Math.abs( height );
+        if ( absHeight < 1 && absHeight > 1E-6 ) {
           height = 1;
         }
-        return height;
+        return height * valueSign;
       };
 
       const kineticEntry = { property: skater.kineticEnergyProperty, color: EnergySkateParkColorScheme.kineticEnergy, modifyBarHeight: hideSmallValues };
@@ -158,7 +162,7 @@ define( require => {
 
       // add the clear thermal button separately on top of the panel, it is separate from panel layout
       let thermalLabelBottom = this.barChartNode.getBarLabelLocation( 2, 'centerBottom' );
-      thermalLabelBottom = containingPanel.globalToLocalPoint( self.barChartNode.localToGlobalPoint( thermalLabelBottom ) );
+      thermalLabelBottom = containingPanel.globalToLocalPoint( this.barChartNode.localToGlobalPoint( thermalLabelBottom ) );
 
       const clearThermalButton = new MoveToTrashButton( {
         arrowColor: EnergySkateParkColorScheme.thermalEnergy,
