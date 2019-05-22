@@ -178,9 +178,10 @@ define( function( require ) {
     } );
 
     // @private - the bar chart showing energy distribution
-    this.energyBarGraph = new EnergyBarGraph( model.skater, model.graphScaleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
+    this.energyBarGraph = new EnergyBarGraph( model.skater, model.graphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
     this.energyBarGraph.leftTop = new Vector2( 5, 5 );
     this.bottomLayer.addChild( this.energyBarGraph );
+    model.barGraphVisibleProperty.linkAttribute( this.energyBarGraph, 'visible' );
 
     this.resetAllButton = new ResetAllButton( {
       listener: model.reset.bind( model ),

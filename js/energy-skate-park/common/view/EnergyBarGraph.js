@@ -44,7 +44,7 @@ define( require => {
      * @param {Tandem} tandem
      * @returns {Skater}            
      */
-    constructor( skater, graphScaleProperty, tandem, options ) {
+    constructor( skater, graphScaleProperty, barGraphVisibleProperty, tandem, options ) {
 
       options = _.extend( {
 
@@ -176,9 +176,15 @@ define( require => {
       this.addChild( clearThermalButton );
 
       // attach listeners - bar chart exists for life of sim, no need to dispose
+      const updateWhenVisible = ( visible ) => {
+        if ( visible ) {
+          this.barChartNode.update();
+        }
+      };
       skater.energyChangedEmitter.addListener( () => {
-        this.barChartNode.update();
+        updateWhenVisible( barGraphVisibleProperty.value );
       } );
+      barGraphVisibleProperty.link( updateWhenVisible );
 
       skater.allowClearingThermalEnergyProperty.link( function( allowClearingThermalEnergy ) {
         clearThermalButton.enabled = allowClearingThermalEnergy;
