@@ -91,6 +91,9 @@ define( function( require ) {
       tandem: tandem
     } );
 
+    // @private - whether or not this screen view should include a measuring tape
+    this.includeMeasuringTapePanel = options.includeMeasuringTapePanel;
+
     // @private - Layers for nodes in the sim. The bottom layer contains the background and UI components that should
     // be behind the animating skater and other draggable things, which are in the topLayer. See addToTopLayer()
     // and addToBackLayer().
@@ -130,26 +133,28 @@ define( function( require ) {
     );
     this.bottomLayer.addChild( this.pieChartLegend );
 
-    var unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
-    this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
-      basePositionProperty: model.measuringTapeBasePositionProperty,
-      tipPositionProperty: model.measuringTapeTipPositionProperty,
-      modelViewTransform: modelViewTransform,
-      dragBounds: this.availableModelBoundsProperty.get(),
-      baseDragEnded: function() {
-        if ( self.measuringTapeNode.getLocalBaseBounds().intersectsBounds( self.measuringTapePanel.bounds ) ) {
-          model.measuringTapeVisibleProperty.set( false );
-        }
-      },
-      tandem: tandem.createTandem( 'measuringTapeNode' )
-    } );
-
-    // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
-    this.measuringTapePanel = new MeasuringTapePanel( model, this.measuringTapeNode, modelViewTransform );
-    // this.measuringTapePanel.top = this.controlPanel.bottom + 5;
-
-    // TODO: Put all code related to the measuring tape in this conditional
+    // add a measuring tape if specified as part of this screen view
     if ( options.includeMeasuringTapePanel ) {
+
+      var unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
+
+      // @private {MeasuringTapeNode} - The measuring tape node will not 
+      this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
+        basePositionProperty: model.measuringTapeBasePositionProperty,
+        tipPositionProperty: model.measuringTapeTipPositionProperty,
+        modelViewTransform: modelViewTransform,
+        dragBounds: this.availableModelBoundsProperty.get(),
+        baseDragEnded: function() {
+          if ( self.measuringTapeNode.getLocalBaseBounds().intersectsBounds( self.measuringTapePanel.bounds ) ) {
+            model.measuringTapeVisibleProperty.set( false );
+          }
+        },
+        tandem: tandem.createTandem( 'measuringTapeNode' )
+      } );
+      this.topLayer.addChild( this.measuringTapeNode );
+
+      // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
+      this.measuringTapePanel = new MeasuringTapePanel( model, this.measuringTapeNode, modelViewTransform );
       this.bottomLayer.addChild( this.measuringTapePanel );
     }
 
@@ -385,9 +390,6 @@ define( function( require ) {
     this.topLayer.addChild( returnSkaterToPreviousStartingPositionButton );
     this.topLayer.addChild( returnSkaterToGroundButton );
 
-    // TODO: This should be removed with includeMeasuringTape options like the above TODO
-    this.topLayer.addChild( this.measuringTapeNode );
-
     // has all of the play, pause, and step controls for layout purposes
     var playControls = new Node();
 
@@ -520,15 +522,16 @@ define( function( require ) {
       this.resetAllButton.right = this.controlPanel.right;
       this.returnSkaterButton.right = this.resetAllButton.left - 10;
 
-      this.measuringTapePanel.top = this.controlPanel.bottom + 5;
-      this.measuringTapePanel.right = this.controlPanel.right;
-
       // Compute the visible model bounds so we will know when a model object like the skater has gone offscreen
       this.availableModelBounds = this.modelViewTransform.viewToModelBounds( this.availableViewBounds );
       this.availableModelBoundsProperty.value = this.availableModelBounds;
 
-      // keep the measuring tape in the avaialable bounds
-      this.measuringTapeNode.setDragBounds( this.availableModelBounds );
+      if ( this.includeMeasuringTapePanel ) {
+        this.measuringTapePanel.top = this.controlPanel.bottom + 5;
+        this.measuringTapePanel.right = this.controlPanel.right;
+
+        this.measuringTapeNode.setDragBounds( this.availableModelBounds );
+      }
 
       if ( EnergySkateParkQueryParameters.controlPanelLocation === 'floating' ) {
         this.energyBarGraph.x = this.availableViewBounds.minX + 5;
