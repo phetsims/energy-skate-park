@@ -25,10 +25,6 @@ define( require => {
   const VBox = require( 'SCENERY/nodes/VBox' );
   const ZoomButton = require( 'SCENERY_PHET/buttons/ZoomButton' );
 
-  // constants
-  // spacing between the thermal button and the label
-  var THERMAL_BUTTON_SPACING = 5;
-  
   // strings
   const energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
   const energyKineticString = require( 'string!ENERGY_SKATE_PARK/energy.kinetic' );
@@ -87,6 +83,14 @@ define( require => {
         return height * valueSign;
       };
 
+      // button to remove thermal energy will be below the "thermal" energy label
+      const clearThermalButton = new MoveToTrashButton( {
+        arrowColor: EnergySkateParkColorScheme.thermalEnergy,
+        tandem: tandem.createTandem( 'clearThermalButton' ),
+        listener: skater.clearThermal.bind( skater ),
+        scale: 0.7
+      } );
+
       const kineticEntry = { property: skater.kineticEnergyProperty, color: EnergySkateParkColorScheme.kineticEnergy, modifyBarHeight: hideSmallValues };
       const potentialEntry = { property: skater.potentialEnergyProperty, color: EnergySkateParkColorScheme.potentialEnergy, modifyBarHeight: hideSmallValues };
       const thermalEntry = { property: skater.thermalEnergyProperty, color: EnergySkateParkColorScheme.thermalEnergy, modifyBarHeight: showSmallValues };
@@ -95,7 +99,7 @@ define( require => {
       this.barChartNode = new BarChartNode( [
         { entries: [ kineticEntry ], labelString: energyKineticString },
         { entries: [ potentialEntry ], labelString: energyPotentialString },
-        { entries: [ thermalEntry ], labelString: energyThermalString },
+        { entries: [ thermalEntry ], labelString: energyThermalString, labelNode: clearThermalButton },
         { entries: [ totalEntry ], labelString: energyTotalString }
       ], graphRangeProperty, {
         barLabelOptions: {
@@ -163,19 +167,19 @@ define( require => {
       this.addChild( containingPanel );
 
       // add the clear thermal button separately on top of the panel, it is separate from panel layout
-      let thermalLabelBottom = this.barChartNode.getBarLabelLocation( 2, 'centerBottom' );
-      thermalLabelBottom = containingPanel.globalToLocalPoint( this.barChartNode.localToGlobalPoint( thermalLabelBottom ) );
+      // let thermalLabelBottom = this.barChartNode.getBarLabelLocation( 2, 'centerBottom' );
+      // thermalLabelBottom = containingPanel.globalToLocalPoint( this.barChartNode.localToGlobalPoint( thermalLabelBottom ) );
 
-      const clearThermalButton = new MoveToTrashButton( {
-        arrowColor: EnergySkateParkColorScheme.thermalEnergy,
-        tandem: tandem.createTandem( 'clearThermalButton' ),
-        listener: skater.clearThermal.bind( skater ),
-        centerX: thermalLabelBottom.x,
-        y: thermalLabelBottom.y + THERMAL_BUTTON_SPACING,
-        scale: 0.7
-      } );
+      // const clearThermalButton = new MoveToTrashButton( {
+      //   arrowColor: EnergySkateParkColorScheme.thermalEnergy,
+      //   tandem: tandem.createTandem( 'clearThermalButton' ),
+      //   listener: skater.clearThermal.bind( skater ),
+      //   centerX: thermalLabelBottom.x,
+      //   y: thermalLabelBottom.y + THERMAL_BUTTON_SPACING,
+      //   scale: 0.7
+      // } );
 
-      this.addChild( clearThermalButton );
+      // this.addChild( clearThermalButton );
 
       // attach listeners - bar chart exists for life of sim, no need to dispose
       skater.energyChangedEmitter.addListener( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
