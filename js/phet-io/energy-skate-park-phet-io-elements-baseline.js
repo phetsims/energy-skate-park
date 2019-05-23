@@ -2003,6 +2003,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<StringIO>"
     },
+    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.speedValueVisibleProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.speedometerVisibleProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
@@ -10528,6 +10539,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<StringIO>"
     },
+    "energySkatePark.introScreen.model.trackSetModel.speedValueVisibleProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
     "energySkatePark.introScreen.model.trackSetModel.speedometerVisibleProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
@@ -17677,6 +17699,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<StringIO>"
+    },
+    "energySkatePark.labScreen.labModel.speedValueVisibleProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
     "energySkatePark.labScreen.labModel.speedometerVisibleProperty": {
       "phetioDocumentation": "",
@@ -26873,6 +26906,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<StringIO>"
+    },
+    "energySkatePark.measureScreen.measureModel.trackSetModel.speedValueVisibleProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
     "energySkatePark.measureScreen.measureModel.trackSetModel.speedometerVisibleProperty": {
       "phetioDocumentation": "",
