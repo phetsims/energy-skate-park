@@ -32,9 +32,7 @@ define( function( require ) {
       // for antialiasing because this method takes up too much memory, see
       // https://github.com/phetsims/scenery/issues/859 and
       // https://github.com/phetsims/energy-skate-park-basics/issues/435
-      allowBackingScaleAntialiasing: !platform.mobileSafari,
-
-      webgl:true
+      allowBackingScaleAntialiasing: !platform.mobileSafari
     }, options );
 
     Sim.call( this, titleString, screens, options );
