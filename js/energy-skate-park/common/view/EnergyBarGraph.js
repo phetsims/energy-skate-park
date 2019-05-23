@@ -166,21 +166,6 @@ define( require => {
       const containingPanel = new Panel( content );
       this.addChild( containingPanel );
 
-      // add the clear thermal button separately on top of the panel, it is separate from panel layout
-      // let thermalLabelBottom = this.barChartNode.getBarLabelLocation( 2, 'centerBottom' );
-      // thermalLabelBottom = containingPanel.globalToLocalPoint( this.barChartNode.localToGlobalPoint( thermalLabelBottom ) );
-
-      // const clearThermalButton = new MoveToTrashButton( {
-      //   arrowColor: EnergySkateParkColorScheme.thermalEnergy,
-      //   tandem: tandem.createTandem( 'clearThermalButton' ),
-      //   listener: skater.clearThermal.bind( skater ),
-      //   centerX: thermalLabelBottom.x,
-      //   y: thermalLabelBottom.y + THERMAL_BUTTON_SPACING,
-      //   scale: 0.7
-      // } );
-
-      // this.addChild( clearThermalButton );
-
       // attach listeners - bar chart exists for life of sim, no need to dispose
       skater.energyChangedEmitter.addListener( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
       barGraphVisibleProperty.link( this.updateWhenVisible.bind( this ) );
