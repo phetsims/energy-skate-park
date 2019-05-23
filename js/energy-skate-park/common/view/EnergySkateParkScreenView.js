@@ -91,13 +91,9 @@ define( function( require ) {
       tandem: tandem
     } );
 
-    // @private {Node} - layers for the screen view, for performance and memory reasons. Nodes will be added to one
-    // of these layers. There is a bottom layer (which shouldn't use WebGL), a middle layer which should only use
-    // WebGL, and a top layer (which shouldn't use WebGL).
     this.bottomLayer = new Node();
-    this.webGLLayer = new Node();
     this.topLayer = new Node();
-    this.children = [ this.bottomLayer, this.webGLLayer, this.topLayer ];
+    this.children = [ this.bottomLayer, this.topLayer ];
 
     var modelPoint = new Vector2( 0, 0 );
 
@@ -341,10 +337,10 @@ define( function( require ) {
       tandem.createTandem( 'skaterNode' )
     );
 
-    this.webGLLayer.addChild( skaterNode );
+    this.topLayer.addChild( skaterNode );
 
     const pieChartNode = new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) );
-    this.webGLLayer.addChild( pieChartNode );
+    this.topLayer.addChild( pieChartNode );
 
     // layout managed in layout function
     this.referenceHeightLine = new ReferenceHeightLine(
@@ -545,8 +541,9 @@ define( function( require ) {
     },
 
     /**
-     * Add a node to the front of the back layer (the end of this.backLayer children array). For memory and performance
-     * reasons, this node had better not be using WebGL.
+     * Add a node to the front of the back layer (the end of this.backLayer children array). This layer is behind
+     * animating or movable things in the sim like the skater. This is useful for adding specific control-panel like
+     * things in subtypes that should be behind the skater.
      * @protected
      *
      * @param {Node} node
@@ -556,8 +553,8 @@ define( function( require ) {
     },
 
     /**
-     * Add a node to the front of the top layer (the end of this.topLayer children array). For memory and
-     * performance reasons, this node and its sub tree had better not be using WebGL.
+     * Add a node to the front of the top layer (the end of this.topLayer children array). Anything added to this
+     * layer will be on top of the skater or other animating things.
      * @protected
      *
      * @param {node} node
