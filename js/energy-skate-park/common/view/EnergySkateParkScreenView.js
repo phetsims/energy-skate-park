@@ -77,10 +77,7 @@ define( function( require ) {
       // options for the bar graph, see composite type options below
       barGraphOptions: null,
 
-      includeMeasuringTapePanel: true,
-
-      // {boolean} - whether this view will include an energy bar graph
-      includeEnergyBarGraph: true
+      includeMeasuringTapePanel: true
     }, options );
 
     options.barGraphOptions = _.extend( {
@@ -99,7 +96,7 @@ define( function( require ) {
     this.includeMeasuringTapePanel = options.includeMeasuringTapePanel;
 
     // @private - whether or not this ScreenView should include the EnergyBarGraph
-    this.includeEnergyBarGraph = options.includeEnergyBarGraph;
+    this.showBarGraph = model.showBarGraph;
 
     // @private - Layers for nodes in the sim. The bottom layer contains the background and UI components that should
     // be behind the animating skater and other draggable things, which are in the topLayer. See addToTopLayer()
@@ -189,7 +186,7 @@ define( function( require ) {
     } );
 
     // @private - the bar chart showing energy distribution
-    if ( options.includeEnergyBarGraph ) {
+    if ( model.showBarGraph ) {
       this.energyBarGraph = new EnergyBarGraph( model.skater, model.graphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
       this.energyBarGraph.leftTop = new Vector2( 5, 5 );
       this.bottomLayer.addChild( this.energyBarGraph );
@@ -553,7 +550,7 @@ define( function( require ) {
       // pie chart legend location is dependent on whether or not the screen includes an energy bar graph
       let pieChartLegendLeftTop = null;
       const leftPlacement = this.availableViewBounds.minX + 5;
-      if ( this.includeEnergyBarGraph ) {
+      if ( this.showBarGraph ) {
         if ( EnergySkateParkQueryParameters.controlPanelLocation === 'floating' ) {
           this.energyBarGraph.x = leftPlacement;
         }

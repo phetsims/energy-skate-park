@@ -34,7 +34,8 @@ define( function( require ) {
 
     // a track set model, with friction allowed
     EnergySkateParkFullTrackSetModel.call( this, true, tandem, {
-      tracksConfigurable: true
+      tracksConfigurable: true,
+      showBarGraph: false
     } );
 
     // @public - whether or not the model should store samples of skater data as the skater moves along the track

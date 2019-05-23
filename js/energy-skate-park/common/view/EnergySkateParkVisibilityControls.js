@@ -35,7 +35,6 @@ define( function( require ) {
 
     options = _.extend( {
       includeSamplesCheckbox: false,
-      includeBarGraphCheckbox: true,
       includeReferenceHeightCheckbox: true
     }, options );
 
@@ -66,7 +65,7 @@ define( function( require ) {
       ),
     );
 
-    if ( options.includeBarGraphCheckbox ) {
+    if ( model.showBarGraph ) {
       checkboxItems.push( new EnergySkateParkCheckboxItem(
         plotsBarGraphString,
         EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } ),
