@@ -77,7 +77,10 @@ define( function( require ) {
       // options for the bar graph, see composite type options below
       barGraphOptions: null,
 
-      includeMeasuringTapePanel: true
+      includeMeasuringTapePanel: true,
+
+      // {boolean} - whether this view will include an energy bar graph
+      includeEnergyBarGraph: true
     }, options );
 
     options.barGraphOptions = _.extend( {
@@ -94,6 +97,9 @@ define( function( require ) {
 
     // @private - whether or not this screen view should include a measuring tape
     this.includeMeasuringTapePanel = options.includeMeasuringTapePanel;
+
+    // @private - whether or not this ScreenView should include the EnergyBarGraph
+    this.includeEnergyBarGraph = options.includeEnergyBarGraph;
 
     // @private - Layers for nodes in the sim. The bottom layer contains the background and UI components that should
     // be behind the animating skater and other draggable things, which are in the topLayer. See addToTopLayer()
@@ -183,10 +189,13 @@ define( function( require ) {
     } );
 
     // @private - the bar chart showing energy distribution
-    this.energyBarGraph = new EnergyBarGraph( model.skater, model.graphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
-    this.energyBarGraph.leftTop = new Vector2( 5, 5 );
-    this.bottomLayer.addChild( this.energyBarGraph );
-    model.barGraphVisibleProperty.linkAttribute( this.energyBarGraph, 'visible' );
+    if ( options.includeEnergyBarGraph ) {
+      this.energyBarGraph = new EnergyBarGraph( model.skater, model.graphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
+      this.energyBarGraph.leftTop = new Vector2( 5, 5 );
+      this.bottomLayer.addChild( this.energyBarGraph );
+      model.barGraphVisibleProperty.linkAttribute( this.energyBarGraph, 'visible' ); 
+    }
+
 
     this.resetAllButton = new ResetAllButton( {
       listener: model.reset.bind( model ),
@@ -519,6 +528,7 @@ define( function( require ) {
         this.attachDetachToggleButtons.centerX = this.controlPanel.centerX;
       }
 
+      // TODO: remove this
       if ( this.sceneSelectionRadioButtonGroup ) {
 
         // symmetrical with the right edge of the reset all button
@@ -540,12 +550,22 @@ define( function( require ) {
         this.measuringTapeNode.setDragBounds( this.availableModelBounds );
       }
 
-      if ( EnergySkateParkQueryParameters.controlPanelLocation === 'floating' ) {
-        this.energyBarGraph.x = this.availableViewBounds.minX + 5;
+      // pie chart legend location is dependent on whether or not the screen includes an energy bar graph
+      let pieChartLegendLeftTop = null;
+      const leftPlacement = this.availableViewBounds.minX + 5;
+      if ( this.includeEnergyBarGraph ) {
+        if ( EnergySkateParkQueryParameters.controlPanelLocation === 'floating' ) {
+          this.energyBarGraph.x = leftPlacement;
+        }
+
+        pieChartLegendLeftTop = new Vector2( this.energyBarGraph.right + 8, this.energyBarGraph.top );
+      }
+      else {
+        pieChartLegendLeftTop = new Vector2( leftPlacement, this.controlPanel.top );
       }
 
       // Put the pie chart legend to the right of the bar chart, see #60, #192
-      this.pieChartLegend.mutate( { top: this.energyBarGraph.top, left: this.energyBarGraph.right + 8 } );
+      this.pieChartLegend.mutate( { leftTop: pieChartLegendLeftTop } );
 
       // Show it for debugging
       if ( showAvailableBounds ) {
