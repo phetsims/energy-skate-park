@@ -45,7 +45,7 @@ define( require => {
       options = _.extend( {
 
         // include buttons that increase/decrease the scale of the graph?
-        includeZoomButtons: true
+        showBarGraphZoomButtons: true
       }, options );
 
       // it is important that the bar graph be rendered with canvas so that the sim has a high framerate when the
@@ -120,7 +120,7 @@ define( require => {
 
       // main content for the containing panel, assembly depends on whether zoom buttons are required
       let content = null;
-      if ( options.includeZoomButtons ) {
+      if ( options.showBarGraphZoomButtons ) {
 
         const zoomOutButton = new ZoomButton( {
           in: false,

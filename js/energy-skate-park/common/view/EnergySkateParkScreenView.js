@@ -71,18 +71,26 @@ define( function( require ) {
 
     options = _.extend( {
 
-      // {*|null} - passed to the EnergySkateParkControlPanel
-      controlPanelOptions: null,
-
       // options for the bar graph, see composite type options below
       barGraphOptions: null,
 
+      // {boolean} - whether or not this ScreenView should have a bar graph
+      showBarGraph: true,
+
+      // {boolean} - whether or not to show buttons that select premade tracks
+      showTrackButtons: true,
+
+      // {boolean} - whether or not this ScreenView will show the skater path along the track
+      showSkaterPath: false,
+
+      // {boolean} - whether or not the bar graph should include zoom buttons
+      showBarGraphZoomButtons: true,
+
+      // {boolean} - whether or not this ScreenView will show the reference height
+      showReferenceHeight: true,
+
       includeMeasuringTapePanel: true
     }, options );
-
-    options.barGraphOptions = _.extend( {
-      includeZoomButtons: true
-    }, options.barGraphOptions );
 
     var trackNodeGroupTandem = tandem.createGroupTandem( 'trackNode' );
 
@@ -95,8 +103,11 @@ define( function( require ) {
     // @private - whether or not this screen view should include a measuring tape
     this.includeMeasuringTapePanel = options.includeMeasuringTapePanel;
 
-    // @private - whether or not this ScreenView should include the EnergyBarGraph
-    this.showBarGraph = model.showBarGraph;
+    // @private {boolean} - visibility of various view components
+    this.showBarGraph = options.showBarGraph;
+    this.showSkaterPath = options.showSkaterPath;
+    this.showReferenceHeight = options.showReferenceHeight;
+    this.showTrackButtons = options.showTrackButtons;
 
     // @private - Layers for nodes in the sim. The bottom layer contains the background and UI components that should
     // be behind the animating skater and other draggable things, which are in the topLayer. See addToTopLayer()
@@ -186,8 +197,10 @@ define( function( require ) {
     } );
 
     // @private - the bar chart showing energy distribution
-    if ( model.showBarGraph ) {
-      this.energyBarGraph = new EnergyBarGraph( model.skater, model.graphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
+    if ( this.showBarGraph ) {
+      this.energyBarGraph = new EnergyBarGraph( model.skater, model.graphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), {
+        showBarGraphZoomButtons: options.showBarGraphZoomButtons
+      } );
       this.energyBarGraph.leftTop = new Vector2( 5, 5 );
       this.bottomLayer.addChild( this.energyBarGraph );
       model.barGraphVisibleProperty.linkAttribute( this.energyBarGraph, 'visible' ); 

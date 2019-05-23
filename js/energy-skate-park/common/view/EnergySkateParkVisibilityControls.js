@@ -31,17 +31,12 @@ define( function( require ) {
    * @param {Array.<EnergySkateParkCheckboxItem>} checkboxItems
    * @param {object} options
    */
-  function EnergySkateParkVisibilityControls( model, tandem, options ) {
-
-    options = _.extend( {
-      includeSamplesCheckbox: false,
-      includeReferenceHeightCheckbox: true
-    }, options );
+  function EnergySkateParkVisibilityControls( model, screenView, tandem ) {
 
     var itemAlignGroup = new AlignGroup();
     var checkboxItems = [];
 
-    if ( options.includeSamplesCheckbox ) {
+    if ( screenView.showSkaterPath ) {
       assert && assert( model.sampleSkaterProperty, 'no Property for measuring samples, add to model or don\'t use options' );
 
       checkboxItems.push(
@@ -65,7 +60,7 @@ define( function( require ) {
       ),
     );
 
-    if ( model.showBarGraph ) {
+    if ( screenView.showBarGraph ) {
       checkboxItems.push( new EnergySkateParkCheckboxItem(
         plotsBarGraphString,
         EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } ),
@@ -92,7 +87,7 @@ define( function( require ) {
       )
     ] );
 
-    if ( options.includeReferenceHeightCheckbox ) {
+    if ( screenView.showReferenceHeight ) {
       checkboxItems.push(
         new EnergySkateParkCheckboxItem(
           controlsReferenceHeightString,

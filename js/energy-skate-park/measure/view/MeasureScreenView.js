@@ -34,7 +34,10 @@ define( function( require ) {
       } ),
       new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) )
     ];
-    EnergySkateParkScreenView.call( this, model, measureControls, tandem );
+    EnergySkateParkScreenView.call( this, model, measureControls, tandem, {
+      showBarGraph: false,
+      showSkaterPath: true      
+    } );
 
     // @private - for layout
     this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorPositionProperty, this.modelViewTransform, {

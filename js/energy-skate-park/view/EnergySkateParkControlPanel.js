@@ -32,20 +32,11 @@ define( function( require ) {
   function EnergySkateParkControlPanel( model, screenView, controls, tandem, options ) {
     assert && assert( controls.length > 0, 'control panel must include additional physical controls' );
 
-    options = _.extend( {
-      includeTrackSelection: true, // include radio buttons that select default tracks?
-
-      // passed to EnergySkateParkVisibilityControls, see that type for supported options
-      visibilityControlsOptions: {}
-    }, options );
-
-    options.visibilityControlsOptions = _.extend( {}, options.visibilityControlsOptions );
-
     // controls that change visibility of items in the screen
-    var visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), options.visibilityControlsOptions );
+    var visibilityControls = new EnergySkateParkVisibilityControls( model, screenView, tandem.createTandem( 'visibilityControls' ) );
     var children = [ visibilityControls ];
 
-    if ( options.includeTrackSelection ) {
+    if ( screenView.showTrackButtons ) {
       children.push( new SceneSelectionRadioButtonGroup( model, screenView, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) ) );
     }
 
@@ -56,7 +47,7 @@ define( function( require ) {
 
     var separatorWidth = _.maxBy( children, function( child ) { return child.width; } ).width;
     children.splice( children.indexOf( controls[ 0 ] ), 0, new HSeparator( separatorWidth ) );
-    if ( options.includeTrackSelection ) {
+    if ( screenView.showTrackButtons ) {
       children.splice( children.indexOf( visibilityControls ) + 1, 0, new HSeparator( separatorWidth ) );
     }
 
