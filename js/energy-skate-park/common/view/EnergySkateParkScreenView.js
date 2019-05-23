@@ -22,7 +22,6 @@ define( function( require ) {
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
   var EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
-  var GaugeNode = require( 'SCENERY_PHET/GaugeNode' );
   var GridNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/GridNode' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -47,11 +46,13 @@ define( function( require ) {
   var StepForwardButton = require( 'SCENERY_PHET/buttons/StepForwardButton' );
   var Text = require( 'SCENERY/nodes/Text' );
   var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackNode' );
+  var ValueGaugeNode = require( 'SCENERY_PHET/ValueGaugeNode' );
   var Vector2 = require( 'DOT/Vector2' );
 
   // strings
   var controlsRestartSkaterString = require( 'string!ENERGY_SKATE_PARK/controls.restart-skater' );
   var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
+  var speedometerMetersPerSecondPatternString = require( 'string!ENERGY_SKATE_PARK/speedometerMetersPerSecondPattern' );
 
   // images
   var skaterIconImage = require( 'image!ENERGY_SKATE_PARK/skater-icon.png' );
@@ -214,16 +215,20 @@ define( function( require ) {
     model.skater.movedProperty.linkAttribute( self.returnSkaterButton, 'enabled' );
     this.bottomLayer.addChild( this.returnSkaterButton );
 
-    var speedometerNode = new GaugeNode(
-      // Hide the needle in for the background of the GaugeNode
-      model.skater.speedProperty, propertiesSpeedString, new Range( 0, 20 ), {
+    var speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 20 ), {
+
+        numberDisplayOptions: {
+          valuePattern: speedometerMetersPerSecondPatternString
+        },
+
         // enable/disable updates based on whether the speedometer is visible
         enabledProperty: model.speedometerVisibleProperty,
         pickable: false,
         radius: 67,
         tandem: tandem.createTandem( 'speedometerNode' )
-      } );
+    } );
     model.speedometerVisibleProperty.linkAttribute( speedometerNode, 'visible' );
+    model.speedValueVisibleProperty.link( ( visible ) => { speedometerNode.setNumberDisplayVisible( visible ); } );
     speedometerNode.centerX = this.layoutBounds.centerX;
     speedometerNode.top = this.layoutBounds.minY + 5;
     this.bottomLayer.addChild( speedometerNode );

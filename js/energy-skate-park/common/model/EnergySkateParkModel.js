@@ -149,6 +149,11 @@ define( function( require ) {
     this.speedometerVisibleProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'speedometerVisibleProperty' )
     } );
+
+    // whether the speed value is visible on the speedometer
+    this.speedValueVisibleProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'speedValueVisibleProperty' )
+    } );
     this.referenceHeightVisibleProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'referenceHeightVisibleProperty' )
     } );

@@ -49,6 +49,9 @@ define( function( require ) {
     // @private {number} - in seconds, time elapsed since the last time we saved a sample
     this.timeSinceSave = 0;
 
+    // the speed value is visible on the speedometer for the MeasureModel
+    this.speedValueVisibleProperty.set( true );
+
     // TODO: Probably more Properties here
     var resetSamplesProperties = [
       this.skater.directionProperty,

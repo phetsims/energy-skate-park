@@ -106,5 +106,8 @@
   },
   "speedMetersPerSecondPattern": {
     "value": "Speed = {{value}} m/s"
+  },
+  "speedometerMetersPerSecondPattern": {
+    "value": "{{value}} m/s"
   }
 }
