@@ -387,6 +387,8 @@ define( function( require ) {
       tandem: tandem.createTandem( 'returnSkaterToGroundButton' )
     } );
 
+    // the "return skater" buttons are in the top layer so that they can be on top of the track and easily visible
+    // when the skater goes off screen
     this.topLayer.addChild( returnSkaterToPreviousStartingPositionButton );
     this.topLayer.addChild( returnSkaterToGroundButton );
 
