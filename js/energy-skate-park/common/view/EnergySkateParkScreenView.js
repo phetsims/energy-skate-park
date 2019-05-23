@@ -91,6 +91,9 @@ define( function( require ) {
       tandem: tandem
     } );
 
+    // @private - Layers for nodes in the sim. The bottom layer contains the background and UI components that should
+    // be behind the animating skater and other draggable things, which are in the topLayer. See addToTopLayer()
+    // and addToBackLayer().
     this.bottomLayer = new Node();
     this.topLayer = new Node();
     this.children = [ this.bottomLayer, this.topLayer ];

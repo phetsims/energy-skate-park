@@ -3,11 +3,6 @@
 /**
  * Circles showing locations of skater samples, collections of data that can be inspected with a meter in the 
  * measure screen.
- *
- * NOTE: I expect that this will have to change for performance reasons, possibly using Canvas or WebGL. But I am
- * also concerned about the memory requirements in this sim for tablets. Rendering to a canvas seems like it
- * would add to the memory footprint. But I am already starting to see "Too many WebGL" context errors, so I am
- * concerned about adding these circles to the WebGL layer too. So starting with SVG to see how far that gets us.
  * 
  * @author Jesse Greenberg
  */

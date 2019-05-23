@@ -1,8 +1,7 @@
 // Copyright 2018, University of Colorado Boulder
 
 /**
- * Just for prototyping saving states of the skater. Griddle can't be used because it
- * doesn't support the layering requirements with WebGL. And I don't know what the graph
+ * Just for prototyping saving states of the skater. At this time, I don't know what the graph
  * will eventually look like.
  *
  * This will display relative energies against time and allow one to scrub through
