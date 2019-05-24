@@ -100,9 +100,6 @@ define( function( require ) {
       // {boolean} - if true, track control points can be dragged and track shapes can change
       tracksConfigurable: false,
 
-      // if true, bar graphs will be visible
-      showBarGraph: true,
-
       // passed to Skater
       skaterOptions: {}
     }, options );
@@ -163,9 +160,6 @@ define( function( require ) {
     this.measuringTapeVisibleProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'measuringTapeVisibleProperty' )
     } );
-
-    // model for visibility of things that should never change, and therefore don't have an associated Property
-    this.showBarGraph = options.showBarGraph;
 
     // @public {number} - scale applied to graphs to determine relative height, making this larger will "zoom out"
     this.graphScaleProperty = new NumberProperty( 1 / 30, {
