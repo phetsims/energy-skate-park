@@ -89,7 +89,7 @@ define( function( require ) {
       // {boolean} - whether or not this ScreenView will show the reference height
       showReferenceHeight: true,
 
-      includeMeasuringTapePanel: true
+      showMeasuringTape: true
     }, options );
 
     var trackNodeGroupTandem = tandem.createGroupTandem( 'trackNode' );
@@ -101,7 +101,7 @@ define( function( require ) {
     } );
 
     // @private - whether or not this screen view should include a measuring tape
-    this.includeMeasuringTapePanel = options.includeMeasuringTapePanel;
+    this.showMeasuringTape = options.showMeasuringTape;
 
     // @private {boolean} - visibility of various view components
     this.showBarGraph = options.showBarGraph;
@@ -149,7 +149,7 @@ define( function( require ) {
     this.bottomLayer.addChild( this.pieChartLegend );
 
     // add a measuring tape if specified as part of this screen view
-    if ( options.includeMeasuringTapePanel ) {
+    if ( options.showMeasuringTape ) {
 
       var unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
 
@@ -553,7 +553,7 @@ define( function( require ) {
       this.availableModelBounds = this.modelViewTransform.viewToModelBounds( this.availableViewBounds );
       this.availableModelBoundsProperty.value = this.availableModelBounds;
 
-      if ( this.includeMeasuringTapePanel ) {
+      if ( this.showMeasuringTape ) {
         this.measuringTapePanel.top = this.controlPanel.bottom + 5;
         this.measuringTapePanel.right = this.controlPanel.right;
 

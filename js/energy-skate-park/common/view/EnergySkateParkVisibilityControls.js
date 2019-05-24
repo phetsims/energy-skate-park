@@ -37,7 +37,7 @@ define( function( require ) {
     var checkboxItems = [];
 
     if ( screenView.showSkaterPath ) {
-      assert && assert( model.sampleSkaterProperty, 'no Property for measuring samples, add to model or don\'t use options' );
+      assert && assert( model.sampleSkaterProperty, 'no Property for measuring samples, add to model or dont show this' );
 
       checkboxItems.push(
         new EnergySkateParkCheckboxItem(
