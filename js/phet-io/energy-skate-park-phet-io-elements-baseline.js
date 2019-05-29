@@ -3304,7 +3304,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3326,7 +3326,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.barGraphCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3436,7 +3436,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.barGraphCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3502,7 +3502,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.gridCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3612,7 +3612,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.gridCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3678,7 +3678,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3788,7 +3788,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3898,7 +3898,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -4008,7 +4008,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -4173,7 +4173,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -4283,7 +4283,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -12225,7 +12225,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -12247,7 +12247,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.barGraphCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -12357,7 +12357,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.barGraphCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -12423,7 +12423,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.gridCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -12533,7 +12533,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.gridCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -12599,7 +12599,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -12709,7 +12709,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -12819,7 +12819,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -12929,7 +12929,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -13094,7 +13094,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedometerCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -13204,7 +13204,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedometerCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -18792,7 +18792,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.labScreen.labScreenView.graphsScreenView.attachDetachToggleButtons.radioButtonGroup.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -19034,7 +19034,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.barGraphCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -19144,7 +19144,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.barGraphCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -19210,7 +19210,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.gridCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -19320,7 +19320,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.gridCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -19386,7 +19386,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -19496,7 +19496,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -19606,7 +19606,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -19716,7 +19716,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -19881,7 +19881,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -19991,7 +19991,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -29605,7 +29605,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -29627,7 +29627,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.gridCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -29737,7 +29737,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.gridCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -29803,7 +29803,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pathCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -29913,7 +29913,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pathCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -29935,7 +29935,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -30045,7 +30045,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -30155,7 +30155,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -30265,7 +30265,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -30430,7 +30430,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedometerCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -30540,7 +30540,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedometerCheckbox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -37492,7 +37492,7 @@ window.phet.phetio.phetioElementsBaseline =
     "energySkatePark.navigationBar.phetButton.pickableProperty": {
       "phetioDocumentation": "Set whether the phetButton will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioEventType": "model",
-      "phetioFeatured": true,
+      "phetioFeatured": false,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
