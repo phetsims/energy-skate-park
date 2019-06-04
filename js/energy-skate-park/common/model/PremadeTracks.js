@@ -48,19 +48,19 @@ define( function( require ) {
     return new Bounds2( point.x - width / 2, point.y - height / 2, point.x + width / 2, point.y + height / 2 );
   };
 
-  /**
-   * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the BOTTOM
-   * CENTER of the limiting bounds
-   * @param  {Vector2} point - location of control point, BOTTOM CENTER of the bounds 
-   * @param  {number} width
-   * @param  {number} height
-   * @returns {Bounds2}       
-   */
-  var createBottomLimitBounds = function( point, width, height ) {
-    return new Bounds2( point.x - width / 2, point.y, point.x + width / 2, point.y + height );
-  };
-
   var PremadeTracks = {
+
+    /**
+     * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the BOTTOM
+     * CENTER of the limiting bounds
+     * @param  {Vector2} point - location of control point, BOTTOM CENTER of the bounds 
+     * @param  {number} width
+     * @param  {number} height
+     * @returns {Bounds2}       
+     */
+    createBottomLimitBounds: function( point, width, height ) {
+      return new Bounds2( point.x - width / 2, point.y, point.x + width / 2, point.y + height );
+    },
 
     // create a set of control points which create a parabola shaped track
     createParabolaControlPoints: function( groupTandem, options ) {
@@ -71,7 +71,7 @@ define( function( require ) {
       var p3 = new Vector2( 4, 6 );
 
       var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
-      var p2Bounds = createBottomLimitBounds( p2, 4, 2 );
+      var p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 4, 2 );
       var p3Bounds = createCenteredLimitBounds( p3, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       return [
@@ -92,8 +92,8 @@ define( function( require ) {
       var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       // createBottomLimitBounds because dragging any lower will cause track to go below ground
-      var p2Bounds = createBottomLimitBounds( p2, 2, 2 );
-      var p3Bounds = createBottomLimitBounds( p3, 1, 1 );
+      var p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 2, 2 );
+      var p3Bounds = PremadeTracks.createBottomLimitBounds( p3, 1, 1 );
 
       return [
         new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
@@ -115,7 +115,7 @@ define( function( require ) {
       var p5 = new Vector2( 4, 5 );
 
       var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
-      var p2Bounds = createBottomLimitBounds( p2, 1, 1 );
+      var p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 1, 1 );
       var p3Bounds = createCenteredLimitBounds( p3, 1, 1 );
       var p4Bounds = createCenteredLimitBounds( p4, 1, 1 );
       var p5Bounds = createCenteredLimitBounds( p5, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
@@ -156,11 +156,11 @@ define( function( require ) {
       var p7 = new Vector2( loopWidth / 2, trackTop );
 
       var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
-      var p2Bounds = createBottomLimitBounds( p2, 0.5, 0.5 );
+      var p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 0.5, 0.5 );
       var p3Bounds = createCenteredLimitBounds( p3, 1, 1 );
       var p4Bounds = createCenteredLimitBounds( p4, 1, 1 );
       var p5Bounds = createCenteredLimitBounds( p5, 1, 1 );
-      var p6Bounds = createBottomLimitBounds( p6, 0.5, 0.5 );
+      var p6Bounds = PremadeTracks.createBottomLimitBounds( p6, 0.5, 0.5 );
       var p7Bounds = createCenteredLimitBounds( p7, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       return [

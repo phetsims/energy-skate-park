@@ -96,13 +96,13 @@ define( function( require ) {
   }, {
 
     /**
-     * In "basics" screens, the track set includes the parabola, slope, and double well.
+     * The "basic" track set includes the parabola, slope, and double well.
      *
      * @public
      * @param {EnergySkateParkTrackSetModel} model
      * @returns {Array.<Track>}
      */
-    createBasicsTrackSet: function( model, tandem ) {
+    createBasicTrackSet: function( model, tandem ) {
       assert && assert( model instanceof EnergySkateParkTrackSetModel, 'PremadeTracks should be used with an EnergySkateParkTrackSetModel' );
       assert && assert( model.tracksDraggable === false, 'tracks should not be draggable in EnergySkateParkTrackSetModels' );
 
@@ -138,32 +138,6 @@ define( function( require ) {
       } );
 
       return [ parabolaTrack, slopeTrack, doubleWellTrack ];
-    },
-
-    /**
-     * The "full" version of Energy Skate Park has four tracks in the set - a parabola, slope, double well, and loop.
-     * Other screns or versions of this sim may not use this.
-     *
-     * @public
-     * @param {EnergySkateParkTrackSetModel} model
-     * @returns {Array.<Track>}
-     */
-    createFullTrackSet: function( model, tandem ) {
-      assert && assert( model instanceof EnergySkateParkTrackSetModel, 'PremadeTracks should be used with an EnergySkateParkTrackSetModel' );
-
-      var basicSet = EnergySkateParkTrackSetModel.createBasicsTrackSet( model, tandem );
-
-      var loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem, {
-        limitPointBounds: model.limitPointBounds
-      } );
-      var loopTrack = PremadeTracks.createTrack( model, model.tracks, loopControlPoints, model.availableModelBoundsProperty, {
-        configurable: model.tracksConfigurable,
-        draggable: model.tracksDraggable,
-        tandem: tandem.createTandem( 'loopTrack' )
-      } );
-
-      basicSet.push( loopTrack );
-      return basicSet;
     }
   } );
 } );
