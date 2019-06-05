@@ -95,17 +95,18 @@ define( function( require ) {
     createGraphsTrackSet: function( tandem ) {
       const groupTandem = this.controlPointGroupTandem;
 
-      const p1 = new Vector2( -5, 4 );
-      const p2 = new Vector2( 0, 0 );
-      const p3 = new Vector2( 5, 4 );
+      // TODO: modify createParabolaControlPoints as was done for createDoubleWellControlPoints so that we don't
+      // have to redefine these parabolaControlPoints
+      const parabolaPoint1 = new Vector2( -5, 4 );
+      const parabolaPoint2 = new Vector2( 0, 0 );
+      const parabolaPoint3 = new Vector2( 5, 4 );
 
-      // center point is draggable with specific bounds
-      const p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 3, 1 );
+      const parabolaPoint2Bounds = PremadeTracks.createBottomLimitBounds( parabolaPoint2, 3, 1 );
 
       const parabolaControlPoints = [
-        new ControlPoint( p1.x, p1.y, { tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p2.x, p2.y, { limitBounds: p2Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p3.x, p3.y, { tandem: groupTandem.createNextTandem(), phetioState: false } )
+        new ControlPoint( parabolaPoint1.x, parabolaPoint1.y, { draggable: false, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( parabolaPoint2.x, parabolaPoint2.y, { limitBounds: parabolaPoint2Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( parabolaPoint3.x, parabolaPoint3.y, { draggable: false, tandem: groupTandem.createNextTandem(), phetioState: false } )
       ];
 
       var parabolaTrack = PremadeTracks.createTrack( this, this.tracks, parabolaControlPoints, this.availableModelBoundsProperty, {
@@ -114,7 +115,24 @@ define( function( require ) {
         phetioState: false
       } );
 
-      return [ parabolaTrack ];
+      const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( groupTandem, {
+        trackHeight: 4,
+        trackWidth: 10, 
+        trackMidHeight: 1.5,
+
+        p1Draggable: false,
+        p2Draggable: true, 
+        p3Draggable: true, 
+        p4Draggable: true, 
+        p5Draggable: false
+      } );
+      const doubleWellTrack = PremadeTracks.createTrack( this, this.tracks, doubleWellControlPoints, this.availableModelBoundsProperty, {
+        configurable: this.tracksConfigurable,
+        tandem: tandem.createTandem( 'doubleWellTrack' ),
+        phetioState: false
+      } );
+
+      return [ parabolaTrack, doubleWellTrack ];
     }
   } );
 } );

@@ -106,13 +106,23 @@ define( function( require ) {
     // For the double well, move the left well up a bit since the interpolation moves it down by that much, and we
     // don't want the skater to go to y<0 while on the track.  Numbers determined by trial and error.
     createDoubleWellControlPoints: function( groupTandem, options ) {
-      options = _.extend( CREATOR_OPTIONS, options );
+      options = _.extend( {
+        trackHeight: 5, // largest height for the well
+        trackWidth: 8, // width from the left most control point to the right most control point
+        trackMidHeight: 2, // height of the mid control point that creates the double well
 
-      var p1 = new Vector2( -4, 5 );
+        p1Draggable: true,
+        p2Draggable: true, 
+        p3Draggable: true, 
+        p4Draggable: true, 
+        p5Draggable: true
+      }, CREATOR_OPTIONS, options );
+
+      var p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
       var p2 = new Vector2( -2, 0.0166015 );
-      var p3 = new Vector2( 0, 2 );
+      var p3 = new Vector2( 0, options.trackMidHeight );
       var p4 = new Vector2( 2, 1 );
-      var p5 = new Vector2( 4, 5 );
+      var p5 = new Vector2( options.trackWidth / 2, options.trackHeight );
 
       var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
       var p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 1, 1 );
@@ -121,11 +131,36 @@ define( function( require ) {
       var p5Bounds = createCenteredLimitBounds( p5, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       return [
-        new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p2.x, p2.y, { limitBounds: p2Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p3.x, p3.y, { limitBounds: p3Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p4.x, p4.y, { limitBounds: p4Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p5.x, p5.y, { limitBounds: p5Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } )
+        new ControlPoint( p1.x, p1.y, {
+          limitBounds: p1Bounds,
+          draggable: options.p1Draggable,
+          phetioState: false,
+          tandem: groupTandem.createNextTandem()
+        } ),
+        new ControlPoint( p2.x, p2.y, {
+          limitBounds: p2Bounds,
+          draggable: options.p2Draggable,
+          phetioState: false,
+          tandem: groupTandem.createNextTandem()
+        } ),
+        new ControlPoint( p3.x, p3.y, {
+          limitBounds: p3Bounds,
+          draggable: options.p3Draggable,
+          phetioState: false,
+          tandem: groupTandem.createNextTandem()
+        } ),
+        new ControlPoint( p4.x, p4.y, {
+          limitBounds: p4Bounds,
+          draggable: options.p4Draggable,
+          phetioState: false,
+          tandem: groupTandem.createNextTandem()
+        } ),
+        new ControlPoint( p5.x, p5.y, {
+          limitBounds: p5Bounds,
+          draggable: options.p5Draggable,
+          phetioState: false,
+          tandem: groupTandem.createNextTandem()
+        } )
       ];
     },
 

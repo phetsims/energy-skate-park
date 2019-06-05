@@ -83,21 +83,21 @@ define( function( require ) {
       this.road.addInputListener( trackDragHandler );
     }
 
+    // only "configurable" tracks have draggable control points, and individual control points may have dragging
+    // disabled
     if ( track.configurable ) {
       for ( var i = 0; i < track.controlPoints.length; i++ ) {
-        var isEndPoint = i === 0 || i === track.controlPoints.length - 1;
-        var controlPointNode = new ControlPointNode( this, trackDragHandler, i, isEndPoint, tandem.createTandem( 'controlPointNode' + i ) );
-        self.addChild( controlPointNode );
-
         var controlPoint = track.controlPoints[ i ];
-        if ( controlPoint.limitBounds ) {
-          assert && assert( controlPointNode.boundsRectangle, 'bounds are limited but there is no bounding Rectangle' );
-          self.addChild( controlPointNode.boundsRectangle );
 
-          // var boundsVisibilityListener = dragging => {
-          // boundsRectangle.visible = dragging;
-          // };
-          // controlPoint.draggingProperty.link( boundsVisibilityListener );
+        if ( controlPoint.draggable ) {
+          var isEndPoint = i === 0 || i === track.controlPoints.length - 1;
+          var controlPointNode = new ControlPointNode( this, trackDragHandler, i, isEndPoint, tandem.createTandem( 'controlPointNode' + i ) );
+          self.addChild( controlPointNode );
+
+          if ( controlPoint.limitBounds ) {
+            assert && assert( controlPointNode.boundsRectangle, 'bounds are limited but there is no bounding Rectangle' );
+            self.addChild( controlPointNode.boundsRectangle );
+          }
         }
       }
     }

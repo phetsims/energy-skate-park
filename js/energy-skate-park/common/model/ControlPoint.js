@@ -36,6 +36,10 @@ define( function( require ) {
 
     options = _.extend( {
 
+      // {boolean} - can this control point specifically be dragged? In order to be draggable, the track itself must
+      // be "configurable" and this must be true.
+      draggable: true,
+
       // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging
       limitBounds: null,
 
@@ -47,6 +51,9 @@ define( function( require ) {
 
     // @public (read-only) {Bounds2|null} - see option for information
     this.limitBounds = options.limitBounds;
+
+    // @public (read-only) {boolean} - see options for information
+    this.draggable = options.draggable;
 
     // @public (phet-io)
     this.controlPointTandem = tandem;
