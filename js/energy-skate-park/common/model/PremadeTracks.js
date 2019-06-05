@@ -64,20 +64,42 @@ define( function( require ) {
 
     // create a set of control points which create a parabola shaped track
     createParabolaControlPoints: function( groupTandem, options ) {
-      options = _.extend( CREATOR_OPTIONS, options );
+      options = _.extend( {
+        trackHeight: 6, // largest height for the parabola
+        trackWidth: 8, // width from the left most control point to the right most control point
 
-      var p1 = new Vector2( -4, 6 );
+        p1Draggable: true,
+        p2Draggable: true, 
+        p3Draggable: true
+      },CREATOR_OPTIONS, options );
+
+      var p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
       var p2 = new Vector2( 0, 0 );
-      var p3 = new Vector2( 4, 6 );
+      var p3 = new Vector2( options.trackWidth / 2, options.trackHeight );
 
       var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
       var p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 4, 2 );
       var p3Bounds = createCenteredLimitBounds( p3, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       return [
-        new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p2.x, p2.y, { limitBounds: p2Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p3.x, p3.y, { limitBounds: p3Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } )
+        new ControlPoint( p1.x, p1.y, {
+          draggable: options.p1Draggable,
+          limitBounds: p1Bounds,
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } ),
+        new ControlPoint( p2.x, p2.y, {
+          draggable: options.p2Draggable,
+          limitBounds: p2Bounds,
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } ),
+        new ControlPoint( p3.x, p3.y, {
+          draggable: options.p3Draggable,
+          limitBounds: p3Bounds,
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } )
       ];
     },
 

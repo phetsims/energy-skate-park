@@ -13,13 +13,11 @@ define( function( require ) {
   var EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
   var GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
   var NumberProperty = require( 'AXON/NumberProperty' );
-  var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
   var ObservableArray = require( 'AXON/ObservableArray' );
   var Range = require( 'DOT/Range' );
   var EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
   var PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var Vector2 = require( 'DOT/Vector2' );
 
   /**
    * @constructor
@@ -95,19 +93,16 @@ define( function( require ) {
     createGraphsTrackSet: function( tandem ) {
       const groupTandem = this.controlPointGroupTandem;
 
-      // TODO: modify createParabolaControlPoints as was done for createDoubleWellControlPoints so that we don't
-      // have to redefine these parabolaControlPoints
-      const parabolaPoint1 = new Vector2( -5, 4 );
-      const parabolaPoint2 = new Vector2( 0, 0 );
-      const parabolaPoint3 = new Vector2( 5, 4 );
+      // all tracks in graphs screen are bound by these dimensions (in meters)
+      const trackHeight = 4;
+      const trackWidth = 10;
 
-      const parabolaPoint2Bounds = PremadeTracks.createBottomLimitBounds( parabolaPoint2, 3, 1 );
-
-      const parabolaControlPoints = [
-        new ControlPoint( parabolaPoint1.x, parabolaPoint1.y, { draggable: false, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( parabolaPoint2.x, parabolaPoint2.y, { limitBounds: parabolaPoint2Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( parabolaPoint3.x, parabolaPoint3.y, { draggable: false, tandem: groupTandem.createNextTandem(), phetioState: false } )
-      ];
+      const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( groupTandem,  {
+        trackHeight: trackHeight,
+        trackWidth: trackWidth,
+        p1Draggable: false,
+        p3Draggable: false
+      } );
 
       var parabolaTrack = PremadeTracks.createTrack( this, this.tracks, parabolaControlPoints, this.availableModelBoundsProperty, {
         configurable: this.tracksConfigurable,
