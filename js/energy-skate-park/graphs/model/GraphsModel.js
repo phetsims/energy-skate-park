@@ -121,9 +121,6 @@ define( function( require ) {
         trackMidHeight: 1.5,
 
         p1Draggable: false,
-        p2Draggable: true, 
-        p3Draggable: true, 
-        p4Draggable: true, 
         p5Draggable: false
       } );
       const doubleWellTrack = PremadeTracks.createTrack( this, this.tracks, doubleWellControlPoints, this.availableModelBoundsProperty, {
