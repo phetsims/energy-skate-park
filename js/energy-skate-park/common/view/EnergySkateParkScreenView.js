@@ -279,7 +279,7 @@ define( function( require ) {
 
       var addTrackNode = function( track ) {
 
-        var trackNode = new TrackNode( model, track, modelViewTransform, self.availableModelBoundsProperty, trackNodeGroupTandem.createTandem( track.tandem.tail ) );
+        var trackNode = new TrackNode( model, track, modelViewTransform, self.availableModelBoundsProperty, trackNodeGroupTandem.createTandem( track.tandem.name ) );
         trackLayer.addChild( trackNode );
 
         // When track removed, remove its view
