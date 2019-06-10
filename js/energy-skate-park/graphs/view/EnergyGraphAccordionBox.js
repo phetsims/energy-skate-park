@@ -12,6 +12,7 @@ define( function( require ) {
   const ABSwitch = require( 'SUN/ABSwitch' );
   const AccordionBox = require( 'SUN/AccordionBox' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
   const Dimension2 = require( 'DOT/Dimension2' );
   const Text = require( 'SCENERY/nodes/Text' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
@@ -48,10 +49,17 @@ define( function( require ) {
       ] );
       contentNode.addChild( checkboxGroup );
 
-
-      // placeholder rectangle, this will eventually be the graph - all layout is relative to this
+      // all layout is relative to the graph
       const energyPlot = new EnergyXYPlot( model );
       contentNode.addChild( energyPlot );
+
+      const eraserButton = new EraserButton( {
+        listener: () => {
+          model.clearEnergyData();
+          energyPlot.clearEnergyDataSeries();
+        }
+      } );
+      contentNode.addChild( eraserButton );
 
       const switchLabelOptions = {
         font: new PhetFont( { size: 11 } )
@@ -64,9 +72,10 @@ define( function( require ) {
       } );
       contentNode.addChild( variableSwitch );
 
-      // layout
+      // layout, all layout is relative to the energy plot
       checkboxGroup.rightCenter = energyPlot.leftCenter;
       variableSwitch.centerBottom = energyPlot.centerTop;
+      eraserButton.rightBottom = energyPlot.rightTop;
 
       super( contentNode, options );
     }
@@ -93,8 +102,8 @@ define( function( require ) {
      */
     constructor( model ) {
       super( {
-        width: 450,
-        height: 150,
+        width: 475,
+        height: 125,
 
         maxX: 20,
         minY: -3000,
@@ -110,27 +119,36 @@ define( function( require ) {
         showHorizontalIntermediateLines: false
       } );
 
-      const kineticEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.kineticEnergy } );
-      const potentialEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.potentialEnergy } );
-      const thermalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.thermalEnergy } );
-      const totalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.totalEnergy } );
+      // @private
+      this.kineticEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.kineticEnergy } );
+      this.potentialEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.potentialEnergy } );
+      this.thermalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.thermalEnergy } );
+      this.totalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.totalEnergy } );
 
       model.skaterSamples.addItemAddedListener( skaterState => {
-        kineticEnergyDataSeries.addPoint( skaterState.time, skaterState.getKineticEnergy() );
-        potentialEnergyDataSeries.addPoint( skaterState.time, skaterState.getPotentialEnergy() );
-        thermalEnergyDataSeries.addPoint( skaterState.time, skaterState.thermalEnergy );
-        totalEnergyDataSeries.addPoint( skaterState.time, skaterState.getTotalEnergy() );
+        this.kineticEnergyDataSeries.addPoint( skaterState.time, skaterState.getKineticEnergy() );
+        this.potentialEnergyDataSeries.addPoint( skaterState.time, skaterState.getPotentialEnergy() );
+        this.thermalEnergyDataSeries.addPoint( skaterState.time, skaterState.thermalEnergy );
+        this.totalEnergyDataSeries.addPoint( skaterState.time, skaterState.getTotalEnergy() );
       } );
 
-      this.addSeries( kineticEnergyDataSeries, true );
-      this.addSeries( potentialEnergyDataSeries, true );
-      this.addSeries( thermalEnergyDataSeries, true );
-      this.addSeries( totalEnergyDataSeries, true );
+      // series rendered in order, this order matches Java version
+      this.addSeries( this.thermalEnergyDataSeries, true );
+      this.addSeries( this.potentialEnergyDataSeries, true );
+      this.addSeries( this.kineticEnergyDataSeries, true );
+      this.addSeries( this.totalEnergyDataSeries, true );
 
-      model.kineticEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ kineticEnergyDataSeries.uniqueId ], 'visible' );
-      model.potentialEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ potentialEnergyDataSeries.uniqueId ], 'visible' );
-      model.thermalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ thermalEnergyDataSeries.uniqueId ], 'visible' );
-      model.totalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ totalEnergyDataSeries.uniqueId ], 'visible' );
+      model.kineticEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.kineticEnergyDataSeries.uniqueId ], 'visible' );
+      model.potentialEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.potentialEnergyDataSeries.uniqueId ], 'visible' );
+      model.thermalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.thermalEnergyDataSeries.uniqueId ], 'visible' );
+      model.totalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.totalEnergyDataSeries.uniqueId ], 'visible' );
+    }
+
+    clearEnergyDataSeries() {
+      this.kineticEnergyDataSeries.clear();
+      this.potentialEnergyDataSeries.clear();
+      this.thermalEnergyDataSeries.clear();
+      this.totalEnergyDataSeries.clear();
     }
   }
 

@@ -14,11 +14,12 @@ define( function( require ) {
   var EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
   var Enumeration = require( 'PHET_CORE/Enumeration' );
   var EnumerationProperty = require( 'AXON/EnumerationProperty' );
+  var EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
   var GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
   var NumberProperty = require( 'AXON/NumberProperty' );
   var ObservableArray = require( 'AXON/ObservableArray' );
   var Range = require( 'DOT/Range' );
-  var EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
+  var SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
   var PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
   var inherit = require( 'PHET_CORE/inherit' );
 
@@ -73,6 +74,17 @@ define( function( require ) {
   energySkatePark.register( 'GraphsModel', GraphsModel );
 
   return inherit( EnergySkateParkFullTrackSetModel, GraphsModel, {
+
+    step: function( dt ) {
+      EnergySkateParkFullTrackSetModel.prototype.step.call( this, dt );
+
+      // for the "Graphs" screen we want to update energies 
+      if ( this.skater.draggingProperty.get() ) {
+        var initialStateCopy = new SkaterState( this.skater );
+        this.stepModel( dt, initialStateCopy );
+      }
+    },
+
     /**
      * When the model is stepped, save skater sample data so that we can scrub states for playback.
      *
@@ -82,27 +94,35 @@ define( function( require ) {
     stepModel: function( dt, skaterState ) {
       var updatedState = EnergySkateParkFullTrackSetModel.prototype.stepModel.call( this, dt, skaterState );
 
+      // for the graphs screen, we need 
       this.runningTimeProperty.set( this.runningTimeProperty.get() + dt );
       updatedState.setTime( this.runningTimeProperty.get() );
 
-      if ( this.skater.trackProperty.get() ) {
+      // index was moved off of old value, clear old samples
+      // TODO:  Can this be deleted?
+      // if ( this.sampleIndexProperty.get() < this.skaterSamples.length - 1 ) {
+        // this.skaterSamples.splice( this.sampleIndexProperty.get() + 1, this.skaterSamples.length - this.sampleIndexProperty.get() );
+      // }
 
-        // index was moved off of old value, clear old samples
-        if ( this.sampleIndexProperty.get() < this.skaterSamples.length - 1 ) {
-          this.skaterSamples.splice( this.sampleIndexProperty.get() + 1, this.skaterSamples.length - this.sampleIndexProperty.get() );
-        }
-
-        // add the new sample
-        this.skaterSamples.push( updatedState );
-        this.sampleIndexProperty.set( this.skaterSamples.length - 1 );
-      }
+      // add the new sample
+      this.skaterSamples.push( updatedState );
+      this.sampleIndexProperty.set( this.skaterSamples.length - 1 );
 
       // we have collected more samples than we want to show, clear old samples
+      // TODO: Can this be deleted? It will be based on time
       if ( this.skaterSamples.length > GraphsConstants.MAX_SAMPLES ) {
         this.skaterSamples.shift();
       }
 
       return updatedState;
+    },
+
+    /**
+     * Clear all energy data, and reset the running time since we will begin recording at zero.
+     */
+    clearEnergyData() {
+      this.runningTimeProperty.reset();
+      this.skaterSamples.clear();
     },
 
     /**
