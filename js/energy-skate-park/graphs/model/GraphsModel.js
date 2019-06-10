@@ -9,8 +9,11 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var BooleanProperty = require( 'AXON/BooleanProperty' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
+  var Enumeration = require( 'PHET_CORE/Enumeration' );
+  var EnumerationProperty = require( 'AXON/EnumerationProperty' );
   var GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
   var NumberProperty = require( 'AXON/NumberProperty' );
   var ObservableArray = require( 'AXON/ObservableArray' );
@@ -34,8 +37,24 @@ define( function( require ) {
     const trackSet = this.createGraphsTrackSet( tandem );
     this.addTrackSet( trackSet );
 
-    // samples of skater data to play back in time
+    // @public - properties for visibility and settings of the graph
+    this.kineticEnergyDataVisibleProperty = new BooleanProperty( true );
+    this.potentialEnergyDataVisibleProperty = new BooleanProperty( true );
+    this.thermalEnergyDataVisibleProperty = new BooleanProperty( true );
+    this.totalEnergyDataVisibleProperty = new BooleanProperty( true );
+
+    // @public - scale for the graph
+    this.lineGraphScaleProperty = new NumberProperty( 1 / 100 );
+
+    // @public - sets the independent variable for the graph display
+    this.independentVariables = new Enumeration( [ 'POSITION', 'TIME' ] );
+    this.independentVariableProperty = new EnumerationProperty( this.independentVariables, this.independentVariables.POSITION );
+
+    // samples of skater data to record and potentially play back
     this.skaterSamples = new ObservableArray();
+
+    // @public - in seconds, how much time has passed since beginning to record skater states
+    this.runningTimeProperty = new NumberProperty( 0 );
 
     this.sampleIndexProperty = new NumberProperty( 0, {
       range: new Range( 0, GraphsConstants.MAX_SAMPLES )
@@ -62,6 +81,9 @@ define( function( require ) {
      */
     stepModel: function( dt, skaterState ) {
       var updatedState = EnergySkateParkFullTrackSetModel.prototype.stepModel.call( this, dt, skaterState );
+
+      this.runningTimeProperty.set( this.runningTimeProperty.get() + dt );
+      updatedState.setTime( this.runningTimeProperty.get() );
 
       if ( this.skater.trackProperty.get() ) {
 

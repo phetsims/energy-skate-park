@@ -27,8 +27,9 @@ define( function( require ) {
    * @constructor
    *
    * @param {SkaterState} skaterState
+   * @param {number} time
    */
-  function SkaterSample( skaterState ) {
+  function SkaterSample( skaterState, time ) {
 
     // @public (read-only)
     this.speed = skaterState.getSpeed();
@@ -38,6 +39,7 @@ define( function( require ) {
     this.totalEnergy = skaterState.getTotalEnergy();
     this.referenceHeight = skaterState.referenceHeight;
     this.position = new Vector2( skaterState.positionX, skaterState.positionY );
+    this.time = time;
 
     // @public - whether or not this sample is being inspected by the probe
     this.inspectedProperty = new BooleanProperty( false );

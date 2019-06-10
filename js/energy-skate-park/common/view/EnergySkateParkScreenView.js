@@ -198,7 +198,7 @@ define( function( require ) {
 
     // @private - the bar chart showing energy distribution
     if ( this.showBarGraph ) {
-      this.energyBarGraph = new EnergyBarGraph( model.skater, model.graphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), {
+      this.energyBarGraph = new EnergyBarGraph( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), {
         showBarGraphZoomButtons: options.showBarGraphZoomButtons
       } );
       this.energyBarGraph.leftTop = new Vector2( 5, 5 );

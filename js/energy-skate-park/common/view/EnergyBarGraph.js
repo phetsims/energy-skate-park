@@ -36,11 +36,11 @@ define( require => {
 
     /**
      * @param {Skater} skater
-     * @param {NumberProperty} graphScaleProperty
+     * @param {NumberProperty} barGraphScaleProperty
      * @param {Tandem} tandem
      * @returns {Skater}            
      */
-    constructor( skater, graphScaleProperty, barGraphVisibleProperty, tandem, options ) {
+    constructor( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem, options ) {
 
       options = _.extend( {
 
@@ -107,7 +107,7 @@ define( require => {
           font: new PhetFont( 12 )
         },
         barOptions: {
-          scaleProperty: graphScaleProperty
+          scaleProperty: barGraphScaleProperty
         },
         labelBackgroundColor: EnergySkateParkColorScheme.transparentPanelFill
       } );
@@ -127,7 +127,7 @@ define( require => {
           scale: 0.3,
           baseColor: ColorConstants.LIGHT_BLUE,
           listener: function() {
-            graphScaleProperty.set( Math.max( graphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
+            barGraphScaleProperty.set( Math.max( barGraphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
           },
           tandem: tandem.createTandem( 'zoomOutButton' )
         } );
@@ -136,7 +136,7 @@ define( require => {
           scale: 0.3,
           baseColor: ColorConstants.LIGHT_BLUE,
           listener: function() {
-            graphScaleProperty.set( Math.min( graphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
+            barGraphScaleProperty.set( Math.min( barGraphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
           },
           tandem: tandem.createTandem( 'zoomInButton' )
         } );
@@ -152,12 +152,12 @@ define( require => {
           align: 'left'
         } );
 
-        graphScaleProperty.link( scale => {
+        barGraphScaleProperty.link( scale => {
           zoomInButton.enabled = scale < Constants.MAX_ZOOM_FACTOR;
           zoomOutButton.enabled = scale > Constants.MIN_ZOOM_FACTOR;
         } );
 
-        graphScaleProperty.link( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
+        barGraphScaleProperty.link( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
       }
       else {
         content = labelledChart;
