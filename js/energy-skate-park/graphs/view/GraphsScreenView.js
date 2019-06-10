@@ -36,5 +36,17 @@ define( function( require ) {
 
   energySkatePark.register( 'GraphsScreenView', GraphsScreenView );
 
-  return inherit( EnergySkateParkScreenView, GraphsScreenView, {} );
+  return inherit( EnergySkateParkScreenView, GraphsScreenView, {
+
+    /**
+     * Special layout for the energy-skate-park, contents can float to the available bounds.
+     * @override
+     */
+    layout: function( width, height ) {
+      EnergySkateParkScreenView.prototype.layout.call( this, width, height );
+
+      this.graphAccordionBox.top = this.controlPanel.top;
+      this.graphAccordionBox.left = this.availableViewBounds.minX + 5;
+    }
+  } );
 } );
