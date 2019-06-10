@@ -29,13 +29,14 @@ define( function( require ) {
   const totalEnergyLabelString = require( 'string!ENERGY_SKATE_PARK/totalEnergyLabel' );
   const timeLabelString = require( 'string!ENERGY_SKATE_PARK/timeLabel' );
   const positionLabelString = require( 'string!ENERGY_SKATE_PARK/positionLabel' );
+  const plotsEnergyGraphString = require( 'string!ENERGY_SKATE_PARK/plots.energy-graph' );
 
   class EnergyGraphAccordionBox extends AccordionBox {
 
     /**
      * TODO: JSDOC
      */
-    constructor( model, options ) {
+    constructor( model ) {
 
       // the parent for all content of the accordion box
       const contentNode = new Node();
@@ -77,7 +78,13 @@ define( function( require ) {
       variableSwitch.centerBottom = energyPlot.centerTop;
       eraserButton.rightBottom = energyPlot.rightTop;
 
-      super( contentNode, options );
+      super( contentNode, {
+        titleNode: new Text( plotsEnergyGraphString, { font: new PhetFont( { size: 16 } ) } ),
+        titleAlignX: 'left',
+        titleXSpacing: 7,
+        buttonXMargin: 5,
+        buttonYMargin: 5
+      } );
     }
 
     static createCheckboxItem( property, labelString, labelFill ) {

@@ -26,6 +26,9 @@
   "plots.bar-graph": {
     "value": "Bar Graph"
   },
+  "plots.energy-graph": {
+    "value": "Energy Graph"
+  },
   "pieChart": {
     "value": "Pie Chart"
   },
