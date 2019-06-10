@@ -109,5 +109,23 @@
   },
   "speedometerMetersPerSecondPattern": {
     "value": "{{value}} m/s"
+  },
+  "kineticEnergyLabel": {
+    "value": "KE"
+  },
+  "potentialEnergyLabel": {
+    "value": "PE"
+  },
+  "thermalEnergyLabel": {
+    "value": "Thermal"
+  },
+  "totalEnergyLabel": {
+    "value": "Total"
+  },
+  "timeLabel": {
+    "value": "Time"
+  },
+  "positionLabel": {
+    "value": "Position"
   }
 }

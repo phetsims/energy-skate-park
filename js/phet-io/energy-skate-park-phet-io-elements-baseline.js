@@ -441,6 +441,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<Bounds2IO>"
     },
+    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.barGraphScaleProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "NumberPropertyIO"
+    },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.barGraphVisibleProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
@@ -926,17 +937,6 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.frictionProperty": {
-      "phetioDocumentation": "",
-      "phetioEventType": "model",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.graphScaleProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
       "phetioFeatured": false,
@@ -7371,39 +7371,6 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.testGraph.dragListener.dragAction": {
-      "phetioDocumentation": "Emits whenever a drag occurs with an EventIO argument.",
-      "phetioEventType": "user",
-      "phetioFeatured": false,
-      "phetioHighFrequency": true,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": false,
-      "phetioStudioControl": true,
-      "phetioTypeName": "ActionIO.<EventIO>"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.testGraph.dragListener.pressAction": {
-      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event.",
-      "phetioEventType": "user",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": false,
-      "phetioStudioControl": true,
-      "phetioTypeName": "ActionIO.<EventIO, VoidIO, VoidIO>"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.testGraph.dragListener.releaseAction": {
-      "phetioDocumentation": "Executes whenever a release occurs.",
-      "phetioEventType": "user",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": false,
-      "phetioStudioControl": true,
-      "phetioTypeName": "ActionIO.<NullableIO.<EventIO>, VoidIO>"
-    },
     "energySkatePark.homeScreen.activeProperty": {
       "phetioDocumentation": "Indicates whether the screen is active.  For single-screen simulations, the screen is always active.",
       "phetioEventType": "model",
@@ -8834,6 +8801,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<Bounds2IO>"
     },
+    "energySkatePark.introScreen.model.trackSetModel.barGraphScaleProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "NumberPropertyIO"
+    },
     "energySkatePark.introScreen.model.trackSetModel.barGraphVisibleProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
@@ -9869,17 +9847,6 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
     "energySkatePark.introScreen.model.trackSetModel.frictionProperty": {
-      "phetioDocumentation": "",
-      "phetioEventType": "model",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.model.trackSetModel.graphScaleProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
       "phetioFeatured": false,
@@ -16160,6 +16127,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<Bounds2IO>"
     },
+    "energySkatePark.labScreen.labModel.barGraphScaleProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "NumberPropertyIO"
+    },
     "energySkatePark.labScreen.labModel.barGraphVisibleProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
@@ -17030,17 +17008,6 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
     "energySkatePark.labScreen.labModel.frictionProperty": {
-      "phetioDocumentation": "",
-      "phetioEventType": "model",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labModel.graphScaleProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
       "phetioFeatured": false,
@@ -25202,6 +25169,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<Bounds2IO>"
     },
+    "energySkatePark.measureScreen.measureModel.trackSetModel.barGraphScaleProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "NumberPropertyIO"
+    },
     "energySkatePark.measureScreen.measureModel.trackSetModel.barGraphVisibleProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
@@ -26237,17 +26215,6 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
     "energySkatePark.measureScreen.measureModel.trackSetModel.frictionProperty": {
-      "phetioDocumentation": "",
-      "phetioEventType": "model",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.graphScaleProperty": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
       "phetioFeatured": false,

@@ -162,8 +162,8 @@ define( function( require ) {
     } );
 
     // @public {number} - scale applied to graphs to determine relative height, making this larger will "zoom out"
-    this.graphScaleProperty = new NumberProperty( 1 / 30, {
-      tandem: tandem.createTandem( 'graphScaleProperty' )
+    this.barGraphScaleProperty = new NumberProperty( 1 / 30, {
+      tandem: tandem.createTandem( 'barGraphScaleProperty' )
     } );
 
     // @public - enabled/disabled for the track editing buttons
@@ -326,7 +326,7 @@ define( function( require ) {
       this.measuringTapeBasePositionProperty.reset();
       this.editButtonEnabledProperty.reset();
       this.clearButtonEnabledProperty.reset();
-      this.graphScaleProperty.reset();
+      this.barGraphScaleProperty.reset();
       this.pausedProperty.reset();
       this.speedProperty.reset();
       this.frictionProperty.reset();

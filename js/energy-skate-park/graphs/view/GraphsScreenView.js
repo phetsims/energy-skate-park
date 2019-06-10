@@ -11,9 +11,9 @@ define( function( require ) {
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
+  var EnergyGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphAccordionBox' );
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
   var GravitySlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravitySlider' );
-  var TestGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/TestGraph' );
   var inherit = require( 'PHET_CORE/inherit' );
 
   /**
@@ -29,10 +29,9 @@ define( function( require ) {
 
     EnergySkateParkScreenView.call( this, model, graphsControls, tandem.createTandem( 'graphsScreenView' ) );
 
-    const graphTandem = tandem.createTandem( 'testGraph' );
-    var testGraph = new TestGraph( model.sampleIndexProperty, model.pausedProperty, model.skaterSamples, this.width, this.height / 2, graphTandem );
-    testGraph.centerBottom = this.layoutBounds.centerTop;
-    this.addChild( testGraph );
+    // @private - for layout
+    this.graphAccordionBox = new EnergyGraphAccordionBox( model );
+    this.addChild( this.graphAccordionBox );
   }
 
   energySkatePark.register( 'GraphsScreenView', GraphsScreenView );
