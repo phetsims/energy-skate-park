@@ -18,6 +18,9 @@ define( function( require ) {
   const GraphsConstants = {
     MAX_SAMPLES: MAX_SAMPLES,
 
+    // maximum recording time for energy vs time plot, in seconds
+    MAX_TIME: 20,
+
     // determined to be reasonable by inspecting energies at large skater heights - anything
     // above this will be off of the graph
     MAX_PLOTTED_ENERGY: 3000

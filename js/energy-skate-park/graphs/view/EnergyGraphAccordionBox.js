@@ -37,7 +37,7 @@ define( function( require ) {
      * TODO: JSDOC
      */
     constructor( model ) {
-
+      
       // the parent for all content of the accordion box
       const contentNode = new Node();
 

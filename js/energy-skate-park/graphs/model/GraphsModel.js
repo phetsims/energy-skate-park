@@ -98,6 +98,10 @@ define( function( require ) {
       this.runningTimeProperty.set( this.runningTimeProperty.get() + dt );
       updatedState.setTime( this.runningTimeProperty.get() );
 
+      if ( this.runningTimeProperty.get() < GraphsConstants.MAX_TIME ) {
+        this.skaterSamples.push( updatedState );
+      }
+
       // index was moved off of old value, clear old samples
       // TODO:  Can this be deleted?
       // if ( this.sampleIndexProperty.get() < this.skaterSamples.length - 1 ) {
@@ -105,14 +109,14 @@ define( function( require ) {
       // }
 
       // add the new sample
-      this.skaterSamples.push( updatedState );
-      this.sampleIndexProperty.set( this.skaterSamples.length - 1 );
+      // this.skaterSamples.push( updatedState );
+      // this.sampleIndexProperty.set( this.skaterSamples.length - 1 );
 
       // we have collected more samples than we want to show, clear old samples
       // TODO: Can this be deleted? It will be based on time
-      if ( this.skaterSamples.length > GraphsConstants.MAX_SAMPLES ) {
-        this.skaterSamples.shift();
-      }
+      // if ( this.skaterSamples.length > GraphsConstants.MAX_SAMPLES ) {
+        // this.skaterSamples.shift();
+      // }
 
       return updatedState;
     },
