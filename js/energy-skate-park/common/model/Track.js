@@ -164,7 +164,7 @@ define( function( require ) {
       model.trackChangedEmitter.emit();
       model.updateEmitter.emit();
     };
-    phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.phetioStateEngine.setStateEmitter && phet.phetIo.phetioEngine.phetioStateEngine.setStateEmitter.addListener( stateListener );
+    _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
 
     // when available bounds change, make sure that control points are within - must be disposed
     var boundsListener = function( bounds ) {
@@ -176,7 +176,7 @@ define( function( require ) {
 
     // @private - make the Track eligible for garbage collection
     this.disposeTrack = function() {
-      phet.phetIo && phet.phetIo.phetioEngine && phet.phetIo.phetioEngine.phetioStateEngine.setStateEmitter && phet.phetIo.phetioEngine.phetioStateEngine.setStateEmitter.removeListener( stateListener );
+      _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
       if ( self.parents ) {
         self.parents.length = 0;
       }
