@@ -19,7 +19,7 @@ define( function( require ) {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  const XYTimePlot = require( 'GRIDDLE/XYTimePlot' );
+  const XYCursorPlot = require( 'GRIDDLE/XYCursorPlot' );
   const XYDataSeries = require( 'GRIDDLE/XYDataSeries' );
   const VerticalCheckboxGroup = require( 'SUN/VerticalCheckboxGroup' );
 
@@ -114,7 +114,7 @@ define( function( require ) {
    * XY Plot for a energy vs time. Includes labels and zoom buttons to change the zoom along the y axis (energy), and
    * an eraser button that clears the plot.
    */
-  class EnergyXYPlot extends XYTimePlot {
+  class EnergyXYPlot extends XYCursorPlot {
 
     /**
      * @param {EnergySkateParkModel} model
