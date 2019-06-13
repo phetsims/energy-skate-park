@@ -30,7 +30,7 @@ define( function( require ) {
     EnergySkateParkScreenView.call( this, model, graphsControls, tandem.createTandem( 'graphsScreenView' ) );
 
     // @private - for layout
-    this.graphAccordionBox = new EnergyGraphAccordionBox( model );
+    this.graphAccordionBox = new EnergyGraphAccordionBox( model, tandem.createTandem( 'graphAccordionBox' ) );
     this.addChild( this.graphAccordionBox );
   }
 

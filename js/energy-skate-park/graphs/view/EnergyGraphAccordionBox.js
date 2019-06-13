@@ -41,7 +41,7 @@ define( function( require ) {
     /**
      * TODO: JSDOC
      */
-    constructor( model ) {
+    constructor( model, tandem ) {
 
       // the parent for all content of the accordion box
       const contentNode = new Node();
@@ -56,14 +56,16 @@ define( function( require ) {
       contentNode.addChild( checkboxGroup );
 
       // all layout is relative to the graph
-      const energyPlot = new EnergyXYPlot( model );
+      const energyPlot = new EnergyXYPlot( model, tandem.createTandem( 'energyPlot' ) );
       contentNode.addChild( energyPlot );
 
       const eraserButton = new EraserButton( {
         listener: () => {
           model.clearEnergyData();
           energyPlot.clearEnergyDataSeries();
-        }
+        },
+
+        tandem: tandem.createTandem( 'eraserButton' )
       } );
       contentNode.addChild( eraserButton );
 
@@ -74,7 +76,8 @@ define( function( require ) {
       const positionLabel = new Text( positionLabelString, switchLabelOptions );
       const timeLabel = new Text( timeLabelString, switchLabelOptions );
       const variableSwitch = new ABSwitch( model.independentVariableProperty, variables.POSITION, positionLabel, variables.TIME, timeLabel, {
-        switchSize: new Dimension2( 40, 20 )
+        switchSize: new Dimension2( 40, 20 ),
+        tandem: tandem.createTandem( 'variableSwitch' )
       } );
       contentNode.addChild( variableSwitch );
 
@@ -88,7 +91,8 @@ define( function( require ) {
         titleAlignX: 'left',
         titleXSpacing: 7,
         buttonXMargin: 5,
-        buttonYMargin: 5
+        buttonYMargin: 5,
+        tandem: tandem.createTandem( 'accordionBox' )
       } );
 
       // @public
@@ -114,8 +118,9 @@ define( function( require ) {
 
     /**
      * @param {EnergySkateParkModel} model
+     * @param {Tandem} tandem
      */
-    constructor( model ) {
+    constructor( model, tandem ) {
 
       const dragEndedEmitter = new Emitter();
       const dragStartedEmitter = new Emitter();
