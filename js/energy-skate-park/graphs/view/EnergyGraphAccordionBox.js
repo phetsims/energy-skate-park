@@ -181,7 +181,7 @@ define( function( require ) {
         this.thermalEnergyDataSeries.addPoint( time, skaterState.thermalEnergy );
         this.totalEnergyDataSeries.addPoint( time, skaterState.getTotalEnergy() );
 
-        this.setCursorTime( time );
+        this.setCursorValue( time );
       } );
 
       // series rendered in order, this order matches Java version
@@ -191,7 +191,7 @@ define( function( require ) {
       this.addSeries( this.totalEnergyDataSeries, true );
 
       dragEndedEmitter.addListener( () => {
-        const timeOnEnd = this.getCursorTime();
+        const timeOnEnd = this.getCursorValue();
 
         model.runningTimeProperty.set( timeOnEnd );
 
