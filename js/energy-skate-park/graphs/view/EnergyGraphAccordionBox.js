@@ -1,7 +1,8 @@
 // Copyright 2019, University of Colorado Boulder
 
 /**
- * TODO: Typedoc
+ * The accordion box in the "Graphs" screen that contains the energy graphs, as well as controls for
+ * controlling the data.
  * 
  * @author Jesse Greenberg
  */
@@ -39,7 +40,8 @@ define( function( require ) {
   class EnergyGraphAccordionBox extends AccordionBox {
 
     /**
-     * TODO: JSDOC
+     * @param {EnergySkateParkModel} model
+     * @param {Tandem} tandem
      */
     constructor( model, tandem ) {
 
@@ -99,6 +101,15 @@ define( function( require ) {
       this.energyPlot = energyPlot;
     }
 
+    /**
+     * Create an "item" for a checkbox of the VerticalCheckboxGroup, with the label and controlling Property.
+     *
+     * @param {Property} property
+     * @param {string} labelString
+     * @param {PaintDef} labelFill
+     *
+     * @returns {*} - Conforms to the item object of VerticalCheckboxGroup
+     */
     static createCheckboxItem( property, labelString, labelFill ) {
       return {
         node: new Text( labelString, {
@@ -217,20 +228,9 @@ define( function( require ) {
       model.totalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.totalEnergyDataSeries.uniqueId ], 'visible' );
     }
 
-    startDrag( event, listener ) {
-      this.pausedOnDragStart = this.model.pausedProperty.get();
-
-      if ( !this.pausedOnDragStart ) {
-        this.model.pausedProperty.set( false );
-      }
-    }
-
-    endDrag( event, listener ) {
-      if ( !this.pausedOnDragStart ) {
-        this.model.pausedProperty.set( false );
-      }
-    }
-
+    /**
+     * Clear all energy data of the DataSeries, from reset or when the EraserButton is pressed.
+     */
     clearEnergyDataSeries() {
       this.kineticEnergyDataSeries.clear();
       this.potentialEnergyDataSeries.clear();
