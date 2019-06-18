@@ -18,8 +18,8 @@ define( function( require ) {
   var GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
   var NumberProperty = require( 'AXON/NumberProperty' );
   var ObservableArray = require( 'AXON/ObservableArray' );
-  var Range = require( 'DOT/Range' );
   var SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
+  var Util = require( 'DOT/Util' );
   var PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
   var inherit = require( 'PHET_CORE/inherit' );
 
@@ -56,19 +56,6 @@ define( function( require ) {
 
     // @public - in seconds, how much time has passed since beginning to record skater states
     this.runningTimeProperty = new NumberProperty( 0 );
-
-    this.sampleIndexProperty = new NumberProperty( 0, {
-      range: new Range( 0, GraphsConstants.MAX_SAMPLES )
-    } );
-
-    this.sampleIndexProperty.link( ( index ) => {
-
-      // index points to the new skater state we wish to set from skaterSamples
-      if ( this.skaterSamples.length > 0 ) {
-        this.skaterSamples.get( index ).setToSkater( this.skater );
-        this.skater.updatedEmitter.emit();
-      }
-    } );
   }
 
   energySkatePark.register( 'GraphsModel', GraphsModel );
@@ -102,23 +89,20 @@ define( function( require ) {
         this.skaterSamples.push( updatedState );
       }
 
-      // index was moved off of old value, clear old samples
-      // TODO:  Can this be deleted?
-      // if ( this.sampleIndexProperty.get() < this.skaterSamples.length - 1 ) {
-        // this.skaterSamples.splice( this.sampleIndexProperty.get() + 1, this.skaterSamples.length - this.sampleIndexProperty.get() );
-      // }
-
-      // add the new sample
-      // this.skaterSamples.push( updatedState );
-      // this.sampleIndexProperty.set( this.skaterSamples.length - 1 );
-
-      // we have collected more samples than we want to show, clear old samples
-      // TODO: Can this be deleted? It will be based on time
-      // if ( this.skaterSamples.length > GraphsConstants.MAX_SAMPLES ) {
-        // this.skaterSamples.shift();
-      // }
-
       return updatedState;
+    },
+
+    /**
+     * Get the closest SkaterState that was saved at the time provided.
+     * @public
+     *
+     * @param {number} time (in seconds)
+     * @returns {}
+     */
+    getClosestSkaterState( time ) {
+      let nearestIndex = _.sortedIndexBy( this.skaterSamples.getArray(), { time: time }, entry => { return entry.time; } );
+      nearestIndex = Util.clamp( nearestIndex, 0, this.skaterSamples.length - 1 );
+      return this.skaterSamples.get( nearestIndex );
     },
 
     /**

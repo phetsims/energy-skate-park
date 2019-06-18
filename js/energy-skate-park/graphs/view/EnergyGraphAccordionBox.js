@@ -166,6 +166,13 @@ define( function( require ) {
             // workaround because `this` is not accessible yet
             dragStartedEmitter.emit();
           },
+          drag: ( event, listener ) => {
+
+            // when we drag the cursor, get the SkaterState at that time and set the skater to that state
+            const closestState = model.getClosestSkaterState( this.getCursorValue() );
+            closestState.setToSkater( model.skater );
+            model.skater.updatedEmitter.emit();
+          },
           endDrag: ( event, listener ) => {
             if ( !pausedOnDragStart ) {
               model.pausedProperty.set( false );
