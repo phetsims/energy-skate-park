@@ -102,6 +102,8 @@ define( function( require ) {
     getClosestSkaterState( time ) {
       let nearestIndex = _.sortedIndexBy( this.skaterSamples.getArray(), { time: time }, entry => { return entry.time; } );
       nearestIndex = Util.clamp( nearestIndex, 0, this.skaterSamples.length - 1 );
+
+      assert && assert( nearestIndex !== undefined, 'there must be an index to retrieve a SkaterState' );
       return this.skaterSamples.get( nearestIndex );
     },
 
