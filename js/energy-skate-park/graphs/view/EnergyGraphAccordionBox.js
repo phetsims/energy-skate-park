@@ -243,6 +243,8 @@ define( function( require ) {
       this.potentialEnergyDataSeries.clear();
       this.thermalEnergyDataSeries.clear();
       this.totalEnergyDataSeries.clear();
+
+      this.setCursorValue( 0 );
     }
   }
 
