@@ -21,20 +21,20 @@ define( require => {
      * @param  {string} titleString
      * @param  {NumberProperty} property
      * @param  {Range} valueRange
-     * @param  {Tandem} tandem  
+     * @param  {Tandem} tandem
      * @param  {Object} options
      */
     constructor( titleString, property, valueRange, tandem, options ) {
       options = options || {};
       assert && assert( options.layoutFunction === undefined, 'PhysicalNumberControl sets layoutFunction' );
-      assert && assert( options.tandem === undefined, 'PhysicalNumberControl shouldnt set tandem in options' ) ;
+      assert && assert( options.tandem === undefined, 'PhysicalNumberControl shouldnt set tandem in options' );
       assert && assert( options.majorTicks === undefined, 'PhysicalNumberControl sets majorTicks' );
       assert && assert( options.arrowButtonOptions === undefined, 'PhysicalNumberControl sets arrowButtonOptions' );
       assert && assert( options.titleFont === undefined, 'PhysicalNumberControl sets title font' );
 
       // slider options are passed directly to the Slider in NumberControl
       options = _.extend( {
-        
+
         // {*|null} - passed to the Slider of NumberControl
         sliderOptions: null,
 
@@ -49,18 +49,30 @@ define( require => {
       }, options.numberDisplayOptions );
 
       // look and feel for all PhysicalNumberControls (not set in normal options extend call because they cannot be
-      // chaned with options!)
+      // changed with options!)
       _.extend( options, {
         arrowButtonOptions: {
           scale: 0.5
         },
         layoutFunction: NumberControl.createLayoutFunction4(),
-        titleFont: Constants.CONTROL_TITLE_FONT,
-        tandem: tandem,
-        majorTicks: [
-          { value: valueRange.min, label: new Text( Util.toFixed( valueRange.min, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS ) },
-          { value: valueRange.max, label: new Text( Util.toFixed( valueRange.max, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS ) }
-        ]
+        titleNodeOptions: {
+          titleFont: Constants.CONTROL_TITLE_FONT
+        },
+        sliderOptions: {
+          majorTicks: [
+            {
+              value: valueRange.min,
+              label: new Text( Util.toFixed( valueRange.min, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
+            },
+            {
+              value: valueRange.max,
+              label: new Text( Util.toFixed( valueRange.max, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
+            }
+          ]
+        },
+
+        // phet-io
+        tandem: tandem
       } );
 
       super( titleString, property, valueRange, options );
