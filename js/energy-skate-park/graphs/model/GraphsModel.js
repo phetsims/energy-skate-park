@@ -100,10 +100,11 @@ define( function( require ) {
      * @returns {}
      */
     getClosestSkaterState( time ) {
-      assert && assert( this.skaterSamples.lenth > 0, 'model has no saved SkaterStates to retrieve' );
+      assert && assert( this.skaterSamples.length > 0, 'model has no saved SkaterStates to retrieve' );
       
       let nearestIndex = _.sortedIndexBy( this.skaterSamples.getArray(), { time: time }, entry => { return entry.time; } );
       nearestIndex = Util.clamp( nearestIndex, 0, this.skaterSamples.length - 1 );
+
       return this.skaterSamples.get( nearestIndex );
     },
 
