@@ -131,10 +131,12 @@ define( function( require ) {
         if ( independentVariable === GraphsModel.IndependentVariable.POSITION ) {
           energyPlot.setMaxX( 10 );
           energyPlot.setCursorVisibleOverride( false );
+          energyPlot.setPlotStyle( XYDataSeriesNode.PlotStyle.SCATTER );
         }
         else {
           energyPlot.setMaxX( 20 );
           energyPlot.setCursorVisibleOverride( null );
+          energyPlot.setPlotStyle( XYDataSeriesNode.PlotStyle.LINE );
         }
       } );
 
@@ -225,7 +227,6 @@ define( function( require ) {
         stepY: 1000,
 
         showAxis: false,
-        plotStyle: XYDataSeriesNode.PlotStyle.SCATTER,
 
         tickLabelFont: new PhetFont( 12 ),
 
