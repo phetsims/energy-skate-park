@@ -51,8 +51,7 @@ define( function( require ) {
     } );
 
     // @public - sets the independent variable for the graph display
-    this.independentVariables = new Enumeration( [ 'POSITION', 'TIME' ] );
-    this.independentVariableProperty = new EnumerationProperty( this.independentVariables, this.independentVariables.POSITION );
+    this.independentVariableProperty = new EnumerationProperty( GraphsModel.IndependentVariable, GraphsModel.IndependentVariable.POSITION );
 
     // samples of skater data to record and potentially play back
     this.skaterSamples = new ObservableArray();
@@ -162,5 +161,9 @@ define( function( require ) {
 
       return [ parabolaTrack, doubleWellTrack ];
     }
+  }, {
+
+    // @static @public
+    IndependentVariable: new Enumeration( [ 'POSITION', 'TIME' ] )
   } );
 } );

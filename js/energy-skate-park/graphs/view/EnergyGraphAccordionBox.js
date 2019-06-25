@@ -16,6 +16,7 @@ define( function( require ) {
   const EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
   const Emitter = require( 'AXON/Emitter' );
   const Dimension2 = require( 'DOT/Dimension2' );
+  const GraphsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/model/GraphsModel' );
   const Text = require( 'SCENERY/nodes/Text' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const Node = require( 'SCENERY/nodes/Node' );
@@ -84,7 +85,7 @@ define( function( require ) {
       const switchLabelOptions = {
         font: new PhetFont( { size: 11 } )
       };
-      const variables = model.independentVariables;
+      const variables = GraphsModel.IndependentVariable;
       const positionLabel = new Text( positionLabelString, switchLabelOptions );
       const timeLabel = new Text( timeLabelString, switchLabelOptions );
       const variableSwitch = new ABSwitch( model.independentVariableProperty, variables.POSITION, positionLabel, variables.TIME, timeLabel, {
