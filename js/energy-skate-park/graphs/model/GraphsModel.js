@@ -18,6 +18,7 @@ define( function( require ) {
   var GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
   var NumberProperty = require( 'AXON/NumberProperty' );
   var ObservableArray = require( 'AXON/ObservableArray' );
+  var Range = require( 'DOT/Range' );
   var SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
   var Util = require( 'DOT/Util' );
   var PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
@@ -45,7 +46,9 @@ define( function( require ) {
     this.totalEnergyDataVisibleProperty = new BooleanProperty( true );
 
     // @public - scale for the graph
-    this.lineGraphScaleProperty = new NumberProperty( 1 / 100 );
+    this.lineGraphScaleProperty = new NumberProperty( 3, {
+      range: new Range( 1, 5 )
+    } );
 
     // @public - sets the independent variable for the graph display
     this.independentVariables = new Enumeration( [ 'POSITION', 'TIME' ] );

@@ -22,7 +22,9 @@ define( function( require ) {
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const XYCursorPlot = require( 'GRIDDLE/XYCursorPlot' );
   const XYDataSeries = require( 'GRIDDLE/XYDataSeries' );
+  const VBox = require( 'SCENERY/nodes/VBox' );
   const VerticalCheckboxGroup = require( 'SUN/VerticalCheckboxGroup' );
+  const EnergyGraphZoomButton = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphZoomButton' );
 
   // strings
   const kineticEnergyLabelString = require( 'string!ENERGY_SKATE_PARK/kineticEnergyLabel' );
@@ -36,6 +38,13 @@ define( function( require ) {
   // constants
   const GRAPH_WIDTH = 475;
   const GRAPH_HEIGHT = 125;
+
+  const DEFAULT_MAX_Y = 3000;
+  const DEFAULT_MIN_Y = -3000;
+
+  const SWITCH_SIZE = new Dimension2( 40, 20 );
+
+  const LABEL_FONT = new PhetFont( { size: 14 } );
 
   class EnergyGraphAccordionBox extends AccordionBox {
 
@@ -78,15 +87,51 @@ define( function( require ) {
       const positionLabel = new Text( positionLabelString, switchLabelOptions );
       const timeLabel = new Text( timeLabelString, switchLabelOptions );
       const variableSwitch = new ABSwitch( model.independentVariableProperty, variables.POSITION, positionLabel, variables.TIME, timeLabel, {
-        switchSize: new Dimension2( 40, 20 ),
+        switchSize: SWITCH_SIZE,
         tandem: tandem.createTandem( 'variableSwitch' )
       } );
       contentNode.addChild( variableSwitch );
 
+      const zoomInButton = new EnergyGraphZoomButton( model.lineGraphScaleProperty, {
+        tandem: tandem.createTandem( 'zoomInButton' )
+      } );
+      const zoomOutButton = new EnergyGraphZoomButton( model.lineGraphScaleProperty, {
+        in: false,
+        tandem: tandem.createTandem( 'zoomOutButton' )
+      } );
+      const zoomButtons = new VBox( {
+        children: [ zoomInButton, zoomOutButton ],
+        spacing: 5
+      } );
+
+      // graph labels - y axis includes zoom buttons as part of the label
+      const yLabelText = new Text( 'Energy (J)', { rotation: -Math.PI / 2, font: LABEL_FONT } );
+      const xLabelText =  new Text( 'Time (s)', { font: LABEL_FONT } );
+      const yLabel = new VBox( {
+        children: [ yLabelText, zoomButtons ],
+        spacing: 10
+      } );
+      contentNode.addChild( yLabel );
+      contentNode.addChild( xLabelText );
+
+      model.lineGraphScaleProperty.link( ( scale ) => {
+        const newMinY = scale * DEFAULT_MIN_Y;
+        const newMaxY = scale * DEFAULT_MAX_Y;
+
+        energyPlot.setMinY( newMinY );
+        energyPlot.setMaxY( newMaxY );
+        energyPlot.setStepY( ( newMaxY - newMinY ) / 6 );
+      } );
+
       // layout, all layout is relative to the energy plot
-      checkboxGroup.rightCenter = energyPlot.leftCenter;
-      variableSwitch.centerBottom = energyPlot.centerTop;
-      eraserButton.rightBottom = energyPlot.rightTop;
+      variableSwitch.centerBottom = energyPlot.centerTop.minusXY( 0, 5 );
+
+      eraserButton.right = energyPlot.right;
+      eraserButton.centerY = variableSwitch.centerY;
+
+      yLabel.rightCenter = energyPlot.leftCenter.minusXY( 10, 0 );
+      xLabelText.centerTop = energyPlot.centerBottom.plusXY( 0, 10 );
+      checkboxGroup.rightCenter = yLabel.leftCenter.minusXY( 10, 0 );
 
       super( contentNode, {
         titleNode: new Text( plotsEnergyGraphString, { font: new PhetFont( { size: 16 } ) } ),
@@ -94,6 +139,7 @@ define( function( require ) {
         titleXSpacing: 7,
         buttonXMargin: 5,
         buttonYMargin: 5,
+        contentYSpacing: -SWITCH_SIZE.height,
         tandem: tandem.createTandem( 'accordionBox' )
       } );
 
