@@ -34,13 +34,13 @@ define( require => {
       if ( options.in ) {
         options.listener = () => {
           const currentScale = scaleProperty.get();
-          scaleProperty.set( Math.min( currentScale + 1, scaleProperty.range.max ) );
+          scaleProperty.set( Math.max( currentScale - options.scaleDelta, scaleProperty.range.min ) );
         };
       }
       else {
         options.listener = () => {
           const currentScale = scaleProperty.get();
-          scaleProperty.set( Math.max( currentScale - 1, scaleProperty.range.min ) );
+          scaleProperty.set( Math.min( currentScale + options.scaleDelta, scaleProperty.range.max ) );
         };
       }
 

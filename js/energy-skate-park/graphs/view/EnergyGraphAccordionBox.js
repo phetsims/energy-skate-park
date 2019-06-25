@@ -21,6 +21,7 @@ define( function( require ) {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Util = require( 'DOT/Util' );
   const XYCursorPlot = require( 'GRIDDLE/XYCursorPlot' );
   const XYDataSeries = require( 'GRIDDLE/XYDataSeries' );
   const XYDataSeriesNode = require( 'GRIDDLE/XYDataSeriesNode' );
@@ -41,8 +42,8 @@ define( function( require ) {
   const GRAPH_WIDTH = 475;
   const GRAPH_HEIGHT = 125;
 
-  const DEFAULT_MAX_Y = 3000;
-  const DEFAULT_MIN_Y = -3000;
+  const DEFAULT_MAX_Y = 1000;
+  const DEFAULT_MIN_Y = -1000;
 
   const SWITCH_SIZE = new Dimension2( 40, 20 );
 
@@ -122,7 +123,7 @@ define( function( require ) {
 
         energyPlot.setMinY( newMinY );
         energyPlot.setMaxY( newMaxY );
-        energyPlot.setStepY( ( newMaxY - newMinY ) / 6 );
+        energyPlot.setStepY( Util.roundToInterval( ( ( newMaxY - newMinY ) / 6 ), 500 ) );
       } );
 
       // when changing graph, the energy plot will update to a different plot
