@@ -22,6 +22,7 @@ define( function( require ) {
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const XYCursorPlot = require( 'GRIDDLE/XYCursorPlot' );
   const XYDataSeries = require( 'GRIDDLE/XYDataSeries' );
+  const XYDataSeriesNode = require( 'GRIDDLE/XYDataSeriesNode' );
   const VBox = require( 'SCENERY/nodes/VBox' );
   const VerticalCheckboxGroup = require( 'SUN/VerticalCheckboxGroup' );
   const EnergyGraphZoomButton = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphZoomButton' );
@@ -194,6 +195,7 @@ define( function( require ) {
         stepY: 1000,
 
         showAxis: false,
+        plotStyle: XYDataSeriesNode.PlotStyle.SCATTER,
 
         tickLabelFont: new PhetFont( 12 ),
 
