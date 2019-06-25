@@ -1,5 +1,5 @@
 /* eslint-disable */
-window.phet.phetio.phetioElementsBaseline =
+window.phet.phetio.phetioElementsBaseline = assert &&
   {
     "energySkatePark.general.activeProperty": {
       "phetioDocumentation": "Determines whether the entire simulation is running and processing user input. Setting this property to false pauses the simulation, and prevents user interaction.",
@@ -2883,6 +2883,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
+    "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.valueProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
+    },
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
@@ -2970,6 +2981,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NullableIO.<EventIO>, VoidIO>"
+    },
+    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.accordionBox.expandCollapseButton.property": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.accordionBox.expandCollapseButton.toggledEmitter": {
       "phetioDocumentation": "Emits when the button is toggled",
@@ -6975,6 +6997,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NullableIO.<EventIO>, VoidIO>"
     },
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.playPauseButton.property": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
+    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.playPauseButton.toggleNode": {
       "phetioDocumentation": "",
       "phetioEventType": "model",
@@ -9207,6 +9240,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
+    "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.valueProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
@@ -12464,6 +12508,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
+    "energySkatePark.introScreen.view.frictionSlider.valueProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
+    },
     "energySkatePark.introScreen.view.frictionSlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
@@ -12848,6 +12903,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
+    "energySkatePark.introScreen.view.gravitySlider.valueProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
     },
     "energySkatePark.introScreen.view.gravitySlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
@@ -16170,6 +16236,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NullableIO.<EventIO>, VoidIO>"
+    },
+    "energySkatePark.introScreen.view.introScreenView.playPauseButton.property": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
     },
     "energySkatePark.introScreen.view.introScreenView.playPauseButton.toggleNode": {
       "phetioDocumentation": "",
@@ -19900,6 +19977,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
+    "energySkatePark.labScreen.labScreenView.frictionSlider.valueProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
+    },
     "energySkatePark.labScreen.labScreenView.frictionSlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
@@ -22957,6 +23045,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NullableIO.<EventIO>, VoidIO>"
+    },
+    "energySkatePark.labScreen.labScreenView.graphsScreenView.playPauseButton.property": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.playPauseButton.toggleNode": {
       "phetioDocumentation": "",
@@ -26730,6 +26829,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
+    "energySkatePark.labScreen.labScreenView.gravitySlider.valueProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
     },
     "energySkatePark.labScreen.labScreenView.gravitySlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
@@ -32440,6 +32550,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
+    "energySkatePark.measureScreen.measureScreenView.frictionSlider.valueProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
+    },
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
@@ -32967,6 +33088,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
+    "energySkatePark.measureScreen.measureScreenView.gravitySlider.slider.valueProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
     },
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.slider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
@@ -33693,6 +33825,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
+    "energySkatePark.measureScreen.measureScreenView.massNumberControl.slider.valueProperty": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
     },
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.slider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
@@ -34628,6 +34771,17 @@ window.phet.phetio.phetioElementsBaseline =
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NullableIO.<EventIO>, VoidIO>"
+    },
+    "energySkatePark.measureScreen.measureScreenView.playPauseButton.property": {
+      "phetioDocumentation": "",
+      "phetioEventType": "model",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "LinkedElementIO"
     },
     "energySkatePark.measureScreen.measureScreenView.playPauseButton.toggleNode": {
       "phetioDocumentation": "",
