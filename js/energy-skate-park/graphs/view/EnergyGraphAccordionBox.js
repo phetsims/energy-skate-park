@@ -125,6 +125,18 @@ define( function( require ) {
         energyPlot.setStepY( ( newMaxY - newMinY ) / 6 );
       } );
 
+      // when changing graph, the energy plot will update to a different plot
+      model.independentVariableProperty.link( ( independentVariable ) => {
+        if ( independentVariable === GraphsModel.IndependentVariable.POSITION ) {
+          energyPlot.setMaxX( 10 );
+          energyPlot.setCursorVisibleOverride( false );
+        }
+        else {
+          energyPlot.setMaxX( 20 );
+          energyPlot.setCursorVisibleOverride( null );
+        }
+      } );
+
       // layout, all layout is relative to the energy plot
       variableSwitch.centerBottom = energyPlot.centerTop.minusXY( 0, 5 );
 
@@ -147,6 +159,22 @@ define( function( require ) {
 
       // @public
       this.energyPlot = energyPlot;
+
+      // @private {GraphsModel}
+      this.model = model;
+
+      // listeners - when the independent variable changes, clear all data and the graph
+      model.independentVariableProperty.link( ( independentVariable ) => {
+        this.clearEnergyData();
+      } ); 
+    }
+
+    /**
+     * Clear all data, removing saved SkaterStates and removing all data from the XYDataSeries attached to the XYPlot.
+     */
+    clearEnergyData() {
+      this.model.clearEnergyData();
+      this.energyPlot.clearEnergyDataSeries();
     }
 
     /**
@@ -240,15 +268,15 @@ define( function( require ) {
       this.totalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.totalEnergy } );
 
       model.skaterSamples.addItemAddedListener( skaterState => {
+        const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
+        const independentVariable = plotTime ? skaterState.time : skaterState.positionX + 5;
 
-        const time = skaterState.time;
+        this.kineticEnergyDataSeries.addPoint( independentVariable, skaterState.getKineticEnergy() );
+        this.potentialEnergyDataSeries.addPoint( independentVariable, skaterState.getPotentialEnergy() );
+        this.thermalEnergyDataSeries.addPoint( independentVariable, skaterState.thermalEnergy );
+        this.totalEnergyDataSeries.addPoint( independentVariable, skaterState.getTotalEnergy() );
 
-        this.kineticEnergyDataSeries.addPoint( time, skaterState.getKineticEnergy() );
-        this.potentialEnergyDataSeries.addPoint( time, skaterState.getPotentialEnergy() );
-        this.thermalEnergyDataSeries.addPoint( time, skaterState.thermalEnergy );
-        this.totalEnergyDataSeries.addPoint( time, skaterState.getTotalEnergy() );
-
-        this.setCursorValue( time );
+        this.setCursorValue( independentVariable );
       } );
 
       // series rendered in order, this order matches Java version

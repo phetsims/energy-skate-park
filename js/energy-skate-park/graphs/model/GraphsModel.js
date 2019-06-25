@@ -24,6 +24,10 @@ define( function( require ) {
   var PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
   var inherit = require( 'PHET_CORE/inherit' );
 
+  // constants
+  // in seconds, how frequently we will save SkaterStates when recording data for energy vs position plot
+  const SAVE_REFRESH_RATE = 0.1;
+
   /**
    * @constructor
    * @param {Tandem} tandem
@@ -55,6 +59,9 @@ define( function( require ) {
 
     // samples of skater data to record and potentially play back
     this.skaterSamples = new ObservableArray();
+
+    // @private {number} - when plotting energy vs time, we only save SkaterStates at SAVE_REFRESH_RATE
+    this.timeSinceSkaterSaved = 0;
 
     // @public - in seconds, how much time has passed since beginning to record skater states
     this.runningTimeProperty = new NumberProperty( 0 );
@@ -88,7 +95,18 @@ define( function( require ) {
       updatedState.setTime( this.runningTimeProperty.get() );
 
       if ( this.runningTimeProperty.get() < GraphsConstants.MAX_TIME ) {
-        this.skaterSamples.push( updatedState );
+        if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME ) {
+          this.skaterSamples.push( updatedState );
+        }
+        else {
+          if ( this.timeSinceSkaterSaved > SAVE_REFRESH_RATE ) {
+            this.timeSinceSkaterSaved = 0;
+            this.skaterSamples.push( updatedState );
+          }
+          else {
+            this.timeSinceSkaterSaved += dt;
+          }
+        }
       }
 
       return updatedState;
