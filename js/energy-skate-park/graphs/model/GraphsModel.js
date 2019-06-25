@@ -67,7 +67,7 @@ define( function( require ) {
     step: function( dt ) {
       EnergySkateParkFullTrackSetModel.prototype.step.call( this, dt );
 
-      // for the "Graphs" screen we want to update energies 
+      // for the "Graphs" screen we want to update energies while dragging so that they are recorded on the graph
       if ( this.skater.draggingProperty.get() ) {
         var initialStateCopy = new SkaterState( this.skater );
         this.stepModel( dt, initialStateCopy );
