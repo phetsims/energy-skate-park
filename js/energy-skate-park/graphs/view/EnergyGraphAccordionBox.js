@@ -75,8 +75,7 @@ define( function( require ) {
 
       const eraserButton = new EraserButton( {
         listener: () => {
-          model.clearEnergyData();
-          energyPlot.clearEnergyDataSeries();
+          this.clearEnergyData();
         },
 
         tandem: tandem.createTandem( 'eraserButton' )
@@ -126,20 +125,6 @@ define( function( require ) {
         energyPlot.setStepY( Util.roundToInterval( ( ( newMaxY - newMinY ) / 6 ), 500 ) );
       } );
 
-      // when changing graph, the energy plot will update to a different plot
-      model.independentVariableProperty.link( ( independentVariable ) => {
-        if ( independentVariable === GraphsModel.IndependentVariable.POSITION ) {
-          energyPlot.setMaxX( 10 );
-          energyPlot.setCursorVisibleOverride( false );
-          energyPlot.setPlotStyle( XYDataSeriesNode.PlotStyle.SCATTER );
-        }
-        else {
-          energyPlot.setMaxX( 20 );
-          energyPlot.setCursorVisibleOverride( null );
-          energyPlot.setPlotStyle( XYDataSeriesNode.PlotStyle.LINE );
-        }
-      } );
-
       // layout, all layout is relative to the energy plot
       variableSwitch.centerBottom = energyPlot.centerTop.minusXY( 0, 5 );
 
@@ -166,9 +151,20 @@ define( function( require ) {
       // @private {GraphsModel}
       this.model = model;
 
-      // listeners - when the independent variable changes, clear all data and the graph
+      // listeners - when the independent variable changes, clear all data and change graph display
       model.independentVariableProperty.link( ( independentVariable ) => {
         this.clearEnergyData();
+
+        if ( independentVariable === GraphsModel.IndependentVariable.POSITION ) {
+          energyPlot.setMaxX( 10 );
+          energyPlot.setCursorVisibleOverride( false );
+          energyPlot.setPlotStyle( XYDataSeriesNode.PlotStyle.SCATTER );
+        }
+        else {
+          energyPlot.setMaxX( 20 );
+          energyPlot.setCursorVisibleOverride( null );
+          energyPlot.setPlotStyle( XYDataSeriesNode.PlotStyle.LINE );
+        }
       } ); 
     }
 
@@ -253,6 +249,7 @@ define( function( require ) {
             model.skater.updatedEmitter.emit();
           },
           endDrag: ( event, listener ) => {
+
             if ( !pausedOnDragStart ) {
               model.pausedProperty.set( false );
             }
