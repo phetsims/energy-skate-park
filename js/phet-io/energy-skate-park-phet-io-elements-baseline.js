@@ -290,7 +290,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.general.navigationBar.graphsScreenButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -477,7 +477,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.general.navigationBar.homeButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -565,7 +565,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.general.navigationBar.introScreenButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -752,7 +752,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.general.navigationBar.labScreenButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -939,7 +939,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.general.navigationBar.measureScreenButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -2897,7 +2897,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -2930,7 +2930,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.accordionBox.expandCollapseButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3073,7 +3073,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.eraserButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3304,7 +3304,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomInButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3480,7 +3480,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomOutButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3909,7 +3909,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene1RadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -3997,7 +3997,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene2RadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -4580,7 +4580,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.barGraphCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -4756,7 +4756,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.gridCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -4932,7 +4932,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -5152,7 +5152,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -5427,7 +5427,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -5614,7 +5614,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.energyBarGraph.clearThermalButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -5746,7 +5746,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.energyBarGraph.zoomInButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -5922,7 +5922,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.energyBarGraph.zoomOutButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -6461,7 +6461,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.clearThermalButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -6945,7 +6945,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.playPauseButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -7418,7 +7418,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.resetAllButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -7572,7 +7572,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.returnSkaterButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -7660,7 +7660,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.returnSkaterToGroundButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -7748,7 +7748,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.returnSkaterToPreviousStartingPositionButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -8254,7 +8254,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.stepButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -9255,7 +9255,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -12522,7 +12522,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.frictionSlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -12918,7 +12918,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.gravitySlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -13281,7 +13281,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene1RadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -13369,7 +13369,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene2RadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -13457,7 +13457,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene3RadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -13545,7 +13545,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene4RadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -13820,7 +13820,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.barGraphCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -13996,7 +13996,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.gridCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -14172,7 +14172,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -14392,7 +14392,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -14667,7 +14667,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedometerCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -14854,7 +14854,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.energyBarGraph.clearThermalButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -14986,7 +14986,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.energyBarGraph.zoomInButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -15162,7 +15162,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.energyBarGraph.zoomOutButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -15701,7 +15701,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.pieChartLegend.clearThermalButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -16185,7 +16185,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.playPauseButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -16658,7 +16658,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.resetAllButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -16812,7 +16812,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.returnSkaterButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -16900,7 +16900,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.returnSkaterToGroundButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -16988,7 +16988,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.returnSkaterToPreviousStartingPositionButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -17494,7 +17494,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.introScreenView.stepButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -17824,7 +17824,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.introScreen.view.massComboBox.button.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -19991,7 +19991,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.frictionSlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -20156,7 +20156,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.attachDetachToggleButtons.radioButtonGroup.attachRadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -20288,7 +20288,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.attachDetachToggleButtons.radioButtonGroup.detachRadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -20508,7 +20508,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.clearButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -20629,7 +20629,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.barGraphCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -20805,7 +20805,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.gridCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -20981,7 +20981,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -21201,7 +21201,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -21476,7 +21476,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -21663,7 +21663,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraph.clearThermalButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -21795,7 +21795,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraph.zoomInButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -21971,7 +21971,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraph.zoomOutButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -22510,7 +22510,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.clearThermalButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -22994,7 +22994,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.playPauseButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -23467,7 +23467,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.resetAllButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -23621,7 +23621,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.returnSkaterButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -23709,7 +23709,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.returnSkaterToGroundButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -23797,7 +23797,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.returnSkaterToPreviousStartingPositionButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -24347,7 +24347,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.graphsScreenView.stepButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -26844,7 +26844,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.labScreen.labScreenView.gravitySlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -28923,7 +28923,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene1RadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -29011,7 +29011,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene2RadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -29099,7 +29099,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene3RadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -29187,7 +29187,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene4RadioButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -31244,7 +31244,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.gridCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -31420,7 +31420,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pathCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -31552,7 +31552,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -31772,7 +31772,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.referenceHeightCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -32047,7 +32047,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedometerCheckbox.enabledProperty": {
       "phetioDocumentation": "When disabled, the checkbox is grayed out and cannot be pressed.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -32564,7 +32564,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -32597,7 +32597,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.leftArrowButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -32806,7 +32806,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.rightArrowButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -33103,7 +33103,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.slider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -33334,7 +33334,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.leftArrowButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -33543,7 +33543,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.rightArrowButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -33840,7 +33840,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.slider.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -34236,7 +34236,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.pieChartLegend.clearThermalButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -34720,7 +34720,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.playPauseButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -35193,7 +35193,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.resetAllButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -35347,7 +35347,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.returnSkaterButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -35435,7 +35435,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.returnSkaterToGroundButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -35523,7 +35523,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.returnSkaterToPreviousStartingPositionButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
@@ -36029,7 +36029,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
     "energySkatePark.measureScreen.measureScreenView.stepButton.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioEventType": "model",
-      "phetioFeatured": false,
+      "phetioFeatured": true,
       "phetioHighFrequency": false,
       "phetioPlayback": false,
       "phetioReadOnly": false,
