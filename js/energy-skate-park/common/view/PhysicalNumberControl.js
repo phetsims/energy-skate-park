@@ -39,7 +39,7 @@ define( require => {
         sliderOptions: null,
 
         // {*|null} - passed to the NumberDisplay of NumberControl
-        numerDisplayOptions: null
+        numberDisplayOptions: null
       }, options );
 
       options.sliderOptions = _.extend( Constants.SLIDER_OPTIONS, options.sliderOptions );
