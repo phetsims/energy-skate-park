@@ -1,28 +1,26 @@
-// Copyright 2018, University of Colorado Boulder
+// Copyright 2019, University of Colorado Boulder
 
 /**
  * Model for the Graphs screen in Energy Skate Park.
+ * 
  * @author Jesse Greenberg
  */
-
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var BooleanProperty = require( 'AXON/BooleanProperty' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
-  var Enumeration = require( 'PHET_CORE/Enumeration' );
-  var EnumerationProperty = require( 'AXON/EnumerationProperty' );
-  var EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
-  var GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
-  var NumberProperty = require( 'AXON/NumberProperty' );
-  var ObservableArray = require( 'AXON/ObservableArray' );
-  var Range = require( 'DOT/Range' );
-  var SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
-  var Util = require( 'DOT/Util' );
-  var PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
-  var inherit = require( 'PHET_CORE/inherit' );
+  const BooleanProperty = require( 'AXON/BooleanProperty' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
+  const Enumeration = require( 'PHET_CORE/Enumeration' );
+  const EnumerationProperty = require( 'AXON/EnumerationProperty' );
+  const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
+  const NumberProperty = require( 'AXON/NumberProperty' );
+  const ObservableArray = require( 'AXON/ObservableArray' );
+  const Range = require( 'DOT/Range' );
+  const SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
+  const Util = require( 'DOT/Util' );
+  const PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
 
   // constants
   // in seconds, how frequently we will save SkaterStates when recording data for energy vs position plot
@@ -32,63 +30,70 @@ define( function( require ) {
    * @constructor
    * @param {Tandem} tandem
    */
-  function GraphsModel( tandem ) {
+  class GraphsModel extends EnergySkateParkFullTrackSetModel {
 
-    // track set model with no friction
-    EnergySkateParkTrackSetModel.call( this, false, tandem.createTandem( 'graphsModel' ),  {
-      tracksConfigurable: true
-    } );
+    /**
+     * @param {Tandem} tandem
+     */
+    constructor( tandem ) {
 
-    // the 'graphs' screen uses a unique set of premade tracks
-    const trackSet = this.createGraphsTrackSet( tandem );
-    this.addTrackSet( trackSet );
+      // track set model with no friction
+      super( false, tandem.createTandem( 'graphsModel' ),  {
+        tracksConfigurable: true
+      } );
 
-    // @public - properties for visibility and settings of the graph
-    this.kineticEnergyDataVisibleProperty = new BooleanProperty( true );
-    this.potentialEnergyDataVisibleProperty = new BooleanProperty( true );
-    this.thermalEnergyDataVisibleProperty = new BooleanProperty( true );
-    this.totalEnergyDataVisibleProperty = new BooleanProperty( true );
+      // the 'graphs' screen uses a unique set of premade tracks
+      const trackSet = this.createGraphsTrackSet( tandem );
+      this.addTrackSet( trackSet );
 
-    // @public - scale for the graph
-    this.lineGraphScaleProperty = new NumberProperty( 3, {
-      range: new Range( 1, 5 )
-    } );
+      // @public - properties for visibility and settings of the graph
+      this.kineticEnergyDataVisibleProperty = new BooleanProperty( true );
+      this.potentialEnergyDataVisibleProperty = new BooleanProperty( true );
+      this.thermalEnergyDataVisibleProperty = new BooleanProperty( true );
+      this.totalEnergyDataVisibleProperty = new BooleanProperty( true );
 
-    // @public - sets the independent variable for the graph display
-    this.independentVariableProperty = new EnumerationProperty( GraphsModel.IndependentVariable, GraphsModel.IndependentVariable.POSITION );
+      // @public - scale for the graph
+      this.lineGraphScaleProperty = new NumberProperty( 3, {
+        range: new Range( 1, 5 )
+      } );
 
-    // samples of skater data to record and potentially play back
-    this.skaterSamples = new ObservableArray();
+      // @public - sets the independent variable for the graph display
+      this.independentVariableProperty = new EnumerationProperty( GraphsModel.IndependentVariable, GraphsModel.IndependentVariable.POSITION );
 
-    // @private {number} - when plotting energy vs time, we only save SkaterStates at SAVE_REFRESH_RATE
-    this.timeSinceSkaterSaved = 0;
+      // samples of skater data to record and potentially play back
+      this.skaterSamples = new ObservableArray();
 
-    // @public - in seconds, how much time has passed since beginning to record skater states
-    this.runningTimeProperty = new NumberProperty( 0 );
-  }
+      // @private {number} - when plotting energy vs time, we only save SkaterStates at SAVE_REFRESH_RATE
+      this.timeSinceSkaterSaved = 0;
 
-  energySkatePark.register( 'GraphsModel', GraphsModel );
+      // @public - in seconds, how much time has passed since beginning to record skater states
+      this.runningTimeProperty = new NumberProperty( 0 );
+    }
 
-  return inherit( EnergySkateParkFullTrackSetModel, GraphsModel, {
+    /**
+     * @override
+     * @param {number} dt
+     */
+    step( dt ) {
 
-    step: function( dt ) {
       EnergySkateParkFullTrackSetModel.prototype.step.call( this, dt );
 
       // for the "Graphs" screen we want to update energies while dragging so that they are recorded on the graph
       if ( this.skater.draggingProperty.get() ) {
-        var initialStateCopy = new SkaterState( this.skater );
+        const initialStateCopy = new SkaterState( this.skater );
         this.stepModel( dt, initialStateCopy );
       }
-    },
+    }
 
     /**
      * When the model is stepped, save skater sample data so that we can scrub states for playback.
      *
+     * @override
      * @param {number} dt
      * @param {SkaterState} skaterState
      */
-    stepModel: function( dt, skaterState ) {
-      var updatedState = EnergySkateParkFullTrackSetModel.prototype.stepModel.call( this, dt, skaterState );
+    stepModel( dt, skaterState ) {
+      const updatedState = EnergySkateParkFullTrackSetModel.prototype.stepModel.call( this, dt, skaterState );
 
       // for the graphs screen, we need 
       this.runningTimeProperty.set( this.runningTimeProperty.get() + dt );
@@ -110,7 +115,7 @@ define( function( require ) {
       }
 
       return updatedState;
-    },
+    }
 
     /**
      * Get the closest SkaterState that was saved at the time provided.
@@ -126,7 +131,7 @@ define( function( require ) {
       nearestIndex = Util.clamp( nearestIndex, 0, this.skaterSamples.length - 1 );
 
       return this.skaterSamples.get( nearestIndex );
-    },
+    }
 
     /**
      * Clear all energy data, and reset the running time since we will begin recording at zero.
@@ -134,7 +139,7 @@ define( function( require ) {
     clearEnergyData() {
       this.runningTimeProperty.reset();
       this.skaterSamples.clear();
-    },
+    }
 
     /**
      * Create the custom set of tracks for the "graphs" screen. The "graphs" screen includes a parabola and a 
@@ -143,7 +148,7 @@ define( function( require ) {
      * @param {Tandem} tandem
      * @return
      */
-    createGraphsTrackSet: function( tandem ) {
+    createGraphsTrackSet( tandem ) {
       const groupTandem = this.controlPointGroupTandem;
 
       // all tracks in graphs screen are bound by these dimensions (in meters)
@@ -179,9 +184,10 @@ define( function( require ) {
 
       return [ parabolaTrack, doubleWellTrack ];
     }
-  }, {
+  }
 
-    // @static @public
-    IndependentVariable: new Enumeration( [ 'POSITION', 'TIME' ] )
-  } );
+  GraphsModel.IndependentVariable = new Enumeration( [ 'POSITION', 'TIME' ] );
+
+  return energySkatePark.register( 'GraphsModel', GraphsModel );
+
 } );
