@@ -169,7 +169,7 @@ define( function( require ) {
     }
 
     /**
-     * Clear all data, removing saved SkaterStates and removing all data from the XYDataSeries attached to the XYPlot.
+     * Clear all data, removing saved SkaterSamples and removing all data from the XYDataSeries attached to the XYPlot.
      */
     clearEnergyData() {
       this.model.clearEnergyData();
@@ -243,9 +243,9 @@ define( function( require ) {
           },
           drag: ( event, listener ) => {
 
-            // when we drag the cursor, get the SkaterState at that time and set the skater to that state
-            const closestState = model.getClosestSkaterState( this.getCursorValue() );
-            closestState.setToSkater( model.skater );
+            // when we drag the cursor, get the skater sample at that time and set the skater to that state
+            const closestSample = model.getClosestSkaterSample( this.getCursorValue() );
+            closestSample.skaterState.setToSkater( model.skater );
             model.skater.updatedEmitter.emit();
           },
           endDrag: ( event, listener ) => {
@@ -266,14 +266,14 @@ define( function( require ) {
       this.thermalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.thermalEnergy } );
       this.totalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.totalEnergy } );
 
-      model.skaterSamples.addItemAddedListener( skaterState => {
+      model.skaterSamples.addItemAddedListener( skaterSample => {
         const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
-        const independentVariable = plotTime ? skaterState.time : skaterState.positionX + 5;
+        const independentVariable = plotTime ? skaterSample.time : skaterSample.position.x + 5;
 
-        this.kineticEnergyDataSeries.addPoint( independentVariable, skaterState.getKineticEnergy() );
-        this.potentialEnergyDataSeries.addPoint( independentVariable, skaterState.getPotentialEnergy() );
-        this.thermalEnergyDataSeries.addPoint( independentVariable, skaterState.thermalEnergy );
-        this.totalEnergyDataSeries.addPoint( independentVariable, skaterState.getTotalEnergy() );
+        this.kineticEnergyDataSeries.addPoint( independentVariable, skaterSample.kineticEnergy );
+        this.potentialEnergyDataSeries.addPoint( independentVariable, skaterSample.potentialEnergy );
+        this.thermalEnergyDataSeries.addPoint( independentVariable, skaterSample.thermalEnergy );
+        this.totalEnergyDataSeries.addPoint( independentVariable, skaterSample.totalEnergy );
 
         this.setCursorValue( independentVariable );
       } );

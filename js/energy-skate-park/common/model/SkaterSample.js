@@ -41,6 +41,13 @@ define( function( require ) {
     this.position = new Vector2( skaterState.positionX, skaterState.positionY );
     this.time = time;
 
+    // @public (read-only)
+    this.skaterState = skaterState;
+
+    // @public - in seconds, time since this sample was added to the model
+    this.timeSinceAdded = 0;
+
+    // TODO: The following Properties need to be moved to a subtype of this SkaterSample (MeasureSkaterSample or something)
     // @public - whether or not this sample is being inspected by the probe
     this.inspectedProperty = new BooleanProperty( false );
 
@@ -73,6 +80,8 @@ define( function( require ) {
           this.removalEmitter.emit();
         }
       }
+
+      this.timeSinceAdded += dt;
     },
 
     /**

@@ -131,23 +131,6 @@ define( function( require ) {
     update: function( overrides ) { return new SkaterState( this, overrides ); },
 
     /**
-     * Set a time for the data of this SkaterState.
-     * TODO: I am unsure about the best way to do this. For plotting and playback, this
-     * tracks the time for saved SkaterStates. SkaterState has many responsibilities and I
-     * wonder if it would be better to have a SkaterSample that tracks all that is needed
-     * for plotting and playback. Would require restoring a skaterState from a SkaterSample.
-     *
-     * This is currently not part of Update because not all SkaterStates require time. Another
-     * reason to move to something else like SkaterSamples.
-     * @public
-     *
-     * @param {number} time
-     */
-    setTime: function( time ) {
-      this.time = time;
-    },
-
-    /**
      * Get the curvature at the skater's point on the track, by setting it to the pass-by-reference argument.
      * 
      * @public

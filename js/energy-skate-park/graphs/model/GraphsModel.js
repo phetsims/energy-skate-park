@@ -19,6 +19,7 @@ define( require => {
   const ObservableArray = require( 'AXON/ObservableArray' );
   const Range = require( 'DOT/Range' );
   const SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
+  const SkaterSample = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterSample' );
   const Util = require( 'DOT/Util' );
   const PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
 
@@ -95,18 +96,19 @@ define( require => {
     stepModel( dt, skaterState ) {
       const updatedState = EnergySkateParkTrackSetModel.prototype.stepModel.call( this, dt, skaterState );
 
+      const skaterSample = new SkaterSample( updatedState, this.runningTimeProperty.get() );
+
       // for the graphs screen, we need 
       this.runningTimeProperty.set( this.runningTimeProperty.get() + dt );
-      updatedState.setTime( this.runningTimeProperty.get() );
 
       if ( this.runningTimeProperty.get() < GraphsConstants.MAX_TIME ) {
         if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME ) {
-          this.skaterSamples.push( updatedState );
+          this.skaterSamples.push( skaterSample );
         }
         else {
           if ( this.timeSinceSkaterSaved > SAVE_REFRESH_RATE ) {
             this.timeSinceSkaterSaved = 0;
-            this.skaterSamples.push( updatedState );
+            this.skaterSamples.push( skaterSample );
           }
           else {
             this.timeSinceSkaterSaved += dt;
@@ -124,8 +126,8 @@ define( require => {
      * @param {number} time (in seconds)
      * @returns {}
      */
-    getClosestSkaterState( time ) {
-      assert && assert( this.skaterSamples.length > 0, 'model has no saved SkaterStates to retrieve' );
+    getClosestSkaterSample( time ) {
+      assert && assert( this.skaterSamples.length > 0, 'model has no saved SkaterSamples to retrieve' );
       
       let nearestIndex = _.sortedIndexBy( this.skaterSamples.getArray(), { time: time }, entry => { return entry.time; } );
       nearestIndex = Util.clamp( nearestIndex, 0, this.skaterSamples.length - 1 );
