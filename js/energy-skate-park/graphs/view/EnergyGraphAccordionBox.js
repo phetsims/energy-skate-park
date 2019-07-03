@@ -272,6 +272,7 @@ define( function( require ) {
         const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
         const independentVariable = plotTime ? addedSample.time : addedSample.position.x + 5;
 
+        // keep a reference to the pointStyle so that it can be modified later
         const pointStyle = new PointStyle();
 
         this.kineticEnergyDataSeries.addPoint( independentVariable, addedSample.kineticEnergy, pointStyle );
@@ -282,16 +283,7 @@ define( function( require ) {
         // add a listener that updates opacity with the SkaterSample Property, dispose it on removal
         const opacityListener = opacity => {
           for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
-
-            // need to get index of addedSample, which may have changed by the time we reach this listener
-            // const dataIndex = this.getSampleDataIndex( addedSample, this.dataSeriesList[ i ] );
             pointStyle.opacity = opacity;
-
-            // TODO: unfortunate to create so many Color instances, consider setting opacity directly in griddle
-            // const pointStyle = this.dataSeriesList[ i ].getPointStyle( 0 );
-            // pointStyle.color = this.dataSeriesList[ i ].color.withAlpha( opacity );
-            // this.dataSeriesList[ i ].setPointStyle( 0, pointStyle );
-
             this.seriesViewMap[ this.dataSeriesList[ i ].uniqueId ].redraw();
           }
         };
