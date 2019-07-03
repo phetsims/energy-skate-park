@@ -21,6 +21,7 @@ define( function( require ) {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const PointStyle = require( 'GRIDDLE/PointStyle' );
   const Util = require( 'DOT/Util' );
   const XYCursorPlot = require( 'GRIDDLE/XYCursorPlot' );
   const XYDataSeries = require( 'GRIDDLE/XYDataSeries' );
@@ -266,14 +267,50 @@ define( function( require ) {
       this.thermalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.thermalEnergy } );
       this.totalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.totalEnergy } );
 
-      model.skaterSamples.addItemAddedListener( skaterSample => {
+      // add data points when a SkaterSample is added to the model
+      model.skaterSamples.addItemAddedListener( addedSample => {
         const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
-        const independentVariable = plotTime ? skaterSample.time : skaterSample.position.x + 5;
+        const independentVariable = plotTime ? addedSample.time : addedSample.position.x + 5;
 
-        this.kineticEnergyDataSeries.addPoint( independentVariable, skaterSample.kineticEnergy );
-        this.potentialEnergyDataSeries.addPoint( independentVariable, skaterSample.potentialEnergy );
-        this.thermalEnergyDataSeries.addPoint( independentVariable, skaterSample.thermalEnergy );
-        this.totalEnergyDataSeries.addPoint( independentVariable, skaterSample.totalEnergy );
+        const pointStyle = new PointStyle();
+
+        this.kineticEnergyDataSeries.addPoint( independentVariable, addedSample.kineticEnergy, pointStyle );
+        this.potentialEnergyDataSeries.addPoint( independentVariable, addedSample.potentialEnergy, pointStyle );
+        this.thermalEnergyDataSeries.addPoint( independentVariable, addedSample.thermalEnergy, pointStyle );
+        this.totalEnergyDataSeries.addPoint( independentVariable, addedSample.totalEnergy, pointStyle );
+
+        // add a listener that updates opacity with the SkaterSample Property, dispose it on removal
+        const opacityListener = opacity => {
+          for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
+
+            // need to get index of addedSample, which may have changed by the time we reach this listener
+            // const dataIndex = this.getSampleDataIndex( addedSample, this.dataSeriesList[ i ] );
+            pointStyle.opacity = opacity;
+
+            // TODO: unfortunate to create so many Color instances, consider setting opacity directly in griddle
+            // const pointStyle = this.dataSeriesList[ i ].getPointStyle( 0 );
+            // pointStyle.color = this.dataSeriesList[ i ].color.withAlpha( opacity );
+            // this.dataSeriesList[ i ].setPointStyle( 0, pointStyle );
+
+            this.seriesViewMap[ this.dataSeriesList[ i ].uniqueId ].redraw();
+          }
+        };
+        addedSample.opacityProperty.link( opacityListener );
+
+        const removalListener = removedSample => {
+          if ( removedSample === addedSample ) {
+
+            addedSample.opacityProperty.unlink( opacityListener );
+
+            for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
+              // TODO: Get the index of the position removed sample rather than assume they will be removed from oldest
+              // to newest?
+              this.dataSeriesList[ i ].removePoint( 0 );
+            }
+            model.skaterSamples.removeItemRemovedListener( removalListener );
+          }
+        };
+        model.skaterSamples.addItemRemovedListener( removalListener );
 
         this.setCursorValue( independentVariable );
       } );

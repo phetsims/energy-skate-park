@@ -27,6 +27,9 @@ define( require => {
   // in seconds, how frequently we will save SkaterStates when recording data for energy vs position plot
   const SAVE_REFRESH_RATE = 0.1;
 
+  // how long to keep a SkaterSample when plotting energy vs position before removing it from the data series
+  const SKATER_SAMPLE_LIFE_TIME = 2;
+
   /**
    * @constructor
    * @param {Tandem} tandem
@@ -101,20 +104,40 @@ define( require => {
       // for the graphs screen, we need 
       this.runningTimeProperty.set( this.runningTimeProperty.get() + dt );
 
-      if ( this.runningTimeProperty.get() < GraphsConstants.MAX_TIME ) {
-        if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME ) {
+      if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME ) {
+        if ( this.runningTimeProperty.get() < GraphsConstants.MAX_TIME ) {
+          this.skaterSamples.push( skaterSample );
+        }
+      }
+      else {
+        if ( this.timeSinceSkaterSaved > SAVE_REFRESH_RATE ) {
+          this.timeSinceSkaterSaved = 0;
           this.skaterSamples.push( skaterSample );
         }
         else {
-          if ( this.timeSinceSkaterSaved > SAVE_REFRESH_RATE ) {
-            this.timeSinceSkaterSaved = 0;
-            this.skaterSamples.push( skaterSample );
+          this.timeSinceSkaterSaved += dt;
+        }
+
+        // update time for each SkaterSample, and initiate remove for any that are too old
+        for ( let i = 0; i < this.skaterSamples.length; i++ ) {
+          const skaterSample = this.skaterSamples.get( i );
+
+          if ( !skaterSample.removeInitiated && ( skaterSample.timeSinceAdded > SKATER_SAMPLE_LIFE_TIME ) ) {
+            skaterSample.initiateRemove();
           }
-          else {
-            this.timeSinceSkaterSaved += dt;
-          }
+
+          // now step the skater sample for opacity and removal
+          this.skaterSamples.get( i ).step( dt );
         }
       }
+
+      // handle removal of the SkaterSample, SkaterSample indicates when it is ready for removal from the model
+      // after fading out
+      const removalListener = () => {
+        skaterSample.removalEmitter.removeListener( removalListener );
+        this.skaterSamples.remove( skaterSample );
+      };
+      skaterSample.removalEmitter.addListener( removalListener );
 
       return updatedState;
     }

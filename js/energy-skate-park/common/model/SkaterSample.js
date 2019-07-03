@@ -21,7 +21,7 @@ define( function( require ) {
   // constants
   // time (s) between initiation of removal and removal from the model - a short delay allows samples to still be
   // inspected a short time after a new set of samples is tracked
-  var REMOVAL_DELAY = 0.2;
+  var REMOVAL_DELAY = 3;
 
   /**
    * @constructor
