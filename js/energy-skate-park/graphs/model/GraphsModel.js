@@ -11,7 +11,7 @@ define( require => {
   // modules
   const BooleanProperty = require( 'AXON/BooleanProperty' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
+  const EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
   const Enumeration = require( 'PHET_CORE/Enumeration' );
   const EnumerationProperty = require( 'AXON/EnumerationProperty' );
   const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
@@ -30,7 +30,7 @@ define( require => {
    * @constructor
    * @param {Tandem} tandem
    */
-  class GraphsModel extends EnergySkateParkFullTrackSetModel {
+  class GraphsModel extends EnergySkateParkTrackSetModel {
 
     /**
      * @param {Tandem} tandem
@@ -76,7 +76,7 @@ define( require => {
      */
     step( dt ) {
 
-      EnergySkateParkFullTrackSetModel.prototype.step.call( this, dt );
+      EnergySkateParkTrackSetModel.prototype.step.call( this, dt );
 
       // for the "Graphs" screen we want to update energies while dragging so that they are recorded on the graph
       if ( this.skater.draggingProperty.get() ) {
@@ -93,7 +93,7 @@ define( require => {
      * @param {SkaterState} skaterState
      */
     stepModel( dt, skaterState ) {
-      const updatedState = EnergySkateParkFullTrackSetModel.prototype.stepModel.call( this, dt, skaterState );
+      const updatedState = EnergySkateParkTrackSetModel.prototype.stepModel.call( this, dt, skaterState );
 
       // for the graphs screen, we need 
       this.runningTimeProperty.set( this.runningTimeProperty.get() + dt );
