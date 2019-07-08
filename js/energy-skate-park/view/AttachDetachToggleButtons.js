@@ -50,7 +50,7 @@ define( function( require ) {
     var radioButtonGroupTandem = tandem.createTandem( 'radioButtonGroup' );
     var radioButtonsContent = [
       {
-        value: false,
+        value: true,
         node: new Image( attachIcon, {
           scale: scale,
           tandem: radioButtonGroupTandem.createTandem( attachRadioButtonTandemName ).createTandem( 'attachIcon' )
@@ -58,7 +58,7 @@ define( function( require ) {
         tandemName: attachRadioButtonTandemName
       },
       {
-        value: true,
+        value: false,
         node: new Image( detachIcon, {
           scale: scale,
           tandem: radioButtonGroupTandem.createTandem( detachRadioButtonTandemName ).createTandem( 'detachIcon' )

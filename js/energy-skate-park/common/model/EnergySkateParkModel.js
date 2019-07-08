@@ -202,7 +202,7 @@ define( function( require ) {
     } );
 
     // @public {boolean} - Whether the skater should stick to the track like a roller coaster, or be able to fly off like a street
-    this.stickingToTrackProperty = new BooleanProperty( false, {
+    this.stickingToTrackProperty = new BooleanProperty( true, {
       tandem: tandem.createTandem( 'stickingToTrackProperty' )
     } );
 
