@@ -89,7 +89,9 @@ define( function( require ) {
       // {boolean} - whether or not this ScreenView will show the reference height
       showReferenceHeight: true,
 
-      showMeasuringTape: true
+      showMeasuringTape: true,
+
+      visibilityControlsOptions: null
     }, options );
 
     var trackNodeGroupTandem = tandem.createGroupTandem( 'trackNode' );
@@ -136,7 +138,7 @@ define( function( require ) {
     this.gridNode = new GridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
     this.bottomLayer.addChild( this.gridNode );
 
-    this.controlPanel = new EnergySkateParkControlPanel( model, this, physicalControls, tandem.createTandem( 'controlPanel' ), options.controlPanelOptions );
+    this.controlPanel = new EnergySkateParkControlPanel( model, this, physicalControls, tandem.createTandem( 'controlPanel' ), options.visibilityControlsOptions );
     this.bottomLayer.addChild( this.controlPanel );
 
     // @private - node that shows the energy legend for the pie chart

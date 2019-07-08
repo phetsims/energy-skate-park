@@ -36,7 +36,14 @@ define( function( require ) {
     ];
     EnergySkateParkScreenView.call( this, model, measureControls, tandem, {
       showBarGraph: false,
-      showSkaterPath: true      
+      showSkaterPath: true,
+      visibilityControlsOptions: {
+        showSkaterPathCheckbox: true,
+        showSpeedCheckbox: true,
+        showPieChartCheckbox: true,
+        showGridCheckbox: true,
+        showReferenceHeightCheckbox: true
+      }
     } );
 
     // @private - for layout

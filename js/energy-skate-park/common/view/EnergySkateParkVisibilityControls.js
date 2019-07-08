@@ -13,9 +13,11 @@ define( function( require ) {
 
   // modules
   var AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
+  const BooleanProperty = require( 'AXON/BooleanProperty' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkCheckboxItem = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkCheckboxItem' );
   var inherit = require( 'PHET_CORE/inherit' );
+  const Spacer = require( 'SCENERY/nodes/Spacer' );
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
@@ -25,18 +27,29 @@ define( function( require ) {
   var pieChartString = require( 'string!ENERGY_SKATE_PARK/pieChart' );
   var plotsBarGraphString = require( 'string!ENERGY_SKATE_PARK/plots.bar-graph' );
   var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
+  const controlsStickToTrackString = require( 'string!ENERGY_SKATE_PARK/controls.stickToTrack' );
 
   /**
    * @constructor
    * @param {Array.<EnergySkateParkCheckboxItem>} checkboxItems
    * @param {object} options
    */
-  function EnergySkateParkVisibilityControls( model, screenView, tandem ) {
+  function EnergySkateParkVisibilityControls( model, screenView, tandem, options ) {
+
+    options = _.extend( {
+      showSpeedCheckbox: false,
+      showStickToTrackCheckbox: false,
+      showSkaterPathCheckbox: false,
+      showPieChartCheckbox: false,
+      showBarGraphCheckbox: false,
+      showGridCheckbox: false,
+      showReferenceHeightCheckbox: false
+    }, options );
 
     var itemAlignGroup = new AlignGroup();
     var checkboxItems = [];
 
-    if ( screenView.showSkaterPath ) {
+    if ( options.showSkaterPathCheckbox ) {
       assert && assert( model.sampleSkaterProperty, 'no Property for measuring samples, add to model or dont show this' );
 
       checkboxItems.push(
@@ -50,17 +63,20 @@ define( function( require ) {
       );
     }
 
-    checkboxItems.push(
-      new EnergySkateParkCheckboxItem(
-        pieChartString,
-        EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } ),
-        itemAlignGroup,
-        model.pieChartVisibleProperty,
-        tandem.createTandem( 'pieChartCheckbox' )
-      ),
-    );
+    if ( options.showPieChartCheckbox ) {
+      checkboxItems.push(
+        new EnergySkateParkCheckboxItem(
+          pieChartString,
+          EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } ),
+          itemAlignGroup,
+          model.pieChartVisibleProperty,
+          tandem.createTandem( 'pieChartCheckbox' )
+        ),
+      );  
+    }
+ 
 
-    if ( screenView.showBarGraph ) {
+    if ( options.showBarGraphCheckbox ) {
       checkboxItems.push( new EnergySkateParkCheckboxItem(
         plotsBarGraphString,
         EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } ),
@@ -70,24 +86,44 @@ define( function( require ) {
       ), );
     }
 
-    checkboxItems = checkboxItems.concat( [
-      new EnergySkateParkCheckboxItem(
+    if ( options.showGridCheckbox ) {
+      checkboxItems.push( new EnergySkateParkCheckboxItem(
         controlsShowGridString,
         EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.gridVisibleProperty,
         tandem.createTandem( 'gridCheckbox' )
-      ),
-      new EnergySkateParkCheckboxItem(
+      ) );
+    }
+
+    if ( options.showSpeedCheckbox ) {
+      checkboxItems.push( new EnergySkateParkCheckboxItem(
         propertiesSpeedString,
         EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.speedometerVisibleProperty,
         tandem.createTandem( 'speedometerCheckbox' )
-      )
-    ] );
+      ) );
+    }
 
-    if ( screenView.showReferenceHeight ) {
+    if ( options.showStickToTrackCheckbox ) {
+
+      // intermediary Property because the model tracks "detachable" rather than "currently sticking"
+      // Checkbox needs to set this Property directly so DerivedProperty won't work. Disposal of this Property
+      // isn't necessary since these controls exist for life of sim. 
+      const stickingProperty = new BooleanProperty( !model.detachableProperty.value );
+      stickingProperty.link( sticking => { model.detachableProperty.set( !sticking ); } );
+
+      checkboxItems.push( new EnergySkateParkCheckboxItem( 
+        controlsStickToTrackString,
+        new Spacer( 5, 5 ), // just until we have an icon, see #77
+        itemAlignGroup,
+        stickingProperty,
+        tandem.createTandem( 'stickToTrackCheckbox' )
+      ) );
+    }
+
+    if ( options.showReferenceHeightCheckbox ) {
       checkboxItems.push(
         new EnergySkateParkCheckboxItem(
           controlsReferenceHeightString,

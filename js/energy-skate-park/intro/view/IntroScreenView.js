@@ -27,7 +27,17 @@ define( function( require ) {
       new GravitySlider( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) ),
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) )
     ];
-    EnergySkateParkScreenView.call( this, model, introControls, tandem.createTandem( 'introScreenView' ) );
+
+    const visibilityControlsOptions = {
+      showSpeedCheckbox: true,
+      showPieChartCheckbox: true,
+      showBarGraphCheckbox: true,
+      showGridCheckbox: true,
+      showReferenceHeightCheckbox: true
+    };
+    EnergySkateParkScreenView.call( this, model, introControls, tandem.createTandem( 'introScreenView' ), {
+      visibilityControlsOptions: visibilityControlsOptions
+    } );
 
     // @private (for layout) {ComboBox} 
     this.massComboBox = new MassComboBox( model.skater.massProperty, this, {

@@ -27,11 +27,19 @@ define( function( require ) {
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) )
     ];
 
-    EnergySkateParkScreenView.call( this, model, graphsControls, tandem.createTandem( 'graphsScreenView' ) );
+    EnergySkateParkScreenView.call( this, model, graphsControls, tandem.createTandem( 'graphsScreenView' ), {
+      visibilityControlsOptions: {
+        showSpeedCheckbox: true,
+        showStickToTrackCheckbox: true
+      }
+    } );
 
     // @private - for layout
     this.graphAccordionBox = new EnergyGraphAccordionBox( model, tandem.createTandem( 'graphAccordionBox' ) );
     this.addChild( this.graphAccordionBox );
+
+    // grid and reference height visibility are controlled from a separate area in the "graphs" screen
+    
   }
 
   energySkatePark.register( 'GraphsScreenView', GraphsScreenView );

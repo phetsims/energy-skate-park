@@ -53,6 +53,9 @@
   "controls.gravity": {
     "value": "Gravity"
   },
+  "controls.stickToTrack": {
+    "value": "Stick to Track"
+  },
   "energy.kinetic": {
     "value": "Kinetic"
   },

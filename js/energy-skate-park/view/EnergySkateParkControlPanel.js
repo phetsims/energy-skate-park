@@ -29,11 +29,11 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function EnergySkateParkControlPanel( model, screenView, controls, tandem ) {
+  function EnergySkateParkControlPanel( model, screenView, controls, tandem, visibilityControlsOptions ) {
     assert && assert( controls.length > 0, 'control panel must include additional physical controls' );
 
     // controls that change visibility of items in the screen
-    var visibilityControls = new EnergySkateParkVisibilityControls( model, screenView, tandem.createTandem( 'visibilityControls' ) );
+    var visibilityControls = new EnergySkateParkVisibilityControls( model, screenView, tandem.createTandem( 'visibilityControls' ), visibilityControlsOptions );
     var children = [ visibilityControls ];
 
     if ( screenView.showTrackButtons ) {
