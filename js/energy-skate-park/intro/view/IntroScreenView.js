@@ -28,15 +28,10 @@ define( function( require ) {
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) )
     ];
 
-    const visibilityControlsOptions = {
-      showSpeedCheckbox: true,
-      showPieChartCheckbox: true,
-      showBarGraphCheckbox: true,
-      showGridCheckbox: true,
-      showReferenceHeightCheckbox: true
-    };
     EnergySkateParkScreenView.call( this, model, introControls, tandem.createTandem( 'introScreenView' ), {
-      visibilityControlsOptions: visibilityControlsOptions
+      visibilityControlsOptions: {
+        showReferenceHeightCheckbox: true
+      }
     } );
 
     // @private (for layout) {ComboBox} 

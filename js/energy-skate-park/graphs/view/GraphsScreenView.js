@@ -30,6 +30,9 @@ define( function( require ) {
 
     EnergySkateParkScreenView.call( this, model, graphsControls, tandem.createTandem( 'graphsScreenView' ), {
       visibilityControlsOptions: {
+        showPieChartCheckbox: false,
+        showBarGraphCheckbox: false,
+        showGridCheckbox: false,
         showSpeedCheckbox: true,
         showStickToTrackCheckbox: true
       }

@@ -39,10 +39,9 @@ define( function( require ) {
       showSkaterPath: true,
       visibilityControlsOptions: {
         showSkaterPathCheckbox: true,
-        showSpeedCheckbox: true,
-        showPieChartCheckbox: true,
-        showGridCheckbox: true,
-        showReferenceHeightCheckbox: true
+        showReferenceHeightCheckbox: true,
+        showStickToTrackCheckbox: true,
+        showBarGraphCheckbox: false
       }
     } );
 

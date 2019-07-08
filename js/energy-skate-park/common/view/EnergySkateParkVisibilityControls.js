@@ -2,7 +2,10 @@
 
 /**
  * Checkboxes that control visibility of items in energy-skate-park, including the pie chart, bar graph, grid,
- * speedometer, and reference height control.
+ * speedometer, and reference height control. Even though the model may support changing a particular Property of this
+ * control group, that doesn't mean it will be included in this control group. A single ScreenView might contain
+ * more than one of these groups with different sets of Checkboxes, so it is important that each check box can be
+ * specifically included/excluded with an option.
  *
  * At the moment, order of checkboxes cannot be controlled.
  *
@@ -35,13 +38,15 @@ define( function( require ) {
   function EnergySkateParkVisibilityControls( model, tandem, options ) {
 
     options = _.extend( {
-      showSpeedCheckbox: false,
-      showStickToTrackCheckbox: false,
+
+      // {boolean} - whether or not Checkboxes for these Properties are included in the controls
+      showPieChartCheckbox: true,
+      showBarGraphCheckbox: true,
+      showGridCheckbox: true,
+      showSpeedCheckbox: true,
+      showReferenceHeightCheckbox: false,
       showSkaterPathCheckbox: false,
-      showPieChartCheckbox: false,
-      showBarGraphCheckbox: false,
-      showGridCheckbox: false,
-      showReferenceHeightCheckbox: false
+      showStickToTrackCheckbox: false
     }, options );
 
     var itemAlignGroup = new AlignGroup();
@@ -104,17 +109,6 @@ define( function( require ) {
       ) );
     }
 
-    if ( options.showStickToTrackCheckbox ) {
-
-      checkboxItems.push( new EnergySkateParkCheckboxItem( 
-        controlsStickToTrackString,
-        EnergySkateParkCheckboxItem.createStickingToTrackIcon(),
-        itemAlignGroup,
-        model.stickingToTrackProperty,
-        tandem.createTandem( 'stickToTrackCheckbox' )
-      ) );
-    }
-
     if ( options.showReferenceHeightCheckbox ) {
       checkboxItems.push(
         new EnergySkateParkCheckboxItem(
@@ -125,6 +119,16 @@ define( function( require ) {
           tandem.createTandem( 'referenceHeightCheckbox' )
         )
       );
+    }
+
+    if ( options.showStickToTrackCheckbox ) {
+      checkboxItems.push( new EnergySkateParkCheckboxItem( 
+        controlsStickToTrackString,
+        EnergySkateParkCheckboxItem.createStickingToTrackIcon(),
+        itemAlignGroup,
+        model.stickingToTrackProperty,
+        tandem.createTandem( 'stickToTrackCheckbox' )
+      ) );
     }
 
     VBox.call( this, {
