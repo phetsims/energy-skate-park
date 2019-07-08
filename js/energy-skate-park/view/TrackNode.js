@@ -54,10 +54,10 @@ define( function( require ) {
     } );
 
     // must be unlinked in dispose
-    var detachableListener = function( detachable ) {
-      self.centerLine.lineDash = detachable ? [] : [ 11, 8 ];
+    var stickingToTrackListener = function( sticking ) {
+      self.centerLine.lineDash = sticking ? [ 11, 8 ] : [];
     };
-    model.detachableProperty.link( detachableListener );
+    model.stickingToTrackProperty.link( stickingToTrackListener );
 
     Node.call( this, {
       children: [ this.road, this.centerLine ],
@@ -128,7 +128,7 @@ define( function( require ) {
 
     // @private - only called by dispose
     this.disposeTrackNode = function() {
-      model.detachableProperty.unlink( detachableListener );
+      model.stickingToTrackProperty.unlink( stickingToTrackListener );
       _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
       for ( var i = 0; i < self.children.length; i++ ) {
         var child = self.children[ i ];

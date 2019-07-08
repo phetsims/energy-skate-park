@@ -202,8 +202,8 @@ define( function( require ) {
     } );
 
     // @public {boolean} - Whether the skater should stick to the track like a roller coaster, or be able to fly off like a street
-    this.detachableProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'detachableProperty' )
+    this.stickingToTrackProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'stickingToTrackProperty' )
     } );
 
     // @public - Will be filled in by the view, used to prevent control points from moving outside the visible model bounds when
@@ -330,7 +330,7 @@ define( function( require ) {
       this.pausedProperty.reset();
       this.speedProperty.reset();
       this.frictionProperty.reset();
-      this.detachableProperty.reset();
+      this.stickingToTrackProperty.reset();
       this.availableModelBoundsProperty.reset();
       this.availableModelBoundsProperty.value = availableModelBounds;
       this.skater.reset();
@@ -981,7 +981,7 @@ define( function( require ) {
 
       var leaveTrack = ( netForceRadial < centripetalForce && outsideCircle ) || ( netForceRadial > centripetalForce && !outsideCircle );
 
-      if ( leaveTrack && this.detachableProperty.value ) {
+      if ( leaveTrack && !this.stickingToTrackProperty.value ) {
 
         // Leave the track.  Make sure the velocity is pointing away from the track or keep track of frames away from the
         // track so it doesn't immediately recollide.  Or project a ray and see if a collision is imminent?

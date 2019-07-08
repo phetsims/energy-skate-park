@@ -46,7 +46,7 @@ define( function( require ) {
         var track = null;
         if ( EnergySkateParkQueryParameters.testTrackIndex === 1 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( -5, 8 ) );
           model.skater.released( 0, 0 );
@@ -60,7 +60,7 @@ define( function( require ) {
         // Skater stutters and slows going over the hump
         if ( EnergySkateParkQueryParameters.testTrackIndex === 2 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( -5, 7.7 ) );
           model.skater.released( 0, 0 );
@@ -74,7 +74,7 @@ define( function( require ) {
         // Tricky one--handled OK
         if ( EnergySkateParkQueryParameters.testTrackIndex === 3 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( -5, 7.7 ) );
           model.skater.released( 0, 0 );
@@ -88,7 +88,7 @@ define( function( require ) {
         // Wide loop, OK
         if ( EnergySkateParkQueryParameters.testTrackIndex === 4 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( -5, 7.7 ) );
           model.skater.released( 0, 0 );
@@ -102,7 +102,7 @@ define( function( require ) {
         // Flickering return skater button, PROBLEM
         if ( EnergySkateParkQueryParameters.testTrackIndex === 5 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( -5, 7.7 ) );
           model.skater.released( 0, 0 );
@@ -116,7 +116,7 @@ define( function( require ) {
         // Passes through track, PROBLEM
         if ( EnergySkateParkQueryParameters.testTrackIndex === 6 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( 5, 7.9 ) );
           model.skater.released( 0, 0 );
@@ -130,7 +130,7 @@ define( function( require ) {
         // Falls through bottom, PROBLEM
         if ( EnergySkateParkQueryParameters.testTrackIndex === 7 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( 5, 7.9 ) );
           model.skater.released( 0, 0 );
@@ -144,7 +144,7 @@ define( function( require ) {
         // Falls through loop, PROBLEM
         if ( EnergySkateParkQueryParameters.testTrackIndex === 8 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( 5, 7.9 ) );
           model.skater.released( 0, 0 );
@@ -158,7 +158,7 @@ define( function( require ) {
         // Pops upside down in loop, PROBLEM
         if ( EnergySkateParkQueryParameters.testTrackIndex === 9 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( 5, 7.9 ) );
           model.skater.released( 0, 0 );
@@ -172,7 +172,7 @@ define( function( require ) {
 
         if ( EnergySkateParkQueryParameters.testTrackIndex === 10 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( 5, 7.9 ) );
           model.skater.released( 0, 0 );
@@ -186,7 +186,7 @@ define( function( require ) {
 
         if ( EnergySkateParkQueryParameters.testTrackIndex === 11 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( 5, 7.9 ) );
           model.skater.released( 0, 0 );
@@ -200,7 +200,7 @@ define( function( require ) {
 
         if ( EnergySkateParkQueryParameters.testTrackIndex === 12 ) {
 
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( 5, 7.9 ) );
           model.skater.released( 0, 0 );
@@ -214,7 +214,7 @@ define( function( require ) {
 
         if ( EnergySkateParkQueryParameters.testTrackIndex === 13 ) {
 
-          model.detachableProperty.value = false;
+          model.stickingToTrackProperty.value = false;
           // The skater falls through model track
           model.skater.positionProperty.set( new Vector2( 5, 7.9 ) );
           model.skater.released( 0, 0 );
@@ -227,7 +227,7 @@ define( function( require ) {
         }
 
         if ( EnergySkateParkQueryParameters.testTrackIndex === 14 ) {
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           model.skater.positionProperty.set( new Vector2( -6.698445595854922, 6.5278756476683935 ) );
           model.skater.released( 0, 0 );
           model.frictionProperty.value = 0.05;
@@ -264,7 +264,7 @@ define( function( require ) {
 
         //Test decrease in thermal energy, see https://github.com/phetsims/energy-skate-park-basics/issues/141#issuecomment-59395426
         if ( EnergySkateParkQueryParameters.testTrackIndex === 15 ) {
-          model.detachableProperty.value = true;
+          model.stickingToTrackProperty.value = false;
           model.skater.positionProperty.set( new Vector2( -6.698445595854922, 6.5278756476683935 ) );
           model.skater.released( 0, 0 );
           model.frictionProperty.value = 0;

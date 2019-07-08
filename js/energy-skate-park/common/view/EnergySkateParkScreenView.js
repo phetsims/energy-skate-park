@@ -179,7 +179,7 @@ define( function( require ) {
     if ( model.tracksDraggable ) {
       var property = model.tracksDraggable ? new Property( true ) :
                      new DerivedProperty( [ model.sceneProperty ], function( scene ) { return scene === 2; } );
-      this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.detachableProperty, property, 150, tandem.createTandem( 'attachDetachToggleButtons' ) );
+      this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.stickingToTrackProperty, property, 150, tandem.createTandem( 'attachDetachToggleButtons' ) );
       this.bottomLayer.addChild( this.attachDetachToggleButtons );
     }
 

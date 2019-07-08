@@ -25,14 +25,14 @@ define( function( require ) {
 
   /**
    * Constructor for the AttachDetachToggleButtons
-   * @param {Property<Boolean>} detachableProperty Axon property that is true if the model state allows the skater to detach
+   * @param {Property<Boolean>} stickingToTrackProperty Axon property that is false if the model state allows the skater to detach
    * @param {Property<Boolean>} enabledProperty Axon property that is true if the control is enabled
    * @param {number} contentWidth Width for the control panel, to match the layout of the rest of the controls.
    * @param {Tandem} tandem
    * @param {Object} [options]
    * @constructor
    */
-  function AttachDetachToggleButtons( detachableProperty, enabledProperty, contentWidth, tandem, options ) {
+  function AttachDetachToggleButtons( stickingToTrackProperty, enabledProperty, contentWidth, tandem, options ) {
 
     // Match the style of the EnergySkateParkControlPanel
     options = _.extend( {
@@ -70,7 +70,7 @@ define( function( require ) {
     var buttonSpacing = contentWidth - ( options.xMargin * 2 ) - ( radioButtonsContent[ 0 ].node.width * 2 ) - SELECTED_LINE_WIDTH * 2; 
     assert && assert( buttonSpacing > 0, 'buttons must have non zero spacing' );
 
-    var radioButtons = new RadioButtonGroup( detachableProperty, radioButtonsContent,
+    var radioButtons = new RadioButtonGroup( stickingToTrackProperty, radioButtonsContent,
       {
         buttonContentXMargin: 0,
         buttonContentYMargin: 0,

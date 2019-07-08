@@ -13,7 +13,6 @@ define( function( require ) {
 
   // modules
   var AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
-  const BooleanProperty = require( 'AXON/BooleanProperty' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkCheckboxItem = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkCheckboxItem' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -108,17 +107,11 @@ define( function( require ) {
 
     if ( options.showStickToTrackCheckbox ) {
 
-      // intermediary Property because the model tracks "detachable" rather than "currently sticking"
-      // Checkbox needs to set this Property directly so DerivedProperty won't work. Disposal of this Property
-      // isn't necessary since these controls exist for life of sim. 
-      const stickingProperty = new BooleanProperty( !model.detachableProperty.value );
-      stickingProperty.link( sticking => { model.detachableProperty.set( !sticking ); } );
-
       checkboxItems.push( new EnergySkateParkCheckboxItem( 
         controlsStickToTrackString,
         new Spacer( 5, 5 ), // just until we have an icon, see #77
         itemAlignGroup,
-        stickingProperty,
+        model.stickingToTrackProperty,
         tandem.createTandem( 'stickToTrackCheckbox' )
       ) );
     }
