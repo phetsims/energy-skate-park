@@ -13,6 +13,7 @@ define( function( require ) {
   var EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
   var EnergyGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphAccordionBox' );
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
+  const GraphsVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/GraphsVisibilityControls' );
   var GravitySlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravitySlider' );
   var inherit = require( 'PHET_CORE/inherit' );
 
@@ -39,7 +40,10 @@ define( function( require ) {
     this.addChild( this.graphAccordionBox );
 
     // grid and reference height visibility are controlled from a separate area in the "graphs" screen
-    
+    this.graphsVisibilityControls = new GraphsVisibilityControls( model, tandem.createTandem( 'graphsVisibilityControls' ), {
+      centerY: this.resetAllButton.centerY
+    } );
+    this.addChild( this.graphsVisibilityControls );
   }
 
   energySkatePark.register( 'GraphsScreenView', GraphsScreenView );
@@ -55,6 +59,9 @@ define( function( require ) {
 
       this.graphAccordionBox.top = this.controlPanel.top;
       this.graphAccordionBox.left = this.availableViewBounds.minX + 5;
+
+      this.graphsVisibilityControls.left = this.graphAccordionBox.left;
+      this.graphsVisibilityControls.centerY = this.resetAllButton.centerY;
     }
   } );
 } );

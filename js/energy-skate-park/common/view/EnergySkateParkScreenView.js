@@ -208,7 +208,6 @@ define( function( require ) {
       model.barGraphVisibleProperty.linkAttribute( this.energyBarGraph, 'visible' ); 
     }
 
-
     this.resetAllButton = new ResetAllButton( {
       listener: model.reset.bind( model ),
       scale: 0.85,

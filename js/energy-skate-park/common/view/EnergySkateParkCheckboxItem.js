@@ -1,10 +1,11 @@
 // Copyright 2018, University of Colorado Boulder
 
 /**
- * Type Documentation
+ * A Checkbox in EnergySkatePark, which includes a label and an icon. Icons are generally aligned with other checkboxes
+ * in the group, and this is handled by collecting all icons into a shared AlignGroup.
+ * 
  * @author Jesse Greenberg
  */
-
 define( function( require ) {
   'use strict';
 

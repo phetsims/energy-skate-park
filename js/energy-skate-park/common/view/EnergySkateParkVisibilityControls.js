@@ -32,7 +32,7 @@ define( function( require ) {
    * @param {Array.<EnergySkateParkCheckboxItem>} checkboxItems
    * @param {object} options
    */
-  function EnergySkateParkVisibilityControls( model, screenView, tandem, options ) {
+  function EnergySkateParkVisibilityControls( model, tandem, options ) {
 
     options = _.extend( {
       showSpeedCheckbox: false,

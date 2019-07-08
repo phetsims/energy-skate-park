@@ -33,7 +33,7 @@ define( function( require ) {
     assert && assert( controls.length > 0, 'control panel must include additional physical controls' );
 
     // controls that change visibility of items in the screen
-    var visibilityControls = new EnergySkateParkVisibilityControls( model, screenView, tandem.createTandem( 'visibilityControls' ), visibilityControlsOptions );
+    var visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), visibilityControlsOptions );
     var children = [ visibilityControls ];
 
     if ( screenView.showTrackButtons ) {
