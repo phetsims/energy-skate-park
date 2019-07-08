@@ -27,6 +27,13 @@ define( function( require ) {
     pathStroke: new Color( 'black' ),
     haloFill: new Color( 225, 231, 86, 0.75 ),
 
+    // associated with the Skater to represent location of the important particle coordinate
+    particleCircle: 'red',
+
+    // colors for the Track
+    roadFill: 'gray',
+    roadLine: 'black',
+
     // color for the reference line arrow
     referenceArrowFill: new Color( 254, 240, 53 ),
 

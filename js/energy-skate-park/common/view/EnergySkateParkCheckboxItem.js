@@ -195,6 +195,37 @@ define( function( require ) {
       } );
 
       return new Node( { children: [ linePath, circlesPath ] } );
+    },
+
+    /**
+     * Create an icon for the "Sticking to Track" checkbox, a small section of track with the skater's center of
+     * mass dot on it.
+     * 
+     * @param {Tandem} tandem
+     * @returns {Node}
+     */
+    createStickingToTrackIcon: function() {
+      const iconWidth = 16;
+
+      const trackRectangle = new Rectangle( 0, 0, iconWidth, 5, {
+        fill: EnergySkateParkColorScheme.roadFill
+      } );
+
+      const trackDashes = new Line( 0, 0, iconWidth, 0, {
+        fill: EnergySkateParkColorScheme.roadLine,
+        stroke: EnergySkateParkColorScheme.roadLine,
+        center: trackRectangle.center,
+        lineWidth: 1,
+        lineDash: [ 2, 1 ]
+      } );
+
+      const centerOfMassCircle = new Circle( 2, {
+        fill: EnergySkateParkColorScheme.particleCircle,
+        opacity: 0.7,
+        center: trackRectangle.center
+      } );
+
+      return new Node( { children: [ trackRectangle, trackDashes, centerOfMassCircle ] } );
     }
   } );
 } );

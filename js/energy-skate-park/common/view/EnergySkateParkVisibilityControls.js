@@ -16,7 +16,6 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkCheckboxItem = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkCheckboxItem' );
   var inherit = require( 'PHET_CORE/inherit' );
-  const Spacer = require( 'SCENERY/nodes/Spacer' );
   var VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
@@ -109,7 +108,7 @@ define( function( require ) {
 
       checkboxItems.push( new EnergySkateParkCheckboxItem( 
         controlsStickToTrackString,
-        new Spacer( 5, 5 ), // just until we have an icon, see #77
+        EnergySkateParkCheckboxItem.createStickingToTrackIcon(),
         itemAlignGroup,
         model.stickingToTrackProperty,
         tandem.createTandem( 'stickToTrackCheckbox' )
