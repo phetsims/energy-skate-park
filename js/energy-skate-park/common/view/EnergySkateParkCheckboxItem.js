@@ -216,7 +216,7 @@ define( function( require ) {
         stroke: EnergySkateParkColorScheme.roadLine,
         center: trackRectangle.center,
         lineWidth: 1,
-        lineDash: [ 2, 1 ]
+        lineDash: [ 2, 1.5 ]
       } );
 
       const centerOfMassCircle = new Circle( 2, {
