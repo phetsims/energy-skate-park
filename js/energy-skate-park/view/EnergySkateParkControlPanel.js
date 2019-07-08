@@ -29,7 +29,7 @@ define( function( require ) {
    * @param {Tandem} tandem
    * @constructor
    */
-  function EnergySkateParkControlPanel( model, screenView, controls, tandem, options ) {
+  function EnergySkateParkControlPanel( model, screenView, controls, tandem ) {
     assert && assert( controls.length > 0, 'control panel must include additional physical controls' );
 
     // controls that change visibility of items in the screen
