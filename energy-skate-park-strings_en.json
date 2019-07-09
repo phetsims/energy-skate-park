@@ -110,6 +110,9 @@
   "heightMetersPattern": {
     "value": "Height = {{value}} m"
   },
+  "massKilogramsPattern": {
+    "value": "{{value}} kg"
+  },
   "speedMetersPerSecondPattern": {
     "value": "Speed = {{value}} m/s"
   },

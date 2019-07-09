@@ -12,6 +12,7 @@ define( require => {
   const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const NumberControl = require( 'SCENERY_PHET/NumberControl' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Text = require( 'SCENERY/nodes/Text' );
   const Util = require( 'DOT/Util' );
 
@@ -32,6 +33,16 @@ define( require => {
       assert && assert( options.arrowButtonOptions === undefined, 'PhysicalNumberControl sets arrowButtonOptions' );
       assert && assert( options.titleFont === undefined, 'PhysicalNumberControl sets title font' );
 
+      if ( options.sliderOptions ) {
+        assert && assert( options.sliderOptions.majorTicks === undefined, 'PhysicalNumberControl sets majorTicks' );
+      }
+
+      if ( options.numberDisplayOptions ) {
+        assert && assert( options.numberDisplayOptions.font === undefined, 'PhysicalNumberControl sets font' );
+        assert && assert( options.numberDisplayOptions.xMargin === undefined, 'PhysicalNumberControl sets xMargin' );
+        assert && assert( options.numberDisplayOptions.yMargin === undefined, 'PhysicalNumberControl sets yMargin' );
+      }
+
       // slider options are passed directly to the Slider in NumberControl
       options = _.extend( {
 
@@ -43,8 +54,10 @@ define( require => {
 
         // {*|null} - passed to the NumberDisplay of NumberControl, extended below
         numberDisplayOptions: null
+
       }, options );
 
+      // into an extra object so we don't modify Constants.SLIDER_OPTIONS
       options.sliderOptions = _.extend( {}, Constants.SLIDER_OPTIONS, options.sliderOptions );
 
       options.numberDisplayOptions = _.extend( {
@@ -69,6 +82,11 @@ define( require => {
               label: new Text( Util.toFixed( valueRange.max, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
             }
           ]
+        } ),
+        numberDisplayOptions: _.extend( options.numberDisplayOptions, {
+          xMargin: 2,
+          yMargin: 2,
+          font: new PhetFont( 10 )
         } ),
         titleNodeOptions: {
           font: Constants.CONTROL_TITLE_FONT
