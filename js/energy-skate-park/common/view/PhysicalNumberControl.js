@@ -35,30 +35,30 @@ define( require => {
       // slider options are passed directly to the Slider in NumberControl
       options = _.extend( {
 
-        // {*|null} - passed to the Slider of NumberControl
+        // decimal places for the ticks and (by default) the NumberControl's NumberDisplay
+        decimalPlaces: 0,
+
+        // {*|null} - passed to the Slider of NumberControl, extended below
         sliderOptions: null,
 
-        // {*|null} - passed to the NumberDisplay of NumberControl
+        // {*|null} - passed to the NumberDisplay of NumberControl, extended below
         numberDisplayOptions: null
       }, options );
 
-      options.sliderOptions = _.extend( Constants.SLIDER_OPTIONS, options.sliderOptions );
+      options.sliderOptions = _.extend( {}, Constants.SLIDER_OPTIONS, options.sliderOptions );
 
       options.numberDisplayOptions = _.extend( {
-        decimalPlaces: 0
+        decimalPlaces: options.decimalPlaces
       }, options.numberDisplayOptions );
 
-      // look and feel for all PhysicalNumberControls (not set in normal options extend call because they cannot be
+      // look and feel for all PhysicalNumberControls (not set in normal options extend calls because they cannot be
       // changed with options!)
       _.extend( options, {
         arrowButtonOptions: {
           scale: 0.5
         },
         layoutFunction: NumberControl.createLayoutFunction4(),
-        titleNodeOptions: {
-          titleFont: Constants.CONTROL_TITLE_FONT
-        },
-        sliderOptions: {
+        sliderOptions: _.extend( options.sliderOptions, {
           majorTicks: [
             {
               value: valueRange.min,
@@ -69,6 +69,9 @@ define( require => {
               label: new Text( Util.toFixed( valueRange.max, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
             }
           ]
+        } ),
+        titleNodeOptions: {
+          font: Constants.CONTROL_TITLE_FONT
         },
 
         // phet-io

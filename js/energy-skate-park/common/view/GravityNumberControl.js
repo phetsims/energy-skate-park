@@ -14,7 +14,8 @@ define( require => {
   const Range = require( 'DOT/Range' );
 
   // strings
-  var controlsGravityString = require( 'string!ENERGY_SKATE_PARK/controls.gravity' );
+  const controlsGravityString = require( 'string!ENERGY_SKATE_PARK/controls.gravity' );
+  const speedometerMetersPerSecondPatternString = require( 'string!ENERGY_SKATE_PARK/speedometerMetersPerSecondPattern' );
 
   class GravityNumberControl extends PhysicalNumberControl {
 
@@ -24,7 +25,12 @@ define( require => {
      * @param {Object} options
      */
     constructor( property, tandem, options ) {
-      super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, options );
+      super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, {
+        decimalPlaces: 1,
+        numberDisplayOptions: {
+          valuePattern: speedometerMetersPerSecondPatternString
+        }
+      } );
     }
   }
 

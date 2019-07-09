@@ -28,9 +28,7 @@ define( function( require ) {
     var measureControls = [
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
       new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ), {
-        numberDisplayOptions: {
-          decimalPlaces: 1
-        }
+        decimalPlaces: 1
       } ),
       new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) )
     ];
