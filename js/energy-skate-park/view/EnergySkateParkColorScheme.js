@@ -34,6 +34,10 @@ define( function( require ) {
     roadFill: 'gray',
     roadLine: 'black',
 
+    // colors for the reference height line
+    referenceLineFill:'rgb(74,133,208)',
+    referenceLineStroke: 'black',
+
     // color for the reference line arrow
     referenceArrowFill: new Color( 254, 240, 53 ),
 

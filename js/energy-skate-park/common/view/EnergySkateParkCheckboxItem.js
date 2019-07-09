@@ -155,14 +155,25 @@ define( function( require ) {
 
     // icon for reference height, three circles aligned horizontally
     createReferenceHeightIcon: function( tandem ) {
-      var shape = new Shape();
 
-      // create three circles in the shape
-      shape.circle( 0, 0, 2 ).newSubpath().circle( 8, 0, 2 ).newSubpath().circle( 16, 0, 2 );
-
-      return new Path( shape, {
-        fill: 'black'
+      // a dashed, stroked line will be drawn with overlapping rectangles, the background rectangle is slightly taller
+      // to mimic stroke
+      const width = 16;
+      const height = 3;
+      const lineDash = [ width / 6, width / 6 ]; // produces 3 segments
+      const lineShape = Shape.lineSegment( 0, 0, width, 0 );
+      const backgroundLine = new Path( lineShape, {
+        lineDash: lineDash,
+        lineWidth: height,
+        stroke: EnergySkateParkColorScheme.referenceLineStroke
       } );
+      const foregroundLine = new Path( lineShape, {
+        lineDash: lineDash,
+        lineWidth: height * 0.8,
+        stroke: EnergySkateParkColorScheme.referenceLineFill
+      } );
+
+      return new Node( { children: [ backgroundLine, foregroundLine ] } );
     },
 
     // create an icon for the "Path" checkbox, three circles connected by a line in the shape of "U".
