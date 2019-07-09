@@ -51,7 +51,7 @@ define( function( require ) {
       children.splice( children.indexOf( visibilityControls ) + 1, 0, new HSeparator( separatorWidth ) );
     }
 
-    var content = new VBox( { resize: false, spacing: 10, children: children } );
+    var content = new VBox( { resize: false, spacing: 8, children: children } );
 
     Panel.call( this, content, {
       xMargin: 10,
