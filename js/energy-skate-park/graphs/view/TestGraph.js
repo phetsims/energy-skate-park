@@ -1,4 +1,4 @@
-// Copyright 2018, University of Colorado Boulder
+// Copyright 2019, University of Colorado Boulder
 
 /**
  * Just for prototyping saving states of the skater. At this time, I don't know what the graph

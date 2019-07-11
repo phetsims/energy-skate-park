@@ -1,4 +1,4 @@
-// Copyright 2018, University of Colorado Boulder
+// Copyright 2019, University of Colorado Boulder
 
 /**
  * "Line" for the graph node, just a bunch of circles drawn with canvas for now.

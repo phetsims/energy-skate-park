@@ -1,4 +1,4 @@
-// Copyright 2014-2018, University of Colorado Boulder
+// Copyright 2014-2019, University of Colorado Boulder
 
 /**
  * Node that shows the delete and cut buttons for track control points.  Created each time a control point is dragged.

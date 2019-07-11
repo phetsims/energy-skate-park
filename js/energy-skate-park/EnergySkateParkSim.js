@@ -1,4 +1,4 @@
-// Copyright 2013-2018, University of Colorado Boulder
+// Copyright 2013-2019, University of Colorado Boulder
 
 /**
  * Simulation for Energy Skate Park. Also meant to be extended by Energy Skate Park: Basics
