@@ -238,7 +238,8 @@ define( function( require ) {
     var speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 20 ), {
 
         numberDisplayOptions: {
-          valuePattern: speedometerMetersPerSecondPatternString
+          valuePattern: speedometerMetersPerSecondPatternString,
+          decimalPlaces: 1
         },
 
         // enable/disable updates based on whether the speedometer is visible
