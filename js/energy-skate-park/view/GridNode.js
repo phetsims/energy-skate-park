@@ -26,7 +26,7 @@ define( function( require ) {
   var zeroMetersString = require( 'string!ENERGY_SKATE_PARK/zeroMeters' );
 
   // constants
-  var FONT = new PhetFont( 16 );
+  var FONT = new PhetFont( 12 );
 
   // in meters, the grid will extend this far into the earth so that when potential energy reference line is moved the
   // grid can translte this far up
