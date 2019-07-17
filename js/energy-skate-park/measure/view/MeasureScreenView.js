@@ -24,6 +24,10 @@ define( require => {
    */
   class MeasureScreenView extends EnergySkateParkScreenView {
 
+    /**
+     * @param  {MeasureModel} model
+     * @param  {Tandem} tandem
+     */
     constructor( model, tandem ) {
       const measureControls = [
         new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
