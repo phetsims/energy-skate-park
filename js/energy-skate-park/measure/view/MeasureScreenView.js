@@ -31,10 +31,10 @@ define( require => {
     constructor( model, tandem ) {
       const measureControls = [
         new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
+        new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) ),
         new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ), {
           decimalPlaces: 1
-        } ),
-        new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) )
+        } )
       ];
 
       super( model, measureControls, tandem, {
