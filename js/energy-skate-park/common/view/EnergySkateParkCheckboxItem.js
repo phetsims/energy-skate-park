@@ -160,7 +160,7 @@ define( function( require ) {
       // to mimic stroke
       const width = 16;
       const height = 3;
-      const lineDash = [ width / 6, width / 6 ]; // produces 3 segments
+      const lineDash = [ width / 5, width / 5 ]; // produces 3 segments
       const lineShape = Shape.lineSegment( 0, 0, width, 0 );
       const backgroundLine = new Path( lineShape, {
         lineDash: lineDash,
