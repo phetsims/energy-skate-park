@@ -131,13 +131,13 @@ define( function( require ) {
 
       var lineHeight = height / layoutScale - BackgroundNode.earthHeight - this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
       var lineY1 = -offsetY + this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
-      for ( var x = 0; x < 100; x++ ) {
+
+      // grid lines are drawn on the half meter, but each still separated by 1 meter
+      for ( var x = 0.5; x < 100; x++ ) {
         var viewXPositive = this.modelViewTransform.modelToViewX( x );
         var viewXNegative = this.modelViewTransform.modelToViewX( -x );
         thinLines.push( { x1: viewXPositive, y1: lineY1, x2: viewXPositive, y2: lineHeight - lineY1 } );
-        if ( x !== 0 ) {
-          thinLines.push( { x1: viewXNegative, y1: lineY1, x2: viewXNegative, y2: lineHeight - lineY1 } );
-        }
+        thinLines.push( { x1: viewXNegative, y1: lineY1, x2: viewXNegative, y2: lineHeight - lineY1 } );
         if ( viewXNegative < -offsetX ) {
           break;
         }
@@ -148,7 +148,7 @@ define( function( require ) {
 
       var separation = width / layoutScale;
       for ( var y = -NEGATIVE_HEIGHT; y < 100; y++ ) {
-        var originX = this.modelViewTransform.modelToViewX( -4 );
+        var originX = this.modelViewTransform.modelToViewX( -5.5 );
         var viewY = this.modelViewTransform.modelToViewY( y );
         if ( viewY < lineY1 ) {
           break;
@@ -164,8 +164,8 @@ define( function( require ) {
         if ( y % 2 === 0 ) {
           var gridLineLabel = new Text( '' + y, {
             font: FONT,
-            top: viewY,
-            right: originX - 2
+            bottom: viewY,
+            left: originX + 2
           } );
           this.createdTexts.push( gridLineLabel );
 
