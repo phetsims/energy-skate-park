@@ -24,8 +24,8 @@ define( function( require ) {
   function IntroScreenView( model, tandem ) {
 
     var introControls = [
-      new GravitySlider( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) ),
-      new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) )
+      new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
+      new GravitySlider( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) )
     ];
 
     EnergySkateParkScreenView.call( this, model, introControls, tandem.createTandem( 'introScreenView' ), {
