@@ -34,7 +34,7 @@ define( require => {
         cornerRadius: 0,
         lineWidth: 0,
         xMargin: 2,
-        yMargin: 2,
+        yMargin: 0,
         resize: false // assumes the text content is static
       }, options );
 

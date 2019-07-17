@@ -20,13 +20,13 @@ define( function( require ) {
   var Path = require( 'SCENERY/nodes/Path' );
   var PhetFont = require( 'SCENERY_PHET/PhetFont' );
   var Shape = require( 'KITE/Shape' );
-  var Text = require( 'SCENERY/nodes/Text' );
+  var TextPanel= require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TextPanel' );
 
   // strings
   var zeroMetersString = require( 'string!ENERGY_SKATE_PARK/zeroMeters' );
 
   // constants
-  var FONT = new PhetFont( 16 );
+  var FONT = new PhetFont( 12 );
 
   // in meters, the grid will extend this far into the earth so that when potential energy reference line is moved the
   // grid can translte this far up
@@ -83,7 +83,7 @@ define( function( require ) {
 
     // @private - keep references to all text created so that they can be disposed and removed from scene graph
     // when layout changes
-    this.createdTexts = [];
+    this.createdTextPanels = [];
 
     // transform the grid with the reference line - this should be faster than redrawing the grid every time it needs
     // to translate
@@ -120,10 +120,10 @@ define( function( require ) {
       var clipHeight = scaledHeight - BackgroundNode.earthHeight;
       this.clipParent.clipArea = Shape.rectangle( -offsetX, -offsetY, width / layoutScale, clipHeight );
 
-      for ( var k = 0; k < this.createdTexts.length; k++ ) {
-        this.createdTexts[ k ].dispose();
+      for ( var k = 0; k < this.createdTextPanels.length; k++ ) {
+        this.createdTextPanels[ k ].dispose();
       }
-      this.createdTexts.length = 0;
+      this.createdTextPanels.length = 0;
 
       var thickLines = [];
       var thinLines = [];
@@ -131,13 +131,13 @@ define( function( require ) {
 
       var lineHeight = height / layoutScale - BackgroundNode.earthHeight - this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
       var lineY1 = -offsetY + this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
-      for ( var x = 0; x < 100; x++ ) {
+
+      // grid lines are drawn on the half meter, but each still separated by 1 meter
+      for ( var x = 0.5; x < 100; x++ ) {
         var viewXPositive = this.modelViewTransform.modelToViewX( x );
         var viewXNegative = this.modelViewTransform.modelToViewX( -x );
         thinLines.push( { x1: viewXPositive, y1: lineY1, x2: viewXPositive, y2: lineHeight - lineY1 } );
-        if ( x !== 0 ) {
-          thinLines.push( { x1: viewXNegative, y1: lineY1, x2: viewXNegative, y2: lineHeight - lineY1 } );
-        }
+        thinLines.push( { x1: viewXNegative, y1: lineY1, x2: viewXNegative, y2: lineHeight - lineY1 } );
         if ( viewXNegative < -offsetX ) {
           break;
         }
@@ -148,7 +148,7 @@ define( function( require ) {
 
       var separation = width / layoutScale;
       for ( var y = -NEGATIVE_HEIGHT; y < 100; y++ ) {
-        var originX = this.modelViewTransform.modelToViewX( -4 );
+        var originX = this.modelViewTransform.modelToViewX( -5.5 );
         var viewY = this.modelViewTransform.modelToViewY( y );
         if ( viewY < lineY1 ) {
           break;
@@ -162,24 +162,24 @@ define( function( require ) {
         }
 
         if ( y % 2 === 0 ) {
-          var gridLineLabel = new Text( '' + y, {
+          var gridLineLabel = new TextPanel( '' + y, {
             font: FONT,
-            top: viewY,
-            right: originX - 2
+            bottom: viewY - 2,
+            left: originX + 2
           } );
-          this.createdTexts.push( gridLineLabel );
+          this.createdTextPanels.push( gridLineLabel );
 
           // For the "0 meters" readout, we still need the 0 to line up perfectly (while still using a single
           // internationalizable string), so use the 0 text bounds
           // And shift it down a bit so it isn't touching the concrete, see #134
           // It won't be added as a child of the gridParent because we don't want it to be clipped
           if ( y === 0 ) {
-            replacementText = new Text( zeroMetersString, {
+            replacementText = new TextPanel( zeroMetersString, {
               font: FONT,
-              top: viewY + 2,
+              top: viewY + 6,
               x: gridLineLabel.x
             } );
-            this.createdTexts.push( replacementText );
+            this.createdTextPanels.push( replacementText );
           }
           else {
             texts.push( gridLineLabel );

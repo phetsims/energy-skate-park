@@ -238,13 +238,14 @@ define( function( require ) {
     var speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 20 ), {
 
         numberDisplayOptions: {
-          valuePattern: speedometerMetersPerSecondPatternString
+          valuePattern: speedometerMetersPerSecondPatternString,
+          decimalPlaces: 1
         },
 
         // enable/disable updates based on whether the speedometer is visible
         enabledProperty: model.speedometerVisibleProperty,
         pickable: false,
-        radius: 67,
+        radius: 62,
         tandem: tandem.createTandem( 'speedometerNode' )
     } );
     model.speedometerVisibleProperty.linkAttribute( speedometerNode, 'visible' );
@@ -569,7 +570,7 @@ define( function( require ) {
           this.energyBarGraph.x = leftPlacement;
         }
 
-        pieChartLegendLeftTop = new Vector2( this.energyBarGraph.right + 8, this.energyBarGraph.top );
+        pieChartLegendLeftTop = new Vector2( this.energyBarGraph.right + 32, this.energyBarGraph.top );
       }
       else {
         pieChartLegendLeftTop = new Vector2( leftPlacement, this.controlPanel.top );

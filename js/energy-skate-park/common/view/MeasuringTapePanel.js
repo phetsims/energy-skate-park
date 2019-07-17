@@ -1,11 +1,10 @@
-// Copyright 2018, University of Colorado Boulder
+// Copyright 2018-2019, University of Colorado Boulder
 
 /**
  * A panel that will contain an icon for a tape measure. When the icon is dragged, it will forward the event
  * to the tape measure used by the view so it can be dragged.
  * @author Jesse Greenberg
  */
-
 define( require => {
   'use strict';
 
@@ -32,6 +31,7 @@ define( require => {
       }, options );
 
       const measuringTapeIcon = MeasuringTapeNode.createIcon();
+      measuringTapeIcon.cursor = 'pointer';
 
       // set scale of measuring tape icon, but don't pas to createIcon because it makes the icon generated with
       // Node.toImage look too aliased, see https://github.com/phetsims/energy-skate-park/issues/27
