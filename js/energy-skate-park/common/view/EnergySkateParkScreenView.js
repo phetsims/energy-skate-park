@@ -569,7 +569,7 @@ define( function( require ) {
           this.energyBarGraph.x = leftPlacement;
         }
 
-        pieChartLegendLeftTop = new Vector2( this.energyBarGraph.right + 8, this.energyBarGraph.top );
+        pieChartLegendLeftTop = new Vector2( this.energyBarGraph.right + 32, this.energyBarGraph.top );
       }
       else {
         pieChartLegendLeftTop = new Vector2( leftPlacement, this.controlPanel.top );
