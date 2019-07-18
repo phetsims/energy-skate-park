@@ -1,4 +1,4 @@
-// Copyright 2018, University of Colorado Boulder
+// Copyright 2018-2019, University of Colorado Boulder
 
 /**
  * Much of the text in this sim is surrounded by a transparent white panel to assist with visibility. This type
