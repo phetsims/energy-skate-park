@@ -46,10 +46,10 @@ define( require => {
   const TITLE_CONTENT_SPACING = 4; // spacing between the "Energy" title and the rest of the content
   const LABEL_VALUE_SPACING = 4; // spacing between label text and the value readout rectangle
   const PROBE_READOUT_SPACING = 5; // spacing between the probe and the height/speed readouts
-  const LAYOUT_SPACING = 2;
+  const LAYOUT_SPACING = 1;
   const TEXT_COLOR = 'white';
-  const TITLE_FONT = new PhetFont( 13 );
-  const LABEL_FONT = new PhetFont( 11 );
+  const TITLE_FONT = new PhetFont( 11 );
+  const LABEL_FONT = new PhetFont( 9 );
 
   // arbitrary range for energies, but required so that this can use NumberDisplay. With this value, the width of the
   // NumberDisplay looks good and if released from within dev bounds, the energy will never get this large.
@@ -72,7 +72,7 @@ define( require => {
 
       // labels and value rectangles are in the same align group so that all entries have same width and height for
       // layout
-      const alignGroup = new AlignGroup();
+      const alignGroup = new AlignGroup( { matchHorizontal: false });
 
       const kineticLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyKineticString );
       const potentialLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyPotentialString );
@@ -106,7 +106,6 @@ define( require => {
         align: 'left'
       } );
 
-      // TODO: Can this be a rectangle?
       this.heightSpeedRectangle = new Rectangle( this.heightSpeedVBox.bounds, {
         fill: EnergySkateParkColorScheme.transparentPanelFill
       } );
@@ -119,14 +118,17 @@ define( require => {
           new HBox( {
             children: [
               new VBox( {
+                align: 'left',
                 children: [
                   kineticLabelBox, potentialLabelBox, thermalLabelBox, totalLabelBox
-                ], spacing: LAYOUT_SPACING
+                ],
+                spacing: LAYOUT_SPACING
               } ),
               new VBox( {
                 children: [
                   this.kineticRectangleBox, this.potentialRectangleBox, this.thermalRectangleBox, this.totalRectangleBox
-                ], spacing: LAYOUT_SPACING
+                ],
+                spacing: LAYOUT_SPACING
               } )
             ],
             spacing: LABEL_VALUE_SPACING
@@ -158,7 +160,7 @@ define( require => {
         // changes with the probe position so the wire looks like it has slack as it gets longer
         const viewPosition = modelViewTransform.modelToViewPosition( sensorPosition );
         const distanceToBody = viewPosition.minus( p1Property.get() );
-        return new Vector2( distanceToBody.x / 3, Math.max( viewPosition.y, body.height * 2 ) );
+        return new Vector2( distanceToBody.x / 3, Math.max( distanceToBody.y, body.height * 2 ) );
       } );
       const p2Property = new DerivedProperty( [ sensorPositionProperty ], ( sensorPosition ) => {
 
@@ -257,18 +259,6 @@ define( require => {
     }
 
     /**
-     * Format a value for readout in the sensor display, each value having one decimal point, followed by units in J.
-     * @private
-     * @param  {number} value
-     * @returns {string}
-     */
-    formatEnergyValue( value ) {
-      return StringUtils.fillIn( energyJoulesPatternString, {
-        value: this.formatValue( value )
-      } );
-    }
-
-    /**
      * Each value in this readout will be as precise as one decimal.
      * @param  {number} value
      * @returns {string}
@@ -326,6 +316,7 @@ define( require => {
         backgroundFill: EnergySkateParkColorScheme.panelFill,
         cornerRadius: 5,
         font: LABEL_FONT,
+        decimalPlaces: 1,
         minBackgroundWidth: 55, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
         valuePattern: energyJoulesPatternString,
 
