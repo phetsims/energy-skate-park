@@ -41,14 +41,14 @@ define( function( require ) {
 
   // constants
   const GRAPH_WIDTH = 475;
-  const GRAPH_HEIGHT = 125;
+  const GRAPH_HEIGHT = 115;
 
   const DEFAULT_MAX_Y = 1000;
   const DEFAULT_MIN_Y = -1000;
 
-  const SWITCH_SIZE = new Dimension2( 40, 20 );
+  const SWITCH_SIZE = new Dimension2( 30, 15 );
 
-  const LABEL_FONT = new PhetFont( { size: 14 } );
+  const LABEL_FONT = new PhetFont( { size: 12 } );
 
   class EnergyGraphAccordionBox extends AccordionBox {
 
@@ -142,7 +142,9 @@ define( function( require ) {
         titleXSpacing: 7,
         buttonXMargin: 5,
         buttonYMargin: 5,
-        contentYSpacing: -SWITCH_SIZE.height,
+        contentYMargin: 2,
+        contentXMargin: 4,
+        contentYSpacing: -eraserButton.height + 2,
         tandem: tandem.createTandem( 'accordionBox' )
       } );
 
@@ -225,7 +227,7 @@ define( function( require ) {
 
         showAxis: false,
 
-        tickLabelFont: new PhetFont( 12 ),
+        tickLabelFont: new PhetFont( 10 ),
 
         lineDash: [ 4, 4 ],
         showVerticalIntermediateLines: false,
