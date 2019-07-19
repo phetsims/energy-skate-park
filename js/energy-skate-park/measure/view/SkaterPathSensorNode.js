@@ -326,6 +326,7 @@ define( require => {
         backgroundFill: EnergySkateParkColorScheme.panelFill,
         cornerRadius: 5,
         font: LABEL_FONT,
+        decimalPlaces: 1,
         minBackgroundWidth: 55, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
         valuePattern: energyJoulesPatternString,
 
