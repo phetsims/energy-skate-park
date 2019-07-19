@@ -15,7 +15,7 @@ define( require => {
 
   // strings
   const controlsGravityString = require( 'string!ENERGY_SKATE_PARK/controls.gravity' );
-  const speedometerMetersPerSecondPatternString = require( 'string!ENERGY_SKATE_PARK/speedometerMetersPerSecondPattern' );
+  const gravityMetersPerSecondSquaredPatternString = require( 'string!ENERGY_SKATE_PARK/gravityMetersPerSecondSquaredPattern' );
 
   class GravityNumberControl extends PhysicalNumberControl {
 
@@ -28,7 +28,8 @@ define( require => {
       super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, {
         decimalPlaces: 1,
         numberDisplayOptions: {
-          valuePattern: speedometerMetersPerSecondPatternString
+          valuePattern: gravityMetersPerSecondSquaredPatternString,
+          useRichText: true // for super script on m/s^2
         }
       } );
     }

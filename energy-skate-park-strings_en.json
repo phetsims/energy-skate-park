@@ -119,6 +119,9 @@
   "speedometerMetersPerSecondPattern": {
     "value": "{{value}} m/s"
   },
+  "gravityMetersPerSecondSquaredPattern": {
+    "value": "{{value}} m/s<sup>2</sup>"
+  },
   "kineticEnergyLabel": {
     "value": "KE"
   },
