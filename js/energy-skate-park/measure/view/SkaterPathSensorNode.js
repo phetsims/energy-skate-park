@@ -161,7 +161,7 @@ define( require => {
         // changes with the probe position so the wire looks like it has slack as it gets longer
         const viewPosition = modelViewTransform.modelToViewPosition( sensorPosition );
         const distanceToBody = viewPosition.minus( p1Property.get() );
-        return new Vector2( distanceToBody.x / 3, Math.max( viewPosition.y, body.height * 2 ) );
+        return new Vector2( distanceToBody.x / 3, Math.max( distanceToBody.y, body.height * 2 ) );
       } );
       const p2Property = new DerivedProperty( [ sensorPositionProperty ], ( sensorPosition ) => {
 
