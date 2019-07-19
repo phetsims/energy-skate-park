@@ -21,8 +21,8 @@ define( function( require ) {
 
   var Constants = {
     SLIDER_OPTIONS: {
-      thumbSize: new Dimension2( 10, 22 ),
-      trackSize: new Dimension2( 100, 4 ),
+      thumbSize: new Dimension2( 10, 20 ),
+      trackSize: new Dimension2( 80, 3 ),
       tickLabelSpacing: 0,
       majorTickLength: 10
     },

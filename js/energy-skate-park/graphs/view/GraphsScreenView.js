@@ -14,7 +14,8 @@ define( function( require ) {
   var EnergyGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphAccordionBox' );
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
   const GraphsVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/GraphsVisibilityControls' );
-  var GravitySlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravitySlider' );
+  var GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
+  var MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
   var inherit = require( 'PHET_CORE/inherit' );
 
   /**
@@ -24,8 +25,9 @@ define( function( require ) {
   function GraphsScreenView( model, tandem ) {
 
     var graphsControls = [
-      new GravitySlider( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) ),
-      new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) )
+      new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
+      new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) ),
+      new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) )
     ];
 
     EnergySkateParkScreenView.call( this, model, graphsControls, tandem.createTandem( 'graphsScreenView' ), {

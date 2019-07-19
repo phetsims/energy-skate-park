@@ -54,7 +54,7 @@ define( function( require ) {
     var content = new VBox( { resize: false, spacing: 8, children: children } );
 
     Panel.call( this, content, {
-      xMargin: 10,
+      xMargin: 5,
       yMargin: 5,
       fill: EnergySkateParkColorScheme.panelFill,
       stroke: null,
