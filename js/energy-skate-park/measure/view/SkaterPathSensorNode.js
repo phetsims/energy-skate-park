@@ -152,9 +152,14 @@ define( require => {
       } );
 
       // points and control points for the wire
-      const normal1Property = new Vector2Property( new Vector2( 0, 200 ) );
-      const normal2Property = new Vector2Property( new Vector2( -150, 0 ) );
-      const p1Property = new Property( body.getCenterBottom() );
+      const p1Property = new Property( body.getCenterBottom().minusXY( 0, 5 ) );
+      const normal1Property = new DerivedProperty( [ sensorPositionProperty ], ( sensorPosition ) => {
+      
+        // changes with the probe position so the wire looks like it has slack as it gets longer
+        const viewPosition = modelViewTransform.modelToViewPosition( sensorPosition );
+        const distanceToBody = viewPosition.minus( p1Property.get() );
+        return new Vector2( distanceToBody.x / 3, Math.max( viewPosition.y, body.height * 2 ) );
+      } );
       const p2Property = new DerivedProperty( [ sensorPositionProperty ], ( sensorPosition ) => {
 
         // calculate the left of the probe in view coordinates
@@ -162,13 +167,15 @@ define( require => {
         const viewWidth = this.probeNode.width;
         return viewPosition.minusXY( viewWidth / 2, 0 );
       } );
+      const normal2Property = new Vector2Property( new Vector2( -25, 0 ) );
 
       const wireNode = new WireNode( p1Property, normal1Property, p2Property, normal2Property, {
         lineWidth: 4
       } );
 
-      this.addChild( body );
+      // wire node behind body so the connection point where wire and body meet are clean
       this.addChild( wireNode );
+      this.addChild( body );
       this.addChild( this.probeNode );
       this.addChild( this.heightSpeedRectangle );
 
