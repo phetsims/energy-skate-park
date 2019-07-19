@@ -49,13 +49,25 @@ define( require => {
       } );
 
       // @private - for layout
-      this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorPositionProperty, this.modelViewTransform, {
+      this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorPositionProperty, this.modelViewTransform, this.controlPanel, {
         tandem: tandem.createTandem( 'pathSensor' )
       } );
       this.pathSensor.top = this.modelViewTransform.modelToViewDeltaY( -2 );
 
       this.addToTopLayer( new SkaterSamplesNode( model, this.modelViewTransform ) );
       this.addToTopLayer( this.pathSensor );
+    }
+
+    /**
+     * Returns true if the no bounds intersects with the EnergySkateParkControlPanel. Useful for changing layout
+     * so that things don't occlude the control panel.
+     * @public
+     * 
+     * @param {Node} node
+     * @returns {boolean}
+     */
+    intersectsControlPanel( node ) {
+      return this.boundsOf( node ).intersectsBounds( this.controlPanel.bounds );
     }
 
     layout( width, height ) {

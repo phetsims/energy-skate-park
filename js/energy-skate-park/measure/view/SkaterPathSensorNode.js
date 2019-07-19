@@ -62,13 +62,26 @@ define( require => {
   const PROBE_THRESHOLD_DISTANCE = 10;
 
   class SkaterPathSensorNode extends Node {
-    constructor( samples, sensorPositionProperty, modelViewTransform, options ) {
+
+    /**
+     * @param   {ObservableArray.<SkaterSample>} samples
+     * @param   {Vector2Property} sensorPositionProperty 
+     * @param   {ModelViewTransform} modelViewTransform     
+     * @param   {EnergySkateParkControlPanel} controlPanel - so the readout doesn't occlude control panel bounds
+     * @param   {object} options                
+     * @returns {ObservableArray.<SkaterSample>}                        
+     */
+    constructor( samples, sensorPositionProperty, modelViewTransform, controlPanel, options ) {
       options = _.extend( {
 
         // prevent block fitting so that things don't jiggle as the probe moves, see 
         preventFit: true
       }, options );
       super( options );
+
+      // @private - so the height speed readout doesn't occlude this
+      this.screenViewControlPanel = controlPanel;
+      this.modelViewTransform = modelViewTransform;
 
       // labels and value rectangles are in the same align group so that all entries have same width and height for
       // layout
@@ -229,34 +242,44 @@ define( require => {
 
       skaterSample.inspectedProperty.set( true );
 
+      // set values for display
       this.kineticValueProperty.value = skaterSample.kineticEnergy;
       this.potentialValueProperty.value = skaterSample.potentialEnergy;
       this.thermalValueProperty.value = skaterSample.thermalEnergy;
       this.totalValueProperty.value = skaterSample.totalEnergy;
 
+      // set values for height and speed readout
       this.heightReadout.text = StringUtils.fillIn( heightMetersPatternString, {
         value: this.formatValue( skaterSample.position.y - skaterSample.referenceHeight )
       } );
-
       this.speedReadout.text = StringUtils.fillIn( speedMetersPerSecondPatternString, {
         value: this.formatValue( skaterSample.speed )
       } );
 
       this.heightSpeedRectangle.visible = true;
-
-      this.positionReadouts();
+      this.positionReadouts( skaterSample );
     }
 
     /**
-     * Position and sizes the height/speed readout which appears to the right of the probe unless a panel would
-     * cover it.
+     * Position and sizes the height/speed readout which appears to the right of the probe, unless that would
+     * occlude the screen view control panel
      *
      * @private
      */
-    positionReadouts() {
+    positionReadouts( skaterSample ) {
       this.heightSpeedRectangle.setRectBounds( this.heightSpeedVBox.bounds );
       this.heightSpeedRectangle.leftCenter = this.probeNode.rightCenter.plusXY( PROBE_READOUT_SPACING, 0 );
+
+      // determine occlusion case from position of the sample point rather than the probe location so that
+      // the display doesn't move around when measuring a single point
+      const spacing = this.heightSpeedRectangle.width + this.probeNode.width / 2;
+      const sampleViewPoint = this.modelViewTransform.modelToViewPosition( skaterSample.position );
+      if ( Math.abs( sampleViewPoint.x - this.screenViewControlPanel.left ) < spacing ) {
+        this.heightSpeedRectangle.leftTop = this.probeNode.leftBottom.plusXY( 0, PROBE_READOUT_SPACING );
+      }
     }
+
+    // this.globalToLocalBounds( node.getGlobalBounds() )
 
     /**
      * Each value in this readout will be as precise as one decimal.
