@@ -106,7 +106,6 @@ define( require => {
         align: 'left'
       } );
 
-      // TODO: Can this be a rectangle?
       this.heightSpeedRectangle = new Rectangle( this.heightSpeedVBox.bounds, {
         fill: EnergySkateParkColorScheme.transparentPanelFill
       } );
