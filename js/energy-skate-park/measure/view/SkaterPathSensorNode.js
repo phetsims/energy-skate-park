@@ -255,19 +255,7 @@ define( require => {
       this.heightSpeedRectangle.setRectBounds( this.heightSpeedVBox.bounds );
       this.heightSpeedRectangle.leftCenter = this.probeNode.rightCenter.plusXY( PROBE_READOUT_SPACING, 0 );
     }
-
-    /**
-     * Format a value for readout in the sensor display, each value having one decimal point, followed by units in J.
-     * @private
-     * @param  {number} value
-     * @returns {string}
-     */
-    formatEnergyValue( value ) {
-      return StringUtils.fillIn( energyJoulesPatternString, {
-        value: this.formatValue( value )
-      } );
-    }
-
+    
     /**
      * Each value in this readout will be as precise as one decimal.
      * @param  {number} value
