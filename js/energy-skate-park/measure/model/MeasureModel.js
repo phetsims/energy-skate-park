@@ -84,6 +84,10 @@ define( function( require ) {
 
       this.skaterSamples.clear();
       this.timeSinceSave = 0;
+
+      this.sensorPositionProperty.reset();
+      this.sampleSkaterProperty.reset();
+
     },
 
     /**
