@@ -169,7 +169,7 @@ define( function( require ) {
     // when available bounds change, make sure that control points are within - must be disposed
     var boundsListener = function( bounds ) {
       if ( self.droppedProperty.get() ) {
-        self.keepControlPointsInBounds( bounds );
+        self.containControlPointsInAvailableBounds( bounds );
       }
     };
     this.availableModelBoundsProperty.link( boundsListener );
@@ -364,7 +364,7 @@ define( function( require ) {
      * If the track is configurable, we do NOT want to maintain this correction when the control points move. But when
      * this track is reset, we should reapply this correction.
      * @public
-     * 
+     *
      * @param {boolean} slopeToGround
      */
     setSlopeToGround: function( slopeToGround ) {
@@ -372,23 +372,23 @@ define( function( require ) {
       this._restoreSlopeToGroundOnReset = true;
     },
     set slopeToGround( slopeToGround ) { this.setSlopeToGround( slopeToGround ); },
-    
+
     /**
      * Get whether or not the track "slopes to the ground", and skater energy state should apply additional corrections.
      * @public
-     * 
+     *
      * @returns {boolean}
      */
     getSlopeToGround: function() {
       return this._slopeToGround;
     },
-    get slopeToGround() { return this.getSlopeToGround(); },  
+    get slopeToGround() { return this.getSlopeToGround(); },
 
     /**
      * For purposes of showing the skater angle, get the view angle of the track here. Note this means inverting the y
      * values, this is called every step while animating on the track, so it was optimized to avoid new allocations.
      * @public
-     * 
+     *
      * @param {number} parametricPosition
      * @returns {number}
      */
@@ -403,7 +403,7 @@ define( function( require ) {
     /**
      * Get the model angle at the specified position on the track.
      * @public
-     * 
+     *
      * @param {number} parametricPosition
      * @returns {number}
      */
@@ -713,16 +713,20 @@ define( function( require ) {
         this.translate( 0, -lowestY );
       }
 
-      this.keepControlPointsInBounds( this.availableModelBoundsProperty.get() );
+      // contain control points in limiting drag bounds (if control points have them specified) so that bumping above
+      // ground doesn't push control points out of these bounds - do this without updating splines since we will
+      // do that anyway in containControlPointsInAvailableBounds
+      this.containControlPointsInLimitBounds( false );
+      this.containControlPointsInAvailableBounds( this.availableModelBoundsProperty.get() );
     },
 
     /**
-     * If any control points are out of bounds, bump them back in. Useful when the model bounds change, or when
-     * bumping the track above ground.
+     * If any control points are out of the model available bounds (bounds of the entire simulation play area),
+     * bump them back in. Useful when the model bounds change, or when bumping the track above ground.
      *
      * @private
      */
-    keepControlPointsInBounds: function( bounds ) {
+    containControlPointsInAvailableBounds: function( bounds ) {
       for ( var i = 0; i < this.controlPoints.length; i++ ) {
         var currentLocation = this.controlPoints[ i ].positionProperty.get();
         if ( !bounds.containsPoint( currentLocation ) ) {
@@ -736,6 +740,35 @@ define( function( require ) {
 
       this.updateSplines();
       this.updateEmitter.emit();
+    },
+
+    /**
+     * Make sure that all control points are contained within their limiting draggable bounds. The algorithm for keeping
+     * the track above ground might push all control points up, so this will make sure that limiting bounds are
+     * respected. Not all control points have limiting bounds for dragging.
+     * @private
+     *
+     * @param {boolean} [updateSplines] optional, whether or not to update splines and redraw after this operation
+     *                                  (for performance, you might chose to wait and do this later)
+     */
+    containControlPointsInLimitBounds: function( updateSplines ) {
+      for ( var i = 0; i < this.controlPoints.length; i++ ) {
+        const controlPoint = this.controlPoints[ i ];
+        const limitBounds = controlPoint.limitBounds;
+        const currentPosition = controlPoint.positionProperty.get();
+
+        if ( limitBounds ) {
+          if ( !limitBounds.containsPoint( currentPosition ) ) {
+            const newPoint = limitBounds.getClosestPoint( currentPosition.x, currentPosition.y );
+            controlPoint.sourcePositionProperty.set( newPoint );
+          }
+        }
+
+        if ( updateSplines ) {
+          this.updateSplines();
+          this.updateEmitter.emit();
+        }
+      }
     },
 
     /**
