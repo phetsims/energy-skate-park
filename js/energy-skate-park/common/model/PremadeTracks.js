@@ -5,9 +5,9 @@
  * Premade tracks are not draggable but they can sometimes be "configurable", meaning that control points can be moved.
  * For configurable premade tracks, the control points can only be dragged within a smaller set of bounds. These
  * bounds are specified for all premade tracks, but will only apply to the track if the model tracks are "configurable".
- * 
+ *
  * Premade tracks are all isolated so they have no "parent" tracks, see Track.js for definition of parent.
- * 
+ *
  * @author Jesse Greenberg
  */
 
@@ -39,10 +39,10 @@ define( function( require ) {
   /**
    * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the
    * CENTER of the limiting bounds.
-   * @param  {Vector2} point - location of control point, CENTER of the bounds 
+   * @param  {Vector2} point - location of control point, CENTER of the bounds
    * @param  {number} width
    * @param  {number} height
-   * @returns {Bounds2}       
+   * @returns {Bounds2}
    */
   var createCenteredLimitBounds = function( point, width, height ) {
     return new Bounds2( point.x - width / 2, point.y - height / 2, point.x + width / 2, point.y + height / 2 );
@@ -53,10 +53,10 @@ define( function( require ) {
     /**
      * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the BOTTOM
      * CENTER of the limiting bounds
-     * @param  {Vector2} point - location of control point, BOTTOM CENTER of the bounds 
+     * @param  {Vector2} point - location of control point, BOTTOM CENTER of the bounds
      * @param  {number} width
      * @param  {number} height
-     * @returns {Bounds2}       
+     * @returns {Bounds2}
      */
     createBottomLimitBounds: function( point, width, height ) {
       return new Bounds2( point.x - width / 2, point.y, point.x + width / 2, point.y + height );
@@ -69,7 +69,7 @@ define( function( require ) {
         trackWidth: 8, // width from the left most control point to the right most control point
 
         p1Draggable: true,
-        p2Draggable: true, 
+        p2Draggable: true,
         p3Draggable: true
       },CREATOR_OPTIONS, options );
 
@@ -134,9 +134,9 @@ define( function( require ) {
         trackMidHeight: 2, // height of the mid control point that creates the double well
 
         p1Draggable: true,
-        p2Draggable: true, 
-        p3Draggable: true, 
-        p4Draggable: true, 
+        p2Draggable: true,
+        p3Draggable: true,
+        p4Draggable: true,
         p5Draggable: true
       }, CREATOR_OPTIONS, options );
 
@@ -196,20 +196,20 @@ define( function( require ) {
 
       // top of the left and right endpoints of the loop, higher than loopTop so that it is easy for the skater to go
       // all the way around the loop
-      var trackTop = 5;
+      var trackTop = 6;
 
-      var trackBottom = 0.08; // bottom points, so that the skater doesn't go below y = 0
-      var loopTop = 3; // adjust to make the loop top point higher or lower
-      var loopWidth = 7; // adjust to make the loop more or less wide
-      var innerLoopWidth = 1; // roughly adjusts the width of the innerloop
-      var innerLoopHeight = 1.5; // roughly adjust inner loop height (for control points, actual loop will be higher)
+      var trackBottom = 0.3; // bottom points, so that the skater doesn't go below y = 0
+      var loopTop = 4; // adjust to make the loop top point higher or lower
+      var loopWidth = 9; // adjust to make the loop more or less wide
+      var innerLoopWidth = 3; // roughly adjusts the width of the innerloop
+      var innerLoopHeight = 2; // roughly adjust inner loop height (for control points, actual loop will be higher)
 
       var p1 = new Vector2( -loopWidth / 2, trackTop );
-      var p2 = new Vector2( -innerLoopWidth, trackBottom );
-      var p3 = new Vector2( innerLoopWidth, innerLoopHeight );
+      var p2 = new Vector2( -innerLoopWidth / 2, trackBottom );
+      var p3 = new Vector2( innerLoopWidth/ 2, innerLoopHeight );
       var p4 = new Vector2( 0, loopTop );
-      var p5 = new Vector2( -innerLoopWidth, innerLoopHeight );
-      var p6 = new Vector2( innerLoopWidth, trackBottom );
+      var p5 = new Vector2( -innerLoopWidth / 2, innerLoopHeight );
+      var p6 = new Vector2( innerLoopWidth / 2, trackBottom );
       var p7 = new Vector2( loopWidth / 2, trackTop );
 
       var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
@@ -243,11 +243,11 @@ define( function( require ) {
     },
 
     /**
-     * Create a track from the control points, 
+     * Create a track from the control points,
      * @param  {EnergySkateParkModel} model
      * @param  {Array.<Track>} modelTracks
      * @param  {Array.<ControlPoint>} controlPoints
-     * @param  {Property.<Bounds2>} availableBoundsProperty 
+     * @param  {Property.<Bounds2>} availableBoundsProperty
      * @param  {object} options
      * @returns {Track}
      */
