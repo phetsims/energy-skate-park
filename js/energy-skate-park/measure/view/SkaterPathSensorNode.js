@@ -227,9 +227,13 @@ define( require => {
       this.probeNode.addInputListener( new DragListener( {
         transform: modelViewTransform,
         locationProperty: sensorPositionProperty,
-        translateNode: true,
         tandem: options.tandem.createTandem( 'dragListener' )
       } ) );
+
+      // translate the probeNode with the positionProperty
+      sensorPositionProperty.link( ( position ) => {
+        this.probeNode.translation = modelViewTransform.modelToViewPosition( position );
+      } );
     }
 
     /**

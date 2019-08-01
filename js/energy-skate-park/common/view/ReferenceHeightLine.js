@@ -34,9 +34,6 @@ define( function( require ) {
    */
   function ReferenceHeightLine( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, tandem ) {
 
-    var options = {};
-    assert && assert( options.children === undefined, 'ReferenceHeightLine sets its own children' );
-
     // line will extend 9.5 meters through along the grid in model coordinates
     var lineLength = modelViewTransform.modelToViewDeltaX( 9.5 );
 
@@ -46,6 +43,9 @@ define( function( require ) {
     var lineStart = new Vector2( 0, 0 );
     var lineEnd = new Vector2( lineLength, 0 );
     var frontLine = new Line( lineStart, lineEnd, {
+
+      // strokes are not generally pickable, this allows the line itself to be dragged
+      strokePickable: true,
       lineWidth: 3,
       lineDash: lineDash,
       stroke: 'rgb(74,133,208)'
@@ -56,6 +56,10 @@ define( function( require ) {
       stroke: 'black'
     } );
 
+    // make the front line a bit easier to pick up
+    frontLine.mouseArea = frontLine.bounds.dilated( 5 );
+    frontLine.touchArea = frontLine.mouseArea;
+
     // double headed arrow indicates this line is draggable
     var doubleArrowNode = new ArrowNode( 0, -12, 0, 12, {
       doubleHead: true,
@@ -63,7 +67,6 @@ define( function( require ) {
       tailWidth: 5,
 
       left: 30,
-      cursor: 'pointer',
       fill: EnergySkateParkColorScheme.referenceArrowFill
     } );
 
@@ -73,7 +76,10 @@ define( function( require ) {
     textPanel.setLeftCenter( doubleArrowNode.rightTop );
 
     Node.call( this, {
-      children: [ backLine, frontLine, doubleArrowNode, textPanel ]
+      children: [ backLine, frontLine, doubleArrowNode, textPanel ],
+
+      // so it is clear that it can be picked up
+      cursor: 'pointer'
     } );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
