@@ -11,6 +11,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  const AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
   var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BackgroundNode' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -82,22 +83,33 @@ define( function( require ) {
 
     var minWidth = _.minBy( contents, function( node ) { return node.width; } ).width;
 
+    const buttonAlignGroup = new AlignGroup();
+
     var radioButtonContent = [];
     _.forEach( contents, function( node, i ) {
 
       // scalar chosen so that buttons are appropriately sized in the control panel
       var contentScale = ( 22 / minWidth );
 
-      // if there isn't a background, scale the tracks horizontally so that they are all the same width
+      // if there isn't a background, scale the tracks so that they are all the same width
       if ( !options.includeBackground ) {
-        node.setScaleMagnitude( contentScale * ( minWidth / node.width ), contentScale );
+        node.setScaleMagnitude( contentScale * ( minWidth / node.width ) );
       }
       else {
         node.scale( contentScale );
       }
+
+      // placec in an align gropu and add margins so that the buttons are always square
+      const alignedNode = buttonAlignGroup.createBox( node );
+      const margin = Math.abs( alignedNode.width - alignedNode.height ) / 2;
+      if ( margin !== 0 ) {
+        const setterFunction = alignedNode.height < alignedNode.width ?  alignedNode.setYMargin : alignedNode.setXMargin;
+        setterFunction.call( alignedNode, margin );
+      }
+
       radioButtonContent.push( {
         value: i,
-        node: node,
+        node: alignedNode,
         tandemName: 'scene' + ( i + 1 ) + 'RadioButton'
       } );
     } );

@@ -19,6 +19,10 @@ define( function( require ) {
   // for zoom buttons for bar graphs, pressing button will increase/decrease scale by this much
   var ZOOM_FACTOR_DELTA = 1 / 60;
 
+  const EARTH_GRAVITY = 9.8;
+  const MOON_GRAVITY = 1.62;
+  const JUPITER_GRAVITY = 25.96;
+
   var Constants = {
     SLIDER_OPTIONS: {
       thumbSize: new Dimension2( 10, 20 ),
@@ -50,8 +54,13 @@ define( function( require ) {
     DEFAULT_FRICTION: 0.05,
 
     // in m/s^2, including direction (naming aligned with magnitude for readability at usages)
-    MAX_GRAVITY: -20,
+    MAX_GRAVITY: -JUPITER_GRAVITY,
     MIN_GRAVITY: -1,
+
+    // pre-determined gravities
+    EARTH_GRAVITY: EARTH_GRAVITY,
+    MOON_GRAVITY: MOON_GRAVITY,
+    JUPITER_GRAVITY: JUPITER_GRAVITY,
 
     REFERENCE_HEIGHT_RANGE: new Range( 0, 8 ) // in meters
   };

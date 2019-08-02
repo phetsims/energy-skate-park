@@ -21,6 +21,9 @@ define( function( require ) {
   var Panel = require( 'SUN/Panel' );
   var SceneSelectionRadioButtonGroup = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SceneSelectionRadioButtonGroup' );
   var VBox = require( 'SCENERY/nodes/VBox' );
+  const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
+
+  const VALID_CONTROLS = [ PhysicalSlider, PhysicalNumberControl, GravityComboBox ];
 
   /**
    * @param {EnergySkateParkModel} model
@@ -41,7 +44,15 @@ define( function( require ) {
     }
 
     controls.forEach( function( control ) {
-      assert && assert( control instanceof PhysicalSlider || control instanceof PhysicalNumberControl, 'inconsistent class for control in panel' );
+      if ( assert ) {
+        let validType = false;
+        _.forEach( VALID_CONTROLS, ( controlType ) => {
+          if ( control instanceof controlType ) {
+            validType = true;
+          }
+        } );
+        assert( validType, 'control must be one of VALID_CONTROLS' );
+      }
       children.push( control );
     } );
 
