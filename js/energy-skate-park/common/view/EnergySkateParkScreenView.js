@@ -556,8 +556,8 @@ define( function( require ) {
       this.availableModelBoundsProperty.value = this.availableModelBounds;
 
       if ( this.showMeasuringTape ) {
-        this.measuringTapePanel.top = this.controlPanel.bottom + 5;
-        this.measuringTapePanel.right = this.controlPanel.right;
+        this.measuringTapePanel.top = this.controlPanel.top;
+        this.measuringTapePanel.right = this.controlPanel.left - 5;
 
         this.measuringTapeNode.setDragBounds( this.availableModelBounds );
       }

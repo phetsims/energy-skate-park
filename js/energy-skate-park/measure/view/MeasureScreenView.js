@@ -13,6 +13,8 @@ define( require => {
   const EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
   const FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
   const GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
+  const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
+  const Node = require( 'SCENERY/nodes/Node' );
   const MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
   const SkaterSamplesNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterSamplesNode' );
   const SkaterPathSensorNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterPathSensorNode' );
@@ -29,12 +31,18 @@ define( require => {
      * @param  {Tandem} tandem
      */
     constructor( model, tandem ) {
+
+      // parent layer for ComboBox, would use this but it is not available
+      // until after super
+      const comboBoxParent = new Node();
+
       const measureControls = [
         new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
         new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) ),
         new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ), {
           decimalPlaces: 1
-        } )
+        } ),
+        new GravityComboBox( model.skater.gravityMagnitudeProperty, comboBoxParent )
       ];
 
       super( model, measureControls, tandem, {
@@ -47,6 +55,8 @@ define( require => {
           showBarGraphCheckbox: false
         }
       } );
+
+      this.addChild( comboBoxParent );
 
       // @private - for layout
       this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorPositionProperty, this.modelViewTransform, this.controlPanel, {
