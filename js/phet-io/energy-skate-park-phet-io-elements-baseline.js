@@ -2663,7 +2663,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": true,
       "phetioStudioControl": true,
-      "phetioTypeName": "ObservableArrayIO"
+      "phetioTypeName": "ObservableArrayIO.<TrackIO>"
     },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.tracks.lengthProperty": {
       "phetioDocumentation": "",
@@ -9503,7 +9503,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "NumberControlIO"
+      "phetioTypeName": "NumberDisplayIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.numberDisplay.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
@@ -10163,7 +10163,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "NumberControlIO"
+      "phetioTypeName": "NumberDisplayIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.numberDisplay.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
@@ -13823,7 +13823,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": true,
       "phetioStudioControl": true,
-      "phetioTypeName": "ObservableArrayIO"
+      "phetioTypeName": "ObservableArrayIO.<TrackIO>"
     },
     "energySkatePark.introScreen.model.trackSetModel.tracks.lengthProperty": {
       "phetioDocumentation": "",
@@ -21671,7 +21671,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": true,
       "phetioStudioControl": true,
-      "phetioTypeName": "ObservableArrayIO"
+      "phetioTypeName": "ObservableArrayIO.<TrackIO>"
     },
     "energySkatePark.labScreen.labModel.tracks.lengthProperty": {
       "phetioDocumentation": "",
@@ -31751,7 +31751,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": true,
       "phetioStudioControl": true,
-      "phetioTypeName": "ObservableArrayIO"
+      "phetioTypeName": "ObservableArrayIO.<TrackIO>"
     },
     "energySkatePark.measureScreen.measureModel.trackSetModel.tracks.lengthProperty": {
       "phetioDocumentation": "",
@@ -36395,7 +36395,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "NumberControlIO"
+      "phetioTypeName": "NumberDisplayIO"
     },
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.numberDisplay.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
@@ -37199,7 +37199,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "NumberControlIO"
+      "phetioTypeName": "NumberDisplayIO"
     },
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.numberDisplay.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",

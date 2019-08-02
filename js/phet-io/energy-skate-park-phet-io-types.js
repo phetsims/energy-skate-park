@@ -932,12 +932,20 @@ window.phet.phetio.phetioTypes = assert &&
       "typeName": "NullableIO.<Vector2IO>"
     },
     "NumberControlIO": {
-      "documentation": "A numeric readout with a background",
+      "documentation": "A number control with a title, slider and +/- buttons",
       "events": [],
       "methodOrder": [],
       "methods": {},
       "supertype": "NodeIO",
       "typeName": "NumberControlIO"
+    },
+    "NumberDisplayIO": {
+      "documentation": "A numeric readout with a background",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "NodeIO",
+      "typeName": "NumberDisplayIO"
     },
     "NumberIO": {
       "documentation": "Wrapper for the built-in JS number type (floating point, but also represents integers)",
@@ -966,7 +974,7 @@ window.phet.phetio.phetioTypes = assert &&
       "supertype": null,
       "typeName": "ObjectIO"
     },
-    "ObservableArrayIO": {
+    "ObservableArrayIO.<TrackIO>": {
       "documentation": "An array that sends notifications when its values have changed.",
       "events": [
         "itemAdded",
@@ -994,8 +1002,11 @@ window.phet.phetio.phetioTypes = assert &&
           "returnType": "NumberIO"
         }
       },
+      "parameterTypes": [
+        "TrackIO"
+      ],
       "supertype": "ObjectIO",
-      "typeName": "ObservableArrayIO"
+      "typeName": "ObservableArrayIO.<TrackIO>"
     },
     "OnOffSwitchIO": {
       "documentation": "A traditional switch component",
