@@ -87,6 +87,12 @@ define( require => {
       this.pieChartLegend.mutate( { top: this.controlPanel.top, left: this.availableViewBounds.minX + 5 } );
 
       this.pathSensor.leftTop = this.pieChartLegend.leftBottom.plusXY( 0, 10 );
+
+      // control panel is taller for this screen so move the measuring tape  to a different place
+      if ( this.showMeasuringTape ) {
+        this.measuringTapePanel.top = this.controlPanel.top;
+        this.measuringTapePanel.right = this.controlPanel.left - 5;
+      }
     }
   }
 
