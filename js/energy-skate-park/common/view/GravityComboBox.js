@@ -14,7 +14,10 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   const Property = require( 'AXON/Property' );
+  var NullableIO = require( 'TANDEM/types/NullableIO' );
   const Text = require( 'SCENERY/nodes/Text' );
+  const PropertyIO = require( 'AXON/PropertyIO' );
+  const NumberIO = require( 'TANDEM/types/NumberIO' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
 
   // constants
@@ -27,12 +30,13 @@ define( require => {
      * @param {Node} listParent - node which the ComboBoxListBox will be added
      * @param {object} options
      */
-    constructor( gravityProperty, listParent, options ) {
+    constructor( gravityProperty, listParent, tandem, options ) {
 
       options = _.extend( {
         xMargin: 10,
         yMargin: 6,
-        listPosition: 'above'
+        listPosition: 'above',
+        tandem: tandem
       }, options );
 
       const items = [
@@ -44,7 +48,10 @@ define( require => {
 
       // adapter Property for the ComboBox, because gravityProperty can also be controlled in
       // other ways and may not always be one of the above options - value is null if not in list
-      const adapterProperty =  new Property( gravityProperty.value );
+      const adapterProperty =  new Property( gravityProperty.value, {
+        tandem: tandem.createTandem( 'adapterProperty' ),
+        phetioType: PropertyIO( NullableIO( NumberIO ) )
+      } );
       adapterProperty.link( value => {
         if ( value ) { gravityProperty.set( value ); }
       } );

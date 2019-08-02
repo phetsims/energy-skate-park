@@ -42,7 +42,7 @@ define( require => {
         new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ), {
           decimalPlaces: 1
         } ),
-        new GravityComboBox( model.skater.gravityMagnitudeProperty, comboBoxParent )
+        new GravityComboBox( model.skater.gravityMagnitudeProperty, comboBoxParent, tandem.createTandem( 'gravityComboBox' ) )
       ];
 
       super( model, measureControls, tandem, {
