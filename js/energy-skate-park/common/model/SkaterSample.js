@@ -21,7 +21,7 @@ define( function( require ) {
   // constants
   // time (s) between initiation of removal and removal from the model - a short delay allows samples to still be
   // inspected a short time after a new set of samples is tracked
-  var REMOVAL_DELAY = 3;
+  const MIN_OPACITY = 0.05;
 
   /**
    * @constructor
@@ -59,9 +59,6 @@ define( function( require ) {
 
     // @private {boolean} - indicates that this sample should begin removal, and will fade out
     this._initiateRemove = false;
-
-    // @private {number} - in seconds, sample removed from model once this time is greater than REMOVAL_DELAY
-    this.timeSinceRemovalInitiated = 0;
   }
 
   energySkatePark.register( 'SkaterSample', SkaterSample  );
@@ -73,10 +70,9 @@ define( function( require ) {
      */
     step: function( dt ) {
       if ( this._initiateRemove ) {
-        this.timeSinceRemovalInitiated += dt;
         this.opacityProperty.set( this.opacityProperty.get() * 0.95 );
 
-        if ( this.timeSinceRemovalInitiated > REMOVAL_DELAY ) {
+        if ( this.opacityProperty.get() < MIN_OPACITY ) {
           this.removalEmitter.emit();
         }
       }
