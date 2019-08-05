@@ -69,6 +69,11 @@ define( function( require ) {
         }
       }
     } );
+
+    // when the scene changes, remove all points immediately so they don't persist
+    this.sceneProperty.link( scene => {
+      this.clearSavedSamples();
+    } );
   }
 
   energySkatePark.register( 'MeasureModel', MeasureModel );
@@ -82,12 +87,18 @@ define( function( require ) {
     reset: function() {
       EnergySkateParkFullTrackSetModel.prototype.reset.call( this );
 
-      this.skaterSamples.clear();
-      this.timeSinceSave = 0;
+      this.clearSavedSamples();
 
       this.sensorPositionProperty.reset();
       this.sampleSkaterProperty.reset();
+    },
 
+    /**
+     * Clear all saved samples and reset time variables responsible for controlling rate of saving samples.
+     */
+    clearSavedSamples: function() {
+      this.skaterSamples.clear();
+      this.timeSinceSave = 0;
     },
 
     /**

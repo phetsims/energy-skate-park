@@ -35,7 +35,7 @@ define( function( require ) {
     var draggableTracks = false; // TODO: Can we get rid of this?
     EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem.createTandem( 'trackSetModel' ), options );
 
-    // @public {number} - Indicatest the currently selected scene. There can be any number of scenes, do we need
+    // @public {number} - Indicates the currently selected scene. There can be any number of scenes, do we need
     // to pass this in as a param
     this.sceneProperty = new Property( 0, {
       tandem: tandem.createTandem( 'sceneProperty' ),

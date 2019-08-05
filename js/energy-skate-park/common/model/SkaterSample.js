@@ -3,7 +3,7 @@
 /**
  * A collection of physical values associated with the skater at a given time. Taken from the skaterState,
  * which will be up to date when this is generated (at some sample rate in the model step).
- * 
+ *
  * @author Jesse Greenberg
  */
 
