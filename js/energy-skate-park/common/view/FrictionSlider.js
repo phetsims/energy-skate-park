@@ -18,7 +18,7 @@ define( require => {
 
   class FrictionSlider extends PhysicalSlider {
     constructor( property, tandem ) {
-      super( property, new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ), controlsFrictionTitleString, tandem );
+      super( controlsFrictionTitleString, property, new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ), tandem );
     }
   }
 

@@ -19,7 +19,7 @@ define( require => {
 
   class GravitySlider extends PhysicalSlider {
     constructor( property, tandem ) {
-      super( property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), controlsGravityString, tandem, {
+      super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, {
         minLabel: controlsValueTinyString
       } );
     }

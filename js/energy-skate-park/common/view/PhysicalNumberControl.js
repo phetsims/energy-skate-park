@@ -29,13 +29,8 @@ define( require => {
       options = options || {};
       assert && assert( options.layoutFunction === undefined, 'PhysicalNumberControl sets layoutFunction' );
       assert && assert( options.tandem === undefined, 'PhysicalNumberControl shouldnt set tandem in options' );
-      assert && assert( options.majorTicks === undefined, 'PhysicalNumberControl sets majorTicks' );
       assert && assert( options.arrowButtonOptions === undefined, 'PhysicalNumberControl sets arrowButtonOptions' );
       assert && assert( options.titleFont === undefined, 'PhysicalNumberControl sets title font' );
-
-      if ( options.sliderOptions ) {
-        assert && assert( options.sliderOptions.majorTicks === undefined, 'PhysicalNumberControl sets majorTicks' );
-      }
 
       if ( options.numberDisplayOptions ) {
         assert && assert( options.numberDisplayOptions.font === undefined, 'PhysicalNumberControl sets font' );
@@ -49,16 +44,29 @@ define( require => {
         // decimal places for the ticks and (by default) the NumberControl's NumberDisplay
         decimalPlaces: 0,
 
+        // {boolean} - if true, the tweaker buttons and number display will be hidden (but rest of NumberControl title
+        // and layout will be preserved)
+        sliderOnly: false,
+
         // {*|null} - passed to the Slider of NumberControl, extended below
         sliderOptions: null,
 
         // {*|null} - passed to the NumberDisplay of NumberControl, extended below
         numberDisplayOptions: null
-
       }, options );
 
-      // into an extra object so we don't modify Constants.SLIDER_OPTIONS
-      options.sliderOptions = _.extend( {}, Constants.SLIDER_OPTIONS, options.sliderOptions );
+      options.sliderOptions = _.extend( {
+        majorTicks: [
+          {
+            value: valueRange.min,
+            label: new Text( Util.toFixed( valueRange.min, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
+          },
+          {
+            value: valueRange.max,
+            label: new Text( Util.toFixed( valueRange.max, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
+          }
+        ]
+      }, Constants.SLIDER_OPTIONS, options.sliderOptions );
 
       options.numberDisplayOptions = _.extend( {
         decimalPlaces: options.decimalPlaces
@@ -70,19 +78,34 @@ define( require => {
         arrowButtonOptions: {
           scale: 0.5
         },
-        layoutFunction: NumberControl.createLayoutFunction4(),
-        sliderOptions: _.extend( options.sliderOptions, {
-          majorTicks: [
-            {
-              value: valueRange.min,
-              label: new Text( Util.toFixed( valueRange.min, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
-            },
-            {
-              value: valueRange.max,
-              label: new Text( Util.toFixed( valueRange.max, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
-            }
-          ]
-        } ),
+
+        /**
+         * Custom layout for the NumberControl - if the slider is the only form of input for the control the tweaker
+         * and number display are hidden. But we still have the same layout for the title so that this matches other
+         * NumberControls used in energy-skate-park.
+         *
+         * @param {Node} titleNode
+         * @param {NumberDisplay} numberDisplay
+         * @param {Slider} slider
+         * @param {ArrowButton} leftArrowButton
+         * @param {ArrowButton} rightArrowButton
+         * @returns {Node}
+         */
+        layoutFunction: ( titleNode, numberDisplay, slider, leftArrowButton, rightArrowButton ) => {
+
+          // default layout, once done we will hide extra components if this is only meant to display the slider
+          const defaultLayoutFunction = NumberControl.createLayoutFunction4();
+          const children = defaultLayoutFunction( titleNode, numberDisplay, slider, leftArrowButton, rightArrowButton );
+
+          if ( options.sliderOnly ) {
+            leftArrowButton.visible = false;
+            rightArrowButton.visible = false;
+            numberDisplay.visible = false;
+          }
+
+          return children;
+        },
+        sliderOptions: options.sliderOptions,
         numberDisplayOptions: _.extend( options.numberDisplayOptions, {
           xMargin: 2,
           yMargin: 2,
