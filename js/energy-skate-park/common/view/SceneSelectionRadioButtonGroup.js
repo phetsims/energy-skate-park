@@ -37,7 +37,6 @@ define( function( require ) {
       buttonContentXMargin: 3,
       buttonContentYMargin: 3,
       cornerRadius: 2,
-      spacing: 5,
       selectedStroke: 'rgb(87,178,226)',
       baseColor: 'white',
       tandem: tandem,
@@ -45,6 +44,11 @@ define( function( require ) {
       // {boolean} - should mountains, background, and sky be included in the icon for track buttons?
       includeBackground: false
     }, options );
+
+    // produces spacing of ~5 when there are 4 premade tracks which is the usual case and looks nice, and provides
+    // more spacing if there are fewer tracks
+    assert && assert( options.spacing === undefined, 'SceneSelectionRadioButtonGroup sets spacing from number of premade tracks' );
+    options.spacing = 20 / model.tracks.length;
 
     // Create a button with a scene like the track in the index
     var createNode = function( index ) {
@@ -99,7 +103,7 @@ define( function( require ) {
         node.scale( contentScale );
       }
 
-      // placec in an align gropu and add margins so that the buttons are always square
+      // place in an align group and add margins so that the buttons are always square
       const alignedNode = buttonAlignGroup.createBox( node );
       const margin = Math.abs( alignedNode.width - alignedNode.height ) / 2;
       if ( margin !== 0 ) {
