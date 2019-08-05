@@ -38,6 +38,10 @@ define( require => {
         assert && assert( options.numberDisplayOptions.yMargin === undefined, 'PhysicalNumberControl sets yMargin' );
       }
 
+      if ( options.sliderOptions ) {
+        assert & assert( options.sliderOptions.constrainValue === undefined, 'PhysicalNumberControl sets constrainValue on slider' );
+      }
+
       // slider options are passed directly to the Slider in NumberControl
       options = _.extend( {
 
@@ -67,6 +71,12 @@ define( require => {
           }
         ]
       }, Constants.SLIDER_OPTIONS, options.sliderOptions );
+
+      if ( options.sliderOnly ) {
+
+        // if we are not including tweaker buttons, don't constrain slider value to tweaker deltas
+        options.sliderOptions.constrainValue = _.identity;
+      }
 
       options.numberDisplayOptions = _.extend( {
         decimalPlaces: options.decimalPlaces
