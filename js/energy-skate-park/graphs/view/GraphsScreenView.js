@@ -41,7 +41,7 @@ define( function( require ) {
     } );
 
     // @private - for layout
-    this.graphAccordionBox = new EnergyGraphAccordionBox( model, tandem.createTandem( 'graphAccordionBox' ) );
+    this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ) );
     this.addChild( this.graphAccordionBox );
 
     // grid and reference height visibility are controlled from a separate area in the "graphs" screen
@@ -62,8 +62,10 @@ define( function( require ) {
     layout: function( width, height ) {
       EnergySkateParkScreenView.prototype.layout.call( this, width, height );
 
+      // the graph within the accordion box needs to line up with the track so that skater positions on the
+      // track align perfectly with positions along the graph
+      this.graphAccordionBox.right = this.trackLayer.right + EnergyGraphAccordionBox.GRAPH_OFFSET;
       this.graphAccordionBox.top = this.controlPanel.top;
-      this.graphAccordionBox.left = this.availableViewBounds.minX + 5;
 
       this.graphsVisibilityControls.left = this.graphAccordionBox.left;
       this.graphsVisibilityControls.centerY = this.resetAllButton.centerY;

@@ -3,7 +3,7 @@
 /**
  * The accordion box in the "Graphs" screen that contains the energy graphs, as well as controls for
  * controlling the data.
- * 
+ *
  * @author Jesse Greenberg
  */
 define( function( require ) {
@@ -17,6 +17,7 @@ define( function( require ) {
   const Emitter = require( 'AXON/Emitter' );
   const Dimension2 = require( 'DOT/Dimension2' );
   const GraphsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/model/GraphsModel' );
+  const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
   const Text = require( 'SCENERY/nodes/Text' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const Node = require( 'SCENERY/nodes/Node' );
@@ -40,11 +41,13 @@ define( function( require ) {
   const plotsEnergyGraphString = require( 'string!ENERGY_SKATE_PARK/plots.energy-graph' );
 
   // constants
-  const GRAPH_WIDTH = 475;
   const GRAPH_HEIGHT = 115;
 
   const DEFAULT_MAX_Y = 1000;
   const DEFAULT_MIN_Y = -1000;
+
+  // margin for content within the panel
+  const CONTENT_X_MARGIN = 4;
 
   const SWITCH_SIZE = new Dimension2( 30, 15 );
 
@@ -54,9 +57,10 @@ define( function( require ) {
 
     /**
      * @param {EnergySkateParkModel} model
+     * @param {ModelViewTransform2} modelViewTransform
      * @param {Tandem} tandem
      */
-    constructor( model, tandem ) {
+    constructor( model, modelViewTransform, tandem ) {
 
       // the parent for all content of the accordion box
       const contentNode = new Node();
@@ -70,8 +74,10 @@ define( function( require ) {
       ] );
       contentNode.addChild( checkboxGroup );
 
+      const graphWidth = modelViewTransform.modelToViewDeltaX( GraphsConstants.TRACK_WIDTH );
+
       // all layout is relative to the graph
-      const energyPlot = new EnergyXYPlot( model, tandem.createTandem( 'energyPlot' ) );
+      const energyPlot = new EnergyXYPlot( model, graphWidth, GRAPH_HEIGHT, tandem.createTandem( 'energyPlot' ) );
       contentNode.addChild( energyPlot );
 
       const eraserButton = new EraserButton( {
@@ -168,7 +174,7 @@ define( function( require ) {
           energyPlot.setCursorVisibleOverride( null );
           energyPlot.setPlotStyle( XYDataSeriesNode.PlotStyle.LINE );
         }
-      } ); 
+      } );
     }
 
     /**
@@ -207,9 +213,11 @@ define( function( require ) {
 
     /**
      * @param {EnergySkateParkModel} model
+     * @param {number} graphWidth
+     * @param {number} graphHeight
      * @param {Tandem} tandem
      */
-    constructor( model, tandem ) {
+    constructor( model, graphWidth, graphHeight, tandem ) {
 
       const dragEndedEmitter = new Emitter();
       const dragStartedEmitter = new Emitter();
@@ -217,8 +225,8 @@ define( function( require ) {
       let pausedOnDragStart = true;
 
       super( {
-        width: GRAPH_WIDTH,
-        height: GRAPH_HEIGHT,
+        width: graphWidth,
+        height: graphHeight,
 
         maxX: 20,
         minY: -3000,
@@ -354,6 +362,10 @@ define( function( require ) {
       this.setCursorValue( 0 );
     }
   }
+
+  // for layout of the accordion box within a screen view, the spacing of the graph from the right edge of the
+  // accordion box is the x content margin
+  EnergyGraphAccordionBox.GRAPH_OFFSET = CONTENT_X_MARGIN;
 
   return energySkatePark.register( 'EnergyGraphAccordionBox', EnergyGraphAccordionBox );
 } );

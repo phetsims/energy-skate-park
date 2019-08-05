@@ -23,7 +23,12 @@ define( function( require ) {
 
     // determined to be reasonable by inspecting energies at large skater heights - anything
     // above this will be off of the graph
-    MAX_PLOTTED_ENERGY: 3000
+    MAX_PLOTTED_ENERGY: 3000,
+
+    // dimensions for the tracks in the graphs screen, reused and referenced by many components in this screen
+    // in model coordinates (meters)
+    TRACK_WIDTH: 10,
+    TRACK_HEIGHT: 4
   };
 
   return energySkatePark.register( 'GraphsConstants', GraphsConstants );

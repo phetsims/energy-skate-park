@@ -155,7 +155,7 @@ define( function( require ) {
 
       var unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
 
-      // @private {MeasuringTapeNode} - The measuring tape node will not 
+      // @private {MeasuringTapeNode} - The measuring tape node will not
       this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
         basePositionProperty: model.measuringTapeBasePositionProperty,
         tipPositionProperty: model.measuringTapeTipPositionProperty,
@@ -205,7 +205,7 @@ define( function( require ) {
       } );
       this.energyBarGraph.leftTop = new Vector2( 5, 5 );
       this.bottomLayer.addChild( this.energyBarGraph );
-      model.barGraphVisibleProperty.linkAttribute( this.energyBarGraph, 'visible' ); 
+      model.barGraphVisibleProperty.linkAttribute( this.energyBarGraph, 'visible' );
     }
 
     this.resetAllButton = new ResetAllButton( {
@@ -254,8 +254,8 @@ define( function( require ) {
     speedometerNode.top = this.layoutBounds.minY + 5;
     this.bottomLayer.addChild( speedometerNode );
 
-    // Layer which will contain all of the tracks
-    var trackLayer = new Node( {
+    // @public (for layout) - Layer which will contain all of the tracks
+    this.trackLayer = new Node( {
       tandem: tandem.createTandem( 'trackLayer' )
     } );
 
@@ -267,7 +267,7 @@ define( function( require ) {
       } );
 
       trackNodes.forEach( function( trackNode ) {
-        trackLayer.addChild( trackNode );
+        self.trackLayer.addChild( trackNode );
       } );
 
       // TODO: Could we link the track PhysicalProperty directly to visible? Through linkAttribute or something?
@@ -282,12 +282,12 @@ define( function( require ) {
       var addTrackNode = function( track ) {
 
         var trackNode = new TrackNode( model, track, modelViewTransform, self.availableModelBoundsProperty, trackNodeGroupTandem.createTandem( track.tandem.name ) );
-        trackLayer.addChild( trackNode );
+        self.trackLayer.addChild( trackNode );
 
         // When track removed, remove its view
         var itemRemovedListener = function( removed ) {
           if ( removed === track ) {
-            trackLayer.removeChild( trackNode );
+            self.trackLayer.removeChild( trackNode );
 
             // Clean up memory leak
             model.tracks.removeItemRemovedListener( itemRemovedListener );
@@ -360,7 +360,7 @@ define( function( require ) {
       this.bottomLayer.addChild( clearButton.mutate( { left: 5, centerY: trackCreationPanel.centerY } ) );
     }
 
-    this.bottomLayer.addChild( trackLayer );
+    this.bottomLayer.addChild( this.trackLayer );
 
     var skaterNode = new SkaterNode(
       model.skater,

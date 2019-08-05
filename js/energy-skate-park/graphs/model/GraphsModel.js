@@ -2,7 +2,7 @@
 
 /**
  * Model for the Graphs screen in Energy Skate Park.
- * 
+ *
  * @author Jesse Greenberg
  */
 define( require => {
@@ -101,7 +101,7 @@ define( require => {
 
       const skaterSample = new SkaterSample( updatedState, this.runningTimeProperty.get() );
 
-      // for the graphs screen, we need 
+      // for the graphs screen, we need
       this.runningTimeProperty.set( this.runningTimeProperty.get() + dt );
 
       if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME ) {
@@ -151,7 +151,7 @@ define( require => {
      */
     getClosestSkaterSample( time ) {
       assert && assert( this.skaterSamples.length > 0, 'model has no saved SkaterSamples to retrieve' );
-      
+
       let nearestIndex = _.sortedIndexBy( this.skaterSamples.getArray(), { time: time }, entry => { return entry.time; } );
       nearestIndex = Util.clamp( nearestIndex, 0, this.skaterSamples.length - 1 );
 
@@ -167,7 +167,7 @@ define( require => {
     }
 
     /**
-     * Create the custom set of tracks for the "graphs" screen. The "graphs" screen includes a parabola and a 
+     * Create the custom set of tracks for the "graphs" screen. The "graphs" screen includes a parabola and a
      * double well with unique shapes where only certain control points are draggable.
      *
      * @param {Tandem} tandem
@@ -177,8 +177,8 @@ define( require => {
       const groupTandem = this.controlPointGroupTandem;
 
       // all tracks in graphs screen are bound by these dimensions (in meters)
-      const trackHeight = 4;
-      const trackWidth = 10;
+      const trackHeight = GraphsConstants.TRACK_HEIGHT;
+      const trackWidth = GraphsConstants.TRACK_WIDTH;
 
       const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( groupTandem,  {
         trackHeight: trackHeight,
@@ -195,7 +195,7 @@ define( require => {
 
       const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( groupTandem, {
         trackHeight: 4,
-        trackWidth: 10, 
+        trackWidth: 10,
         trackMidHeight: 1.5,
 
         p1Draggable: false,
