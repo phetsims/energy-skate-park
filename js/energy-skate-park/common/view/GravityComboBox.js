@@ -35,7 +35,6 @@ define( require => {
       options = _.extend( {
         xMargin: 10,
         yMargin: 6,
-        listPosition: 'above',
         tandem: tandem
       }, options );
 
@@ -61,7 +60,6 @@ define( require => {
         adapterProperty.value = _.includes( gravityOptions, value ) ? value : null;
       } );
 
-      // add the option for 
       super( items, adapterProperty, listParent, options );
     }
   }
