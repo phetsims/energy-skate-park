@@ -23,7 +23,7 @@ define( function( require ) {
   const Node = require( 'SCENERY/nodes/Node' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const PointStyle = require( 'GRIDDLE/PointStyle' );
-  const Util = require( 'DOT/Util' );
+  const Range = require( 'DOT/Range' );
   const XYCursorPlot = require( 'GRIDDLE/XYCursorPlot' );
   const XYDataSeries = require( 'GRIDDLE/XYDataSeries' );
   const XYDataSeriesNode = require( 'GRIDDLE/XYDataSeriesNode' );
@@ -43,8 +43,14 @@ define( function( require ) {
   // constants
   const GRAPH_HEIGHT = 115;
 
-  const DEFAULT_MAX_Y = 1000;
-  const DEFAULT_MIN_Y = -1000;
+  // determines a range for the energy plot as a function of the scale
+  const Y_OFFSET = 500;
+  const Y_SLOPE = 500;
+
+  // when the plot range is larger than this the threshold a larger step is used for vertical grid lines on the plot
+  const LARGE_RANGE_THRESHOLD = 5000;
+  const LARGE_STEP = 1000;
+  const SMALL_STEP = 500;
 
   // margin for content within the panel
   const CONTENT_X_MARGIN = 4;
@@ -123,13 +129,16 @@ define( function( require ) {
       contentNode.addChild( yLabel );
       contentNode.addChild( xLabelText );
 
+      // calculate new range of plot when zooming in or out
       model.lineGraphScaleProperty.link( ( scale ) => {
-        const newMinY = scale * DEFAULT_MIN_Y;
-        const newMaxY = scale * DEFAULT_MAX_Y;
+        const newRange = calculateRange( scale );
+        const newMaxY = newRange.max;
+        const newMinY = newRange.min;
+        const newStepY = ( newMaxY - newMinY ) >= LARGE_RANGE_THRESHOLD ? LARGE_STEP : SMALL_STEP;
 
         energyPlot.setMinY( newMinY );
         energyPlot.setMaxY( newMaxY );
-        energyPlot.setStepY( Util.roundToInterval( ( ( newMaxY - newMinY ) / 6 ), 500 ) );
+        energyPlot.setStepY( newStepY );
       } );
 
       // layout, all layout is relative to the energy plot
@@ -224,14 +233,16 @@ define( function( require ) {
 
       let pausedOnDragStart = true;
 
+      const plotRange = calculateRange( model.lineGraphScaleProperty.value );
+
       super( {
         width: graphWidth,
         height: graphHeight,
 
         maxX: 20,
-        minY: -3000,
-        maxY: 3000,
-        stepY: 1000,
+        minY: plotRange.min,
+        maxY: plotRange.max,
+        stepY: SMALL_STEP,
 
         showAxis: false,
 
@@ -366,6 +377,19 @@ define( function( require ) {
   // for layout of the accordion box within a screen view, the spacing of the graph from the right edge of the
   // accordion box is the x content margin
   EnergyGraphAccordionBox.GRAPH_OFFSET = CONTENT_X_MARGIN;
+
+  //--------------------------------------------------------------------------
+  // helper functions
+  //-------------------------------------------------------------------------
+  /**
+   * Calculates the range of the plot as a function of scale
+   * @param {number} scale
+   * @returns {Range}
+   */
+  const calculateRange = scale => {
+    const max = Y_OFFSET + scale * Y_SLOPE;
+    return new Range( -max, max );
+  };
 
   return energySkatePark.register( 'EnergyGraphAccordionBox', EnergyGraphAccordionBox );
 } );
