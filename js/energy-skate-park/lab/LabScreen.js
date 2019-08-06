@@ -1,7 +1,7 @@
-// Copyright 2018, University of Colorado Boulder
+// Copyright 2018-2019, University of Colorado Boulder
 
 /**
- * The "Lab" screen.
+ * The "Lab" screen. No premade tracks. More open space for the user to play with custom tracks.
  *
  * @author Jesse Greenberg
  */
@@ -17,7 +17,6 @@ define( function( require ) {
   var Screen = require( 'JOIST/Screen' );
 
   // images
-  // TODO: navigation bar/home screen images
   var iconPlaygroundHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-playground-homescreen.png' );
   var iconPlaygroundNavbar = require( 'image!ENERGY_SKATE_PARK/icon-playground-navbar.png' );
 
