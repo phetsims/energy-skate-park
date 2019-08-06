@@ -14,7 +14,7 @@ define( function( require ) {
   const AccordionBox = require( 'SUN/AccordionBox' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
-  const Emitter = require( 'AXON/Emitter' );
+  const EnergyPlot = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyPlot' );
   const Dimension2 = require( 'DOT/Dimension2' );
   const GraphsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/model/GraphsModel' );
   const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
@@ -22,10 +22,6 @@ define( function( require ) {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  const PointStyle = require( 'GRIDDLE/PointStyle' );
-  const Range = require( 'DOT/Range' );
-  const XYCursorPlot = require( 'GRIDDLE/XYCursorPlot' );
-  const XYDataSeries = require( 'GRIDDLE/XYDataSeries' );
   const XYDataSeriesNode = require( 'GRIDDLE/XYDataSeriesNode' );
   const VBox = require( 'SCENERY/nodes/VBox' );
   const VerticalCheckboxGroup = require( 'SUN/VerticalCheckboxGroup' );
@@ -43,18 +39,10 @@ define( function( require ) {
   // constants
   const GRAPH_HEIGHT = 115;
 
-  // determines a range for the energy plot as a function of the scale
-  const Y_OFFSET = 500;
-  const Y_SLOPE = 500;
-
-  // when the plot range is larger than this the threshold a larger step is used for vertical grid lines on the plot
-  const LARGE_RANGE_THRESHOLD = 5000;
-  const LARGE_STEP = 1000;
-  const SMALL_STEP = 500;
-
   // margin for content within the panel
   const CONTENT_X_MARGIN = 4;
 
+  // size of the ABSwitch that changes from plotting position vs time
   const SWITCH_SIZE = new Dimension2( 30, 15 );
 
   const LABEL_FONT = new PhetFont( { size: 12 } );
@@ -80,12 +68,14 @@ define( function( require ) {
       ] );
       contentNode.addChild( checkboxGroup );
 
+      // the graph is as long as the tracks in the Graphs screen so that position of the skater matches
+      // with position along the plot
       const graphWidth = modelViewTransform.modelToViewDeltaX( GraphsConstants.TRACK_WIDTH );
 
-      // all layout is relative to the graph
-      const energyPlot = new EnergyXYPlot( model, graphWidth, GRAPH_HEIGHT, tandem.createTandem( 'energyPlot' ) );
+      const energyPlot = new EnergyPlot( model, graphWidth, GRAPH_HEIGHT, tandem.createTandem( 'energyPlot' ) );
       contentNode.addChild( energyPlot );
 
+      // eraser button to clear all data from the graph
       const eraserButton = new EraserButton( {
         listener: () => {
           this.clearEnergyData();
@@ -95,6 +85,7 @@ define( function( require ) {
       } );
       contentNode.addChild( eraserButton );
 
+      // ABSwitch to change plotting variables
       const switchLabelOptions = {
         font: new PhetFont( { size: 11 } )
       };
@@ -107,6 +98,7 @@ define( function( require ) {
       } );
       contentNode.addChild( variableSwitch );
 
+      // zoom buttons
       const zoomInButton = new EnergyGraphZoomButton( model.lineGraphScaleProperty, {
         tandem: tandem.createTandem( 'zoomInButton' )
       } );
@@ -128,18 +120,6 @@ define( function( require ) {
       } );
       contentNode.addChild( yLabel );
       contentNode.addChild( xLabelText );
-
-      // calculate new range of plot when zooming in or out
-      model.lineGraphScaleProperty.link( ( scale ) => {
-        const newRange = calculateRange( scale );
-        const newMaxY = newRange.max;
-        const newMinY = newRange.min;
-        const newStepY = ( newMaxY - newMinY ) >= LARGE_RANGE_THRESHOLD ? LARGE_STEP : SMALL_STEP;
-
-        energyPlot.setMinY( newMinY );
-        energyPlot.setMaxY( newMaxY );
-        energyPlot.setStepY( newStepY );
-      } );
 
       // layout, all layout is relative to the energy plot
       variableSwitch.centerBottom = energyPlot.centerTop.minusXY( 0, 5 );
@@ -214,182 +194,9 @@ define( function( require ) {
     }
   }
 
-  /**
-   * XY Plot for a energy vs time. Includes labels and zoom buttons to change the zoom along the y axis (energy), and
-   * an eraser button that clears the plot.
-   */
-  class EnergyXYPlot extends XYCursorPlot {
-
-    /**
-     * @param {EnergySkateParkModel} model
-     * @param {number} graphWidth
-     * @param {number} graphHeight
-     * @param {Tandem} tandem
-     */
-    constructor( model, graphWidth, graphHeight, tandem ) {
-
-      const dragEndedEmitter = new Emitter();
-      const dragStartedEmitter = new Emitter();
-
-      let pausedOnDragStart = true;
-
-      const plotRange = calculateRange( model.lineGraphScaleProperty.value );
-
-      super( {
-        width: graphWidth,
-        height: graphHeight,
-
-        maxX: 20,
-        minY: plotRange.min,
-        maxY: plotRange.max,
-        stepY: SMALL_STEP,
-
-        showAxis: false,
-
-        tickLabelFont: new PhetFont( 10 ),
-
-        lineDash: [ 4, 4 ],
-        showVerticalIntermediateLines: false,
-        showHorizontalIntermediateLines: false,
-
-        cursorOptions: {
-          startDrag: ( event, listener ) => {
-            pausedOnDragStart = model.pausedProperty.get();
-
-            if ( !pausedOnDragStart ) {
-              model.pausedProperty.set( true );
-            }
-
-            // workaround because `this` is not accessible yet
-            dragStartedEmitter.emit();
-          },
-          drag: ( event, listener ) => {
-
-            // when we drag the cursor, get the skater sample at that time and set the skater to that state
-            const closestSample = model.getClosestSkaterSample( this.getCursorValue() );
-            closestSample.skaterState.setToSkater( model.skater );
-            model.skater.updatedEmitter.emit();
-          },
-          endDrag: ( event, listener ) => {
-
-            if ( !pausedOnDragStart ) {
-              model.pausedProperty.set( false );
-            }
-
-            // clear all data up to this point, we will begin recording from here
-            dragEndedEmitter.emit(); // a workaround since we don't have access to `this` yet
-          }
-        }
-      } );
-
-      // @private
-      this.kineticEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.kineticEnergy } );
-      this.potentialEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.potentialEnergy } );
-      this.thermalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.thermalEnergy } );
-      this.totalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.totalEnergy } );
-
-      // add data points when a SkaterSample is added to the model
-      model.skaterSamples.addItemAddedListener( addedSample => {
-        const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
-        const independentVariable = plotTime ? addedSample.time : addedSample.position.x + 5;
-
-        // keep a reference to the pointStyle so that it can be modified later
-        const pointStyle = new PointStyle();
-
-        this.kineticEnergyDataSeries.addPoint( independentVariable, addedSample.kineticEnergy, pointStyle );
-        this.potentialEnergyDataSeries.addPoint( independentVariable, addedSample.potentialEnergy, pointStyle );
-        this.thermalEnergyDataSeries.addPoint( independentVariable, addedSample.thermalEnergy, pointStyle );
-        this.totalEnergyDataSeries.addPoint( independentVariable, addedSample.totalEnergy, pointStyle );
-
-        // add a listener that updates opacity with the SkaterSample Property, dispose it on removal
-        const opacityListener = opacity => {
-          for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
-            pointStyle.opacity = opacity;
-            this.seriesViewMap[ this.dataSeriesList[ i ].uniqueId ].redraw();
-          }
-        };
-        addedSample.opacityProperty.link( opacityListener );
-
-        const removalListener = removedSample => {
-          if ( removedSample === addedSample ) {
-
-            addedSample.opacityProperty.unlink( opacityListener );
-
-            for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
-              // TODO: Get the index of the position removed sample rather than assume they will be removed from oldest
-              // to newest?
-              this.dataSeriesList[ i ].removePoint( 0 );
-            }
-            model.skaterSamples.removeItemRemovedListener( removalListener );
-          }
-        };
-        model.skaterSamples.addItemRemovedListener( removalListener );
-
-        this.setCursorValue( independentVariable );
-      } );
-
-      // series rendered in order, this order matches Java version
-      this.addSeries( this.thermalEnergyDataSeries, true );
-      this.addSeries( this.potentialEnergyDataSeries, true );
-      this.addSeries( this.kineticEnergyDataSeries, true );
-      this.addSeries( this.totalEnergyDataSeries, true );
-
-      dragEndedEmitter.addListener( () => {
-        const timeOnEnd = this.getCursorValue();
-
-        model.runningTimeProperty.set( timeOnEnd );
-
-        // clear all data that has time great than the cursor time - this assumes that the time data is in order
-        for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
-          const dataSeries = this.dataSeriesList[ i ];
-          const timeData = dataSeries.getXPoints();
-          for ( let j = 0; j < dataSeries.getLength(); j++ ) {
-            if ( timeData[ j ] >= timeOnEnd ) {
-              const startIndex = j;
-              const endIndex = dataSeries.getLength();
-
-              dataSeries.removePoints( startIndex, endIndex );
-              break;
-            }
-          }
-        }
-      } );
-
-      model.kineticEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.kineticEnergyDataSeries.uniqueId ], 'visible' );
-      model.potentialEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.potentialEnergyDataSeries.uniqueId ], 'visible' );
-      model.thermalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.thermalEnergyDataSeries.uniqueId ], 'visible' );
-      model.totalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.totalEnergyDataSeries.uniqueId ], 'visible' );
-    }
-
-    /**
-     * Clear all energy data of the DataSeries, from reset or when the EraserButton is pressed.
-     */
-    clearEnergyDataSeries() {
-      this.kineticEnergyDataSeries.clear();
-      this.potentialEnergyDataSeries.clear();
-      this.thermalEnergyDataSeries.clear();
-      this.totalEnergyDataSeries.clear();
-
-      this.setCursorValue( 0 );
-    }
-  }
-
   // for layout of the accordion box within a screen view, the spacing of the graph from the right edge of the
   // accordion box is the x content margin
   EnergyGraphAccordionBox.GRAPH_OFFSET = CONTENT_X_MARGIN;
-
-  //--------------------------------------------------------------------------
-  // helper functions
-  //-------------------------------------------------------------------------
-  /**
-   * Calculates the range of the plot as a function of scale
-   * @param {number} scale
-   * @returns {Range}
-   */
-  const calculateRange = scale => {
-    const max = Y_OFFSET + scale * Y_SLOPE;
-    return new Range( -max, max );
-  };
 
   return energySkatePark.register( 'EnergyGraphAccordionBox', EnergyGraphAccordionBox );
 } );
