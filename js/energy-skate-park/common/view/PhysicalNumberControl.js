@@ -104,7 +104,11 @@ define( require => {
         layoutFunction: ( titleNode, numberDisplay, slider, leftArrowButton, rightArrowButton ) => {
 
           // default layout, once done we will hide extra components if this is only meant to display the slider
-          const defaultLayoutFunction = NumberControl.createLayoutFunction4();
+          const defaultLayoutFunction = NumberControl.createLayoutFunction4( {
+
+            // arrow buttons a bit tighter than default to provide more room for content in screens
+            arrowButtonSpacing: 2
+          } );
           const children = defaultLayoutFunction( titleNode, numberDisplay, slider, leftArrowButton, rightArrowButton );
 
           if ( options.sliderOnly ) {

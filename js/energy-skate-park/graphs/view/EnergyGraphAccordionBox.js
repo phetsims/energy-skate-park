@@ -139,6 +139,7 @@ define( function( require ) {
         contentYMargin: 2,
         contentXMargin: 4,
         contentYSpacing: -eraserButton.height + 2,
+        stroke: EnergySkateParkColorScheme.panelFill,
         tandem: tandem.createTandem( 'accordionBox' )
       } );
 
