@@ -22,8 +22,9 @@ define( function( require ) {
   var SceneSelectionRadioButtonGroup = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SceneSelectionRadioButtonGroup' );
   var VBox = require( 'SCENERY/nodes/VBox' );
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
+  const MassComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassComboBox' );
 
-  const VALID_CONTROLS = [ PhysicalSlider, PhysicalNumberControl, GravityComboBox ];
+  const VALID_CONTROLS = [ PhysicalSlider, PhysicalNumberControl, GravityComboBox, MassComboBox ];
 
   /**
    * @param {EnergySkateParkModel} model

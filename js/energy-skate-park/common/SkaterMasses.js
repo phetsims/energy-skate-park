@@ -1,7 +1,7 @@
 // Copyright 2018, University of Colorado Boulder
 
 /**
- * Constants used in the intro screen.
+ * Constants related to the skater in Energy Skate Park.
  * @author Sam Reid
  */
 define( function( require ) {
@@ -10,7 +10,7 @@ define( function( require ) {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
-  const IntroConstants = {
+  const SkaterMasses = {
 
     // masses of skater objects in the intro screen, in kg
     PHET_SKATER_MASS: 75,
@@ -20,7 +20,7 @@ define( function( require ) {
     BALL_MASS: 5
   };
 
-  energySkatePark.register( 'IntroConstants', IntroConstants );
+  energySkatePark.register( 'SkaterMasses', SkaterMasses );
 
-  return IntroConstants;
+  return SkaterMasses;
 } );

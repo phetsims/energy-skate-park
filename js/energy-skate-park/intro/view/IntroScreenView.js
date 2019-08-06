@@ -15,7 +15,7 @@ define( function( require ) {
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
   var GravitySlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravitySlider' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var MassComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/view/MassComboBox' );
+  var MassComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassComboBox' );
 
   /**
    * @constructor
@@ -34,10 +34,8 @@ define( function( require ) {
       }
     } );
 
-    // @private (for layout) {ComboBox} 
-    this.massComboBox = new MassComboBox( model.skater.massProperty, this, {
-      tandem: tandem.createTandem( 'massComboBox' )
-    } );
+    // @private (for layout) {ComboBox}
+    this.massComboBox = new MassComboBox( model.skater.massProperty, this, tandem );
 
     // add the combo box to the back layer so it is behind the skater
     this.addToBottomLayer( this.massComboBox );

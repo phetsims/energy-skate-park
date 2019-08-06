@@ -13,7 +13,7 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var IntroConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/IntroConstants' );
+  var SkaterMasses = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SkaterMasses' );
 
   // constants
   function IntroModel( tandem ) {
@@ -21,8 +21,8 @@ define( function( require ) {
     // track set model with friction
     EnergySkateParkFullTrackSetModel.call( this, true, tandem, {
       skaterOptions: {
-        defaultMass: IntroConstants.PHET_SKATER_MASS,
-        massRange: new Range( IntroConstants.BUG_MASS, IntroConstants.PHET_SKATER_MASS )
+        defaultMass: SkaterMasses.PHET_SKATER_MASS,
+        massRange: new Range( SkaterMasses.BUG_MASS, SkaterMasses.PHET_SKATER_MASS )
       }
     } );
   }
