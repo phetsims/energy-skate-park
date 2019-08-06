@@ -39,7 +39,7 @@ define( require => {
       }
 
       if ( options.sliderOptions ) {
-        assert & assert( options.sliderOptions.constrainValue === undefined, 'PhysicalNumberControl sets constrainValue on slider' );
+        assert && assert( options.sliderOptions.constrainValue === undefined, 'PhysicalNumberControl sets constrainValue on slider' );
       }
 
       // slider options are passed directly to the Slider in NumberControl
