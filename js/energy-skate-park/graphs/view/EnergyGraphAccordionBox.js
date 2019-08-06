@@ -152,6 +152,13 @@ define( function( require ) {
       model.independentVariableProperty.link( () => {
         this.clearEnergyData();
       } );
+
+      model.lineGraphScaleProperty.link( scale => {
+        const range = model.lineGraphScaleProperty.range;
+        assert && assert( model.lineGraphScaleProperty.range, 'please define a range for lineGraphScaleProperty' );
+        zoomInButton.enabled = scale > range.min;
+        zoomOutButton.enabled = scale < range.max;
+      } );
     }
 
     /**
