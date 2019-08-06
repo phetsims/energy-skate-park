@@ -86,6 +86,10 @@ define( function( require ) {
       // {boolean} - whether or not the bar graph should include zoom buttons
       showBarGraphZoomButtons: true,
 
+      // {boolean} - whether or not the screen will include radio buttons to control skater attaching/detaching
+      // from the tracks
+      showAttachDetachRadioButtons: false,
+
       // {boolean} - whether or not this ScreenView will show the reference height
       showReferenceHeight: true,
 
@@ -176,7 +180,7 @@ define( function( require ) {
     }
 
     // For the playground screen, show attach/detach toggle buttons
-    if ( model.tracksDraggable ) {
+    if ( options.showAttachDetachRadioButtons ) {
       var property = model.tracksDraggable ? new Property( true ) :
                      new DerivedProperty( [ model.sceneProperty ], function( scene ) { return scene === 2; } );
       this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.stickingToTrackProperty, property, 150, tandem.createTandem( 'attachDetachToggleButtons' ) );
