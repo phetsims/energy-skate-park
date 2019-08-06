@@ -22,7 +22,6 @@ define( function( require ) {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  const XYDataSeriesNode = require( 'GRIDDLE/XYDataSeriesNode' );
   const VBox = require( 'SCENERY/nodes/VBox' );
   const VerticalCheckboxGroup = require( 'SUN/VerticalCheckboxGroup' );
   const EnergyGraphZoomButton = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphZoomButton' );
@@ -149,20 +148,9 @@ define( function( require ) {
       // @private {GraphsModel}
       this.model = model;
 
-      // listeners - when the independent variable changes, clear all data and change graph display
-      model.independentVariableProperty.link( ( independentVariable ) => {
+      // listeners - when the independent variable changes, clear all data
+      model.independentVariableProperty.link( () => {
         this.clearEnergyData();
-
-        if ( independentVariable === GraphsModel.IndependentVariable.POSITION ) {
-          energyPlot.setMaxX( 10 );
-          energyPlot.setCursorVisibleOverride( false );
-          energyPlot.setPlotStyle( XYDataSeriesNode.PlotStyle.SCATTER );
-        }
-        else {
-          energyPlot.setMaxX( 20 );
-          energyPlot.setCursorVisibleOverride( null );
-          energyPlot.setPlotStyle( XYDataSeriesNode.PlotStyle.LINE );
-        }
       } );
     }
 

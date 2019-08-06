@@ -20,6 +20,7 @@ define( require => {
   const Range = require( 'DOT/Range' );
   const XYCursorPlot = require( 'GRIDDLE/XYCursorPlot' );
   const XYDataSeries = require( 'GRIDDLE/XYDataSeries' );
+  const XYDataSeriesNode = require( 'GRIDDLE/XYDataSeriesNode' );
 
   // constants
   // determines a range for the energy plot as a function of the scale
@@ -30,6 +31,10 @@ define( require => {
   const LARGE_RANGE_THRESHOLD = 5000;
   const LARGE_STEP = 1000;
   const SMALL_STEP = 500;
+
+  // determines domain for the plot depending on independent variable
+  const TIME_MAX_X = 20; // in seconds
+  const POSITION_MAX_X = 10; // in meters
 
   class EnergyPlot extends XYCursorPlot {
 
@@ -144,6 +149,20 @@ define( require => {
         this.setStepY( newStepY );
       } );
 
+      // update range, domain, and plot style of plot when the independent variable changes - cursor is invisible for
+      // plots against position
+      model.independentVariableProperty.link( independentVariable => {
+        this.setMaxX( calculateDomain( independentVariable ).max );
+        if ( independentVariable === GraphsModel.IndependentVariable.POSITION ) {
+          this.setCursorVisibleOverride( false );
+          this.setPlotStyle( XYDataSeriesNode.PlotStyle.SCATTER );
+        }
+        else {
+          this.setCursorVisibleOverride( null );
+          this.setPlotStyle( XYDataSeriesNode.PlotStyle.LINE );
+        }
+      } );
+
       model.kineticEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.kineticEnergyDataSeries.uniqueId ], 'visible' );
       model.potentialEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.potentialEnergyDataSeries.uniqueId ], 'visible' );
       model.thermalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.thermalEnergyDataSeries.uniqueId ], 'visible' );
@@ -208,13 +227,23 @@ define( require => {
   // helper functions
   //-------------------------------------------------------------------------
   /**
-   * Calculates the range of the plot as a function of scale
+   * Calculates the range of the plot as a function of scale.
    * @param {number} scale
    * @returns {Range}
    */
   const calculateRange = scale => {
     const max = Y_OFFSET + scale * Y_SLOPE;
     return new Range( -max, max );
+  };
+
+  /**
+   * Calculates the domain of the plot as a function of the independent variable.
+   * @param {GraphsModel.independentVariable} independentVariable
+   * @returns {Range}
+   */
+  const calculateDomain = independentVariable => {
+    const maxX = independentVariable === GraphsModel.IndependentVariable.POSITION ? POSITION_MAX_X : TIME_MAX_X;
+    return new Range( 0, maxX );
   };
 
   return energySkatePark.register( 'EnergyPlot', EnergyPlot );
