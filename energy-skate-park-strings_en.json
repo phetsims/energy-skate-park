@@ -23,6 +23,9 @@
   "plots.bar-graph": {
     "value": "Bar Graph"
   },
+  "large": {
+    "value": "Large"
+  },
   "plots.energy-graph": {
     "value": "Energy Graph"
   },
