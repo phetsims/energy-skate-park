@@ -13,7 +13,7 @@ define( function( require ) {
   var EnergySkateParkTrackSetScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTrackSetScreenView' );
   var EnergyGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphAccordionBox' );
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
-  const GraphsVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/GraphsVisibilityControls' );
+  const VisibilityControlsPanel =require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/VisibilityControlsPanel' );
   var GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
   const Node = require( 'SCENERY/nodes/Node' );
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
@@ -53,11 +53,11 @@ define( function( require ) {
     this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ) );
     this.addChild( this.graphAccordionBox );
 
-    // grid and reference height visibility are controlled from a separate area in the "graphs" screen
-    this.graphsVisibilityControls = new GraphsVisibilityControls( model, tandem.createTandem( 'graphsVisibilityControls' ), {
+    // grid and reference height visibility are controlled from a separate area
+    this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ), {
       centerY: this.resetAllButton.centerY
     } );
-    this.addChild( this.graphsVisibilityControls );
+    this.addChild( this.visibilityControlsPanel );
   }
 
   energySkatePark.register( 'GraphsScreenView', GraphsScreenView );
@@ -76,8 +76,8 @@ define( function( require ) {
       this.graphAccordionBox.right = this.trackLayer.right + EnergyGraphAccordionBox.GRAPH_OFFSET;
       this.graphAccordionBox.top = this.controlPanel.top;
 
-      this.graphsVisibilityControls.left = this.graphAccordionBox.left;
-      this.graphsVisibilityControls.centerY = this.resetAllButton.centerY;
+      this.visibilityControlsPanel.left = this.graphAccordionBox.left;
+      this.visibilityControlsPanel.centerY = this.resetAllButton.centerY;
     }
   } );
 } );

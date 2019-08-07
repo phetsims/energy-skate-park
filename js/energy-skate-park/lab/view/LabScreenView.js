@@ -14,6 +14,7 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkPlaygroundScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkPlaygroundScreenView' );
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
+  const VisibilityControlsPanel =require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/VisibilityControlsPanel' );
   var GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
   var MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -47,6 +48,10 @@ define( function( require ) {
 
     this.addChild( comboBoxParent );
 
+    // grid and reference height visibility are controlled from a separate area
+    this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ) );
+    this.addChild( this.visibilityControlsPanel );
+
     // layout custom to the Lab screen
     this.clearButton.rightCenter = this.trackCreationPanel.leftCenter.minusXY( 10, 0 );
 
@@ -62,6 +67,8 @@ define( function( require ) {
     this.playControls.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter - this.playControls.width / 2 - spacing / 2 );
     this.speedControl.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter + this.speedControl.width / 2 + spacing / 2 );
 
+    this.visibilityControlsPanel.left = this.energyBarGraph.left;
+    this.visibilityControlsPanel.centerY = this.clearButton.centerY;
   }
 
   energySkatePark.register( 'LabScreenView', LabScreenView );
