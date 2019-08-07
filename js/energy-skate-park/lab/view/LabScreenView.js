@@ -17,6 +17,7 @@ define( function( require ) {
   const VisibilityControlsPanel =require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/VisibilityControlsPanel' );
   var GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
   var MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
+  const EnergyBarGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/view/EnergyBarGraphAccordionBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   const Node = require( 'SCENERY/nodes/Node' );
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
@@ -48,6 +49,11 @@ define( function( require ) {
 
     this.addChild( comboBoxParent );
 
+    this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model, tandem.createTandem( 'energyBarGraphAccordionBox' ) );
+    this.energyBarGraphAccordionBox.top = 5;
+    this.bottomLayer.addChild( this.energyBarGraphAccordionBox );
+
+
     // grid and reference height visibility are controlled from a separate area
     this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ) );
     this.addChild( this.visibilityControlsPanel );
@@ -67,11 +73,18 @@ define( function( require ) {
     this.playControls.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter - this.playControls.width / 2 - spacing / 2 );
     this.speedControl.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter + this.speedControl.width / 2 + spacing / 2 );
 
-    this.visibilityControlsPanel.left = this.energyBarGraph.left;
     this.visibilityControlsPanel.centerY = this.clearButton.centerY;
   }
 
   energySkatePark.register( 'LabScreenView', LabScreenView );
 
-  return inherit( EnergySkateParkPlaygroundScreenView, LabScreenView );
+  return inherit( EnergySkateParkPlaygroundScreenView, LabScreenView, {
+
+    layout: function( width, height ) {
+      EnergySkateParkPlaygroundScreenView.prototype.layout.call( this, width, height );
+
+      this.energyBarGraphAccordionBox.x = this.floatingLeft;
+      this.visibilityControlsPanel.left = this.floatingLeft;
+    }
+  } );
 } );
