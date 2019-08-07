@@ -121,8 +121,8 @@ define( function( require ) {
 
     // @protected {null|number} - defines the min and max edges horizontally for floating layout, null until first
     // layout() - includes padding so elements won't touch the edge
-    this.floatingRight = null;
-    this.floatingLeft = null;
+    this.fixedRight = null;
+    this.fixedLeft = null;
 
     // @private - Layers for nodes in the sim. The bottom layer contains the background and UI components that should
     // be behind the animating skater and other draggable things, which are in the topLayer. See addToTopLayer()
@@ -451,11 +451,11 @@ define( function( require ) {
       const minFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? this.layoutBounds.left - EXTRA_FLOAT : -Number.MAX_VALUE;
 
       // for use in subtypes
-      this.floatingRight = Math.min( maxFloatAmount, this.availableViewBounds.maxX ) - 5;
-      this.floatingLeft = Math.max( minFloatAmount, this.availableViewBounds.minX ) + 5;
+      this.fixedRight = Math.min( maxFloatAmount, this.availableViewBounds.maxX ) - 5;
+      this.fixedLeft = Math.max( minFloatAmount, this.availableViewBounds.minX ) + 5;
 
       this.controlPanel.top = 5;
-      this.controlPanel.right = this.floatingRight;
+      this.controlPanel.right = this.fixedRight;
 
       if ( this.attachDetachToggleButtons ) {
         this.attachDetachToggleButtons.top = this.controlPanel.bottom + 5;
@@ -495,7 +495,7 @@ define( function( require ) {
         pieChartLegendLeftTop = new Vector2( this.energyBarGraphPanel.right + 32, this.energyBarGraphPanel.top );
       }
       else {
-        pieChartLegendLeftTop = new Vector2( leftPlacement, this.controlPanel.top );
+        pieChartLegendLeftTop = new Vector2( this.fixedLeft, this.controlPanel.top );
       }
 
       // Put the pie chart legend to the right of the bar chart, see #60, #192

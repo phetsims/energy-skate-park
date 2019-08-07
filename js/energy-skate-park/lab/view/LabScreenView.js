@@ -38,6 +38,7 @@ define( function( require ) {
     ];
     EnergySkateParkPlaygroundScreenView.call( this, model, labControls, tandem.createTandem( 'graphsScreenView' ), {
       showTrackButtons: false,
+      showBarGraph: false,
       visibilityControlsOptions: {
         showPieChartCheckbox: true,
         showGridCheckbox: false,
@@ -83,8 +84,11 @@ define( function( require ) {
     layout: function( width, height ) {
       EnergySkateParkPlaygroundScreenView.prototype.layout.call( this, width, height );
 
-      this.energyBarGraphAccordionBox.x = this.floatingLeft;
-      this.visibilityControlsPanel.left = this.floatingLeft;
+      this.energyBarGraphAccordionBox.x = this.fixedLeft;
+      this.visibilityControlsPanel.left = this.fixedLeft;
+
+      // the pie chart legend is just to the right of the 5 meter mark, which is where grid labels are
+      this.pieChartLegend.left = this.modelViewTransform.modelToViewX( -5 );
     }
   } );
 } );
