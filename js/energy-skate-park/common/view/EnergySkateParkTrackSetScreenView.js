@@ -16,6 +16,12 @@ define( require => {
   var inherit = require( 'PHET_CORE/inherit' );
   var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackNode' );
 
+  /**
+   * @param {EnergySkateParkTrackSetModel} model
+   * @param {Array.<PhysicalNumberControl|PhysicalComboBox>} controls
+   * @param {tandem} tandem
+   * @param {} options]
+   */
   function EnergySkateParkTrackSetScreenView( model, controls, tandem, options ) {
 
     options = _.extend( {
