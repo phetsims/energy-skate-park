@@ -18,7 +18,7 @@ define( require => {
 
   class MassSlider extends PhysicalSlider {
     constructor( property, massRange, tandem ) {
-      super( property, massRange, controlsMassString, tandem, {
+      super( controlsMassString, property, massRange, tandem, {
         minLabel: smallString,
         maxLabel: largeString
       } );
