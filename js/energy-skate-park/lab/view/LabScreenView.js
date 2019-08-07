@@ -76,8 +76,6 @@ define( function( require ) {
 
     this.visibilityControlsPanel.centerY = this.clearButton.centerY;
 
-    // the pie chart legend is just to the right of the 5 meter mark, which is where grid labels are
-    this.pieChartLegend.left = this.modelViewTransform.modelToViewX( -5 );
   }
 
   energySkatePark.register( 'LabScreenView', LabScreenView );
@@ -89,6 +87,9 @@ define( function( require ) {
 
       this.energyBarGraphAccordionBox.x = this.fixedLeft;
       this.visibilityControlsPanel.left = this.fixedLeft;
+
+      // the pie chart legend is just to the right of the 5 meter mark, which is where grid labels are
+      this.pieChartLegend.left = this.modelViewTransform.modelToViewX( -5 );
     }
   } );
 } );
