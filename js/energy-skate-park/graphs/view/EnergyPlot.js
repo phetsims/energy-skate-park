@@ -90,7 +90,7 @@ define( require => {
 
             // when we drag the cursor, get the skater sample at the closest cursor time and set skater to skaterState
             const closestSample = model.getClosestSkaterSample( this.getCursorValue() );
-            closestSample.skaterStatesetToSkater( model.skater );
+            closestSample.skaterState.setToSkater( model.skater );
             model.skater.updatedEmitter.emit();
           },
           endDrag: ( event, listener ) => {
