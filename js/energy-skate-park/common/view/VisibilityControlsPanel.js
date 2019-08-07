@@ -14,8 +14,6 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkVisibilityControls' );
 
-  // constants
-
   class VisibilityControlsPanel extends Panel {
 
     /**
