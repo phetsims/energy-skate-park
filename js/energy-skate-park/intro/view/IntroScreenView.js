@@ -11,7 +11,7 @@ define( function( require ) {
   // modules
   var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BackgroundNode' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
+  var EnergySkateParkTrackSetScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTrackSetScreenView' );
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
   var GravitySlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravitySlider' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -28,7 +28,7 @@ define( function( require ) {
       new GravitySlider( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) )
     ];
 
-    EnergySkateParkScreenView.call( this, model, introControls, tandem.createTandem( 'introScreenView' ), {
+    EnergySkateParkTrackSetScreenView.call( this, model, introControls, tandem.createTandem( 'introScreenView' ), {
       visibilityControlsOptions: {
         showReferenceHeightCheckbox: true
       }
@@ -44,7 +44,7 @@ define( function( require ) {
 
   energySkatePark.register( 'IntroScreenView', IntroScreenView );
 
-  return inherit( EnergySkateParkScreenView, IntroScreenView, {
+  return inherit( EnergySkateParkTrackSetScreenView, IntroScreenView, {
 
     /**
      * Align the mass combo box with the right control panel (defined in super type).
@@ -54,7 +54,7 @@ define( function( require ) {
      * @param {number} height - desired height of view, prior to scaling
      */
     layout: function( width, height ) {
-      EnergySkateParkScreenView.prototype.layout.call( this, width, height );
+      EnergySkateParkTrackSetScreenView.prototype.layout.call( this, width, height );
       this.massComboBox.right = this.controlPanel.right;
     }
   } );

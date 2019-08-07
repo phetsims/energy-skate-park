@@ -14,14 +14,12 @@ define( function( require ) {
   var EnergyBarGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraph' );
   var BooleanProperty = require( 'AXON/BooleanProperty' );
   var Bounds2 = require( 'DOT/Bounds2' );
-  var Color = require( 'SCENERY/util/Color' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
   var DotRectangle = require( 'DOT/Rectangle' ); // eslint-disable-line require-statement-match
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkControlPanel' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
-  var EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
   var GridNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/GridNode' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
@@ -36,7 +34,6 @@ define( function( require ) {
   var PlayPauseButton = require( 'SCENERY_PHET/buttons/PlayPauseButton' );
   var Property = require( 'AXON/Property' );
   var Range = require( 'DOT/Range' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
   var ReferenceHeightLine = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ReferenceHeightLine' );
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
@@ -45,7 +42,6 @@ define( function( require ) {
   var SkaterNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/SkaterNode' );
   var StepForwardButton = require( 'SCENERY_PHET/buttons/StepForwardButton' );
   var Text = require( 'SCENERY/nodes/Text' );
-  var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackNode' );
   var ValueGaugeNode = require( 'SCENERY_PHET/ValueGaugeNode' );
   var Vector2 = require( 'DOT/Vector2' );
 
@@ -98,13 +94,17 @@ define( function( require ) {
       visibilityControlsOptions: null
     }, options );
 
-    var trackNodeGroupTandem = tandem.createGroupTandem( 'trackNode' );
+    // @protected
+    this.trackNodeGroupTandem = tandem.createGroupTandem( 'trackNode' );
 
     var self = this;
     ScreenView.call( self, {
       layoutBounds: new Bounds2( 0, 0, 834, 504 ),
       tandem: tandem
     } );
+
+    // @protected
+    this.model = model;
 
     // @private - whether or not this screen view should include a measuring tape
     this.showMeasuringTape = options.showMeasuringTape;
@@ -263,106 +263,24 @@ define( function( require ) {
       tandem: tandem.createTandem( 'trackLayer' )
     } );
 
-    // Switch between selectable tracks
-    if ( !model.tracksDraggable ) {
+    // // Switch between selectable tracks
+    // if ( !model.tracksDraggable ) {
 
-      var trackNodes = model.tracks.getArray().map( function( track ) {
-        return new TrackNode( model, track, modelViewTransform, self.availableModelBoundsProperty, trackNodeGroupTandem.createNextTandem() );
-      } );
+    //   var trackNodes = model.tracks.getArray().map( function( track ) {
+    //     return new TrackNode( model, track, modelViewTransform, self.availableModelBoundsProperty, self.trackNodeGroupTandem.createNextTandem() );
+    //   } );
 
-      trackNodes.forEach( function( trackNode ) {
-        self.trackLayer.addChild( trackNode );
-      } );
+    //   trackNodes.forEach( function( trackNode ) {
+    //     self.trackLayer.addChild( trackNode );
+    //   } );
 
-      // TODO: Could we link the track PhysicalProperty directly to visible? Through linkAttribute or something?
-      model.sceneProperty.link( function( scene ) {
-        _.forEach( model.tracks, function( track, i ) {
-          trackNodes[ i ].visible = scene === i;
-        } );
-      } );
-    }
-    else {
-
-      var addTrackNode = function( track ) {
-
-        var trackNode = new TrackNode( model, track, modelViewTransform, self.availableModelBoundsProperty, trackNodeGroupTandem.createTandem( track.tandem.name ) );
-        self.trackLayer.addChild( trackNode );
-
-        // When track removed, remove its view
-        var itemRemovedListener = function( removed ) {
-          if ( removed === track ) {
-            self.trackLayer.removeChild( trackNode );
-
-            // Clean up memory leak
-            model.tracks.removeItemRemovedListener( itemRemovedListener );
-            trackNode.dispose();
-          }
-        };
-        model.tracks.addItemRemovedListener( itemRemovedListener );
-
-        return trackNode;
-      };
-
-      // Create the tracks for the track toolbox
-      var interactiveTrackNodes = model.tracks.getArray().map( addTrackNode );
-
-      // Add a panel behind the tracks
-      var padding = 10;
-
-      var trackCreationPanel = new Rectangle(
-        ( interactiveTrackNodes[ 0 ].left - padding / 2 ),
-        ( interactiveTrackNodes[ 0 ].top - padding / 2 ),
-        ( interactiveTrackNodes[ 0 ].width + padding ),
-        ( interactiveTrackNodes[ 0 ].height + padding ),
-        6,
-        6, {
-          fill: 'white',
-          stroke: 'black'
-        } );
-      this.bottomLayer.addChild( trackCreationPanel );
-
-      model.tracks.addItemAddedListener( addTrackNode );
-
-      var xTip = 20;
-      var yTip = 8;
-      var xControl = 12;
-      var yControl = -5;
-
-      var createArrowhead = function( angle, tail ) {
-        var headWidth = 10;
-        var headHeight = 10;
-        var directionUnitVector = Vector2.createPolar( 1, angle );
-        var orthogonalUnitVector = directionUnitVector.perpendicular;
-        var tip = directionUnitVector.times( headHeight ).plus( tail );
-        return new Path( new Shape().moveToPoint( tail ).lineToPoint( tail.plus( orthogonalUnitVector.times( headWidth / 2 ) ) ).lineToPoint( tip ).lineToPoint( tail.plus( orthogonalUnitVector.times( -headWidth / 2 ) ) ).lineToPoint( tail ).close(), {
-          fill: 'black',
-          tandem: tandem.createTandem( 'arrowHead' )
-        } );
-      };
-
-      var rightCurve = new Path( new Shape().moveTo( 0, 0 ).quadraticCurveTo( -xControl, yControl, -xTip, yTip ), {
-        stroke: 'black',
-        lineWidth: 3,
-        tandem: tandem.createTandem( 'rightCurve' )
-      } );
-      var arrowHead = createArrowhead( Math.PI - Math.PI / 3, new Vector2( -xTip, yTip ) );
-
-      var clearButtonEnabledProperty = model.clearButtonEnabledProperty;
-      clearButtonEnabledProperty.link( function( clearButtonEnabled ) {
-        rightCurve.stroke = clearButtonEnabled ? 'black' : 'gray';
-        arrowHead.fill = clearButtonEnabled ? 'black' : 'gray';
-      } );
-
-      var clearButton = new EraserButton( {
-        iconWidth: 30,
-        baseColor: new Color( 221, 210, 32 ),
-        tandem: tandem.createTandem( 'clearButton' )
-      } );
-      clearButtonEnabledProperty.linkAttribute( clearButton, 'enabled' );
-      clearButton.addListener( function() {model.clearTracks();} );
-
-      this.bottomLayer.addChild( clearButton.mutate( { left: 5, centerY: trackCreationPanel.centerY } ) );
-    }
+    //   // TODO: Could we link the track PhysicalProperty directly to visible? Through linkAttribute or something?
+    //   model.sceneProperty.link( function( scene ) {
+    //     _.forEach( model.tracks, function( track, i ) {
+    //       trackNodes[ i ].visible = scene === i;
+    //     } );
+    //   } );
+    // }
 
     this.bottomLayer.addChild( this.trackLayer );
 

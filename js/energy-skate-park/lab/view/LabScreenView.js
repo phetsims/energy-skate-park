@@ -1,16 +1,18 @@
 // Copyright 2018-2019, University of Colorado Boulder
 
 /**
- * Type Documentation
+ * View where you can create custom tracks which are draggable, configurable,
+ * splittable, and attachable.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
  * @author Jesse Greenberg
  */
-
 define( function( require ) {
   'use strict';
 
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
+  var EnergySkateParkPlaygroundScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkPlaygroundScreenView' );
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
   var GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
   var MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
@@ -32,7 +34,7 @@ define( function( require ) {
       new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) ),
       new GravityComboBox( model.skater.gravityMagnitudeProperty, comboBoxParent, tandem.createTandem( 'gravityComboBox' ) )
     ];
-    EnergySkateParkScreenView.call( this, model, labControls, tandem.createTandem( 'graphsScreenView' ), {
+    EnergySkateParkPlaygroundScreenView.call( this, model, labControls, tandem.createTandem( 'graphsScreenView' ), {
       showTrackButtons: false,
       visibilityControlsOptions: {
         showPieChartCheckbox: true,
@@ -48,5 +50,5 @@ define( function( require ) {
 
   energySkatePark.register( 'LabScreenView', LabScreenView );
 
-  return inherit( EnergySkateParkScreenView, LabScreenView, {} );
+  return inherit( EnergySkateParkPlaygroundScreenView, LabScreenView );
 } );

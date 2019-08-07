@@ -10,7 +10,7 @@ define( function( require ) {
 
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
+  var EnergySkateParkTrackSetScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTrackSetScreenView' );
   var EnergyGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphAccordionBox' );
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
   const GraphsVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/GraphsVisibilityControls' );
@@ -37,7 +37,7 @@ define( function( require ) {
       new GravityComboBox( model.skater.gravityMagnitudeProperty, comboBoxParent, tandem.createTandem( 'gravityComboBox' ) )
     ];
 
-    EnergySkateParkScreenView.call( this, model, graphsControls, tandem.createTandem( 'graphsScreenView' ), {
+    EnergySkateParkTrackSetScreenView.call( this, model, graphsControls, tandem.createTandem( 'graphsScreenView' ), {
       visibilityControlsOptions: {
         showPieChartCheckbox: false,
         showBarGraphCheckbox: false,
@@ -62,14 +62,14 @@ define( function( require ) {
 
   energySkatePark.register( 'GraphsScreenView', GraphsScreenView );
 
-  return inherit( EnergySkateParkScreenView, GraphsScreenView, {
+  return inherit( EnergySkateParkTrackSetScreenView, GraphsScreenView, {
 
     /**
      * Special layout for the energy-skate-park, contents can float to the available bounds.
      * @override
      */
     layout: function( width, height ) {
-      EnergySkateParkScreenView.prototype.layout.call( this, width, height );
+      EnergySkateParkTrackSetScreenView.prototype.layout.call( this, width, height );
 
       // the graph within the accordion box needs to line up with the track so that skater positions on the
       // track align perfectly with positions along the graph

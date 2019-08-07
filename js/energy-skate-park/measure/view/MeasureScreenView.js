@@ -2,7 +2,7 @@
 
 /**
  * The ScreenView for the "Measure" Screen.
- * 
+ *
  * @author Jesse Greenberg
  */
 define( require => {
@@ -10,7 +10,7 @@ define( require => {
 
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
+  const EnergySkateParkTrackSetScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTrackSetScreenView' );
   const FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
   const GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
@@ -24,7 +24,7 @@ define( require => {
    * @param {EnergySkateParkTrackSetModel} model
    * @param {Tandem} tandem
    */
-  class MeasureScreenView extends EnergySkateParkScreenView {
+  class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
 
     /**
      * @param  {MeasureModel} model
@@ -72,7 +72,7 @@ define( require => {
      * Returns true if the no bounds intersects with the EnergySkateParkControlPanel. Useful for changing layout
      * so that things don't occlude the control panel.
      * @public
-     * 
+     *
      * @param {Node} node
      * @returns {boolean}
      */
@@ -81,7 +81,7 @@ define( require => {
     }
 
     layout( width, height ) {
-      EnergySkateParkScreenView.prototype.layout.call( this, width, height );
+      EnergySkateParkTrackSetScreenView.prototype.layout.call( this, width, height );
 
       // in the measure screen the legend is in the top left of the screen
       this.pieChartLegend.mutate( { top: this.controlPanel.top, left: this.availableViewBounds.minX + 5 } );
