@@ -263,25 +263,6 @@ define( function( require ) {
       tandem: tandem.createTandem( 'trackLayer' )
     } );
 
-    // // Switch between selectable tracks
-    // if ( !model.tracksDraggable ) {
-
-    //   var trackNodes = model.tracks.getArray().map( function( track ) {
-    //     return new TrackNode( model, track, modelViewTransform, self.availableModelBoundsProperty, self.trackNodeGroupTandem.createNextTandem() );
-    //   } );
-
-    //   trackNodes.forEach( function( trackNode ) {
-    //     self.trackLayer.addChild( trackNode );
-    //   } );
-
-    //   // TODO: Could we link the track PhysicalProperty directly to visible? Through linkAttribute or something?
-    //   model.sceneProperty.link( function( scene ) {
-    //     _.forEach( model.tracks, function( track, i ) {
-    //       trackNodes[ i ].visible = scene === i;
-    //     } );
-    //   } );
-    // }
-
     this.bottomLayer.addChild( this.trackLayer );
 
     var skaterNode = new SkaterNode(
@@ -352,24 +333,26 @@ define( function( require ) {
     playingProperty.link( function( playing ) {
       model.pausedProperty.set( !playing );
     } );
-    var playPauseButton = new PlayPauseButton( playingProperty, {
+
+    const playPauseButton = new PlayPauseButton( playingProperty, {
       tandem: tandem.createTandem( 'playPauseButton' )
     } ).mutate( { scale: 0.6 } );
 
     // Make the Play/Pause button bigger when it is showing the pause button, see #298
     var pauseSizeIncreaseFactor = 1.35;
-    playingProperty.lazyLink( function( isPlaying ) {
+    playingProperty.lazyLink( isPlaying => {
       playPauseButton.scale( isPlaying ? ( 1 / pauseSizeIncreaseFactor ) : pauseSizeIncreaseFactor );
     } );
 
-    var stepButton = new StepForwardButton( {
+    const stepButton = new StepForwardButton( {
       isPlayingProperty: playingProperty,
       listener: function() { model.manualStep(); },
       tandem: tandem.createTandem( 'stepButton' ),
       leftCenter: playPauseButton.rightCenter.plusXY( 8, 0 )
     } );
 
-    var speedControl = new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ), {
+    // @protected - for layout in subtypes
+    this.speedControl = new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ), {
       leftCenter: stepButton.rightCenter.plusXY( 15, 0 )
     } );
 
@@ -379,12 +362,13 @@ define( function( require ) {
 
     playControls.addChild( playPauseButton );
     playControls.addChild( stepButton );
-    this.topLayer.addChild( speedControl );
+    this.topLayer.addChild( this.speedControl );
     this.topLayer.addChild( playControls );
 
     var speedControlSpacing = 15;
-    speedControl.setLeftBottom( this.layoutBounds.centerBottom.plusXY( speedControlSpacing, -15 ) );
+    this.speedControl.setLeftBottom( this.layoutBounds.centerBottom.plusXY( speedControlSpacing, -15 ) );
     playControls.setRightBottom( this.layoutBounds.centerBottom.minusXY( speedControlSpacing, 15 ) );
+    this.playControls = playControls;
 
     // When the skater goes off screen, make the "return skater" button big
     onscreenProperty.link( function( skaterOnscreen ) {

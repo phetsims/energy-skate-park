@@ -46,6 +46,22 @@ define( function( require ) {
     } );
 
     this.addChild( comboBoxParent );
+
+    // layout custom to the Lab screen
+    this.clearButton.rightCenter = this.trackCreationPanel.leftCenter.minusXY( 10, 0 );
+
+    // The eraser and trackCreationPanel are in one group on the left side of the screen view and the playback
+    // controls are in another group on the right side - the centers of each group should be symmetric about
+    // horizontal center of screen. We assume that the left group is already in the correct location (because track pan
+    // is positioned by the model) so we need to position the right group (playback controls)
+    const leftGroupBounds = this.clearButton.bounds.union( this.trackCreationPanel.bounds );
+    const leftGroupCenter = leftGroupBounds.center;
+    const distanceToScreenCenter = this.layoutBounds.center.x - leftGroupCenter.x;
+
+    const spacing = 30;
+    this.playControls.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter - this.playControls.width / 2 - spacing / 2 );
+    this.speedControl.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter + this.speedControl.width / 2 + spacing / 2 );
+
   }
 
   energySkatePark.register( 'LabScreenView', LabScreenView );
