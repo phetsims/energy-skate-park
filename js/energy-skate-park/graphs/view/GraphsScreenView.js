@@ -51,13 +51,13 @@ define( function( require ) {
 
     // @private - for layout
     this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ) );
-    this.addChild( this.graphAccordionBox );
+    this.addToBottomLayer( this.graphAccordionBox );
 
     // grid and reference height visibility are controlled from a separate area
     this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ), {
       centerY: this.resetAllButton.centerY
     } );
-    this.addChild( this.visibilityControlsPanel );
+    this.addToBottomLayer( this.visibilityControlsPanel );
   }
 
   energySkatePark.register( 'GraphsScreenView', GraphsScreenView );
