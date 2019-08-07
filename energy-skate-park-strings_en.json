@@ -5,9 +5,6 @@
   "small": {
     "value": "Small"
   },
-  "screen.trackPlayground": {
-    "value": "Playground"
-  },
   "controls.mass": {
     "value": "Mass"
   },
@@ -35,12 +32,6 @@
   "controls.show-grid": {
     "value": "Grid"
   },
-  "large": {
-    "value": "Large"
-  },
-  "controls.gravity.lots": {
-    "value": "Lots"
-  },
   "controls.value.lots": {
     "value": "Lots"
   },
@@ -64,12 +55,6 @@
   },
   "normal": {
     "value": "Normal"
-  },
-  "controls.gravity.none": {
-    "value": "None"
-  },
-  "screen.friction": {
-    "value": "Friction"
   },
   "energy.energy": {
     "value": "Energy"
@@ -99,7 +84,7 @@
     "value": "Reference Height"
   },
   "heightEqualsZero": {
-    "value": "Height = 0"  
+    "value": "Height = 0"
   },
   "controls.path": {
     "value": "Path"
