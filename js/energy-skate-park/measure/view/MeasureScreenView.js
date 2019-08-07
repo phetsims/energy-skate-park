@@ -84,9 +84,10 @@ define( require => {
       EnergySkateParkTrackSetScreenView.prototype.layout.call( this, width, height );
 
       // in the measure screen the legend is in the top left of the screen
-      this.pieChartLegend.mutate( { top: this.controlPanel.top, left: this.availableViewBounds.minX + 5 } );
+      this.pieChartLegend.mutate( { top: this.controlPanel.top, left: this.fixedLeft } );
 
-      this.pathSensor.leftTop = this.pieChartLegend.leftBottom.plusXY( 0, 10 );
+      this.pathSensor.top = this.pieChartLegend.bottom + 10;
+      this.pathSensor.left = this.fixedLeft;
 
       // control panel is taller for this screen so move the measuring tape  to a different place
       if ( this.showMeasuringTape ) {
