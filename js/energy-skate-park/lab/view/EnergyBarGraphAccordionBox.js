@@ -30,6 +30,9 @@ define( require => {
         buttonYMargin: 5,
         titleNode: EnergyBarGraph.createLabel(),
 
+        // use this model Property because the graph only updates when it is visible
+        expandedProperty: model.barGraphVisibleProperty,
+
         // {null|*} options for the bar graph itself, passed on to EnergyBarGraph
         barGraphOptions: null
       } );
