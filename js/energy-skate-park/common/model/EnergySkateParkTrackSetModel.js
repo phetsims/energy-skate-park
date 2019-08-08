@@ -91,6 +91,8 @@ define( function( require ) {
         }
       } );
 
+      this.sceneProperty.reset();
+
       this.updateActiveTrack( this.sceneProperty.get() );
     }
   }, {
