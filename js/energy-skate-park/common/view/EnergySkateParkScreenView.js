@@ -11,7 +11,7 @@ define( function( require ) {
   // modules
   var AttachDetachToggleButtons = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/AttachDetachToggleButtons' );
   var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BackgroundNode' );
-  var EnergyBarGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraph' );
+  var EnergyBarGraphPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraphPanel' );
   var BooleanProperty = require( 'AXON/BooleanProperty' );
   var Bounds2 = require( 'DOT/Bounds2' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
@@ -52,6 +52,10 @@ define( function( require ) {
 
   // images
   var skaterIconImage = require( 'image!ENERGY_SKATE_PARK/skater-icon.png' );
+
+  // constants
+  // for wider screens, panels can float to the left and right by this much beyond dev bounds in view coordinates
+  const EXTRA_FLOAT = 51.5;
 
   // Debug flag to show the view bounds, the region within which the skater can move
   var showAvailableBounds = false;
@@ -114,6 +118,11 @@ define( function( require ) {
     this.showSkaterPath = options.showSkaterPath;
     this.showReferenceHeight = options.showReferenceHeight;
     this.showTrackButtons = options.showTrackButtons;
+
+    // @protected {null|number} - defines the min and max edges horizontally for floating layout, null until first
+    // layout() - includes padding so elements won't touch the edge
+    this.fixedRight = null;
+    this.fixedLeft = null;
 
     // @private - Layers for nodes in the sim. The bottom layer contains the background and UI components that should
     // be behind the animating skater and other draggable things, which are in the topLayer. See addToTopLayer()
@@ -204,12 +213,14 @@ define( function( require ) {
 
     // @private - the bar chart showing energy distribution
     if ( this.showBarGraph ) {
-      this.energyBarGraph = new EnergyBarGraph( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), {
-        showBarGraphZoomButtons: options.showBarGraphZoomButtons
+      this.energyBarGraphPanel = new EnergyBarGraphPanel( model, tandem.createTandem( 'energyBargGraphPanel' ), {
+        barGraphOptions: {
+          showBarGraphZoomButtons: options.showBarGraphZoomButtons
+        }
       } );
-      this.energyBarGraph.leftTop = new Vector2( 5, 5 );
-      this.bottomLayer.addChild( this.energyBarGraph );
-      model.barGraphVisibleProperty.linkAttribute( this.energyBarGraph, 'visible' );
+      this.energyBarGraphPanel.leftTop = new Vector2( 5, 5 );
+      this.bottomLayer.addChild( this.energyBarGraphPanel );
+      model.barGraphVisibleProperty.linkAttribute( this.energyBarGraphPanel, 'visible' );
     }
 
     this.resetAllButton = new ResetAllButton( {
@@ -262,25 +273,6 @@ define( function( require ) {
     this.trackLayer = new Node( {
       tandem: tandem.createTandem( 'trackLayer' )
     } );
-
-    // // Switch between selectable tracks
-    // if ( !model.tracksDraggable ) {
-
-    //   var trackNodes = model.tracks.getArray().map( function( track ) {
-    //     return new TrackNode( model, track, modelViewTransform, self.availableModelBoundsProperty, self.trackNodeGroupTandem.createNextTandem() );
-    //   } );
-
-    //   trackNodes.forEach( function( trackNode ) {
-    //     self.trackLayer.addChild( trackNode );
-    //   } );
-
-    //   // TODO: Could we link the track PhysicalProperty directly to visible? Through linkAttribute or something?
-    //   model.sceneProperty.link( function( scene ) {
-    //     _.forEach( model.tracks, function( track, i ) {
-    //       trackNodes[ i ].visible = scene === i;
-    //     } );
-    //   } );
-    // }
 
     this.bottomLayer.addChild( this.trackLayer );
 
@@ -352,24 +344,26 @@ define( function( require ) {
     playingProperty.link( function( playing ) {
       model.pausedProperty.set( !playing );
     } );
-    var playPauseButton = new PlayPauseButton( playingProperty, {
+
+    const playPauseButton = new PlayPauseButton( playingProperty, {
       tandem: tandem.createTandem( 'playPauseButton' )
     } ).mutate( { scale: 0.6 } );
 
     // Make the Play/Pause button bigger when it is showing the pause button, see #298
     var pauseSizeIncreaseFactor = 1.35;
-    playingProperty.lazyLink( function( isPlaying ) {
+    playingProperty.lazyLink( isPlaying => {
       playPauseButton.scale( isPlaying ? ( 1 / pauseSizeIncreaseFactor ) : pauseSizeIncreaseFactor );
     } );
 
-    var stepButton = new StepForwardButton( {
+    const stepButton = new StepForwardButton( {
       isPlayingProperty: playingProperty,
       listener: function() { model.manualStep(); },
       tandem: tandem.createTandem( 'stepButton' ),
       leftCenter: playPauseButton.rightCenter.plusXY( 8, 0 )
     } );
 
-    var speedControl = new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ), {
+    // @protected - for layout in subtypes
+    this.speedControl = new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ), {
       leftCenter: stepButton.rightCenter.plusXY( 15, 0 )
     } );
 
@@ -379,12 +373,13 @@ define( function( require ) {
 
     playControls.addChild( playPauseButton );
     playControls.addChild( stepButton );
-    this.topLayer.addChild( speedControl );
+    this.topLayer.addChild( this.speedControl );
     this.topLayer.addChild( playControls );
 
     var speedControlSpacing = 15;
-    speedControl.setLeftBottom( this.layoutBounds.centerBottom.plusXY( speedControlSpacing, -15 ) );
+    this.speedControl.setLeftBottom( this.layoutBounds.centerBottom.plusXY( speedControlSpacing, -15 ) );
     playControls.setRightBottom( this.layoutBounds.centerBottom.minusXY( speedControlSpacing, 15 ) );
+    this.playControls = playControls;
 
     // When the skater goes off screen, make the "return skater" button big
     onscreenProperty.link( function( skaterOnscreen ) {
@@ -452,10 +447,15 @@ define( function( require ) {
 
       this.availableViewBounds = new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) );
 
-      // Float the control panel to the right (but not arbitrarily far because it could get too far from the play area)
-      var maxFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? 890 : Number.MAX_VALUE;
+      const maxFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? this.layoutBounds.right + EXTRA_FLOAT : Number.MAX_VALUE;
+      const minFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? this.layoutBounds.left - EXTRA_FLOAT : -Number.MAX_VALUE;
+
+      // for use in subtypes
+      this.fixedRight = Math.min( maxFloatAmount, this.availableViewBounds.maxX ) - 5;
+      this.fixedLeft = Math.max( minFloatAmount, this.availableViewBounds.minX ) + 5;
+
       this.controlPanel.top = 5;
-      this.controlPanel.right = Math.min( maxFloatAmount, this.availableViewBounds.maxX ) - 5;
+      this.controlPanel.right = this.fixedRight;
 
       if ( this.attachDetachToggleButtons ) {
         this.attachDetachToggleButtons.top = this.controlPanel.bottom + 5;
@@ -489,13 +489,13 @@ define( function( require ) {
       const leftPlacement = this.availableViewBounds.minX + 5;
       if ( this.showBarGraph ) {
         if ( EnergySkateParkQueryParameters.controlPanelLocation === 'floating' ) {
-          this.energyBarGraph.x = leftPlacement;
+          this.energyBarGraphPanel.x = leftPlacement;
         }
 
-        pieChartLegendLeftTop = new Vector2( this.energyBarGraph.right + 32, this.energyBarGraph.top );
+        pieChartLegendLeftTop = new Vector2( this.energyBarGraphPanel.right + 32, this.energyBarGraphPanel.top );
       }
       else {
-        pieChartLegendLeftTop = new Vector2( leftPlacement, this.controlPanel.top );
+        pieChartLegendLeftTop = new Vector2( this.fixedLeft, this.controlPanel.top );
       }
 
       // Put the pie chart legend to the right of the bar chart, see #60, #192

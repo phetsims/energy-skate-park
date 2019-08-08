@@ -14,8 +14,10 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkPlaygroundScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkPlaygroundScreenView' );
   var FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
+  const VisibilityControlsPanel =require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/VisibilityControlsPanel' );
   var GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
   var MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
+  const EnergyBarGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/view/EnergyBarGraphAccordionBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   const Node = require( 'SCENERY/nodes/Node' );
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
@@ -36,6 +38,7 @@ define( function( require ) {
     ];
     EnergySkateParkPlaygroundScreenView.call( this, model, labControls, tandem.createTandem( 'graphsScreenView' ), {
       showTrackButtons: false,
+      showBarGraph: false,
       visibilityControlsOptions: {
         showPieChartCheckbox: true,
         showGridCheckbox: false,
@@ -46,9 +49,47 @@ define( function( require ) {
     } );
 
     this.addChild( comboBoxParent );
+
+    this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model, tandem.createTandem( 'energyBarGraphAccordionBox' ) );
+    this.energyBarGraphAccordionBox.top = 5;
+    this.bottomLayer.addChild( this.energyBarGraphAccordionBox );
+
+
+    // grid and reference height visibility are controlled from a separate area
+    this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ) );
+    this.addChild( this.visibilityControlsPanel );
+
+    // layout custom to the Lab screen
+    this.clearButton.rightCenter = this.trackCreationPanel.leftCenter.minusXY( 10, 0 );
+
+    // The eraser and trackCreationPanel are in one group on the left side of the screen view and the playback
+    // controls are in another group on the right side - the centers of each group should be symmetric about
+    // horizontal center of screen. We assume that the left group is already in the correct location (because track pan
+    // is positioned by the model) so we need to position the right group (playback controls)
+    const leftGroupBounds = this.clearButton.bounds.union( this.trackCreationPanel.bounds );
+    const leftGroupCenter = leftGroupBounds.center;
+    const distanceToScreenCenter = this.layoutBounds.center.x - leftGroupCenter.x;
+
+    const spacing = 30;
+    this.playControls.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter - this.playControls.width / 2 - spacing / 2 );
+    this.speedControl.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter + this.speedControl.width / 2 + spacing / 2 );
+
+    this.visibilityControlsPanel.centerY = this.clearButton.centerY;
+
   }
 
   energySkatePark.register( 'LabScreenView', LabScreenView );
 
-  return inherit( EnergySkateParkPlaygroundScreenView, LabScreenView );
+  return inherit( EnergySkateParkPlaygroundScreenView, LabScreenView, {
+
+    layout: function( width, height ) {
+      EnergySkateParkPlaygroundScreenView.prototype.layout.call( this, width, height );
+
+      this.energyBarGraphAccordionBox.x = this.fixedLeft;
+      this.visibilityControlsPanel.left = this.fixedLeft;
+
+      // the pie chart legend is just to the right of the 5 meter mark, which is where grid labels are
+      this.pieChartLegend.left = this.modelViewTransform.modelToViewX( -5 );
+    }
+  } );
 } );

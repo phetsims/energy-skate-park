@@ -2,7 +2,7 @@
 
 /**
  * Bar graph that displays the distribution of energy for this simulation.
- * 
+ *
  * @author Jesse Greenberg
  */
 define( require => {
@@ -17,7 +17,6 @@ define( require => {
   const HBox = require( 'SCENERY/nodes/HBox' );
   const MoveToTrashButton = require( 'SCENERY_PHET/MoveToTrashButton' );
   const Node = require( 'SCENERY/nodes/Node' );
-  const Panel = require( 'SUN/Panel' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Property = require( 'AXON/Property' );
   const Range = require( 'DOT/Range' );
@@ -38,7 +37,7 @@ define( require => {
      * @param {Skater} skater
      * @param {NumberProperty} barGraphScaleProperty
      * @param {Tandem} tandem
-     * @returns {Skater}            
+     * @returns {Skater}
      */
     constructor( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem, options ) {
 
@@ -68,12 +67,12 @@ define( require => {
         if ( absHeight < 1 ) {
           return 0;
         }
-        return height;  
+        return height;
       };
 
       // For thermal and total energy, make sure they are big enough to be visible, see #307
       const showSmallValues = ( value, scale ) => {
-        const valueSign = value < 0 ? -1 : 1; 
+        const valueSign = value < 0 ? -1 : 1;
 
         let height = value * scale;
         const absHeight = Math.abs( height );
@@ -112,11 +111,11 @@ define( require => {
         labelBackgroundColor: EnergySkateParkColorScheme.transparentPanelFill
       } );
 
-      const graphLabel = new Text( energyEnergyString, { font: new PhetFont( { size: 14, weight: 'bold' } ) } );
+      // const graphLabel = new Text( energyEnergyString, { font: new PhetFont( { size: 14, weight: 'bold' } ) } );
 
-      const labelledChart = new VBox( {
-        children: [ graphLabel, this.barChartNode ]
-      } );
+      // const labelledChart = new VBox( {
+        // children: [ graphLabel, this.barChartNode ]
+      // } );
 
       // main content for the containing panel, assembly depends on whether zoom buttons are required
       let content = null;
@@ -147,7 +146,7 @@ define( require => {
         } );
 
         content = new VBox( {
-          children: [ labelledChart, zoomButtons ],
+          children: [ this.barChartNode, zoomButtons ],
           spacing: 5,
           align: 'left'
         } );
@@ -160,11 +159,12 @@ define( require => {
         barGraphScaleProperty.link( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
       }
       else {
-        content = labelledChart;
+        content = this.barChartNode;
       }
 
-      const containingPanel = new Panel( content );
-      this.addChild( containingPanel );
+      this.addChild( content );
+      // const containingPanel = new Panel( content );
+      // this.addChild( containingPanel );
 
       // attach listeners - bar chart exists for life of sim, no need to dispose
       skater.energyChangedEmitter.addListener( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
@@ -186,6 +186,16 @@ define( require => {
       }
     }
   }
+
+  /**
+   * Create a label for the bar graph that can be explicitly located for custom layout.
+   *
+   * @static
+   * @returns {Text}
+   */
+  EnergyBarGraph.createLabel = () => {
+    return new Text( energyEnergyString, { font: new PhetFont( { size: 14, weight: 'bold' } ) } );
+  };
 
   return energySkatePark.register( 'EnergyBarGraph', EnergyBarGraph );
 } );

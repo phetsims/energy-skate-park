@@ -32,9 +32,10 @@ define( require => {
     // Create the tracks for the track toolbox
     var interactiveTrackNodes = model.tracks.getArray().map( this.addTrackNode.bind( this ) );
 
-    // Add a panel behind the tracks
     var padding = 10;
-    var trackCreationPanel = new Rectangle(
+
+    // @protected (for layout of other things in subtypes)
+    this.trackCreationPanel = new Rectangle(
       ( interactiveTrackNodes[ 0 ].left - padding / 2 ),
       ( interactiveTrackNodes[ 0 ].top - padding / 2 ),
       ( interactiveTrackNodes[ 0 ].width + padding ),
@@ -44,23 +45,24 @@ define( require => {
         fill: 'white',
         stroke: 'black'
     } );
-    this.bottomLayer.addChild( trackCreationPanel );
+    this.bottomLayer.addChild( this.trackCreationPanel );
 
     // move the panel behind the tracks (which were added in supertype)
     const indexOfTrackLayer = _.indexOf( this.bottomLayer.children, this.trackLayer );
-    this.bottomLayer.moveChildToIndex( trackCreationPanel, indexOfTrackLayer );
+    this.bottomLayer.moveChildToIndex( this.trackCreationPanel, indexOfTrackLayer );
 
     model.tracks.addItemAddedListener( this.addTrackNode.bind( this ) );
 
-    var clearButton = new EraserButton( {
+    // @protected - for layout in subtypes
+    this.clearButton = new EraserButton( {
       iconWidth: 30,
       baseColor: new Color( 221, 210, 32 ),
       tandem: tandem.createTandem( 'clearButton' )
     } );
-    model.clearButtonEnabledProperty.linkAttribute( clearButton, 'enabled' );
-    clearButton.addListener( function() {model.clearTracks();} );
+    model.clearButtonEnabledProperty.linkAttribute( this.clearButton, 'enabled' );
+    this.clearButton.addListener( function() {model.clearTracks();} );
 
-    this.bottomLayer.addChild( clearButton.mutate( { left: 5, centerY: trackCreationPanel.centerY } ) );
+    this.bottomLayer.addChild( this.clearButton.mutate( { left: 5, centerY: this.trackCreationPanel.centerY } ) );
   }
 
   energySkatePark.register( 'EnergySkateParkPlaygroundScreenView', EnergySkateParkPlaygroundScreenView );

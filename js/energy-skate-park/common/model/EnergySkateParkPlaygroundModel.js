@@ -1,7 +1,7 @@
 // Copyright 2018-2019, University of Colorado Boulder
 
 /**
- * A model for Energy Skate Park that can have tracks that are buildable and draggable. Doesn't have a set of 
+ * A model for Energy Skate Park that can have tracks that are buildable and draggable. Doesn't have a set of
  * pre-constructed tracks, but allows user to build them from scratch.
  * @author Jesse Greenberg
  */
@@ -27,6 +27,13 @@ define( function( require ) {
    * @param {Object} options
    */
   function EnergySkateParkPlaygroundModel( frictionAllowed, tandem, options ) {
+
+    options = _.extend( {
+
+      // the center of initial tracks in the control panel, change this to move the panel to a different location
+      // in model coordinates (meters)
+      initialTracksOffsetVector: new Vector2( -5.1, -0.85 )
+    }, options );
     options = options || {};
 
     assert && assert( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
@@ -38,6 +45,9 @@ define( function( require ) {
     var draggableTracks = true; // TODO: Get rid of this param?
     EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem, options );
 
+    // @private {Vector2} - see options for documentation
+    this.initialTracksOffsetVector = options.initialTracksOffsetVector;
+
     // add all of the possible draggable tracks
     this.addDraggableTracks();
   }
@@ -48,7 +58,7 @@ define( function( require ) {
 
     /**
      * Add the draggable tracks that will be in the toolbox of a playground scene.
-     * 
+     *
      * @public
      */
     addDraggableTracks: function() {
@@ -61,7 +71,7 @@ define( function( require ) {
 
     /**
      * Add a single draggable track to a control panel.
-     * 
+     *
      * @public
      */
     addDraggableTrack: function() {
@@ -72,7 +82,7 @@ define( function( require ) {
       // Move the tracks over so they will be in the right position in the view coordinates, under the grass to the left
       // of the clock controls.  Could use view transform for this, but it would require creating the view first, so just
       // eyeballing it for now.
-      var offset = new Vector2( -5.1, -0.85 );
+      var offset = this.initialTracksOffsetVector;
       var controlPoints = [
         new ControlPoint( offset.x - 1, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } ),
         new ControlPoint( offset.x, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } ),

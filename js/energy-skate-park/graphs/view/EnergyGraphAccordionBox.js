@@ -82,7 +82,6 @@ define( function( require ) {
 
         tandem: tandem.createTandem( 'eraserButton' )
       } );
-      contentNode.addChild( eraserButton );
 
       // ABSwitch to change plotting variables
       const switchLabelOptions = {
@@ -95,7 +94,6 @@ define( function( require ) {
         switchSize: SWITCH_SIZE,
         tandem: tandem.createTandem( 'variableSwitch' )
       } );
-      contentNode.addChild( variableSwitch );
 
       // zoom buttons
       const zoomInButton = new EnergyGraphZoomButton( model.lineGraphScaleProperty, {
@@ -120,27 +118,46 @@ define( function( require ) {
       contentNode.addChild( yLabel );
       contentNode.addChild( xLabelText );
 
-      // layout, all layout is relative to the energy plot
-      variableSwitch.centerBottom = energyPlot.centerTop.minusXY( 0, 5 );
+      const labelNode = new Text( plotsEnergyGraphString, { font: new PhetFont( { size: 16 } ) } );
+      const titleNode = new phet.scenery.Node( {
+        children: [
+          labelNode,
+          variableSwitch,
+          eraserButton
+        ]
+      } );
 
-      eraserButton.right = energyPlot.right;
-      eraserButton.centerY = variableSwitch.centerY;
+      // initial positioning for titleNode and content before passing to AccordionBox
+      variableSwitch.left = labelNode.right;
+      variableSwitch.centerY = labelNode.centerY;
+      eraserButton.centerY = labelNode.centerY;
 
       yLabel.rightCenter = energyPlot.leftCenter.minusXY( 10, 0 );
       xLabelText.centerTop = energyPlot.centerBottom.plusXY( 0, 10 );
       checkboxGroup.rightCenter = yLabel.leftCenter.minusXY( 10, 0 );
 
       super( contentNode, {
-        titleNode: new Text( plotsEnergyGraphString, { font: new PhetFont( { size: 16 } ) } ),
+        titleNode: titleNode,
         titleAlignX: 'left',
         titleXSpacing: 7,
         buttonXMargin: 5,
         buttonYMargin: 5,
         contentYMargin: 2,
         contentXMargin: 4,
-        contentYSpacing: -eraserButton.height + 2,
+        contentYSpacing: 0,
         stroke: EnergySkateParkColorScheme.panelFill,
         tandem: tandem.createTandem( 'accordionBox' )
+      } );
+
+      // position the elements of the titleNode using global positioning after AccordionBox positions its titleNode
+      variableSwitch.centerX = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.plotPath.center ) ).x;
+      eraserButton.right = eraserButton.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.plotPath.rightCenter ) ).x;
+
+      // The variable switch and eraser button are part of the title layout but should only be visible when
+      // expanded
+      this.expandedProperty.link( expanded => {
+        variableSwitch.visible = expanded;
+        eraserButton.visible = expanded;
       } );
 
       // @public
