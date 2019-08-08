@@ -75,6 +75,11 @@ define( require => {
 
       // @public - in seconds, how much time has passed since beginning to record skater states
       this.runningTimeProperty = new NumberProperty( 0 );
+
+      // listeners, no need for disposal as the model exists forever
+      this.sceneProperty.link( scene => {
+        this.clearEnergyData();
+      } );
     }
 
     /**
