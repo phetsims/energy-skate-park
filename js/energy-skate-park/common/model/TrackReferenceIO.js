@@ -30,6 +30,8 @@ define( function( require ) {
 
   phetioInherit( ObjectIO, 'TrackReferenceIO', TrackReferenceIO, {}, {
     validator: { valueType: Track },
+    documentation: 'A Track serialization that only holds a phetioID of a Track in the sim, not the serialized state.',
+
     toStateObject: function( track ) {
       validate( track, this.validator );
       return track ? track.trackTandem.phetioID : null;
