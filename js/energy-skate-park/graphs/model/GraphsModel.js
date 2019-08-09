@@ -42,7 +42,7 @@ define( require => {
     constructor( tandem ) {
 
       // track set model with no friction
-      super( false, tandem.createTandem( 'graphsModel' ),  {
+      super( false, tandem.createTandem( 'graphsModel' ), {
         tracksConfigurable: true
       } );
 
@@ -65,7 +65,9 @@ define( require => {
       this.independentVariableProperty = new EnumerationProperty( GraphsModel.IndependentVariable, GraphsModel.IndependentVariable.POSITION );
 
       // @public - whether or not the energy plot is visible
-      this.energyPlotVisibleProperty = new BooleanProperty( true );
+      this.energyPlotVisibleProperty = new BooleanProperty( true, {
+        tandem: tandem.createTandem( 'energyPlotVisibleProperty' )
+      } );
 
       // samples of skater data to record and potentially play back
       this.skaterSamples = new ObservableArray();
@@ -214,7 +216,7 @@ define( require => {
       const trackHeight = GraphsConstants.TRACK_HEIGHT;
       const trackWidth = GraphsConstants.TRACK_WIDTH;
 
-      const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( groupTandem,  {
+      const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( groupTandem, {
         trackHeight: trackHeight,
         trackWidth: trackWidth,
         p1Draggable: false,
