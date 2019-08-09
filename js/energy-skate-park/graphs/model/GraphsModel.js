@@ -64,6 +64,9 @@ define( require => {
       // @public - sets the independent variable for the graph display
       this.independentVariableProperty = new EnumerationProperty( GraphsModel.IndependentVariable, GraphsModel.IndependentVariable.POSITION );
 
+      // @public - whether or not the energy plot is visible
+      this.energyPlotVisibleProperty = new BooleanProperty( true );
+
       // samples of skater data to record and potentially play back
       this.skaterSamples = new ObservableArray();
 
@@ -72,6 +75,37 @@ define( require => {
 
       // @public - in seconds, how much time has passed since beginning to record skater states
       this.runningTimeProperty = new NumberProperty( 0 );
+
+      // listeners, no need for disposal as the model exists forever
+      this.sceneProperty.link( scene => {
+        this.clearEnergyData();
+      } );
+    }
+
+    /**
+     * Resets the screen and Properties specific to this model.
+     *
+     * @public
+     * @override
+     */
+    reset() {
+      super.reset();
+
+      this.energyPlotVisibleProperty.reset();
+
+      this.kineticEnergyDataVisibleProperty.reset();
+      this.potentialEnergyDataVisibleProperty.reset();
+      this.thermalEnergyDataVisibleProperty.reset();
+      this.totalEnergyDataVisibleProperty.reset();
+
+      this.lineGraphScaleProperty.reset();
+      this.independentVariableProperty.reset();
+      this.runningTimeProperty.reset();
+
+      this.clearEnergyData();
+
+      // after reset, restart timer for next saved state
+      this.timeSinceSkaterSaved = 0;
     }
 
     /**

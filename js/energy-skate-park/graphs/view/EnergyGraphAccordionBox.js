@@ -146,6 +146,7 @@ define( function( require ) {
         contentXMargin: 4,
         contentYSpacing: 0,
         stroke: EnergySkateParkColorScheme.panelFill,
+        expandedProperty: model.energyPlotVisibleProperty,
         tandem: tandem.createTandem( 'accordionBox' )
       } );
 
