@@ -160,9 +160,6 @@ define( require => {
       model.thermalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.thermalEnergyDataSeries.uniqueId ], 'visible' );
       model.totalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.totalEnergyDataSeries.uniqueId ], 'visible' );
 
-      // map that will go from index of values in the XYDataSeries used to a particular added SkaterSample
-      const sampleIndexMap = new Map();
-
       // add data points when a SkaterSample is added to the model
       model.skaterSamples.addItemAddedListener( addedSample => {
         const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
@@ -176,9 +173,6 @@ define( require => {
         this.thermalEnergyDataSeries.addPoint( independentVariable, addedSample.thermalEnergy, pointStyle );
         this.totalEnergyDataSeries.addPoint( independentVariable, addedSample.totalEnergy, pointStyle );
 
-        // the indices will be the same for all data series, doesn't matter which one we pull length from
-        sampleIndexMap.set( addedSample, this.kineticEnergyDataSeries.getLength() - 1 );
-
         // add a listener that updates opacity with the SkaterSample Property, dispose it on removal
         const opacityListener = opacity => {
           for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
@@ -190,11 +184,10 @@ define( require => {
 
         const removalListener = removedSample => {
           if ( removedSample === addedSample ) {
-            addedSample.opacityProperty.unlink( opacityListener );
+            removedSample.opacityProperty.unlink( opacityListener );
 
             for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
-              assert && assert( sampleIndexMap.has( addedSample ) );
-              this.dataSeriesList[ i ].removePoint( sampleIndexMap.get( removedSample ) );
+              this.dataSeriesList[ i ].removePointAtX( independentVariable );
             }
             model.skaterSamples.removeItemRemovedListener( removalListener );
           }
