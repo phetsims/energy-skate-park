@@ -117,24 +117,16 @@ define( require => {
       this.addSeries( this.totalEnergyDataSeries, true );
 
       // when cursor drag finishes, clear all data that has time greater than cursor time and set model time
-      // to the selected cursor time - this method assumes that all data is in chronological order
+      // to the selected cursor time
       dragEndedEmitter.addListener( () => {
         const timeOnEnd = this.getCursorValue();
         model.runningTimeProperty.set( timeOnEnd );
 
-        for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
-          const dataSeries = this.dataSeriesList[ i ];
-          const timeData = dataSeries.getXPoints();
-          for ( let j = 0; j < dataSeries.getLength(); j++ ) {
-            if ( timeData[ j ] >= timeOnEnd ) {
-              const startIndex = j;
-              const endIndex = dataSeries.getLength();
+        const closestSample = model.getClosestSkaterSample( timeOnEnd );
+        const indexOfSample = model.skaterSamples.indexOf( closestSample );
 
-              dataSeries.removePoints( startIndex, endIndex );
-              break;
-            }
-          }
-        }
+        assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
+        model.skaterSamples.splice( indexOfSample, model.skaterSamples.length - indexOfSample );
       } );
 
       // calculate new range of plot when zooming in or out
@@ -168,6 +160,9 @@ define( require => {
       model.thermalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.thermalEnergyDataSeries.uniqueId ], 'visible' );
       model.totalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.totalEnergyDataSeries.uniqueId ], 'visible' );
 
+      // map that will go from index of values in the XYDataSeries used to a particular added SkaterSample
+      const sampleIndexMap = new Map();
+
       // add data points when a SkaterSample is added to the model
       model.skaterSamples.addItemAddedListener( addedSample => {
         const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
@@ -180,6 +175,9 @@ define( require => {
         this.potentialEnergyDataSeries.addPoint( independentVariable, addedSample.potentialEnergy, pointStyle );
         this.thermalEnergyDataSeries.addPoint( independentVariable, addedSample.thermalEnergy, pointStyle );
         this.totalEnergyDataSeries.addPoint( independentVariable, addedSample.totalEnergy, pointStyle );
+
+        // the indices will be the same for all data series, doesn't matter which one we pull length from
+        sampleIndexMap.set( addedSample, this.kineticEnergyDataSeries.getLength() - 1 );
 
         // add a listener that updates opacity with the SkaterSample Property, dispose it on removal
         const opacityListener = opacity => {
@@ -195,10 +193,8 @@ define( require => {
             addedSample.opacityProperty.unlink( opacityListener );
 
             for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
-
-              // TODO: Get the index of the position removed sample rather than assume they will be removed from oldest
-              // to newest?
-              this.dataSeriesList[ i ].removePoint( 0 );
+              assert && assert( sampleIndexMap.has( addedSample ) );
+              this.dataSeriesList[ i ].removePoint( sampleIndexMap.get( removedSample ) );
             }
             model.skaterSamples.removeItemRemovedListener( removalListener );
           }
