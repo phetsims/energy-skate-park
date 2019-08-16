@@ -518,7 +518,7 @@ define( function( require ) {
       var newKineticEnergy = 0.5 * newSpeed * newSpeed * skaterState.mass;
       var newPotentialEnergy = ( -1 ) * skaterState.mass * skaterState.gravity * ( 0 - skaterState.referenceHeight );
 
-      // TODO: This needs  a similar fix to stepGround for #145
+      // TODO: This is likely related to issue identified in #45
       var newThermalEnergy = initialEnergy - newKineticEnergy - newPotentialEnergy;
 
       // Supply information about a very rare problem that occurs when thermal energy goes negative,
@@ -526,6 +526,8 @@ define( function( require ) {
       assert && assert( newThermalEnergy >= 0,
         'Thermal energy should be non-negative: ' +
         'skaterState: ' + skaterState + ', ' +
+        'oldPotentialEnergy:' + skaterState.getPotentialEnergy() + ', ' +
+        'skaterPositionY:' + skaterState.positionY + ', ' +
         'initialEnergy: ' + initialEnergy + ', ' +
         'proposedPosition: ' + proposedPosition + ', ' +
         'proposedVelocity: ' + proposedVelocity + ', ' +
