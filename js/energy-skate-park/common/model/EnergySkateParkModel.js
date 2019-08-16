@@ -466,7 +466,26 @@ define( function( require ) {
       var updated = skaterState.updatePositionAngleUpVelocity( newPosition.x, newPosition.y, 0, true, v1, 0 );
 
       var newEnergy = updated.getTotalEnergy();
-      return updated.updateThermalEnergy( updated.thermalEnergy + ( originalEnergy - newEnergy ) );
+      const newKineticEnergy = updated.getKineticEnergy();
+
+
+      // Correct the energy so that total energy does not change after this update. If the energy has gone down
+      // (energyDiference below positive), we can add energyDifference to thermal energy without much consequence.
+      // But if energy increased, we may end up with negative thermal energy if we remove it from thermal energy,
+      // so we attempt to take it out of kinetic energy instead.
+      // See https://github.com/phetsims/energy-skate-park/issues/45
+      const energyDifference = ( originalEnergy - newEnergy );
+      if ( energyDifference < 0 && newKineticEnergy > energyDifference ) {
+
+        // since KE = 1/2 * m * v^2
+        const newV = Math.sqrt( 2 * newKineticEnergy / updated.mass );
+        return skaterState.updatePositionAngleUpVelocity( newPosition.x, newPosition.y, 0, true, newV, 0 );
+      }
+      else {
+        const newThermalEnergy = updated.thermalEnergy + energyDifference;
+        assert && assert( newThermalEnergy >= 0, 'thermal energy should not be negative, correct energy another way' );
+        return updated.updateThermalEnergy( newThermalEnergy );
+      }
     },
 
     /**
@@ -491,6 +510,8 @@ define( function( require ) {
       // Make sure energy perfectly conserved when falling to the ground.
       var newKineticEnergy = 0.5 * newSpeed * newSpeed * skaterState.mass;
       var newPotentialEnergy = ( -1 ) * skaterState.mass * skaterState.gravity * ( 0 - skaterState.referenceHeight );
+
+      // TODO: This needs  a similar fix to stepGround for #145
       var newThermalEnergy = initialEnergy - newKineticEnergy - newPotentialEnergy;
 
       // Supply information about a very rare problem that occurs when thermal energy goes negative,
