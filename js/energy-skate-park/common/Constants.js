@@ -8,20 +8,28 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Dimension2 = require( 'DOT/Dimension2' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var Range = require( 'DOT/Range' );
+  const SkaterMasses = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SkaterMasses' );
+  const Dimension2 = require( 'DOT/Dimension2' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Range = require( 'DOT/Range' );
 
-  var minMass = 5;// kg
-  var maxMass = 100;
+  // Must accommodate all values in SkaterMasses
+  const minMass = 0.2;// kg
+  const maxMass = 100;
 
   // for zoom buttons for bar graphs, pressing button will increase/decrease scale by this much
-  var ZOOM_FACTOR_DELTA = 1 / 60;
+  const ZOOM_FACTOR_DELTA = 1 / 60;
 
   const EARTH_GRAVITY = 9.8;
   const MOON_GRAVITY = 1.62;
   const JUPITER_GRAVITY = 25.96;
+
+  const massRange = new Range( minMass, maxMass );
+
+  Object.keys( SkaterMasses ).forEach( key => {
+    assert && assert( massRange.contains( SkaterMasses[ key ] ), 'mass range should accommodate all SkaterMasses values' );
+  } );
 
   var Constants = {
     SLIDER_OPTIONS: {
@@ -43,10 +51,10 @@ define( function( require ) {
     MAX_ZOOM_FACTOR: 9 * ZOOM_FACTOR_DELTA,
     MIN_ZOOM_FACTOR: ZOOM_FACTOR_DELTA / 3,
 
-    DEFAULT_MASS: (minMass + maxMass) / 2,
+    DEFAULT_MASS: maxMass / 100,
     MIN_MASS: minMass,
     MAX_MASS: maxMass,
-    MASS_RANGE: new Range( minMass, maxMass ),
+    MASS_RANGE: massRange,
 
     // coefficients of friction, default values are not common
     MIN_FRICTION: 0,
