@@ -9,18 +9,18 @@ define( require => {
   'use strict';
 
   // modules
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergyBarGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraph' );
   const AccordionBox = require( 'SUN/AccordionBox' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const Tandem = require( 'TANDEM/Tandem' );
+  var EnergyBarGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraph' );
 
   class EnergyBarGraphAccordionBox extends AccordionBox {
 
     /**
      * @param {EnergySkateParkModel} model
-     * @param {Tandem} tandem
      * @param {Object} options
      */
-    constructor( model, tandem, options ) {
+    constructor( model, options ) {
 
       options = _.extend( {
 
@@ -34,10 +34,12 @@ define( require => {
         expandedProperty: model.barGraphVisibleProperty,
 
         // {null|*} options for the bar graph itself, passed on to EnergyBarGraph
-        barGraphOptions: null
-      } );
+        barGraphOptions: null,
 
-      const energyBarGraph = new EnergyBarGraph( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
+        tandem: Tandem.required
+      }, options );
+
+      const energyBarGraph = new EnergyBarGraph( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, options.tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
       super( energyBarGraph, options );
     }
   }
