@@ -470,16 +470,23 @@ define( function( require ) {
 
 
       // Correct the energy so that total energy does not change after this update. If the energy has gone down
-      // (energyDiference below positive), we can add energyDifference to thermal energy without much consequence.
-      // But if energy increased, we may end up with negative thermal energy if we remove it from thermal energy,
-      // so we attempt to take it out of kinetic energy instead.
+      // (energyDiference positive), we can add energyDifference to thermal energy without much consequence.
+      // But if energy increased, we may end up with negative thermal energy if we remove the excess from
+      // thermal energy, so we attempt to take it out of kinetic energy instead.
       // See https://github.com/phetsims/energy-skate-park/issues/45
       const energyDifference = ( originalEnergy - newEnergy );
-      if ( energyDifference < 0 && newKineticEnergy > energyDifference ) {
+      const absEnergyDifference = Math.abs( energyDifference );
+      if ( energyDifference < 0 && newKineticEnergy > absEnergyDifference ) {
+        const currentSpeed = Math.abs( v1 );
 
         // since KE = 1/2 * m * v^2
-        const newV = Math.sqrt( 2 * newKineticEnergy / updated.mass );
-        return skaterState.updatePositionAngleUpVelocity( newPosition.x, newPosition.y, 0, true, newV, 0 );
+        const speedInExcessEnergy = Math.sqrt( 2 * Math.abs( absEnergyDifference ) / updated.mass );
+        const newSpeed = currentSpeed - speedInExcessEnergy;
+        assert && assert( newSpeed >= 0, 'tried to remove too much energy from kineticEnergy, correct another way' );
+
+        // restore direction to velocity
+        const correctedV = v1 >= 0 ? newSpeed : -newSpeed;
+        return skaterState.updatePositionAngleUpVelocity( newPosition.x, newPosition.y, 0, true, correctedV, 0 );
       }
       else {
         const newThermalEnergy = updated.thermalEnergy + energyDifference;
