@@ -82,8 +82,6 @@ define( function( require ) {
   var modelIterations = 0;
 
   /**
-   * Main constructor for the EnergySkateParkModel
-   *
    * TODO: Remove draggableTracks!
    * @param {boolean} draggableTracks True in screen 3 where the user can drag the tracks
    * @param {boolean} frictionAllowed True if this is screen 2-3, where friction is allowed to be on or off
