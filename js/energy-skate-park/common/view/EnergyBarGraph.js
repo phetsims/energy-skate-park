@@ -74,12 +74,13 @@ define( require => {
       const showSmallValues = ( value, scale ) => {
         const valueSign = value < 0 ? -1 : 1;
 
-        let height = value * scale;
-        const absHeight = Math.abs( height );
+        const height = value * scale;
+        let absHeight = Math.abs( height );
         if ( absHeight < 1 && absHeight > 1E-6 ) {
-          height = 1;
+          absHeight = 1;
         }
-        return height * valueSign;
+
+        return absHeight * valueSign;
       };
 
       // button to remove thermal energy will be below the "thermal" energy label
