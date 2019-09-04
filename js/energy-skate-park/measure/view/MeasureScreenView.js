@@ -32,8 +32,7 @@ define( require => {
      */
     constructor( model, tandem ) {
 
-      // parent layer for ComboBox, would use this but it is not available
-      // until after super
+      // parent layer for ComboBox, would use this but it is not available until after super
       const comboBoxParent = new Node();
 
       const measureControls = [
@@ -42,7 +41,7 @@ define( require => {
         new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ), {
           decimalPlaces: 1
         } ),
-        new GravityComboBox( model.skater.gravityMagnitudeProperty, comboBoxParent, tandem.createTandem( 'gravityComboBox' ) )
+        new GravityComboBox( model.skater.gravityMagnitudeProperty, model.resetEmitter, comboBoxParent, tandem.createTandem( 'gravityComboBox' ) )
       ];
 
       super( model, measureControls, tandem, {

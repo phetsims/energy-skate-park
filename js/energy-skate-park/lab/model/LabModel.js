@@ -21,8 +21,10 @@ define( function( require ) {
 
     // Playground model, with friction
     EnergySkateParkPlaygroundModel.call( this, true, tandem, {
-      defaultMass: SkaterMasses.PHET_SKATER_MASS,
-      massRange: new Range( SkaterMasses.BUG_MASS, SkaterMasses.PHET_SKATER_MASS ),
+      skaterOptions: {
+        defaultMass: SkaterMasses.PHET_SKATER_MASS,
+        massRange: new Range( SkaterMasses.BUG_MASS, SkaterMasses.PHET_SKATER_MASS )
+      },
 
       // Draggable tracks in the lab screen start at a different location in the "Lab" screen
       initialTracksOffsetVector: new Vector2( -2, -0.75 )

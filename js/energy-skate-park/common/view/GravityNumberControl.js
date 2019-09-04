@@ -25,13 +25,15 @@ define( require => {
      * @param {Object} options
      */
     constructor( property, tandem, options ) {
-      super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, {
+
+      options = _.extend( {
         decimalPlaces: 1,
         numberDisplayOptions: {
           valuePattern: gravityMetersPerSecondSquaredPatternString,
-          useRichText: true // for super script on m/s^2
+          useRichText: true // for the superscript on units
         }
-      } );
+      }, options );
+      super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, options );
     }
   }
 

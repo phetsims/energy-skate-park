@@ -32,9 +32,9 @@ define( function( require ) {
     var labControls = [
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
       new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) ),
-      new MassComboBox( model.skater.massProperty, comboBoxParent, tandem.createTandem( 'massComboBox' ) ),
+      new MassComboBox( model.skater.massProperty, model.resetEmitter, comboBoxParent, tandem.createTandem( 'massComboBox' ) ),
       new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) ),
-      new GravityComboBox( model.skater.gravityMagnitudeProperty, comboBoxParent, tandem.createTandem( 'gravityComboBox' ) )
+      new GravityComboBox( model.skater.gravityMagnitudeProperty, model.resetEmitter, comboBoxParent, tandem.createTandem( 'gravityComboBox' ) )
     ];
     EnergySkateParkPlaygroundScreenView.call( this, model, labControls, tandem.createTandem( 'graphsScreenView' ), {
       showTrackButtons: false,

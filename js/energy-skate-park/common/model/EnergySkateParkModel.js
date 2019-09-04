@@ -218,6 +218,9 @@ define( function( require ) {
     // @public {Skater} - the skater model instance
     this.skater = new Skater( tandem.createTandem( 'skater' ), options.skaterOptions );
 
+    // @public - signify that the model has successfully been reset to initial state
+    this.resetEmitter = new Emitter();
+
     // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
     // TODO: Can this me moved into Skater.js?
     this.skater.massProperty.link( function() { if ( self.pausedProperty.value ) { self.skater.updatedEmitter.emit(); } } );
@@ -334,6 +337,8 @@ define( function( require ) {
       this.skater.reset();
 
       this.clearTracks();
+
+      this.resetEmitter.emit();
     },
 
     /**
