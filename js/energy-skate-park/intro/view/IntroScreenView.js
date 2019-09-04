@@ -35,7 +35,9 @@ define( function( require ) {
     } );
 
     // @private (for layout) {ComboBox}
-    this.massComboBox = new MassComboBox( model.skater.massProperty, model.resetEmitter, this, tandem );
+    this.massComboBox = new MassComboBox( model.skater.massProperty, model.resetEmitter, this, tandem, {
+      listPosition: 'above'
+    } );
 
     // add the combo box to the back layer so it is behind the skater
     this.addToBottomLayer( this.massComboBox );
