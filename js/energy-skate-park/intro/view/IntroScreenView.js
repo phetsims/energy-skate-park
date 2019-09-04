@@ -36,7 +36,10 @@ define( function( require ) {
 
     // @private (for layout) {ComboBox}
     this.massComboBox = new MassComboBox( model.skater.massProperty, model.resetEmitter, this, tandem, {
-      listPosition: 'above'
+      listPosition: 'above',
+
+      // this combo box is the only way to change mass on the Intro screen
+      supportCustom: false
     } );
 
     // add the combo box to the back layer so it is behind the skater
