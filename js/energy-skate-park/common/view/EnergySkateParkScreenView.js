@@ -250,7 +250,7 @@ define( function( require ) {
     model.skater.movedProperty.linkAttribute( self.returnSkaterButton, 'enabled' );
     this.bottomLayer.addChild( this.returnSkaterButton );
 
-    var speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 20 ), {
+    var speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 30 ), {
 
         numberDisplayOptions: {
           valuePattern: speedometerMetersPerSecondPatternString,
