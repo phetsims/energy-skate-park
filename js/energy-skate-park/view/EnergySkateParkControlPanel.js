@@ -14,7 +14,6 @@ define( function( require ) {
   var PhysicalNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PhysicalNumberControl' );
   // var Range = require( 'DOT/Range' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const PhysicalSliderComboBoxGroup = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PhysicalSliderComboBoxGroup' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   var EnergySkateParkVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkVisibilityControls' );
   var HSeparator = require( 'SUN/HSeparator' );
@@ -25,7 +24,7 @@ define( function( require ) {
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
   const MassComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassComboBox' );
 
-  const VALID_CONTROLS = [ PhysicalSlider, PhysicalNumberControl, GravityComboBox, MassComboBox, PhysicalSliderComboBoxGroup ];
+  const VALID_CONTROLS = [ PhysicalSlider, PhysicalNumberControl, GravityComboBox, MassComboBox ];
 
   /**
    * @param {EnergySkateParkModel} model
