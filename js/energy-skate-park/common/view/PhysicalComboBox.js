@@ -68,11 +68,13 @@ define( require => {
       } );
 
       // if the physical Property changes as a result of anything other than the adapter Property, set to null
-      physicalProperty.link( ( physicalValue ) => {
-        if ( physicalValue !== adapterProperty.value ) {
+      if ( options.supportCustom ) {
+        physicalProperty.link( ( physicalValue ) => {
+         if ( physicalValue !== adapterProperty.value ) {
           adapterProperty.set( null );
-        }
-      } );
+          }
+        } );
+      }
 
       // the only case where an external physicalProperty change should update
       resetEmitter.addListener( () => {
