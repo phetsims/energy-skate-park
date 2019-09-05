@@ -63,8 +63,12 @@ define( require => {
       } );
       this.pathSensor.top = this.modelViewTransform.modelToViewDeltaY( -2 );
 
-      this.addToTopLayer( new SkaterSamplesNode( model, this.modelViewTransform ) );
-      this.addToTopLayer( this.pathSensor );
+      // insert the samples and measure into the layering so that the measurable path is above the track but below
+      // the skater, and the sensor is below the measuring tape to avoid occlusion
+      const skaterSamplesNode = new SkaterSamplesNode( model, this.modelViewTransform );
+      const indexOfTrackLayer = _.indexOf( this.topLayer.children, this.trackLayer );
+      this.topLayer.insertChild( indexOfTrackLayer + 1, skaterSamplesNode );
+      this.topLayer.insertChild( indexOfTrackLayer + 2, this.pathSensor );
     }
 
     /**

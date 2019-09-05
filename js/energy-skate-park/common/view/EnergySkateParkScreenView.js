@@ -163,31 +163,6 @@ define( function( require ) {
     );
     this.bottomLayer.addChild( this.pieChartLegend );
 
-    // add a measuring tape if specified as part of this screen view
-    if ( options.showMeasuringTape ) {
-
-      var unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
-
-      // @private {MeasuringTapeNode} - The measuring tape node will not
-      this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
-        basePositionProperty: model.measuringTapeBasePositionProperty,
-        tipPositionProperty: model.measuringTapeTipPositionProperty,
-        modelViewTransform: modelViewTransform,
-        dragBounds: this.availableModelBoundsProperty.get(),
-        baseDragEnded: function() {
-          if ( self.measuringTapeNode.getLocalBaseBounds().intersectsBounds( self.measuringTapePanel.bounds ) ) {
-            model.measuringTapeVisibleProperty.set( false );
-          }
-        },
-        tandem: tandem.createTandem( 'measuringTapeNode' )
-      } );
-      this.topLayer.addChild( this.measuringTapeNode );
-
-      // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
-      this.measuringTapePanel = new MeasuringTapePanel( model, this.measuringTapeNode, modelViewTransform );
-      this.bottomLayer.addChild( this.measuringTapePanel );
-    }
-
     // For the playground screen, show attach/detach toggle buttons
     if ( options.showAttachDetachRadioButtons ) {
       var property = model.tracksDraggable ? new Property( true ) :
@@ -274,7 +249,33 @@ define( function( require ) {
       tandem: tandem.createTandem( 'trackLayer' )
     } );
 
-    this.bottomLayer.addChild( this.trackLayer );
+    // tracks on top of panels and non-interactive visualizations
+    this.topLayer.addChild( this.trackLayer );
+
+    // add a measuring tape, on top of tracks, below the skater
+    if ( options.showMeasuringTape ) {
+
+      var unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
+
+      // @private {MeasuringTapeNode} - The measuring tape node will not
+      this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
+        basePositionProperty: model.measuringTapeBasePositionProperty,
+        tipPositionProperty: model.measuringTapeTipPositionProperty,
+        modelViewTransform: modelViewTransform,
+        dragBounds: this.availableModelBoundsProperty.get(),
+        baseDragEnded: function() {
+          if ( self.measuringTapeNode.getLocalBaseBounds().intersectsBounds( self.measuringTapePanel.bounds ) ) {
+            model.measuringTapeVisibleProperty.set( false );
+          }
+        },
+        tandem: tandem.createTandem( 'measuringTapeNode' )
+      } );
+      this.topLayer.addChild( this.measuringTapeNode );
+
+      // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
+      this.measuringTapePanel = new MeasuringTapePanel( model, this.measuringTapeNode, modelViewTransform );
+      this.bottomLayer.addChild( this.measuringTapePanel );
+    }
 
     var skaterNode = new SkaterNode(
       model.skater,

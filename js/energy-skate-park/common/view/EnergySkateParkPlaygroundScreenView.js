@@ -47,10 +47,6 @@ define( require => {
     } );
     this.bottomLayer.addChild( this.trackCreationPanel );
 
-    // move the panel behind the tracks (which were added in supertype)
-    const indexOfTrackLayer = _.indexOf( this.bottomLayer.children, this.trackLayer );
-    this.bottomLayer.moveChildToIndex( this.trackCreationPanel, indexOfTrackLayer );
-
     model.tracks.addItemAddedListener( this.addTrackNode.bind( this ) );
 
     // @protected - for layout in subtypes
