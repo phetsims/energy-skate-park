@@ -14437,6 +14437,18 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
+    "energySkatePark.introScreen.view": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "USER",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ComboBoxIO"
+    },
     "energySkatePark.introScreen.view.adapterProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -14448,6 +14460,126 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<NumberIO>>"
+    },
+    "energySkatePark.introScreen.view.button": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "NodeIO"
+    },
+    "energySkatePark.introScreen.view.button.enabledProperty": {
+      "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": true,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
+    "energySkatePark.introScreen.view.button.firedEmitter": {
+      "phetioDocumentation": "Emits when the button is fired No arguments.",
+      "phetioDynamicElement": false,
+      "phetioEventType": "USER",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "EmitterIO.<>"
+    },
+    "energySkatePark.introScreen.view.button.opacityProperty": {
+      "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "NumberPropertyIO"
+    },
+    "energySkatePark.introScreen.view.button.pickableProperty": {
+      "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
+    },
+    "energySkatePark.introScreen.view.button.pressListener.pressAction": {
+      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
+      "phetioDynamicElement": false,
+      "phetioEventType": "USER",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ActionIO.<EventIO>"
+    },
+    "energySkatePark.introScreen.view.button.pressListener.releaseAction": {
+      "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO.<EventIO></li></ol>",
+      "phetioDynamicElement": false,
+      "phetioEventType": "USER",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ActionIO.<NullableIO.<EventIO>>"
+    },
+    "energySkatePark.introScreen.view.button.visibleProperty": {
+      "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": true,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
+    "energySkatePark.introScreen.view.displayOnlyProperty": {
+      "phetioDocumentation": "disables interaction with the ComboBox and makes it appear like a display that shows the current selection",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
+    },
+    "energySkatePark.introScreen.view.enabledProperty": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
     "energySkatePark.introScreen.view.frictionSlider": {
       "phetioDocumentation": "",
@@ -21325,19 +21457,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "energySkatePark.introScreen.view.massComboBox": {
-      "phetioDocumentation": "",
-      "phetioDynamicElement": false,
-      "phetioEventType": "USER",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": false,
-      "phetioStudioControl": true,
-      "phetioTypeName": "ComboBoxIO"
-    },
-    "energySkatePark.introScreen.view.massComboBox.button": {
+    "energySkatePark.introScreen.view.listBox": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -21349,127 +21469,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.introScreen.view.massComboBox.button.enabledProperty": {
-      "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": true,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO.<BooleanIO>"
-    },
-    "energySkatePark.introScreen.view.massComboBox.button.firedEmitter": {
-      "phetioDocumentation": "Emits when the button is fired No arguments.",
-      "phetioDynamicElement": false,
-      "phetioEventType": "USER",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": false,
-      "phetioStudioControl": true,
-      "phetioTypeName": "EmitterIO.<>"
-    },
-    "energySkatePark.introScreen.view.massComboBox.button.opacityProperty": {
-      "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.massComboBox.button.pickableProperty": {
-      "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
-    },
-    "energySkatePark.introScreen.view.massComboBox.button.pressListener.pressAction": {
-      "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
-      "phetioDynamicElement": false,
-      "phetioEventType": "USER",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": false,
-      "phetioStudioControl": true,
-      "phetioTypeName": "ActionIO.<EventIO>"
-    },
-    "energySkatePark.introScreen.view.massComboBox.button.pressListener.releaseAction": {
-      "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO.<EventIO></li></ol>",
-      "phetioDynamicElement": false,
-      "phetioEventType": "USER",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": false,
-      "phetioStudioControl": true,
-      "phetioTypeName": "ActionIO.<NullableIO.<EventIO>>"
-    },
-    "energySkatePark.introScreen.view.massComboBox.button.visibleProperty": {
-      "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": true,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO.<BooleanIO>"
-    },
-    "energySkatePark.introScreen.view.massComboBox.displayOnlyProperty": {
-      "phetioDocumentation": "disables interaction with the ComboBox and makes it appear like a display that shows the current selection",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO.<BooleanIO>"
-    },
-    "energySkatePark.introScreen.view.massComboBox.enabledProperty": {
-      "phetioDocumentation": "",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO.<BooleanIO>"
-    },
-    "energySkatePark.introScreen.view.massComboBox.listBox": {
-      "phetioDocumentation": "",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": false,
-      "phetioStudioControl": true,
-      "phetioTypeName": "NodeIO"
-    },
-    "energySkatePark.introScreen.view.massComboBox.listBox.fireAction": {
+    "energySkatePark.introScreen.view.listBox.fireAction": {
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -21481,7 +21481,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<>"
     },
-    "energySkatePark.introScreen.view.massComboBox.listBox.opacityProperty": {
+    "energySkatePark.introScreen.view.listBox.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -21493,7 +21493,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.massComboBox.listBox.pickableProperty": {
+    "energySkatePark.introScreen.view.listBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -21505,7 +21505,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
     },
-    "energySkatePark.introScreen.view.massComboBox.listBox.visibleProperty": {
+    "energySkatePark.introScreen.view.listBox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -21517,7 +21517,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "energySkatePark.introScreen.view.massComboBox.opacityProperty": {
+    "energySkatePark.introScreen.view.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -21529,7 +21529,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.massComboBox.pickableProperty": {
+    "energySkatePark.introScreen.view.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -21541,7 +21541,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
     },
-    "energySkatePark.introScreen.view.massComboBox.property": {
+    "energySkatePark.introScreen.view.property": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -21553,7 +21553,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "LinkedElementIO"
     },
-    "energySkatePark.introScreen.view.massComboBox.visibleProperty": {
+    "energySkatePark.introScreen.view.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31321,6 +31321,18 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
+    "energySkatePark.labScreen.labScreenView.massComboBox": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "USER",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ComboBoxIO"
+    },
     "energySkatePark.labScreen.labScreenView.massComboBox.adapterProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -31333,19 +31345,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<NumberIO>>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox": {
-      "phetioDocumentation": "",
-      "phetioDynamicElement": false,
-      "phetioEventType": "USER",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": false,
-      "phetioStudioControl": true,
-      "phetioTypeName": "ComboBoxIO"
-    },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.button": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.button": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31357,7 +31357,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.button.enabledProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.button.enabledProperty": {
       "phetioDocumentation": "When disabled, the button is grayed out and cannot be pressed",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31369,7 +31369,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.button.firedEmitter": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.button.firedEmitter": {
       "phetioDocumentation": "Emits when the button is fired No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -31381,7 +31381,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO.<>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.button.opacityProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.button.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31393,7 +31393,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.button.pickableProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.button.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31405,7 +31405,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.button.pressListener.pressAction": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.button.pressListener.pressAction": {
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the Event. The arguments are:<br/><ol><li>event: EventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -31417,7 +31417,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<EventIO>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.button.pressListener.releaseAction": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.button.pressListener.releaseAction": {
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO.<EventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -31429,7 +31429,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<NullableIO.<EventIO>>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.button.visibleProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.button.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31441,7 +31441,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.displayOnlyProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.displayOnlyProperty": {
       "phetioDocumentation": "disables interaction with the ComboBox and makes it appear like a display that shows the current selection",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31453,7 +31453,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.enabledProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.enabledProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31465,7 +31465,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.listBox": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.listBox": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31477,7 +31477,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.listBox.fireAction": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.listBox.fireAction": {
       "phetioDocumentation": "A function that executes. No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -31489,7 +31489,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO.<>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.listBox.opacityProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.listBox.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31501,7 +31501,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.listBox.pickableProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.listBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31513,7 +31513,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.listBox.visibleProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.listBox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31525,7 +31525,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<BooleanIO>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.opacityProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31537,7 +31537,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.pickableProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31549,7 +31549,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO.<NullableIO.<BooleanIO>>"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.property": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.property": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -31561,7 +31561,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "LinkedElementIO"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.massComboBox.visibleProperty": {
+    "energySkatePark.labScreen.labScreenView.massComboBox.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",

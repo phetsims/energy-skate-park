@@ -15,8 +15,11 @@ define( require => {
   const ComboBox = require( 'SUN/ComboBox' );
   const ComboBoxItem = require( 'SUN/ComboBoxItem' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const NumberIO = require( 'TANDEM/types/NumberIO' );
+  const NullableIO = require( 'TANDEM/types/NullableIO' );
   const Text = require( 'SCENERY/nodes/Text' );
   const Property = require( 'AXON/Property' );
+  const PropertyIO = require( 'AXON/PropertyIO' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
 
   // constants
@@ -58,8 +61,9 @@ define( require => {
       // adapter Property for the ComboBox because the physicalProperty can be set to values other than those defined
       // in labelValueList - value is null and 'Custom' in this case
       const adapterProperty = new Property( physicalProperty.value, {
-        tandem: tandem.createTandem( 'adapterProperty' ),
-        reentrant: true
+        reentrant: true,
+        phetioType: PropertyIO( NullableIO( NumberIO ) ),
+        tandem: tandem.createTandem( 'adapterProperty' )
       } );
 
       // if an entry in the combo box is selected to any entry other than "custom", update the actual Property
