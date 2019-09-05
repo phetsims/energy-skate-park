@@ -67,12 +67,13 @@ define( require => {
      * @param   {ObservableArray.<SkaterSample>} samples
      * @param   {Vector2Property} sensorProbePositionProperty
      * @param   {Vector2Property} sensorBodyPositionProperty
+     * @param   {Property.<Bounds2>} modelBoundsProperty
      * @param   {ModelViewTransform} modelViewTransform
      * @param   {EnergySkateParkControlPanel} controlPanel - so the readout doesn't occlude control panel bounds
      * @param   {object} options
      * @returns {ObservableArray.<SkaterSample>}
      */
-    constructor( samples, sensorProbePositionProperty, sensorBodyPositionProperty, modelViewTransform, controlPanel, options ) {
+    constructor( samples, sensorProbePositionProperty, sensorBodyPositionProperty, modelBoundsProperty, modelViewTransform, controlPanel, options ) {
       options = _.extend( {
 
         // prevent block fitting so that things don't jiggle as the probe moves, see
@@ -238,6 +239,7 @@ define( require => {
       this.probeNode.addInputListener( new DragListener( {
         transform: modelViewTransform,
         locationProperty: sensorProbePositionProperty,
+        dragBoundsProperty: modelBoundsProperty,
         tandem: options.tandem.createTandem( 'dragListener' )
       } ) );
     }
