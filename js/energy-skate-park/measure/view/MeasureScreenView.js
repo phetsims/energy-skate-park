@@ -58,10 +58,9 @@ define( require => {
       this.addChild( comboBoxParent );
 
       // @private - for layout
-      this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorPositionProperty, this.modelViewTransform, this.controlPanel, {
+      this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorProbePositionProperty, model.sensorBodyPositionProperty, this.modelViewTransform, this.controlPanel, {
         tandem: tandem.createTandem( 'pathSensor' )
       } );
-      this.pathSensor.top = this.modelViewTransform.modelToViewDeltaY( -2 );
 
       // insert the samples and measure into the layering so that the measurable path is above the track but below
       // the skater, and the sensor is below the measuring tape to avoid occlusion
@@ -89,8 +88,8 @@ define( require => {
       // in the measure screen the legend is in the top left of the screen
       this.pieChartLegend.mutate( { top: this.controlPanel.top, left: this.fixedLeft } );
 
-      this.pathSensor.top = this.pieChartLegend.bottom + 10;
-      this.pathSensor.left = this.fixedLeft;
+      // position the body relative to the pie chart legend, this sets the origin of the body (top left)
+      this.model.sensorBodyPositionProperty.set( this.modelViewTransform.viewToModelXY( this.fixedLeft, this.pieChartLegend.bottom + 10 ) );
 
       // control panel is taller for this screen so move the measuring tape  to a different place
       if ( this.showMeasuringTape ) {

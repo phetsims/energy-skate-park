@@ -65,16 +65,17 @@ define( require => {
 
     /**
      * @param   {ObservableArray.<SkaterSample>} samples
-     * @param   {Vector2Property} sensorPositionProperty 
-     * @param   {ModelViewTransform} modelViewTransform     
+     * @param   {Vector2Property} sensorProbePositionProperty
+     * @param   {Vector2Property} sensorBodyPositionProperty
+     * @param   {ModelViewTransform} modelViewTransform
      * @param   {EnergySkateParkControlPanel} controlPanel - so the readout doesn't occlude control panel bounds
-     * @param   {object} options                
-     * @returns {ObservableArray.<SkaterSample>}                        
+     * @param   {object} options
+     * @returns {ObservableArray.<SkaterSample>}
      */
-    constructor( samples, sensorPositionProperty, modelViewTransform, controlPanel, options ) {
+    constructor( samples, sensorProbePositionProperty, sensorBodyPositionProperty, modelViewTransform, controlPanel, options ) {
       options = _.extend( {
 
-        // prevent block fitting so that things don't jiggle as the probe moves, see 
+        // prevent block fitting so that things don't jiggle as the probe moves, see
         preventFit: true
       }, options );
       super( options );
@@ -157,25 +158,35 @@ define( require => {
       } );
       body.addChild( content );
 
+      sensorBodyPositionProperty.link( ( bodyPosition ) => {
+        body.leftTop = modelViewTransform.modelToViewPosition( bodyPosition );
+      } );
+
       // the probe
       this.probeNode = new ProbeNode( {
         scale: 0.40,
         rotation: Math.PI / 2,
         sensorTypeFunction: ProbeNode.crosshairs(),
-        center: modelViewTransform.modelToViewPosition( sensorPositionProperty.get() ),
+        center: modelViewTransform.modelToViewPosition( sensorProbePositionProperty.get() ),
         cursor: 'pointer'
       } );
 
+      sensorProbePositionProperty.link( ( position ) => {
+        this.probeNode.translation = modelViewTransform.modelToViewPosition( position );
+      } );
+
       // points and control points for the wire
-      const p1Property = new Property( body.getCenterBottom().minusXY( 0, 5 ) );
-      const normal1Property = new DerivedProperty( [ sensorPositionProperty ], ( sensorPosition ) => {
-      
+      const p1Property = new DerivedProperty( [ sensorBodyPositionProperty ], ( bodyPosition ) => {
+        return body.getCenterBottom().minusXY( 0, 5 );
+      } );
+      const normal1Property = new DerivedProperty( [ sensorProbePositionProperty, sensorBodyPositionProperty ], ( sensorPosition ) => {
+
         // changes with the probe position so the wire looks like it has slack as it gets longer
         const viewPosition = modelViewTransform.modelToViewPosition( sensorPosition );
         const distanceToBody = viewPosition.minus( p1Property.get() );
         return new Vector2( distanceToBody.x / 3, Math.max( distanceToBody.y, body.height * 2 ) );
       } );
-      const p2Property = new DerivedProperty( [ sensorPositionProperty ], ( sensorPosition ) => {
+      const p2Property = new DerivedProperty( [ sensorProbePositionProperty ], ( sensorPosition ) => {
 
         // calculate the left of the probe in view coordinates
         const viewPosition = modelViewTransform.modelToViewPosition( sensorPosition );
@@ -200,7 +211,7 @@ define( require => {
 
       // display the sample that is close to the sample of the probe - find the closest one in case multiple samples
       // are near the probe center
-      sensorPositionProperty.link( ( modelPosition ) => {
+      sensorProbePositionProperty.link( ( modelPosition ) => {
 
         // clear the previous sample
         this.inspectedSample && this.clearDisplay( this.inspectedSample );
@@ -226,14 +237,9 @@ define( require => {
       // add a drag listener to the probe body
       this.probeNode.addInputListener( new DragListener( {
         transform: modelViewTransform,
-        locationProperty: sensorPositionProperty,
+        locationProperty: sensorProbePositionProperty,
         tandem: options.tandem.createTandem( 'dragListener' )
       } ) );
-
-      // translate the probeNode with the positionProperty
-      sensorPositionProperty.link( ( position ) => {
-        this.probeNode.translation = modelViewTransform.modelToViewPosition( position );
-      } );
     }
 
     /**

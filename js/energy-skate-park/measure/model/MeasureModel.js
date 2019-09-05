@@ -41,7 +41,12 @@ define( function( require ) {
     this.sampleSkaterProperty = new BooleanProperty( true, { tandem: tandem.createTandem( 'sampleSkaterProperty' ) } );
 
     // @public - the position of the sensor, in model coordinates (meters)
-    this.sensorPositionProperty = new Vector2Property( new Vector2( -4, 5 ) );
+    this.sensorProbePositionProperty = new Vector2Property( new Vector2( -4, 1.5 ) );
+
+    // @public - the position of the sensor body in model coordinates, set later because it will be relative to other
+    // panels in the view, and this similarly should not be reset on reset(). This is meant to be the origin of the
+    // body (top left)
+    this.sensorBodyPositionProperty = new Vector2Property( new Vector2( 0, 0 ) );
 
     // @public {ObservableArray.<SkaterSample>} - list of all samples of skater physical values at a particular time
     this.skaterSamples = new ObservableArray();
@@ -89,7 +94,7 @@ define( function( require ) {
 
       this.clearSavedSamples();
 
-      this.sensorPositionProperty.reset();
+      this.sensorProbePositionProperty.reset();
       this.sampleSkaterProperty.reset();
     },
 
