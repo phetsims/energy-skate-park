@@ -122,10 +122,19 @@
   "totalEnergyLabel": {
     "value": "Total"
   },
-  "timeLabel": {
+  "timeSwitchLabel": {
     "value": "Time"
   },
-  "positionLabel": {
+  "positionSwitchLabel": {
     "value": "Position"
+  },
+  "plots.timeLabel": {
+    "value": "Time (s)"
+  },
+  "plots.positionLabel": {
+    "value": "Position (m)"
+  },
+  "plots.energyLabel": {
+    "value": "Energy (J)"
   }
 }

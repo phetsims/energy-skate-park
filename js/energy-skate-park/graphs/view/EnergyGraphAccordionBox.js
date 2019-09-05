@@ -31,9 +31,12 @@ define( function( require ) {
   const potentialEnergyLabelString = require( 'string!ENERGY_SKATE_PARK/potentialEnergyLabel' );
   const thermalEnergyLabelString = require( 'string!ENERGY_SKATE_PARK/thermalEnergyLabel' );
   const totalEnergyLabelString = require( 'string!ENERGY_SKATE_PARK/totalEnergyLabel' );
-  const timeLabelString = require( 'string!ENERGY_SKATE_PARK/timeLabel' );
-  const positionLabelString = require( 'string!ENERGY_SKATE_PARK/positionLabel' );
+  const timeSwitchLabelString = require( 'string!ENERGY_SKATE_PARK/timeSwitchLabel' );
+  const positionSwitchLabelString = require( 'string!ENERGY_SKATE_PARK/positionSwitchLabel' );
   const plotsEnergyGraphString = require( 'string!ENERGY_SKATE_PARK/plots.energy-graph' );
+  const plotsPositionLabelString = require( 'string!ENERGY_SKATE_PARK/plots.positionLabel' );
+  const plotsEnergyLabelString = require( 'string!ENERGY_SKATE_PARK/plots.energyLabel' );
+  const plotsTimeLabelString = require( 'string!ENERGY_SKATE_PARK/plots.timeLabel' );
 
   // constants
   const GRAPH_HEIGHT = 115;
@@ -88,9 +91,9 @@ define( function( require ) {
         font: new PhetFont( { size: 11 } )
       };
       const variables = GraphsModel.IndependentVariable;
-      const positionLabel = new Text( positionLabelString, switchLabelOptions );
-      const timeLabel = new Text( timeLabelString, switchLabelOptions );
-      const variableSwitch = new ABSwitch( model.independentVariableProperty, variables.POSITION, positionLabel, variables.TIME, timeLabel, {
+      const positionSwitchLabel = new Text( positionSwitchLabelString, switchLabelOptions );
+      const timeSwitchLabel = new Text( timeSwitchLabelString, switchLabelOptions );
+      const variableSwitch = new ABSwitch( model.independentVariableProperty, variables.POSITION, positionSwitchLabel, variables.TIME, timeSwitchLabel, {
         switchSize: SWITCH_SIZE,
         tandem: tandem.createTandem( 'variableSwitch' )
       } );
@@ -109,8 +112,8 @@ define( function( require ) {
       } );
 
       // graph labels - y axis includes zoom buttons as part of the label
-      const yLabelText = new Text( 'Energy (J)', { rotation: -Math.PI / 2, font: LABEL_FONT } );
-      const xLabelText =  new Text( 'Time (s)', { font: LABEL_FONT } );
+      const yLabelText = new Text( plotsEnergyLabelString, { rotation: -Math.PI / 2, font: LABEL_FONT } );
+      const xLabelText =  new Text( '', { font: LABEL_FONT } );
       const yLabel = new VBox( {
         children: [ yLabelText, zoomButtons ],
         spacing: 10
@@ -167,8 +170,9 @@ define( function( require ) {
       // @private {GraphsModel}
       this.model = model;
 
-      // listeners - when the independent variable changes, clear all data
-      model.independentVariableProperty.link( () => {
+      // listeners - when the independent variable changes, clear all data and update labels
+      model.independentVariableProperty.link( ( independentVariable ) => {
+        xLabelText.text = independentVariable === GraphsModel.IndependentVariable.TIME ? plotsTimeLabelString : plotsPositionLabelString;
         this.clearEnergyData();
       } );
 
