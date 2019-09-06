@@ -12,21 +12,9 @@ define( function( require ) {
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
-  var phetioInherit = require( 'TANDEM/phetioInherit' );
   var validate = require( 'AXON/validate' );
 
-  /**
-   * @param {EnergySkateParkModel} energySkateParkModel
-   * @param {string} phetioID
-   * @constructor
-   */
-  function EnergySkateParkModelIO( energySkateParkModel, phetioID ) {
-    ObjectIO.call( this, energySkateParkModel, phetioID );
-  }
-
-  phetioInherit( ObjectIO, 'EnergySkateParkModelIO', EnergySkateParkModelIO, {}, {
-    documentation: 'The model for the Skate Park.',
-    validator: { isValidValue: v => v instanceof phet.energySkatePark.EnergySkateParkModel },
+  class EnergySkateParkModelIO extends ObjectIO {
 
     /**
      * Remove all instances of the model's dynamic children.
@@ -35,12 +23,12 @@ define( function( require ) {
      *
      * @param {EnergySkateParkModel} energySkateParkModel
      */
-    clearChildInstances: function( energySkateParkModel ) {
+    static clearChildInstances( energySkateParkModel ) {
       validate( energySkateParkModel, this.validator );
       if ( energySkateParkModel.draggableTracks ) {
         energySkateParkModel.removeAllTracks();
       }
-    },
+    }
 
     /**
      * Adds a Track as specified by the phetioID and state.
@@ -49,7 +37,7 @@ define( function( require ) {
      * @param {Tandem} tandem
      * @param {Object} stateObject
      */
-    addChildInstance: function( energySkateParkModel, tandem, stateObject ) {
+    static addChildInstance( energySkateParkModel, tandem, stateObject ) {
       validate( energySkateParkModel, this.validator );
       var isControlPoint = tandem.phetioID.indexOf( '.controlPoint' ) >= 0;
 
@@ -61,9 +49,12 @@ define( function( require ) {
       // If it isn't a ControlPoint, then it is a Track
       return energySkateParkModel.addTrack( tandem, stateObject.draggable, stateObject.configurable, stateObject.controlPointTandemIDs );
     }
-  } );
+  }
 
-  energySkatePark.register( 'EnergySkateParkModelIO', EnergySkateParkModelIO );
+  EnergySkateParkModelIO.documentation = 'The model for the Skate Park.';
+  EnergySkateParkModelIO.validator = { isValidValue: v => v instanceof phet.energySkatePark.EnergySkateParkModel };
+  EnergySkateParkModelIO.typeName = 'EnergySkateParkModelIO';
+  ObjectIO.validateSubtype( EnergySkateParkModelIO );
 
-  return EnergySkateParkModelIO;
+  return energySkatePark.register( 'EnergySkateParkModelIO', EnergySkateParkModelIO );
 } );

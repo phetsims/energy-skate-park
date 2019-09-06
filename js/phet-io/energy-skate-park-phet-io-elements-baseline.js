@@ -4811,7 +4811,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -4967,7 +4967,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -5075,7 +5075,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -5183,7 +5183,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode3.inputListener": {
       "phetioDocumentation": "",
@@ -8879,7 +8879,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~0.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -9035,7 +9035,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -9143,7 +9143,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -9251,7 +9251,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode3.inputListener": {
       "phetioDocumentation": "",
@@ -28259,7 +28259,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -28367,7 +28367,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -28475,7 +28475,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -28691,7 +28691,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -28799,7 +28799,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -28907,7 +28907,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -29123,7 +29123,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -29231,7 +29231,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -29339,7 +29339,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -29555,7 +29555,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -29663,7 +29663,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -29771,7 +29771,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -29987,7 +29987,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -30095,7 +30095,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -30203,7 +30203,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -35219,7 +35219,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -35327,7 +35327,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -35435,7 +35435,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -35591,7 +35591,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -35699,7 +35699,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -35807,7 +35807,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -35963,7 +35963,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -36071,7 +36071,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -36179,7 +36179,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -36287,7 +36287,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode3.inputListener": {
       "phetioDocumentation": "",
@@ -36395,7 +36395,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode4.inputListener": {
       "phetioDocumentation": "",
@@ -36551,7 +36551,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -36659,7 +36659,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -36767,7 +36767,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -36875,7 +36875,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode3.inputListener": {
       "phetioDocumentation": "",
@@ -36983,7 +36983,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode4.inputListener": {
       "phetioDocumentation": "",
@@ -37091,7 +37091,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode5.inputListener": {
       "phetioDocumentation": "",
@@ -37199,7 +37199,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode6.inputListener": {
       "phetioDocumentation": "",
@@ -43475,7 +43475,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -43583,7 +43583,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -43691,7 +43691,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -43847,7 +43847,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -43955,7 +43955,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -44063,7 +44063,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -44219,7 +44219,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -44327,7 +44327,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -44435,7 +44435,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -44543,7 +44543,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode3.inputListener": {
       "phetioDocumentation": "",
@@ -44651,7 +44651,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode4.inputListener": {
       "phetioDocumentation": "",
@@ -44807,7 +44807,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode0.inputListener": {
       "phetioDocumentation": "",
@@ -44915,7 +44915,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode1.inputListener": {
       "phetioDocumentation": "",
@@ -45023,7 +45023,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode2.inputListener": {
       "phetioDocumentation": "",
@@ -45131,7 +45131,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode3.inputListener": {
       "phetioDocumentation": "",
@@ -45239,7 +45239,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode4.inputListener": {
       "phetioDocumentation": "",
@@ -45347,7 +45347,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode5.inputListener": {
       "phetioDocumentation": "",
@@ -45455,7 +45455,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ControlPointNodeIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode6.inputListener": {
       "phetioDocumentation": "",

@@ -12,24 +12,12 @@ define( function( require ) {
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
-  var phetioInherit = require( 'TANDEM/phetioInherit' );
   var validate = require( 'AXON/validate' );
 
   // ifphetio
   var phetioEngine = require( 'ifphetio!PHET_IO/phetioEngine' );
 
-  /**
-   * @param {ControlPoint} controlPoint
-   * @param {string} phetioID
-   * @constructor
-   */
-  function ControlPointIO( controlPoint, phetioID ) {
-    ObjectIO.call( this, controlPoint, phetioID );
-  }
-
-  phetioInherit( ObjectIO, 'ControlPointIO', ControlPointIO, {}, {
-    documentation: 'A control point that can manipulate the track.',
-    validator: { isValidValue: v => v instanceof phet.energySkatePark.ControlPoint },
+  class ControlPointIO extends ObjectIO {
 
     /**
      * Encodes a ControlPoint instance to a state.
@@ -37,10 +25,10 @@ define( function( require ) {
      * @returns {Object}
      * @override
      */
-    toStateObject: function( controlPoint ) {
+    static toStateObject( controlPoint ) {
       validate( controlPoint, this.validator );
       return controlPoint ? controlPoint.tandem.phetioID : 'null';
-    },
+    }
 
     /**
      * Decodes a ControlPoint from a state object. Supports null.
@@ -49,7 +37,7 @@ define( function( require ) {
      * @returns {ControlPoint}
      * @override
      */
-    fromStateObject: function( stateObject ) {
+    static fromStateObject( stateObject ) {
       if ( stateObject === 'null' ) {
         return null;
       }
@@ -57,9 +45,12 @@ define( function( require ) {
         return phetioEngine.getPhetioObject( stateObject );
       }
     }
-  } );
+  }
 
-  energySkatePark.register( 'ControlPointIO', ControlPointIO );
+  ControlPointIO.documentation = 'A control point that can manipulate the track.';
+  ControlPointIO.validator = { isValidValue: v => v instanceof phet.energySkatePark.ControlPoint };
+  ControlPointIO.typeName = 'ControlPointIO';
+  ObjectIO.validateSubtype( ControlPointIO );
 
-  return ControlPointIO;
+  return energySkatePark.register( 'ControlPointIO', ControlPointIO );
 } );

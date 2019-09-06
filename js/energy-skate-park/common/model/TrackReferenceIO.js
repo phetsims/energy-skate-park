@@ -12,31 +12,20 @@ define( function( require ) {
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
-  var phetioInherit = require( 'TANDEM/phetioInherit' );
   var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
   var validate = require( 'AXON/validate' );
 
   // ifphetio
   var phetioEngine = require( 'ifphetio!PHET_IO/phetioEngine' );
 
-  /**
-   * @param {Track} track
-   * @param {string} phetioID
-   * @constructor
-   */
-  function TrackReferenceIO( track, phetioID ) {
-    ObjectIO.call( this, track, phetioID );
-  }
+  class TrackReferenceIO extends ObjectIO {
 
-  phetioInherit( ObjectIO, 'TrackReferenceIO', TrackReferenceIO, {}, {
-    validator: { valueType: Track },
-    documentation: 'A Track serialization that only holds a phetioID of a Track in the sim, not the serialized state.',
-
-    toStateObject: function( track ) {
+    static toStateObject( track ) {
       validate( track, this.validator );
       return track ? track.trackTandem.phetioID : null;
-    },
-    fromStateObject: function( stateObject ) {
+    }
+
+    static fromStateObject( stateObject ) {
       if ( stateObject === null ) {
         return null;
       }
@@ -47,9 +36,12 @@ define( function( require ) {
         throw new Error( 'fromStateObject failed' );
       }
     }
-  } );
+  }
 
-  energySkatePark.register( 'TrackReferenceIO', TrackReferenceIO );
+  TrackReferenceIO.validator = { valueType: Track };
+  TrackReferenceIO.documentation = 'A Track serialization that only holds a phetioID of a Track in the sim, not the serialized state.';
+  TrackReferenceIO.typeName = 'TrackReferenceIO';
+  ObjectIO.validateSubtype( TrackReferenceIO );
 
-  return TrackReferenceIO;
+  return energySkatePark.register( 'TrackReferenceIO', TrackReferenceIO );
 } );

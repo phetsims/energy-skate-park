@@ -12,26 +12,11 @@ define( function( require ) {
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var ObjectIO = require( 'TANDEM/types/ObjectIO' );
-  var phetioInherit = require( 'TANDEM/phetioInherit' );
   var validate = require( 'AXON/validate' );
 
-  /**
-   * @param {Track} track
-   * @param {string} phetioID
-   * @constructor
-   */
-  function TrackIO( track, phetioID ) {
-    ObjectIO.call( this, track, phetioID );
-  }
+  class TrackIO extends ObjectIO {
 
-  /**
-   * The IO type for a track.
-   */
-  phetioInherit( ObjectIO, 'TrackIO', TrackIO, {}, {
-    documentation: 'A skate track.',
-    validator: { isValidValue: v => v instanceof phet.energySkatePark.Track },
-
-    toStateObject: function( track ) {
+    static toStateObject( track ) {
       validate( track, this.validator );
       if ( track instanceof phet.energySkatePark.Track || track === null ) {
 
@@ -53,17 +38,19 @@ define( function( require ) {
         // See https://github.com/phetsims/energy-skate-park-basics/issues/366
         return track;
       }
-    },
+    }
 
-
-    fromStateObject: function( stateObject ) {
+    static fromStateObject( stateObject ) {
 
       // TODO: This is sketchy, see // See https://github.com/phetsims/energy-skate-park-basics/issues/366
       return stateObject;
     }
-  } );
+  }
 
-  energySkatePark.register( 'TrackIO', TrackIO );
+  TrackIO.documentation = 'A skate track.';
+  TrackIO.validator = { isValidValue: v => v instanceof phet.energySkatePark.Track };
+  TrackIO.typeName = 'TrackIO';
+  ObjectIO.validateSubtype( TrackIO );
 
-  return TrackIO;
+  return energySkatePark.register( 'TrackIO', TrackIO );
 } );

@@ -11,7 +11,6 @@ define( function( require ) {
 
   // modules
   var Circle = require( 'SCENERY/nodes/Circle' );
-  var ControlPointNodeIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/ControlPointNodeIO' );
   var ControlPointUI = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/ControlPointUI' );
   var Emitter = require( 'AXON/Emitter' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
@@ -56,7 +55,6 @@ define( function( require ) {
       cursor: 'pointer',
       translation: modelViewTransform.modelToViewPosition( controlPoint.positionProperty.value ),
       tandem: tandem,
-      phetioType: ControlPointNodeIO,
       phetioComponentOptions: { phetioState: false }
     } );
 
