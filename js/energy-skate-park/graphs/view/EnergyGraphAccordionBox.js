@@ -128,7 +128,7 @@ define( function( require ) {
 
       const labelNode = new Text( plotsEnergyGraphString, {
         font: new PhetFont( { size: 16 } ),
-        maxWidth: energyPlot.width / 2
+        maxWidth: energyPlot.width / 3
       } );
       const titleNode = new Node( {
         children: [
