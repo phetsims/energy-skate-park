@@ -26,7 +26,6 @@ define( function( require ) {
   var controlsReferenceHeightString = require( 'string!ENERGY_SKATE_PARK/controls.referenceHeight' );
   var controlsShowGridString = require( 'string!ENERGY_SKATE_PARK/controls.show-grid' );
   var pieChartString = require( 'string!ENERGY_SKATE_PARK/pieChart' );
-  var plotsBarGraphString = require( 'string!ENERGY_SKATE_PARK/plots.bar-graph' );
   var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
   const controlsStickToTrackString = require( 'string!ENERGY_SKATE_PARK/controls.stickToTrack' );
 
@@ -41,7 +40,6 @@ define( function( require ) {
 
       // {boolean} - whether or not Checkboxes for these Properties are included in the controls
       showPieChartCheckbox: true,
-      showBarGraphCheckbox: true,
       showGridCheckbox: true,
       showSpeedCheckbox: true,
       showReferenceHeightCheckbox: false,
@@ -81,18 +79,6 @@ define( function( require ) {
           options.itemOptions
         ),
       );
-    }
-
-
-    if ( options.showBarGraphCheckbox ) {
-      checkboxItems.push( new EnergySkateParkCheckboxItem(
-        plotsBarGraphString,
-        EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } ),
-        itemAlignGroup,
-        model.barGraphVisibleProperty,
-        tandem.createTandem( 'barGraphCheckbox' ),
-        options.itemOptions
-      ), );
     }
 
     if ( options.showGridCheckbox ) {

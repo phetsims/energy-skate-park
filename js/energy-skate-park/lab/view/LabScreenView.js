@@ -17,7 +17,7 @@ define( function( require ) {
   const VisibilityControlsPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/VisibilityControlsPanel' );
   var GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
   var MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
-  const EnergyBarGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/view/EnergyBarGraphAccordionBox' );
+  // const EnergyBarGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/view/EnergyBarGraphAccordionBox' );
   var inherit = require( 'PHET_CORE/inherit' );
   const Node = require( 'SCENERY/nodes/Node' );
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
@@ -38,11 +38,9 @@ define( function( require ) {
     ];
     EnergySkateParkPlaygroundScreenView.call( this, model, labControls, tandem.createTandem( 'graphsScreenView' ), {
       showTrackButtons: false,
-      showBarGraph: false,
       visibilityControlsOptions: {
         showPieChartCheckbox: true,
         showGridCheckbox: false,
-        showBarGraphCheckbox: false,
         showSpeedCheckbox: true,
         showStickToTrackCheckbox: true
       }
@@ -50,9 +48,9 @@ define( function( require ) {
 
     this.addChild( comboBoxParent );
 
-    this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model, tandem.createTandem( 'energyBarGraphAccordionBox' ) );
-    this.energyBarGraphAccordionBox.top = 5;
-    this.bottomLayer.addChild( this.energyBarGraphAccordionBox );
+    // this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model, tandem.createTandem( 'energyBarGraphAccordionBox' ) );
+    // this.energyBarGraphAccordionBox.top = 5;
+    // this.bottomLayer.addChild( this.energyBarGraphAccordionBox );
 
 
     // grid and reference height visibility are controlled from a separate area
@@ -85,7 +83,6 @@ define( function( require ) {
     layout: function( width, height ) {
       EnergySkateParkPlaygroundScreenView.prototype.layout.call( this, width, height );
 
-      this.energyBarGraphAccordionBox.x = this.fixedLeft;
       this.visibilityControlsPanel.left = this.fixedLeft;
 
       // the pie chart legend is just to the right of the 5 meter mark, which is where grid labels are

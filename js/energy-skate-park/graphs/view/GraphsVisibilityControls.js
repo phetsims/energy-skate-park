@@ -3,7 +3,7 @@
 /**
  * The visibility controls for "Graphs" screen - controls for grid and reference height visibility moved to a different
  * panel to create more space in the ScreenView.
- * 
+ *
  * @author Jesse Greenberg
  */
 define( require => {
@@ -26,7 +26,6 @@ define( require => {
 
       const content = new EnergySkateParkVisibilityControls( model, tandem, {
         showPieChartCheckbox: false,
-        showBarGraphCheckbox: false,
         showSpeedCheckbox: false,
         showReferenceHeightCheckbox: true
       } );

@@ -11,7 +11,8 @@ define( function( require ) {
   // modules
   var AttachDetachToggleButtons = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/AttachDetachToggleButtons' );
   var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BackgroundNode' );
-  var EnergyBarGraphPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraphPanel' );
+  // var EnergyBarGraphPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraphPanel' );
+  var EnergyBarGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraphAccordionBox' );
   var BooleanProperty = require( 'AXON/BooleanProperty' );
   var Bounds2 = require( 'DOT/Bounds2' );
   var DerivedProperty = require( 'AXON/DerivedProperty' );
@@ -188,14 +189,22 @@ define( function( require ) {
 
     // @private - the bar chart showing energy distribution
     if ( this.showBarGraph ) {
-      this.energyBarGraphPanel = new EnergyBarGraphPanel( model, tandem.createTandem( 'energyBargGraphPanel' ), {
+      this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model, tandem.createTandem( 'energyBarGraphAccordionBox' ), {
         barGraphOptions: {
           showBarGraphZoomButtons: options.showBarGraphZoomButtons
         }
       } );
-      this.energyBarGraphPanel.leftTop = new Vector2( 5, 5 );
-      this.bottomLayer.addChild( this.energyBarGraphPanel );
-      model.barGraphVisibleProperty.linkAttribute( this.energyBarGraphPanel, 'visible' );
+      this.energyBarGraphAccordionBox.leftTop = new Vector2( 5, 5 );
+      this.bottomLayer.addChild( this.energyBarGraphAccordionBox );
+
+      // this.energyBarGraphPanel = new EnergyBarGraphPanel( model, tandem.createTandem( 'energyBargGraphPanel' ), {
+        // barGraphOptions: {
+      //     showBarGraphZoomButtons: options.showBarGraphZoomButtons
+      //   }
+      // } );
+      // this.energyBarGraphPanel.leftTop = new Vector2( 5, 5 );
+      // this.bottomLayer.addChild( this.energyBarGraphPanel );
+      // model.barGraphVisibleProperty.linkAttribute( this.energyBarGraphPanel, 'visible' );
     }
 
     this.resetAllButton = new ResetAllButton( {
@@ -488,13 +497,9 @@ define( function( require ) {
 
       // pie chart legend location is dependent on whether or not the screen includes an energy bar graph
       let pieChartLegendLeftTop = null;
-      const leftPlacement = this.availableViewBounds.minX + 5;
       if ( this.showBarGraph ) {
-        if ( EnergySkateParkQueryParameters.controlPanelLocation === 'floating' ) {
-          this.energyBarGraphPanel.x = leftPlacement;
-        }
-
-        pieChartLegendLeftTop = new Vector2( this.energyBarGraphPanel.right + 32, this.energyBarGraphPanel.top );
+        this.energyBarGraphAccordionBox.x = this.fixedLeft;
+        pieChartLegendLeftTop = new Vector2( this.energyBarGraphAccordionBox.right + 32, this.energyBarGraphAccordionBox.top );
       }
       else {
         pieChartLegendLeftTop = new Vector2( this.fixedLeft, this.controlPanel.top );

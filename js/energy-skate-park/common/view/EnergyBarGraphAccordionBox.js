@@ -20,9 +20,13 @@ define( require => {
      * @param {EnergySkateParkModel} model
      * @param {Tandem} tandem
      */
-    constructor( model, tandem ) {
+    constructor( model, tandem, options ) {
 
-      const energyBarGraph = new EnergyBarGraph( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ) );
+      options = _.extend( {
+        barGraphOptions: null
+      }, options );
+
+      const energyBarGraph = new EnergyBarGraph( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
 
       const margin = 5;
       super( energyBarGraph, {

@@ -24,7 +24,6 @@ define( require => {
     constructor( model, tandem, options ) {
       const content = new EnergySkateParkVisibilityControls( model, tandem, {
         showPieChartCheckbox: false,
-        showBarGraphCheckbox: false,
         showSpeedCheckbox: false,
         showReferenceHeightCheckbox: true,
 
