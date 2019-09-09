@@ -78,32 +78,6 @@ define( function( require ) {
 
   return inherit( HBox, EnergySkateParkCheckboxItem, {}, {
 
-    // Create an icon for the bar graph checkbox
-    createBarGraphIcon: function( tandem, options ) {
-      options = _.extend( {
-        scale: 1
-      }, options );
-
-      return new Node( {
-        tandem: tandem,
-        children: [
-          new Rectangle( 0, 0, 20, 20, { fill: 'white', stroke: 'black', lineWidth: 0.5 } ),
-          new Rectangle( 3, 14, 5, 6, {
-            fill: EnergySkateParkColorScheme.kineticEnergy,
-            stroke: 'black',
-            lineWidth: 0.5
-          } ),
-          new Rectangle( 11, 8, 5, 12, {
-            fill: EnergySkateParkColorScheme.potentialEnergy,
-            stroke: 'black',
-            lineWidth: 0.5
-          } )
-        ],
-
-        scale: options.scale
-      } );
-    },
-
     // Create an icon for the pie chart checkbox
     createPieChartIcon: function( tandem, options ) {
       options = _.extend( {

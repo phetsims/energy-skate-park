@@ -11,8 +11,10 @@ define( require => {
   // modules
   const AccordionBox = require( 'SUN/AccordionBox' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkCheckboxItem = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkCheckboxItem' );
   const EnergyBarGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraph' );
+  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
 
   class EnergyBarGraphAccordionBox extends AccordionBox {
 
@@ -49,7 +51,7 @@ define( require => {
       } );
 
       // create an icon that represents the content, it is invisible when expanded
-      const graphIcon = EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } );
+      const graphIcon = createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } );
       this.addChild( graphIcon );
       graphIcon.right = graphIcon.globalToParentPoint( energyBarGraph.parentToGlobalPoint( energyBarGraph.rightCenter ) ).x;
       graphIcon.top = margin;
@@ -58,6 +60,39 @@ define( require => {
         graphIcon.visible = !visible;
       } );
     }
+  }
+
+  /**
+   * Create an icon for the energy bar graph accordion box title.
+   * @private
+   *
+   * @param {Tandem} tandem
+   * @param {Object} options
+   * @returns {Node}
+   */
+  function createBarGraphIcon( tandem, options ) {
+    options = _.extend( {
+      scale: 1
+    }, options );
+
+    return new Node( {
+      tandem: tandem,
+      children: [
+        new Rectangle( 0, 0, 20, 20, { fill: 'white', stroke: 'black', lineWidth: 0.5 } ),
+        new Rectangle( 3, 14, 5, 6, {
+          fill: EnergySkateParkColorScheme.kineticEnergy,
+          stroke: 'black',
+          lineWidth: 0.5
+        } ),
+        new Rectangle( 11, 8, 5, 12, {
+          fill: EnergySkateParkColorScheme.potentialEnergy,
+          stroke: 'black',
+          lineWidth: 0.5
+        } )
+      ],
+
+      scale: options.scale
+    } );
   }
 
   return energySkatePark.register( 'EnergyBarGraphAccordionBox', EnergyBarGraphAccordionBox );
