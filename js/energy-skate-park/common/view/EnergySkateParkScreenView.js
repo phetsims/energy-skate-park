@@ -225,17 +225,18 @@ define( function( require ) {
     model.skater.movedProperty.linkAttribute( self.returnSkaterButton, 'enabled' );
     this.bottomLayer.addChild( this.returnSkaterButton );
 
+    const gaugeRadius = 62;
     var speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 30 ), {
-
         numberDisplayOptions: {
           valuePattern: speedometerMetersPerSecondPatternString,
+          numberMaxWidth: gaugeRadius * 1.3,
           decimalPlaces: 1
         },
 
         // enable/disable updates based on whether the speedometer is visible
         enabledProperty: model.speedometerVisibleProperty,
         pickable: false,
-        radius: 62,
+        radius: gaugeRadius,
         tandem: tandem.createTandem( 'speedometerNode' )
     } );
     model.speedometerVisibleProperty.linkAttribute( speedometerNode, 'visible' );
