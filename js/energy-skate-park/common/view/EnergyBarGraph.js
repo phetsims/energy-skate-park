@@ -103,7 +103,7 @@ define( require => {
         { entries: [ totalEntry ], labelString: energyTotalString }
       ], graphRangeProperty, {
         barLabelOptions: {
-          maxWidth: 500,
+          maxWidth: 50, // i18n, by inspection
           font: new PhetFont( 12 )
         },
         barOptions: {
@@ -111,12 +111,6 @@ define( require => {
         },
         labelBackgroundColor: EnergySkateParkColorScheme.transparentPanelFill
       } );
-
-      // const graphLabel = new Text( energyEnergyString, { font: new PhetFont( { size: 14, weight: 'bold' } ) } );
-
-      // const labelledChart = new VBox( {
-        // children: [ graphLabel, this.barChartNode ]
-      // } );
 
       // main content for the containing panel, assembly depends on whether zoom buttons are required
       let content = null;
