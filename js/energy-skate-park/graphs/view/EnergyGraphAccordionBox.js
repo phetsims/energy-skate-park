@@ -88,7 +88,8 @@ define( function( require ) {
 
       // ABSwitch to change plotting variables
       const switchLabelOptions = {
-        font: new PhetFont( { size: 11 } )
+        font: new PhetFont( { size: 11 } ),
+        maxWidth: 100
       };
       const variables = GraphsModel.IndependentVariable;
       const positionSwitchLabel = new Text( positionSwitchLabelString, switchLabelOptions );
@@ -112,8 +113,12 @@ define( function( require ) {
       } );
 
       // graph labels - y axis includes zoom buttons as part of the label
-      const yLabelText = new Text( plotsEnergyLabelString, { rotation: -Math.PI / 2, font: LABEL_FONT } );
-      const xLabelText =  new Text( '', { font: LABEL_FONT } );
+      const yLabelText = new Text( plotsEnergyLabelString, {
+        rotation: -Math.PI / 2,
+        font: LABEL_FONT,
+        maxWidth: energyPlot.height / 2
+      } );
+      const xLabelText =  new Text( '', { font: LABEL_FONT, maxWidth: energyPlot.width } );
       const yLabel = new VBox( {
         children: [ yLabelText, zoomButtons ],
         spacing: 10
@@ -121,8 +126,11 @@ define( function( require ) {
       contentNode.addChild( yLabel );
       contentNode.addChild( xLabelText );
 
-      const labelNode = new Text( plotsEnergyGraphString, { font: new PhetFont( { size: 16 } ) } );
-      const titleNode = new phet.scenery.Node( {
+      const labelNode = new Text( plotsEnergyGraphString, {
+        font: new PhetFont( { size: 16 } ),
+        maxWidth: energyPlot.width / 2
+      } );
+      const titleNode = new Node( {
         children: [
           labelNode,
           variableSwitch,
@@ -205,7 +213,8 @@ define( function( require ) {
       return {
         node: new Text( labelString, {
           fill: labelFill,
-          font: new PhetFont( { size: 11 } )
+          font: new PhetFont( { size: 11 } ),
+          maxWidth: 50
         } ),
         property: property
       };
