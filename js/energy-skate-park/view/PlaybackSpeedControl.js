@@ -25,6 +25,11 @@ define( function( require ) {
   var Y_DILATION = 2;
   var RADIO_BUTTON_RADIUS = 7.1;
 
+  const LABEL_OPTIONS = {
+    font: new PhetFont( 15 ),
+    maxWidth: 90
+  };
+
   /**
    * @param {Property<Number>} speedProperty the instantaneous speed of the skater (magnitude of the velocity vector)
    * @param {Tandem} tandem
@@ -34,22 +39,19 @@ define( function( require ) {
 
     options = _.extend( {
       align: 'left',
-      spacing: 4,
-      maxWidth: 142
+      spacing: 4
     }, options );
     assert && assert( options.children === undefined, 'PlaybackSpeedControl sets children' );
 
-    var slowMotionRadioButton = new AquaRadioButton( speedProperty, 'slow', new Text( slowMotionString, {
-      font: new PhetFont( 15 ),
-      tandem: tandem.createTandem( 'slowMotionTextNode' )
-    } ), {
+    var slowMotionRadioButton = new AquaRadioButton( speedProperty, 'slow', new Text( slowMotionString, _.extend( {
+      tandem: tandem.createTandem( 'slowMotionTextNode' ) }, LABEL_OPTIONS )
+    ), {
       radius: RADIO_BUTTON_RADIUS,
       tandem: tandem.createTandem( 'slowMotionRadioButton' )
     } );
-    var normalSpeedRadioButton = new AquaRadioButton( speedProperty, 'normal', new Text( normalString, {
-      font: new PhetFont( 15 ),
-      tandem: tandem.createTandem( 'normalSpeedTextNode' )
-    } ), {
+    var normalSpeedRadioButton = new AquaRadioButton( speedProperty, 'normal', new Text( normalString, _.extend( {
+      tandem: tandem.createTandem( 'normalSpeedTextNode' ) }, LABEL_OPTIONS )
+    ), {
       radius: RADIO_BUTTON_RADIUS,
       x: 130,
       tandem: tandem.createTandem( 'normalSpeedButton' )

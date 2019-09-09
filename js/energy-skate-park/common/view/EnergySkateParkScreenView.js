@@ -213,7 +213,7 @@ define( function( require ) {
     this.returnSkaterButton = new RectangularPushButton( {
       content: new Text( controlsRestartSkaterString, {
         tandem: tandem.createTandem( 'restartSkaterTextNode' ),
-        maxWidth: 100
+        maxWidth: 90
       } ),
       listener: model.returnSkater.bind( model ),
       centerY: this.resetAllButton.centerY,
