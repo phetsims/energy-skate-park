@@ -3,7 +3,7 @@
 /**
  * A Checkbox in EnergySkatePark, which includes a label and an icon. Icons are generally aligned with other checkboxes
  * in the group, and this is handled by collecting all icons into a shared AlignGroup.
- * 
+ *
  * @author Jesse Greenberg
  */
 define( function( require ) {
@@ -29,7 +29,7 @@ define( function( require ) {
   var Vector2 = require( 'DOT/Vector2' );
 
   // constants
-  // 
+  //
   // strings
   var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
 
@@ -48,7 +48,7 @@ define( function( require ) {
 
     var textOptions = {
       font: new PhetFont( 11 ),
-      maxWidth: 134 // selected by choosing the length of widest English string in ?stringTest=double
+      maxWidth: 95 // selected by inspection
     };
 
     var checkboxItemOptions = {
@@ -212,7 +212,7 @@ define( function( require ) {
     /**
      * Create an icon for the "Sticking to Track" checkbox, a small section of track with the skater's center of
      * mass dot on it.
-     * 
+     *
      * @param {Tandem} tandem
      * @returns {Node}
      */

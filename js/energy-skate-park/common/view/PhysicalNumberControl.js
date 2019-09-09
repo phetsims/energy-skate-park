@@ -123,10 +123,12 @@ define( require => {
         numberDisplayOptions: _.extend( options.numberDisplayOptions, {
           xMargin: 2,
           yMargin: 2,
-          font: new PhetFont( 10 )
+          font: new PhetFont( 10 ),
+          numberMaxWidth: 50
         } ),
         titleNodeOptions: {
-          font: Constants.CONTROL_TITLE_FONT
+          font: Constants.CONTROL_TITLE_FONT,
+          maxWidth: 50
         },
 
         // phet-io

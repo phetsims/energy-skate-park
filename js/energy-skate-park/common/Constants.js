@@ -43,7 +43,7 @@ define( function( require ) {
     CONTROL_TITLE_FONT: new PhetFont( { weight: 'bold', size: 12 } ),
     CONTROL_TICK_LABEL_OPTIONS: {
       font: new PhetFont( 10 ),
-      maxWidth: 54 // selected by choosing the length of widest English string in ?stringTest=doubl
+      maxWidth: 25 // selected by choosing the length of widest English string in ?stringTest=doubl
     },
 
     // for the bar graphs, factors multiplied by physical values to produce heights in view coordinates
