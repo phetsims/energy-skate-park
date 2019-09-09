@@ -50,6 +50,7 @@ define( require => {
   const TEXT_COLOR = 'white';
   const TITLE_FONT = new PhetFont( 11 );
   const LABEL_FONT = new PhetFont( 9 );
+  const ENTRY_MAX_WIDTH = 60;
 
   // arbitrary range for energies, but required so that this can use NumberDisplay. With this value, the width of the
   // NumberDisplay looks good and if released from within dev bounds, the energy will never get this large.
@@ -97,7 +98,8 @@ define( require => {
       // label for the probe
       const energyLabel = new Text( energyEnergyString, {
         font: TITLE_FONT,
-        fill: TEXT_COLOR
+        fill: TEXT_COLOR,
+        maxWidth: 80
       } );
 
       // @private {Property.<number|null> for the NumberDisplays, null unless probe is over a skater sample
@@ -332,7 +334,7 @@ define( require => {
      * @returns {AlignBox}
      */
     static createLabelBox( alignGroup, labelString ) {
-      const labelText = new Text( labelString, { fill: TEXT_COLOR, font: LABEL_FONT } );
+      const labelText = new Text( labelString, { fill: TEXT_COLOR, font: LABEL_FONT, maxWidth: ENTRY_MAX_WIDTH } );
       return alignGroup.createBox( labelText, { xAlign: 'left' } );
     }
 
@@ -349,10 +351,11 @@ define( require => {
       const numberDisplay = new NumberDisplay( valueProperty, ENERGY_RANGE, {
         backgroundStroke: 'black',
         backgroundFill: EnergySkateParkColorScheme.panelFill,
-        cornerRadius: 5,
+        cornerRadius: 3,
         font: LABEL_FONT,
         decimalPlaces: 1,
         minBackgroundWidth: 55, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
+        numberMaxWidth: ENTRY_MAX_WIDTH,
         valuePattern: energyJoulesPatternString,
 
         // when there are no values, hide units
