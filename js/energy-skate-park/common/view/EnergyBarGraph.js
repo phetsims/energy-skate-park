@@ -20,12 +20,10 @@ define( require => {
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Property = require( 'AXON/Property' );
   const Range = require( 'DOT/Range' );
-  const Text = require( 'SCENERY/nodes/Text' );
   const VBox = require( 'SCENERY/nodes/VBox' );
   const ZoomButton = require( 'SCENERY_PHET/buttons/ZoomButton' );
 
   // strings
-  const energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
   const energyKineticString = require( 'string!ENERGY_SKATE_PARK/energy.kinetic' );
   const energyPotentialString = require( 'string!ENERGY_SKATE_PARK/energy.potential' );
   const energyThermalString = require( 'string!ENERGY_SKATE_PARK/energy.thermal' );
@@ -181,19 +179,6 @@ define( require => {
       }
     }
   }
-
-  /**
-   * Create a label for the bar graph that can be explicitly located for custom layout.
-   *
-   * @static
-   * @returns {Text}
-   */
-  EnergyBarGraph.createLabel = () => {
-    return new Text( energyEnergyString, {
-      font: new PhetFont( { size: 14, weight: 'bold' } ),
-      maxWidth: 75 // i18n, by inspection
-    } );
-  };
 
   return energySkatePark.register( 'EnergyBarGraph', EnergyBarGraph );
 } );

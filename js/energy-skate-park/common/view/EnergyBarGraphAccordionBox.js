@@ -10,17 +10,23 @@ define( require => {
 
   // modules
   const AccordionBox = require( 'SUN/AccordionBox' );
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergyBarGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraph' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
   const Node = require( 'SCENERY/nodes/Node' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Rectangle = require( 'SCENERY/nodes/Rectangle' );
+  const Text = require( 'SCENERY/nodes/Text' );
+
+  // strings
+  const energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
 
   class EnergyBarGraphAccordionBox extends AccordionBox {
 
     /**
      * @param {EnergySkateParkModel} model
      * @param {Tandem} tandem
+     * @param {Object} options
      */
     constructor( model, tandem, options ) {
 
@@ -39,7 +45,10 @@ define( require => {
         buttonYMargin: margin,
         cornerRadius: margin,
 
-        titleNode: EnergyBarGraph.createLabel(),
+        titleNode: new Text( energyEnergyString, {
+          font: new PhetFont( { size: 14, weight: 'bold' } ),
+          maxWidth: 75 // i18n, by inspection
+        } ),
 
         // use this model Property because the graph only updates when it is visible
         expandedProperty: model.barGraphVisibleProperty,
