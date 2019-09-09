@@ -181,6 +181,7 @@ define( function( require ) {
       // listeners - when the independent variable changes, clear all data and update labels
       model.independentVariableProperty.link( ( independentVariable ) => {
         xLabelText.text = independentVariable === GraphsModel.IndependentVariable.TIME ? plotsTimeLabelString : plotsPositionLabelString;
+        xLabelText.centerX = xLabelText.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.plotPath.center ) ).x;
         this.clearEnergyData();
       } );
 
