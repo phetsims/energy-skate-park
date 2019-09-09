@@ -189,7 +189,10 @@ define( require => {
    * @returns {Text}
    */
   EnergyBarGraph.createLabel = () => {
-    return new Text( energyEnergyString, { font: new PhetFont( { size: 14, weight: 'bold' } ) } );
+    return new Text( energyEnergyString, {
+      font: new PhetFont( { size: 14, weight: 'bold' } ),
+      maxWidth: 75 // i18n, by inspection
+    } );
   };
 
   return energySkatePark.register( 'EnergyBarGraph', EnergyBarGraph );
