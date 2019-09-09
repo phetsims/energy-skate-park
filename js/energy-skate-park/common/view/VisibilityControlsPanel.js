@@ -26,7 +26,13 @@ define( require => {
         showPieChartCheckbox: false,
         showBarGraphCheckbox: false,
         showSpeedCheckbox: false,
-        showReferenceHeightCheckbox: true
+        showReferenceHeightCheckbox: true,
+
+        itemOptions: {
+
+          // i18n, smaller than default so that long labels don't occlude the grid labels in the GridNode
+          labelMaxWidth: 75
+        }
       } );
 
       super( content, options );

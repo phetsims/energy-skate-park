@@ -46,9 +46,15 @@ define( function( require ) {
     assert && assert( textAlignGroup.matchHorizontal === true, 'text content in check boxes must align' );
     assert && assert( textAlignGroup.matchVertical === true, 'text content for checkboxes in group must align' );
 
+    options = _.extend( {
+
+      // {number} - default determined by inspection, certain contexts require shorter width
+      labelMaxWidth: 95
+    }, options );
+
     var textOptions = {
-      font: new PhetFont( 11 ),
-      maxWidth: 95 // selected by inspection
+      font: new PhetFont( 10 ),
+      maxWidth: options.labelMaxWidth
     };
 
     var checkboxItemOptions = {

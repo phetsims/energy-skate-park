@@ -46,7 +46,10 @@ define( function( require ) {
       showSpeedCheckbox: true,
       showReferenceHeightCheckbox: false,
       showSkaterPathCheckbox: false,
-      showStickToTrackCheckbox: false
+      showStickToTrackCheckbox: false,
+
+      // {*|null} options that are passed to each EnergySkateParkCheckboxItem in this group of controls
+      itemOptions: null
     }, options );
 
     var itemAlignGroup = new AlignGroup();
@@ -61,7 +64,8 @@ define( function( require ) {
           EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) ),
           itemAlignGroup,
           model.sampleSkaterProperty,
-          tandem.createTandem( 'pathCheckbox' )
+          tandem.createTandem( 'pathCheckbox' ),
+          options.itemOptions
         )
       );
     }
@@ -73,11 +77,12 @@ define( function( require ) {
           EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } ),
           itemAlignGroup,
           model.pieChartVisibleProperty,
-          tandem.createTandem( 'pieChartCheckbox' )
+          tandem.createTandem( 'pieChartCheckbox' ),
+          options.itemOptions
         ),
-      );  
+      );
     }
- 
+
 
     if ( options.showBarGraphCheckbox ) {
       checkboxItems.push( new EnergySkateParkCheckboxItem(
@@ -85,7 +90,8 @@ define( function( require ) {
         EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.barGraphVisibleProperty,
-        tandem.createTandem( 'barGraphCheckbox' )
+        tandem.createTandem( 'barGraphCheckbox' ),
+        options.itemOptions
       ), );
     }
 
@@ -95,7 +101,8 @@ define( function( require ) {
         EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.gridVisibleProperty,
-        tandem.createTandem( 'gridCheckbox' )
+        tandem.createTandem( 'gridCheckbox' ),
+        options.itemOptions
       ) );
     }
 
@@ -105,7 +112,8 @@ define( function( require ) {
         EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
         model.speedometerVisibleProperty,
-        tandem.createTandem( 'speedometerCheckbox' )
+        tandem.createTandem( 'speedometerCheckbox' ),
+        options.itemOptions
       ) );
     }
 
@@ -116,18 +124,20 @@ define( function( require ) {
           EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) ),
           itemAlignGroup,
           model.referenceHeightVisibleProperty,
-          tandem.createTandem( 'referenceHeightCheckbox' )
+          tandem.createTandem( 'referenceHeightCheckbox' ),
+          options.itemOptions
         )
       );
     }
 
     if ( options.showStickToTrackCheckbox ) {
-      checkboxItems.push( new EnergySkateParkCheckboxItem( 
+      checkboxItems.push( new EnergySkateParkCheckboxItem(
         controlsStickToTrackString,
         EnergySkateParkCheckboxItem.createStickingToTrackIcon(),
         itemAlignGroup,
         model.stickingToTrackProperty,
-        tandem.createTandem( 'stickToTrackCheckbox' )
+        tandem.createTandem( 'stickToTrackCheckbox' ),
+        options.itemOptions
       ) );
     }
 
