@@ -41,7 +41,6 @@ define( function( require ) {
     this.skater = skater;
     var self = this;
 
-    // Use a separate texture for left/right skaters to avoid WebGL performance issues when switching textures
     var leftSkaterImageNode = new Image( skaterLeftImage, {
       cursor: 'pointer',
       tandem: tandem.createTandem( 'leftSkaterImageNode' )
