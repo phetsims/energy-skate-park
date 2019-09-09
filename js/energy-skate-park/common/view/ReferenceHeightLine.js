@@ -71,7 +71,7 @@ define( function( require ) {
     } );
 
     // label for the reference line, surround by a transparent panel for better visibility
-    var textPanel = new TextPanel( heightEqualsZeroString );
+    var textPanel = new TextPanel( heightEqualsZeroString, { textMaxWidth: 125 } );
 
     textPanel.setLeftCenter( doubleArrowNode.rightTop );
 

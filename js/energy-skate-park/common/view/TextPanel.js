@@ -3,7 +3,7 @@
 /**
  * Much of the text in this sim is surrounded by a transparent white panel to assist with visibility. This type
  * handles that for you.
- * 
+ *
  * @author Jesse Greenberg
  */
 define( require => {
@@ -28,6 +28,7 @@ define( require => {
 
         // Text options
         font: new PhetFont( 10 ),
+        textMaxWidth: 150,
 
         // panel options
         fill: EnergySkateParkColorScheme.transparentPanelFill,
@@ -39,7 +40,8 @@ define( require => {
       }, options );
 
       const text = new Text( textContent, {
-        font: options.font
+        font: options.font,
+        maxWidth: options.textMaxWidth
       } );
 
       super( text, options );

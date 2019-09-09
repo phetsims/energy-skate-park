@@ -107,7 +107,7 @@ define( function( require ) {
      * Perhaps it will improve performance too? Could performance optimize by using visible instead of add/remove child
      * if necessary (would only change performance on screen size change). For more performance improvements on screen size change,
      * only update when the graph is visible, then again when it becomes visible.
-     * 
+     *
      * @param  {number} offsetX - offset applied to center horizontally
      * @param  {number} offsetY - offset applied to place bottom along the navigation bar
      * @param  {number} width - width of view, before any layout scale
