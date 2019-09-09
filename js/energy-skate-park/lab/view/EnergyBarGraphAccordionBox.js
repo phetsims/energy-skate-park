@@ -11,23 +11,28 @@ define( require => {
   // modules
   const AccordionBox = require( 'SUN/AccordionBox' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const Tandem = require( 'TANDEM/Tandem' );
-  var EnergyBarGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraph' );
+  const EnergySkateParkCheckboxItem = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkCheckboxItem' );
+  const EnergyBarGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraph' );
 
   class EnergyBarGraphAccordionBox extends AccordionBox {
 
     /**
      * @param {EnergySkateParkModel} model
-     * @param {Object} options
+     * @param {Tandem} tandem
      */
-    constructor( model, options ) {
+    constructor( model, tandem ) {
 
-      options = _.extend( {
+      const energyBarGraph = new EnergyBarGraph( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ) );
 
-        contentXMargin: 5,
-        contentYMargin: 5,
-        buttonXMargin: 5,
-        buttonYMargin: 5,
+      const margin = 5;
+      super( energyBarGraph, {
+
+        contentXMargin: margin,
+        contentYMargin: margin,
+        buttonXMargin: margin,
+        buttonYMargin: margin,
+        cornerRadius: margin,
+
         titleNode: EnergyBarGraph.createLabel(),
 
         // use this model Property because the graph only updates when it is visible
@@ -36,11 +41,18 @@ define( require => {
         // {null|*} options for the bar graph itself, passed on to EnergyBarGraph
         barGraphOptions: null,
 
-        tandem: Tandem.required
-      }, options );
+        tandem: tandem
+      } );
 
-      const energyBarGraph = new EnergyBarGraph( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, options.tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
-      super( energyBarGraph, options );
+      // create an icon that represents the content, it is invisible when expanded
+      const graphIcon = EnergySkateParkCheckboxItem.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } );
+      this.addChild( graphIcon );
+      graphIcon.right = graphIcon.globalToParentPoint( energyBarGraph.parentToGlobalPoint( energyBarGraph.rightCenter ) ).x;
+      graphIcon.top = margin;
+
+      model.barGraphVisibleProperty.link( ( visible ) => {
+        graphIcon.visible = !visible;
+      } );
     }
   }
 

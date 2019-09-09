@@ -50,9 +50,7 @@ define( function( require ) {
 
     this.addChild( comboBoxParent );
 
-    this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model, {
-      tandem: tandem.createTandem( 'energyBarGraphAccordionBox' )
-    } );
+    this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model, tandem.createTandem( 'energyBarGraphAccordionBox' ) );
     this.energyBarGraphAccordionBox.top = 5;
     this.bottomLayer.addChild( this.energyBarGraphAccordionBox );
 
