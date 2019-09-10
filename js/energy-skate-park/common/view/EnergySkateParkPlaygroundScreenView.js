@@ -13,7 +13,7 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
-  var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackNode' );
+  var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TrackNode' );
   var Color = require( 'SCENERY/util/Color' );
   var EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
   var inherit = require( 'PHET_CORE/inherit' );
