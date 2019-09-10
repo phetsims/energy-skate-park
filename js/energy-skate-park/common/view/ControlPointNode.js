@@ -11,7 +11,7 @@ define( function( require ) {
 
   // modules
   var Circle = require( 'SCENERY/nodes/Circle' );
-  var ControlPointUI = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/ControlPointUI' );
+  var ControlPointUI = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ControlPointUI' );
   var Emitter = require( 'AXON/Emitter' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
