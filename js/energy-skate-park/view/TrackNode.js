@@ -21,7 +21,7 @@ define( function( require ) {
   // var Rectangle = require( 'SCENERY/nodes/Rectangle' );
   var Shape = require( 'KITE/Shape' );
   var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SplineEvaluation' );
-  var TrackDragHandler = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/TrackDragHandler' );
+  var TrackDragHandler = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TrackDragHandler' );
 
   // constants
   var FastArray = dot.FastArray;
