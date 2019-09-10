@@ -13,7 +13,7 @@ define( require => {
   // modules
   const Emitter = require( 'AXON/Emitter' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
+  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   const GraphsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/model/GraphsModel' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const PointStyle = require( 'GRIDDLE/PointStyle' );

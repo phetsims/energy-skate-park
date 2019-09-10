@@ -11,7 +11,7 @@ define( ( require ) => {
 
   // modules
   const Circle = require( 'SCENERY/nodes/Circle' );
-  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
+  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const Node = require( 'SCENERY/nodes/Node' );
 

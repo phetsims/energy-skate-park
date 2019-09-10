@@ -12,7 +12,7 @@ define( require => {
   const DerivedProperty = require( 'AXON/DerivedProperty' );
   const DragListener = require( 'SCENERY/listeners/DragListener' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
+  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   const MeasuringTapeNode = require( 'SCENERY_PHET/MeasuringTapeNode' );
   const Panel = require( 'SUN/Panel' );
 

@@ -13,7 +13,7 @@ define( function( require ) {
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var CanvasNode = require( 'SCENERY/nodes/CanvasNode' );
   var GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
+  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
 
   // constants
   var MAX_ENERGY = 3000; // because why not, in Joules

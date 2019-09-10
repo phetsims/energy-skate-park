@@ -13,7 +13,7 @@ define( function( require ) {
   var Checkbox = require( 'SUN/Checkbox' );
   var Circle = require( 'SCENERY/nodes/Circle' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/EnergySkateParkColorScheme' );
+  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   var GaugeNode = require( 'SCENERY_PHET/GaugeNode' );
   var HBox = require( 'SCENERY/nodes/HBox' );
   var inherit = require( 'PHET_CORE/inherit' );
