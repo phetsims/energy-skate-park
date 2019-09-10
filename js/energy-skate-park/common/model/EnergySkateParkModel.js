@@ -714,7 +714,7 @@ define( function( require ) {
           newThermalEnergy = skaterState.thermalEnergy;
           newKineticEnergy = initialEnergy - newPotentialEnergy - newThermalEnergy;
 
-          assert && assert( newKineticEnergy >= 0 );
+          assert && assert( newKineticEnergy >= 0, 'kinetic energy should be non-negative after correction' );
           if ( newKineticEnergy < 0 ) {
             newKineticEnergy = 0;
           }
