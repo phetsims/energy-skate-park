@@ -11,7 +11,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var ControlPointNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/ControlPointNode' );
+  var ControlPointNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ControlPointNode' );
   var dot = require( 'DOT/dot' );
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   var inherit = require( 'PHET_CORE/inherit' );
