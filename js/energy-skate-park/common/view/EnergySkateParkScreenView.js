@@ -29,7 +29,7 @@ define( function( require ) {
   var ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Path = require( 'SCENERY/nodes/Path' );
-  var PieChartLegend = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/PieChartLegend' );
+  var PieChartLegend = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PieChartLegend' );
   var PieChartNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/PieChartNode' );
   var PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/PlaybackSpeedControl' );
   var PlayPauseButton = require( 'SCENERY_PHET/buttons/PlayPauseButton' );
