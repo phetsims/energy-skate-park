@@ -21,7 +21,7 @@ define( function( require ) {
   var EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkControlPanel' );
   var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
-  var GridNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/GridNode' );
+  var GridNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GridNode' );
   var Image = require( 'SCENERY/nodes/Image' );
   var inherit = require( 'PHET_CORE/inherit' );
   var MeasuringTapeNode = require( 'SCENERY_PHET/MeasuringTapeNode' );
