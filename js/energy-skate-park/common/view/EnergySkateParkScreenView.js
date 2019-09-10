@@ -9,7 +9,7 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var AttachDetachToggleButtons = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/AttachDetachToggleButtons' );
+  var AttachDetachToggleButtons = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/AttachDetachToggleButtons' );
   var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/BackgroundNode' );
   // var EnergyBarGraphPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraphPanel' );
   var EnergyBarGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraphAccordionBox' );
