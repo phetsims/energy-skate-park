@@ -40,7 +40,7 @@ define( function( require ) {
   var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
   var ScreenView = require( 'JOIST/ScreenView' );
   var Shape = require( 'KITE/Shape' );
-  var SkaterNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/view/SkaterNode' );
+  var SkaterNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SkaterNode' );
   var StepForwardButton = require( 'SCENERY_PHET/buttons/StepForwardButton' );
   var Text = require( 'SCENERY/nodes/Text' );
   var ValueGaugeNode = require( 'SCENERY_PHET/ValueGaugeNode' );
