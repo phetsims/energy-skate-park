@@ -11,7 +11,7 @@ define( function( require ) {
 
   // modules
   var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/EnergySkateParkQueryParameters' );
+  var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
   var platform = require( 'PHET_CORE/platform' );
   var inherit = require( 'PHET_CORE/inherit' );
   var Sim = require( 'JOIST/Sim' );
