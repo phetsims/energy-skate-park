@@ -51,7 +51,7 @@ define( function( require ) {
     MAX_ZOOM_FACTOR: 9 * ZOOM_FACTOR_DELTA,
     MIN_ZOOM_FACTOR: ZOOM_FACTOR_DELTA / 3,
 
-    DEFAULT_MASS: maxMass / 100,
+    DEFAULT_MASS: SkaterMasses.STAR_SKATER_MASS,
     MIN_MASS: minMass,
     MAX_MASS: maxMass,
     MASS_RANGE: massRange,
