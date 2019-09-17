@@ -51,7 +51,7 @@ define( require => {
           measuringTapeNode.startBaseDrag( event );
         }
 
-      }, { allowTouchSnag: true } ) );
+      } ) );
 
       // icon is only visible when measuring tape is hidden
       const iconVisibleProperty = new DerivedProperty( [ model.measuringTapeVisibleProperty ], isVisible => {
