@@ -36,7 +36,7 @@ define( require => {
      * @param {Object} options
      */
     constructor( physicalProperty, labelValueList, resetEmitter, listParent, tandem, options ) {
-      assert && assert( _.find( labelValueList, entry => { return entry.value === null; } ) === undefined, 'PhysicalComboBox adds "Custom" item' );
+      assert && assert( _.find( labelValueList, entry => entry.value === null ) === undefined, 'PhysicalComboBox adds "Custom" item' );
 
       options = _.extend( {
         xMargin: 10,
@@ -74,8 +74,8 @@ define( require => {
       // if the physical Property changes as a result of anything other than the adapter Property, set to null
       if ( options.supportCustom ) {
         physicalProperty.link( physicalValue => {
-         if ( physicalValue !== adapterProperty.value ) {
-          adapterProperty.set( null );
+          if ( physicalValue !== adapterProperty.value ) {
+            adapterProperty.set( null );
           }
         } );
       }
