@@ -6,16 +6,16 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
-  var Vector2 = require( 'DOT/Vector2' );
+  const ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
+  const Vector2 = require( 'DOT/Vector2' );
 
   /**
    * @constructor

@@ -4,19 +4,19 @@
  * A model in Energy Skate park with a specific set of tracks. Does not include any buildable or movable tracks.
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModel' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
-  var Property = require( 'AXON/Property' );
-  var PropertyIO = require( 'AXON/PropertyIO' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModel' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
+  const Property = require( 'AXON/Property' );
+  const PropertyIO = require( 'AXON/PropertyIO' );
 
   // phetio types
-  var NumberIO = require( 'TANDEM/types/NumberIO' );
+  const NumberIO = require( 'TANDEM/types/NumberIO' );
 
   /**
    * @constructor

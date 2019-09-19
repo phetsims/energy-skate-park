@@ -7,22 +7,22 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var Circle = require( 'SCENERY/nodes/Circle' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var Image = require( 'SCENERY/nodes/Image' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var LinearFunction = require( 'DOT/LinearFunction' );
-  var Matrix3 = require( 'DOT/Matrix3' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
+  const Circle = require( 'SCENERY/nodes/Circle' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const Image = require( 'SCENERY/nodes/Image' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const LinearFunction = require( 'DOT/LinearFunction' );
+  const Matrix3 = require( 'DOT/Matrix3' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
 
   // images
-  var skaterLeftImage = require( 'image!ENERGY_SKATE_PARK/skater-left.png' );
-  var skaterRightImage = require( 'image!ENERGY_SKATE_PARK/skater-right.png' );
+  const skaterLeftImage = require( 'image!ENERGY_SKATE_PARK/skater-left.png' );
+  const skaterRightImage = require( 'image!ENERGY_SKATE_PARK/skater-right.png' );
 
   /**
    * SkaterNode constructor

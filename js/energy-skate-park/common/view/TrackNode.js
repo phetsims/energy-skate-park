@@ -7,21 +7,21 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var ControlPointNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ControlPointNode' );
-  var dot = require( 'DOT/dot' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var LineStyles = require( 'KITE/util/LineStyles' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var Path = require( 'SCENERY/nodes/Path' );
-  // var Rectangle = require( 'SCENERY/nodes/Rectangle' );
-  var Shape = require( 'KITE/Shape' );
-  var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SplineEvaluation' );
-  var TrackDragHandler = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TrackDragHandler' );
+  const ControlPointNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ControlPointNode' );
+  const dot = require( 'DOT/dot' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const LineStyles = require( 'KITE/util/LineStyles' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const Path = require( 'SCENERY/nodes/Path' );
+  // const Rectangle = require( 'SCENERY/nodes/Rectangle' );
+  const Shape = require( 'KITE/Shape' );
+  const SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SplineEvaluation' );
+  const TrackDragHandler = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TrackDragHandler' );
 
   // constants
   var FastArray = dot.FastArray;

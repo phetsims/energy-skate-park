@@ -7,19 +7,19 @@
  * @author Jesse Greenberg
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var BooleanProperty = require( 'AXON/BooleanProperty' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
-  var Property = require( 'AXON/Property' );
-  var SkaterSample = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterSample' );
-  var ObservableArray = require( 'AXON/ObservableArray' );
-  var Vector2 = require( 'DOT/Vector2' );
-  var Vector2Property = require( 'DOT/Vector2Property' );
-  var inherit = require( 'PHET_CORE/inherit' );
+  const BooleanProperty = require( 'AXON/BooleanProperty' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
+  const Property = require( 'AXON/Property' );
+  const SkaterSample = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterSample' );
+  const ObservableArray = require( 'AXON/ObservableArray' );
+  const Vector2 = require( 'DOT/Vector2' );
+  const Vector2Property = require( 'DOT/Vector2Property' );
+  const inherit = require( 'PHET_CORE/inherit' );
 
   // constants
   // in seconds, how frequently we will sample the state of the skater and add to the list of SkaterSamples.

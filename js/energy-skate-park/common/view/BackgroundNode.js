@@ -5,21 +5,21 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var Image = require( 'SCENERY/nodes/Image' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var LinearGradient = require( 'SCENERY/util/LinearGradient' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var Pattern = require( 'SCENERY/util/Pattern' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const Image = require( 'SCENERY/nodes/Image' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const LinearGradient = require( 'SCENERY/util/LinearGradient' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const Pattern = require( 'SCENERY/util/Pattern' );
+  const Rectangle = require( 'SCENERY/nodes/Rectangle' );
 
   // images
-  var cementImg = require( 'image!ENERGY_SKATE_PARK/cement-texture-dark.jpg' );
-  var mountainImage = require( 'image!ENERGY_SKATE_PARK/mountains.png' );
+  const cementImg = require( 'image!ENERGY_SKATE_PARK/cement-texture-dark.jpg' );
+  const mountainImage = require( 'image!ENERGY_SKATE_PARK/mountains.png' );
 
   // constants
   var earthHeight = 70;

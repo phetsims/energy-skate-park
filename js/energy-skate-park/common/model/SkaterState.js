@@ -9,13 +9,13 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Vector2 = require( 'DOT/Vector2' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Vector2 = require( 'DOT/Vector2' );
 
   // constants
   var EMPTY_OBJECT = {};

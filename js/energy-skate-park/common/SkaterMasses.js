@@ -4,7 +4,7 @@
  * Constants related to the skater in Energy Skate Park.
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules

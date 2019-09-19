@@ -5,14 +5,14 @@
  *
  * @author Sam Reid (PhET Interactive Simulations)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
 
   /**
    * @param {TrackNode} trackNode the track node that this listener will drag

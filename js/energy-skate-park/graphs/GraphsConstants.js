@@ -4,11 +4,11 @@
  * Constants for the Graphs screen of Energy Skate Park.
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
   // constants
   var TIME_PER_SAMPLE = 1 / 60; // in seconds (assuming 60 fps, one sample per frame)

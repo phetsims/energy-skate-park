@@ -6,13 +6,13 @@
  * @author Sam Reid (PhET Interactive Simulations)
  * @author Andrew Adare (PhET Interactive Simulations)
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var ObjectIO = require( 'TANDEM/types/ObjectIO' );
-  var validate = require( 'AXON/validate' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const ObjectIO = require( 'TANDEM/types/ObjectIO' );
+  const validate = require( 'AXON/validate' );
 
   class EnergySkateParkModelIO extends ObjectIO {
 

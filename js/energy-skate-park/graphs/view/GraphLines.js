@@ -5,15 +5,15 @@
  * @author Jesse Greenberg
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var CanvasNode = require( 'SCENERY/nodes/CanvasNode' );
-  var GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const CanvasNode = require( 'SCENERY/nodes/CanvasNode' );
+  const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
+  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
 
   // constants
   var MAX_ENERGY = 3000; // because why not, in Joules

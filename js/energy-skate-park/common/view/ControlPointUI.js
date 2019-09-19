@@ -5,18 +5,18 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var Color = require( 'SCENERY/util/Color' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var FontAwesomeNode = require( 'SUN/FontAwesomeNode' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var LinearFunction = require( 'DOT/LinearFunction' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var RoundPushButton = require( 'SUN/buttons/RoundPushButton' );
-  var Vector2 = require( 'DOT/Vector2' );
+  const Color = require( 'SCENERY/util/Color' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const FontAwesomeNode = require( 'SUN/FontAwesomeNode' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const LinearFunction = require( 'DOT/LinearFunction' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const RoundPushButton = require( 'SUN/buttons/RoundPushButton' );
+  const Vector2 = require( 'DOT/Vector2' );
 
   /**
    * Constructor for the ControlPointUI for a single control point.

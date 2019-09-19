@@ -5,13 +5,13 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var Color = require( 'SCENERY/util/Color' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
+  const Color = require( 'SCENERY/util/Color' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
 
   var EnergySkateParkColorScheme = {
 

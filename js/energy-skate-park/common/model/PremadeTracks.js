@@ -11,15 +11,15 @@
  * @author Jesse Greenberg
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var Vector2 = require( 'DOT/Vector2' );
-  var Bounds2 = require( 'DOT/Bounds2' );
-  var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
+  const Vector2 = require( 'DOT/Vector2' );
+  const Bounds2 = require( 'DOT/Bounds2' );
+  const ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
 
   // constants
   var PARENT_TRACKS = null;

@@ -4,7 +4,7 @@
  * Constants used throughout the simulation.
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules

@@ -5,20 +5,20 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var AquaRadioButton = require( 'SUN/AquaRadioButton' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Text = require( 'SCENERY/nodes/Text' );
-  var VBox = require( 'SCENERY/nodes/VBox' );
+  const AquaRadioButton = require( 'SUN/AquaRadioButton' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Text = require( 'SCENERY/nodes/Text' );
+  const VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var normalString = require( 'string!ENERGY_SKATE_PARK/normal' );
-  var slowMotionString = require( 'string!ENERGY_SKATE_PARK/slow.motion' );
+  const normalString = require( 'string!ENERGY_SKATE_PARK/normal' );
+  const slowMotionString = require( 'string!ENERGY_SKATE_PARK/slow.motion' );
 
   // constants
   var X_DILATION = 5;

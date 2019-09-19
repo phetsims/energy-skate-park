@@ -6,19 +6,19 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var Image = require( 'SCENERY/nodes/Image' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Panel = require( 'SUN/Panel' );
-  var RadioButtonGroup = require( 'SUN/buttons/RadioButtonGroup' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const Image = require( 'SCENERY/nodes/Image' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Panel = require( 'SUN/Panel' );
+  const RadioButtonGroup = require( 'SUN/buttons/RadioButtonGroup' );
 
   // images
-  var attachIcon = require( 'image!ENERGY_SKATE_PARK/attach.png' );
-  var detachIcon = require( 'image!ENERGY_SKATE_PARK/detach.png' );
+  const attachIcon = require( 'image!ENERGY_SKATE_PARK/attach.png' );
+  const detachIcon = require( 'image!ENERGY_SKATE_PARK/detach.png' );
 
   // constants
   var SELECTED_LINE_WIDTH = 2.3;

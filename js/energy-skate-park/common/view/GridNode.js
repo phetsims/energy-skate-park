@@ -9,21 +9,21 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/BackgroundNode' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var Path = require( 'SCENERY/nodes/Path' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Shape = require( 'KITE/Shape' );
+  const BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/BackgroundNode' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const Path = require( 'SCENERY/nodes/Path' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Shape = require( 'KITE/Shape' );
   var TextPanel= require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TextPanel' );
 
   // strings
-  var zeroMetersString = require( 'string!ENERGY_SKATE_PARK/zeroMeters' );
+  const zeroMetersString = require( 'string!ENERGY_SKATE_PARK/zeroMeters' );
 
   // constants
   var FONT = new PhetFont( 12 );

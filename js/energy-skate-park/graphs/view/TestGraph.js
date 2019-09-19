@@ -13,15 +13,15 @@ define( require => {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var GraphLines = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/GraphLines' );
-  var GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
-  var DragListener = require( 'SCENERY/listeners/DragListener' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
-  var Line = require( 'SCENERY/nodes/Line' );
-  var Util = require( 'DOT/Util' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const GraphLines = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/GraphLines' );
+  const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
+  const DragListener = require( 'SCENERY/listeners/DragListener' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const Rectangle = require( 'SCENERY/nodes/Rectangle' );
+  const Line = require( 'SCENERY/nodes/Line' );
+  const Util = require( 'DOT/Util' );
 
   /**
    * @constructors

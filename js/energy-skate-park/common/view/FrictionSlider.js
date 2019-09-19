@@ -14,7 +14,7 @@ define( require => {
   const Range = require( 'DOT/Range' );
 
   // strings
-  var controlsFrictionTitleString = require( 'string!ENERGY_SKATE_PARK/controls.friction.title' );
+  const controlsFrictionTitleString = require( 'string!ENERGY_SKATE_PARK/controls.friction.title' );
 
   class FrictionSlider extends PhysicalSlider {
     constructor( property, tandem ) {

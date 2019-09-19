@@ -5,24 +5,24 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
   const BooleanProperty = require( 'AXON/BooleanProperty' );
-  var ControlPointIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPointIO' );
-  var DerivedProperty = require( 'AXON/DerivedProperty' );
-  var DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var NullableIO = require( 'TANDEM/types/NullableIO' );
-  var PhetioObject = require( 'TANDEM/PhetioObject' );
-  var Property = require( 'AXON/Property' );
-  var PropertyIO = require( 'AXON/PropertyIO' );
-  var Tandem = require( 'TANDEM/Tandem' );
-  var Vector2 = require( 'DOT/Vector2' );
-  var Vector2IO = require( 'DOT/Vector2IO' );
-  var Vector2Property = require( 'DOT/Vector2Property' );
+  const ControlPointIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPointIO' );
+  const DerivedProperty = require( 'AXON/DerivedProperty' );
+  const DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const NullableIO = require( 'TANDEM/types/NullableIO' );
+  const PhetioObject = require( 'TANDEM/PhetioObject' );
+  const Property = require( 'AXON/Property' );
+  const PropertyIO = require( 'AXON/PropertyIO' );
+  const Tandem = require( 'TANDEM/Tandem' );
+  const Vector2 = require( 'DOT/Vector2' );
+  const Vector2IO = require( 'DOT/Vector2IO' );
+  const Vector2Property = require( 'DOT/Vector2Property' );
 
   /**
    *

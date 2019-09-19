@@ -6,29 +6,29 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var BooleanIO = require( 'TANDEM/types/BooleanIO' );
-  var BooleanProperty = require( 'AXON/BooleanProperty' );
-  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
-  var DerivedProperty = require( 'AXON/DerivedProperty' );
-  var DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
-  var Emitter = require( 'AXON/Emitter' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var NullableIO = require( 'TANDEM/types/NullableIO' );
-  var NumberIO = require( 'TANDEM/types/NumberIO' );
-  var NumberProperty = require( 'AXON/NumberProperty' );
-  var Property = require( 'AXON/Property' );
-  var PropertyIO = require( 'AXON/PropertyIO' );
-  var Range = require( 'DOT/Range' );
-  var StringIO = require( 'TANDEM/types/StringIO' );
-  var TrackReferenceIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackReferenceIO' );
-  var Util = require( 'DOT/Util' );
-  var Vector2 = require( 'DOT/Vector2' );
-  var Vector2Property = require( 'DOT/Vector2Property' );
+  const BooleanIO = require( 'TANDEM/types/BooleanIO' );
+  const BooleanProperty = require( 'AXON/BooleanProperty' );
+  const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
+  const DerivedProperty = require( 'AXON/DerivedProperty' );
+  const DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
+  const Emitter = require( 'AXON/Emitter' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const NullableIO = require( 'TANDEM/types/NullableIO' );
+  const NumberIO = require( 'TANDEM/types/NumberIO' );
+  const NumberProperty = require( 'AXON/NumberProperty' );
+  const Property = require( 'AXON/Property' );
+  const PropertyIO = require( 'AXON/PropertyIO' );
+  const Range = require( 'DOT/Range' );
+  const StringIO = require( 'TANDEM/types/StringIO' );
+  const TrackReferenceIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackReferenceIO' );
+  const Util = require( 'DOT/Util' );
+  const Vector2 = require( 'DOT/Vector2' );
+  const Vector2Property = require( 'DOT/Vector2Property' );
 
   // Compare two arrays, whose elements have 'equals' methods for comparison
   var arrayEquals = function( a, b ) {

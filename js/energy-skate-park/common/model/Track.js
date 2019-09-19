@@ -6,20 +6,20 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var BooleanProperty = require( 'AXON/BooleanProperty' );
-  var dot = require( 'DOT/dot' );
-  var Emitter = require( 'AXON/Emitter' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var PhetioObject = require( 'TANDEM/PhetioObject' );
-  var SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SplineEvaluation' );
-  var Tandem = require( 'TANDEM/Tandem' );
-  var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackIO' );
-  var Vector2 = require( 'DOT/Vector2' );
+  const BooleanProperty = require( 'AXON/BooleanProperty' );
+  const dot = require( 'DOT/dot' );
+  const Emitter = require( 'AXON/Emitter' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const PhetioObject = require( 'TANDEM/PhetioObject' );
+  const SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SplineEvaluation' );
+  const Tandem = require( 'TANDEM/Tandem' );
+  const TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackIO' );
+  const Vector2 = require( 'DOT/Vector2' );
 
   // constants
   var FastArray = dot.FastArray;

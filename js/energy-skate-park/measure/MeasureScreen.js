@@ -5,24 +5,24 @@
  *
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Image = require( 'SCENERY/nodes/Image' );
-  var MeasureModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/model/MeasureModel' );
-  var MeasureScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/MeasureScreenView' );
-  var Screen = require( 'JOIST/Screen' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Image = require( 'SCENERY/nodes/Image' );
+  const MeasureModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/model/MeasureModel' );
+  const MeasureScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/MeasureScreenView' );
+  const Screen = require( 'JOIST/Screen' );
 
   // images
   // TODO: navigation bar/home screen images
-  var iconFrictionHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-friction-homescreen.png' );
-  var iconFrictionNavbar = require( 'image!ENERGY_SKATE_PARK/icon-friction-navbar.png' );
+  const iconFrictionHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-friction-homescreen.png' );
+  const iconFrictionNavbar = require( 'image!ENERGY_SKATE_PARK/icon-friction-navbar.png' );
   
   // strings
-  var screenMeasureString = require( 'string!ENERGY_SKATE_PARK/screen.measure' );
+  const screenMeasureString = require( 'string!ENERGY_SKATE_PARK/screen.measure' );
 
   /**
    * @param {Tandem} tandem

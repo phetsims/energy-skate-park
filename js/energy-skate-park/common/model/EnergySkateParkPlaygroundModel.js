@@ -5,16 +5,16 @@
  * pre-constructed tracks, but allows user to build them from scratch.
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModel' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
-  var Vector2 = require( 'DOT/Vector2' );
+  const ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModel' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
+  const Vector2 = require( 'DOT/Vector2' );
 
   // Control points are replenished in the toolbox as they are destroyed (by connecting) in the play area
   // This is the maximum number of control points available to the user.

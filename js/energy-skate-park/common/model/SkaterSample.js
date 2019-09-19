@@ -7,16 +7,16 @@
  * @author Jesse Greenberg
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var BooleanProperty = require( 'AXON/BooleanProperty' );
-  var NumberProperty = require( 'AXON/NumberProperty' );
-  var Emitter = require( 'AXON/Emitter' );
-  var Vector2 = require( 'DOT/Vector2' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const BooleanProperty = require( 'AXON/BooleanProperty' );
+  const NumberProperty = require( 'AXON/NumberProperty' );
+  const Emitter = require( 'AXON/Emitter' );
+  const Vector2 = require( 'DOT/Vector2' );
 
   // constants
   // time (s) between initiation of removal and removal from the model - a short delay allows samples to still be

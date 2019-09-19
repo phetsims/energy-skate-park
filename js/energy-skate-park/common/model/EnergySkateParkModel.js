@@ -22,37 +22,37 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var BooleanProperty = require( 'AXON/BooleanProperty' );
-  var Bounds2 = require( 'DOT/Bounds2' );
-  var Bounds2IO = require( 'DOT/Bounds2IO' );
-  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
-  var ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
-  var DebugTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/DebugTracks' );
-  var Emitter = require( 'AXON/Emitter' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModelIO' );
-  var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var NumberProperty = require( 'AXON/NumberProperty' );
-  var ObservableArray = require( 'AXON/ObservableArray' );
-  var ObservableArrayIO = require( 'AXON/ObservableArrayIO' );
-  var PhetioObject = require( 'TANDEM/PhetioObject' );
-  var Property = require( 'AXON/Property' );
-  var PropertyIO = require( 'AXON/PropertyIO' );
-  var Range = require( 'DOT/Range' );
-  var Skater = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Skater' );
-  var SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
-  var StringIO = require( 'TANDEM/types/StringIO' );
-  var Tandem = require( 'TANDEM/Tandem' );
-  var Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
-  var TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackIO' );
-  var Util = require( 'DOT/Util' );
-  var Vector2 = require( 'DOT/Vector2' );
-  var Vector2Property = require( 'DOT/Vector2Property' );
+  const BooleanProperty = require( 'AXON/BooleanProperty' );
+  const Bounds2 = require( 'DOT/Bounds2' );
+  const Bounds2IO = require( 'DOT/Bounds2IO' );
+  const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
+  const ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
+  const DebugTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/DebugTracks' );
+  const Emitter = require( 'AXON/Emitter' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModelIO' );
+  const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const NumberProperty = require( 'AXON/NumberProperty' );
+  const ObservableArray = require( 'AXON/ObservableArray' );
+  const ObservableArrayIO = require( 'AXON/ObservableArrayIO' );
+  const PhetioObject = require( 'TANDEM/PhetioObject' );
+  const Property = require( 'AXON/Property' );
+  const PropertyIO = require( 'AXON/PropertyIO' );
+  const Range = require( 'DOT/Range' );
+  const Skater = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Skater' );
+  const SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
+  const StringIO = require( 'TANDEM/types/StringIO' );
+  const Tandem = require( 'TANDEM/Tandem' );
+  const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
+  const TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackIO' );
+  const Util = require( 'DOT/Util' );
+  const Vector2 = require( 'DOT/Vector2' );
+  const Vector2Property = require( 'DOT/Vector2Property' );
 
   // Reuse empty object for creating SkaterStates to avoid allocations
   var EMPTY_OBJECT = {};

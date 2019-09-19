@@ -6,15 +6,15 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
-  var platform = require( 'PHET_CORE/platform' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Sim = require( 'JOIST/Sim' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
+  const platform = require( 'PHET_CORE/platform' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Sim = require( 'JOIST/Sim' );
 
   /**
    * @constructor

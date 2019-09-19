@@ -8,23 +8,23 @@
  * @author Jesse Greenberg
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
-  var Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
-  var DragListener = require( 'SCENERY/listeners/DragListener' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Line = require( 'SCENERY/nodes/Line' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var TextPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TextPanel' );
-  var Vector2 = require( 'DOT/Vector2' );
+  const ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
+  const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
+  const DragListener = require( 'SCENERY/listeners/DragListener' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Line = require( 'SCENERY/nodes/Line' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const TextPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TextPanel' );
+  const Vector2 = require( 'DOT/Vector2' );
 
   // strings
-  var heightEqualsZeroString = require( 'string!ENERGY_SKATE_PARK/heightEqualsZero' );
+  const heightEqualsZeroString = require( 'string!ENERGY_SKATE_PARK/heightEqualsZero' );
 
   /**
    * @constructor

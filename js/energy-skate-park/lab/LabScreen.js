@@ -5,23 +5,23 @@
  *
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var LabModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/model/LabModel' );
-  var LabScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/view/LabScreenView' );
-  var Image = require( 'SCENERY/nodes/Image' );
-  var Screen = require( 'JOIST/Screen' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const LabModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/model/LabModel' );
+  const LabScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/view/LabScreenView' );
+  const Image = require( 'SCENERY/nodes/Image' );
+  const Screen = require( 'JOIST/Screen' );
 
   // images
-  var iconPlaygroundHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-playground-homescreen.png' );
-  var iconPlaygroundNavbar = require( 'image!ENERGY_SKATE_PARK/icon-playground-navbar.png' );
+  const iconPlaygroundHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-playground-homescreen.png' );
+  const iconPlaygroundNavbar = require( 'image!ENERGY_SKATE_PARK/icon-playground-navbar.png' );
 
   // strings
-  var screenLabString = require( 'string!ENERGY_SKATE_PARK/screen.lab' );
+  const screenLabString = require( 'string!ENERGY_SKATE_PARK/screen.lab' );
 
   /**
    * @param {Tandem} tandem

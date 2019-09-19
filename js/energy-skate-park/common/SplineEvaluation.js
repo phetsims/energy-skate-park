@@ -6,12 +6,12 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var dot = require( 'DOT/dot' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const dot = require( 'DOT/dot' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
   // constants
   var FastArray = dot.FastArray;

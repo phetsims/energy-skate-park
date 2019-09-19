@@ -14,8 +14,8 @@ define( require => {
   const Range = require( 'DOT/Range' );
 
   // strings
-  var controlsGravityString = require( 'string!ENERGY_SKATE_PARK/controls.gravity' );
-  var controlsValueTinyString = require( 'string!ENERGY_SKATE_PARK/controls.value.tiny' );
+  const controlsGravityString = require( 'string!ENERGY_SKATE_PARK/controls.gravity' );
+  const controlsValueTinyString = require( 'string!ENERGY_SKATE_PARK/controls.value.tiny' );
 
   class GravitySlider extends PhysicalSlider {
     constructor( property, tandem ) {

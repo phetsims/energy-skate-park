@@ -5,22 +5,22 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
-  var EnergySkateParkSim = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkSim' );
-  var SimLauncher = require( 'JOIST/SimLauncher' );
-  var Tandem = require( 'TANDEM/Tandem' );
-  var IntroScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/IntroScreen' );
-  var GraphsScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsScreen' );
-  var LabScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/LabScreen' );
-  var MeasureScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/MeasureScreen' );
+  const EnergySkateParkSim = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkSim' );
+  const SimLauncher = require( 'JOIST/SimLauncher' );
+  const Tandem = require( 'TANDEM/Tandem' );
+  const IntroScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/IntroScreen' );
+  const GraphsScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsScreen' );
+  const LabScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/LabScreen' );
+  const MeasureScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/MeasureScreen' );
 
   // Fix a circular loading problem when using this in EnergySkateParkColorScheme
   require( 'SCENERY/util/Color' );
 
   // strings
-  var energySkateParkTitleString = require( 'string!ENERGY_SKATE_PARK/energy-skate-park.title' );
+  const energySkateParkTitleString = require( 'string!ENERGY_SKATE_PARK/energy-skate-park.title' );
 
   // constants
   var tandem = Tandem.rootTandem;

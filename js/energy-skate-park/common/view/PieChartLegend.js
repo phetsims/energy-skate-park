@@ -5,29 +5,29 @@
  *
  * @author Sam Reid
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
-  var HBox = require( 'SCENERY/nodes/HBox' );
-  var HStrut = require( 'SCENERY/nodes/HStrut' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var MoveToTrashButton = require( 'SCENERY_PHET/MoveToTrashButton' );
-  var Panel = require( 'SUN/Panel' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
-  var Text = require( 'SCENERY/nodes/Text' );
-  var VBox = require( 'SCENERY/nodes/VBox' );
-  var VStrut = require( 'SCENERY/nodes/VStrut' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
+  const HBox = require( 'SCENERY/nodes/HBox' );
+  const HStrut = require( 'SCENERY/nodes/HStrut' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const MoveToTrashButton = require( 'SCENERY_PHET/MoveToTrashButton' );
+  const Panel = require( 'SUN/Panel' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Rectangle = require( 'SCENERY/nodes/Rectangle' );
+  const Text = require( 'SCENERY/nodes/Text' );
+  const VBox = require( 'SCENERY/nodes/VBox' );
+  const VStrut = require( 'SCENERY/nodes/VStrut' );
 
   // strings
-  var energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
-  var energyKineticString = require( 'string!ENERGY_SKATE_PARK/energy.kinetic' );
-  var energyPotentialString = require( 'string!ENERGY_SKATE_PARK/energy.potential' );
-  var energyThermalString = require( 'string!ENERGY_SKATE_PARK/energy.thermal' );
-  var energyTotalString = require( 'string!ENERGY_SKATE_PARK/energy.total' );
+  const energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
+  const energyKineticString = require( 'string!ENERGY_SKATE_PARK/energy.kinetic' );
+  const energyPotentialString = require( 'string!ENERGY_SKATE_PARK/energy.potential' );
+  const energyThermalString = require( 'string!ENERGY_SKATE_PARK/energy.thermal' );
+  const energyTotalString = require( 'string!ENERGY_SKATE_PARK/energy.total' );
 
   /**
    * @param {Skater} skater the model for the skater

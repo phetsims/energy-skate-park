@@ -11,22 +11,22 @@
  *
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var EnergySkateParkCheckboxItem = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkCheckboxItem' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var VBox = require( 'SCENERY/nodes/VBox' );
+  const AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const EnergySkateParkCheckboxItem = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkCheckboxItem' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
-  var controlsPathString = require( 'string!ENERGY_SKATE_PARK/controls.path' );
-  var controlsReferenceHeightString = require( 'string!ENERGY_SKATE_PARK/controls.referenceHeight' );
-  var controlsShowGridString = require( 'string!ENERGY_SKATE_PARK/controls.show-grid' );
-  var pieChartString = require( 'string!ENERGY_SKATE_PARK/pieChart' );
-  var propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
+  const controlsPathString = require( 'string!ENERGY_SKATE_PARK/controls.path' );
+  const controlsReferenceHeightString = require( 'string!ENERGY_SKATE_PARK/controls.referenceHeight' );
+  const controlsShowGridString = require( 'string!ENERGY_SKATE_PARK/controls.show-grid' );
+  const pieChartString = require( 'string!ENERGY_SKATE_PARK/pieChart' );
+  const propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
   const controlsStickToTrackString = require( 'string!ENERGY_SKATE_PARK/controls.stickToTrack' );
 
   /**

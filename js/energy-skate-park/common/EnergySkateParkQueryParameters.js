@@ -3,11 +3,11 @@
 /**
  * Query parameters supported by this simulation.
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
   var EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
 

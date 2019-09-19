@@ -7,18 +7,18 @@
  * @author Sam Reid
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
   const AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
-  var BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/BackgroundNode' );
-  var energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var Property = require( 'AXON/Property' );
-  var RadioButtonGroup = require( 'SUN/buttons/RadioButtonGroup' );
-  var TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TrackNode' );
+  const BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/BackgroundNode' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const Property = require( 'AXON/Property' );
+  const RadioButtonGroup = require( 'SUN/buttons/RadioButtonGroup' );
+  const TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TrackNode' );
 
   /**
    * Construct a SceneSelectionRadioButtonGroup.  Pass the entire model since it is used to create TrackNode
