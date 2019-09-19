@@ -65,7 +65,7 @@ define( require => {
       graphIcon.right = graphIcon.globalToParentPoint( energyBarGraph.parentToGlobalPoint( energyBarGraph.rightCenter ) ).x;
       graphIcon.top = margin;
 
-      model.barGraphVisibleProperty.link( ( visible ) => {
+      model.barGraphVisibleProperty.link( visible => {
         graphIcon.visible = !visible;
       } );
     }

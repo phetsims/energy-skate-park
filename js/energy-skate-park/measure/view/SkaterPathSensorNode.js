@@ -161,7 +161,7 @@ define( require => {
       } );
       body.addChild( content );
 
-      sensorBodyPositionProperty.link( ( bodyPosition ) => {
+      sensorBodyPositionProperty.link( bodyPosition => {
         body.leftTop = modelViewTransform.modelToViewPosition( bodyPosition );
       } );
 
@@ -174,22 +174,22 @@ define( require => {
         cursor: 'pointer'
       } );
 
-      sensorProbePositionProperty.link( ( position ) => {
+      sensorProbePositionProperty.link( position => {
         this.probeNode.translation = modelViewTransform.modelToViewPosition( position );
       } );
 
       // points and control points for the wire
-      const p1Property = new DerivedProperty( [ sensorBodyPositionProperty ], ( bodyPosition ) => {
+      const p1Property = new DerivedProperty( [ sensorBodyPositionProperty ], bodyPosition => {
         return body.getCenterBottom().minusXY( 0, 5 );
       } );
-      const normal1Property = new DerivedProperty( [ sensorProbePositionProperty, sensorBodyPositionProperty ], ( sensorPosition ) => {
+      const normal1Property = new DerivedProperty( [ sensorProbePositionProperty, sensorBodyPositionProperty ], sensorPosition => {
 
         // changes with the probe position so the wire looks like it has slack as it gets longer
         const viewPosition = modelViewTransform.modelToViewPosition( sensorPosition );
         const distanceToBody = viewPosition.minus( p1Property.get() );
         return new Vector2( distanceToBody.x / 3, Math.max( distanceToBody.y, body.height * 2 ) );
       } );
-      const p2Property = new DerivedProperty( [ sensorProbePositionProperty ], ( sensorPosition ) => {
+      const p2Property = new DerivedProperty( [ sensorProbePositionProperty ], sensorPosition => {
 
         // calculate the left of the probe in view coordinates
         const viewPosition = modelViewTransform.modelToViewPosition( sensorPosition );
@@ -214,7 +214,7 @@ define( require => {
 
       // display the sample that is close to the sample of the probe - find the closest one in case multiple samples
       // are near the probe center
-      sensorProbePositionProperty.link( ( modelPosition ) => {
+      sensorProbePositionProperty.link( modelPosition => {
 
         // clear the previous sample
         this.inspectedSample && this.clearDisplay( this.inspectedSample );

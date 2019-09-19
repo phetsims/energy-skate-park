@@ -9,7 +9,7 @@
  *  
  * @author Jesse Greenberg
  */
-define( ( require ) => {
+define( require => {
   'use strict';
 
   // modules
@@ -59,14 +59,14 @@ define( ( require ) => {
     background.children = [ xAxis, yAxis, dataLines, indexLine ];
 
     // position the index line with the selected SkaterState sample
-    indexProperty.link( ( index ) => {
+    indexProperty.link( index => {
       indexLine.centerTop = background.leftTop.plusXY( ( index ) / GraphsConstants.MAX_SAMPLES * width, 0 );
     } );
 
     let pausedOnDrag = false;
     indexLine.addInputListener( new DragListener( {
       tandem: tandem.createTandem( 'dragListener' ),
-      start: ( listener ) => {
+      start: listener => {
         if ( samples.length > 0 ) {
           if ( !pausedProperty.get() ) {
             pausedOnDrag = true;
@@ -105,7 +105,7 @@ define( ( require ) => {
        *
        * @param {function} listener
        */
-      end: ( listener ) => {
+      end: listener => {
         if ( pausedOnDrag ) {
           pausedProperty.set( false );
         }

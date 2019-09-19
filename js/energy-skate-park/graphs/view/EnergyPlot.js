@@ -130,7 +130,7 @@ define( require => {
       } );
 
       // calculate new range of plot when zooming in or out
-      model.lineGraphScaleProperty.link( ( scale ) => {
+      model.lineGraphScaleProperty.link( scale => {
         const newRange = calculateRange( scale );
         const newMaxY = newRange.max;
         const newMinY = newRange.min;

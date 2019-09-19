@@ -249,7 +249,7 @@ define( function( require ) {
         tandem: tandem.createTandem( 'speedometerNode' )
     } );
     model.speedometerVisibleProperty.linkAttribute( speedometerNode, 'visible' );
-    model.speedValueVisibleProperty.link( ( visible ) => { speedometerNode.setNumberDisplayVisible( visible ); } );
+    model.speedValueVisibleProperty.link( visible => { speedometerNode.setNumberDisplayVisible( visible ); } );
     speedometerNode.centerX = this.layoutBounds.centerX;
     speedometerNode.top = this.layoutBounds.minY + 5;
     this.bottomLayer.addChild( speedometerNode );

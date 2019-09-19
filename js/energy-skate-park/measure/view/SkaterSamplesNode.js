@@ -6,7 +6,7 @@
  * 
  * @author Jesse Greenberg
  */
-define( ( require ) => {
+define( require => {
   'use strict';
 
   // modules
@@ -24,7 +24,7 @@ define( ( require ) => {
     constructor( model, modelViewTransform ) {
       super();
 
-      model.skaterSamples.addItemAddedListener( ( addedSample ) => {
+      model.skaterSamples.addItemAddedListener( addedSample => {
 
         const sampleNode = new SampleNode( modelViewTransform.modelToViewPosition( addedSample.position ), addedSample.inspectedProperty, addedSample.opacityProperty );
         this.addChild( sampleNode );
@@ -74,12 +74,12 @@ define( ( require ) => {
       this.opacityProperty = opacityProperty;
 
       // @private - listeners to be removed on disposal
-      this.inspectedListener = ( inspected ) => {
+      this.inspectedListener = inspected => {
         haloCircle.visible = inspected;
       };
       this.inspectedProperty.link( this.inspectedListener );
 
-      this.opacityListener = ( opacity ) => {
+      this.opacityListener = opacity => {
         this.opacity = opacity;
       };
       this.opacityProperty.link( this.opacityListener );

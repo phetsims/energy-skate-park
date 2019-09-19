@@ -47,7 +47,7 @@ define( function( require ) {
     controls.forEach( function( control ) {
       if ( assert ) {
         let validType = false;
-        _.forEach( VALID_CONTROLS, ( controlType ) => {
+        _.forEach( VALID_CONTROLS, controlType => {
           if ( control instanceof controlType ) {
             validType = true;
           }
