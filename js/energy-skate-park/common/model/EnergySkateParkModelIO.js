@@ -39,7 +39,7 @@ define( require => {
      */
     static addChildInstance( energySkateParkModel, tandem, stateObject ) {
       validate( energySkateParkModel, this.validator );
-      var isControlPoint = tandem.phetioID.indexOf( '.controlPoint' ) >= 0;
+      const isControlPoint = tandem.phetioID.indexOf( '.controlPoint' ) >= 0;
 
       // Control Points are already being created when the tracks are made, so if the tandem is a controlPoint it's a no-op
       if ( isControlPoint ) {

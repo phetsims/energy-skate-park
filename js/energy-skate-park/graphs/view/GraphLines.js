@@ -16,7 +16,7 @@ define( require => {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
 
   // constants
-  var MAX_ENERGY = 3000; // because why not, in Joules
+  const MAX_ENERGY = 3000; // because why not, in Joules
 
   function GraphLines( samples, bounds ) {
     CanvasNode.call( this, {
@@ -26,7 +26,7 @@ define( require => {
 
     this.samples = samples;
 
-    var self = this;
+    const self = this;
     this.samples.addItemAddedListener( function( item ) {
       self.invalidatePaint();
     } );
@@ -46,7 +46,7 @@ define( require => {
      * @param {CanvasContext2D} context
      */
     paintCanvas: function( context ) {
-      var points = this.samples.getArray();
+      const points = this.samples.getArray();
 
       if ( points.length > 0 ) {
         this.drawLine( context, points, 'kinetic', EnergySkateParkColorScheme.kineticEnergy );
@@ -64,17 +64,17 @@ define( require => {
      * @param {[type]} color
      */
     drawLine: function( context, points, energyType, color ) {
-      var bounds = this.canvasBounds;
+      const bounds = this.canvasBounds;
 
-      var pWidth = 2;
-      var pHeight = pWidth;
+      const pWidth = 2;
+      const pHeight = pWidth;
 
       // draw potential energy
       context.fillStyle = color.toCSS();
       context.beginPath();
 
       for ( let i = 0; i < points.length; i++ ) {
-        var point = points[ i ];
+        const point = points[ i ];
 
         // this involves a calculation for the energy,
         // that is way too many calculations!!
@@ -92,10 +92,10 @@ define( require => {
         assert && assert( energy !== undefined, 'wrong kind of energy bro' );
 
         // so that 0 is the bottom of the graph
-        var y = bounds.height / 2 - ( energy / MAX_ENERGY * bounds.height / 2 );
+        const y = bounds.height / 2 - ( energy / MAX_ENERGY * bounds.height / 2 );
 
         // this is based on width...it should be temporal
-        var x = i / GraphsConstants.MAX_SAMPLES * bounds.width;
+        const x = i / GraphsConstants.MAX_SAMPLES * bounds.width;
 
         context.moveTo( x + pWidth, y + pHeight );
         context.lineTo( x - pWidth, y + pHeight );

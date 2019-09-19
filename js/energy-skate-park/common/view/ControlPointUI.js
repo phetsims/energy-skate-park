@@ -30,10 +30,10 @@ define( require => {
    */
   function ControlPointUI( model, track, controlPointIndex, modelViewTransform, parentNode, tandem ) {
 
-    var self = this;
+    const self = this;
 
     // See ComboxBox.js
-    var enableClickToDismissListener = true;
+    let enableClickToDismissListener = true;
 
     // listener for 'click outside to dismiss'
     this.clickToDismissListener = {
@@ -57,17 +57,17 @@ define( require => {
       phetioComponentOptions: { phetioState: false }
     } );
 
-    var isEndPoint = controlPointIndex === 0 || controlPointIndex === track.controlPoints.length - 1;
-    var alpha = new LinearFunction( 0, track.controlPoints.length - 1, track.minPoint, track.maxPoint )( controlPointIndex );
-    var position = track.getPoint( alpha );
-    var angle = track.getViewAngleAt( alpha );
-    var modelAngle = track.getModelAngleAt( alpha );
+    const isEndPoint = controlPointIndex === 0 || controlPointIndex === track.controlPoints.length - 1;
+    const alpha = new LinearFunction( 0, track.controlPoints.length - 1, track.minPoint, track.maxPoint )( controlPointIndex );
+    const position = track.getPoint( alpha );
+    const angle = track.getViewAngleAt( alpha );
+    const modelAngle = track.getModelAngleAt( alpha );
 
-    var disableDismissAction = { down: function() { enableClickToDismissListener = false; } };
+    const disableDismissAction = { down: function() { enableClickToDismissListener = false; } };
 
     // Add a scissors cut button, but only for interior points and only if there aren't too many control points already
     if ( !isEndPoint && model.canCutTrackControlPoint() ) {
-      var scissorNode = new FontAwesomeNode( 'cut', { fill: 'black', scale: 0.6, rotation: Math.PI / 2 - angle } );
+      const scissorNode = new FontAwesomeNode( 'cut', { fill: 'black', scale: 0.6, rotation: Math.PI / 2 - angle } );
       var cutButton = new RoundPushButton( {
         tandem: tandem.createTandem( 'cutButton' ),
         phetioState: false,
@@ -89,8 +89,8 @@ define( require => {
     }
 
     // Show the delete button.
-    var deleteNode = new FontAwesomeNode( 'times_circle', { fill: 'red', scale: 0.6 } );
-    var deleteButton = new RoundPushButton( {
+    const deleteNode = new FontAwesomeNode( 'times_circle', { fill: 'red', scale: 0.6 } );
+    const deleteButton = new RoundPushButton( {
       tandem: tandem.createTandem( 'deleteButton' ),
       phetioState: false,
       phetioComponentOptions: { phetioState: false },

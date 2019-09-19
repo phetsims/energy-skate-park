@@ -22,11 +22,11 @@ define( require => {
   const Vector2 = require( 'DOT/Vector2' );
 
   // constants
-  var FastArray = dot.FastArray;
+  const FastArray = dot.FastArray;
 
   // options for a track that is fully interactive - it can be dragged, control points can be moved, broken into
   // different tracks, and combined with another track
-  var FULLY_INTERACTIVE_OPTIONS = {
+  const FULLY_INTERACTIVE_OPTIONS = {
     draggable: true,
     configurable: true,
     splittable: true,
@@ -67,8 +67,8 @@ define( require => {
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
     }, options );
 
-    var tandem = options.tandem;
-    var self = this;
+    const tandem = options.tandem;
+    const self = this;
     this.model = model;
     this.parents = parents;
     this.modelTracks = modelTracks;
@@ -135,7 +135,7 @@ define( require => {
       phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
-    var trackChangedListener = function() { model.trackChangedEmitter.emit(); };
+    const trackChangedListener = function() { model.trackChangedEmitter.emit(); };
     this.physicalProperty.link( trackChangedListener );
 
     this.controlPoints = controlPoints;
@@ -167,7 +167,7 @@ define( require => {
     _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
 
     // when available bounds change, make sure that control points are within - must be disposed
-    var boundsListener = function( bounds ) {
+    const boundsListener = function( bounds ) {
       if ( self.droppedProperty.get() ) {
         self.containControlPointsInAvailableBounds( bounds );
       }
@@ -197,7 +197,7 @@ define( require => {
     updateSplines: function() {
 
       // Arrays are fixed length, so just overwrite values, see #38
-      for ( var i = 0; i < this.controlPoints.length; i++ ) {
+      for ( let i = 0; i < this.controlPoints.length; i++ ) {
         this.parametricPosition[ i ] = i / this.controlPoints.length;
         this.x[ i ] = this.controlPoints[ i ].positionProperty.value.x;
         this.y[ i ] = this.controlPoints[ i ].positionProperty.value.y;
@@ -224,7 +224,7 @@ define( require => {
       this.leftThePanelProperty.reset();
       this.draggingProperty.reset();
       this.droppedProperty.reset();
-      for ( var i = 0; i < this.controlPoints.length; i++ ) {
+      for ( let i = 0; i < this.controlPoints.length; i++ ) {
         this.controlPoints[ i ].reset();
       }
 
@@ -258,11 +258,11 @@ define( require => {
         this.ySearchPoints = SplineEvaluation.atArray( this.ySpline, this.searchLinSpace );
       }
 
-      var bestU = 0;
-      var bestDistanceSquared = Number.POSITIVE_INFINITY;
-      var bestPoint = new Vector2( 0, 0 );
+      let bestU = 0;
+      let bestDistanceSquared = Number.POSITIVE_INFINITY;
+      const bestPoint = new Vector2( 0, 0 );
       for ( var i = 0; i < this.xSearchPoints.length; i++ ) {
-        var distanceSquared = point.distanceSquaredXY( this.xSearchPoints[ i ], this.ySearchPoints[ i ] );
+        const distanceSquared = point.distanceSquaredXY( this.xSearchPoints[ i ], this.ySearchPoints[ i ] );
         if ( distanceSquared < bestDistanceSquared ) {
           bestDistanceSquared = distanceSquared;
           bestU = this.searchLinSpace[ i ];
@@ -272,22 +272,22 @@ define( require => {
       }
 
       // Binary search in the neighborhood of the best point, to refine the search
-      var distanceBetweenSearchPoints = Math.abs( this.searchLinSpace[ 1 ] - this.searchLinSpace[ 0 ] );
-      var topU = bestU + distanceBetweenSearchPoints / 2;
-      var bottomU = bestU - distanceBetweenSearchPoints / 2;
+      const distanceBetweenSearchPoints = Math.abs( this.searchLinSpace[ 1 ] - this.searchLinSpace[ 0 ] );
+      let topU = bestU + distanceBetweenSearchPoints / 2;
+      let bottomU = bestU - distanceBetweenSearchPoints / 2;
 
-      var topX = SplineEvaluation.atNumber( this.xSpline, topU );
-      var topY = SplineEvaluation.atNumber( this.ySpline, topU );
+      let topX = SplineEvaluation.atNumber( this.xSpline, topU );
+      let topY = SplineEvaluation.atNumber( this.ySpline, topU );
 
-      var bottomX = SplineEvaluation.atNumber( this.xSpline, bottomU );
-      var bottomY = SplineEvaluation.atNumber( this.ySpline, bottomU );
+      let bottomX = SplineEvaluation.atNumber( this.xSpline, bottomU );
+      let bottomY = SplineEvaluation.atNumber( this.ySpline, bottomU );
 
       // Even at 400 binary search iterations, performance is smooth on iPad3, so this loop doesn't seem too invasive
-      var maxBinarySearchIterations = 40;
+      const maxBinarySearchIterations = 40;
       for ( i = 0; i < maxBinarySearchIterations; i++ ) {
 
-        var topDistanceSquared = point.distanceSquaredXY( topX, topY );
-        var bottomDistanceSquared = point.distanceSquaredXY( bottomX, bottomY );
+        const topDistanceSquared = point.distanceSquaredXY( topX, topY );
+        const bottomDistanceSquared = point.distanceSquaredXY( bottomX, bottomY );
 
         if ( topDistanceSquared < bottomDistanceSquared ) {
           bottomU = bottomU + ( topU - bottomU ) / 4;  // move halfway up
@@ -332,8 +332,8 @@ define( require => {
      * @returns {Vector2}
      */
     getPoint: function( parametricPosition ) {
-      var x = SplineEvaluation.atNumber( this.xSpline, parametricPosition );
-      var y = SplineEvaluation.atNumber( this.ySpline, parametricPosition );
+      const x = SplineEvaluation.atNumber( this.xSpline, parametricPosition );
+      const y = SplineEvaluation.atNumber( this.ySpline, parametricPosition );
       return new Vector2( x, y );
     },
 
@@ -347,8 +347,8 @@ define( require => {
       this._position = this._position.plusXY( dx, dy );
 
       // move all the control points
-      for ( var i = 0; i < this.controlPoints.length; i++ ) {
-        var point = this.controlPoints[ i ];
+      for ( let i = 0; i < this.controlPoints.length; i++ ) {
+        const point = this.controlPoints[ i ];
         point.sourcePositionProperty.value = point.sourcePositionProperty.value.plusXY( dx, dy );
       }
 
@@ -447,12 +447,12 @@ define( require => {
     updateLinSpace: function() {
       this.minPoint = 0;
       this.maxPoint = ( this.controlPoints.length - 1 ) / this.controlPoints.length;
-      var prePoint = this.minPoint - 1E-6;
-      var postPoint = this.maxPoint + 1E-6;
+      const prePoint = this.minPoint - 1E-6;
+      const postPoint = this.maxPoint + 1E-6;
 
       // Store for performance
       // made number of sample points depend on the length of the track, to make it smooth enough no matter how long it is
-      var n = 20 * ( this.controlPoints.length - 1 );
+      const n = 20 * ( this.controlPoints.length - 1 );
       this.searchLinSpace = numeric.linspace( prePoint, postPoint, n );
       this.distanceBetweenSamplePoints = ( postPoint - prePoint ) / n;
     },
@@ -464,17 +464,17 @@ define( require => {
     },
 
     toString: function() {
-      var string = '';
-      for ( var i = 0; i < this.controlPoints.length; i++ ) {
-        var point = this.controlPoints[ i ];
+      let string = '';
+      for ( let i = 0; i < this.controlPoints.length; i++ ) {
+        const point = this.controlPoints[ i ];
         string = string + '(' + point.positionProperty.value.x + ',' + point.positionProperty.value.y + ')';
       }
       return string;
     },
 
     getSnapTarget: function() {
-      for ( var i = 0; i < this.controlPoints.length; i++ ) {
-        var o = this.controlPoints[ i ];
+      for ( let i = 0; i < this.controlPoints.length; i++ ) {
+        const o = this.controlPoints[ i ];
         if ( o.snapTargetProperty.value ) {
           return o.snapTargetProperty.value;
         }
@@ -483,9 +483,9 @@ define( require => {
     },
 
     getBottomControlPointY: function() {
-      var best = Number.POSITIVE_INFINITY;
-      var length = this.controlPoints.length;
-      for ( var i = 0; i < length; i++ ) {
+      let best = Number.POSITIVE_INFINITY;
+      const length = this.controlPoints.length;
+      for ( let i = 0; i < length; i++ ) {
         if ( this.controlPoints[ i ].sourcePositionProperty.value.y < best ) {
           best = this.controlPoints[ i ].sourcePositionProperty.value.y;
         }
@@ -494,9 +494,9 @@ define( require => {
     },
 
     getTopControlPointY: function() {
-      var best = Number.NEGATIVE_INFINITY;
-      var length = this.controlPoints.length;
-      for ( var i = 0; i < length; i++ ) {
+      let best = Number.NEGATIVE_INFINITY;
+      const length = this.controlPoints.length;
+      for ( let i = 0; i < length; i++ ) {
         if ( this.controlPoints[ i ].sourcePositionProperty.value.y > best ) {
           best = this.controlPoints[ i ].sourcePositionProperty.value.y;
         }
@@ -505,9 +505,9 @@ define( require => {
     },
 
     getLeftControlPointX: function() {
-      var best = Number.POSITIVE_INFINITY;
-      var length = this.controlPoints.length;
-      for ( var i = 0; i < length; i++ ) {
+      let best = Number.POSITIVE_INFINITY;
+      const length = this.controlPoints.length;
+      for ( let i = 0; i < length; i++ ) {
         if ( this.controlPoints[ i ].sourcePositionProperty.value.x < best ) {
           best = this.controlPoints[ i ].sourcePositionProperty.value.x;
         }
@@ -516,9 +516,9 @@ define( require => {
     },
 
     getRightControlPointX: function() {
-      var best = Number.NEGATIVE_INFINITY;
-      var length = this.controlPoints.length;
-      for ( var i = 0; i < length; i++ ) {
+      let best = Number.NEGATIVE_INFINITY;
+      const length = this.controlPoints.length;
+      for ( let i = 0; i < length; i++ ) {
         if ( this.controlPoints[ i ].sourcePositionProperty.value.x > best ) {
           best = this.controlPoints[ i ].sourcePositionProperty.value.x;
         }
@@ -527,7 +527,7 @@ define( require => {
     },
 
     containsControlPoint: function( controlPoint ) {
-      for ( var i = 0; i < this.controlPoints.length; i++ ) {
+      for ( let i = 0; i < this.controlPoints.length; i++ ) {
         if ( this.controlPoints[ i ] === controlPoint ) {
           return true;
         }
@@ -541,8 +541,8 @@ define( require => {
     returnToControlPanel: function() {
       if ( this.parents ) {
         this.modelTracks.remove( this );
-        for ( var i = 0; i < this.parents.length; i++ ) {
-          var parent = this.parents[ i ];
+        for ( let i = 0; i < this.parents.length; i++ ) {
+          const parent = this.parents[ i ];
           parent.reset();
           this.modelTracks.add( parent );
         }
@@ -569,18 +569,18 @@ define( require => {
 
       // Discrepancy with original version: original version had 10 subdivisions here.  We have reduced it to improve
       // performance at the cost of numerical precision
-      var numSegments = 4;
-      var da = ( u1 - u0 ) / ( numSegments - 1 );
-      var prevX = SplineEvaluation.atNumber( this.xSpline, u0 );
-      var prevY = SplineEvaluation.atNumber( this.ySpline, u0 );
-      var sum = 0;
-      for ( var i = 1; i < numSegments; i++ ) {
-        var a = u0 + i * da;
-        var ptX = SplineEvaluation.atNumber( this.xSpline, a );
-        var ptY = SplineEvaluation.atNumber( this.ySpline, a );
+      const numSegments = 4;
+      const da = ( u1 - u0 ) / ( numSegments - 1 );
+      let prevX = SplineEvaluation.atNumber( this.xSpline, u0 );
+      let prevY = SplineEvaluation.atNumber( this.ySpline, u0 );
+      let sum = 0;
+      for ( let i = 1; i < numSegments; i++ ) {
+        const a = u0 + i * da;
+        const ptX = SplineEvaluation.atNumber( this.xSpline, a );
+        const ptY = SplineEvaluation.atNumber( this.ySpline, a );
 
-        var dx = prevX - ptX;
-        var dy = prevY - ptY;
+        const dx = prevX - ptX;
+        const dy = prevY - ptY;
 
         sum += Math.sqrt( dx * dx + dy * dy );
         prevX = ptX;
@@ -596,15 +596,15 @@ define( require => {
      * @returns {number}
      */
     getParametricDistance: function( u0, ds ) {
-      var lowerBound = -1;
-      var upperBound = 2;
+      let lowerBound = -1;
+      let upperBound = 2;
 
-      var guess = ( upperBound + lowerBound ) / 2.0;
+      let guess = ( upperBound + lowerBound ) / 2.0;
 
-      var metricDelta = this.getArcLength( u0, guess );
-      var epsilon = 1E-8; // ORIGINAL ENERGY SKATE PARK BASICS HAD VALUE 1E-8
+      let metricDelta = this.getArcLength( u0, guess );
+      const epsilon = 1E-8; // ORIGINAL ENERGY SKATE PARK BASICS HAD VALUE 1E-8
 
-      var count = 0;
+      let count = 0;
       while ( Math.abs( metricDelta - ds ) > epsilon ) {
         if ( metricDelta > ds ) {
           upperBound = guess;
@@ -645,21 +645,21 @@ define( require => {
         this.ySplineDiffDiff = this.ySplineDiff.diff();
       }
 
-      var xP = SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition );
-      var xPP = SplineEvaluation.atNumber( this.xSplineDiffDiff, parametricPosition );
-      var yP = SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition );
-      var yPP = SplineEvaluation.atNumber( this.ySplineDiffDiff, parametricPosition );
+      const xP = SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition );
+      const xPP = SplineEvaluation.atNumber( this.xSplineDiffDiff, parametricPosition );
+      const yP = SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition );
+      const yPP = SplineEvaluation.atNumber( this.ySplineDiffDiff, parametricPosition );
 
-      var k = ( xP * yPP - yP * xPP ) /
+      const k = ( xP * yPP - yP * xPP ) /
               Math.pow( ( xP * xP + yP * yP ), 3 / 2 );
 
       // Using component-wise maths to avoid allocations, see #50
-      var centerX = this.getX( parametricPosition );
-      var centerY = this.getY( parametricPosition );
+      const centerX = this.getX( parametricPosition );
+      const centerY = this.getY( parametricPosition );
 
-      var unitNormalVector = this.getUnitNormalVector( parametricPosition );
-      var vectorX = unitNormalVector.x / k + centerX;
-      var vectorY = unitNormalVector.y / k + centerY;
+      const unitNormalVector = this.getUnitNormalVector( parametricPosition );
+      const vectorX = unitNormalVector.x / k + centerX;
+      const vectorY = unitNormalVector.y / k + centerY;
 
       curvature.r = 1 / k;
       curvature.x = vectorX;
@@ -674,9 +674,9 @@ define( require => {
         this.ySearchPoints = SplineEvaluation.atArray( this.ySpline, this.searchLinSpace );
       }
 
-      var min = Number.POSITIVE_INFINITY;
-      var minIndex = -1;
-      var y;
+      let min = Number.POSITIVE_INFINITY;
+      let minIndex = -1;
+      let y;
       for ( var i = 0; i < this.ySearchPoints.length; i++ ) {
         y = this.ySearchPoints[ i ];
         if ( y < min ) {
@@ -686,13 +686,13 @@ define( require => {
       }
 
       // Increase resolution in the neighborhood of y
-      var foundU = this.searchLinSpace[ minIndex ];
+      const foundU = this.searchLinSpace[ minIndex ];
 
-      var minBound = foundU - this.distanceBetweenSamplePoints;
-      var maxBound = foundU + this.distanceBetweenSamplePoints;
+      const minBound = foundU - this.distanceBetweenSamplePoints;
+      const maxBound = foundU + this.distanceBetweenSamplePoints;
 
-      var smallerSpace = numeric.linspace( minBound, maxBound, 200 );
-      var refinedSearchPoints = SplineEvaluation.atArray( this.ySpline, smallerSpace );
+      const smallerSpace = numeric.linspace( minBound, maxBound, 200 );
+      const refinedSearchPoints = SplineEvaluation.atArray( this.ySpline, smallerSpace );
 
       min = Number.POSITIVE_INFINITY;
       for ( i = 0; i < refinedSearchPoints.length; i++ ) {
@@ -708,7 +708,7 @@ define( require => {
     // If any part of the track is below ground, move the whole track up so it rests at y=0 at its minimum, see #71
     // Called when user releases track or a control point after dragging
     bumpAboveGround: function() {
-      var lowestY = this.getLowestY();
+      const lowestY = this.getLowestY();
       if ( lowestY < 0 ) {
         this.translate( 0, -lowestY );
       }
@@ -727,10 +727,10 @@ define( require => {
      * @private
      */
     containControlPointsInAvailableBounds: function( bounds ) {
-      for ( var i = 0; i < this.controlPoints.length; i++ ) {
-        var currentLocation = this.controlPoints[ i ].positionProperty.get();
+      for ( let i = 0; i < this.controlPoints.length; i++ ) {
+        const currentLocation = this.controlPoints[ i ].positionProperty.get();
         if ( !bounds.containsPoint( currentLocation ) ) {
-          var newPoint = bounds.getClosestPoint( currentLocation.x, currentLocation.y );
+          const newPoint = bounds.getClosestPoint( currentLocation.x, currentLocation.y );
 
           // set the control point "source" position to the new point - this is the unsnapped position, see
           // ControlPoint.js
@@ -752,7 +752,7 @@ define( require => {
      *                                  (for performance, you might chose to wait and do this later)
      */
     containControlPointsInLimitBounds: function( updateSplines ) {
-      for ( var i = 0; i < this.controlPoints.length; i++ ) {
+      for ( let i = 0; i < this.controlPoints.length; i++ ) {
         const controlPoint = this.controlPoints[ i ];
         const limitBounds = controlPoint.limitBounds;
         const currentPosition = controlPoint.positionProperty.get();
@@ -779,28 +779,28 @@ define( require => {
       assert && assert( i >= 0 && i < this.controlPoints.length );
       assert && assert( this.availableModelBoundsProperty );
 
-      var availableModelBounds = this.availableModelBoundsProperty.value;
+      const availableModelBounds = this.availableModelBoundsProperty.value;
       assert && assert( availableModelBounds );
 
-      var success = false;
-      var numTries = 0;
+      let success = false;
+      let numTries = 0;
 
       // Record the original control point location
-      var originalX = this.controlPoints[ i ].sourcePositionProperty.value.x;
-      var originalY = this.controlPoints[ i ].sourcePositionProperty.value.y;
+      const originalX = this.controlPoints[ i ].sourcePositionProperty.value.x;
+      const originalY = this.controlPoints[ i ].sourcePositionProperty.value.y;
 
       // Spiral outward, searching for a point that gives a smooth enough track.
-      var distance = 0.01;
-      var angle = 0;
-      var MAX_TRIES = 80;
-      var MAXIMUM_ACCEPTABLE_RADIUS_OF_CURVATURE = 0.03;
+      let distance = 0.01;
+      let angle = 0;
+      const MAX_TRIES = 80;
+      const MAXIMUM_ACCEPTABLE_RADIUS_OF_CURVATURE = 0.03;
 
       while ( this.getMinimumRadiusOfCurvature() < MAXIMUM_ACCEPTABLE_RADIUS_OF_CURVATURE && numTries < MAX_TRIES ) {
-        var delta = Vector2.createPolar( distance, angle );
-        var proposedPosition = delta.plusXY( originalX, originalY );
+        const delta = Vector2.createPolar( distance, angle );
+        const proposedPosition = delta.plusXY( originalX, originalY );
 
         // Only search within the visible model bounds, see #195
-        var containsPoint = availableModelBounds.containsPoint( proposedPosition );
+        const containsPoint = availableModelBounds.containsPoint( proposedPosition );
         if ( containsPoint ) {
           this.controlPoints[ i ].sourcePositionProperty.value = proposedPosition;
           this.updateSplines();
@@ -831,16 +831,16 @@ define( require => {
     smoothPointOfHighestCurvature: function( indicesToIgnore ) {
 
       // Find the sharpest turn on the track
-      var highestCurvatureU = this.getUWithHighestCurvature();
+      const highestCurvatureU = this.getUWithHighestCurvature();
 
       // find the point closest (in parametric coordinates) to the sharpest turn, but not including the indexToIgnore
       // it looks like the control points are equally spaced in parametric coordinates (see the constructor)
-      var bestDistance = Number.POSITIVE_INFINITY;
-      var bestIndex = -1;
-      for ( var i = 0; i < this.controlPoints.length; i++ ) {
+      let bestDistance = Number.POSITIVE_INFINITY;
+      let bestIndex = -1;
+      for ( let i = 0; i < this.controlPoints.length; i++ ) {
         if ( indicesToIgnore.indexOf( i ) === -1 ) {
-          var controlPointU = i / this.controlPoints.length;
-          var distanceFromHighestCurvature = Math.abs( highestCurvatureU - controlPointU );
+          const controlPointU = i / this.controlPoints.length;
+          const distanceFromHighestCurvature = Math.abs( highestCurvatureU - controlPointU );
           if ( distanceFromHighestCurvature < bestDistance ) {
             bestDistance = distanceFromHighestCurvature;
             bestIndex = i;
@@ -849,7 +849,7 @@ define( require => {
       }
 
       // If smoothing succeeded, all is well, otherwise try smoothing based on another point, see #198
-      var success = this.smooth( bestIndex );
+      const success = this.smooth( bestIndex );
       if ( success ) {
         return true;
       }
@@ -867,17 +867,17 @@ define( require => {
     getUWithHighestCurvature: function() {
       // Below implementation copied from getMinimumRadiusOfCurvature.  It is a CPU demanding task, so kept separate to
       // keep the other one fast. Should be kept in sync manually
-      var curvature = { r: 0, x: 0, y: 0 };
-      var minRadius = Number.POSITIVE_INFINITY;
-      var bestU = 0;
+      const curvature = { r: 0, x: 0, y: 0 };
+      let minRadius = Number.POSITIVE_INFINITY;
+      let bestU = 0;
 
       // Search the entire space of the spline.  Larger number of divisions was chosen to prevent large curvatures at a
       // single sampling point.
-      var numDivisions = 400;
-      var du = ( this.maxPoint - this.minPoint ) / numDivisions;
-      for ( var parametricPosition = this.minPoint; parametricPosition < this.maxPoint; parametricPosition += du ) {
+      const numDivisions = 400;
+      const du = ( this.maxPoint - this.minPoint ) / numDivisions;
+      for ( let parametricPosition = this.minPoint; parametricPosition < this.maxPoint; parametricPosition += du ) {
         this.getCurvature( parametricPosition, curvature );
-        var r = Math.abs( curvature.r );
+        const r = Math.abs( curvature.r );
         if ( r < minRadius ) {
           minRadius = r;
           bestU = parametricPosition;
@@ -891,16 +891,16 @@ define( require => {
      * @returns {number} the minimum radius of curvature along the track, in meters.
      */
     getMinimumRadiusOfCurvature: function() {
-      var curvature = { r: 0, x: 0, y: 0 };
-      var minRadius = Number.POSITIVE_INFINITY;
+      const curvature = { r: 0, x: 0, y: 0 };
+      let minRadius = Number.POSITIVE_INFINITY;
 
       // Search the entire space of the spline.  Larger number of divisions was chosen to prevent large curvatures at a
       // single sampling point.
-      var numDivisions = 400;
-      var du = ( this.maxPoint - this.minPoint ) / numDivisions;
-      for ( var parametricPosition = this.minPoint; parametricPosition < this.maxPoint; parametricPosition += du ) {
+      const numDivisions = 400;
+      const du = ( this.maxPoint - this.minPoint ) / numDivisions;
+      for ( let parametricPosition = this.minPoint; parametricPosition < this.maxPoint; parametricPosition += du ) {
         this.getCurvature( parametricPosition, curvature );
-        var r = Math.abs( curvature.r );
+        const r = Math.abs( curvature.r );
         if ( r < minRadius ) {
           minRadius = r;
         }
@@ -915,7 +915,7 @@ define( require => {
     },
 
     set position( newPosition ) {
-      var delta = newPosition.minus( this.position );
+      const delta = newPosition.minus( this.position );
       this.translate( delta.x, delta.y );
     },
 
@@ -924,9 +924,9 @@ define( require => {
     },
 
     getDebugString: function() {
-      var string = 'var controlPoints = [';
-      for ( var i = 0; i < this.controlPoints.length; i++ ) {
-        var controlPoint = this.controlPoints[ i ];
+      let string = 'var controlPoints = [';
+      for ( let i = 0; i < this.controlPoints.length; i++ ) {
+        const controlPoint = this.controlPoints[ i ];
         string += 'new ControlPoint(' + controlPoint.positionProperty.value.x + ',' + controlPoint.positionProperty.value.y + ')';
         if ( i < this.controlPoints.length - 1 ) {
           string += ',';

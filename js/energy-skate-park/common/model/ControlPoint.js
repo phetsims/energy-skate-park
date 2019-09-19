@@ -32,7 +32,7 @@ define( require => {
    * @constructor
    */
   function ControlPoint( x, y, options ) {
-    var self = this;
+    const self = this;
 
     options = _.extend( {
 
@@ -47,7 +47,7 @@ define( require => {
       phetioType: ControlPointIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
     }, options );
-    var tandem = options.tandem;
+    const tandem = options.tandem;
 
     // @public (read-only) {Bounds2|null} - see option for information
     this.limitBounds = options.limitBounds;

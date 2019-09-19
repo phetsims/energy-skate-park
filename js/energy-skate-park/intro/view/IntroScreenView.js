@@ -23,7 +23,7 @@ define( require => {
    */
   function IntroScreenView( model, tandem ) {
 
-    var introControls = [
+    const introControls = [
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
       new GravitySlider( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) )
     ];

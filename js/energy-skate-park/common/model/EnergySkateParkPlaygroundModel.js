@@ -18,7 +18,7 @@ define( require => {
 
   // Control points are replenished in the toolbox as they are destroyed (by connecting) in the play area
   // This is the maximum number of control points available to the user.
-  var MAX_NUMBER_CONTROL_POINTS = 15;
+  const MAX_NUMBER_CONTROL_POINTS = 15;
 
   /**
    * @constructor
@@ -42,7 +42,7 @@ define( require => {
     assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
     options.tracksConfigurable = true;
 
-    var draggableTracks = true; // TODO: Get rid of this param?
+    const draggableTracks = true; // TODO: Get rid of this param?
     EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem, options );
 
     // @private {Vector2} - see options for documentation
@@ -64,7 +64,7 @@ define( require => {
     addDraggableTracks: function() {
 
       // 3 points per track
-      for ( var i = 0; i < MAX_NUMBER_CONTROL_POINTS / 3; i++ ) {
+      for ( let i = 0; i < MAX_NUMBER_CONTROL_POINTS / 3; i++ ) {
         this.addDraggableTrack();
       }
     },
@@ -76,14 +76,14 @@ define( require => {
      */
     addDraggableTrack: function() {
 
-      var controlPointGroupTandem = this.controlPointGroupTandem;
-      var trackGroupTandem = this.trackGroupTandem;
+      const controlPointGroupTandem = this.controlPointGroupTandem;
+      const trackGroupTandem = this.trackGroupTandem;
 
       // Move the tracks over so they will be in the right position in the view coordinates, under the grass to the left
       // of the clock controls.  Could use view transform for this, but it would require creating the view first, so just
       // eyeballing it for now.
-      var offset = this.initialTracksOffsetVector;
-      var controlPoints = [
+      const offset = this.initialTracksOffsetVector;
+      const controlPoints = [
         new ControlPoint( offset.x - 1, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } ),
         new ControlPoint( offset.x, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } ),
         new ControlPoint( offset.x + 1, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } )

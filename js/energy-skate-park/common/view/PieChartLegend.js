@@ -45,7 +45,7 @@ define( require => {
     }, options );
 
     // The x-coordinate of a bar chart bar
-    var createLabel = function( index, title, color, tandemName ) {
+    const createLabel = function( index, title, color, tandemName ) {
       return new Text( title, {
         tandem: tandem.createTandem( tandemName ),
         fill: color,
@@ -55,7 +55,7 @@ define( require => {
       } );
     };
 
-    var createBar = function( index, color ) {
+    const createBar = function( index, color ) {
       return new Rectangle( 0, 0, 16.5, 16.5, {
         fill: color,
         stroke: 'black',
@@ -63,17 +63,17 @@ define( require => {
       } );
     };
 
-    var kineticBar = createBar( 0, EnergySkateParkColorScheme.kineticEnergy );
-    var potentialBar = createBar( 1, EnergySkateParkColorScheme.potentialEnergy );
-    var thermalBar = createBar( 2, EnergySkateParkColorScheme.thermalEnergy );
-    var totalBar = createBar( 3, EnergySkateParkColorScheme.totalEnergy );
+    const kineticBar = createBar( 0, EnergySkateParkColorScheme.kineticEnergy );
+    const potentialBar = createBar( 1, EnergySkateParkColorScheme.potentialEnergy );
+    const thermalBar = createBar( 2, EnergySkateParkColorScheme.thermalEnergy );
+    const totalBar = createBar( 3, EnergySkateParkColorScheme.totalEnergy );
 
-    var kineticLabel = createLabel( 0, energyKineticString, EnergySkateParkColorScheme.kineticEnergy, 'kineticEnergyLabel' );
-    var potentialLabel = createLabel( 1, energyPotentialString, EnergySkateParkColorScheme.potentialEnergy, 'potentialEnergyLabel' );
-    var thermalLabel = createLabel( 2, energyThermalString, EnergySkateParkColorScheme.thermalEnergy, 'thermalEnergyLabel' );
-    var totalLabel = createLabel( 3, energyTotalString, EnergySkateParkColorScheme.totalEnergy, 'totalEnergyLabel' );
+    const kineticLabel = createLabel( 0, energyKineticString, EnergySkateParkColorScheme.kineticEnergy, 'kineticEnergyLabel' );
+    const potentialLabel = createLabel( 1, energyPotentialString, EnergySkateParkColorScheme.potentialEnergy, 'potentialEnergyLabel' );
+    const thermalLabel = createLabel( 2, energyThermalString, EnergySkateParkColorScheme.thermalEnergy, 'thermalEnergyLabel' );
+    const totalLabel = createLabel( 3, energyTotalString, EnergySkateParkColorScheme.totalEnergy, 'totalEnergyLabel' );
 
-    var clearThermalButton = new MoveToTrashButton( {
+    const clearThermalButton = new MoveToTrashButton( {
       arrowColor: EnergySkateParkColorScheme.thermalEnergy,
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: clearThermal,
@@ -87,9 +87,9 @@ define( require => {
 
     // Don't let the MoveToTrashButton participate in the layout since it is too big vertically.  Just use a strut to
     // get the width right, then add the undo button later
-    var clearThermalButtonStrut = new Rectangle( 0, 0, clearThermalButton.width, 1, {} );
+    const clearThermalButtonStrut = new Rectangle( 0, 0, clearThermalButton.width, 1, {} );
 
-    var children = [
+    const children = [
       new HBox( { spacing: 4, children: [ kineticBar, kineticLabel ] } ),
       new HBox( { spacing: 4, children: [ potentialBar, potentialLabel ] } ),
       new HBox( {
@@ -104,16 +104,16 @@ define( require => {
 
     children.push( new VStrut( 1 ) );
 
-    var contentNode = new VBox( { spacing: 5, align: 'left', children: children } );
+    const contentNode = new VBox( { spacing: 5, align: 'left', children: children } );
 
-    var titleNode = new Text( energyEnergyString, {
+    const titleNode = new Text( energyEnergyString, {
       tandem: tandem.createTandem( 'titleNode' ),
       fill: 'black',
       font: new PhetFont( 14 ),
       pickable: false,
       maxWidth: 93 // selected by choosing the length of widest English string in ?stringTest=double
     } );
-    var contentWithTitle = new VBox( {
+    const contentWithTitle = new VBox( {
       spacing: 5, align: 'center', children: [
         titleNode,
         contentNode
@@ -134,8 +134,8 @@ define( require => {
       } );
 
     this.addChild( clearThermalButton );
-    var strutGlobal = clearThermalButtonStrut.parentToGlobalPoint( clearThermalButtonStrut.center );
-    var buttonLocal = clearThermalButton.globalToParentPoint( strutGlobal );
+    const strutGlobal = clearThermalButtonStrut.parentToGlobalPoint( clearThermalButtonStrut.center );
+    const buttonLocal = clearThermalButton.globalToParentPoint( strutGlobal );
     clearThermalButton.center = buttonLocal;
 
     pieChartVisibleProperty.linkAttribute( this, 'visible' );

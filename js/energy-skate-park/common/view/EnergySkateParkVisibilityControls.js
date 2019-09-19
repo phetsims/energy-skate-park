@@ -50,8 +50,8 @@ define( require => {
       itemOptions: null
     }, options );
 
-    var itemAlignGroup = new AlignGroup();
-    var checkboxItems = [];
+    const itemAlignGroup = new AlignGroup();
+    const checkboxItems = [];
 
     if ( options.showSkaterPathCheckbox ) {
       assert && assert( model.sampleSkaterProperty, 'no Property for measuring samples, add to model or dont show this' );

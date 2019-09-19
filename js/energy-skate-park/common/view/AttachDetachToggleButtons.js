@@ -21,7 +21,7 @@ define( require => {
   const detachIcon = require( 'image!ENERGY_SKATE_PARK/detach.png' );
 
   // constants
-  var SELECTED_LINE_WIDTH = 2.3;
+  const SELECTED_LINE_WIDTH = 2.3;
 
   /**
    * Constructor for the AttachDetachToggleButtons
@@ -42,13 +42,13 @@ define( require => {
       yMargin: 5
     }, options );
 
-    var scale = 0.32;
+    const scale = 0.32;
 
     // This is sort of hack to pass through the tandem of the radioButtonGroupMember to its child.
-    var attachRadioButtonTandemName = 'attachRadioButton';
-    var detachRadioButtonTandemName = 'detachRadioButton';
-    var radioButtonGroupTandem = tandem.createTandem( 'radioButtonGroup' );
-    var radioButtonsContent = [
+    const attachRadioButtonTandemName = 'attachRadioButton';
+    const detachRadioButtonTandemName = 'detachRadioButton';
+    const radioButtonGroupTandem = tandem.createTandem( 'radioButtonGroup' );
+    const radioButtonsContent = [
       {
         value: true,
         node: new Image( attachIcon, {
@@ -67,10 +67,10 @@ define( require => {
       }
     ];
 
-    var buttonSpacing = contentWidth - ( options.xMargin * 2 ) - ( radioButtonsContent[ 0 ].node.width * 2 ) - SELECTED_LINE_WIDTH * 2; 
+    const buttonSpacing = contentWidth - ( options.xMargin * 2 ) - ( radioButtonsContent[ 0 ].node.width * 2 ) - SELECTED_LINE_WIDTH * 2; 
     assert && assert( buttonSpacing > 0, 'buttons must have non zero spacing' );
 
-    var radioButtons = new RadioButtonGroup( stickingToTrackProperty, radioButtonsContent,
+    const radioButtons = new RadioButtonGroup( stickingToTrackProperty, radioButtonsContent,
       {
         buttonContentXMargin: 0,
         buttonContentYMargin: 0,
@@ -85,7 +85,7 @@ define( require => {
         tandem: radioButtonGroupTandem
       } );
 
-    var panelOptions = _.extend( { tandem: tandem }, options );
+    const panelOptions = _.extend( { tandem: tandem }, options );
     Panel.call( this, radioButtons, panelOptions );
   }
 

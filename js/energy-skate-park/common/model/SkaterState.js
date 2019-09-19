@@ -18,7 +18,7 @@ define( require => {
   const Vector2 = require( 'DOT/Vector2' );
 
   // constants
-  var EMPTY_OBJECT = {};
+  const EMPTY_OBJECT = {};
 
   /**
    * Create a SkaterSate from a SkaterState or Skater
@@ -32,7 +32,7 @@ define( require => {
 
   energySkatePark.register( 'SkaterState', SkaterState );
 
-  var getValue = function( key, source, overrides ) {
+  const getValue = function( key, source, overrides ) {
     return key in overrides ? overrides[ key ] :
            typeof source[ key + 'Property' ] === 'object' ? source[ key + 'Property' ].value :
            source[ key ];
@@ -175,7 +175,7 @@ define( require => {
      * @returns {SkaterState} 
      */
     updateTrackUD: function( track, parametricSpeed ) {
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.track = track;
       state.parametricSpeed = parametricSpeed;
       return state;
@@ -194,7 +194,7 @@ define( require => {
      * @returns {SkaterState}
      */
     updateUUDVelocityPosition: function( parametricPosition, parametricSpeed, velocityX, velocityY, positionX, positionY ) {
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.parametricPosition = parametricPosition;
       state.parametricSpeed = parametricSpeed;
       state.velocityX = velocityX;
@@ -216,7 +216,7 @@ define( require => {
      * @returns {SkaterState}
      */
     updatePositionAngleUpVelocity: function( positionX, positionY, angle, onTopSideOfTrack, velocityX, velocityY ) {
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.angle = angle;
       state.onTopSideOfTrack = onTopSideOfTrack;
       state.velocityX = velocityX;
@@ -235,7 +235,7 @@ define( require => {
     updateThermalEnergy: function( thermalEnergy ) {
       assert && assert( thermalEnergy >= 0 );
 
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.thermalEnergy = thermalEnergy;
       return state;
     },
@@ -249,7 +249,7 @@ define( require => {
      * @returns {SkaterState}
      */
     updateUPosition: function( parametricPosition, positionX, positionY ) {
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.parametricPosition = parametricPosition;
       state.positionX = positionX;
       state.positionY = positionY;
@@ -270,7 +270,7 @@ define( require => {
     switchToGround: function( thermalEnergy, velocityX, velocityY, positionX, positionY ) {
       assert && assert( thermalEnergy >= 0 );
 
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.thermalEnergy = thermalEnergy;
       state.track = null;
       state.onTopSideOfTrack = true;
@@ -292,7 +292,7 @@ define( require => {
     strikeGround: function( thermalEnergy, positionX ) {
       assert && assert( thermalEnergy >= 0 );
 
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.thermalEnergy = thermalEnergy;
       state.positionX = positionX;
       state.positionY = 0;
@@ -317,7 +317,7 @@ define( require => {
      * @returns {SkaterState}
      */
     leaveTrack: function() {
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.parametricSpeed = 0;
       state.track = null;
       return state;
@@ -331,7 +331,7 @@ define( require => {
      * @returns {SkaterState}
      */
     updatePosition: function( positionX, positionY ) {
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.positionX = positionX;
       state.positionY = positionY;
       return state;
@@ -347,7 +347,7 @@ define( require => {
      * @returns {SkaterState}
      */
     updateUDVelocity: function( parametricSpeed, velocityX, velocityY ) {
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.parametricSpeed = parametricSpeed;
       state.velocityX = velocityX;
       state.velocityY = velocityY;
@@ -366,7 +366,7 @@ define( require => {
      * @returns {SkaterState}
      */
     continueFreeFall: function( velocityX, velocityY, positionX, positionY ) {
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.velocityX = velocityX;
       state.velocityY = velocityY;
       state.positionX = positionX;
@@ -391,7 +391,7 @@ define( require => {
     attachToTrack: function( thermalEnergy, track, onTopSideOfTrack, parametricPosition, parametricSpeed, velocityX, velocityY, positionX, positionY ) {
       assert && assert( thermalEnergy >= 0 );
 
-      var state = new SkaterState( this, EMPTY_OBJECT );
+      const state = new SkaterState( this, EMPTY_OBJECT );
       state.thermalEnergy = thermalEnergy;
       state.track = track;
       state.onTopSideOfTrack = onTopSideOfTrack;

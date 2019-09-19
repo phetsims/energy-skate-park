@@ -30,7 +30,7 @@ define( require => {
 
     EnergySkateParkScreenView.call( this, model, controls, tandem, options );
 
-    var trackNodes = model.tracks.getArray().map( track => {
+    const trackNodes = model.tracks.getArray().map( track => {
       return new TrackNode( model, track, this.modelViewTransform, this.availableModelBoundsProperty, this.trackNodeGroupTandem.createNextTandem() );
     } );
 

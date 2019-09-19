@@ -29,7 +29,7 @@ define( require => {
     // parent for combo boxes - would use the ScreenView but `this` isn't available until after super call
     const comboBoxParent = new Node();
 
-    var labControls = [
+    const labControls = [
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
       new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) ),
       new MassComboBox( model.skater.massProperty, model.resetEmitter, comboBoxParent, tandem.createTandem( 'massComboBox' ) ),

@@ -223,7 +223,7 @@ define( require => {
         p3Draggable: false
       } );
 
-      var parabolaTrack = PremadeTracks.createTrack( this, this.tracks, parabolaControlPoints, this.availableModelBoundsProperty, {
+      const parabolaTrack = PremadeTracks.createTrack( this, this.tracks, parabolaControlPoints, this.availableModelBoundsProperty, {
         configurable: this.tracksConfigurable,
         tandem: tandem.createTandem( 'parabolaTrack' ),
         phetioState: false

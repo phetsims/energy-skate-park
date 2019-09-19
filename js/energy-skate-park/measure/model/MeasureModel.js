@@ -23,7 +23,7 @@ define( require => {
 
   // constants
   // in seconds, how frequently we will sample the state of the skater and add to the list of SkaterSamples.
-  var SAVE_REFRESH_RATE = 0.1;
+  const SAVE_REFRESH_RATE = 0.1;
 
   /**
    * @constructor
@@ -58,7 +58,7 @@ define( require => {
     this.speedValueVisibleProperty.set( true );
 
     // TODO: Probably more Properties here
-    var resetSamplesProperties = [
+    const resetSamplesProperties = [
       this.skater.directionProperty,
       this.skater.trackProperty,
       this.skater.referenceHeightProperty,
@@ -66,9 +66,9 @@ define( require => {
       this.skater.draggingProperty
     ];
 
-    var self = this;
+    const self = this;
     Property.multilink( resetSamplesProperties, function() {
-      for ( var i = 0; i < self.skaterSamples.length; i++ ) {
+      for ( let i = 0; i < self.skaterSamples.length; i++ ) {
         if ( !self.skaterSamples.get( i ).removeInitiated ) {
           self.skaterSamples.get( i ).initiateRemove();
         }
@@ -116,7 +116,7 @@ define( require => {
      * @returns {SkaterState} - returned, may update the model Skater
      */
     stepModel: function( dt, skaterState ) {
-      var updatedState = EnergySkateParkFullTrackSetModel.prototype.stepModel.call( this, dt, skaterState );
+      const updatedState = EnergySkateParkFullTrackSetModel.prototype.stepModel.call( this, dt, skaterState );
 
       if ( this.sampleSkaterProperty.get() ) {
         if ( this.skater.trackProperty.get() ) {
@@ -124,10 +124,10 @@ define( require => {
 
           if ( this.timeSinceSave > SAVE_REFRESH_RATE ) {
             this.timeSinceSave = 0;
-            var newSample = new SkaterSample( updatedState );
+            const newSample = new SkaterSample( updatedState );
 
             // add a listener that removes this sample from the list - removes this listener on removal as well
-            var self = this;
+            const self = this;
             var removalListener = function() {
               newSample.removalEmitter.removeListener( removalListener );
               self.skaterSamples.remove( newSample );

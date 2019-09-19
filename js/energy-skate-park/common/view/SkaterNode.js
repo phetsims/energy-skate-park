@@ -39,13 +39,13 @@ define( require => {
    */
   function SkaterNode( skater, view, modelViewTransform, getClosestTrackAndPositionAndParameter, getPhysicalTracks, tandem ) {
     this.skater = skater;
-    var self = this;
+    const self = this;
 
-    var leftSkaterImageNode = new Image( skaterLeftImage, {
+    const leftSkaterImageNode = new Image( skaterLeftImage, {
       cursor: 'pointer',
       tandem: tandem.createTandem( 'leftSkaterImageNode' )
     } );
-    var rightSkaterImageNode = new Image( skaterRightImage, {
+    const rightSkaterImageNode = new Image( skaterRightImage, {
       cursor: 'pointer',
       tandem: tandem.createTandem( 'rightSkaterImageNode' )
     } );
@@ -61,38 +61,38 @@ define( require => {
       rightSkaterImageNode.visible = direction === 'right';
     } );
 
-    var imageWidth = this.width;
-    var imageHeight = this.height;
+    const imageWidth = this.width;
+    const imageHeight = this.height;
 
     // @private - Map from mass(kg) to the amount to scale the image
-    var centerMassValue = skater.massRange.getCenter();
-    var massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.34, 0.43 );
+    const centerMassValue = skater.massRange.getCenter();
+    const massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.34, 0.43 );
 
     // Update the position and angle.  Normally the angle would only change if the position has also changed, so no need
     // for a duplicate callback there.  Uses pooling to avoid allocations, see #50
     this.skater.updatedEmitter.addListener( function() {
-      var mass = skater.massProperty.value;
-      var position = skater.positionProperty.value;
-      var angle = skater.angleProperty.value;
+      const mass = skater.massProperty.value;
+      const position = skater.positionProperty.value;
+      const angle = skater.angleProperty.value;
 
-      var view = modelViewTransform.modelToViewPosition( position );
+      const view = modelViewTransform.modelToViewPosition( position );
 
       // Translate to the desired location
-      var matrix = Matrix3.translation( view.x, view.y );
+      const matrix = Matrix3.translation( view.x, view.y );
 
       // Rotate about the pivot (bottom center of the skater)
-      var rotationMatrix = Matrix3.rotation2( angle );
+      const rotationMatrix = Matrix3.rotation2( angle );
       matrix.multiplyMatrix( rotationMatrix );
       rotationMatrix.freeToPool();
 
-      var scale = massToScale( mass );
-      var scalingMatrix = Matrix3.scaling( scale );
+      const scale = massToScale( mass );
+      const scalingMatrix = Matrix3.scaling( scale );
       matrix.multiplyMatrix( scalingMatrix );
       scalingMatrix.freeToPool();
 
       // Think of it as a multiplying the Vector2 to the right, so this step happens first actually.  Use it to center
       // the registration point
-      var translation = Matrix3.translation( -imageWidth / 2, -imageHeight );
+      const translation = Matrix3.translation( -imageWidth / 2, -imageHeight );
       matrix.multiplyMatrix( translation );
       translation.freeToPool();
 
@@ -100,34 +100,34 @@ define( require => {
     } );
 
     // Show a red dot in the bottom center as the important particle model coordinate
-    var circle = new Circle( 8, { fill: 'red', x: imageWidth / 2, y: imageHeight } );
+    const circle = new Circle( 8, { fill: 'red', x: imageWidth / 2, y: imageHeight } );
     this.addChild( circle );
 
-    var targetTrack = null;
+    let targetTrack = null;
 
-    var targetU = null;
+    let targetU = null;
 
     function dragSkater( event ) {
-      var globalPoint = self.globalToParentPoint( event.pointer.point );
-      var position = modelViewTransform.viewToModelPosition( globalPoint );
+      const globalPoint = self.globalToParentPoint( event.pointer.point );
+      let position = modelViewTransform.viewToModelPosition( globalPoint );
 
       // make sure it is within the visible bounds
       position = view.availableModelBounds.getClosestPoint( position.x, position.y, position );
 
       // PERFORMANCE/ALLOCATION: lots of unnecessary allocations and computation here, biggest improvement could be
       // to use binary search for position on the track
-      var closestTrackAndPositionAndParameter = getClosestTrackAndPositionAndParameter( position, getPhysicalTracks() );
-      var closeEnough = false;
+      const closestTrackAndPositionAndParameter = getClosestTrackAndPositionAndParameter( position, getPhysicalTracks() );
+      let closeEnough = false;
       if ( closestTrackAndPositionAndParameter && closestTrackAndPositionAndParameter.track && closestTrackAndPositionAndParameter.track.isParameterInBounds( closestTrackAndPositionAndParameter.parametricPosition ) ) {
-        var closestPoint = closestTrackAndPositionAndParameter.point;
-        var distance = closestPoint.distance( position );
+        const closestPoint = closestTrackAndPositionAndParameter.point;
+        const distance = closestPoint.distance( position );
         if ( distance < 0.5 ) {
           position = closestPoint;
           targetTrack = closestTrackAndPositionAndParameter.track;
           targetU = closestTrackAndPositionAndParameter.parametricPosition;
 
           // Choose the right side of the track, i.e. the side of the track that would have the skater upside up
-          var normal = targetTrack.getUnitNormalVector( targetU );
+          const normal = targetTrack.getUnitNormalVector( targetU );
           skater.onTopSideOfTrackProperty.value = normal.y > 0;
 
           skater.angleProperty.value = targetTrack.getViewAngleAt( targetU ) + (skater.onTopSideOfTrackProperty.value ? 0 : Math.PI);

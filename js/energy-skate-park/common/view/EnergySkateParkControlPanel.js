@@ -37,8 +37,8 @@ define( require => {
     assert && assert( controls.length > 0, 'control panel must include additional physical controls' );
 
     // controls that change visibility of items in the screen
-    var visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), visibilityControlsOptions );
-    var children = [ visibilityControls ];
+    const visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), visibilityControlsOptions );
+    const children = [ visibilityControls ];
 
     if ( screenView.showTrackButtons ) {
       children.push( new SceneSelectionRadioButtonGroup( model, screenView, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) ) );
@@ -57,13 +57,13 @@ define( require => {
       children.push( control );
     } );
 
-    var separatorWidth = _.maxBy( children, function( child ) { return child.width; } ).width;
+    const separatorWidth = _.maxBy( children, function( child ) { return child.width; } ).width;
     children.splice( children.indexOf( controls[ 0 ] ), 0, new HSeparator( separatorWidth ) );
     if ( screenView.showTrackButtons ) {
       children.splice( children.indexOf( visibilityControls ) + 1, 0, new HSeparator( separatorWidth ) );
     }
 
-    var content = new VBox( { resize: false, spacing: 8, children: children } );
+    const content = new VBox( { resize: false, spacing: 8, children: children } );
 
     Panel.call( this, content, {
       xMargin: 5,

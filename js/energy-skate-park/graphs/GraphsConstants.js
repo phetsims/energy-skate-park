@@ -11,9 +11,9 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
   // constants
-  var TIME_PER_SAMPLE = 1 / 60; // in seconds (assuming 60 fps, one sample per frame)
-  var RECORDED_TIME = 5; // recording 5 seconds of data
-  var MAX_SAMPLES = RECORDED_TIME / TIME_PER_SAMPLE;
+  const TIME_PER_SAMPLE = 1 / 60; // in seconds (assuming 60 fps, one sample per frame)
+  const RECORDED_TIME = 5; // recording 5 seconds of data
+  const MAX_SAMPLES = RECORDED_TIME / TIME_PER_SAMPLE;
 
   const GraphsConstants = {
     MAX_SAMPLES: MAX_SAMPLES,

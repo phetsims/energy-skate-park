@@ -21,9 +21,9 @@ define( require => {
    */
   function TrackDragHandler( trackNode, tandem ) {
     this.trackNode = trackNode;
-    var self = this;
+    const self = this;
     this.track = trackNode.track;
-    var track = trackNode.track;
+    const track = trackNode.track;
     this.model = trackNode.model;
     this.modelViewTransform = trackNode.modelViewTransform;
     this.availableBoundsProperty = trackNode.availableBoundsProperty;
@@ -38,7 +38,7 @@ define( require => {
     // Uses a similar strategy as MovableDragHandler but requires a separate implementation because its bounds are
     // determined by the shape of the track (so it cannot go below ground)
     // And so it can be dragged out of the toolbox but not back into it (so it won't be dragged below ground)
-    var trackSegmentDragHandlerOptions = {
+    const trackSegmentDragHandlerOptions = {
       tandem: tandem.createTandem( 'inputListener' ),
       allowTouchSnag: true,
 
@@ -84,9 +84,9 @@ define( require => {
       this.startedDrag = false;
     },
     trackDragged: function( event ) {
-      var snapTargetChanged = false;
-      var model = this.model;
-      var track = this.track;
+      let snapTargetChanged = false;
+      const model = this.model;
+      const track = this.track;
 
       // Check whether the model contains a track so that input listeners for detached elements can't create bugs, see #230
       if ( !model.containsTrack( track ) ) { return; }
@@ -95,24 +95,24 @@ define( require => {
       if ( !this.startedDrag ) {
         track.draggingProperty.value = true;
 
-        var startingPosition = this.modelViewTransform.modelToViewPosition( track.position );
+        const startingPosition = this.modelViewTransform.modelToViewPosition( track.position );
         this.startOffset = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( startingPosition );
         this.startedDrag = true;
       }
       track.draggingProperty.value = true;
 
-      var parentPoint = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( this.startOffset );
-      var location = this.modelViewTransform.viewToModelPosition( parentPoint );
+      const parentPoint = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( this.startOffset );
+      const location = this.modelViewTransform.viewToModelPosition( parentPoint );
 
       // If the user moved it out of the toolbox above y=0, then make it physically interactive
-      var bottomControlPointY = track.getBottomControlPointY();
+      const bottomControlPointY = track.getBottomControlPointY();
       if ( !track.physicalProperty.value && bottomControlPointY > 0 ) {
         track.physicalProperty.value = true;
       }
 
       // When dragging track, make sure the control points don't go below ground, see #71
-      var modelDelta = location.minus( track.position );
-      var translatedBottomControlPointY = bottomControlPointY + modelDelta.y;
+      const modelDelta = location.minus( track.position );
+      const translatedBottomControlPointY = bottomControlPointY + modelDelta.y;
 
       if ( track.physicalProperty.value && translatedBottomControlPointY < 0 ) {
         location.y += Math.abs( translatedBottomControlPointY );
@@ -121,22 +121,22 @@ define( require => {
       if ( this.availableBoundsProperty.value ) {
 
         // constrain each point to lie within the available bounds
-        var availableBounds = this.availableBoundsProperty.value;
+        const availableBounds = this.availableBoundsProperty.value;
 
         // Constrain the top
-        var topControlPointY = track.getTopControlPointY();
+        const topControlPointY = track.getTopControlPointY();
         if ( topControlPointY + modelDelta.y > availableBounds.maxY ) {
           location.y = availableBounds.maxY - (topControlPointY - track.position.y);
         }
 
         // Constrain the left side
-        var leftControlPointX = track.getLeftControlPointX();
+        const leftControlPointX = track.getLeftControlPointX();
         if ( leftControlPointX + modelDelta.x < availableBounds.minX ) {
           location.x = availableBounds.minX - (leftControlPointX - track.position.x);
         }
 
         // Constrain the right side
-        var rightControlPointX = track.getRightControlPointX();
+        const rightControlPointX = track.getRightControlPointX();
         if ( rightControlPointX + modelDelta.x > availableBounds.maxX ) {
           location.x = availableBounds.maxX - (rightControlPointX - track.position.x);
         }
@@ -145,27 +145,27 @@ define( require => {
       track.position = location;
 
       // If one of the control points is close enough to link to another track, do so
-      var tracks = model.getPhysicalTracks();
+      const tracks = model.getPhysicalTracks();
 
-      var bestDistance = null;
-      var myBestPoint = null;
-      var otherBestPoint = null;
+      let bestDistance = null;
+      let myBestPoint = null;
+      let otherBestPoint = null;
 
-      var points = [ track.controlPoints[ 0 ], track.controlPoints[ track.controlPoints.length - 1 ] ];
+      const points = [ track.controlPoints[ 0 ], track.controlPoints[ track.controlPoints.length - 1 ] ];
 
-      for ( var i = 0; i < tracks.length; i++ ) {
-        var t = tracks[ i ];
+      for ( let i = 0; i < tracks.length; i++ ) {
+        const t = tracks[ i ];
         if ( t !== track ) {
 
           // 4 cases 00, 01, 10, 11
-          var otherPoints = [ t.controlPoints[ 0 ], t.controlPoints[ t.controlPoints.length - 1 ] ];
+          const otherPoints = [ t.controlPoints[ 0 ], t.controlPoints[ t.controlPoints.length - 1 ] ];
 
           // don't match inner points
-          for ( var j = 0; j < points.length; j++ ) {
-            var point = points[ j ];
-            for ( var k = 0; k < otherPoints.length; k++ ) {
-              var otherPoint = otherPoints[ k ];
-              var distance = point.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
+          for ( let j = 0; j < points.length; j++ ) {
+            const point = points[ j ];
+            for ( let k = 0; k < otherPoints.length; k++ ) {
+              const otherPoint = otherPoints[ k ];
+              const distance = point.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
               if ( (bestDistance === null && distance > 1E-6) || (distance < bestDistance ) ) {
                 bestDistance = distance;
                 myBestPoint = point;
@@ -183,7 +183,7 @@ define( require => {
         myBestPoint.snapTargetProperty.value = otherBestPoint;
 
         // Set the opposite point to be unsnapped, you can only snap one at a time
-        var source = (myBestPoint === points[ 0 ] ? points[ 1 ] : points[ 0 ]);
+        const source = (myBestPoint === points[ 0 ] ? points[ 1 ] : points[ 0 ]);
         if ( source.snapTargetProperty.value !== null ) {
           snapTargetChanged = true;
         }
@@ -213,8 +213,8 @@ define( require => {
       model.trackModified( track );
     },
     trackDragEnded: function( event ) {
-      var track = this.track;
-      var model = this.model;
+      const track = this.track;
+      const model = this.model;
 
       // If dropped in the play area, signify that it has been dropped--this will make it so that dragging the control points
       // reshapes the track instead of translating it
@@ -227,7 +227,7 @@ define( require => {
 
       // If the user never dragged the object, then there is no track to drop in this case, see #205
       if ( this.startedDrag ) {
-        var myPoints = [ track.controlPoints[ 0 ], track.controlPoints[ track.controlPoints.length - 1 ] ];
+        const myPoints = [ track.controlPoints[ 0 ], track.controlPoints[ track.controlPoints.length - 1 ] ];
         if ( myPoints[ 0 ].snapTargetProperty.value || myPoints[ 1 ].snapTargetProperty.value ) {
           model.joinTracks( track ); // Track will be joined to compatible track, then both will be disposed, and new track created.
         }

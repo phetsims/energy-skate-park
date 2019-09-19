@@ -14,35 +14,35 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
   // constants
-  var FastArray = dot.FastArray;
+  const FastArray = dot.FastArray;
 
   // The most important function for this sim in numeric.js is just too slow because it uses tensor versions of all functions.
   // This version inlines everything.
-  var _at = function( spline, x1, p ) {
-    var x = spline.x;
-    var yl = spline.yl;
-    var yr = spline.yr;
-    var kl = spline.kl;
-    var kr = spline.kr;
-    var a;
-    var b;
-    var t;
+  const _at = function( spline, x1, p ) {
+    const x = spline.x;
+    const yl = spline.yl;
+    const yr = spline.yr;
+    const kl = spline.kl;
+    const kr = spline.kr;
+    let a;
+    let b;
+    let t;
     a = (kl[ p ] * (x[ p + 1 ] - x[ p ])) - (yr[ p + 1 ] - yl[ p ]);
     b = kr[ p + 1 ] * (x[ p ] - x[ p + 1 ]) + yr[ p + 1 ] - yl[ p ];
     t = (x1 - x[ p ]) / (x[ p + 1 ] - x[ p ]);
-    var s = t * (1 - t);
+    const s = t * (1 - t);
     return ((1 - t) * yl[ p ] + t * yr[ p + 1 ] +
            a * s * (1 - t) ) +
            b * s * t;
   };
 
-  var atNumber = function( spline, x0 ) {
-    var x = spline.x;
-    var n = x.length;
-    var p;
-    var q;
-    var mid;
-    var floor = Math.floor;
+  const atNumber = function( spline, x0 ) {
+    const x = spline.x;
+    const n = x.length;
+    let p;
+    let q;
+    let mid;
+    const floor = Math.floor;
     p = 0;
     q = n - 1;
     while ( q - p > 1 ) {
@@ -57,17 +57,17 @@ define( require => {
     return _at( spline, x0, p );
   };
 
-  var atArray = function( spline, x0 ) {
-    var n = x0.length;
-    var i;
-    var ret = new FastArray( n );
+  const atArray = function( spline, x0 ) {
+    const n = x0.length;
+    let i;
+    const ret = new FastArray( n );
     for ( i = n - 1; i !== -1; --i ) {
       ret[ i ] = atNumber( spline, x0[ i ] );
     }
     return ret;
   };
 
-  var SplineEvaluation = { atNumber: atNumber, atArray: atArray };
+  const SplineEvaluation = { atNumber: atNumber, atArray: atArray };
 
   energySkatePark.register( 'SplineEvaluation', SplineEvaluation );
 

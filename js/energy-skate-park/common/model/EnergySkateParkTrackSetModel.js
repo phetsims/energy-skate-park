@@ -32,7 +32,7 @@ define( require => {
       limitPointBounds: false
     }, options );
 
-    var draggableTracks = false; // TODO: Can we get rid of this?
+    const draggableTracks = false; // TODO: Can we get rid of this?
     EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem.createTandem( 'trackSetModel' ), options );
 
     // @public {number} - Indicates the currently selected scene. There can be any number of scenes, do we need
@@ -58,7 +58,7 @@ define( require => {
      * @private
      */
     updateActiveTrack: function( scene ) {
-      for ( var i = 0; i < this.tracks.length; i++ ) {
+      for ( let i = 0; i < this.tracks.length; i++ ) {
         this.tracks.get( i ).physicalProperty.value = ( i === scene );
 
         // Reset the skater when the track is changed, see #179
@@ -108,19 +108,19 @@ define( require => {
       assert && assert( model instanceof EnergySkateParkTrackSetModel, 'PremadeTracks should be used with an EnergySkateParkTrackSetModel' );
       assert && assert( model.tracksDraggable === false, 'tracks should not be draggable in EnergySkateParkTrackSetModels' );
 
-      var parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem, {
+      const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem, {
         limitPointBounds: model.limitPointBounds
       } );
-      var parabolaTrack = PremadeTracks.createTrack( model, model.tracks, parabolaControlPoints, model.availableModelBoundsProperty, {
+      const parabolaTrack = PremadeTracks.createTrack( model, model.tracks, parabolaControlPoints, model.availableModelBoundsProperty, {
         configurable: model.tracksConfigurable,
         tandem: tandem.createTandem( 'parabolaTrack' ),
         phetioState: false
       } );
 
-      var slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem, {
+      const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem, {
         limitPointBounds: model.limitPointBounds
       } );
-      var slopeTrack = PremadeTracks.createTrack( model, model.tracks, slopeControlPoints, model.availableModelBoundsProperty, {
+      const slopeTrack = PremadeTracks.createTrack( model, model.tracks, slopeControlPoints, model.availableModelBoundsProperty, {
         configurable: model.tracksConfigurable,
         tandem: tandem.createTandem( 'slopeTrack' ),
         phetioState: false
@@ -130,10 +130,10 @@ define( require => {
       // see #164
       slopeTrack.slopeToGround = true;
 
-      var doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem, {
+      const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem, {
         limitPointBounds: model.limitPointBounds
       } );
-      var doubleWellTrack = PremadeTracks.createTrack( model, model.tracks, doubleWellControlPoints, model.availableModelBoundsProperty, {
+      const doubleWellTrack = PremadeTracks.createTrack( model, model.tracks, doubleWellControlPoints, model.availableModelBoundsProperty, {
         configurable: model.tracksConfigurable,
         tandem: tandem.createTandem( 'doubleWellTrack' ),
         phetioState: false

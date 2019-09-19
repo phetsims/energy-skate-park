@@ -22,13 +22,13 @@ define( require => {
   const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
 
   // constants
-  var PARENT_TRACKS = null;
+  const PARENT_TRACKS = null;
 
   // limiting bounds for dragging control points
-  var END_BOUNDS_WIDTH = 2;
-  var END_BOUNDS_HEIGHT = END_BOUNDS_WIDTH;
+  const END_BOUNDS_WIDTH = 2;
+  const END_BOUNDS_HEIGHT = END_BOUNDS_WIDTH;
 
-  var CREATOR_OPTIONS = {
+  const CREATOR_OPTIONS = {
 
     // {boolean} - premade tracks can have draggable control points, and setting this to true will limit
     // the drag bounds of control points for each track. Each control point can have unique bounds so limiting
@@ -44,7 +44,7 @@ define( require => {
    * @param  {number} height
    * @returns {Bounds2}
    */
-  var createCenteredLimitBounds = function( point, width, height ) {
+  const createCenteredLimitBounds = function( point, width, height ) {
     return new Bounds2( point.x - width / 2, point.y - height / 2, point.x + width / 2, point.y + height / 2 );
   };
 
@@ -73,13 +73,13 @@ define( require => {
         p3Draggable: true
       },CREATOR_OPTIONS, options );
 
-      var p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
-      var p2 = new Vector2( 0, 0 );
-      var p3 = new Vector2( options.trackWidth / 2, options.trackHeight );
+      const p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
+      const p2 = new Vector2( 0, 0 );
+      const p3 = new Vector2( options.trackWidth / 2, options.trackHeight );
 
-      var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
-      var p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 4, 2 );
-      var p3Bounds = createCenteredLimitBounds( p3, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      const p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 4, 2 );
+      const p3Bounds = createCenteredLimitBounds( p3, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       return [
         new ControlPoint( p1.x, p1.y, {
@@ -107,15 +107,15 @@ define( require => {
     createSlopeControlPoints: function( groupTandem, options ) {
       options = _.extend( CREATOR_OPTIONS, options );
 
-      var p1 = new Vector2( -4, 6 );
-      var p2 = new Vector2( -2, 1.2 );
-      var p3 = new Vector2( 2, 0 );
+      const p1 = new Vector2( -4, 6 );
+      const p2 = new Vector2( -2, 1.2 );
+      const p3 = new Vector2( 2, 0 );
 
-      var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       // createBottomLimitBounds because dragging any lower will cause track to go below ground
-      var p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 2, 2 );
-      var p3Bounds = PremadeTracks.createBottomLimitBounds( p3, 1, 1 );
+      const p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 2, 2 );
+      const p3Bounds = PremadeTracks.createBottomLimitBounds( p3, 1, 1 );
 
       return [
         new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
@@ -140,17 +140,17 @@ define( require => {
         p5Draggable: true
       }, CREATOR_OPTIONS, options );
 
-      var p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
-      var p2 = new Vector2( -2, 0.0166015 );
-      var p3 = new Vector2( 0, options.trackMidHeight );
-      var p4 = new Vector2( 2, 1 );
-      var p5 = new Vector2( options.trackWidth / 2, options.trackHeight );
+      const p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
+      const p2 = new Vector2( -2, 0.0166015 );
+      const p3 = new Vector2( 0, options.trackMidHeight );
+      const p4 = new Vector2( 2, 1 );
+      const p5 = new Vector2( options.trackWidth / 2, options.trackHeight );
 
-      var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
-      var p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 1, 1 );
-      var p3Bounds = createCenteredLimitBounds( p3, 1, 1 );
-      var p4Bounds = createCenteredLimitBounds( p4, 1, 1 );
-      var p5Bounds = createCenteredLimitBounds( p5, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      const p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 1, 1 );
+      const p3Bounds = createCenteredLimitBounds( p3, 1, 1 );
+      const p4Bounds = createCenteredLimitBounds( p4, 1, 1 );
+      const p5Bounds = createCenteredLimitBounds( p5, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       return [
         new ControlPoint( p1.x, p1.y, {
@@ -196,29 +196,29 @@ define( require => {
 
       // top of the left and right endpoints of the loop, higher than loopTop so that it is easy for the skater to go
       // all the way around the loop
-      var trackTop = 6;
+      const trackTop = 6;
 
-      var trackBottom = 0.3; // bottom points, so that the skater doesn't go below y = 0
-      var loopTop = 4; // adjust to make the loop top point higher or lower
-      var loopWidth = 9; // adjust to make the loop more or less wide
-      var innerLoopWidth = 3; // roughly adjusts the width of the innerloop
-      var innerLoopHeight = 2; // roughly adjust inner loop height (for control points, actual loop will be higher)
+      const trackBottom = 0.3; // bottom points, so that the skater doesn't go below y = 0
+      const loopTop = 4; // adjust to make the loop top point higher or lower
+      const loopWidth = 9; // adjust to make the loop more or less wide
+      const innerLoopWidth = 3; // roughly adjusts the width of the innerloop
+      const innerLoopHeight = 2; // roughly adjust inner loop height (for control points, actual loop will be higher)
 
-      var p1 = new Vector2( -loopWidth / 2, trackTop );
-      var p2 = new Vector2( -innerLoopWidth / 2, trackBottom );
-      var p3 = new Vector2( innerLoopWidth/ 2, innerLoopHeight );
-      var p4 = new Vector2( 0, loopTop );
-      var p5 = new Vector2( -innerLoopWidth / 2, innerLoopHeight );
-      var p6 = new Vector2( innerLoopWidth / 2, trackBottom );
-      var p7 = new Vector2( loopWidth / 2, trackTop );
+      const p1 = new Vector2( -loopWidth / 2, trackTop );
+      const p2 = new Vector2( -innerLoopWidth / 2, trackBottom );
+      const p3 = new Vector2( innerLoopWidth/ 2, innerLoopHeight );
+      const p4 = new Vector2( 0, loopTop );
+      const p5 = new Vector2( -innerLoopWidth / 2, innerLoopHeight );
+      const p6 = new Vector2( innerLoopWidth / 2, trackBottom );
+      const p7 = new Vector2( loopWidth / 2, trackTop );
 
-      var p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
-      var p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 0.5, 0.5 );
-      var p3Bounds = createCenteredLimitBounds( p3, 1, 1 );
-      var p4Bounds = createCenteredLimitBounds( p4, 1, 1 );
-      var p5Bounds = createCenteredLimitBounds( p5, 1, 1 );
-      var p6Bounds = PremadeTracks.createBottomLimitBounds( p6, 0.5, 0.5 );
-      var p7Bounds = createCenteredLimitBounds( p7, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      const p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 0.5, 0.5 );
+      const p3Bounds = createCenteredLimitBounds( p3, 1, 1 );
+      const p4Bounds = createCenteredLimitBounds( p4, 1, 1 );
+      const p5Bounds = createCenteredLimitBounds( p5, 1, 1 );
+      const p6Bounds = PremadeTracks.createBottomLimitBounds( p6, 0.5, 0.5 );
+      const p7Bounds = createCenteredLimitBounds( p7, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       return [
         new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
@@ -252,7 +252,7 @@ define( require => {
      * @returns {Track}
      */
     createTrack:function( model, modelTracks, controlPoints, availableBoundsProperty, options ) {
-      var track = new Track( model, modelTracks, controlPoints, PARENT_TRACKS, availableBoundsProperty, options );
+      const track = new Track( model, modelTracks, controlPoints, PARENT_TRACKS, availableBoundsProperty, options );
 
       // none of the premade tracks are draggable, or created from a toolbox, so set the dropped Property so that
       // the control points can be used if the track is configurable

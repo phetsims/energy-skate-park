@@ -51,26 +51,26 @@ define( require => {
     options.spacing = 20 / model.tracks.length;
 
     // Create a button with a scene like the track in the index
-    var createNode = function( index ) {
-      var children = [];
+    const createNode = function( index ) {
+      const children = [];
 
       if ( options.includeBackground ) {
-        var background = new BackgroundNode( view.layoutBounds, tandem.createTandem( 'backgroundNode' + index ) );
+        const background = new BackgroundNode( view.layoutBounds, tandem.createTandem( 'backgroundNode' + index ) );
         background.layout( 0, 0, view.layoutBounds.width, view.layoutBounds.height, 1 );
         children.push( background );
       }
 
-      var track = model.tracks.get( index );
-      var trackNode = new TrackNode( model, track, view.modelViewTransform, new Property(), tandem.createTandem( 'trackNode' + index ) );
+      const track = model.tracks.get( index );
+      const trackNode = new TrackNode( model, track, view.modelViewTransform, new Property(), tandem.createTandem( 'trackNode' + index ) );
 
       // use a rasterized version of the node so that the icon doesn't change with the model for configurable tracks
-      var iconNode = trackNode.rasterized();
+      const iconNode = trackNode.rasterized();
       children.push( iconNode );
 
       // Fixes: Cursor turns into a hand over the track in the track selection panel, see #204
       iconNode.pickable = false;
 
-      var contentNode = new Node( {
+      const contentNode = new Node( {
         tandem: tandem.createTandem( 'contentNode' + index ),
         children: children
       } );
@@ -79,21 +79,21 @@ define( require => {
     };
 
     // create the contents for the radio buttons
-    var contents = [];
+    const contents = [];
     _.forEach( model.tracks, function( track, i ) {
-      var contentNode = createNode( i );
+      const contentNode = createNode( i );
       contents.push( contentNode );
     } );
 
-    var minWidth = _.minBy( contents, function( node ) { return node.width; } ).width;
+    const minWidth = _.minBy( contents, function( node ) { return node.width; } ).width;
 
     const buttonAlignGroup = new AlignGroup();
 
-    var radioButtonContent = [];
+    const radioButtonContent = [];
     _.forEach( contents, function( node, i ) {
 
       // scalar chosen so that buttons are appropriately sized in the control panel
-      var contentScale = ( 22 / minWidth );
+      const contentScale = ( 22 / minWidth );
 
       // if there isn't a background, scale the tracks so that they are all the same width
       if ( !options.includeBackground ) {

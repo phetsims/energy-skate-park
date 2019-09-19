@@ -31,13 +31,13 @@ define( require => {
   const Vector2Property = require( 'DOT/Vector2Property' );
 
   // Compare two arrays, whose elements have 'equals' methods for comparison
-  var arrayEquals = function( a, b ) {
+  const arrayEquals = function( a, b ) {
     if ( a.length !== b.length ) {
       return false;
     }
-    for ( var i = 0; i < a.length; i++ ) {
-      var elm1 = a[ i ];
-      var elm2 = b[ i ];
+    for ( let i = 0; i < a.length; i++ ) {
+      const elm1 = a[ i ];
+      const elm2 = b[ i ];
       if ( !elm1.equals( elm2 ) ) {
         return false;
       }
@@ -56,7 +56,7 @@ define( require => {
       massRange: Constants.MASS_RANGE
     }, options );
 
-    var self = this;
+    const self = this;
 
     // @private {Range}
     this.massRange = options.massRange;
@@ -96,7 +96,7 @@ define( require => {
 
     // @public {number} - Gravity magnitude and direction
     this.gravityProperty = new DerivedProperty( [ this.gravityMagnitudeProperty ], function( gravity ) {
-      var gravityWithDirection = -gravity;
+      const gravityWithDirection = -gravity;
       assert && assert( gravityWithDirection <= 0, 'this sim only supports negative or 0 gravity' );
       return gravityWithDirection;      
     }, {
@@ -226,7 +226,7 @@ define( require => {
 
       // Require the skater to overcome a speed threshold so he won't toggle back and forth rapidly at the bottom of a
       // well with friction, see #51
-      var speedThreshold = 0.01;
+      const speedThreshold = 0.01;
 
       if ( parametricSpeed > speedThreshold ) {
         self.directionProperty.value = self.onTopSideOfTrackProperty.value ? 'right' : 'left';
@@ -334,7 +334,7 @@ define( require => {
       // set the angle to zero first so that the optimization for SkaterNode.updatePosition is maintained, without
       // showing the skater at the wrong angle
       this.angleProperty.value = 0;
-      var mass = this.massProperty.value;
+      const mass = this.massProperty.value;
 
       // TODO: avoid duplication
       this.trackProperty.reset();
@@ -372,7 +372,7 @@ define( require => {
     returnToInitialPosition: function() {
 
       // Everything needs to be reset except the mass, see #188
-      var mass = this.massProperty.value;
+      const mass = this.massProperty.value;
       this.reset();
       this.massProperty.value = mass;
     },
@@ -422,10 +422,10 @@ define( require => {
 
       // Center pie chart over skater's head not his feet so it doesn't look awkward when skating in a parabola
       // Note this has been tuned independently of SkaterNode.massToScale, which also accounts for the image dimensions
-      var skaterHeight = Util.linear( this.massRange.min, this.massRange.max, 1.65, 2.4, this.massProperty.value );
+      const skaterHeight = Util.linear( this.massRange.min, this.massRange.max, 1.65, 2.4, this.massProperty.value );
 
-      var vectorX = skaterHeight * Math.cos( this.angleProperty.value - Math.PI / 2 );
-      var vectorY = skaterHeight * Math.sin( this.angleProperty.value - Math.PI / 2 );
+      const vectorX = skaterHeight * Math.cos( this.angleProperty.value - Math.PI / 2 );
+      const vectorY = skaterHeight * Math.sin( this.angleProperty.value - Math.PI / 2 );
 
       return new Vector2( this.positionProperty.value.x + vectorX, this.positionProperty.value.y - vectorY );
     },
@@ -438,7 +438,7 @@ define( require => {
      * @private
      */
     updateHeadPosition: function() {
-      var headPosition = this.getHeadPosition();
+      const headPosition = this.getHeadPosition();
 
       // Manually trigger notifications to avoid allocations, see #50
       this.headPositionProperty.value.x = headPosition.x;

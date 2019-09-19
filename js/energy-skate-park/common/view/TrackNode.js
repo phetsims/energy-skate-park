@@ -24,7 +24,7 @@ define( require => {
   const TrackDragHandler = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TrackDragHandler' );
 
   // constants
-  var FastArray = dot.FastArray;
+  const FastArray = dot.FastArray;
 
   /**
    * Constructor for TrackNode
@@ -37,7 +37,7 @@ define( require => {
    * @constructor
    */
   function TrackNode( model, track, modelViewTransform, availableBoundsProperty, tandem ) {
-    var self = this;
+    const self = this;
     this.track = track;
     this.model = model;
     this.modelViewTransform = modelViewTransform;
@@ -54,7 +54,7 @@ define( require => {
     } );
 
     // must be unlinked in dispose
-    var stickingToTrackListener = function( sticking ) {
+    const stickingToTrackListener = function( sticking ) {
       self.centerLine.lineDash = sticking ? [ 11, 8 ] : [];
     };
     model.stickingToTrackProperty.link( stickingToTrackListener );
@@ -77,7 +77,7 @@ define( require => {
     this.lengthForLinSpace = track.controlPoints.length;
 
     // created and passed to ControlPointNodes so that dragging a control point can initiate dragging a track
-    var trackDragHandler = null;
+    let trackDragHandler = null;
     if ( track.draggable ) {
       trackDragHandler = new TrackDragHandler( this, tandem.createTandem( 'trackDragHandler' ) );
       this.road.addInputListener( trackDragHandler );
@@ -86,12 +86,12 @@ define( require => {
     // only "configurable" tracks have draggable control points, and individual control points may have dragging
     // disabled
     if ( track.configurable ) {
-      for ( var i = 0; i < track.controlPoints.length; i++ ) {
-        var controlPoint = track.controlPoints[ i ];
+      for ( let i = 0; i < track.controlPoints.length; i++ ) {
+        const controlPoint = track.controlPoints[ i ];
 
         if ( controlPoint.draggable ) {
-          var isEndPoint = i === 0 || i === track.controlPoints.length - 1;
-          var controlPointNode = new ControlPointNode( this, trackDragHandler, i, isEndPoint, tandem.createTandem( 'controlPointNode' + i ) );
+          const isEndPoint = i === 0 || i === track.controlPoints.length - 1;
+          const controlPointNode = new ControlPointNode( this, trackDragHandler, i, isEndPoint, tandem.createTandem( 'controlPointNode' + i ) );
           self.addChild( controlPointNode );
 
           if ( controlPoint.limitBounds ) {
@@ -130,8 +130,8 @@ define( require => {
     this.disposeTrackNode = function() {
       model.stickingToTrackProperty.unlink( stickingToTrackListener );
       _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
-      for ( var i = 0; i < self.children.length; i++ ) {
-        var child = self.children[ i ];
+      for ( let i = 0; i < self.children.length; i++ ) {
+        const child = self.children[ i ];
         if ( child instanceof ControlPointNode ) {
           child.dispose();
           i--; // Child is removed, we must decrement index so wo don't miss the next child
@@ -161,10 +161,10 @@ define( require => {
     // update the shape of the track.
     updateTrackShape: function() {
 
-      var track = this.track;
-      var model = this.model;
+      const track = this.track;
+      const model = this.model;
 
-      var i;
+      let i;
       // Update the sample range when the number of control points has changed
       if ( this.lengthForLinSpace !== track.controlPoints.length ) {
         this.lastPoint = ( track.controlPoints.length - 1 ) / track.controlPoints.length;
@@ -179,18 +179,18 @@ define( require => {
       }
 
       // Compute points for lineTo
-      var xPoints = SplineEvaluation.atArray( track.xSpline, this.linSpace );
-      var yPoints = SplineEvaluation.atArray( track.ySpline, this.linSpace );
+      const xPoints = SplineEvaluation.atArray( track.xSpline, this.linSpace );
+      const yPoints = SplineEvaluation.atArray( track.ySpline, this.linSpace );
 
-      var tx = this.getTranslation();
-      var shape = new Shape().moveTo(
+      const tx = this.getTranslation();
+      const shape = new Shape().moveTo(
         this.modelViewTransform.modelToViewX( xPoints[ 0 ] ) - tx.x,
         this.modelViewTransform.modelToViewY( yPoints[ 0 ] ) - tx.y
       );
 
       // Show the track at reduced resolution while dragging so it will be smooth and responsive while dragging
       // (whether updating the entire track, some of the control points or both)
-      var delta = track.draggingProperty.value ? 3 : 1;
+      const delta = track.draggingProperty.value ? 3 : 1;
       for ( i = 1; i < xPoints.length; i = i + delta ) {
         shape.lineTo( this.modelViewTransform.modelToViewX( xPoints[ i ] ) - tx.x, this.modelViewTransform.modelToViewY( yPoints[ i ] ) - tx.y );
       }
@@ -201,7 +201,7 @@ define( require => {
         shape.lineTo( this.modelViewTransform.modelToViewX( xPoints[ i ] ) - tx.x, this.modelViewTransform.modelToViewY( yPoints[ i ] ) - tx.y );
       }
 
-      var strokeStyles = new LineStyles( {
+      const strokeStyles = new LineStyles( {
         lineWidth: 10,
         lineCap: 'butt',
         lineJoin: 'miter',

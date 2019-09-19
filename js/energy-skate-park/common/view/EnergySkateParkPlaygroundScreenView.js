@@ -30,9 +30,9 @@ define( require => {
     EnergySkateParkScreenView.call( this, model, physicalControls, tandem, options );
 
     // Create the tracks for the track toolbox
-    var interactiveTrackNodes = model.tracks.getArray().map( this.addTrackNode.bind( this ) );
+    const interactiveTrackNodes = model.tracks.getArray().map( this.addTrackNode.bind( this ) );
 
-    var padding = 10;
+    const padding = 10;
 
     // @protected (for layout of other things in subtypes)
     this.trackCreationPanel = new Rectangle(
@@ -73,7 +73,7 @@ define( require => {
      * @returns {TrackNode}
      */
     addTrackNode( track ) {
-      var trackNode = new TrackNode( this.model, track, this.modelViewTransform, this.availableModelBoundsProperty, this.trackNodeGroupTandem.createTandem( track.tandem.name ) );
+      const trackNode = new TrackNode( this.model, track, this.modelViewTransform, this.availableModelBoundsProperty, this.trackNodeGroupTandem.createTandem( track.tandem.name ) );
       this.trackLayer.addChild( trackNode );
 
       // When track removed, remove its view

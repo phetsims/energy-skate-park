@@ -23,10 +23,10 @@ define( require => {
   const energySkateParkTitleString = require( 'string!ENERGY_SKATE_PARK/energy-skate-park.title' );
 
   // constants
-  var tandem = Tandem.rootTandem;
+  const tandem = Tandem.rootTandem;
 
   SimLauncher.launch( function() {
-    var screens = [
+    const screens = [
       new IntroScreen( tandem.createTandem( 'introScreen' ) ),
       new MeasureScreen( tandem.createTandem( 'measureScreen' ) ),
       new GraphsScreen( tandem.createTandem( 'graphsScreen' ) ),

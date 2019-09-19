@@ -13,7 +13,7 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
 
-  var EnergySkateParkColorScheme = {
+  const EnergySkateParkColorScheme = {
 
     // Use color instances here to prevent parsing these values multiple times, luckily PhetColorScheme also
     // uses Color instances

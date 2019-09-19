@@ -9,7 +9,7 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
 
-  var EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
+  const EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
 
     // Print out console messages related to the physics
     debugLog: { type: 'flag' },

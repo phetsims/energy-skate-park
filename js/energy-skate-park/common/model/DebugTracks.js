@@ -38,12 +38,12 @@ define( require => {
     init: function( model, controlPointGroupTandem, trackGroupTandem ) {
         // Tracks to help demonstrate issues
 
-      var createControlPoint = function( x, y ) {
+      const createControlPoint = function( x, y ) {
         return new ControlPoint( x, y, { tandem: controlPointGroupTandem.createNextTandem() } );
       };
 
-        var controlPoints = null;
-        var track = null;
+        let controlPoints = null;
+        let track = null;
         if ( EnergySkateParkQueryParameters.testTrackIndex === 1 ) {
 
           model.stickingToTrackProperty.value = false;
@@ -232,32 +232,32 @@ define( require => {
           model.skater.released( 0, 0 );
           model.frictionProperty.value = 0.05;
 
-          var controlPoints1 = [
+          const controlPoints1 = [
             createControlPoint( -6.23, -0.85 ),
             createControlPoint( -5.23, -0.85 ),
             createControlPoint( -4.23, -0.85 )
           ];
-          var track1 = new Track( model, model.tracks, controlPoints1, null, model.availableModelBoundsProperty, { tandem: trackGroupTandem.createNextTandem() } );
+          const track1 = new Track( model, model.tracks, controlPoints1, null, model.availableModelBoundsProperty, { tandem: trackGroupTandem.createNextTandem() } );
           track1.physicalProperty.value = false;
           model.tracks.add( track1 );
 
-          var controlPoints2 = [
+          const controlPoints2 = [
             createControlPoint( -6.23, -0.85 ),
             createControlPoint( -5.23, -0.85 ),
             createControlPoint( -4.23, -0.85 )
           ];
-          var track2 = new Track( model, model.tracks, controlPoints2, null, model.availableModelBoundsProperty, { tandem: trackGroupTandem.createNextTandem() } );
+          const track2 = new Track( model, model.tracks, controlPoints2, null, model.availableModelBoundsProperty, { tandem: trackGroupTandem.createNextTandem() } );
           track2.physicalProperty.value = false;
           model.tracks.add( track2 );
 
-          var controlPoints3 = [
+          const controlPoints3 = [
             createControlPoint( -0.720977917981072, 1.6368312846731214 ),
             createControlPoint( 0.279022082018928, 1.6368312846731214 ),
             createControlPoint( 3.8511345589035137, 7.315696725769607 ),
             createControlPoint( -1.1916066572392037, 2.911932992494288 ),
             createControlPoint( -9.170190362232134, 6.469483302512781 )
           ];
-          var track3 = new Track( model, model.tracks, controlPoints3, null, model.availableModelBoundsProperty, { tandem: trackGroupTandem.createNextTandem() } );
+          const track3 = new Track( model, model.tracks, controlPoints3, null, model.availableModelBoundsProperty, { tandem: trackGroupTandem.createNextTandem() } );
           track3.physicalProperty.value = true;
           model.tracks.add( track3 );
         }
@@ -268,7 +268,7 @@ define( require => {
           model.skater.positionProperty.set( new Vector2( -6.698445595854922, 6.5278756476683935 ) );
           model.skater.released( 0, 0 );
           model.frictionProperty.value = 0;
-          var track15 = new Track( model, model.tracks, [
+          const track15 = new Track( model, model.tracks, [
             createControlPoint( 0.9873551637279601, 7.856892317380353 ),
             createControlPoint( -0.4621662468513845, 5.9031895465994975 ),
             createControlPoint( -3.0250881612090676, 5.735129093198994 ),

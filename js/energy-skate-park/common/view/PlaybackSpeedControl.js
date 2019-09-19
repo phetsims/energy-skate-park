@@ -21,9 +21,9 @@ define( require => {
   const slowMotionString = require( 'string!ENERGY_SKATE_PARK/slow.motion' );
 
   // constants
-  var X_DILATION = 5;
-  var Y_DILATION = 2;
-  var RADIO_BUTTON_RADIUS = 7.1;
+  const X_DILATION = 5;
+  const Y_DILATION = 2;
+  const RADIO_BUTTON_RADIUS = 7.1;
 
   const LABEL_OPTIONS = {
     font: new PhetFont( 15 ),
@@ -43,13 +43,13 @@ define( require => {
     }, options );
     assert && assert( options.children === undefined, 'PlaybackSpeedControl sets children' );
 
-    var slowMotionRadioButton = new AquaRadioButton( speedProperty, 'slow', new Text( slowMotionString, _.extend( {
+    const slowMotionRadioButton = new AquaRadioButton( speedProperty, 'slow', new Text( slowMotionString, _.extend( {
       tandem: tandem.createTandem( 'slowMotionTextNode' ) }, LABEL_OPTIONS )
     ), {
       radius: RADIO_BUTTON_RADIUS,
       tandem: tandem.createTandem( 'slowMotionRadioButton' )
     } );
-    var normalSpeedRadioButton = new AquaRadioButton( speedProperty, 'normal', new Text( normalString, _.extend( {
+    const normalSpeedRadioButton = new AquaRadioButton( speedProperty, 'normal', new Text( normalString, _.extend( {
       tandem: tandem.createTandem( 'normalSpeedTextNode' ) }, LABEL_OPTIONS )
     ), {
       radius: RADIO_BUTTON_RADIUS,

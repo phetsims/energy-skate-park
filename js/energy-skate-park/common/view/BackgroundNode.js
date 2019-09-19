@@ -22,8 +22,8 @@ define( require => {
   const mountainImage = require( 'image!ENERGY_SKATE_PARK/mountains.png' );
 
   // constants
-  var earthHeight = 70;
-  var cementWidth = 4;
+  const earthHeight = 70;
+  const cementWidth = 4;
 
   /**
    * @param {Bounds2} layoutBounds the ScreenView layoutBounds
@@ -67,7 +67,7 @@ define( require => {
       // Exactly fit the geometry to the screen so no matter what aspect ratio it will always show something.
       // Perhaps it will improve performance too?
       layout: function( offsetX, offsetY, width, height, layoutScale ) {
-        var cementY = this.cementY;
+        const cementY = this.cementY;
         this.earth.setRect( -offsetX, cementY, width / layoutScale, earthHeight );
 
         // Work around scenery horizontal line pattern problem, see https:// github.com/phetsims/scenery/issues/196

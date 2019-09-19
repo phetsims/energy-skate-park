@@ -39,17 +39,17 @@ define( require => {
     this.indexProperty = indexProperty;
     this.samples = samples;
 
-    var background = new Rectangle( 0, 0, width, height, { fill: 'white' } );
+    const background = new Rectangle( 0, 0, width, height, { fill: 'white' } );
     this.addChild( background );
 
-    var xAxis = new Line( 0, 0, width, 0, { stroke: 'black' } );
-    var yAxis = new Line( 0, 0, 0, height, { stroke: 'black' } );
+    const xAxis = new Line( 0, 0, width, 0, { stroke: 'black' } );
+    const yAxis = new Line( 0, 0, 0, height, { stroke: 'black' } );
     xAxis.leftCenter = background.leftCenter;
     yAxis.centerTop = background.leftTop;
 
-    var dataLines = new GraphLines( samples, this.bounds );
+    const dataLines = new GraphLines( samples, this.bounds );
 
-    var indexLine = new Rectangle( 0, 0, 5, height, {
+    const indexLine = new Rectangle( 0, 0, 5, height, {
       fill: 'purple',
       cursor: 'pointer'
     } );
@@ -86,8 +86,8 @@ define( require => {
         if ( samples.length > 0 ) {
 
           // pointer in view parent coordinates
-          var pMouse = this.globalToLocalPoint( event.pointer.point );
-          var x = pMouse.x;
+          const pMouse = this.globalToLocalPoint( event.pointer.point );
+          const x = pMouse.x;
 
           // map x to an index of samples
           let sampleIndex = Util.roundSymmetric( x / this.bounds.width * GraphsConstants.MAX_SAMPLES );

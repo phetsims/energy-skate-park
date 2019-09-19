@@ -59,7 +59,7 @@ define( require => {
   const EXTRA_FLOAT = 51.5;
 
   // Debug flag to show the view bounds, the region within which the skater can move
-  var showAvailableBounds = false;
+  const showAvailableBounds = false;
 
   /**
    * @param {EnergySkateParkModel} model
@@ -102,7 +102,7 @@ define( require => {
     // @protected
     this.trackNodeGroupTandem = tandem.createGroupTandem( 'trackNode' );
 
-    var self = this;
+    const self = this;
     ScreenView.call( self, {
       layoutBounds: new Bounds2( 0, 0, 834, 504 ),
       tandem: tandem
@@ -132,12 +132,12 @@ define( require => {
     this.topLayer = new Node();
     this.children = [ this.bottomLayer, this.topLayer ];
 
-    var modelPoint = new Vector2( 0, 0 );
+    const modelPoint = new Vector2( 0, 0 );
 
     // earth is 70px high in stage coordinates
-    var viewPoint = new Vector2( this.layoutBounds.width / 2, this.layoutBounds.height - BackgroundNode.earthHeight );
-    var scale = 50;
-    var modelViewTransform = ModelViewTransform2.createSinglePointScaleInvertedYMapping( modelPoint, viewPoint, scale );
+    const viewPoint = new Vector2( this.layoutBounds.width / 2, this.layoutBounds.height - BackgroundNode.earthHeight );
+    const scale = 50;
+    const modelViewTransform = ModelViewTransform2.createSinglePointScaleInvertedYMapping( modelPoint, viewPoint, scale );
     this.modelViewTransform = modelViewTransform;
 
     this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ) );
@@ -166,13 +166,13 @@ define( require => {
 
     // For the playground screen, show attach/detach toggle buttons
     if ( options.showAttachDetachRadioButtons ) {
-      var property = model.tracksDraggable ? new Property( true ) :
+      const property = model.tracksDraggable ? new Property( true ) :
                      new DerivedProperty( [ model.sceneProperty ], function( scene ) { return scene === 2; } );
       this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.stickingToTrackProperty, property, 150, tandem.createTandem( 'attachDetachToggleButtons' ) );
       this.bottomLayer.addChild( this.attachDetachToggleButtons );
     }
 
-    var containsAbove = function( bounds, x, y ) {
+    const containsAbove = function( bounds, x, y ) {
       return bounds.minX <= x && x <= bounds.maxX && y <= bounds.maxY;
     };
 
@@ -180,7 +180,7 @@ define( require => {
     // Don't check whether the skater is underground since that is a rare case (only if the user is actively dragging a
     // control point near y=0 and the track curves below) and the skater will pop up again soon, see the related
     // flickering problem in #206
-    var onscreenProperty = new DerivedProperty( [ model.skater.positionProperty ], function( position ) {
+    const onscreenProperty = new DerivedProperty( [ model.skater.positionProperty ], function( position ) {
       if ( !self.availableModelBounds ) {
         return true;
       }
@@ -235,7 +235,7 @@ define( require => {
     this.bottomLayer.addChild( this.returnSkaterButton );
 
     const gaugeRadius = 62;
-    var speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 30 ), {
+    const speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 30 ), {
         numberDisplayOptions: {
           valuePattern: speedometerMetersPerSecondPatternString,
           numberMaxWidth: gaugeRadius * 1.3,
@@ -265,7 +265,7 @@ define( require => {
     // add a measuring tape, on top of tracks, below the skater
     if ( options.showMeasuringTape ) {
 
-      var unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
+      const unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
 
       // @private {MeasuringTapeNode} - The measuring tape node will not
       this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
@@ -287,7 +287,7 @@ define( require => {
       this.bottomLayer.addChild( this.measuringTapePanel );
     }
 
-    var skaterNode = new SkaterNode(
+    const skaterNode = new SkaterNode(
       model.skater,
       this,
       modelViewTransform,
@@ -314,8 +314,8 @@ define( require => {
     this.referenceHeightLine.centerX = this.layoutBounds.centerX;
 
     // Buttons to return the skater when she is offscreen, see #219
-    var iconScale = 0.4;
-    var returnSkaterToPreviousStartingPositionButton = new RectangularPushButton( {
+    const iconScale = 0.4;
+    const returnSkaterToPreviousStartingPositionButton = new RectangularPushButton( {
       content: new Image( skaterIconImage, {
         scale: iconScale,
         tandem: tandem.createTandem( 'skaterIconImage1' )
@@ -327,7 +327,7 @@ define( require => {
       tandem: tandem.createTandem( 'returnSkaterToPreviousStartingPositionButton' )
     } );
 
-    var returnSkaterToGroundButton = new RectangularPushButton( {
+    const returnSkaterToGroundButton = new RectangularPushButton( {
       content: new Image( skaterIconImage, {
         scale: iconScale,
         tandem: tandem.createTandem( 'skaterIconImage2' )
@@ -344,9 +344,9 @@ define( require => {
     this.topLayer.addChild( returnSkaterToGroundButton );
 
     // has all of the play, pause, and step controls for layout purposes
-    var playControls = new Node();
+    const playControls = new Node();
 
-    var playingProperty = new BooleanProperty( !model.pausedProperty.value, {
+    const playingProperty = new BooleanProperty( !model.pausedProperty.value, {
       tandem: tandem.createTandem( 'playingProperty' )
     } );
     model.pausedProperty.link( function( paused ) {
@@ -361,7 +361,7 @@ define( require => {
     } ).mutate( { scale: 0.6 } );
 
     // Make the Play/Pause button bigger when it is showing the pause button, see #298
-    var pauseSizeIncreaseFactor = 1.35;
+    const pauseSizeIncreaseFactor = 1.35;
     playingProperty.lazyLink( isPlaying => {
       playPauseButton.scale( isPlaying ? ( 1 / pauseSizeIncreaseFactor ) : pauseSizeIncreaseFactor );
     } );
@@ -387,14 +387,14 @@ define( require => {
     this.topLayer.addChild( this.speedControl );
     this.topLayer.addChild( playControls );
 
-    var speedControlSpacing = 15;
+    const speedControlSpacing = 15;
     this.speedControl.setLeftBottom( this.layoutBounds.centerBottom.plusXY( speedControlSpacing, -15 ) );
     playControls.setRightBottom( this.layoutBounds.centerBottom.minusXY( speedControlSpacing, 15 ) );
     this.playControls = playControls;
 
     // When the skater goes off screen, make the "return skater" button big
     onscreenProperty.link( function( skaterOnscreen ) {
-      var buttonsVisible = !skaterOnscreen;
+      const buttonsVisible = !skaterOnscreen;
       returnSkaterToGroundButton.visible = buttonsVisible;
       returnSkaterToPreviousStartingPositionButton.visible = buttonsVisible;
 
@@ -402,7 +402,7 @@ define( require => {
 
         // Put the button where the skater will appear.  Nudge it up a bit so the mouse can hit it from the drop site,
         // without being moved at all (to simplify repeat runs).
-        var viewPosition = modelViewTransform.modelToViewPosition( model.skater.startingPositionProperty.value ).plusXY( 0, 5 );
+        const viewPosition = modelViewTransform.modelToViewPosition( model.skater.startingPositionProperty.value ).plusXY( 0, 5 );
         returnSkaterToPreviousStartingPositionButton.centerBottom = viewPosition;
 
         // If the return skater button went offscreen, move it back on the screen, see #222
@@ -436,11 +436,11 @@ define( require => {
 
       this.resetTransform();
 
-      var scale = this.getLayoutScale( width, height );
+      const scale = this.getLayoutScale( width, height );
       this.setScaleMagnitude( scale );
 
-      var offsetX = 0;
-      var offsetY = 0;
+      let offsetX = 0;
+      let offsetY = 0;
 
       // Move to bottom vertically
       if ( scale === width / this.layoutBounds.width ) {

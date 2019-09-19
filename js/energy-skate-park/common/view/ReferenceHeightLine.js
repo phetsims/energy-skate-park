@@ -35,14 +35,14 @@ define( require => {
   function ReferenceHeightLine( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, tandem ) {
 
     // line will extend 9.5 meters through along the grid in model coordinates
-    var lineLength = modelViewTransform.modelToViewDeltaX( 9.5 );
+    const lineLength = modelViewTransform.modelToViewDeltaX( 9.5 );
 
     // the line will be composed of two lines on top of each other to assist with line visibility but still look like
     // a dashed line - a taller black line to mimic stroke behind a shorter blue line
-    var lineDash = [ 10, 8 ];
-    var lineStart = new Vector2( 0, 0 );
-    var lineEnd = new Vector2( lineLength, 0 );
-    var frontLine = new Line( lineStart, lineEnd, {
+    const lineDash = [ 10, 8 ];
+    const lineStart = new Vector2( 0, 0 );
+    const lineEnd = new Vector2( lineLength, 0 );
+    const frontLine = new Line( lineStart, lineEnd, {
 
       // strokes are not generally pickable, this allows the line itself to be dragged
       strokePickable: true,
@@ -50,7 +50,7 @@ define( require => {
       lineDash: lineDash,
       stroke: 'rgb(74,133,208)'
     } );
-    var backLine = new Line( lineStart, lineEnd, {
+    const backLine = new Line( lineStart, lineEnd, {
       lineWidth: 5,
       lineDash: lineDash,
       stroke: 'black'
@@ -61,7 +61,7 @@ define( require => {
     frontLine.touchArea = frontLine.mouseArea;
 
     // double headed arrow indicates this line is draggable
-    var doubleArrowNode = new ArrowNode( 0, -12, 0, 12, {
+    const doubleArrowNode = new ArrowNode( 0, -12, 0, 12, {
       doubleHead: true,
       headWidth: 13,
       tailWidth: 5,
@@ -71,7 +71,7 @@ define( require => {
     } );
 
     // label for the reference line, surround by a transparent panel for better visibility
-    var textPanel = new TextPanel( heightEqualsZeroString, { textMaxWidth: 125 } );
+    const textPanel = new TextPanel( heightEqualsZeroString, { textMaxWidth: 125 } );
 
     textPanel.setLeftCenter( doubleArrowNode.rightTop );
 
@@ -83,7 +83,7 @@ define( require => {
     } );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
-    var self = this;
+    const self = this;
     referenceHeightProperty.link( function( height ) {
 
       // position the reference height line, model value in meters
@@ -103,14 +103,14 @@ define( require => {
       drag: function( event, listener ) {
 
         // mouse in view coordinates
-        var pMouse = self.globalToParentPoint( event.pointer.point );
+        const pMouse = self.globalToParentPoint( event.pointer.point );
 
         // mouse in model coordinates
-        var modelMouse = modelViewTransform.viewToModelPosition( pMouse );
+        const modelMouse = modelViewTransform.viewToModelPosition( pMouse );
 
         // limit to reference height range
-        var modelY = modelMouse.y;
-        var constrainedValue = Constants.REFERENCE_HEIGHT_RANGE.constrainValue( modelY );
+        const modelY = modelMouse.y;
+        const constrainedValue = Constants.REFERENCE_HEIGHT_RANGE.constrainValue( modelY );
         referenceHeightProperty.set( constrainedValue );
       },
       tandem: tandem.createTandem( 'dragListener' )

@@ -30,7 +30,7 @@ define( require => {
     // parent layer for ComboBox, would use "this" but it is not available until after super
     const comboBoxParent = new Node();
 
-    var graphsControls = [
+    const graphsControls = [
       new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
       new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) ),
       new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) ),

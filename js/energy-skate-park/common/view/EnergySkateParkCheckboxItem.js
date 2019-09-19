@@ -52,21 +52,21 @@ define( require => {
       labelMaxWidth: 95
     }, options );
 
-    var textOptions = {
+    const textOptions = {
       font: new PhetFont( 10 ),
       maxWidth: options.labelMaxWidth
     };
 
-    var checkboxItemOptions = {
+    const checkboxItemOptions = {
       boxWidth: 14,
       tandem: tandem
     };
 
     // create text and an align box for it so that all text in a group of items is aligned
-    var text = new Text( label, _.extend( { tandem: tandem.createTandem( 'itemLabel' ) }, textOptions ) );
-    var textBox = textAlignGroup.createBox( text, { xAlign: 'left' } );
+    const text = new Text( label, _.extend( { tandem: tandem.createTandem( 'itemLabel' ) }, textOptions ) );
+    const textBox = textAlignGroup.createBox( text, { xAlign: 'left' } );
 
-    var checkbox = new Checkbox( textBox, property, checkboxItemOptions );
+    const checkbox = new Checkbox( textBox, property, checkboxItemOptions );
 
     HBox.call( this, {
       children: [ checkbox, icon ],
@@ -84,8 +84,8 @@ define( require => {
         scale: 1
       }, options );
 
-      var radius = 10;
-      var x = new Shape().moveTo( 0, 0 ).ellipticalArc( 0, 0, radius, radius, 0, -Math.PI / 2, 0, false ).lineTo( 0, 0 );
+      const radius = 10;
+      const x = new Shape().moveTo( 0, 0 ).ellipticalArc( 0, 0, radius, radius, 0, -Math.PI / 2, 0, false ).lineTo( 0, 0 );
       return new Node( {
         tandem: tandem,
         children: [
@@ -124,7 +124,7 @@ define( require => {
       options = _.extend( {
         scale: 1
       }, options );
-      var node = new GaugeNode( new Property( 0 ), propertiesSpeedString, new Range( 0, 10 ),
+      const node = new GaugeNode( new Property( 0 ), propertiesSpeedString, new Range( 0, 10 ),
         {
           pickable: false,
           tandem: tandem.createTandem( 'gaugeNode' )
@@ -159,29 +159,29 @@ define( require => {
     // create an icon for the "Path" checkbox, three circles connected by a line in the shape of "U".
     createSamplesIcon: function( tandem ) {
 
-      var circleRadius = 3;
+      const circleRadius = 3;
 
       // positions of circles, for circles and path
-      var pointDistance = 3 * circleRadius;
-      var firstCenter = new Vector2( -pointDistance, -pointDistance );
-      var secondCenter = new Vector2( 0, 0 );
-      var thirdCenter = new Vector2( pointDistance, -pointDistance );
+      const pointDistance = 3 * circleRadius;
+      const firstCenter = new Vector2( -pointDistance, -pointDistance );
+      const secondCenter = new Vector2( 0, 0 );
+      const thirdCenter = new Vector2( pointDistance, -pointDistance );
 
       // create three circles
-      var circleShape = new Shape();
+      const circleShape = new Shape();
       circleShape.circle( firstCenter, circleRadius ).newSubpath()
         .circle( secondCenter, circleRadius ).newSubpath()
         .circle( thirdCenter, circleRadius );
-      var circlesPath = new Path( circleShape, {
+      const circlesPath = new Path( circleShape, {
         fill: EnergySkateParkColorScheme.pathFill,
         stroke: EnergySkateParkColorScheme.pathStroke
       } );
 
       // line connecting each circle
-      var lineShape = new Shape().moveToPoint( firstCenter )
+      const lineShape = new Shape().moveToPoint( firstCenter )
         .quadraticCurveToPoint( firstCenter.plusXY( 0, pointDistance ), secondCenter )
         .quadraticCurveToPoint( thirdCenter.plusXY( 0, pointDistance ), thirdCenter );
-      var linePath = new Path( lineShape, {
+      const linePath = new Path( lineShape, {
         stroke: EnergySkateParkColorScheme.pathStroke,
         lineWidth: 2
       } );

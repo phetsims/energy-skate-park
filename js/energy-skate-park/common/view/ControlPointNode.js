@@ -28,23 +28,23 @@ define( require => {
    * @constructor
    */
   function ControlPointNode( trackNode, trackDragHandler, i, isEndPoint, tandem ) {
-    var track = trackNode.track;
-    var model = trackNode.model;
-    var modelViewTransform = trackNode.modelViewTransform;
-    var availableBoundsProperty = trackNode.availableBoundsProperty;
-    var controlPointUIShownEmitter = new Emitter();
+    const track = trackNode.track;
+    const model = trackNode.model;
+    const modelViewTransform = trackNode.modelViewTransform;
+    const availableBoundsProperty = trackNode.availableBoundsProperty;
+    const controlPointUIShownEmitter = new Emitter();
 
-    var self = this;
-    var controlPoint = track.controlPoints[ i ];
+    const self = this;
+    const controlPoint = track.controlPoints[ i ];
 
     // Default colors for the control point fill and highlight
-    var fill = 'red';
-    var highlightedFill = '#c90606';
+    const fill = 'red';
+    const highlightedFill = '#c90606';
 
     // When mousing over the control point, highlight it like a button, to hint that it can be pressed to show the
     // cut/delete buttons, see #234
-    var opacity = 0.7;
-    var highlightedOpacity = 0.85;
+    const opacity = 0.7;
+    const highlightedOpacity = 0.85;
 
     Circle.call( this, 14, {
       pickable: true,
@@ -73,7 +73,7 @@ define( require => {
         lineDash: [ 4, 5 ]
       } );
 
-      var boundsVisibilityListener = dragging => {
+      const boundsVisibilityListener = dragging => {
         this.boundsRectangle.visible = dragging;
       };
       controlPoint.draggingProperty.link( boundsVisibilityListener );
@@ -82,8 +82,8 @@ define( require => {
     controlPoint.positionProperty.link( function( position ) {
       self.translation = modelViewTransform.modelToViewPosition( position );
     } );
-    var dragEvents = 0;
-    var lastControlPointUI = null;
+    let dragEvents = 0;
+    let lastControlPointUI = null;
     var inputListener = new SimpleDragHandler( {
       tandem: tandem.createTandem( 'inputListener' ),
       allowTouchSnag: true,
@@ -127,17 +127,17 @@ define( require => {
         dragEvents++;
         controlPoint.draggingProperty.value = true;
         track.draggingProperty.value = true;
-        var globalPoint = self.globalToParentPoint( event.pointer.point );
+        const globalPoint = self.globalToParentPoint( event.pointer.point );
 
         // trigger reconstruction of the track shape based on the control points
-        var pt = modelViewTransform.viewToModelPosition( globalPoint );
+        let pt = modelViewTransform.viewToModelPosition( globalPoint );
 
         // Constrain the control points to remain in y>0, see #71
         pt.y = Math.max( pt.y, 0 );
 
         // Constrain the control point to the limited bounds, this should be more more strict than
         // availableBoundsProperty so this is done first to avoid multiple checks
-        var dragBounds = controlPoint.limitBounds || availableBoundsProperty.value;
+        const dragBounds = controlPoint.limitBounds || availableBoundsProperty.value;
         if ( dragBounds ) {
           pt = dragBounds.closestPointTo( pt );
         }
@@ -151,21 +151,21 @@ define( require => {
 
         if ( isEndPoint ) {
           // If one of the control points is close enough to link to another track, do so
-          var tracks = model.getPhysicalTracks();
+          const tracks = model.getPhysicalTracks();
 
-          var bestDistance = Number.POSITIVE_INFINITY;
-          var bestMatch = null;
+          let bestDistance = Number.POSITIVE_INFINITY;
+          let bestMatch = null;
 
-          for ( var i = 0; i < tracks.length; i++ ) {
-            var t = tracks[ i ];
+          for ( let i = 0; i < tracks.length; i++ ) {
+            const t = tracks[ i ];
             if ( t !== track ) {
 
               // don't match inner points
-              var otherPoints = [ t.controlPoints[ 0 ], t.controlPoints[ t.controlPoints.length - 1 ] ];
+              const otherPoints = [ t.controlPoints[ 0 ], t.controlPoints[ t.controlPoints.length - 1 ] ];
 
-              for ( var k = 0; k < otherPoints.length; k++ ) {
-                var otherPoint = otherPoints[ k ];
-                var distance = controlPoint.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
+              for ( let k = 0; k < otherPoints.length; k++ ) {
+                const otherPoint = otherPoints[ k ];
+                const distance = controlPoint.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
 
                 if ( distance < bestDistance ) {
                   bestDistance = distance;
@@ -231,7 +231,7 @@ define( require => {
             );
 
             // If the track was removed, get rid of the buttons
-            var removalListener = function() {
+            const removalListener = function() {
               lastControlPointUI && lastControlPointUI.dispose();
               lastControlPointUI = null;
             };

@@ -20,17 +20,17 @@ define( require => {
   const Path = require( 'SCENERY/nodes/Path' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Shape = require( 'KITE/Shape' );
-  var TextPanel= require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TextPanel' );
+  const TextPanel= require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TextPanel' );
 
   // strings
   const zeroMetersString = require( 'string!ENERGY_SKATE_PARK/zeroMeters' );
 
   // constants
-  var FONT = new PhetFont( 12 );
+  const FONT = new PhetFont( 12 );
 
   // in meters, the grid will extend this far into the earth so that when potential energy reference line is moved the
   // grid can translte this far up
-  var NEGATIVE_HEIGHT = 10;
+  const NEGATIVE_HEIGHT = 10;
 
   /**
    * @param {Property.<boolean>} gridVisibleProperty the axon property indicating whether the grid should be visible
@@ -87,9 +87,9 @@ define( require => {
 
     // transform the grid with the reference line - this should be faster than redrawing the grid every time it needs
     // to translate
-    var self = this;
+    const self = this;
     referenceHeightProperty.lazyLink( function( height, oldHeight ) {
-      var viewDelta = modelViewTransform.modelToViewDeltaY( height - oldHeight );
+      const viewDelta = modelViewTransform.modelToViewDeltaY( height - oldHeight );
 
       // apply transform to grid and "0 meters" label, without translating the clip shape
       self.gridParent.translate( 0, viewDelta );
@@ -115,27 +115,27 @@ define( require => {
      * @param  {number} layoutScale - vertical or horizontal scale for sim, whichever is more limiting
      */
     layout: function( offsetX, offsetY, width, height, layoutScale ) {
-      var scaledHeight = height / layoutScale; // height of the view
+      const scaledHeight = height / layoutScale; // height of the view
 
-      var clipHeight = scaledHeight - BackgroundNode.earthHeight;
+      const clipHeight = scaledHeight - BackgroundNode.earthHeight;
       this.clipParent.clipArea = Shape.rectangle( -offsetX, -offsetY, width / layoutScale, clipHeight );
 
-      for ( var k = 0; k < this.createdTextPanels.length; k++ ) {
+      for ( let k = 0; k < this.createdTextPanels.length; k++ ) {
         this.createdTextPanels[ k ].dispose();
       }
       this.createdTextPanels.length = 0;
 
-      var thickLines = [];
-      var thinLines = [];
-      var texts = [];
+      const thickLines = [];
+      const thinLines = [];
+      const texts = [];
 
-      var lineHeight = height / layoutScale - BackgroundNode.earthHeight - this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
-      var lineY1 = -offsetY + this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
+      const lineHeight = height / layoutScale - BackgroundNode.earthHeight - this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
+      const lineY1 = -offsetY + this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
 
       // grid lines are drawn on the half meter, but each still separated by 1 meter
-      for ( var x = 0.5; x < 100; x++ ) {
-        var viewXPositive = this.modelViewTransform.modelToViewX( x );
-        var viewXNegative = this.modelViewTransform.modelToViewX( -x );
+      for ( let x = 0.5; x < 100; x++ ) {
+        const viewXPositive = this.modelViewTransform.modelToViewX( x );
+        const viewXNegative = this.modelViewTransform.modelToViewX( -x );
         thinLines.push( { x1: viewXPositive, y1: lineY1, x2: viewXPositive, y2: lineHeight - lineY1 } );
         thinLines.push( { x1: viewXNegative, y1: lineY1, x2: viewXNegative, y2: lineHeight - lineY1 } );
         if ( viewXNegative < -offsetX ) {
@@ -144,12 +144,12 @@ define( require => {
       }
 
       // will replace the "0 meters" label at that height
-      var replacementText;
+      let replacementText;
 
-      var separation = width / layoutScale;
-      for ( var y = -NEGATIVE_HEIGHT; y < 100; y++ ) {
-        var originX = this.modelViewTransform.modelToViewX( -5.5 );
-        var viewY = this.modelViewTransform.modelToViewY( y );
+      const separation = width / layoutScale;
+      for ( let y = -NEGATIVE_HEIGHT; y < 100; y++ ) {
+        const originX = this.modelViewTransform.modelToViewX( -5.5 );
+        const viewY = this.modelViewTransform.modelToViewY( y );
         if ( viewY < lineY1 ) {
           break;
         }
@@ -162,7 +162,7 @@ define( require => {
         }
 
         if ( y % 2 === 0 ) {
-          var gridLineLabel = new TextPanel( '' + y, {
+          const gridLineLabel = new TextPanel( '' + y, {
             font: FONT,
             bottom: viewY - 2,
             left: originX + 2
@@ -187,15 +187,15 @@ define( require => {
         }
       }
 
-      var thinLineShape = new Shape();
-      var thickLineShape = new Shape();
-      for ( var i = 0; i < thinLines.length; i++ ) {
-        var thinLine = thinLines[ i ];
+      const thinLineShape = new Shape();
+      const thickLineShape = new Shape();
+      for ( let i = 0; i < thinLines.length; i++ ) {
+        const thinLine = thinLines[ i ];
         thinLineShape.moveTo( thinLine.x1, thinLine.y1 );
         thinLineShape.lineTo( thinLine.x2, thinLine.y2 );
       }
-      for ( var m = 0; m < thickLines.length; m++ ) {
-        var thickLine = thickLines[ m ];
+      for ( let m = 0; m < thickLines.length; m++ ) {
+        const thickLine = thickLines[ m ];
         thickLineShape.moveTo( thickLine.x1, thickLine.y1 );
         thickLineShape.lineTo( thickLine.x2, thickLine.y2 );
       }

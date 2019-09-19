@@ -31,7 +31,7 @@ define( require => {
     assert && assert( massRange.contains( SkaterMasses[ key ] ), 'mass range should accommodate all SkaterMasses values' );
   } );
 
-  var Constants = {
+  const Constants = {
     SLIDER_OPTIONS: {
       thumbSize: new Dimension2( 10, 20 ),
       trackSize: new Dimension2( 80, 3 ),

@@ -25,12 +25,12 @@ define( require => {
     EnergySkateParkTrackSetModel.call( this, frictionAllowed, tandem, options );
 
     // the "full" track set has all of the premade tracks - a parabola,  slope, double well, and loop.
-    var trackSet = EnergySkateParkTrackSetModel.createBasicTrackSet( this, tandem );
+    const trackSet = EnergySkateParkTrackSetModel.createBasicTrackSet( this, tandem );
 
-    var loopControlPoints = PremadeTracks.createLoopControlPoints( this.controlPointGroupTandem, {
+    const loopControlPoints = PremadeTracks.createLoopControlPoints( this.controlPointGroupTandem, {
       limitPointBounds: this.limitPointBounds
     } );
-    var loopTrack = PremadeTracks.createTrack( this, this.tracks, loopControlPoints, this.availableModelBoundsProperty, {
+    const loopTrack = PremadeTracks.createTrack( this, this.tracks, loopControlPoints, this.availableModelBoundsProperty, {
       configurable: this.tracksConfigurable,
       draggable: this.tracksDraggable,
       tandem: tandem.createTandem( 'loopTrack' )
