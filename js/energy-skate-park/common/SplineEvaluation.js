@@ -24,12 +24,9 @@ define( require => {
     const yr = spline.yr;
     const kl = spline.kl;
     const kr = spline.kr;
-    let a;
-    let b;
-    let t;
-    a = (kl[ p ] * (x[ p + 1 ] - x[ p ])) - (yr[ p + 1 ] - yl[ p ]);
-    b = kr[ p + 1 ] * (x[ p ] - x[ p + 1 ]) + yr[ p + 1 ] - yl[ p ];
-    t = (x1 - x[ p ]) / (x[ p + 1 ] - x[ p ]);
+    const a = (kl[ p ] * (x[ p + 1 ] - x[ p ])) - (yr[ p + 1 ] - yl[ p ]);
+    const b = kr[ p + 1 ] * (x[ p ] - x[ p + 1 ]) + yr[ p + 1 ] - yl[ p ];
+    const t = (x1 - x[ p ]) / (x[ p + 1 ] - x[ p ]);
     const s = t * (1 - t);
     return ((1 - t) * yl[ p ] + t * yr[ p + 1 ] +
            a * s * (1 - t) ) +
