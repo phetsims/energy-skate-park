@@ -91,10 +91,10 @@ define( require => {
 
       // @private
       this.disposeControlPoint = () => {
-        self.positionProperty.dispose();
-        self.sourcePositionProperty.dispose();
-        self.snapTargetProperty.dispose();
-        self.draggingProperty.dispose();
+        this.positionProperty.dispose();
+        this.sourcePositionProperty.dispose();
+        this.snapTargetProperty.dispose();
+        this.draggingProperty.dispose();
       };
     }
 
