@@ -11,7 +11,6 @@ define( require => {
   'use strict';
 
   // modules
-  const inherit = require( 'PHET_CORE/inherit' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const BooleanProperty = require( 'AXON/BooleanProperty' );
   const NumberProperty = require( 'AXON/NumberProperty' );
@@ -23,52 +22,50 @@ define( require => {
   // inspected a short time after a new set of samples is tracked
   const MIN_OPACITY = 0.05;
 
-  /**
-   * @constructor
-   *
-   * @param {SkaterState} skaterState
-   * @param {number} time
-   */
-  function SkaterSample( skaterState, time ) {
+  class SkaterSample {
 
-    // @public (read-only)
-    this.speed = skaterState.getSpeed();
-    this.kineticEnergy = skaterState.getKineticEnergy();
-    this.potentialEnergy = skaterState.getPotentialEnergy();
-    this.thermalEnergy = skaterState.thermalEnergy;
-    this.totalEnergy = skaterState.getTotalEnergy();
-    this.referenceHeight = skaterState.referenceHeight;
-    this.position = new Vector2( skaterState.positionX, skaterState.positionY );
-    this.time = time;
+    /**
+     * @constructor
+     *
+     * @param {SkaterState} skaterState
+     * @param {number} time
+     */
+    constructor( skaterState, time ) {
 
-    // @public (read-only)
-    this.skaterState = skaterState;
+      // @public (read-only)
+      this.speed = skaterState.getSpeed();
+      this.kineticEnergy = skaterState.getKineticEnergy();
+      this.potentialEnergy = skaterState.getPotentialEnergy();
+      this.thermalEnergy = skaterState.thermalEnergy;
+      this.totalEnergy = skaterState.getTotalEnergy();
+      this.referenceHeight = skaterState.referenceHeight;
+      this.position = new Vector2( skaterState.positionX, skaterState.positionY );
+      this.time = time;
 
-    // @public - in seconds, time since this sample was added to the model
-    this.timeSinceAdded = 0;
+      // @public (read-only)
+      this.skaterState = skaterState;
 
-    // TODO: The following Properties need to be moved to a subtype of this SkaterSample (MeasureSkaterSample or something)
-    // @public - whether or not this sample is being inspected by the probe
-    this.inspectedProperty = new BooleanProperty( false );
+      // @public - in seconds, time since this sample was added to the model
+      this.timeSinceAdded = 0;
 
-    // @public - the opacity of this skater sample, tied to visual representation
-    this.opacityProperty = new NumberProperty( 1 );
+      // TODO: The following Properties need to be moved to a subtype of this SkaterSample (MeasureSkaterSample or something)
+      // @public - whether or not this sample is being inspected by the probe
+      this.inspectedProperty = new BooleanProperty( false );
 
-    // @public - emits an event when the skater sample is old enough to be removed from the model
-    this.removalEmitter = new Emitter();
+      // @public - the opacity of this skater sample, tied to visual representation
+      this.opacityProperty = new NumberProperty( 1 );
 
-    // @private {boolean} - indicates that this sample should begin removal, and will fade out
-    this._initiateRemove = false;
-  }
+      // @public - emits an event when the skater sample is old enough to be removed from the model
+      this.removalEmitter = new Emitter();
 
-  energySkatePark.register( 'SkaterSample', SkaterSample  );
-
-  return inherit( Object, SkaterSample, {
+      // @private {boolean} - indicates that this sample should begin removal, and will fade out
+      this._initiateRemove = false;
+    }
 
     /**
      * @param {} dt - in seconds
      */
-    step: function( dt ) {
+    step( dt ) {
       if ( this._initiateRemove ) {
         this.opacityProperty.set( this.opacityProperty.get() * 0.95 );
 
@@ -78,21 +75,23 @@ define( require => {
       }
 
       this.timeSinceAdded += dt;
-    },
+    }
 
     /**
      * Indicate that this skater sample is about to be removed. Opacity immediately is reduced, and after a short time
-     * this sample will be completedly removed.
+     * this sample will be completely removed.
      *
      * @returns {}
      */
-    initiateRemove: function() {
+    initiateRemove() {
       assert && assert( !this._initiateRemove, 'removal should only be initiated once' );
       this._initiateRemove = true;
-    },
+    }
 
     get removeInitiated() {
       return this._initiateRemove;
     }
-  } );
+  }
+
+  return energySkatePark.register( 'SkaterSample', SkaterSample  );
 } );

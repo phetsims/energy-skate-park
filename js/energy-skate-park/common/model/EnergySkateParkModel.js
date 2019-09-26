@@ -121,8 +121,6 @@ define( require => {
       this.tracksDraggable = options.tracksDraggable;
       this.tracksConfigurable = options.tracksConfigurable;
 
-      const self = this;
-
       const controlPointGroupTandem = tandem.createGroupTandem( 'controlPoint' );
       const trackGroupTandem = tandem.createGroupTandem( 'track' );
 
@@ -227,7 +225,7 @@ define( require => {
 
       // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
       // TODO: Can this me moved into Skater.js?
-      this.skater.massProperty.link( function() { if ( self.pausedProperty.value ) { self.skater.updatedEmitter.emit(); } } );
+      this.skater.massProperty.link( () => { if ( this.pausedProperty.value ) { this.skater.updatedEmitter.emit(); } } );
 
       // @public
       this.tracks = new ObservableArray( {
@@ -243,10 +241,10 @@ define( require => {
       } );
 
       // Determine when to show/hide the track edit buttons (cut track or delete control point)
-      const updateTrackEditingButtonProperties = function() {
+      const updateTrackEditingButtonProperties = () => {
         let editEnabled = false;
         let clearEnabled = false;
-        const physicalTracks = self.getPhysicalTracks();
+        const physicalTracks = this.getPhysicalTracks();
         for ( let i = 0; i < physicalTracks.length; i++ ) {
           clearEnabled = true;
           const physicalTrack = physicalTracks[ i ];
@@ -254,8 +252,8 @@ define( require => {
             editEnabled = true;
           }
         }
-        self.editButtonEnabledProperty.value = editEnabled;
-        self.clearButtonEnabledProperty.value = clearEnabled;
+        this.editButtonEnabledProperty.value = editEnabled;
+        this.clearButtonEnabledProperty.value = clearEnabled;
       };
       this.tracks.addItemAddedListener( updateTrackEditingButtonProperties );
       this.tracks.addItemRemovedListener( updateTrackEditingButtonProperties );

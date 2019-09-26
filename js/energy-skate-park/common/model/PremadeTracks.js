@@ -44,11 +44,11 @@ define( require => {
    * @param  {number} height
    * @returns {Bounds2}
    */
-  const createCenteredLimitBounds = function( point, width, height ) {
+  const createCenteredLimitBounds = ( point, width, height ) => {
     return new Bounds2( point.x - width / 2, point.y - height / 2, point.x + width / 2, point.y + height / 2 );
   };
 
-  var PremadeTracks = {
+  const PremadeTracks = {
 
     /**
      * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the BOTTOM
@@ -58,12 +58,12 @@ define( require => {
      * @param  {number} height
      * @returns {Bounds2}
      */
-    createBottomLimitBounds: function( point, width, height ) {
+    createBottomLimitBounds: ( point, width, height ) => {
       return new Bounds2( point.x - width / 2, point.y, point.x + width / 2, point.y + height );
     },
 
     // create a set of control points which create a parabola shaped track
-    createParabolaControlPoints: function( groupTandem, options ) {
+    createParabolaControlPoints: ( groupTandem, options ) => {
       options = _.extend( {
         trackHeight: 6, // largest height for the parabola
         trackWidth: 8, // width from the left most control point to the right most control point
@@ -104,7 +104,7 @@ define( require => {
     },
 
     // create a set of control points which create a slope shaped track
-    createSlopeControlPoints: function( groupTandem, options ) {
+    createSlopeControlPoints: ( groupTandem, options ) => {
       options = _.extend( CREATOR_OPTIONS, options );
 
       const p1 = new Vector2( -4, 6 );
@@ -127,7 +127,7 @@ define( require => {
     // create a set of control points which create a double well
     // For the double well, move the left well up a bit since the interpolation moves it down by that much, and we
     // don't want the skater to go to y<0 while on the track.  Numbers determined by trial and error.
-    createDoubleWellControlPoints: function( groupTandem, options ) {
+    createDoubleWellControlPoints: ( groupTandem, options ) => {
       options = _.extend( {
         trackHeight: 5, // largest height for the well
         trackWidth: 8, // width from the left most control point to the right most control point
@@ -191,7 +191,7 @@ define( require => {
      * @param  {Tandem} groupTandem
      * @returns {Array.<ControlPoint>}
      */
-    createLoopControlPoints: function ( groupTandem, options ) {
+    createLoopControlPoints: ( groupTandem, options ) => {
       options = _.extend( CREATOR_OPTIONS, options );
 
       // top of the left and right endpoints of the loop, higher than loopTop so that it is easy for the skater to go
@@ -251,7 +251,7 @@ define( require => {
      * @param  {object} options
      * @returns {Track}
      */
-    createTrack:function( model, modelTracks, controlPoints, availableBoundsProperty, options ) {
+    createTrack( model, modelTracks, controlPoints, availableBoundsProperty, options ) {
       const track = new Track( model, modelTracks, controlPoints, PARENT_TRACKS, availableBoundsProperty, options );
 
       // none of the premade tracks are draggable, or created from a toolbox, so set the dropped Property so that

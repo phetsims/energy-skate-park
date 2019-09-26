@@ -14,7 +14,6 @@ define( require => {
   const dot = require( 'DOT/dot' );
   const Emitter = require( 'AXON/Emitter' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const PhetioObject = require( 'TANDEM/PhetioObject' );
   const SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SplineEvaluation' );
   const Tandem = require( 'TANDEM/Tandem' );
@@ -33,168 +32,169 @@ define( require => {
     attachable: true
   };
 
-  /**
-   * Model for a track, which has a fixed number of points.  If you added a point to a Track, you need a new track.
-   *
-   * @param {EnergySkateParkModel} model
-   * @param {ObservableArray<Track>} modelTracks all model tracks, so this track can add/remove others when joined/split
-   * @param {Array<ControlPoint>} controlPoints
-   * @param {null|Array<Track>} parents the original tracks that were used to make this track (if any) so they can be
-   * broken apart when dragged back to control panel
-   * @param {Property<Bounds2>} availableModelBoundsProperty function that provides the visible model bounds, to prevent the
-   * adjusted control point from going offscreen, see #195
-   * @param {Object} options - required for tandem
-   * @constructor
-   */
-  function Track( model, modelTracks, controlPoints, parents, availableModelBoundsProperty, options ) {
 
-    options = _.extend( {
+  class Track extends PhetioObject {
 
-      // {boolean} - can this track be dragged and moved in the play area?
-      draggable: false,
+    /**
+     * Model for a track, which has a fixed number of points.  If you added a point to a Track, you need a new track.
+     *
+     * @param {EnergySkateParkModel} model
+     * @param {ObservableArray<Track>} modelTracks all model tracks, so this track can add/remove others when joined/split
+     * @param {Array<ControlPoint>} controlPoints
+     * @param {null|Array<Track>} parents the original tracks that were used to make this track (if any) so they can be
+     * broken apart when dragged back to control panel
+     * @param {Property<Bounds2>} availableModelBoundsProperty function that provides the visible model bounds, to prevent the
+     * adjusted control point from going offscreen, see #195
+     * @param {Object} options - required for tandem
+     * @constructor
+     */
+    constructor( model, modelTracks, controlPoints, parents, availableModelBoundsProperty, options ) {
+      options = _.extend( {
 
-      // {boolean} - can this track be changed by dragging control points?
-      configurable: false,
+        // {boolean} - can this track be dragged and moved in the play area?
+        draggable: false,
 
-      // {boolean} - can this track be changed or broken by removing control points?
-      splittable: false,
+        // {boolean} - can this track be changed by dragging control points?
+        configurable: false,
 
-      // {boolean} - can this track be attached with another track by dragging track or control points?
-      attachable: false,
+        // {boolean} - can this track be changed or broken by removing control points?
+        splittable: false,
 
-      tandem: Tandem.required,
-      phetioType: TrackIO,
-      phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
-    }, options );
+        // {boolean} - can this track be attached with another track by dragging track or control points?
+        attachable: false,
 
-    const tandem = options.tandem;
-    const self = this;
-    this.model = model;
-    this.parents = parents;
-    this.modelTracks = modelTracks;
+        tandem: Tandem.required,
+        phetioType: TrackIO,
+        phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
+      }, options );
 
-    // @public (phet-io), see TrackReferenceIO
-    this.trackTandem = tandem;
-    this.availableModelBoundsProperty = availableModelBoundsProperty;
+      super( options );
 
-    // @public (read-only) - see options
-    this.draggable = options.draggable;
-    this.configurable = options.configurable;
-    this.splittable = options.splittable;
-    this.attachable = options.attachable;
+      const tandem = options.tandem;
+      const self = this;
+      this.model = model;
+      this.parents = parents;
+      this.modelTracks = modelTracks;
 
-    // @public
-    this.translatedEmitter = new Emitter();
-    this.resetEmitter = new Emitter();
-    this.smoothedEmitter = new Emitter();
-    this.updateEmitter = new Emitter();
-    this.removeEmitter = new Emitter();
+      // @public (phet-io), see TrackReferenceIO
+      this.trackTandem = tandem;
+      this.availableModelBoundsProperty = availableModelBoundsProperty;
 
-    // @public {SimpleDragHandler} Keep track of what component (control point or track body) is dragging the track, so
-    // that it can't be dragged by
-    // two sources, which causes a flicker, see #282
-    this.dragSource = null;
+      // @public (read-only) - see options
+      this.draggable = options.draggable;
+      this.configurable = options.configurable;
+      this.splittable = options.splittable;
+      this.attachable = options.attachable;
 
-    // @private - Flag to indicate whether the skater transitions from the right edge of this track directly to the
-    // ground, if set to true, additional corrections to skater energy will be applied so that energy is conserved in
-    // this case - see phetsims/energy-skate-park-basics#164. Also see the getters/setters for this below.
-    this._slopeToGround = false;
+      // @public
+      this.translatedEmitter = new Emitter();
+      this.resetEmitter = new Emitter();
+      this.smoothedEmitter = new Emitter();
+      this.updateEmitter = new Emitter();
+      this.removeEmitter = new Emitter();
 
-    // @private {boolean} - if slopeToGround is set, and we disable the energy corrections when a control point moves,
-    // the "slope to ground" energy corrections should be applied again once the track is reset
-    this._restoreSlopeToGroundOnReset = false;
+      // @public {SimpleDragHandler} Keep track of what component (control point or track body) is dragging the track, so
+      // that it can't be dragged by
+      // two sources, which causes a flicker, see #282
+      this.dragSource = null;
 
-    // @private - Use an arbitrary position for translating the track during dragging.  Only used for deltas in relative
-    // positioning and translation, so an exact "position" is irrelevant, see #260
-    this._position = new Vector2( 0, 0 );
+      // @private - Flag to indicate whether the skater transitions from the right edge of this track directly to the
+      // ground, if set to true, additional corrections to skater energy will be applied so that energy is conserved in
+      // this case - see phetsims/energy-skate-park-basics#164. Also see the getters/setters for this below.
+      this._slopeToGround = false;
 
-    // @public {boolean} - True if the track can be interacted with.  For screens 1-2 only one track will be physical
-    // (and hence visible). For screen 3, tracks in the control panel are visible but non-physical until dragged to
-    // the play area
-    this.physicalProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'physicalProperty' ),
-      phetioState: options.phetioState // Participate in state only if parent track is too
-    } );
+      // @private {boolean} - if slopeToGround is set, and we disable the energy corrections when a control point moves,
+      // the "slope to ground" energy corrections should be applied again once the track is reset
+      this._restoreSlopeToGroundOnReset = false;
 
-    // @private {boolean} - Flag that shows whether the track has been dragged fully out of the panel
-    this.leftThePanelProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'leftThePanelProperty' ),
-      phetioState: options.phetioState // Participate in state only if parent track is too
-    } );
+      // @private - Use an arbitrary position for translating the track during dragging.  Only used for deltas in relative
+      // positioning and translation, so an exact "position" is irrelevant, see #260
+      this._position = new Vector2( 0, 0 );
 
-    // @public - Keep track of whether the track is dragging, so performance can be optimized while dragging
-    this.draggingProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'draggingProperty' ),
-      phetioState: options.phetioState // Participate in state only if parent track is too
-    } );
+      // @public {boolean} - True if the track can be interacted with.  For screens 1-2 only one track will be physical
+      // (and hence visible). For screen 3, tracks in the control panel are visible but non-physical until dragged to
+      // the play area
+      this.physicalProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'physicalProperty' ),
+        phetioState: options.phetioState // Participate in state only if parent track is too
+      } );
 
-    // @public {boolean} - Flag to indicate whether the user has dragged the track out of the toolbox.  If dragging from the toolbox,
-    // then dragging translates the entire track instead of just a point.
-    this.droppedProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'droppedProperty' ),
-      phetioState: options.phetioState // Participate in state only if parent track is too
-    } );
+      // @private {boolean} - Flag that shows whether the track has been dragged fully out of the panel
+      this.leftThePanelProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'leftThePanelProperty' ),
+        phetioState: options.phetioState // Participate in state only if parent track is too
+      } );
 
-    const trackChangedListener = function() { model.trackChangedEmitter.emit(); };
-    this.physicalProperty.link( trackChangedListener );
+      // @public - Keep track of whether the track is dragging, so performance can be optimized while dragging
+      this.draggingProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'draggingProperty' ),
+        phetioState: options.phetioState // Participate in state only if parent track is too
+      } );
 
-    this.controlPoints = controlPoints;
-    assert && assert( this.controlPoints, 'control points should be defined' );
+      // @public {boolean} - Flag to indicate whether the user has dragged the track out of the toolbox.  If dragging from the toolbox,
+      // then dragging translates the entire track instead of just a point.
+      this.droppedProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'droppedProperty' ),
+        phetioState: options.phetioState // Participate in state only if parent track is too
+      } );
 
-    // @public {FastArray<number>}
-    this.parametricPosition = new FastArray( this.controlPoints.length );
-    this.x = new FastArray( this.controlPoints.length );
-    this.y = new FastArray( this.controlPoints.length );
+      const trackChangedListener = () => { model.trackChangedEmitter.emit(); };
+      this.physicalProperty.link( trackChangedListener );
 
-    // Sampling points, which will be initialized and updated in updateLinSpace.  These points are evenly spaced
-    // in the track parametric coordinates from just before the track parameter space to just after. See updateLinSpace
-    // @private
-    this.searchLinSpace = null;
-    this.distanceBetweenSamplePoints = null;
+      this.controlPoints = controlPoints;
+      assert && assert( this.controlPoints, 'control points should be defined' );
 
-    this.updateLinSpace();
-    this.updateSplines();
+      // @public {FastArray<number>}
+      this.parametricPosition = new FastArray( this.controlPoints.length );
+      this.x = new FastArray( this.controlPoints.length );
+      this.y = new FastArray( this.controlPoints.length );
 
-    PhetioObject.call( this, options );
+      // Sampling points, which will be initialized and updated in updateLinSpace.  These points are evenly spaced
+      // in the track parametric coordinates from just before the track parameter space to just after. See updateLinSpace
+      // @private
+      this.searchLinSpace = null;
+      this.distanceBetweenSamplePoints = null;
 
-    // In the state wrapper, when the state changes, we must update the skater node
-    const stateListener = function() {
-      self.updateLinSpace();
-      self.updateSplines();
-      model.trackChangedEmitter.emit();
-      model.updateEmitter.emit();
-    };
-    _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
+      this.updateLinSpace();
+      this.updateSplines();
 
-    // when available bounds change, make sure that control points are within - must be disposed
-    const boundsListener = function( bounds ) {
-      if ( self.droppedProperty.get() ) {
-        self.containControlPointsInAvailableBounds( bounds );
-      }
-    };
-    this.availableModelBoundsProperty.link( boundsListener );
+      // In the state wrapper, when the state changes, we must update the skater node
+      const stateListener = () => {
+        self.updateLinSpace();
+        self.updateSplines();
+        model.trackChangedEmitter.emit();
+        model.updateEmitter.emit();
+      };
+      _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
 
-    // @private - make the Track eligible for garbage collection
-    this.disposeTrack = function() {
-      _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
-      if ( self.parents ) {
-        self.parents.length = 0;
-      }
-      self.physicalProperty.dispose();
-      self.leftThePanelProperty.dispose();
-      self.draggingProperty.dispose();
-      self.droppedProperty.dispose();
+      // when available bounds change, make sure that control points are within - must be disposed
+      const boundsListener = bounds => {
+        if ( self.droppedProperty.get() ) {
+          self.containControlPointsInAvailableBounds( bounds );
+        }
+      };
+      this.availableModelBoundsProperty.link( boundsListener );
 
-      this.availableModelBoundsProperty.unlink( boundsListener );
-    };
-  }
+      // @private - make the Track eligible for garbage collection
+      this.disposeTrack = () => {
+        _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
+        if ( self.parents ) {
+          self.parents.length = 0;
+        }
+        self.physicalProperty.dispose();
+        self.leftThePanelProperty.dispose();
+        self.draggingProperty.dispose();
+        self.droppedProperty.dispose();
 
-  energySkatePark.register( 'Track', Track );
+        this.availableModelBoundsProperty.unlink( boundsListener );
+      };
+    }
 
-  return inherit( PhetioObject, Track, {
+
+
 
     // when points change, update the spline instance
-    updateSplines: function() {
+    updateSplines() {
 
       // Arrays are fixed length, so just overwrite values, see #38
       for ( let i = 0; i < this.controlPoints.length; i++ ) {
@@ -216,10 +216,10 @@ define( require => {
 
       this.xSplineDiffDiff = null;
       this.ySplineDiffDiff = null;
-    },
+    }
 
     // reset the track
-    reset: function() {
+    reset() {
       this.physicalProperty.reset();
       this.leftThePanelProperty.reset();
       this.draggingProperty.reset();
@@ -237,7 +237,7 @@ define( require => {
       // Broadcast message so that TrackNode can update the shape
       this.updateSplines();
       this.resetEmitter.emit();
-    },
+    }
 
     /**
      * Returns the closest point (Euclidean) and position (parametric) on the track, as an object with {u,point}
@@ -249,7 +249,7 @@ define( require => {
      * @param {Vector2} point
      * @returns {{parametricPosition: number, point: Vector2, distance: Number}}
      */
-    getClosestPositionAndParameter: function( point ) {
+    getClosestPositionAndParameter( point ) {
 
       // Compute the spline points for purposes of getting closest points.
       // keep these points around and invalidate only when necessary
@@ -307,7 +307,7 @@ define( require => {
       bestPoint.y = SplineEvaluation.atNumber( this.ySpline, bestU );
 
       return { parametricPosition: bestU, point: bestPoint, distance: bestDistanceSquared };
-    },
+    }
 
     /**
      * Get x location at the parametric position.
@@ -315,7 +315,7 @@ define( require => {
      * @param {number} parametricPosition
      * @returns {number}
      */
-    getX: function( parametricPosition ) { return SplineEvaluation.atNumber( this.xSpline, parametricPosition ); },
+    getX( parametricPosition ) { return SplineEvaluation.atNumber( this.xSpline, parametricPosition ); }
 
     /**
      * Get y location at the parametric position.
@@ -323,7 +323,7 @@ define( require => {
      * @param {number}
      * @returns {number}
      */
-    getY: function( parametricPosition ) { return SplineEvaluation.atNumber( this.ySpline, parametricPosition ); },
+    getY( parametricPosition ) { return SplineEvaluation.atNumber( this.ySpline, parametricPosition ); }
 
     /**
      * Get the model location at the parametric position.
@@ -331,11 +331,11 @@ define( require => {
      * @param {number} parametricPosition
      * @returns {Vector2}
      */
-    getPoint: function( parametricPosition ) {
+    getPoint( parametricPosition ) {
       const x = SplineEvaluation.atNumber( this.xSpline, parametricPosition );
       const y = SplineEvaluation.atNumber( this.ySpline, parametricPosition );
       return new Vector2( x, y );
-    },
+    }
 
     /**
      * Translate the track by moving all control points by dx and dy.
@@ -343,7 +343,7 @@ define( require => {
      * @param {number} dx
      * @param {number} dy
      */
-    translate: function( dx, dy ) {
+    translate( dx, dy ) {
       this._position = this._position.plusXY( dx, dy );
 
       // move all the control points
@@ -357,7 +357,7 @@ define( require => {
       // Just observing the control points individually would lead to N expensive callbacks (instead of 1)
       // for each of the N points, So we use this broadcast mechanism instead
       this.translatedEmitter.emit();
-    },
+    }
 
     /**
      * Set whether or not this Track slopes to the ground, and corrects energy on the transition from track to ground.
@@ -367,11 +367,11 @@ define( require => {
      *
      * @param {boolean} slopeToGround
      */
-    setSlopeToGround: function( slopeToGround ) {
+    setSlopeToGround( slopeToGround ) {
       this._slopeToGround = slopeToGround;
       this._restoreSlopeToGroundOnReset = true;
-    },
-    set slopeToGround( slopeToGround ) { this.setSlopeToGround( slopeToGround ); },
+    }
+    set slopeToGround( slopeToGround ) { this.setSlopeToGround( slopeToGround ); }
 
     /**
      * Get whether or not the track "slopes to the ground", and skater energy state should apply additional corrections.
@@ -379,10 +379,10 @@ define( require => {
      *
      * @returns {boolean}
      */
-    getSlopeToGround: function() {
+    getSlopeToGround() {
       return this._slopeToGround;
-    },
-    get slopeToGround() { return this.getSlopeToGround(); },
+    }
+    get slopeToGround() { return this.getSlopeToGround(); }
 
     /**
      * For purposes of showing the skater angle, get the view angle of the track here. Note this means inverting the y
@@ -392,13 +392,13 @@ define( require => {
      * @param {number} parametricPosition
      * @returns {number}
      */
-    getViewAngleAt: function( parametricPosition ) {
+    getViewAngleAt( parametricPosition ) {
       if ( this.xSplineDiff === null ) {
         this.xSplineDiff = this.xSpline.diff();
         this.ySplineDiff = this.ySpline.diff();
       }
       return Math.atan2( -SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition ), SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ) );
-    },
+    }
 
     /**
      * Get the model angle at the specified position on the track.
@@ -407,7 +407,7 @@ define( require => {
      * @param {number} parametricPosition
      * @returns {number}
      */
-    getModelAngleAt: function( parametricPosition ) {
+    getModelAngleAt( parametricPosition ) {
 
       // load xSplineDiff, ySplineDiff here if not already loaded
       if ( this.xSplineDiff === null ) {
@@ -415,7 +415,7 @@ define( require => {
         this.ySplineDiff = this.ySpline.diff();
       }
       return Math.atan2( SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition ), SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ) );
-    },
+    }
 
     /**
      * Get the model unit vector at the specified position on the track.
@@ -423,7 +423,7 @@ define( require => {
      * @param {number} parametricPosition
      * @returns {number}
      */
-    getUnitNormalVector: function( parametricPosition ) {
+    getUnitNormalVector( parametricPosition ) {
 
       // load xSplineDiff, ySplineDiff here if not already loaded
       if ( this.xSplineDiff === null ) {
@@ -431,10 +431,10 @@ define( require => {
         this.ySplineDiff = this.ySpline.diff();
       }
       return new Vector2( -SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition ), SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ) ).normalize();
-    },
+    }
 
     // Get the model parallel vector at the specified position on the track
-    getUnitParallelVector: function( parametricPosition ) {
+    getUnitParallelVector( parametricPosition ) {
 
       // load xSplineDiff, ySplineDiff here if not already loaded
       if ( this.xSplineDiff === null ) {
@@ -442,9 +442,9 @@ define( require => {
         this.ySplineDiff = this.ySpline.diff();
       }
       return new Vector2( SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ), SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition ) ).normalize();
-    },
+    }
 
-    updateLinSpace: function() {
+    updateLinSpace() {
       this.minPoint = 0;
       this.maxPoint = ( this.controlPoints.length - 1 ) / this.controlPoints.length;
       const prePoint = this.minPoint - 1E-6;
@@ -455,24 +455,24 @@ define( require => {
       const n = 20 * ( this.controlPoints.length - 1 );
       this.searchLinSpace = numeric.linspace( prePoint, postPoint, n );
       this.distanceBetweenSamplePoints = ( postPoint - prePoint ) / n;
-    },
+    }
 
     // Detect whether a parametric point is in bounds of this track, for purposes of telling whether the skater fell
     // past the edge of the track
-    isParameterInBounds: function( parametricPosition ) {
+    isParameterInBounds( parametricPosition ) {
       return parametricPosition >= this.minPoint && parametricPosition <= this.maxPoint;
-    },
+    }
 
-    toString: function() {
+    toString() {
       let string = '';
       for ( let i = 0; i < this.controlPoints.length; i++ ) {
         const point = this.controlPoints[ i ];
         string = string + '(' + point.positionProperty.value.x + ',' + point.positionProperty.value.y + ')';
       }
       return string;
-    },
+    }
 
-    getSnapTarget: function() {
+    getSnapTarget() {
       for ( let i = 0; i < this.controlPoints.length; i++ ) {
         const o = this.controlPoints[ i ];
         if ( o.snapTargetProperty.value ) {
@@ -480,9 +480,9 @@ define( require => {
         }
       }
       return null;
-    },
+    }
 
-    getBottomControlPointY: function() {
+    getBottomControlPointY() {
       let best = Number.POSITIVE_INFINITY;
       const length = this.controlPoints.length;
       for ( let i = 0; i < length; i++ ) {
@@ -491,9 +491,9 @@ define( require => {
         }
       }
       return best;
-    },
+    }
 
-    getTopControlPointY: function() {
+    getTopControlPointY() {
       let best = Number.NEGATIVE_INFINITY;
       const length = this.controlPoints.length;
       for ( let i = 0; i < length; i++ ) {
@@ -502,9 +502,9 @@ define( require => {
         }
       }
       return best;
-    },
+    }
 
-    getLeftControlPointX: function() {
+    getLeftControlPointX() {
       let best = Number.POSITIVE_INFINITY;
       const length = this.controlPoints.length;
       for ( let i = 0; i < length; i++ ) {
@@ -513,9 +513,9 @@ define( require => {
         }
       }
       return best;
-    },
+    }
 
-    getRightControlPointX: function() {
+    getRightControlPointX() {
       let best = Number.NEGATIVE_INFINITY;
       const length = this.controlPoints.length;
       for ( let i = 0; i < length; i++ ) {
@@ -524,21 +524,21 @@ define( require => {
         }
       }
       return best;
-    },
+    }
 
-    containsControlPoint: function( controlPoint ) {
+    containsControlPoint( controlPoint ) {
       for ( let i = 0; i < this.controlPoints.length; i++ ) {
         if ( this.controlPoints[ i ] === controlPoint ) {
           return true;
         }
       }
       return false;
-    },
+    }
 
     // Return an array which contains all of the Tracks that would need to be reset if this track was reset.
-    getParentsOrSelf: function() { return this.parents || [ this ]; },
+    getParentsOrSelf() { return this.parents || [ this ]; }
 
-    returnToControlPanel: function() {
+    returnToControlPanel() {
       if ( this.parents ) {
         this.modelTracks.remove( this );
         for ( let i = 0; i < this.parents.length; i++ ) {
@@ -550,7 +550,7 @@ define( require => {
       else {
         this.reset();
       }
-    },
+    }
 
     /**
      * Returns the arc length (in meters) between two points on a parametric curve.
@@ -559,7 +559,7 @@ define( require => {
      * @param {number} u1
      * @returns {number}
      */
-    getArcLength: function( u0, u1 ) {
+    getArcLength( u0, u1 ) {
       if ( u1 === u0 ) {
         return 0;
       }
@@ -587,7 +587,7 @@ define( require => {
         prevY = ptY;
       }
       return sum;
-    },
+    }
 
     /**
      * Find the parametric distance along the track, starting at u0 and moving ds meters
@@ -595,7 +595,7 @@ define( require => {
      * @param {number} ds meters to traverse along the track
      * @returns {number}
      */
-    getParametricDistance: function( u0, ds ) {
+    getParametricDistance( u0, ds ) {
       let lowerBound = -1;
       let upperBound = 2;
 
@@ -621,7 +621,7 @@ define( require => {
         }
       }
       return guess - u0;
-    },
+    }
 
 
     /**
@@ -633,7 +633,7 @@ define( require => {
      * @param parametricPosition
      * @param curvature
      */
-    getCurvature: function( parametricPosition, curvature ) {
+    getCurvature( parametricPosition, curvature ) {
 
       if ( this.xSplineDiff === null ) {
         this.xSplineDiff = this.xSpline.diff();
@@ -664,11 +664,11 @@ define( require => {
       curvature.r = 1 / k;
       curvature.x = vectorX;
       curvature.y = vectorY;
-    },
+    }
 
     // Find the lowest y-point on the spline by sampling, used when dropping the track or a control point to ensure it
     // won't go below y=0
-    getLowestY: function() {
+    getLowestY() {
       if ( !this.xSearchPoints ) {
         this.xSearchPoints = SplineEvaluation.atArray( this.xSpline, this.searchLinSpace );
         this.ySearchPoints = SplineEvaluation.atArray( this.ySpline, this.searchLinSpace );
@@ -703,11 +703,11 @@ define( require => {
       }
 
       return min;
-    },
+    }
 
     // If any part of the track is below ground, move the whole track up so it rests at y=0 at its minimum, see #71
     // Called when user releases track or a control point after dragging
-    bumpAboveGround: function() {
+    bumpAboveGround() {
       const lowestY = this.getLowestY();
       if ( lowestY < 0 ) {
         this.translate( 0, -lowestY );
@@ -718,7 +718,7 @@ define( require => {
       // do that anyway in containControlPointsInAvailableBounds
       this.containControlPointsInLimitBounds( false );
       this.containControlPointsInAvailableBounds( this.availableModelBoundsProperty.get() );
-    },
+    }
 
     /**
      * If any control points are out of the model available bounds (bounds of the entire simulation play area),
@@ -726,7 +726,7 @@ define( require => {
      *
      * @private
      */
-    containControlPointsInAvailableBounds: function( bounds ) {
+    containControlPointsInAvailableBounds( bounds ) {
       for ( let i = 0; i < this.controlPoints.length; i++ ) {
         const currentLocation = this.controlPoints[ i ].positionProperty.get();
         if ( !bounds.containsPoint( currentLocation ) ) {
@@ -740,7 +740,7 @@ define( require => {
 
       this.updateSplines();
       this.updateEmitter.emit();
-    },
+    }
 
     /**
      * Make sure that all control points are contained within their limiting draggable bounds. The algorithm for keeping
@@ -751,7 +751,7 @@ define( require => {
      * @param {boolean} [updateSplines] optional, whether or not to update splines and redraw after this operation
      *                                  (for performance, you might chose to wait and do this later)
      */
-    containControlPointsInLimitBounds: function( updateSplines ) {
+    containControlPointsInLimitBounds( updateSplines ) {
       for ( let i = 0; i < this.controlPoints.length; i++ ) {
         const controlPoint = this.controlPoints[ i ];
         const limitBounds = controlPoint.limitBounds;
@@ -769,13 +769,13 @@ define( require => {
           this.updateEmitter.emit();
         }
       }
-    },
+    }
 
     /**
      * Smooth out the track so it doesn't have any sharp turns, see #177
      * @param {number} i - the index of the control point to adjust
      */
-    smooth: function( i ) {
+    smooth( i ) {
       assert && assert( i >= 0 && i < this.controlPoints.length );
       assert && assert( this.availableModelBoundsProperty );
 
@@ -821,14 +821,14 @@ define( require => {
 
       this.smoothedEmitter.emit();
       return success;
-    },
+    }
 
     /**
      * The user just released a control point with index (indexToIgnore) and the spline needs to be smoothed.
      * Choose the point closest to the sharpest turn and adjust it.
      * @param {Array} indicesToIgnore indices which should not be adjusted (perhaps because the user just released them)
      */
-    smoothPointOfHighestCurvature: function( indicesToIgnore ) {
+    smoothPointOfHighestCurvature( indicesToIgnore ) {
 
       // Find the sharpest turn on the track
       const highestCurvatureU = this.getUWithHighestCurvature();
@@ -862,9 +862,9 @@ define( require => {
           return this.smoothPointOfHighestCurvature( indicesToIgnore );
         }
       }
-    },
+    }
 
-    getUWithHighestCurvature: function() {
+    getUWithHighestCurvature() {
       // Below implementation copied from getMinimumRadiusOfCurvature.  It is a CPU demanding task, so kept separate to
       // keep the other one fast. Should be kept in sync manually
       const curvature = { r: 0, x: 0, y: 0 };
@@ -884,13 +884,13 @@ define( require => {
         }
       }
       return bestU;
-    },
+    }
 
     /**
      * Find the minimum radius of curvature along the track, in meters
      * @returns {number} the minimum radius of curvature along the track, in meters.
      */
-    getMinimumRadiusOfCurvature: function() {
+    getMinimumRadiusOfCurvature() {
       const curvature = { r: 0, x: 0, y: 0 };
       let minRadius = Number.POSITIVE_INFINITY;
 
@@ -906,24 +906,24 @@ define( require => {
         }
       }
       return minRadius;
-    },
+    }
 
     // Use an arbitrary position for translating the track during dragging.  Only used for deltas in relative
     // positioning and translation, so an exact "position" is irrelevant.
     get position() {
       return this._position.copy();
-    },
+    }
 
     set position( newPosition ) {
       const delta = newPosition.minus( this.position );
       this.translate( delta.x, delta.y );
-    },
+    }
 
-    copyControlPointSources: function() {
-      return this.controlPoints.map( function( controlPoint ) {return controlPoint.sourcePositionProperty.value.copy();} );
-    },
+    copyControlPointSources() {
+      return this.controlPoints.map( controlPoint => { return controlPoint.sourcePositionProperty.value.copy(); } );
+    }
 
-    getDebugString: function() {
+    getDebugString() {
       let string = 'var controlPoints = [';
       for ( let i = 0; i < this.controlPoints.length; i++ ) {
         const controlPoint = this.controlPoints[ i ];
@@ -933,24 +933,26 @@ define( require => {
         }
       }
       return string + '];';
-    },
+    }
 
-    dispose: function() {
+    dispose() {
       this.disposeTrack();
       PhetioObject.prototype.dispose.call( this );
-    },
+    }
 
     /**
      * Dispose all of the control points of the track when they will not be reused in another track
      * @public
      */
-    disposeControlPoints: function() {
-      this.controlPoints.forEach( function( controlPoint ) {
+    disposeControlPoints() {
+      this.controlPoints.forEach( controlPoint => {
         controlPoint.dispose();
       } );
     }
-  }, {
+  }
 
-    FULLY_INTERACTIVE_OPTIONS: FULLY_INTERACTIVE_OPTIONS
-  } );
+  // @public @public
+  Track.FULLY_INTERACTIVE_OPTIONS = FULLY_INTERACTIVE_OPTIONS;
+
+  return energySkatePark.register( 'Track', Track );
 } );
