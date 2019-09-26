@@ -36,7 +36,6 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModelIO' );
   const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const NumberProperty = require( 'AXON/NumberProperty' );
   const ObservableArray = require( 'AXON/ObservableArray' );
   const ObservableArrayIO = require( 'AXON/ObservableArrayIO' );
@@ -56,7 +55,6 @@ define( require => {
 
   // Reuse empty object for creating SkaterStates to avoid allocations
   const EMPTY_OBJECT = {};
-
 
   // Use a separate pooled curvature variable to reduce memory allocations - object values
   // will be modified as the skater moves
@@ -88,202 +86,199 @@ define( require => {
    * @param {Tandem} tandem
    * @constructor
    */
-  function EnergySkateParkModel( draggableTracks, frictionAllowed, tandem, options ) {
+  class EnergySkateParkModel extends PhetioObject {
+    constructor( draggableTracks, frictionAllowed, tandem, options ) {
+      super( {
+        phetioType: EnergySkateParkModelIO,
+        tandem: tandem,
+        phetioState: false
+      } );
 
-    options = _.extend( {
+      options = _.extend( {
 
-      // {boolean} - if true, tracks can be dragged around the play area
-      tracksDraggable: false,
+        // {boolean} - if true, tracks can be dragged around the play area
+        tracksDraggable: false,
 
-      // {boolean} - if true, track control points can be dragged and track shapes can change
-      tracksConfigurable: false,
+        // {boolean} - if true, track control points can be dragged and track shapes can change
+        tracksConfigurable: false,
 
-      // passed to Skater
-      skaterOptions: {}
-    }, options );
+        // passed to Skater
+        skaterOptions: {}
+      }, options );
 
-    options.skaterOptions = _.extend( {
+      options.skaterOptions = _.extend( {
 
-      // initial mass for the skater
-      // TODO: In the future, we may have many skaters and this won't apply
-      // Or maybe we will only have one skater, and change the visual representation by value
-      defaultMass: Constants.DEFAULT_MASS,
-      massRange: Constants.MASS_RANGE
-    }, options.skaterOptions );
+        // initial mass for the skater
+        // TODO: In the future, we may have many skaters and this won't apply
+        // Or maybe we will only have one skater, and change the visual representation by value
+        defaultMass: Constants.DEFAULT_MASS,
+        massRange: Constants.MASS_RANGE
+      }, options.skaterOptions );
 
-    // @public (read-only)
-    this.draggableTracks = draggableTracks; // TODO: REmove this in favor of tracksDraggable option
-    this.frictionAllowed = frictionAllowed;
-    this.tracksDraggable = options.tracksDraggable;
-    this.tracksConfigurable = options.tracksConfigurable;
+      // @public (read-only)
+      this.draggableTracks = draggableTracks; // TODO: REmove this in favor of tracksDraggable option
+      this.frictionAllowed = frictionAllowed;
+      this.tracksDraggable = options.tracksDraggable;
+      this.tracksConfigurable = options.tracksConfigurable;
 
-    const self = this;
+      const self = this;
 
-    const controlPointGroupTandem = tandem.createGroupTandem( 'controlPoint' );
-    const trackGroupTandem = tandem.createGroupTandem( 'track' );
+      const controlPointGroupTandem = tandem.createGroupTandem( 'controlPoint' );
+      const trackGroupTandem = tandem.createGroupTandem( 'track' );
 
-    // @protected
-    this.controlPointGroupTandem = controlPointGroupTandem;
+      // @protected
+      this.controlPointGroupTandem = controlPointGroupTandem;
 
-    // @public
-    this.trackGroupTandem = trackGroupTandem;
+      // @public
+      this.trackGroupTandem = trackGroupTandem;
 
-    // Temporary flag that keeps track of whether the track was changed in the step before the physics update.
-    // true if the skater's track is being dragged by the user, so that energy conservation no longer applies.
-    // Only applies to one frame at a time (for the immediate next update).  See #127 and #135
-    // @private
-    this.trackChangePending = false;
+      // Temporary flag that keeps track of whether the track was changed in the step before the physics update.
+      // true if the skater's track is being dragged by the user, so that energy conservation no longer applies.
+      // Only applies to one frame at a time (for the immediate next update).  See #127 and #135
+      // @private
+      this.trackChangePending = false;
 
-    // @public - model for visibility of various view parameters
-    this.pieChartVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'pieChartVisibleProperty' )
-    } );
-    this.barGraphVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'barGraphVisibleProperty' )
-    } );
-    this.gridVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'gridVisibleProperty' )
-    } );
-    this.speedometerVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'speedometerVisibleProperty' )
-    } );
+      // @public - model for visibility of various view parameters
+      this.pieChartVisibleProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'pieChartVisibleProperty' )
+      } );
+      this.barGraphVisibleProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'barGraphVisibleProperty' )
+      } );
+      this.gridVisibleProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'gridVisibleProperty' )
+      } );
+      this.speedometerVisibleProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'speedometerVisibleProperty' )
+      } );
 
-    // whether the speed value is visible on the speedometer
-    this.speedValueVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'speedValueVisibleProperty' )
-    } );
-    this.referenceHeightVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'referenceHeightVisibleProperty' )
-    } );
-    this.measuringTapeVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'measuringTapeVisibleProperty' )
-    } );
+      // whether the speed value is visible on the speedometer
+      this.speedValueVisibleProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'speedValueVisibleProperty' )
+      } );
+      this.referenceHeightVisibleProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'referenceHeightVisibleProperty' )
+      } );
+      this.measuringTapeVisibleProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'measuringTapeVisibleProperty' )
+      } );
 
-    // @public {number} - scale applied to graphs to determine relative height, making this larger will "zoom out"
-    this.barGraphScaleProperty = new NumberProperty( 1 / 30, {
-      tandem: tandem.createTandem( 'barGraphScaleProperty' )
-    } );
+      // @public {number} - scale applied to graphs to determine relative height, making this larger will "zoom out"
+      this.barGraphScaleProperty = new NumberProperty( 1 / 30, {
+        tandem: tandem.createTandem( 'barGraphScaleProperty' )
+      } );
 
-    // @public - enabled/disabled for the track editing buttons
-    this.editButtonEnabledProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'editButtonEnabledProperty' )
-    } );
-    this.clearButtonEnabledProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'clearButtonEnabledProperty' )
-    } );
+      // @public - enabled/disabled for the track editing buttons
+      this.editButtonEnabledProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'editButtonEnabledProperty' )
+      } );
+      this.clearButtonEnabledProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'clearButtonEnabledProperty' )
+      } );
 
-    // Whether the sim is paused or running
-    this.pausedProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'pausedProperty' )
-    } );
+      // Whether the sim is paused or running
+      this.pausedProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'pausedProperty' )
+      } );
 
-    // @public {string} - speed of the model, either 'normal' or 'slow'
-    this.speedProperty = new Property( 'normal', {
-      tandem: tandem.createTandem( 'speedProperty' ),
-      phetioType: PropertyIO( StringIO )
-    } );
+      // @public {string} - speed of the model, either 'normal' or 'slow'
+      this.speedProperty = new Property( 'normal', {
+        tandem: tandem.createTandem( 'speedProperty' ),
+        phetioType: PropertyIO( StringIO )
+      } );
 
-    // @public {number} - Coefficient of friction (unitless) between skater and track
-    this.frictionProperty = new NumberProperty( frictionAllowed ? Constants.DEFAULT_FRICTION : 0, {
-      range: new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ),
-      tandem: tandem.createTandem( 'frictionProperty' )
-    } );
+      // @public {number} - Coefficient of friction (unitless) between skater and track
+      this.frictionProperty = new NumberProperty( frictionAllowed ? Constants.DEFAULT_FRICTION : 0, {
+        range: new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ),
+        tandem: tandem.createTandem( 'frictionProperty' )
+      } );
 
-    // @public
-    this.measuringTapeBasePositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' )
-    } );
+      // @public
+      this.measuringTapeBasePositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
+        tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' )
+      } );
 
-    // @public
-    this.measuringTapeTipPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' )
-    } );
+      // @public
+      this.measuringTapeTipPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
+        tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' )
+      } );
 
-    // @public {boolean} - Whether the skater should stick to the track like a roller coaster, or be able to fly off like a street
-    this.stickingToTrackProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'stickingToTrackProperty' )
-    } );
+      // @public {boolean} - Whether the skater should stick to the track like a roller coaster, or be able to fly off like a street
+      this.stickingToTrackProperty = new BooleanProperty( true, {
+        tandem: tandem.createTandem( 'stickingToTrackProperty' )
+      } );
 
-    // @public - Will be filled in by the view, used to prevent control points from moving outside the visible model bounds when
-    // adjusted, see #195
-    this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
-      tandem: tandem.createTandem( 'availableModelBoundsProperty' ),
-      phetioType: PropertyIO( Bounds2IO )
-    } );
+      // @public - Will be filled in by the view, used to prevent control points from moving outside the visible model bounds when
+      // adjusted, see #195
+      this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
+        tandem: tandem.createTandem( 'availableModelBoundsProperty' ),
+        phetioType: PropertyIO( Bounds2IO )
+      } );
 
-    if ( EnergySkateParkQueryParameters.debugTrack ) {
-      this.frictionProperty.debug( 'friction' );
-    }
-
-    // @public {Skater} - the skater model instance
-    this.skater = new Skater( tandem.createTandem( 'skater' ), options.skaterOptions );
-
-    // @public - signify that the model has successfully been reset to initial state
-    this.resetEmitter = new Emitter();
-
-    // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
-    // TODO: Can this me moved into Skater.js?
-    this.skater.massProperty.link( function() { if ( self.pausedProperty.value ) { self.skater.updatedEmitter.emit(); } } );
-
-    // @public
-    this.tracks = new ObservableArray( {
-      phetioType: ObservableArrayIO( TrackIO, {
-        isReferenceType: false // because this is using "value type" serialization
-      } ),
-      tandem: tandem.createTandem( 'tracks' )
-    } );
-
-    // When tracks are removed, they are no longer used by the application and should be disposed
-    this.tracks.addItemRemovedListener( function( track ) {
-      track.dispose();
-    } );
-
-    // Determine when to show/hide the track edit buttons (cut track or delete control point)
-    const updateTrackEditingButtonProperties = function() {
-      let editEnabled = false;
-      let clearEnabled = false;
-      const physicalTracks = self.getPhysicalTracks();
-      for ( let i = 0; i < physicalTracks.length; i++ ) {
-        clearEnabled = true;
-        const physicalTrack = physicalTracks[ i ];
-        if ( physicalTrack.controlPoints.length >= 3 ) {
-          editEnabled = true;
-        }
+      if ( EnergySkateParkQueryParameters.debugTrack ) {
+        this.frictionProperty.debug( 'friction' );
       }
-      self.editButtonEnabledProperty.value = editEnabled;
-      self.clearButtonEnabledProperty.value = clearEnabled;
-    };
-    this.tracks.addItemAddedListener( updateTrackEditingButtonProperties );
-    this.tracks.addItemRemovedListener( updateTrackEditingButtonProperties );
-    this.trackChangedEmitter = new Emitter();
-    this.updateEmitter = new Emitter();
-    this.trackChangedEmitter.addListener( updateTrackEditingButtonProperties );
 
-    if ( EnergySkateParkQueryParameters.debugTrack ) {
-      DebugTracks.init( this, tandem.createGroupTandem( 'debugTrackControlPoint' ), tandem.createGroupTandem( 'track' ) );
+      // @public {Skater} - the skater model instance
+      this.skater = new Skater( tandem.createTandem( 'skater' ), options.skaterOptions );
+
+      // @public - signify that the model has successfully been reset to initial state
+      this.resetEmitter = new Emitter();
+
+      // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
+      // TODO: Can this me moved into Skater.js?
+      this.skater.massProperty.link( function() { if ( self.pausedProperty.value ) { self.skater.updatedEmitter.emit(); } } );
+
+      // @public
+      this.tracks = new ObservableArray( {
+        phetioType: ObservableArrayIO( TrackIO, {
+          isReferenceType: false // because this is using "value type" serialization
+        } ),
+        tandem: tandem.createTandem( 'tracks' )
+      } );
+
+      // When tracks are removed, they are no longer used by the application and should be disposed
+      this.tracks.addItemRemovedListener( function( track ) {
+        track.dispose();
+      } );
+
+      // Determine when to show/hide the track edit buttons (cut track or delete control point)
+      const updateTrackEditingButtonProperties = function() {
+        let editEnabled = false;
+        let clearEnabled = false;
+        const physicalTracks = self.getPhysicalTracks();
+        for ( let i = 0; i < physicalTracks.length; i++ ) {
+          clearEnabled = true;
+          const physicalTrack = physicalTracks[ i ];
+          if ( physicalTrack.controlPoints.length >= 3 ) {
+            editEnabled = true;
+          }
+        }
+        self.editButtonEnabledProperty.value = editEnabled;
+        self.clearButtonEnabledProperty.value = clearEnabled;
+      };
+      this.tracks.addItemAddedListener( updateTrackEditingButtonProperties );
+      this.tracks.addItemRemovedListener( updateTrackEditingButtonProperties );
+      this.trackChangedEmitter = new Emitter();
+      this.updateEmitter = new Emitter();
+      this.trackChangedEmitter.addListener( updateTrackEditingButtonProperties );
+
+      if ( EnergySkateParkQueryParameters.debugTrack ) {
+        DebugTracks.init( this, tandem.createGroupTandem( 'debugTrackControlPoint' ), tandem.createGroupTandem( 'track' ) );
+      }
     }
-    PhetioObject.call( this, {
-      phetioType: EnergySkateParkModelIO,
-      tandem: tandem,
-      phetioState: false
-    } );
-  }
 
-  energySkatePark.register( 'EnergySkateParkModel', EnergySkateParkModel );
-
-  return inherit( PhetioObject, EnergySkateParkModel, {
-
-    // Add the tracks that will be in the track toolbox for the "Playground" screen
-    addDraggableTracks: function() {
+        // Add the tracks that will be in the track toolbox for the "Playground" screen
+    addDraggableTracks() {
 
       // 3 points per track
       for ( let i = 0; i < MAX_NUMBER_CONTROL_POINTS / 3; i++ ) {
         this.addDraggableTrack();
       }
-    },
+    }
 
     // Add a single track to the track control panel.
-    addDraggableTrack: function() {
+    addDraggableTrack() {
 
       const controlPointGroupTandem = this.controlPointGroupTandem;
       const trackGroupTandem = this.trackGroupTandem;
@@ -312,10 +307,10 @@ define( require => {
           tandem: trackGroupTandem.createNextTandem()
         }, Track.FULLY_INTERACTIVE_OPTIONS )
       ) );
-    },
+    }
 
     // Reset the model, including the skater, tracks, visualizations, etc.
-    reset: function() {
+    reset() {
       const availableModelBounds = this.availableModelBoundsProperty.value;
       this.pieChartVisibleProperty.reset();
       this.barGraphVisibleProperty.reset();
@@ -339,13 +334,13 @@ define( require => {
       this.clearTracks();
 
       this.resetEmitter.emit();
-    },
+    }
 
     /**
      * Clear all draggable tracks from the screen. For "Intro" and "Friction" screens, this will no-op, only clears
      * "Playground" screen.
      */
-    clearTracks: function() {
+    clearTracks() {
 
       // For the first two screens, make the default track physical
       if ( this.tracksDraggable ) {
@@ -360,19 +355,19 @@ define( require => {
           this.skater.trackProperty.value = null;
         }
       }
-    },
+    }
 
     // step one frame, assuming 60fps
-    manualStep: function() {
+    manualStep() {
       const skaterState = new SkaterState( this.skater, EMPTY_OBJECT );
       const dt = 1.0 / 60;
       const result = this.stepModel( dt, skaterState );
       result.setToSkater( this.skater );
       this.skater.updatedEmitter.emit();
-    },
+    }
 
     // Step the model, automatically called from Joist
-    step: function( dt ) {
+    step( dt ) {
 
       // This simulation uses a fixed time step to make the skater's motion reproducible.  Making the time step fixed
       // did not significantly reduce performance/speed on iPad3.
@@ -439,7 +434,7 @@ define( require => {
           // skater wasn't moving, so don't change directions
         }
       }
-    },
+    }
 
     /**
      * The skater moves along the ground with the same coefficient of fraction as the tracks, see #11. Returns a
@@ -450,7 +445,7 @@ define( require => {
      *
      * @returns {SkaterState}
      */
-    stepGround: function( dt, skaterState ) {
+    stepGround( dt, skaterState ) {
       const x0 = skaterState.positionX;
       const frictionMagnitude = ( this.frictionProperty.value === 0 || skaterState.getSpeed() < 1E-2 ) ? 0 :
                               this.frictionProperty.value * skaterState.mass * skaterState.gravity;
@@ -496,7 +491,7 @@ define( require => {
         assert && assert( newThermalEnergy >= 0, 'thermal energy should not be negative, correct energy another way' );
         return updated.updateThermalEnergy( newThermalEnergy );
       }
-    },
+    }
 
     /**
      * Transition the skater to the ground. New speed for the skater will keep x component of proposed velocity, and
@@ -512,7 +507,7 @@ define( require => {
      *
      * @returns {SkaterState}
      */
-    switchToGround: function( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt ) {
+    switchToGround( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt ) {
       const segment = new Vector2( 1, 0 );
 
       const newSpeed = segment.dot( proposedVelocity );
@@ -543,7 +538,7 @@ define( require => {
 
       if ( !isFinite( newThermalEnergy ) ) { throw new Error( 'not finite' ); }
       return skaterState.switchToGround( newThermalEnergy, newSpeed, 0, proposedPosition.x, proposedPosition.y );
-    },
+    }
 
     /**
      * Update the skater in free fall
@@ -553,7 +548,7 @@ define( require => {
      * interact with the track.
      * @returns {SkaterState} the new state
      */
-    stepFreeFall: function( dt, skaterState, justLeft ) {
+    stepFreeFall( dt, skaterState, justLeft ) {
       const initialEnergy = skaterState.getTotalEnergy();
 
       const acceleration = new Vector2( 0, skaterState.gravity );
@@ -581,7 +576,7 @@ define( require => {
       else {
         return skaterState;
       }
-    },
+    }
 
     // Find the closest track to the skater, to see what he can bounce off of or attach to, and return the closest point
     // on that track took.
@@ -594,7 +589,7 @@ define( require => {
      *
      * @returns {Object|null} - collection of { track: {Track}, parametricPosition: {Vector2}, point: {Vector2} }, or null
      */
-    getClosestTrackAndPositionAndParameter: function( position, physicalTracks ) {
+    getClosestTrackAndPositionAndParameter( position, physicalTracks ) {
       let closestTrack = null;
       let closestMatch = null;
       let closestDistance = Number.POSITIVE_INFINITY;
@@ -616,7 +611,7 @@ define( require => {
       else {
         return null;
       }
-    },
+    }
 
     /**
      * Check to see if the points crossed the track.
@@ -630,7 +625,7 @@ define( require => {
      *
      * @returns {boolean}
      */
-    crossedTrack: function( closestTrackAndPositionAndParameter, physicalTracks, beforeX, beforeY, afterX, afterY ) {
+    crossedTrack( closestTrackAndPositionAndParameter, physicalTracks, beforeX, beforeY, afterX, afterY ) {
       const track = closestTrackAndPositionAndParameter.track;
       const parametricPosition = closestTrackAndPositionAndParameter.parametricPosition;
       const trackPoint = closestTrackAndPositionAndParameter.point;
@@ -649,7 +644,7 @@ define( require => {
         const intersection = Util.lineSegmentIntersection( a.x, a.y, b.x, b.y, beforeX, beforeY, afterX, afterY );
         return intersection !== null;
       }
-    },
+    }
 
     /**
      * Check to see if skater should hit or attach to  track during free fall. Returns a new SkaterState for this.skater
@@ -663,7 +658,7 @@ define( require => {
      *
      * @returns {SkaterState}
      */
-    interactWithTracksWhileFalling: function( physicalTracks, skaterState, proposedPosition, initialEnergy, dt, proposedVelocity ) {
+    interactWithTracksWhileFalling( physicalTracks, skaterState, proposedPosition, initialEnergy, dt, proposedVelocity ) {
 
       // Find the closest track, and see if the skater would cross it in this time step.
       // Assuming the skater's initial + final locations determine a line segment, we search for the best point for the
@@ -758,7 +753,7 @@ define( require => {
       else {
         return this.continueFreeFall( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt );
       }
-    },
+    }
 
     /**
      * Started in free fall and did not interact with a track. Returns a new SkaterState for this.skater.
@@ -772,7 +767,7 @@ define( require => {
      *
      * @returns {SkaterState}
      */
-    continueFreeFall: function( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt ) {
+    continueFreeFall( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt ) {
 
       // make up for the difference by changing the y value
       const y = ( initialEnergy - 0.5 * skaterState.mass * proposedVelocity.magnitudeSquared - skaterState.thermalEnergy ) / ( -1 * skaterState.mass * skaterState.gravity ) + skaterState.referenceHeight;
@@ -783,7 +778,7 @@ define( require => {
       else {
         return skaterState.continueFreeFall( proposedVelocity.x, proposedVelocity.y, proposedPosition.x, y );
       }
-    },
+    }
 
     /**
      * Gets the net force discluding normal force.
@@ -795,9 +790,9 @@ define( require => {
      * @param {SkaterState} skaterState the state
      * @returns {number} netForce in the X direction
      */
-    getNetForceWithoutNormalX: function( skaterState ) {
+    getNetForceWithoutNormalX( skaterState ) {
       return this.getFrictionForceX( skaterState );
-    },
+    }
 
     /**
      * Gets the net force but without the normal force.
@@ -808,9 +803,9 @@ define( require => {
      * @param {SkaterState} skaterState the state
      * @returns {number} netForce in the Y direction
      */
-    getNetForceWithoutNormalY: function( skaterState ) {
+    getNetForceWithoutNormalY( skaterState ) {
       return skaterState.mass * skaterState.gravity + this.getFrictionForceY( skaterState );
-    },
+    }
 
     /**
      * The only other force on the object in the direction of motion is the gravity force
@@ -821,7 +816,7 @@ define( require => {
      *
      * @returns {number}
      */
-    getFrictionForceX: function( skaterState ) {
+    getFrictionForceX( skaterState ) {
 
       // Friction force should not exceed sum of other forces (in the direction of motion), otherwise the friction could
       // start a stopped object moving. Hence we check to see if the object is already stopped and don't add friction
@@ -836,7 +831,7 @@ define( require => {
         assert && assert( isFinite( angleComponent ), 'angleComponent should be finite' );
         return magnitude * angleComponent;
       }
-    },
+    }
 
     /**
      * The only other force on the object in the direction of motion is the gravity force
@@ -846,7 +841,7 @@ define( require => {
      * @param {SkaterState} skaterState
      * @returns {number}
      */
-    getFrictionForceY: function( skaterState ) {
+    getFrictionForceY( skaterState ) {
 
       // Friction force should not exceed sum of other forces (in the direction of motion), otherwise the friction could
       // start a stopped object moving.  Hence we check to see if the object is already stopped and don't add friction in
@@ -858,7 +853,7 @@ define( require => {
         const magnitude = this.frictionProperty.value * this.getNormalForce( skaterState ).magnitude;
         return magnitude * Math.sin( skaterState.getVelocity().angle + Math.PI );
       }
-    },
+    }
 
     /**
      * Get the normal force (Newtons) on the skater.
@@ -866,7 +861,7 @@ define( require => {
      * @param {SkaterState} skaterState
      * @returns {number}
      */
-    getNormalForce: function( skaterState ) {
+    getNormalForce( skaterState ) {
       skaterState.getCurvature( curvatureTemp2 );
       const radiusOfCurvature = Math.min( curvatureTemp2.r, 100000 );
       const netForceRadial = new Vector2( 0, 0 );
@@ -885,7 +880,7 @@ define( require => {
       assert && assert( isFinite( n.x ), 'n.x should be finite' );
       assert && assert( isFinite( n.y ), 'n.y should be finite' );
       return n;
-    },
+    }
 
     /**
      * Use an Euler integration step to move the skater along the track. This code is in an inner loop of the model
@@ -896,7 +891,7 @@ define( require => {
      *
      * @returns {SkaterState}
      */
-    stepEuler: function( dt, skaterState ) {
+    stepEuler( dt, skaterState ) {
       const track = skaterState.track;
       const origEnergy = skaterState.getTotalEnergy();
       const origLocX = skaterState.positionX;
@@ -977,7 +972,7 @@ define( require => {
       else {
         return newState;
       }
-    },
+    }
 
     /**
      * Update the skater as it moves along the track, and fly off the track if it  goes over a jump off the track's end.
@@ -986,7 +981,7 @@ define( require => {
      * @param {SkaterState} skaterState
      * @returns {SkaterState}
      */
-    stepTrack: function( dt, skaterState ) {
+    stepTrack( dt, skaterState ) {
 
       skaterState.getCurvature( curvatureTemp );
 
@@ -1070,7 +1065,7 @@ define( require => {
           }
         }
       }
-    },
+    }
 
     /**
      * When the skater leaves the track, adjust the position and velocity. This prevents the following problems:
@@ -1085,7 +1080,7 @@ define( require => {
      *
      * @returns {Skater}
      */
-    nudge: function( freeSkater, sideVectorX, sideVectorY, sign ) {
+    nudge( freeSkater, sideVectorX, sideVectorY, sign ) {
 
       // angle the velocity down a bit and underset from track so that it won't immediately re-collide
       // Nudge the velocity in the 'up' direction so the skater won't pass through the track, see #207
@@ -1109,7 +1104,7 @@ define( require => {
         }
       }
       return freeSkater;
-    },
+    }
 
     /**
      * Try to match the target energy by reducing the velocity of the skaterState.
@@ -1119,7 +1114,7 @@ define( require => {
      *
      * @returns {SkaterState}
      */
-    correctEnergyReduceVelocity: function( skaterState, targetState ) {
+    correctEnergyReduceVelocity( skaterState, targetState ) {
 
       // Make a clone we can mutate and return, to protect the input argument
       const newSkaterState = targetState.copy();
@@ -1148,7 +1143,7 @@ define( require => {
         }
       }
       return newSkaterState;
-    },
+    }
 
     /**
      * Binary search to find the parametric coordinate along the track that matches the e0 energy.
@@ -1161,7 +1156,7 @@ define( require => {
      *
      * @returns {number}
      */
-    searchSplineForEnergy: function( skaterState, u0, u1, e0, numSteps ) {
+    searchSplineForEnergy( skaterState, u0, u1, e0, numSteps ) {
       const da = ( u1 - u0 ) / numSteps;
       let bestAlpha = ( u1 + u0 ) / 2;
       const p = skaterState.track.getPoint( bestAlpha );
@@ -1177,7 +1172,7 @@ define( require => {
       }
       debug && debug( 'After ' + numSteps + ' steps, origAlpha=' + u0 + ', bestAlpha=' + bestAlpha + ', dE=' + bestDE );
       return bestAlpha;
-    },
+    }
 
     /**
      * A number of heuristic energy correction steps to ensure energy is conserved while keeping the motion smooth and
@@ -1188,7 +1183,7 @@ define( require => {
      *
      * @returns {SkaterState}
      */
-    correctEnergy: function( skaterState, newState ) {
+    correctEnergy( skaterState, newState ) {
       if ( this.trackChangePending ) {
         return newState;
       }
@@ -1304,25 +1299,25 @@ define( require => {
           return fixedState;
         }
       }
-    },
+    }
 
     // PERFORMANCE/ALLOCATION
-    getCurvatureDirection: function( curvature, x2, y2 ) {
+    getCurvatureDirection( curvature, x2, y2 ) {
       const v = new Vector2( curvature.x - x2, curvature.y - y2 );
       return v.x !== 0 || v.y !== 0 ? v.normalized() : v;
-    },
+    }
 
-    getCurvatureDirectionX: function( curvature, x2, y2 ) {
+    getCurvatureDirectionX( curvature, x2, y2 ) {
       const vx = curvature.x - x2;
       const vy = curvature.y - y2;
       return vx !== 0 || vy !== 0 ? vx / Math.sqrt( vx * vx + vy * vy ) : vx;
-    },
+    }
 
-    getCurvatureDirectionY: function( curvature, x2, y2 ) {
+    getCurvatureDirectionY( curvature, x2, y2 ) {
       const vx = curvature.x - x2;
       const vy = curvature.y - y2;
       return vx !== 0 || vy !== 0 ? vy / Math.sqrt( vx * vx + vy * vy ) : vy;
-    },
+    }
 
     /**
      * Update the skater based on which state.
@@ -1331,13 +1326,13 @@ define( require => {
      * @param {SkaterState}
      * @returns {SkaterState}
      */
-    stepModel: function( dt, skaterState ) {
+    stepModel( dt, skaterState ) {
       return skaterState.dragging ? skaterState : // User is dragging the skater, nothing to update here
              !skaterState.track && skaterState.positionY <= 0 ? this.stepGround( dt, skaterState ) :
              !skaterState.track && skaterState.positionY > 0 ? this.stepFreeFall( dt, skaterState, false ) :
              skaterState.track ? this.stepTrack( dt, skaterState ) :
              skaterState;
-    },
+    }
 
     /**
      * Return to the place he was last released by the user. Also restores the track the skater was on so the initial
@@ -1345,7 +1340,7 @@ define( require => {
      *
      * @returns {SkaterState}
      */
-    returnSkater: function() {
+    returnSkater() {
 
       // if the skater's original track is available, restore her to it, see #143
       const originalTrackAvailable = _.includes( this.getPhysicalTracks(), this.skater.startingTrackProperty.value );
@@ -1353,13 +1348,13 @@ define( require => {
         this.skater.trackProperty.value = this.skater.startingTrackProperty.value;
       }
       this.skater.returnSkater();
-    },
+    }
 
     // Clear the thermal energy from the model
-    clearThermal: function() { this.skater.clearThermal(); },
+    clearThermal() { this.skater.clearThermal(); }
 
     // Get all of the tracks marked as physical (i.e. that the skater could interact with).
-    getPhysicalTracks: function() {
+    getPhysicalTracks() {
 
       // Use vanilla instead of lodash for speed since this is in an inner loop
       const physicalTracks = [];
@@ -1371,14 +1366,14 @@ define( require => {
         }
       }
       return physicalTracks;
-    },
+    }
 
     /**
      * Get all tracks that the skater cannot interact with.
      *
      * @returns {[].Track}
      */
-    getNonPhysicalTracks: function() {
+    getNonPhysicalTracks() {
 
       // Use vanilla instead of lodash for speed since this is in an inner loop
       const nonphysicalTracks = [];
@@ -1390,14 +1385,14 @@ define( require => {
         }
       }
       return nonphysicalTracks;
-    },
+    }
 
     /**
      * Find whatever track is connected to the specified track and join them together to a new track.
      *
      * @param {Track} track
      */
-    joinTracks: function( track ) {
+    joinTracks( track ) {
       const connectedPoint = track.getSnapTarget();
       for ( let i = 0; i < this.getPhysicalTracks().length; i++ ) {
         var otherTrack = this.getPhysicalTracks()[ i ];
@@ -1414,7 +1409,7 @@ define( require => {
       if ( this.getNumberOfControlPoints() <= MAX_NUMBER_CONTROL_POINTS - 3 ) {
         this.addDraggableTrack();
       }
-    },
+    }
 
     /**
      * The user has pressed the "delete" button for the specified track's specified control point, and it should be
@@ -1424,7 +1419,7 @@ define( require => {
      * @param {Track} track
      * @param {number} controlPointIndex [description]
      */
-    deleteControlPoint: function( track, controlPointIndex ) {
+    deleteControlPoint( track, controlPointIndex ) {
 
       track.removeEmitter.emit();
       this.tracks.remove( track );
@@ -1470,7 +1465,7 @@ define( require => {
       if ( this.getNumberOfControlPoints() <= MAX_NUMBER_CONTROL_POINTS - 3 ) {
         this.addDraggableTrack();
       }
-    },
+    }
 
     /**
      * The user has pressed the "delete" button for the specified track's specified control point, and it should be
@@ -1480,7 +1475,7 @@ define( require => {
      * @param {number} controlPointIndex - integer
      * @param {number} modelAngle
      */
-    splitControlPoint: function( track, controlPointIndex, modelAngle ) {
+    splitControlPoint( track, controlPointIndex, modelAngle ) {
       assert && assert( track.splittable, 'trying to split a track that is not splittable!' );
       const controlPointToSplit = track.controlPoints[ controlPointIndex ];
 
@@ -1545,7 +1540,7 @@ define( require => {
 
       // Dispose the control point itself
       controlPointToSplit.dispose();
-    },
+    }
 
     /**
      * Join the specified tracks together into a single new track and delete the old tracks.
@@ -1553,7 +1548,7 @@ define( require => {
      * @param a {Track}
      * @param b {Track}
      */
-    joinTrackToTrack: function( a, b ) {
+    joinTrackToTrack( a, b ) {
       const points = [];
       let i;
       const controlPointGroupTandem = this.controlPointGroupTandem;
@@ -1662,7 +1657,7 @@ define( require => {
 
       // When joining tracks, smooth out the new track, but without moving the point that joined the tracks, see #177 #238
       newTrack.smoothPointOfHighestCurvature( [] );
-    },
+    }
 
     /**
      * When a track is dragged, update the skater's energy (if the sim was paused), since it wouldn't be handled in the
@@ -1670,43 +1665,43 @@ define( require => {
      *
      * @param {Track} track
      */
-    trackModified: function( track ) {
+    trackModified( track ) {
       if ( this.pausedProperty.value && this.skater.trackProperty.value === track ) {
         this.skater.updateEnergy();
       }
 
       // Flag the track as having changed *this frame* so energy doesn't need to be conserved during this frame, see #127
       this.trackChangePending = true;
-    },
+    }
 
     // Get the number of physical control points (i.e. control points outside of the toolbox)
-    getNumberOfPhysicalControlPoints: function() {
+    getNumberOfPhysicalControlPoints() {
       const numberOfPointsInEachTrack = _.map( this.getPhysicalTracks(), function( track ) {return track.controlPoints.length;} );
       return _.reduce( numberOfPointsInEachTrack, function( memo, num ) { return memo + num; }, 0 );
-    },
+    }
 
     // Get the number of all control points for this model's tracks
-    getNumberOfControlPoints: function() {
+    getNumberOfControlPoints() {
       const numberOfPointsInEachTrack = _.map( this.tracks.getArray(), function( track ) {return track.controlPoints.length;} );
       return _.reduce( numberOfPointsInEachTrack, function( memo, num ) { return memo + num; }, 0 );
-    },
+    }
 
     // Logic to determine whether a control point can be added by cutting a track's control point in two
     // This is feasible if the number of control points in the play area (above y>0) is less than the maximum
-    canCutTrackControlPoint: function() {
+    canCutTrackControlPoint() {
       return this.getNumberOfPhysicalControlPoints() < MAX_NUMBER_CONTROL_POINTS;
-    },
+    }
 
     // Check whether the model contains a track so that input listeners for detached elements can't create bugs, see #230
-    containsTrack: function( track ) {
+    containsTrack( track ) {
       return this.tracks.contains( track );
-    },
+    }
 
     /**
      * Called by phet-io to clear out the model state before restoring child tracks.
      * @public (phet-io)
      */
-    removeAllTracks: function() {
+    removeAllTracks() {
 
       // TODO: should we leverage this.draggableTracks and only save the truly dynamic tracks?
       while ( this.tracks.length > 0 ) {
@@ -1714,7 +1709,7 @@ define( require => {
         track.disposeControlPoints();
         this.tracks.remove( track );
       }
-    },
+    }
 
     /**
      * Add a track, called by phet-io in setState (to restore a state).
@@ -1722,7 +1717,7 @@ define( require => {
      * @param {Tandem} tandem
      * @param controlPointTandemIDs
      */
-    addTrack: function( tandem, draggable, configurable, controlPointTandemIDs ) {
+    addTrack( tandem, draggable, configurable, controlPointTandemIDs ) {
 
       assert && assert( controlPointTandemIDs, 'controlPointTandemIDs should exist' );
       const controlPoints = controlPointTandemIDs.map( function( id, index ) {
@@ -1736,6 +1731,7 @@ define( require => {
       this.tracks.add( newTrack );
       return newTrack;
     }
+  }
 
-  } );
+  return energySkatePark.register( 'EnergySkateParkModel', EnergySkateParkModel );
 } );

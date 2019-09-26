@@ -10,7 +10,6 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModel' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
   const Property = require( 'AXON/Property' );
   const PropertyIO = require( 'AXON/PropertyIO' );
@@ -18,38 +17,35 @@ define( require => {
   // phetio types
   const NumberIO = require( 'TANDEM/types/NumberIO' );
 
-  /**
-   * @constructor
-   * @param {boolean} frictionAllowed - Whether or not friction is allowed in this model.
-   * @param {Object} options
-   */
-  function EnergySkateParkTrackSetModel( frictionAllowed, tandem, options ) {
+  class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
 
-    options = _.extend( {
+    /**
+     * @constructor
+     * @param {boolean} frictionAllowed - Whether or not friction is allowed in this model.
+     * @param {Object} options
+     */
+    constructor( frictionAllowed, tandem, options ) {
+      options = _.extend( {
 
-      // of true, tracks created with PremadeTracks will have limiting bounds for dragging (assuming that
-      // points are configurable)
-      limitPointBounds: false
-    }, options );
+        // of true, tracks created with PremadeTracks will have limiting bounds for dragging (assuming that
+        // points are configurable)
+        limitPointBounds: false
+      }, options );
 
-    const draggableTracks = false; // TODO: Can we get rid of this?
-    EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem.createTandem( 'trackSetModel' ), options );
+      const draggableTracks = false; // TODO: Can we get rid of this?
+      super( draggableTracks, frictionAllowed, tandem.createTandem( 'trackSetModel' ), options );
 
-    // @public {number} - Indicates the currently selected scene. There can be any number of scenes, do we need
-    // to pass this in as a param
-    this.sceneProperty = new Property( 0, {
-      tandem: tandem.createTandem( 'sceneProperty' ),
-      validValues: [ 0, 1, 2, 3 ],
-      phetioType: PropertyIO( NumberIO ) // TODO: automatically get the number of tracks
-    } );
+      // @public {number} - Indicates the currently selected scene. There can be any number of scenes, do we need
+      // to pass this in as a param
+      this.sceneProperty = new Property( 0, {
+        tandem: tandem.createTandem( 'sceneProperty' ),
+        validValues: [ 0, 1, 2, 3 ],
+        phetioType: PropertyIO( NumberIO ) // TODO: automatically get the number of tracks
+      } );
 
-    // When the scene changes, also change the tracks.
-    this.sceneProperty.link( this.updateActiveTrack.bind( this ) );
-  }
-
-  energySkatePark.register( 'EnergySkateParkTrackSetModel', EnergySkateParkTrackSetModel );
-
-  return inherit( EnergySkateParkModel, EnergySkateParkTrackSetModel, {
+      // When the scene changes, also change the tracks.
+      this.sceneProperty.link( this.updateActiveTrack.bind( this ) );
+    }
 
     /**
      * When the scene changes or tracks are added to the track set, update which track is visible and physically
@@ -57,7 +53,7 @@ define( require => {
      *
      * @private
      */
-    updateActiveTrack: function( scene ) {
+    updateActiveTrack( scene ) {
       for ( let i = 0; i < this.tracks.length; i++ ) {
         this.tracks.get( i ).physicalProperty.value = ( i === scene );
 
@@ -67,23 +63,23 @@ define( require => {
 
       // The skater should detach from track when the scene changes.  Code elsewhere also resets the location of the skater.
       this.skater.trackProperty.value = null;
-    },
+    }
 
     /**
      * Add all tracks in the set. In addition to adding all to the ObservbleArray, this will initialize which track
      * should be visible, physical, and interactive depending on the model sceneProperty.
      * @param {Array.<Track>} tracks
      */
-    addTrackSet: function( tracks ) {
+    addTrackSet( tracks ) {
       this.tracks.addAll( tracks );
       this.updateActiveTrack( this.sceneProperty.get() );
-    },
+    }
 
     /**
      * Reset all of the tracks in this model's track set, if they are configurable. Otherwise, identical to
      * super function.
      */
-    reset: function() {
+    reset() {
       EnergySkateParkModel.prototype.reset.call( this );
       this.tracks.forEach( track => {
         if ( track.configurable ) {
@@ -95,16 +91,15 @@ define( require => {
 
       this.updateActiveTrack( this.sceneProperty.get() );
     }
-  }, {
 
     /**
      * The "basic" track set includes the parabola, slope, and double well.
-     *
      * @public
+     *
      * @param {EnergySkateParkTrackSetModel} model
      * @returns {Array.<Track>}
      */
-    createBasicTrackSet: function( model, tandem ) {
+    static createBasicTrackSet( model, tandem ) {
       assert && assert( model instanceof EnergySkateParkTrackSetModel, 'PremadeTracks should be used with an EnergySkateParkTrackSetModel' );
       assert && assert( model.tracksDraggable === false, 'tracks should not be draggable in EnergySkateParkTrackSetModels' );
 
@@ -141,5 +136,7 @@ define( require => {
 
       return [ parabolaTrack, slopeTrack, doubleWellTrack ];
     }
-  } );
+  }
+
+  return energySkatePark.register( 'EnergySkateParkTrackSetModel', EnergySkateParkTrackSetModel );
 } );

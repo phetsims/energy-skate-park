@@ -12,7 +12,6 @@ define( require => {
   const ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModel' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
   const Vector2 = require( 'DOT/Vector2' );
 
@@ -26,55 +25,51 @@ define( require => {
    * @param {Tandem} tandem
    * @param {Object} options
    */
-  function EnergySkateParkPlaygroundModel( frictionAllowed, tandem, options ) {
+  class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
+    constructor( frictionAllowed, tandem, options ) {
+      options = _.extend( {
 
-    options = _.extend( {
+        // the center of initial tracks in the control panel, change this to move the panel to a different location
+        // in model coordinates (meters)
+        initialTracksOffsetVector: new Vector2( -5.1, -0.85 )
+      }, options );
+      options = options || {};
 
-      // the center of initial tracks in the control panel, change this to move the panel to a different location
-      // in model coordinates (meters)
-      initialTracksOffsetVector: new Vector2( -5.1, -0.85 )
-    }, options );
-    options = options || {};
+      assert && assert( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
+      options.tracksDraggable = true;
 
-    assert && assert( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
-    options.tracksDraggable = true;
+      assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
+      options.tracksConfigurable = true;
 
-    assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
-    options.tracksConfigurable = true;
+      const draggableTracks = true; // TODO: Get rid of this param?
+      super( draggableTracks, frictionAllowed, tandem, options );
 
-    const draggableTracks = true; // TODO: Get rid of this param?
-    EnergySkateParkModel.call( this, draggableTracks, frictionAllowed, tandem, options );
+      // @private {Vector2} - see options for documentation
+      this.initialTracksOffsetVector = options.initialTracksOffsetVector;
 
-    // @private {Vector2} - see options for documentation
-    this.initialTracksOffsetVector = options.initialTracksOffsetVector;
-
-    // add all of the possible draggable tracks
-    this.addDraggableTracks();
-  }
-
-  energySkatePark.register( 'EnergySkateParkPlaygroundModel', EnergySkateParkPlaygroundModel );
-
-  return inherit( EnergySkateParkModel, EnergySkateParkPlaygroundModel, {
+      // add all of the possible draggable tracks
+      this.addDraggableTracks();
+    }
 
     /**
      * Add the draggable tracks that will be in the toolbox of a playground scene.
      *
      * @public
      */
-    addDraggableTracks: function() {
+    addDraggableTracks() {
 
       // 3 points per track
       for ( let i = 0; i < MAX_NUMBER_CONTROL_POINTS / 3; i++ ) {
         this.addDraggableTrack();
       }
-    },
+    }
 
     /**
      * Add a single draggable track to a control panel.
      *
      * @public
      */
-    addDraggableTrack: function() {
+    addDraggableTrack() {
 
       const controlPointGroupTandem = this.controlPointGroupTandem;
       const trackGroupTandem = this.trackGroupTandem;
@@ -98,5 +93,8 @@ define( require => {
         }
       ) );
     }
-  } );
+
+  }
+
+  return energySkatePark.register( 'EnergySkateParkPlaygroundModel', EnergySkateParkPlaygroundModel );
 } );
