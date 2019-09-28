@@ -42,7 +42,7 @@ define( require => {
 
     /**
      * Redraw the canvas content.
-     * 
+     *
      * @param {CanvasContext2D} context
      */
     paintCanvas: function( context ) {
@@ -79,7 +79,7 @@ define( require => {
         // this involves a calculation for the energy,
         // that is way too many calculations!!
         // Use SkaterSamples or something with this information stored>
-        var energy;        
+        var energy;
         if ( energyType === 'thermal' ) {
           energy = point.thermalEnergy;
         }

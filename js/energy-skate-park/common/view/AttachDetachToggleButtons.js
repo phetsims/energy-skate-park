@@ -67,7 +67,7 @@ define( require => {
       }
     ];
 
-    const buttonSpacing = contentWidth - ( options.xMargin * 2 ) - ( radioButtonsContent[ 0 ].node.width * 2 ) - SELECTED_LINE_WIDTH * 2; 
+    const buttonSpacing = contentWidth - ( options.xMargin * 2 ) - ( radioButtonsContent[ 0 ].node.width * 2 ) - SELECTED_LINE_WIDTH * 2;
     assert && assert( buttonSpacing > 0, 'buttons must have non zero spacing' );
 
     const radioButtons = new RadioButtonGroup( stickingToTrackProperty, radioButtonsContent,
