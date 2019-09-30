@@ -80,7 +80,7 @@ define( require => {
      * super function.
      */
     reset() {
-      EnergySkateParkModel.prototype.reset.call( this );
+      super.reset();
       this.tracks.forEach( track => {
         if ( track.configurable ) {
           track.reset();

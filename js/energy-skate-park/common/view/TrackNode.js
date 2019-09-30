@@ -152,7 +152,7 @@ define( require => {
      */
     dispose() {
       this.disposeTrackNode();
-      Node.prototype.dispose.call( this );
+      super.dispose();
     }
 
     // When a control point has moved, or the track has moved, or the track has been reset, or on initialization

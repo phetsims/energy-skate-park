@@ -19,7 +19,7 @@ define( require => {
   const SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
 
   class ControlPointNode extends Circle {
-    
+
     /**
      * @param {TrackNode} trackNode
      * @param {TrackDragHandler|null} trackDragHandler - so dragging a ControlPointNode can initiate dragging a track
@@ -274,7 +274,7 @@ define( require => {
      */
     dispose() {
       this.disposeControlPointNode();
-      Circle.prototype.dispose.call( this );
+      super.dispose();
     }
   }
 

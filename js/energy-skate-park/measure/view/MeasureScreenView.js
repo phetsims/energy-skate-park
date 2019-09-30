@@ -82,7 +82,7 @@ define( require => {
     }
 
     layout( width, height ) {
-      EnergySkateParkTrackSetScreenView.prototype.layout.call( this, width, height );
+      super.layout( width, height );
 
       // in the measure screen the legend is in the top left of the screen
       this.pieChartLegend.mutate( { top: this.controlPanel.top, left: this.fixedLeft } );

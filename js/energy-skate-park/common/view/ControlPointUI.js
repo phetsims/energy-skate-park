@@ -124,7 +124,7 @@ define( require => {
      */
     dispose() {
       this.disposeControlPointUI();
-      Node.prototype.dispose.call( this );
+      super.dispose();
     }
 
     /**
@@ -132,7 +132,7 @@ define( require => {
      * @public
      */
     detach() {
-      Node.prototype.detach.call( this );
+      super.detach();
       if ( _.indexOf( phet.joist.display.getInputListeners(), this.clickToDismissListener ) !== -1 ) {
         phet.joist.display.removeInputListener( this.clickToDismissListener );
       }

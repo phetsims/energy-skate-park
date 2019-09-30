@@ -115,8 +115,7 @@ define( require => {
      * @param {number} dt
      */
     step( dt ) {
-
-      EnergySkateParkTrackSetModel.prototype.step.call( this, dt );
+      super.step( dt );
 
       // for the "Graphs" screen we want to update energies while dragging so that they are recorded on the graph
       if ( this.skater.draggingProperty.get() ) {
@@ -133,7 +132,7 @@ define( require => {
      * @param {SkaterState} skaterState
      */
     stepModel( dt, skaterState ) {
-      const updatedState = EnergySkateParkTrackSetModel.prototype.stepModel.call( this, dt, skaterState );
+      const updatedState = super.stepModel( dt, skaterState );
 
       const skaterSample = new SkaterSample( updatedState, this.runningTimeProperty.get() );
 

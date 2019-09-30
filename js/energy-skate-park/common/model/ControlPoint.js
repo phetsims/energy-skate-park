@@ -103,7 +103,7 @@ define( require => {
      */
     dispose() {
       this.disposeControlPoint();
-      PhetioObject.prototype.dispose.call( this );
+      super.dispose();
     }
 
     /**

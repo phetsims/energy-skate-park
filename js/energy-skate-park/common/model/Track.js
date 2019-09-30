@@ -937,7 +937,7 @@ define( require => {
 
     dispose() {
       this.disposeTrack();
-      PhetioObject.prototype.dispose.call( this );
+      super.dispose();
     }
 
     /**

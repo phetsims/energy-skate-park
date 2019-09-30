@@ -94,7 +94,7 @@ define( require => {
     dispose() {
       this.inspectedProperty.unlink( this.inspectedListener );
       this.opacityProperty.unlink( this.opacityListener );
-      Node.prototype.dispose.call( this );
+      super.dispose();
     }
   }
 
