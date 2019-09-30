@@ -1,9 +1,9 @@
 // Copyright 2018-2019, University of Colorado Boulder
 
 /**
- * Circles showing locations of skater samples, collections of data that can be inspected with a meter in the 
+ * Circles showing locations of skater samples, collections of data that can be inspected with a meter in the
  * measure screen.
- * 
+ *
  * @author Jesse Greenberg
  */
 define( require => {
@@ -29,14 +29,16 @@ define( require => {
         const sampleNode = new SampleNode( modelViewTransform.modelToViewPosition( addedSample.position ), addedSample.inspectedProperty, addedSample.opacityProperty );
         this.addChild( sampleNode );
 
-        model.skaterSamples.addItemRemovedListener( function removalListener( removedSample ) {
+
+        const removalListener = removedSample => {
           if ( addedSample === removedSample ) {
             model.skaterSamples.removeItemRemovedListener( removalListener );
 
             // this will detach the node from the scene graph
             sampleNode.dispose();
           }
-      } );
+        };
+        model.skaterSamples.addItemRemovedListener( removalListener );
     } );
     }
   }

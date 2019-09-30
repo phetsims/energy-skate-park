@@ -22,8 +22,12 @@ define( require => {
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
   const MassComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassComboBox' );
 
-  // constants
   class LabScreenView extends EnergySkateParkPlaygroundScreenView {
+
+    /**
+     * @param {EnergySkateParkLabModel} model
+     * @param {Tandem} tandem
+     */
     constructor( model, tandem ) {
 
       // parent for combo boxes - would use the ScreenView but `this` isn't available until after super call

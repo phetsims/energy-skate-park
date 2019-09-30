@@ -23,11 +23,12 @@ define( require => {
   // strings
   const screenGraphsString = require( 'string!ENERGY_SKATE_PARK/screen.graphs' );
 
-  /**
-   * @param {Tandem} tandem
-   * @constructor
-   */
   class GraphsScreen extends Screen {
+
+    /**
+     * @param {Tandem} tandem
+     * @constructor
+     */
     constructor( tandem ) {
       var options = _.extend( {
         name: screenGraphsString,

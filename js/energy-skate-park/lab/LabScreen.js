@@ -10,7 +10,6 @@ define( require => {
 
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const LabModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/model/LabModel' );
   const LabScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/view/LabScreenView' );
   const Image = require( 'SCENERY/nodes/Image' );
@@ -22,29 +21,29 @@ define( require => {
 
   // strings
   const screenLabString = require( 'string!ENERGY_SKATE_PARK/screen.lab' );
+  class LabScreen extends Screen {
 
-  /**
-   * @param {Tandem} tandem
-   * @constructor
-   */
-  function LabScreen( tandem ) {
+    /**
+     * @param {Tandem} tandem
+     * @constructor
+     */
+    constructor( tandem ) {
 
-    var options = _.extend( {
-      name: screenLabString,
-      homeScreenIcon: new Image( iconPlaygroundHomescreen ),
-      navigationBarIcon: new Image( iconPlaygroundNavbar ),
+      var options = _.extend( {
+        name: screenLabString,
+        homeScreenIcon: new Image( iconPlaygroundHomescreen ),
+        navigationBarIcon: new Image( iconPlaygroundNavbar ),
 
-      tandem: tandem
-    }, options );
+        tandem: tandem
+      }, options );
 
-    Screen.call( this,
-      function() { return new LabModel( tandem.createTandem( 'labModel' ) ); },
-      function( model ) { return new LabScreenView( model, tandem.createTandem( 'labScreenView' ) ); },
-      options
-    );
+      super(
+        function() { return new LabModel( tandem.createTandem( 'labModel' ) ); },
+        function( model ) { return new LabScreenView( model, tandem.createTandem( 'labScreenView' ) ); },
+        options
+      );
+    }
   }
 
-  energySkatePark.register( 'LabScreen', LabScreen );
-
-  return inherit( Screen, LabScreen );
+  return energySkatePark.register( 'LabScreen', LabScreen );
 } );

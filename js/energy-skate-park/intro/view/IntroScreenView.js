@@ -16,11 +16,12 @@ define( require => {
   const GravitySlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravitySlider' );
   const MassComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassComboBox' );
 
-  /**
-   * @constructor
-   * @param {EnergySkateParkIntroModel} model
-   */
   class IntroScreenView extends EnergySkateParkTrackSetScreenView {
+
+    /**
+     * @param {EnergySkateParkIntroModel} model
+     * @param {Tandem} tandem
+     */
     constructor( model, tandem ) {
 
       const introControls = [
@@ -58,7 +59,7 @@ define( require => {
       super.layout( width, height );
       this.massComboBox.right = this.controlPanel.right;
     }
-  
+
   }
 
   return energySkatePark.register( 'IntroScreenView', IntroScreenView );
