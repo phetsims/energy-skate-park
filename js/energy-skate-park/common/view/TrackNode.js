@@ -14,7 +14,6 @@ define( require => {
   const ControlPointNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ControlPointNode' );
   const dot = require( 'DOT/dot' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const LineStyles = require( 'KITE/util/LineStyles' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Path = require( 'SCENERY/nodes/Path' );
@@ -26,140 +25,139 @@ define( require => {
   // constants
   const FastArray = dot.FastArray;
 
-  /**
-   * Constructor for TrackNode
-   * @param {EnergySkateParkModel} model the entire model.  Not absolutely necessary, but so many methods are called on it for joining and
-   * splitting tracks that we pass the entire model anyways.
-   * @param {Track} track the track for this track node
-   * @param {ModelViewTransform} modelViewTransform the model view transform for the view
-   * @param {Property.<Bounds2>} availableBoundsProperty
-   * @param {Tandem} tandem
-   * @constructor
-   */
-  function TrackNode( model, track, modelViewTransform, availableBoundsProperty, tandem ) {
-    const self = this;
-    this.track = track;
-    this.model = model;
-    this.modelViewTransform = modelViewTransform;
-    this.availableBoundsProperty = availableBoundsProperty;
+  class TrackNode extends Node {
 
-    this.road = new Path( null, {
-      fill: 'gray',
-      cursor: track.draggable ? 'pointer' : 'default'
-    } );
-    this.centerLine = new Path( null, {
-      stroke: 'black',
-      lineWidth: 1.2,
-      lineDash: [ 11, 8 ]
-    } );
+    /**
+     * Constructor for TrackNode
+     * @param {EnergySkateParkModel} model the entire model.  Not absolutely necessary, but so many methods are called on it for joining and
+     * splitting tracks that we pass the entire model anyways.
+     * @param {Track} track the track for this track node
+     * @param {ModelViewTransform} modelViewTransform the model view transform for the view
+     * @param {Property.<Bounds2>} availableBoundsProperty
+     * @param {Tandem} tandem
+     * @constructor
+     */
+    constructor( model, track, modelViewTransform, availableBoundsProperty, tandem ) {
 
-    // must be unlinked in dispose
-    const stickingToTrackListener = function( sticking ) {
-      self.centerLine.lineDash = sticking ? [ 11, 8 ] : [];
-    };
-    model.stickingToTrackProperty.link( stickingToTrackListener );
+      super( {
+        tandem: tandem,
+        phetioComponentOptions: { phetioState: false }
+      } );
 
-    Node.call( this, {
-      children: [ this.road, this.centerLine ],
-      tandem: tandem,
-      phetioComponentOptions: { phetioState: false }
-    } );
+      this.track = track;
+      this.model = model;
+      this.modelViewTransform = modelViewTransform;
+      this.availableBoundsProperty = availableBoundsProperty;
 
-    // Reuse arrays to save allocations and prevent garbage collections, see #38
-    this.xArray = new FastArray( track.controlPoints.length );
-    this.yArray = new FastArray( track.controlPoints.length );
+      this.road = new Path( null, {
+        fill: 'gray',
+        cursor: track.draggable ? 'pointer' : 'default'
+      } );
+      this.centerLine = new Path( null, {
+        stroke: 'black',
+        lineWidth: 1.2,
+        lineDash: [ 11, 8 ]
+      } );
 
-    // Store for performance
-    this.lastPoint = ( track.controlPoints.length - 1 ) / track.controlPoints.length;
+      this.children = [ this.road, this.centerLine ];
 
-    // Sample space, which is recomputed if the track gets longer, to keep it looking smooth no matter how many control points
-    this.linSpace = numeric.linspace( 0, this.lastPoint, 20 * ( track.controlPoints.length - 1 ) );
-    this.lengthForLinSpace = track.controlPoints.length;
+      // must be unlinked in dispose
+      const stickingToTrackListener = sticking => {
+        this.centerLine.lineDash = sticking ? [ 11, 8 ] : [];
+      };
+      model.stickingToTrackProperty.link( stickingToTrackListener );
 
-    // created and passed to ControlPointNodes so that dragging a control point can initiate dragging a track
-    let trackDragHandler = null;
-    if ( track.draggable ) {
-      trackDragHandler = new TrackDragHandler( this, tandem.createTandem( 'trackDragHandler' ) );
-      this.road.addInputListener( trackDragHandler );
-    }
+      // Reuse arrays to save allocations and prevent garbage collections, see #38
+      this.xArray = new FastArray( track.controlPoints.length );
+      this.yArray = new FastArray( track.controlPoints.length );
 
-    // only "configurable" tracks have draggable control points, and individual control points may have dragging
-    // disabled
-    if ( track.configurable ) {
-      for ( let i = 0; i < track.controlPoints.length; i++ ) {
-        const controlPoint = track.controlPoints[ i ];
+      // Store for performance
+      this.lastPoint = ( track.controlPoints.length - 1 ) / track.controlPoints.length;
 
-        if ( controlPoint.draggable ) {
-          const isEndPoint = i === 0 || i === track.controlPoints.length - 1;
-          const controlPointNode = new ControlPointNode( this, trackDragHandler, i, isEndPoint, tandem.createTandem( 'controlPointNode' + i ) );
-          self.addChild( controlPointNode );
+      // Sample space, which is recomputed if the track gets longer, to keep it looking smooth no matter how many control points
+      this.linSpace = numeric.linspace( 0, this.lastPoint, 20 * ( track.controlPoints.length - 1 ) );
+      this.lengthForLinSpace = track.controlPoints.length;
 
-          if ( controlPoint.limitBounds ) {
-            assert && assert( controlPointNode.boundsRectangle, 'bounds are limited but there is no bounding Rectangle' );
-            self.addChild( controlPointNode.boundsRectangle );
+      // created and passed to ControlPointNodes so that dragging a control point can initiate dragging a track
+      let trackDragHandler = null;
+      if ( track.draggable ) {
+        trackDragHandler = new TrackDragHandler( this, tandem.createTandem( 'trackDragHandler' ) );
+        this.road.addInputListener( trackDragHandler );
+      }
+
+      // only "configurable" tracks have draggable control points, and individual control points may have dragging
+      // disabled
+      if ( track.configurable ) {
+        for ( let i = 0; i < track.controlPoints.length; i++ ) {
+          const controlPoint = track.controlPoints[ i ];
+
+          if ( controlPoint.draggable ) {
+            const isEndPoint = i === 0 || i === track.controlPoints.length - 1;
+            const controlPointNode = new ControlPointNode( this, trackDragHandler, i, isEndPoint, tandem.createTandem( 'controlPointNode' + i ) );
+            this.addChild( controlPointNode );
+
+            if ( controlPoint.limitBounds ) {
+              assert && assert( controlPointNode.boundsRectangle, 'bounds are limited but there is no bounding Rectangle' );
+              this.addChild( controlPointNode.boundsRectangle );
+            }
           }
         }
       }
-    }
 
-    // Init the track shape
-    this.updateTrackShape();
+      // Init the track shape
+      this.updateTrackShape();
 
-    // Update the track shape when the whole track is translated
-    // Just observing the control points individually would lead to N expensive callbacks (instead of 1) for each of the N points
-    // So we use this broadcast mechanism instead
-    track.translatedEmitter.addListener( this.updateTrackShape.bind( this ) );
+      // Update the track shape when the whole track is translated
+      // Just observing the control points individually would lead to N expensive callbacks (instead of 1) for each of the N points
+      // So we use this broadcast mechanism instead
+      track.translatedEmitter.addListener( this.updateTrackShape.bind( this ) );
 
-    track.draggingProperty.link( function( dragging ) {
-      if ( !dragging ) {
-        self.updateTrackShape();
-      }
-    } );
-
-    track.resetEmitter.addListener( this.updateTrackShape.bind( this ) );
-    track.smoothedEmitter.addListener( this.updateTrackShape.bind( this ) );
-    track.updateEmitter.addListener( this.updateTrackShape.bind( this ) );
-
-    // In the state wrapper, when the state changes, we must update the skater node
-    const stateListener = function() {
-      self.updateTrackShape();
-    };
-    _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
-
-    // @private - only called by dispose
-    this.disposeTrackNode = function() {
-      model.stickingToTrackProperty.unlink( stickingToTrackListener );
-      _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
-      for ( let i = 0; i < self.children.length; i++ ) {
-        const child = self.children[ i ];
-        if ( child instanceof ControlPointNode ) {
-          child.dispose();
-          i--; // Child is removed, we must decrement index so wo don't miss the next child
+      track.draggingProperty.link( dragging => {
+        if ( !dragging ) {
+          this.updateTrackShape();
         }
-      }
+      } );
 
-      if ( track.draggable ) {
-        trackDragHandler.dispose();
-      }
-    };
-  }
+      track.resetEmitter.addListener( this.updateTrackShape.bind( this ) );
+      track.smoothedEmitter.addListener( this.updateTrackShape.bind( this ) );
+      track.updateEmitter.addListener( this.updateTrackShape.bind( this ) );
 
-  energySkatePark.register( 'TrackNode', TrackNode );
+      // In the state wrapper, when the state changes, we must update the skater node
+      const stateListener = () => {
+        this.updateTrackShape();
+      };
+      _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
 
-  return inherit( Node, TrackNode, {
+      // @private - only called by dispose
+      this.disposeTrackNode = () => {
+        model.stickingToTrackProperty.unlink( stickingToTrackListener );
+        _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
+        for ( let i = 0; i < this.children.length; i++ ) {
+          const child = this.children[ i ];
+          if ( child instanceof ControlPointNode ) {
+            child.dispose();
+            i--; // Child is removed, we must decrement index so wo don't miss the next child
+          }
+        }
+
+        if ( track.draggable ) {
+          trackDragHandler.dispose();
+        }
+      };
+    }
 
     /**
      * Make eligible for garbage collection.
      * @public
      */
-    dispose: function() {
+    dispose() {
       this.disposeTrackNode();
       Node.prototype.dispose.call( this );
-    },
+    }
 
     // When a control point has moved, or the track has moved, or the track has been reset, or on initialization
     // update the shape of the track.
-    updateTrackShape: function() {
+    updateTrackShape() {
 
       const track = this.track;
       const model = this.model;
@@ -217,5 +215,7 @@ define( require => {
         model.skater.updatedEmitter.emit();
       }
     }
-  } );
+  }
+
+  return energySkatePark.register( 'TrackNode', TrackNode );
 } );

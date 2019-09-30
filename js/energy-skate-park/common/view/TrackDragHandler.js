@@ -246,7 +246,7 @@ define( require => {
 
         // If the track hasn't been disposed (see #393), bump it above ground and make it physical if user has started
         // dragging, see #384 and #205
-        if ( !track.isDisposed && track.controlPoints.filter( function( point ) {return !point.isDisposed;} ).length !== 0 ) {
+        if ( !track.isDisposed && track.controlPoints.filter( point => {return !point.isDisposed;} ).length !== 0 ) {
           track.bumpAboveGround();
           track.physicalProperty.value = true; // for interactivity, but also for #414
         }

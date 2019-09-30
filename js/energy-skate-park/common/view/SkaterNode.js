@@ -107,7 +107,7 @@ define( require => {
 
       let targetU = null;
 
-      function dragSkater( event ) {
+      const dragSkater = event => {
         const globalPoint = this.globalToParentPoint( event.pointer.point );
         let position = modelViewTransform.viewToModelPosition( globalPoint );
 
@@ -152,7 +152,7 @@ define( require => {
 
         skater.updateEnergy();
         skater.updatedEmitter.emit();
-      }
+      };
 
       this.addInputListener( new SimpleDragHandler( {
         tandem: tandem.createTandem( 'inputListener' ),

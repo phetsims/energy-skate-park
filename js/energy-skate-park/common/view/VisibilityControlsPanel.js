@@ -17,9 +17,9 @@ define( require => {
   class VisibilityControlsPanel extends Panel {
 
     /**
-     * @param   {EnergySkateParkModel} model
-     * @param   {Tandem} tandem
-     * @param   {Object} options
+     * @param {EnergySkateParkModel} model
+     * @param {Tandem} tandem
+     * @param {Object} options
      */
     constructor( model, tandem, options ) {
       const content = new EnergySkateParkVisibilityControls( model, tandem, {
