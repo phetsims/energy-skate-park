@@ -49,8 +49,8 @@ define( require => {
       } );
 
       // Skip bounds computation to improve performance, see #245
-      kineticEnergySlice.computeShapeBounds = function() {return new Bounds2( 0, 0, 0, 0 );};
-      potentialEnergySlice.computeShapeBounds = function() {return new Bounds2( 0, 0, 0, 0 );};
+      kineticEnergySlice.computeShapeBounds = () => { return new Bounds2( 0, 0, 0, 0 ); };
+      potentialEnergySlice.computeShapeBounds = () => { return new Bounds2( 0, 0, 0, 0 ); };
 
       // total energy representation is a full circle, so it can use the optimized version.
       const totalEnergyCircle = new Circle( 1, {
@@ -78,23 +78,23 @@ define( require => {
       // be invisible in this case
       this.showNegativeEnergy = options.showNegativeEnergy;
 
-      const updatePieChartLocation = function() {
+      const updatePieChartLocation = () => {
 
         const view = modelViewTransform.modelToViewPosition( skater.headPositionProperty.value );
 
         // Center pie chart over skater's head not his feet so it doesn't look awkward when skating in a parabola
-        self.setTranslation( view.x, view.y - 50 );
+        this.setTranslation( view.x, view.y - 50 );
       };
-      skater.headPositionProperty.link( function() {
-        if ( self.visible ) {
+      skater.headPositionProperty.link( () => {
+        if ( this.visible ) {
           updatePieChartLocation();
         }
       } );
 
-      const updatePaths = function() {
+      const updatePaths = () => {
 
         // Guard against expensive changes while the pie chart is invisible
-        if ( !self.visible ) {
+        if ( !this.visible ) {
           return;
         }
         const totalEnergy = skater.totalEnergyProperty.value;
@@ -113,7 +113,7 @@ define( require => {
 
         // Don't show the pie chart if energies are zero, or if potential energy is negative (underground skater), see #189
         const energyNegative = skater.potentialEnergyProperty.value < 0;
-        if ( energyNegative && self.showNegativeEnergy ) {
+        if ( energyNegative && this.showNegativeEnergy ) {
 
           // energy is negative and we want to represent it with a full yellow circle
           potentialEnergySlice.visible = false;
@@ -183,8 +183,8 @@ define( require => {
       skater.energyChangedEmitter.addListener( updatePaths );
 
       // Synchronize visibility with the model, and also update when visibility changes because it is guarded against in updatePaths
-      pieChartVisibleProperty.link( function( visible ) {
-        self.visible = visible;
+      pieChartVisibleProperty.link( visible => {
+        this.visible = visible;
         updatePaths();
         if ( visible ) {
           updatePieChartLocation();
