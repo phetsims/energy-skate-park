@@ -38,8 +38,8 @@ define( require => {
       }, options );
 
       super(
-        function() { return new GraphsModel( tandem.createTandem( 'graphsModel' ) ); },
-        function( model ) { return new GraphsScreenView( model, tandem.createTandem( 'graphsScreenView' ) ); },
+        () => { return new GraphsModel( tandem.createTandem( 'graphsModel' ) ); },
+        model => { return new GraphsScreenView( model, tandem.createTandem( 'graphsScreenView' ) ); },
         options
       );
     }

@@ -28,7 +28,7 @@ define( require => {
         return {
           draggable: track.draggable,
           configurable: track.configurable,
-          controlPointTandemIDs: track.controlPoints.map( function( controlPoint ) {
+          controlPointTandemIDs: track.controlPoints.map( controlPoint => {
             return controlPoint.controlPointTandem.phetioID;
           } )
         };

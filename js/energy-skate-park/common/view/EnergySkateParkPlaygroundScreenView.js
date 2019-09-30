@@ -57,10 +57,10 @@ define( require => {
         tandem: tandem.createTandem( 'clearButton' )
       } );
       model.clearButtonEnabledProperty.linkAttribute( this.clearButton, 'enabled' );
-      this.clearButton.addListener( function() {model.clearTracks();} );
+      this.clearButton.addListener( () => { model.clearTracks(); } );
 
       this.bottomLayer.addChild( this.clearButton.mutate( { left: 5, centerY: this.trackCreationPanel.centerY } ) );
-    
+
     }
 
     /**

@@ -38,8 +38,8 @@ define( require => {
       }, options );
 
       super(
-        function() { return new LabModel( tandem.createTandem( 'labModel' ) ); },
-        function( model ) { return new LabScreenView( model, tandem.createTandem( 'labScreenView' ) ); },
+        () => { return new LabModel( tandem.createTandem( 'labModel' ) ); },
+        model => { return new LabScreenView( model, tandem.createTandem( 'labScreenView' ) ); },
         options
       );
     }

@@ -236,7 +236,7 @@ define( require => {
       } );
 
       // When tracks are removed, they are no longer used by the application and should be disposed
-      this.tracks.addItemRemovedListener( function( track ) {
+      this.tracks.addItemRemovedListener( track => {
         track.dispose();
       } );
 
@@ -342,7 +342,7 @@ define( require => {
 
       // For the first two screens, make the default track physical
       if ( this.tracksDraggable ) {
-        this.tracks.forEach( function( track ) {
+        this.tracks.forEach( track => {
           track.disposeControlPoints();
         } );
         this.tracks.clear();
@@ -1552,22 +1552,22 @@ define( require => {
       const controlPointGroupTandem = this.controlPointGroupTandem;
       const trackGroupTandem = this.trackGroupTandem;
 
-      const firstTrackForward = function() {
+      const firstTrackForward = () => {
         for ( i = 0; i < a.controlPoints.length; i++ ) {
           points.push( a.controlPoints[ i ].copy( controlPointGroupTandem.createNextTandem() ) );
         }
       };
-      const firstTrackBackward = function() {
+      const firstTrackBackward = () => {
         for ( i = a.controlPoints.length - 1; i >= 0; i-- ) {
           points.push( a.controlPoints[ i ].copy( controlPointGroupTandem.createNextTandem() ) );
         }
       };
-      const secondTrackForward = function() {
+      const secondTrackForward = () => {
         for ( i = 1; i < b.controlPoints.length; i++ ) {
           points.push( b.controlPoints[ i ].copy( controlPointGroupTandem.createNextTandem() ) );
         }
       };
-      const secondTrackBackward = function() {
+      const secondTrackBackward = () => {
         for ( i = b.controlPoints.length - 2; i >= 0; i-- ) {
           points.push( b.controlPoints[ i ].copy( controlPointGroupTandem.createNextTandem() ) );
         }
@@ -1674,14 +1674,14 @@ define( require => {
 
     // Get the number of physical control points (i.e. control points outside of the toolbox)
     getNumberOfPhysicalControlPoints() {
-      const numberOfPointsInEachTrack = _.map( this.getPhysicalTracks(), function( track ) {return track.controlPoints.length;} );
-      return _.reduce( numberOfPointsInEachTrack, function( memo, num ) { return memo + num; }, 0 );
+      const numberOfPointsInEachTrack = _.map( this.getPhysicalTracks(), track => {return track.controlPoints.length;} );
+      return _.reduce( numberOfPointsInEachTrack, ( memo, num ) => { return memo + num; }, 0 );
     }
 
     // Get the number of all control points for this model's tracks
     getNumberOfControlPoints() {
-      const numberOfPointsInEachTrack = _.map( this.tracks.getArray(), function( track ) {return track.controlPoints.length;} );
-      return _.reduce( numberOfPointsInEachTrack, function( memo, num ) { return memo + num; }, 0 );
+      const numberOfPointsInEachTrack = _.map( this.tracks.getArray(), track => {return track.controlPoints.length;} );
+      return _.reduce( numberOfPointsInEachTrack, ( memo, num ) => { return memo + num; }, 0 );
     }
 
     // Logic to determine whether a control point can be added by cutting a track's control point in two
@@ -1718,7 +1718,7 @@ define( require => {
     addTrack( tandem, draggable, configurable, controlPointTandemIDs ) {
 
       assert && assert( controlPointTandemIDs, 'controlPointTandemIDs should exist' );
-      const controlPoints = controlPointTandemIDs.map( function( id, index ) {
+      const controlPoints = controlPointTandemIDs.map( ( id, index ) => {
         return new ControlPoint( index, 0, { tandem: Tandem.createFromPhetioID( id ) } ); // TODO: create with correct initial x & y values.
       } );
       const newTrack = new Track( this, this.tracks, controlPoints, [], this.availableModelBoundsProperty, {

@@ -84,7 +84,7 @@ define( require => {
 
       // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
       const self = this;
-      referenceHeightProperty.link( function( height ) {
+      referenceHeightProperty.link( height => {
 
         // position the reference height line, model value in meters
         self.y = modelViewTransform.modelToViewY( height );
@@ -92,7 +92,7 @@ define( require => {
 
       // update visibility with model Property and reset reference height when node is no longer visible to avoid
       // confusion
-      referenceHeightVisibleProperty.link( function( visible ) {
+      referenceHeightVisibleProperty.link( visible => {
         referenceHeightProperty.reset();
 
         self.visible = visible;
@@ -100,7 +100,7 @@ define( require => {
 
       this.addInputListener( new DragListener( {
         transform: modelViewTransform,
-        drag: function( event, listener ) {
+        drag: ( event, listener ) => {
 
           // mouse in view coordinates
           const pMouse = self.globalToParentPoint( event.pointer.point );

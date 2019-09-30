@@ -25,7 +25,7 @@ define( require => {
   // constants
   const tandem = Tandem.rootTandem;
 
-  SimLauncher.launch( function() {
+  SimLauncher.launch( () => {
     const screens = [
       new IntroScreen( tandem.createTandem( 'introScreen' ) ),
       new MeasureScreen( tandem.createTandem( 'measureScreen' ) ),
