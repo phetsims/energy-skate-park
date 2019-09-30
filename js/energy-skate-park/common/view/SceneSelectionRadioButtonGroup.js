@@ -52,7 +52,7 @@ define( require => {
       options.spacing = 20 / model.tracks.length;
 
       // Create a button with a scene like the track in the index
-      const createNode = function( index ) {
+      const createNode = index => {
         const children = [];
 
         if ( options.includeBackground ) {
@@ -81,17 +81,17 @@ define( require => {
 
       // create the contents for the radio buttons
       const contents = [];
-      _.forEach( model.tracks, function( track, i ) {
+      _.forEach( model.tracks, ( track, i ) => {
         const contentNode = createNode( i );
         contents.push( contentNode );
       } );
 
-      const minWidth = _.minBy( contents, function( node ) { return node.width; } ).width;
+      const minWidth = _.minBy( contents, node => { return node.width; } ).width;
 
       const buttonAlignGroup = new AlignGroup();
 
       const radioButtonContent = [];
-      _.forEach( contents, function( node, i ) {
+      _.forEach( contents, ( node, i ) => {
 
         // scalar chosen so that buttons are appropriately sized in the control panel
         const contentScale = ( 22 / minWidth );

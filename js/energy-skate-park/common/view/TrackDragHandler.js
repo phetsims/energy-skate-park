@@ -11,79 +11,90 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
 
-  /**
-   * @param {TrackNode} trackNode the track node that this listener will drag
-   * @param {Tandem} tandem
-   * @constructor
-   */
-  function TrackDragHandler( trackNode, tandem ) {
-    this.trackNode = trackNode;
-    const self = this;
-    this.track = trackNode.track;
-    const track = trackNode.track;
-    this.model = trackNode.model;
-    this.modelViewTransform = trackNode.modelViewTransform;
-    this.availableBoundsProperty = trackNode.availableBoundsProperty;
-    this.startOffset = null;
 
-    // Keep track of whether the user has started to drag the track.  Click events should not create tracks, only drag
-    // events.  See #205
-    // @private
-    this.startedDrag = false;
+  class TrackDragHandler extends SimpleDragHandler {
 
-    // Drag handler for dragging the track segment itself (not one of the control points)
-    // Uses a similar strategy as MovableDragHandler but requires a separate implementation because its bounds are
-    // determined by the shape of the track (so it cannot go below ground)
-    // And so it can be dragged out of the toolbox but not back into it (so it won't be dragged below ground)
-    const trackSegmentDragHandlerOptions = {
-      tandem: tandem.createTandem( 'inputListener' ),
-      allowTouchSnag: true,
+    /**
+     * @param {TrackNode} trackNode the track node that this listener will drag
+     * @param {Tandem} tandem
+     * @constructor
+     */
+    constructor( trackNode, tandem ) {
 
-      start: function( event ) {
+      // Drag handler for dragging the track segment itself (not one of the control points)
+      // Uses a similar strategy as MovableDragHandler but requires a separate implementation because its bounds are
+      // determined by the shape of the track (so it cannot go below ground)
+      // And so it can be dragged out of the toolbox but not back into it (so it won't be dragged below ground)
+      super( {
+        tandem: tandem.createTandem( 'inputListener' ),
+        allowTouchSnag: true,
 
-        // Move the track to the front when it starts dragging, see #296
-        // The track is in a layer of tracks (without other nodes) so moving it to the front will work perfectly
-        trackNode.moveToFront();
+        start: event => this.handleDragStart( event ),
+        drag: event => this.handleDrag( event ),
+        end: event => this.handleDragEnd( event )
+      } );
 
-        if ( track.dragSource === null ) {
-          // A new press has started, but the user has not moved the track yet, so do not create it yet.  See #205
-          track.dragSource = self;
+      this.trackNode = trackNode;
+      this.track = trackNode.track;
+      this.model = trackNode.model;
+      this.modelViewTransform = trackNode.modelViewTransform;
+      this.availableBoundsProperty = trackNode.availableBoundsProperty;
+      this.startOffset = null;
 
-          self.trackDragStarted( event );
-        }
-      },
+      // Keep track of whether the user has started to drag the track.  Click events should not create tracks, only drag
+      // events.  See #205
+      // @private
+      this.startedDrag = false;
+    }
 
-      // Drag an entire track
-      drag: function( event ) {
-        if ( track.dragSource === self ) {
-          self.trackDragged( event );
-        }
-      },
+    /**
+     * Start of a drag interaction from an event.
+     * @param {Event} event
+     */
+    handleDragStart( event ) {
 
-      // End the drag
-      end: function( event ) {
-        if ( track.dragSource === self ) {
-          self.trackDragEnded( event );
-        }
+      // Move the track to the front when it starts dragging, see #296
+      // The track is in a layer of tracks (without other nodes) so moving it to the front will work perfectly
+      this.trackNode.moveToFront();
+
+      if ( this.track.dragSource === null ) {
+
+        // A new press has started, but the user has not moved the track yet, so do not create it yet.  See #205
+        this.track.dragSource = self;
+        this.trackDragStarted( event );
       }
-    };
-    SimpleDragHandler.call( this, trackSegmentDragHandlerOptions );
-  }
+    }
 
-  energySkatePark.register( 'TrackDragHandler', TrackDragHandler );
+    /**
+     * Continuation of drag.
+     * @param {Event} event
+     */
+    handleDrag( event ) {
+      if ( this.track.dragSource === self ) {
+        this.trackDragged( event );
+      }
+    }
 
-  return inherit( SimpleDragHandler, TrackDragHandler, {
+    /**
+     * End of a drag interaction.
+     * @param {Event} even
+     */
+    handleDragEnd( even ) {
+      if ( this.trackNode.dragSource === self ) {
+       self.trackDragEnded( event );
+      }
+    }
 
     // When the user drags the track out of the toolbox, if they drag the track by a control point, it still translates
     // the track.  In that case (and only that case), the following methods are called by the ControlPointNode drag
     // handler in order to translate the track.
-    trackDragStarted: function( event ) {
+    trackDragStarted( event ) {
       this.startedDrag = false;
-    },
-    trackDragged: function( event ) {
+    }
+
+    trackDragged( event ) {
       let snapTargetChanged = false;
       const model = this.model;
       const track = this.track;
@@ -211,8 +222,9 @@ define( require => {
       }
 
       model.trackModified( track );
-    },
-    trackDragEnded: function( event ) {
+    }
+
+    trackDragEnded( event ) {
       const track = this.track;
       const model = this.model;
 
@@ -246,5 +258,7 @@ define( require => {
         this.startedDrag = false;
       }
     }
-  } );
+  }
+
+  return energySkatePark.register( 'TrackDragHandler', TrackDragHandler );
 } );

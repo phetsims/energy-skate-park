@@ -14,7 +14,6 @@ define( require => {
   const Circle = require( 'SCENERY/nodes/Circle' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const Image = require( 'SCENERY/nodes/Image' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const LinearFunction = require( 'DOT/LinearFunction' );
   const Matrix3 = require( 'DOT/Matrix3' );
   const Node = require( 'SCENERY/nodes/Node' );
@@ -24,158 +23,159 @@ define( require => {
   const skaterLeftImage = require( 'image!ENERGY_SKATE_PARK/skater-left.png' );
   const skaterRightImage = require( 'image!ENERGY_SKATE_PARK/skater-right.png' );
 
-  /**
-   * SkaterNode constructor
-   *
-   * @param {Skater} skater
-   * @param {EnergySkateParkScreenView} view
-   * @param {ModelViewTransform} modelViewTransform
-   * @param {function} getClosestTrackAndPositionAndParameter function that gets the closest track properties, used when
-   * the skater is being dragged close to the track
-   * @param {function} getPhysicalTracks function that returns the physical tracks in the model, so the skater can try
-   * to attach to them while dragging
-   * @param {Tandem} tandem
-   * @constructor
-   */
-  function SkaterNode( skater, view, modelViewTransform, getClosestTrackAndPositionAndParameter, getPhysicalTracks, tandem ) {
-    this.skater = skater;
-    const self = this;
+  class SkaterNode extends Node {
 
-    const leftSkaterImageNode = new Image( skaterLeftImage, {
-      cursor: 'pointer',
-      tandem: tandem.createTandem( 'leftSkaterImageNode' )
-    } );
-    const rightSkaterImageNode = new Image( skaterRightImage, {
-      cursor: 'pointer',
-      tandem: tandem.createTandem( 'rightSkaterImageNode' )
-    } );
+    /**
+     * SkaterNode constructor.
+     *
+     * @param {Skater} skater
+     * @param {EnergySkateParkScreenView} view
+     * @param {ModelViewTransform} modelViewTransform
+     * @param {function} getClosestTrackAndPositionAndParameter function that gets the closest track properties, used when
+     * the skater is being dragged close to the track
+     * @param {function} getPhysicalTracks function that returns the physical tracks in the model, so the skater can try
+     * to attach to them while dragging
+     * @param {Tandem} tandem
+     * @constructor
+     */
+    constructor( skater, view, modelViewTransform, getClosestTrackAndPositionAndParameter, getPhysicalTracks, tandem ) {
+      const leftSkaterImageNode = new Image( skaterLeftImage, {
+        cursor: 'pointer',
+        tandem: tandem.createTandem( 'leftSkaterImageNode' )
+      } );
+      const rightSkaterImageNode = new Image( skaterRightImage, {
+        cursor: 'pointer',
+        tandem: tandem.createTandem( 'rightSkaterImageNode' )
+      } );
 
-    Node.call( this, {
-      children: [ leftSkaterImageNode, rightSkaterImageNode ],
-      renderer: 'canvas',
-      tandem: tandem
-    } );
+      super( {
+        children: [ leftSkaterImageNode, rightSkaterImageNode ],
+        renderer: 'canvas',
+        tandem: tandem
+      } );
 
-    skater.directionProperty.link( function( direction ) {
-      leftSkaterImageNode.visible = direction === 'left';
-      rightSkaterImageNode.visible = direction === 'right';
-    } );
+      this.skater = skater;
 
-    const imageWidth = this.width;
-    const imageHeight = this.height;
+      skater.directionProperty.link( direction => {
+        leftSkaterImageNode.visible = direction === 'left';
+        rightSkaterImageNode.visible = direction === 'right';
+      } );
 
-    // @private - Map from mass(kg) to the amount to scale the image
-    const centerMassValue = skater.massRange.getCenter();
-    const massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.34, 0.43 );
+      const imageWidth = this.width;
+      const imageHeight = this.height;
 
-    // Update the position and angle.  Normally the angle would only change if the position has also changed, so no need
-    // for a duplicate callback there.  Uses pooling to avoid allocations, see #50
-    this.skater.updatedEmitter.addListener( function() {
-      const mass = skater.massProperty.value;
-      const position = skater.positionProperty.value;
-      const angle = skater.angleProperty.value;
+      // @private - Map from mass(kg) to the amount to scale the image
+      const centerMassValue = skater.massRange.getCenter();
+      const massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.34, 0.43 );
 
-      const view = modelViewTransform.modelToViewPosition( position );
+      // Update the position and angle.  Normally the angle would only change if the position has also changed, so no need
+      // for a duplicate callback there.  Uses pooling to avoid allocations, see #50
+      this.skater.updatedEmitter.addListener( () => {
+        const mass = skater.massProperty.value;
+        const position = skater.positionProperty.value;
+        const angle = skater.angleProperty.value;
 
-      // Translate to the desired location
-      const matrix = Matrix3.translation( view.x, view.y );
+        const view = modelViewTransform.modelToViewPosition( position );
 
-      // Rotate about the pivot (bottom center of the skater)
-      const rotationMatrix = Matrix3.rotation2( angle );
-      matrix.multiplyMatrix( rotationMatrix );
-      rotationMatrix.freeToPool();
+        // Translate to the desired location
+        const matrix = Matrix3.translation( view.x, view.y );
 
-      const scale = massToScale( mass );
-      const scalingMatrix = Matrix3.scaling( scale );
-      matrix.multiplyMatrix( scalingMatrix );
-      scalingMatrix.freeToPool();
+        // Rotate about the pivot (bottom center of the skater)
+        const rotationMatrix = Matrix3.rotation2( angle );
+        matrix.multiplyMatrix( rotationMatrix );
+        rotationMatrix.freeToPool();
 
-      // Think of it as a multiplying the Vector2 to the right, so this step happens first actually.  Use it to center
-      // the registration point
-      const translation = Matrix3.translation( -imageWidth / 2, -imageHeight );
-      matrix.multiplyMatrix( translation );
-      translation.freeToPool();
+        const scale = massToScale( mass );
+        const scalingMatrix = Matrix3.scaling( scale );
+        matrix.multiplyMatrix( scalingMatrix );
+        scalingMatrix.freeToPool();
 
-      self.setMatrix( matrix );
-    } );
+        // Think of it as a multiplying the Vector2 to the right, so this step happens first actually.  Use it to center
+        // the registration point
+        const translation = Matrix3.translation( -imageWidth / 2, -imageHeight );
+        matrix.multiplyMatrix( translation );
+        translation.freeToPool();
 
-    // Show a red dot in the bottom center as the important particle model coordinate
-    const circle = new Circle( 8, { fill: 'red', x: imageWidth / 2, y: imageHeight } );
-    this.addChild( circle );
+        this.setMatrix( matrix );
+      } );
 
-    let targetTrack = null;
+      // Show a red dot in the bottom center as the important particle model coordinate
+      const circle = new Circle( 8, { fill: 'red', x: imageWidth / 2, y: imageHeight } );
+      this.addChild( circle );
 
-    let targetU = null;
+      let targetTrack = null;
 
-    function dragSkater( event ) {
-      const globalPoint = self.globalToParentPoint( event.pointer.point );
-      let position = modelViewTransform.viewToModelPosition( globalPoint );
+      let targetU = null;
 
-      // make sure it is within the visible bounds
-      position = view.availableModelBounds.getClosestPoint( position.x, position.y, position );
+      function dragSkater( event ) {
+        const globalPoint = this.globalToParentPoint( event.pointer.point );
+        let position = modelViewTransform.viewToModelPosition( globalPoint );
 
-      // PERFORMANCE/ALLOCATION: lots of unnecessary allocations and computation here, biggest improvement could be
-      // to use binary search for position on the track
-      const closestTrackAndPositionAndParameter = getClosestTrackAndPositionAndParameter( position, getPhysicalTracks() );
-      let closeEnough = false;
-      if ( closestTrackAndPositionAndParameter && closestTrackAndPositionAndParameter.track && closestTrackAndPositionAndParameter.track.isParameterInBounds( closestTrackAndPositionAndParameter.parametricPosition ) ) {
-        const closestPoint = closestTrackAndPositionAndParameter.point;
-        const distance = closestPoint.distance( position );
-        if ( distance < 0.5 ) {
-          position = closestPoint;
-          targetTrack = closestTrackAndPositionAndParameter.track;
-          targetU = closestTrackAndPositionAndParameter.parametricPosition;
+        // make sure it is within the visible bounds
+        position = view.availableModelBounds.getClosestPoint( position.x, position.y, position );
 
-          // Choose the right side of the track, i.e. the side of the track that would have the skater upside up
-          const normal = targetTrack.getUnitNormalVector( targetU );
-          skater.onTopSideOfTrackProperty.value = normal.y > 0;
+        // PERFORMANCE/ALLOCATION: lots of unnecessary allocations and computation here, biggest improvement could be
+        // to use binary search for position on the track
+        const closestTrackAndPositionAndParameter = getClosestTrackAndPositionAndParameter( position, getPhysicalTracks() );
+        let closeEnough = false;
+        if ( closestTrackAndPositionAndParameter && closestTrackAndPositionAndParameter.track && closestTrackAndPositionAndParameter.track.isParameterInBounds( closestTrackAndPositionAndParameter.parametricPosition ) ) {
+          const closestPoint = closestTrackAndPositionAndParameter.point;
+          const distance = closestPoint.distance( position );
+          if ( distance < 0.5 ) {
+            position = closestPoint;
+            targetTrack = closestTrackAndPositionAndParameter.track;
+            targetU = closestTrackAndPositionAndParameter.parametricPosition;
 
-          skater.angleProperty.value = targetTrack.getViewAngleAt( targetU ) + (skater.onTopSideOfTrackProperty.value ? 0 : Math.PI);
+            // Choose the right side of the track, i.e. the side of the track that would have the skater upside up
+            const normal = targetTrack.getUnitNormalVector( targetU );
+            skater.onTopSideOfTrackProperty.value = normal.y > 0;
 
-          closeEnough = true;
+            skater.angleProperty.value = targetTrack.getViewAngleAt( targetU ) + (skater.onTopSideOfTrackProperty.value ? 0 : Math.PI);
+
+            closeEnough = true;
+          }
         }
+        if ( !closeEnough ) {
+          targetTrack = null;
+          targetU = null;
+
+          // make skater upright if not near the track
+          skater.angleProperty.value = 0;
+          skater.onTopSideOfTrackProperty.value = true;
+
+          skater.positionProperty.value = position;
+        }
+
+        else {
+          skater.positionProperty.value = targetTrack.getPoint( targetU );
+        }
+
+        skater.updateEnergy();
+        skater.updatedEmitter.emit();
       }
-      if ( !closeEnough ) {
-        targetTrack = null;
-        targetU = null;
 
-        // make skater upright if not near the track
-        skater.angleProperty.value = 0;
-        skater.onTopSideOfTrackProperty.value = true;
+      this.addInputListener( new SimpleDragHandler( {
+        tandem: tandem.createTandem( 'inputListener' ),
+        start: event => {
+          skater.draggingProperty.value = true;
 
-        skater.positionProperty.value = position;
-      }
+          // Clear thermal energy whenever skater is grabbed, see #32
+          skater.thermalEnergyProperty.value = 0;
 
-      else {
-        skater.positionProperty.value = targetTrack.getPoint( targetU );
-      }
+          // Jump to the input location when dragged
+          dragSkater( event );
+        },
 
-      skater.updateEnergy();
-      skater.updatedEmitter.emit();
+        drag: dragSkater,
+
+        end: () => {
+
+          // Record the state of the skater for "return skater"
+          skater.released( targetTrack, targetU );
+        }
+      } ) );
     }
-
-    this.addInputListener( new SimpleDragHandler( {
-      tandem: tandem.createTandem( 'inputListener' ),
-      start: function( event ) {
-        skater.draggingProperty.value = true;
-
-        // Clear thermal energy whenever skater is grabbed, see #32
-        skater.thermalEnergyProperty.value = 0;
-
-        // Jump to the input location when dragged
-        dragSkater( event );
-      },
-
-      drag: dragSkater,
-
-      end: function() {
-        // Record the state of the skater for "return skater"
-        skater.released( targetTrack, targetU );
-      }
-    } ) );
   }
 
-  energySkatePark.register( 'SkaterNode', SkaterNode );
-
-  return inherit( Node, SkaterNode );
+  return energySkatePark.register( 'SkaterNode', SkaterNode );
 } );
