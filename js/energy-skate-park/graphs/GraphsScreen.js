@@ -12,7 +12,6 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const GraphsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/model/GraphsModel' );
   const GraphsScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/GraphsScreenView' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const Image = require( 'SCENERY/nodes/Image' );
   const Screen = require( 'JOIST/Screen' );
 
@@ -28,24 +27,22 @@ define( require => {
    * @param {Tandem} tandem
    * @constructor
    */
-  function GraphsScreen( tandem ) {
+  class GraphsScreen extends Screen {
+    constructor( tandem ) {
+      var options = _.extend( {
+        name: screenGraphsString,
+        homeScreenIcon: new Image( iconFrictionHomescreen ),
+        navigationBarIcon: new Image( iconFrictionNavbar ),
+        tandem: tandem
+      }, options );
 
-    var options = _.extend( {
-      name: screenGraphsString,
-      homeScreenIcon: new Image( iconFrictionHomescreen ),
-      navigationBarIcon: new Image( iconFrictionNavbar ),
-
-      tandem: tandem
-    }, options );
-
-    Screen.call( this,
-      function() { return new GraphsModel( tandem.createTandem( 'graphsModel' ) ); },
-      function( model ) { return new GraphsScreenView( model, tandem.createTandem( 'graphsScreenView' ) ); },
-      options
-    );
+      super(
+        function() { return new GraphsModel( tandem.createTandem( 'graphsModel' ) ); },
+        function( model ) { return new GraphsScreenView( model, tandem.createTandem( 'graphsScreenView' ) ); },
+        options
+      );
+    }
   }
 
-  energySkatePark.register( 'GraphsScreen', GraphsScreen );
-
-  return inherit( Screen, GraphsScreen );
+  return energySkatePark.register( 'GraphsScreen', GraphsScreen );
 } );
