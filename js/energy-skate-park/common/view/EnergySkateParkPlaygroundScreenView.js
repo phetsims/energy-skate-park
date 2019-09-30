@@ -16,54 +16,52 @@ define( require => {
   const TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TrackNode' );
   const Color = require( 'SCENERY/util/Color' );
   const EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const Rectangle = require( 'SCENERY/nodes/Rectangle' );
 
-  /**
-   * @param {EnergySkateParkModel} model
-   * @param {Array.<PhysicalSlider|PhysicalNumberControl} physicalControls
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   * @constructor
-   */
-  function EnergySkateParkPlaygroundScreenView( model, physicalControls, tandem, options ) {
-    EnergySkateParkScreenView.call( this, model, physicalControls, tandem, options );
+  class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 
-    // Create the tracks for the track toolbox
-    const interactiveTrackNodes = model.tracks.getArray().map( this.addTrackNode.bind( this ) );
+    /**
+     * @param {EnergySkateParkModel} model
+     * @param {Array.<PhysicalSlider|PhysicalNumberControl} physicalControls
+     * @param {Tandem} tandem
+     * @param {Object} [options]
+     */
+    constructor( model, physicalControls, tandem, options ) {
 
-    const padding = 10;
+      super( model, physicalControls, tandem, options );
 
-    // @protected (for layout of other things in subtypes)
-    this.trackCreationPanel = new Rectangle(
-      ( interactiveTrackNodes[ 0 ].left - padding / 2 ),
-      ( interactiveTrackNodes[ 0 ].top - padding / 2 ),
-      ( interactiveTrackNodes[ 0 ].width + padding ),
-      ( interactiveTrackNodes[ 0 ].height + padding ),
-      6,
-      6, {
-        fill: 'white',
-        stroke: 'black'
-    } );
-    this.bottomLayer.addChild( this.trackCreationPanel );
+      // Create the tracks for the track toolbox
+      const interactiveTrackNodes = model.tracks.getArray().map( this.addTrackNode.bind( this ) );
 
-    model.tracks.addItemAddedListener( this.addTrackNode.bind( this ) );
+      const padding = 10;
 
-    // @protected - for layout in subtypes
-    this.clearButton = new EraserButton( {
-      iconWidth: 30,
-      baseColor: new Color( 221, 210, 32 ),
-      tandem: tandem.createTandem( 'clearButton' )
-    } );
-    model.clearButtonEnabledProperty.linkAttribute( this.clearButton, 'enabled' );
-    this.clearButton.addListener( function() {model.clearTracks();} );
+      // @protected (for layout of other things in subtypes)
+      this.trackCreationPanel = new Rectangle(
+        ( interactiveTrackNodes[ 0 ].left - padding / 2 ),
+        ( interactiveTrackNodes[ 0 ].top - padding / 2 ),
+        ( interactiveTrackNodes[ 0 ].width + padding ),
+        ( interactiveTrackNodes[ 0 ].height + padding ),
+        6,
+        6, {
+          fill: 'white',
+          stroke: 'black'
+      } );
+      this.bottomLayer.addChild( this.trackCreationPanel );
 
-    this.bottomLayer.addChild( this.clearButton.mutate( { left: 5, centerY: this.trackCreationPanel.centerY } ) );
-  }
+      model.tracks.addItemAddedListener( this.addTrackNode.bind( this ) );
 
-  energySkatePark.register( 'EnergySkateParkPlaygroundScreenView', EnergySkateParkPlaygroundScreenView );
+      // @protected - for layout in subtypes
+      this.clearButton = new EraserButton( {
+        iconWidth: 30,
+        baseColor: new Color( 221, 210, 32 ),
+        tandem: tandem.createTandem( 'clearButton' )
+      } );
+      model.clearButtonEnabledProperty.linkAttribute( this.clearButton, 'enabled' );
+      this.clearButton.addListener( function() {model.clearTracks();} );
 
-  return inherit( EnergySkateParkScreenView, EnergySkateParkPlaygroundScreenView, {
+      this.bottomLayer.addChild( this.clearButton.mutate( { left: 5, centerY: this.trackCreationPanel.centerY } ) );
+    
+    }
 
     /**
      * Add a TrackNode to this ScreenView and add listeners that will
@@ -90,5 +88,7 @@ define( require => {
 
       return trackNode;
     }
-  } );
+  }
+
+  return energySkatePark.register( 'EnergySkateParkPlaygroundScreenView', EnergySkateParkPlaygroundScreenView );
 } );

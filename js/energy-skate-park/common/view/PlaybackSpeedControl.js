@@ -11,7 +11,6 @@ define( require => {
   // modules
   const AquaRadioButton = require( 'SUN/AquaRadioButton' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Text = require( 'SCENERY/nodes/Text' );
   const VBox = require( 'SCENERY/nodes/VBox' );
@@ -30,40 +29,42 @@ define( require => {
     maxWidth: 90
   };
 
-  /**
-   * @param {Property<Number>} speedProperty the instantaneous speed of the skater (magnitude of the velocity vector)
-   * @param {Tandem} tandem
-   * @constructor
-   */
-  function PlaybackSpeedControl( speedProperty, tandem, options ) {
+  class PlaybackSpeedControl extends VBox {
 
-    options = _.extend( {
-      align: 'left',
-      spacing: 4
-    }, options );
-    assert && assert( options.children === undefined, 'PlaybackSpeedControl sets children' );
+    /**
+     * @param {Property<Number>} speedProperty the instantaneous speed of the skater (magnitude of the velocity vector)
+     * @param {Tandem} tandem
+     * @constructor
+     */
+    constructor( speedProperty, tandem, options ) {
 
-    const slowMotionRadioButton = new AquaRadioButton( speedProperty, 'slow', new Text( slowMotionString, _.extend( {
-      tandem: tandem.createTandem( 'slowMotionTextNode' ) }, LABEL_OPTIONS )
-    ), {
-      radius: RADIO_BUTTON_RADIUS,
-      tandem: tandem.createTandem( 'slowMotionRadioButton' )
-    } );
-    const normalSpeedRadioButton = new AquaRadioButton( speedProperty, 'normal', new Text( normalString, _.extend( {
-      tandem: tandem.createTandem( 'normalSpeedTextNode' ) }, LABEL_OPTIONS )
-    ), {
-      radius: RADIO_BUTTON_RADIUS,
-      x: 130,
-      tandem: tandem.createTandem( 'normalSpeedButton' )
-    } );
-    slowMotionRadioButton.touchArea = slowMotionRadioButton.localBounds.dilatedXY( X_DILATION, Y_DILATION );
-    normalSpeedRadioButton.touchArea = normalSpeedRadioButton.localBounds.dilatedXY( X_DILATION, Y_DILATION );
+      options = _.extend( {
+        align: 'left',
+        spacing: 4
+      }, options );
+      assert && assert( options.children === undefined, 'PlaybackSpeedControl sets children' );
 
-    options.children = [ slowMotionRadioButton, normalSpeedRadioButton ];
-    VBox.call( this, options );
+      const slowMotionRadioButton = new AquaRadioButton( speedProperty, 'slow', new Text( slowMotionString, _.extend( {
+        tandem: tandem.createTandem( 'slowMotionTextNode' ) }, LABEL_OPTIONS )
+      ), {
+        radius: RADIO_BUTTON_RADIUS,
+        tandem: tandem.createTandem( 'slowMotionRadioButton' )
+      } );
+      const normalSpeedRadioButton = new AquaRadioButton( speedProperty, 'normal', new Text( normalString, _.extend( {
+        tandem: tandem.createTandem( 'normalSpeedTextNode' ) }, LABEL_OPTIONS )
+      ), {
+        radius: RADIO_BUTTON_RADIUS,
+        x: 130,
+        tandem: tandem.createTandem( 'normalSpeedButton' )
+      } );
+      slowMotionRadioButton.touchArea = slowMotionRadioButton.localBounds.dilatedXY( X_DILATION, Y_DILATION );
+      normalSpeedRadioButton.touchArea = normalSpeedRadioButton.localBounds.dilatedXY( X_DILATION, Y_DILATION );
+
+      options.children = [ slowMotionRadioButton, normalSpeedRadioButton ];
+
+      super( options );
+    }
   }
 
-  energySkatePark.register( 'PlaybackSpeedControl', PlaybackSpeedControl );
-
-  return inherit( VBox, PlaybackSpeedControl );
+  return energySkatePark.register( 'PlaybackSpeedControl', PlaybackSpeedControl );
 } );

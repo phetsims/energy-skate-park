@@ -4,7 +4,6 @@
  * View for the graphs screen in Energy Skate Park.
  * @author Jesse Greenberg
  */
-
 define( require => {
   'use strict';
 
@@ -18,58 +17,60 @@ define( require => {
   const Node = require( 'SCENERY/nodes/Node' );
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
   const MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
-  const inherit = require( 'PHET_CORE/inherit' );
+
 
   /**
    * @constructor
    * @param {GraphsModel} model
    */
-  function GraphsScreenView( model, tandem ) {
+  class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
 
+    /**
+     * @param {EnergySkateParkModel} model
+     * @param {Tandem} tandem
+     */
+    constructor( model, tandem ) {
 
-    // parent layer for ComboBox, would use "this" but it is not available until after super
-    const comboBoxParent = new Node();
+      // parent layer for ComboBox, would use "this" but it is not available until after super
+      const comboBoxParent = new Node();
 
-    const graphsControls = [
-      new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
-      new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) ),
-      new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) ),
-      new GravityComboBox( model.skater.gravityMagnitudeProperty, model.resetEmitter, comboBoxParent, tandem.createTandem( 'gravityComboBox' ) )
-    ];
+      const graphsControls = [
+        new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
+        new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) ),
+        new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) ),
+        new GravityComboBox( model.skater.gravityMagnitudeProperty, model.resetEmitter, comboBoxParent, tandem.createTandem( 'gravityComboBox' ) )
+      ];
 
-    EnergySkateParkTrackSetScreenView.call( this, model, graphsControls, tandem.createTandem( 'graphsScreenView' ), {
-      showBarGraph: false,
-      visibilityControlsOptions: {
-        showPieChartCheckbox: false,
-        showGridCheckbox: false,
-        showSpeedCheckbox: true,
-        showStickToTrackCheckbox: true
-      }
-    } );
+      super( model, graphsControls, tandem.createTandem( 'graphsScreenView' ), {
+        showBarGraph: false,
+        visibilityControlsOptions: {
+          showPieChartCheckbox: false,
+          showGridCheckbox: false,
+          showSpeedCheckbox: true,
+          showStickToTrackCheckbox: true
+        }
+      } );
 
-    this.addChild( comboBoxParent );
+      this.addChild( comboBoxParent );
 
-    // @private - for layout
-    this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ) );
-    this.addToBottomLayer( this.graphAccordionBox );
+      // @private - for layout
+      this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ) );
+      this.addToBottomLayer( this.graphAccordionBox );
 
-    // grid and reference height visibility are controlled from a separate area
-    this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ), {
-      centerY: this.resetAllButton.centerY
-    } );
-    this.addToBottomLayer( this.visibilityControlsPanel );
-  }
-
-  energySkatePark.register( 'GraphsScreenView', GraphsScreenView );
-
-  return inherit( EnergySkateParkTrackSetScreenView, GraphsScreenView, {
+      // grid and reference height visibility are controlled from a separate area
+      this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ), {
+        centerY: this.resetAllButton.centerY
+      } );
+      this.addToBottomLayer( this.visibilityControlsPanel );
+    
+    }
 
     /**
      * Special layout for the energy-skate-park, contents can float to the available bounds.
      * @override
      */
-    layout: function( width, height ) {
-      EnergySkateParkTrackSetScreenView.prototype.layout.call( this, width, height );
+    layout( width, height ) {
+      super.layout( width, height );
 
       // the graph within the accordion box needs to line up with the track so that skater positions on the
       // track align perfectly with positions along the graph
@@ -79,5 +80,7 @@ define( require => {
       this.visibilityControlsPanel.left = this.graphAccordionBox.left;
       this.visibilityControlsPanel.centerY = this.resetAllButton.centerY;
     }
-  } );
+  }
+
+  return energySkatePark.register( 'GraphsScreenView', GraphsScreenView );
 } );

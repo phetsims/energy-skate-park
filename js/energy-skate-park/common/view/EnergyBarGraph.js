@@ -118,7 +118,7 @@ define( require => {
           in: false,
           scale: 0.3,
           baseColor: ColorConstants.LIGHT_BLUE,
-          listener: function() {
+          listener: () => {
             barGraphScaleProperty.set( Math.max( barGraphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
           },
           tandem: tandem.createTandem( 'zoomOutButton' )
@@ -127,7 +127,7 @@ define( require => {
           in: true,
           scale: 0.3,
           baseColor: ColorConstants.LIGHT_BLUE,
-          listener: function() {
+          listener: () => {
             barGraphScaleProperty.set( Math.min( barGraphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
           },
           tandem: tandem.createTandem( 'zoomInButton' )
@@ -163,7 +163,7 @@ define( require => {
       skater.energyChangedEmitter.addListener( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
       barGraphVisibleProperty.link( this.updateWhenVisible.bind( this ) );
 
-      skater.allowClearingThermalEnergyProperty.link( function( allowClearingThermalEnergy ) {
+      skater.allowClearingThermalEnergyProperty.link( allowClearingThermalEnergy => {
         clearThermalButton.enabled = allowClearingThermalEnergy;
       } );
     }

@@ -17,6 +17,12 @@ define( require => {
   const largeString = require( 'string!ENERGY_SKATE_PARK/large' );
 
   class MassSlider extends PhysicalSlider {
+
+    /**
+     * @param {NumberProperty} property
+     * @param {Range} massRange
+     * @param {Tandem} tandem
+     */
     constructor( property, massRange, tandem ) {
       super( controlsMassString, property, massRange, tandem, {
         minLabel: smallString,

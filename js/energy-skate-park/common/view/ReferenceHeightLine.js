@@ -7,7 +7,6 @@
  *
  * @author Jesse Greenberg
  */
-
 define( require => {
   'use strict';
 
@@ -17,7 +16,6 @@ define( require => {
   const DragListener = require( 'SCENERY/listeners/DragListener' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const Line = require( 'SCENERY/nodes/Line' );
   const Node = require( 'SCENERY/nodes/Node' );
   const TextPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TextPanel' );
@@ -26,98 +24,99 @@ define( require => {
   // strings
   const heightEqualsZeroString = require( 'string!ENERGY_SKATE_PARK/heightEqualsZero' );
 
-  /**
-   * @constructor
-   * @param {ModelViewTransform2} modelViewTransform
-   * @param {NumberProperty} referenceHeightProperty
-   * @param {Tandem} tandem
-   */
-  function ReferenceHeightLine( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, tandem ) {
+  class ReferenceHeightLine extends Node {
 
-    // line will extend 9.5 meters through along the grid in model coordinates
-    const lineLength = modelViewTransform.modelToViewDeltaX( 9.5 );
+    /**
+     * @constructor
+     * @param {ModelViewTransform2} modelViewTransform
+     * @param {NumberProperty} referenceHeightProperty
+     * @param {Tandem} tandem
+     */
+    constructor( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, tandem )  {
 
-    // the line will be composed of two lines on top of each other to assist with line visibility but still look like
-    // a dashed line - a taller black line to mimic stroke behind a shorter blue line
-    const lineDash = [ 10, 8 ];
-    const lineStart = new Vector2( 0, 0 );
-    const lineEnd = new Vector2( lineLength, 0 );
-    const frontLine = new Line( lineStart, lineEnd, {
+      // line will extend 9.5 meters through along the grid in model coordinates
+      const lineLength = modelViewTransform.modelToViewDeltaX( 9.5 );
 
-      // strokes are not generally pickable, this allows the line itself to be dragged
-      strokePickable: true,
-      lineWidth: 3,
-      lineDash: lineDash,
-      stroke: 'rgb(74,133,208)'
-    } );
-    const backLine = new Line( lineStart, lineEnd, {
-      lineWidth: 5,
-      lineDash: lineDash,
-      stroke: 'black'
-    } );
+      // the line will be composed of two lines on top of each other to assist with line visibility but still look like
+      // a dashed line - a taller black line to mimic stroke behind a shorter blue line
+      const lineDash = [ 10, 8 ];
+      const lineStart = new Vector2( 0, 0 );
+      const lineEnd = new Vector2( lineLength, 0 );
+      const frontLine = new Line( lineStart, lineEnd, {
 
-    // make the front line a bit easier to pick up
-    frontLine.mouseArea = frontLine.bounds.dilated( 5 );
-    frontLine.touchArea = frontLine.mouseArea;
+        // strokes are not generally pickable, this allows the line itself to be dragged
+        strokePickable: true,
+        lineWidth: 3,
+        lineDash: lineDash,
+        stroke: 'rgb(74,133,208)'
+      } );
+      const backLine = new Line( lineStart, lineEnd, {
+        lineWidth: 5,
+        lineDash: lineDash,
+        stroke: 'black'
+      } );
 
-    // double headed arrow indicates this line is draggable
-    const doubleArrowNode = new ArrowNode( 0, -12, 0, 12, {
-      doubleHead: true,
-      headWidth: 13,
-      tailWidth: 5,
+      // make the front line a bit easier to pick up
+      frontLine.mouseArea = frontLine.bounds.dilated( 5 );
+      frontLine.touchArea = frontLine.mouseArea;
 
-      left: 30,
-      fill: EnergySkateParkColorScheme.referenceArrowFill
-    } );
+      // double headed arrow indicates this line is draggable
+      const doubleArrowNode = new ArrowNode( 0, -12, 0, 12, {
+        doubleHead: true,
+        headWidth: 13,
+        tailWidth: 5,
 
-    // label for the reference line, surround by a transparent panel for better visibility
-    const textPanel = new TextPanel( heightEqualsZeroString, { textMaxWidth: 125 } );
+        left: 30,
+        fill: EnergySkateParkColorScheme.referenceArrowFill
+      } );
 
-    textPanel.setLeftCenter( doubleArrowNode.rightTop );
+      // label for the reference line, surround by a transparent panel for better visibility
+      const textPanel = new TextPanel( heightEqualsZeroString, { textMaxWidth: 125 } );
 
-    Node.call( this, {
-      children: [ backLine, frontLine, doubleArrowNode, textPanel ],
+      textPanel.setLeftCenter( doubleArrowNode.rightTop );
 
-      // so it is clear that it can be picked up
-      cursor: 'pointer'
-    } );
+      super( {
+        children: [ backLine, frontLine, doubleArrowNode, textPanel ],
 
-    // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
-    const self = this;
-    referenceHeightProperty.link( function( height ) {
+        // so it is clear that it can be picked up
+        cursor: 'pointer'
+      } );
 
-      // position the reference height line, model value in meters
-      self.y = modelViewTransform.modelToViewY( height );
-    } );
+      // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
+      const self = this;
+      referenceHeightProperty.link( function( height ) {
 
-    // update visibility with model Property and reset reference height when node is no longer visible to avoid
-    // confusion
-    referenceHeightVisibleProperty.link( function( visible ) {
-      referenceHeightProperty.reset();
+        // position the reference height line, model value in meters
+        self.y = modelViewTransform.modelToViewY( height );
+      } );
 
-      self.visible = visible;
-    } );
+      // update visibility with model Property and reset reference height when node is no longer visible to avoid
+      // confusion
+      referenceHeightVisibleProperty.link( function( visible ) {
+        referenceHeightProperty.reset();
 
-    this.addInputListener( new DragListener( {
-      transform: modelViewTransform,
-      drag: function( event, listener ) {
+        self.visible = visible;
+      } );
 
-        // mouse in view coordinates
-        const pMouse = self.globalToParentPoint( event.pointer.point );
+      this.addInputListener( new DragListener( {
+        transform: modelViewTransform,
+        drag: function( event, listener ) {
 
-        // mouse in model coordinates
-        const modelMouse = modelViewTransform.viewToModelPosition( pMouse );
+          // mouse in view coordinates
+          const pMouse = self.globalToParentPoint( event.pointer.point );
 
-        // limit to reference height range
-        const modelY = modelMouse.y;
-        const constrainedValue = Constants.REFERENCE_HEIGHT_RANGE.constrainValue( modelY );
-        referenceHeightProperty.set( constrainedValue );
-      },
-      tandem: tandem.createTandem( 'dragListener' )
-    } ) );
+          // mouse in model coordinates
+          const modelMouse = modelViewTransform.viewToModelPosition( pMouse );
+
+          // limit to reference height range
+          const modelY = modelMouse.y;
+          const constrainedValue = Constants.REFERENCE_HEIGHT_RANGE.constrainValue( modelY );
+          referenceHeightProperty.set( constrainedValue );
+        },
+        tandem: tandem.createTandem( 'dragListener' )
+      } ) );
+    }
   }
 
-  energySkatePark.register( 'ReferenceHeightLine', ReferenceHeightLine );
-
-  return inherit( Node, ReferenceHeightLine, {} );
+  return energySkatePark.register( 'ReferenceHeightLine', ReferenceHeightLine );
 } );

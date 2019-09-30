@@ -13,39 +13,34 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkScreenView' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const TrackNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TrackNode' );
 
-  /**
-   * @param {EnergySkateParkTrackSetModel} model
-   * @param {Array.<PhysicalNumberControl|PhysicalComboBox>} controls
-   * @param {tandem} tandem
-   * @param {} options]
-   */
-  function EnergySkateParkTrackSetScreenView( model, controls, tandem, options ) {
+  class EnergySkateParkTrackSetScreenView extends EnergySkateParkScreenView {
 
-    options = _.extend( {
+    /**
+     * @param {EnergySkateParkTrackSetModel} model
+     * @param {Array.<PhysicalNumberControl|PhysicalComboBox} controls
+     * @param {Tandem} tandem
+     * @param {Object} options
+     */
+    constructor( model, controls, tandem, options ) {
+      super( model, controls, tandem, options );
 
-    }, options );
-
-    EnergySkateParkScreenView.call( this, model, controls, tandem, options );
-
-    const trackNodes = model.tracks.getArray().map( track => {
-      return new TrackNode( model, track, this.modelViewTransform, this.availableModelBoundsProperty, this.trackNodeGroupTandem.createNextTandem() );
-    } );
-
-    trackNodes.forEach( trackNode => {
-      this.trackLayer.addChild( trackNode );
-    } );
-
-    model.sceneProperty.link( function( scene ) {
-      _.forEach( model.tracks, function( track, i ) {
-        trackNodes[ i ].visible = scene === i;
+      const trackNodes = model.tracks.getArray().map( track => {
+        return new TrackNode( model, track, this.modelViewTransform, this.availableModelBoundsProperty, this.trackNodeGroupTandem.createNextTandem() );
       } );
-    } );
+
+      trackNodes.forEach( trackNode => {
+        this.trackLayer.addChild( trackNode );
+      } );
+
+      model.sceneProperty.link( scene => {
+        _.forEach( model.tracks, ( track, i ) => {
+          trackNodes[ i ].visible = scene === i;
+        } );
+      } );
+    }
   }
 
-  energySkatePark.register( 'EnergySkateParkTrackSetScreenView', EnergySkateParkTrackSetScreenView );
-
-  return inherit( EnergySkateParkScreenView, EnergySkateParkTrackSetScreenView,  );
+  return energySkatePark.register( 'EnergySkateParkTrackSetScreenView', EnergySkateParkTrackSetScreenView );
 } );

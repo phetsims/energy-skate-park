@@ -19,9 +19,9 @@ define( require => {
   class MeasuringTapePanel extends Panel {
 
     /**
-     * @param  {MeasuringTapeNode} measuringTapeNode - used in a view and receives a forwarded event from icon
-     * @param  {BooleanProperty}
-     * @param  {Object} options
+     * @param {MeasuringTapeNode} measuringTapeNode - used in a view and receives a forwarded event from icon
+     * @param {BooleanProperty}
+     * @param {Object} options
      */
     constructor( model, measuringTapeNode, modelViewTransform, forwardCallback, options ) {
 

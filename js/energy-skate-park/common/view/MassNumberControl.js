@@ -16,6 +16,12 @@ define( require => {
   const massKilogramsPatternString = require( 'string!ENERGY_SKATE_PARK/massKilogramsPattern' );
 
   class MassNumberControl extends PhysicalNumberControl {
+
+    /**
+     * @param {NumberProperty} massProperty
+     * @param {Range} massRange
+     * @param {Tandem} tandem
+     */
     constructor( massProperty, massRange, tandem ) {
       super( controlsMassString, massProperty, massRange, tandem, {
         numberDisplayOptions: {

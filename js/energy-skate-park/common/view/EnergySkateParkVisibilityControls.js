@@ -18,7 +18,6 @@ define( require => {
   const AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkCheckboxItem = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkCheckboxItem' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
@@ -29,112 +28,113 @@ define( require => {
   const propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
   const controlsStickToTrackString = require( 'string!ENERGY_SKATE_PARK/controls.stickToTrack' );
 
-  /**
-   * @constructor
-   * @param {Array.<EnergySkateParkCheckboxItem>} checkboxItems
-   * @param {object} options
-   */
-  function EnergySkateParkVisibilityControls( model, tandem, options ) {
+  class EnergySkateParkVisibilityControls extends VBox {
 
-    options = _.extend( {
+    /**
+     * @constructor
+     * @param {Array.<EnergySkateParkCheckboxItem>} checkboxItems
+     * @param {object} options
+     */
+    constructor( model, tandem, options ) {
+      options = _.extend( {
 
-      // {boolean} - whether or not Checkboxes for these Properties are included in the controls
-      showPieChartCheckbox: true,
-      showGridCheckbox: true,
-      showSpeedCheckbox: true,
-      showReferenceHeightCheckbox: false,
-      showSkaterPathCheckbox: false,
-      showStickToTrackCheckbox: false,
+        // {boolean} - whether or not Checkboxes for these Properties are included in the controls
+        showPieChartCheckbox: true,
+        showGridCheckbox: true,
+        showSpeedCheckbox: true,
+        showReferenceHeightCheckbox: false,
+        showSkaterPathCheckbox: false,
+        showStickToTrackCheckbox: false,
 
-      // {*|null} options that are passed to each EnergySkateParkCheckboxItem in this group of controls
-      itemOptions: null
-    }, options );
+        // {*|null} options that are passed to each EnergySkateParkCheckboxItem in this group of controls
+        itemOptions: null
+      }, options );
 
-    const itemAlignGroup = new AlignGroup();
-    const checkboxItems = [];
+      const itemAlignGroup = new AlignGroup();
+      const checkboxItems = [];
 
-    if ( options.showSkaterPathCheckbox ) {
-      assert && assert( model.sampleSkaterProperty, 'no Property for measuring samples, add to model or dont show this' );
+      if ( options.showSkaterPathCheckbox ) {
+        assert && assert( model.sampleSkaterProperty, 'no Property for measuring samples, add to model or dont show this' );
 
-      checkboxItems.push(
-        new EnergySkateParkCheckboxItem(
-          controlsPathString,
-          EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) ),
+        checkboxItems.push(
+          new EnergySkateParkCheckboxItem(
+            controlsPathString,
+            EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) ),
+            itemAlignGroup,
+            model.sampleSkaterProperty,
+            tandem.createTandem( 'pathCheckbox' ),
+            options.itemOptions
+          )
+        );
+      }
+
+      if ( options.showPieChartCheckbox ) {
+        checkboxItems.push(
+          new EnergySkateParkCheckboxItem(
+            pieChartString,
+            EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } ),
+            itemAlignGroup,
+            model.pieChartVisibleProperty,
+            tandem.createTandem( 'pieChartCheckbox' ),
+            options.itemOptions
+          ),
+        );
+      }
+
+      if ( options.showGridCheckbox ) {
+        checkboxItems.push( new EnergySkateParkCheckboxItem(
+          controlsShowGridString,
+          EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } ),
           itemAlignGroup,
-          model.sampleSkaterProperty,
-          tandem.createTandem( 'pathCheckbox' ),
+          model.gridVisibleProperty,
+          tandem.createTandem( 'gridCheckbox' ),
           options.itemOptions
-        )
-      );
-    }
+        ) );
+      }
 
-    if ( options.showPieChartCheckbox ) {
-      checkboxItems.push(
-        new EnergySkateParkCheckboxItem(
-          pieChartString,
-          EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } ),
+      if ( options.showSpeedCheckbox ) {
+        checkboxItems.push( new EnergySkateParkCheckboxItem(
+          propertiesSpeedString,
+          EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } ),
           itemAlignGroup,
-          model.pieChartVisibleProperty,
-          tandem.createTandem( 'pieChartCheckbox' ),
+          model.speedometerVisibleProperty,
+          tandem.createTandem( 'speedometerCheckbox' ),
           options.itemOptions
-        ),
-      );
-    }
+        ) );
+      }
 
-    if ( options.showGridCheckbox ) {
-      checkboxItems.push( new EnergySkateParkCheckboxItem(
-        controlsShowGridString,
-        EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } ),
-        itemAlignGroup,
-        model.gridVisibleProperty,
-        tandem.createTandem( 'gridCheckbox' ),
-        options.itemOptions
-      ) );
-    }
+      if ( options.showReferenceHeightCheckbox ) {
+        checkboxItems.push(
+          new EnergySkateParkCheckboxItem(
+            controlsReferenceHeightString,
+            EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) ),
+            itemAlignGroup,
+            model.referenceHeightVisibleProperty,
+            tandem.createTandem( 'referenceHeightCheckbox' ),
+            options.itemOptions
+          )
+        );
+      }
 
-    if ( options.showSpeedCheckbox ) {
-      checkboxItems.push( new EnergySkateParkCheckboxItem(
-        propertiesSpeedString,
-        EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } ),
-        itemAlignGroup,
-        model.speedometerVisibleProperty,
-        tandem.createTandem( 'speedometerCheckbox' ),
-        options.itemOptions
-      ) );
-    }
-
-    if ( options.showReferenceHeightCheckbox ) {
-      checkboxItems.push(
-        new EnergySkateParkCheckboxItem(
-          controlsReferenceHeightString,
-          EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) ),
+      if ( options.showStickToTrackCheckbox ) {
+        checkboxItems.push( new EnergySkateParkCheckboxItem(
+          controlsStickToTrackString,
+          EnergySkateParkCheckboxItem.createStickingToTrackIcon(),
           itemAlignGroup,
-          model.referenceHeightVisibleProperty,
-          tandem.createTandem( 'referenceHeightCheckbox' ),
+          model.stickingToTrackProperty,
+          tandem.createTandem( 'stickToTrackCheckbox' ),
           options.itemOptions
-        )
-      );
-    }
+        ) );
+      }
 
-    if ( options.showStickToTrackCheckbox ) {
-      checkboxItems.push( new EnergySkateParkCheckboxItem(
-        controlsStickToTrackString,
-        EnergySkateParkCheckboxItem.createStickingToTrackIcon(),
-        itemAlignGroup,
-        model.stickingToTrackProperty,
-        tandem.createTandem( 'stickToTrackCheckbox' ),
-        options.itemOptions
-      ) );
+      super( {
+        children: checkboxItems,
+        align: 'left',
+        spacing: 6.5
+      } );
+    
     }
-
-    VBox.call( this, {
-      children: checkboxItems,
-      align: 'left',
-      spacing: 6.5
-    } );
   }
 
-  energySkatePark.register( 'EnergySkateParkVisibilityControls', EnergySkateParkVisibilityControls );
-
-  return inherit( VBox, EnergySkateParkVisibilityControls, {} );
+  return energySkatePark.register( 'EnergySkateParkVisibilityControls', EnergySkateParkVisibilityControls );
 } );

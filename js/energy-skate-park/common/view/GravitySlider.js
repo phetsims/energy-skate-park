@@ -18,6 +18,11 @@ define( require => {
   const controlsValueTinyString = require( 'string!ENERGY_SKATE_PARK/controls.value.tiny' );
 
   class GravitySlider extends PhysicalSlider {
+
+    /**
+     * @param {NumberProperty} property
+     * @param {Tandem} tandems
+     */
     constructor( property, tandem ) {
       super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, {
         minLabel: controlsValueTinyString

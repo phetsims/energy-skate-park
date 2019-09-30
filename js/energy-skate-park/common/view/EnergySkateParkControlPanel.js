@@ -17,65 +17,66 @@ define( require => {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   const EnergySkateParkVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkVisibilityControls' );
   const HSeparator = require( 'SUN/HSeparator' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const Panel = require( 'SUN/Panel' );
   const SceneSelectionRadioButtonGroup = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SceneSelectionRadioButtonGroup' );
   const VBox = require( 'SCENERY/nodes/VBox' );
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
   const MassComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassComboBox' );
 
+  // constants
   const VALID_CONTROLS = [ PhysicalSlider, PhysicalNumberControl, GravityComboBox, MassComboBox ];
 
-  /**
-   * @param {EnergySkateParkModel} model
-   * @param {EnergySkateParkScreenView} screenView
-   * @param {Array.<PhysicalNumberControl|PhysicalSlider>} controls - list of controls to follow visibility controls
-   * @param {Tandem} tandem
-   * @constructor
-   */
-  function EnergySkateParkControlPanel( model, screenView, controls, tandem, visibilityControlsOptions, options ) {
-    assert && assert( controls.length > 0, 'control panel must include additional physical controls' );
+  class EnergySkateParkControlPanel extends Panel {
+    
+    /**
+     * @param {EnergySkateParkModel} model
+     * @param {EnergySkateParkScreenView} screenView
+     * @param {Array.<PhysicalNumberControl|PhysicalSlider>} controls - list of controls to follow visibility controls
+     * @param {Tandem} tandem
+     * @constructor
+     */
+    constructor( model, screenView, controls, tandem, visibilityControlsOptions, options ) {
+      assert && assert( controls.length > 0, 'control panel must include additional physical controls' );
 
-    // controls that change visibility of items in the screen
-    const visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), visibilityControlsOptions );
-    const children = [ visibilityControls ];
+      // controls that change visibility of items in the screen
+      const visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), visibilityControlsOptions );
+      const children = [ visibilityControls ];
 
-    if ( screenView.showTrackButtons ) {
-      children.push( new SceneSelectionRadioButtonGroup( model, screenView, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) ) );
-    }
-
-    controls.forEach( function( control ) {
-      if ( assert ) {
-        let validType = false;
-        _.forEach( VALID_CONTROLS, controlType => {
-          if ( control instanceof controlType ) {
-            validType = true;
-          }
-        } );
-        assert( validType, 'control must be one of VALID_CONTROLS' );
+      if ( screenView.showTrackButtons ) {
+        children.push( new SceneSelectionRadioButtonGroup( model, screenView, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) ) );
       }
-      children.push( control );
-    } );
 
-    const separatorWidth = _.maxBy( children, function( child ) { return child.width; } ).width;
-    children.splice( children.indexOf( controls[ 0 ] ), 0, new HSeparator( separatorWidth ) );
-    if ( screenView.showTrackButtons ) {
-      children.splice( children.indexOf( visibilityControls ) + 1, 0, new HSeparator( separatorWidth ) );
+      controls.forEach( control => {
+        if ( assert ) {
+          let validType = false;
+          _.forEach( VALID_CONTROLS, controlType => {
+            if ( control instanceof controlType ) {
+              validType = true;
+            }
+          } );
+          assert( validType, 'control must be one of VALID_CONTROLS' );
+        }
+        children.push( control );
+      } );
+
+      const separatorWidth = _.maxBy( children, child => { return child.width; } ).width;
+      children.splice( children.indexOf( controls[ 0 ] ), 0, new HSeparator( separatorWidth ) );
+      if ( screenView.showTrackButtons ) {
+        children.splice( children.indexOf( visibilityControls ) + 1, 0, new HSeparator( separatorWidth ) );
+      }
+
+      const content = new VBox( { resize: false, spacing: 8, children: children } );
+
+      super( content, {
+        xMargin: 5,
+        yMargin: 5,
+        fill: EnergySkateParkColorScheme.panelFill,
+        stroke: null,
+        resize: false,
+        tandem: tandem
+      } );
     }
-
-    const content = new VBox( { resize: false, spacing: 8, children: children } );
-
-    Panel.call( this, content, {
-      xMargin: 5,
-      yMargin: 5,
-      fill: EnergySkateParkColorScheme.panelFill,
-      stroke: null,
-      resize: false,
-      tandem: tandem
-    } );
   }
 
-  energySkatePark.register( 'EnergySkateParkControlPanel', EnergySkateParkControlPanel );
-
-  return inherit( Panel, EnergySkateParkControlPanel );
+  return energySkatePark.register( 'EnergySkateParkControlPanel', EnergySkateParkControlPanel );
 } );

@@ -32,5 +32,4 @@ define( require => {
   }
 
   return energySkatePark.register( 'GravityComboBox', GravityComboBox );
-
 } );

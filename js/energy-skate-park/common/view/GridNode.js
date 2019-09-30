@@ -15,7 +15,6 @@ define( require => {
   // modules
   const BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/BackgroundNode' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Path = require( 'SCENERY/nodes/Path' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -32,75 +31,70 @@ define( require => {
   // grid can translte this far up
   const NEGATIVE_HEIGHT = 10;
 
-  /**
-   * @param {Property.<boolean>} gridVisibleProperty the axon property indicating whether the grid should be visible
-   * @param {NumberProperty} referenceHeightProperty - Property in meters for height of zero potential energy
-   * @param {ModelViewTransform2} modelViewTransform the main model-view transform
-   * @param {Tandem} tandem
-   * @constructor
-   */
-  function GridNode( gridVisibleProperty, referenceHeightProperty, modelViewTransform, tandem ) {
+  class GridNode extends Node {
 
-    Node.call( this, {
-      pickable: false,
-      tandem: tandem
-    } );
+    /**
+     * @param {Property.<boolean>} gridVisibleProperty the axon property indicating whether the grid should be visible
+     * @param {NumberProperty} referenceHeightProperty - Property in meters for height of zero potential energy
+     * @param {ModelViewTransform2} modelViewTransform the main model-view transform
+     * @param {Tandem} tandem
+     * @constructor
+     */
+    constructor( gridVisibleProperty, referenceHeightProperty, modelViewTransform, tandem ) {
+      super( {
+        pickable: false,
+        tandem: tandem
+      } );
 
-    // @private
-    this.gridNodeTandem = tandem;
-    this.referenceHeightProperty = referenceHeightProperty;
-    this.modelViewTransform = modelViewTransform;
+      // @private
+      this.gridNodeTandem = tandem;
+      this.referenceHeightProperty = referenceHeightProperty;
+      this.modelViewTransform = modelViewTransform;
 
-    // @private {Node} - will contain the gridParent, and therefore most children of the grid except for the
-    // "0 meters" label (which must be outside of the clip area). The clip area is everything above the earth, updated
-    // in layout()
-    this.clipParent = new Node();
-    this.addChild( this.clipParent );
+      // @private {Node} - will contain the gridParent, and therefore most children of the grid except for the
+      // "0 meters" label (which must be outside of the clip area). The clip area is everything above the earth, updated
+      // in layout()
+      this.clipParent = new Node();
+      this.addChild( this.clipParent );
 
-    // @private {Node} - will contain most children of the grid node (lines, text, and others), so that this node
-    // can be transformed without moving the clip area.
-    this.gridParent = new Node();
-    this.clipParent.addChild( this.gridParent );
+      // @private {Node} - will contain most children of the grid node (lines, text, and others), so that this node
+      // can be transformed without moving the clip area.
+      this.gridParent = new Node();
+      this.clipParent.addChild( this.gridParent );
 
-    // @private {Node} - parent for the "0 meters" label, outside of the clipParent because we want this text to
-    // always be visible, even if outside of the clip shape (under the ground).
-    this.zeroLabelParent = new Node();
-    this.addChild( this.zeroLabelParent );
+      // @private {Node} - parent for the "0 meters" label, outside of the clipParent because we want this text to
+      // always be visible, even if outside of the clip shape (under the ground).
+      this.zeroLabelParent = new Node();
+      this.addChild( this.zeroLabelParent );
 
-    gridVisibleProperty.linkAttribute( this, 'visible' );
+      gridVisibleProperty.linkAttribute( this, 'visible' );
 
-    // @private
-    this.thinLinePath = new Path( null, {
-      stroke: '#686868',
-      lineWidth: 0.8,
-      tandem: tandem.createTandem( 'thinLinePath' )
-    } );
-    this.thickLinePath = new Path( null, {
-      stroke: '#686868',
-      lineWidth: 1.8,
-      tandem: tandem.createTandem( 'thickLinePath' )
-    } );
+      // @private
+      this.thinLinePath = new Path( null, {
+        stroke: '#686868',
+        lineWidth: 0.8,
+        tandem: tandem.createTandem( 'thinLinePath' )
+      } );
+      this.thickLinePath = new Path( null, {
+        stroke: '#686868',
+        lineWidth: 1.8,
+        tandem: tandem.createTandem( 'thickLinePath' )
+      } );
 
-    // @private - keep references to all text created so that they can be disposed and removed from scene graph
-    // when layout changes
-    this.createdTextPanels = [];
+      // @private - keep references to all text created so that they can be disposed and removed from scene graph
+      // when layout changes
+      this.createdTextPanels = [];
 
-    // transform the grid with the reference line - this should be faster than redrawing the grid every time it needs
-    // to translate
-    const self = this;
-    referenceHeightProperty.lazyLink( function( height, oldHeight ) {
-      const viewDelta = modelViewTransform.modelToViewDeltaY( height - oldHeight );
+      // transform the grid with the reference line - this should be faster than redrawing the grid every time it needs
+      // to translate
+      referenceHeightProperty.lazyLink( ( height, oldHeight ) => {
+        const viewDelta = modelViewTransform.modelToViewDeltaY( height - oldHeight );
 
-      // apply transform to grid and "0 meters" label, without translating the clip shape
-      self.gridParent.translate( 0, viewDelta );
-      self.zeroLabelParent.translate( 0, viewDelta );
-    } );
-  }
-
-  energySkatePark.register( 'GridNode', GridNode );
-
-  return inherit( Node, GridNode, {
-
+        // apply transform to grid and "0 meters" label, without translating the clip shape
+        this.gridParent.translate( 0, viewDelta );
+        this.zeroLabelParent.translate( 0, viewDelta );
+      } );
+    }
 
     /**
      * Exactly fit the geometry to the screen so no matter what aspect ratio, the grid will fill the entire screen.
@@ -114,7 +108,7 @@ define( require => {
      * @param  {number} height - height of view, before any layout scale
      * @param  {number} layoutScale - vertical or horizontal scale for sim, whichever is more limiting
      */
-    layout: function( offsetX, offsetY, width, height, layoutScale ) {
+    layout( offsetX, offsetY, width, height, layoutScale ) {
       const scaledHeight = height / layoutScale; // height of the view
 
       const clipHeight = scaledHeight - BackgroundNode.earthHeight;
@@ -210,5 +204,7 @@ define( require => {
       assert && assert( replacementText, 'at 0 height, a label should have been created' );
       this.zeroLabelParent.addChild( replacementText );
     }
-  } );
+  }
+
+  return energySkatePark.register( 'GridNode', GridNode );
 } );

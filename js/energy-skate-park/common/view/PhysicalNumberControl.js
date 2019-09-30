@@ -19,11 +19,11 @@ define( require => {
   class PhysicalNumberControl extends NumberControl {
 
     /**
-     * @param  {string} titleString
-     * @param  {NumberProperty} property
-     * @param  {Range} valueRange
-     * @param  {Tandem} tandem
-     * @param  {Object} options
+     * @param {string} titleString
+     * @param {NumberProperty} property
+     * @param {Range} valueRange
+     * @param {Tandem} tandem
+     * @param {Object} options
      */
     constructor( titleString, property, valueRange, tandem, options ) {
       options = options || {};

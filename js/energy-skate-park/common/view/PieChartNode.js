@@ -14,184 +14,184 @@ define( require => {
   const Circle = require( 'SCENERY/nodes/Circle' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Path = require( 'SCENERY/nodes/Path' );
   const Shape = require( 'KITE/Shape' );
   const Util = require( 'DOT/Util' );
 
-  /**
-   * @param {Skater} skater the skater model
-   * @param {Property<Boolean>} pieChartVisibleProperty axon Property indicating whether the pie chart is shown
-   * @param {ModelViewTransform2} modelViewTransform
-   * @param {Tandem} tandem
-   * @constructor
-   */
-  function PieChartNode( skater, pieChartVisibleProperty, modelViewTransform, tandem, options ) {
-    const self = this;
+  class PieChartNode extends Node {
 
-    options = _.extend( {
+    /**
+     * @param {Skater} skater the skater model
+     * @param {Property<Boolean>} pieChartVisibleProperty axon Property indicating whether the pie chart is shown
+     * @param {ModelViewTransform2} modelViewTransform
+     * @param {Tandem} tandem
+     * @constructor
+     */
+    constructor( skater, pieChartVisibleProperty, modelViewTransform, tandem, options ) {
 
-      // {boolean} - Whether or not to represent negative energy. When true, when one of the energies is negative
-      // the pie chart will only show total energy, a solid circle with the color for total energy
-      showNegativeEnergy: true
-    }, options );
+      options = _.extend( {
 
-    const kineticEnergySlice = new Path( null, {
-      fill: EnergySkateParkColorScheme.kineticEnergy,
-      stroke: 'black',
-      lineWidth: 1
-    } );
-    const potentialEnergySlice = new Path( null, {
-      fill: EnergySkateParkColorScheme.potentialEnergy,
-      stroke: 'black',
-      lineWidth: 1
-    } );
+        // {boolean} - Whether or not to represent negative energy. When true, when one of the energies is negative
+        // the pie chart will only show total energy, a solid circle with the color for total energy
+        showNegativeEnergy: true
+      }, options );
 
-    // @private {boolean} - whether or not negative potential energy will be represented by the pie chart or it should
-    // be invisible in this case
-    this.showNegativeEnergy = options.showNegativeEnergy;
+      const kineticEnergySlice = new Path( null, {
+        fill: EnergySkateParkColorScheme.kineticEnergy,
+        stroke: 'black',
+        lineWidth: 1
+      } );
+      const potentialEnergySlice = new Path( null, {
+        fill: EnergySkateParkColorScheme.potentialEnergy,
+        stroke: 'black',
+        lineWidth: 1
+      } );
 
-    // Skip bounds computation to improve performance, see #245
-    kineticEnergySlice.computeShapeBounds = function() {return new Bounds2( 0, 0, 0, 0 );};
-    potentialEnergySlice.computeShapeBounds = function() {return new Bounds2( 0, 0, 0, 0 );};
+      // Skip bounds computation to improve performance, see #245
+      kineticEnergySlice.computeShapeBounds = function() {return new Bounds2( 0, 0, 0, 0 );};
+      potentialEnergySlice.computeShapeBounds = function() {return new Bounds2( 0, 0, 0, 0 );};
 
-    // total energy representation is a full circle, so it can use the optimized version.
-    const totalEnergyCircle = new Circle( 1, {
-      fill: EnergySkateParkColorScheme.totalEnergy,
-      stroke: 'black',
-      lineWidth: 1,
-      lineDash: [ 2, 2 ],
-      opacity: 0.5
-    } );
+      // total energy representation is a full circle, so it can use the optimized version.
+      const totalEnergyCircle = new Circle( 1, {
+        fill: EnergySkateParkColorScheme.totalEnergy,
+        stroke: 'black',
+        lineWidth: 1,
+        lineDash: [ 2, 2 ],
+        opacity: 0.5
+      } );
 
-    // Back layer is always a circle, so use the optimized version.
-    const thermalEnergySlice = new Circle( 1, {
-      fill: EnergySkateParkColorScheme.thermalEnergy,
-      stroke: 'black',
-      lineWidth: 1
-    } );
-    Node.call( this, {
-      tandem: tandem,
-      children: [ thermalEnergySlice, potentialEnergySlice, kineticEnergySlice, totalEnergyCircle ],
-      pickable: false
-    } );
+      // Back layer is always a circle, so use the optimized version.
+      const thermalEnergySlice = new Circle( 1, {
+        fill: EnergySkateParkColorScheme.thermalEnergy,
+        stroke: 'black',
+        lineWidth: 1
+      } );
 
-    const updatePieChartLocation = function() {
+      super( {
+        tandem: tandem,
+        children: [ thermalEnergySlice, potentialEnergySlice, kineticEnergySlice, totalEnergyCircle ],
+        pickable: false
+      } );
 
-      const view = modelViewTransform.modelToViewPosition( skater.headPositionProperty.value );
+      // @private {boolean} - whether or not negative potential energy will be represented by the pie chart or it should
+      // be invisible in this case
+      this.showNegativeEnergy = options.showNegativeEnergy;
 
-      // Center pie chart over skater's head not his feet so it doesn't look awkward when skating in a parabola
-      self.setTranslation( view.x, view.y - 50 );
-    };
-    skater.headPositionProperty.link( function() {
-      if ( self.visible ) {
-        updatePieChartLocation();
-      }
-    } );
+      const updatePieChartLocation = function() {
 
-    const updatePaths = function() {
+        const view = modelViewTransform.modelToViewPosition( skater.headPositionProperty.value );
 
-      // Guard against expensive changes while the pie chart is invisible
-      if ( !self.visible ) {
-        return;
-      }
-      const totalEnergy = skater.totalEnergyProperty.value;
+        // Center pie chart over skater's head not his feet so it doesn't look awkward when skating in a parabola
+        self.setTranslation( view.x, view.y - 50 );
+      };
+      skater.headPositionProperty.link( function() {
+        if ( self.visible ) {
+          updatePieChartLocation();
+        }
+      } );
 
-      // Make the radius proportional to the square root of the energy so that the area will grow linearly with energy,
-      // handling negative energy in case skater is below potential energy reference line
-      const radius = 0.4 * Math.sqrt( Math.abs( totalEnergy ) );
+      const updatePaths = function() {
 
-      // If any value is too low, then don't show it, see #136
-      const THRESHOLD = 1E-4;
+        // Guard against expensive changes while the pie chart is invisible
+        if ( !self.visible ) {
+          return;
+        }
+        const totalEnergy = skater.totalEnergyProperty.value;
 
-      // if only one component of pie chart, then show as a circle so there are no seams
-      const numberComponents = ( skater.potentialEnergyProperty.value > THRESHOLD ? 1 : 0 ) +
-                             ( skater.kineticEnergyProperty.value > THRESHOLD ? 1 : 0 ) +
-                             ( skater.thermalEnergyProperty.value > THRESHOLD ? 1 : 0 );
+        // Make the radius proportional to the square root of the energy so that the area will grow linearly with energy,
+        // handling negative energy in case skater is below potential energy reference line
+        const radius = 0.4 * Math.sqrt( Math.abs( totalEnergy ) );
 
-      // Don't show the pie chart if energies are zero, or if potential energy is negative (underground skater), see #189
-      const energyNegative = skater.potentialEnergyProperty.value < 0;
-      if ( energyNegative && self.showNegativeEnergy ) {
+        // If any value is too low, then don't show it, see #136
+        const THRESHOLD = 1E-4;
 
-        // energy is negative and we want to represent it with a full yellow circle
-        potentialEnergySlice.visible = false;
-        kineticEnergySlice.visible = false;
-        thermalEnergySlice.visible = false;
-        totalEnergyCircle.visible = true;
+        // if only one component of pie chart, then show as a circle so there are no seams
+        const numberComponents = ( skater.potentialEnergyProperty.value > THRESHOLD ? 1 : 0 ) +
+                               ( skater.kineticEnergyProperty.value > THRESHOLD ? 1 : 0 ) +
+                               ( skater.thermalEnergyProperty.value > THRESHOLD ? 1 : 0 );
 
-        // round to nearest int so that graphics update only happens every pixel change or more
-        totalEnergyCircle.radius = Util.roundSymmetric( radius );
-      }
-      else if ( numberComponents === 0 || energyNegative ) {
-        potentialEnergySlice.visible = false;
-        kineticEnergySlice.visible = false;
-        thermalEnergySlice.visible = false;
-        totalEnergyCircle.visible = false;
-      }
-      else if ( numberComponents === 1 ) {
-        const selectedSlice = skater.potentialEnergyProperty.value > THRESHOLD ? potentialEnergySlice :
-                            skater.kineticEnergyProperty.value > THRESHOLD ? kineticEnergySlice :
-                            thermalEnergySlice;
-        potentialEnergySlice.visible = false;
-        thermalEnergySlice.visible = false;
-        kineticEnergySlice.visible = false;
-        totalEnergyCircle.visible = false;
-        selectedSlice.visible = true;
+        // Don't show the pie chart if energies are zero, or if potential energy is negative (underground skater), see #189
+        const energyNegative = skater.potentialEnergyProperty.value < 0;
+        if ( energyNegative && self.showNegativeEnergy ) {
 
-        // Performance optimization for background circle
-        if ( selectedSlice instanceof Circle ) {
+          // energy is negative and we want to represent it with a full yellow circle
+          potentialEnergySlice.visible = false;
+          kineticEnergySlice.visible = false;
+          thermalEnergySlice.visible = false;
+          totalEnergyCircle.visible = true;
 
+          // round to nearest int so that graphics update only happens every pixel change or more
+          totalEnergyCircle.radius = Util.roundSymmetric( radius );
+        }
+        else if ( numberComponents === 0 || energyNegative ) {
+          potentialEnergySlice.visible = false;
+          kineticEnergySlice.visible = false;
+          thermalEnergySlice.visible = false;
+          totalEnergyCircle.visible = false;
+        }
+        else if ( numberComponents === 1 ) {
+          const selectedSlice = skater.potentialEnergyProperty.value > THRESHOLD ? potentialEnergySlice :
+                              skater.kineticEnergyProperty.value > THRESHOLD ? kineticEnergySlice :
+                              thermalEnergySlice;
+          potentialEnergySlice.visible = false;
+          thermalEnergySlice.visible = false;
+          kineticEnergySlice.visible = false;
+          totalEnergyCircle.visible = false;
+          selectedSlice.visible = true;
+
+          // Performance optimization for background circle
+          if ( selectedSlice instanceof Circle ) {
+
+            // Round the radius so it will only update the graphics when it changed by a px or more
+            selectedSlice.radius = Util.roundSymmetric( radius );
+          }
+          else {
+            selectedSlice.shape = Shape.circle( 0, 0, radius );
+          }
+        }
+        else {
+          potentialEnergySlice.visible = true;
+          kineticEnergySlice.visible = true;
+          thermalEnergySlice.visible = true;
+          totalEnergyCircle.visible = false;
+          const fractionPotential = skater.potentialEnergyProperty.value / skater.totalEnergyProperty.value;
+          const fractionKinetic = skater.kineticEnergyProperty.value / skater.totalEnergyProperty.value;
+
+          // Show one of them in the background instead of pieces for each one for performance
           // Round the radius so it will only update the graphics when it changed by a px or more
-          selectedSlice.radius = Util.roundSymmetric( radius );
+          thermalEnergySlice.radius = Util.roundSymmetric( radius );
+
+          // Start thermal at the right and wind counter clockwise, see #133
+          // Order is thermal (in the background), kinetic, potential
+          const potentialStartAngle = 0;
+          const kineticStartAngle = Math.PI * 2 * fractionPotential;
+
+          // If there is no potential energy (i.e. the skater is on the ground) then don't show the potential energy slice,
+          // see #165
+          if ( fractionPotential === 0 ) {
+            potentialEnergySlice.shape = null;
+          }
+          else {
+            potentialEnergySlice.shape = new Shape().moveTo( 0, 0 ).arc( 0, 0, radius, potentialStartAngle, kineticStartAngle, false ).lineTo( 0, 0 ).close();
+          }
+          kineticEnergySlice.shape = new Shape().moveTo( 0, 0 ).arc( 0, 0, radius, kineticStartAngle, kineticStartAngle + fractionKinetic * Math.PI * 2, false ).lineTo( 0, 0 ).close();
         }
-        else {
-          selectedSlice.shape = Shape.circle( 0, 0, radius );
+      };
+
+      // instead of changing the entire pie chart whenever one energy changes, use trigger to update the whole pie
+      skater.energyChangedEmitter.addListener( updatePaths );
+
+      // Synchronize visibility with the model, and also update when visibility changes because it is guarded against in updatePaths
+      pieChartVisibleProperty.link( function( visible ) {
+        self.visible = visible;
+        updatePaths();
+        if ( visible ) {
+          updatePieChartLocation();
         }
-      }
-      else {
-        potentialEnergySlice.visible = true;
-        kineticEnergySlice.visible = true;
-        thermalEnergySlice.visible = true;
-        totalEnergyCircle.visible = false;
-        const fractionPotential = skater.potentialEnergyProperty.value / skater.totalEnergyProperty.value;
-        const fractionKinetic = skater.kineticEnergyProperty.value / skater.totalEnergyProperty.value;
-
-        // Show one of them in the background instead of pieces for each one for performance
-        // Round the radius so it will only update the graphics when it changed by a px or more
-        thermalEnergySlice.radius = Util.roundSymmetric( radius );
-
-        // Start thermal at the right and wind counter clockwise, see #133
-        // Order is thermal (in the background), kinetic, potential
-        const potentialStartAngle = 0;
-        const kineticStartAngle = Math.PI * 2 * fractionPotential;
-
-        // If there is no potential energy (i.e. the skater is on the ground) then don't show the potential energy slice,
-        // see #165
-        if ( fractionPotential === 0 ) {
-          potentialEnergySlice.shape = null;
-        }
-        else {
-          potentialEnergySlice.shape = new Shape().moveTo( 0, 0 ).arc( 0, 0, radius, potentialStartAngle, kineticStartAngle, false ).lineTo( 0, 0 ).close();
-        }
-        kineticEnergySlice.shape = new Shape().moveTo( 0, 0 ).arc( 0, 0, radius, kineticStartAngle, kineticStartAngle + fractionKinetic * Math.PI * 2, false ).lineTo( 0, 0 ).close();
-      }
-    };
-
-    // instead of changing the entire pie chart whenever one energy changes, use trigger to update the whole pie
-    skater.energyChangedEmitter.addListener( updatePaths );
-
-    // Synchronize visibility with the model, and also update when visibility changes because it is guarded against in updatePaths
-    pieChartVisibleProperty.link( function( visible ) {
-      self.visible = visible;
-      updatePaths();
-      if ( visible ) {
-        updatePieChartLocation();
-      }
-    } );
+      } );
+    }
   }
 
-  energySkatePark.register( 'PieChartNode', PieChartNode );
-
-  return inherit( Node, PieChartNode );
+  return energySkatePark.register( 'PieChartNode', PieChartNode );
 } );

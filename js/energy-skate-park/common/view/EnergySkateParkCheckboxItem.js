@@ -16,7 +16,6 @@ define( require => {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   const GaugeNode = require( 'SCENERY_PHET/GaugeNode' );
   const HBox = require( 'SCENERY/nodes/HBox' );
-  const inherit = require( 'PHET_CORE/inherit' );
   const Line = require( 'SCENERY/nodes/Line' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Path = require( 'SCENERY/nodes/Path' );
@@ -42,44 +41,48 @@ define( require => {
    * @param {Tandem} tandem
    * @param {Object} options
    */
-  function EnergySkateParkCheckboxItem( label, icon, textAlignGroup, property, tandem, options ) {
-    assert && assert( textAlignGroup.matchHorizontal === true, 'text content in check boxes must align' );
-    assert && assert( textAlignGroup.matchVertical === true, 'text content for checkboxes in group must align' );
+  class EnergySkateParkCheckboxItem extends HBox {
+    constructor( label, icon, textAlignGroup, property, tandem, options ) {
 
-    options = _.extend( {
+      assert && assert( textAlignGroup.matchHorizontal === true, 'text content in check boxes must align' );
+      assert && assert( textAlignGroup.matchVertical === true, 'text content for checkboxes in group must align' );
 
-      // {number} - default determined by inspection, certain contexts require shorter width
-      labelMaxWidth: 95
-    }, options );
+      options = _.extend( {
 
-    const textOptions = {
-      font: new PhetFont( 10 ),
-      maxWidth: options.labelMaxWidth
-    };
+        // {number} - default determined by inspection, certain contexts require shorter width
+        labelMaxWidth: 95
+      }, options );
 
-    const checkboxItemOptions = {
-      boxWidth: 14,
-      tandem: tandem
-    };
+      const textOptions = {
+        font: new PhetFont( 10 ),
+        maxWidth: options.labelMaxWidth
+      };
 
-    // create text and an align box for it so that all text in a group of items is aligned
-    const text = new Text( label, _.extend( { tandem: tandem.createTandem( 'itemLabel' ) }, textOptions ) );
-    const textBox = textAlignGroup.createBox( text, { xAlign: 'left' } );
+      const checkboxItemOptions = {
+        boxWidth: 14,
+        tandem: tandem
+      };
 
-    const checkbox = new Checkbox( textBox, property, checkboxItemOptions );
+      // create text and an align box for it so that all text in a group of items is aligned
+      const text = new Text( label, _.extend( { tandem: tandem.createTandem( 'itemLabel' ) }, textOptions ) );
+      const textBox = textAlignGroup.createBox( text, { xAlign: 'left' } );
 
-    HBox.call( this, {
-      children: [ checkbox, icon ],
-      spacing: 10
-    } );
-  }
+      const checkbox = new Checkbox( textBox, property, checkboxItemOptions );
 
-  energySkatePark.register( 'EnergySkateParkCheckboxItem', EnergySkateParkCheckboxItem );
+      super( {
+        children: [ checkbox, icon ],
+        spacing: 10
+      } );
+    
+    }
 
-  return inherit( HBox, EnergySkateParkCheckboxItem, {}, {
-
-    // Create an icon for the pie chart checkbox
-    createPieChartIcon: function( tandem, options ) {
+    /**
+     * In icon for the pie chart..
+     * @param {Tandem} tandem
+     * @param {Object} options
+     * @returns {Node}
+     */
+    static createPieChartIcon( tandem, options ) {
       options = _.extend( {
         scale: 1
       }, options );
@@ -97,10 +100,15 @@ define( require => {
         ],
         scale: options.scale
       } );
-    },
+    }
 
-    // Create an icon for the grid checkbox
-    createGridIcon: function( tandem, options ) {
+    /**
+     * An icon for the grid.
+     * @param {Tandem} tandem
+     * @param {Object} options
+     * @returns {Node}
+     */
+    static createGridIcon( tandem, options ) {
       options = _.extend( {
         scale: 1
       }, options );
@@ -117,10 +125,15 @@ define( require => {
         ],
         scale: options.scale
       } );
-    },
+    }
 
-    // Create an icon for the speedometer checkbox
-    createSpeedometerIcon: function( tandem, options ) {
+    /**
+     * An icon for the speedometer.
+     * @param {Tandem} tandem
+     * @param {Object} options
+     * @returns {Node}
+     */
+    static createSpeedometerIcon( tandem, options ) {
       options = _.extend( {
         scale: 1
       }, options );
@@ -131,10 +144,14 @@ define( require => {
         } );
       node.scale( ( 20 / node.width ) * options.scale );
       return node;
-    },
+    }
 
-    // icon for reference height, three circles aligned horizontally
-    createReferenceHeightIcon: function( tandem ) {
+    /**
+     * An icon for the reference height control.
+     * @param {Tandem} tandem 
+     * @returns {Node}
+     */
+    static createReferenceHeightIcon( tandem ) {
 
       // a dashed, stroked line will be drawn with overlapping rectangles, the background rectangle is slightly taller
       // to mimic stroke
@@ -154,10 +171,14 @@ define( require => {
       } );
 
       return new Node( { children: [ backgroundLine, foregroundLine ] } );
-    },
+    }
 
-    // create an icon for the "Path" checkbox, three circles connected by a line in the shape of "U".
-    createSamplesIcon: function( tandem ) {
+    /**
+     * An icon for the "Path" control.
+     * @param {Tandem} tandem
+     * @returns {Node}
+     */
+    static createSamplesIcon( tandem ) {
 
       const circleRadius = 3;
 
@@ -187,7 +208,7 @@ define( require => {
       } );
 
       return new Node( { children: [ linePath, circlesPath ] } );
-    },
+    }
 
     /**
      * Create an icon for the "Sticking to Track" checkbox, a small section of track with the skater's center of
@@ -196,7 +217,7 @@ define( require => {
      * @param {Tandem} tandem
      * @returns {Node}
      */
-    createStickingToTrackIcon: function() {
+    static createStickingToTrackIcon() {
       const iconWidth = 16;
 
       const trackRectangle = new Rectangle( 0, 0, iconWidth, 5, {
@@ -219,5 +240,7 @@ define( require => {
 
       return new Node( { children: [ trackRectangle, trackDashes, centerOfMassCircle ] } );
     }
-  } );
+  }
+
+  return energySkatePark.register( 'EnergySkateParkCheckboxItem', EnergySkateParkCheckboxItem );
 } );
