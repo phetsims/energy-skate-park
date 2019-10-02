@@ -229,9 +229,7 @@ define( require => {
 
       // @public
       this.tracks = new ObservableArray( {
-        phetioType: ObservableArrayIO( TrackIO, {
-          isReferenceType: false // because this is using "value type" serialization
-        } ),
+        phetioType: ObservableArrayIO( TrackIO ),
         tandem: tandem.createTandem( 'tracks' )
       } );
 
@@ -266,7 +264,7 @@ define( require => {
       }
     }
 
-        // Add the tracks that will be in the track toolbox for the "Playground" screen
+    // Add the tracks that will be in the track toolbox for the "Playground" screen
     addDraggableTracks() {
 
       // 3 points per track
@@ -446,7 +444,7 @@ define( require => {
     stepGround( dt, skaterState ) {
       const x0 = skaterState.positionX;
       const frictionMagnitude = ( this.frictionProperty.value === 0 || skaterState.getSpeed() < 1E-2 ) ? 0 :
-                              this.frictionProperty.value * skaterState.mass * skaterState.gravity;
+                                this.frictionProperty.value * skaterState.mass * skaterState.gravity;
       const acceleration = Math.abs( frictionMagnitude ) * ( skaterState.velocityX > 0 ? -1 : 1 ) / skaterState.mass;
 
       let v1 = skaterState.velocityX + acceleration * dt;
@@ -988,9 +986,9 @@ define( require => {
 
       const track = skaterState.track;
       const sideVectorX = skaterState.onTopSideOfTrack ? track.getUnitNormalVector( skaterState.parametricPosition ).x :
-                        track.getUnitNormalVector( skaterState.parametricPosition ).x * -1;
+                          track.getUnitNormalVector( skaterState.parametricPosition ).x * -1;
       const sideVectorY = skaterState.onTopSideOfTrack ? track.getUnitNormalVector( skaterState.parametricPosition ).y :
-                        track.getUnitNormalVector( skaterState.parametricPosition ).y * -1;
+                          track.getUnitNormalVector( skaterState.parametricPosition ).y * -1;
 
       // Dot product written out component-wise to avoid allocations, see #50
       const outsideCircle = sideVectorX * curvatureDirectionX + sideVectorY * curvatureDirectionY < 0;
@@ -1121,7 +1119,7 @@ define( require => {
 
       // Find the direction of velocity.  This is on the track unless the skater just left the "slope" track
       const unit = newSkaterState.track ? newSkaterState.track.getUnitParallelVector( newSkaterState.parametricPosition ) :
-                 newSkaterState.getVelocity().normalized();
+                   newSkaterState.getVelocity().normalized();
 
       // Binary search, but bail after too many iterations
       for ( let i = 0; i < 100; i++ ) {
