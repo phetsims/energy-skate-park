@@ -204,6 +204,9 @@ define( require => {
       this.updatedEmitter = new Emitter();
       this.energyChangedEmitter = new Emitter();
 
+      // @public - emits an event when the skater is returned to a previous position
+      this.returnedEmitter = new Emitter();
+
       // @public {number}
       this.speedProperty = new DerivedProperty( [ this.velocityProperty ], velocity => {
         return velocity.magnitude;
@@ -395,6 +398,8 @@ define( require => {
       this.clearThermal();
       this.updateEnergy();
       this.updatedEmitter.emit();
+
+      this.returnedEmitter.emit();
     }
 
     /**

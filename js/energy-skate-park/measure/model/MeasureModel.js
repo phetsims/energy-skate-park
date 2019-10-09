@@ -56,27 +56,31 @@ define( require => {
       // the speed value is visible on the speedometer for the MeasureModel
       this.speedValueVisibleProperty.set( true );
 
-      // TODO: Probably more Properties here
       const resetSamplesProperties = [
         this.skater.directionProperty,
-        this.skater.trackProperty,
-        this.skater.referenceHeightProperty,
         this.sampleSkaterProperty,
         this.skater.draggingProperty
       ];
 
-      Property.multilink( resetSamplesProperties, () => {
-        for ( let i = 0; i < this.skaterSamples.length; i++ ) {
-          if ( !this.skaterSamples.get( i ).removeInitiated ) {
-            this.skaterSamples.get( i ).initiateRemove();
-          }
-        }
-      } );
+      Property.multilink( resetSamplesProperties, this.initiateSampleRemoval.bind( this ) );
+      this.skater.returnedEmitter.addListener( this.initiateSampleRemoval.bind( this ) );
 
       // when the scene changes, remove all points immediately so they don't persist
       this.sceneProperty.link( scene => {
         this.clearSavedSamples();
       } );
+    }
+
+    /**
+     * Begin to remove all samples, indicating that all existing samples should fade away.
+     * @private
+     */
+    initiateSampleRemoval() {
+      for ( let i = 0; i < this.skaterSamples.length; i++ ) {
+        if ( !this.skaterSamples.get( i ).removeInitiated ) {
+          this.skaterSamples.get( i ).initiateRemove();
+        }
+      }
     }
 
     /**
