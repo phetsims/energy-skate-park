@@ -124,7 +124,6 @@ define( require => {
 
           if ( this.timeSinceSave > SAVE_REFRESH_RATE ) {
             this.timeSinceSave = 0;
-            console.log( 'new sample' );
             const newSample = new SkaterSample( updatedState );
 
             // add a listener that removes this sample from the list - removes this listener on removal as well
