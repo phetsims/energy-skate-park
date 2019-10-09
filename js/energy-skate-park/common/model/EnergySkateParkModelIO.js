@@ -10,6 +10,7 @@ define( require => {
   'use strict';
 
   // modules
+  const CouldNotYetDeserializeError = require( 'TANDEM/CouldNotYetDeserializeError' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const ObjectIO = require( 'TANDEM/types/ObjectIO' );
   const validate = require( 'AXON/validate' );
@@ -43,7 +44,7 @@ define( require => {
 
       // Control Points are already being created when the tracks are made, so if the tandem is a controlPoint it's a no-op
       if ( isControlPoint ) {
-        return false;
+        throw new CouldNotYetDeserializeError();
       }
 
       // If it isn't a ControlPoint, then it is a Track

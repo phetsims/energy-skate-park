@@ -76,7 +76,6 @@ define( require => {
       this.parents = parents;
       this.modelTracks = modelTracks;
 
-      // @public (phet-io), see TrackReferenceIO
       this.trackTandem = tandem;
       this.availableModelBoundsProperty = availableModelBoundsProperty;
 
@@ -189,9 +188,6 @@ define( require => {
         this.availableModelBoundsProperty.unlink( boundsListener );
       };
     }
-
-
-
 
     // when points change, update the spline instance
     updateSplines() {
@@ -371,6 +367,7 @@ define( require => {
       this._slopeToGround = slopeToGround;
       this._restoreSlopeToGroundOnReset = true;
     }
+
     set slopeToGround( slopeToGround ) { this.setSlopeToGround( slopeToGround ); }
 
     /**
@@ -382,6 +379,7 @@ define( require => {
     getSlopeToGround() {
       return this._slopeToGround;
     }
+
     get slopeToGround() { return this.getSlopeToGround(); }
 
     /**
@@ -651,7 +649,7 @@ define( require => {
       const yPP = SplineEvaluation.atNumber( this.ySplineDiffDiff, parametricPosition );
 
       const k = ( xP * yPP - yP * xPP ) /
-              Math.pow( ( xP * xP + yP * yP ), 3 / 2 );
+                Math.pow( ( xP * xP + yP * yP ), 3 / 2 );
 
       // Using component-wise maths to avoid allocations, see #50
       const centerX = this.getX( parametricPosition );

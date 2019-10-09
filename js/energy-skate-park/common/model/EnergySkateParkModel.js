@@ -43,6 +43,7 @@ define( require => {
   const Property = require( 'AXON/Property' );
   const PropertyIO = require( 'AXON/PropertyIO' );
   const Range = require( 'DOT/Range' );
+  const ReferenceIO = require( 'TANDEM/types/ReferenceIO' );
   const Skater = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Skater' );
   const SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
   const StringIO = require( 'TANDEM/types/StringIO' );
@@ -229,12 +230,14 @@ define( require => {
 
       // @public
       this.tracks = new ObservableArray( {
-        phetioType: ObservableArrayIO( TrackIO ),
+        phetioType: ObservableArrayIO( ReferenceIO ),
         tandem: tandem.createTandem( 'tracks' )
       } );
 
       // When tracks are removed, they are no longer used by the application and should be disposed
       this.tracks.addItemRemovedListener( track => {
+
+        // TODO: may need to add an isDisposedCheck to support PhET-iO state
         track.dispose();
       } );
 

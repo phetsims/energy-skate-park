@@ -23,8 +23,8 @@ define( require => {
   const Property = require( 'AXON/Property' );
   const PropertyIO = require( 'AXON/PropertyIO' );
   const Range = require( 'DOT/Range' );
+  const ReferenceIO = require( 'TANDEM/types/ReferenceIO' );
   const StringIO = require( 'TANDEM/types/StringIO' );
-  const TrackReferenceIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackReferenceIO' );
   const Util = require( 'DOT/Util' );
   const Vector2 = require( 'DOT/Vector2' );
   const Vector2Property = require( 'DOT/Vector2Property' );
@@ -62,7 +62,7 @@ define( require => {
       // @public - The track the skater is on, or null if free-falling
       this.trackProperty = new Property( null, {
         tandem: tandem.createTandem( 'trackProperty' ),
-        phetioType: PropertyIO( NullableIO( TrackReferenceIO ) )
+        phetioType: PropertyIO( NullableIO( ReferenceIO ) )
       } );
 
       // @public {number} - Parameter along the parametric spline, unitless since it is in parametric space
