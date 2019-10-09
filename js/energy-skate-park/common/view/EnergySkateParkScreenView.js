@@ -279,7 +279,8 @@ define( require => {
         this.bottomLayer.addChild( this.measuringTapePanel );
       }
 
-      const skaterNode = new SkaterNode(
+      // @protected (read-only) - protected for layering content
+      this.skaterNode = new SkaterNode(
         model.skater,
         this,
         modelViewTransform,
@@ -288,7 +289,7 @@ define( require => {
         tandem.createTandem( 'skaterNode' )
       );
 
-      this.topLayer.addChild( skaterNode );
+      this.topLayer.addChild( this.skaterNode );
 
       const pieChartNode = new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) );
       this.topLayer.addChild( pieChartNode );
