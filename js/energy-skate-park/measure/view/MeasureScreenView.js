@@ -64,6 +64,7 @@ define( require => {
       // the skater, and the sensor is below the measuring tape to avoid occlusion
       const skaterSamplesNode = new SkaterSamplesNode( model, this.modelViewTransform );
       this.topLayer.addChild( skaterSamplesNode );
+      this.topLayer.addChild( this.pathSensor );
     }
 
     /**
