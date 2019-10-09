@@ -117,22 +117,20 @@ define( require => {
       const updatedState = super.stepModel(  dt, skaterState );
 
       if ( this.sampleSkaterProperty.get() ) {
-        if ( this.skater.trackProperty.get() ) {
-          this.timeSinceSave = this.timeSinceSave + dt;
+        this.timeSinceSave = this.timeSinceSave + dt;
 
-          if ( this.timeSinceSave > SAVE_REFRESH_RATE ) {
-            this.timeSinceSave = 0;
-            const newSample = new SkaterSample( updatedState );
+        if ( this.timeSinceSave > SAVE_REFRESH_RATE ) {
+          this.timeSinceSave = 0;
+          const newSample = new SkaterSample( updatedState );
 
-            // add a listener that removes this sample from the list - removes this listener on removal as well
-            const removalListener = () => {
-              newSample.removalEmitter.removeListener( removalListener );
-              this.skaterSamples.remove( newSample );
-            };
-            newSample.removalEmitter.addListener( removalListener );
+          // add a listener that removes this sample from the list - removes this listener on removal as well
+          const removalListener = () => {
+            newSample.removalEmitter.removeListener( removalListener );
+            this.skaterSamples.remove( newSample );
+          };
+          newSample.removalEmitter.addListener( removalListener );
 
-            this.skaterSamples.add( newSample );
-          }
+          this.skaterSamples.add( newSample );
         }
       }
 
