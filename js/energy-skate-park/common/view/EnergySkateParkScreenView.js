@@ -171,21 +171,6 @@ define( require => {
         this.bottomLayer.addChild( this.attachDetachToggleButtons );
       }
 
-      const containsAbove = ( bounds, x, y ) => {
-        return bounds.minX <= x && x <= bounds.maxX && y <= bounds.maxY;
-      };
-
-      // Determine if the skater is onscreen or offscreen for purposes of highlighting the 'return skater' button.
-      // Don't check whether the skater is underground since that is a rare case (only if the user is actively dragging a
-      // control point near y=0 and the track curves below) and the skater will pop up again soon, see the related
-      // flickering problem in #206
-      const onscreenProperty = new DerivedProperty( [ model.skater.positionProperty ], position => {
-        if ( !this.availableModelBounds ) {
-          return true;
-        }
-        return this.availableModelBounds && containsAbove( this.availableModelBounds, position.x, position.y );
-      } );
-
       // @private - the bar chart showing energy distribution
       if ( this.showBarGraph ) {
         this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model, tandem.createTandem( 'energyBarGraphAccordionBox' ), {
@@ -392,8 +377,8 @@ define( require => {
       this.playControls = playControls;
 
       // When the skater goes off screen, make the "return skater" button big
-      onscreenProperty.link( skaterOnscreen => {
-        const buttonsVisible = !skaterOnscreen;
+      model.skaterInBoundsProperty.link( inBounds => {
+        const buttonsVisible = !inBounds;
         returnSkaterToGroundButton.visible = buttonsVisible;
         returnSkaterToPreviousStartingPositionButton.visible = buttonsVisible;
 
