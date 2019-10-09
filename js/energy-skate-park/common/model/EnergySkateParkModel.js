@@ -103,6 +103,10 @@ define( require => {
         // {boolean} - if true, track control points can be dragged and track shapes can change
         tracksConfigurable: false,
 
+        // @boolean - default for the speedValueVisibleProperty, whether or not the value of speed is displayed
+        // on the speedometer
+        defaultSpeedValueVisible: true,
+
         // passed to Skater
         skaterOptions: {}
       }, options );
@@ -152,7 +156,7 @@ define( require => {
       } );
 
       // whether the speed value is visible on the speedometer
-      this.speedValueVisibleProperty = new BooleanProperty( true, {
+      this.speedValueVisibleProperty = new BooleanProperty( options.defaultSpeedValueVisible, {
         tandem: tandem.createTandem( 'speedValueVisibleProperty' )
       } );
       this.referenceHeightVisibleProperty = new BooleanProperty( false, {
