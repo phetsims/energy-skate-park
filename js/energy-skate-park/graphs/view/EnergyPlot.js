@@ -32,9 +32,11 @@ define( require => {
   const LARGE_STEP = 1000;
   const SMALL_STEP = 500;
 
-  // determines domain for the plot depending on independent variable
+  // determines properties of the plot that may depend on the independent variable
   const TIME_MAX_X = 20; // in seconds
+  const TIME_STEP_X = 2; // in seconds
   const POSITION_MAX_X = 10; // in meters
+  const POSITION_STEP_X = 1;
 
   class EnergyPlot extends XYCursorPlot {
 
@@ -148,10 +150,12 @@ define( require => {
         if ( independentVariable === GraphsModel.IndependentVariable.POSITION ) {
           this.setCursorVisibleOverride( false );
           this.setPlotStyle( XYDataSeriesNode.PlotStyle.SCATTER );
+          this.setStepX( POSITION_STEP_X );
         }
         else {
           this.setCursorVisibleOverride( null );
           this.setPlotStyle( XYDataSeriesNode.PlotStyle.LINE );
+          this.setStepX( TIME_STEP_X );
         }
       } );
 
