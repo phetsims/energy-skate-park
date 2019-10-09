@@ -218,6 +218,9 @@ define( require => {
         this.frictionProperty.debug( 'friction' );
       }
 
+      // @public {Skater} - the skater model instance
+      this.skater = new Skater( tandem.createTandem( 'skater' ), options.skaterOptions );
+
       // Determine if the skater is onscreen or offscreen for purposes of highlighting the 'return skater' button.
       // Don't check whether the skater is underground since that is a rare case (only if the user is actively dragging a
       // control point near y=0 and the track curves below) and the skater will pop up again soon, see the related
@@ -227,11 +230,8 @@ define( require => {
         if ( !availableModelBounds.hasNonzeroArea() ) {
           return true;
         }
-        return availableModelBounds && containsAbove( this.availableModelBounds, position.x, position.y );
+        return availableModelBounds && containsAbove( availableModelBounds, position.x, position.y );
       } );
-
-      // @public {Skater} - the skater model instance
-      this.skater = new Skater( tandem.createTandem( 'skater' ), options.skaterOptions );
 
       // @public - signify that the model has successfully been reset to initial state
       this.resetEmitter = new Emitter();
