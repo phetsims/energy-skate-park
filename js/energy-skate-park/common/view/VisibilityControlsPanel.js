@@ -1,8 +1,8 @@
 // Copyright 2019, University of Colorado Boulder
 
 /**
- * A separate panel just with VisibilityControls for this sim, used to save space when there are already too many
- * items in the EnergySkateParkControlPanel.
+ * A separate panel just with EnergySkateParkVisibilityControls for this sim, used to save space when there are
+ * already too many items in the EnergySkateParkControlPanel.
  *
  * @author Jesse Greenberg
  */
@@ -25,6 +25,7 @@ define( require => {
       const content = new EnergySkateParkVisibilityControls( model, tandem, {
         showPieChartCheckbox: false,
         showSpeedCheckbox: false,
+        showGridCheckbox: true,
         showReferenceHeightCheckbox: true,
 
         itemOptions: {

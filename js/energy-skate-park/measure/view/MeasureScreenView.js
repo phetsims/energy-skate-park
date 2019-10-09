@@ -49,7 +49,6 @@ define( require => {
         showSkaterPath: true,
         visibilityControlsOptions: {
           showSkaterPathCheckbox: true,
-          showReferenceHeightCheckbox: true,
           showStickToTrackCheckbox: true
         }
       } );

@@ -14,7 +14,6 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkPlaygroundScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkPlaygroundScreenView' );
   const FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
-  const VisibilityControlsPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/VisibilityControlsPanel' );
   const GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
   const MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
   // const EnergyBarGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/view/EnergyBarGraphAccordionBox' );
@@ -56,11 +55,6 @@ define( require => {
       // this.energyBarGraphAccordionBox.top = 5;
       // this.bottomLayer.addChild( this.energyBarGraphAccordionBox );
 
-
-      // grid and reference height visibility are controlled from a separate area
-      this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ) );
-      this.addChild( this.visibilityControlsPanel );
-
       // layout custom to the Lab screen
       this.clearButton.rightCenter = this.trackCreationPanel.leftCenter.minusXY( 10, 0 );
 
@@ -75,8 +69,6 @@ define( require => {
       const spacing = 30;
       this.playControls.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter - this.playControls.width / 2 - spacing / 2 );
       this.speedControl.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter + this.speedControl.width / 2 + spacing / 2 );
-
-      this.visibilityControlsPanel.centerY = this.clearButton.centerY;
     }
 
     /**
@@ -86,8 +78,6 @@ define( require => {
      */
     layout( width, height ) {
       super.layout( width, height );
-
-      this.visibilityControlsPanel.left = this.fixedLeft;
 
       // the pie chart legend is just to the right of the 5 meter mark, which is where grid labels are
       this.pieChartLegend.left = this.modelViewTransform.modelToViewX( -5 );

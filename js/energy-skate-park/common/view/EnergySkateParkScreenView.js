@@ -43,6 +43,7 @@ define( require => {
   const StepForwardButton = require( 'SCENERY_PHET/buttons/StepForwardButton' );
   const Text = require( 'SCENERY/nodes/Text' );
   const ValueGaugeNode = require( 'SCENERY_PHET/ValueGaugeNode' );
+  const VisibilityControlsPanel =require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/VisibilityControlsPanel' );
   const Vector2 = require( 'DOT/Vector2' );
 
   // strings
@@ -96,6 +97,12 @@ define( require => {
 
         showMeasuringTape: true,
 
+        // {boolean} - if true, the "grid" and "reference height" visibility controls will be displayed in a separate
+        // panel near the bottom of the screen
+        showSeparateVisibilityControlsPanel: true,
+
+        // {Object} passed to EnergySkateParkControlPanel, options for the EnergySkateParkVisibilityControls in that
+        // panel
         visibilityControlsOptions: null
       }, options );
 
@@ -118,6 +125,7 @@ define( require => {
       this.showSkaterPath = options.showSkaterPath;
       this.showReferenceHeight = options.showReferenceHeight;
       this.showTrackButtons = options.showTrackButtons;
+      this.showSeparateVisibilityControlsPanel = options.showSeparateVisibilityControlsPanel;
 
       // @protected {null|number} - defines the min and max edges horizontally for floating layout, null until first
       // layout() - includes padding so elements won't touch the edge
@@ -196,7 +204,7 @@ define( require => {
         scale: 0.85,
 
         // Align vertically with other controls, see #134
-        centerY: ( modelViewTransform.modelToViewY( 0 ) + this.layoutBounds.maxY ) / 2 + 8,
+        centerY: ( modelViewTransform.modelToViewY( 0 ) + this.layoutBounds.maxY ) / 2,
 
         tandem: tandem.createTandem( 'resetAllButton' )
       } );
@@ -376,6 +384,16 @@ define( require => {
       playControls.setRightBottom( this.layoutBounds.centerBottom.minusXY( speedControlSpacing, 15 ) );
       this.playControls = playControls;
 
+        // grid and reference height visibility are controlled from a separate panel
+      if ( this.showSeparateVisibilityControlsPanel ) {
+
+        // @protected (read-only) - for layout
+        this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ), {
+          centerY: playControls.centerY
+        } );
+        this.addToBottomLayer( this.visibilityControlsPanel );
+      }
+
       // When the skater goes off screen, make the "return skater" button big
       model.skaterInBoundsProperty.link( inBounds => {
         const buttonsVisible = !inBounds;
@@ -489,6 +507,10 @@ define( require => {
       }
       else {
         pieChartLegendLeftTop = new Vector2( this.fixedLeft, this.controlPanel.top );
+      }
+
+      if ( this.showSeparateVisibilityControlsPanel ) {
+        this.visibilityControlsPanel.left = this.fixedLeft;
       }
 
       // Put the pie chart legend to the right of the bar chart, see #60, #192

@@ -29,11 +29,7 @@ define( require => {
         new GravitySlider( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) )
       ];
 
-      super( model, introControls, tandem.createTandem( 'introScreenView' ), {
-        visibilityControlsOptions: {
-          showReferenceHeightCheckbox: true
-        }
-      } );
+      super( model, introControls, tandem.createTandem( 'introScreenView' ) );
 
       // @private (for layout) {ComboBox}
       this.massComboBox = new MassComboBox( model.skater.massProperty, model.resetEmitter, this, tandem, {

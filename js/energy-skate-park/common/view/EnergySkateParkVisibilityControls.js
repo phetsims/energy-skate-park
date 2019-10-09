@@ -40,7 +40,7 @@ define( require => {
 
         // {boolean} - whether or not Checkboxes for these Properties are included in the controls
         showPieChartCheckbox: true,
-        showGridCheckbox: true,
+        showGridCheckbox: false,
         showSpeedCheckbox: true,
         showReferenceHeightCheckbox: false,
         showSkaterPathCheckbox: false,
@@ -132,7 +132,7 @@ define( require => {
         align: 'left',
         spacing: 6.5
       } );
-    
+
     }
   }
 

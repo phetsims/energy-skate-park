@@ -12,7 +12,6 @@ define( require => {
   const EnergySkateParkTrackSetScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTrackSetScreenView' );
   const EnergyGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphAccordionBox' );
   const FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
-  const VisibilityControlsPanel =require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/VisibilityControlsPanel' );
   const GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
   const Node = require( 'SCENERY/nodes/Node' );
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
@@ -56,13 +55,6 @@ define( require => {
       // @private - for layout
       this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ) );
       this.addToBottomLayer( this.graphAccordionBox );
-
-      // grid and reference height visibility are controlled from a separate area
-      this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ), {
-        centerY: this.resetAllButton.centerY
-      } );
-      this.addToBottomLayer( this.visibilityControlsPanel );
-    
     }
 
     /**
@@ -76,9 +68,6 @@ define( require => {
       // track align perfectly with positions along the graph
       this.graphAccordionBox.right = this.trackLayer.right + EnergyGraphAccordionBox.GRAPH_OFFSET;
       this.graphAccordionBox.top = this.controlPanel.top;
-
-      this.visibilityControlsPanel.left = this.graphAccordionBox.left;
-      this.visibilityControlsPanel.centerY = this.resetAllButton.centerY;
     }
   }
 
