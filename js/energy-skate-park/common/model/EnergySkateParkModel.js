@@ -49,7 +49,6 @@ define( require => {
   const StringIO = require( 'TANDEM/types/StringIO' );
   const Tandem = require( 'TANDEM/Tandem' );
   const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
-  const TrackIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/TrackIO' );
   const Util = require( 'DOT/Util' );
   const Vector2 = require( 'DOT/Vector2' );
   const Vector2Property = require( 'DOT/Vector2Property' );
