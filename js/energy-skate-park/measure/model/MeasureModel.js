@@ -119,7 +119,7 @@ define( require => {
       if ( this.sampleSkaterProperty.get() ) {
 
         // don't save any points if the skater is out of bounds (and therefore not visible)
-        if ( this.skaterInBoundsProperty .get() ) {
+        if ( this.skaterInBoundsProperty.get() ) {
           this.timeSinceSave = this.timeSinceSave + dt;
 
           if ( this.timeSinceSave > SAVE_REFRESH_RATE ) {
