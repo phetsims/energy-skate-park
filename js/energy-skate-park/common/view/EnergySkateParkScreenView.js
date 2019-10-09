@@ -227,7 +227,9 @@ define( require => {
       this.bottomLayer.addChild( this.returnSkaterButton );
 
       const gaugeRadius = 62;
-      const speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 30 ), {
+
+      // @protected (read-only) - for layout or repositioning in subtypes
+      this.speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 30 ), {
           numberDisplayOptions: {
             valuePattern: speedometerMetersPerSecondPatternString,
             numberMaxWidth: gaugeRadius * 1.3,
@@ -240,11 +242,13 @@ define( require => {
           radius: gaugeRadius,
           tandem: tandem.createTandem( 'speedometerNode' )
       } );
-      model.speedometerVisibleProperty.linkAttribute( speedometerNode, 'visible' );
-      model.speedValueVisibleProperty.link( visible => { speedometerNode.setNumberDisplayVisible( visible ); } );
-      speedometerNode.centerX = this.layoutBounds.centerX;
-      speedometerNode.top = this.layoutBounds.minY + 5;
-      this.bottomLayer.addChild( speedometerNode );
+      model.speedometerVisibleProperty.linkAttribute( this.speedometerNode, 'visible' );
+      model.speedValueVisibleProperty.link( visible => { this.speedometerNode.setNumberDisplayVisible( visible ); } );
+
+      // default layout, but may change in subtypes
+      this.speedometerNode.centerX = this.layoutBounds.centerX;
+      this.speedometerNode.top = this.layoutBounds.minY + 5;
+      this.bottomLayer.addChild( this.speedometerNode );
 
       // @public (for layout) - Layer which will contain all of the tracks
       this.trackLayer = new Node( {
