@@ -117,21 +117,26 @@ define( require => {
       const updatedState = super.stepModel(  dt, skaterState );
 
       if ( this.sampleSkaterProperty.get() ) {
-        this.timeSinceSave = this.timeSinceSave + dt;
 
-        if ( this.timeSinceSave > SAVE_REFRESH_RATE ) {
-          this.timeSinceSave = 0;
-          const newSample = new SkaterSample( updatedState );
+        // don't save any points if the skater is out of bounds (and therefore not visible)
+        // if ( this.skaterInBoundsProperty .get() ) {
+          this.timeSinceSave = this.timeSinceSave + dt;
 
-          // add a listener that removes this sample from the list - removes this listener on removal as well
-          const removalListener = () => {
-            newSample.removalEmitter.removeListener( removalListener );
-            this.skaterSamples.remove( newSample );
-          };
-          newSample.removalEmitter.addListener( removalListener );
+          if ( this.timeSinceSave > SAVE_REFRESH_RATE ) {
+            this.timeSinceSave = 0;
+            console.log( 'new sample' );
+            const newSample = new SkaterSample( updatedState );
 
-          this.skaterSamples.add( newSample );
-        }
+            // add a listener that removes this sample from the list - removes this listener on removal as well
+            const removalListener = () => {
+              newSample.removalEmitter.removeListener( removalListener );
+              this.skaterSamples.remove( newSample );
+            };
+            newSample.removalEmitter.addListener( removalListener );
+
+            this.skaterSamples.add( newSample );
+          }
+        // }
       }
 
       // determine if it is time fo any skater samples to be removed - use forEach to do on a copy of the array
