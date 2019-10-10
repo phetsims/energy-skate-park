@@ -21,7 +21,7 @@ define( require => {
     showSaveAndLoad: { type: 'flag' },
 
     // Frequency at which data points will be saved and added to the scatter plot in the "Graphs" screen. Just for
-    // assisting design, should be removed soon, see #129
+    // assisting design, should be removed soon, see #129. This value is in seconds.
     saveFrequency: { type: 'number', defaultValue: 0.1 },
 
     // By default, the control panels are in a fixed relative location to the sim and cannot float all the way to the
