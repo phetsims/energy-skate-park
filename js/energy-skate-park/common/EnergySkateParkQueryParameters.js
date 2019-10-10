@@ -20,6 +20,10 @@ define( require => {
     // Show experimental save & load button
     showSaveAndLoad: { type: 'flag' },
 
+    // Frequency at which data points will be saved and added to the scatter plot in the "Graphs" screen. Just for
+    // assisting design, should be removed soon, see #129
+    saveFrequency: { type: 'number', defaultValue: 0.1 },
+
     // By default, the control panels are in a fixed relative location to the sim and cannot float all the way to the
     // sides, but specifying 'floating' allows them to go all the way to the sides.
     controlPanelLocation: { type: 'string', defaultValue: 'fixed', validValues: [ 'fixed', 'floating' ] },
