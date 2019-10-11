@@ -33,7 +33,7 @@ define( require => {
       new LabScreen( tandem.createTandem( 'labScreen' ) )
     ];
 
-    new EnergySkateParkSim( energySkateParkTitleString, screens, tandem, {
+    const sim = new EnergySkateParkSim( energySkateParkTitleString, screens, tandem, {
       credits: {
         leadDesign: 'Ariel Paul, Noah Podolefsky, Sam Reid',
         softwareDevelopment: 'Sam Reid',
@@ -41,6 +41,7 @@ define( require => {
         graphicArts: 'Sharon Siman-Tov, Amanda McGarry',
         qualityAssurance: 'Steele Dalton, Oliver Orejola, Arnab Purkayastha, Bryan Yoelin'
       }
-    } ).start();
+    } );
+    sim.start();
   } );
 } );
