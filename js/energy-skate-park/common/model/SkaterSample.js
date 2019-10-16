@@ -15,6 +15,7 @@ define( require => {
   const BooleanProperty = require( 'AXON/BooleanProperty' );
   const NumberProperty = require( 'AXON/NumberProperty' );
   const Emitter = require( 'AXON/Emitter' );
+  const Util = require( 'DOT/Util' );
   const Vector2 = require( 'DOT/Vector2' );
 
   // constants
@@ -58,12 +59,51 @@ define( require => {
       // @public - emits an event when the skater sample is old enough to be removed from the model
       this.removalEmitter = new Emitter();
 
+      // @public - emits an event when this SkaterSample has updated in some way, like when energies change
+      // due to a change in reference height
+      this.updatedEmitter = new Emitter();
+
       // @private {boolean} - indicates that this sample should begin removal, and will fade out
       this._initiateRemove = false;
     }
 
     /**
-     * @param {} dt - in seconds
+     * Calculate new energies for this SkaterSample with the new reference height. Potential energy will be recalculated
+     * and total energy will be adjusted accordingly to conserve energy. Thermal and kinetic energies should not change.
+     *
+     * @param {} referenceHeight
+     */
+    setNewReferenceHeight( referenceHeight ) {
+
+      this.referenceHeight = referenceHeight;
+
+      const oldPotentialEnergy = this.potentialEnergy;
+      this.potentialEnergy = this.getPotentialEnergyAtReferenceHeight( referenceHeight );
+
+      const energyChange = this.potentialEnergy - oldPotentialEnergy;
+      this.totalEnergy = this.totalEnergy + energyChange;
+
+      this.updatedEmitter.emit();
+
+      if ( assert ) {
+        const totalEnergy = this.potentialEnergy + this.kineticEnergy + this.thermalEnergy;
+        assert( Util.equalsEpsilon( totalEnergy, this.totalEnergy, 1E-10 ), 'energy should be conserved' );
+      }
+    }
+
+    /**
+     * Get the potential energy a particular reference height, using the other physical properties of the SkaterState
+     * unchanged.
+     *
+     * @param {number} referenceHeight
+     * @returns {number}
+     */
+    getPotentialEnergyAtReferenceHeight( referenceHeight ) {
+      return -this.skaterState.mass * this.skaterState.gravity * ( this.skaterState.positionY - referenceHeight );
+    }
+
+    /**
+     * @param {number} dt - in seconds
      */
     step( dt ) {
       if ( this._initiateRemove ) {

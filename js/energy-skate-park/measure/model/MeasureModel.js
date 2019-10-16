@@ -65,6 +65,13 @@ define( require => {
       Property.multilink( resetSamplesProperties, this.initiateSampleRemoval.bind( this ) );
       this.skater.returnedEmitter.addListener( this.initiateSampleRemoval.bind( this ) );
 
+      // when the reference height changes, update energies for all skater samples
+      this.skater.referenceHeightProperty.link( referenceHeight => {
+        for ( let i = 0; i < this.skaterSamples.length; i++ ) {
+          this.skaterSamples.get( i ).setNewReferenceHeight( referenceHeight );
+        }
+      } );
+
       // when the scene changes, remove all points immediately so they don't persist
       this.sceneProperty.link( scene => {
         this.clearSavedSamples();

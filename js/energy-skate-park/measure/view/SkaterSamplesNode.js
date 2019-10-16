@@ -29,7 +29,6 @@ define( require => {
         const sampleNode = new SampleNode( modelViewTransform.modelToViewPosition( addedSample.position ), addedSample.inspectedProperty, addedSample.opacityProperty );
         this.addChild( sampleNode );
 
-
         const removalListener = removedSample => {
           if ( addedSample === removedSample ) {
             model.skaterSamples.removeItemRemovedListener( removalListener );

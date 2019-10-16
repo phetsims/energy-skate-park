@@ -234,7 +234,13 @@ define( require => {
           }
         }
 
-        sampleToDisplay && this.displayState( sampleToDisplay );
+        if ( sampleToDisplay ) {
+          this.displayState( sampleToDisplay );
+
+          // update the display whenever sample energies update, listener removed in clearDisplay
+          this.updateDisplayListener = this.displayState.bind( this, sampleToDisplay );
+          sampleToDisplay.updatedEmitter.addListener( this.updateDisplayListener );
+        }
       } );
 
       // add a drag listener to the probe body
@@ -319,7 +325,11 @@ define( require => {
       this.thermalValueProperty.value = null;
       this.totalValueProperty.value = null;
 
+      assert && assert( this.updateDisplayListener, 'listener not attached to skaterSample emitter' );
+      this.inspectedSample.updatedEmitter.removeListener( this.updateDisplayListener );
+
       this.inspectedSample = null;
+      this.updateDisplayListener = null;
 
       skaterSample.inspectedProperty.set( false );
       this.heightSpeedRectangle.visible = false;
