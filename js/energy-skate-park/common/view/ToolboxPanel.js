@@ -32,6 +32,7 @@ define( require => {
     constructor( model, view, tandem, options ) {
       options = _.extend( {
         lineWidth: 0,
+        align: 'center',
         fill: EnergySkateParkColorScheme.panelFill
       }, options );
 
@@ -45,14 +46,14 @@ define( require => {
         tandem: tandem.createTandem( 'timerIcon' )
       } );
 
-      measuringTapeIcon.setScaleMagnitude( 0.75 );
-      timerIcon.setScaleMagnitude( 0.5 );
+      measuringTapeIcon.setScaleMagnitude( 0.65 );
+      timerIcon.setScaleMagnitude( 0.4 );
 
       // align icons for panel
       const icons = new HBox( {
         children: [ timerIcon, measuringTapeIcon ],
         align: 'center',
-        spacing: 12
+        spacing: 20
       } );
 
       super( icons, options );
