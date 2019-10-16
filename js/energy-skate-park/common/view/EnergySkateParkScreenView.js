@@ -20,11 +20,12 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkControlPanel' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
+  const EnergySkateParkTimerNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTimerNode' );
   const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
   const GridNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GridNode' );
   const Image = require( 'SCENERY/nodes/Image' );
   const MeasuringTapeNode = require( 'SCENERY_PHET/MeasuringTapeNode' );
-  const MeasuringTapePanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MeasuringTapePanel' );
+  const ToolboxPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ToolboxPanel' );
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Path = require( 'SCENERY/nodes/Path' );
@@ -95,7 +96,8 @@ define( require => {
         // {boolean} - whether or not this ScreenView will show the reference height
         showReferenceHeight: true,
 
-        showMeasuringTape: true,
+        // {boolean} - whether or not to include a toolbox that contains a ruler and a measuring tape
+        showToolbox: true,
 
         // {boolean} - if true, the "grid" and "reference height" visibility controls will be displayed in a separate
         // panel near the bottom of the screen
@@ -118,7 +120,7 @@ define( require => {
       this.model = model;
 
       // @private - whether or not this screen view should include a measuring tape
-      this.showMeasuringTape = options.showMeasuringTape;
+      this.showToolbox = options.showToolbox;
 
       // @private {boolean} - visibility of various view components
       this.showBarGraph = options.showBarGraph;
@@ -259,28 +261,35 @@ define( require => {
       this.topLayer.addChild( this.trackLayer );
 
       // add a measuring tape, on top of tracks, below the skater
-      if ( options.showMeasuringTape ) {
+      if ( options.showToolbox ) {
 
         const unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
 
-        // @private {MeasuringTapeNode} - The measuring tape node will not
+        // @private {MeasuringTapeNode}
         this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
           basePositionProperty: model.measuringTapeBasePositionProperty,
           tipPositionProperty: model.measuringTapeTipPositionProperty,
           modelViewTransform: modelViewTransform,
           dragBounds: this.availableModelBoundsProperty.get(),
           baseDragEnded: () => {
-            if ( this.measuringTapeNode.getLocalBaseBounds().intersectsBounds( this.measuringTapePanel.bounds ) ) {
+            if ( this.measuringTapeNode.getLocalBaseBounds().intersectsBounds( this.toolboxPanel.bounds ) ) {
               model.measuringTapeVisibleProperty.set( false );
             }
           },
           tandem: tandem.createTandem( 'measuringTapeNode' )
         } );
+
+        // @private {EnergySkateParkTimerNode}
+        this.timerNode = new EnergySkateParkTimerNode( model, this, tandem.createTandem( 'timerNode' ) );
+
+        this.topLayer.addChild( this.timerNode );
         this.topLayer.addChild( this.measuringTapeNode );
 
-        // @private {MeasuringTapePanel} - so it can float to the layout bounds, see layout()
-        this.measuringTapePanel = new MeasuringTapePanel( model, this.measuringTapeNode, modelViewTransform );
-        this.bottomLayer.addChild( this.measuringTapePanel );
+        // @private {ToolboxPanel} - so it can float to the layout bounds, see layout()
+        this.toolboxPanel = new ToolboxPanel( model, this, tandem.createTandem( 'toolboxPanel' ), {
+          minWidth: this.controlPanel.width
+        } );
+        this.bottomLayer.addChild( this.toolboxPanel );
       }
 
       // @protected (read-only) - protected for layering content
@@ -497,9 +506,9 @@ define( require => {
       this.availableModelBounds = this.modelViewTransform.viewToModelBounds( this.availableViewBounds );
       this.availableModelBoundsProperty.value = this.availableModelBounds;
 
-      if ( this.showMeasuringTape ) {
-        this.measuringTapePanel.top = this.controlPanel.bottom + 5;
-        this.measuringTapePanel.right = this.controlPanel.right;
+      if ( this.showToolbox ) {
+        this.toolboxPanel.top = this.controlPanel.bottom + 5;
+        this.toolboxPanel.right = this.controlPanel.right;
 
         this.measuringTapeNode.setDragBounds( this.availableModelBounds );
       }

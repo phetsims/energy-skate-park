@@ -122,7 +122,7 @@ define( require => {
       // to the selected cursor time
       dragEndedEmitter.addListener( () => {
         const timeOnEnd = this.getCursorValue();
-        model.runningTimeProperty.set( timeOnEnd );
+        model.sampleTimeProperty.set( timeOnEnd );
 
         const closestSample = model.getClosestSkaterSample( timeOnEnd );
         const indexOfSample = model.skaterSamples.indexOf( closestSample );

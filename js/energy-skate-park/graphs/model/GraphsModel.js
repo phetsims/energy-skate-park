@@ -77,7 +77,7 @@ define( require => {
       this.timeSinceSkaterSaved = 0;
 
       // @public - in seconds, how much time has passed since beginning to record skater states
-      this.runningTimeProperty = new NumberProperty( 0 );
+      this.sampleTimeProperty = new NumberProperty( 0 );
 
       // listeners, no need for disposal as the model exists forever
       this.sceneProperty.link( scene => {
@@ -103,7 +103,7 @@ define( require => {
 
       this.lineGraphScaleProperty.reset();
       this.independentVariableProperty.reset();
-      this.runningTimeProperty.reset();
+      this.sampleTimeProperty.reset();
 
       this.clearEnergyData();
 
@@ -135,13 +135,13 @@ define( require => {
     stepModel( dt, skaterState ) {
       const updatedState = super.stepModel( dt, skaterState );
 
-      const skaterSample = new SkaterSample( updatedState, this.runningTimeProperty.get() );
+      const skaterSample = new SkaterSample( updatedState, this.sampleTimeProperty.get() );
 
       // for the graphs screen, we need
-      this.runningTimeProperty.set( this.runningTimeProperty.get() + dt );
+      this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );
 
       if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME ) {
-        if ( this.runningTimeProperty.get() < GraphsConstants.MAX_TIME ) {
+        if ( this.sampleTimeProperty.get() < GraphsConstants.MAX_TIME ) {
           this.skaterSamples.push( skaterSample );
         }
       }
@@ -198,7 +198,7 @@ define( require => {
      * Clear all energy data, and reset the running time since we will begin recording at zero.
      */
     clearEnergyData() {
-      this.runningTimeProperty.reset();
+      this.sampleTimeProperty.reset();
       this.skaterSamples.clear();
     }
 

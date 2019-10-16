@@ -184,6 +184,27 @@ define( require => {
         tandem: tandem.createTandem( 'pausedProperty' )
       } );
 
+      // @public {NumberProperty} - For the simulation timer which can be started/stopped/reset by user - not the
+      // time since launch
+      this.timeProperty = new NumberProperty( 0, {
+        tandem: tandem.createTandem( 'timeProperty' )
+      } );
+
+      // @public {BooleanProperty} -Whether or not the timer is running
+      this.timerRunningProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'timerRunningProperty' )
+      } );
+
+      // @public {Vector2} - position for the timer, in model coordinates
+      this.timerPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
+        tandem: tandem.createTandem( 'timerPositionProperty' )
+      } );
+
+      // @public {BooleanProperty} - whether or not the timer is visible for use
+      this.timerVisibleProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'timerVisibleProperty' )
+      } );
+
       // @public {string} - speed of the model, either 'normal' or 'slow'
       this.speedProperty = new Property( 'normal', {
         tandem: tandem.createTandem( 'speedProperty' ),
@@ -343,6 +364,10 @@ define( require => {
       this.frictionProperty.reset();
       this.stickingToTrackProperty.reset();
       this.availableModelBoundsProperty.reset();
+      this.timeProperty.reset();
+      this.timerRunningProperty.reset();
+      this.timerPositionProperty.reset();
+      this.timerVisibleProperty.reset();
       this.availableModelBoundsProperty.value = availableModelBounds;
       this.skater.reset();
 
@@ -448,6 +473,11 @@ define( require => {
         else {
           // skater wasn't moving, so don't change directions
         }
+      }
+
+      // increment running time
+      if ( this.timerRunningProperty.get() ) {
+        this.timeProperty.set( this.timeProperty.get() + dt );
       }
     }
 
