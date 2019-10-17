@@ -15,12 +15,13 @@ define( require => {
   const ComboBox = require( 'SUN/ComboBox' );
   const ComboBoxItem = require( 'SUN/ComboBoxItem' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const NumberIO = require( 'TANDEM/types/NumberIO' );
+  const merge = require( 'PHET_CORE/merge' );
   const NullableIO = require( 'TANDEM/types/NullableIO' );
-  const Text = require( 'SCENERY/nodes/Text' );
+  const NumberIO = require( 'TANDEM/types/NumberIO' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Property = require( 'AXON/Property' );
   const PropertyIO = require( 'AXON/PropertyIO' );
-  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Text = require( 'SCENERY/nodes/Text' );
 
   // constants
   const LABEL_OPTIONS = { font: new PhetFont( 11 ) };
@@ -38,7 +39,7 @@ define( require => {
     constructor( physicalProperty, labelValueList, resetEmitter, listParent, tandem, options ) {
       assert && assert( _.find( labelValueList, entry => entry.value === null ) === undefined, 'PhysicalComboBox adds "Custom" item' );
 
-      options = _.extend( {
+      options = merge( {
         xMargin: 10,
         yMargin: 6,
 

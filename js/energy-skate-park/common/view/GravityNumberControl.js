@@ -10,6 +10,7 @@ define( require => {
   // modules
   const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const merge = require( 'PHET_CORE/merge' );
   const PhysicalNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PhysicalNumberControl' );
   const Range = require( 'DOT/Range' );
 
@@ -26,7 +27,7 @@ define( require => {
      */
     constructor( property, tandem, options ) {
 
-      options = _.extend( {
+      options = merge( {
         decimalPlaces: 1,
         numberDisplayOptions: {
           valuePattern: gravityMetersPerSecondSquaredPatternString,

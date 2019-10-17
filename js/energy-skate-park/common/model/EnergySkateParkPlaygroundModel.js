@@ -12,6 +12,7 @@ define( require => {
   const ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModel' );
+  const merge = require( 'PHET_CORE/merge' );
   const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
   const Vector2 = require( 'DOT/Vector2' );
 
@@ -27,7 +28,7 @@ define( require => {
    */
   class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
     constructor( frictionAllowed, tandem, options ) {
-      options = _.extend( {
+      options = merge( {
 
         // the center of initial tracks in the control panel, change this to move the panel to a different location
         // in model coordinates (meters)

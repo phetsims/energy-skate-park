@@ -17,6 +17,7 @@ define( require => {
   const DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
   const Emitter = require( 'AXON/Emitter' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const merge = require( 'PHET_CORE/merge' );
   const NullableIO = require( 'TANDEM/types/NullableIO' );
   const NumberIO = require( 'TANDEM/types/NumberIO' );
   const NumberProperty = require( 'AXON/NumberProperty' );
@@ -51,7 +52,7 @@ define( require => {
      * @param {[type]} options
      */
     constructor( tandem, options ) {
-      options = _.extend( {
+      options = merge( {
         defaultMass: Constants.DEFAULT_MASS,
         massRange: Constants.MASS_RANGE
       }, options );

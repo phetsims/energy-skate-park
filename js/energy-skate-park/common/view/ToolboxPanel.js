@@ -10,16 +10,17 @@ define( require => {
   'use strict';
 
   // modules
+  const BooleanProperty = require( 'AXON/BooleanProperty' );
   const DerivedProperty = require( 'AXON/DerivedProperty' );
   const DragListener = require( 'SCENERY/listeners/DragListener' );
-  const BooleanProperty = require( 'AXON/BooleanProperty' );
-  const TimerNode = require( 'SCENERY_PHET/TimerNode' );
-  const NumberProperty = require( 'AXON/NumberProperty' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
-  const MeasuringTapeNode = require( 'SCENERY_PHET/MeasuringTapeNode' );
-  const Panel = require( 'SUN/Panel' );
   const HBox = require( 'SCENERY/nodes/HBox' );
+  const MeasuringTapeNode = require( 'SCENERY_PHET/MeasuringTapeNode' );
+  const merge = require( 'PHET_CORE/merge' );
+  const NumberProperty = require( 'AXON/NumberProperty' );
+  const Panel = require( 'SUN/Panel' );
+  const TimerNode = require( 'SCENERY_PHET/TimerNode' );
 
   class ToolboxPanel extends Panel {
 
@@ -30,7 +31,7 @@ define( require => {
      * @param {Object} options
      */
     constructor( model, view, tandem, options ) {
-      options = _.extend( {
+      options = merge( {
         lineWidth: 0,
         align: 'center',
         fill: EnergySkateParkColorScheme.panelFill

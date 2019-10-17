@@ -14,6 +14,7 @@ define( require => {
   const dot = require( 'DOT/dot' );
   const Emitter = require( 'AXON/Emitter' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const merge = require( 'PHET_CORE/merge' );
   const PhetioObject = require( 'TANDEM/PhetioObject' );
   const SplineEvaluation = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SplineEvaluation' );
   const Tandem = require( 'TANDEM/Tandem' );
@@ -49,7 +50,7 @@ define( require => {
      * @constructor
      */
     constructor( model, modelTracks, controlPoints, parents, availableModelBoundsProperty, options ) {
-      options = _.extend( {
+      options = merge( {
 
         // {boolean} - can this track be dragged and moved in the play area?
         draggable: false,

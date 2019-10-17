@@ -15,11 +15,12 @@ define( require => {
   'use strict';
 
   // modules
-  const Vector2 = require( 'DOT/Vector2' );
   const Bounds2 = require( 'DOT/Bounds2' );
   const ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const merge = require( 'PHET_CORE/merge' );
   const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
+  const Vector2 = require( 'DOT/Vector2' );
 
   // constants
   const PARENT_TRACKS = null;
@@ -64,7 +65,7 @@ define( require => {
 
     // create a set of control points which create a parabola shaped track
     createParabolaControlPoints: ( groupTandem, options ) => {
-      options = _.extend( {
+      options = merge( {
         trackHeight: 6, // largest height for the parabola
         trackWidth: 8, // width from the left most control point to the right most control point
 
@@ -105,7 +106,7 @@ define( require => {
 
     // create a set of control points which create a slope shaped track
     createSlopeControlPoints: ( groupTandem, options ) => {
-      options = _.extend( CREATOR_OPTIONS, options );
+      options = merge( CREATOR_OPTIONS, options );
 
       const p1 = new Vector2( -4, 6 );
       const p2 = new Vector2( -2, 1.2 );
@@ -128,7 +129,7 @@ define( require => {
     // For the double well, move the left well up a bit since the interpolation moves it down by that much, and we
     // don't want the skater to go to y<0 while on the track.  Numbers determined by trial and error.
     createDoubleWellControlPoints: ( groupTandem, options ) => {
-      options = _.extend( {
+      options = merge( {
         trackHeight: 5, // largest height for the well
         trackWidth: 8, // width from the left most control point to the right most control point
         trackMidHeight: 2, // height of the mid control point that creates the double well
@@ -192,7 +193,7 @@ define( require => {
      * @returns {Array.<ControlPoint>}
      */
     createLoopControlPoints: ( groupTandem, options ) => {
-      options = _.extend( CREATOR_OPTIONS, options );
+      options = merge( CREATOR_OPTIONS, options );
 
       // top of the left and right endpoints of the loop, higher than loopTop so that it is easy for the skater to go
       // all the way around the loop

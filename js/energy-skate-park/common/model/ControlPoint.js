@@ -14,6 +14,7 @@ define( require => {
   const DerivedProperty = require( 'AXON/DerivedProperty' );
   const DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const merge = require( 'PHET_CORE/merge' );
   const NullableIO = require( 'TANDEM/types/NullableIO' );
   const PhetioObject = require( 'TANDEM/PhetioObject' );
   const Property = require( 'AXON/Property' );
@@ -32,7 +33,7 @@ define( require => {
      * @constructor
      */
     constructor( x, y, options ) {
-      options = _.extend( {
+      options = merge( {
 
         // {boolean} - can this control point specifically be dragged? In order to be draggable, the track itself must
         // be "configurable" and this must be true.

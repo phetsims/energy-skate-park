@@ -18,15 +18,16 @@ define( require => {
   const AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkCheckboxItem = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkCheckboxItem' );
+  const merge = require( 'PHET_CORE/merge' );
   const VBox = require( 'SCENERY/nodes/VBox' );
 
   // strings
   const controlsPathString = require( 'string!ENERGY_SKATE_PARK/controls.path' );
   const controlsReferenceHeightString = require( 'string!ENERGY_SKATE_PARK/controls.referenceHeight' );
   const controlsShowGridString = require( 'string!ENERGY_SKATE_PARK/controls.show-grid' );
+  const controlsStickToTrackString = require( 'string!ENERGY_SKATE_PARK/controls.stickToTrack' );
   const pieChartString = require( 'string!ENERGY_SKATE_PARK/pieChart' );
   const propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
-  const controlsStickToTrackString = require( 'string!ENERGY_SKATE_PARK/controls.stickToTrack' );
 
   class EnergySkateParkVisibilityControls extends VBox {
 
@@ -36,7 +37,7 @@ define( require => {
      * @param {object} options
      */
     constructor( model, tandem, options ) {
-      options = _.extend( {
+      options = merge( {
 
         // {boolean} - whether or not Checkboxes for these Properties are included in the controls
         showPieChartCheckbox: true,

@@ -13,6 +13,7 @@ define( require => {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   const HBox = require( 'SCENERY/nodes/HBox' );
   const HStrut = require( 'SCENERY/nodes/HStrut' );
+  const merge = require( 'PHET_CORE/merge' );
   const MoveToTrashButton = require( 'SCENERY_PHET/MoveToTrashButton' );
   const Panel = require( 'SUN/Panel' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -40,7 +41,7 @@ define( require => {
      */
     constructor( skater, clearThermal, pieChartVisibleProperty, tandem, options ) {
 
-      options = _.extend( {
+      options = merge( {
 
         // {boolean} - whether or not to include total energy in the legend, will the pie chart show total energy?
         includeTotal: true

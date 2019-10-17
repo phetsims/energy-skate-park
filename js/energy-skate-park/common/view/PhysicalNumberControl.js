@@ -11,6 +11,7 @@ define( require => {
   // modules
   const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const merge = require( 'PHET_CORE/merge' );
   const NumberControl = require( 'SCENERY_PHET/NumberControl' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Text = require( 'SCENERY/nodes/Text' );
@@ -43,7 +44,7 @@ define( require => {
       }
 
       // slider options are passed directly to the Slider in NumberControl
-      options = _.extend( {
+      options = merge( {
 
         // decimal places for the ticks and (by default) the NumberControl's NumberDisplay
         decimalPlaces: 0,
@@ -59,7 +60,7 @@ define( require => {
         numberDisplayOptions: null
       }, options );
 
-      options.sliderOptions = _.extend( {
+      options.sliderOptions = merge( {
         majorTicks: [
           {
             value: valueRange.min,
@@ -78,13 +79,13 @@ define( require => {
         options.sliderOptions.constrainValue = _.identity;
       }
 
-      options.numberDisplayOptions = _.extend( {
+      options.numberDisplayOptions = merge( {
         decimalPlaces: options.decimalPlaces
       }, options.numberDisplayOptions );
 
       // look and feel for all PhysicalNumberControls (not set in normal options extend calls because they cannot be
       // changed with options!)
-      _.extend( options, {
+      merge( options, {
         arrowButtonOptions: {
           scale: 0.5
         },
@@ -120,7 +121,7 @@ define( require => {
           return children;
         },
         sliderOptions: options.sliderOptions,
-        numberDisplayOptions: _.extend( options.numberDisplayOptions, {
+        numberDisplayOptions: merge( options.numberDisplayOptions, {
           xMargin: 2,
           yMargin: 2,
           font: new PhetFont( 10 ),

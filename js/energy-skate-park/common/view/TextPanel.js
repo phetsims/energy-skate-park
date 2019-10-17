@@ -12,6 +12,7 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
+  const merge = require( 'PHET_CORE/merge' );
   const Panel = require( 'SUN/Panel' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Text = require( 'SCENERY/nodes/Text' );
@@ -24,7 +25,7 @@ define( require => {
      */
     constructor( textContent, options ) {
 
-      options = _.extend( {
+      options = merge( {
 
         // Text options
         font: new PhetFont( 10 ),

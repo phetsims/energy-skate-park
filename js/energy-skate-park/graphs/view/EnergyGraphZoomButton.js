@@ -10,6 +10,7 @@ define( require => {
 
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const merge = require( 'PHET_CORE/merge' );
   const PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
   const ZoomButton = require( 'SCENERY_PHET/buttons/ZoomButton' );
 
@@ -21,7 +22,7 @@ define( require => {
      */
     constructor( scaleProperty, options ) {
 
-      options = _.extend( {
+      options = merge( {
         in: true, // true: zoom-in button, false: zoom-out button
         scaleDelta: 1, // how much to change scaleProperty when zooming in or out
 

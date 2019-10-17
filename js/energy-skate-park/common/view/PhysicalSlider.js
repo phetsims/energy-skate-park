@@ -14,6 +14,7 @@ define( require => {
   // modules
   const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const merge = require( 'PHET_CORE/merge' );
   const PhysicalNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PhysicalNumberControl' );
   const Text = require( 'SCENERY/nodes/Text' );
 
@@ -32,7 +33,7 @@ define( require => {
      */
     constructor( titleString, property, valueRange, tandem, options ) {
 
-      options = _.extend( {
+      options = merge( {
         // {string} - labels for the min and max values of this control
         maxLabel: controlsValueLotsString,
         minLabel: controlsValueNoneString,
@@ -46,7 +47,7 @@ define( require => {
         // don't include any arrow buttons or the NumberDislay for this control
         sliderOnly: true,
 
-        sliderOptions: _.extend( {}, Constants.SLIDER_OPTIONS, {
+        sliderOptions: merge( {}, Constants.SLIDER_OPTIONS, {
           majorTicks: [
             createTickEntry( valueRange.min, options.minLabel, tandem, 'minLabel' ),
             createTickEntry( valueRange.max, options.maxLabel, tandem, 'maxLabel' )
@@ -67,7 +68,7 @@ define( require => {
   const createTickEntry = ( value, label, tandem, tandemName ) => {
     return {
       value: value,
-      label: new Text( label, _.extend( {
+      label: new Text( label, merge( {
         tandem: tandem.createTandem( tandemName )
       }, Constants.CONTROL_TICK_LABEL_OPTIONS ) )
     };

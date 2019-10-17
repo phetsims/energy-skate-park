@@ -10,6 +10,7 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModel' );
+  const merge = require( 'PHET_CORE/merge' );
   const PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
   const Property = require( 'AXON/Property' );
   const PropertyIO = require( 'AXON/PropertyIO' );
@@ -25,7 +26,7 @@ define( require => {
      * @param {Object} options
      */
     constructor( frictionAllowed, tandem, options ) {
-      options = _.extend( {
+      options = merge( {
 
         // of true, tracks created with PremadeTracks will have limiting bounds for dragging (assuming that
         // points are configurable)

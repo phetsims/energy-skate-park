@@ -13,6 +13,7 @@ define( require => {
   const GraphsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/model/GraphsModel' );
   const GraphsScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/GraphsScreenView' );
   const Image = require( 'SCENERY/nodes/Image' );
+  const merge = require( 'PHET_CORE/merge' );
   const Screen = require( 'JOIST/Screen' );
 
   // images
@@ -30,7 +31,7 @@ define( require => {
      * @constructor
      */
     constructor( tandem ) {
-      var options = _.extend( {
+      var options = merge( {
         name: screenGraphsString,
         homeScreenIcon: new Image( iconFrictionHomescreen ),
         navigationBarIcon: new Image( iconFrictionNavbar ),

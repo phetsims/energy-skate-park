@@ -13,6 +13,7 @@ define( require => {
   const Image = require( 'SCENERY/nodes/Image' );
   const IntroModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/model/IntroModel' );
   const IntroScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/view/IntroScreenView' );
+  const merge = require( 'PHET_CORE/merge' );
   const Screen = require( 'JOIST/Screen' );
 
   // images
@@ -29,7 +30,7 @@ define( require => {
      * @constructor
      */
     constructor( tandem ) {
-      var options = _.extend( {
+      var options = merge( {
         name: screenIntroductionString,
         tandem: tandem,
         homeScreenIcon: new Image( iconIntroHomescreen ),

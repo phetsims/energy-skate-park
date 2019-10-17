@@ -9,23 +9,23 @@ define( require => {
   'use strict';
 
   // modules
+  // const EnergyBarGraphPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraphPanel' );
   const AttachDetachToggleButtons = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/AttachDetachToggleButtons' );
   const BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/BackgroundNode' );
-  // const EnergyBarGraphPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraphPanel' );
-  const EnergyBarGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraphAccordionBox' );
   const BooleanProperty = require( 'AXON/BooleanProperty' );
   const Bounds2 = require( 'DOT/Bounds2' );
   const DerivedProperty = require( 'AXON/DerivedProperty' );
   const DotRectangle = require( 'DOT/Rectangle' ); // eslint-disable-line require-statement-match
+  const EnergyBarGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraphAccordionBox' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkControlPanel' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
-  const EnergySkateParkTimerNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTimerNode' );
+  const EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkControlPanel' );
   const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
+  const EnergySkateParkTimerNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTimerNode' );
   const GridNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GridNode' );
   const Image = require( 'SCENERY/nodes/Image' );
   const MeasuringTapeNode = require( 'SCENERY_PHET/MeasuringTapeNode' );
-  const ToolboxPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ToolboxPanel' );
+  const merge = require( 'PHET_CORE/merge' );
   const ModelViewTransform2 = require( 'PHETCOMMON/view/ModelViewTransform2' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Path = require( 'SCENERY/nodes/Path' );
@@ -43,6 +43,7 @@ define( require => {
   const SkaterNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SkaterNode' );
   const StepForwardButton = require( 'SCENERY_PHET/buttons/StepForwardButton' );
   const Text = require( 'SCENERY/nodes/Text' );
+  const ToolboxPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ToolboxPanel' );
   const ValueGaugeNode = require( 'SCENERY_PHET/ValueGaugeNode' );
   const VisibilityControlsPanel =require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/VisibilityControlsPanel' );
   const Vector2 = require( 'DOT/Vector2' );
@@ -72,7 +73,7 @@ define( require => {
    */
   class EnergySkateParkScreenView extends ScreenView {
     constructor( model, physicalControls, tandem, options ) {
-      options = _.extend( {
+      options = merge( {
 
         // options for the bar graph, see composite type options below
         barGraphOptions: null,

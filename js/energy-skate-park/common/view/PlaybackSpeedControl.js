@@ -11,6 +11,7 @@ define( require => {
   // modules
   const AquaRadioButton = require( 'SUN/AquaRadioButton' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const merge = require( 'PHET_CORE/merge' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Text = require( 'SCENERY/nodes/Text' );
   const VBox = require( 'SCENERY/nodes/VBox' );
@@ -38,19 +39,19 @@ define( require => {
      */
     constructor( speedProperty, tandem, options ) {
 
-      options = _.extend( {
+      options = merge( {
         align: 'left',
         spacing: 4
       }, options );
       assert && assert( options.children === undefined, 'PlaybackSpeedControl sets children' );
 
-      const slowMotionRadioButton = new AquaRadioButton( speedProperty, 'slow', new Text( slowMotionString, _.extend( {
+      const slowMotionRadioButton = new AquaRadioButton( speedProperty, 'slow', new Text( slowMotionString, merge( {
         tandem: tandem.createTandem( 'slowMotionTextNode' ) }, LABEL_OPTIONS )
       ), {
         radius: RADIO_BUTTON_RADIUS,
         tandem: tandem.createTandem( 'slowMotionRadioButton' )
       } );
-      const normalSpeedRadioButton = new AquaRadioButton( speedProperty, 'normal', new Text( normalString, _.extend( {
+      const normalSpeedRadioButton = new AquaRadioButton( speedProperty, 'normal', new Text( normalString, merge( {
         tandem: tandem.createTandem( 'normalSpeedTextNode' ) }, LABEL_OPTIONS )
       ), {
         radius: RADIO_BUTTON_RADIUS,

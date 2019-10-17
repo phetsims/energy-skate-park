@@ -17,6 +17,7 @@ define( require => {
   const GaugeNode = require( 'SCENERY_PHET/GaugeNode' );
   const HBox = require( 'SCENERY/nodes/HBox' );
   const Line = require( 'SCENERY/nodes/Line' );
+  const merge = require( 'PHET_CORE/merge' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Path = require( 'SCENERY/nodes/Path' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -47,7 +48,7 @@ define( require => {
       assert && assert( textAlignGroup.matchHorizontal === true, 'text content in check boxes must align' );
       assert && assert( textAlignGroup.matchVertical === true, 'text content for checkboxes in group must align' );
 
-      options = _.extend( {
+      options = merge( {
 
         // {number} - default determined by inspection, certain contexts require shorter width
         labelMaxWidth: 95
@@ -64,7 +65,7 @@ define( require => {
       };
 
       // create text and an align box for it so that all text in a group of items is aligned
-      const text = new Text( label, _.extend( { tandem: tandem.createTandem( 'itemLabel' ) }, textOptions ) );
+      const text = new Text( label, merge( { tandem: tandem.createTandem( 'itemLabel' ) }, textOptions ) );
       const textBox = textAlignGroup.createBox( text, { xAlign: 'left' } );
 
       const checkbox = new Checkbox( textBox, property, checkboxItemOptions );
@@ -83,7 +84,7 @@ define( require => {
      * @returns {Node}
      */
     static createPieChartIcon( tandem, options ) {
-      options = _.extend( {
+      options = merge( {
         scale: 1
       }, options );
 
@@ -109,7 +110,7 @@ define( require => {
      * @returns {Node}
      */
     static createGridIcon( tandem, options ) {
-      options = _.extend( {
+      options = merge( {
         scale: 1
       }, options );
       return new Node( {
@@ -134,7 +135,7 @@ define( require => {
      * @returns {Node}
      */
     static createSpeedometerIcon( tandem, options ) {
-      options = _.extend( {
+      options = merge( {
         scale: 1
       }, options );
       const node = new GaugeNode( new Property( 0 ), propertiesSpeedString, new Range( 0, 10 ),

@@ -37,6 +37,7 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkModelIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModelIO' );
   const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
+  const merge = require( 'PHET_CORE/merge' );
   const NumberProperty = require( 'AXON/NumberProperty' );
   const ObservableArray = require( 'AXON/ObservableArray' );
   const ObservableArrayIO = require( 'AXON/ObservableArrayIO' );
@@ -95,7 +96,7 @@ define( require => {
         phetioState: false
       } );
 
-      options = _.extend( {
+      options = merge( {
 
         // {boolean} - if true, tracks can be dragged around the play area
         tracksDraggable: false,
@@ -111,7 +112,7 @@ define( require => {
         skaterOptions: {}
       }, options );
 
-      options.skaterOptions = _.extend( {
+      options.skaterOptions = merge( {
 
         // initial mass for the skater
         // TODO: In the future, we may have many skaters and this won't apply
@@ -339,7 +340,7 @@ define( require => {
           phetioState: this.tracksDraggable
         } )
       ];
-      this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, _.extend( {
+      this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, merge( {
           tandem: trackGroupTandem.createNextTandem()
         }, Track.FULLY_INTERACTIVE_OPTIONS )
       ) );
@@ -1474,7 +1475,7 @@ define( require => {
         const controlPointToDelete = track.controlPoints[ controlPointIndex ];
         const points = _.without( track.controlPoints, controlPointToDelete );
         controlPointToDelete.dispose();
-        const newTrack = new Track( this, this.tracks, points, track.getParentsOrSelf(), this.availableModelBoundsProperty, _.extend( {
+        const newTrack = new Track( this, this.tracks, points, track.getParentsOrSelf(), this.availableModelBoundsProperty, merge( {
           tandem: trackGroupTandem.createNextTandem()
         }, Track.FULLY_INTERACTIVE_OPTIONS ) );
         newTrack.physicalProperty.value = true;
@@ -1544,12 +1545,12 @@ define( require => {
       points1.push( newPoint1 );
       points2.unshift( newPoint2 );
 
-      const newTrack1 = new Track( this, this.tracks, points1, track.getParentsOrSelf(), this.availableModelBoundsProperty, _.extend( {
+      const newTrack1 = new Track( this, this.tracks, points1, track.getParentsOrSelf(), this.availableModelBoundsProperty, merge( {
         tandem: trackGroupTandem.createNextTandem()
       }, Track.FULLY_INTERACTIVE_OPTIONS ) );
       newTrack1.physicalProperty.value = true;
       newTrack1.droppedProperty.value = true;
-      const newTrack2 = new Track( this, this.tracks, points2, track.getParentsOrSelf(), this.availableModelBoundsProperty, _.extend( {
+      const newTrack2 = new Track( this, this.tracks, points2, track.getParentsOrSelf(), this.availableModelBoundsProperty, merge( {
         tandem: trackGroupTandem.createNextTandem()
       }, Track.FULLY_INTERACTIVE_OPTIONS ) );
       newTrack2.physicalProperty.value = true;
@@ -1645,7 +1646,7 @@ define( require => {
         secondTrackBackward();
       }
 
-      const newTrack = new Track( this, this.tracks, points, a.getParentsOrSelf().concat( b.getParentsOrSelf() ), this.availableModelBoundsProperty, _.extend( {
+      const newTrack = new Track( this, this.tracks, points, a.getParentsOrSelf().concat( b.getParentsOrSelf() ), this.availableModelBoundsProperty, merge( {
         tandem: trackGroupTandem.createNextTandem()
       }, Track.FULLY_INTERACTIVE_OPTIONS ) );
       newTrack.physicalProperty.value = true;

@@ -13,6 +13,7 @@ define( require => {
   const EnergyBarGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraph' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
+  const merge = require( 'PHET_CORE/merge' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Rectangle = require( 'SCENERY/nodes/Rectangle' );
@@ -30,7 +31,7 @@ define( require => {
      */
     constructor( model, tandem, options ) {
 
-      options = _.extend( {
+      options = merge( {
         barGraphOptions: null
       }, options );
 
@@ -80,7 +81,7 @@ define( require => {
    * @returns {Node}
    */
   function createBarGraphIcon( tandem, options ) {
-    options = _.extend( {
+    options = merge( {
       scale: 1
     }, options );
 

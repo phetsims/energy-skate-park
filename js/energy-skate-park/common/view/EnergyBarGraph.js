@@ -15,6 +15,7 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   const HBox = require( 'SCENERY/nodes/HBox' );
+  const merge = require( 'PHET_CORE/merge' );
   const MoveToTrashButton = require( 'SCENERY_PHET/MoveToTrashButton' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -39,7 +40,7 @@ define( require => {
      */
     constructor( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem, options ) {
 
-      options = _.extend( {
+      options = merge( {
 
         // include buttons that increase/decrease the scale of the graph?
         showBarGraphZoomButtons: true

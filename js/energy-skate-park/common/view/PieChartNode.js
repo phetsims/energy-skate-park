@@ -14,6 +14,7 @@ define( require => {
   const Circle = require( 'SCENERY/nodes/Circle' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
+  const merge = require( 'PHET_CORE/merge' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Path = require( 'SCENERY/nodes/Path' );
   const Shape = require( 'KITE/Shape' );
@@ -30,7 +31,7 @@ define( require => {
      */
     constructor( skater, pieChartVisibleProperty, modelViewTransform, tandem, options ) {
 
-      options = _.extend( {
+      options = merge( {
 
         // {boolean} - Whether or not to represent negative energy. When true, when one of the energies is negative
         // the pie chart will only show total energy, a solid circle with the color for total energy

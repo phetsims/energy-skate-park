@@ -14,6 +14,7 @@ define( require => {
   const AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
   const BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/BackgroundNode' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const merge = require( 'PHET_CORE/merge' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Property = require( 'AXON/Property' );
   const RadioButtonGroup = require( 'SUN/buttons/RadioButtonGroup' );
@@ -31,7 +32,7 @@ define( require => {
      */
     constructor( model, view, tandem, options ) {
 
-      options = _.extend( {
+      options = merge( {
 
         // specific and passed to RadioButtonGroup
         orientation: 'horizontal',

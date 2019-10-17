@@ -10,9 +10,10 @@ define( require => {
 
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const Image = require( 'SCENERY/nodes/Image' );
   const LabModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/model/LabModel' );
   const LabScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/view/LabScreenView' );
-  const Image = require( 'SCENERY/nodes/Image' );
+  const merge = require( 'PHET_CORE/merge' );
   const Screen = require( 'JOIST/Screen' );
 
   // images
@@ -29,7 +30,7 @@ define( require => {
      */
     constructor( tandem ) {
 
-      var options = _.extend( {
+      var options = merge( {
         name: screenLabString,
         homeScreenIcon: new Image( iconPlaygroundHomescreen ),
         navigationBarIcon: new Image( iconPlaygroundNavbar ),

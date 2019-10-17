@@ -12,6 +12,7 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const Image = require( 'SCENERY/nodes/Image' );
+  const merge = require( 'PHET_CORE/merge' );
   const Panel = require( 'SUN/Panel' );
   const RadioButtonGroup = require( 'SUN/buttons/RadioButtonGroup' );
 
@@ -36,7 +37,7 @@ define( require => {
     constructor( stickingToTrackProperty, enabledProperty, contentWidth, tandem, options ) {
 
       // Match the style of the EnergySkateParkControlPanel
-      options = _.extend( {
+      options = merge( {
         fill: '#F0F0F0',
         stroke: null,
         xMargin: 15,
@@ -86,7 +87,7 @@ define( require => {
           tandem: radioButtonGroupTandem
         } );
 
-      const panelOptions = _.extend( { tandem: tandem }, options );
+      const panelOptions = merge( { tandem: tandem }, options );
       super( radioButtons, panelOptions );
     }
   }

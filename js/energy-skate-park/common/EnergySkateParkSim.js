@@ -12,6 +12,7 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
+  const merge = require( 'PHET_CORE/merge' );
   const platform = require( 'PHET_CORE/platform' );
   const Sim = require( 'JOIST/Sim' );
 
@@ -23,18 +24,20 @@ define( require => {
      * @param {Object} options
      * @param {Tandem} tandem
      */
-    super( titleString, screens, tandem, options ) {
-      options = _.extend( {
+    constructor( titleString, screens, tandem, options ) {
+      options = merge( {
         showSaveAndLoad: EnergySkateParkQueryParameters.showSaveAndLoad,
 
         // if running the sim on an ipad, do not use the "backing scale" technique
         // for antialiasing because this method takes up too much memory, see
         // https://github.com/phetsims/scenery/issues/859 and
         // https://github.com/phetsims/energy-skate-park-basics/issues/435
-        allowBackingScaleAntialiasing: !platform.mobileSafari
+        allowBackingScaleAntialiasing: !platform.mobileSafari,
+
+        tandem: tandem
       }, options );
 
-      Sim.call( this, titleString, screens, options );
+      super( titleString, screens, options );
     }
   }
 
