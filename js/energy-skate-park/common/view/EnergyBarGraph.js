@@ -20,6 +20,7 @@ define( require => {
   const Node = require( 'SCENERY/nodes/Node' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Property = require( 'AXON/Property' );
+  const Rectangle = require( 'SCENERY/nodes/Rectangle' );
   const Range = require( 'DOT/Range' );
   const Text = require( 'SCENERY/nodes/Text' );
   const VBox = require( 'SCENERY/nodes/VBox' );
@@ -190,6 +191,39 @@ define( require => {
       return new Text( energyEnergyString, {
         font: new PhetFont( { size: 14, weight: 'bold' } ),
         maxWidth: 75 // i18n, by inspection
+      } );
+    }
+
+
+    /**
+     * Create an icon of the bar graph, to be used in visibility or other controls.
+     *
+     * @param {Tandem} tandem
+     * @param {Object} options
+     * @returns {Node}
+     */
+    static createBarGraphIcon( tandem, options ) {
+      options = merge( {
+        scale: 1
+      }, options );
+
+      return new Node( {
+        tandem: tandem,
+        children: [
+          new Rectangle( 0, 0, 20, 20, { fill: 'white', stroke: 'black', lineWidth: 0.5 } ),
+          new Rectangle( 3, 14, 5, 6, {
+            fill: EnergySkateParkColorScheme.kineticEnergy,
+            stroke: 'black',
+            lineWidth: 0.5
+          } ),
+          new Rectangle( 11, 8, 5, 12, {
+            fill: EnergySkateParkColorScheme.potentialEnergy,
+            stroke: 'black',
+            lineWidth: 0.5
+          } )
+        ],
+
+        scale: options.scale
       } );
     }
   }

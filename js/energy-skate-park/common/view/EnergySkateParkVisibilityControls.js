@@ -16,6 +16,7 @@ define( require => {
 
   // modules
   const AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
+  const EnergyBarGraph = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraph' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkCheckboxItem = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkCheckboxItem' );
   const merge = require( 'PHET_CORE/merge' );
@@ -27,6 +28,7 @@ define( require => {
   const controlsShowGridString = require( 'string!ENERGY_SKATE_PARK/controls.show-grid' );
   const controlsStickToTrackString = require( 'string!ENERGY_SKATE_PARK/controls.stickToTrack' );
   const pieChartString = require( 'string!ENERGY_SKATE_PARK/pieChart' );
+  const plotsBarGraphString = require( 'string!ENERGY_SKATE_PARK/plots.bar-graph' );
   const propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
 
   class EnergySkateParkVisibilityControls extends VBox {
@@ -41,6 +43,7 @@ define( require => {
 
         // {boolean} - whether or not Checkboxes for these Properties are included in the controls
         showPieChartCheckbox: true,
+        showBarGraphCheckbox: false,
         showGridCheckbox: false,
         showSpeedCheckbox: true,
         showReferenceHeightCheckbox: false,
@@ -80,6 +83,17 @@ define( require => {
             options.itemOptions
           ),
         );
+      }
+
+      if ( options.showBarGraphCheckbox ) {
+        checkboxItems.push( new EnergySkateParkCheckboxItem(
+          plotsBarGraphString,
+          EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } ),
+          itemAlignGroup,
+          model.barGraphVisibleProperty,
+          tandem.createTandem( 'barGraphCheckbox' ),
+          options.itemOptions
+        ), );
       }
 
       if ( options.showGridCheckbox ) {
