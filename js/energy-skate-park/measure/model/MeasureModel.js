@@ -60,30 +60,23 @@ define( require => {
       // the speed value is visible on the speedometer for the MeasureModel
       this.speedValueVisibleProperty.set( true );
 
-      const resetSamplesProperties = [
-        this.skater.directionProperty,
-        this.sampleSkaterProperty,
-        this.skater.draggingProperty
-      ];
+      // initiate sample fadeaway when the skater direction changes
+      this.skater.directionProperty.link( direction => {
+        this.initiateSampleRemoval();
+      } );
 
-      Property.multilink( resetSamplesProperties, this.initiateSampleRemoval.bind( this ) );
-      this.skater.returnedEmitter.addListener( this.initiateSampleRemoval.bind( this ) );
+      // immediately clear samples in these cases
+      const clearSamplesProperties = [ this.sampleSkaterProperty, this.skater.draggingProperty, this.sceneProperty ];
+      const boundClearSamples = this.clearSavedSamples.bind( this );
+      Property.multilink( clearSamplesProperties, boundClearSamples );
+      this.skater.returnedEmitter.addListener( boundClearSamples );
+      this.trackChangedEmitter.addListener( boundClearSamples );
 
       // when the reference height changes, update energies for all skater samples
       this.skater.referenceHeightProperty.link( referenceHeight => {
         for ( let i = 0; i < this.skaterSamples.length; i++ ) {
           this.skaterSamples.get( i ).setNewReferenceHeight( referenceHeight );
         }
-      } );
-
-      // when the scene changes, remove all points immediately so they don't persist
-      this.sceneProperty.link( scene => {
-        this.clearSavedSamples();
-      } );
-
-      // whenever a track changes in some whey, clear all samples
-      this.trackChangedEmitter.addListener( () => {
-        this.clearSavedSamples();
       } );
     }
 
