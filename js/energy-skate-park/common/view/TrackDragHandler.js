@@ -62,7 +62,7 @@ define( require => {
       if ( this.track.dragSource === null ) {
 
         // A new press has started, but the user has not moved the track yet, so do not create it yet.  See #205
-        this.track.dragSource = self;
+        this.track.dragSource = this;
         this.trackDragStarted( event );
       }
     }
@@ -72,7 +72,7 @@ define( require => {
      * @param {Event} event
      */
     handleDrag( event ) {
-      if ( this.track.dragSource === self ) {
+      if ( this.track.dragSource === this ) {
         this.trackDragged( event );
       }
     }
@@ -82,8 +82,8 @@ define( require => {
      * @param {Event} even
      */
     handleDragEnd( even ) {
-      if ( this.trackNode.dragSource === self ) {
-       self.trackDragEnded( event );
+      if ( this.trackNode.dragSource === this ) {
+       this.trackDragEnded( event );
       }
     }
 
