@@ -24,6 +24,10 @@ define( require => {
   // in seconds, how frequently we will sample the state of the skater and add to the list of SkaterSamples.
   const SAVE_REFRESH_RATE = 0.1;
 
+  // maximum number of saved samples at one time so to reduce memory and performance stress when sim runs for a long
+  // time without a case that clears existing samples
+  const MAX_SAVED_SAMPLES = 50;
+
   class MeasureModel extends EnergySkateParkFullTrackSetModel {
 
     /**
@@ -141,12 +145,24 @@ define( require => {
             newSample.removalEmitter.addListener( removalListener );
 
             this.skaterSamples.add( newSample );
+            console.log( this.skaterSamples.length );
+          }
+        }
+
+        // remove oldest samples if we have collected too many
+        if ( this.skaterSamples.length > MAX_SAVED_SAMPLES ) {
+          const numberToRemove = this.skaterSamples.length - MAX_SAVED_SAMPLES;
+          for ( let i = 0; i < numberToRemove; i++ ) {
+            const sample = this.skaterSamples.get( i );
+            if ( !sample.removeInitiated ) {
+              sample.initiateRemove();
+            }
           }
         }
       }
 
-      // determine if it is time fo any skater samples to be removed - use forEach to do on a copy of the array
-      // because this may involve array modification
+      // step all samples - use ObservableArray.forEach to do on a copy of the array because this may involve array
+      // modification
       this.skaterSamples.forEach( sample => {
         sample.step( dt );
       } );
