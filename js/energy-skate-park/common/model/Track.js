@@ -456,8 +456,13 @@ define( require => {
       this.distanceBetweenSamplePoints = ( postPoint - prePoint ) / n;
     }
 
-    // Detect whether a parametric point is in bounds of this track, for purposes of telling whether the skater fell
-    // past the edge of the track
+    /**
+     * Detect whether a parametric point is in bounds of this track, for purposes of telling whether the skater fell
+     * past the edge of the track.
+     *
+     * @param {Vector2} parametricPosition
+     * @returns {boolean}
+     */
     isParameterInBounds( parametricPosition ) {
       return parametricPosition >= this.minPoint && parametricPosition <= this.maxPoint;
     }
