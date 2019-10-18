@@ -31,6 +31,10 @@ define( require => {
     // Show a testing track (as indicated by testTrackIndex)
     debugTrack: { type: 'flag' },
 
+    // Shows the drag bounds for the control points on the premade tracks - normal behavior is for them to only be
+    // visible during drag
+    showPointBounds: { type: 'flag' },
+
     // If debugTrack is true, this indicates the index (1-based) of the track to show
     testTrackIndex: {
       type: 'number',

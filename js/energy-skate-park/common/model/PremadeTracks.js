@@ -26,8 +26,8 @@ define( require => {
   const PARENT_TRACKS = null;
 
   // limiting bounds for dragging control points
-  const END_BOUNDS_WIDTH = 2;
-  const END_BOUNDS_HEIGHT = END_BOUNDS_WIDTH;
+  const END_BOUNDS_WIDTH = 3;
+  const END_BOUNDS_HEIGHT = 4;
 
   const CREATOR_OPTIONS = {
 
@@ -49,6 +49,8 @@ define( require => {
     return new Bounds2( point.x - width / 2, point.y - height / 2, point.x + width / 2, point.y + height / 2 );
   };
 
+
+
   const PremadeTracks = {
 
     /**
@@ -61,6 +63,20 @@ define( require => {
      */
     createBottomLimitBounds: ( point, width, height ) => {
       return new Bounds2( point.x - width / 2, point.y, point.x + width / 2, point.y + height );
+    },
+
+    /**
+     * Create a set of limiting drag bounds for a control point. The spacing args are relative to provided point.
+     *
+     * @param {Vector2} point - position of the control point, remaining spaces relative to this point
+     * @param {number} leftSpace - how much space bounds should extend to left of point
+     * @param {number} rightSpace - how much space bounds should extend to right of point
+     * @param {number} upSpace - how much space bounds should extend above point
+     * @param {number} downSpace - how much space bounds should extend below point
+     * @returns {Bounds2}
+     */
+    createRelativeSpaceBounds: ( point, leftSpace, rightSpace, upSpace, downSpace ) => {
+      return new Bounds2( point.x - leftSpace, point.y - downSpace, point.x + rightSpace, point.y + upSpace );
     },
 
     // create a set of control points which create a parabola shaped track
@@ -79,7 +95,7 @@ define( require => {
       const p3 = new Vector2( options.trackWidth / 2, options.trackHeight );
 
       const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
-      const p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 4, 2 );
+      const p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 5, 3 );
       const p3Bounds = createCenteredLimitBounds( p3, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       return [
@@ -114,9 +130,9 @@ define( require => {
 
       const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
-      // createBottomLimitBounds because dragging any lower will cause track to go below ground
-      const p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 2, 2 );
-      const p3Bounds = PremadeTracks.createBottomLimitBounds( p3, 1, 1 );
+      // custom relative bounds so that bounds fall along the meter
+      const p2Bounds = PremadeTracks.createRelativeSpaceBounds( p2, 0.5, 2.5, 1.8, 0.2 );
+      const p3Bounds = PremadeTracks.createRelativeSpaceBounds( p3, 0.5, 2.5, 3, 0 );
 
       return [
         new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
@@ -147,11 +163,11 @@ define( require => {
       const p4 = new Vector2( 2, 1 );
       const p5 = new Vector2( options.trackWidth / 2, options.trackHeight );
 
-      const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
-      const p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 1, 1 );
-      const p3Bounds = createCenteredLimitBounds( p3, 1, 1 );
-      const p4Bounds = createCenteredLimitBounds( p4, 1, 1 );
-      const p5Bounds = createCenteredLimitBounds( p5, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      const p1Bounds = PremadeTracks.createRelativeSpaceBounds( p1, 1.5, 1.5, 3, 1 );
+      const p2Bounds = PremadeTracks.createRelativeSpaceBounds( p2, 1.5, 0.5, 3, 0 );
+      const p3Bounds = PremadeTracks.createRelativeSpaceBounds( p3, 1, 1, 4, 2 );
+      const p4Bounds = PremadeTracks.createRelativeSpaceBounds( p4, 0.5, 1.5, 2, 1 );
+      const p5Bounds = PremadeTracks.createRelativeSpaceBounds( p5, 1.5, 1.5, 3, 1 );
 
       return [
         new ControlPoint( p1.x, p1.y, {
@@ -213,13 +229,13 @@ define( require => {
       const p6 = new Vector2( innerLoopWidth / 2, trackBottom );
       const p7 = new Vector2( loopWidth / 2, trackTop );
 
-      const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
-      const p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 0.5, 0.5 );
-      const p3Bounds = createCenteredLimitBounds( p3, 1, 1 );
-      const p4Bounds = createCenteredLimitBounds( p4, 1, 1 );
-      const p5Bounds = createCenteredLimitBounds( p5, 1, 1 );
-      const p6Bounds = PremadeTracks.createBottomLimitBounds( p6, 0.5, 0.5 );
-      const p7Bounds = createCenteredLimitBounds( p7, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
+      const p1Bounds = PremadeTracks.createRelativeSpaceBounds( p1, 1, 1, 2, 3 );
+      const p2Bounds = PremadeTracks.createRelativeSpaceBounds( p2, 1, 1, 1 - trackBottom, trackBottom );
+      const p3Bounds = createCenteredLimitBounds( p3, 2, 1 );
+      const p4Bounds = PremadeTracks.createRelativeSpaceBounds( p4, 1.5, 1.5, 2, 1 );
+      const p5Bounds = createCenteredLimitBounds( p5, 2, 1 );
+      const p6Bounds = PremadeTracks.createRelativeSpaceBounds( p6, 1, 1, 1 - trackBottom, trackBottom );
+      const p7Bounds = PremadeTracks.createRelativeSpaceBounds( p7, 1, 1, 2, 3 );
 
       return [
         new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),

@@ -74,7 +74,7 @@ define( require => {
         } );
 
         const boundsVisibilityListener = dragging => {
-          this.boundsRectangle.visible = dragging;
+          this.boundsRectangle.visible = EnergySkateParkQueryParameters.showPointBounds || dragging;
         };
         controlPoint.draggingProperty.link( boundsVisibilityListener );
       }
