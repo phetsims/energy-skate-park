@@ -21,10 +21,12 @@ define( require => {
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Property = require( 'AXON/Property' );
   const Range = require( 'DOT/Range' );
+  const Text = require( 'SCENERY/nodes/Text' );
   const VBox = require( 'SCENERY/nodes/VBox' );
   const ZoomButton = require( 'SCENERY_PHET/buttons/ZoomButton' );
 
   // strings
+  const energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
   const energyKineticString = require( 'string!ENERGY_SKATE_PARK/energy.kinetic' );
   const energyPotentialString = require( 'string!ENERGY_SKATE_PARK/energy.potential' );
   const energyThermalString = require( 'string!ENERGY_SKATE_PARK/energy.thermal' );
@@ -178,6 +180,17 @@ define( require => {
       if ( visible ) {
         this.barChartNode.update();
       }
+    }
+
+    /**
+     * Create the label for the bar graph, which can be added in various places depending on layout of the graph.
+     * @returns {Text}
+     */
+    static createLabel() {
+      return new Text( energyEnergyString, {
+        font: new PhetFont( { size: 14, weight: 'bold' } ),
+        maxWidth: 75 // i18n, by inspection
+      } );
     }
   }
 

@@ -15,12 +15,7 @@ define( require => {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   const merge = require( 'PHET_CORE/merge' );
   const Node = require( 'SCENERY/nodes/Node' );
-  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Rectangle = require( 'SCENERY/nodes/Rectangle' );
-  const Text = require( 'SCENERY/nodes/Text' );
-
-  // strings
-  const energyEnergyString = require( 'string!ENERGY_SKATE_PARK/energy.energy' );
 
   class EnergyBarGraphAccordionBox extends AccordionBox {
 
@@ -46,10 +41,7 @@ define( require => {
         buttonYMargin: margin,
         cornerRadius: margin,
 
-        titleNode: new Text( energyEnergyString, {
-          font: new PhetFont( { size: 14, weight: 'bold' } ),
-          maxWidth: 75 // i18n, by inspection
-        } ),
+        titleNode: EnergyBarGraph.createLabel(),
 
         // use this model Property because the graph only updates when it is visible
         expandedProperty: model.barGraphVisibleProperty,
