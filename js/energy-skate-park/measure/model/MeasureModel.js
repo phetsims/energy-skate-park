@@ -80,6 +80,11 @@ define( require => {
       this.sceneProperty.link( scene => {
         this.clearSavedSamples();
       } );
+
+      // whenever a track changes in some whey, clear all samples
+      this.trackChangedEmitter.addListener( () => {
+        this.clearSavedSamples();
+      } );
     }
 
     /**
@@ -145,7 +150,6 @@ define( require => {
             newSample.removalEmitter.addListener( removalListener );
 
             this.skaterSamples.add( newSample );
-            console.log( this.skaterSamples.length );
           }
         }
 

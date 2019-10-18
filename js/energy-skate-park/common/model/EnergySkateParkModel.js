@@ -279,6 +279,10 @@ define( require => {
         track.dispose();
       } );
 
+      // @public - emits an event whenever a track changes in some way (control points dragged, track split apart,
+      // track dragged, track deleted or scene changed, etc...)
+      this.trackChangedEmitter = new Emitter();
+
       // Determine when to show/hide the track edit buttons (cut track or delete control point)
       const updateTrackEditingButtonProperties = () => {
         let editEnabled = false;
@@ -296,7 +300,6 @@ define( require => {
       };
       this.tracks.addItemAddedListener( updateTrackEditingButtonProperties );
       this.tracks.addItemRemovedListener( updateTrackEditingButtonProperties );
-      this.trackChangedEmitter = new Emitter();
       this.updateEmitter = new Emitter();
       this.trackChangedEmitter.addListener( updateTrackEditingButtonProperties );
 
@@ -1706,8 +1709,8 @@ define( require => {
     }
 
     /**
-     * When a track is dragged, update the skater's energy (if the sim was paused), since it wouldn't be handled in the
-     * update loop.
+     * When a track is dragged or a control point is moved, update the skater's energy (if the sim was paused), since
+     * it wouldn't be handled in the update loop.
      *
      * @param {Track} track
      */
@@ -1718,6 +1721,9 @@ define( require => {
 
       // Flag the track as having changed *this frame* so energy doesn't need to be conserved during this frame, see #127
       this.trackChangePending = true;
+
+      // emit a message indicating that the track has changed in some way
+      this.trackChangedEmitter.emit();
     }
 
     // Get the number of physical control points (i.e. control points outside of the toolbox)
