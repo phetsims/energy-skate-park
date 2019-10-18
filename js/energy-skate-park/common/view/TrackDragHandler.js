@@ -84,7 +84,7 @@ define( require => {
      * @param {Event} even
      */
     handleDragEnd( even ) {
-      if ( this.trackNode.dragSource === this ) {
+      if ( this.track.dragSource === this ) {
        this.trackDragEnded( event );
       }
     }
