@@ -59,6 +59,8 @@ define( require => {
       // The track is in a layer of tracks (without other nodes) so moving it to the front will work perfectly
       this.trackNode.moveToFront();
 
+      this.calculateStartOffset( event );
+
       if ( this.track.dragSource === null ) {
 
         // A new press has started, but the user has not moved the track yet, so do not create it yet.  See #205
@@ -106,8 +108,8 @@ define( require => {
       if ( !this.startedDrag ) {
         track.draggingProperty.value = true;
 
-        const startingPosition = this.modelViewTransform.modelToViewPosition( track.position );
-        this.startOffset = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( startingPosition );
+        // we may not have determined point offset if first down hit toolbox
+        this.calculateStartOffset( event );
         this.startedDrag = true;
       }
       track.draggingProperty.value = true;
@@ -257,6 +259,17 @@ define( require => {
 
         this.startedDrag = false;
       }
+    }
+
+    /**
+     * Determine the offset point at the start of a drag so that the track translates with the mouse without jumping.
+     * @private
+     *
+     * @param {Event} event
+     */
+    calculateStartOffset( event ) {
+      const startingPosition = this.modelViewTransform.modelToViewPosition( this.track.position );
+      this.startOffset = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( startingPosition );
     }
   }
 
