@@ -154,7 +154,11 @@ define( require => {
         p2Draggable: true,
         p3Draggable: true,
         p4Draggable: true,
-        p5Draggable: true
+        p5Draggable: true,
+
+        // Spacing for drag bounds of the third (center) control point for createRelativeSpaceBounds
+        p3UpSpacing: 4,
+        p3DownSpacing: 2
       }, CREATOR_OPTIONS, options );
 
       const p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
@@ -165,7 +169,7 @@ define( require => {
 
       const p1Bounds = PremadeTracks.createRelativeSpaceBounds( p1, 1.5, 1.5, 3, 1 );
       const p2Bounds = PremadeTracks.createRelativeSpaceBounds( p2, 1.5, 0.5, 3, 0 );
-      const p3Bounds = PremadeTracks.createRelativeSpaceBounds( p3, 1, 1, 4, 2 );
+      const p3Bounds = PremadeTracks.createRelativeSpaceBounds( p3, 1, 1, options.p3UpSpacing, options.p3DownSpacing );
       const p4Bounds = PremadeTracks.createRelativeSpaceBounds( p4, 0.5, 1.5, 2, 1 );
       const p5Bounds = PremadeTracks.createRelativeSpaceBounds( p5, 1.5, 1.5, 3, 1 );
 

@@ -235,7 +235,11 @@ define( require => {
         trackMidHeight: 1.5,
 
         p1Draggable: false,
-        p5Draggable: false
+        p5Draggable: false,
+
+        // spacing for the limiting drag bounds of the third control point
+        p3UpSpacing: 2.5,
+        p3DownSpacing: 1.5
       } );
       const doubleWellTrack = PremadeTracks.createTrack( this, this.tracks, doubleWellControlPoints, this.availableModelBoundsProperty, {
         configurable: this.tracksConfigurable,
