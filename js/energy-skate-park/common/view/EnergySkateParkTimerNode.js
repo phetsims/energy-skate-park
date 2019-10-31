@@ -22,7 +22,9 @@ define( require => {
      * @param {Tandem} tandem
      */
     constructor( model, view, tandem ) {
-      super( model.timeProperty, model.timerRunningProperty );
+      super( model.timeProperty, model.timerRunningProperty, {
+        tandem: tandem
+      } );
 
       // constrain the available bounds so that the timer cannot be dragged out of view
       const dragBoundsProperty = new DerivedProperty( [ model.availableModelBoundsProperty ], modelBounds => {

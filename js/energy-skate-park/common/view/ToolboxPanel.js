@@ -21,6 +21,7 @@ define( require => {
   const NumberProperty = require( 'AXON/NumberProperty' );
   const Panel = require( 'SUN/Panel' );
   const TimerNode = require( 'SCENERY_PHET/TimerNode' );
+  const Tandem = require( 'TANDEM/Tandem' );
 
   class ToolboxPanel extends Panel {
 
@@ -41,7 +42,7 @@ define( require => {
       const measuringTapeIcon = MeasuringTapeNode.createIcon();
       measuringTapeIcon.cursor = 'pointer';
 
-      const timerIcon = new TimerNode( new NumberProperty( 0 ), new BooleanProperty( false ) ).rasterized( {
+      const timerIcon = new TimerNode( new NumberProperty( 0 ), new BooleanProperty( false ), { tandem: Tandem.optional } ).rasterized( {
         cursor: 'pointer',
         resolution: 5,
         tandem: tandem.createTandem( 'timerIcon' )
