@@ -16,7 +16,7 @@ define( require => {
   const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
   const Node = require( 'SCENERY/nodes/Node' );
   const MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
-  const SkaterSamplesNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterSamplesNode' );
+  const SkaterSamplesCanvasNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterSamplesCanvasNode' );
   const SkaterPathSensorNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterPathSensorNode' );
 
   /**
@@ -60,11 +60,18 @@ define( require => {
         tandem: tandem.createTandem( 'pathSensor' )
       } );
 
-      // insert the samples and measure into the layering so that the measurable path is above the track but below
-      // the skater, and the sensor is below the measuring tape to avoid occlusion
-      const skaterSamplesNode = new SkaterSamplesNode( model, this.modelViewTransform );
-      this.topLayer.addChild( skaterSamplesNode );
+      // @private - so it can be repainted in step
+      this.skaterSamplesNode = new SkaterSamplesCanvasNode( model, this.modelViewTransform );
+      this.topLayer.addChild( this.skaterSamplesNode );
+
       this.topLayer.addChild( this.pathSensor );
+    }
+
+    /**
+     * @param {number} dt - in seconds
+     */
+    step( dt ) {
+      this.skaterSamplesNode.step( dt );
     }
 
     /**
