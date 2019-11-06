@@ -67,9 +67,7 @@ define( require => {
      * @param {number} dt - in seconds
      */
     step( dt ) {
-      if ( !this.model.pausedProperty.get() ) {
-        this.invalidatePaint();
-      }
+      this.invalidatePaint();
     }
   }
 
