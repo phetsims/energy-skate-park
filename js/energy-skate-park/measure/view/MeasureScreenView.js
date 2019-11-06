@@ -17,6 +17,7 @@ define( require => {
   const Node = require( 'SCENERY/nodes/Node' );
   const MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
   const SkaterSamplesCanvasNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterSamplesCanvasNode' );
+  const InspectedSampleHaloNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/InspectedSampleHaloNode' );
   const SkaterPathSensorNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterPathSensorNode' );
 
   /**
@@ -59,6 +60,9 @@ define( require => {
       this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorProbePositionProperty, model.sensorBodyPositionProperty, model.availableModelBoundsProperty, this.modelViewTransform, this.controlPanel, {
         tandem: tandem.createTandem( 'pathSensor' )
       } );
+
+      const inspectedSampleHaloNode = new InspectedSampleHaloNode( model.skaterSamples, this.modelViewTransform );
+      this.topLayer.addChild( inspectedSampleHaloNode );
 
       // @private - so it can be repainted in step
       this.skaterSamplesNode = new SkaterSamplesCanvasNode( model, this.modelViewTransform );
