@@ -1,7 +1,9 @@
 // Copyright 2018, University of Colorado Boulder
 
 /**
- * TODO: Type Documentation
+ * A circle that becomes visible and is positioned under the inspected skater sample to indicate
+ * that the user is inspecting that point.
+ *
  * @author Jesse Greenberg
  */
 define( require => {
@@ -23,7 +25,10 @@ define( require => {
      */
     constructor( skaterSamples, modelViewTransform ) {
       super( HALO_RADIUS, {
-        fill: EnergySkateParkColorScheme.haloFill
+        fill: EnergySkateParkColorScheme.haloFill,
+
+        // not visible until a SkaterSample becomes inspected
+        visible: false
       } );
 
       // Whenever a new sample is added, adds a listener to make the halo visible when a sample
