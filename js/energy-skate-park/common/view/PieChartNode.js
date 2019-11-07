@@ -17,6 +17,7 @@ define( require => {
   const merge = require( 'PHET_CORE/merge' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Path = require( 'SCENERY/nodes/Path' );
+  const platform = require( 'PHET_CORE/platform' );
   const Shape = require( 'KITE/Shape' );
   const Util = require( 'DOT/Util' );
 
@@ -72,7 +73,11 @@ define( require => {
       super( {
         tandem: tandem,
         children: [ thermalEnergySlice, potentialEnergySlice, kineticEnergySlice, totalEnergyCircle ],
-        pickable: false
+        pickable: false,
+
+        // render with canvas on iOS Safari to improve performance when rendering this Node, see
+        // https://github.com/phetsims/energy-skate-park/issues/125
+        renderer: platform.mobileSafari ? 'canvas' : null
       } );
 
       // @private {boolean} - whether or not negative potential energy will be represented by the pie chart or it should
