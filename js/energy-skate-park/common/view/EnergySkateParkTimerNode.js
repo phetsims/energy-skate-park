@@ -38,6 +38,7 @@ define( require => {
 
       // @public {DragListener} - for forwarding
       this.dragListener = new DragListener( {
+        targetNode: this,
         locationProperty: model.timerPositionProperty,
         transform: view.modelViewTransform,
         dragBoundsProperty: dragBoundsProperty,
@@ -48,7 +49,7 @@ define( require => {
         },
         tandem: tandem.createTandem( 'dragListener' )
       } );
-      this.addInputListener( this.dragListener );
+      this.dragTarget.addInputListener( this.dragListener );
 
       // sync location Property with translation
       model.timerPositionProperty.link( location => {
