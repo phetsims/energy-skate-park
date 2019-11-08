@@ -924,7 +924,7 @@ define( require => {
     }
 
     copyControlPointSources() {
-      return this.controlPoints.map( controlPoint => { controlPoint.sourcePositionProperty.value.copy(); } );
+      return this.controlPoints.map( controlPoint => controlPoint.sourcePositionProperty.value.copy() );
     }
 
     getDebugString() {
