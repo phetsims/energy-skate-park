@@ -108,7 +108,10 @@ define( require => {
           const defaultLayoutFunction = NumberControl.createLayoutFunction4( {
 
             // arrow buttons a bit tighter than default to provide more room for content in screens
-            arrowButtonSpacing: 2
+            arrowButtonSpacing: 2,
+
+            // can be multiple physical controls in a panel, need to make some extra space
+            verticalSpacing: 2
           } );
           const children = defaultLayoutFunction( titleNode, numberDisplay, slider, leftArrowButton, rightArrowButton );
 
