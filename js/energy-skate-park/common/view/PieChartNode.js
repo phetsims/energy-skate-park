@@ -51,8 +51,8 @@ define( require => {
       } );
 
       // Skip bounds computation to improve performance, see #245
-      kineticEnergySlice.computeShapeBounds = () => { return new Bounds2( 0, 0, 0, 0 ); };
-      potentialEnergySlice.computeShapeBounds = () => { return new Bounds2( 0, 0, 0, 0 ); };
+      kineticEnergySlice.computeShapeBounds = () => new Bounds2( 0, 0, 0, 0 );
+      potentialEnergySlice.computeShapeBounds = () => new Bounds2( 0, 0, 0, 0 );
 
       // total energy representation is a full circle, so it can use the optimized version.
       const totalEnergyCircle = new Circle( 1, {

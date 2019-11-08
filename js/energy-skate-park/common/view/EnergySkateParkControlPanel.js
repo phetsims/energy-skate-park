@@ -27,7 +27,7 @@ define( require => {
   const VALID_CONTROLS = [ PhysicalSlider, PhysicalNumberControl, GravityComboBox, MassComboBox ];
 
   class EnergySkateParkControlPanel extends Panel {
-    
+
     /**
      * @param {EnergySkateParkModel} model
      * @param {EnergySkateParkScreenView} screenView
@@ -59,7 +59,7 @@ define( require => {
         children.push( control );
       } );
 
-      const separatorWidth = _.maxBy( children, child => { return child.width; } ).width;
+      const separatorWidth = _.maxBy( children, child => { child.width; } ).width;
       children.splice( children.indexOf( controls[ 0 ] ), 0, new HSeparator( separatorWidth ) );
       if ( screenView.showTrackButtons ) {
         children.splice( children.indexOf( visibilityControls ) + 1, 0, new HSeparator( separatorWidth ) );

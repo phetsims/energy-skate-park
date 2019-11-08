@@ -87,7 +87,7 @@ define( require => {
         contents.push( contentNode );
       } );
 
-      const minWidth = _.minBy( contents, node => { return node.width; } ).width;
+      const minWidth = _.minBy( contents, node => { node.width; } ).width;
 
       const buttonAlignGroup = new AlignGroup();
 

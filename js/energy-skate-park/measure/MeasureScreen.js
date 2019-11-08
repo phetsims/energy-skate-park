@@ -39,8 +39,8 @@ define( require => {
       };
 
       super(
-        () => { return new MeasureModel( tandem.createTandem( 'measureModel' ) ); },
-        model => { return new MeasureScreenView( model, tandem.createTandem( 'measureScreenView' ) ); },
+        () => new MeasureModel( tandem.createTandem( 'measureModel' ) ),
+        model => new MeasureScreenView( model, tandem.createTandem( 'measureScreenView' ) ),
         options
       );
 

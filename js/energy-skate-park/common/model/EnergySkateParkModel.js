@@ -1736,13 +1736,13 @@ define( require => {
     // Get the number of physical control points (i.e. control points outside of the toolbox)
     getNumberOfPhysicalControlPoints() {
       const numberOfPointsInEachTrack = _.map( this.getPhysicalTracks(), track => {return track.controlPoints.length;} );
-      return _.reduce( numberOfPointsInEachTrack, ( memo, num ) => { return memo + num; }, 0 );
+      return _.reduce( numberOfPointsInEachTrack, ( memo, num ) => { memo + num; }, 0 );
     }
 
     // Get the number of all control points for this model's tracks
     getNumberOfControlPoints() {
       const numberOfPointsInEachTrack = _.map( this.tracks.getArray(), track => {return track.controlPoints.length;} );
-      return _.reduce( numberOfPointsInEachTrack, ( memo, num ) => { return memo + num; }, 0 );
+      return _.reduce( numberOfPointsInEachTrack, ( memo, num ) => { memo + num; }, 0 );
     }
 
     // Logic to determine whether a control point can be added by cutting a track's control point in two

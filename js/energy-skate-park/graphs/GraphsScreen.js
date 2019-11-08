@@ -39,8 +39,8 @@ define( require => {
       }, options );
 
       super(
-        () => { return new GraphsModel( tandem.createTandem( 'graphsModel' ) ); },
-        model => { return new GraphsScreenView( model, tandem.createTandem( 'graphsScreenView' ) ); },
+        () => new GraphsModel( tandem.createTandem( 'graphsModel' ) ),
+        model => new GraphsScreenView( model, tandem.createTandem( 'graphsScreenView' ) ),
         options
       );
     }

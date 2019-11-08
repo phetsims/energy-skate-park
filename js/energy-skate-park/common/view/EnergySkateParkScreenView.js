@@ -177,7 +177,7 @@ define( require => {
       // For the playground screen, show attach/detach toggle buttons
       if ( options.showAttachDetachRadioButtons ) {
         const property = model.tracksDraggable ? new Property( true ) :
-                       new DerivedProperty( [ model.sceneProperty ], scene => { return scene === 2; } );
+                       new DerivedProperty( [ model.sceneProperty ], scene => { scene === 2; } );
         this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.stickingToTrackProperty, property, 150, tandem.createTandem( 'attachDetachToggleButtons' ) );
         this.bottomLayer.addChild( this.attachDetachToggleButtons );
       }
