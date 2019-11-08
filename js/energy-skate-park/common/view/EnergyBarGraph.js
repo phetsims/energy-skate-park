@@ -49,11 +49,6 @@ define( require => {
         showBarGraphZoomButtons: true
       }, options );
 
-      // it is important that the bar graph be rendered with canvas so that the sim has a high framerate when the
-      // skater is off screen in iOS, see https://github.com/phetsims/energy-skate-park/issues/42
-      assert && assert( options.renderer === undefined, 'EnergyBarGraph sets renderer' );
-      options.renderer = 'canvas';
-
       super( options );
 
       // the range for the visible portion of the graph, in joules - note this is somewhat arbitrary because
