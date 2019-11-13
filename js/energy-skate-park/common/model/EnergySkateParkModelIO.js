@@ -38,7 +38,7 @@ define( require => {
      * @param {Tandem} tandem
      * @param {Object} stateObject
      */
-    static addChildInstance( energySkateParkModel, tandem, stateObject ) {
+    static addChildInstanceDeprecated( energySkateParkModel, tandem, stateObject ) {
       validate( energySkateParkModel, this.validator );
       const isControlPoint = tandem.phetioID.indexOf( '.controlPoint' ) >= 0;
 
