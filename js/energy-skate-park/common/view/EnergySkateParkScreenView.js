@@ -293,6 +293,15 @@ define( require => {
         this.bottomLayer.addChild( this.toolboxPanel );
       }
 
+      // @private {ReferenceHeightLine} - layout managed in layout function
+      this.referenceHeightLine = new ReferenceHeightLine(
+        modelViewTransform,
+        model.skater.referenceHeightProperty,
+        model.referenceHeightVisibleProperty,
+        tandem.createTandem( 'referenceHeightLine' )
+      );
+      this.topLayer.addChild( this.referenceHeightLine );
+
       // @protected (read-only) - protected for layering content
       this.skaterNode = new SkaterNode(
         model.skater,
@@ -302,20 +311,10 @@ define( require => {
         model.getPhysicalTracks.bind( model ),
         tandem.createTandem( 'skaterNode' )
       );
-
       this.topLayer.addChild( this.skaterNode );
 
       const pieChartNode = new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) );
       this.topLayer.addChild( pieChartNode );
-
-      // layout managed in layout function
-      this.referenceHeightLine = new ReferenceHeightLine(
-        modelViewTransform,
-        model.skater.referenceHeightProperty,
-        model.referenceHeightVisibleProperty,
-        tandem.createTandem( 'referenceHeightLine' )
-      );
-      this.bottomLayer.addChild( this.referenceHeightLine );
 
       // relative to the control panel, but this will not float with the layout
       this.referenceHeightLine.centerX = this.layoutBounds.centerX;

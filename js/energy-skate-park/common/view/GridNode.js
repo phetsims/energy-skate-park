@@ -127,7 +127,7 @@ define( require => {
       const lineY1 = -offsetY + this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
 
       // grid lines are drawn on the half meter, but each still separated by 1 meter
-      for ( let x = 0.5; x < 100; x++ ) {
+      for ( let x = 0; x < 100; x++ ) {
         const viewXPositive = this.modelViewTransform.modelToViewX( x );
         const viewXNegative = this.modelViewTransform.modelToViewX( -x );
         thinLines.push( { x1: viewXPositive, y1: lineY1, x2: viewXPositive, y2: lineHeight - lineY1 } );
