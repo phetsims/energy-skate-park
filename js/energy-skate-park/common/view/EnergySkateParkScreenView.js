@@ -34,6 +34,7 @@ define( require => {
   const PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PlaybackSpeedControl' );
   const PlayPauseButton = require( 'SCENERY_PHET/buttons/PlayPauseButton' );
   const Property = require( 'AXON/Property' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Range = require( 'DOT/Range' );
   const RectangularPushButton = require( 'SUN/buttons/RectangularPushButton' );
   const ReferenceHeightLine = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ReferenceHeightLine' );
@@ -264,7 +265,7 @@ define( require => {
       // add a measuring tape, on top of tracks, below the skater
       if ( options.showToolbox ) {
 
-        const unitsProperty = new Property( { name: 'meters', multiplier: 1 } );
+        const unitsProperty = new Property( { name: 'm', multiplier: 1 } );
 
         // @private {MeasuringTapeNode}
         this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
@@ -272,6 +273,9 @@ define( require => {
           tipPositionProperty: model.measuringTapeTipPositionProperty,
           modelViewTransform: modelViewTransform,
           dragBounds: this.availableModelBoundsProperty.get(),
+          textBackgroundColor: EnergySkateParkColorScheme.transparentPanelFill,
+          textColor: 'black',
+          textFont: new PhetFont( { size: 12 } ),
           baseDragEnded: () => {
             if ( this.measuringTapeNode.getLocalBaseBounds().intersectsBounds( this.toolboxPanel.bounds ) ) {
               model.measuringTapeVisibleProperty.set( false );
