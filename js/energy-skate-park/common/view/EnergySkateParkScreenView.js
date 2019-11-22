@@ -53,6 +53,7 @@ define( require => {
   const controlsRestartSkaterString = require( 'string!ENERGY_SKATE_PARK/controls.restart-skater' );
   const propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
   const speedometerMetersPerSecondPatternString = require( 'string!ENERGY_SKATE_PARK/speedometerMetersPerSecondPattern' );
+  const measuringTapeUnitsString = require( 'string!ENERGY_SKATE_PARK/measuringTape.units' );
 
   // images
   const skaterIconImage = require( 'image!ENERGY_SKATE_PARK/skater-icon.png' );
@@ -265,7 +266,7 @@ define( require => {
       // add a measuring tape, on top of tracks, below the skater
       if ( options.showToolbox ) {
 
-        const unitsProperty = new Property( { name: 'm', multiplier: 1 } );
+        const unitsProperty = new Property( { name: measuringTapeUnitsString, multiplier: 1 } );
 
         // @private {MeasuringTapeNode}
         this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
