@@ -82,9 +82,11 @@ define( require => {
         this.clearEnergyData();
       } );
 
+      // if plotting against position, don't save any skater samples while dragging
       this.skater.draggingProperty.link( isDragging => {
         if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ) {
           this.clearEnergyData();
+          this.preventSampleSave = isDragging;
         }
       } );
 
