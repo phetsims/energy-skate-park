@@ -137,6 +137,31 @@ define( require => {
 
       return [ parabolaTrack, slopeTrack, doubleWellTrack ];
     }
+
+    /**
+     * The "full" track set has all of the premade tracks - a parabola, slope, double well, and loop.
+     *
+     * @param {EnergySkateParkModel} model
+     * @param {Tandem} tandem
+     * @returns {Array.<Track>}
+     */
+    static createFullTrackSet( model, tandem ) {
+
+      // the "full" track set has all of the premade tracks - a parabola,  slope, double well, and loop.
+      const trackSet = EnergySkateParkTrackSetModel.createBasicTrackSet( model, tandem );
+
+      const loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem, {
+        limitPointBounds: model.limitPointBounds
+      } );
+      const loopTrack = PremadeTracks.createTrack( model, model.tracks, loopControlPoints, model.availableModelBoundsProperty, {
+        configurable: model.tracksConfigurable,
+        draggable: model.tracksDraggable,
+        tandem: tandem.createTandem( 'loopTrack' )
+      } );
+      trackSet.push( loopTrack );
+
+      return trackSet;
+    }
   }
 
   return energySkatePark.register( 'EnergySkateParkTrackSetModel', EnergySkateParkTrackSetModel );

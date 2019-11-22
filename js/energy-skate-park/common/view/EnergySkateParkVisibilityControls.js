@@ -58,14 +58,14 @@ define( require => {
       const checkboxItems = [];
 
       if ( options.showSkaterPathCheckbox ) {
-        assert && assert( model.sampleSkaterProperty, 'no Property for measuring samples, add to model or dont show this' );
+        assert && assert( model.saveSkaterSamplesProperty, 'no Property for measuring samples, add to model or dont show this' );
 
         checkboxItems.push(
           new EnergySkateParkCheckboxItem(
             controlsPathString,
             EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) ),
             itemAlignGroup,
-            model.sampleSkaterProperty,
+            model.saveSkaterSamplesProperty,
             tandem.createTandem( 'pathCheckbox' ),
             options.itemOptions
           )
