@@ -56,10 +56,17 @@ define( require => {
      */
     updateActiveTrack( scene ) {
       for ( let i = 0; i < this.tracks.length; i++ ) {
-        this.tracks.get( i ).physicalProperty.value = ( i === scene );
+        const track = this.tracks.get( i );
+        track.physicalProperty.value = ( i === scene );
 
         // Reset the skater when the track is changed, see #179
         this.skater.returnToInitialPosition();
+
+        // make sure that the entire track is above ground - points should be, but this makes sure that the
+        // entire curve is fully above ground
+        if ( this.availableModelBoundsProperty.get().hasNonzeroArea() ) {
+          this.tracks.get( i ).bumpAboveGround();
+        }
       }
 
       // The skater should detach from track when the scene changes.  Code elsewhere also resets the location of the skater.
