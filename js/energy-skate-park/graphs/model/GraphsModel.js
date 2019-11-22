@@ -12,7 +12,6 @@ define( require => {
   const BooleanProperty = require( 'AXON/BooleanProperty' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
-  const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
   const Enumeration = require( 'PHET_CORE/Enumeration' );
   const EnumerationProperty = require( 'AXON/EnumerationProperty' );
   const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
@@ -25,8 +24,9 @@ define( require => {
   const PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
 
   // constants
-  // in seconds, how frequently we will save SkaterStates when recording data for energy vs position plot
-  const SAVE_REFRESH_RATE = EnergySkateParkQueryParameters.saveFrequency;
+  // in seconds, how frequently we will save SkaterStates when recording data for energy vs position plot - at
+  // such a low value we are essentially saving a data point every animation frame
+  const SAVE_REFRESH_RATE = 0.01;
 
   // how long to keep a SkaterSample when plotting energy vs position before removing it from the data series
   const SKATER_SAMPLE_LIFE_TIME = 2;
