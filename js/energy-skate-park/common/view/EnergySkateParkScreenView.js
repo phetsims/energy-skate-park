@@ -293,7 +293,8 @@ define( require => {
         this.bottomLayer.addChild( this.toolboxPanel );
       }
 
-      // @private {ReferenceHeightLine} - layout managed in layout function
+      // @private {ReferenceHeightLine} - above the track because it is draggable, but below the skater because
+      // it is important for the skater center of mass representation to always be visible
       this.referenceHeightLine = new ReferenceHeightLine(
         modelViewTransform,
         model.skater.referenceHeightProperty,
