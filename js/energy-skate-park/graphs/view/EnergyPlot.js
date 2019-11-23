@@ -15,6 +15,7 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   const GraphsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/model/GraphsModel' );
+  const merge = require( 'PHET_CORE/merge' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const PointStyle = require( 'GRIDDLE/PointStyle' );
   const Range = require( 'DOT/Range' );
@@ -107,10 +108,11 @@ define( require => {
       } );
 
       // @private {XYDataSeries}
-      this.kineticEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.kineticEnergy } );
-      this.potentialEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.potentialEnergy } );
-      this.thermalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.thermalEnergy } );
-      this.totalEnergyDataSeries = new XYDataSeries( { color: EnergySkateParkColorScheme.totalEnergy } );
+      const seriesOptions = { lineWidth: 2 };
+      this.kineticEnergyDataSeries = new XYDataSeries( merge( { color: EnergySkateParkColorScheme.kineticEnergy }, seriesOptions ) );
+      this.potentialEnergyDataSeries = new XYDataSeries( merge( { color: EnergySkateParkColorScheme.potentialEnergy }, seriesOptions ) );
+      this.thermalEnergyDataSeries = new XYDataSeries( merge( { color: EnergySkateParkColorScheme.thermalEnergy }, seriesOptions ) );
+      this.totalEnergyDataSeries = new XYDataSeries( merge( { color: EnergySkateParkColorScheme.totalEnergy }, seriesOptions ) );
 
       // second parameter allows data to be scaled correctly so it is in the correct spot relative to plot range
       this.addSeries( this.thermalEnergyDataSeries, true );

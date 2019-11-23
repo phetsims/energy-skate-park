@@ -56,10 +56,17 @@ define( require => {
      */
     updateActiveTrack( scene ) {
       for ( let i = 0; i < this.tracks.length; i++ ) {
-        this.tracks.get( i ).physicalProperty.value = ( i === scene );
+        const track = this.tracks.get( i );
+        track.physicalProperty.value = ( i === scene );
 
         // Reset the skater when the track is changed, see #179
         this.skater.returnToInitialPosition();
+
+        // make sure that the entire track is above ground - points should be, but this makes sure that the
+        // entire curve is fully above ground
+        if ( this.availableModelBoundsProperty.get().hasNonzeroArea() ) {
+          this.tracks.get( i ).bumpAboveGround();
+        }
       }
 
       // The skater should detach from track when the scene changes.  Code elsewhere also resets the location of the skater.
@@ -136,6 +143,31 @@ define( require => {
       } );
 
       return [ parabolaTrack, slopeTrack, doubleWellTrack ];
+    }
+
+    /**
+     * The "full" track set has all of the premade tracks - a parabola, slope, double well, and loop.
+     *
+     * @param {EnergySkateParkModel} model
+     * @param {Tandem} tandem
+     * @returns {Array.<Track>}
+     */
+    static createFullTrackSet( model, tandem ) {
+
+      // the "full" track set has all of the premade tracks - a parabola,  slope, double well, and loop.
+      const trackSet = EnergySkateParkTrackSetModel.createBasicTrackSet( model, tandem );
+
+      const loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem, {
+        limitPointBounds: model.limitPointBounds
+      } );
+      const loopTrack = PremadeTracks.createTrack( model, model.tracks, loopControlPoints, model.availableModelBoundsProperty, {
+        configurable: model.tracksConfigurable,
+        draggable: model.tracksDraggable,
+        tandem: tandem.createTandem( 'loopTrack' )
+      } );
+      trackSet.push( loopTrack );
+
+      return trackSet;
     }
   }
 

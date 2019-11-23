@@ -11,31 +11,21 @@ define( require => {
   // modules
   const BooleanProperty = require( 'AXON/BooleanProperty' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
+  const EnergySkateParkSaveSampleModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkSaveSampleModel' );
   const Enumeration = require( 'PHET_CORE/Enumeration' );
   const EnumerationProperty = require( 'AXON/EnumerationProperty' );
   const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
   const NumberProperty = require( 'AXON/NumberProperty' );
-  const ObservableArray = require( 'AXON/ObservableArray' );
   const Range = require( 'DOT/Range' );
   const SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
-  const SkaterSample = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterSample' );
   const Util = require( 'DOT/Util' );
   const PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
-
-  // constants
-  // in seconds, how frequently we will save SkaterStates when recording data for energy vs position plot - at
-  // such a low value we are essentially saving a data point every animation frame
-  const SAVE_REFRESH_RATE = 0.01;
-
-  // how long to keep a SkaterSample when plotting energy vs position before removing it from the data series
-  const SKATER_SAMPLE_LIFE_TIME = 2;
 
   /**
    * @constructor
    * @param {Tandem} tandem
    */
-  class GraphsModel extends EnergySkateParkTrackSetModel {
+  class GraphsModel extends EnergySkateParkSaveSampleModel {
 
     /**
      * @param {Tandem} tandem
@@ -44,7 +34,11 @@ define( require => {
 
       // track set model with no friction
       super( false, tandem.createTandem( 'graphsModel' ), {
-        tracksConfigurable: true
+
+        //
+        tracksConfigurable: true,
+        saveSampleInterval: 0.01,
+        maxNumberOfSamples: 1000
       } );
 
       // the 'graphs' screen uses a unique set of premade tracks
@@ -70,18 +64,41 @@ define( require => {
         tandem: tandem.createTandem( 'energyPlotVisibleProperty' )
       } );
 
-      // samples of skater data to record and potentially play back
-      this.skaterSamples = new ObservableArray();
+      // existing data fades away before removal when the skater direction changes
+      this.skater.directionProperty.link( direction => {
+        if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ) {
+          this.initiateSampleRemoval();
+        }
+      } );
 
-      // @private {number} - when plotting energy vs time, we only save SkaterStates at SAVE_REFRESH_RATE
-      this.timeSinceSkaterSaved = 0;
-
-      // @public - in seconds, how much time has passed since beginning to record skater states
-      this.sampleTimeProperty = new NumberProperty( 0 );
+      // there are far more points required for the Energy vs Time plot, so we don't limit the number of
+      // saved samples in this case - trust that
+      this.independentVariableProperty.link( independentVariable => {
+        this.limitNumberOfSamples = independentVariable === GraphsModel.IndependentVariable.POSITION;
+      } );
 
       // listeners, no need for disposal as the model exists forever
       this.sceneProperty.link( scene => {
         this.clearEnergyData();
+      } );
+
+      // if plotting against position, don't save any skater samples while dragging
+      this.skater.draggingProperty.link( isDragging => {
+        if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ) {
+          this.clearEnergyData();
+          this.preventSampleSave = isDragging;
+        }
+      } );
+
+      this.sampleTimeProperty.link( time => {
+        const plottingTime = this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
+        const overTime = time > GraphsConstants.MAX_PLOTTED_TIME;
+        if ( plottingTime && overTime) {
+          this.preventSampleSave = true;
+        }
+        else {
+          this.preventSampleSave = false;
+        }
       } );
     }
 
@@ -103,7 +120,6 @@ define( require => {
 
       this.lineGraphScaleProperty.reset();
       this.independentVariableProperty.reset();
-      this.sampleTimeProperty.reset();
 
       this.clearEnergyData();
 
@@ -126,59 +142,6 @@ define( require => {
     }
 
     /**
-     * When the model is stepped, save skater sample data so that we can scrub states for playback.
-     *
-     * @override
-     * @param {number} dt
-     * @param {SkaterState} skaterState
-     */
-    stepModel( dt, skaterState ) {
-      const updatedState = super.stepModel( dt, skaterState );
-
-      const skaterSample = new SkaterSample( updatedState, this.sampleTimeProperty.get() );
-
-      // for the graphs screen, we need
-      this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );
-
-      if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME ) {
-        if ( this.sampleTimeProperty.get() < GraphsConstants.MAX_TIME ) {
-          this.skaterSamples.push( skaterSample );
-        }
-      }
-      else {
-        if ( this.timeSinceSkaterSaved > SAVE_REFRESH_RATE ) {
-          this.timeSinceSkaterSaved = 0;
-          this.skaterSamples.push( skaterSample );
-        }
-        else {
-          this.timeSinceSkaterSaved += dt;
-        }
-
-        // update time for each SkaterSample, and initiate remove for any that are too old
-        for ( let i = 0; i < this.skaterSamples.length; i++ ) {
-          const skaterSample = this.skaterSamples.get( i );
-
-          if ( !skaterSample.removeInitiated && ( skaterSample.timeSinceAdded > SKATER_SAMPLE_LIFE_TIME ) ) {
-            skaterSample.initiateRemove();
-          }
-
-          // now step the skater sample for opacity and removal
-          this.skaterSamples.get( i ).step( dt );
-        }
-      }
-
-      // handle removal of the SkaterSample, SkaterSample indicates when it is ready for removal from the model
-      // after fading out
-      const removalListener = () => {
-        skaterSample.removalEmitter.removeListener( removalListener );
-        this.skaterSamples.remove( skaterSample );
-      };
-      skaterSample.removalEmitter.addListener( removalListener );
-
-      return updatedState;
-    }
-
-    /**
      * Get the closest SkaterState that was saved at the time provided.
      * @public
      *
@@ -192,14 +155,6 @@ define( require => {
       nearestIndex = Util.clamp( nearestIndex, 0, this.skaterSamples.length - 1 );
 
       return this.skaterSamples.get( nearestIndex );
-    }
-
-    /**
-     * Clear all energy data, and reset the running time since we will begin recording at zero.
-     */
-    clearEnergyData() {
-      this.sampleTimeProperty.reset();
-      this.skaterSamples.clear();
     }
 
     /**

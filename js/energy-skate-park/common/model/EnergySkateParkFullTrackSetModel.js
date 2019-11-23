@@ -12,8 +12,6 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
-  const PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
-
 
   class EnergySkateParkFullTrackSetModel extends EnergySkateParkTrackSetModel {
 
@@ -25,19 +23,7 @@ define( require => {
     constructor( frictionAllowed, tandem, options ) {
       super( frictionAllowed, tandem, options );
 
-      // the "full" track set has all of the premade tracks - a parabola,  slope, double well, and loop.
-      const trackSet = EnergySkateParkTrackSetModel.createBasicTrackSet( this, tandem );
-
-      const loopControlPoints = PremadeTracks.createLoopControlPoints( this.controlPointGroupTandem, {
-        limitPointBounds: this.limitPointBounds
-      } );
-      const loopTrack = PremadeTracks.createTrack( this, this.tracks, loopControlPoints, this.availableModelBoundsProperty, {
-        configurable: this.tracksConfigurable,
-        draggable: this.tracksDraggable,
-        tandem: tandem.createTandem( 'loopTrack' )
-      } );
-      trackSet.push( loopTrack );
-
+      const trackSet = EnergySkateParkTrackSetModel.createFullTrackSet( this, tandem );
 
       // NOTE: It would have been nice to pass the tracks to EnergySkateParkTrackSetModel, but tracks require knowledge
       // of the model they are being added to so this isn't possible.
