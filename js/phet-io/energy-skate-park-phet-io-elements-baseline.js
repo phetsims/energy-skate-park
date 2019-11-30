@@ -2198,6 +2198,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
+    "energySkatePark.graphsScreen.graphsModel.graphsModel.saveSkaterSamplesProperty": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioDynamicElementArchetype": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO<BooleanIO>"
+    },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.sceneProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -36635,7 +36648,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.measureScreen.measureModel.sampleSkaterProperty": {
+    "energySkatePark.measureScreen.measureModel.saveSkaterSamplesProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioDynamicElementArchetype": false,
