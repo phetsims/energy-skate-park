@@ -21,10 +21,6 @@ define( require => {
   const Util = require( 'DOT/Util' );
   const PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
 
-  /**
-   * @constructor
-   * @param {Tandem} tandem
-   */
   class GraphsModel extends EnergySkateParkSaveSampleModel {
 
     /**
@@ -35,9 +31,13 @@ define( require => {
       // track set model with no friction
       super( false, tandem.createTandem( 'graphsModel' ), {
 
-        //
+        // premade tracks can be modified
         tracksConfigurable: true,
+
+        // interval at which we save skater samples
         saveSampleInterval: 0.01,
+
+        // to prevent a memory leak if we run for a long time without clearing
         maxNumberOfSamples: 1000
       } );
 
@@ -45,7 +45,7 @@ define( require => {
       const trackSet = this.createGraphsTrackSet( tandem );
       this.addTrackSet( trackSet );
 
-      // @public - properties for visibility and settings of the graph
+      // @public - properties for visibility and settings for the graph
       this.kineticEnergyDataVisibleProperty = new BooleanProperty( true );
       this.potentialEnergyDataVisibleProperty = new BooleanProperty( true );
       this.thermalEnergyDataVisibleProperty = new BooleanProperty( true );
@@ -72,17 +72,18 @@ define( require => {
       } );
 
       // there are far more points required for the Energy vs Time plot, so we don't limit the number of
-      // saved samples in this case - trust that
+      // saved samples in this case
       this.independentVariableProperty.link( independentVariable => {
         this.limitNumberOfSamples = independentVariable === GraphsModel.IndependentVariable.POSITION;
       } );
 
-      // listeners, no need for disposal as the model exists forever
+      // clear all data when the track changes
       this.sceneProperty.link( scene => {
         this.clearEnergyData();
       } );
 
-      // if plotting against position, don't save any skater samples while dragging
+      // if plotting against position don't save any skater samples while dragging, but if plotting against time
+      // it is still useful to see data as potential energy changes
       this.skater.draggingProperty.link( isDragging => {
         if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ) {
           this.clearEnergyData();
@@ -90,6 +91,7 @@ define( require => {
         }
       } );
 
+      // stop saving samples after the time limit if we are plotting against time
       this.sampleTimeProperty.link( time => {
         const plottingTime = this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
         const overTime = time > GraphsConstants.MAX_PLOTTED_TIME;
@@ -129,7 +131,7 @@ define( require => {
 
     /**
      * @override
-     * @param {number} dt
+     * @param {number} dt - in seconds
      */
     step( dt ) {
       super.step( dt );

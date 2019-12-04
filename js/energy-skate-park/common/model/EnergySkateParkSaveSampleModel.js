@@ -1,12 +1,12 @@
 // Copyright 2019, University of Colorado Boulder
 
 /**
- * An EnergySkateParkFullTrackSetModel that can save SkaterSamples as the model steps in time. SkaterSamples contain
- * information about the physical state of the skater at a point in time.
+ * An EnergySkateParkTrackSetModel that can save SkaterSamples. SkaterSamples contain information about the physical
+ * state of the skater at a point in time.
  *
  * Generally, it is up to the subtype to clear data at the correct time, as different presentations of this
  * data need to persist in different cases. But maxNumberOfSamples can be specified to keep things simple, and this
- * will only keep at most 50 samples at a time.
+ * will only keep at most that number of samples at a time.
  *
  * @author Jesse Greenberg
  */
@@ -36,16 +36,17 @@ define( require => {
         saveSampleInterval: 0.1,
 
         // the maximum number of SkaterSamples saved by this model, to prevent from saving too many if we run without
-        // a case that clears old samples
+        // encountering a case that clears old samples
         maxNumberOfSamples: 50
       }, options );
 
       super( includeFriction, tandem, options );
 
+      // @private {number}
       this.saveSampleInterval = options.saveSampleInterval;
       this.maxNumberOfSamples = options.maxNumberOfSamples;
 
-      // amount of time that has elapsed since a skater sample has been saved
+      // @private {number} - amount of time that has elapsed since a skater sample has been saved
       this.timeSinceSampleSave = 0;
 
       // @public {boolean} - whether or not to limit the number of samples to be saved - if false, which
@@ -70,6 +71,7 @@ define( require => {
 
     /**
      * Clear all saved data immediately and prepare to save data again.
+     * @public
      * @returns {}
      */
     clearEnergyData() {
@@ -89,6 +91,14 @@ define( require => {
       }
     }
 
+    /**
+     * @override
+     * @public
+     *
+     * @param {number} dt - in seconds
+     * @param {SkaterState} skaterState
+     * @returns {SkaterState}
+     */
     stepModel( dt, skaterState ) {
       const updatedState = super.stepModel( dt, skaterState );
 
