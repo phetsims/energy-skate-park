@@ -142,7 +142,7 @@ define( require => {
 
       const separation = width / layoutScale;
       for ( let y = -NEGATIVE_HEIGHT; y < 100; y++ ) {
-        const originX = this.modelViewTransform.modelToViewX( -5.5 );
+        const rightX = this.modelViewTransform.modelToViewX( -5 );
         const viewY = this.modelViewTransform.modelToViewY( y );
         if ( viewY < lineY1 ) {
           break;
@@ -159,7 +159,7 @@ define( require => {
           const gridLineLabel = new TextPanel( '' + y, {
             font: FONT,
             bottom: viewY - 2,
-            left: originX + 2
+            right: rightX - 2
           } );
           this.createdTextPanels.push( gridLineLabel );
 
@@ -171,7 +171,7 @@ define( require => {
             replacementText = new TextPanel( zeroMetersString, {
               font: FONT,
               top: viewY + 6,
-              x: gridLineLabel.x
+              right: gridLineLabel.right
             } );
             this.createdTextPanels.push( replacementText );
           }
