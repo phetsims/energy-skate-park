@@ -1087,14 +1087,7 @@ define( require => {
 
         // Check whether the skater has left the track
         if ( skaterState.track.isParameterInBounds( correctedState.parametricPosition ) ) {
-
-          if ( skaterState.positionY <= 0 ) {
-            const groundPosition = new Vector2( correctedState.positionX, 0 );
-            return this.switchToGround( correctedState, correctedState.getTotalEnergy(), groundPosition, correctedState.getVelocity(), dt );
-          }
-          else {
-            return correctedState;
-          }
+          return correctedState;
         }
         else {
           // Fly off the left or right side of the track
