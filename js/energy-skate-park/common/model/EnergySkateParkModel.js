@@ -1088,7 +1088,11 @@ define( require => {
         // Check whether the skater has left the track
         if ( skaterState.track.isParameterInBounds( correctedState.parametricPosition ) ) {
 
-          if ( skaterState.positionY <= 0 ) {
+          // To prevent non-physical behavior when the skater "pops" above ground after leaving a track that has
+          // forced it underground, we switch to ground before the skater can go below ground in the first place.
+          // This should only happen while dragging the track, as all track points should be above ground otherwise.
+          // See https://github.com/phetsims/energy-skate-park/issues/45
+          if ( correctedState.positionY <= 0 ) {
             const groundPosition = new Vector2( correctedState.positionX, 0 );
             return this.switchToGround( correctedState, correctedState.getTotalEnergy(), groundPosition, correctedState.getVelocity(), dt );
           }
