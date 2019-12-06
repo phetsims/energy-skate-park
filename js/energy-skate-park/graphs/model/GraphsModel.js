@@ -208,7 +208,7 @@ define( require => {
     }
   }
 
-  GraphsModel.IndependentVariable = new Enumeration( [ 'POSITION', 'TIME' ] );
+  GraphsModel.IndependentVariable = Enumeration.byKeys( [ 'POSITION', 'TIME' ] );
 
   return energySkatePark.register( 'GraphsModel', GraphsModel );
 
