@@ -32,7 +32,8 @@ define( require => {
   const PieChartLegend = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PieChartLegend' );
   const PieChartNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PieChartNode' );
   const PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PlaybackSpeedControl' );
-  const PlayPauseButton = require( 'SCENERY_PHET/buttons/PlayPauseButton' );
+  // const PlayPauseButton = require( 'SCENERY_PHET/buttons/PlayPauseButton' );
+  const TimeControlNode = require( 'SCENERY_PHET/TimeControlNode' );
   const Property = require( 'AXON/Property' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Range = require( 'DOT/Range' );
@@ -42,7 +43,7 @@ define( require => {
   const ScreenView = require( 'JOIST/ScreenView' );
   const Shape = require( 'KITE/Shape' );
   const SkaterNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SkaterNode' );
-  const StepForwardButton = require( 'SCENERY_PHET/buttons/StepForwardButton' );
+  // const StepForwardButton = require( 'SCENERY_PHET/buttons/StepForwardButton' );
   const Text = require( 'SCENERY/nodes/Text' );
   const ToolboxPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ToolboxPanel' );
   const ValueGaugeNode = require( 'SCENERY_PHET/ValueGaugeNode' );
@@ -368,34 +369,27 @@ define( require => {
         model.pausedProperty.set( !playing );
       } );
 
-      const playPauseButton = new PlayPauseButton( playingProperty, {
-        tandem: tandem.createTandem( 'playPauseButton' )
-      } ).mutate( { scale: 0.6 } );
-
-      // Make the Play/Pause button bigger when it is showing the pause button, see #298
-      const pauseSizeIncreaseFactor = 1.35;
-      playingProperty.lazyLink( isPlaying => {
-        playPauseButton.scale( isPlaying ? ( 1 / pauseSizeIncreaseFactor ) : pauseSizeIncreaseFactor );
-      } );
-
-      const stepButton = new StepForwardButton( {
-        isPlayingProperty: playingProperty,
-        listener: () => { model.manualStep(); },
-        tandem: tandem.createTandem( 'stepButton' ),
-        leftCenter: playPauseButton.rightCenter.plusXY( 8, 0 )
+      // play/pause and step buttons are same size until playingProperty is false
+      const buttonRadius = 18;
+      const timeControlNode = new TimeControlNode( playingProperty, {
+        tandem: tandem.createTandem( 'timeControlNode' ),
+        playPauseStepXSpacing: 12,
+        playPauseOptions: {
+          radius: buttonRadius,
+          playButtonScaleFactor: 1.35
+        },
+        stepOptions: {
+          radius: buttonRadius,
+          listener: model.manualStep
+        }
       } );
 
       // @protected - for layout in subtypes
       this.speedControl = new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ), {
-        leftCenter: stepButton.rightCenter.plusXY( 15, 0 )
+        leftCenter: timeControlNode.rightCenter.plusXY( 15, 0 )
       } );
 
-      // Make the step button the same size as the pause button.
-      stepButton.mutate( { scale: playPauseButton.height / stepButton.height } );
-      model.pausedProperty.linkAttribute( stepButton, 'enabled' );
-
-      playControls.addChild( playPauseButton );
-      playControls.addChild( stepButton );
+      playControls.addChild( timeControlNode );
       this.topLayer.addChild( this.speedControl );
       this.topLayer.addChild( playControls );
 
