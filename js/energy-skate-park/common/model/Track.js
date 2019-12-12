@@ -64,7 +64,7 @@ define( require => {
         // {boolean} - can this track be attached with another track by dragging track or control points?
         attachable: false,
 
-        tandem: Tandem.required,
+        tandem: Tandem.REQUIRED,
         phetioType: TrackIO,
         phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
       }, options );

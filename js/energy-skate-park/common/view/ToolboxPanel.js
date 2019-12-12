@@ -42,7 +42,7 @@ define( require => {
       const measuringTapeIcon = MeasuringTapeNode.createIcon();
       measuringTapeIcon.cursor = 'pointer';
 
-      const timerIcon = new TimerNode( new NumberProperty( 0 ), new BooleanProperty( false ), { tandem: Tandem.optional } ).rasterized( {
+      const timerIcon = new TimerNode( new NumberProperty( 0 ), new BooleanProperty( false ), { tandem: Tandem.OPTIONAL } ).rasterized( {
         cursor: 'pointer',
         resolution: 5,
         tandem: tandem.createTandem( 'timerIcon' )

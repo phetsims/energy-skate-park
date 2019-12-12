@@ -42,7 +42,7 @@ define( require => {
         // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging
         limitBounds: null,
 
-        tandem: Tandem.required,
+        tandem: Tandem.REQUIRED,
         phetioType: ControlPointIO,
         phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
       }, options );
