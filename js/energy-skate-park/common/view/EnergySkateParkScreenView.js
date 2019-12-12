@@ -380,7 +380,7 @@ define( require => {
         },
         stepOptions: {
           radius: buttonRadius,
-          listener: model.manualStep
+          listener: model.manualStep.bind( model )
         }
       } );
 
