@@ -17,10 +17,10 @@ where:
 
 The following fundamental energy equations are used heavily throughout the simulation/
 
-KE = 0.5 * m * v<sup>2</sup>
-PE = m * g * h
-TE = Ff * d
-T = KE + PE + TE
+KE = 0.5 * m * v<sup>2</sup><br>
+PE = m * g * h<br>
+TE = Ff * d<br>
+T = KE + PE + TE<br>
 
 where:
  - KE is kinetic energy
