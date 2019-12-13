@@ -479,8 +479,8 @@ define( require => {
         }
       }
 
-      // increment running time
-      if ( this.timerRunningProperty.get() ) {
+      // increment running time, only if simulation is also running
+      if ( !this.pausedProperty.value && this.timerRunningProperty.get() ) {
         this.timeProperty.set( this.timeProperty.get() + dt );
       }
     }
