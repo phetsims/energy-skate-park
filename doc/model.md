@@ -15,7 +15,7 @@ where:
 
 # Energy
 
-The following fundamental energy equations are used heavily throughout the simulation/
+The following fundamental energy equations are used heavily throughout the simulation
 
 KE = 0.5 * m * v<sup>2</sup><br>
 PE = m * g * h<br>
