@@ -378,7 +378,7 @@ define( require => {
           radius: buttonRadius,
           playButtonScaleFactor: 1.35
         },
-        stepOptions: {
+        stepForwardOptions: {
           radius: buttonRadius,
           listener: model.manualStep.bind( model )
         }
