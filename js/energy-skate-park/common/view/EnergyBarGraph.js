@@ -155,8 +155,6 @@ define( require => {
       }
 
       this.addChild( content );
-      // const containingPanel = new Panel( content );
-      // this.addChild( containingPanel );
 
       // attach listeners - bar chart exists for life of sim, no need to dispose
       skater.energyChangedEmitter.addListener( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
