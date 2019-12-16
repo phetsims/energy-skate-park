@@ -46,7 +46,12 @@ define( require => {
       options = merge( {
 
         // include buttons that increase/decrease the scale of the graph?
-        showBarGraphZoomButtons: true
+        showBarGraphZoomButtons: true,
+
+        // @param {Range} - The range for the visible portion of the graph, in joules - note this is somewhat arbitrary
+        // because the bars will have difference scales, but size should be about 1.5 times larger than the energy would
+        // extend bars at default scale. A negative min value will allow some space to represent negative energies.
+        graphRange: new Range( -100, 265 )
       }, options );
 
       super( options );
@@ -54,7 +59,7 @@ define( require => {
       // the range for the visible portion of the graph, in joules - note this is somewhat arbitrary because
       // the bars will have difference scales, but size should be about 1.5 times larger than the energy would
       // extend bars at default scale
-      const graphRangeProperty = new Property( new Range( -100, 265 ) );
+      const graphRangeProperty = new Property( options.graphRange );
 
       // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
       //   "The kinetic energy is zero at the top of the trajectory (turning point)
