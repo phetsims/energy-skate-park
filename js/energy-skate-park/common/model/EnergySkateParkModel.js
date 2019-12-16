@@ -1101,13 +1101,26 @@ define( require => {
           }
         }
         else {
+
           // Fly off the left or right side of the track
           // Off the edge of the track.  If the skater transitions from the right edge of the 2nd track directly to the
           // ground then do not lose thermal energy during the transition, see #164
           if ( correctedState.parametricPosition > skaterState.track.maxPoint && skaterState.track.slopeToGround ) {
-            const result = correctedState.switchToGround( correctedState.thermalEnergy, correctedState.getSpeed(), 0, correctedState.positionX, 0 );
+            let result = correctedState.switchToGround( correctedState.thermalEnergy, correctedState.getSpeed(), 0, correctedState.positionX, 0 );
 
-            // Correct the energy discrepancy when switching to the ground, see #301
+            // All track points are at or above ground so it is possible that we took potential energy out of the. Add
+            // to kinetic energy to compensate
+            const energyDiference = result.getPotentialEnergy() - correctedState.getPotentialEnergy();
+            if ( energyDiference < 0 ) {
+              const speedToAdd = result.getSpeedFromEnergy( Math.abs( energyDiference ) );
+              const correctedSpeed = result.getSpeed() + speedToAdd;
+
+              // restore direction to velocity - slopes point to the right, but just in case
+              const correctedV = result.velocityX >= 0 ? correctedSpeed : -correctedSpeed;
+              result = result.updatePositionAngleUpVelocity( result.positionX, result.positionY, 0, true, correctedV, 0 );
+            }
+
+            // Correct any other energy discrepancy when switching to the ground, see #301
             return this.correctEnergy( skaterState, result );
           }
           else {

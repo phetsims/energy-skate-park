@@ -411,6 +411,17 @@ define( require => {
       return new Vector2( this.velocityX, this.velocityY );
     }
 
+    /**
+     * Get the speed of this SkaterState from kinetic energy, using KE = 1/2 * m * v^2.
+     * @public
+     *
+     * @param {number} kineticEnergy
+     * @returns {number}
+     */
+    getSpeedFromEnergy( kineticEnergy ) {
+      return Math.sqrt( 2 * Math.abs( kineticEnergy ) / this.mass );
+    }
+
     // TODO: Pooling support for SkaterState?
     freeToPool() {}
 
