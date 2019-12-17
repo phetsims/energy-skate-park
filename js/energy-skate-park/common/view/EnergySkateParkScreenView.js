@@ -541,7 +541,7 @@ define( require => {
         this.viewBoundsPath.shape = Shape.bounds( this.availableViewBounds );
       }
 
-      this.visibleBoundsProperty.set( this.availableViewBounds ); // TODO: Should the StopwatchNode be able to go below ground?  See https://github.com/phetsims/gas-properties/issues/170
+      this.visibleBoundsProperty.set( this.availableViewBounds ); // TODO: Should the StopwatchNode be able to go below ground?  See https://github.com/phetsims/energy-skate-park/issues/154
     }
 
     /**
