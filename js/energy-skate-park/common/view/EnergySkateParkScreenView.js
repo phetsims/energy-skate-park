@@ -177,7 +177,7 @@ define( require => {
       // For the playground screen, show attach/detach toggle buttons
       if ( options.showAttachDetachRadioButtons ) {
         const property = model.tracksDraggable ? new Property( true ) :
-                       new DerivedProperty( [ model.sceneProperty ], scene => { scene === 2; } );
+                         new DerivedProperty( [ model.sceneProperty ], scene => { scene === 2; } );
         this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.stickingToTrackProperty, property, 150, tandem.createTandem( 'attachDetachToggleButtons' ) );
         this.bottomLayer.addChild( this.attachDetachToggleButtons );
       }
@@ -233,17 +233,17 @@ define( require => {
 
       // @protected (read-only) - for layout or repositioning in subtypes
       this.speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 30 ), {
-          numberDisplayOptions: {
-            valuePattern: speedometerMetersPerSecondPatternString,
-            numberMaxWidth: gaugeRadius * 1.3,
-            decimalPlaces: 1
-          },
+        numberDisplayOptions: {
+          valuePattern: speedometerMetersPerSecondPatternString,
+          numberMaxWidth: gaugeRadius * 1.3,
+          decimalPlaces: 1
+        },
 
-          // enable/disable updates based on whether the speedometer is visible
-          enabledProperty: model.speedometerVisibleProperty,
-          pickable: false,
-          radius: gaugeRadius,
-          tandem: tandem.createTandem( 'speedometerNode' )
+        // enable/disable updates based on whether the speedometer is visible
+        enabledProperty: model.speedometerVisibleProperty,
+        pickable: false,
+        radius: gaugeRadius,
+        tandem: tandem.createTandem( 'speedometerNode' )
       } );
       model.speedometerVisibleProperty.linkAttribute( this.speedometerNode, 'visible' );
       model.speedValueVisibleProperty.link( visible => { this.speedometerNode.setNumberDisplayVisible( visible ); } );
@@ -287,9 +287,11 @@ define( require => {
         this.stopwatchNode = new StopwatchNode( model.stopwatch, {
           visibleBoundsProperty: this.visibleBoundsProperty,
           tandem: tandem.createTandem( 'stopwatchNode' ),
-          dragEndListener: () => {
-            if ( this.stopwatchNode.bounds.intersectsBounds( this.toolboxPanel.bounds ) ) {
-              model.stopwatch.isVisibleProperty.value = false;
+          dragListenerOptions: {
+            end: () => {
+              if ( this.stopwatchNode.bounds.intersectsBounds( this.toolboxPanel.bounds ) ) {
+                model.stopwatch.isVisibleProperty.value = false;
+              }
             }
           }
         } );
