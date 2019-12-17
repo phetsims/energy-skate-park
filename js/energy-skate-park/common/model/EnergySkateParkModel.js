@@ -48,6 +48,7 @@ define( require => {
   const ReferenceIO = require( 'TANDEM/types/ReferenceIO' );
   const Skater = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Skater' );
   const SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
+  const Stopwatch = require( 'SCENERY_PHET/Stopwatch' );
   const StringIO = require( 'TANDEM/types/StringIO' );
   const Tandem = require( 'TANDEM/Tandem' );
   const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
@@ -185,25 +186,9 @@ define( require => {
         tandem: tandem.createTandem( 'pausedProperty' )
       } );
 
-      // @public {NumberProperty} - For the simulation timer which can be started/stopped/reset by user - not the
-      // time since launch
-      this.timeProperty = new NumberProperty( 0, {
-        tandem: tandem.createTandem( 'timeProperty' )
-      } );
-
       // @public {BooleanProperty} -Whether or not the timer is running
-      this.timerRunningProperty = new BooleanProperty( false, {
-        tandem: tandem.createTandem( 'timerRunningProperty' )
-      } );
-
-      // @public {Vector2} - position for the timer, in model coordinates
-      this.timerPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
-        tandem: tandem.createTandem( 'timerPositionProperty' )
-      } );
-
-      // @public {BooleanProperty} - whether or not the timer is visible for use
-      this.timerVisibleProperty = new BooleanProperty( false, {
-        tandem: tandem.createTandem( 'timerVisibleProperty' )
+      this.stopwatch = new Stopwatch( {
+        tandem: tandem.createTandem( 'stopwatch' )
       } );
 
       // @public {string} - speed of the model, either 'normal' or 'slow'
@@ -368,10 +353,7 @@ define( require => {
       this.frictionProperty.reset();
       this.stickingToTrackProperty.reset();
       this.availableModelBoundsProperty.reset();
-      this.timeProperty.reset();
-      this.timerRunningProperty.reset();
-      this.timerPositionProperty.reset();
-      this.timerVisibleProperty.reset();
+      this.stopwatch.reset();
       this.availableModelBoundsProperty.value = availableModelBounds;
       this.skater.reset();
 
@@ -480,8 +462,8 @@ define( require => {
       }
 
       // increment running time, only if simulation is also running
-      if ( !this.pausedProperty.value && this.timerRunningProperty.get() ) {
-        this.timeProperty.set( this.timeProperty.get() + dt );
+      if ( !this.pausedProperty.value ) {
+        this.stopwatch.step( dt );
       }
     }
 

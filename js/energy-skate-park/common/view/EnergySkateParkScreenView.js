@@ -21,7 +21,6 @@ define( require => {
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
   const EnergySkateParkControlPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkControlPanel' );
   const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
-  const EnergySkateParkTimerNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTimerNode' );
   const GridNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GridNode' );
   const Image = require( 'SCENERY/nodes/Image' );
   const MeasuringTapeNode = require( 'SCENERY_PHET/MeasuringTapeNode' );
@@ -42,10 +41,11 @@ define( require => {
   const ScreenView = require( 'JOIST/ScreenView' );
   const Shape = require( 'KITE/Shape' );
   const SkaterNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SkaterNode' );
+  const StopwatchNode = require( 'SCENERY_PHET/StopwatchNode' );
   const Text = require( 'SCENERY/nodes/Text' );
   const ToolboxPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/ToolboxPanel' );
   const ValueGaugeNode = require( 'SCENERY_PHET/ValueGaugeNode' );
-  const VisibilityControlsPanel =require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/VisibilityControlsPanel' );
+  const VisibilityControlsPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/VisibilityControlsPanel' );
   const Vector2 = require( 'DOT/Vector2' );
 
   // strings
@@ -63,7 +63,6 @@ define( require => {
 
   // Debug flag to show the view bounds, the region within which the skater can move
   const showAvailableBounds = false;
-
 
   /**
    * @param {EnergySkateParkModel} model
@@ -194,7 +193,7 @@ define( require => {
         this.bottomLayer.addChild( this.energyBarGraphAccordionBox );
 
         // this.energyBarGraphPanel = new EnergyBarGraphPanel( model, tandem.createTandem( 'energyBargGraphPanel' ), {
-          // barGraphOptions: {
+        // barGraphOptions: {
         //     showBarGraphZoomButtons: options.showBarGraphZoomButtons
         //   }
         // } );
@@ -284,10 +283,18 @@ define( require => {
           tandem: tandem.createTandem( 'measuringTapeNode' )
         } );
 
-        // @private {EnergySkateParkTimerNode}
-        this.timerNode = new EnergySkateParkTimerNode( model, this, tandem.createTandem( 'timerNode' ) );
+        // @private
+        this.stopwatchNode = new StopwatchNode( model.stopwatch, {
+          visibleBoundsProperty: this.visibleBoundsProperty,
+          tandem: tandem.createTandem( 'stopwatchNode' ),
+          dragEndListener: () => {
+            if ( this.stopwatchNode.bounds.intersectsBounds( this.toolboxPanel.bounds ) ) {
+              model.stopwatch.isVisibleProperty.value = false;
+            }
+          }
+        } );
 
-        this.topLayer.addChild( this.timerNode );
+        this.topLayer.addChild( this.stopwatchNode );
         this.topLayer.addChild( this.measuringTapeNode );
 
         // @private {ToolboxPanel} - so it can float to the layout bounds, see layout()
@@ -396,7 +403,7 @@ define( require => {
       playControls.setRightBottom( this.layoutBounds.centerBottom.minusXY( speedControlSpacing, 15 ) );
       this.playControls = playControls;
 
-        // grid and reference height visibility are controlled from a separate panel
+      // grid and reference height visibility are controlled from a separate panel
       if ( this.showSeparateVisibilityControlsPanel ) {
 
         // @protected (read-only) - for layout
@@ -440,9 +447,10 @@ define( require => {
 
     /**
      * Layout the EnergySkateParkScreenView, scaling it up and down with the size of the screen to ensure a
-     * minimially visible area, but keeping it centered at the bottom of the screen, so there is more area in the +y
+     * minimally visible area, but keeping it centered at the bottom of the screen, so there is more area in the +y
      * direction to build tracks and move the skater.
      * @public
+     * @override
      *
      * @param {number} width
      * @param {number} height
@@ -532,6 +540,8 @@ define( require => {
       if ( showAvailableBounds ) {
         this.viewBoundsPath.shape = Shape.bounds( this.availableViewBounds );
       }
+
+      this.visibleBoundsProperty.set( this.availableViewBounds ); // TODO: Should the StopwatchNode be able to go below ground?  See https://github.com/phetsims/gas-properties/issues/170
     }
 
     /**

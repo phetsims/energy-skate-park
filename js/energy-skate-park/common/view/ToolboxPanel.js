@@ -10,7 +10,6 @@ define( require => {
   'use strict';
 
   // modules
-  const BooleanProperty = require( 'AXON/BooleanProperty' );
   const DerivedProperty = require( 'AXON/DerivedProperty' );
   const DragListener = require( 'SCENERY/listeners/DragListener' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
@@ -18,9 +17,9 @@ define( require => {
   const HBox = require( 'SCENERY/nodes/HBox' );
   const MeasuringTapeNode = require( 'SCENERY_PHET/MeasuringTapeNode' );
   const merge = require( 'PHET_CORE/merge' );
-  const NumberProperty = require( 'AXON/NumberProperty' );
   const Panel = require( 'SUN/Panel' );
-  const TimerNode = require( 'SCENERY_PHET/TimerNode' );
+  const Stopwatch = require( 'SCENERY_PHET/Stopwatch' );
+  const StopwatchNode = require( 'SCENERY_PHET/StopwatchNode' );
   const Tandem = require( 'TANDEM/Tandem' );
 
   class ToolboxPanel extends Panel {
@@ -42,18 +41,18 @@ define( require => {
       const measuringTapeIcon = MeasuringTapeNode.createIcon();
       measuringTapeIcon.cursor = 'pointer';
 
-      const timerIcon = new TimerNode( new NumberProperty( 0 ), new BooleanProperty( false ), { tandem: Tandem.OPTIONAL } ).rasterized( {
+      const stopwatchIcon = new StopwatchNode( new Stopwatch( { isVisible: true } ), { tandem: Tandem.OPT_OUT } ).rasterized( {
         cursor: 'pointer',
         resolution: 5,
         tandem: tandem.createTandem( 'timerIcon' )
       } );
 
       measuringTapeIcon.setScaleMagnitude( 0.65 );
-      timerIcon.setScaleMagnitude( 0.4 );
+      stopwatchIcon.setScaleMagnitude( 0.4 );
 
       // align icons for panel
       const icons = new HBox( {
-        children: [ timerIcon, measuringTapeIcon ],
+        children: [ stopwatchIcon, measuringTapeIcon ],
         align: 'center',
         spacing: 20
       } );
@@ -73,23 +72,22 @@ define( require => {
         }
       } ) );
 
-      // create a forwarding listener for the TimerNode DragListener
-      timerIcon.addInputListener( DragListener.createForwardingListener( event => {
-        if ( !model.timerVisibleProperty.get() ) {
-          model.timerVisibleProperty.set( true );
+      // create a forwarding listener for the StopwatchNode DragListener
+      stopwatchIcon.addInputListener( DragListener.createForwardingListener( event => {
+        if ( !model.stopwatch.isVisibleProperty.get() ) {
+          model.stopwatch.isVisibleProperty.value = true;
 
-          const parentPoint = this.globalToParentPoint( event.pointer.point );
-          const correctedPoint = parentPoint.minusXY( view.timerNode.width / 2, view.timerNode.height / 2 );
-
-          const modelPoint = view.modelViewTransform.viewToModelPosition( correctedPoint );
-          model.timerPositionProperty.set( modelPoint );
-
-          view.timerNode.dragListener.press( event, view.timerNode );
+          const coordinate = this.globalToParentPoint( event.pointer.point ).minusXY(
+            view.stopwatchNode.width / 2,
+            view.stopwatchNode.height / 2
+          );
+          model.stopwatch.positionProperty.set( coordinate );
+          view.stopwatchNode.dragListener.press( event, view.stopwatchNode );
         }
       } ) );
 
       ToolboxPanel.attachIconVisibilityListener( measuringTapeIcon, model.measuringTapeVisibleProperty );
-      ToolboxPanel.attachIconVisibilityListener( timerIcon, model.timerVisibleProperty );
+      ToolboxPanel.attachIconVisibilityListener( stopwatchIcon, model.stopwatch.isVisibleProperty );
     }
 
     /**
