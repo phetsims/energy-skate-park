@@ -758,9 +758,14 @@ define( require => {
           newThermalEnergy = skaterState.thermalEnergy;
           newKineticEnergy = initialEnergy - newPotentialEnergy - newThermalEnergy;
 
-          assert && assert( newKineticEnergy >= 0, 'kinetic energy should be non-negative after correction, newKineticEnergy: ' + newKineticEnergy );
+          // if newPotentialEnergy ~= but slightly larger than initialEnergy (since the skater may have been bumped
+          // up to the track after crossing) we must accept the increase in total energy, but it should be small
+          // enough that the user does not notice it, see https://github.com/phetsims/energy-skate-park/issues/44
           if ( newKineticEnergy < 0 ) {
             newKineticEnergy = 0;
+
+            const newTotalEnergy = newThermalEnergy + newKineticEnergy + newPotentialEnergy;
+            assert && assert( Util.equalsEpsilon( newTotalEnergy, initialEnergy, 1E-8 ), 'substantial total energy change after corrections' );
           }
 
           // ke = 1/2 m v v
