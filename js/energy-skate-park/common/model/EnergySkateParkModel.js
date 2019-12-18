@@ -553,7 +553,7 @@ define( require => {
       if ( newThermalEnergy < 0 ) {
         const correctedState = this.correctThermalEnergy( skaterState, segment, proposedPosition );
 
-        newSpeed = correctedState.speed;
+        newSpeed = correctedState.getSpeed();
         newThermalEnergy = correctedState.thermalEnergy;
       }
 
@@ -771,7 +771,7 @@ define( require => {
         // If crossed the track, attach to it.
         let newVelocity = segment.times( segment.dot( proposedVelocity ) );
         let newSpeed = newVelocity.magnitude;
-        let newKineticEnergy = 0.5 * skaterState.mass * newVelocity.magnitudeSquared;
+        const newKineticEnergy = 0.5 * skaterState.mass * newVelocity.magnitudeSquared;
         const newPosition = track.getPoint( parametricPosition );
         const newPotentialEnergy = -skaterState.mass * skaterState.gravity * ( newPosition.y - skaterState.referenceHeight );
         let newThermalEnergy = initialEnergy - newKineticEnergy - newPotentialEnergy;
@@ -779,22 +779,11 @@ define( require => {
         // Sometimes (depending on dt) the thermal energy can go negative by the above calculation, see #141
         // In that case, set the thermal energy to zero and reduce the speed to compensate.
         if ( newThermalEnergy < skaterState.thermalEnergy ) {
-          newThermalEnergy = skaterState.thermalEnergy;
-          newKineticEnergy = initialEnergy - newPotentialEnergy - newThermalEnergy;
+          const correctedState = this.correctThermalEnergy( skaterState, segment, proposedPosition );
 
-          // if newPotentialEnergy ~= but slightly larger than initialEnergy (since the skater may have been bumped
-          // up to the track after crossing) we must accept the increase in total energy, but it should be small
-          // enough that the user does not notice it, see https://github.com/phetsims/energy-skate-park/issues/44
-          if ( newKineticEnergy < 0 ) {
-            newKineticEnergy = 0;
-
-            const newTotalEnergy = newThermalEnergy + newKineticEnergy + newPotentialEnergy;
-            assert && assert( Util.equalsEpsilon( newTotalEnergy, initialEnergy, 1E-8 ), 'substantial total energy change after corrections' );
-          }
-
-          // ke = 1/2 m v v
-          newSpeed = Math.sqrt( 2 * newKineticEnergy / skaterState.mass );
-          newVelocity = segment.times( newSpeed );
+          newThermalEnergy = correctedState.thermalEnergy;
+          newSpeed = correctedState.getSpeed();
+          newVelocity = correctedState.getVelocity();
         }
 
         const dot = proposedVelocity.normalized().dot( segment );
