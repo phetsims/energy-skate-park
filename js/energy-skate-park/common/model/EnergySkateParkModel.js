@@ -541,7 +541,7 @@ define( require => {
     switchToGround( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt ) {
       const segment = new Vector2( 1, 0 );
 
-      const newSpeed = segment.dot( proposedVelocity );
+      let newSpeed = segment.dot( proposedVelocity );
 
       // Make sure energy perfectly conserved when falling to the ground.
       const newKineticEnergy = 0.5 * newSpeed * newSpeed * skaterState.mass;
@@ -551,13 +551,10 @@ define( require => {
       let newThermalEnergy = initialEnergy - newKineticEnergy - newPotentialEnergy;
 
       if ( newThermalEnergy < 0 ) {
-        newThermalEnergy = 0;
+        const correctedState = this.correctThermalEnergy( skaterState, segment, proposedPosition );
 
-        // verify that the corrected thermal does not produce a noticeable total energy difference
-        if ( assert ) {
-          const newTotalEnergy = newThermalEnergy + newKineticEnergy + newPotentialEnergy;
-          assert( Util.equalsEpsilon( newTotalEnergy, initialEnergy, 1E-8 ), 'substantial total energy change after thermal energy correction' );
-        }
+        newSpeed = correctedState.speed;
+        newThermalEnergy = correctedState.thermalEnergy;
       }
 
       // Supply information about a very rare problem that occurs when thermal energy goes negative,
@@ -579,6 +576,41 @@ define( require => {
 
       if ( !isFinite( newThermalEnergy ) ) { throw new Error( 'not finite' ); }
       return skaterState.switchToGround( newThermalEnergy, newSpeed, 0, proposedPosition.x, proposedPosition.y );
+    }
+
+    /**
+     * Only use this correction when something has gone wrong with the thermal energy calculation. For example, thermal
+     * energy has gone negative. Attempts to correct by using previous thermal energy and compensate modifying
+     * kinetic energy. If this results in negative kinetic energy, we have to accept a change to total energy, but
+     * we make sure that it is within an acceptable amount.
+     *
+     * @param {SkaterState} skaterState
+     * @param {Vector2} segment
+     * @returns {SkaterState}
+     */
+    correctThermalEnergy( skaterState, segment, proposedPosition ) {
+      const initialEnergy = skaterState.getTotalEnergy();
+      const newPotentialEnergy = ( -1 ) * skaterState.mass * skaterState.gravity * ( proposedPosition.y - skaterState.referenceHeight );
+      const newThermalEnergy = skaterState.thermalEnergy;
+      let newKineticEnergy = initialEnergy - newPotentialEnergy - newThermalEnergy;
+
+      // if newPotentialEnergy ~= but slightly larger than initialEnergy (since the skater may have been bumped
+      // up to the track after crossing) we must accept the increase in total energy, but it should be small
+      // enough that the user does not notice it, see https://github.com/phetsims/energy-skate-park/issues/44
+      if ( newKineticEnergy < 0 ) {
+        newKineticEnergy = 0;
+      }
+
+      // ke = 1/2 m v v
+      const newSpeed = Math.sqrt( 2 * newKineticEnergy / skaterState.mass );
+      const newVelocity = segment.times( newSpeed );
+
+      let correctedState = skaterState.updateThermalEnergy( newThermalEnergy );
+      correctedState = correctedState.updateUDVelocity( correctedState.parametricSpeed, newVelocity.x, newVelocity.y );
+
+      assert && assert( Util.equalsEpsilon( correctedState.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'substantial total energy change after corrections' );
+
+      return correctedState;
     }
 
     /**
