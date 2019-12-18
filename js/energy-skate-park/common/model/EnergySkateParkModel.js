@@ -548,7 +548,17 @@ define( require => {
       const newPotentialEnergy = ( -1 ) * skaterState.mass * skaterState.gravity * ( 0 - skaterState.referenceHeight );
 
       // TODO: This is likely related to issue identified in #45
-      const newThermalEnergy = initialEnergy - newKineticEnergy - newPotentialEnergy;
+      let newThermalEnergy = initialEnergy - newKineticEnergy - newPotentialEnergy;
+
+      if ( newThermalEnergy < 0 ) {
+        newThermalEnergy = 0;
+
+        // verify that the corrected thermal does not produce a noticeable total energy difference
+        if ( assert ) {
+          const newTotalEnergy = newThermalEnergy + newKineticEnergy + newPotentialEnergy;
+          assert( Util.equalsEpsilon( newTotalEnergy, initialEnergy, 1E-8 ), 'substantial total energy change after thermal energy correction' );
+        }
+      }
 
       // Supply information about a very rare problem that occurs when thermal energy goes negative,
       // see https://github.com/phetsims/energy-skate-park/issues/45
