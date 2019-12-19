@@ -51,7 +51,7 @@ define( require => {
 
     /**
      * Start of a drag interaction from an event.
-     * @param {Event} event
+     * @param {SceneryEvent} event
      */
     handleDragStart( event ) {
 
@@ -71,7 +71,7 @@ define( require => {
 
     /**
      * Continuation of drag.
-     * @param {Event} event
+     * @param {SceneryEvent} event
      */
     handleDrag( event ) {
       if ( this.track.dragSource === this ) {
@@ -81,7 +81,7 @@ define( require => {
 
     /**
      * End of a drag interaction.
-     * @param {Event} even
+     * @param {SceneryEvent} even
      */
     handleDragEnd( even ) {
       if ( this.track.dragSource === this ) {
@@ -266,7 +266,7 @@ define( require => {
      * Determine the offset point at the start of a drag so that the track translates with the mouse without jumping.
      * @private
      *
-     * @param {Event} event
+     * @param {SceneryEvent} event
      */
     calculateStartOffset( event ) {
       const startingPosition = this.modelViewTransform.modelToViewPosition( this.track.position );
