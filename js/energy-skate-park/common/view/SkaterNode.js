@@ -50,6 +50,9 @@ define( require => {
 
       super( {
         children: [ leftSkaterImageNode, rightSkaterImageNode ],
+
+        // rendering the skater with canvas makes it move smoothly around the screen edges in iOS Safari, see
+        // https://github.com/phetsims/energy-skate-park/issues/42
         renderer: 'canvas',
         tandem: tandem
       } );
