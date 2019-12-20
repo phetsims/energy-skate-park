@@ -449,7 +449,9 @@ define( require => {
         this.availableModelBoundsProperty.value = this.availableModelBounds;
 
         // limit measuring tape to available area
-        this.measuringTapeNode.setDragBounds( this.availableModelBounds );
+        if ( options.showToolbox ) {
+          this.measuringTapeNode.setDragBounds( this.availableModelBounds );
+        }
 
         this.floatInterface();
       } );
@@ -486,14 +488,13 @@ define( require => {
       this.translate( offsetX, offsetY );
 
       // availableViewBounds in this sim is the visible area above ground (y=0)
-      this.availableViewBounds = new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) );
+      // TODO: Should the StopwatchNode and other draggables be able to go below ground? See https://github.com/phetsims/energy-skate-park/issues/154
+      this.visibleBoundsProperty.set( new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) ) ); // TODO: Should the StopwatchNode be able to go below ground?  See https://github.com/phetsims/energy-skate-park/issues/154
 
       // Show it for debugging
       if ( showAvailableBounds ) {
-        this.viewBoundsPath.shape = Shape.bounds( this.availableViewBounds );
+        this.viewBoundsPath.shape = Shape.bounds( this.visibleBoundsProperty.get() );
       }
-
-      this.visibleBoundsProperty.set( this.availableViewBounds ); // TODO: Should the StopwatchNode be able to go below ground?  See https://github.com/phetsims/energy-skate-park/issues/154
     }
 
     /**
