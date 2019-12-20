@@ -454,6 +454,11 @@ define( require => {
         }
 
         this.floatInterface();
+
+        // Show it for debugging
+        if ( showAvailableBounds ) {
+          this.viewBoundsPath.shape = Shape.bounds( this.visibleBoundsProperty.get() );
+        }
       } );
     }
 
@@ -490,11 +495,6 @@ define( require => {
       // availableViewBounds in this sim is the visible area above ground (y=0)
       // TODO: Should the StopwatchNode and other draggables be able to go below ground? See https://github.com/phetsims/energy-skate-park/issues/154
       this.visibleBoundsProperty.set( new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) ) ); // TODO: Should the StopwatchNode be able to go below ground?  See https://github.com/phetsims/energy-skate-park/issues/154
-
-      // Show it for debugging
-      if ( showAvailableBounds ) {
-        this.viewBoundsPath.shape = Shape.bounds( this.visibleBoundsProperty.get() );
-      }
     }
 
     /**
