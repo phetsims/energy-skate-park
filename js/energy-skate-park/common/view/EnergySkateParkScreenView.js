@@ -441,7 +441,6 @@ define( require => {
         this.topLayer.addChild( this.viewBoundsPath );
       }
 
-      // float UI components to provide as much space as possible in the play area
       this.visibleBoundsProperty.lazyLink( visibleBounds => {
 
         // Compute the visible model bounds so we will know when a model object like the skater has gone offscreen
@@ -453,6 +452,7 @@ define( require => {
           this.measuringTapeNode.setDragBounds( this.availableModelBounds );
         }
 
+        // float UI components to provide as much space as possible in the play area
         this.floatInterface();
 
         // Show it for debugging
