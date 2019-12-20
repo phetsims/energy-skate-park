@@ -440,6 +440,9 @@ define( require => {
         } );
         this.topLayer.addChild( this.viewBoundsPath );
       }
+
+      // float UI components to provide as much space as possible in the play area
+      this.visibleBoundsProperty.lazyLink( () => this.floatInterface() );
     }
 
     /**
@@ -453,8 +456,6 @@ define( require => {
      * @param {number} height
      */
     layout( width, height ) {
-      assert && assert( this.controlPanel, 'much of component layout based on control panel, subtype should create one.' );
-
       this.resetTransform();
 
       const scale = this.getLayoutScale( width, height );
@@ -477,12 +478,29 @@ define( require => {
       // availableViewBounds in this sim is the visible area above ground (y=0)
       this.availableViewBounds = new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) );
 
+      // Show it for debugging
+      if ( showAvailableBounds ) {
+        this.viewBoundsPath.shape = Shape.bounds( this.availableViewBounds );
+      }
+
+      this.visibleBoundsProperty.set( this.availableViewBounds ); // TODO: Should the StopwatchNode be able to go below ground?  See https://github.com/phetsims/energy-skate-park/issues/154
+    }
+
+    /**
+     * Float the UI controls to provide more play area space when possible to move the skater and create tracks. If
+     * there is extra horizontal space, controls near the edge of the layoutBounds will float outward.
+     *
+     * Override in subtypes for unique layout of various controls.
+     */
+    floatInterface() {
+      assert && assert( this.controlPanel, 'much of component layout based on control panel, one should be created.' );
+
       const maxFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? this.layoutBounds.right + EXTRA_FLOAT : Number.MAX_VALUE;
       const minFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? this.layoutBounds.left - EXTRA_FLOAT : -Number.MAX_VALUE;
 
       // for use in subtypes
-      this.fixedRight = Math.min( maxFloatAmount, this.availableViewBounds.maxX ) - 5;
-      this.fixedLeft = Math.max( minFloatAmount, this.availableViewBounds.minX ) + 5;
+      this.fixedRight = Math.min( maxFloatAmount, this.visibleBoundsProperty.get().maxX ) - 5;
+      this.fixedLeft = Math.max( minFloatAmount, this.visibleBoundsProperty.get().minX ) + 5;
 
       this.controlPanel.top = 5;
       this.controlPanel.right = this.fixedRight;
@@ -496,7 +514,7 @@ define( require => {
       if ( this.sceneSelectionRadioButtonGroup ) {
 
         // symmetrical with the right edge of the reset all button
-        this.sceneSelectionRadioButtonGroup.left = this.availableViewBounds.minX + 5;
+        this.sceneSelectionRadioButtonGroup.left = this.visibleBoundsProperty.get().minX + 5;
         this.sceneSelectionRadioButtonGroup.bottom = this.resetAllButton.bottom;
       }
 
@@ -504,7 +522,7 @@ define( require => {
       this.returnSkaterButton.right = this.resetAllButton.left - 10;
 
       // Compute the visible model bounds so we will know when a model object like the skater has gone offscreen
-      this.availableModelBounds = this.modelViewTransform.viewToModelBounds( this.availableViewBounds );
+      this.availableModelBounds = this.modelViewTransform.viewToModelBounds( this.visibleBoundsProperty.get() );
       this.availableModelBoundsProperty.value = this.availableModelBounds;
 
       if ( this.showToolbox ) {
@@ -530,13 +548,6 @@ define( require => {
 
       // Put the pie chart legend to the right of the bar chart, see #60, #192
       this.pieChartLegend.mutate( { leftTop: pieChartLegendLeftTop } );
-
-      // Show it for debugging
-      if ( showAvailableBounds ) {
-        this.viewBoundsPath.shape = Shape.bounds( this.availableViewBounds );
-      }
-
-      this.visibleBoundsProperty.set( this.availableViewBounds ); // TODO: Should the StopwatchNode be able to go below ground?  See https://github.com/phetsims/energy-skate-park/issues/154
     }
 
     /**
