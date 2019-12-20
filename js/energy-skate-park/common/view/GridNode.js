@@ -13,7 +13,6 @@ define( require => {
   'use strict';
 
   // modules
-  const BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/BackgroundNode' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Path = require( 'SCENERY/nodes/Path' );
@@ -40,7 +39,7 @@ define( require => {
      * @param {Tandem} tandem
      * @constructor
      */
-    constructor( gridVisibleProperty, referenceHeightProperty, modelViewTransform, tandem ) {
+    constructor( gridVisibleProperty, referenceHeightProperty, visibleBoundsProperty, modelViewTransform, tandem ) {
       super( {
         pickable: false,
         tandem: tandem
@@ -94,6 +93,8 @@ define( require => {
         this.gridParent.translate( 0, viewDelta );
         this.zeroLabelParent.translate( 0, viewDelta );
       } );
+
+      visibleBoundsProperty.link( bounds => this.layout( bounds ) );
     }
 
     /**
@@ -108,11 +109,8 @@ define( require => {
      * @param  {number} height - height of view, before any layout scale
      * @param  {number} layoutScale - vertical or horizontal scale for sim, whichever is more limiting
      */
-    layout( offsetX, offsetY, width, height, layoutScale ) {
-      const scaledHeight = height / layoutScale; // height of the view
-
-      const clipHeight = scaledHeight - BackgroundNode.earthHeight;
-      this.clipParent.clipArea = Shape.rectangle( -offsetX, -offsetY, width / layoutScale, clipHeight );
+    layout( bounds ) {
+      this.clipParent.clipArea = Shape.bounds( bounds );
 
       for ( let k = 0; k < this.createdTextPanels.length; k++ ) {
         this.createdTextPanels[ k ].dispose();
@@ -123,16 +121,16 @@ define( require => {
       const thinLines = [];
       const texts = [];
 
-      const lineHeight = height / layoutScale - BackgroundNode.earthHeight - this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
-      const lineY1 = -offsetY + this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
+      const lineHeight = bounds.height - this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
+      const lineY1 = bounds.minY + this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
 
-      // grid lines are drawn on the half meter, but each still separated by 1 meter
+      // grid lines are drawn on the meter, each still separated by 1 meter
       for ( let x = 0; x < 100; x++ ) {
         const viewXPositive = this.modelViewTransform.modelToViewX( x );
         const viewXNegative = this.modelViewTransform.modelToViewX( -x );
         thinLines.push( { x1: viewXPositive, y1: lineY1, x2: viewXPositive, y2: lineHeight - lineY1 } );
         thinLines.push( { x1: viewXNegative, y1: lineY1, x2: viewXNegative, y2: lineHeight - lineY1 } );
-        if ( viewXNegative < -offsetX ) {
+        if ( viewXNegative < bounds.minX ) {
           break;
         }
       }
@@ -140,7 +138,7 @@ define( require => {
       // will replace the "0 meters" label at that height
       let replacementText;
 
-      const separation = width / layoutScale;
+      const separation = bounds.width;
       for ( let y = -NEGATIVE_HEIGHT; y < 100; y++ ) {
         const rightX = this.modelViewTransform.modelToViewX( -5 );
         const viewY = this.modelViewTransform.modelToViewY( y );
@@ -149,10 +147,10 @@ define( require => {
         }
 
         if ( y % 2 === 0 ) {
-          thickLines.push( { x1: -offsetX, y1: viewY, x2: separation - offsetX, y2: viewY } );
+          thickLines.push( { x1: bounds.minX, y1: viewY, x2: bounds.minX + separation, y2: viewY } );
         }
         else {
-          thinLines.push( { x1: -offsetX, y1: viewY, x2: separation - offsetX, y2: viewY } );
+          thinLines.push( { x1: bounds.minX, y1: viewY, x2: bounds.minX + separation, y2: viewY } );
         }
 
         if ( y % 2 === 0 ) {

@@ -159,7 +159,7 @@ define( require => {
       this.backgroundNode = new BackgroundNode( this.layoutBounds, tandem.createTandem( 'backgroundNode' ) );
       this.bottomLayer.addChild( this.backgroundNode );
 
-      this.gridNode = new GridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
+      this.gridNode = new GridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, this.visibleBoundsProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
       this.bottomLayer.addChild( this.gridNode );
 
       this.controlPanel = new EnergySkateParkControlPanel( model, this, physicalControls, tandem.createTandem( 'controlPanel' ), options.visibilityControlsOptions );
@@ -474,10 +474,10 @@ define( require => {
       }
       this.translate( offsetX, offsetY );
 
-      this.backgroundNode.layout( offsetX, offsetY, width, height, scale );
-      this.gridNode.layout( offsetX, offsetY, width, height, scale );
-
+      // availableViewBounds in this sim is the visible area above ground (y=0)
       this.availableViewBounds = new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) );
+
+      this.backgroundNode.layout( offsetX, offsetY, width, height, scale );
 
       const maxFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? this.layoutBounds.right + EXTRA_FLOAT : Number.MAX_VALUE;
       const minFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? this.layoutBounds.left - EXTRA_FLOAT : -Number.MAX_VALUE;
