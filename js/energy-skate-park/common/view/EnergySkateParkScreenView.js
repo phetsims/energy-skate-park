@@ -442,7 +442,17 @@ define( require => {
       }
 
       // float UI components to provide as much space as possible in the play area
-      this.visibleBoundsProperty.lazyLink( () => this.floatInterface() );
+      this.visibleBoundsProperty.lazyLink( visibleBounds => {
+
+        // Compute the visible model bounds so we will know when a model object like the skater has gone offscreen
+        this.availableModelBounds = this.modelViewTransform.viewToModelBounds( visibleBounds );
+        this.availableModelBoundsProperty.value = this.availableModelBounds;
+
+        // limit measuring tape to available area
+        this.measuringTapeNode.setDragBounds( this.availableModelBounds );
+
+        this.floatInterface();
+      } );
     }
 
     /**
@@ -521,15 +531,9 @@ define( require => {
       this.resetAllButton.right = this.controlPanel.right;
       this.returnSkaterButton.right = this.resetAllButton.left - 10;
 
-      // Compute the visible model bounds so we will know when a model object like the skater has gone offscreen
-      this.availableModelBounds = this.modelViewTransform.viewToModelBounds( this.visibleBoundsProperty.get() );
-      this.availableModelBoundsProperty.value = this.availableModelBounds;
-
       if ( this.showToolbox ) {
         this.toolboxPanel.top = this.controlPanel.bottom + 5;
         this.toolboxPanel.right = this.controlPanel.right;
-
-        this.measuringTapeNode.setDragBounds( this.availableModelBounds );
       }
 
       // pie chart legend location is dependent on whether or not the screen includes an energy bar graph

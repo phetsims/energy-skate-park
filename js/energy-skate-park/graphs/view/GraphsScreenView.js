@@ -62,8 +62,8 @@ define( require => {
      * Special layout for the energy-skate-park, contents can float to the available bounds.
      * @override
      */
-    layout( width, height ) {
-      super.layout( width, height );
+    floatInterface() {
+      super.floatInterface();
 
       // the graph within the accordion box needs to line up with the track so that skater positions on the
       // track align perfectly with positions along the graph

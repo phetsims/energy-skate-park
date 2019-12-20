@@ -75,8 +75,8 @@ define( require => {
      * @param {number} width
      * @param {number} height
      */
-    layout( width, height ) {
-      super.layout( width, height );
+    floatInterface() {
+      super.floatInterface();
 
       // the pie chart legend is just to the right of the 5 meter mark, which is where grid labels are
       this.pieChartLegend.left = this.modelViewTransform.modelToViewX( -5 );
