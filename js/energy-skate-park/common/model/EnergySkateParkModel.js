@@ -49,7 +49,6 @@ define( require => {
   const Skater = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Skater' );
   const SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
   const Stopwatch = require( 'SCENERY_PHET/Stopwatch' );
-  const StringIO = require( 'TANDEM/types/StringIO' );
   const Tandem = require( 'TANDEM/Tandem' );
   const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
   const Util = require( 'DOT/Util' );
@@ -191,10 +190,9 @@ define( require => {
         tandem: tandem.createTandem( 'stopwatch' )
       } );
 
-      // @public {string} - speed of the model, either 'normal' or 'slow'
-      this.speedProperty = new Property( 'normal', {
-        tandem: tandem.createTandem( 'speedProperty' ),
-        phetioType: PropertyIO( StringIO )
+      // @public {BooleanProperty} - speed of the model, running in slow motion if true
+      this.isSlowMotionProperty = new BooleanProperty( false, {
+        tandem: tandem.createTandem( 'isSlowMotionProperty' )
       } );
 
       // @public {number} - Coefficient of friction (unitless) between skater and track
@@ -349,7 +347,7 @@ define( require => {
       this.clearButtonEnabledProperty.reset();
       this.barGraphScaleProperty.reset();
       this.pausedProperty.reset();
-      this.speedProperty.reset();
+      this.isSlowMotionProperty.reset();
       this.frictionProperty.reset();
       this.stickingToTrackProperty.reset();
       this.availableModelBoundsProperty.reset();
@@ -423,13 +421,13 @@ define( require => {
         // In either case, 10 subdivisions on iPad3 makes the sim run too slowly, so we may just want to leave it as is
         let updatedState = null;
         modelIterations++;
-        if ( this.speedProperty.value === 'normal' || modelIterations % 3 === 0 ) {
+        if ( !this.isSlowMotionProperty.get() || modelIterations % 3 === 0 ) {
           updatedState = this.stepModel( dt, skaterState );
         }
 
         if ( debug && Math.abs( updatedState.getTotalEnergy() - initialEnergy ) > 1E-6 ) {
           const initialStateCopy = new SkaterState( this.skater, EMPTY_OBJECT );
-          const redo = this.stepModel( this.speedProperty.value === 'normal' ? dt : dt * 0.25, initialStateCopy );
+          const redo = this.stepModel( this.isSlowMotionProperty.value === false ? dt : dt * 0.25, initialStateCopy );
           debug && debug( redo );
         }
         if ( updatedState ) {

@@ -30,7 +30,7 @@ define( require => {
   const Path = require( 'SCENERY/nodes/Path' );
   const PieChartLegend = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PieChartLegend' );
   const PieChartNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PieChartNode' );
-  const PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PlaybackSpeedControl' );
+  // const PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PlaybackSpeedControl' );
   const TimeControlNode = require( 'SCENERY_PHET/TimeControlNode' );
   const Property = require( 'AXON/Property' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -363,9 +363,6 @@ define( require => {
       this.topLayer.addChild( returnSkaterToPreviousStartingPositionButton );
       this.topLayer.addChild( returnSkaterToGroundButton );
 
-      // has all of the play, pause, and step controls for layout purposes
-      const playControls = new Node();
-
       const playingProperty = new BooleanProperty( !model.pausedProperty.value, {
         tandem: tandem.createTandem( 'playingProperty' )
       } );
@@ -378,8 +375,9 @@ define( require => {
 
       // play/pause and step buttons are same size until playingProperty is false
       const buttonRadius = 18;
-      const timeControlNode = new TimeControlNode( playingProperty, {
+      this.timeControlNode = new TimeControlNode( playingProperty, {
         tandem: tandem.createTandem( 'timeControlNode' ),
+        isSlowMotionProperty: model.isSlowMotionProperty,
         playPauseStepXSpacing: 12,
         playPauseOptions: {
           radius: buttonRadius,
@@ -391,26 +389,23 @@ define( require => {
         }
       } );
 
-      // @protected - for layout in subtypes
-      this.speedControl = new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ), {
-        leftCenter: timeControlNode.rightCenter.plusXY( 15, 0 )
-      } );
+      // // @protected - for layout in subtypes
+      // this.speedControl = new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ), {
+      //   leftCenter: timeControlNode.rightCenter.plusXY( 15, 0 )
+      // } );
 
-      playControls.addChild( timeControlNode );
-      this.topLayer.addChild( this.speedControl );
-      this.topLayer.addChild( playControls );
+      this.topLayer.addChild( this.timeControlNode );
 
-      const speedControlSpacing = 15;
-      this.speedControl.setLeftBottom( this.layoutBounds.centerBottom.plusXY( speedControlSpacing, -15 ) );
-      playControls.setRightBottom( this.layoutBounds.centerBottom.minusXY( speedControlSpacing, 15 ) );
-      this.playControls = playControls;
+      // const speedControlSpacing = 15;
+      // this.speedControl.setLeftBottom( this.layoutBounds.centerBottom.plusXY( speedControlSpacing, -15 ) );
+      this.timeControlNode.setCenterBottom( this.layoutBounds.centerBottom.minusXY( 0, 15 ) );
 
       // grid and reference height visibility are controlled from a separate panel
       if ( this.showSeparateVisibilityControlsPanel ) {
 
         // @protected (read-only) - for layout
         this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ), {
-          centerY: playControls.centerY
+          centerY: this.timeControlNode.centerY
         } );
         this.addToBottomLayer( this.visibilityControlsPanel );
       }

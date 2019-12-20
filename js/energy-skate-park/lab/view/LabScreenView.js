@@ -67,8 +67,7 @@ define( require => {
       const distanceToScreenCenter = this.layoutBounds.center.x - leftGroupCenter.x;
 
       const spacing = 30;
-      this.playControls.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter - this.playControls.width / 2 - spacing / 2 );
-      this.speedControl.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter + this.speedControl.width / 2 + spacing / 2 );
+      this.timeControlNode.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter - spacing / 2 );
     }
 
     /**

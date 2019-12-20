@@ -2,7 +2,7 @@
 
 /**
  * Zoom buttons for the energy graphs in the Graphs screens.
- * 
+ *
  * @author Jesse Greenberg
  */
 define( require => {
