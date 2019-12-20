@@ -28,10 +28,11 @@ define( require => {
 
     /**
      * @param {Bounds2} layoutBounds
+     * @param {Property.<Bounds2>} visibleBoundsProperty
      * @param {Tandem} tandem
      * @param {Object} options
      */
-    constructor( layoutBounds, tandem, options ) {
+    constructor( layoutBounds, visibleBoundsProperty, tandem, options ) {
       super( {
         pickable: false,
         tandem: tandem
@@ -58,27 +59,26 @@ define( require => {
       if ( options ) {
         this.mutate( options );
       }
+
+      // update layout when visible bounds change
+      visibleBoundsProperty.link( bounds => this.layout( bounds ) );
     }
 
     /**
      * Exactly fit the geometry to the screen so  no matter what aspect ratio it will always show something.
      * Perhaps it will improve performance too?
      * @public
-     * 
-     * @param  {number} offsetX
-     * @param  {number} offsetY    
-     * @param  {number} width      
-     * @param  {number} height     
-     * @param  {number} layoutScale
+     *
+     * @param {Bounds2} bounds
      */
-    layout( offsetX, offsetY, width, height, layoutScale ) {
+    layout( bounds ) {
       const cementY = this.cementY;
-      this.earth.setRect( -offsetX, cementY, width / layoutScale, earthHeight );
+      this.earth.setRect( bounds.minX, cementY, bounds.width, earthHeight );
 
       // Work around scenery horizontal line pattern problem, see https:// github.com/phetsims/scenery/issues/196
-      this.cement.setRect( -offsetX, cementY, width / layoutScale, cementWidth );
-      this.sky.setRect( -offsetX, -offsetY, width / layoutScale, height / layoutScale - earthHeight );
-      this.sky.fill = new LinearGradient( 0, 0, 0, height / 2 ).addColorStop( 0, '#02ace4' ).addColorStop( 1, '#cfecfc' );
+      this.cement.setRect( bounds.minX, cementY, bounds.width, cementWidth );
+      this.sky.setRect( bounds.minX, bounds.minY, bounds.width, bounds.height );
+      this.sky.fill = new LinearGradient( 0, 0, 0, bounds.height / 2 ).addColorStop( 0, '#02ace4' ).addColorStop( 1, '#cfecfc' );
     }
   }
 
