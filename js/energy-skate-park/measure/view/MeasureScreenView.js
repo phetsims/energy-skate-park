@@ -90,8 +90,12 @@ define( require => {
       return this.boundsOf( node ).intersectsBounds( this.controlPanel.bounds );
     }
 
-    layout( width, height ) {
-      super.layout( width, height );
+    /**
+     * Custom floating layout for this screen, dependent on available view bounds.
+     * @override
+     */
+    floatInterface() {
+      super.floatInterface();
 
       // in the measure screen the legend is in the top left of the screen
       this.pieChartLegend.mutate( { top: this.controlPanel.top, left: this.fixedLeft } );

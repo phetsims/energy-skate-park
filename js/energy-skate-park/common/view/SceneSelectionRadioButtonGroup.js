@@ -13,6 +13,7 @@ define( require => {
   // modules
   const AlignGroup = require( 'SCENERY/nodes/AlignGroup' );
   const BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/BackgroundNode' );
+  const Bounds2 = require( 'DOT/Bounds2' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const merge = require( 'PHET_CORE/merge' );
   const Node = require( 'SCENERY/nodes/Node' );
@@ -58,7 +59,7 @@ define( require => {
 
         if ( options.includeBackground ) {
           const background = new BackgroundNode( view.layoutBounds, tandem.createTandem( 'backgroundNode' + index ) );
-          background.layout( 0, 0, view.layoutBounds.width, view.layoutBounds.height, 1 );
+          background.layout( new Bounds2( 0, 0, view.layoutBounds.width, view.layoutBounds.height ), 1 );
           children.push( background );
         }
 

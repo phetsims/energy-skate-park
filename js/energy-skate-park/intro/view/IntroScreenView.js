@@ -44,18 +44,10 @@ define( require => {
       this.massComboBox.bottom = this.layoutBounds.height - BackgroundNode.earthHeight - 5;
     }
 
-    /**
-     * Align the mass combo box with the right control panel (defined in super type).
-     * @override
-     *
-     * @param {number} width - desired width of view, prior to scaling
-     * @param {number} height - desired height of view, prior to scaling
-     */
-    layout( width, height ) {
-      super.layout( width, height );
+    floatInterface() {
+      super.floatInterface();
       this.massComboBox.right = this.controlPanel.right;
     }
-
   }
 
   return energySkatePark.register( 'IntroScreenView', IntroScreenView );

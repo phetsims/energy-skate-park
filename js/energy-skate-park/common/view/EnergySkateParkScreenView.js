@@ -30,7 +30,7 @@ define( require => {
   const Path = require( 'SCENERY/nodes/Path' );
   const PieChartLegend = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PieChartLegend' );
   const PieChartNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PieChartNode' );
-  const PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PlaybackSpeedControl' );
+  // const PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PlaybackSpeedControl' );
   const TimeControlNode = require( 'SCENERY_PHET/TimeControlNode' );
   const Property = require( 'AXON/Property' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -156,10 +156,10 @@ define( require => {
       } );
 
       // The background
-      this.backgroundNode = new BackgroundNode( this.layoutBounds, tandem.createTandem( 'backgroundNode' ) );
+      this.backgroundNode = new BackgroundNode( this.layoutBounds, this.visibleBoundsProperty, tandem.createTandem( 'backgroundNode' ) );
       this.bottomLayer.addChild( this.backgroundNode );
 
-      this.gridNode = new GridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
+      this.gridNode = new GridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, this.visibleBoundsProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
       this.bottomLayer.addChild( this.gridNode );
 
       this.controlPanel = new EnergySkateParkControlPanel( model, this, physicalControls, tandem.createTandem( 'controlPanel' ), options.visibilityControlsOptions );
@@ -363,9 +363,6 @@ define( require => {
       this.topLayer.addChild( returnSkaterToPreviousStartingPositionButton );
       this.topLayer.addChild( returnSkaterToGroundButton );
 
-      // has all of the play, pause, and step controls for layout purposes
-      const playControls = new Node();
-
       const playingProperty = new BooleanProperty( !model.pausedProperty.value, {
         tandem: tandem.createTandem( 'playingProperty' )
       } );
@@ -378,8 +375,9 @@ define( require => {
 
       // play/pause and step buttons are same size until playingProperty is false
       const buttonRadius = 18;
-      const timeControlNode = new TimeControlNode( playingProperty, {
+      this.timeControlNode = new TimeControlNode( playingProperty, {
         tandem: tandem.createTandem( 'timeControlNode' ),
+        isSlowMotionProperty: model.isSlowMotionProperty,
         playPauseStepXSpacing: 12,
         playPauseOptions: {
           radius: buttonRadius,
@@ -391,26 +389,23 @@ define( require => {
         }
       } );
 
-      // @protected - for layout in subtypes
-      this.speedControl = new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ), {
-        leftCenter: timeControlNode.rightCenter.plusXY( 15, 0 )
-      } );
+      // // @protected - for layout in subtypes
+      // this.speedControl = new PlaybackSpeedControl( model.speedProperty, tandem.createTandem( 'playbackSpeedControl' ), {
+      //   leftCenter: timeControlNode.rightCenter.plusXY( 15, 0 )
+      // } );
 
-      playControls.addChild( timeControlNode );
-      this.topLayer.addChild( this.speedControl );
-      this.topLayer.addChild( playControls );
+      this.topLayer.addChild( this.timeControlNode );
 
-      const speedControlSpacing = 15;
-      this.speedControl.setLeftBottom( this.layoutBounds.centerBottom.plusXY( speedControlSpacing, -15 ) );
-      playControls.setRightBottom( this.layoutBounds.centerBottom.minusXY( speedControlSpacing, 15 ) );
-      this.playControls = playControls;
+      // const speedControlSpacing = 15;
+      // this.speedControl.setLeftBottom( this.layoutBounds.centerBottom.plusXY( speedControlSpacing, -15 ) );
+      this.timeControlNode.setCenterBottom( this.layoutBounds.centerBottom.minusXY( 0, 15 ) );
 
       // grid and reference height visibility are controlled from a separate panel
       if ( this.showSeparateVisibilityControlsPanel ) {
 
         // @protected (read-only) - for layout
         this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ), {
-          centerY: playControls.centerY
+          centerY: this.timeControlNode.centerY
         } );
         this.addToBottomLayer( this.visibilityControlsPanel );
       }
@@ -445,6 +440,26 @@ define( require => {
         } );
         this.topLayer.addChild( this.viewBoundsPath );
       }
+
+      this.visibleBoundsProperty.lazyLink( visibleBounds => {
+
+        // Compute the visible model bounds so we will know when a model object like the skater has gone offscreen
+        this.availableModelBounds = this.modelViewTransform.viewToModelBounds( visibleBounds );
+        this.availableModelBoundsProperty.value = this.availableModelBounds;
+
+        // limit measuring tape to available area
+        if ( options.showToolbox ) {
+          this.measuringTapeNode.setDragBounds( this.availableModelBounds );
+        }
+
+        // float UI components to provide as much space as possible in the play area
+        this.floatInterface();
+
+        // Show it for debugging
+        if ( showAvailableBounds ) {
+          this.viewBoundsPath.shape = Shape.bounds( this.visibleBoundsProperty.get() );
+        }
+      } );
     }
 
     /**
@@ -458,8 +473,6 @@ define( require => {
      * @param {number} height
      */
     layout( width, height ) {
-      assert && assert( this.controlPanel, 'much of component layout based on control panel, subtype should create one.' );
-
       this.resetTransform();
 
       const scale = this.getLayoutScale( width, height );
@@ -479,17 +492,26 @@ define( require => {
       }
       this.translate( offsetX, offsetY );
 
-      this.backgroundNode.layout( offsetX, offsetY, width, height, scale );
-      this.gridNode.layout( offsetX, offsetY, width, height, scale );
+      // availableViewBounds in this sim is the visible area above ground (y=0)
+      // TODO: Should the StopwatchNode and other draggables be able to go below ground? See https://github.com/phetsims/energy-skate-park/issues/154
+      this.visibleBoundsProperty.set( new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) ) ); // TODO: Should the StopwatchNode be able to go below ground?  See https://github.com/phetsims/energy-skate-park/issues/154
+    }
 
-      this.availableViewBounds = new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) );
+    /**
+     * Float the UI controls to provide more play area space when possible to move the skater and create tracks. If
+     * there is extra horizontal space, controls near the edge of the layoutBounds will float outward.
+     *
+     * Override in subtypes for unique layout of various controls.
+     */
+    floatInterface() {
+      assert && assert( this.controlPanel, 'much of component layout based on control panel, one should be created.' );
 
       const maxFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? this.layoutBounds.right + EXTRA_FLOAT : Number.MAX_VALUE;
       const minFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? this.layoutBounds.left - EXTRA_FLOAT : -Number.MAX_VALUE;
 
       // for use in subtypes
-      this.fixedRight = Math.min( maxFloatAmount, this.availableViewBounds.maxX ) - 5;
-      this.fixedLeft = Math.max( minFloatAmount, this.availableViewBounds.minX ) + 5;
+      this.fixedRight = Math.min( maxFloatAmount, this.visibleBoundsProperty.get().maxX ) - 5;
+      this.fixedLeft = Math.max( minFloatAmount, this.visibleBoundsProperty.get().minX ) + 5;
 
       this.controlPanel.top = 5;
       this.controlPanel.right = this.fixedRight;
@@ -503,22 +525,16 @@ define( require => {
       if ( this.sceneSelectionRadioButtonGroup ) {
 
         // symmetrical with the right edge of the reset all button
-        this.sceneSelectionRadioButtonGroup.left = this.availableViewBounds.minX + 5;
+        this.sceneSelectionRadioButtonGroup.left = this.visibleBoundsProperty.get().minX + 5;
         this.sceneSelectionRadioButtonGroup.bottom = this.resetAllButton.bottom;
       }
 
       this.resetAllButton.right = this.controlPanel.right;
       this.returnSkaterButton.right = this.resetAllButton.left - 10;
 
-      // Compute the visible model bounds so we will know when a model object like the skater has gone offscreen
-      this.availableModelBounds = this.modelViewTransform.viewToModelBounds( this.availableViewBounds );
-      this.availableModelBoundsProperty.value = this.availableModelBounds;
-
       if ( this.showToolbox ) {
         this.toolboxPanel.top = this.controlPanel.bottom + 5;
         this.toolboxPanel.right = this.controlPanel.right;
-
-        this.measuringTapeNode.setDragBounds( this.availableModelBounds );
       }
 
       // pie chart legend location is dependent on whether or not the screen includes an energy bar graph
@@ -537,13 +553,6 @@ define( require => {
 
       // Put the pie chart legend to the right of the bar chart, see #60, #192
       this.pieChartLegend.mutate( { leftTop: pieChartLegendLeftTop } );
-
-      // Show it for debugging
-      if ( showAvailableBounds ) {
-        this.viewBoundsPath.shape = Shape.bounds( this.availableViewBounds );
-      }
-
-      this.visibleBoundsProperty.set( this.availableViewBounds ); // TODO: Should the StopwatchNode be able to go below ground?  See https://github.com/phetsims/energy-skate-park/issues/154
     }
 
     /**

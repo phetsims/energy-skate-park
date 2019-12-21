@@ -67,8 +67,7 @@ define( require => {
       const distanceToScreenCenter = this.layoutBounds.center.x - leftGroupCenter.x;
 
       const spacing = 30;
-      this.playControls.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter - this.playControls.width / 2 - spacing / 2 );
-      this.speedControl.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter + this.speedControl.width / 2 + spacing / 2 );
+      this.timeControlNode.centerX = this.layoutBounds.centerX + ( distanceToScreenCenter - spacing / 2 );
     }
 
     /**
@@ -76,8 +75,8 @@ define( require => {
      * @param {number} width
      * @param {number} height
      */
-    layout( width, height ) {
-      super.layout( width, height );
+    floatInterface() {
+      super.floatInterface();
 
       // the pie chart legend is just to the right of the 5 meter mark, which is where grid labels are
       this.pieChartLegend.left = this.modelViewTransform.modelToViewX( -5 );
