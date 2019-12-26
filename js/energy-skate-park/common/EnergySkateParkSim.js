@@ -11,7 +11,6 @@ define( require => {
 
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkQueryParameters = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkQueryParameters' );
   const merge = require( 'PHET_CORE/merge' );
   const platform = require( 'PHET_CORE/platform' );
   const Sim = require( 'JOIST/Sim' );
