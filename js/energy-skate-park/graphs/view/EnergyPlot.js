@@ -11,6 +11,7 @@ define( require => {
   'use strict';
 
   // modules
+  const DynamicSeries = require( 'GRIDDLE/DynamicSeries' );
   const Emitter = require( 'AXON/Emitter' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
@@ -18,9 +19,9 @@ define( require => {
   const merge = require( 'PHET_CORE/merge' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const PointStyle = require( 'GRIDDLE/PointStyle' );
+  const PointStyledVector2 = require( 'GRIDDLE/PointStyledVector2' );
   const Range = require( 'DOT/Range' );
   const XYCursorPlot = require( 'GRIDDLE/XYCursorPlot' );
-  const XYDataSeries = require( 'GRIDDLE/XYDataSeries' );
   const XYDataSeriesNode = require( 'GRIDDLE/XYDataSeriesNode' );
 
   // constants
@@ -107,12 +108,13 @@ define( require => {
         }
       } );
 
-      // @private {XYDataSeries}
       const seriesOptions = { lineWidth: 2 };
-      this.kineticEnergyDataSeries = new XYDataSeries( merge( { color: EnergySkateParkColorScheme.kineticEnergy }, seriesOptions ) );
-      this.potentialEnergyDataSeries = new XYDataSeries( merge( { color: EnergySkateParkColorScheme.potentialEnergy }, seriesOptions ) );
-      this.thermalEnergyDataSeries = new XYDataSeries( merge( { color: EnergySkateParkColorScheme.thermalEnergy }, seriesOptions ) );
-      this.totalEnergyDataSeries = new XYDataSeries( merge( { color: EnergySkateParkColorScheme.totalEnergy }, seriesOptions ) );
+
+      // @private {DynamicSeries}
+      this.kineticEnergyDataSeries = new DynamicSeries( merge( { color: EnergySkateParkColorScheme.kineticEnergy }, seriesOptions ) );
+      this.potentialEnergyDataSeries = new DynamicSeries( merge( { color: EnergySkateParkColorScheme.potentialEnergy }, seriesOptions ) );
+      this.thermalEnergyDataSeries = new DynamicSeries( merge( { color: EnergySkateParkColorScheme.thermalEnergy }, seriesOptions ) );
+      this.totalEnergyDataSeries = new DynamicSeries( merge( { color: EnergySkateParkColorScheme.totalEnergy }, seriesOptions ) );
 
       // second parameter allows data to be scaled correctly so it is in the correct spot relative to plot range
       this.addSeries( this.thermalEnergyDataSeries, true );
@@ -174,10 +176,10 @@ define( require => {
         // keep a reference to the pointStyle so that it can be modified later
         const pointStyle = new PointStyle();
 
-        this.kineticEnergyDataSeries.addPoint( independentVariable, addedSample.kineticEnergy, pointStyle );
-        this.potentialEnergyDataSeries.addPoint( independentVariable, addedSample.potentialEnergy, pointStyle );
-        this.thermalEnergyDataSeries.addPoint( independentVariable, addedSample.thermalEnergy, pointStyle );
-        this.totalEnergyDataSeries.addPoint( independentVariable, addedSample.totalEnergy, pointStyle );
+        this.kineticEnergyDataSeries.data.push( new PointStyledVector2( independentVariable, addedSample.kineticEnergy, pointStyle ) );
+        this.potentialEnergyDataSeries.data.push( new PointStyledVector2( independentVariable, addedSample.potentialEnergy, pointStyle ) );
+        this.thermalEnergyDataSeries.data.push( new PointStyledVector2( independentVariable, addedSample.thermalEnergy, pointStyle ) );
+        this.totalEnergyDataSeries.data.push( new PointStyledVector2( independentVariable, addedSample.totalEnergy, pointStyle ) );
 
         // add a listener that updates opacity with the SkaterSample Property, dispose it on removal
         const opacityListener = opacity => {

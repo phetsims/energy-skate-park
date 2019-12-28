@@ -194,7 +194,7 @@ define( require => {
     }
 
     /**
-     * Clear all data, removing saved SkaterSamples and removing all data from the XYDataSeries attached to the XYPlot.
+     * Clear all data, removing saved SkaterSamples and removing all data from the series attached to the XYPlot.
      */
     clearEnergyData() {
       this.model.clearEnergyData();
