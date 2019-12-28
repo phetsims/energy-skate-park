@@ -163,10 +163,10 @@ define( require => {
         }
       } );
 
-      model.kineticEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.kineticEnergyDataSeries.uniqueId ], 'visible' );
-      model.potentialEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.potentialEnergyDataSeries.uniqueId ], 'visible' );
-      model.thermalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.thermalEnergyDataSeries.uniqueId ], 'visible' );
-      model.totalEnergyDataVisibleProperty.linkAttribute( this.seriesViewMap[ this.totalEnergyDataSeries.uniqueId ], 'visible' );
+      model.kineticEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.kineticEnergyDataSeries ), 'visible' );
+      model.potentialEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.potentialEnergyDataSeries ), 'visible' );
+      model.thermalEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.thermalEnergyDataSeries ), 'visible' );
+      model.totalEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.totalEnergyDataSeries ), 'visible' );
 
       // add data points when a SkaterSample is added to the model
       model.skaterSamples.addItemAddedListener( addedSample => {
@@ -185,7 +185,8 @@ define( require => {
         const opacityListener = opacity => {
           for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
             pointStyle.opacity = opacity;
-            this.seriesViewMap[ this.dataSeriesList[ i ].uniqueId ].redraw();
+            const dataSeries = this.dataSeriesList[ i ];
+            this.getXYDataSeriesNode( dataSeries ).invalidatePaint();
           }
         };
         addedSample.opacityProperty.link( opacityListener );
