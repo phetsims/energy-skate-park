@@ -381,7 +381,7 @@ define( require => {
         playPauseStepXSpacing: 12,
         playPauseOptions: {
           radius: buttonRadius,
-          playButtonScaleFactor: 1.35
+          scaleFactorWhenPaused: 1.35
         },
         stepForwardOptions: {
           radius: buttonRadius,
