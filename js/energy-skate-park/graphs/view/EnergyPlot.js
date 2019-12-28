@@ -176,28 +176,22 @@ define( require => {
         // keep a reference to the pointStyle so that it can be modified later
         const pointStyle = new PointStyle();
 
-        this.kineticEnergyDataSeries.data.push( new PointStyledVector2( independentVariable, addedSample.kineticEnergy, pointStyle ) );
-        this.potentialEnergyDataSeries.data.push( new PointStyledVector2( independentVariable, addedSample.potentialEnergy, pointStyle ) );
-        this.thermalEnergyDataSeries.data.push( new PointStyledVector2( independentVariable, addedSample.thermalEnergy, pointStyle ) );
-        this.totalEnergyDataSeries.data.push( new PointStyledVector2( independentVariable, addedSample.totalEnergy, pointStyle ) );
+        this.kineticEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, addedSample.kineticEnergy, pointStyle ) );
+        this.potentialEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, addedSample.potentialEnergy, pointStyle ) );
+        this.thermalEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, addedSample.thermalEnergy, pointStyle ) );
+        this.totalEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, addedSample.totalEnergy, pointStyle ) );
 
         // add a listener that updates opacity with the SkaterSample Property, dispose it on removal
         const opacityListener = opacity => {
-          for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
-            pointStyle.opacity = opacity;
-            const dataSeries = this.dataSeriesList[ i ];
-            this.getXYDataSeriesNode( dataSeries ).invalidatePaint();
-          }
+          pointStyle.opacity = opacity;
+          this.invalidateDataSeriesNodes();
         };
         addedSample.opacityProperty.link( opacityListener );
 
         const removalListener = removedSample => {
           if ( removedSample === addedSample ) {
             removedSample.opacityProperty.unlink( opacityListener );
-
-            for ( let i = 0; i < this.dataSeriesList.length; i++ ) {
-              this.dataSeriesList[ i ].removePointAtX( independentVariable );
-            }
+            this.forEachDataSeries( dataSeries => dataSeries.removePointAtX( independentVariable ) );
             model.skaterSamples.removeItemRemovedListener( removalListener );
           }
         };
