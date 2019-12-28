@@ -39,16 +39,20 @@ define( require => {
         showNegativeEnergy: true
       }, options );
 
-      const kineticEnergySlice = new Path( null, {
-        fill: EnergySkateParkColorScheme.kineticEnergy,
+      const sliceOptions = {
         stroke: 'black',
-        lineWidth: 1
-      } );
-      const potentialEnergySlice = new Path( null, {
-        fill: EnergySkateParkColorScheme.potentialEnergy,
-        stroke: 'black',
-        lineWidth: 1
-      } );
+        lineWidth: 1,
+
+        // removes graphical artifacts around sharp corners of the energy slice, see #156
+        lineJoin: 'round'
+      };
+
+      const kineticEnergySlice = new Path( null, merge( {
+        fill: EnergySkateParkColorScheme.kineticEnergy
+      }, sliceOptions ) );
+      const potentialEnergySlice = new Path( null, merge( {
+        fill: EnergySkateParkColorScheme.potentialEnergy
+      }, sliceOptions ) );
 
       // Skip bounds computation to improve performance, see #245
       kineticEnergySlice.computeShapeBounds = () => new Bounds2( 0, 0, 0, 0 );
