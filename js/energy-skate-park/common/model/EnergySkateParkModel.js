@@ -626,19 +626,27 @@ define( require => {
       const proposedVelocity = skaterState.getVelocity().plus( acceleration.times( dt ) );
       const position = skaterState.getPosition();
       const proposedPosition = position.plus( proposedVelocity.times( dt ) );
-      if ( proposedPosition.y < 0 ) {
-        proposedPosition.y = 0;
 
-        return this.switchToGround( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt );
-      }
-      else if ( position.x !== proposedPosition.x || position.y !== proposedPosition.y ) {
+      // only do the work to check for interactions if there is some proposed change to position
+      if ( position.x !== proposedPosition.x || position.y !== proposedPosition.y ) {
 
         // see if it crossed the track
         const physicalTracks = this.getPhysicalTracks();
 
         // Don't interact with the track if the skater just left the track in this same frame, see #142
         if ( physicalTracks.length && !justLeft ) {
-          return this.interactWithTracksWhileFalling( physicalTracks, skaterState, proposedPosition, initialEnergy, dt, proposedVelocity );
+
+          // at high freefall velocity the skater may cross a track AND the proposedPosition may be below ground in the
+          // same step - in this case prefer switching to track (because tracks are above ground) by only switching to
+          // ground if interactWithTracksWhileFalling produces a `null` track, see #159
+          const newSkaterState = this.interactWithTracksWhileFalling( physicalTracks, skaterState, proposedPosition, initialEnergy, dt, proposedVelocity );
+          if ( proposedPosition.y < 0 && newSkaterState.track === null ) {
+            proposedPosition.y = 0;
+            return this.switchToGround( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt );
+          }
+          else {
+            return newSkaterState;
+          }
         }
         else {
           return this.continueFreeFall( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt );
