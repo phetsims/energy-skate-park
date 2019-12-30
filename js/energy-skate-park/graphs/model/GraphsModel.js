@@ -18,7 +18,7 @@ define( require => {
   const NumberProperty = require( 'AXON/NumberProperty' );
   const Range = require( 'DOT/Range' );
   const SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
   const PremadeTracks = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/PremadeTracks' );
 
   class GraphsModel extends EnergySkateParkSaveSampleModel {
@@ -154,7 +154,7 @@ define( require => {
       assert && assert( this.skaterSamples.length > 0, 'model has no saved SkaterSamples to retrieve' );
 
       let nearestIndex = _.sortedIndexBy( this.skaterSamples.getArray(), { time: time }, entry => entry.time );
-      nearestIndex = Util.clamp( nearestIndex, 0, this.skaterSamples.length - 1 );
+      nearestIndex = Utils.clamp( nearestIndex, 0, this.skaterSamples.length - 1 );
 
       return this.skaterSamples.get( nearestIndex );
     }

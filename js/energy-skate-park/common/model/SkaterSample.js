@@ -15,7 +15,7 @@ define( require => {
   const BooleanProperty = require( 'AXON/BooleanProperty' );
   const NumberProperty = require( 'AXON/NumberProperty' );
   const Emitter = require( 'AXON/Emitter' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
   const Vector2 = require( 'DOT/Vector2' );
 
   // constants
@@ -87,7 +87,7 @@ define( require => {
 
       if ( assert ) {
         const totalEnergy = this.potentialEnergy + this.kineticEnergy + this.thermalEnergy;
-        assert( Util.equalsEpsilon( totalEnergy, this.totalEnergy, 1E-10 ), 'energy should be conserved' );
+        assert( Utils.equalsEpsilon( totalEnergy, this.totalEnergy, 1E-10 ), 'energy should be conserved' );
       }
     }
 

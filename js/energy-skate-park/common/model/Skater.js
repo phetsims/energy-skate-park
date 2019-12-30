@@ -26,7 +26,7 @@ define( require => {
   const Range = require( 'DOT/Range' );
   const ReferenceIO = require( 'TANDEM/types/ReferenceIO' );
   const StringIO = require( 'TANDEM/types/StringIO' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
   const Vector2 = require( 'DOT/Vector2' );
   const Vector2Property = require( 'DOT/Vector2Property' );
 
@@ -422,7 +422,7 @@ define( require => {
 
       // Center pie chart over skater's head not his feet so it doesn't look awkward when skating in a parabola
       // Note this has been tuned independently of SkaterNode.massToScale, which also accounts for the image dimensions
-      const skaterHeight = Util.linear( this.massRange.min, this.massRange.max, 1.65, 2.4, this.massProperty.value );
+      const skaterHeight = Utils.linear( this.massRange.min, this.massRange.max, 1.65, 2.4, this.massProperty.value );
 
       const vectorX = skaterHeight * Math.cos( this.angleProperty.value - Math.PI / 2 );
       const vectorY = skaterHeight * Math.sin( this.angleProperty.value - Math.PI / 2 );

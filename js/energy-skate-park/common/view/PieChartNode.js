@@ -19,7 +19,7 @@ define( require => {
   const Path = require( 'SCENERY/nodes/Path' );
   const platform = require( 'PHET_CORE/platform' );
   const Shape = require( 'KITE/Shape' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
 
   class PieChartNode extends Node {
 
@@ -132,7 +132,7 @@ define( require => {
           totalEnergyCircle.visible = true;
 
           // round to nearest int so that graphics update only happens every pixel change or more
-          totalEnergyCircle.radius = Util.roundSymmetric( radius );
+          totalEnergyCircle.radius = Utils.roundSymmetric( radius );
         }
         else if ( numberComponents === 0 || energyNegative ) {
           potentialEnergySlice.visible = false;
@@ -154,7 +154,7 @@ define( require => {
           if ( selectedSlice instanceof Circle ) {
 
             // Round the radius so it will only update the graphics when it changed by a px or more
-            selectedSlice.radius = Util.roundSymmetric( radius );
+            selectedSlice.radius = Utils.roundSymmetric( radius );
           }
           else {
             selectedSlice.shape = Shape.circle( 0, 0, radius );
@@ -170,7 +170,7 @@ define( require => {
 
           // Show one of them in the background instead of pieces for each one for performance
           // Round the radius so it will only update the graphics when it changed by a px or more
-          thermalEnergySlice.radius = Util.roundSymmetric( radius );
+          thermalEnergySlice.radius = Utils.roundSymmetric( radius );
 
           // Start thermal at the right and wind counter clockwise, see #133
           // Order is thermal (in the background), kinetic, potential

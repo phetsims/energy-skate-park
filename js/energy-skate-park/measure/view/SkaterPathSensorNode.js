@@ -27,7 +27,7 @@ define( require => {
   const StringUtils = require( 'PHETCOMMON/util/StringUtils' );
   const SunConstants = require( 'SUN/SunConstants' );
   const Text = require( 'SCENERY/nodes/Text' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
   const VBox = require( 'SCENERY/nodes/VBox' );
   const Vector2 = require( 'DOT/Vector2' );
   const Vector2Property = require( 'DOT/Vector2Property' );
@@ -308,7 +308,7 @@ define( require => {
      * @returns {string}
      */
     formatValue( value ) {
-      return Util.toFixed( value, 1 );
+      return Utils.toFixed( value, 1 );
     }
 
     /**

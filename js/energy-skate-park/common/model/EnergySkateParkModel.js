@@ -51,7 +51,7 @@ define( require => {
   const Stopwatch = require( 'SCENERY_PHET/Stopwatch' );
   const Tandem = require( 'TANDEM/Tandem' );
   const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
   const Vector2 = require( 'DOT/Vector2' );
   const Vector2Property = require( 'DOT/Vector2Property' );
 
@@ -606,7 +606,7 @@ define( require => {
       let correctedState = skaterState.updateThermalEnergy( newThermalEnergy );
       correctedState = correctedState.updateUDVelocity( correctedState.parametricSpeed, newVelocity.x, newVelocity.y );
 
-      assert && assert( Util.equalsEpsilon( correctedState.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'substantial total energy change after corrections' );
+      assert && assert( Utils.equalsEpsilon( correctedState.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'substantial total energy change after corrections' );
 
       return correctedState;
     }
@@ -720,7 +720,7 @@ define( require => {
         const unitParallelVector = track.getUnitParallelVector( parametricPosition );
         const a = trackPoint.plus( unitParallelVector.times( 100 ) );
         const b = trackPoint.plus( unitParallelVector.times( -100 ) );
-        const intersection = Util.lineSegmentIntersection( a.x, a.y, b.x, b.y, beforeX, beforeY, afterX, afterY );
+        const intersection = Utils.lineSegmentIntersection( a.x, a.y, b.x, b.y, beforeX, beforeY, afterX, afterY );
         return intersection !== null;
       }
     }
@@ -749,9 +749,9 @@ define( require => {
       const c = this.getClosestTrackAndPositionAndParameter( new Vector2( proposedPosition.x, proposedPosition.y ), physicalTracks );
 
       const initialPosition = skaterState.getPosition();
-      const distanceA = Util.distToSegment( a.point, initialPosition, proposedPosition );
-      const distanceB = Util.distToSegment( b.point, initialPosition, proposedPosition );
-      const distanceC = Util.distToSegment( c.point, initialPosition, proposedPosition );
+      const distanceA = Utils.distToSegment( a.point, initialPosition, proposedPosition );
+      const distanceB = Utils.distToSegment( b.point, initialPosition, proposedPosition );
+      const distanceC = Utils.distToSegment( c.point, initialPosition, proposedPosition );
 
       const distances = [ distanceA, distanceB, distanceC ];
       const minDistance = _.min( distances );
@@ -1148,7 +1148,7 @@ define( require => {
               result = result.updatePositionAngleUpVelocity( result.positionX, result.positionY, 0, true, correctedV, 0 );
 
               // this correction should put result energy very close to correctedState energy
-              assert && assert( Util.equalsEpsilon( result.getTotalEnergy(), correctedState.getTotalEnergy(), 1E-6 ), 'correction after slope to ground changed total energy too much' );
+              assert && assert( Utils.equalsEpsilon( result.getTotalEnergy(), correctedState.getTotalEnergy(), 1E-6 ), 'correction after slope to ground changed total energy too much' );
             }
 
             // Correct any other energy discrepancy when switching to the ground, see #301
@@ -1242,7 +1242,7 @@ define( require => {
         newSkaterState.velocityX = result.x;
         newSkaterState.velocityY = result.y;
 
-        if ( Util.equalsEpsilon( e0, newSkaterState.getTotalEnergy(), 1E-8 ) ) {
+        if ( Utils.equalsEpsilon( e0, newSkaterState.getTotalEnergy(), 1E-8 ) ) {
           break;
         }
       }
@@ -1313,7 +1313,7 @@ define( require => {
             debug && debug( 'Could fix all energy by changing velocity.' );
             const correctedStateA = this.correctEnergyReduceVelocity( skaterState, newState );
             debug && debug( 'changed velocity: dE=' + ( correctedStateA.getTotalEnergy() - e0 ) );
-            if ( !Util.equalsEpsilon( e0, correctedStateA.getTotalEnergy(), 1E-8 ) ) {
+            if ( !Utils.equalsEpsilon( e0, correctedStateA.getTotalEnergy(), 1E-8 ) ) {
               debug && debug( 'Energy error[0]' );
             }
             return correctedStateA;
@@ -1336,7 +1336,7 @@ define( require => {
             const point = newState.track.getPoint( bestAlpha );
             const correctedState = newState.updateUPosition( bestAlpha, point.x, point.y );
             debug && debug( 'changed position u: dE=' + ( correctedState.getTotalEnergy() - e0 ) );
-            if ( !Util.equalsEpsilon( e0, correctedState.getTotalEnergy(), 1E-8 ) ) {
+            if ( !Utils.equalsEpsilon( e0, correctedState.getTotalEnergy(), 1E-8 ) ) {
 
               // amount we could reduce the energy if we deleted all the kinetic energy:
               if ( Math.abs( correctedState.getKineticEnergy() ) > Math.abs( dE ) ) {
@@ -1344,7 +1344,7 @@ define( require => {
                 // TODO: maybe should only do this if all velocity is not converted
                 debug && debug( 'Fixed position some, still need to fix velocity as well.' );
                 const correctedState2 = this.correctEnergyReduceVelocity( skaterState, correctedState );
-                if ( !Util.equalsEpsilon( e0, correctedState2.getTotalEnergy(), 1E-8 ) ) {
+                if ( !Utils.equalsEpsilon( e0, correctedState2.getTotalEnergy(), 1E-8 ) ) {
                   debug && debug( 'Changed position & Velocity and still had energy error' );
                   debug && debug( 'Energy error[123]' );
                 }
@@ -1367,7 +1367,7 @@ define( require => {
                     // Take as much thermal energy out as possible
                     const originalThermalEnergyState = newState.update( { thermalEnergy: skaterState.thermalEnergy } );
                     const correctedState3 = this.correctEnergyReduceVelocity( skaterState, originalThermalEnergyState );
-                    if ( !Util.equalsEpsilon( e0, correctedState3.getTotalEnergy(), 1E-8 ) ) {
+                    if ( !Utils.equalsEpsilon( e0, correctedState3.getTotalEnergy(), 1E-8 ) ) {
                       debug && debug( 'Changed position & Velocity and still had energy error, error[124]' );
                     }
                     return correctedState3;
@@ -1397,7 +1397,7 @@ define( require => {
           const fixedState = newState.updateUDVelocity( newVelocity, updatedVelocityX, updatedVelocityY );
           debug && debug( 'Set velocity to match energy, when energy was low: ' );
           debug && debug( 'INC changed velocity: dE=' + ( fixedState.getTotalEnergy() - e0 ) );
-          if ( !Util.equalsEpsilon( e0, fixedState.getTotalEnergy(), 1E-8 ) ) {
+          if ( !Utils.equalsEpsilon( e0, fixedState.getTotalEnergy(), 1E-8 ) ) {
             new Error( 'Energy error[2]' ).printStackTrace();
           }
           return fixedState;

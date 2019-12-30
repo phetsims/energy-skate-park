@@ -15,7 +15,7 @@ define( require => {
   const NumberControl = require( 'SCENERY_PHET/NumberControl' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Text = require( 'SCENERY/nodes/Text' );
-  const Util = require( 'DOT/Util' );
+  const Utils = require( 'DOT/Utils' );
 
   class PhysicalNumberControl extends NumberControl {
 
@@ -64,11 +64,11 @@ define( require => {
         majorTicks: [
           {
             value: valueRange.min,
-            label: new Text( Util.toFixed( valueRange.min, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
+            label: new Text( Utils.toFixed( valueRange.min, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
           },
           {
             value: valueRange.max,
-            label: new Text( Util.toFixed( valueRange.max, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
+            label: new Text( Utils.toFixed( valueRange.max, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
           }
         ]
       }, Constants.SLIDER_OPTIONS, options.sliderOptions );
