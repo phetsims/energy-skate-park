@@ -1136,12 +1136,19 @@ define( require => {
             // to kinetic energy to compensate
             const energyDiference = result.getPotentialEnergy() - correctedState.getPotentialEnergy();
             if ( energyDiference < 0 ) {
-              const speedToAdd = result.getSpeedFromEnergy( Math.abs( energyDiference ) );
-              const correctedSpeed = result.getSpeed() + speedToAdd;
+
+              // add the lost energy to kinetic energy to compensate
+              const newKineticEnergy = result.getKineticEnergy() + -energyDiference;
+
+              // new skater speed will be speed from adjusted kinetic energy
+              const adjustedSpeed = result.getSpeedFromEnergy( newKineticEnergy );
 
               // restore direction to velocity - slopes point to the right, but just in case
-              const correctedV = result.velocityX >= 0 ? correctedSpeed : -correctedSpeed;
+              const correctedV = result.velocityX >= 0 ? adjustedSpeed : -adjustedSpeed;
               result = result.updatePositionAngleUpVelocity( result.positionX, result.positionY, 0, true, correctedV, 0 );
+
+              // this correction should put result energy very close to correctedState energy
+              assert && assert( Util.equalsEpsilon( result.getTotalEnergy(), correctedState.getTotalEnergy(), 1E-6 ), 'correction after slope to ground changed total energy too much' );
             }
 
             // Correct any other energy discrepancy when switching to the ground, see #301
