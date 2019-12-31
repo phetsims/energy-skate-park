@@ -1165,7 +1165,16 @@ define( require => {
             const nudgedState = this.nudge( freeSkaterState, sideVectorX, sideVectorY, -1 );
 
             // Step after switching to free fall, so it doesn't look like it pauses
-            return this.stepFreeFall( dt, nudgedState, true );
+            const freeFallState = this.stepFreeFall( dt, nudgedState, true );
+
+            // if during this step we switched to ground, restore the kinetic energy and horizontal velocity rather
+            // than striking the earth
+            if ( freeFallState.positionY === 0 ) {
+              return this.switchToGround( freeFallState, freeFallState.getTotalEnergy(), freeFallState.getPosition(), nudgedState.getVelocity(), dt );
+            }
+            else {
+              return freeFallState;
+            }
           }
         }
       }
