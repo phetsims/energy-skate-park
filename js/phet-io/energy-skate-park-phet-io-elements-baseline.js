@@ -9193,7 +9193,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.playPauseButton": {
-      "phetioDocumentation": "",
+      "phetioDocumentation": "Button to control the animation in the simulation. This will also stop the model from stepping.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -9635,7 +9635,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.stepForwardButton": {
-      "phetioDocumentation": "",
+      "phetioDocumentation": "Progress the simulation a single model step forwards.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -22765,7 +22765,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.timeControlNode.playPauseButton": {
-      "phetioDocumentation": "",
+      "phetioDocumentation": "Button to control the animation in the simulation. This will also stop the model from stepping.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -23207,7 +23207,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "energySkatePark.introScreen.view.introScreenView.timeControlNode.stepForwardButton": {
-      "phetioDocumentation": "",
+      "phetioDocumentation": "Progress the simulation a single model step forwards.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -31228,7 +31228,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.playPauseButton": {
-      "phetioDocumentation": "",
+      "phetioDocumentation": "Button to control the animation in the simulation. This will also stop the model from stepping.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -31670,7 +31670,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.stepForwardButton": {
-      "phetioDocumentation": "",
+      "phetioDocumentation": "Progress the simulation a single model step forwards.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -47842,7 +47842,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.timeControlNode.playPauseButton": {
-      "phetioDocumentation": "",
+      "phetioDocumentation": "Button to control the animation in the simulation. This will also stop the model from stepping.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48284,7 +48284,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "energySkatePark.measureScreen.measureScreenView.timeControlNode.stepForwardButton": {
-      "phetioDocumentation": "",
+      "phetioDocumentation": "Progress the simulation a single model step forwards.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
