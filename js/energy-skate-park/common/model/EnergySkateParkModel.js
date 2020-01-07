@@ -845,8 +845,9 @@ define( require => {
       // make up for the difference by changing the y value
       const y = ( initialEnergy - 0.5 * skaterState.mass * proposedVelocity.magnitudeSquared - skaterState.thermalEnergy ) / ( -1 * skaterState.mass * skaterState.gravity ) + skaterState.referenceHeight;
       if ( y <= 0 ) {
-        // When falling straight down, stop completely and convert all energy to thermal
-        return skaterState.strikeGround( initialEnergy, proposedPosition.x );
+
+        // When falling straight down, stop completely and convert all energy kinetic to thermal
+        return skaterState.strikeGround( skaterState.getKineticEnergy(), proposedPosition.x );
       }
       else {
         return skaterState.continueFreeFall( proposedVelocity.x, proposedVelocity.y, proposedPosition.x, y );
