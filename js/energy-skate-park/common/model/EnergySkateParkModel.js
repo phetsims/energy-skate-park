@@ -604,6 +604,7 @@ define( require => {
       const newVelocity = segment.times( newSpeed );
 
       let correctedState = skaterState.updateThermalEnergy( newThermalEnergy );
+      correctedState = correctedState.updatePosition( proposedPosition.x, proposedPosition.y );
       correctedState = correctedState.updateUDVelocity( correctedState.parametricSpeed, newVelocity.x, newVelocity.y );
 
       assert && assert( Utils.equalsEpsilon( correctedState.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'substantial total energy change after corrections' );
