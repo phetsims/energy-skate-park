@@ -786,7 +786,7 @@ define( require => {
         // Sometimes (depending on dt) the thermal energy can go negative by the above calculation, see #141
         // In that case, set the thermal energy to zero and reduce the speed to compensate.
         if ( newThermalEnergy < skaterState.thermalEnergy ) {
-          const correctedState = this.correctThermalEnergy( skaterState, segment, proposedPosition );
+          const correctedState = this.correctThermalEnergy( skaterState, segment, newPosition );
 
           newThermalEnergy = correctedState.thermalEnergy;
           newSpeed = correctedState.getSpeed();
@@ -820,7 +820,9 @@ define( require => {
           parametricSpeed = parametricSpeed * -1;
         }
 
-        return skaterState.attachToTrack( newThermalEnergy, track, onTopSideOfTrack, parametricPosition, parametricSpeed, newVelocity.x, newVelocity.y, newPosition.x, newPosition.y );
+        const attachedSkater = skaterState.attachToTrack( newThermalEnergy, track, onTopSideOfTrack, parametricPosition, parametricSpeed, newVelocity.x, newVelocity.y, newPosition.x, newPosition.y );
+        assert && assert( Utils.equalsEpsilon( attachedSkater.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'large energy change after attaching to track' );
+        return attachedSkater;
       }
 
       // It just continued in free fall
