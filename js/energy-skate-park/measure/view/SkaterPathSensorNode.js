@@ -247,7 +247,7 @@ define( require => {
       // add a drag listener to the probe body
       this.probeNode.addInputListener( new DragListener( {
         transform: modelViewTransform,
-        locationProperty: sensorProbePositionProperty,
+        positionProperty: sensorProbePositionProperty,
         dragBoundsProperty: modelBoundsProperty,
         tandem: options.tandem.createTandem( 'dragListener' )
       } ) );
