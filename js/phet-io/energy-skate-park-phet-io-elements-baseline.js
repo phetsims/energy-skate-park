@@ -4564,6 +4564,32 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
+    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.variableSwitch.aInputListener": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ButtonListenerIO"
+    },
+    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.variableSwitch.bInputListener": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ButtonListenerIO"
+    },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.variableSwitch.onOffSwitch": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
