@@ -1522,9 +1522,7 @@ define( require => {
       assert && assert( otherTrack.attachable, 'trying to join tracks, but other track is not attachable' );
 
       // if the number of control points is low enough, replenish the toolbox
-      console.log( this.getNumberOfControlPoints() );
       if ( this.getNumberOfControlPoints() <= MAX_NUMBER_CONTROL_POINTS - 3 ) {
-        debugger;
         this.addDraggableTrack();
       }
     }
