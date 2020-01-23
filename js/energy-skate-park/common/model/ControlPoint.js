@@ -39,7 +39,8 @@ define( require => {
         // be "configurable" and this must be true.
         draggable: true,
 
-        // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging
+        // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging,
+        // in model coordinates
         limitBounds: null,
 
         tandem: Tandem.REQUIRED,
@@ -59,7 +60,7 @@ define( require => {
       // @public (phet-io)
       this.controlPointTandem = tandem;
 
-      // Where it would be if it hadn't snapped to another point during dragging
+      // @public - where it would be if it hadn't snapped to another point during dragging
       this.sourcePositionProperty = new Vector2Property( new Vector2( x, y ), {
         tandem: tandem.createTandem( 'sourcePositionProperty' ),
         phetioState: options.phetioState // in state only if parent is
