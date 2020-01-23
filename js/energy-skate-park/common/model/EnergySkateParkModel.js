@@ -185,7 +185,7 @@ define( require => {
         tandem: tandem.createTandem( 'pausedProperty' )
       } );
 
-      // @public {BooleanProperty} -Whether or not the timer is running
+      // @public {StopWatch} - model element for the stop watch in this sim
       this.stopwatch = new Stopwatch( {
         tandem: tandem.createTandem( 'stopwatch' )
       } );
@@ -201,12 +201,12 @@ define( require => {
         tandem: tandem.createTandem( 'frictionProperty' )
       } );
 
-      // @public
+      // @public {Vector2Property} - model position for the base  of the measuring tape
       this.measuringTapeBasePositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
         tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' )
       } );
 
-      // @public
+      // @public {Vector2Property} - model position for the tip of the measuring tape
       this.measuringTapeTipPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
         tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' )
       } );
