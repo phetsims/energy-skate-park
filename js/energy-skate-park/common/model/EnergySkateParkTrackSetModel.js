@@ -33,8 +33,7 @@ define( require => {
         limitPointBounds: false
       }, options );
 
-      const draggableTracks = false; // TODO: Can we get rid of this?
-      super( draggableTracks, frictionAllowed, tandem.createTandem( 'trackSetModel' ), options );
+      super( frictionAllowed, tandem.createTandem( 'trackSetModel' ), options );
 
       // @public {number} - Indicates the currently selected scene. There can be any number of scenes, do we need
       // to pass this in as a param

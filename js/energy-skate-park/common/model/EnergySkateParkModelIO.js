@@ -26,7 +26,7 @@ define( require => {
      */
     static clearChildInstances( energySkateParkModel ) {
       validate( energySkateParkModel, this.validator );
-      if ( energySkateParkModel.draggableTracks ) {
+      if ( energySkateParkModel.tracksDraggable ) {
         energySkateParkModel.removeAllTracks();
       }
     }

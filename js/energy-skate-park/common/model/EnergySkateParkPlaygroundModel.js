@@ -42,8 +42,7 @@ define( require => {
       assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
       options.tracksConfigurable = true;
 
-      const draggableTracks = true; // TODO: Get rid of this param?
-      super( draggableTracks, frictionAllowed, tandem, options );
+      super( frictionAllowed, tandem, options );
 
       // @private {Vector2} - see options for documentation
       this.initialTracksOffsetVector = options.initialTracksOffsetVector;

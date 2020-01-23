@@ -82,14 +82,13 @@ define( require => {
   let modelIterations = 0;
 
   /**
-   * TODO: Remove draggableTracks!
-   * @param {boolean} draggableTracks True in screen 3 where the user can drag the tracks
-   * @param {boolean} frictionAllowed True if this is screen 2-3, where friction is allowed to be on or off
+   * @param {boolean} frictionAllowed - if true, friction is included in the model, and may be configurable by user
    * @param {Tandem} tandem
+   * @param {Object} [options]
    * @constructor
    */
   class EnergySkateParkModel extends PhetioObject {
-    constructor( draggableTracks, frictionAllowed, tandem, options ) {
+    constructor( frictionAllowed, tandem, options ) {
       super( {
         phetioType: EnergySkateParkModelIO,
         tandem: tandem,
@@ -122,7 +121,6 @@ define( require => {
       }, options.skaterOptions );
 
       // @public (read-only)
-      this.draggableTracks = draggableTracks; // TODO: REmove this in favor of tracksDraggable option
       this.frictionAllowed = frictionAllowed;
       this.tracksDraggable = options.tracksDraggable;
       this.tracksConfigurable = options.tracksConfigurable;
@@ -1822,8 +1820,6 @@ define( require => {
      * @public (phet-io)
      */
     removeAllTracks() {
-
-      // TODO: should we leverage this.draggableTracks and only save the truly dynamic tracks?
       while ( this.tracks.length > 0 ) {
         const track = this.tracks.get( 0 );
         track.disposeControlPoints();
