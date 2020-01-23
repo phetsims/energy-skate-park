@@ -22,8 +22,7 @@ define( require => {
      */
     constructor( tandem ) {
 
-      // Playground model, with friction
-      super( true, tandem, {
+      super( tandem, {
         skaterOptions: {
           defaultMass: SkaterMasses.PHET_SKATER_MASS,
           massRange: new Range( SkaterMasses.BUG_MASS, SkaterMasses.PHET_SKATER_MASS )

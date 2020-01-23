@@ -25,8 +25,7 @@ define( require => {
      */
     constructor( tandem ) {
 
-      // a track set model, with friction allowed
-      super( true, tandem, {
+      super( tandem, {
         tracksConfigurable: true
       } );
 

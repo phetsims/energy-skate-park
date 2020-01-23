@@ -82,13 +82,12 @@ define( require => {
   let modelIterations = 0;
 
   /**
-   * @param {boolean} frictionAllowed - if true, friction is included in the model, and may be configurable by user
    * @param {Tandem} tandem
    * @param {Object} [options]
    * @constructor
    */
   class EnergySkateParkModel extends PhetioObject {
-    constructor( frictionAllowed, tandem, options ) {
+    constructor( tandem, options ) {
       super( {
         phetioType: EnergySkateParkModelIO,
         tandem: tandem,
@@ -96,6 +95,9 @@ define( require => {
       } );
 
       options = merge( {
+
+        // {boolean} - if true, friction is included in the model and may be configurable by the user
+        includeFriction: true,
 
         // {boolean} - if true, tracks can be dragged around the play area
         tracksDraggable: false,
@@ -121,7 +123,7 @@ define( require => {
       }, options.skaterOptions );
 
       // @public (read-only)
-      this.frictionAllowed = frictionAllowed;
+      this.includeFriction = options.includeFriction;
       this.tracksDraggable = options.tracksDraggable;
       this.tracksConfigurable = options.tracksConfigurable;
 
@@ -194,7 +196,7 @@ define( require => {
       } );
 
       // @public {number} - Coefficient of friction (unitless) between skater and track
-      this.frictionProperty = new NumberProperty( frictionAllowed ? Constants.DEFAULT_FRICTION : 0, {
+      this.frictionProperty = new NumberProperty( this.includeFriction ? Constants.DEFAULT_FRICTION : 0, {
         range: new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ),
         tandem: tandem.createTandem( 'frictionProperty' )
       } );

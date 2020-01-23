@@ -25,11 +25,10 @@ define( require => {
   class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
 
     /**
-     * @param {boolean} includeFriction
      * @param {Tandem} tandem
      * @param {object} options
      */
-    constructor( includeFriction, tandem, options ) {
+    constructor( tandem, options ) {
       options = merge( {
 
         // the interval at which we save SkaterSamples, in seconds
@@ -40,7 +39,7 @@ define( require => {
         maxNumberOfSamples: 50
       }, options );
 
-      super( includeFriction, tandem, options );
+      super( tandem, options );
 
       // @private {number}
       this.saveSampleInterval = options.saveSampleInterval;

@@ -29,7 +29,9 @@ define( require => {
     constructor( tandem ) {
 
       // track set model with no friction
-      super( false, tandem.createTandem( 'graphsModel' ), {
+      super( tandem.createTandem( 'graphsModel' ), {
+
+        includeFriction: false,
 
         // premade tracks can be modified
         tracksConfigurable: true,

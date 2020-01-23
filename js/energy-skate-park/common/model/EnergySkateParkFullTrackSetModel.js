@@ -16,12 +16,11 @@ define( require => {
   class EnergySkateParkFullTrackSetModel extends EnergySkateParkTrackSetModel {
 
     /**
-     * @param {boolean} frictionAllowed
      * @param {Tandem} tandem
      * @param {Object} options
      */
-    constructor( frictionAllowed, tandem, options ) {
-      super( frictionAllowed, tandem, options );
+    constructor( tandem, options ) {
+      super( tandem, options );
 
       const trackSet = EnergySkateParkTrackSetModel.createFullTrackSet( this, tandem );
 

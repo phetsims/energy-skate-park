@@ -22,10 +22,9 @@ define( require => {
 
     /**
      * @constructor
-     * @param {boolean} frictionAllowed - Whether or not friction is allowed in this model.
      * @param {Object} options
      */
-    constructor( frictionAllowed, tandem, options ) {
+    constructor( tandem, options ) {
       options = merge( {
 
         // of true, tracks created with PremadeTracks will have limiting bounds for dragging (assuming that
@@ -33,7 +32,7 @@ define( require => {
         limitPointBounds: false
       }, options );
 
-      super( frictionAllowed, tandem.createTandem( 'trackSetModel' ), options );
+      super( tandem.createTandem( 'trackSetModel' ), options );
 
       // @public {number} - Indicates the currently selected scene. There can be any number of scenes, do we need
       // to pass this in as a param

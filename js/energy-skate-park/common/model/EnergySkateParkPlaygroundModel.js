@@ -22,12 +22,11 @@ define( require => {
 
   /**
    * @constructor
-   * @param {boolean} frictionAllowed - is friction allowed in this model?
    * @param {Tandem} tandem
    * @param {Object} options
    */
   class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
-    constructor( frictionAllowed, tandem, options ) {
+    constructor( tandem, options ) {
       options = merge( {
 
         // the center of initial tracks in the control panel, change this to move the panel to a different location
@@ -42,7 +41,7 @@ define( require => {
       assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
       options.tracksConfigurable = true;
 
-      super( frictionAllowed, tandem, options );
+      super( tandem, options );
 
       // @private {Vector2} - see options for documentation
       this.initialTracksOffsetVector = options.initialTracksOffsetVector;
