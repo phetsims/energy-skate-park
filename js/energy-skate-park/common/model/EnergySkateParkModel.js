@@ -246,7 +246,6 @@ define( require => {
       this.resetEmitter = new Emitter();
 
       // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
-      // TODO: Can this me moved into Skater.js?
       this.skater.massProperty.link( () => { if ( this.pausedProperty.value ) { this.skater.updatedEmitter.emit(); } } );
 
       // @public
