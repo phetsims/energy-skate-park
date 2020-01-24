@@ -142,6 +142,7 @@ define( require => {
 
     /**
      * @public
+     * @override
      */
     reset() {
       super.reset();
