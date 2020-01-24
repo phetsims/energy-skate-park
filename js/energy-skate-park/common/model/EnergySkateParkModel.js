@@ -74,10 +74,6 @@ define( require => {
     console.log.apply( console, arguments );
   } : null;
 
-  // Control points are replenished in the toolbox as they are destroyed (by connecting) in the play area
-  // This is the maximum number of control points available to the user.
-  const MAX_NUMBER_CONTROL_POINTS = 15;
-
   // Track the model iterations to implement "slow motion" by stepping every Nth frame, see #210
   let modelIterations = 0;
 
@@ -1571,7 +1567,7 @@ define( require => {
 
       // If a control point was split and that makes too many "live" control points total, remove a piece of track from
       // the toolbox to keep the total number of control points low enough.
-      if ( this.getNumberOfControlPoints() > MAX_NUMBER_CONTROL_POINTS ) {
+      if ( this.getNumberOfControlPoints() > Constants.MAX_NUMBER_CONTROL_POINTS ) {
         // find a nonphysical track, then remove it
 
         const trackToRemove = this.getNonPhysicalTracks()[ 0 ];
@@ -1734,7 +1730,7 @@ define( require => {
     // Logic to determine whether a control point can be added by cutting a track's control point in two
     // This is feasible if the number of control points in the play area (above y>0) is less than the maximum
     canCutTrackControlPoint() {
-      return this.getNumberOfPhysicalControlPoints() < MAX_NUMBER_CONTROL_POINTS;
+      return this.getNumberOfPhysicalControlPoints() < Constants.MAX_NUMBER_CONTROL_POINTS;
     }
 
     // Check whether the model contains a track so that input listeners for detached elements can't create bugs, see #230

@@ -46,6 +46,10 @@ define( require => {
       maxWidth: 25 // selected by choosing the length of widest English string in ?stringTest=doubl
     },
 
+    // Control points are replenished in the toolbox as they are destroyed (by connecting) in the play area
+    // This is the maximum number of control points available to the user.
+    MAX_NUMBER_CONTROL_POINTS: 15,
+
     // for the bar graphs, factors multiplied by physical values to produce heights in view coordinates
     ZOOM_FACTOR_DELTA: ZOOM_FACTOR_DELTA,
     MAX_ZOOM_FACTOR: 9 * ZOOM_FACTOR_DELTA,

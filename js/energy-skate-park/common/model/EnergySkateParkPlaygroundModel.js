@@ -10,15 +10,12 @@ define( require => {
 
   // modules
   const ControlPoint = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPoint' );
+  const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkModel' );
   const merge = require( 'PHET_CORE/merge' );
   const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
   const Vector2 = require( 'DOT/Vector2' );
-
-  // Control points are replenished in the toolbox as they are destroyed (by connecting) in the play area
-  // This is the maximum number of control points available to the user.
-  const MAX_NUMBER_CONTROL_POINTS = 15;
 
   /**
    * @constructor
@@ -58,7 +55,7 @@ define( require => {
     addDraggableTracks() {
 
       // 3 points per track
-      for ( let i = 0; i < MAX_NUMBER_CONTROL_POINTS / 3; i++ ) {
+      for ( let i = 0; i < Constants.MAX_NUMBER_CONTROL_POINTS / 3; i++ ) {
         this.addDraggableTrack();
       }
     }
@@ -99,7 +96,7 @@ define( require => {
       super.joinTracks( track );
 
       // if the number of control points is low enough, replenish the toolbox
-      if ( this.getNumberOfControlPoints() <= MAX_NUMBER_CONTROL_POINTS - 3 ) {
+      if ( this.getNumberOfControlPoints() <= Constants.MAX_NUMBER_CONTROL_POINTS - 3 ) {
         this.addDraggableTrack();
       }
     }
@@ -114,7 +111,7 @@ define( require => {
      */
     deleteControlPoint( track, controlPointIndex ) {
       super.deleteControlPoint( track, controlPointIndex );
-      if ( this.getNumberOfControlPoints() <= MAX_NUMBER_CONTROL_POINTS - 3 ) {
+      if ( this.getNumberOfControlPoints() <= Constants.MAX_NUMBER_CONTROL_POINTS - 3 ) {
         this.addDraggableTrack();
       }
     }
