@@ -40,6 +40,7 @@ define( require => {
   /**
    * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the
    * CENTER of the limiting bounds.
+   *
    * @param  {Vector2} point - location of control point, CENTER of the bounds
    * @param  {number} width
    * @param  {number} height
@@ -49,42 +50,48 @@ define( require => {
     return new Bounds2( point.x - width / 2, point.y - height / 2, point.x + width / 2, point.y + height / 2 );
   };
 
+  /**
+   * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the BOTTOM
+   * CENTER of the limiting bounds.
+   *
+   * @param  {Vector2} point - location of control point, BOTTOM CENTER of the bounds
+   * @param  {number} width
+   * @param  {number} height
+   * @returns {Bounds2}
+   */
+  const createBottomLimitBounds = ( point, width, height ) => {
+    return new Bounds2( point.x - width / 2, point.y, point.x + width / 2, point.y + height );
+  };
 
+  /**
+   * Create a set of limiting drag bounds for a control point. The spacing args are relative to provided point,
+   * which is presumably the location of the control point.
+   *
+   * @param {Vector2} point - spacing in each direction relative to this point
+   * @param {number} leftSpace - space to the left of point for bounds
+   * @param {number} rightSpace - space to the right of point for bounds
+   * @param {number} upSpace - space to the up of point for bounds
+   * @param {number} downSpace - space to the down of point for bounds
+   * @returns {Bounds2}
+   */
+  const createRelativeSpaceBounds = ( point, leftSpace, rightSpace, upSpace, downSpace ) => {
+    return new Bounds2( point.x - leftSpace, point.y - downSpace, point.x + rightSpace, point.y + upSpace );
+  };
 
   const PremadeTracks = {
 
     /**
-     * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the BOTTOM
-     * CENTER of the limiting bounds
-     * @param  {Vector2} point - location of control point, BOTTOM CENTER of the bounds
-     * @param  {number} width
-     * @param  {number} height
-     * @returns {Bounds2}
+     * Create a set of control points that create a parabola shaped track.
+     * @param {Tandem} groupTandem
+     * @param {Object} [options]
+     * @returns {ControlPoint[]}
      */
-    createBottomLimitBounds: ( point, width, height ) => {
-      return new Bounds2( point.x - width / 2, point.y, point.x + width / 2, point.y + height );
-    },
-
-    /**
-     * Create a set of limiting drag bounds for a control point. The spacing args are relative to provided point.
-     *
-     * @param {Vector2} point - position of the control point, remaining spaces relative to this point
-     * @param {number} leftSpace - how much space bounds should extend to left of point
-     * @param {number} rightSpace - how much space bounds should extend to right of point
-     * @param {number} upSpace - how much space bounds should extend above point
-     * @param {number} downSpace - how much space bounds should extend below point
-     * @returns {Bounds2}
-     */
-    createRelativeSpaceBounds: ( point, leftSpace, rightSpace, upSpace, downSpace ) => {
-      return new Bounds2( point.x - leftSpace, point.y - downSpace, point.x + rightSpace, point.y + upSpace );
-    },
-
-    // create a set of control points which create a parabola shaped track
     createParabolaControlPoints: ( groupTandem, options ) => {
       options = merge( {
         trackHeight: 6, // largest height for the parabola
         trackWidth: 8, // width from the left most control point to the right most control point
 
+        // {boolean} - individual points may or may not be draggable
         p1Draggable: true,
         p2Draggable: true,
         p3Draggable: true
@@ -95,7 +102,7 @@ define( require => {
       const p3 = new Vector2( options.trackWidth / 2, options.trackHeight );
 
       const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
-      const p2Bounds = PremadeTracks.createBottomLimitBounds( p2, 5, 3 );
+      const p2Bounds = createBottomLimitBounds( p2, 5, 3 );
       const p3Bounds = createCenteredLimitBounds( p3, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       return [
@@ -120,7 +127,13 @@ define( require => {
       ];
     },
 
-    // create a set of control points which create a slope shaped track
+    /**
+     * Create a set of control points which create a slope shaped track, touching the ground on the right side.
+     *
+     * @param {Tandem} groupTandem
+     * @param {Object} options
+     * @returns {ControlPoint[]}
+     */
     createSlopeControlPoints: ( groupTandem, options ) => {
       options = merge( CREATOR_OPTIONS, options );
 
@@ -131,8 +144,8 @@ define( require => {
       const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
       // custom relative bounds so that bounds fall along the meter
-      const p2Bounds = PremadeTracks.createRelativeSpaceBounds( p2, 0.5, 2.5, 1.8, 0.2 );
-      const p3Bounds = PremadeTracks.createRelativeSpaceBounds( p3, 0.5, 2.5, 3, 0 );
+      const p2Bounds = createRelativeSpaceBounds( p2, 0.5, 2.5, 1.8, 0.2 );
+      const p3Bounds = createRelativeSpaceBounds( p3, 0.5, 2.5, 3, 0 );
 
       return [
         new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
@@ -141,15 +154,22 @@ define( require => {
       ];
     },
 
-    // create a set of control points which create a double well
-    // For the double well, move the left well up a bit since the interpolation moves it down by that much, and we
-    // don't want the skater to go to y<0 while on the track.  Numbers determined by trial and error.
+    /**
+     * Create a set of control points that will create a double well track. For the double well, move the left well up
+     * a but since the interpolation moves it down by that much and we don't want the skater to go below ground
+     * while on the track. Numbers determined by trial and error.
+     *
+     * @param {Tandem} groupTandem
+     * @param {Object} options
+     * @returns {ControlPoint[]}
+     */
     createDoubleWellControlPoints: ( groupTandem, options ) => {
       options = merge( {
         trackHeight: 5, // largest height for the well
         trackWidth: 8, // width from the left most control point to the right most control point
         trackMidHeight: 2, // height of the mid control point that creates the double well
 
+        // {boolean} - individual points may or may not be draggable
         p1Draggable: true,
         p2Draggable: true,
         p3Draggable: true,
@@ -167,11 +187,11 @@ define( require => {
       const p4 = new Vector2( 2, 1 );
       const p5 = new Vector2( options.trackWidth / 2, options.trackHeight );
 
-      const p1Bounds = PremadeTracks.createRelativeSpaceBounds( p1, 1.5, 1.5, 3, 1 );
-      const p2Bounds = PremadeTracks.createRelativeSpaceBounds( p2, 1.5, 0.5, 3, 0 );
-      const p3Bounds = PremadeTracks.createRelativeSpaceBounds( p3, 1, 1, options.p3UpSpacing, options.p3DownSpacing );
-      const p4Bounds = PremadeTracks.createRelativeSpaceBounds( p4, 0.5, 1.5, 2, 1 );
-      const p5Bounds = PremadeTracks.createRelativeSpaceBounds( p5, 1.5, 1.5, 3, 1 );
+      const p1Bounds = createRelativeSpaceBounds( p1, 1.5, 1.5, 3, 1 );
+      const p2Bounds = createRelativeSpaceBounds( p2, 1.5, 0.5, 3, 0 );
+      const p3Bounds = createRelativeSpaceBounds( p3, 1, 1, options.p3UpSpacing, options.p3DownSpacing );
+      const p4Bounds = createRelativeSpaceBounds( p4, 0.5, 1.5, 2, 1 );
+      const p5Bounds = createRelativeSpaceBounds( p5, 1.5, 1.5, 3, 1 );
 
       return [
         new ControlPoint( p1.x, p1.y, {
@@ -209,6 +229,7 @@ define( require => {
 
     /**
      * Create a set of control points that will form a track that takes the shape of a loop.
+     *
      * @param  {Tandem} groupTandem
      * @returns {Array.<ControlPoint>}
      */
@@ -233,13 +254,13 @@ define( require => {
       const p6 = new Vector2( innerLoopWidth / 2, trackBottom );
       const p7 = new Vector2( loopWidth / 2, trackTop );
 
-      const p1Bounds = PremadeTracks.createRelativeSpaceBounds( p1, 1, 1, 2, 3 );
-      const p2Bounds = PremadeTracks.createRelativeSpaceBounds( p2, 1, 1, 1 - trackBottom, trackBottom );
+      const p1Bounds = createRelativeSpaceBounds( p1, 1, 1, 2, 3 );
+      const p2Bounds = createRelativeSpaceBounds( p2, 1, 1, 1 - trackBottom, trackBottom );
       const p3Bounds = createCenteredLimitBounds( p3, 2, 1 );
-      const p4Bounds = PremadeTracks.createRelativeSpaceBounds( p4, 1.5, 1.5, 2, 1 );
+      const p4Bounds = createRelativeSpaceBounds( p4, 1.5, 1.5, 2, 1 );
       const p5Bounds = createCenteredLimitBounds( p5, 2, 1 );
-      const p6Bounds = PremadeTracks.createRelativeSpaceBounds( p6, 1, 1, 1 - trackBottom, trackBottom );
-      const p7Bounds = PremadeTracks.createRelativeSpaceBounds( p7, 1, 1, 2, 3 );
+      const p6Bounds = createRelativeSpaceBounds( p6, 1, 1, 1 - trackBottom, trackBottom );
+      const p7Bounds = createRelativeSpaceBounds( p7, 1, 1, 2, 3 );
 
       return [
         new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
@@ -264,7 +285,8 @@ define( require => {
     },
 
     /**
-     * Create a track from the control points,
+     * Create a track from the provided control points.
+     *
      * @param  {EnergySkateParkModel} model
      * @param  {Array.<Track>} modelTracks
      * @param  {Array.<ControlPoint>} controlPoints
@@ -273,15 +295,7 @@ define( require => {
      * @returns {Track}
      */
     createTrack( model, modelTracks, controlPoints, availableBoundsProperty, options ) {
-      const track = new Track( model, modelTracks, controlPoints, PARENT_TRACKS, availableBoundsProperty, options );
-
-      // none of the premade tracks are draggable, or created from a toolbox, so set the dropped Property so that
-      // the control points can be used if the track is configurable
-      if ( options.configurable ) {
-        // track.droppedProperty.value = true;
-      }
-
-      return track;
+      return new Track( model, modelTracks, controlPoints, PARENT_TRACKS, availableBoundsProperty, options );
     }
   };
 
