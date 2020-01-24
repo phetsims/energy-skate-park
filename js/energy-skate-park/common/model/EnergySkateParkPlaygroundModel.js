@@ -82,16 +82,43 @@ define( require => {
         new ControlPoint( offset.x, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } ),
         new ControlPoint( offset.x + 1, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } )
       ];
-      this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, {
-          draggable: true,
-          configurable: true,
-          splittable: true,
-          attachable: true,
-
+      this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, merge( {
           tandem: trackGroupTandem.createNextTandem()
-        }
+        }, Track.FULLY_INTERACTIVE_OPTIONS )
       ) );
     }
+
+    /**
+     * After joining tracks, replenish the toolbox if number of control points has gone down enough.
+     * @public
+     * @override
+     *
+     * @param {Track} track
+     */
+    joinTracks( track ) {
+      super.joinTracks( track );
+
+      // if the number of control points is low enough, replenish the toolbox
+      if ( this.getNumberOfControlPoints() <= MAX_NUMBER_CONTROL_POINTS - 3 ) {
+        this.addDraggableTrack();
+      }
+    }
+
+    /**
+     * After deleting a control point, replenish the toolbox if number of control points has decreased enough.
+     * @public
+     * @override
+     *
+     * @param {Track} track
+     * @param {number} controlPointIndex
+     */
+    deleteControlPoint( track, controlPointIndex ) {
+      super.deleteControlPoint( track, controlPointIndex );
+      if ( this.getNumberOfControlPoints() <= MAX_NUMBER_CONTROL_POINTS - 3 ) {
+        this.addDraggableTrack();
+      }
+    }
+
 
     /**
      * Clear all tracks from the model.

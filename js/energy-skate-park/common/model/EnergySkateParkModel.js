@@ -290,38 +290,6 @@ define( require => {
       }
     }
 
-    // Add a single track to the track control panel.
-    addDraggableTrack() {
-
-      const controlPointGroupTandem = this.controlPointGroupTandem;
-      const trackGroupTandem = this.trackGroupTandem;
-
-      // Move the tracks over so they will be in the right position in the view coordinates, under the grass to the left
-      // of the clock controls.  Could use view transform for this, but it would require creating the view first, so just
-      // eyeballing it for now.
-      const offset = new Vector2( -5.1, -0.85 );
-      const controlPoints = [
-
-        // Control points only participate in the state if they are draggable (on the lab screens)
-        new ControlPoint( offset.x - 1, offset.y, {
-          tandem: controlPointGroupTandem.createNextTandem(),
-          phetioState: this.tracksDraggable
-        } ),
-        new ControlPoint( offset.x, offset.y, {
-          tandem: controlPointGroupTandem.createNextTandem(),
-          phetioState: this.tracksDraggable
-        } ),
-        new ControlPoint( offset.x + 1, offset.y, {
-          tandem: controlPointGroupTandem.createNextTandem(),
-          phetioState: this.tracksDraggable
-        } )
-      ];
-      this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, merge( {
-          tandem: trackGroupTandem.createNextTandem()
-        }, Track.FULLY_INTERACTIVE_OPTIONS )
-      ) );
-    }
-
     // Reset the model, including the skater, tracks, visualizations, etc.
     reset() {
       const availableModelBounds = this.availableModelBoundsProperty.value;
@@ -1488,11 +1456,6 @@ define( require => {
 
       assert && assert( track.attachable, 'trying to join tracks, but track is not attachable' );
       assert && assert( otherTrack.attachable, 'trying to join tracks, but other track is not attachable' );
-
-      // if the number of control points is low enough, replenish the toolbox
-      if ( this.getNumberOfControlPoints() <= MAX_NUMBER_CONTROL_POINTS - 3 ) {
-        this.addDraggableTrack();
-      }
     }
 
     /**
@@ -1543,11 +1506,6 @@ define( require => {
       // If the skater was on track, then he should fall off
       if ( this.skater.trackProperty.value === track ) {
         this.skater.trackProperty.value = null;
-      }
-
-      // if the number of control points is low enough, replenish the toolbox
-      if ( this.getNumberOfControlPoints() <= MAX_NUMBER_CONTROL_POINTS - 3 ) {
-        this.addDraggableTrack();
       }
     }
 
