@@ -225,10 +225,10 @@ define( require => {
       // @public {Skater} - the skater model instance
       this.skater = new Skater( tandem.createTandem( 'skater' ), options.skaterOptions );
 
-      // Determine if the skater is onscreen or offscreen for purposes of highlighting the 'return skater' button.
-      // Don't check whether the skater is underground since that is a rare case (only if the user is actively dragging a
-      // control point near y=0 and the track curves below) and the skater will pop up again soon, see the related
-      // flickering problem in #206
+      // @public {DerivedProperty} - Determine if the skater is onscreen or offscreen for purposes of highlighting the
+      // 'return skater' button. Don't check whether the skater is underground since that is a rare case (only if the
+      // user is actively dragging a control point near y=0 and the track curves below) and the skater will pop up
+      // again soon, see the related flickering problem in #206
       this.skaterInBoundsProperty = new DerivedProperty( [ this.skater.positionProperty ], position => {
         const availableModelBounds = this.availableModelBoundsProperty.get();
         if ( !availableModelBounds.hasNonzeroArea() ) {
