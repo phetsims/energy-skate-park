@@ -1,7 +1,7 @@
 // Copyright 2018-2020, University of Colorado Boulder
 
 /**
- * A model in Energy Skate park with a specific set of tracks. Does not include any buildable or movable tracks.
+ * A model in Energy Skate park with a premade set of tracks. Does not include any configurable or movable tracks.
  * @author Jesse Greenberg
  */
 define( require => {
@@ -21,14 +21,14 @@ define( require => {
   class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
 
     /**
-     * @constructor
+     * @param {Tandem} tandem
      * @param {Object} options
      */
     constructor( tandem, options ) {
       options = merge( {
 
-        // of true, tracks created with PremadeTracks will have limiting bounds for dragging (assuming that
-        // points are configurable)
+        // if true, tracks created from PremadeTracks that are configurable will have limiting bounds for dragging
+        // control points
         limitPointBounds: false
       }, options );
 
@@ -49,7 +49,6 @@ define( require => {
     /**
      * When the scene changes or tracks are added to the track set, update which track is visible and physically
      * interactive.
-     *
      * @private
      */
     updateActiveTrack( scene ) {
@@ -74,6 +73,8 @@ define( require => {
     /**
      * Add all tracks in the set. In addition to adding all to the ObservbleArray, this will initialize which track
      * should be visible, physical, and interactive depending on the model sceneProperty.
+     * @public
+     *
      * @param {Array.<Track>} tracks
      */
     addTrackSet( tracks ) {
@@ -84,6 +85,8 @@ define( require => {
     /**
      * Reset all of the tracks in this model's track set, if they are configurable. Otherwise, identical to
      * super function.
+     * @public
+     * @override
      */
     reset() {
       super.reset();
