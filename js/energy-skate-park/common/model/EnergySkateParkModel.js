@@ -205,13 +205,14 @@ define( require => {
         tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' )
       } );
 
-      // @public {boolean} - Whether the skater should stick to the track like a roller coaster, or be able to fly off like a street
+      // @public {boolean} - Whether the skater should stick to the track like a roller coaster, or be able to fly off
+      // like a street
       this.stickingToTrackProperty = new BooleanProperty( true, {
         tandem: tandem.createTandem( 'stickingToTrackProperty' )
       } );
 
-      // @public - Will be filled in by the view, used to prevent control points from moving outside the visible model bounds when
-      // adjusted, see #195
+      // @public - Will be filled in by the view, used to prevent control points from moving outside the visible model
+      // bounds when adjusted, see #195
       this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
         tandem: tandem.createTandem( 'availableModelBoundsProperty' ),
         phetioType: PropertyIO( Bounds2IO )
