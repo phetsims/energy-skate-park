@@ -130,8 +130,8 @@ define( require => {
       // @public
       this.trackGroupTandem = trackGroupTandem;
 
-      // Temporary flag that keeps track of whether the track was changed in the step before the physics update.
-      // true if the skater's track is being dragged by the user, so that energy conservation no longer applies.
+      // {boolean} - Temporary flag that keeps track of whether the track was changed in the step before the physics
+      // update. True if the skater's track is being dragged by the user, so that energy conservation no longer applies.
       // Only applies to one frame at a time (for the immediate next update).  See #127 and #135
       // @private
       this.trackChangePending = false;
