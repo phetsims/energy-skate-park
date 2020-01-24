@@ -79,19 +79,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.general.barrierRectangle.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.general.barrierRectangle.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -404,19 +391,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.general.navigationBar.graphsScreenButton.icon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.general.navigationBar.graphsScreenButton.icon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -455,19 +429,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.graphsScreenButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.graphsScreenButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -533,19 +494,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.graphsScreenButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.graphsScreenButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -650,19 +598,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.homeButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.homeButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -781,19 +716,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.general.navigationBar.introScreenButton.icon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.general.navigationBar.introScreenButton.icon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -832,19 +754,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.introScreenButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.introScreenButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -910,19 +819,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.introScreenButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.introScreenButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -1041,19 +937,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.general.navigationBar.labScreenButton.icon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.general.navigationBar.labScreenButton.icon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -1092,19 +975,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.labScreenButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.labScreenButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -1170,19 +1040,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.labScreenButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.labScreenButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -1301,19 +1158,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.general.navigationBar.measureScreenButton.icon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.general.navigationBar.measureScreenButton.icon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -1352,19 +1196,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.measureScreenButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.measureScreenButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -1430,19 +1261,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.measureScreenButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.measureScreenButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -1626,19 +1444,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.archetype.closeButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": true,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.archetype.closeButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -1717,19 +1522,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.archetype.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": true,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.archetype.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -1768,19 +1560,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.archetype.termsPrivacyAndLicensingText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": true,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.archetype.termsPrivacyAndLicensingText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -1847,19 +1626,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.archetype.thirdPartyCreditsLinkText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": true,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.archetype.thirdPartyCreditsLinkText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -1924,19 +1690,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.archetype.translationCreditsLinkText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": true,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutDialogCapsule.archetype.translationCreditsLinkText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -2055,19 +1808,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutMenuItem.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.general.navigationBar.phetButton.phetMenu.aboutMenuItem.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -2158,19 +1898,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.navigationBar.phetButton.phetMenu.screenshotMenuItem.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.navigationBar.phetButton.phetMenu.screenshotMenuItem.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -2263,19 +1990,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.general.navigationBar.titleTextNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.general.navigationBar.titleTextNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -2353,19 +2067,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.screenIndexProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.general.showHomeScreenProperty": {
       "phetioDocumentation": "Whether or not home screen is displayed. This is independent of the \"current sim screen\" stored in the \"screenIndexProperty.\"",
@@ -2561,19 +2262,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.barGraphScaleProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.barGraphVisibleProperty": {
       "phetioDocumentation": "",
@@ -3147,19 +2835,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.frictionProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.gridVisibleProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -3290,19 +2965,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.angleProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.directionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -3342,19 +3004,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.gravityMagnitudeProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.headPositionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -3381,19 +3030,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.kineticEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.massProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -3406,19 +3042,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.massProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.movedProperty": {
       "phetioDocumentation": "",
@@ -3472,19 +3095,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.parametricSpeedProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.positionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -3511,19 +3121,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.potentialEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.referenceHeightProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -3536,19 +3133,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.referenceHeightProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.speedProperty": {
       "phetioDocumentation": "",
@@ -3615,19 +3199,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.thermalEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.totalEnergyProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -3640,19 +3211,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.totalEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.skater.trackProperty": {
       "phetioDocumentation": "",
@@ -3784,19 +3342,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.stopwatch.timeProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.tracks": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -3822,19 +3367,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsModel.graphsModel.trackSetModel.tracks.lengthProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsModel.parabolaTrack": {
       "phetioDocumentation": "",
@@ -3966,19 +3498,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.leftArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.leftArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -4057,19 +3576,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.maxLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.maxLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -4134,19 +3640,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.minLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.minLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -4213,19 +3706,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.numberDisplay.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.numberDisplay.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -4264,19 +3744,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.numberDisplay.valueText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.numberDisplay.valueText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -4343,19 +3810,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -4420,19 +3874,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.rightArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.rightArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -4538,19 +3979,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.slider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.slider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -4589,19 +4017,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.slider.thumb.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.slider.thumb.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -4811,19 +4226,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.frictionSlider.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -4928,19 +4330,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.accordionBox.expandCollapseButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.accordionBox.expandCollapseButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -5032,19 +4421,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.accordionBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.accordionBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -5122,19 +4498,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.eraserButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.eraserButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -5253,19 +4616,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.variableSwitch.onOffSwitch.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.variableSwitch.onOffSwitch.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -5370,19 +4720,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.variableSwitch.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.variableSwitch.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -5474,19 +4811,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomInButton.glassNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomInButton.glassNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -5525,19 +4849,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomInButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomInButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -5603,19 +4914,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomInButton.signNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomInButton.signNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -5721,19 +5019,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomOutButton.glassNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomOutButton.glassNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -5772,19 +5057,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomOutButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomOutButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -5850,19 +5122,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomOutButton.signNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.zoomOutButton.signNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -5955,19 +5214,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.backgroundNode.mountainImage.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.backgroundNode.mountainImage.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -6006,19 +5252,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.backgroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.backgroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -6072,19 +5305,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -6136,19 +5356,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -6202,19 +5409,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -6253,19 +5447,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -6344,19 +5525,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene1RadioButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene1RadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -6461,19 +5629,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene2RadioButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene2RadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -6631,19 +5786,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -6682,19 +5824,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -6826,19 +5955,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -6955,19 +6071,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -7086,19 +6189,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -7137,19 +6227,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -7229,19 +6306,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.foregroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.foregroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -7294,19 +6358,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.labelNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.labelNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -7358,19 +6409,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -7450,19 +6488,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -7514,19 +6539,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -7632,19 +6644,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -7696,19 +6695,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -7801,19 +6787,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.gridNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.gridNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -7852,19 +6825,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.gridNode.thickLinePath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.gridNode.thickLinePath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -7917,19 +6877,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.gridNode.thinLinePath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.gridNode.thinLinePath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -8061,19 +7008,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -8178,19 +7112,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -8255,19 +7176,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.clearThermalButton.arrowPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.clearThermalButton.arrowPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -8334,19 +7242,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.clearThermalButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.clearThermalButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -8411,19 +7306,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.clearThermalButton.trashPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.clearThermalButton.trashPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -8490,19 +7372,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.kineticEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.kineticEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -8555,19 +7424,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -8606,19 +7462,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.potentialEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.potentialEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -8685,19 +7528,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.thermalEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.thermalEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -8763,19 +7593,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -8840,19 +7657,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.totalEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartLegend.totalEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -8931,19 +7735,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.pieChartNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -9088,19 +7879,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.resetAllButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.resetAllButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -9178,19 +7956,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.restartSkaterTextNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.restartSkaterTextNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -9282,19 +8047,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.returnSkaterButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.returnSkaterButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -9400,19 +8152,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.returnSkaterToGroundButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.returnSkaterToGroundButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -9517,19 +8256,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.returnSkaterToPreviousStartingPositionButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.returnSkaterToPreviousStartingPositionButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -9608,19 +8334,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterIconImage1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterIconImage1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -9672,19 +8385,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterIconImage2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterIconImage2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -9816,19 +8516,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterNode.leftSkaterImageNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterNode.leftSkaterImageNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -9868,19 +8555,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -9919,19 +8593,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterNode.rightSkaterImageNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterNode.rightSkaterImageNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -10011,19 +8672,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.speedometerNode.foregroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.speedometerNode.foregroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -10076,19 +8724,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.speedometerNode.labelNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.speedometerNode.labelNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -10140,19 +8775,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.speedometerNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.speedometerNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -10284,19 +8906,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.stopwatchNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.stopwatchNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -10348,19 +8957,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.stopwatchNode.playPauseButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.stopwatchNode.playPauseButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -10492,19 +9088,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.stopwatchNode.resetButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.stopwatchNode.resetButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -10622,19 +9205,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -10686,19 +9256,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.playPauseButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.playPauseButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -10777,19 +9334,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.playPauseButton.toggleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.playPauseButton.toggleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -10934,19 +9478,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -10985,19 +9516,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -11103,19 +9621,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -11206,19 +9711,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.stepForwardButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.stepForwardButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -11311,19 +9803,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.toolboxPanel.timerIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.toolboxPanel.timerIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -11375,19 +9854,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackLayer.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackLayer.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -11519,19 +9985,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~0.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~0.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -11570,19 +10023,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -11714,19 +10154,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -11843,19 +10270,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -11974,19 +10388,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -12025,19 +10426,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -12117,19 +10505,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.visibilityControlsPanel.gridCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.visibilityControlsPanel.gridCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -12181,19 +10556,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.visibilityControlsPanel.gridCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.visibilityControlsPanel.gridCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -12273,19 +10635,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.visibilityControlsPanel.gridIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.visibilityControlsPanel.gridIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -12364,19 +10713,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.visibilityControlsPanel.referenceHeightCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.visibilityControlsPanel.referenceHeightCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -12428,19 +10764,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.visibilityControlsPanel.referenceHeightCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.visibilityControlsPanel.referenceHeightCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -12585,19 +10908,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.gravityComboBox.button.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.gravityComboBox.button.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -12715,19 +11025,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.gravityComboBox.listBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.gravityComboBox.listBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -12766,19 +11063,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.gravityComboBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.gravityComboBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -12884,19 +11168,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.leftArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.leftArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -12975,19 +11246,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.numberDisplay.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.numberDisplay.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -13026,19 +11284,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.numberDisplay.valueText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.numberDisplay.valueText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -13105,19 +11350,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -13182,19 +11414,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.rightArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.rightArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -13300,19 +11519,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.slider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.slider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -13351,19 +11557,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.slider.thumb.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.slider.thumb.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -13573,19 +11766,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.gravitySlider.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -13703,19 +11883,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.leftArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.leftArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -13794,19 +11961,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.numberDisplay.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.numberDisplay.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -13845,19 +11999,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.numberDisplay.valueText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.numberDisplay.valueText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -13924,19 +12065,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -14001,19 +12129,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.rightArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.rightArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -14119,19 +12234,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.slider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.slider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -14170,19 +12272,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.slider.thumb.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.slider.thumb.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -14392,19 +12481,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.graphsScreen.graphsScreenView.massNumberControl.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -14548,19 +12624,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.homeScreen.view.graphsScreenLargeButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.homeScreen.view.graphsScreenLargeButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -14599,19 +12662,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.homeScreen.view.graphsScreenLargeButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.homeScreen.view.graphsScreenLargeButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -14730,19 +12780,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.homeScreen.view.graphsScreenSmallButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.homeScreen.view.graphsScreenSmallButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -14781,19 +12818,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.homeScreen.view.graphsScreenSmallButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.homeScreen.view.graphsScreenSmallButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -14912,19 +12936,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.homeScreen.view.introScreenLargeButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.homeScreen.view.introScreenLargeButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -14963,19 +12974,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.homeScreen.view.introScreenLargeButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.homeScreen.view.introScreenLargeButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -15094,19 +13092,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.homeScreen.view.introScreenSmallButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.homeScreen.view.introScreenSmallButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -15145,19 +13130,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.homeScreen.view.introScreenSmallButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.homeScreen.view.introScreenSmallButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -15276,19 +13248,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.homeScreen.view.labScreenLargeButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.homeScreen.view.labScreenLargeButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -15327,19 +13286,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.homeScreen.view.labScreenLargeButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.homeScreen.view.labScreenLargeButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -15458,19 +13404,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.homeScreen.view.labScreenSmallButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.homeScreen.view.labScreenSmallButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -15509,19 +13442,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.homeScreen.view.labScreenSmallButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.homeScreen.view.labScreenSmallButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -15640,19 +13560,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.homeScreen.view.measureScreenLargeButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.homeScreen.view.measureScreenLargeButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -15691,19 +13598,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.homeScreen.view.measureScreenLargeButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.homeScreen.view.measureScreenLargeButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -15822,19 +13716,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.homeScreen.view.measureScreenSmallButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.homeScreen.view.measureScreenSmallButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -15873,19 +13754,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.homeScreen.view.measureScreenSmallButton.text.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.homeScreen.view.measureScreenSmallButton.text.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -15952,19 +13820,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.homeScreen.view.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.homeScreen.view.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -16003,19 +13858,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.homeScreen.view.title.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.homeScreen.view.title.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -16393,19 +14235,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.model.trackSetModel.barGraphScaleProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.model.trackSetModel.barGraphVisibleProperty": {
       "phetioDocumentation": "",
@@ -17629,19 +15458,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.model.trackSetModel.frictionProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.model.trackSetModel.gridVisibleProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -17772,19 +15588,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.model.trackSetModel.skater.angleProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.model.trackSetModel.skater.directionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -17824,19 +15627,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.model.trackSetModel.skater.gravityMagnitudeProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.model.trackSetModel.skater.headPositionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -17863,19 +15653,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.model.trackSetModel.skater.kineticEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.model.trackSetModel.skater.massProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -17888,19 +15665,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.model.trackSetModel.skater.massProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.model.trackSetModel.skater.movedProperty": {
       "phetioDocumentation": "",
@@ -17954,19 +15718,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.model.trackSetModel.skater.parametricSpeedProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.model.trackSetModel.skater.positionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -17993,19 +15744,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.model.trackSetModel.skater.potentialEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.model.trackSetModel.skater.referenceHeightProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -18018,19 +15756,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.model.trackSetModel.skater.referenceHeightProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.model.trackSetModel.skater.speedProperty": {
       "phetioDocumentation": "",
@@ -18097,19 +15822,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.model.trackSetModel.skater.thermalEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.model.trackSetModel.skater.totalEnergyProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -18122,19 +15834,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.model.trackSetModel.skater.totalEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.model.trackSetModel.skater.trackProperty": {
       "phetioDocumentation": "",
@@ -18266,19 +15965,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.model.trackSetModel.stopwatch.timeProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.model.trackSetModel.tracks": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -18304,19 +15990,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.model.trackSetModel.tracks.lengthProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view": {
       "phetioDocumentation": "",
@@ -18395,19 +16068,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.button.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.button.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -18552,19 +16212,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.frictionSlider.leftArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.frictionSlider.leftArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -18643,19 +16290,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.frictionSlider.maxLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.frictionSlider.maxLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -18720,19 +16354,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.frictionSlider.minLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.frictionSlider.minLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -18799,19 +16420,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.frictionSlider.numberDisplay.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.frictionSlider.numberDisplay.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -18850,19 +16458,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.frictionSlider.numberDisplay.valueText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.frictionSlider.numberDisplay.valueText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -18929,19 +16524,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.frictionSlider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.frictionSlider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -19006,19 +16588,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.frictionSlider.rightArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.frictionSlider.rightArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -19124,19 +16693,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.frictionSlider.slider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.frictionSlider.slider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -19175,19 +16731,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.frictionSlider.slider.thumb.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.frictionSlider.slider.thumb.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -19397,19 +16940,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.frictionSlider.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.frictionSlider.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -19527,19 +17057,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.gravitySlider.leftArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.gravitySlider.leftArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -19618,19 +17135,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.gravitySlider.maxLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.gravitySlider.maxLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -19695,19 +17199,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.gravitySlider.minLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.gravitySlider.minLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -19774,19 +17265,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.gravitySlider.numberDisplay.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.gravitySlider.numberDisplay.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -19825,19 +17303,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.gravitySlider.numberDisplay.valueText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.gravitySlider.numberDisplay.valueText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -19904,19 +17369,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.gravitySlider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.gravitySlider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -19981,19 +17433,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.gravitySlider.rightArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.gravitySlider.rightArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -20099,19 +17538,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.gravitySlider.slider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.gravitySlider.slider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -20150,19 +17576,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.gravitySlider.slider.thumb.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.gravitySlider.slider.thumb.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -20372,19 +17785,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.gravitySlider.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.gravitySlider.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -20489,19 +17889,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.backgroundNode.mountainImage.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.backgroundNode.mountainImage.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -20540,19 +17927,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.backgroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.backgroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -20606,19 +17980,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -20670,19 +18031,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -20736,19 +18084,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -20800,19 +18135,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -20866,19 +18188,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -20917,19 +18226,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -21008,19 +18304,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene1RadioButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene1RadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -21126,19 +18409,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene2RadioButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene2RadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -21242,19 +18512,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene3RadioButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene3RadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -21360,19 +18617,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene4RadioButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene4RadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -21451,19 +18695,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -21515,19 +18746,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -21581,19 +18799,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -21645,19 +18850,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -21750,19 +18942,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -21814,19 +18993,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -21906,19 +19072,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.path": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -21944,19 +19097,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.path.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.path.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -22049,19 +19189,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.foregroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.foregroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -22114,19 +19241,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.labelNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.labelNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -22178,19 +19292,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -22270,19 +19371,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedometerCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedometerCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -22334,19 +19422,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedometerCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.speedometerCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -22452,19 +19527,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.barGraphIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.barGraphIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -22529,19 +19591,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.arrowPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.arrowPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -22608,19 +19657,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -22685,19 +19721,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.trashPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.trashPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -22803,19 +19826,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.glassNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.glassNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -22854,19 +19864,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -22932,19 +19929,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.signNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.signNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -23050,19 +20034,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.glassNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.glassNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -23101,19 +20072,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -23179,19 +20137,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.signNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.signNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -23270,19 +20215,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.expandCollapseButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.expandCollapseButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -23375,19 +20307,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.energyBarGraphAccordionBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -23440,19 +20359,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.gridNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.gridNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -23491,19 +20397,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.gridNode.thickLinePath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.gridNode.thickLinePath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -23556,19 +20449,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.gridNode.thinLinePath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.gridNode.thinLinePath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -23700,19 +20580,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -23817,19 +20684,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -23894,19 +20748,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.pieChartLegend.clearThermalButton.arrowPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.pieChartLegend.clearThermalButton.arrowPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -23973,19 +20814,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.pieChartLegend.clearThermalButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.pieChartLegend.clearThermalButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -24050,19 +20878,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.pieChartLegend.clearThermalButton.trashPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.pieChartLegend.clearThermalButton.trashPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -24129,19 +20944,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.pieChartLegend.kineticEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.pieChartLegend.kineticEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -24194,19 +20996,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.pieChartLegend.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.pieChartLegend.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -24245,19 +21034,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.pieChartLegend.potentialEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.pieChartLegend.potentialEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -24324,19 +21100,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.pieChartLegend.thermalEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.pieChartLegend.thermalEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -24402,19 +21165,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.pieChartLegend.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.pieChartLegend.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -24479,19 +21229,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.pieChartLegend.totalEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.pieChartLegend.totalEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -24570,19 +21307,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.pieChartNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.pieChartNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -24727,19 +21451,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.resetAllButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.resetAllButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -24817,19 +21528,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.restartSkaterTextNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.restartSkaterTextNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -24921,19 +21619,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.returnSkaterButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.returnSkaterButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -25039,19 +21724,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.returnSkaterToGroundButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.returnSkaterToGroundButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -25156,19 +21828,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.returnSkaterToPreviousStartingPositionButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.returnSkaterToPreviousStartingPositionButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -25247,19 +21906,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.skaterIconImage1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.skaterIconImage1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -25311,19 +21957,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.skaterIconImage2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.skaterIconImage2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -25455,19 +22088,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.skaterNode.leftSkaterImageNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.skaterNode.leftSkaterImageNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -25507,19 +22127,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.skaterNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.skaterNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -25558,19 +22165,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.skaterNode.rightSkaterImageNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.skaterNode.rightSkaterImageNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -25650,19 +22244,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.speedometerNode.foregroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.speedometerNode.foregroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -25715,19 +22296,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.speedometerNode.labelNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.speedometerNode.labelNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -25779,19 +22347,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.speedometerNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.speedometerNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -25923,19 +22478,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.stopwatchNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.stopwatchNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -25987,19 +22529,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.stopwatchNode.playPauseButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.stopwatchNode.playPauseButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -26131,19 +22660,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.stopwatchNode.resetButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.stopwatchNode.resetButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -26261,19 +22777,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.timeControlNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -26325,19 +22828,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.playPauseButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.timeControlNode.playPauseButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -26416,19 +22906,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.playPauseButton.toggleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.timeControlNode.playPauseButton.toggleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -26573,19 +23050,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normal.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normal.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -26624,19 +23088,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -26742,19 +23193,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slow.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slow.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -26845,19 +23283,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.stepForwardButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.timeControlNode.stepForwardButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -26950,19 +23375,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.toolboxPanel.timerIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.toolboxPanel.timerIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -27014,19 +23426,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.trackLayer.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.trackLayer.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -27080,19 +23479,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.trackNode~0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.trackNode~0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -27144,19 +23530,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.trackNode~1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.trackNode~1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -27210,19 +23583,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.trackNode~2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.trackNode~2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -27274,19 +23634,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.trackNode~3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.trackNode~3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -27366,19 +23713,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.visibilityControlsPanel.gridCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.visibilityControlsPanel.gridCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -27430,19 +23764,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.visibilityControlsPanel.gridCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.visibilityControlsPanel.gridCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -27522,19 +23843,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.visibilityControlsPanel.gridIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.visibilityControlsPanel.gridIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -27613,19 +23921,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.visibilityControlsPanel.referenceHeightCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.introScreenView.visibilityControlsPanel.referenceHeightCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -27677,19 +23972,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.visibilityControlsPanel.referenceHeightCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.introScreenView.visibilityControlsPanel.referenceHeightCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -27795,19 +24077,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.listBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.introScreen.view.listBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -27846,19 +24115,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.introScreen.view.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -27950,19 +24206,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labModel.barGraphScaleProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labModel.barGraphVisibleProperty": {
       "phetioDocumentation": "",
@@ -28991,19 +25234,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labModel.frictionProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labModel.gridVisibleProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -29134,19 +25364,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labModel.skater.angleProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labModel.skater.directionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -29186,19 +25403,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labModel.skater.gravityMagnitudeProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labModel.skater.headPositionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -29225,19 +25429,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labModel.skater.kineticEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labModel.skater.massProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -29250,19 +25441,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labModel.skater.massProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labModel.skater.movedProperty": {
       "phetioDocumentation": "",
@@ -29316,19 +25494,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labModel.skater.parametricSpeedProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labModel.skater.positionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -29355,19 +25520,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labModel.skater.potentialEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labModel.skater.referenceHeightProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -29380,19 +25532,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labModel.skater.referenceHeightProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labModel.skater.speedProperty": {
       "phetioDocumentation": "",
@@ -29459,19 +25598,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labModel.skater.thermalEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labModel.skater.totalEnergyProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -29484,19 +25610,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labModel.skater.totalEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labModel.skater.trackProperty": {
       "phetioDocumentation": "",
@@ -29628,19 +25741,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labModel.stopwatch.timeProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labModel.tracks": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -29666,19 +25766,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labModel.tracks.lengthProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labModel.track~0": {
       "phetioDocumentation": "",
@@ -30070,19 +26157,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.frictionSlider.leftArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.frictionSlider.leftArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -30161,19 +26235,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.frictionSlider.maxLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.frictionSlider.maxLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -30238,19 +26299,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.frictionSlider.minLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.frictionSlider.minLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -30317,19 +26365,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.frictionSlider.numberDisplay.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.frictionSlider.numberDisplay.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -30368,19 +26403,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.frictionSlider.numberDisplay.valueText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.frictionSlider.numberDisplay.valueText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -30447,19 +26469,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.frictionSlider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.frictionSlider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -30524,19 +26533,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.frictionSlider.rightArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.frictionSlider.rightArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -30642,19 +26638,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.frictionSlider.slider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.frictionSlider.slider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -30693,19 +26676,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.frictionSlider.slider.thumb.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.frictionSlider.slider.thumb.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -30915,19 +26885,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.frictionSlider.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.frictionSlider.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -31032,19 +26989,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.backgroundNode.mountainImage.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.backgroundNode.mountainImage.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -31083,19 +27027,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.backgroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.backgroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -31175,19 +27106,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.clearButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.clearButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -31266,19 +27184,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -31344,19 +27249,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -31408,19 +27300,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -31500,19 +27379,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.path": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -31538,19 +27404,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.path.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.path.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -31643,19 +27496,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.foregroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.foregroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -31708,19 +27548,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.labelNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.labelNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -31772,19 +27599,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -31864,19 +27678,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -31928,19 +27729,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.speedometerCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -32046,19 +27834,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -32110,19 +27885,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -32228,19 +27990,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.barGraphIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.barGraphIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -32305,19 +28054,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.arrowPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.arrowPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -32384,19 +28120,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -32461,19 +28184,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.trashPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.clearThermalButton.trashPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -32579,19 +28289,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.glassNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.glassNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -32630,19 +28327,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -32708,19 +28392,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.signNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomInButton.signNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -32826,19 +28497,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.glassNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.glassNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -32877,19 +28535,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -32955,19 +28600,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.signNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.energyBarGraph.zoomOutButton.signNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -33046,19 +28678,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.expandCollapseButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.expandCollapseButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -33151,19 +28770,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.energyBarGraphAccordionBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -33216,19 +28822,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.gridNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.gridNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -33267,19 +28860,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.gridNode.thickLinePath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.gridNode.thickLinePath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -33332,19 +28912,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.gridNode.thinLinePath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.gridNode.thinLinePath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -33476,19 +29043,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -33593,19 +29147,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -33670,19 +29211,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.clearThermalButton.arrowPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.clearThermalButton.arrowPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -33749,19 +29277,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.clearThermalButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.clearThermalButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -33826,19 +29341,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.clearThermalButton.trashPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.clearThermalButton.trashPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -33905,19 +29407,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.kineticEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.kineticEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -33970,19 +29459,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -34021,19 +29497,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.potentialEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.potentialEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -34100,19 +29563,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.thermalEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.thermalEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -34178,19 +29628,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -34255,19 +29692,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.totalEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartLegend.totalEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -34346,19 +29770,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.pieChartNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -34503,19 +29914,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.resetAllButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.resetAllButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -34593,19 +29991,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.restartSkaterTextNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.restartSkaterTextNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -34697,19 +30082,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.returnSkaterButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.returnSkaterButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -34815,19 +30187,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.returnSkaterToGroundButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.returnSkaterToGroundButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -34932,19 +30291,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.returnSkaterToPreviousStartingPositionButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.returnSkaterToPreviousStartingPositionButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -35023,19 +30369,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterIconImage1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterIconImage1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -35087,19 +30420,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterIconImage2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterIconImage2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -35231,19 +30551,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterNode.leftSkaterImageNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterNode.leftSkaterImageNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -35283,19 +30590,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -35334,19 +30628,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterNode.rightSkaterImageNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterNode.rightSkaterImageNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -35426,19 +30707,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.speedometerNode.foregroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.speedometerNode.foregroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -35491,19 +30759,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.speedometerNode.labelNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.speedometerNode.labelNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -35555,19 +30810,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.speedometerNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.speedometerNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -35699,19 +30941,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.stopwatchNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.stopwatchNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -35763,19 +30992,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.stopwatchNode.playPauseButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.stopwatchNode.playPauseButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -35907,19 +31123,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.stopwatchNode.resetButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.stopwatchNode.resetButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -36037,19 +31240,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -36101,19 +31291,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.playPauseButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.playPauseButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -36192,19 +31369,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.playPauseButton.toggleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.playPauseButton.toggleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -36349,19 +31513,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -36400,19 +31551,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -36518,19 +31656,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -36621,19 +31746,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.stepForwardButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.timeControlNode.stepForwardButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -36726,19 +31838,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.toolboxPanel.timerIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.toolboxPanel.timerIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -36790,19 +31889,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackLayer.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackLayer.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -36934,19 +32020,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -37063,19 +32136,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -37194,19 +32254,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -37245,19 +32292,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -37454,19 +32488,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -37583,19 +32604,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -37714,19 +32722,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -37765,19 +32760,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -37974,19 +32956,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -38103,19 +33072,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -38234,19 +33190,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -38285,19 +33228,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -38494,19 +33424,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -38623,19 +33540,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -38754,19 +33658,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -38805,19 +33696,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -39014,19 +33892,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -39143,19 +34008,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -39274,19 +34126,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -39325,19 +34164,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -39482,19 +34308,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.visibilityControlsPanel.gridCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.visibilityControlsPanel.gridCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -39546,19 +34359,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.visibilityControlsPanel.gridCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.visibilityControlsPanel.gridCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -39638,19 +34438,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.visibilityControlsPanel.gridIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.visibilityControlsPanel.gridIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -39729,19 +34516,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.visibilityControlsPanel.referenceHeightCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.visibilityControlsPanel.referenceHeightCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -39793,19 +34567,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.visibilityControlsPanel.referenceHeightCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.visibilityControlsPanel.referenceHeightCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -39950,19 +34711,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.gravityComboBox.button.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.gravityComboBox.button.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -40080,19 +34828,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.gravityComboBox.listBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.gravityComboBox.listBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -40131,19 +34866,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.gravityComboBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.gravityComboBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -40249,19 +34971,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.gravitySlider.leftArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.gravitySlider.leftArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -40340,19 +35049,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.gravitySlider.numberDisplay.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.gravitySlider.numberDisplay.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -40391,19 +35087,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.gravitySlider.numberDisplay.valueText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.gravitySlider.numberDisplay.valueText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -40470,19 +35153,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.gravitySlider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.gravitySlider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -40547,19 +35217,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.gravitySlider.rightArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.gravitySlider.rightArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -40665,19 +35322,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.gravitySlider.slider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.gravitySlider.slider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -40716,19 +35360,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.gravitySlider.slider.thumb.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.gravitySlider.slider.thumb.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -40938,19 +35569,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.gravitySlider.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.gravitySlider.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -41081,19 +35699,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.button.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.massComboBox.button.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -41211,19 +35816,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.massComboBox.listBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.massComboBox.listBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -41262,19 +35854,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.massComboBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.massComboBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -41380,19 +35959,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.massNumberControl.leftArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.massNumberControl.leftArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -41471,19 +36037,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.massNumberControl.numberDisplay.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.massNumberControl.numberDisplay.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -41522,19 +36075,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.massNumberControl.numberDisplay.valueText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.massNumberControl.numberDisplay.valueText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -41601,19 +36141,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.massNumberControl.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.massNumberControl.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -41678,19 +36205,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.massNumberControl.rightArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.massNumberControl.rightArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -41796,19 +36310,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.massNumberControl.slider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.labScreen.labScreenView.massNumberControl.slider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -41847,19 +36348,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.massNumberControl.slider.thumb.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.massNumberControl.slider.thumb.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -42068,19 +36556,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.massNumberControl.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.labScreen.labScreenView.massNumberControl.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -42471,19 +36946,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.barGraphScaleProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureModel.trackSetModel.barGraphVisibleProperty": {
       "phetioDocumentation": "",
@@ -43707,19 +38169,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.frictionProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureModel.trackSetModel.gridVisibleProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -43850,19 +38299,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.skater.angleProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureModel.trackSetModel.skater.directionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -43902,19 +38338,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.skater.gravityMagnitudeProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureModel.trackSetModel.skater.headPositionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -43941,19 +38364,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.skater.kineticEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureModel.trackSetModel.skater.massProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -43966,19 +38376,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.skater.massProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureModel.trackSetModel.skater.movedProperty": {
       "phetioDocumentation": "",
@@ -44032,19 +38429,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.skater.parametricSpeedProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureModel.trackSetModel.skater.positionProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -44071,19 +38455,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.skater.potentialEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureModel.trackSetModel.skater.referenceHeightProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -44096,19 +38467,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.skater.referenceHeightProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureModel.trackSetModel.skater.speedProperty": {
       "phetioDocumentation": "",
@@ -44175,19 +38533,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.skater.thermalEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureModel.trackSetModel.skater.totalEnergyProperty": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -44200,19 +38545,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.skater.totalEnergyProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureModel.trackSetModel.skater.trackProperty": {
       "phetioDocumentation": "",
@@ -44344,19 +38676,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.stopwatch.timeProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureModel.trackSetModel.tracks": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -44382,19 +38701,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureModel.trackSetModel.tracks.lengthProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView": {
       "phetioDocumentation": "",
@@ -44448,19 +38754,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.backgroundNode.mountainImage.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.backgroundNode.mountainImage.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -44499,19 +38792,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.backgroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.backgroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -44565,19 +38845,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -44629,19 +38896,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -44695,19 +38949,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -44759,19 +39000,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -44825,19 +39053,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.contentNode3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -44876,19 +39091,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -44967,19 +39169,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene1RadioButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene1RadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -45085,19 +39274,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene2RadioButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene2RadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -45202,19 +39378,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene3RadioButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene3RadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -45318,19 +39481,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene4RadioButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.scene4RadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -45488,19 +39638,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -45617,19 +39754,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -45748,19 +39872,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -45799,19 +39910,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -45943,19 +40041,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -46072,19 +40157,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -46203,19 +40275,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -46254,19 +40313,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -46398,19 +40444,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -46527,19 +40560,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -46658,19 +40678,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -46787,19 +40794,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -46918,19 +40912,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode4.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode4.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -46969,19 +40950,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -47113,19 +41081,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -47242,19 +41197,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -47373,19 +41315,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -47502,19 +41431,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -47633,19 +41549,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode4.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode4.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -47762,19 +41665,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode5.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode5.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -47893,19 +41783,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode6.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode6.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -47944,19 +41821,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -48049,19 +41913,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pathCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pathCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -48113,19 +41964,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pathCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pathCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -48231,19 +42069,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -48295,19 +42120,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -48387,19 +42199,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.path": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -48425,19 +42224,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.path.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.path.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -48530,19 +42316,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.foregroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.foregroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -48595,19 +42368,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.labelNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.labelNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -48659,19 +42419,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedIcon.gaugeNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -48751,19 +42498,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedometerCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedometerCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -48815,19 +42549,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedometerCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.speedometerCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -48933,19 +42654,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -48997,19 +42705,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.stickToTrackCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -49141,19 +42836,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.frictionSlider.leftArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.leftArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -49232,19 +42914,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.frictionSlider.maxLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.maxLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -49309,19 +42978,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.frictionSlider.minLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.minLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -49388,19 +43044,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.frictionSlider.numberDisplay.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.numberDisplay.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -49439,19 +43082,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.frictionSlider.numberDisplay.valueText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.numberDisplay.valueText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -49518,19 +43148,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.frictionSlider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -49595,19 +43212,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.frictionSlider.rightArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.rightArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -49713,19 +43317,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.frictionSlider.slider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.slider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -49764,19 +43355,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.frictionSlider.slider.thumb.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.slider.thumb.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -49986,19 +43564,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.frictionSlider.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.frictionSlider.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -50129,19 +43694,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.gravityComboBox.button.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.gravityComboBox.button.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -50259,19 +43811,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.gravityComboBox.listBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.gravityComboBox.listBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -50310,19 +43849,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.gravityComboBox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.gravityComboBox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -50428,19 +43954,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.gravitySlider.leftArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.leftArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -50519,19 +44032,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.gravitySlider.numberDisplay.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.numberDisplay.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -50570,19 +44070,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.gravitySlider.numberDisplay.valueText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.numberDisplay.valueText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -50649,19 +44136,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.gravitySlider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -50726,19 +44200,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.gravitySlider.rightArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.rightArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -50844,19 +44305,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.gravitySlider.slider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.slider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -50895,19 +44343,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.gravitySlider.slider.thumb.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.slider.thumb.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -51117,19 +44552,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.gravitySlider.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.gravitySlider.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -51208,19 +44630,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.gridNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.gridNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -51259,19 +44668,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.gridNode.thickLinePath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.gridNode.thickLinePath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -51324,19 +44720,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.gridNode.thinLinePath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.gridNode.thinLinePath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -51442,19 +44825,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.massNumberControl.leftArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.leftArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -51533,19 +44903,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.massNumberControl.numberDisplay.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.numberDisplay.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -51584,19 +44941,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.massNumberControl.numberDisplay.valueText.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.numberDisplay.valueText.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -51663,19 +45007,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.massNumberControl.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -51740,19 +45071,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.massNumberControl.rightArrowButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.rightArrowButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -51858,19 +45176,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.massNumberControl.slider.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.slider.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -51909,19 +45214,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.massNumberControl.slider.thumb.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.slider.thumb.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -52131,19 +45423,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.massNumberControl.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.massNumberControl.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -52287,19 +45566,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -52404,19 +45670,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.pathSensor": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
@@ -52481,19 +45734,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.pathSensor.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.pathSensor.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -52586,19 +45826,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.pieChartLegend.clearThermalButton.arrowPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.pieChartLegend.clearThermalButton.arrowPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -52663,19 +45890,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.pieChartLegend.clearThermalButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.pieChartLegend.clearThermalButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -52742,19 +45956,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.pieChartLegend.clearThermalButton.trashPath.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.pieChartLegend.clearThermalButton.trashPath.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -52820,19 +46021,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.pieChartLegend.kineticEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.pieChartLegend.kineticEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -52885,19 +46073,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.pieChartLegend.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.pieChartLegend.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -52936,19 +46111,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.pieChartLegend.potentialEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.pieChartLegend.potentialEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -53015,19 +46177,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.pieChartLegend.thermalEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.pieChartLegend.thermalEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -53093,19 +46242,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.pieChartLegend.titleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.pieChartLegend.titleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -53170,19 +46306,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.pieChartLegend.totalEnergyLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.pieChartLegend.totalEnergyLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -53261,19 +46384,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.pieChartNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.pieChartNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -53418,19 +46528,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.resetAllButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.resetAllButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -53508,19 +46605,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.restartSkaterTextNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.restartSkaterTextNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -53612,19 +46696,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.returnSkaterButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.returnSkaterButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -53730,19 +46801,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.returnSkaterToGroundButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.returnSkaterToGroundButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -53847,19 +46905,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.returnSkaterToPreviousStartingPositionButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.returnSkaterToPreviousStartingPositionButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -53938,19 +46983,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.skaterIconImage1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.skaterIconImage1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -54002,19 +47034,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.skaterIconImage2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.skaterIconImage2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -54146,19 +47165,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.skaterNode.leftSkaterImageNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.skaterNode.leftSkaterImageNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -54198,19 +47204,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.skaterNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.skaterNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -54249,19 +47242,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.skaterNode.rightSkaterImageNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.skaterNode.rightSkaterImageNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -54341,19 +47321,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.speedometerNode.foregroundNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.speedometerNode.foregroundNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -54406,19 +47373,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.speedometerNode.labelNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.speedometerNode.labelNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -54470,19 +47424,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.speedometerNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.speedometerNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -54614,19 +47555,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.stopwatchNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.stopwatchNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -54678,19 +47606,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.stopwatchNode.playPauseButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.stopwatchNode.playPauseButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -54822,19 +47737,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.stopwatchNode.resetButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.stopwatchNode.resetButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -54952,19 +47854,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.timeControlNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -55016,19 +47905,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.playPauseButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.timeControlNode.playPauseButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -55107,19 +47983,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.playPauseButton.toggleNode.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.timeControlNode.playPauseButton.toggleNode.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -55264,19 +48127,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normal.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normal.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -55315,19 +48165,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -55433,19 +48270,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slow.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slow.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -55536,19 +48360,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.stepForwardButton.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.timeControlNode.stepForwardButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -55641,19 +48452,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.toolboxPanel.timerIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.toolboxPanel.timerIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -55705,19 +48503,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackLayer.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackLayer.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -55849,19 +48634,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -55978,19 +48750,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -56109,19 +48868,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -56160,19 +48906,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -56304,19 +49037,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -56433,19 +49153,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -56564,19 +49271,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -56615,19 +49309,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -56759,19 +49440,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -56888,19 +49556,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -57019,19 +49674,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -57148,19 +49790,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -57279,19 +49908,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode4.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode4.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -57330,19 +49946,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -57474,19 +50077,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode0.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode0.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -57603,19 +50193,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode1.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode1.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -57734,19 +50311,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode2.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode2.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -57863,19 +50427,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -57994,19 +50545,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode4.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode4.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -58123,19 +50661,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode5.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode5.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -58254,19 +50779,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode6.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode6.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -58305,19 +50817,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.trackNode~3.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -58397,19 +50896,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.visibilityControlsPanel.gridCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.visibilityControlsPanel.gridCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -58461,19 +50947,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.visibilityControlsPanel.gridCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.visibilityControlsPanel.gridCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -58553,19 +51026,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.visibilityControlsPanel.gridIcon.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.visibilityControlsPanel.gridIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -58644,19 +51104,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.visibilityControlsPanel.referenceHeightCheckbox.itemLabel.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
-    },
     "energySkatePark.measureScreen.measureScreenView.visibilityControlsPanel.referenceHeightCheckbox.itemLabel.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
@@ -58708,19 +51155,6 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.visibilityControlsPanel.referenceHeightCheckbox.opacityProperty.rangeProperty": {
-      "phetioDocumentation": "provides the range of possible values for the parent NumberProperty",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": true,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<NullableIO<RangeIO>>"
     },
     "energySkatePark.measureScreen.measureScreenView.visibilityControlsPanel.referenceHeightCheckbox.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
