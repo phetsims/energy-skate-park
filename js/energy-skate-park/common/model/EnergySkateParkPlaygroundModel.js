@@ -1,8 +1,10 @@
 // Copyright 2018-2020, University of Colorado Boulder
 
 /**
- * A model for Energy Skate Park that can have tracks that are buildable and draggable. Doesn't have a set of
- * pre-constructed tracks, but allows user to build them from scratch.
+ * A model for Energy Skate Park that can have tracks that are draggable and attachable. Doesn't have a set of
+ * premade tracks, but allows user to build them from scratch from a set of short tracks each with a few draggable
+ * control points.
+ *
  * @author Jesse Greenberg
  */
 define( require => {
@@ -17,16 +19,16 @@ define( require => {
   const Track = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/Track' );
   const Vector2 = require( 'DOT/Vector2' );
 
-  /**
-   * @constructor
-   * @param {Tandem} tandem
-   * @param {Object} options
-   */
   class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
+
+    /**
+     * @param {Tandem} tandem
+     * @param {Object} [options]
+     */
     constructor( tandem, options ) {
       options = merge( {
 
-        // the center of initial tracks in the control panel, change this to move the panel to a different location
+        // the center of initial tracks in the toolbox, change this to move the panel to a different location
         // in model coordinates (meters)
         initialTracksOffsetVector: new Vector2( -5.1, -0.85 )
       }, options );
@@ -134,6 +136,11 @@ define( require => {
       }
     }
 
+    /**
+     * Reset the model.
+     * @public
+     * @override
+     */
     reset() {
       super.reset();
       this.clearTracks();
