@@ -93,6 +93,27 @@ define( require => {
       ) );
     }
 
+    /**
+     * Clear all tracks from the model.
+     */
+    clearTracks() {
+
+      this.tracks.forEach( track => {
+        track.disposeControlPoints();
+      } );
+      this.tracks.clear();
+      this.addDraggableTracks();
+
+      // If the skater was on a track, then he should fall off, see #97
+      if ( this.skater.trackProperty.value ) {
+        this.skater.trackProperty.value = null;
+      }
+    }
+
+    reset() {
+      super.reset();
+      this.clearTracks();
+    }
   }
 
   return energySkatePark.register( 'EnergySkateParkPlaygroundModel', EnergySkateParkPlaygroundModel );

@@ -354,30 +354,7 @@ define( require => {
       this.availableModelBoundsProperty.value = availableModelBounds;
       this.skater.reset();
 
-      this.clearTracks();
-
       this.resetEmitter.emit();
-    }
-
-    /**
-     * Clear all draggable tracks from the screen. For "Intro" and "Friction" screens, this will no-op, only clears
-     * "Playground" screen.
-     */
-    clearTracks() {
-
-      // For the first two screens, make the default track physical
-      if ( this.tracksDraggable ) {
-        this.tracks.forEach( track => {
-          track.disposeControlPoints();
-        } );
-        this.tracks.clear();
-        this.addDraggableTracks();
-
-        // If the skater was on a track, then he should fall off, see #97
-        if ( this.skater.trackProperty.value ) {
-          this.skater.trackProperty.value = null;
-        }
-      }
     }
 
     // step one frame, assuming 60fps
