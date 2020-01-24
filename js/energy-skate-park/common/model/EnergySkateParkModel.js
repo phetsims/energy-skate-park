@@ -285,7 +285,10 @@ define( require => {
       }
     }
 
-    // Reset the model, including the skater, tracks, visualizations, etc.
+    /**
+     * Reset the model, including skater, tracks, tools, and UI visibility, etc.
+     * @public
+     */
     reset() {
       const availableModelBounds = this.availableModelBoundsProperty.value;
       this.pieChartVisibleProperty.reset();
