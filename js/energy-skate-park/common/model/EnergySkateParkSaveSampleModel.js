@@ -49,17 +49,16 @@ define( require => {
       this.timeSinceSampleSave = 0;
 
       // @public {boolean} - whether or not to limit the number of samples to be saved - if false, which
-      // can be disabled if you are ok with limitless samples, setting to false means that options.maxNumberOfSamples
-      // has no impact
+      // can be done if you are ok with saving limitless samples, options.maxNumberOfSamples has no impact
       this.limitNumberOfSamples = true;
-
-      // @public {boolean} - set to true to prevent the model from saving any more samples - this can be used
-      // instead of (or in combination with) maxNumberOfSamples to prevent the model from saving too many
-      // samples for reasons other than array length
-      this.preventSampleSave = false;
 
       // @public {BooleanProperty} - controls whether or not samples are saved as the model steps through time
       this.saveSkaterSamplesProperty = new BooleanProperty( true, { tandem: tandem.createTandem( 'saveSkaterSamplesProperty' ) } );
+
+      // @public {boolean} - set to true to prevent the model from saving any more samples, even if
+      // saveSkaterSamplesProperty is true - this can be used instead of (or in combination with) maxNumberOfSamples\
+      // to prevent the model from saving too many samples for reasons other than array length
+      this.preventSampleSave = false;
 
       // @public - in seconds, how much time has passed since beginning to record skater states
       this.sampleTimeProperty = new NumberProperty( 0 );
