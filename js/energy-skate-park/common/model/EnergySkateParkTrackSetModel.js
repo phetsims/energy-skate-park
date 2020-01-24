@@ -106,6 +106,7 @@ define( require => {
      * @public
      *
      * @param {EnergySkateParkTrackSetModel} model
+     * @param {Tandem} tandem
      * @returns {Array.<Track>}
      */
     static createBasicTrackSet( model, tandem ) {
