@@ -1,7 +1,7 @@
 // Copyright 2018-2019, University of Colorado Boulder
 
 /**
- * A collection of traks used in the EnergySkateParkTrackSet models of energy-skate-park and energy-skate-park-basics.
+ * A collection of tracks used in the EnergySkateParkTrackSet models of energy-skate-park and energy-skate-park-basics.
  * Premade tracks are not draggable but they can sometimes be "configurable", meaning that control points can be moved.
  * For configurable premade tracks, the control points can only be dragged within a smaller set of bounds. These
  * bounds are specified for all premade tracks, but will only apply to the track if the model tracks are "configurable".
