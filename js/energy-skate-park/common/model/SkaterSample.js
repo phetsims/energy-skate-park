@@ -1,8 +1,10 @@
 // Copyright 2018-2019, University of Colorado Boulder
 
 /**
- * A collection of physical values associated with the skater at a given time. Taken from the skaterState,
- * which will be up to date when this is generated (at some sample rate in the model step).
+ * A collection of physical values and data about the Skater at a particular time. This data can be plotted visually
+ * or individually inspected by the user.
+ *
+ * Generally this information is a
  *
  * @author Jesse Greenberg
  */
@@ -19,8 +21,7 @@ define( require => {
   const Vector2 = require( 'DOT/Vector2' );
 
   // constants
-  // time (s) between initiation of removal and removal from the model - a short delay allows samples to still be
-  // inspected a short time after a new set of samples is tracked
+  // inspect-able samples will fade out to this opacity before being fully removed from the model
   const MIN_OPACITY = 0.05;
 
   class SkaterSample {
@@ -29,7 +30,7 @@ define( require => {
      * @constructor
      *
      * @param {SkaterState} skaterState
-     * @param {number} time
+     * @param {number} time - in seconds
      */
     constructor( skaterState, time ) {
 
@@ -56,7 +57,7 @@ define( require => {
       // @public - the opacity of this skater sample, tied to visual representation
       this.opacityProperty = new NumberProperty( 1 );
 
-      // @public - emits an event when the skater sample is old enough to be removed from the model
+      // @public - emits an event when the skater sample has been removed from the model
       this.removalEmitter = new Emitter();
 
       // @public - emits an event when this SkaterSample has updated in some way, like when energies change
@@ -71,7 +72,7 @@ define( require => {
      * Calculate new energies for this SkaterSample with the new reference height. Potential energy will be recalculated
      * and total energy will be adjusted accordingly to conserve energy. Thermal and kinetic energies should not change.
      *
-     * @param {} referenceHeight
+     * @param {number} referenceHeight
      */
     setNewReferenceHeight( referenceHeight ) {
 
