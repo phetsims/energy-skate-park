@@ -1794,7 +1794,9 @@ define( require => {
 
     /**
      * Add a track, called by phet-io in setState (to restore a state).
-     * TODO: this code should be called by EnergySkateParkModel too.
+     * TODO: this code should be called by EnergySkateParkModel too, see
+     * https://github.com/phetsims/energy-skate-park/issues/165
+     *
      * @param {Tandem} tandem
      * @param controlPointTandemIDs
      */
