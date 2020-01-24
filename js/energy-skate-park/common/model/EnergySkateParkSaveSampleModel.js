@@ -1,4 +1,4 @@
-// Copyright 2019, University of Colorado Boulder
+// Copyright 2019-2020, University of Colorado Boulder
 
 /**
  * An EnergySkateParkTrackSetModel that can save SkaterSamples. SkaterSamples contain information about the physical

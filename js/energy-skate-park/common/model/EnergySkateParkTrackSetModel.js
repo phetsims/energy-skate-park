@@ -1,4 +1,4 @@
-// Copyright 2018-2019, University of Colorado Boulder
+// Copyright 2018-2020, University of Colorado Boulder
 
 /**
  * A model in Energy Skate park with a specific set of tracks. Does not include any buildable or movable tracks.
