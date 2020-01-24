@@ -112,8 +112,6 @@ define( require => {
       options.skaterOptions = merge( {
 
         // initial mass for the skater
-        // TODO: In the future, we may have many skaters and this won't apply
-        // Or maybe we will only have one skater, and change the visual representation by value
         defaultMass: Constants.DEFAULT_MASS,
         massRange: Constants.MASS_RANGE
       }, options.skaterOptions );
