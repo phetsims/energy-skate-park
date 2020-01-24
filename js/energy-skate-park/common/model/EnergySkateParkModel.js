@@ -290,15 +290,6 @@ define( require => {
       }
     }
 
-    // Add the tracks that will be in the track toolbox for the "Playground" screen
-    addDraggableTracks() {
-
-      // 3 points per track
-      for ( let i = 0; i < MAX_NUMBER_CONTROL_POINTS / 3; i++ ) {
-        this.addDraggableTrack();
-      }
-    }
-
     // Add a single track to the track control panel.
     addDraggableTrack() {
 
