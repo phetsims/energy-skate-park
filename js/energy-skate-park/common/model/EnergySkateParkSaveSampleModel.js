@@ -79,7 +79,7 @@ define( require => {
 
     /**
      * Begin to remove all samples, indicating that all existing samples should fade away.
-     * @private
+     * @protected
      */
     initiateSampleRemoval() {
       for ( let i = 0; i < this.skaterSamples.length; i++ ) {
