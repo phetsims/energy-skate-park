@@ -314,7 +314,10 @@ define( require => {
       this.resetEmitter.emit();
     }
 
-    // step one frame, assuming 60fps
+    /**
+     * Step one frame, assuming 60 fps.
+     * @public
+     */
     manualStep() {
       const skaterState = new SkaterState( this.skater, EMPTY_OBJECT );
       const dt = 1.0 / 60;
@@ -323,7 +326,10 @@ define( require => {
       this.skater.updatedEmitter.emit();
     }
 
-    // Step the model, automatically called from Joist
+    /**
+     * Step the model (automatically called by joist)
+     * @param {number} dt - in seconds
+     */
     step( dt ) {
 
       // This simulation uses a fixed time step to make the skater's motion reproducible.  Making the time step fixed
@@ -1400,10 +1406,19 @@ define( require => {
       this.skater.returnSkater();
     }
 
-    // Clear the thermal energy from the model
+
+    /**
+     * Clear thermal energy from the model.
+     * @public
+     */
     clearThermal() { this.skater.clearThermal(); }
 
-    // Get all of the tracks marked as physical (i.e. that the skater could interact with).
+    /**
+     * Get all tracks in the model that are marked as physical (they can interact with the Skater in some way).
+     * @public
+     *
+     * @returns {Track[]}
+     */
     getPhysicalTracks() {
 
       // Use vanilla instead of lodash for speed since this is in an inner loop
@@ -1420,8 +1435,9 @@ define( require => {
 
     /**
      * Get all tracks that the skater cannot interact with.
+     * @public
      *
-     * @returns {[].Track}
+     * @returns {Track[]}
      */
     getNonPhysicalTracks() {
 
@@ -1439,6 +1455,7 @@ define( require => {
 
     /**
      * Find whatever track is connected to the specified track and join them together to a new track.
+     * @public
      *
      * @param {Track} track
      */
@@ -1717,25 +1734,48 @@ define( require => {
       this.trackChangedEmitter.emit();
     }
 
-    // Get the number of physical control points (i.e. control points outside of the toolbox)
+    /**
+     * Get the number of physical control points (control points attached to a track that the Skater can interact with)
+     * @public
+     *
+     * @returns {number}
+     */
     getNumberOfPhysicalControlPoints() {
       const numberOfPointsInEachTrack = _.map( this.getPhysicalTracks(), track => {return track.controlPoints.length;} );
       return _.reduce( numberOfPointsInEachTrack, ( memo, num ) => memo + num, 0 );
     }
 
-    // Get the number of all control points for this model's tracks
+    /**
+     * Get the number of all control points for this model's tracks (including those that are not physical, like
+     * ones in the toolbox)
+     * @public
+     *
+     * @returns {number}
+     */
     getNumberOfControlPoints() {
       const numberOfPointsInEachTrack = _.map( this.tracks.getArray(), track => {return track.controlPoints.length;} );
       return _.reduce( numberOfPointsInEachTrack, ( memo, num ) => memo + num, 0 );
     }
 
-    // Logic to determine whether a control point can be added by cutting a track's control point in two
-    // This is feasible if the number of control points in the play area (above y>0) is less than the maximum
+    /**
+     * Logic to determine whether a control point can be added by cutting a track's control point in two. This
+     * is feasible if the number of control points in the play area above ground is less than maximum number.
+     * @public
+     *
+     * @returns {boolean}
+     */
     canCutTrackControlPoint() {
       return this.getNumberOfPhysicalControlPoints() < Constants.MAX_NUMBER_CONTROL_POINTS;
     }
 
-    // Check whether the model contains a track so that input listeners for detached elements can't create bugs, see #230
+    /**
+     * Check whether the model contains a track so that input listeners for detached elements can't create bugs.
+     * See #230
+     * @public
+     *
+     * @param {Track} track
+     * @returns {boolean}
+     */
     containsTrack( track ) {
       return this.tracks.contains( track );
     }
