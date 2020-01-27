@@ -58,6 +58,15 @@ define( require => {
         this.initiateSampleRemoval();
       } );
 
+      // Don't save any SkaterSamples while control points are being dragged. This can be done during construction
+      // because MeasureModel tracks are static and no new tracks are introduced. For the same reason disposal
+      // of these listeners is not necessary.
+      this.tracks.forEach( track => {
+        track.controlPointDraggingProperty.link( anyPointDragging => {
+          this.preventSampleSave = anyPointDragging;
+        } );
+      } );
+
       // existing data is removed immediately when any of these Properties change
       const clearSampleProperties = [ this.saveSkaterSamplesProperty, this.skater.draggingProperty, this.sceneProperty ];
       const boundClearSamples = this.clearEnergyData.bind( this );
