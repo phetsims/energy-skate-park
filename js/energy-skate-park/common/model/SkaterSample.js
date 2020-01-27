@@ -4,7 +4,8 @@
  * A collection of physical values and data about the Skater at a particular time. This data can be plotted visually
  * or individually inspected by the user.
  *
- * Generally this information is a
+ * Generally this information is static, but energy values for sample CAN change. For example, when the reference height
+ * line moves energy data updates according to this line.
  *
  * @author Jesse Greenberg
  */
