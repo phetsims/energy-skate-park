@@ -11,6 +11,7 @@ define( require => {
 
   // modules
   const BooleanProperty = require( 'AXON/BooleanProperty' );
+  const DerivedProperty = require( 'AXON/DerivedProperty' );
   const dot = require( 'DOT/dot' );
   const Emitter = require( 'AXON/Emitter' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
@@ -145,6 +146,11 @@ define( require => {
       this.controlPoints = controlPoints;
       assert && assert( this.controlPoints, 'control points should be defined' );
 
+      // @public - boolean value that is true if any control point on this track is being dragged
+      this.controlPointDraggingProperty = new DerivedProperty( _.map( controlPoints, point => point.draggingProperty ), ( ...args ) => {
+        return _.reduce( args, ( collapsed, value ) => collapsed || value );
+      } );
+
       // @public {FastArray<number>}
       this.parametricPosition = new FastArray( this.controlPoints.length );
       this.x = new FastArray( this.controlPoints.length );
@@ -186,6 +192,7 @@ define( require => {
         self.leftThePanelProperty.dispose();
         self.draggingProperty.dispose();
         self.droppedProperty.dispose();
+        self.controlPointDraggingProperty.dispose();
 
         this.availableModelBoundsProperty.unlink( boundsListener );
       };
