@@ -38,21 +38,25 @@ define( require => {
         tandem: tandem
       } );
 
+      // @private
       this.sky = new Rectangle( 0, 0, 0, 0 );
       this.addChild( this.sky );
 
-      // Wait for bounds to fill in the grass
+      // @private - wait for bounds to fill in the grass
       this.earth = new Rectangle( 0, 0, 0, 0, { fill: '#93774c' } );
       this.addChild( this.earth );
 
+      // @private {number}
       this.cementY = layoutBounds.height - earthHeight;
 
+      // @private
       this.mountain = new Image( mountainImage, {
         bottom: this.cementY,
         tandem: tandem.createTandem( 'mountainImage' )
       } );
       this.addChild( this.mountain );
 
+      // @private
       this.cement = new Rectangle( 0, 0, 0, cementWidth, { fill: new Pattern( cementImg ) } );
       this.addChild( this.cement );
 
