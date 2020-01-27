@@ -73,10 +73,11 @@ define( require => {
 
       const tandem = options.tandem;
       const self = this;
+
+      // @private
       this.model = model;
       this.parents = parents;
       this.modelTracks = modelTracks;
-
       this.trackTandem = tandem;
       this.availableModelBoundsProperty = availableModelBoundsProperty;
 
@@ -190,7 +191,10 @@ define( require => {
       };
     }
 
-    // when points change, update the spline instance
+    /**
+     * When points change, update the spline instance.
+     * @public
+     */
     updateSplines() {
 
       // Arrays are fixed length, so just overwrite values, see #38
@@ -215,7 +219,10 @@ define( require => {
       this.ySplineDiffDiff = null;
     }
 
-    // reset the track
+    /**
+     * Reset the track.
+     * @public
+     */
     reset() {
       this.physicalProperty.reset();
       this.leftThePanelProperty.reset();
@@ -368,7 +375,6 @@ define( require => {
       this._slopeToGround = slopeToGround;
       this._restoreSlopeToGroundOnReset = true;
     }
-
     set slopeToGround( slopeToGround ) { this.setSlopeToGround( slopeToGround ); }
 
     /**
@@ -380,7 +386,6 @@ define( require => {
     getSlopeToGround() {
       return this._slopeToGround;
     }
-
     get slopeToGround() { return this.getSlopeToGround(); }
 
     /**
@@ -443,6 +448,10 @@ define( require => {
       return new Vector2( SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ), SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition ) ).normalize();
     }
 
+    /**
+     * Update the linspace, the evenly spaced vectors between the number of control points in the track.
+     * @private
+     */
     updateLinSpace() {
       this.minPoint = 0;
       this.maxPoint = ( this.controlPoints.length - 1 ) / this.controlPoints.length;
@@ -476,6 +485,12 @@ define( require => {
       return string;
     }
 
+    /**
+     * Get the snap target for a control point, if one is specified.
+     * @public
+     *
+     * @returns {null|ControlPoin}
+     */
     getSnapTarget() {
       for ( let i = 0; i < this.controlPoints.length; i++ ) {
         const o = this.controlPoints[ i ];
@@ -486,6 +501,12 @@ define( require => {
       return null;
     }
 
+    /**
+     * Get the y position in meters of the bottom most control point.
+     * @public
+     *
+     * @returns {number}
+     */
     getBottomControlPointY() {
       let best = Number.POSITIVE_INFINITY;
       const length = this.controlPoints.length;
@@ -497,6 +518,12 @@ define( require => {
       return best;
     }
 
+    /**
+     * Get the y position in meters of the top most control point.
+     * @public
+     *
+     * @returns {number}
+     */
     getTopControlPointY() {
       let best = Number.NEGATIVE_INFINITY;
       const length = this.controlPoints.length;
@@ -508,6 +535,12 @@ define( require => {
       return best;
     }
 
+    /**
+     * Get the x position of the left most control point, in meters.
+     * @public
+     *
+     * @returns {number}
+     */
     getLeftControlPointX() {
       let best = Number.POSITIVE_INFINITY;
       const length = this.controlPoints.length;
@@ -519,6 +552,12 @@ define( require => {
       return best;
     }
 
+    /**
+     * Get the x position of the right most control point, in meters.
+     * @public
+     *
+     * @returns {number}
+     */
     getRightControlPointX() {
       let best = Number.NEGATIVE_INFINITY;
       const length = this.controlPoints.length;
@@ -530,6 +569,13 @@ define( require => {
       return best;
     }
 
+    /**
+     * Returns true if this track contains the provided control point.
+     * @public
+     *
+     * @param {ControlPoint} controlPoint
+     * @returns {boolean}
+     */
     containsControlPoint( controlPoint ) {
       for ( let i = 0; i < this.controlPoints.length; i++ ) {
         if ( this.controlPoints[ i ] === controlPoint ) {
@@ -539,9 +585,18 @@ define( require => {
       return false;
     }
 
-    // Return an array which contains all of the Tracks that would need to be reset if this track was reset.
+    /**
+     * Returns an array which contains all of the Tracks that would need to be reset if this Track was reset.
+     * @public
+     *
+     * @returns {Track[]}
+     */
     getParentsOrSelf() { return this.parents || [ this ]; }
 
+    /**
+     * Return this track to its control panel by resetting it to its initial state.
+     * @public
+     */
     returnToControlPanel() {
       if ( this.parents ) {
         this.modelTracks.remove( this );
@@ -559,6 +614,8 @@ define( require => {
     /**
      * Returns the arc length (in meters) between two points on a parametric curve.
      * This function is at the heart of many nested loops, so it must be heavily optimized
+     * @public
+     *
      * @param {number} u0
      * @param {number} u1
      * @returns {number}
@@ -595,6 +652,8 @@ define( require => {
 
     /**
      * Find the parametric distance along the track, starting at u0 and moving ds meters
+     * @public
+     *
      * @param {number} u0 the starting point along the track in parametric coordinates
      * @param {number} ds meters to traverse along the track
      * @returns {number}
@@ -633,6 +692,7 @@ define( require => {
      * Used for centripetal force and determining whether the skater flies off the track
      * Curvature parameter is for storing the result as pass-by-value.
      * Sorry, see #50 regarding GC
+     * @public
      *
      * @param parametricPosition
      * @param curvature
@@ -670,8 +730,13 @@ define( require => {
       curvature.y = vectorY;
     }
 
-    // Find the lowest y-point on the spline by sampling, used when dropping the track or a control point to ensure it
-    // won't go below y=0
+    /**
+     * Find the lowest y-point on the spline by sampling, used when dropping the track or a control point to ensure
+     * it won't go below y=0.
+     * @public
+     *
+     * @returns {number}
+     */
     getLowestY() {
       if ( !this.xSearchPoints ) {
         this.xSearchPoints = SplineEvaluation.atArray( this.xSpline, this.searchLinSpace );
@@ -777,6 +842,8 @@ define( require => {
 
     /**
      * Smooth out the track so it doesn't have any sharp turns, see #177
+     * @public
+     *
      * @param {number} i - the index of the control point to adjust
      */
     smooth( i ) {
@@ -830,6 +897,8 @@ define( require => {
     /**
      * The user just released a control point with index (indexToIgnore) and the spline needs to be smoothed.
      * Choose the point closest to the sharpest turn and adjust it.
+     * @public
+     *
      * @param {Array} indicesToIgnore indices which should not be adjusted (perhaps because the user just released them)
      */
     smoothPointOfHighestCurvature( indicesToIgnore ) {
@@ -868,6 +937,12 @@ define( require => {
       }
     }
 
+    /**
+     * Get the spline position at the point of highest curvature.
+     * @private
+     *
+     * @returns {number}
+     */
     getUWithHighestCurvature() {
       // Below implementation copied from getMinimumRadiusOfCurvature.  It is a CPU demanding task, so kept separate to
       // keep the other one fast. Should be kept in sync manually
@@ -912,21 +987,42 @@ define( require => {
       return minRadius;
     }
 
-    // Use an arbitrary position for translating the track during dragging.  Only used for deltas in relative
-    // positioning and translation, so an exact "position" is irrelevant.
+    /**
+     * Use an arbitrary position for translating the track during dragging. Only used for deltas in relative positioning
+     * and translation, so an exact "position" is irrelevant.
+     * @public
+     *
+     * @returns {Vector2}
+     */
     get position() {
       return this._position.copy();
     }
 
+    /**
+     * Set the position of this Track.
+     * @public
+     *
+     * @param {Vector2} newPosition
+     */
     set position( newPosition ) {
       const delta = newPosition.minus( this.position );
       this.translate( delta.x, delta.y );
     }
 
+    /**
+     * Get an array of all control point sourcePositions - this is the position of all ControlPoint's if none had
+     * snapped to a location in attempt to combine with another track.
+     * @public
+     *
+     * @returns {Vector2[]}
+     */
     copyControlPointSources() {
       return this.controlPoints.map( controlPoint => controlPoint.sourcePositionProperty.value.copy() );
     }
 
+    /**
+     * Debugging info.
+     */
     getDebugString() {
       let string = 'var controlPoints = [';
       for ( let i = 0; i < this.controlPoints.length; i++ ) {
@@ -939,6 +1035,10 @@ define( require => {
       return string + '];';
     }
 
+    /**
+     * Disposal for garbage collection.
+     * @returns {[type]} [description]
+     */
     dispose() {
       this.disposeTrack();
       super.dispose();
