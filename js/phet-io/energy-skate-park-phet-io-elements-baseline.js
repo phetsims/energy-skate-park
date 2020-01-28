@@ -2355,7 +2355,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "energySkatePark.general.soundManager.enabledProperty": {
-      "phetioDocumentation": "",
+      "phetioDocumentation": "If this sim contains sound, then this Property will toggle whether sound is enabled ordisabled.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
