@@ -81,7 +81,7 @@ define( require => {
             model.pieChartVisibleProperty,
             tandem.createTandem( 'pieChartCheckbox' ),
             options.itemOptions
-          ),
+          )
         );
       }
 
@@ -93,7 +93,7 @@ define( require => {
           model.barGraphVisibleProperty,
           tandem.createTandem( 'barGraphCheckbox' ),
           options.itemOptions
-        ), );
+        ) );
       }
 
       if ( options.showGridCheckbox ) {
