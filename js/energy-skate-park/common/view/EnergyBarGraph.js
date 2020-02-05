@@ -197,7 +197,7 @@ define( require => {
      * Create an icon of the bar graph, to be used in visibility or other controls.
      *
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      * @returns {Node}
      */
     static createBarGraphIcon( tandem, options ) {

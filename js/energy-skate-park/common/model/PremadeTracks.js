@@ -131,7 +131,7 @@ define( require => {
      * Create a set of control points which create a slope shaped track, touching the ground on the right side.
      *
      * @param {Tandem} groupTandem
-     * @param {Object} options
+     * @param {Object} [options]
      * @returns {ControlPoint[]}
      */
     createSlopeControlPoints: ( groupTandem, options ) => {
@@ -160,7 +160,7 @@ define( require => {
      * while on the track. Numbers determined by trial and error.
      *
      * @param {Tandem} groupTandem
-     * @param {Object} options
+     * @param {Object} [options]
      * @returns {ControlPoint[]}
      */
     createDoubleWellControlPoints: ( groupTandem, options ) => {

@@ -21,7 +21,7 @@ define( require => {
      * @param {EnergySkateParkTrackSetModel} model
      * @param {Array.<PhysicalNumberControl|PhysicalComboBox} controls
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      */
     constructor( model, controls, tandem, options ) {
       super( model, controls, tandem, options );

@@ -30,7 +30,7 @@ define( require => {
      * @param {Bounds2} layoutBounds
      * @param {Property.<Bounds2>} visibleBoundsProperty
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      */
     constructor( layoutBounds, visibleBoundsProperty, tandem, options ) {
       super( {

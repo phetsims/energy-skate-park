@@ -18,7 +18,7 @@ define( require => {
 
     /**
      * @param {NumberProperty} scaleProperty - Property to change when pressing buttons
-     * @param {Object} options
+     * @param {Object} [options]
      */
     constructor( scaleProperty, options ) {
 

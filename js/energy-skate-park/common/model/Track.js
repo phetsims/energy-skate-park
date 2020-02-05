@@ -47,7 +47,7 @@ define( require => {
      * broken apart when dragged back to control panel
      * @param {Property<Bounds2>} availableModelBoundsProperty function that provides the visible model bounds, to prevent the
      * adjusted control point from going offscreen, see #195
-     * @param {Object} options - required for tandem
+     * @param {Object} [options] - required for tandem
      * @constructor
      */
     constructor( model, modelTracks, controlPoints, parents, availableModelBoundsProperty, options ) {

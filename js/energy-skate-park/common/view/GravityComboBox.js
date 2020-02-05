@@ -17,7 +17,7 @@ define( require => {
      * @param {NumberProperty} gravityProperty
      * @param {Emitter} resetEmitter
      * @param {Node} listParent - node which the ComboBoxListBox will be added
-     * @param {object} options
+     * @param {Object} [options]
      */
     constructor( gravityProperty, resetEmitter, listParent, tandem, options ) {
 

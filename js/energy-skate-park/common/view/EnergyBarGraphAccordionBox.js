@@ -19,7 +19,7 @@ define( require => {
     /**
      * @param {EnergySkateParkModel} model
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      */
     constructor( model, tandem, options ) {
 

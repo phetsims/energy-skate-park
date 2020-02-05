@@ -26,10 +26,11 @@ define( require => {
 
   class ControlPoint extends PhetioObject {
 
+    // TODO: Should the "required" options parameter be changed to "config"?
     /**
      * @param x
      * @param y
-     * @param {Object} options - required
+     * @param {Object} [options] - required
      * @constructor
      */
     constructor( x, y, options ) {

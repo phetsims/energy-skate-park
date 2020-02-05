@@ -36,7 +36,7 @@ define( require => {
     /**
      * @constructor
      * @param {Array.<EnergySkateParkCheckboxItem>} checkboxItems
-     * @param {object} options
+     * @param {Object} [options]
      */
     constructor( model, tandem, options ) {
       options = merge( {

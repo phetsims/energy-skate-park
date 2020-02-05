@@ -36,7 +36,7 @@ define( require => {
      * @param {Function} clearThermal function to be called when the user presses the clear thermal button
      * @param {Property.<boolean>} pieChartVisibleProperty axon Property indicating whether the pie chart is visible
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      * @constructor
      */
     constructor( skater, clearThermal, pieChartVisibleProperty, tandem, options ) {

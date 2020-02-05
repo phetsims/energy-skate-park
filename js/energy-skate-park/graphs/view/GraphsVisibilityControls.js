@@ -20,7 +20,7 @@ define( require => {
      * @param {GraphsModel} model
      * @param {GraphsScreenView} screenView
      * @param {Tandem} tandem
-     * @param {object} options
+     * @param {Object} [options]
      */
     constructor( model, tandem, options ) {
 

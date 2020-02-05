@@ -28,7 +28,7 @@ define( require => {
      * @param {EnergySkateParkModel} model
      * @param {EnergySkateParkScreenView} view
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      */
     constructor( model, view, tandem, options ) {
       options = merge( {

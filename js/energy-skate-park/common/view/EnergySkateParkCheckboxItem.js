@@ -40,7 +40,7 @@ define( require => {
    * @param {AlignGroup} textAlignGroup
    * @param {Property} property - the checkbox will update this Property
    * @param {Tandem} tandem
-   * @param {Object} options
+   * @param {Object} [options]
    */
   class EnergySkateParkCheckboxItem extends HBox {
     constructor( label, icon, textAlignGroup, property, tandem, options ) {
@@ -80,7 +80,7 @@ define( require => {
     /**
      * In icon for the pie chart..
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      * @returns {Node}
      */
     static createPieChartIcon( tandem, options ) {
@@ -106,7 +106,7 @@ define( require => {
     /**
      * An icon for the grid.
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      * @returns {Node}
      */
     static createGridIcon( tandem, options ) {
@@ -131,7 +131,7 @@ define( require => {
     /**
      * An icon for the speedometer.
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      * @returns {Node}
      */
     static createSpeedometerIcon( tandem, options ) {

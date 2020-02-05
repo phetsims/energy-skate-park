@@ -20,7 +20,7 @@ define( require => {
     /**
      * @param {string} titleString - title for the simulation
      * @param {Array.<Screen>} screens
-     * @param {Object} options
+     * @param {Object} [options]
      * @param {Tandem} tandem
      */
     constructor( titleString, screens, tandem, options ) {

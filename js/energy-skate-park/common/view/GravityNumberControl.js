@@ -23,7 +23,7 @@ define( require => {
     /**
      * @param {NumberProperty} property
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      */
     constructor( property, tandem, options ) {
 

@@ -24,7 +24,7 @@ define( require => {
      * @param {NumberProperty} property
      * @param {Range} valueRange
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      */
     constructor( titleString, property, valueRange, tandem, options ) {
       options = options || {};

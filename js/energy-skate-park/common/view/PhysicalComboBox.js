@@ -34,7 +34,7 @@ define( require => {
      * @param {Emitter} resetEmitter
      * @param {Node} listParent - parent for the ComboBox list
      * @param {Tandem} tandem
-     * @param {Object} options
+     * @param {Object} [options]
      */
     constructor( physicalProperty, labelValueList, resetEmitter, listParent, tandem, options ) {
       assert && assert( _.find( labelValueList, entry => entry.value === null ) === undefined, 'PhysicalComboBox adds "Custom" item' );

@@ -26,7 +26,7 @@ define( require => {
 
     /**
      * @param {Tandem} tandem
-     * @param {object} options
+     * @param {Object} [options]
      */
     constructor( tandem, options ) {
       options = merge( {
