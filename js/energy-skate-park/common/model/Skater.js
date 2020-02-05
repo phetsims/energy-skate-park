@@ -252,7 +252,10 @@ define( require => {
           phetioType: DerivedPropertyIO( BooleanIO )
         } );
 
-      this.massProperty.link( () => { this.updateEnergy(); } );
+      // update energies whenever mass, gravity, or height changes so that energy distribution updates while the sim is paused
+      Property.multilink( [ this.massProperty, this.referenceHeightProperty, this.gravityProperty ], ( mass, height, gravity ) => {
+        this.updateEnergy();
+      } );
 
       this.updateEnergy();
 
