@@ -1,4 +1,4 @@
-// Copyright 2013-2019, University of Colorado Boulder
+// Copyright 2013-2020, University of Colorado Boulder
 
 /**
  * Model for the skater in Energy Skate Park, including position, velocity, energy, etc..
