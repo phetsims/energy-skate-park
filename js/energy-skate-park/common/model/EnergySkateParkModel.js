@@ -1379,11 +1379,8 @@ define( require => {
      */
     stepModel( dt, skaterState ) {
 
-      // increment running time, only if simulation is also running - done in stepModel because dt reflects
-      // slowMotionProperty here
-      if ( !this.pausedProperty.value ) {
-        this.stopwatch.step( dt );
-      }
+      // increment running time - done in stepModel because dt reflects slowMotionProperty here
+      this.stopwatch.step( dt );
 
       return skaterState.dragging ? skaterState : // User is dragging the skater, nothing to update here
              !skaterState.track && skaterState.positionY <= 0 ? this.stepGround( dt, skaterState ) :
