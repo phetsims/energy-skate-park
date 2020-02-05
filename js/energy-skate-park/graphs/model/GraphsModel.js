@@ -209,6 +209,13 @@ define( require => {
         p1Draggable: false,
         p5Draggable: false,
 
+        // limit vertical bounds for points 1 and 5 so that the track can never overlap with other UI components, including
+        // when it is bumped above ground
+        p1UpSpacing: 0,
+        p1DownSpacing: 0,
+        p5UpSpacing: 0,
+        p5DownSpacing: 0,
+
         // spacing for the limiting drag bounds of the third control point
         p3UpSpacing: 2.5,
         p3DownSpacing: 1.5

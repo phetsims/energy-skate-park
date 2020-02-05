@@ -40,10 +40,9 @@ define( require => {
         // be "configurable" and this must be true.
         draggable: true,
 
-        // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging,
-        // in model coordinates
+        // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging, or
+        // when the track is bumped above ground, in model coordinates
         limitBounds: null,
-
 
         tandem: Tandem.REQUIRED,
         phetioType: ControlPointIO,

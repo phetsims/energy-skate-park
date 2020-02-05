@@ -176,9 +176,18 @@ define( require => {
         p4Draggable: true,
         p5Draggable: true,
 
+        // spacing for drag bounds of the first (left) control point for createRelativeSpaceBounds
+        p1UpSpacing: 3,
+        p1DownSpacing: 1,
+
         // Spacing for drag bounds of the third (center) control point for createRelativeSpaceBounds
         p3UpSpacing: 4,
-        p3DownSpacing: 2
+        p3DownSpacing: 2,
+
+        // spacing for the drag bounds of the fifth (right) control point for createRelativeSpaceBounds
+        p5UpSpacing: 3,
+        p5DownSpacing: 1
+
       }, CREATOR_OPTIONS, options );
 
       const p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
@@ -187,11 +196,11 @@ define( require => {
       const p4 = new Vector2( 2, 1 );
       const p5 = new Vector2( options.trackWidth / 2, options.trackHeight );
 
-      const p1Bounds = createRelativeSpaceBounds( p1, 1.5, 1.5, 3, 1 );
+      const p1Bounds = createRelativeSpaceBounds( p1, 1.5, 1.5, options.p1UpSpacing, options.p1DownSpacing );
       const p2Bounds = createRelativeSpaceBounds( p2, 1.5, 0.5, 3, 0 );
       const p3Bounds = createRelativeSpaceBounds( p3, 1, 1, options.p3UpSpacing, options.p3DownSpacing );
       const p4Bounds = createRelativeSpaceBounds( p4, 0.5, 1.5, 2, 1 );
-      const p5Bounds = createRelativeSpaceBounds( p5, 1.5, 1.5, 3, 1 );
+      const p5Bounds = createRelativeSpaceBounds( p5, 1.5, 1.5, options.p5UpSpacing, options.p5DownSpacing );
 
       return [
         new ControlPoint( p1.x, p1.y, {
