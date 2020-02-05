@@ -44,6 +44,7 @@ define( require => {
         // in model coordinates
         limitBounds: null,
 
+
         tandem: Tandem.REQUIRED,
         phetioType: ControlPointIO,
         phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
