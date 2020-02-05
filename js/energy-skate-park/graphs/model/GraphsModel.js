@@ -16,6 +16,7 @@ define( require => {
   const EnumerationProperty = require( 'AXON/EnumerationProperty' );
   const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
   const NumberProperty = require( 'AXON/NumberProperty' );
+  const Property = require( 'AXON/Property' );
   const Range = require( 'DOT/Range' );
   const SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
   const Utils = require( 'DOT/Utils' );
@@ -84,12 +85,19 @@ define( require => {
         this.clearEnergyData();
       } );
 
-      // if plotting against position don't save any skater samples while dragging, but if plotting against time
-      // it is still useful to see data as potential energy changes
-      this.skater.draggingProperty.link( isDragging => {
+      // conditions for saving SkaterSamples dependent on our graph's Independent variable
+      Property.multilink( [ this.skater.draggingProperty, this.pausedProperty ], ( dragging, paused ) => {
         if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ) {
+
+          // if plotting against  position, don't save any samples while dragging
           this.clearEnergyData();
-          this.preventSampleSave = isDragging;
+          this.preventSampleSave = dragging;
+        }
+        else {
+
+          // if plotting against time, it is useful to save samples to see the energy distribiution as skater
+          // moves, but don't save samples while sim is paused
+          this.preventSampleSave = dragging && paused;
         }
       } );
 
