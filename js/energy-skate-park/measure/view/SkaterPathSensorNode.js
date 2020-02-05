@@ -2,7 +2,7 @@
 
 /**
  * The sensor that reads information from the samples along the skater path. Includes the body, wire, and sensor. The
- * body is stationary and the beter can be dragged to sample locations.
+ * body is stationary and the beter can be dragged to sample positions.
  *
  * @author Jesse Greenberg
  */
@@ -57,7 +57,7 @@ define( require => {
   // NumberDisplay looks good and if released from within dev bounds, the energy will never get this large.
   const ENERGY_RANGE = new Range( -20000, 20000 );
 
-  // offset so that the center of the probe aligns with sample locations
+  // offset so that the center of the probe aligns with sample positions
   const PROBE_CENTER_OFFSET = new Vector2( 5.5, 0 );
 
   // max distance between sample and probe center for the sample to be displayed, in view coordinates
@@ -291,7 +291,7 @@ define( require => {
       this.heightSpeedRectangle.setRectBounds( this.heightSpeedVBox.bounds );
       this.heightSpeedRectangle.leftCenter = this.probeNode.rightCenter.plusXY( PROBE_READOUT_SPACING, 0 );
 
-      // determine occlusion case from position of the sample point rather than the probe location so that
+      // determine occlusion case from position of the sample point rather than the probe position so that
       // the display doesn't move around when measuring a single point
       const spacing = this.heightSpeedRectangle.width + this.probeNode.width / 2;
       const sampleViewPoint = this.modelViewTransform.modelToViewPosition( skaterSample.position );

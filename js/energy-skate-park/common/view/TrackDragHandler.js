@@ -115,7 +115,7 @@ define( require => {
       track.draggingProperty.value = true;
 
       const parentPoint = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( this.startOffset );
-      const location = this.modelViewTransform.viewToModelPosition( parentPoint );
+      const position = this.modelViewTransform.viewToModelPosition( parentPoint );
 
       // If the user moved it out of the toolbox above y=0, then make it physically interactive
       const bottomControlPointY = track.getBottomControlPointY();
@@ -124,11 +124,11 @@ define( require => {
       }
 
       // When dragging track, make sure the control points don't go below ground, see #71
-      const modelDelta = location.minus( track.position );
+      const modelDelta = position.minus( track.position );
       const translatedBottomControlPointY = bottomControlPointY + modelDelta.y;
 
       if ( track.physicalProperty.value && translatedBottomControlPointY < 0 ) {
-        location.y += Math.abs( translatedBottomControlPointY );
+        position.y += Math.abs( translatedBottomControlPointY );
       }
 
       if ( this.availableBoundsProperty.value ) {
@@ -139,23 +139,23 @@ define( require => {
         // Constrain the top
         const topControlPointY = track.getTopControlPointY();
         if ( topControlPointY + modelDelta.y > availableBounds.maxY ) {
-          location.y = availableBounds.maxY - (topControlPointY - track.position.y);
+          position.y = availableBounds.maxY - (topControlPointY - track.position.y);
         }
 
         // Constrain the left side
         const leftControlPointX = track.getLeftControlPointX();
         if ( leftControlPointX + modelDelta.x < availableBounds.minX ) {
-          location.x = availableBounds.minX - (leftControlPointX - track.position.x);
+          position.x = availableBounds.minX - (leftControlPointX - track.position.x);
         }
 
         // Constrain the right side
         const rightControlPointX = track.getRightControlPointX();
         if ( rightControlPointX + modelDelta.x > availableBounds.maxX ) {
-          location.x = availableBounds.maxX - (rightControlPointX - track.position.x);
+          position.x = availableBounds.maxX - (rightControlPointX - track.position.x);
         }
       }
 
-      track.position = location;
+      track.position = position;
 
       // If one of the control points is close enough to link to another track, do so
       const tracks = model.getPhysicalTracks();

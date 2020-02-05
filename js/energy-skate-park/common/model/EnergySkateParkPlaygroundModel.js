@@ -28,7 +28,7 @@ define( require => {
     constructor( tandem, options ) {
       options = merge( {
 
-        // the center of initial tracks in the toolbox, change this to move the panel to a different location
+        // the center of initial tracks in the toolbox, change this to move the panel to a different position
         // in model coordinates (meters)
         initialTracksOffsetVector: new Vector2( -5.1, -0.85 )
       }, options );

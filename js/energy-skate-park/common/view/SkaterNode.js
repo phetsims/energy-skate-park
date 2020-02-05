@@ -80,7 +80,7 @@ define( require => {
 
         const view = modelViewTransform.modelToViewPosition( position );
 
-        // Translate to the desired location
+        // Translate to the desired position
         const matrix = Matrix3.translation( view.x, view.y );
 
         // Rotate about the pivot (bottom center of the skater)
@@ -165,7 +165,7 @@ define( require => {
           // Clear thermal energy whenever skater is grabbed, see #32
           skater.thermalEnergyProperty.value = 0;
 
-          // Jump to the input location when dragged
+          // Jump to the input position when dragged
           dragSkater( event );
         },
 

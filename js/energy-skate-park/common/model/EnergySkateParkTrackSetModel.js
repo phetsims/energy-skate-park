@@ -66,7 +66,7 @@ define( require => {
         }
       }
 
-      // The skater should detach from track when the scene changes.  Code elsewhere also resets the location of the skater.
+      // The skater should detach from track when the scene changes.  Code elsewhere also resets the position of the skater.
       this.skater.trackProperty.value = null;
     }
 

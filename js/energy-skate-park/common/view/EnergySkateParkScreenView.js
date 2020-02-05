@@ -536,7 +536,7 @@ define( require => {
         this.toolboxPanel.right = this.controlPanel.right;
       }
 
-      // pie chart legend location is dependent on whether or not the screen includes an energy bar graph
+      // pie chart legend position is dependent on whether or not the screen includes an energy bar graph
       let pieChartLegendLeftTop = null;
       if ( this.showBarGraph ) {
         this.energyBarGraphAccordionBox.x = this.fixedLeft;

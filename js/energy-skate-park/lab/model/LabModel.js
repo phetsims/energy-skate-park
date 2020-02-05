@@ -28,7 +28,7 @@ define( require => {
           massRange: new Range( SkaterMasses.BUG_MASS, SkaterMasses.PHET_SKATER_MASS )
         },
 
-        // Draggable tracks in the lab screen start at a different location in the "Lab" screen
+        // Draggable tracks in the lab screen start at a different position in the "Lab" screen
         initialTracksOffsetVector: new Vector2( -2, -0.75 )
       } );
     }

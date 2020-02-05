@@ -321,7 +321,7 @@ define( require => {
     }
 
     /**
-     * Get x location at the parametric position.
+     * Get x position at the parametric position.
      * @public
      * @param {number} parametricPosition
      * @returns {number}
@@ -329,7 +329,7 @@ define( require => {
     getX( parametricPosition ) { return SplineEvaluation.atNumber( this.xSpline, parametricPosition ); }
 
     /**
-     * Get y location at the parametric position.
+     * Get y position at the parametric position.
      * @public
      * @param {number}
      * @returns {number}
@@ -337,7 +337,7 @@ define( require => {
     getY( parametricPosition ) { return SplineEvaluation.atNumber( this.ySpline, parametricPosition ); }
 
     /**
-     * Get the model location at the parametric position.
+     * Get the model position at the parametric position.
      * @public
      * @param {number} parametricPosition
      * @returns {Vector2}
@@ -804,9 +804,9 @@ define( require => {
      */
     containControlPointsInAvailableBounds( bounds ) {
       for ( let i = 0; i < this.controlPoints.length; i++ ) {
-        const currentLocation = this.controlPoints[ i ].positionProperty.get();
-        if ( !bounds.containsPoint( currentLocation ) ) {
-          const newPoint = bounds.getClosestPoint( currentLocation.x, currentLocation.y );
+        const currentPosition = this.controlPoints[ i ].positionProperty.get();
+        if ( !bounds.containsPoint( currentPosition ) ) {
+          const newPoint = bounds.getClosestPoint( currentPosition.x, currentPosition.y );
 
           // set the control point "source" position to the new point - this is the unsnapped position, see
           // ControlPoint.js
@@ -863,7 +863,7 @@ define( require => {
       let success = false;
       let numTries = 0;
 
-      // Record the original control point location
+      // Record the original control point position
       const originalX = this.controlPoints[ i ].sourcePositionProperty.value.x;
       const originalY = this.controlPoints[ i ].sourcePositionProperty.value.y;
 
@@ -1018,7 +1018,7 @@ define( require => {
 
     /**
      * Get an array of all control point sourcePositions - this is the position of all ControlPoint's if none had
-     * snapped to a location in attempt to combine with another track.
+     * snapped to a position in attempt to combine with another track.
      * @public
      *
      * @returns {Vector2[]}

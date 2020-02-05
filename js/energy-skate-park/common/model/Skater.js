@@ -376,7 +376,7 @@ define( require => {
     }
 
     /**
-     * Return the skater to the last location it was released by the user (or its starting location), including the
+     * Return the skater to the last position it was released by the user (or its starting position), including the
      * position on a track (if any).
      * @public
      */
@@ -449,7 +449,7 @@ define( require => {
     /**
      * If the skater is released, store the initial conditions for when the skater is returned.
      * @param targetTrack The track to start on (if any)
-     * @param targetU The parametric location along the track to start on (if any)
+     * @param targetU The parametric position along the track to start on (if any)
      */
     released( targetTrack, targetU ) {
       this.draggingProperty.value = false;

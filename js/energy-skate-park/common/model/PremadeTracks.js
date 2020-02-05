@@ -41,7 +41,7 @@ define( require => {
    * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the
    * CENTER of the limiting bounds.
    *
-   * @param  {Vector2} point - location of control point, CENTER of the bounds
+   * @param  {Vector2} point - position of control point, CENTER of the bounds
    * @param  {number} width
    * @param  {number} height
    * @returns {Bounds2}
@@ -54,7 +54,7 @@ define( require => {
    * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the BOTTOM
    * CENTER of the limiting bounds.
    *
-   * @param  {Vector2} point - location of control point, BOTTOM CENTER of the bounds
+   * @param  {Vector2} point - position of control point, BOTTOM CENTER of the bounds
    * @param  {number} width
    * @param  {number} height
    * @returns {Bounds2}
@@ -65,7 +65,7 @@ define( require => {
 
   /**
    * Create a set of limiting drag bounds for a control point. The spacing args are relative to provided point,
-   * which is presumably the location of the control point.
+   * which is presumably the position of the control point.
    *
    * @param {Vector2} point - spacing in each direction relative to this point
    * @param {number} leftSpace - space to the left of point for bounds

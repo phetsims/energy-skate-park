@@ -680,7 +680,7 @@ define( require => {
     interactWithTracksWhileFalling( physicalTracks, skaterState, proposedPosition, initialEnergy, dt, proposedVelocity ) {
 
       // Find the closest track, and see if the skater would cross it in this time step.
-      // Assuming the skater's initial + final locations determine a line segment, we search for the best point for the
+      // Assuming the skater's initial + final positions determine a line segment, we search for the best point for the
       // skater's start point, midpoint and end point and choose whichever is closest.  This helps avoid "high curvature"
       // problems like the one identified in #212
       const a = this.getClosestTrackAndPositionAndParameter( skaterState.getPosition(), physicalTracks );

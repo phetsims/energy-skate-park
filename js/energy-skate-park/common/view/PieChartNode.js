@@ -88,7 +88,7 @@ define( require => {
       // be invisible in this case
       this.showNegativeEnergy = options.showNegativeEnergy;
 
-      const updatePieChartLocation = () => {
+      const updatePieChartPosition = () => {
 
         const view = modelViewTransform.modelToViewPosition( skater.headPositionProperty.value );
 
@@ -97,7 +97,7 @@ define( require => {
       };
       skater.headPositionProperty.link( () => {
         if ( this.visible ) {
-          updatePieChartLocation();
+          updatePieChartPosition();
         }
       } );
 
@@ -197,7 +197,7 @@ define( require => {
         this.visible = visible;
         updatePaths();
         if ( visible ) {
-          updatePieChartLocation();
+          updatePieChartPosition();
         }
       } );
     }
