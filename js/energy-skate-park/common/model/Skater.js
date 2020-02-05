@@ -53,9 +53,18 @@ define( require => {
      */
     constructor( tandem, options ) {
       options = merge( {
+
+        // {number} - initial mass for the Skater, in kg
         defaultMass: Constants.DEFAULT_MASS,
-        massRange: Constants.MASS_RANGE
+
+        // {Range} - range for the Skater mass, in kg
+        massRange: Constants.MASS_RANGE,
+
+        // {Range} - Range for the reference height, in meters
+        referenceHeightRange: Constants.REFERENCE_HEIGHT_RANGE
       }, options );
+
+      assert && assert( options.referenceHeightRange.min === 0, 'reference height range needs to start from ground' );
 
       // @private {Range}
       this.massRange = options.massRange;
@@ -108,7 +117,7 @@ define( require => {
       this.referenceHeightProperty = new NumberProperty( 0, {
         tandem: tandem.createTandem( 'referenceHeightProperty' ),
         units: 'meters',
-        range: Constants.REFERENCE_HEIGHT_RANGE
+        range: options.referenceHeightRange
       } );
 
       // @public {Vector2} - the position of the skater

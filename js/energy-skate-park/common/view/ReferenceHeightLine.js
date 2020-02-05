@@ -12,7 +12,6 @@ define( require => {
 
   // modules
   const ArrowNode = require( 'SCENERY_PHET/ArrowNode' );
-  const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   const DragListener = require( 'SCENERY/listeners/DragListener' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
@@ -110,7 +109,7 @@ define( require => {
 
           // limit to reference height range
           const modelY = modelMouse.y;
-          const constrainedValue = Constants.REFERENCE_HEIGHT_RANGE.constrainValue( modelY );
+          const constrainedValue = referenceHeightProperty.range.constrainValue( modelY );
           referenceHeightProperty.set( constrainedValue );
         },
         tandem: tandem.createTandem( 'dragListener' )

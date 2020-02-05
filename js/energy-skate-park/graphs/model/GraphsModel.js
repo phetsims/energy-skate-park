@@ -34,6 +34,11 @@ define( require => {
 
         includeFriction: false,
 
+        // limited reference height range for this Screen because the graph takes up so much space
+        skaterOptions: {
+          referenceHeightRange: new Range( 0, 4.5 )
+        },
+
         // premade tracks can be modified
         tracksConfigurable: true,
 
