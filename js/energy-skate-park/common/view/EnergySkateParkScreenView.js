@@ -378,7 +378,7 @@ define( require => {
       this.timeControlNode = new TimeControlNode( playingProperty, {
         tandem: tandem.createTandem( 'timeControlNode' ),
         isSlowMotionProperty: model.isSlowMotionProperty,
-        playPauseStepXSpacing: 19,
+        playPauseStepXSpacing: 19, // extra spacing avoids pointer area overlap when play pause button size increases
         playPauseOptions: {
           radius: buttonRadius,
           scaleFactorWhenPaused: 1.35
