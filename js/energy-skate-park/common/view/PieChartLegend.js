@@ -1,4 +1,4 @@
-// Copyright 2013-2019, University of Colorado Boulder
+// Copyright 2013-2020, University of Colorado Boulder
 
 /**
  * Scenery node that shows the legend for the pie chart, and a reset button for thermal energy.
