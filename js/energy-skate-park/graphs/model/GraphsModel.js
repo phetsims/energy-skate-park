@@ -16,7 +16,6 @@ define( require => {
   const EnumerationProperty = require( 'AXON/EnumerationProperty' );
   const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
   const NumberProperty = require( 'AXON/NumberProperty' );
-  const Property = require( 'AXON/Property' );
   const Range = require( 'DOT/Range' );
   const SkaterState = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterState' );
   const Utils = require( 'DOT/Utils' );
@@ -90,19 +89,20 @@ define( require => {
         this.clearEnergyData();
       } );
 
-      // conditions for saving SkaterSamples dependent on our graph's Independent variable
-      Property.multilink( [ this.skater.draggingProperty, this.pausedProperty ], ( dragging, paused ) => {
+      this.skater.draggingProperty.link( isDragging => {
         if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ) {
 
-          // if plotting against  position, don't save any samples while dragging
+          // if plotting against position don't save any skater samples while dragging, but if plotting against time
+          // it is still useful to see data as potential energy changes
           this.clearEnergyData();
-          this.preventSampleSave = dragging;
+          this.preventSampleSave = isDragging;
         }
         else {
 
-          // if plotting against time, it is useful to save samples to see the energy distribiution as skater
-          // moves, but don't save samples while sim is paused
-          this.preventSampleSave = dragging && paused;
+          // if plotting against time, it is still useful to see changing data as potentiala energy changes, but prevent
+          // sample saving while paused and dragging so that we don't add data while puased, but still save data
+          // while manually stepping
+          this.preventSampleSave = isDragging && this.pausedProperty.get();
         }
       } );
 
