@@ -157,7 +157,8 @@ define( require => {
         skater.updatedEmitter.emit();
       };
 
-      this.addInputListener( new SimpleDragHandler( {
+      // @private - for interruption, see interruptDrag
+      this.dragHandler = new SimpleDragHandler( {
         tandem: tandem.createTandem( 'inputListener' ),
         start: event => {
           skater.draggingProperty.value = true;
@@ -176,7 +177,18 @@ define( require => {
           // Record the state of the skater for "return skater"
           skater.released( targetTrack, targetU );
         }
-      } ) );
+      } );
+      this.addInputListener( this.dragHandler );
+    }
+
+    /**
+     * If dragging, interrupt and release the Skater.
+     * @public
+     */
+    interruptDrag() {
+      if ( this.dragHandler.isDraggingProperty.get() ) {
+        this.dragHandler.interrupt();
+      }
     }
   }
 

@@ -38,6 +38,10 @@ define( require => {
         _.forEach( model.tracks, ( track, i ) => {
           trackNodes[ i ].visible = scene === i;
         } );
+
+        // interrupt the DragHandler when scene Property changes since Skater needs to reset to initial position when
+        // track changes, see https://github.com/phetsims/energy-skate-park-basics/issues/179
+        this.skaterNode.interruptDrag();
       } );
     }
   }
