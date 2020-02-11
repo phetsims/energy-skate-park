@@ -15,7 +15,7 @@ define( require => {
   const Range = require( 'DOT/Range' );
 
   // Must accommodate all values in SkaterMasses
-  const minMass = 0.2;// kg
+  const minMass = 1;// kg
   const maxMass = 100;
 
   // for zoom buttons for bar graphs, pressing button will increase/decrease scale by this much

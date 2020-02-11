@@ -16,7 +16,7 @@ define( require => {
     PHET_SKATER_MASS: 75,
     STAR_SKATER_MASS: 60,
     BULLDOG_MASS: 20,
-    BUG_MASS: 0.2,
+    BUG_MASS: 1,
     BALL_MASS: 5
   };
 
