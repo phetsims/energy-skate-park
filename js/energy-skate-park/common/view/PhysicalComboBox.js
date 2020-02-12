@@ -24,7 +24,7 @@ define( require => {
   const Text = require( 'SCENERY/nodes/Text' );
 
   // constants
-  const LABEL_OPTIONS = { font: new PhetFont( 11 ) };
+  const LABEL_OPTIONS = { font: new PhetFont( 11 ), maxWidth: 80 };
 
   class PhysicalComboBox extends ComboBox {
 

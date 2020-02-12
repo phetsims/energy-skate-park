@@ -106,15 +106,8 @@ define( require => {
         defaultSpeedValueVisible: true,
 
         // passed to Skater
-        skaterOptions: {}
+        skaterOptions: null
       }, options );
-
-      options.skaterOptions = merge( {
-
-        // initial mass for the skater
-        defaultMass: Constants.DEFAULT_MASS,
-        massRange: Constants.MASS_RANGE
-      }, options.skaterOptions );
 
       // @public (read-only)
       this.includeFriction = options.includeFriction;

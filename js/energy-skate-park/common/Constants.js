@@ -8,15 +8,10 @@ define( require => {
   'use strict';
 
   // modules
-  const SkaterMasses = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SkaterMasses' );
   const Dimension2 = require( 'DOT/Dimension2' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Range = require( 'DOT/Range' );
-
-  // Must accommodate all values in SkaterMasses
-  const minMass = 1;// kg
-  const maxMass = 100;
 
   // for zoom buttons for bar graphs, pressing button will increase/decrease scale by this much
   const ZOOM_FACTOR_DELTA = 1 / 60;
@@ -24,12 +19,6 @@ define( require => {
   const EARTH_GRAVITY = 9.8;
   const MOON_GRAVITY = 1.62;
   const JUPITER_GRAVITY = 25.96;
-
-  const massRange = new Range( minMass, maxMass );
-
-  Object.keys( SkaterMasses ).forEach( key => {
-    assert && assert( massRange.contains( SkaterMasses[ key ] ), 'mass range should accommodate all SkaterMasses values' );
-  } );
 
   const Constants = {
     SLIDER_OPTIONS: {
@@ -54,11 +43,6 @@ define( require => {
     ZOOM_FACTOR_DELTA: ZOOM_FACTOR_DELTA,
     MAX_ZOOM_FACTOR: 9 * ZOOM_FACTOR_DELTA,
     MIN_ZOOM_FACTOR: ZOOM_FACTOR_DELTA / 3,
-
-    DEFAULT_MASS: SkaterMasses.STAR_SKATER_MASS,
-    MIN_MASS: minMass,
-    MAX_MASS: maxMass,
-    MASS_RANGE: massRange,
 
     // coefficients of friction, default values are not common
     MIN_FRICTION: 0,

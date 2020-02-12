@@ -9,15 +9,26 @@ define( require => {
 
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const Range = require( 'DOT/Range' );
+
+  // constants
+  const MIN_MASS = 1;
+  const MAX_MASS = 100;
 
   const SkaterMasses = {
 
     // masses of skater objects in the intro screen, in kg
-    PHET_SKATER_MASS: 75,
-    STAR_SKATER_MASS: 60,
-    BULLDOG_MASS: 20,
-    BUG_MASS: 1,
-    BALL_MASS: 5
+    SKATER_1_MASS: 60,
+    SKATER_2_MASS: 35,
+    SKATER_3_MASS: 40,
+    SKATER_4_MASS: 65,
+    SKATER_5_MASS: 80,
+    DOG_MASS: 30,
+
+    // min/max masses for the skater when a range of masses is allowed
+    MIN_MASS: 1,
+    MAX_MASS: 100,
+    MASS_RANGE: new Range( MIN_MASS, MAX_MASS )
   };
 
   energySkatePark.register( 'SkaterMasses', SkaterMasses );

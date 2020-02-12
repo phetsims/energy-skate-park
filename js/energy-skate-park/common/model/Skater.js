@@ -13,6 +13,7 @@ define( require => {
   const BooleanIO = require( 'TANDEM/types/BooleanIO' );
   const BooleanProperty = require( 'AXON/BooleanProperty' );
   const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
+  const SkaterMasses = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/SkaterMasses' );
   const DerivedProperty = require( 'AXON/DerivedProperty' );
   const DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
   const Emitter = require( 'AXON/Emitter' );
@@ -55,10 +56,10 @@ define( require => {
       options = merge( {
 
         // {number} - initial mass for the Skater, in kg
-        defaultMass: Constants.DEFAULT_MASS,
+        defaultMass: SkaterMasses.SKATER_1_MASS,
 
         // {Range} - range for the Skater mass, in kg
-        massRange: Constants.MASS_RANGE,
+        massRange: SkaterMasses.MASS_RANGE,
 
         // {Range} - Range for the reference height, in meters
         referenceHeightRange: Constants.REFERENCE_HEIGHT_RANGE

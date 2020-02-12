@@ -50,6 +50,24 @@
   "controls.skater": {
     "value": "Skater"
   },
+  "controls.skater1": {
+    "value": "Skater 1 (60 kg)"
+  },
+  "controls.skater2": {
+    "value": "Skater 2 (35 kg)"
+  },
+  "controls.skater3": {
+    "value": "Skater 3 (40 kg)"
+  },
+  "controls.skater4": {
+    "value": "Skater 4 (65 kg)"
+  },
+  "controls.skater5": {
+    "value": "Skater 5 (80 kg)"
+  },
+  "controls.dog": {
+    "value": "Dog (30 kg)"
+  },
   "controls.stickToTrack": {
     "value": "Stick to Track"
   },
