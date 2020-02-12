@@ -4,7 +4,6 @@
  * A ComboBox that selects a an image for a Skater but has no other impact on physical state of the skater.
  * @author Jesse Greenberg
  */
-
 define( require => {
   'use strict';
 
@@ -28,7 +27,6 @@ define( require => {
   const controlsDogString = require( 'string!ENERGY_SKATE_PARK/controls.dog' );
 
   class SkaterComboBox extends LabelledComboBox {
-
 
     /**
      * @param {EnumerationProperty} skaterImageProperty - one of SkaterNode.SkaterImage
