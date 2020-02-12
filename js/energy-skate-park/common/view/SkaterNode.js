@@ -14,6 +14,7 @@ define( require => {
   const Circle = require( 'SCENERY/nodes/Circle' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const Enumeration = require( 'PHET_CORE/Enumeration' );
+  const EnumerationProperty = require( 'AXON/EnumerationProperty' );
   const Image = require( 'SCENERY/nodes/Image' );
   const LinearFunction = require( 'DOT/LinearFunction' );
   const Matrix3 = require( 'DOT/Matrix3' );
@@ -60,22 +61,29 @@ define( require => {
       } );
 
       // @private {Image} - left and right Images for the skater
-      this.leftSkaterImageNode = new Image( skater1LeftImage, {
+      const leftSkaterImageNode = new Image( skater1LeftImage, {
         cursor: 'pointer',
         tandem: tandem.createTandem( 'leftSkaterImageNode' )
       } );
-      this.rightSkaterImageNode = new Image( skater1RightImage, {
+      const rightSkaterImageNode = new Image( skater1RightImage, {
         cursor: 'pointer',
         tandem: tandem.createTandem( 'rightSkaterImageNode' )
       } );
-      this.children = [ this.leftSkaterImageNode, this.rightSkaterImageNode ];
+      this.children = [ leftSkaterImageNode, rightSkaterImageNode ];
+
+      // @public {EnumerationProperty} - one of SkaterNode.SkaterImage, set this Property to change the Skater image
+      this.skaterImageProperty = new EnumerationProperty( SkaterNode.SkaterImage, SkaterNode.SkaterImage.SKATER_1 );
+      this.skaterImageProperty.link( skaterImage => {
+        leftSkaterImageNode.image = skaterImage.leftImage;
+        rightSkaterImageNode.image = skaterImage.rightImage;
+      } );
 
       // @private {Skater}
       this.skater = skater;
 
       skater.directionProperty.link( direction => {
-        this.leftSkaterImageNode.visible = direction === 'left';
-        this.rightSkaterImageNode.visible = direction === 'right';
+        leftSkaterImageNode.visible = direction === 'left';
+        rightSkaterImageNode.visible = direction === 'right';
       } );
 
       const imageWidth = this.width;
@@ -193,19 +201,6 @@ define( require => {
         }
       } );
       this.addInputListener( this.dragHandler );
-    }
-
-    /**
-     * Set the image for the SkaterNode (both left and right directions) by setting to one of SkaterNode.SkaterImage.
-     * @public
-     *
-     * @param {SkaterImage} skaterImage
-     */
-    setSkaterImage( skaterImage ) {
-      assert && assert( SkaterNode.SkaterImage.includes( skaterImage ), 'image must be one of SkaterNode.SkaterImage' );
-
-      this.leftSkaterImageNode.image = skaterImage.leftImage;
-      this.rightSkaterImageNode.image = skaterImage.rightImage;
     }
 
     /**

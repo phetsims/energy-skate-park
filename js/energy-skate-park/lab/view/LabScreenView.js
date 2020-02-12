@@ -36,7 +36,7 @@ define( require => {
             showStickToTrackCheckbox: true
           },
           massControlsOptions: {
-            includeMassComboBox: true
+            includeSkaterComboBox: true
           },
           gravityControlsOptions: {
             includeGravityComboBox: true

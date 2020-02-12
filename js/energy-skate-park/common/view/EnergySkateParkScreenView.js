@@ -155,6 +155,16 @@ define( require => {
         model.availableModelBoundsProperty.set( bounds );
       } );
 
+      // @protected (read-only)
+      this.skaterNode = new SkaterNode(
+        model.skater,
+        this,
+        modelViewTransform,
+        model.getClosestTrackAndPositionAndParameter.bind( model ),
+        model.getPhysicalTracks.bind( model ),
+        tandem.createTandem( 'skaterNode' )
+      );
+
       // The background
       this.backgroundNode = new BackgroundNode( this.layoutBounds, this.visibleBoundsProperty, tandem.createTandem( 'backgroundNode' ) );
       this.bottomLayer.addChild( this.backgroundNode );
@@ -307,15 +317,7 @@ define( require => {
       );
       this.topLayer.addChild( this.referenceHeightLine );
 
-      // @protected (read-only) - protected for layering content
-      this.skaterNode = new SkaterNode(
-        model.skater,
-        this,
-        modelViewTransform,
-        model.getClosestTrackAndPositionAndParameter.bind( model ),
-        model.getPhysicalTracks.bind( model ),
-        tandem.createTandem( 'skaterNode' )
-      );
+      // skaterNode is above most things as it is the primary draggable object
       this.topLayer.addChild( this.skaterNode );
 
       const pieChartNode = new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) );

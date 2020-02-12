@@ -47,7 +47,7 @@ define( require => {
       // in the intro screen, each allowable mass has a unique skater image
       model.skater.massProperty.link( mass => {
         assert && assert( MASS_IMAGE_MAP.has( mass ), 'no image supported for that mass' );
-        this.skaterNode.setSkaterImage( MASS_IMAGE_MAP.get( mass ) );
+        this.skaterNode.skaterImageProperty.set( MASS_IMAGE_MAP.get( mass ) );
       } );
     }
   }

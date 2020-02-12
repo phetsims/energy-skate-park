@@ -14,6 +14,7 @@ define( require => {
   const MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
   const MassSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassSlider' );
   const MassComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassComboBox' );
+  const SkaterComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/SkaterComboBox' );
   const VBox = require( 'SCENERY/nodes/VBox' );
 
   class EnergySkateParkMassControls extends VBox {
@@ -26,7 +27,7 @@ define( require => {
      * @param {Tandem} tandem
      * @param {Object} [options]
      */
-    constructor( massProperty, massRange, resetEmitter, listParent, tandem, options ) {
+    constructor( massProperty, massRange, skaterImageProperty, resetEmitter, listParent, tandem, options ) {
 
       options = merge( {
 
@@ -37,8 +38,11 @@ define( require => {
         // {boolean} whether or not a MassNumberControl is included in this set of controls
         includeMassSlider: false,
 
-        // {boolean} whether or not a MassNumberControl is included in this set of controls
+        // {boolean} whether or not a MassComboBox is included in this set of controls
         includeMassComboBox: false,
+
+        // {boolean} whether or not a SkaterComboBox is included in this set of controls
+        includeSkaterComboBox: false,
 
         // {Object|null} - options passed along to the MassNumberControl, if one is included
         massNumberControlOptions: null,
@@ -47,6 +51,7 @@ define( require => {
         massComboBoxOptions: null
       }, options );
       assert && assert( !( options.includeMassSlider && options.includeMassNumberControl ), 'only MassSlider OR MassNumberControl can be used at one time' );
+      assert && assert( !( options.includeMassComboBox && options.includeSkaterComboBox ), 'only MassComboBox OR SkaterComboBox can be used at one time' );
 
       const children = [];
 
@@ -64,18 +69,28 @@ define( require => {
 
       let massComboBox = null;
       if ( options.includeMassComboBox ) {
-        massComboBox = new MassComboBox( massProperty, resetEmitter, listParent, 15, tandem.createTandem( 'massComboBox' ), options.massComboBoxOptions );
+        massComboBox = new MassComboBox( massProperty, resetEmitter, listParent, tandem.createTandem( 'massComboBox' ), options.massComboBoxOptions );
         children.push( massComboBox );
+      }
+
+      let skaterComboBox = null;
+      if ( options.includeSkaterComboBox ) {
+        skaterComboBox = new SkaterComboBox( skaterImageProperty, listParent, tandem.createTandem( 'skaterComboBox' ) );
+        children.push( skaterComboBox );
       }
 
       super( { spacing: 8, children: children } );
 
       this.massComboBox = massComboBox;
+      this.skaterComboBox = skaterComboBox;
     }
 
     matchLayout( width ) {
       if ( this.massComboBox ) {
         this.massComboBox.matchLayout( width );
+      }
+      if ( this.skaterComboBox ) {
+        this.skaterComboBox.matchLayout( width );
       }
     }
   }
