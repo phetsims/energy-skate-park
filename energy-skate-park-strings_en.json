@@ -47,6 +47,9 @@
   "controls.gravity": {
     "value": "Gravity"
   },
+  "controls.skater": {
+    "value": "Skater"
+  },
   "controls.stickToTrack": {
     "value": "Stick to Track"
   },

@@ -96,7 +96,13 @@ define( require => {
       trackRadioButtons && children.splice( children.indexOf( trackRadioButtons ) + 1, 0, new HSeparator( separatorWidth ) );
 
       // one separator before mass buttons
-      massControls && children.splice( children.indexOf( massControls ), 0, new HSeparator( separatorWidth ) );
+      if ( massControls ) {
+        children.splice( children.indexOf( massControls ), 0, new HSeparator( separatorWidth ) );
+
+        // the layout for the mass controls needs to match the layout of the above controls so that the title matches
+        // position with the other NumberControls
+        massControls.matchLayout( separatorWidth );
+      }
 
       const content = new VBox( { resize: false, spacing: 8, children: children } );
 

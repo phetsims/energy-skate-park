@@ -64,11 +64,19 @@ define( require => {
 
       let massComboBox = null;
       if ( options.includeMassComboBox ) {
-        massComboBox = new MassComboBox( massProperty, resetEmitter, listParent, tandem.createTandem( 'massComboBox' ), options.massComboBoxOptions );
+        massComboBox = new MassComboBox( massProperty, resetEmitter, listParent, 15, tandem.createTandem( 'massComboBox' ), options.massComboBoxOptions );
         children.push( massComboBox );
       }
 
-      super( { resize: false, spacing: 8, children: children } );
+      super( { spacing: 8, children: children } );
+
+      this.massComboBox = massComboBox;
+    }
+
+    matchLayout( width ) {
+      if ( this.massComboBox ) {
+        this.massComboBox.matchLayout( width );
+      }
     }
   }
 
