@@ -50,22 +50,22 @@
   "controls.skater": {
     "value": "Skater"
   },
-  "controls.skater1": {
+  "controls.skater1Mass": {
     "value": "Skater 1 (60 kg)"
   },
-  "controls.skater2": {
+  "controls.skater2Mass": {
     "value": "Skater 2 (35 kg)"
   },
-  "controls.skater3": {
+  "controls.skater3Mass": {
     "value": "Skater 3 (40 kg)"
   },
-  "controls.skater4": {
+  "controls.skater4Mass": {
     "value": "Skater 4 (65 kg)"
   },
-  "controls.skater5": {
+  "controls.skater5Mass": {
     "value": "Skater 5 (80 kg)"
   },
-  "controls.dog": {
+  "controls.dogMass": {
     "value": "Dog (30 kg)"
   },
   "controls.stickToTrack": {

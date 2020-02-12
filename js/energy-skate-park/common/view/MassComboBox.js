@@ -22,12 +22,12 @@ define( require => {
 
   // strings
   const controlsSkaterString = require( 'string!ENERGY_SKATE_PARK/controls.skater' );
-  const controlsSkater1String = require( 'string!ENERGY_SKATE_PARK/controls.skater1' );
-  const controlsSkater2String = require( 'string!ENERGY_SKATE_PARK/controls.skater2' );
-  const controlsSkater3String = require( 'string!ENERGY_SKATE_PARK/controls.skater3' );
-  const controlsSkater4String = require( 'string!ENERGY_SKATE_PARK/controls.skater4' );
-  const controlsSkater5String = require( 'string!ENERGY_SKATE_PARK/controls.skater5' );
-  const controlsDogString = require( 'string!ENERGY_SKATE_PARK/controls.dog' );
+  const controlsSkater1MassString = require( 'string!ENERGY_SKATE_PARK/controls.skater1Mass' );
+  const controlsSkater2MassString = require( 'string!ENERGY_SKATE_PARK/controls.skater2Mass' );
+  const controlsSkater3MassString = require( 'string!ENERGY_SKATE_PARK/controls.skater3Mass' );
+  const controlsSkater4MassString = require( 'string!ENERGY_SKATE_PARK/controls.skater4Mass' );
+  const controlsSkater5MassString = require( 'string!ENERGY_SKATE_PARK/controls.skater5Mass' );
+  const controlsDogMassString = require( 'string!ENERGY_SKATE_PARK/controls.dogMass' );
 
   class MassComboBox extends VBox {
 
@@ -51,12 +51,12 @@ define( require => {
 
       // TODO: These labels are temporary and will be replaced by images
       const labelValueList = [
-        { label: controlsSkater1String, value: SkaterMasses.SKATER_1_MASS },
-        { label: controlsSkater2String, value: SkaterMasses.SKATER_2_MASS },
-        { label: controlsSkater3String, value: SkaterMasses.SKATER_3_MASS },
-        { label: controlsSkater4String, value: SkaterMasses.SKATER_4_MASS },
-        { label: controlsSkater5String, value: SkaterMasses.SKATER_5_MASS },
-        { label: controlsDogString, value: SkaterMasses.DOG_MASS }
+        { label: controlsSkater1MassString, value: SkaterMasses.SKATER_1_MASS },
+        { label: controlsSkater2MassString, value: SkaterMasses.SKATER_2_MASS },
+        { label: controlsSkater3MassString, value: SkaterMasses.SKATER_3_MASS },
+        { label: controlsSkater4MassString, value: SkaterMasses.SKATER_4_MASS },
+        { label: controlsSkater5MassString, value: SkaterMasses.SKATER_5_MASS },
+        { label: controlsDogMassString, value: SkaterMasses.DOG_MASS }
       ];
       this.comboBox = new PhysicalComboBox( massProperty, labelValueList, resetEmitter, listParent, tandem, options );
 
