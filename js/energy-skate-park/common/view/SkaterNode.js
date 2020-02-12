@@ -13,6 +13,7 @@ define( require => {
   // modules
   const Circle = require( 'SCENERY/nodes/Circle' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
+  const Enumeration = require( 'PHET_CORE/Enumeration' );
   const Image = require( 'SCENERY/nodes/Image' );
   const LinearFunction = require( 'DOT/LinearFunction' );
   const Matrix3 = require( 'DOT/Matrix3' );
@@ -20,8 +21,19 @@ define( require => {
   const SimpleDragHandler = require( 'SCENERY/input/SimpleDragHandler' );
 
   // images
-  const skaterLeftImage = require( 'image!ENERGY_SKATE_PARK/skater-left.png' );
-  const skaterRightImage = require( 'image!ENERGY_SKATE_PARK/skater-right.png' );
+  const skater1LeftImage = require( 'image!ENERGY_SKATE_PARK/skater1_left.png' );
+  const skater1RightImage = require( 'image!ENERGY_SKATE_PARK/skater1_right.png' );
+  const skater2LeftImage = require( 'image!ENERGY_SKATE_PARK/skater2_left.png' );
+  const skater2RightImage = require( 'image!ENERGY_SKATE_PARK/skater2_right.png' );
+  const skater3LeftImage = require( 'image!ENERGY_SKATE_PARK/skater3_left.png' );
+  const skater3RightImage = require( 'image!ENERGY_SKATE_PARK/skater3_right.png' );
+  const skater4LeftImage = require( 'image!ENERGY_SKATE_PARK/skater4_left.png' );
+  const skater4RightImage = require( 'image!ENERGY_SKATE_PARK/skater4_right.png' );
+  const skater5LeftImage = require( 'image!ENERGY_SKATE_PARK/skater5_left.png' );
+  const skater5RightImage = require( 'image!ENERGY_SKATE_PARK/skater5_right.png' );
+  const dogLeftImage = require( 'image!ENERGY_SKATE_PARK/dog_left.png' );
+  const dogRightImage = require( 'image!ENERGY_SKATE_PARK/dog_right.png' );
+
 
   class SkaterNode extends Node {
 
@@ -39,17 +51,7 @@ define( require => {
      * @constructor
      */
     constructor( skater, view, modelViewTransform, getClosestTrackAndPositionAndParameter, getPhysicalTracks, tandem ) {
-      const leftSkaterImageNode = new Image( skaterLeftImage, {
-        cursor: 'pointer',
-        tandem: tandem.createTandem( 'leftSkaterImageNode' )
-      } );
-      const rightSkaterImageNode = new Image( skaterRightImage, {
-        cursor: 'pointer',
-        tandem: tandem.createTandem( 'rightSkaterImageNode' )
-      } );
-
       super( {
-        children: [ leftSkaterImageNode, rightSkaterImageNode ],
 
         // rendering the skater with canvas makes it move smoothly around the screen edges in iOS Safari, see
         // https://github.com/phetsims/energy-skate-park/issues/42
@@ -57,11 +59,23 @@ define( require => {
         tandem: tandem
       } );
 
+      // @private {Image} - left and right Images for the skater
+      this.leftSkaterImageNode = new Image( skater1LeftImage, {
+        cursor: 'pointer',
+        tandem: tandem.createTandem( 'leftSkaterImageNode' )
+      } );
+      this.rightSkaterImageNode = new Image( skater1RightImage, {
+        cursor: 'pointer',
+        tandem: tandem.createTandem( 'rightSkaterImageNode' )
+      } );
+      this.children = [ this.leftSkaterImageNode, this.rightSkaterImageNode ];
+
+      // @private {Skater}
       this.skater = skater;
 
       skater.directionProperty.link( direction => {
-        leftSkaterImageNode.visible = direction === 'left';
-        rightSkaterImageNode.visible = direction === 'right';
+        this.leftSkaterImageNode.visible = direction === 'left';
+        this.rightSkaterImageNode.visible = direction === 'right';
       } );
 
       const imageWidth = this.width;
@@ -69,7 +83,7 @@ define( require => {
 
       // @private - Map from mass(kg) to the amount to scale the image
       const centerMassValue = skater.massRange.getCenter();
-      const massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.34, 0.43 );
+      const massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.38, 0.5 );
 
       // Update the position and angle.  Normally the angle would only change if the position has also changed, so no need
       // for a duplicate callback there.  Uses pooling to avoid allocations, see #50
@@ -182,6 +196,19 @@ define( require => {
     }
 
     /**
+     * Set the image for the SkaterNode (both left and right directions) by setting to one of SkaterNode.SkaterImage.
+     * @public
+     *
+     * @param {SkaterImage} skaterImage
+     */
+    setSkaterImage( skaterImage ) {
+      assert && assert( SkaterNode.SkaterImage.includes( skaterImage ), 'image must be one of SkaterNode.SkaterImage' );
+
+      this.leftSkaterImageNode.image = skaterImage.leftImage;
+      this.rightSkaterImageNode.image = skaterImage.rightImage;
+    }
+
+    /**
      * If dragging, interrupt and release the Skater.
      * @public
      */
@@ -191,6 +218,36 @@ define( require => {
       }
     }
   }
+
+  // Collection of possible left and right images for the Skater.
+  // @public
+  // @static
+  SkaterNode.SkaterImage = Enumeration.byMap( {
+    SKATER_1: {
+      leftImage: skater1LeftImage,
+      rightImage: skater1RightImage
+    },
+    SKATER_2: {
+      leftImage: skater2LeftImage,
+      rightImage: skater2RightImage
+    },
+    SKATER_3: {
+      leftImage: skater3LeftImage,
+      rightImage: skater3RightImage
+    },
+    SKATER_4: {
+      leftImage: skater4LeftImage,
+      rightImage: skater4RightImage
+    },
+    SKATER_5: {
+      leftImage: skater5LeftImage,
+      rightImage: skater5RightImage
+    },
+    DOG: {
+      leftImage: dogLeftImage,
+      rightImage: dogRightImage
+    }
+  } );
 
   return energySkatePark.register( 'SkaterNode', SkaterNode );
 } );

@@ -38,7 +38,7 @@ define( require => {
         leadDesign: 'Ariel Paul, Noah Podolefsky, Sam Reid',
         softwareDevelopment: 'Sam Reid',
         team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Emily B. Moore, Kathy Perkins',
-        graphicArts: 'Sharon Siman-Tov, Amanda McGarry',
+        graphicArts: 'Sharon Siman-Tov, Amanda McGarry, Megan Lai',
         qualityAssurance: 'Steele Dalton, Oliver Orejola, Arnab Purkayastha, Bryan Yoelin'
       }
     } ).start();
