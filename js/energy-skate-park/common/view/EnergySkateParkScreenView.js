@@ -9,7 +9,6 @@ define( require => {
   'use strict';
 
   // modules
-  // const EnergyBarGraphPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergyBarGraphPanel' );
   const AttachDetachToggleButtons = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/AttachDetachToggleButtons' );
   const BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/BackgroundNode' );
   const BooleanProperty = require( 'AXON/BooleanProperty' );
@@ -30,7 +29,6 @@ define( require => {
   const Path = require( 'SCENERY/nodes/Path' );
   const PieChartLegend = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PieChartLegend' );
   const PieChartNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PieChartNode' );
-  // const PlaybackSpeedControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PlaybackSpeedControl' );
   const TimeControlNode = require( 'SCENERY_PHET/TimeControlNode' );
   const Property = require( 'AXON/Property' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
@@ -66,13 +64,12 @@ define( require => {
 
   /**
    * @param {EnergySkateParkModel} model
-   * @param {Array.<PhysicalSlider|PhysicalNumberControl} physicalControls
    * @param {Tandem} tandem
    * @param {Object} [options]
    * @constructor
    */
   class EnergySkateParkScreenView extends ScreenView {
-    constructor( model, physicalControls, tandem, options ) {
+    constructor( model, tandem, options ) {
       options = merge( {
 
         // options for the bar graph, see composite type options below
@@ -103,6 +100,9 @@ define( require => {
         // {boolean} - if true, the "grid" and "reference height" visibility controls will be displayed in a separate
         // panel near the bottom of the screen
         showSeparateVisibilityControlsPanel: true,
+
+        // {Object} - options passed along to EnergySkateParkControlPanel
+        controlPanelOptions: null,
 
         // {Object} passed to EnergySkateParkControlPanel, options for the EnergySkateParkVisibilityControls in that
         // panel
@@ -162,7 +162,7 @@ define( require => {
       this.gridNode = new GridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, this.visibleBoundsProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
       this.bottomLayer.addChild( this.gridNode );
 
-      this.controlPanel = new EnergySkateParkControlPanel( model, this, physicalControls, tandem.createTandem( 'controlPanel' ), options.visibilityControlsOptions );
+      this.controlPanel = new EnergySkateParkControlPanel( model, this, tandem.createTandem( 'controlPanel' ), options.controlPanelOptions );
       this.bottomLayer.addChild( this.controlPanel );
 
       // @private - node that shows the energy legend for the pie chart
@@ -191,15 +191,6 @@ define( require => {
         } );
         this.energyBarGraphAccordionBox.leftTop = new Vector2( 5, 5 );
         this.bottomLayer.addChild( this.energyBarGraphAccordionBox );
-
-        // this.energyBarGraphPanel = new EnergyBarGraphPanel( model, tandem.createTandem( 'energyBargGraphPanel' ), {
-        // barGraphOptions: {
-        //     showBarGraphZoomButtons: options.showBarGraphZoomButtons
-        //   }
-        // } );
-        // this.energyBarGraphPanel.leftTop = new Vector2( 5, 5 );
-        // this.bottomLayer.addChild( this.energyBarGraphPanel );
-        // model.barGraphVisibleProperty.linkAttribute( this.energyBarGraphPanel, 'visible' );
       }
 
       this.resetAllButton = new ResetAllButton( {

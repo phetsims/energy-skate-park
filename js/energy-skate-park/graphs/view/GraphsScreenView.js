@@ -11,13 +11,8 @@ define( require => {
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkTrackSetScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTrackSetScreenView' );
   const EnergyGraphAccordionBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphAccordionBox' );
-  const FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
   const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
-  const GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
   const Node = require( 'SCENERY/nodes/Node' );
-  const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
-  const MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
-
 
   /**
    * @constructor
@@ -34,20 +29,18 @@ define( require => {
       // parent layer for ComboBox, would use "this" but it is not available until after super
       const comboBoxParent = new Node();
 
-      const graphsControls = [
-        new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
-        new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) ),
-        new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) ),
-        new GravityComboBox( model.skater.gravityMagnitudeProperty, model.resetEmitter, comboBoxParent, tandem.createTandem( 'gravityComboBox' ) )
-      ];
-
-      super( model, graphsControls, tandem.createTandem( 'graphsScreenView' ), {
+      super( model, tandem.createTandem( 'graphsScreenView' ), {
         showBarGraph: false,
-        visibilityControlsOptions: {
-          showPieChartCheckbox: false,
-          showGridCheckbox: false,
-          showSpeedCheckbox: true,
-          showStickToTrackCheckbox: true
+        controlPanelOptions: {
+          visibilityControlsOptions: {
+            showPieChartCheckbox: false,
+            showGridCheckbox: false,
+            showSpeedCheckbox: true,
+            showStickToTrackCheckbox: true
+          },
+          gravityControlsOptions: {
+            includeGravityComboBox: true
+          }
         }
       } );
 

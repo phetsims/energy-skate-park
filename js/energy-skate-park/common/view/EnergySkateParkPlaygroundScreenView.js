@@ -22,13 +22,12 @@ define( require => {
 
     /**
      * @param {EnergySkateParkModel} model
-     * @param {Array.<PhysicalSlider|PhysicalNumberControl} physicalControls
      * @param {Tandem} tandem
      * @param {Object} [options]
      */
-    constructor( model, physicalControls, tandem, options ) {
+    constructor( model, tandem, options ) {
 
-      super( model, physicalControls, tandem, options );
+      super( model, tandem, options );
 
       // Create the tracks for the track toolbox
       const interactiveTrackNodes = model.tracks.getArray().map( this.addTrackNode.bind( this ) );

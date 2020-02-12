@@ -25,6 +25,7 @@ define( require => {
 
     /**
      * Construct a SceneSelectionRadioButtonGroup.  Pass the entire model since it is used to create TrackNode
+     *
      * @param {EnergySkateParkModel} model the main model for the entire screen
      * @param {EnergySkateParkBasicsView} view the main view for the entire screen
      * @param {ModelViewTransform2} transform the model view transform
@@ -32,6 +33,7 @@ define( require => {
      * @constructor
      */
     constructor( model, view, tandem, options ) {
+      assert && assert( model.sceneProperty !== undefined, 'model does not support a scene' );
 
       options = merge( {
 

@@ -12,8 +12,6 @@ define( require => {
   const BackgroundNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/BackgroundNode' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkTrackSetScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTrackSetScreenView' );
-  const FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
-  const GravitySlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravitySlider' );
   const MassComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassComboBox' );
 
   class IntroScreenView extends EnergySkateParkTrackSetScreenView {
@@ -23,13 +21,15 @@ define( require => {
      * @param {Tandem} tandem
      */
     constructor( model, tandem ) {
-
-      const introControls = [
-        new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
-        new GravitySlider( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) )
-      ];
-
-      super( model, introControls, tandem.createTandem( 'introScreenView' ) );
+      super( model, tandem.createTandem( 'introScreenView' ), {
+        controlPanelOptions: {
+          showMassControls: false,
+          gravityControlsOptions: {
+            includeGravityNumberControl: false,
+            includeGravitySlider: true
+          }
+        }
+      } );
 
       // @private (for layout) {ComboBox}
       this.massComboBox = new MassComboBox( model.skater.massProperty, model.resetEmitter, this, tandem, {
@@ -44,6 +44,10 @@ define( require => {
       this.massComboBox.bottom = this.layoutBounds.height - BackgroundNode.earthHeight - 5;
     }
 
+    /**
+     * Positions the mass combo box in the correct location.
+     * @override
+     */
     floatInterface() {
       super.floatInterface();
       this.massComboBox.right = this.controlPanel.right;

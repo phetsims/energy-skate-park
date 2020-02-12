@@ -11,11 +11,7 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkTrackSetScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkTrackSetScreenView' );
-  const FrictionSlider = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/FrictionSlider' );
-  const GravityNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityNumberControl' );
-  const GravityComboBox = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/GravityComboBox' );
   const Node = require( 'SCENERY/nodes/Node' );
-  const MassNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/MassNumberControl' );
   const SkaterSamplesCanvasNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterSamplesCanvasNode' );
   const InspectedSampleHaloNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/InspectedSampleHaloNode' );
   const SkaterPathSensorNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterPathSensorNode' );
@@ -36,21 +32,17 @@ define( require => {
       // parent layer for ComboBox, would use this but it is not available until after super
       const comboBoxParent = new Node();
 
-      const measureControls = [
-        new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) ),
-        new MassNumberControl( model.skater.massProperty, model.skater.massRange, tandem.createTandem( 'massNumberControl' ) ),
-        new GravityNumberControl( model.skater.gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ), {
-          decimalPlaces: 1
-        } ),
-        new GravityComboBox( model.skater.gravityMagnitudeProperty, model.resetEmitter, comboBoxParent, tandem.createTandem( 'gravityComboBox' ) )
-      ];
-
-      super( model, measureControls, tandem, {
+      super( model, tandem, {
         showBarGraph: false,
         showSkaterPath: true,
-        visibilityControlsOptions: {
-          showSkaterPathCheckbox: true,
-          showStickToTrackCheckbox: true
+        controlPanelOptions: {
+          visibilityControlsOptions: {
+            showSkaterPathCheckbox: true,
+            showStickToTrackCheckbox: true
+          },
+          gravityControlsOptions: {
+            includeGravityComboBox: true
+          }
         }
       } );
 

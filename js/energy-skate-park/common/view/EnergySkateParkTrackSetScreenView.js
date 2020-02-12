@@ -19,12 +19,11 @@ define( require => {
 
     /**
      * @param {EnergySkateParkTrackSetModel} model
-     * @param {Array.<PhysicalNumberControl|PhysicalComboBox} controls
      * @param {Tandem} tandem
      * @param {Object} [options]
      */
-    constructor( model, controls, tandem, options ) {
-      super( model, controls, tandem, options );
+    constructor( model, tandem, options ) {
+      super( model, tandem, options );
 
       const trackNodes = model.tracks.getArray().map( track => {
         return new TrackNode( model, track, this.modelViewTransform, this.availableModelBoundsProperty, this.trackNodeGroupTandem.createNextTandem() );
