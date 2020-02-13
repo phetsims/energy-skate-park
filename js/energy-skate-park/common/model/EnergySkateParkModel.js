@@ -1280,7 +1280,7 @@ define( require => {
               // amount we could reduce the energy if we deleted all the kinetic energy:
               if ( Math.abs( correctedState.getKineticEnergy() ) > Math.abs( dE ) ) {
 
-                // TODO: maybe should only do this if all velocity is not converted
+                // NOTE: maybe should only do this if all velocity is not converted
                 debug && debug( 'Fixed position some, still need to fix velocity as well.' );
                 const correctedState2 = this.correctEnergyReduceVelocity( skaterState, correctedState );
                 if ( !Utils.equalsEpsilon( e0, correctedState2.getTotalEnergy(), 1E-8 ) ) {
