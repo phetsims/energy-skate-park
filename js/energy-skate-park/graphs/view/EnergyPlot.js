@@ -65,10 +65,10 @@ define( require => {
         height: graphHeight,
 
         // plot domain, range, and grid increments
-        maxX: 20, // TODO: ?
+        maxX: TIME_MAX_X,
         minY: plotRange.min,
         maxY: plotRange.max,
-        stepY: SMALL_STEP, // TODO: ?
+        stepY: SMALL_STEP,
 
         // no arrows along x and y
         showAxis: false,

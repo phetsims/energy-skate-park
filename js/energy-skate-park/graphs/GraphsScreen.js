@@ -17,7 +17,6 @@ define( require => {
   const Screen = require( 'JOIST/Screen' );
 
   // images
-  // TODO: navigation bar/home screen images
   const iconFrictionHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-friction-homescreen.png' );
   const iconFrictionNavbar = require( 'image!ENERGY_SKATE_PARK/icon-friction-navbar.png' );
 
