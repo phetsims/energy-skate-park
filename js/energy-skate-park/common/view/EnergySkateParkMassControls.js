@@ -55,18 +55,6 @@ define( require => {
 
       const children = [];
 
-      let massNumberControl = null;
-      if ( options.includeMassNumberControl ) {
-        massNumberControl = new MassNumberControl( massProperty, massRange, tandem.createTandem( 'massNumberControl' ), options.massNumberControlOptions );
-        children.push( massNumberControl );
-      }
-
-      let massSlider = null;
-      if ( options.includeMassSlider ) {
-        massSlider = new MassSlider( massProperty, massRange, tandem.createTandem( 'massSlider' ) );
-        children.push( massSlider );
-      }
-
       let massComboBox = null;
       if ( options.includeMassComboBox ) {
         massComboBox = new MassComboBox( massProperty, resetEmitter, listParent, tandem.createTandem( 'massComboBox' ), options.massComboBoxOptions );
@@ -77,6 +65,18 @@ define( require => {
       if ( options.includeSkaterComboBox ) {
         skaterComboBox = new SkaterComboBox( skaterImageProperty, listParent, tandem.createTandem( 'skaterComboBox' ) );
         children.push( skaterComboBox );
+      }
+
+      let massNumberControl = null;
+      if ( options.includeMassNumberControl ) {
+        massNumberControl = new MassNumberControl( massProperty, massRange, tandem.createTandem( 'massNumberControl' ), options.massNumberControlOptions );
+        children.push( massNumberControl );
+      }
+
+      let massSlider = null;
+      if ( options.includeMassSlider ) {
+        massSlider = new MassSlider( massProperty, massRange, tandem.createTandem( 'massSlider' ) );
+        children.push( massSlider );
       }
 
       super( { spacing: 8, children: children } );
