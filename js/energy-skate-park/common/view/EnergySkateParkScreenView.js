@@ -506,14 +506,6 @@ define( require => {
         this.attachDetachToggleButtons.centerX = this.controlPanel.centerX;
       }
 
-      // TODO: remove this
-      if ( this.sceneSelectionRadioButtonGroup ) {
-
-        // symmetrical with the right edge of the reset all button
-        this.sceneSelectionRadioButtonGroup.left = this.visibleBoundsProperty.get().minX + 5;
-        this.sceneSelectionRadioButtonGroup.bottom = this.resetAllButton.bottom;
-      }
-
       this.resetAllButton.right = this.controlPanel.right;
       this.returnSkaterButton.right = this.resetAllButton.left - 10;
 
