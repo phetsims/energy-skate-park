@@ -39,7 +39,7 @@ define( require => {
       this.sceneProperty = new Property( 0, {
         tandem: tandem.createTandem( 'sceneProperty' ),
         validValues: [ 0, 1, 2, 3 ],
-        phetioType: PropertyIO( NumberIO ) // TODO: automatically get the number of tracks
+        phetioType: PropertyIO( NumberIO )
       } );
 
       // When the scene changes, also change the tracks.
