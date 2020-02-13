@@ -874,7 +874,7 @@ define( require => {
 
       // On a flat surface, just use the radial component of the net force for the normal, see #344
       if ( isNaN( curvatureDirection.x ) || isNaN( curvatureDirection.y ) ) {
-        curvatureDirection = netForceRadial.normalized(); // todo: sign?
+        curvatureDirection = netForceRadial.normalized();
       }
       const normalForce = skaterState.mass * skaterState.getSpeed() * skaterState.getSpeed() / Math.abs( radiusOfCurvature ) - netForceRadial.dot( curvatureDirection );
       debug && debug( normalForce );
