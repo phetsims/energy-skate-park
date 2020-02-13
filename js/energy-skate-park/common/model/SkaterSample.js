@@ -5,7 +5,7 @@
  * or individually inspected by the user.
  *
  * Generally this information is static, but energy values for sample CAN change. For example, when the reference height
- * line moves energy data updates according to this line.
+ * line moves, energy data updates according to this line.
  *
  * @author Jesse Greenberg
  */
@@ -51,7 +51,6 @@ define( require => {
       // @public - in seconds, time since this sample was added to the model
       this.timeSinceAdded = 0;
 
-      // TODO: The following Properties need to be moved to a subtype of this SkaterSample (MeasureSkaterSample or something)
       // @public - whether or not this sample is being inspected by the probe
       this.inspectedProperty = new BooleanProperty( false );
 
