@@ -424,7 +424,7 @@ define( require => {
       return Math.sqrt( 2 * Math.abs( kineticEnergy ) / this.mass );
     }
 
-    // TODO: Pooling support for SkaterState?
+    // NOTE: Consider Pooling support for SkaterState?
     freeToPool() {}
 
     /**
