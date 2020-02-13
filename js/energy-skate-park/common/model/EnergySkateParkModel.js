@@ -472,7 +472,6 @@ define( require => {
       const newKineticEnergy = 0.5 * newSpeed * newSpeed * skaterState.mass;
       const newPotentialEnergy = ( -1 ) * skaterState.mass * skaterState.gravity * ( 0 - skaterState.referenceHeight );
 
-      // TODO: This is likely related to issue identified in #45
       let newThermalEnergy = initialEnergy - newKineticEnergy - newPotentialEnergy;
 
       if ( newThermalEnergy < 0 ) {
