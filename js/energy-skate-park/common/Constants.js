@@ -35,6 +35,13 @@ define( require => {
       maxWidth: 25 // selected by choosing the length of widest English string in ?stringTest=doubl
     },
 
+    // options for the ComboBoxes in this sim
+    COMBO_BOX_OPTIONS: {
+      xMargin: 10,
+      yMargin: 6
+    },
+    COMBO_BOX_ITEM_OPTIONS: { font: new PhetFont( 11 ), maxWidth: 80 },
+
     // Control points are replenished in the toolbox as they are destroyed (by connecting) in the play area
     // This is the maximum number of control points available to the user.
     MAX_NUMBER_CONTROL_POINTS: 15,

@@ -14,17 +14,14 @@ define( require => {
   // modules
   const ComboBox = require( 'SUN/ComboBox' );
   const ComboBoxItem = require( 'SUN/ComboBoxItem' );
+  const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const merge = require( 'PHET_CORE/merge' );
   const NullableIO = require( 'TANDEM/types/NullableIO' );
   const NumberIO = require( 'TANDEM/types/NumberIO' );
-  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Property = require( 'AXON/Property' );
   const PropertyIO = require( 'AXON/PropertyIO' );
   const Text = require( 'SCENERY/nodes/Text' );
-
-  // constants
-  const LABEL_OPTIONS = { font: new PhetFont( 11 ), maxWidth: 80 };
 
   class PhysicalComboBox extends ComboBox {
 
@@ -32,7 +29,7 @@ define( require => {
      * @param {Property} physicalProperty
      * @param {Array.<Object>} labelValueList - entries like {label:{string}, value:{number}}
      * @param {Emitter} resetEmitter
-     * @param {Node} listParent - parent for the ComboBox list
+     * @param {Node} listParent - parent for the ComboBoxListBox
      * @param {Tandem} tandem
      * @param {Object} [options]
      */
@@ -40,27 +37,26 @@ define( require => {
       assert && assert( _.find( labelValueList, entry => entry.value === null ) === undefined, 'PhysicalComboBox adds "Custom" item' );
 
       options = merge( {
-        xMargin: 10,
-        yMargin: 6,
 
-        // whether or not the physicalProperty can be set to something other than the entries defined in labelValueList
+        // {boolean} whether or not the physicalProperty can be set to something other than the entries defined
+        // in labelValueList
         supportCustom: true,
 
         tandem: tandem
-      }, options );
+      }, Constants.COMBO_BOX_OPTIONS, options );
 
       // {[].ComboBoxItem}
       const itemList = [];
       labelValueList.forEach( entry => {
-        itemList.push( new ComboBoxItem( new Text( entry.label, LABEL_OPTIONS ), entry.value ) );
+        itemList.push( new ComboBoxItem( new Text( entry.label, Constants.COMBO_BOX_ITEM_OPTIONS ), entry.value ) );
       } );
 
       if ( options.supportCustom ) {
-        itemList.push( new ComboBoxItem( new Text( 'Custom', LABEL_OPTIONS ), null ) );
+        itemList.push( new ComboBoxItem( new Text( 'Custom', Constants.COMBO_BOX_ITEM_OPTIONS ), null ) );
       }
 
       // adapter Property for the ComboBox because the physicalProperty can be set to values other than those defined
-      // in labelValueList - value is null and 'Custom' in this case
+      // in labelValueList - value is null which means 'Custom'
       const adapterProperty = new Property( physicalProperty.value, {
         reentrant: true,
         phetioType: PropertyIO( NullableIO( NumberIO ) ),

@@ -82,7 +82,7 @@ define( require => {
 
       let massControls = null;
       if ( options.showMassControls ) {
-        massControls = new EnergySkateParkMassControls( model.skater.massProperty, model.skater.massRange, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
+        massControls = new EnergySkateParkMassControls( model.skater.massProperty, model.skater.massRange, screenView.skaterNode.skaterImageProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
         children.push( massControls );
       }
 
