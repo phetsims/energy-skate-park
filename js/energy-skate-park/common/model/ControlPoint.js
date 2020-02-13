@@ -27,15 +27,14 @@ define( require => {
 
   class ControlPoint extends PhetioObject {
 
-    // TODO: Should the "required" options parameter be changed to "config"?
     /**
      * @param x
      * @param y
-     * @param {Object} config
+     * @param {Object} [options]
      * @constructor
      */
-    constructor( x, y, config ) {
-      config = merge( {
+    constructor( x, y, options ) {
+      options = merge( {
 
         // {boolean} - can this control point specifically be dragged? In order to be draggable, the track itself must
         // be "configurable" and this must be true.
@@ -48,16 +47,16 @@ define( require => {
         tandem: required( Tandem.REQUIRED ),
         phetioType: ControlPointIO,
         phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
-      }, config );
-      const tandem = config.tandem;
+      }, options );
+      const tandem = options.tandem;
 
-      super( config );
+      super( options );
 
       // @public (read-only) {Bounds2|null} - see option for information
-      this.limitBounds = config.limitBounds;
+      this.limitBounds = options.limitBounds;
 
-      // @public (read-only) {boolean} - see config for information
-      this.draggable = config.draggable;
+      // @public (read-only) {boolean} - see options for information
+      this.draggable = options.draggable;
 
       // @public (phet-io)
       this.controlPointTandem = tandem;
@@ -65,14 +64,14 @@ define( require => {
       // @public - where it would be if it hadn't snapped to another point during dragging
       this.sourcePositionProperty = new Vector2Property( new Vector2( x, y ), {
         tandem: tandem.createTandem( 'sourcePositionProperty' ),
-        phetioState: config.phetioState // in state only if parent is
+        phetioState: options.phetioState // in state only if parent is
       } );
 
       // @public {ControlPoint} - Another ControlPoint that this ControlPoint is going to 'snap' to if released.
       this.snapTargetProperty = new Property( null, {
         tandem: tandem.createTandem( 'snapTargetProperty' ),
         phetioType: PropertyIO( NullableIO( ControlPointIO ) ),
-        phetioState: config.phetioState // in state only if parent is
+        phetioState: options.phetioState // in state only if parent is
       } );
 
       // Where it is shown on the screen.  Same as sourcePosition (if not snapped) or snapTarget.position (if snapped).
@@ -85,7 +84,7 @@ define( require => {
         }, {
           tandem: tandem.createTandem( 'positionProperty' ),
           phetioType: DerivedPropertyIO( Vector2IO ),
-          phetioState: config.phetioState
+          phetioState: options.phetioState
         } );
 
       // @public {BooleanProperty} - whether the control point is currently being dragged
