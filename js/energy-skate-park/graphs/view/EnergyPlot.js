@@ -4,9 +4,9 @@
  * The energy plot in the Graphs screen of energy skate park. Plots Energy against time OR energy against position
  * depending on the selected independent variable. Uses XYCursorPlot because the cursor can be dragged to
  * control playback and restore previous the model to a previous point in time.
+ *
  * @author Jesse Greenberg
  */
-
 define( require => {
   'use strict';
 
@@ -29,7 +29,7 @@ define( require => {
   const Y_OFFSET = 500;
   const Y_SLOPE = 500;
 
-  // when the plot range is larger than this the threshold a larger step is used for vertical grid lines on the plot
+  // when the plot range is larger than this threshold, a larger step is used for vertical grid lines on the plot
   const LARGE_RANGE_THRESHOLD = 5000;
   const LARGE_STEP = 1000;
   const SMALL_STEP = 500;
@@ -53,7 +53,8 @@ define( require => {
       const dragEndedEmitter = new Emitter();
       const dragStartedEmitter = new Emitter();
 
-      // whether or not the sim was paused when dragging started
+      // whether or not the sim was paused when dragging started, if not paused on drag start we will resume
+      // sim play when dragging ends
       let pausedOnDragStart = false;
 
       const plotRange = calculateRange( model.lineGraphScaleProperty.get() );
@@ -92,7 +93,7 @@ define( require => {
           },
           drag: ( event, listener ) => {
 
-            // when we drag the cursor, get the skater sample at the closest cursor time and set skater to skaterState
+            // when we drag the cursor, get the skater sample at the closest cursor time and set skater to found SkaterState
             const closestSample = model.getClosestSkaterSample( this.getCursorValue() );
             closestSample.skaterState.setToSkater( model.skater );
             model.skater.updatedEmitter.emit();
