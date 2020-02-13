@@ -2328,8 +2328,8 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<NumberIO, NumberIO>"
     },
-    "energySkatePark.general.screenIndexProperty": {
-      "phetioDocumentation": "Indicates which sim screen is selected (0-indexed). Note that the home screen does not have an index. To control the home screen see \"showHomeScreenProperty\".",
+    "energySkatePark.general.screenProperty": {
+      "phetioDocumentation": "Which sim screen is selected, including the home screen",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": true,
@@ -2339,20 +2339,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": true,
       "phetioStudioControl": true,
-      "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.general.showHomeScreenProperty": {
-      "phetioDocumentation": "Whether or not home screen is displayed. This is independent of the \"current sim screen\" stored in the \"screenIndexProperty.\"",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": true,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<BooleanIO>"
+      "phetioTypeName": "PropertyIO<ScreenIO>"
     },
     "energySkatePark.general.soundManager.enabledProperty": {
       "phetioDocumentation": "If this sim contains sound, then this Property will toggle whether sound is enabled ordisabled.",
@@ -2379,6 +2366,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": false,
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<NumberIO>"
+    },
+    "energySkatePark.graphsScreen": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ScreenIO"
     },
     "energySkatePark.graphsScreen.activeProperty": {
       "phetioDocumentation": "Indicates whether the screen is currently displayed in the simulation.  For single-screen simulations, there is only one screen and it is always active.",
@@ -12546,6 +12546,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
+    "energySkatePark.homeScreen": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ScreenIO"
+    },
     "energySkatePark.homeScreen.activeProperty": {
       "phetioDocumentation": "Indicates whether the screen is currently displayed in the simulation.  For single-screen simulations, there is only one screen and it is always active.",
       "phetioDynamicElement": false,
@@ -12558,6 +12571,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
+    },
+    "energySkatePark.homeScreen.model.selectedScreenProperty": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "PropertyIO<ReferenceIO>"
     },
     "energySkatePark.homeScreen.view": {
       "phetioDocumentation": "",
@@ -13923,6 +13949,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
+    },
+    "energySkatePark.introScreen": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ScreenIO"
     },
     "energySkatePark.introScreen.activeProperty": {
       "phetioDocumentation": "Indicates whether the screen is currently displayed in the simulation.  For single-screen simulations, there is only one screen and it is always active.",
@@ -23959,6 +23998,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
+    },
+    "energySkatePark.labScreen": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ScreenIO"
     },
     "energySkatePark.labScreen.activeProperty": {
       "phetioDocumentation": "Indicates whether the screen is currently displayed in the simulation.  For single-screen simulations, there is only one screen and it is always active.",
@@ -36127,6 +36179,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
+    },
+    "energySkatePark.measureScreen": {
+      "phetioDocumentation": "",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": false,
+      "phetioStudioControl": true,
+      "phetioTypeName": "ScreenIO"
     },
     "energySkatePark.measureScreen.activeProperty": {
       "phetioDocumentation": "Indicates whether the screen is currently displayed in the simulation.  For single-screen simulations, there is only one screen and it is always active.",
