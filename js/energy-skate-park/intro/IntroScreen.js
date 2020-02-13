@@ -11,7 +11,7 @@ define( require => {
   // modules
   const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const Image = require( 'SCENERY/nodes/Image' );
-  const IntroModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/model/IntroModel' );
+  const EnergySkateParkFullTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkFullTrackSetModel' );
   const IntroScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/view/IntroScreenView' );
   const merge = require( 'PHET_CORE/merge' );
   const Screen = require( 'JOIST/Screen' );
@@ -38,7 +38,7 @@ define( require => {
       }, options );
 
       super(
-        () => new IntroModel( tandem.createTandem( 'model' ) ),
+        () => new EnergySkateParkFullTrackSetModel( tandem.createTandem( 'model' ) ),
         model => new IntroScreenView( model, tandem.createTandem( 'view' ) ),
         options
       );
