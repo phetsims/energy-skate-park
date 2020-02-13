@@ -205,7 +205,6 @@ define( require => {
       this.startingTrackProperty = new Property( null );
 
       // @public {Vector2} - Position of the skater's head, for positioning the pie chart.
-      // TODO: Could this be a derived Property?
       this.headPositionProperty = new Vector2Property( this.getHeadPosition(), {
         tandem: tandem.createTandem( 'headPositionProperty' ),
         phetioReadOnly: true
@@ -306,31 +305,10 @@ define( require => {
      * @public
      */
     reset() {
+      this.resetPositionProperties();
 
-      // set the angle to zero first so that the optimization for SkaterNode.updatePosition is maintained,
-      // without showing the skater at the wrong angle
-      this.angleProperty.value = 0;
-      this.trackProperty.reset();
-      this.parametricPositionProperty.reset();
-      this.parametricSpeedProperty.reset();
-      this.onTopSideOfTrackProperty.reset();
-      this.gravityMagnitudeProperty.reset();
       this.referenceHeightProperty.reset();
-      this.positionProperty.reset();
-      this.massProperty.reset();
-      this.directionProperty.reset();
-      this.velocityProperty.reset();
-      this.draggingProperty.reset();
-      this.kineticEnergyProperty.reset();
-      this.potentialEnergyProperty.reset();
-      this.thermalEnergyProperty.reset();
-      this.totalEnergyProperty.reset();
-      this.angleProperty.reset();
-      this.startingPositionProperty.reset();
-      this.startingUProperty.reset();
-      this.startingUpProperty.reset();
-      this.startingTrackProperty.reset();
-      this.headPositionProperty.reset();
+
       this.updateEnergy();
 
       // Notify the graphics to re-render.  See #223
@@ -342,12 +320,29 @@ define( require => {
      * @public
      */
     resetPosition() {
+      const mass = this.massProperty.value;
+
+      this.resetPositionProperties();
+
+      this.massProperty.value = mass;
+      this.updateEnergy();
+
+      // Notify the graphics to re-render.  See #223
+      this.updatedEmitter.emit();
+    }
+
+    /**
+     * Reset all Properties of the Skater except for reference height. Useful when resetting skater position only,
+     * but reused in a few places when resetting Skater (to be surrounded by resetting reference height too). After
+     * calling this, be sure to signify updates with this.updateEnergy() and this.updatedEmitter.emit().
+     * @private
+     */
+    resetPositionProperties() {
+
       // set the angle to zero first so that the optimization for SkaterNode.updatePosition is maintained, without
       // showing the skater at the wrong angle
       this.angleProperty.value = 0;
-      const mass = this.massProperty.value;
 
-      // TODO: avoid duplication
       this.trackProperty.reset();
       this.parametricPositionProperty.reset();
       this.parametricSpeedProperty.reset();
@@ -368,11 +363,6 @@ define( require => {
       this.startingUpProperty.reset();
       this.startingTrackProperty.reset();
       this.headPositionProperty.reset();
-      this.massProperty.value = mass;
-      this.updateEnergy();
-
-      // Notify the graphics to re-render.  See #223
-      this.updatedEmitter.emit();
     }
 
     /**
