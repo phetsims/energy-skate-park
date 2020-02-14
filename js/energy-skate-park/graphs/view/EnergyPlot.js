@@ -1,4 +1,4 @@
-// Copyright 2019, University of Colorado Boulder
+// Copyright 2019-2020, University of Colorado Boulder
 
 /**
  * The energy plot in the Graphs screen of energy skate park. Plots Energy against time OR energy against position
