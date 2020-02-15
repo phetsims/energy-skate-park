@@ -58,7 +58,7 @@ define( require => {
 
       let gravityNumberControl = null;
       if ( options.includeGravityNumberControl ) {
-        gravityNumberControl = new GravityNumberControl( gravityProperty, tandem, options.gravityComboBoxOptions );
+        gravityNumberControl = new GravityNumberControl( gravityProperty, tandem.createTandem( 'gravityNumberControl' ), options.gravityComboBoxOptions );
         children.push( gravityNumberControl );
       }
 
@@ -70,7 +70,7 @@ define( require => {
 
       let gravityComboBox = null;
       if ( options.includeGravityComboBox ) {
-        gravityComboBox = new GravityComboBox( gravityProperty, resetEmitter, listParent, tandem, options );
+        gravityComboBox = new GravityComboBox( gravityProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ), options );
         children.push( gravityComboBox );
       }
 
