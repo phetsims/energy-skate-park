@@ -12,19 +12,20 @@ define( require => {
   // modules
   const ABSwitch = require( 'SUN/ABSwitch' );
   const AccordionBox = require( 'SUN/AccordionBox' );
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
-  const EnergyPlot = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyPlot' );
   const Dimension2 = require( 'DOT/Dimension2' );
-  const GraphsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/model/GraphsModel' );
-  const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
-  const Text = require( 'SCENERY/nodes/Text' );
+  const EnergyGraphZoomButton = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphZoomButton' );
+  const EnergyPlot = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyPlot' );
+  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
   const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
+  const EraserButton = require( 'SCENERY_PHET/buttons/EraserButton' );
+  const GraphsConstants = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsConstants' );
+  const GraphsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/model/GraphsModel' );
+  const merge = require( 'PHET_CORE/merge' );
   const Node = require( 'SCENERY/nodes/Node' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const Text = require( 'SCENERY/nodes/Text' );
   const VBox = require( 'SCENERY/nodes/VBox' );
   const VerticalCheckboxGroup = require( 'SUN/VerticalCheckboxGroup' );
-  const EnergyGraphZoomButton = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/EnergyGraphZoomButton' );
 
   // strings
   const kineticEnergyLabelString = require( 'string!ENERGY_SKATE_PARK/kineticEnergyLabel' );
@@ -92,11 +93,16 @@ define( require => {
         maxWidth: 100
       };
       const variables = GraphsModel.IndependentVariable;
-      const positionSwitchLabel = new Text( positionSwitchLabelString, switchLabelOptions );
-      const timeSwitchLabel = new Text( timeSwitchLabelString, switchLabelOptions );
-      const variableSwitch = new ABSwitch( model.independentVariableProperty, variables.POSITION, positionSwitchLabel, variables.TIME, timeSwitchLabel, {
+      const variableSwitchTandem = tandem.createTandem( 'variableSwitch' );
+      const positionLabel = new Text( positionSwitchLabelString, merge( {
+        tandem: variableSwitchTandem.createTandem( 'positionLabel' )
+      }, switchLabelOptions ) );
+      const timeLabel = new Text( timeSwitchLabelString, merge( {
+        tandem: variableSwitchTandem.createTandem( 'timeLabel' )
+      }, switchLabelOptions ) );
+      const variableSwitch = new ABSwitch( model.independentVariableProperty, variables.POSITION, positionLabel, variables.TIME, timeLabel, {
         switchSize: SWITCH_SIZE,
-        tandem: tandem.createTandem( 'variableSwitch' )
+        tandem: variableSwitchTandem
       } );
 
       // zoom buttons
