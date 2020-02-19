@@ -101,7 +101,7 @@ define( require => {
         tandem: variableSwitchTandem.createTandem( 'timeLabel' )
       }, switchLabelOptions ) );
       const variableSwitch = new ABSwitch( model.independentVariableProperty, variables.POSITION, positionLabel, variables.TIME, timeLabel, {
-        switchSize: SWITCH_SIZE,
+        toggleSwitchOptions: { size: SWITCH_SIZE },
         tandem: variableSwitchTandem
       } );
 

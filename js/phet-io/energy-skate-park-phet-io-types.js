@@ -52,6 +52,30 @@ window.phet.phetio.phetioTypes = assert &&
       "supertype": "ObjectIO",
       "typeName": "ActionIO<BooleanIO>"
     },
+    "ActionIO<EnumerationIO(POSITION|TIME), EnumerationIO(POSITION|TIME)>": {
+      "documentation": "Executes when an event occurs.",
+      "events": [
+        "emitted"
+      ],
+      "methodOrder": [],
+      "methods": {
+        "execute": {
+          "documentation": "Executes the function the Action is wrapping.",
+          "invocableForReadOnlyElements": false,
+          "parameterTypes": [
+            "EnumerationIO(POSITION|TIME)",
+            "EnumerationIO(POSITION|TIME)"
+          ],
+          "returnType": "VoidIO"
+        }
+      },
+      "parameterTypes": [
+        "EnumerationIO(POSITION|TIME)",
+        "EnumerationIO(POSITION|TIME)"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "ActionIO<EnumerationIO(POSITION|TIME), EnumerationIO(POSITION|TIME)>"
+    },
     "ActionIO<EventIO>": {
       "documentation": "Executes when an event occurs.",
       "events": [
@@ -414,6 +438,14 @@ window.phet.phetio.phetioTypes = assert &&
       "methods": {},
       "supertype": "ObjectIO",
       "typeName": "EnergySkateParkModelIO"
+    },
+    "EnumerationIO(POSITION|TIME)": {
+      "documentation": "Possible values: POSITION,TIME.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "ObjectIO",
+      "typeName": "EnumerationIO(POSITION|TIME)"
     },
     "EventIO": {
       "documentation": "A DOM Event",
@@ -980,16 +1012,6 @@ window.phet.phetio.phetioTypes = assert &&
       ],
       "supertype": "ObjectIO",
       "typeName": "ObservableArrayIO<ReferenceIO>"
-    },
-    "OnOffSwitchIO": {
-      "documentation": "A traditional switch component",
-      "events": [
-        "toggled"
-      ],
-      "methodOrder": [],
-      "methods": {},
-      "supertype": "NodeIO",
-      "typeName": "OnOffSwitchIO"
     },
     "PhetButtonIO": {
       "documentation": "The PhET Button in the bottom right of the screen",
@@ -1942,6 +1964,16 @@ window.phet.phetio.phetioTypes = assert &&
       "methods": {},
       "supertype": "NodeIO",
       "typeName": "ToggleButtonIO"
+    },
+    "ToggleSwitchIO": {
+      "documentation": "a switch that toggles between 2 values",
+      "events": [
+        "toggledAction"
+      ],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "NodeIO",
+      "typeName": "ToggleSwitchIO"
     },
     "TrackIO": {
       "documentation": "A skate track.",
