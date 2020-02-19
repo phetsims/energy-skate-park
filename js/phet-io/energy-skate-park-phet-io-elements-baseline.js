@@ -2316,7 +2316,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PhetioCommandProcessorIO"
     },
     "energySkatePark.general.resizeAction": {
-      "phetioDocumentation": "Executes when the sim is resized. The arguments are:<br/><ol><li>width: NumberIO</li><br/><li>height: NumberIO</li></ol>",
+      "phetioDocumentation": "Executes when the sim is resized. Values are in CSS pixels. The arguments are:<br/><ol><li>width: NumberIO</li><br/><li>height: NumberIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -2355,7 +2355,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
     "energySkatePark.general.stepSimulationAction": {
-      "phetioDocumentation": "A function that steps time forward. The arguments are:<br/><ol><li>dt: NumberIO</li></ol>",
+      "phetioDocumentation": "A function that steps time forward. The arguments are:<br/><ol><li>dt: NumberIO - The amount of time stepped in each call, in seconds.</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -5423,7 +5423,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.thumbInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -5436,7 +5436,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.thumbInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -5449,7 +5449,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.thumbInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -5488,7 +5488,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.track.trackInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -5501,7 +5501,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.track.trackInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -5514,7 +5514,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.track.trackInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -6138,7 +6138,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.thumbInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -6151,7 +6151,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.thumbInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -6164,7 +6164,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.thumbInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -6203,7 +6203,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.track.trackInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -6216,7 +6216,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.track.trackInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -6229,7 +6229,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.track.trackInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -6983,7 +6983,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -6996,7 +6996,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7009,7 +7009,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7048,7 +7048,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7061,7 +7061,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7074,7 +7074,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7633,7 +7633,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7646,7 +7646,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7659,7 +7659,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7802,7 +7802,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7815,7 +7815,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7828,7 +7828,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7919,7 +7919,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7932,7 +7932,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -7945,7 +7945,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -8036,7 +8036,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode3.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -8049,7 +8049,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode3.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -8062,7 +8062,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode3.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -8855,7 +8855,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.baseDragHandler.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -8868,7 +8868,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.baseDragHandler.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -8881,7 +8881,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.baseDragHandler.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -8946,7 +8946,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.tipDragHandler.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -8959,7 +8959,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.tipDragHandler.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -8972,7 +8972,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.tipDragHandler.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -10350,7 +10350,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterNode.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -10363,7 +10363,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterNode.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -10376,7 +10376,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.skaterNode.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -11832,7 +11832,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~0.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -11845,7 +11845,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~0.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -11858,7 +11858,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~0.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -12001,7 +12001,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -12014,7 +12014,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -12027,7 +12027,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -12118,7 +12118,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -12131,7 +12131,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -12144,7 +12144,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -12235,7 +12235,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode3.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -12248,7 +12248,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode3.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -12261,7 +12261,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.trackNode~1.controlPointNode3.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -16993,7 +16993,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.energySkateParkGravityControls.gravitySlider.slider.thumbInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -17006,7 +17006,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.energySkateParkGravityControls.gravitySlider.slider.thumbInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -17019,7 +17019,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.energySkateParkGravityControls.gravitySlider.slider.thumbInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -17058,7 +17058,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.energySkateParkGravityControls.gravitySlider.slider.track.trackInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -17071,7 +17071,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.energySkateParkGravityControls.gravitySlider.slider.track.trackInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -17084,7 +17084,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.energySkateParkGravityControls.gravitySlider.slider.track.trackInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -18111,7 +18111,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -18124,7 +18124,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -18137,7 +18137,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -18176,7 +18176,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -18189,7 +18189,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -18202,7 +18202,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -20672,7 +20672,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.baseDragHandler.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -20685,7 +20685,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.baseDragHandler.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -20698,7 +20698,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.baseDragHandler.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -20763,7 +20763,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.tipDragHandler.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -20776,7 +20776,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.tipDragHandler.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -20789,7 +20789,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.tipDragHandler.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -22167,7 +22167,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.introScreen.view.introScreenView.skaterNode.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -22180,7 +22180,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.skaterNode.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -22193,7 +22193,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.introScreen.view.introScreenView.skaterNode.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27146,7 +27146,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.thumbInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27159,7 +27159,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.thumbInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27172,7 +27172,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.thumbInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27211,7 +27211,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.track.trackInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27224,7 +27224,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.track.trackInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27237,7 +27237,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.track.trackInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27861,7 +27861,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.thumbInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27874,7 +27874,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.thumbInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27887,7 +27887,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.thumbInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27926,7 +27926,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.track.trackInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27939,7 +27939,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.track.trackInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -27952,7 +27952,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.track.trackInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -28953,7 +28953,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -28966,7 +28966,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -28979,7 +28979,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -29018,7 +29018,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -29031,7 +29031,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -29044,7 +29044,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -30773,7 +30773,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.baseDragHandler.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -30786,7 +30786,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.baseDragHandler.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -30799,7 +30799,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.baseDragHandler.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -30864,7 +30864,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.tipDragHandler.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -30877,7 +30877,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.tipDragHandler.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -30890,7 +30890,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.tipDragHandler.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -32268,7 +32268,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterNode.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -32281,7 +32281,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterNode.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -32294,7 +32294,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.skaterNode.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -33750,7 +33750,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -33763,7 +33763,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -33776,7 +33776,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -33867,7 +33867,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -33880,7 +33880,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -33893,7 +33893,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -33984,7 +33984,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -33997,7 +33997,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34010,7 +34010,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34114,7 +34114,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.trackDragHandler.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34127,7 +34127,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.trackDragHandler.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34140,7 +34140,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~0.trackDragHandler.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34218,7 +34218,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34231,7 +34231,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34244,7 +34244,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34335,7 +34335,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34348,7 +34348,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34361,7 +34361,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34452,7 +34452,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34465,7 +34465,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34478,7 +34478,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34582,7 +34582,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.trackDragHandler.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34595,7 +34595,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.trackDragHandler.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34608,7 +34608,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~1.trackDragHandler.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34686,7 +34686,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34699,7 +34699,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34712,7 +34712,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34803,7 +34803,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34816,7 +34816,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34829,7 +34829,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34920,7 +34920,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34933,7 +34933,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -34946,7 +34946,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35050,7 +35050,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.trackDragHandler.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35063,7 +35063,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.trackDragHandler.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35076,7 +35076,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~2.trackDragHandler.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35154,7 +35154,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35167,7 +35167,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35180,7 +35180,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35271,7 +35271,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35284,7 +35284,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35297,7 +35297,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35388,7 +35388,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35401,7 +35401,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35414,7 +35414,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35518,7 +35518,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.trackDragHandler.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35531,7 +35531,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.trackDragHandler.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35544,7 +35544,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~3.trackDragHandler.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35622,7 +35622,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35635,7 +35635,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35648,7 +35648,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35739,7 +35739,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35752,7 +35752,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35765,7 +35765,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35856,7 +35856,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35869,7 +35869,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35882,7 +35882,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35986,7 +35986,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.trackDragHandler.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -35999,7 +35999,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.trackDragHandler.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -36012,7 +36012,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.trackNode.track~4.trackDragHandler.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -39431,7 +39431,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.thumbInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -39444,7 +39444,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.thumbInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -39457,7 +39457,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.thumbInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -39496,7 +39496,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.track.trackInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -39509,7 +39509,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.track.trackInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -39522,7 +39522,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkGravityControls.gravityNumberControl.slider.track.trackInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -40146,7 +40146,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.thumbInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -40159,7 +40159,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.thumbInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -40172,7 +40172,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.thumbInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -40211,7 +40211,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.track.trackInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -40224,7 +40224,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.track.trackInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -40237,7 +40237,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.energySkateParkMassControls.massNumberControl.slider.track.trackInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -40991,7 +40991,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -41004,7 +41004,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -41017,7 +41017,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.frictionSlider.slider.thumbInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -41056,7 +41056,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -41069,7 +41069,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -41082,7 +41082,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.frictionSlider.slider.track.trackInputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -41953,7 +41953,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -41966,7 +41966,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -41979,7 +41979,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42070,7 +42070,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42083,7 +42083,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42096,7 +42096,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42187,7 +42187,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42200,7 +42200,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42213,7 +42213,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode0.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42356,7 +42356,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42369,7 +42369,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42382,7 +42382,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42473,7 +42473,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42486,7 +42486,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42499,7 +42499,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42590,7 +42590,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42603,7 +42603,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42616,7 +42616,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode1.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42759,7 +42759,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42772,7 +42772,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42785,7 +42785,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42876,7 +42876,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42889,7 +42889,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42902,7 +42902,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -42993,7 +42993,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43006,7 +43006,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43019,7 +43019,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43110,7 +43110,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode3.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43123,7 +43123,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode3.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43136,7 +43136,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode3.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43227,7 +43227,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode4.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43240,7 +43240,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode4.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43253,7 +43253,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode2.controlPointNode4.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43396,7 +43396,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43409,7 +43409,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43422,7 +43422,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43513,7 +43513,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43526,7 +43526,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43539,7 +43539,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43630,7 +43630,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43643,7 +43643,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43656,7 +43656,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43747,7 +43747,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode3.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43760,7 +43760,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode3.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43773,7 +43773,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode3.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43864,7 +43864,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode4.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43877,7 +43877,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode4.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43890,7 +43890,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode4.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43981,7 +43981,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode5.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -43994,7 +43994,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode5.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -44007,7 +44007,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode5.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -44098,7 +44098,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode6.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -44111,7 +44111,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode6.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -44124,7 +44124,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.sceneSelectionRadioButtonGroup.trackNode3.controlPointNode6.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -45333,7 +45333,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.baseDragHandler.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -45346,7 +45346,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.baseDragHandler.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -45359,7 +45359,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.baseDragHandler.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -45424,7 +45424,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.tipDragHandler.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -45437,7 +45437,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.tipDragHandler.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -45450,7 +45450,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.tipDragHandler.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -46919,7 +46919,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.skaterNode.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -46932,7 +46932,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.skaterNode.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -46945,7 +46945,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.skaterNode.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48401,7 +48401,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48414,7 +48414,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48427,7 +48427,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48518,7 +48518,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48531,7 +48531,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48544,7 +48544,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48635,7 +48635,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48648,7 +48648,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48661,7 +48661,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~0.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48804,7 +48804,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48817,7 +48817,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48830,7 +48830,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48921,7 +48921,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48934,7 +48934,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -48947,7 +48947,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49038,7 +49038,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49051,7 +49051,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49064,7 +49064,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~1.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49207,7 +49207,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49220,7 +49220,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49233,7 +49233,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49324,7 +49324,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49337,7 +49337,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49350,7 +49350,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49441,7 +49441,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49454,7 +49454,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49467,7 +49467,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49558,7 +49558,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode3.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49571,7 +49571,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode3.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49584,7 +49584,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode3.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49675,7 +49675,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode4.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49688,7 +49688,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode4.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49701,7 +49701,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~2.controlPointNode4.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49844,7 +49844,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode0.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49857,7 +49857,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode0.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49870,7 +49870,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode0.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49961,7 +49961,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode1.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49974,7 +49974,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode1.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -49987,7 +49987,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode1.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50078,7 +50078,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode2.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50091,7 +50091,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode2.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50104,7 +50104,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode2.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50195,7 +50195,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode3.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50208,7 +50208,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode3.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50221,7 +50221,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode3.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50312,7 +50312,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode4.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50325,7 +50325,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode4.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50338,7 +50338,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode4.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50429,7 +50429,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode5.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50442,7 +50442,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode5.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50455,7 +50455,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode5.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50546,7 +50546,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ObjectIO"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode6.inputListener.dragAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50559,7 +50559,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode6.inputListener.dragEndAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag end in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag end in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
@@ -50572,7 +50572,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "ActionIO<Vector2IO>"
     },
     "energySkatePark.measureScreen.measureScreenView.trackNode~3.controlPointNode6.inputListener.dragStartAction": {
-      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO. the position of the drag start in view coordinates</li></ol>",
+      "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>point: Vector2IO - the position of the drag start in view coordinates</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
       "phetioFeatured": false,
