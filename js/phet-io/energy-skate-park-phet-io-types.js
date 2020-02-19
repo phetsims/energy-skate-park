@@ -8,7 +8,18 @@ window.phet.phetio.phetioTypes = assert &&
         "collapsed"
       ],
       "methodOrder": [],
-      "methods": {},
+      "methods": {
+        "moveBackward": {
+          "documentation": "Move this node one index backward in each of its parents.  If the node is already at the back, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        },
+        "moveForward": {
+          "documentation": "Move this node one index forward in each of its parents.  If the node is already at the front, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        }
+      },
       "supertype": "NodeIO",
       "typeName": "AccordionBoxIO"
     },
@@ -51,6 +62,30 @@ window.phet.phetio.phetioTypes = assert &&
       ],
       "supertype": "ObjectIO",
       "typeName": "ActionIO<BooleanIO>"
+    },
+    "ActionIO<EnumerationIO(POSITION|TIME), EnumerationIO(POSITION|TIME)>": {
+      "documentation": "Executes when an event occurs.",
+      "events": [
+        "emitted"
+      ],
+      "methodOrder": [],
+      "methods": {
+        "execute": {
+          "documentation": "Executes the function the Action is wrapping.",
+          "invocableForReadOnlyElements": false,
+          "parameterTypes": [
+            "EnumerationIO(POSITION|TIME)",
+            "EnumerationIO(POSITION|TIME)"
+          ],
+          "returnType": "VoidIO"
+        }
+      },
+      "parameterTypes": [
+        "EnumerationIO(POSITION|TIME)",
+        "EnumerationIO(POSITION|TIME)"
+      ],
+      "supertype": "ObjectIO",
+      "typeName": "ActionIO<EnumerationIO(POSITION|TIME), EnumerationIO(POSITION|TIME)>"
     },
     "ActionIO<EventIO>": {
       "documentation": "Executes when an event occurs.",
@@ -267,7 +302,18 @@ window.phet.phetio.phetioTypes = assert &&
         "listBoxHidden"
       ],
       "methodOrder": [],
-      "methods": {},
+      "methods": {
+        "moveBackward": {
+          "documentation": "Move this node one index backward in each of its parents.  If the node is already at the back, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        },
+        "moveForward": {
+          "documentation": "Move this node one index forward in each of its parents.  If the node is already at the front, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        }
+      },
       "supertype": "NodeIO",
       "typeName": "ComboBoxIO"
     },
@@ -349,7 +395,18 @@ window.phet.phetio.phetioTypes = assert &&
       "documentation": "A dialog panel",
       "events": [],
       "methodOrder": [],
-      "methods": {},
+      "methods": {
+        "moveBackward": {
+          "documentation": "Move this node one index backward in each of its parents.  If the node is already at the back, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        },
+        "moveForward": {
+          "documentation": "Move this node one index forward in each of its parents.  If the node is already at the front, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        }
+      },
       "supertype": "NodeIO",
       "typeName": "DialogIO"
     },
@@ -414,6 +471,14 @@ window.phet.phetio.phetioTypes = assert &&
       "methods": {},
       "supertype": "ObjectIO",
       "typeName": "EnergySkateParkModelIO"
+    },
+    "EnumerationIO(POSITION|TIME)": {
+      "documentation": "Possible values: POSITION,TIME.",
+      "events": [],
+      "methodOrder": [],
+      "methods": {},
+      "supertype": "ObjectIO",
+      "typeName": "EnumerationIO(POSITION|TIME)"
     },
     "EventIO": {
       "documentation": "A DOM Event",
@@ -694,7 +759,18 @@ window.phet.phetio.phetioTypes = assert &&
       "documentation": "The base type for graphical and potentially interactive objects.  NodeIO has nested PropertyIO values for visibility, pickability and opacity.<br><br>Pickable can take one of three values:<br><ul><li>null: pass-through behavior. Nodes with input listeners are pickable, but nodes without input listeners won't block events for nodes behind it.</li><li>false: The node cannot be interacted with, and it blocks events for nodes behind it.</li><li>true: The node can be interacted with (if it has an input listener).</li></ul>For more about Scenery node pickability, please see <a href=\"http://phetsims.github.io/scenery/doc/implementation-notes#pickability\">http://phetsims.github.io/scenery/doc/implementation-notes#pickability</a>",
       "events": [],
       "methodOrder": [],
-      "methods": {},
+      "methods": {
+        "moveBackward": {
+          "documentation": "Move this node one index backward in each of its parents.  If the node is already at the back, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        },
+        "moveForward": {
+          "documentation": "Move this node one index forward in each of its parents.  If the node is already at the front, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        }
+      },
       "supertype": "ObjectIO",
       "typeName": "NodeIO"
     },
@@ -878,7 +954,18 @@ window.phet.phetio.phetioTypes = assert &&
       "documentation": "A number control with a title, slider and +/- buttons",
       "events": [],
       "methodOrder": [],
-      "methods": {},
+      "methods": {
+        "moveBackward": {
+          "documentation": "Move this node one index backward in each of its parents.  If the node is already at the back, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        },
+        "moveForward": {
+          "documentation": "Move this node one index forward in each of its parents.  If the node is already at the front, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        }
+      },
       "supertype": "NodeIO",
       "typeName": "NumberControlIO"
     },
@@ -886,7 +973,18 @@ window.phet.phetio.phetioTypes = assert &&
       "documentation": "A numeric readout with a background",
       "events": [],
       "methodOrder": [],
-      "methods": {},
+      "methods": {
+        "moveBackward": {
+          "documentation": "Move this node one index backward in each of its parents.  If the node is already at the back, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        },
+        "moveForward": {
+          "documentation": "Move this node one index forward in each of its parents.  If the node is already at the front, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        }
+      },
       "supertype": "NodeIO",
       "typeName": "NumberDisplayIO"
     },
@@ -980,16 +1078,6 @@ window.phet.phetio.phetioTypes = assert &&
       ],
       "supertype": "ObjectIO",
       "typeName": "ObservableArrayIO<ReferenceIO>"
-    },
-    "OnOffSwitchIO": {
-      "documentation": "A traditional switch component",
-      "events": [
-        "toggled"
-      ],
-      "methodOrder": [],
-      "methods": {},
-      "supertype": "NodeIO",
-      "typeName": "OnOffSwitchIO"
     },
     "PhetButtonIO": {
       "documentation": "The PhET Button in the bottom right of the screen",
@@ -1837,7 +1925,18 @@ window.phet.phetio.phetioTypes = assert &&
         "releasedDisabled"
       ],
       "methodOrder": [],
-      "methods": {},
+      "methods": {
+        "moveBackward": {
+          "documentation": "Move this node one index backward in each of its parents.  If the node is already at the back, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        },
+        "moveForward": {
+          "documentation": "Move this node one index forward in each of its parents.  If the node is already at the front, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        }
+      },
       "supertype": "NodeIO",
       "typeName": "ResetAllButtonIO"
     },
@@ -1845,7 +1944,18 @@ window.phet.phetio.phetioTypes = assert &&
       "documentation": "The tandem IO type for the scenery RichText node",
       "events": [],
       "methodOrder": [],
-      "methods": {},
+      "methods": {
+        "moveBackward": {
+          "documentation": "Move this node one index backward in each of its parents.  If the node is already at the back, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        },
+        "moveForward": {
+          "documentation": "Move this node one index forward in each of its parents.  If the node is already at the front, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        }
+      },
       "supertype": "NodeIO",
       "typeName": "RichTextIO"
     },
@@ -1939,9 +2049,41 @@ window.phet.phetio.phetioTypes = assert &&
         "toggled"
       ],
       "methodOrder": [],
-      "methods": {},
+      "methods": {
+        "moveBackward": {
+          "documentation": "Move this node one index backward in each of its parents.  If the node is already at the back, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        },
+        "moveForward": {
+          "documentation": "Move this node one index forward in each of its parents.  If the node is already at the front, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        }
+      },
       "supertype": "NodeIO",
       "typeName": "ToggleButtonIO"
+    },
+    "ToggleSwitchIO": {
+      "documentation": "a switch that toggles between 2 values",
+      "events": [
+        "toggledAction"
+      ],
+      "methodOrder": [],
+      "methods": {
+        "moveBackward": {
+          "documentation": "Move this node one index backward in each of its parents.  If the node is already at the back, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        },
+        "moveForward": {
+          "documentation": "Move this node one index forward in each of its parents.  If the node is already at the front, this is a no-op.",
+          "parameterTypes": [],
+          "returnType": "VoidIO"
+        }
+      },
+      "supertype": "NodeIO",
+      "typeName": "ToggleSwitchIO"
     },
     "TrackIO": {
       "documentation": "A skate track.",
