@@ -182,21 +182,8 @@ define( require => {
         this.thermalEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, addedSample.thermalEnergy, pointStyle ) );
         this.totalEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, addedSample.totalEnergy, pointStyle ) );
 
-
-        // don't repaint 4 canvases  ANY opacityProperty changes for any skaterSample, seems very
-        // inneficient
-        // // add a listener that updates opacity with the SkaterSample Property, dispose it on removal
-        // const opacityListener = opacity => {
-        //   console.log( 'here' );
-        //
-        //   pointStyle.opacity = opacity;
-        //   this.invalidateDataSeriesNodes();
-        // };
-        // addedSample.opacityProperty.link( opacityListener );
-
         const removalListener = removedSample => {
           if ( removedSample === addedSample ) {
-            // removedSample.opacityProperty.unlink( opacityListener );
             this.forEachDataSeries( dataSeries => dataSeries.removePointAtX( independentVariable ) );
             model.skaterSamples.removeItemRemovedListener( removalListener );
           }
