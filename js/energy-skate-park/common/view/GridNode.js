@@ -39,7 +39,7 @@ define( require => {
      * @param {Tandem} tandem
      * @constructor
      */
-    constructor( gridVisibleProperty, referenceHeightProperty, visibleBoundsProperty, modelViewTransform, tandem ) {
+    constructor( gridVisibleProperty, referenceHeightProperty, visibleBoundsProperty, modelViewTransform, tandem ) { // TODO: visibleBoundsProperty not marked in JSDoc
       super( {
         pickable: false,
         tandem: tandem
