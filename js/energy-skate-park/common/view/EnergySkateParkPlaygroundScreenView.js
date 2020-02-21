@@ -44,7 +44,7 @@ define( require => {
         6, {
           fill: 'white',
           stroke: 'black'
-      } );
+        } );
       this.bottomLayer.addChild( this.trackCreationPanel );
 
       model.tracks.addItemAddedListener( this.addTrackNode.bind( this ) );

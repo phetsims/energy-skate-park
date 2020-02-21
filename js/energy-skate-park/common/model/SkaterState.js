@@ -91,7 +91,7 @@ define( require => {
      * @returns {number}
      */
     getTotalEnergy() {
-      return 0.5 * this.mass * (this.velocityX * this.velocityX + this.velocityY * this.velocityY) - this.mass * this.gravity * ( this.positionY - this.referenceHeight ) + this.thermalEnergy;
+      return 0.5 * this.mass * ( this.velocityX * this.velocityX + this.velocityY * this.velocityY ) - this.mass * this.gravity * ( this.positionY - this.referenceHeight ) + this.thermalEnergy;
     }
 
     /**
@@ -100,7 +100,7 @@ define( require => {
      * @returns {number}
      */
     getKineticEnergy() {
-      return 0.5 * this.mass * (this.velocityX * this.velocityX + this.velocityY * this.velocityY);
+      return 0.5 * this.mass * ( this.velocityX * this.velocityX + this.velocityY * this.velocityY );
     }
 
     /**
@@ -155,7 +155,7 @@ define( require => {
       skater.onTopSideOfTrackProperty.value = this.onTopSideOfTrack;
 
       // only an angle to restore if skater is attached to a track and skater is not being dragged
-      skater.angleProperty.value = ( skater.trackProperty.value && !this.dragging ) ? skater.trackProperty.value.getViewAngleAt( this.parametricPosition ) + (this.onTopSideOfTrack ? 0 : Math.PI) : this.angle;
+      skater.angleProperty.value = ( skater.trackProperty.value && !this.dragging ) ? skater.trackProperty.value.getViewAngleAt( this.parametricPosition ) + ( this.onTopSideOfTrack ? 0 : Math.PI ) : this.angle;
       skater.updateEnergy();
     }
 

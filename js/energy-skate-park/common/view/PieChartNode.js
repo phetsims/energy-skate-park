@@ -118,8 +118,8 @@ define( require => {
 
         // if only one component of pie chart, then show as a circle so there are no seams
         const numberComponents = ( skater.potentialEnergyProperty.value > THRESHOLD ? 1 : 0 ) +
-                               ( skater.kineticEnergyProperty.value > THRESHOLD ? 1 : 0 ) +
-                               ( skater.thermalEnergyProperty.value > THRESHOLD ? 1 : 0 );
+                                 ( skater.kineticEnergyProperty.value > THRESHOLD ? 1 : 0 ) +
+                                 ( skater.thermalEnergyProperty.value > THRESHOLD ? 1 : 0 );
 
         // Don't show the pie chart if energies are zero, or if potential energy is negative (underground skater), see #189
         const energyNegative = skater.potentialEnergyProperty.value < 0;
@@ -142,8 +142,8 @@ define( require => {
         }
         else if ( numberComponents === 1 ) {
           const selectedSlice = skater.potentialEnergyProperty.value > THRESHOLD ? potentialEnergySlice :
-                              skater.kineticEnergyProperty.value > THRESHOLD ? kineticEnergySlice :
-                              thermalEnergySlice;
+                                skater.kineticEnergyProperty.value > THRESHOLD ? kineticEnergySlice :
+                                thermalEnergySlice;
           potentialEnergySlice.visible = false;
           thermalEnergySlice.visible = false;
           kineticEnergySlice.visible = false;

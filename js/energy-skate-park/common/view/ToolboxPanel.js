@@ -41,7 +41,10 @@ define( require => {
       const measuringTapeIcon = MeasuringTapeNode.createIcon();
       measuringTapeIcon.cursor = 'pointer';
 
-      const stopwatchIcon = new StopwatchNode( new Stopwatch( { isVisible: true, tandem: Tandem.OPT_OUT } ), { tandem: Tandem.OPT_OUT } ).rasterized( {
+      const stopwatchIcon = new StopwatchNode( new Stopwatch( {
+        isVisible: true,
+        tandem: Tandem.OPT_OUT
+      } ), { tandem: Tandem.OPT_OUT } ).rasterized( {
         cursor: 'pointer',
         resolution: 5,
         tandem: tandem.createTandem( 'timerIcon' )

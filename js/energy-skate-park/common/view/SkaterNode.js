@@ -155,7 +155,7 @@ define( require => {
             const normal = targetTrack.getUnitNormalVector( targetU );
             skater.onTopSideOfTrackProperty.value = normal.y > 0;
 
-            skater.angleProperty.value = targetTrack.getViewAngleAt( targetU ) + (skater.onTopSideOfTrackProperty.value ? 0 : Math.PI);
+            skater.angleProperty.value = targetTrack.getViewAngleAt( targetU ) + ( skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
 
             closeEnough = true;
           }

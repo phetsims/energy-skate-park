@@ -31,7 +31,7 @@ define( require => {
      * @param {Tandem} trackGroupTandem
      */
     static init( model, controlPointGroupTandem, trackGroupTandem ) {
-        // Tracks to help demonstrate issues
+      // Tracks to help demonstrate issues
 
       const createControlPoint = ( x, y ) => {
         return new ControlPoint( x, y, { tandem: controlPointGroupTandem.createNextTandem() } );
@@ -278,22 +278,22 @@ define( require => {
         model.frictionProperty.value = 0;
 
         const controlPoints = [
-          createControlPoint(-0.29564715581203593,5.349320898598515),
-          createControlPoint(0.5844187963726313,5.266814715581202),
-          createControlPoint(1.5469909315746087,4.771777617477328),
-          createControlPoint(2.0145259686727126,3.1629070486397355),
-          createControlPoint(1.2307172300082456,1.7878039983511949),
-          createControlPoint(-1.2994723825226702,1.7740529678483092),
-          createControlPoint(-2.1382852431986805,3.575437963726298),
-          createControlPoint(-1.0382028029678487,5.280565746084088),
-          createControlPoint(0.6944270403957145,6.806930131904369),
-          createControlPoint(-0.9831986809563062,7.962016694146743)
+          createControlPoint( -0.29564715581203593, 5.349320898598515 ),
+          createControlPoint( 0.5844187963726313, 5.266814715581202 ),
+          createControlPoint( 1.5469909315746087, 4.771777617477328 ),
+          createControlPoint( 2.0145259686727126, 3.1629070486397355 ),
+          createControlPoint( 1.2307172300082456, 1.7878039983511949 ),
+          createControlPoint( -1.2994723825226702, 1.7740529678483092 ),
+          createControlPoint( -2.1382852431986805, 3.575437963726298 ),
+          createControlPoint( -1.0382028029678487, 5.280565746084088 ),
+          createControlPoint( 0.6944270403957145, 6.806930131904369 ),
+          createControlPoint( -0.9831986809563062, 7.962016694146743 )
         ];
 
         const track16 = new Track( model, model.tracks, controlPoints, null, model.availableModelBoundsProperty, {
           tandem: trackGroupTandem.createNextTandem(),
           configurable: true
-         } );
+        } );
         track16.physicalProperty.value = true;
         model.tracks.add( track16 );
       }

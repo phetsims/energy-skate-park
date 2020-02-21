@@ -24,12 +24,12 @@ define( require => {
     const yr = spline.yr;
     const kl = spline.kl;
     const kr = spline.kr;
-    const a = (kl[ p ] * (x[ p + 1 ] - x[ p ])) - (yr[ p + 1 ] - yl[ p ]);
-    const b = kr[ p + 1 ] * (x[ p ] - x[ p + 1 ]) + yr[ p + 1 ] - yl[ p ];
-    const t = (x1 - x[ p ]) / (x[ p + 1 ] - x[ p ]);
-    const s = t * (1 - t);
-    return ((1 - t) * yl[ p ] + t * yr[ p + 1 ] +
-           a * s * (1 - t) ) +
+    const a = ( kl[ p ] * ( x[ p + 1 ] - x[ p ] ) ) - ( yr[ p + 1 ] - yl[ p ] );
+    const b = kr[ p + 1 ] * ( x[ p ] - x[ p + 1 ] ) + yr[ p + 1 ] - yl[ p ];
+    const t = ( x1 - x[ p ] ) / ( x[ p + 1 ] - x[ p ] );
+    const s = t * ( 1 - t );
+    return ( ( 1 - t ) * yl[ p ] + t * yr[ p + 1 ] +
+           a * s * ( 1 - t ) ) +
            b * s * t;
   };
 
@@ -43,7 +43,7 @@ define( require => {
     p = 0;
     q = n - 1;
     while ( q - p > 1 ) {
-      mid = floor( (p + q) / 2 );
+      mid = floor( ( p + q ) / 2 );
       if ( x[ mid ] <= x0 ) {
         p = mid;
       }

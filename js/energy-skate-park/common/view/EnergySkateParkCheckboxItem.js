@@ -74,7 +74,7 @@ define( require => {
         children: [ checkbox, icon ],
         spacing: 10
       } );
-    
+
     }
 
     /**
@@ -149,7 +149,7 @@ define( require => {
 
     /**
      * An icon for the reference height control.
-     * @param {Tandem} tandem 
+     * @param {Tandem} tandem
      * @returns {Node}
      */
     static createReferenceHeightIcon( tandem ) {

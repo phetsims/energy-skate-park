@@ -48,10 +48,11 @@ define( require => {
         sliderOnly: true,
 
         sliderOptions: merge( {}, Constants.SLIDER_OPTIONS, {
-          majorTicks: [
-            createTickEntry( valueRange.min, options.minLabel, tandem, 'minLabel' ),
-            createTickEntry( valueRange.max, options.maxLabel, tandem, 'maxLabel' )
-          ] }
+            majorTicks: [
+              createTickEntry( valueRange.min, options.minLabel, tandem, 'minLabel' ),
+              createTickEntry( valueRange.max, options.maxLabel, tandem, 'maxLabel' )
+            ]
+          }
         )
       } );
     }

@@ -134,5 +134,5 @@ define( require => {
     }
   }
 
-  return energySkatePark.register( 'SkaterSample', SkaterSample  );
+  return energySkatePark.register( 'SkaterSample', SkaterSample );
 } );

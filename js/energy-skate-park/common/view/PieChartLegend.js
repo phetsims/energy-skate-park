@@ -29,7 +29,7 @@ define( require => {
   const energyThermalString = require( 'string!ENERGY_SKATE_PARK/energy.thermal' );
   const energyTotalString = require( 'string!ENERGY_SKATE_PARK/energy.total' );
 
-  class PieChartLegend extends Panel{
+  class PieChartLegend extends Panel {
 
     /**
      * @param {Skater} skater the model for the skater

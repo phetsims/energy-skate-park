@@ -46,13 +46,15 @@ define( require => {
       assert && assert( options.children === undefined, 'PlaybackSpeedControl sets children' );
 
       const slowMotionRadioButton = new AquaRadioButton( speedProperty, 'slow', new Text( slowMotionString, merge( {
-        tandem: tandem.createTandem( 'slowMotionTextNode' ) }, LABEL_OPTIONS )
+          tandem: tandem.createTandem( 'slowMotionTextNode' )
+        }, LABEL_OPTIONS )
       ), {
         radius: RADIO_BUTTON_RADIUS,
         tandem: tandem.createTandem( 'slowMotionRadioButton' )
       } );
       const normalSpeedRadioButton = new AquaRadioButton( speedProperty, 'normal', new Text( normalString, merge( {
-        tandem: tandem.createTandem( 'normalSpeedTextNode' ) }, LABEL_OPTIONS )
+          tandem: tandem.createTandem( 'normalSpeedTextNode' )
+        }, LABEL_OPTIONS )
       ), {
         radius: RADIO_BUTTON_RADIUS,
         x: 130,

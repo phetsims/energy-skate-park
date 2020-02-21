@@ -18,7 +18,7 @@ define( require => {
   const Path = require( 'SCENERY/nodes/Path' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
   const Shape = require( 'KITE/Shape' );
-  const TextPanel= require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TextPanel' );
+  const TextPanel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/TextPanel' );
 
   // strings
   const zeroMetersString = require( 'string!ENERGY_SKATE_PARK/zeroMeters' );

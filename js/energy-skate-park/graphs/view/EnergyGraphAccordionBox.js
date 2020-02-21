@@ -124,7 +124,7 @@ define( require => {
         font: LABEL_FONT,
         maxWidth: energyPlot.height / 2
       } );
-      const xLabelText =  new Text( '', { font: LABEL_FONT, maxWidth: energyPlot.width } );
+      const xLabelText = new Text( '', { font: LABEL_FONT, maxWidth: energyPlot.width } );
       const yLabel = new VBox( {
         children: [ yLabelText, zoomButtons ],
         spacing: 10

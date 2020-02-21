@@ -382,6 +382,7 @@ define( require => {
       this._slopeToGround = slopeToGround;
       this._restoreSlopeToGroundOnReset = true;
     }
+
     set slopeToGround( slopeToGround ) { this.setSlopeToGround( slopeToGround ); }
 
     /**
@@ -393,6 +394,7 @@ define( require => {
     getSlopeToGround() {
       return this._slopeToGround;
     }
+
     get slopeToGround() { return this.getSlopeToGround(); }
 
     /**

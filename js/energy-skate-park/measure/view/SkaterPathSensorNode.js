@@ -89,7 +89,7 @@ define( require => {
 
       // labels and value rectangles are in the same align group so that all entries have same width and height for
       // layout
-      const alignGroup = new AlignGroup( { matchHorizontal: false });
+      const alignGroup = new AlignGroup( { matchHorizontal: false } );
 
       const kineticLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyKineticString );
       const potentialLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyPotentialString );
@@ -357,7 +357,7 @@ define( require => {
      * @param  {AlignGroup} alignGroup
      * @returns {AlignBox}
      */
-    static createReadoutBox( alignGroup, valueProperty  ) {
+    static createReadoutBox( alignGroup, valueProperty ) {
 
       const numberDisplay = new NumberDisplay( valueProperty, ENERGY_RANGE, {
         backgroundStroke: 'black',

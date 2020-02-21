@@ -22,6 +22,7 @@ define( require => {
 
   // strings
   const screenLabString = require( 'string!ENERGY_SKATE_PARK/screen.lab' );
+
   class LabScreen extends Screen {
 
     /**

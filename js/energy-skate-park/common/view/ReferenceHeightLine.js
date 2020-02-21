@@ -31,7 +31,7 @@ define( require => {
      * @param {NumberProperty} referenceHeightProperty
      * @param {Tandem} tandem
      */
-    constructor( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, tandem )  {
+    constructor( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, tandem ) {
 
       // line will extend 9.5 meters through along the grid in model coordinates
       const lineLength = modelViewTransform.modelToViewDeltaX( 9.5 );

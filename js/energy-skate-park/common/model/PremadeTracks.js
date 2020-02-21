@@ -95,7 +95,7 @@ define( require => {
         p1Draggable: true,
         p2Draggable: true,
         p3Draggable: true
-      },CREATOR_OPTIONS, options );
+      }, CREATOR_OPTIONS, options );
 
       const p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
       const p2 = new Vector2( 0, 0 );
@@ -148,9 +148,21 @@ define( require => {
       const p3Bounds = createRelativeSpaceBounds( p3, 0.5, 2.5, 3, 0 );
 
       return [
-        new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p2.x, p2.y, { limitBounds: p2Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p3.x, p3.y, { limitBounds: p3Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } )
+        new ControlPoint( p1.x, p1.y, {
+          limitBounds: p1Bounds,
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } ),
+        new ControlPoint( p2.x, p2.y, {
+          limitBounds: p2Bounds,
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } ),
+        new ControlPoint( p3.x, p3.y, {
+          limitBounds: p3Bounds,
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } )
       ];
     },
 
@@ -257,7 +269,7 @@ define( require => {
 
       const p1 = new Vector2( -loopWidth / 2, trackTop );
       const p2 = new Vector2( -innerLoopWidth / 2, trackBottom );
-      const p3 = new Vector2( innerLoopWidth/ 2, innerLoopHeight );
+      const p3 = new Vector2( innerLoopWidth / 2, innerLoopHeight );
       const p4 = new Vector2( 0, loopTop );
       const p5 = new Vector2( -innerLoopWidth / 2, innerLoopHeight );
       const p6 = new Vector2( innerLoopWidth / 2, trackBottom );
@@ -272,7 +284,11 @@ define( require => {
       const p7Bounds = createRelativeSpaceBounds( p7, 1, 1, 2, 3 );
 
       return [
-        new ControlPoint( p1.x, p1.y, { limitBounds: p1Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
+        new ControlPoint( p1.x, p1.y, {
+          limitBounds: p1Bounds,
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } ),
         new ControlPoint( p2.x, p2.y, {
           limitBounds: p2Bounds,
           tandem: groupTandem.createNextTandem(),
@@ -283,13 +299,26 @@ define( require => {
           tandem: groupTandem.createNextTandem(),
           phetioState: false
         } ),
-        new ControlPoint( p4.x, p4.y, { limitBounds: p4Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p5.x, p5.y, { limitBounds: p5Bounds,
+        new ControlPoint( p4.x, p4.y, {
+          limitBounds: p4Bounds,
           tandem: groupTandem.createNextTandem(),
           phetioState: false
         } ),
-        new ControlPoint( p6.x, p6.y, { limitBounds: p6Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } ),
-        new ControlPoint( p7.x, p7.y, { limitBounds: p7Bounds, tandem: groupTandem.createNextTandem(), phetioState: false } )
+        new ControlPoint( p5.x, p5.y, {
+          limitBounds: p5Bounds,
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } ),
+        new ControlPoint( p6.x, p6.y, {
+          limitBounds: p6Bounds,
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } ),
+        new ControlPoint( p7.x, p7.y, {
+          limitBounds: p7Bounds,
+          tandem: groupTandem.createNextTandem(),
+          phetioState: false
+        } )
       ];
     },
 

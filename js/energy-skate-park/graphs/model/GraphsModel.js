@@ -110,7 +110,7 @@ define( require => {
       this.sampleTimeProperty.link( time => {
         const plottingTime = this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
         const overTime = time > GraphsConstants.MAX_PLOTTED_TIME;
-        if ( plottingTime && overTime) {
+        if ( plottingTime && overTime ) {
           this.preventSampleSave = true;
         }
         else {

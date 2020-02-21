@@ -35,7 +35,7 @@ define( require => {
     roadLine: 'black',
 
     // colors for the reference height line
-    referenceLineFill:'rgb(74,133,208)',
+    referenceLineFill: 'rgb(74,133,208)',
     referenceLineStroke: 'black',
 
     // color for the reference line arrow

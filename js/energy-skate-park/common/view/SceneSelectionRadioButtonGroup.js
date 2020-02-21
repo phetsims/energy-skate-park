@@ -112,7 +112,7 @@ define( require => {
         const alignedNode = buttonAlignGroup.createBox( node );
         const margin = Math.abs( alignedNode.width - alignedNode.height ) / 2;
         if ( margin !== 0 ) {
-          const setterFunction = alignedNode.height < alignedNode.width ?  alignedNode.setYMargin : alignedNode.setXMargin;
+          const setterFunction = alignedNode.height < alignedNode.width ? alignedNode.setYMargin : alignedNode.setXMargin;
           setterFunction.call( alignedNode, margin );
         }
 

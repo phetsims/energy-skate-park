@@ -93,10 +93,26 @@ define( require => {
         scale: 0.7
       } );
 
-      const kineticEntry = { property: skater.kineticEnergyProperty, color: EnergySkateParkColorScheme.kineticEnergy, modifyBarHeight: hideSmallValues };
-      const potentialEntry = { property: skater.potentialEnergyProperty, color: EnergySkateParkColorScheme.potentialEnergy, modifyBarHeight: hideSmallValues };
-      const thermalEntry = { property: skater.thermalEnergyProperty, color: EnergySkateParkColorScheme.thermalEnergy, modifyBarHeight: showSmallValues };
-      const totalEntry = { property: skater.totalEnergyProperty, color: EnergySkateParkColorScheme.totalEnergy, modifyBarHeight: showSmallValues };
+      const kineticEntry = {
+        property: skater.kineticEnergyProperty,
+        color: EnergySkateParkColorScheme.kineticEnergy,
+        modifyBarHeight: hideSmallValues
+      };
+      const potentialEntry = {
+        property: skater.potentialEnergyProperty,
+        color: EnergySkateParkColorScheme.potentialEnergy,
+        modifyBarHeight: hideSmallValues
+      };
+      const thermalEntry = {
+        property: skater.thermalEnergyProperty,
+        color: EnergySkateParkColorScheme.thermalEnergy,
+        modifyBarHeight: showSmallValues
+      };
+      const totalEntry = {
+        property: skater.totalEnergyProperty,
+        color: EnergySkateParkColorScheme.totalEnergy,
+        modifyBarHeight: showSmallValues
+      };
 
       this.barChartNode = new BarChartNode( [
         { entries: [ kineticEntry ], labelString: energyKineticString },

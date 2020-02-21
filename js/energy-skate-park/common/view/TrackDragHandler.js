@@ -85,7 +85,7 @@ define( require => {
      */
     handleDragEnd( even ) {
       if ( this.track.dragSource === this ) {
-       this.trackDragEnded( event );
+        this.trackDragEnded( event );
       }
     }
 
@@ -139,19 +139,19 @@ define( require => {
         // Constrain the top
         const topControlPointY = track.getTopControlPointY();
         if ( topControlPointY + modelDelta.y > availableBounds.maxY ) {
-          position.y = availableBounds.maxY - (topControlPointY - track.position.y);
+          position.y = availableBounds.maxY - ( topControlPointY - track.position.y );
         }
 
         // Constrain the left side
         const leftControlPointX = track.getLeftControlPointX();
         if ( leftControlPointX + modelDelta.x < availableBounds.minX ) {
-          position.x = availableBounds.minX - (leftControlPointX - track.position.x);
+          position.x = availableBounds.minX - ( leftControlPointX - track.position.x );
         }
 
         // Constrain the right side
         const rightControlPointX = track.getRightControlPointX();
         if ( rightControlPointX + modelDelta.x > availableBounds.maxX ) {
-          position.x = availableBounds.maxX - (rightControlPointX - track.position.x);
+          position.x = availableBounds.maxX - ( rightControlPointX - track.position.x );
         }
       }
 
@@ -179,7 +179,7 @@ define( require => {
             for ( let k = 0; k < otherPoints.length; k++ ) {
               const otherPoint = otherPoints[ k ];
               const distance = point.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
-              if ( (bestDistance === null && distance > 1E-6) || (distance < bestDistance ) ) {
+              if ( ( bestDistance === null && distance > 1E-6 ) || ( distance < bestDistance ) ) {
                 bestDistance = distance;
                 myBestPoint = point;
                 otherBestPoint = otherPoint;
@@ -196,7 +196,7 @@ define( require => {
         myBestPoint.snapTargetProperty.value = otherBestPoint;
 
         // Set the opposite point to be unsnapped, you can only snap one at a time
-        const source = (myBestPoint === points[ 0 ] ? points[ 1 ] : points[ 0 ]);
+        const source = ( myBestPoint === points[ 0 ] ? points[ 1 ] : points[ 0 ] );
         if ( source.snapTargetProperty.value !== null ) {
           snapTargetChanged = true;
         }
@@ -255,7 +255,7 @@ define( require => {
         }
 
         if ( EnergySkateParkQueryParameters.debugTrack ) {
-         console.log( track.getDebugString() );
+          console.log( track.getDebugString() );
         }
 
         this.startedDrag = false;
