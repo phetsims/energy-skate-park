@@ -27,7 +27,7 @@ define( require => {
   const FONT = new PhetFont( 12 );
 
   // in meters, the grid will extend this far into the earth so that when potential energy reference line is moved the
-  // grid can translte this far up
+  // grid can translate this far up
   const NEGATIVE_HEIGHT = 10;
 
   class GridNode extends Node {
