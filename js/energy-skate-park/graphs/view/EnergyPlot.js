@@ -177,6 +177,12 @@ define( require => {
         // keep a reference to the pointStyle so that it can be modified later
         const pointStyle = new PointStyle();
 
+        // add a listener that updates opacity with the SkaterSample Property, dispose it on removal
+        const opacityListener = opacity => {
+          pointStyle.opacity = opacity;
+        };
+        addedSample.opacityProperty.link( opacityListener );
+
         this.kineticEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, addedSample.kineticEnergy, pointStyle ) );
         this.potentialEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, addedSample.potentialEnergy, pointStyle ) );
         this.thermalEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, addedSample.thermalEnergy, pointStyle ) );
@@ -184,6 +190,7 @@ define( require => {
 
         const removalListener = removedSample => {
           if ( removedSample === addedSample ) {
+            removedSample.opacityProperty.unlink( opacityListener );
             this.forEachDataSeries( dataSeries => dataSeries.removePointAtX( independentVariable ) );
             model.skaterSamples.removeItemRemovedListener( removalListener );
           }
