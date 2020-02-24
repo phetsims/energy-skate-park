@@ -63,30 +63,6 @@ window.phet.phetio.phetioTypes = assert &&
       "supertype": "ObjectIO",
       "typeName": "ActionIO<BooleanIO>"
     },
-    "ActionIO<EnumerationIO(POSITION|TIME), EnumerationIO(POSITION|TIME)>": {
-      "documentation": "Executes when an event occurs.",
-      "events": [
-        "emitted"
-      ],
-      "methodOrder": [],
-      "methods": {
-        "execute": {
-          "documentation": "Executes the function the Action is wrapping.",
-          "invocableForReadOnlyElements": false,
-          "parameterTypes": [
-            "EnumerationIO(POSITION|TIME)",
-            "EnumerationIO(POSITION|TIME)"
-          ],
-          "returnType": "VoidIO"
-        }
-      },
-      "parameterTypes": [
-        "EnumerationIO(POSITION|TIME)",
-        "EnumerationIO(POSITION|TIME)"
-      ],
-      "supertype": "ObjectIO",
-      "typeName": "ActionIO<EnumerationIO(POSITION|TIME), EnumerationIO(POSITION|TIME)>"
-    },
     "ActionIO<EventIO>": {
       "documentation": "Executes when an event occurs.",
       "events": [
@@ -471,14 +447,6 @@ window.phet.phetio.phetioTypes = assert &&
       "methods": {},
       "supertype": "ObjectIO",
       "typeName": "EnergySkateParkModelIO"
-    },
-    "EnumerationIO(POSITION|TIME)": {
-      "documentation": "Possible values: POSITION,TIME.",
-      "events": [],
-      "methodOrder": [],
-      "methods": {},
-      "supertype": "ObjectIO",
-      "typeName": "EnumerationIO(POSITION|TIME)"
     },
     "EventIO": {
       "documentation": "A DOM Event",
@@ -2063,27 +2031,6 @@ window.phet.phetio.phetioTypes = assert &&
       },
       "supertype": "NodeIO",
       "typeName": "ToggleButtonIO"
-    },
-    "ToggleSwitchIO": {
-      "documentation": "a switch that toggles between 2 values",
-      "events": [
-        "toggledAction"
-      ],
-      "methodOrder": [],
-      "methods": {
-        "moveBackward": {
-          "documentation": "Move this node one index backward in each of its parents.  If the node is already at the back, this is a no-op.",
-          "parameterTypes": [],
-          "returnType": "VoidIO"
-        },
-        "moveForward": {
-          "documentation": "Move this node one index forward in each of its parents.  If the node is already at the front, this is a no-op.",
-          "parameterTypes": [],
-          "returnType": "VoidIO"
-        }
-      },
-      "supertype": "NodeIO",
-      "typeName": "ToggleSwitchIO"
     },
     "TrackIO": {
       "documentation": "A skate track.",

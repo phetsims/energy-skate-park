@@ -4211,7 +4211,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ToggleSwitchIO"
+      "phetioTypeName": "NodeIO"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.variableSwitch.toggleSwitch.dragListener.dragAction": {
       "phetioDocumentation": "Emits whenever a drag occurs with an SceneryEventIO argument. The arguments are:<br/><ol><li>event: SceneryEventIO</li></ol>",
@@ -4279,7 +4279,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.variableSwitch.toggleSwitch.toggleAction": {
-      "phetioDocumentation": "Occurs when the switch is toggled via user interaction The arguments are:<br/><ol><li>oldValue: EnumerationIO(POSITION|TIME)</li><br/><li>newValue: EnumerationIO(POSITION|TIME)</li></ol>",
+      "phetioDocumentation": "Occurs when the switch is toggled via user interaction No arguments.",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
       "phetioFeatured": false,
@@ -4289,7 +4289,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": false,
       "phetioStudioControl": true,
-      "phetioTypeName": "ActionIO<EnumerationIO(POSITION|TIME), EnumerationIO(POSITION|TIME)>"
+      "phetioTypeName": "ActionIO<>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphAccordionBox.variableSwitch.toggleSwitch.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
