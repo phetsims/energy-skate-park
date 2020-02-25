@@ -191,13 +191,24 @@ define( require => {
         const removalListener = removedSample => {
           if ( removedSample === addedSample ) {
             removedSample.opacityProperty.unlink( opacityListener );
-            this.forEachDataSeries( dataSeries => dataSeries.removePointAtX( independentVariable ) );
             model.skaterSamples.removeItemRemovedListener( removalListener );
           }
         };
         model.skaterSamples.addItemRemovedListener( removalListener );
 
         this.setCursorValue( independentVariable );
+      } );
+
+      // remove a batch of of SkaterSamples, but only redraw once after all have been removed for performance
+      model.batchRemoveSamplesProperty.lazyLink( samplesToRemove => {
+        const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
+        for ( let i = 0; i < samplesToRemove.length; i++ ) {
+          const sampleToRemove = samplesToRemove[ i ];
+          const independentVariable = plotTime ? sampleToRemove.time : sampleToRemove.position.x + 5;
+
+          this.forEachDataSeries( dataSeries => dataSeries.removePointAtX( independentVariable, false ) );
+        }
+        this.invalidateDataSeriesNodes();
       } );
     }
 

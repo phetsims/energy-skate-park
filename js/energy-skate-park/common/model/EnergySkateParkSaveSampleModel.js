@@ -20,6 +20,7 @@ define( require => {
   const merge = require( 'PHET_CORE/merge' );
   const NumberProperty = require( 'AXON/NumberProperty' );
   const ObservableArray = require( 'AXON/ObservableArray' );
+  const Property = require( 'AXON/Property' );
   const SkaterSample = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/SkaterSample' );
 
   class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
@@ -65,6 +66,11 @@ define( require => {
 
       // @protected {ObservableArray.<SkaterSample>} - observable list of all saved SkaterSamples
       this.skaterSamples = new ObservableArray();
+
+      // @public (read-only) - an array of SkaterSamples that have just been removed from the model. Necessary
+      // for performance so that we can redraw once after removing many samples rather than redrawing every time
+      // a single sample is removed
+      this.batchRemoveSamplesProperty = new Property( [] );
     }
 
     /**
@@ -73,7 +79,9 @@ define( require => {
      * @returns {}
      */
     clearEnergyData() {
+      const samplesToRemove = this.skaterSamples.getArray().slice();
       this.skaterSamples.clear();
+      this.batchRemoveSamplesProperty.set( samplesToRemove );
       this.sampleTimeProperty.reset();
     }
 
@@ -120,7 +128,7 @@ define( require => {
         }
       }
 
-      // remove oldest samples if we have collected too many
+      // old samples fade out if we have collected too many
       if ( this.limitNumberOfSamples && this.skaterSamples.length > this.maxNumberOfSamples ) {
         const numberToRemove = this.skaterSamples.length - this.maxNumberOfSamples;
         for ( let i = 0; i < numberToRemove; i++ ) {
@@ -131,11 +139,22 @@ define( require => {
         }
       }
 
-      // step all samples - use ObservableArray.forEach to do on a copy of the array because this may involve array
-      // modification
+      // update opacity of SkaterSamples and determine if it is time for them to be removed from model
+      const samplesToRemove = [];
       this.skaterSamples.forEach( sample => {
         sample.step( dt );
+
+        if ( sample.opacityProperty.get() < SkaterSample.MIN_OPACITY ) {
+          samplesToRemove.push( sample );
+          sample.removalEmitter.emit();
+        }
       } );
+
+      // for performance, we batch removal of SkaterSamples so that we can redraw once after many have been removed
+      // rather than redraw on each data point, see https://github.com/phetsims/energy-skate-park/issues/198
+      if ( samplesToRemove.length > 0 ) {
+        this.batchRemoveSamplesProperty.set( samplesToRemove );
+      }
 
       return updatedState;
     }

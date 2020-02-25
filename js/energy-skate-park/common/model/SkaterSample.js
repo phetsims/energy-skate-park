@@ -22,7 +22,7 @@ define( require => {
   const Vector2 = require( 'DOT/Vector2' );
 
   // constants
-  // inspect-able samples will fade out to this opacity before being fully removed from the model
+  // samples will fade out to this opacity before being fully removed from the model
   const MIN_OPACITY = 0.05;
 
   class SkaterSample {
@@ -109,10 +109,6 @@ define( require => {
     step( dt ) {
       if ( this._initiateRemove ) {
         this.opacityProperty.set( this.opacityProperty.get() * 0.95 );
-
-        if ( this.opacityProperty.get() < MIN_OPACITY ) {
-          this.removalEmitter.emit();
-        }
       }
 
       this.timeSinceAdded += dt;
@@ -133,6 +129,10 @@ define( require => {
       return this._initiateRemove;
     }
   }
+
+  // @public
+  // @static
+  SkaterSample.MIN_OPACITY = MIN_OPACITY;
 
   return energySkatePark.register( 'SkaterSample', SkaterSample );
 } );
