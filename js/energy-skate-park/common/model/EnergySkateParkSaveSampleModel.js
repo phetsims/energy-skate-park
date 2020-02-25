@@ -76,13 +76,30 @@ define( require => {
     /**
      * Clear all saved data immediately and prepare to save data again.
      * @public
-     * @returns {}
      */
     clearEnergyData() {
-      const samplesToRemove = this.skaterSamples.getArray().slice();
-      this.skaterSamples.clear();
-      this.batchRemoveSamplesProperty.set( samplesToRemove );
+      this.batchRemoveSamples( this.skaterSamples.getArray().slice() );
       this.sampleTimeProperty.reset();
+    }
+
+    /**
+     * SkaterSamples are removed from the model in batches for performance. This way we can remove many
+     * SkaterSamples and then update the view once after several are removed. The behavior of this sim
+     * is such that hundreds of SkaterSamples are frequencly removed at a time.
+     *
+     * Assumes that samplesToRemove is a sub-array of this.skaterSamples, in the right order.
+     *
+     * @public
+     * @param samplesToRemove
+     */
+    batchRemoveSamples( samplesToRemove ) {
+      this.batchRemoveSamplesProperty.set( samplesToRemove );
+
+      const indexOfFirstSample = this.skaterSamples.indexOf( samplesToRemove[ 0 ] );
+      this.skaterSamples.splice( indexOfFirstSample, samplesToRemove.length );
+
+      // broadcast that this batch of samples has been removed
+      this.batchRemoveSamplesProperty.set( samplesToRemove );
     }
 
     /**
@@ -114,13 +131,6 @@ define( require => {
         if ( !this.preventSampleSave && this.timeSinceSampleSave > this.saveSampleInterval ) {
           const newSample = new SkaterSample( updatedState, this.sampleTimeProperty.get() );
 
-          // listener that removes sample from list when it it time
-          const removalListener = () => {
-            newSample.removalEmitter.removeListener( removalListener );
-            this.skaterSamples.remove( newSample );
-          };
-          newSample.removalEmitter.addListener( removalListener );
-
           this.skaterSamples.add( newSample );
 
           this.timeSinceSampleSave = 0;
@@ -146,14 +156,13 @@ define( require => {
 
         if ( sample.opacityProperty.get() < SkaterSample.MIN_OPACITY ) {
           samplesToRemove.push( sample );
-          sample.removalEmitter.emit();
         }
       } );
 
       // for performance, we batch removal of SkaterSamples so that we can redraw once after many have been removed
       // rather than redraw on each data point, see https://github.com/phetsims/energy-skate-park/issues/198
       if ( samplesToRemove.length > 0 ) {
-        this.batchRemoveSamplesProperty.set( samplesToRemove );
+        this.batchRemoveSamples( samplesToRemove );
       }
 
       return updatedState;

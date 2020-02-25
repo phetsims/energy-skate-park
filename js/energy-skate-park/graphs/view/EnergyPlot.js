@@ -133,7 +133,8 @@ define( require => {
         const indexOfSample = model.skaterSamples.indexOf( closestSample );
 
         assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
-        model.skaterSamples.splice( indexOfSample, model.skaterSamples.length - indexOfSample );
+
+        model.batchRemoveSamples( model.skaterSamples.getArray().slice( indexOfSample ) );
       } );
 
       // calculate new range of plot when zooming in or out

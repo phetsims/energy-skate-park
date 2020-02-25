@@ -57,9 +57,6 @@ define( require => {
       // @public - the opacity of this skater sample, tied to visual representation
       this.opacityProperty = new NumberProperty( 1 );
 
-      // @public - emits an event when the skater sample has been removed from the model
-      this.removalEmitter = new Emitter();
-
       // @public - emits an event when this SkaterSample has updated in some way, like when energies change
       // due to a change in reference height
       this.updatedEmitter = new Emitter();
