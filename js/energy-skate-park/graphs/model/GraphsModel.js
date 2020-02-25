@@ -117,6 +117,15 @@ define( require => {
           this.preventSampleSave = false;
         }
       } );
+
+      // if plotting against position we want to clear data when skater returns, but it is useful to
+      // see previous data when plotting against time so don't clear in that case
+      this.skater.returnedEmitter.addListener( () => {
+        if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ) {
+          this.clearEnergyData();
+        }
+      } );
+
     }
 
     /**
