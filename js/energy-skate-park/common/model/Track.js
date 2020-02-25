@@ -815,8 +815,28 @@ define( require => {
           this.controlPoints[ i ].sourcePositionProperty.value = newPoint;
         }
       }
-
       this.updateSplines();
+
+      // It is possible that containing the control points has pushed a portion of the spline back
+      // underground, if that is the case bump them back above ground. But only do this if no control points
+      // are "snapping" as the spline *could* be underground  temporarily in this case
+      const anyControlPointsSnapping = _.some( this.controlPoints, point => point.snapTargetProperty.get() );
+      if ( !anyControlPointsSnapping ) {
+
+        const lowestY = this.getLowestY();
+        if ( lowestY < 0 ) {
+
+          // push the track above ground by an amount that isn't prone to precision errors, see
+          // https://github.com/phetsims/energy-skate-park/issues/191
+          const correction = lowestY - 0.001;
+
+          // translate updates splines for us
+          this.translate( 0, -correction );
+          assert && assert( this.getLowestY() >= 0, 'track should be above ground' );
+        }
+      }
+
+      // assert && assert( this.getLowestY() >= 0, 'track should be above ground' );
       this.updateEmitter.emit();
     }
 
