@@ -89,13 +89,13 @@ define( require => {
       }, options );
 
       const radius = 10;
-      const x = new Shape().moveTo( 0, 0 ).ellipticalArc( 0, 0, radius, radius, 0, -Math.PI / 2, 0, false ).lineTo( 0, 0 );
+      const arc = new Shape().moveTo( 0, 0 ).ellipticalArc( 0, 0, radius, radius, 0, -Math.PI / 2, 0, false ).lineTo( 0, 0 );
       return new Node( {
         tandem: tandem,
         children: [
           new Circle( radius, { fill: EnergySkateParkColorScheme.potentialEnergy, lineWidth: 0.5, stroke: 'black' } ),
-          new Path( x, {
-            tandem: tandem.createTandem( 'path' ), // TODO: What is this path for
+          new Path( arc, {
+            tandem: tandem.createTandem( 'kineticEnergyArc' ),
             fill: EnergySkateParkColorScheme.kineticEnergy, lineWidth: 0.5, stroke: 'black'
           } )
         ],

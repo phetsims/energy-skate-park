@@ -135,6 +135,8 @@ define( require => {
         assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
 
         model.batchRemoveSamples( model.skaterSamples.getArray().slice( indexOfSample ) );
+
+        this.setCursorValue( timeOnEnd );
       } );
 
       // calculate new range of plot when zooming in or out
@@ -202,13 +204,18 @@ define( require => {
 
       // remove a batch of of SkaterSamples, but only redraw once after all have been removed for performance
       model.batchRemoveSamplesProperty.lazyLink( samplesToRemove => {
+
+        // don't redraw until we have removed all points in the DynamicSeries
+        this.setWaitToRedraw( true );
         const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
         for ( let i = 0; i < samplesToRemove.length; i++ ) {
           const sampleToRemove = samplesToRemove[ i ];
           const independentVariable = plotTime ? sampleToRemove.time : sampleToRemove.position.x + 5;
 
-          this.forEachDataSeries( dataSeries => dataSeries.removePointAtX( independentVariable, false ) );
+          this.forEachDataSeries( dataSeries => dataSeries.removePointAtX( independentVariable ) );
         }
+
+        this.setWaitToRedraw( false );
         this.invalidateDataSeriesNodes();
       } );
     }

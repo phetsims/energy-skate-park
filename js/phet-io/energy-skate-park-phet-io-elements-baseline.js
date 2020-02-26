@@ -19436,20 +19436,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.opacityProperty": {
-      "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.path": {
+    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -19462,7 +19449,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.path.opacityProperty": {
+    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -19475,7 +19462,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.path.pickableProperty": {
+    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -19488,7 +19475,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.path.visibleProperty": {
+    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -19500,6 +19487,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
+    },
+    "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.opacityProperty": {
+      "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "NumberPropertyIO"
     },
     "energySkatePark.introScreen.view.introScreenView.controlPanel.visibilityControls.pieChartIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -29381,20 +29381,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.opacityProperty": {
-      "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.path": {
+    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -29407,7 +29394,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.path.opacityProperty": {
+    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -29420,7 +29407,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.path.pickableProperty": {
+    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -29433,7 +29420,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.path.visibleProperty": {
+    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -29445,6 +29432,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
+    },
+    "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.opacityProperty": {
+      "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "NumberPropertyIO"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.controlPanel.visibilityControls.pieChartIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
@@ -44578,20 +44578,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.opacityProperty": {
-      "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
-      "phetioDynamicElement": false,
-      "phetioEventType": "MODEL",
-      "phetioFeatured": false,
-      "phetioHighFrequency": false,
-      "phetioIsArchetype": false,
-      "phetioPlayback": false,
-      "phetioReadOnly": false,
-      "phetioState": true,
-      "phetioStudioControl": true,
-      "phetioTypeName": "NumberPropertyIO"
-    },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.path": {
+    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -44604,7 +44591,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.path.opacityProperty": {
+    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -44617,7 +44604,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.path.pickableProperty": {
+    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -44630,7 +44617,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.path.visibleProperty": {
+    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.kineticEnergyArc.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -44642,6 +44629,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
+    },
+    "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.opacityProperty": {
+      "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": false,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "NumberPropertyIO"
     },
     "energySkatePark.measureScreen.measureScreenView.controlPanel.visibilityControls.pieChartIcon.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
