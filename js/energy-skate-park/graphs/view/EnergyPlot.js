@@ -135,6 +135,8 @@ define( require => {
         assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
 
         model.batchRemoveSamples( model.skaterSamples.getArray().slice( indexOfSample ) );
+
+        this.setCursorValue( timeOnEnd );
       } );
 
       // calculate new range of plot when zooming in or out
