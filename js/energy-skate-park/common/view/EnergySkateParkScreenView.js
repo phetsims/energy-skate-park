@@ -137,8 +137,7 @@ define( require => {
       this.fixedLeft = null;
 
       // @private - Layers for nodes in the sim. The bottom layer contains the background and UI components that should
-      // be behind the animating skater and other draggable things, which are in the topLayer. See addToTopLayer()
-      // and addToBackLayer().
+      // be behind the animating skater and other draggable things, which are in the topLayer.
       this.bottomLayer = new Node();
       this.topLayer = new Node();
       this.children = [ this.bottomLayer, this.topLayer ];
@@ -534,7 +533,7 @@ define( require => {
     }
 
     /**
-     * Add a node to the front of the back layer (the end of this.backLayer children array). This layer is behind
+     * Add a node to the front of the bottom layer (the end of this.backLayer children array). This layer is behind
      * animating or movable things in the sim like the skater. This is useful for adding specific control-panel like
      * things in subtypes that should be behind the skater.
      * @protected
@@ -543,17 +542,6 @@ define( require => {
      */
     addToBottomLayer( node ) {
       this.bottomLayer.addChild( node );
-    }
-
-    /**
-     * Add a node to the front of the top layer (the end of this.topLayer children array). Anything added to this
-     * layer will be on top of the skater or other animating things.
-     * @protected
-     *
-     * @param {node} node
-     */
-    addToTopLayer( node ) {
-      this.topLayer.addChild( node );
     }
   }
 
