@@ -4,9 +4,9 @@
  * An EnergySkateParkTrackSetModel that can save SkaterSamples. SkaterSamples contain information about the physical
  * state of the skater at a point in time.
  *
- * Generally, it is up to the subtype to clear data at the correct time, as different presentations of this
- * data need to persist in different cases. But maxNumberOfSamples can be specified to keep things simple, and this
- * will only keep at most that number of samples at a time.
+ * Generally, it is up to the subtype of EnergySkateParkSaveSampleModel to clear data at the correct time, as different
+ * presentations of this data need to persist in different cases. But maxNumberOfSamples can be specified to keep
+ * at most that number of samples at a time.
  *
  * @author Jesse Greenberg
  */
@@ -39,8 +39,8 @@ define( require => {
         // like opacity = opacity * sampleFadeDecay
         sampleFadeDecay: 0.95,
 
-        // {number} - the maximum number of SkaterSamples saved by this model, to prevent from saving too many if we run without
-        // encountering a case that clears old samples
+        // {number} - the maximum number of SkaterSamples saved by this model, to prevent from saving too many if we
+        // run without encountering a case that clears old samples
         maxNumberOfSamples: 50
       }, options );
 

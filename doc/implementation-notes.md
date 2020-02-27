@@ -34,11 +34,14 @@ The EnergySkateParkModel is the entry point for skater motion. It manages transi
 in free fall, motion along the track, and motion along the ground. It steps the skater through each of these states.
 
 ### EnergySkateParkModel Subtypes
-There are two primary subtypes of EnergySkateParkModel's that are used across screens. [EnergySkateParkPlaygroundModel](https://github.com/phetsims/energy-skate-park/blob/master/js/common/model/EnergySkateParkPlaygroundModel.js)
+There are two primary subtypes of EnergySkateParkModel that are used across screens. [EnergySkateParkPlaygroundModel](https://github.com/phetsims/energy-skate-park/blob/master/js/common/model/EnergySkateParkPlaygroundModel.js)
 is an EnergySkateParkModel where custom tracks can be built by the user. This model provides a number of track segments that are fully
 interactive (see Tracks section below). [EnergySkateParkTrackSetModel](https://github.com/phetsims/energy-skate-park/blob/master/js/common/model/EnergySkateParkTrackSetModel.js)
 is an EnergySkateParkModel with a set of premade tracks that cannot be as freely customized. Subtypes of this model
 generally add a set of premade Tracks. The frequently reused tracks can be found in [PremadeTracks](https://github.com/phetsims/energy-skate-park/blob/master/js/common/model/PremadeTracks.js).
+
+[EnergySkateParkSaveSampleModel](https://github.com/phetsims/energy-skate-park/blob/master/js/common/model/EnergySkateParkSaveSampleModel.js) is a model which saves samples of SkaterState data
+in SkaterSamples to be presented in some way to the user.
 
 ### Tracks
 Tracks are composed of [ControlPoint](https://github.com/phetsims/energy-skate-park/blob/master/js/common/model/ControlPoint.js)s and
