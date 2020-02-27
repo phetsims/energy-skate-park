@@ -3,7 +3,8 @@
 /**
  * Data structure for a control point, which allows the user to change the track shape in the 'playground' screen.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';
@@ -41,7 +42,7 @@ class ControlPoint extends PhetioObject {
       // when the track is bumped above ground, in model coordinates
       limitBounds: null,
 
-      tandem: required( Tandem.REQUIRED ),
+      tandem: required( Tandem.REQUIRED ), // REVIEW: It seems odd to have required(REQUIRED)
       phetioType: ControlPointIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
     }, options );
@@ -55,8 +56,8 @@ class ControlPoint extends PhetioObject {
     // @public (read-only) {boolean} - see options for information
     this.draggable = options.draggable;
 
-    // @public (phet-io)
-    this.controlPointTandem = tandem;
+    // @public (phet-io) {Tandem}
+    this.controlPointTandem = tandem; // REVIEW - this is probably unnecessary, because PhetioObject.tandem already exists
 
     // @public - where it would be if it hadn't snapped to another point during dragging
     this.sourcePositionProperty = new Vector2Property( new Vector2( x, y ), {
@@ -68,7 +69,7 @@ class ControlPoint extends PhetioObject {
     this.snapTargetProperty = new Property( null, {
       tandem: tandem.createTandem( 'snapTargetProperty' ),
       phetioType: PropertyIO( NullableIO( ControlPointIO ) ),
-      phetioState: options.phetioState // in state only if parent is
+      phetioState: options.phetioState // in state only if parent is // REVIEW: does parent mean "track this point is in"?
     } );
 
     // Where it is shown on the screen.  Same as sourcePosition (if not snapped) or snapTarget.position (if snapped).
@@ -76,9 +77,7 @@ class ControlPoint extends PhetioObject {
     // connection is possible
     // @public {Vector2}
     this.positionProperty = new DerivedProperty( [ this.sourcePositionProperty, this.snapTargetProperty ],
-      ( sourcePosition, snapTarget ) => {
-        return snapTarget ? snapTarget.positionProperty.value : sourcePosition;
-      }, {
+      ( sourcePosition, snapTarget ) => snapTarget ? snapTarget.positionProperty.value : sourcePosition, {
         tandem: tandem.createTandem( 'positionProperty' ),
         phetioType: DerivedPropertyIO( Vector2IO ),
         phetioState: options.phetioState
@@ -126,7 +125,6 @@ class ControlPoint extends PhetioObject {
       tandem: tandem
     } );
   }
-
 }
 
 energySkatePark.register( 'ControlPoint', ControlPoint );
