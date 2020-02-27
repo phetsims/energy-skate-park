@@ -6,70 +6,67 @@
  *
  * @author Jesse Greenberg
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const CanvasNode = require( 'SCENERY/nodes/CanvasNode' );
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
+import CanvasNode from '../../../../../scenery/js/nodes/CanvasNode.js';
+import energySkatePark from '../../../energySkatePark.js';
+import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 
-  // constants
-  const SAMPLE_RADIUS = 3;
+// constants
+const SAMPLE_RADIUS = 3;
 
-  class SkaterSamplesCanvasNode extends CanvasNode {
+class SkaterSamplesCanvasNode extends CanvasNode {
 
-    /**
-     * @param {MeasureModel} model
-     * @param {ModelViewTransform2} modelViewTransform
-     */
-    constructor( model, modelViewTransform ) {
-      super();
+  /**
+   * @param {MeasureModel} model
+   * @param {ModelViewTransform2} modelViewTransform
+   */
+  constructor( model, modelViewTransform ) {
+    super();
 
-      // @private
-      this.model = model;
-      this.modelViewTransform = modelViewTransform;
+    // @private
+    this.model = model;
+    this.modelViewTransform = modelViewTransform;
 
-      this.model.availableModelBoundsProperty.link( modelBounds => {
-        this.canvasBounds = this.modelViewTransform.modelToViewBounds( modelBounds );
+    this.model.availableModelBoundsProperty.link( modelBounds => {
+      this.canvasBounds = this.modelViewTransform.modelToViewBounds( modelBounds );
 
-        // repaint in case we are paused
-        this.invalidatePaint();
-      } );
-    }
-
-    /**
-     * Paints the canvas node.
-     *
-     * @param {CanvasRenderingContext2D} context
-     */
-    paintCanvas( context ) {
-      for ( let i = 0; i < this.model.skaterSamples.length; i++ ) {
-        const sample = this.model.skaterSamples.get( i );
-        const viewPosition = this.modelViewTransform.modelToViewPosition( sample.position );
-
-        context.beginPath();
-        context.arc( viewPosition.x, viewPosition.y, SAMPLE_RADIUS, 0, 2 * Math.PI );
-
-        const alpha = sample.opacityProperty.get();
-
-        context.fillStyle = EnergySkateParkColorScheme.pathFill.withAlpha( alpha ).toCSS();
-        context.strokeStyle = EnergySkateParkColorScheme.pathStroke.withAlpha( alpha ).toCSS();
-
-        context.fill();
-        context.stroke();
-      }
-    }
-
-    /**
-     * Repaint in the animation frame if playing.
-     *
-     * @param {number} dt - in seconds
-     */
-    step( dt ) {
+      // repaint in case we are paused
       this.invalidatePaint();
+    } );
+  }
+
+  /**
+   * Paints the canvas node.
+   *
+   * @param {CanvasRenderingContext2D} context
+   */
+  paintCanvas( context ) {
+    for ( let i = 0; i < this.model.skaterSamples.length; i++ ) {
+      const sample = this.model.skaterSamples.get( i );
+      const viewPosition = this.modelViewTransform.modelToViewPosition( sample.position );
+
+      context.beginPath();
+      context.arc( viewPosition.x, viewPosition.y, SAMPLE_RADIUS, 0, 2 * Math.PI );
+
+      const alpha = sample.opacityProperty.get();
+
+      context.fillStyle = EnergySkateParkColorScheme.pathFill.withAlpha( alpha ).toCSS();
+      context.strokeStyle = EnergySkateParkColorScheme.pathStroke.withAlpha( alpha ).toCSS();
+
+      context.fill();
+      context.stroke();
     }
   }
 
-  return energySkatePark.register( 'SkaterSamplesCanvasNode', SkaterSamplesCanvasNode );
-} );
+  /**
+   * Repaint in the animation frame if playing.
+   *
+   * @param {number} dt - in seconds
+   */
+  step( dt ) {
+    this.invalidatePaint();
+  }
+}
+
+energySkatePark.register( 'SkaterSamplesCanvasNode', SkaterSamplesCanvasNode );
+export default SkaterSamplesCanvasNode;

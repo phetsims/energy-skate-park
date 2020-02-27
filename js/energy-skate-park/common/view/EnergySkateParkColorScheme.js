@@ -5,49 +5,45 @@
  *
  * @author Sam Reid
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const Color = require( 'SCENERY/util/Color' );
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
+import PhetColorScheme from '../../../../../scenery-phet/js/PhetColorScheme.js';
+import Color from '../../../../../scenery/js/util/Color.js';
+import energySkatePark from '../../../energySkatePark.js';
 
-  const EnergySkateParkColorScheme = {
+const EnergySkateParkColorScheme = {
 
-    // Use color instances here to prevent parsing these values multiple times, luckily PhetColorScheme also
-    // uses Color instances
-    kineticEnergy: PhetColorScheme.KINETIC_ENERGY,
-    potentialEnergy: PhetColorScheme.GRAVITATIONAL_POTENTIAL_ENERGY,
-    thermalEnergy: PhetColorScheme.HEAT_THERMAL_ENERGY,
-    totalEnergy: PhetColorScheme.TOTAL_ENERGY,
+  // Use color instances here to prevent parsing these values multiple times, luckily PhetColorScheme also
+  // uses Color instances
+  kineticEnergy: PhetColorScheme.KINETIC_ENERGY,
+  potentialEnergy: PhetColorScheme.GRAVITATIONAL_POTENTIAL_ENERGY,
+  thermalEnergy: PhetColorScheme.HEAT_THERMAL_ENERGY,
+  totalEnergy: PhetColorScheme.TOTAL_ENERGY,
 
-    // fill of circles that show the skater path
-    pathFill: new Color( 220, 175, 250 ),
-    pathStroke: new Color( 'black' ),
-    haloFill: new Color( 225, 231, 86, 0.75 ),
+  // fill of circles that show the skater path
+  pathFill: new Color( 220, 175, 250 ),
+  pathStroke: new Color( 'black' ),
+  haloFill: new Color( 225, 231, 86, 0.75 ),
 
-    // associated with the Skater to represent position of the important particle coordinate
-    particleCircle: 'red',
+  // associated with the Skater to represent position of the important particle coordinate
+  particleCircle: 'red',
 
-    // colors for the Track
-    roadFill: 'gray',
-    roadLine: 'black',
+  // colors for the Track
+  roadFill: 'gray',
+  roadLine: 'black',
 
-    // colors for the reference height line
-    referenceLineFill: 'rgb(74,133,208)',
-    referenceLineStroke: 'black',
+  // colors for the reference height line
+  referenceLineFill: 'rgb(74,133,208)',
+  referenceLineStroke: 'black',
 
-    // color for the reference line arrow
-    referenceArrowFill: new Color( 254, 240, 53 ),
+  // color for the reference line arrow
+  referenceArrowFill: new Color( 254, 240, 53 ),
 
-    panelFill: new Color( '#F0F0F0' ),
+  panelFill: new Color( '#F0F0F0' ),
 
-    // surrounds text for better visibility
-    transparentPanelFill: new Color( 255, 255, 255, 0.5 )
-  };
+  // surrounds text for better visibility
+  transparentPanelFill: new Color( 255, 255, 255, 0.5 )
+};
 
-  energySkatePark.register( 'EnergySkateParkColorScheme', EnergySkateParkColorScheme );
+energySkatePark.register( 'EnergySkateParkColorScheme', EnergySkateParkColorScheme );
 
-  return EnergySkateParkColorScheme;
-} );
+export default EnergySkateParkColorScheme;

@@ -6,33 +6,30 @@
  *
  * @author Jesse Greenberg
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkVisibilityControls' );
-  const Panel = require( 'SUN/Panel' );
+import Panel from '../../../../../sun/js/Panel.js';
+import energySkatePark from '../../../energySkatePark.js';
+import EnergySkateParkVisibilityControls from '../../common/view/EnergySkateParkVisibilityControls.js';
 
-  class GraphsVisibilityControls extends Panel {
+class GraphsVisibilityControls extends Panel {
 
-    /**
-     * @param {GraphsModel} model
-     * @param {GraphsScreenView} screenView
-     * @param {Tandem} tandem
-     * @param {Object} [options]
-     */
-    constructor( model, tandem, options ) {
+  /**
+   * @param {GraphsModel} model
+   * @param {GraphsScreenView} screenView
+   * @param {Tandem} tandem
+   * @param {Object} [options]
+   */
+  constructor( model, tandem, options ) {
 
-      const content = new EnergySkateParkVisibilityControls( model, tandem, {
-        showPieChartCheckbox: false,
-        showSpeedCheckbox: false,
-        showReferenceHeightCheckbox: true
-      } );
+    const content = new EnergySkateParkVisibilityControls( model, tandem, {
+      showPieChartCheckbox: false,
+      showSpeedCheckbox: false,
+      showReferenceHeightCheckbox: true
+    } );
 
-      super( content, options );
-    }
+    super( content, options );
   }
+}
 
-  return energySkatePark.register( 'GraphsVisibilityControls', GraphsVisibilityControls );
-} );
+energySkatePark.register( 'GraphsVisibilityControls', GraphsVisibilityControls );
+export default GraphsVisibilityControls;

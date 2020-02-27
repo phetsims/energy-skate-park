@@ -4,32 +4,29 @@
  * A NumberControl that controls the skater mass Property of energy skate park.
  * @author Jesse Greenberg
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const PhysicalNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PhysicalNumberControl' );
+import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkatePark from '../../../energySkatePark.js';
+import PhysicalNumberControl from './PhysicalNumberControl.js';
 
-  // strings
-  const controlsMassString = require( 'string!ENERGY_SKATE_PARK/controls.mass' );
-  const massKilogramsPatternString = require( 'string!ENERGY_SKATE_PARK/massKilogramsPattern' );
+const controlsMassString = energySkateParkStrings.controls.mass;
+const massKilogramsPatternString = energySkateParkStrings.massKilogramsPattern;
 
-  class MassNumberControl extends PhysicalNumberControl {
+class MassNumberControl extends PhysicalNumberControl {
 
-    /**
-     * @param {NumberProperty} massProperty
-     * @param {Range} massRange
-     * @param {Tandem} tandem
-     */
-    constructor( massProperty, massRange, tandem ) {
-      super( controlsMassString, massProperty, massRange, tandem, {
-        numberDisplayOptions: {
-          valuePattern: massKilogramsPatternString
-        }
-      } );
-    }
+  /**
+   * @param {NumberProperty} massProperty
+   * @param {Range} massRange
+   * @param {Tandem} tandem
+   */
+  constructor( massProperty, massRange, tandem ) {
+    super( controlsMassString, massProperty, massRange, tandem, {
+      numberDisplayOptions: {
+        valuePattern: massKilogramsPatternString
+      }
+    } );
   }
+}
 
-  return energySkatePark.register( 'MassNumberControl', MassNumberControl );
-} );
+energySkatePark.register( 'MassNumberControl', MassNumberControl );
+export default MassNumberControl;

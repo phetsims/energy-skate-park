@@ -5,42 +5,39 @@
  *
  * @author Sam Reid
  */
-define( require => {
-  'use strict';
 
-  const EnergySkateParkSim = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/EnergySkateParkSim' );
-  const SimLauncher = require( 'JOIST/SimLauncher' );
-  const Tandem = require( 'TANDEM/Tandem' );
-  const IntroScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/intro/IntroScreen' );
-  const GraphsScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/GraphsScreen' );
-  const LabScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/lab/LabScreen' );
-  const MeasureScreen = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/MeasureScreen' );
+import SimLauncher from '../../joist/js/SimLauncher.js';
+import '../../scenery/js/util/Color.js';
+import Tandem from '../../tandem/js/Tandem.js';
+import energySkateParkStrings from './energy-skate-park-strings.js';
+import EnergySkateParkSim from './energy-skate-park/common/EnergySkateParkSim.js';
+import GraphsScreen from './energy-skate-park/graphs/GraphsScreen.js';
+import IntroScreen from './energy-skate-park/intro/IntroScreen.js';
+import LabScreen from './energy-skate-park/lab/LabScreen.js';
+import MeasureScreen from './energy-skate-park/measure/MeasureScreen.js';
 
-  // Fix a circular loading problem when using this in EnergySkateParkColorScheme
-  require( 'SCENERY/util/Color' );
+// Fix a circular loading problem when using this in EnergySkateParkColorScheme
 
-  // strings
-  const energySkateParkTitleString = require( 'string!ENERGY_SKATE_PARK/energy-skate-park.title' );
+const energySkateParkTitleString = energySkateParkStrings[ 'energy-skate-park' ].title;
 
-  // constants
-  const tandem = Tandem.ROOT;
+// constants
+const tandem = Tandem.ROOT;
 
-  SimLauncher.launch( () => {
-    const screens = [
-      new IntroScreen( tandem.createTandem( 'introScreen' ) ),
-      new MeasureScreen( tandem.createTandem( 'measureScreen' ) ),
-      new GraphsScreen( tandem.createTandem( 'graphsScreen' ) ),
-      new LabScreen( tandem.createTandem( 'labScreen' ) )
-    ];
+SimLauncher.launch( () => {
+  const screens = [
+    new IntroScreen( tandem.createTandem( 'introScreen' ) ),
+    new MeasureScreen( tandem.createTandem( 'measureScreen' ) ),
+    new GraphsScreen( tandem.createTandem( 'graphsScreen' ) ),
+    new LabScreen( tandem.createTandem( 'labScreen' ) )
+  ];
 
-    new EnergySkateParkSim( energySkateParkTitleString, screens, tandem, {
-      credits: {
-        leadDesign: 'Ariel Paul, Noah Podolefsky, Sam Reid',
-        softwareDevelopment: 'Sam Reid',
-        team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Emily B. Moore, Kathy Perkins',
-        graphicArts: 'Sharon Siman-Tov, Amanda McGarry, Megan Lai',
-        qualityAssurance: 'Steele Dalton, Oliver Orejola, Arnab Purkayastha, Bryan Yoelin'
-      }
-    } ).start();
-  } );
+  new EnergySkateParkSim( energySkateParkTitleString, screens, tandem, {
+    credits: {
+      leadDesign: 'Ariel Paul, Noah Podolefsky, Sam Reid',
+      softwareDevelopment: 'Sam Reid',
+      team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Emily B. Moore, Kathy Perkins',
+      graphicArts: 'Sharon Siman-Tov, Amanda McGarry, Megan Lai',
+      qualityAssurance: 'Steele Dalton, Oliver Orejola, Arnab Purkayastha, Bryan Yoelin'
+    }
+  } ).start();
 } );

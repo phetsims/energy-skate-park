@@ -4,39 +4,36 @@
  * A NumberControl that controls the gravity Property of energy skate park.
  * @author Jesse Greenberg
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const Constants = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/Constants' );
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const merge = require( 'PHET_CORE/merge' );
-  const PhysicalNumberControl = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/PhysicalNumberControl' );
-  const Range = require( 'DOT/Range' );
+import Range from '../../../../../dot/js/Range.js';
+import merge from '../../../../../phet-core/js/merge.js';
+import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkatePark from '../../../energySkatePark.js';
+import Constants from '../Constants.js';
+import PhysicalNumberControl from './PhysicalNumberControl.js';
 
-  // strings
-  const controlsGravityString = require( 'string!ENERGY_SKATE_PARK/controls.gravity' );
-  const gravityMetersPerSecondSquaredPatternString = require( 'string!ENERGY_SKATE_PARK/gravityMetersPerSecondSquaredPattern' );
+const controlsGravityString = energySkateParkStrings.controls.gravity;
+const gravityMetersPerSecondSquaredPatternString = energySkateParkStrings.gravityMetersPerSecondSquaredPattern;
 
-  class GravityNumberControl extends PhysicalNumberControl {
+class GravityNumberControl extends PhysicalNumberControl {
 
-    /**
-     * @param {NumberProperty} property
-     * @param {Tandem} tandem
-     * @param {Object} [options]
-     */
-    constructor( property, tandem, options ) {
+  /**
+   * @param {NumberProperty} property
+   * @param {Tandem} tandem
+   * @param {Object} [options]
+   */
+  constructor( property, tandem, options ) {
 
-      options = merge( {
-        decimalPlaces: 1,
-        numberDisplayOptions: {
-          valuePattern: gravityMetersPerSecondSquaredPatternString,
-          useRichText: true // for the superscript on units
-        }
-      }, options );
-      super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, options );
-    }
+    options = merge( {
+      decimalPlaces: 1,
+      numberDisplayOptions: {
+        valuePattern: gravityMetersPerSecondSquaredPatternString,
+        useRichText: true // for the superscript on units
+      }
+    }, options );
+    super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, options );
   }
+}
 
-  return energySkatePark.register( 'GravityNumberControl', GravityNumberControl );
-} );
+energySkatePark.register( 'GravityNumberControl', GravityNumberControl );
+export default GravityNumberControl;

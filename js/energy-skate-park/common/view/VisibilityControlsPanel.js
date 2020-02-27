@@ -6,38 +6,35 @@
  *
  * @author Jesse Greenberg
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const Panel = require( 'SUN/Panel' );
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkVisibilityControls = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkVisibilityControls' );
+import Panel from '../../../../../sun/js/Panel.js';
+import energySkatePark from '../../../energySkatePark.js';
+import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
 
-  class VisibilityControlsPanel extends Panel {
+class VisibilityControlsPanel extends Panel {
 
-    /**
-     * @param {EnergySkateParkModel} model
-     * @param {Tandem} tandem
-     * @param {Object} [options]
-     */
-    constructor( model, tandem, options ) {
-      const content = new EnergySkateParkVisibilityControls( model, tandem, {
-        showPieChartCheckbox: false,
-        showSpeedCheckbox: false,
-        showGridCheckbox: true,
-        showReferenceHeightCheckbox: true,
+  /**
+   * @param {EnergySkateParkModel} model
+   * @param {Tandem} tandem
+   * @param {Object} [options]
+   */
+  constructor( model, tandem, options ) {
+    const content = new EnergySkateParkVisibilityControls( model, tandem, {
+      showPieChartCheckbox: false,
+      showSpeedCheckbox: false,
+      showGridCheckbox: true,
+      showReferenceHeightCheckbox: true,
 
-        itemOptions: {
+      itemOptions: {
 
-          // i18n, smaller than default so that long labels don't occlude the grid labels in the GridNode
-          labelMaxWidth: 75
-        }
-      } );
+        // i18n, smaller than default so that long labels don't occlude the grid labels in the GridNode
+        labelMaxWidth: 75
+      }
+    } );
 
-      super( content, options );
-    }
+    super( content, options );
   }
+}
 
-  return energySkatePark.register( 'VisibilityControlsPanel', VisibilityControlsPanel );
-} );
+energySkatePark.register( 'VisibilityControlsPanel', VisibilityControlsPanel );
+export default VisibilityControlsPanel;

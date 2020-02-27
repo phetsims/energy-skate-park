@@ -5,45 +5,40 @@
  *
  * @author Jesse Greenberg
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const GraphsModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/model/GraphsModel' );
-  const GraphsScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/graphs/view/GraphsScreenView' );
-  const Image = require( 'SCENERY/nodes/Image' );
-  const merge = require( 'PHET_CORE/merge' );
-  const Screen = require( 'JOIST/Screen' );
+import Screen from '../../../../joist/js/Screen.js';
+import merge from '../../../../phet-core/js/merge.js';
+import Image from '../../../../scenery/js/nodes/Image.js';
+import iconFrictionHomescreen from '../../../images/icon-friction-homescreen_png.js';
+import iconFrictionNavbar from '../../../images/icon-friction-navbar_png.js';
+import energySkateParkStrings from '../../energy-skate-park-strings.js';
+import energySkatePark from '../../energySkatePark.js';
+import GraphsModel from './model/GraphsModel.js';
+import GraphsScreenView from './view/GraphsScreenView.js';
 
-  // images
-  const iconFrictionHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-friction-homescreen.png' );
-  const iconFrictionNavbar = require( 'image!ENERGY_SKATE_PARK/icon-friction-navbar.png' );
+const screenGraphsString = energySkateParkStrings.screen.graphs;
 
-  // strings
-  const screenGraphsString = require( 'string!ENERGY_SKATE_PARK/screen.graphs' );
+class GraphsScreen extends Screen {
 
-  class GraphsScreen extends Screen {
+  /**
+   * @param {Tandem} tandem
+   * @constructor
+   */
+  constructor( tandem ) {
+    var options = merge( {
+      name: screenGraphsString,
+      homeScreenIcon: new Image( iconFrictionHomescreen ),
+      navigationBarIcon: new Image( iconFrictionNavbar ),
+      tandem: tandem
+    }, options );
 
-    /**
-     * @param {Tandem} tandem
-     * @constructor
-     */
-    constructor( tandem ) {
-      var options = merge( {
-        name: screenGraphsString,
-        homeScreenIcon: new Image( iconFrictionHomescreen ),
-        navigationBarIcon: new Image( iconFrictionNavbar ),
-        tandem: tandem
-      }, options );
-
-      super(
-        () => new GraphsModel( tandem.createTandem( 'graphsModel' ) ),
-        model => new GraphsScreenView( model, tandem.createTandem( 'graphsScreenView' ) ),
-        options
-      );
-    }
+    super(
+      () => new GraphsModel( tandem.createTandem( 'graphsModel' ) ),
+      model => new GraphsScreenView( model, tandem.createTandem( 'graphsScreenView' ) ),
+      options
+    );
   }
+}
 
-  return energySkatePark.register( 'GraphsScreen', GraphsScreen );
-} );
+energySkatePark.register( 'GraphsScreen', GraphsScreen );
+export default GraphsScreen;

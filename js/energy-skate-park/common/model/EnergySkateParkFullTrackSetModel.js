@@ -7,26 +7,22 @@
  * @author Jesse Greenberg
  */
 
-define( require => {
-  'use strict';
+import energySkatePark from '../../../energySkatePark.js';
+import EnergySkateParkTrackSetModel from './EnergySkateParkTrackSetModel.js';
 
-  // modules
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkTrackSetModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkTrackSetModel' );
+class EnergySkateParkFullTrackSetModel extends EnergySkateParkTrackSetModel {
 
-  class EnergySkateParkFullTrackSetModel extends EnergySkateParkTrackSetModel {
+  /**
+   * @param {Tandem} tandem
+   * @param {Object} [options]
+   */
+  constructor( tandem, options ) {
+    super( tandem, options );
 
-    /**
-     * @param {Tandem} tandem
-     * @param {Object} [options]
-     */
-    constructor( tandem, options ) {
-      super( tandem, options );
-
-      const trackSet = EnergySkateParkTrackSetModel.createFullTrackSet( this, tandem );
-      this.addTrackSet( trackSet );
-    }
+    const trackSet = EnergySkateParkTrackSetModel.createFullTrackSet( this, tandem );
+    this.addTrackSet( trackSet );
   }
+}
 
-  return energySkatePark.register( 'EnergySkateParkFullTrackSetModel', EnergySkateParkFullTrackSetModel );
-} );
+energySkatePark.register( 'EnergySkateParkFullTrackSetModel', EnergySkateParkFullTrackSetModel );
+export default EnergySkateParkFullTrackSetModel;

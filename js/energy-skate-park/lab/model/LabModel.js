@@ -5,27 +5,23 @@
  * @author Jesse Greenberg
  */
 
-define( require => {
-  'use strict';
+import Vector2 from '../../../../../dot/js/Vector2.js';
+import energySkatePark from '../../../energySkatePark.js';
+import EnergySkateParkPlaygroundModel from '../../common/model/EnergySkateParkPlaygroundModel.js';
 
-  // modules
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkPlaygroundModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/EnergySkateParkPlaygroundModel' );
-  const Vector2 = require( 'DOT/Vector2' );
+class LabModel extends EnergySkateParkPlaygroundModel {
 
-  class LabModel extends EnergySkateParkPlaygroundModel {
+  /**
+   * @param {Tandem} tandem
+   */
+  constructor( tandem ) {
+    super( tandem, {
 
-    /**
-     * @param {Tandem} tandem
-     */
-    constructor( tandem ) {
-      super( tandem, {
-
-        // Draggable tracks in the lab screen start at a different position in the "Lab" screen
-        initialTracksOffsetVector: new Vector2( -2, -0.75 )
-      } );
-    }
+      // Draggable tracks in the lab screen start at a different position in the "Lab" screen
+      initialTracksOffsetVector: new Vector2( -2, -0.75 )
+    } );
   }
+}
 
-  return energySkatePark.register( 'LabModel', LabModel );
-} );
+energySkatePark.register( 'LabModel', LabModel );
+export default LabModel;

@@ -6,48 +6,45 @@
  *
  * @author Jesse Greenberg
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const EnergySkateParkColorScheme = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/view/EnergySkateParkColorScheme' );
-  const merge = require( 'PHET_CORE/merge' );
-  const Panel = require( 'SUN/Panel' );
-  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
-  const Text = require( 'SCENERY/nodes/Text' );
+import merge from '../../../../../phet-core/js/merge.js';
+import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
+import Text from '../../../../../scenery/js/nodes/Text.js';
+import Panel from '../../../../../sun/js/Panel.js';
+import energySkatePark from '../../../energySkatePark.js';
+import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-  class TextPanel extends Panel {
+class TextPanel extends Panel {
 
-    /**
-     * @param {string} textContent - text to fill the panel
-     * @param {Object} [options]
-     */
-    constructor( textContent, options ) {
+  /**
+   * @param {string} textContent - text to fill the panel
+   * @param {Object} [options]
+   */
+  constructor( textContent, options ) {
 
-      options = merge( {
+    options = merge( {
 
-        // Text options
-        font: new PhetFont( 10 ),
-        textMaxWidth: 150,
+      // Text options
+      font: new PhetFont( 10 ),
+      textMaxWidth: 150,
 
-        // panel options
-        fill: EnergySkateParkColorScheme.transparentPanelFill,
-        cornerRadius: 0,
-        lineWidth: 0,
-        xMargin: 2,
-        yMargin: 0,
-        resize: false // assumes the text content is static
-      }, options );
+      // panel options
+      fill: EnergySkateParkColorScheme.transparentPanelFill,
+      cornerRadius: 0,
+      lineWidth: 0,
+      xMargin: 2,
+      yMargin: 0,
+      resize: false // assumes the text content is static
+    }, options );
 
-      const text = new Text( textContent, {
-        font: options.font,
-        maxWidth: options.textMaxWidth
-      } );
+    const text = new Text( textContent, {
+      font: options.font,
+      maxWidth: options.textMaxWidth
+    } );
 
-      super( text, options );
-    }
+    super( text, options );
   }
+}
 
-  return energySkatePark.register( 'TextPanel', TextPanel );
-} );
+energySkatePark.register( 'TextPanel', TextPanel );
+export default TextPanel;

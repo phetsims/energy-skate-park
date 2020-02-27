@@ -5,132 +5,129 @@
  *
  * @author Sam Reid
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const BooleanProperty = require( 'AXON/BooleanProperty' );
-  const ControlPointIO = require( 'ENERGY_SKATE_PARK/energy-skate-park/common/model/ControlPointIO' );
-  const DerivedProperty = require( 'AXON/DerivedProperty' );
-  const DerivedPropertyIO = require( 'AXON/DerivedPropertyIO' );
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const merge = require( 'PHET_CORE/merge' );
-  const NullableIO = require( 'TANDEM/types/NullableIO' );
-  const PhetioObject = require( 'TANDEM/PhetioObject' );
-  const Property = require( 'AXON/Property' );
-  const PropertyIO = require( 'AXON/PropertyIO' );
-  const required = require( 'PHET_CORE/required' );
-  const Tandem = require( 'TANDEM/Tandem' );
-  const Vector2 = require( 'DOT/Vector2' );
-  const Vector2IO = require( 'DOT/Vector2IO' );
-  const Vector2Property = require( 'DOT/Vector2Property' );
+import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';
+import DerivedProperty from '../../../../../axon/js/DerivedProperty.js';
+import DerivedPropertyIO from '../../../../../axon/js/DerivedPropertyIO.js';
+import Property from '../../../../../axon/js/Property.js';
+import PropertyIO from '../../../../../axon/js/PropertyIO.js';
+import Vector2 from '../../../../../dot/js/Vector2.js';
+import Vector2IO from '../../../../../dot/js/Vector2IO.js';
+import Vector2Property from '../../../../../dot/js/Vector2Property.js';
+import merge from '../../../../../phet-core/js/merge.js';
+import required from '../../../../../phet-core/js/required.js';
+import PhetioObject from '../../../../../tandem/js/PhetioObject.js';
+import Tandem from '../../../../../tandem/js/Tandem.js';
+import NullableIO from '../../../../../tandem/js/types/NullableIO.js';
+import energySkatePark from '../../../energySkatePark.js';
+import ControlPointIO from './ControlPointIO.js';
 
-  class ControlPoint extends PhetioObject {
+class ControlPoint extends PhetioObject {
 
-    /**
-     * @param x
-     * @param y
-     * @param {Object} [options]
-     * @constructor
-     */
-    constructor( x, y, options ) {
-      options = merge( {
+  /**
+   * @param x
+   * @param y
+   * @param {Object} [options]
+   * @constructor
+   */
+  constructor( x, y, options ) {
+    options = merge( {
 
-        // {boolean} - can this control point specifically be dragged? In order to be draggable, the track itself must
-        // be "configurable" and this must be true.
-        draggable: true,
+      // {boolean} - can this control point specifically be dragged? In order to be draggable, the track itself must
+      // be "configurable" and this must be true.
+      draggable: true,
 
-        // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging, or
-        // when the track is bumped above ground, in model coordinates
-        limitBounds: null,
+      // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging, or
+      // when the track is bumped above ground, in model coordinates
+      limitBounds: null,
 
-        tandem: required( Tandem.REQUIRED ),
-        phetioType: ControlPointIO,
-        phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
-      }, options );
-      const tandem = options.tandem;
+      tandem: required( Tandem.REQUIRED ),
+      phetioType: ControlPointIO,
+      phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
+    }, options );
+    const tandem = options.tandem;
 
-      super( options );
+    super( options );
 
-      // @public (read-only) {Bounds2|null} - see option for information
-      this.limitBounds = options.limitBounds;
+    // @public (read-only) {Bounds2|null} - see option for information
+    this.limitBounds = options.limitBounds;
 
-      // @public (read-only) {boolean} - see options for information
-      this.draggable = options.draggable;
+    // @public (read-only) {boolean} - see options for information
+    this.draggable = options.draggable;
 
-      // @public (phet-io)
-      this.controlPointTandem = tandem;
+    // @public (phet-io)
+    this.controlPointTandem = tandem;
 
-      // @public - where it would be if it hadn't snapped to another point during dragging
-      this.sourcePositionProperty = new Vector2Property( new Vector2( x, y ), {
-        tandem: tandem.createTandem( 'sourcePositionProperty' ),
-        phetioState: options.phetioState // in state only if parent is
+    // @public - where it would be if it hadn't snapped to another point during dragging
+    this.sourcePositionProperty = new Vector2Property( new Vector2( x, y ), {
+      tandem: tandem.createTandem( 'sourcePositionProperty' ),
+      phetioState: options.phetioState // in state only if parent is
+    } );
+
+    // @public {ControlPoint} - Another ControlPoint that this ControlPoint is going to 'snap' to if released.
+    this.snapTargetProperty = new Property( null, {
+      tandem: tandem.createTandem( 'snapTargetProperty' ),
+      phetioType: PropertyIO( NullableIO( ControlPointIO ) ),
+      phetioState: options.phetioState // in state only if parent is
+    } );
+
+    // Where it is shown on the screen.  Same as sourcePosition (if not snapped) or snapTarget.position (if snapped).
+    // Snapping means temporarily connecting to an adjacent open point before the tracks are joined, to indicate that a
+    // connection is possible
+    // @public {Vector2}
+    this.positionProperty = new DerivedProperty( [ this.sourcePositionProperty, this.snapTargetProperty ],
+      ( sourcePosition, snapTarget ) => {
+        return snapTarget ? snapTarget.positionProperty.value : sourcePosition;
+      }, {
+        tandem: tandem.createTandem( 'positionProperty' ),
+        phetioType: DerivedPropertyIO( Vector2IO ),
+        phetioState: options.phetioState
       } );
 
-      // @public {ControlPoint} - Another ControlPoint that this ControlPoint is going to 'snap' to if released.
-      this.snapTargetProperty = new Property( null, {
-        tandem: tandem.createTandem( 'snapTargetProperty' ),
-        phetioType: PropertyIO( NullableIO( ControlPointIO ) ),
-        phetioState: options.phetioState // in state only if parent is
-      } );
+    // @public {BooleanProperty} - whether the control point is currently being dragged
+    this.draggingProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'draggingProperty' )
+    } );
 
-      // Where it is shown on the screen.  Same as sourcePosition (if not snapped) or snapTarget.position (if snapped).
-      // Snapping means temporarily connecting to an adjacent open point before the tracks are joined, to indicate that a
-      // connection is possible
-      // @public {Vector2}
-      this.positionProperty = new DerivedProperty( [ this.sourcePositionProperty, this.snapTargetProperty ],
-        ( sourcePosition, snapTarget ) => {
-          return snapTarget ? snapTarget.positionProperty.value : sourcePosition;
-        }, {
-          tandem: tandem.createTandem( 'positionProperty' ),
-          phetioType: DerivedPropertyIO( Vector2IO ),
-          phetioState: options.phetioState
-        } );
-
-      // @public {BooleanProperty} - whether the control point is currently being dragged
-      this.draggingProperty = new BooleanProperty( false, {
-        tandem: tandem.createTandem( 'draggingProperty' )
-      } );
-
-      // @private
-      this.disposeControlPoint = () => {
-        this.positionProperty.dispose();
-        this.sourcePositionProperty.dispose();
-        this.snapTargetProperty.dispose();
-        this.draggingProperty.dispose();
-      };
-    }
-
-    /**
-     * @public
-     */
-    dispose() {
-      this.disposeControlPoint();
-      super.dispose();
-    }
-
-    /**
-     * Reset to initial state.
-     * @public
-     */
-    reset() {
-      this.sourcePositionProperty.reset();
-      this.snapTargetProperty.reset();
-      this.draggingProperty.reset();
-    }
-
-    /**
-     * Create a new control point, identical to this one.
-     * @param {Tandem} tandem
-     * @returns {ControlPoint}
-     */
-    copy( tandem ) {
-      return new ControlPoint( this.positionProperty.value.x, this.positionProperty.value.y, {
-        tandem: tandem
-      } );
-    }
-
+    // @private
+    this.disposeControlPoint = () => {
+      this.positionProperty.dispose();
+      this.sourcePositionProperty.dispose();
+      this.snapTargetProperty.dispose();
+      this.draggingProperty.dispose();
+    };
   }
 
-  return energySkatePark.register( 'ControlPoint', ControlPoint );
-} );
+  /**
+   * @public
+   */
+  dispose() {
+    this.disposeControlPoint();
+    super.dispose();
+  }
+
+  /**
+   * Reset to initial state.
+   * @public
+   */
+  reset() {
+    this.sourcePositionProperty.reset();
+    this.snapTargetProperty.reset();
+    this.draggingProperty.reset();
+  }
+
+  /**
+   * Create a new control point, identical to this one.
+   * @param {Tandem} tandem
+   * @returns {ControlPoint}
+   */
+  copy( tandem ) {
+    return new ControlPoint( this.positionProperty.value.x, this.positionProperty.value.y, {
+      tandem: tandem
+    } );
+  }
+
+}
+
+energySkatePark.register( 'ControlPoint', ControlPoint );
+export default ControlPoint;

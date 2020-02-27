@@ -5,46 +5,41 @@
  *
  * @author Jesse Greenberg
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const energySkatePark = require( 'ENERGY_SKATE_PARK/energySkatePark' );
-  const Image = require( 'SCENERY/nodes/Image' );
-  const MeasureModel = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/model/MeasureModel' );
-  const MeasureScreenView = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/MeasureScreenView' );
-  const Screen = require( 'JOIST/Screen' );
+import Screen from '../../../../joist/js/Screen.js';
+import Image from '../../../../scenery/js/nodes/Image.js';
+import iconFrictionHomescreen from '../../../images/icon-friction-homescreen_png.js';
+import iconFrictionNavbar from '../../../images/icon-friction-navbar_png.js';
+import energySkateParkStrings from '../../energy-skate-park-strings.js';
+import energySkatePark from '../../energySkatePark.js';
+import MeasureModel from './model/MeasureModel.js';
+import MeasureScreenView from './view/MeasureScreenView.js';
 
-  // images
-  const iconFrictionHomescreen = require( 'image!ENERGY_SKATE_PARK/icon-friction-homescreen.png' );
-  const iconFrictionNavbar = require( 'image!ENERGY_SKATE_PARK/icon-friction-navbar.png' );
+const screenMeasureString = energySkateParkStrings.screen.measure;
 
-  // strings
-  const screenMeasureString = require( 'string!ENERGY_SKATE_PARK/screen.measure' );
+class MeasureScreen extends Screen {
 
-  class MeasureScreen extends Screen {
+  /**
+   * @param {Tandem} tandem
+   * @constructor
+   */
+  constructor( tandem ) {
+    const options = {
+      name: screenMeasureString,
+      homeScreenIcon: new Image( iconFrictionHomescreen ),
+      navigationBarIcon: new Image( iconFrictionNavbar ),
 
-    /**
-     * @param {Tandem} tandem
-     * @constructor
-     */
-    constructor( tandem ) {
-      const options = {
-        name: screenMeasureString,
-        homeScreenIcon: new Image( iconFrictionHomescreen ),
-        navigationBarIcon: new Image( iconFrictionNavbar ),
+      tandem: tandem
+    };
 
-        tandem: tandem
-      };
+    super(
+      () => new MeasureModel( tandem.createTandem( 'measureModel' ) ),
+      model => new MeasureScreenView( model, tandem.createTandem( 'measureScreenView' ) ),
+      options
+    );
 
-      super(
-        () => new MeasureModel( tandem.createTandem( 'measureModel' ) ),
-        model => new MeasureScreenView( model, tandem.createTandem( 'measureScreenView' ) ),
-        options
-      );
-
-    }
   }
+}
 
-  return energySkatePark.register( 'MeasureScreen', MeasureScreen );
-} );
+energySkatePark.register( 'MeasureScreen', MeasureScreen );
+export default MeasureScreen;
