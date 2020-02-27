@@ -62,13 +62,14 @@ define( require => {
   // Debug flag to show the view bounds, the region within which the skater can move
   const showAvailableBounds = false;
 
-  /**
-   * @param {EnergySkateParkModel} model
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   * @constructor
-   */
   class EnergySkateParkScreenView extends ScreenView {
+
+    /**
+     * @param {EnergySkateParkModel} model
+     * @param {Tandem} tandem
+     * @param {Object} [options]
+     * @constructor
+     */
     constructor( model, tandem, options ) {
       options = merge( {
 

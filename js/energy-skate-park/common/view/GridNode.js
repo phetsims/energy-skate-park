@@ -35,11 +35,12 @@ define( require => {
     /**
      * @param {Property.<boolean>} gridVisibleProperty the axon property indicating whether the grid should be visible
      * @param {NumberProperty} referenceHeightProperty - Property in meters for height of zero potential energy
+     * @param {Property.<Bounds2>} visibleBoundsProperty - visible bounds, in view coordinates
      * @param {ModelViewTransform2} modelViewTransform the main model-view transform
      * @param {Tandem} tandem
      * @constructor
      */
-    constructor( gridVisibleProperty, referenceHeightProperty, visibleBoundsProperty, modelViewTransform, tandem ) { // TODO: visibleBoundsProperty not marked in JSDoc
+    constructor( gridVisibleProperty, referenceHeightProperty, visibleBoundsProperty, modelViewTransform, tandem ) {
       super( {
         pickable: false,
         tandem: tandem
@@ -104,11 +105,7 @@ define( require => {
      * only update when the graph is visible, then again when it becomes visible.
      * @private
      *
-     * @param  {number} offsetX - offset applied to center horizontally
-     * @param  {number} offsetY - offset applied to place bottom along the navigation bar
-     * @param  {number} width - width of view, before any layout scale
-     * @param  {number} height - height of view, before any layout scale
-     * @param  {number} layoutScale - vertical or horizontal scale for sim, whichever is more limiting
+     * @param {Bounds2} bounds - visible bounds, in view coordinates
      */
     layout( bounds ) {
       this.clipParent.clipArea = Shape.bounds( bounds );

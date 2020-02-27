@@ -28,21 +28,20 @@ define( require => {
   const Text = require( 'SCENERY/nodes/Text' );
   const Vector2 = require( 'DOT/Vector2' );
 
-  // constants
-  //
   // strings
   const propertiesSpeedString = require( 'string!ENERGY_SKATE_PARK/properties.speed' );
 
-  /**
-   * @constructor
-   * @param {string} label
-   * @param {Node} icon
-   * @param {AlignGroup} textAlignGroup
-   * @param {Property} property - the checkbox will update this Property
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
   class EnergySkateParkCheckboxItem extends HBox {
+
+    /**
+     * @constructor
+     * @param {string} label
+     * @param {Node} icon
+     * @param {AlignGroup} textAlignGroup
+     * @param {Property} property - the checkbox will update this Property
+     * @param {Tandem} tandem
+     * @param {Object} [options]
+     */
     constructor( label, icon, textAlignGroup, property, tandem, options ) {
 
       assert && assert( textAlignGroup.matchHorizontal === true, 'text content in check boxes must align' );

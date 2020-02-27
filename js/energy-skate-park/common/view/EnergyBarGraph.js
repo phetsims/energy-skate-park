@@ -38,8 +38,9 @@ define( require => {
     /**
      * @param {Skater} skater
      * @param {NumberProperty} barGraphScaleProperty
+     * @param {BooleanProperty} barGraphsVisibleProperty
      * @param {Tandem} tandem
-     * @returns {Skater}
+     * @param {Object} [options]
      */
     constructor( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem, options ) {
 

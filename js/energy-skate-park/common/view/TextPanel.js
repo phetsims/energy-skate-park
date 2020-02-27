@@ -21,7 +21,7 @@ define( require => {
 
     /**
      * @param {string} textContent - text to fill the panel
-     * @param  {Object} options
+     * @param {Object} [options]
      */
     constructor( textContent, options ) {
 

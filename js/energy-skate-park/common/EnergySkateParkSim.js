@@ -20,8 +20,8 @@ define( require => {
     /**
      * @param {string} titleString - title for the simulation
      * @param {Array.<Screen>} screens
-     * @param {Object} [options]
      * @param {Tandem} tandem
+     * @param {Object} [options]
      */
     constructor( titleString, screens, tandem, options ) {
       options = merge( {

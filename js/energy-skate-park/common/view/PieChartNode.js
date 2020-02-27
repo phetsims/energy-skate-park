@@ -28,7 +28,7 @@ define( require => {
      * @param {Property<Boolean>} pieChartVisibleProperty axon Property indicating whether the pie chart is shown
      * @param {ModelViewTransform2} modelViewTransform
      * @param {Tandem} tandem
-     * @constructor
+     * @param {Object} [options]
      */
     constructor( skater, pieChartVisibleProperty, modelViewTransform, tandem, options ) {
 

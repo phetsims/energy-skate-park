@@ -16,11 +16,6 @@ define( require => {
   const InspectedSampleHaloNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/InspectedSampleHaloNode' );
   const SkaterPathSensorNode = require( 'ENERGY_SKATE_PARK/energy-skate-park/measure/view/SkaterPathSensorNode' );
 
-  /**
-   * @constructor
-   * @param {EnergySkateParkTrackSetModel} model
-   * @param {Tandem} tandem
-   */
   class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
 
     /**

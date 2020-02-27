@@ -28,14 +28,11 @@ define( require => {
   class TrackNode extends Node {
 
     /**
-     * Constructor for TrackNode
-     * @param {EnergySkateParkModel} model the entire model.  Not absolutely necessary, but so many methods are called on it for joining and
-     * splitting tracks that we pass the entire model anyways.
+     * @param {EnergySkateParkModel} model the entire model.
      * @param {Track} track the track for this track node
      * @param {ModelViewTransform} modelViewTransform the model view transform for the view
      * @param {Property.<Bounds2>} availableBoundsProperty
-     * @param {Tandem} tandem
-     * @constructor
+     * @param {Tandem} tandems
      */
     constructor( model, track, modelViewTransform, availableBoundsProperty, tandem ) {
 

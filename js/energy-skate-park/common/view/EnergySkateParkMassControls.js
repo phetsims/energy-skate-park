@@ -22,6 +22,7 @@ define( require => {
     /**
      * @param {NumberProperty} massProperty
      * @param {Range} massRange - allowable range for the Skater mass
+     * @param {Property} skaterImageProperty - controls the current image for the SkaterNode
      * @param {[type]} resetEmitter - broadcasts when EnergySkateParkModel has been reset
      * @param {Node} listParent - parent Node for the ComboBox, if one is included
      * @param {Tandem} tandem

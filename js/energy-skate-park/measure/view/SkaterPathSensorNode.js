@@ -66,14 +66,13 @@ define( require => {
   class SkaterPathSensorNode extends Node {
 
     /**
-     * @param   {ObservableArray.<SkaterSample>} samples
-     * @param   {Vector2Property} sensorProbePositionProperty
-     * @param   {Vector2Property} sensorBodyPositionProperty
-     * @param   {Property.<Bounds2>} modelBoundsProperty
-     * @param   {ModelViewTransform} modelViewTransform
-     * @param   {EnergySkateParkControlPanel} controlPanel - so the readout doesn't occlude control panel bounds
-     * @param   {object} options
-     * @returns {ObservableArray.<SkaterSample>}
+     * @param {ObservableArray.<SkaterSample>} samples
+     * @param {Vector2Property} sensorProbePositionProperty
+     * @param {Vector2Property} sensorBodyPositionProperty
+     * @param {Property.<Bounds2>} modelBoundsProperty
+     * @param {ModelViewTransform} modelViewTransform
+     * @param {EnergySkateParkControlPanel} controlPanel - so the readout doesn't occlude control panel bounds
+     * @param {Object} [options]
      */
     constructor( samples, sensorProbePositionProperty, sensorBodyPositionProperty, modelBoundsProperty, modelViewTransform, controlPanel, options ) {
       options = merge( {

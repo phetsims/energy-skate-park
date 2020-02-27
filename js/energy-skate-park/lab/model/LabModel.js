@@ -19,7 +19,6 @@ define( require => {
      * @param {Tandem} tandem
      */
     constructor( tandem ) {
-
       super( tandem, {
 
         // Draggable tracks in the lab screen start at a different position in the "Lab" screen

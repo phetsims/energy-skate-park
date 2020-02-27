@@ -29,6 +29,7 @@ define( require => {
      * @constructor
      * @param {ModelViewTransform2} modelViewTransform
      * @param {NumberProperty} referenceHeightProperty
+     * @param {BooleanProperty} referenceHeightVisibleProperty
      * @param {Tandem} tandem
      */
     constructor( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, tandem ) {

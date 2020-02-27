@@ -17,6 +17,11 @@ define( require => {
   const controlsFrictionTitleString = require( 'string!ENERGY_SKATE_PARK/controls.friction.title' );
 
   class FrictionSlider extends PhysicalSlider {
+
+    /**
+     * @param {NumberProperty} property - Property for friction
+     * @param {Tandem} tandem
+     */
     constructor( property, tandem ) {
       super( controlsFrictionTitleString, property, new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ), tandem );
     }
