@@ -5,7 +5,7 @@
  * If the track's length is changed (by deleting a control point or linking two tracks together) a new TrackNode is created.
  * Keep track of whether the track is dragging, so performance can be optimized while dragging
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import dot from '../../../../../dot/js/dot.js';

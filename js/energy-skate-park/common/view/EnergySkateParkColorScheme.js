@@ -3,7 +3,7 @@
 /**
  * Colors used in Energy Skate Park, using PhetColorScheme to color energies.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import PhetColorScheme from '../../../../../scenery-phet/js/PhetColorScheme.js';

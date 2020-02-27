@@ -4,7 +4,7 @@
  * Model for one track in Energy Skate Park, which contains the control points and cubic splines for
  * interpolating between them.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';

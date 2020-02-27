@@ -3,7 +3,7 @@
 /**
  * Scenery node that shows the legend for the pie chart, and a reset button for thermal energy.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import merge from '../../../../../phet-core/js/merge.js';

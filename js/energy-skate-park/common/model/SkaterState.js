@@ -7,7 +7,7 @@
  * conserved from one step to another. Pooled to avoid allocation problems, see #50. Another reason this class is
  * valuable is to create and evaluate proposed states before applying them to the live model.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import Vector2 from '../../../../../dot/js/Vector2.js';

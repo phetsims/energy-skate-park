@@ -4,7 +4,7 @@
  * Simulation for Energy Skate Park. Also meant to be extended by Energy Skate Park: Basics
  * because this has sim specific options that help the Energy Skate Park sims run better on iPad2.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import Sim from '../../../../joist/js/Sim.js';

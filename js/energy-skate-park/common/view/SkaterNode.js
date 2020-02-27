@@ -5,7 +5,7 @@
  *
  * Converted to composition instead of inheritance for SkaterNode to work around updateSVGFragment problem, see #123
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import EnumerationProperty from '../../../../../axon/js/EnumerationProperty.js';

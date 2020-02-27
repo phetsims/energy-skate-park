@@ -4,7 +4,7 @@
  * Radio button group for choosing one of the tracks, used in a "Track Set" screen of EnergySkatePark. This changes
  * the "scene" of the sim.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  * @author Jesse Greenberg
  */
 

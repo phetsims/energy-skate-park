@@ -2,7 +2,7 @@
 
 /**
  * Constants related to the skater in Energy Skate Park.
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import Range from '../../../../dot/js/Range.js';

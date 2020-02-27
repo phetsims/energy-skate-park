@@ -4,7 +4,7 @@
  * Debug tracks, which can be enabled using the query parameter 'debugTrack' with the index of the track to debug.
  * There is no automated testing, you have to launch the track and see if the behavior looks correct.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import Vector2 from '../../../../../dot/js/Vector2.js';

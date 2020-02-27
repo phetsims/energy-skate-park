@@ -7,7 +7,7 @@
  * The grid will translate with the potential energy reference line, so that "0" line always aligns with
  * 0 potential energy.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import Shape from '../../../../../kite/js/Shape.js';

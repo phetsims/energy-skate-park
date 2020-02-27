@@ -3,7 +3,7 @@
 /**
  * Entry point for PhET Interactive Simulation's Energy Skate Park application.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import SimLauncher from '../../joist/js/SimLauncher.js';

@@ -3,7 +3,7 @@
 /**
  * Scenery node for the speed controls, with "normal" and "slow motion" radio buttons.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import merge from '../../../../../phet-core/js/merge.js';

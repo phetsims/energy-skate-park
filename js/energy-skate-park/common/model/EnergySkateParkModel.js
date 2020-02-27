@@ -20,7 +20,7 @@
  * pass by reference, and component-wise math. Unfortunately, these are often compromises in the
  * readability/maintainability of the code, but they seemed important to attain good performance.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';

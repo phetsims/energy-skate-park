@@ -4,7 +4,7 @@
  * Scenery node for the pie chart, which moves with the skater and shows a pie chart representation of the energies by
  * type. The size of the pie chart is proportional to the total energy.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import Bounds2 from '../../../../../dot/js/Bounds2.js';

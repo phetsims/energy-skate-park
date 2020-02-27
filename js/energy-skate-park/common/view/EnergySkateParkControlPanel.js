@@ -4,7 +4,7 @@
  * Scenery node for the control panel, with view settings and controls. The control panel may or may not include various controls
  * depending on options, but the order of included controls is always the same.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import merge from '../../../../../phet-core/js/merge.js';

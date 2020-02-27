@@ -3,7 +3,7 @@
 /**
  * Scenery node that shows the background, including the mountains, sky, ground and grass.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import Image from '../../../../../scenery/js/nodes/Image.js';

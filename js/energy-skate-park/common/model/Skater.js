@@ -4,7 +4,7 @@
  * Model for the skater in Energy Skate Park, including position, velocity, energy, etc..
  * All units are in meters.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';

@@ -3,7 +3,7 @@
 /**
  * Node that shows the delete and cut buttons for track control points.  Created each time a control point is dragged.
  *
- * @author Sam Reid
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import LinearFunction from '../../../../../dot/js/LinearFunction.js';
