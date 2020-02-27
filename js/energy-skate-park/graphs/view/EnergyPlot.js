@@ -205,6 +205,8 @@ class EnergyPlot extends XYCursorPlot {
       const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
       for ( let i = 0; i < samplesToRemove.length; i++ ) {
         const sampleToRemove = samplesToRemove[ i ];
+
+        // REVIEW: Consider adding parentheses here, it is unclear what is +5.  Also, why is there a +5 at all?
         const independentVariable = plotTime ? sampleToRemove.time : sampleToRemove.position.x + 5;
 
         this.forEachDataSeries( dataSeries => dataSeries.removePointAtX( independentVariable ) );

@@ -115,9 +115,9 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
     }
   }
 
-
   /**
    * Clear all tracks from the model.
+   * @public
    */
   clearTracks() {
 

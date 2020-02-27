@@ -101,7 +101,7 @@ class DebugTracks {
 
       controlPoints = [ createControlPoint( 4.431091234347049, 7.9252447313977665 ), createControlPoint( 2.4169588550983896, 7.975935759156005 ), createControlPoint( -1.9874106197862114, 4.75700797278857 ), createControlPoint( 0.13992761930286512, 6.207060140642635 ), createControlPoint( 1.447191413237924, 1.0090653610430707 ), createControlPoint( -1.7008228980322002, 1.0717102008522177 ), createControlPoint( -5.37101967799642, 7.0748332823816655 ) ];
       track = new Track( model, model.tracks, controlPoints, null, model.availableModelBoundsProperty, { tandem: trackGroupTandem.createNextTandem() } );
-      track.physicalProperty.value = true;
+      track.physicalProperty.value = true; // REVIEW: it seems like physicalProperty should be an option
       model.tracks.add( track );
     }
 

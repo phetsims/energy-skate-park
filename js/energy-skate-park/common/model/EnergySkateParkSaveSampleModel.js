@@ -101,7 +101,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
     this.skaterSamples.splice( indexOfFirstSample, samplesToRemove.length );
 
     // broadcast that this batch of samples has been removed
-    this.batchRemoveSamplesProperty.set( samplesToRemove );
+    this.batchRemoveSamplesProperty.set( samplesToRemove ); // REVIEW: this is identical to another line earlier in this method, probably not sending notifications.  Consider using an Emitter instead?
   }
 
   /**

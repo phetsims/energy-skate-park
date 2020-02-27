@@ -13,8 +13,6 @@ import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 import PremadeTracks from './PremadeTracks.js';
 
-// phetio types
-
 class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
 
   /**
@@ -68,7 +66,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
   }
 
   /**
-   * Add all tracks in the set. In addition to adding all to the ObservbleArray, this will initialize which track
+   * Add all tracks in the set. In addition to adding all to the ObservableArray, this will initialize which track
    * should be visible, physical, and interactive depending on the model sceneProperty.
    * @public
    *
@@ -150,6 +148,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
    * @param {EnergySkateParkModel} model
    * @param {Tandem} tandem
    * @returns {Array.<Track>}
+   * @public
    */
   static createFullTrackSet( model, tandem ) {
 
