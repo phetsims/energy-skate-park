@@ -202,11 +202,9 @@ define( require => {
         this.setCursorValue( independentVariable );
       } );
 
-      // remove a batch of of SkaterSamples, but only redraw once after all have been removed for performance
+      // remove a batch of of SkaterSamples
       model.batchRemoveSamplesProperty.lazyLink( samplesToRemove => {
 
-        // don't redraw until we have removed all points in the DynamicSeries
-        this.setWaitToRedraw( true );
         const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
         for ( let i = 0; i < samplesToRemove.length; i++ ) {
           const sampleToRemove = samplesToRemove[ i ];
@@ -214,9 +212,6 @@ define( require => {
 
           this.forEachDataSeries( dataSeries => dataSeries.removePointAtX( independentVariable ) );
         }
-
-        this.setWaitToRedraw( false );
-        this.invalidateDataSeriesNodes();
       } );
     }
 
