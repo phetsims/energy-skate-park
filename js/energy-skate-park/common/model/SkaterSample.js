@@ -32,8 +32,10 @@ define( require => {
      *
      * @param {SkaterState} skaterState
      * @param {number} time - in seconds
+     * @param {number} fadeDecay - samples being removed retain this percent of opacity (opacity = opacity * fadeDecacy)
      */
-    constructor( skaterState, time ) {
+    constructor( skaterState, time, fadeDecay ) {
+      assert && assert( fadeDecay < 1, 'samples which have initiated removal need to fade away' );
 
       // @public (read-only)
       this.speed = skaterState.getSpeed();
@@ -60,6 +62,10 @@ define( require => {
       // @public - emits an event when this SkaterSample has updated in some way, like when energies change
       // due to a change in reference height
       this.updatedEmitter = new Emitter();
+
+      // @private {number} - SkaterSamples which have initiated removal will retain this percentage of opacity
+      // every animation frame. opacity = opacity * fadeDecay
+      this.fadeDecay = fadeDecay;
 
       // @private {boolean} - indicates that this sample should begin removal, and will fade out
       this._initiateRemove = false;
@@ -105,7 +111,7 @@ define( require => {
      */
     step( dt ) {
       if ( this._initiateRemove ) {
-        this.opacityProperty.set( this.opacityProperty.get() * 0.95 );
+        this.opacityProperty.set( this.opacityProperty.get() * this.fadeDecay );
       }
 
       this.timeSinceAdded += dt;

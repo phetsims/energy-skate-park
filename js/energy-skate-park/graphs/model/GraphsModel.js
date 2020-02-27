@@ -44,6 +44,10 @@ define( require => {
         // interval at which we save skater samples
         saveSampleInterval: 0.01,
 
+        // graph samples will fade more quicly, partly because it looks nicer, but mostly because
+        // it is better for perfomance to have fewer transparent points
+        sampleFadeDecay: 0.5,
+
         // to prevent a memory leak if we run for a long time without clearing
         maxNumberOfSamples: 1000
       } );

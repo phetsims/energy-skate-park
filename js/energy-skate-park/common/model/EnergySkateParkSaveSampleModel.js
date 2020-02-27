@@ -32,10 +32,14 @@ define( require => {
     constructor( tandem, options ) {
       options = merge( {
 
-        // the interval at which we save SkaterSamples, in seconds
+        // {number} - the interval at which we save SkaterSamples, in seconds
         saveSampleInterval: 0.1,
 
-        // the maximum number of SkaterSamples saved by this model, to prevent from saving too many if we run without
+        // {number} skater samples which are being removed will fade away at this rate every animation frame
+        // like opacity = opacity * sampleFadeDecay
+        sampleFadeDecay: 0.95,
+
+        // {number} - the maximum number of SkaterSamples saved by this model, to prevent from saving too many if we run without
         // encountering a case that clears old samples
         maxNumberOfSamples: 50
       }, options );
@@ -45,6 +49,7 @@ define( require => {
       // @private {number}
       this.saveSampleInterval = options.saveSampleInterval;
       this.maxNumberOfSamples = options.maxNumberOfSamples;
+      this.sampleFadeDecay = options.sampleFadeDecay;
 
       // @private {number} - amount of time that has elapsed since a skater sample has been saved
       this.timeSinceSampleSave = 0;
@@ -129,7 +134,7 @@ define( require => {
         this.timeSinceSampleSave = this.timeSinceSampleSave + dt;
 
         if ( !this.preventSampleSave && this.timeSinceSampleSave > this.saveSampleInterval ) {
-          const newSample = new SkaterSample( updatedState, this.sampleTimeProperty.get() );
+          const newSample = new SkaterSample( updatedState, this.sampleTimeProperty.get(), this.sampleFadeDecay );
 
           this.skaterSamples.add( newSample );
 
