@@ -73,7 +73,7 @@ define( require => {
       this.skaterSamples = new ObservableArray();
 
       // @public (read-only) - an array of SkaterSamples that have just been removed from the model. Necessary
-      // for performance so that we can redraw once after removing many samples rather than redrawing every time
+      // for performance so that we can update once after removing many samples rather than every time
       // a single sample is removed
       this.batchRemoveSamplesProperty = new Property( [] );
     }
@@ -164,8 +164,8 @@ define( require => {
         }
       } );
 
-      // for performance, we batch removal of SkaterSamples so that we can redraw once after many have been removed
-      // rather than redraw on each data point, see https://github.com/phetsims/energy-skate-park/issues/198
+      // for performance, we batch removal of SkaterSamples so that we can update once after many have been removed
+      // rather than on each data point, see https://github.com/phetsims/energy-skate-park/issues/198
       if ( samplesToRemove.length > 0 ) {
         this.batchRemoveSamples( samplesToRemove );
       }
