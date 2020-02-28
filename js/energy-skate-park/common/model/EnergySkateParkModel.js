@@ -1441,6 +1441,8 @@ class EnergySkateParkModel extends PhetioObject {
    */
   getNonPhysicalTracks() {
 
+    // REVIEW: it took >30 seconds of fuzzing for this code to be hit, maybe it isn't a performance concern?
+    // REVIEW: if not a performance concern, it seems like Array.filter would be clearest
     // Use vanilla instead of lodash for speed since this is in an inner loop
     const nonphysicalTracks = [];
     for ( let i = 0; i < this.tracks.length; i++ ) {
@@ -1462,6 +1464,8 @@ class EnergySkateParkModel extends PhetioObject {
   joinTracks( track ) {
     const connectedPoint = track.getSnapTarget();
     let otherTrack = null;
+
+    // REVIEW: Array.filter would be clearer here
     for ( let i = 0; i < this.getPhysicalTracks().length; i++ ) {
       otherTrack = this.getPhysicalTracks()[ i ];
       if ( otherTrack.containsControlPoint( connectedPoint ) ) {
