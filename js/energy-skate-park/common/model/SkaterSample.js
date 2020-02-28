@@ -116,8 +116,6 @@ class SkaterSample {
   /**
    * Indicate that this skater sample is about to be removed. Opacity immediately is reduced, and after a short time
    * this sample will be completely removed.
-   *
-   * @returns {}
    */
   initiateRemove() {
     assert && assert( !this._initiateRemove, 'removal should only be initiated once' );
