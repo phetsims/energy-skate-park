@@ -45,6 +45,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
    * When the scene changes or tracks are added to the track set, update which track is visible and physically
    * interactive.
    * @private
+   * //REVIEW: JSDoc @param for the scene
    */
   updateActiveTrack( scene ) {
     for ( let i = 0; i < this.tracks.length; i++ ) {
@@ -56,6 +57,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
 
       // make sure that the entire track is above ground - points should be, but this makes sure that the
       // entire curve is fully above ground
+      // REVIEW: When would the available model bounds ever have zero area?
       if ( this.availableModelBoundsProperty.get().hasNonzeroArea() ) {
         this.tracks.get( i ).bumpAboveGround();
       }
