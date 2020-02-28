@@ -80,6 +80,9 @@ class Track extends PhetioObject {
     this.availableModelBoundsProperty = availableModelBoundsProperty;
 
     // @public (read-only) - see options
+    // REVIEW: When in the sim is a Track configurable but not splittable?
+    // REVIEW: When in the sim is a Track splittable but not attachable?
+    // REVIEW: Can any of these options be combined?
     this.draggable = options.draggable;
     this.configurable = options.configurable;
     this.splittable = options.splittable;

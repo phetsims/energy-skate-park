@@ -193,7 +193,6 @@ class GridNode extends Node {
       this.thickLinePath
     ].concat( texts );
 
-
     assert && assert( replacementText, 'at 0 height, a label should have been created' );
     this.zeroLabelParent.addChild( replacementText );
   }

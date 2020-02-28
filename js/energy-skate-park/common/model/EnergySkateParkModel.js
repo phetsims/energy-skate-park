@@ -1802,6 +1802,8 @@ class EnergySkateParkModel extends PhetioObject {
    * TODO: this code should be called by EnergySkateParkModel too, see
    * https://github.com/phetsims/energy-skate-park/issues/165
    *
+   * // REVIEW: JSDoc
+   *
    * @param {Tandem} tandem
    * @param controlPointTandemIDs
    */
