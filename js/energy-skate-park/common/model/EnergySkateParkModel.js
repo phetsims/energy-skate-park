@@ -627,6 +627,7 @@ class EnergySkateParkModel extends PhetioObject {
    * @param {number} afterY
    *
    * @returns {boolean}
+   * // REVIEW: Visibility annotation, is this @public or @private or something else?
    */
   crossedTrack( closestTrackAndPositionAndParameter, physicalTracks, beforeX, beforeY, afterX, afterY ) {
     const track = closestTrackAndPositionAndParameter.track;
@@ -660,6 +661,7 @@ class EnergySkateParkModel extends PhetioObject {
    * @param {Vector2} proposedVelocity
    *
    * @returns {SkaterState}
+   * // REVIEW: Visibility annotation, is this @public or @private or something else?
    */
   interactWithTracksWhileFalling( physicalTracks, skaterState, proposedPosition, initialEnergy, dt, proposedVelocity ) {
 
@@ -1119,6 +1121,7 @@ class EnergySkateParkModel extends PhetioObject {
    * @param {number} sign
    *
    * @returns {Skater}
+   * // REVIEW: Visibility annotation, is this @public or @private or something else?
    */
   nudge( freeSkater, sideVectorX, sideVectorY, sign ) {
 
@@ -1153,6 +1156,7 @@ class EnergySkateParkModel extends PhetioObject {
    * @param {SkaterState} targetState
    *
    * @returns {SkaterState}
+   * // REVIEW: Visibility annotation, is this @public or @private or something else?
    */
   correctEnergyReduceVelocity( skaterState, targetState ) {
 
@@ -1195,6 +1199,7 @@ class EnergySkateParkModel extends PhetioObject {
    * @param {number} numSteps
    *
    * @returns {number}
+   * // REVIEW: Visibility annotation, is this @public or @private or something else?
    */
   searchSplineForEnergy( skaterState, u0, u1, e0, numSteps ) {
     const da = ( u1 - u0 ) / numSteps;
@@ -1342,17 +1347,20 @@ class EnergySkateParkModel extends PhetioObject {
   }
 
   // PERFORMANCE/ALLOCATION
+  // REVIEW: JSDoc
   getCurvatureDirection( curvature, x2, y2 ) {
     const v = new Vector2( curvature.x - x2, curvature.y - y2 );
     return v.x !== 0 || v.y !== 0 ? v.normalized() : v;
   }
 
+  // REVIEW: JSDoc
   getCurvatureDirectionX( curvature, x2, y2 ) {
     const vx = curvature.x - x2;
     const vy = curvature.y - y2;
     return vx !== 0 || vy !== 0 ? vx / Math.sqrt( vx * vx + vy * vy ) : vx;
   }
 
+  // REVIEW: JSDoc
   getCurvatureDirectionY( curvature, x2, y2 ) {
     const vx = curvature.x - x2;
     const vy = curvature.y - y2;
@@ -1363,8 +1371,9 @@ class EnergySkateParkModel extends PhetioObject {
    * Update the skater based on which state.
    *
    * @param {number} dt
-   * @param {SkaterState}
+   * @param {SkaterState} skaterState
    * @returns {SkaterState}
+   * // REVIEW: public/private annotation
    */
   stepModel( dt, skaterState ) {
 
@@ -1383,6 +1392,7 @@ class EnergySkateParkModel extends PhetioObject {
    * conditions are the same as the previous release.
    *
    * @returns {SkaterState}
+   * // REVIEW: public/private annotation
    */
   returnSkater() {
 
@@ -1399,7 +1409,9 @@ class EnergySkateParkModel extends PhetioObject {
    * Clear thermal energy from the model.
    * @public
    */
-  clearThermal() { this.skater.clearThermal(); }
+  clearThermal() {
+    this.skater.clearThermal();
+  }
 
   /**
    * Get all tracks in the model that are marked as physical (they can interact with the Skater in some way).
@@ -1449,8 +1461,9 @@ class EnergySkateParkModel extends PhetioObject {
    */
   joinTracks( track ) {
     const connectedPoint = track.getSnapTarget();
+    let otherTrack = null;
     for ( let i = 0; i < this.getPhysicalTracks().length; i++ ) {
-      var otherTrack = this.getPhysicalTracks()[ i ];
+      otherTrack = this.getPhysicalTracks()[ i ];
       if ( otherTrack.containsControlPoint( connectedPoint ) ) {
         this.joinTrackToTrack( track, otherTrack );
         break;

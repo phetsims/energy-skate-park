@@ -26,7 +26,7 @@ class LabScreen extends Screen {
    */
   constructor( tandem ) {
 
-    var options = merge( {
+    const options = merge( {
       name: screenLabString,
       homeScreenIcon: new Image( iconPlaygroundHomescreen ),
       navigationBarIcon: new Image( iconPlaygroundNavbar ),

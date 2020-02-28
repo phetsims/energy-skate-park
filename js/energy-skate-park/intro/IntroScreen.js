@@ -25,7 +25,7 @@ class IntroScreen extends Screen {
    * @constructor
    */
   constructor( tandem ) {
-    var options = merge( {
+    const options = merge( {
       name: screenIntroductionString,
       tandem: tandem,
       homeScreenIcon: new Image( iconIntroHomescreen ),

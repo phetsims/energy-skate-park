@@ -25,7 +25,7 @@ class GraphsScreen extends Screen {
    * @constructor
    */
   constructor( tandem ) {
-    var options = merge( {
+    const options = merge( {
       name: screenGraphsString,
       homeScreenIcon: new Image( iconFrictionHomescreen ),
       navigationBarIcon: new Image( iconFrictionNavbar ),

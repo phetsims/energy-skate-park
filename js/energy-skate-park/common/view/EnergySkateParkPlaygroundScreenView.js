@@ -71,7 +71,7 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
     this.trackLayer.addChild( trackNode );
 
     // When track removed, remove its view
-    var itemRemovedListener = removed => {
+    const itemRemovedListener = removed => {
       if ( removed === track ) {
         this.trackLayer.removeChild( trackNode );
 

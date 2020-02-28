@@ -269,7 +269,7 @@ class Track extends PhetioObject {
     let bestU = 0;
     let bestDistanceSquared = Number.POSITIVE_INFINITY;
     const bestPoint = new Vector2( 0, 0 );
-    for ( var i = 0; i < this.xSearchPoints.length; i++ ) {
+    for ( let i = 0; i < this.xSearchPoints.length; i++ ) {
       const distanceSquared = point.distanceSquaredXY( this.xSearchPoints[ i ], this.ySearchPoints[ i ] );
       if ( distanceSquared < bestDistanceSquared ) {
         bestDistanceSquared = distanceSquared;
@@ -292,7 +292,7 @@ class Track extends PhetioObject {
 
     // Even at 400 binary search iterations, performance is smooth on iPad3, so this loop doesn't seem too invasive
     const maxBinarySearchIterations = 40;
-    for ( i = 0; i < maxBinarySearchIterations; i++ ) {
+    for ( let i = 0; i < maxBinarySearchIterations; i++ ) {
 
       const topDistanceSquared = point.distanceSquaredXY( topX, topY );
       const bottomDistanceSquared = point.distanceSquaredXY( bottomX, bottomY );
@@ -752,7 +752,7 @@ class Track extends PhetioObject {
     let min = Number.POSITIVE_INFINITY;
     let minIndex = -1;
     let y;
-    for ( var i = 0; i < this.ySearchPoints.length; i++ ) {
+    for ( let i = 0; i < this.ySearchPoints.length; i++ ) {
       y = this.ySearchPoints[ i ];
       if ( y < min ) {
         min = y;
@@ -770,7 +770,7 @@ class Track extends PhetioObject {
     const refinedSearchPoints = SplineEvaluation.atArray( this.ySpline, smallerSpace );
 
     min = Number.POSITIVE_INFINITY;
-    for ( i = 0; i < refinedSearchPoints.length; i++ ) {
+    for ( let i = 0; i < refinedSearchPoints.length; i++ ) {
       y = refinedSearchPoints[ i ];
       if ( y < min ) {
         min = y;
