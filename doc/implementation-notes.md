@@ -49,7 +49,7 @@ cubic splines which create the shape between them. The algorithm for interpolati
 though the portions used in this sim were optimized and re-written in [SplineEvaluation](https://github.com/phetsims/energy-skate-park/blob/master/js/common/model/SplineEvaluation.js)
 to be fast enough for this sim.
 
-To support various levls of user customization, Tracks have fields that define their interactivity
+To support various levels of user customization, Tracks have fields that define their interactivity
  * Track.draggable - If true the entire Track can be dragged in the play area
  * Track.configurable - If true, the Track shape can be modified by dragging control points
  * Track.splittable - If true, the Track can be split into two Tracks at a control point
