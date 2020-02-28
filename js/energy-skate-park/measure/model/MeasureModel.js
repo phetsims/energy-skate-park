@@ -64,10 +64,8 @@ class MeasureModel extends EnergySkateParkSaveSampleModel {
     } );
 
     // existing data is removed immediately when any of these Properties change
-    const clearSampleProperties = [ this.saveSkaterSamplesProperty, this.skater.draggingProperty, this.sceneProperty ];
     const boundClearSamples = this.clearEnergyData.bind( this );
-
-    Property.multilink( clearSampleProperties, boundClearSamples );
+    Property.multilink( [ this.saveSkaterSamplesProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
     this.skater.returnedEmitter.addListener( boundClearSamples );
     this.trackChangedEmitter.addListener( boundClearSamples );
   }
