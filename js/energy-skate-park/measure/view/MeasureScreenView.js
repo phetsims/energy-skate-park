@@ -69,6 +69,7 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
    *
    * @param {Node} node
    * @returns {boolean}
+   * // REVIEW: this method appears unused
    */
   intersectsControlPanel( node ) {
     return this.boundsOf( node ).intersectsBounds( this.controlPanel.bounds );
@@ -77,6 +78,7 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
   /**
    * Custom floating layout for this screen, dependent on available view bounds.
    * @override
+   * // REVIEW: this should be named "layout"
    */
   floatInterface() {
     super.floatInterface();
@@ -88,7 +90,10 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
     this.model.sensorBodyPositionProperty.set( this.modelViewTransform.viewToModelXY( this.fixedLeft, this.pieChartLegend.bottom + 10 ) );
 
     // control panel is taller for this screen so move the measuring tape  to a different place
+    // REVIEW: It looks like `this.showMeasuringTape` is never declared?
     if ( this.showMeasuringTape ) {
+
+      // REVIEW: It looks like `this.measuringTapePanel` is never declared?
       this.measuringTapePanel.top = this.controlPanel.top;
       this.measuringTapePanel.right = this.controlPanel.left - 5;
     }
