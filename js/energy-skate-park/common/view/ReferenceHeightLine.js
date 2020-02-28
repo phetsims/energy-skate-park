@@ -17,6 +17,7 @@ import energySkateParkStrings from '../../../energy-skate-park-strings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TextPanel from './TextPanel.js';
+import Vector2Property from '../../../../../dot/js/Vector2Property.js';
 
 const heightEqualsZeroString = energySkateParkStrings.heightEqualsZero;
 
@@ -95,32 +96,18 @@ class ReferenceHeightLine extends Node {
       self.visible = visible;
     } );
 
-    // {Vector2|null} - for dragging, reference height in model coordinates on drag start so dragging is done by delta
-    let initialReferenceHeight = null;
-
-    // {number|null} - for dragging, pointer offset from referenceHeight, also in model coordinate frame
-    let verticalStartOffset = null;
+    // a Vector2Property for DragListener so we can update the NumberProperty ReferenceHeightProperty with dragging
+    const dragPositionProperty = new Vector2Property( new Vector2( 0, referenceHeightProperty.value ) );
 
     this.addInputListener( new DragListener( {
       transform: modelViewTransform,
-      start: ( event, listener ) => {
-        initialReferenceHeight = referenceHeightProperty.get();
-
-        const parentPoint = self.globalToParentPoint( event.pointer.point );
-        verticalStartOffset = modelViewTransform.viewToModelY( parentPoint.y ) - initialReferenceHeight;
-      },
-      drag: ( event, listener ) => {
-        const viewPoint = self.globalToParentPoint( event.pointer.point );
-        const modelY = modelViewTransform.viewToModelY( viewPoint.y );
-        const modelDeltaY = modelY - initialReferenceHeight;
-
-        // limit to reference height range
-        const proposedValue = initialReferenceHeight + modelDeltaY - verticalStartOffset;
-        const constrainedValue = referenceHeightProperty.range.constrainValue( proposedValue );
-        referenceHeightProperty.set( constrainedValue );
-      },
+      positionProperty: dragPositionProperty,
       tandem: tandem.createTandem( 'dragListener' )
     } ) );
+
+    dragPositionProperty.link( dragPosition => {
+      referenceHeightProperty.set( dragPositionProperty.get().y );
+    } );
   }
 }
 
