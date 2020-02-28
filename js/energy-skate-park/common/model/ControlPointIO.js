@@ -10,6 +10,7 @@
 import validate from '../../../../../axon/js/validate.js';
 import ObjectIO from '../../../../../tandem/js/types/ObjectIO.js';
 import energySkatePark from '../../../energySkatePark.js';
+import ControlPoint from './ControlPoint.js';
 
 class ControlPointIO extends ObjectIO {
 
@@ -42,7 +43,7 @@ class ControlPointIO extends ObjectIO {
 }
 
 ControlPointIO.documentation = 'A control point that can manipulate the track.';
-ControlPointIO.validator = { isValidValue: v => v instanceof phet.energySkatePark.ControlPoint };
+ControlPointIO.validator = { isValidValue: v => v instanceof ControlPoint };
 ControlPointIO.typeName = 'ControlPointIO';
 ObjectIO.validateSubtype( ControlPointIO );
 
