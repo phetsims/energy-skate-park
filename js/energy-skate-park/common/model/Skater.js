@@ -29,6 +29,7 @@ import Constants from '../Constants.js';
 import SkaterMasses from '../SkaterMasses.js';
 
 // Compare two arrays, whose elements have 'equals' methods for comparison
+// REVIEW: There should be a lodash or built-in JS function for this
 const arrayEquals = ( a, b ) => {
   if ( a.length !== b.length ) {
     return false;
@@ -47,7 +48,7 @@ class Skater {
 
   /**
    * @param {Tandem} tandem
-   * @param {[type]} options
+   * @param {Object} [options]
    */
   constructor( tandem, options ) {
     options = merge( {
@@ -110,7 +111,6 @@ class Skater {
       range: new Range( -100, 1E-6 )
     } );
 
-
     // @public {number} - reference height for potential energy, 0 is at the ground
     this.referenceHeightProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'referenceHeightProperty' ),
@@ -137,7 +137,7 @@ class Skater {
       phetioType: PropertyIO( StringIO )
     } );
 
-    // @public {vector2}
+    // @public {Vector2}
     this.velocityProperty = new Vector2Property( new Vector2( 0, 0 ), {
       tandem: tandem.createTandem( 'velocityProperty' )
     } );
@@ -147,7 +147,7 @@ class Skater {
       tandem: tandem.createTandem( 'draggingProperty' )
     } );
 
-    // @public {numbere} - Energies are in Joules
+    // @public {number} - Energies are in Joules
     this.kineticEnergyProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'kineticEnergyProperty' ),
       units: 'joules',
@@ -215,9 +215,7 @@ class Skater {
     this.returnedEmitter = new Emitter();
 
     // @public {number}
-    this.speedProperty = new DerivedProperty( [ this.velocityProperty ], velocity => {
-      return velocity.magnitude;
-    }, {
+    this.speedProperty = new DerivedProperty( [ this.velocityProperty ], velocity => velocity.magnitude, {
       tandem: tandem.createTandem( 'speedProperty' ),
       units: 'meters/second',
       phetioType: DerivedPropertyIO( NumberIO )

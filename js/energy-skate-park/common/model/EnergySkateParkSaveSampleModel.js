@@ -89,7 +89,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
   /**
    * SkaterSamples are removed from the model in batches for performance. This way we can remove many
    * SkaterSamples and then update the view once after several are removed. The behavior of this sim
-   * is such that hundreds of SkaterSamples are frequencly removed at a time.
+   * is such that hundreds of SkaterSamples are frequently removed at a time.
    *
    * Assumes that samplesToRemove is a sub-array of this.skaterSamples, in the right order.
    *
