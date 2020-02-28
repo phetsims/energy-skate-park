@@ -697,7 +697,7 @@ class Track extends PhetioObject {
   }
 
   /**
-   * Compute the signed curvature as defined here: http:// en.wikipedia.org/wiki/Curvature#Local_expressions
+   * Compute the signed curvature as defined here: http://en.wikipedia.org/wiki/Curvature#Local_expressions
    * Used for centripetal force and determining whether the skater flies off the track
    * Curvature parameter is for storing the result as pass-by-value.
    * Sorry, see #50 regarding GC
