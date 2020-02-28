@@ -24,6 +24,8 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
 
       // if true, tracks created from PremadeTracks that are configurable will have limiting bounds for dragging
       // control points
+      // REVIEW: It looks like limitPointBounds is set in half a dozen places, but never read from.  Is that correct?
+      // REVIEW: Should it be used somewhere? Can it be deleted?
       limitPointBounds: false
     }, options );
 
@@ -50,6 +52,10 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
   updateActiveTrack( scene ) {
     for ( let i = 0; i < this.tracks.length; i++ ) {
       const track = this.tracks.get( i );
+
+      // REVIEW: other simulations have a pattern for switching between scenes, where each EnergySkateParkScene
+      // REVIEW: would contain its own list of Tracks. Would that pattern work here?  If not, why not?  If yes, should
+      // REVIEW: we use that strategy?
       track.physicalProperty.value = ( i === scene );
 
       // Reset the skater when the track is changed, see #179
@@ -110,6 +116,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
     assert && assert( model instanceof EnergySkateParkTrackSetModel, 'PremadeTracks should be used with an EnergySkateParkTrackSetModel' );
     assert && assert( model.tracksDraggable === false, 'tracks should not be draggable in EnergySkateParkTrackSetModels' );
 
+    // REVIEW: This function has many duplicated parts (same pattern occurs 3 times) and should be factored out.
     const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem, {
       limitPointBounds: model.limitPointBounds
     } );
@@ -130,6 +137,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
 
     // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
     // see #164
+    // REVIEW: slopeToGround should be an option
     slopeTrack.slopeToGround = true;
 
     const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem, {
