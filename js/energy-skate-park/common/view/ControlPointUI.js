@@ -33,7 +33,7 @@ class ControlPointUI extends Node {
       phetioComponentOptions: { phetioState: false }
     } );
 
-    // See ComboxBox.js
+    // See ComboBox.js
     let enableClickToDismissListener = true;
 
     // listener for 'click outside to dismiss'

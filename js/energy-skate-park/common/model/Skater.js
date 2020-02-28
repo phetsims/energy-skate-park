@@ -368,6 +368,10 @@ class Skater {
   returnToInitialPosition() {
 
     // Everything needs to be reset except the mass, see #188
+
+    // REVIEW: A better way to do this would be to have a function resetEverythingExceptForMass()
+    // REVIEW: which is called from here.  Then reset would call resetEverythingExceptForMass() and also massProperty.reset()
+    // REVIEW: Also, the JSDoc says "and other properties", but I can't figure out what they are?
     const mass = this.massProperty.value;
     this.reset();
     this.massProperty.value = mass;
@@ -416,6 +420,7 @@ class Skater {
     this.energyChangedEmitter.emit();
   }
 
+  // REVIEW: JSDoc
   getHeadPosition() {
 
     // Center pie chart over skater's head not his feet so it doesn't look awkward when skating in a parabola
@@ -448,6 +453,7 @@ class Skater {
    * If the skater is released, store the initial conditions for when the skater is returned.
    * @param targetTrack The track to start on (if any)
    * @param targetU The parametric position along the track to start on (if any)
+   * //REVIEW: @param types and visibility
    */
   released( targetTrack, targetU ) {
     this.draggingProperty.value = false;

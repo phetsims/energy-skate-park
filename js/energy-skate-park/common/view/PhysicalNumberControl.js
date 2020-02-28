@@ -26,7 +26,7 @@ class PhysicalNumberControl extends NumberControl {
   constructor( titleString, property, valueRange, tandem, options ) {
     options = options || {};
     assert && assert( options.layoutFunction === undefined, 'PhysicalNumberControl sets layoutFunction' );
-    assert && assert( options.tandem === undefined, 'PhysicalNumberControl shouldnt set tandem in options' );
+    assert && assert( options.tandem === undefined, 'PhysicalNumberControl shouldn\'t set tandem in options' );
     assert && assert( options.arrowButtonOptions === undefined, 'PhysicalNumberControl sets arrowButtonOptions' );
     assert && assert( options.titleFont === undefined, 'PhysicalNumberControl sets title font' );
 

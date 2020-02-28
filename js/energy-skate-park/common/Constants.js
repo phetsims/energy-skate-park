@@ -29,7 +29,7 @@ const Constants = {
   CONTROL_TITLE_FONT: new PhetFont( { weight: 'bold', size: 12 } ),
   CONTROL_TICK_LABEL_OPTIONS: {
     font: new PhetFont( 10 ),
-    maxWidth: 25 // selected by choosing the length of widest English string in ?stringTest=doubl
+    maxWidth: 25 // selected by choosing the length of widest English string in ?stringTest=double
   },
 
   // options for the ComboBoxes in this sim

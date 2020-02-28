@@ -328,7 +328,7 @@ class EnergySkateParkModel extends PhetioObject {
 
     let initialEnergy = null;
 
-    // If the delay makes dt too high, then truncate it.  This helps e.g. when clicking in the address bar on ipad,
+    // If the delay makes dt too high, then truncate it.  This helps e.g. when clicking in the address bar on iPad,
     // which gives a huge dt and problems for integration
     if ( !this.pausedProperty.value && !this.skater.draggingProperty.value ) {
 
@@ -421,7 +421,7 @@ class EnergySkateParkModel extends PhetioObject {
 
 
     // Correct the energy so that total energy does not change after this update. If the energy has gone down
-    // (energyDiference positive), we can add energyDifference to thermal energy without much consequence.
+    // (energyDifference positive), we can add energyDifference to thermal energy without much consequence.
     // But if energy increased, we may end up with negative thermal energy if we remove the excess from
     // thermal energy, so we attempt to take it out of kinetic energy instead.
     // See https://github.com/phetsims/energy-skate-park/issues/45
@@ -1063,11 +1063,11 @@ class EnergySkateParkModel extends PhetioObject {
 
           // All track points are at or above ground so it is possible that we took potential energy out of the. Add
           // to kinetic energy to compensate
-          const energyDiference = result.getPotentialEnergy() - correctedState.getPotentialEnergy();
-          if ( energyDiference < 0 ) {
+          const energyDifference = result.getPotentialEnergy() - correctedState.getPotentialEnergy();
+          if ( energyDifference < 0 ) {
 
             // add the lost energy to kinetic energy to compensate
-            const newKineticEnergy = result.getKineticEnergy() + -energyDiference;
+            const newKineticEnergy = result.getKineticEnergy() + -energyDifference;
 
             // new skater speed will be speed from adjusted kinetic energy
             const adjustedSpeed = result.getSpeedFromEnergy( newKineticEnergy );

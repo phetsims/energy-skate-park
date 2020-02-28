@@ -2,7 +2,7 @@
 
 /**
  * The sensor that reads information from the samples along the skater path. Includes the body, wire, and sensor. The
- * body is stationary and the beter can be dragged to sample positions.
+ * body is stationary and the sensor can be dragged to sample positions.
  *
  * @author Jesse Greenberg
  */
@@ -206,7 +206,7 @@ class SkaterPathSensorNode extends Node {
     this.addChild( this.heightSpeedRectangle );
 
     // @private - {SkaterSample|null} - the skater sample currently being inspected, reference so we can un-inspect
-    // wihtout looping through all samples
+    // without looping through all samples
     this.inspectedSample = null;
 
     // display the sample that is close to the sample of the probe - find the closest one in case multiple samples
@@ -250,7 +250,7 @@ class SkaterPathSensorNode extends Node {
   }
 
   /**
-   * Display values assocated with a sample of skater state.
+   * Display values associated with a sample of skater state.
    * @private
    * @param  {SkaterSample} skaterSample
    */

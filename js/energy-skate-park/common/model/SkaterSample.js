@@ -28,7 +28,7 @@ class SkaterSample {
    *
    * @param {SkaterState} skaterState
    * @param {number} time - in seconds
-   * @param {number} fadeDecay - samples being removed retain this percent of opacity (opacity = opacity * fadeDecacy)
+   * @param {number} fadeDecay - samples being removed retain this percent of opacity (opacity = opacity * fadeDecay)
    */
   constructor( skaterState, time, fadeDecay ) {
     assert && assert( fadeDecay < 1, 'samples which have initiated removal need to fade away' );

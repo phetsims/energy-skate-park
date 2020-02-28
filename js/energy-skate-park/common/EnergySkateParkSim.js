@@ -23,7 +23,7 @@ class EnergySkateParkSim extends Sim {
   constructor( titleString, screens, tandem, options ) {
     options = merge( {
 
-      // If running the sim on an ipad, do not use the "backing scale" technique for antialiasing because this method
+      // If running the sim on an iPad, do not use the "backing scale" technique for antialiasing because this method
       // takes up too much memory, see https://github.com/phetsims/scenery/issues/859 and
       // https://github.com/phetsims/energy-skate-park-basics/issues/435
       allowBackingScaleAntialiasing: !platform.mobileSafari,

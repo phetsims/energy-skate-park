@@ -333,6 +333,7 @@ class Track extends PhetioObject {
    * @public
    * @param {number}
    * @returns {number}
+   * //REVIEW: JSDoc doesn't match the parameter
    */
   getY( parametricPosition ) { return SplineEvaluation.atNumber( this.ySpline, parametricPosition ); }
 
@@ -498,7 +499,7 @@ class Track extends PhetioObject {
    * Get the snap target for a control point, if one is specified.
    * @public
    *
-   * @returns {null|ControlPoin}
+   * @returns {null|ControlPoint}
    */
   getSnapTarget() {
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
@@ -694,7 +695,6 @@ class Track extends PhetioObject {
     }
     return guess - u0;
   }
-
 
   /**
    * Compute the signed curvature as defined here: http:// en.wikipedia.org/wiki/Curvature#Local_expressions

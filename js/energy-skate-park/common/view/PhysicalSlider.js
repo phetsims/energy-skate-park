@@ -41,7 +41,7 @@ class PhysicalSlider extends PhysicalNumberControl {
 
     super( titleString, property, valueRange, tandem, {
 
-      // don't include any arrow buttons or the NumberDislay for this control
+      // don't include any arrow buttons or the NumberDisplay for this control
       sliderOnly: true,
 
       sliderOptions: merge( {}, Constants.SLIDER_OPTIONS, {

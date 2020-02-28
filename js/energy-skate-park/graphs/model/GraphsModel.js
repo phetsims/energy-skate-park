@@ -41,8 +41,8 @@ class GraphsModel extends EnergySkateParkSaveSampleModel {
       // interval at which we save skater samples
       saveSampleInterval: 0.01,
 
-      // graph samples will fade more quicly, partly because it looks nicer, but mostly because
-      // it is better for perfomance to have fewer transparent points
+      // graph samples will fade more quickly, partly because it looks nicer, but mostly because
+      // it is better for performance to have fewer transparent points
       sampleFadeDecay: 0.5,
 
       // to prevent a memory leak if we run for a long time without clearing
@@ -100,8 +100,8 @@ class GraphsModel extends EnergySkateParkSaveSampleModel {
       }
       else {
 
-        // if plotting against time, it is still useful to see changing data as potentiala energy changes, but prevent
-        // sample saving while paused and dragging so that we don't add data while puased, but still save data
+        // if plotting against time, it is still useful to see changing data as potential energy changes, but prevent
+        // sample saving while paused and dragging so that we don't add data while paused, but still save data
         // while manually stepping
         this.preventSampleSave = isDragging && this.pausedProperty.get();
       }
