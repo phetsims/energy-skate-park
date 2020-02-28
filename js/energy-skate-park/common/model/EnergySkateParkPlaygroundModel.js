@@ -27,6 +27,14 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 
       // the center of initial tracks in the toolbox, change this to move the panel to a different position
       // in model coordinates (meters)
+
+      // REVIEW: It seems odd that we would specify the model position of the panel.  This should be view-only, and
+      // REVIEW: When tracks are dragged out, their corresponding model positions should be computed.
+      // REVIEW: For instance, if a designer asked to move this panel 10px to the left, that would be difficult
+      // REVIEW: or impossible with the existing implementation.
+
+      // REVIEW: Also, it seems odd that the default option only applies to "Energy Skate Park: Basics".  That should
+      // REVIEW: be reversed, but probably unnecessary after addressing the preceding TODO
       initialTracksOffsetVector: new Vector2( -5.1, -0.85 )
     }, options );
     options = options || {};
@@ -72,6 +80,9 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
     // Move the tracks over so they will be in the right position in the view coordinates, under the grass to the left
     // of the clock controls.  Could use view transform for this, but it would require creating the view first, so just
     // eyeballing it for now.
+
+    // REVIEW: Let's use the standard pattern of showing an icon in the control panel, then creating the model component
+    // REVIEW: in the corresponding model location when dragged.
     const offset = this.initialTracksOffsetVector;
     const controlPoints = [
       new ControlPoint( offset.x - 1, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } ),
