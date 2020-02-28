@@ -30,7 +30,7 @@ class IntroScreen extends Screen {
       tandem: tandem,
       homeScreenIcon: new Image( iconIntroHomescreen ),
       navigationScreenIcon: new Image( iconIntroNavbar )
-    }, options );
+    }, {} ); // REVIEW: should there be an options parameter to this constructor?
 
     super(
       () => new EnergySkateParkFullTrackSetModel( tandem.createTandem( 'model' ) ),

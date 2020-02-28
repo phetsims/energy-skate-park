@@ -32,7 +32,7 @@ class LabScreen extends Screen {
       navigationBarIcon: new Image( iconPlaygroundNavbar ),
 
       tandem: tandem
-    }, options );
+    }, {} ); // REVIEW: should there be an options parameter to this constructor?
 
     super(
       () => new LabModel( tandem.createTandem( 'labModel' ) ),

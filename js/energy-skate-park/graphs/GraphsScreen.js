@@ -30,7 +30,7 @@ class GraphsScreen extends Screen {
       homeScreenIcon: new Image( iconFrictionHomescreen ),
       navigationBarIcon: new Image( iconFrictionNavbar ),
       tandem: tandem
-    }, options );
+    }, {} ); // REVIEW: should there be an options parameter to this constructor?
 
     super(
       () => new GraphsModel( tandem.createTandem( 'graphsModel' ) ),
