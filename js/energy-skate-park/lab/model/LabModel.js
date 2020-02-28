@@ -1,7 +1,7 @@
 // Copyright 2018-2020, University of Colorado Boulder
 
 /**
- * Type Documentation
+ * Type Documentation // REVIEW: Type Documentation
  * @author Jesse Greenberg
  */
 

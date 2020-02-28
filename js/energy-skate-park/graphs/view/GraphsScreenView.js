@@ -18,7 +18,7 @@ import EnergyGraphAccordionBox from './EnergyGraphAccordionBox.js';
 class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
 
   /**
-   * @param {EnergySkateParkModel} model
+   * @param {EnergySkateParkTrackSetModel} model
    * @param {Tandem} tandem
    */
   constructor( model, tandem ) {
@@ -50,6 +50,8 @@ class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
 
   /**
    * Special layout for the energy-skate-park, contents can float to the available bounds.
+   *
+   * // REVIEW: A better name for this would be "layout"
    * @override
    */
   floatInterface() {

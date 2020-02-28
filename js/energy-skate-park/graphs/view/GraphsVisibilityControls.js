@@ -15,7 +15,7 @@ class GraphsVisibilityControls extends Panel {
 
   /**
    * @param {GraphsModel} model
-   * @param {GraphsScreenView} screenView
+   * @param {GraphsScreenView} screenView // REVIEW: doesn't appear in constructor
    * @param {Tandem} tandem
    * @param {Object} [options]
    */

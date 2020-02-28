@@ -483,6 +483,7 @@ class EnergySkateParkScreenView extends ScreenView {
    * there is extra horizontal space, controls near the edge of the layoutBounds will float outward.
    *
    * Override in subtypes for unique layout of various controls.
+   * // REVIEW: A better name for this would be "layout"
    */
   floatInterface() {
     assert && assert( this.controlPanel, 'much of component layout based on control panel, one should be created.' );

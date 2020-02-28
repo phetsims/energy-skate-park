@@ -1,7 +1,7 @@
 // Copyright 2018-2020, University of Colorado Boulder
 
 /**
- * Type Documentation
+ * Type Documentation  // REVIEW: Type Documentation
  * @author Jesse Greenberg
  */
 
@@ -22,7 +22,7 @@ MASS_IMAGE_MAP.set( SkaterMasses.DOG_MASS, SkaterNode.SkaterImage.DOG );
 class IntroScreenView extends EnergySkateParkTrackSetScreenView {
 
   /**
-   * @param {EnergySkateParkIntroModel} model
+   * @param {EnergySkateParkIntroModel} model // REVIEW: I don't see a type with this name
    * @param {Tandem} tandem
    */
   constructor( model, tandem ) {
