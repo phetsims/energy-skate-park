@@ -296,8 +296,6 @@ class SkaterPathSensorNode extends Node {
     }
   }
 
-  // this.globalToLocalBounds( node.getGlobalBounds() )
-
   /**
    * Each value in this readout will be as precise as one decimal.
    * @param  {number} value
@@ -312,7 +310,6 @@ class SkaterPathSensorNode extends Node {
    * @private
    *
    * @param {SkaterSample} skaterSample
-   * @returns {}
    */
   clearDisplay( skaterSample ) {
 
@@ -351,6 +348,7 @@ class SkaterPathSensorNode extends Node {
    * @private
    *
    * @param  {AlignGroup} alignGroup
+   * // REVIEW: JSDOC param
    * @returns {AlignBox}
    */
   static createReadoutBox( alignGroup, valueProperty ) {

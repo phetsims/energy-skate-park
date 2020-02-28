@@ -16,8 +16,8 @@ import SkaterSamplesCanvasNode from './SkaterSamplesCanvasNode.js';
 class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
 
   /**
-   * @param  {MeasureModel} model
-   * @param  {Tandem} tandem
+   * @param {MeasureModel} model
+   * @param {Tandem} tandem
    */
   constructor( model, tandem ) {
 
