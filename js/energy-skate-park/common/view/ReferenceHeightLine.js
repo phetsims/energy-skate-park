@@ -95,19 +95,28 @@ class ReferenceHeightLine extends Node {
       self.visible = visible;
     } );
 
+    // {Vector2|null} - for dragging, reference height in model coordinates on drag start so dragging is done by delta
+    let initialReferenceHeight = null;
+
+    // {number|null} - for dragging, pointer offset from referenceHeight, also in model coordinate frame
+    let verticalStartOffset = null;
+
     this.addInputListener( new DragListener( {
       transform: modelViewTransform,
+      start: ( event, listener ) => {
+        initialReferenceHeight = referenceHeightProperty.get();
+
+        const parentPoint = self.globalToParentPoint( event.pointer.point );
+        verticalStartOffset = modelViewTransform.viewToModelY( parentPoint.y ) - initialReferenceHeight;
+      },
       drag: ( event, listener ) => {
-
-        // mouse in view coordinates
-        const pMouse = self.globalToParentPoint( event.pointer.point );
-
-        // mouse in model coordinates
-        const modelMouse = modelViewTransform.viewToModelPosition( pMouse );
+        const viewPoint = self.globalToParentPoint( event.pointer.point );
+        const modelY = modelViewTransform.viewToModelY( viewPoint.y );
+        const modelDeltaY = modelY - initialReferenceHeight;
 
         // limit to reference height range
-        const modelY = modelMouse.y;
-        const constrainedValue = referenceHeightProperty.range.constrainValue( modelY );
+        const proposedValue = initialReferenceHeight + modelDeltaY - verticalStartOffset;
+        const constrainedValue = referenceHeightProperty.range.constrainValue( proposedValue );
         referenceHeightProperty.set( constrainedValue );
       },
       tandem: tandem.createTandem( 'dragListener' )
