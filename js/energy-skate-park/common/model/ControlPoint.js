@@ -26,8 +26,8 @@ import ControlPointIO from './ControlPointIO.js';
 class ControlPoint extends PhetioObject {
 
   /**
-   * @param x
-   * @param y
+   * @param x // REVIEW: @param types
+   * @param y // REVIEW: @param types
    * @param {Object} [options]
    * @constructor
    */

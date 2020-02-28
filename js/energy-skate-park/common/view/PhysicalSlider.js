@@ -57,10 +57,10 @@ class PhysicalSlider extends PhysicalNumberControl {
 
 /**
  * Create a tick entry for the slider to be added with addMajorTick.
- * @param   {number} value - value on the slider to add the tick
- * @param   {string} label - label for the tick
- * @param   {Tandem} tandem
- * @param   {string} tandemName
+ * @param {number} value - value on the slider to add the tick
+ * @param {string} label - label for the tick
+ * @param {Tandem} tandem
+ * @param {string} tandemName
  * @returns {Object} - conforms to { value: {number}, label: Node }, required by NumberControl options
  */
 const createTickEntry = ( value, label, tandem, tandemName ) => {

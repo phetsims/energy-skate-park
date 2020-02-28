@@ -92,7 +92,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
    * Assumes that samplesToRemove is a sub-array of this.skaterSamples, in the right order.
    *
    * @public
-   * @param samplesToRemove
+   * @param samplesToRemove // REVIEW: @param type
    */
   batchRemoveSamples( samplesToRemove ) {
     this.batchRemoveSamplesProperty.set( samplesToRemove );

@@ -700,8 +700,8 @@ class Track extends PhetioObject {
    * Sorry, see #50 regarding GC
    * @public
    *
-   * @param parametricPosition
-   * @param curvature
+   * @param parametricPosition // REVIEW: @param types
+   * @param curvature // REVIEW: @param types
    */
   getCurvature( parametricPosition, curvature ) {
 
