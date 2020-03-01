@@ -20,8 +20,8 @@ class SkaterState {
 
   /**
    * Create a SkaterSate from a SkaterState or Skater
-   * @param {Skater|SkaterSate} source
-   * @param {*] overrides the new values
+   * @param {Skater|SkaterState} source
+   * @param {*} overrides the new values
    * @constructor
    */
   constructor( source, overrides ) {
@@ -33,13 +33,15 @@ class SkaterState {
    * @param {Skater|SkaterState} source the initial values to use
    * @param {*} overrides the new values to override in the source
    * @returns {SkaterState} the new SkaterState
+   *
+   * // REVIEW: visibility annotation
    */
   setState( source, overrides ) {
 
+    // REVIEW: In running with fuzzing for a long time, this was never triggered.  Perhaps it can be removed?
     if ( !overrides ) {
       overrides = EMPTY_OBJECT;
     }
-
 
     // Handle the case of a skater passed in (which has a position vector) or a SkaterState passed in, which has a number
     if ( source.positionProperty ) {
@@ -86,6 +88,8 @@ class SkaterState {
    * performance.
    *
    * @returns {number}
+   *
+   * // REVIEW: visibility annotation
    */
   getTotalEnergy() {
     return 0.5 * this.mass * ( this.velocityX * this.velocityX + this.velocityY * this.velocityY ) - this.mass * this.gravity * ( this.positionY - this.referenceHeight ) + this.thermalEnergy;
@@ -95,6 +99,8 @@ class SkaterState {
    * Get the kinetic energy with KE = 1/2 * m * v^2
    *
    * @returns {number}
+   *
+   * // REVIEW: visibility annotation
    */
   getKineticEnergy() {
     return 0.5 * this.mass * ( this.velocityX * this.velocityX + this.velocityY * this.velocityY );
@@ -104,6 +110,8 @@ class SkaterState {
    * Get the potential energy with PE = mgh.
    *
    * @returns {number}
+   *
+   * // REVIEW: visibility annotation
    */
   getPotentialEnergy() {
     return -this.mass * this.gravity * ( this.positionY - this.referenceHeight );
@@ -115,6 +123,8 @@ class SkaterState {
    *
    * @param {Object} overrides
    * @returns {SkaterState}
+   *
+   * // REVIEW: visibility annotation
    */
   update( overrides ) { return new SkaterState( this, overrides ); }
 
@@ -133,6 +143,8 @@ class SkaterState {
    * Apply skate to skater. Only set values that have changed.
    *
    * @param {Skater} skater
+   *
+   * // REVIEW: visibility annotation
    */
   setToSkater( skater ) {
     skater.trackProperty.value = this.track;
@@ -163,6 +175,8 @@ class SkaterState {
    * @param {Track} track
    * @param {number} parametricSpeed
    * @returns {SkaterState}
+   *
+   * // REVIEW: visibility annotation
    */
   updateTrackUD( track, parametricSpeed ) {
     const state = new SkaterState( this, EMPTY_OBJECT );
@@ -182,6 +196,8 @@ class SkaterState {
    * @param {number} positionX
    * @param {number} positionY
    * @returns {SkaterState}
+   *
+   * // REVIEW: visibility annotation
    */
   updateUUDVelocityPosition( parametricPosition, parametricSpeed, velocityX, velocityY, positionX, positionY ) {
     const state = new SkaterState( this, EMPTY_OBJECT );
@@ -204,6 +220,8 @@ class SkaterState {
    * @param {number} velocityX
    * @param {number} velocityY
    * @returns {SkaterState}
+   *
+   * // REVIEW: visibility annotation
    */
   updatePositionAngleUpVelocity( positionX, positionY, angle, onTopSideOfTrack, velocityX, velocityY ) {
     const state = new SkaterState( this, EMPTY_OBJECT );
@@ -237,6 +255,7 @@ class SkaterState {
    * @param {number} positionX
    * @param {number} positionY
    * @returns {SkaterState}
+   * // REVIEW: visibility annotation
    */
   updateUPosition( parametricPosition, positionX, positionY ) {
     const state = new SkaterState( this, EMPTY_OBJECT );
@@ -256,6 +275,8 @@ class SkaterState {
    * @param {number} positionX
    * @param {number} positionY
    * @returns {SkaterState}
+   *
+   * // REVIEW: visibility annotation
    */
   switchToGround( thermalEnergy, velocityX, velocityY, positionX, positionY ) {
     assert && assert( thermalEnergy >= 0 );
@@ -305,6 +326,7 @@ class SkaterState {
    * Leave the track by zeroing the parametric speed and setting track to null.
    *
    * @returns {SkaterState}
+   * // REVIEW: visibility annotation
    */
   leaveTrack() {
     const state = new SkaterState( this, EMPTY_OBJECT );
@@ -319,6 +341,8 @@ class SkaterState {
    * @param {number} positionX
    * @param {number} positionY
    * @returns {SkaterState}
+   *
+   * // REVIEW: visibility annotation
    */
   updatePosition( positionX, positionY ) {
     const state = new SkaterState( this, EMPTY_OBJECT );
@@ -335,6 +359,8 @@ class SkaterState {
    * @param {number} velocityY
    *
    * @returns {SkaterState}
+   *
+   * // REVIEW: visibility annotation
    */
   updateUDVelocity( parametricSpeed, velocityX, velocityY ) {
     const state = new SkaterState( this, EMPTY_OBJECT );
@@ -354,6 +380,8 @@ class SkaterState {
    * @param {number} positionY
    *
    * @returns {SkaterState}
+   *
+   * // REVIEW: visibility annotation
    */
   continueFreeFall( velocityX, velocityY, positionX, positionY ) {
     const state = new SkaterState( this, EMPTY_OBJECT );
@@ -377,6 +405,8 @@ class SkaterState {
    * @param {number} positionX
    * @param {number} positionY
    * @returns {SkaterState}
+   *
+   * // REVIEW: visibility annotation
    */
   attachToTrack( thermalEnergy, track, onTopSideOfTrack, parametricPosition, parametricSpeed, velocityX, velocityY, positionX, positionY ) {
     assert && assert( thermalEnergy >= 0 );
@@ -397,6 +427,8 @@ class SkaterState {
   /**
    * Get the speed of this SkaterState, the magnitude of velocity.
    * @returns {number}
+   *
+   * // REVIEW: visibility annotation
    */
   getSpeed() {
     return Math.sqrt( this.velocityX * this.velocityX + this.velocityY * this.velocityY );
@@ -405,6 +437,8 @@ class SkaterState {
   /**
    * Return a new Vector2 of this SkaterState's that does not reference this SkaterState's velocity.
    * @returns {Vector2}
+   *
+   * // REVIEW: visibility annotation
    */
   getVelocity() {
     return new Vector2( this.velocityX, this.velocityY );
@@ -416,6 +450,7 @@ class SkaterState {
    *
    * @param {number} kineticEnergy
    * @returns {number}
+   * // REVIEW: visibility annotation
    */
   getSpeedFromEnergy( kineticEnergy ) {
     return Math.sqrt( 2 * Math.abs( kineticEnergy ) / this.mass );
@@ -428,12 +463,15 @@ class SkaterState {
    * Create a new Vector2 that contains the positionX/positionY of this SkaterState.
    *
    * @returns {Vector2}
+   *
+   * // REVIEW: visibility annotation
    */
   getPosition() {
     return new Vector2( this.positionX, this.positionY );
   }
 }
 
+// REVIEW: JSDoc.  Why is this needed?
 const getValue = ( key, source, overrides ) => {
   return key in overrides ? overrides[ key ] :
          typeof source[ key + 'Property' ] === 'object' ? source[ key + 'Property' ].value :

@@ -22,7 +22,7 @@ class ControlPointIO extends ObjectIO {
    */
   static toStateObject( controlPoint ) {
     validate( controlPoint, this.validator );
-    return controlPoint ? controlPoint.tandem.phetioID : 'null';
+    return controlPoint ? controlPoint.tandem.phetioID : 'null'; // REVIEW (phet-io): Should this use ReferenceIO?
   }
 
   /**
