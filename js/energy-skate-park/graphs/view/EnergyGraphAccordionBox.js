@@ -50,7 +50,7 @@ const LABEL_FONT = new PhetFont( { size: 12 } );
 class EnergyGraphAccordionBox extends AccordionBox {
 
   /**
-   * @param {EnergySkateParkModel} model
+   * @param {GraphsModel} model
    * @param {ModelViewTransform2} modelViewTransform
    * @param {Tandem} tandem
    */
@@ -209,7 +209,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
    *
    * @param {Property} property
    * @param {string} labelString
-   * @param {PaintDef} labelFill
+   * @param {PaintDef|Color} labelFill
    *
    * @returns {*} - Conforms to the item object of VerticalCheckboxGroup
    */
