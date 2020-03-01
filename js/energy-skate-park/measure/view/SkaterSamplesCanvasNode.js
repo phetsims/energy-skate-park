@@ -55,6 +55,8 @@ class SkaterSamplesCanvasNode extends CanvasNode {
 
       context.fill();
       context.stroke();
+
+      // REVIEW: Do we need to save/restore context here, or is that done by the caller?
     }
   }
 

@@ -1,6 +1,8 @@
 // Copyright 2013-2020, University of Colorado Boulder
 
 /**
+ * // REVIEW: It looks like ControlPoint is used on many (all?) screens, and can be controlled in more screens than
+ * // REVIEW: just the playground screen.
  * Data structure for a control point, which allows the user to change the track shape in the 'playground' screen.
  *
  * @author Sam Reid (PhET Interactive Simulations)

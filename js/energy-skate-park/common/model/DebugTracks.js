@@ -91,7 +91,7 @@ class DebugTracks {
       model.tracks.add( track );
     }
 
-    // Flickering return skater button, PROBLEM
+    // Flickering return skater button, PROBLEM // REVIEW: Is this still a "PROBLEM"?
     if ( EnergySkateParkQueryParameters.testTrackIndex === 5 ) {
 
       model.stickingToTrackProperty.value = false;
@@ -105,7 +105,7 @@ class DebugTracks {
       model.tracks.add( track );
     }
 
-    // Passes through track, PROBLEM
+    // Passes through track, PROBLEM // REVIEW: Is this still a "PROBLEM"?
     if ( EnergySkateParkQueryParameters.testTrackIndex === 6 ) {
 
       model.stickingToTrackProperty.value = false;
@@ -119,7 +119,7 @@ class DebugTracks {
       model.tracks.add( track );
     }
 
-    // Falls through bottom, PROBLEM
+    // Falls through bottom, PROBLEM // REVIEW: Is this still a "PROBLEM"?
     if ( EnergySkateParkQueryParameters.testTrackIndex === 7 ) {
 
       model.stickingToTrackProperty.value = false;
@@ -133,7 +133,7 @@ class DebugTracks {
       model.tracks.add( track );
     }
 
-    // Falls through loop, PROBLEM
+    // Falls through loop, PROBLEM // REVIEW: Is this still a "PROBLEM"?
     if ( EnergySkateParkQueryParameters.testTrackIndex === 8 ) {
 
       model.stickingToTrackProperty.value = false;
@@ -147,7 +147,7 @@ class DebugTracks {
       model.tracks.add( track );
     }
 
-    // Pops upside down in loop, PROBLEM
+    // Pops upside down in loop, PROBLEM // REVIEW: Is this still a "PROBLEM"?
     if ( EnergySkateParkQueryParameters.testTrackIndex === 9 ) {
 
       model.stickingToTrackProperty.value = false;
