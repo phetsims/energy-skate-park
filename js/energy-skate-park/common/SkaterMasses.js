@@ -15,6 +15,7 @@ const MAX_MASS = 100;
 const SkaterMasses = {
 
   // masses of skater objects in the intro screen, in kg
+  // REVIEW: Make a note or, better, an assertion that these masses must remain unique if they are to be used as Map keys
   SKATER_1_MASS: 60,
   SKATER_2_MASS: 35,
   SKATER_3_MASS: 40,
