@@ -15,7 +15,7 @@ import EnergySkateParkPlaygroundScreenView from '../../common/view/EnergySkatePa
 class LabScreenView extends EnergySkateParkPlaygroundScreenView {
 
   /**
-   * @param {EnergySkateParkLabModel} model
+   * @param {LabModel} model
    * @param {Tandem} tandem
    */
   constructor( model, tandem ) {
@@ -62,8 +62,6 @@ class LabScreenView extends EnergySkateParkPlaygroundScreenView {
    * Positions the pie chart legend in the correct location as the UI floats.
    *
    * @override
-   * @param {number} width
-   * @param {number} height
    */
   floatInterface() {
     super.floatInterface();

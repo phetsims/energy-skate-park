@@ -67,7 +67,7 @@ class SkaterPathSensorNode extends Node {
    * @param {Vector2Property} sensorProbePositionProperty
    * @param {Vector2Property} sensorBodyPositionProperty
    * @param {Property.<Bounds2>} modelBoundsProperty
-   * @param {ModelViewTransform} modelViewTransform
+   * @param {ModelViewTransform2} modelViewTransform
    * @param {EnergySkateParkControlPanel} controlPanel - so the readout doesn't occlude control panel bounds
    * @param {Object} [options]
    */
