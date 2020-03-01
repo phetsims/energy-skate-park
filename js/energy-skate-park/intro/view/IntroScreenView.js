@@ -22,7 +22,7 @@ MASS_IMAGE_MAP.set( SkaterMasses.DOG_MASS, SkaterNode.SkaterImage.DOG );
 class IntroScreenView extends EnergySkateParkTrackSetScreenView {
 
   /**
-   * @param {EnergySkateParkIntroModel} model // REVIEW: I don't see a type with this name
+   * @param {EnergySkateParkFullTrackSetModel} model
    * @param {Tandem} tandem
    */
   constructor( model, tandem ) {
