@@ -26,6 +26,7 @@ class EnergySkateParkSim extends Sim {
       // If running the sim on an iPad, do not use the "backing scale" technique for antialiasing because this method
       // takes up too much memory, see https://github.com/phetsims/scenery/issues/859 and
       // https://github.com/phetsims/energy-skate-park-basics/issues/435
+      // REVIEW: Now that the sim is no longer using WebGL, is this flag doing anything?
       allowBackingScaleAntialiasing: !platform.mobileSafari,
 
       tandem: tandem
