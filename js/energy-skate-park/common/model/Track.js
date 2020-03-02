@@ -699,8 +699,8 @@ class Track extends PhetioObject {
   /**
    * Compute the signed curvature as defined here: http://en.wikipedia.org/wiki/Curvature#Local_expressions
    * Used for centripetal force and determining whether the skater flies off the track
-   * Curvature parameter is for storing the result as pass-by-value.
-   * Sorry, see #50 regarding GC
+   * Curvature parameter is for storing the result as pass-by-value. //REVIEW: Isn't this "pass by reference"?
+   * Sorry, see #50 regarding GC // REVIEW: Is the "sorry" referring to something?  Should it be here?  Should it be "Please" instead?
    * @public
    *
    * @param parametricPosition // REVIEW: @param types
@@ -726,7 +726,7 @@ class Track extends PhetioObject {
     const k = ( xP * yPP - yP * xPP ) /
               Math.pow( ( xP * xP + yP * yP ), 3 / 2 );
 
-    // Using component-wise maths to avoid allocations, see #50
+    // Using component-wise math to avoid allocations, see #50
     const centerX = this.getX( parametricPosition );
     const centerY = this.getY( parametricPosition );
 

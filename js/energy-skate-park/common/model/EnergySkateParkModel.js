@@ -335,6 +335,7 @@ class EnergySkateParkModel extends PhetioObject {
       const initialThermalEnergy = this.skater.thermalEnergyProperty.value;
 
       // If they switched windows or tabs, just bail on that delta
+      // REVIEW: This should be handled with screen.maxDT
       if ( dt > 1 || dt <= 0 ) {
         dt = 1.0 / 60.0;
       }
@@ -354,6 +355,7 @@ class EnergySkateParkModel extends PhetioObject {
         updatedState = this.stepModel( dt, skaterState );
       }
 
+      // REVIEW: what if updatedState is null?
       if ( debug && Math.abs( updatedState.getTotalEnergy() - initialEnergy ) > 1E-6 ) {
         const initialStateCopy = new SkaterState( this.skater, EMPTY_OBJECT );
         const redo = this.stepModel( this.isSlowMotionProperty.value === false ? dt : dt * 0.25, initialStateCopy );
@@ -364,6 +366,7 @@ class EnergySkateParkModel extends PhetioObject {
         this.skater.updatedEmitter.emit();
 
         // Make sure the thermal energy doesn't go negative
+        // REVIEW wrap this whole part in if(debug){...} so it is clear why it is here
         const finalThermalEnergy = this.skater.thermalEnergyProperty.value;
         const deltaThermalEnergy = finalThermalEnergy - initialThermalEnergy;
         if ( deltaThermalEnergy < 0 ) {
@@ -378,7 +381,7 @@ class EnergySkateParkModel extends PhetioObject {
     // If traveling on the ground, face in the direction of motion, see #181
     if ( this.skater.trackProperty.value === null && this.skater.positionProperty.value.y === 0 ) {
       if ( this.skater.velocityProperty.value.x > 0 ) {
-        this.skater.directionProperty.value = 'right';
+        this.skater.directionProperty.value = 'right'; // REVIEW: Use Enumeration.byKeys for these values
       }
       if ( this.skater.velocityProperty.value.x < 0 ) {
         this.skater.directionProperty.value = 'left';
@@ -991,6 +994,8 @@ class EnergySkateParkModel extends PhetioObject {
     const curvatureDirectionY = this.getCurvatureDirectionY( curvatureTemp, skaterState.positionX, skaterState.positionY );
 
     const track = skaterState.track;
+
+    // REVIEW: Rewrite so that 'getUnitNormalVector' only appears once on each line, and the onTopSideOfTrack just applies to the overall sign
     const sideVectorX = skaterState.onTopSideOfTrack ? track.getUnitNormalVector( skaterState.parametricPosition ).x :
                         track.getUnitNormalVector( skaterState.parametricPosition ).x * -1;
     const sideVectorY = skaterState.onTopSideOfTrack ? track.getUnitNormalVector( skaterState.parametricPosition ).y :
@@ -1030,6 +1035,7 @@ class EnergySkateParkModel extends PhetioObject {
       // Turning this value to 5 or less causes thermal energy to decrease on some time steps
       // Discrepancy with original version: original version had 10 divisions here.  We have reduced it to make it more
       // smooth and less GC
+      // REVIEW: Is this comment stale?  Does thermal energy still decrease on some time steps because n=4?
       const numDivisions = 4;
       for ( let i = 0; i < numDivisions; i++ ) {
         newState = this.stepEuler( dt / numDivisions, newState );
@@ -1115,12 +1121,12 @@ class EnergySkateParkModel extends PhetioObject {
    * 2. When leaving from the middle of the track (say going over a jump or falling upside-down from a loop),
    * adjust the skater so it won't fall through or re-collide.
    *
-   * @param {Skater} freeSkater
+   * @param {SkaterState} freeSkater
    * @param {number} sideVectorX
    * @param {number} sideVectorY
    * @param {number} sign
    *
-   * @returns {Skater}
+   * @returns {SkaterState}
    * // REVIEW: Visibility annotation, is this @public or @private or something else?
    */
   nudge( freeSkater, sideVectorX, sideVectorY, sign ) {
@@ -1380,11 +1386,12 @@ class EnergySkateParkModel extends PhetioObject {
     // increment running time - done in stepModel because dt reflects slowMotionProperty here
     this.stopwatch.step( dt );
 
+    // REVIEW: The dev team recommends to use parentheses around the ternary predicates
     return skaterState.dragging ? skaterState : // User is dragging the skater, nothing to update here
            !skaterState.track && skaterState.positionY <= 0 ? this.stepGround( dt, skaterState ) :
            !skaterState.track && skaterState.positionY > 0 ? this.stepFreeFall( dt, skaterState, false ) :
            skaterState.track ? this.stepTrack( dt, skaterState ) :
-           skaterState;
+           skaterState; // REVIEW: How could this else trigger?  Should that be an error or assertion case?
   }
 
   /**
