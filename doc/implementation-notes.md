@@ -60,6 +60,11 @@ Tracks in the EnergySkateParkPlayGroundModel have all of these fields set to tru
 ### Skater, SkaterStates, and SkaterSamples
 The Skater is the model component for the skater with observable Properties for its state.
 [SkaterState](https://github.com/phetsims/energy-skate-park/blob/master/js/common/model/SkaterState.js)s were added to
+
+// REVIEW: It doesn't make sense that SkaterState was added primarily for performance.  The more performance way to 
+// REVIEW: it would be with a purely imperative approach that mutates all values.  However, in order to make a functional-style
+// REVIEW: computation which allows backtracking and revising energy, the SkaterState is useful.
+
 support the model and are primarily for performance. These contain state information for the skater at a particular snapshot.
 In a single model step, energy and state information can be re-calculated many times. SkaterStates are created or modified in these calculations so that SkaterState Properties can be set once
 after all calculations are complete. And so many SkaterStates can be created in a single model step. A [SkaterSample](https://github.com/phetsims/energy-skate-park/blob/master/js/common/model/SkaterSample.js)
