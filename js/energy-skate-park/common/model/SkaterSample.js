@@ -33,6 +33,7 @@ class SkaterSample {
   constructor( skaterState, time, fadeDecay ) {
     assert && assert( fadeDecay < 1, 'samples which have initiated removal need to fade away' );
 
+    // REVIEW: Why copy all of the data in skaterState?
     // @public (read-only)
     this.speed = skaterState.getSpeed();
     this.kineticEnergy = skaterState.getKineticEnergy();

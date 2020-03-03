@@ -97,7 +97,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
    * @param samplesToRemove // REVIEW: @param type
    */
   batchRemoveSamples( samplesToRemove ) {
-    this.batchRemoveSamplesProperty.set( samplesToRemove );
+    this.batchRemoveSamplesProperty.set( samplesToRemove ); // REVIEW: What if batchRemoveSamples is called twice?  Should this append, or check that it was empty to begin with?
 
     const indexOfFirstSample = this.skaterSamples.indexOf( samplesToRemove[ 0 ] );
     this.skaterSamples.splice( indexOfFirstSample, samplesToRemove.length );
@@ -166,7 +166,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
     // for performance, we batch removal of SkaterSamples so that we can update once after many have been removed
     // rather than on each data point, see https://github.com/phetsims/energy-skate-park/issues/198
     if ( samplesToRemove.length > 0 ) {
-      this.batchRemoveSamples( samplesToRemove );
+      this.batchRemoveSamples( samplesToRemove ); // REVIEW: How can you be sure this doesn't violate the assumptions in batchRemoveSamples?
     }
 
     return updatedState;
