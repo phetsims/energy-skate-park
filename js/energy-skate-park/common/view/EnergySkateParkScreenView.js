@@ -50,7 +50,6 @@ const propertiesSpeedString = energySkateParkStrings.properties.speed;
 const speedometerMetersPerSecondPatternString = energySkateParkStrings.speedometerMetersPerSecondPattern;
 const measuringTapeUnitsString = energySkateParkStrings.measuringTape.units;
 
-
 // constants
 // for wider screens, panels can float to the left and right by this much beyond dev bounds in view coordinates
 const EXTRA_FLOAT = 51.5;

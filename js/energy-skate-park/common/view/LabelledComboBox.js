@@ -15,8 +15,6 @@ import VBox from '../../../../../scenery/js/nodes/VBox.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 
-// constants
-
 class LabelledComboBox extends VBox {
 
   /**

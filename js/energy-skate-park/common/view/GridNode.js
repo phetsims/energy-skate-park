@@ -18,7 +18,7 @@ import energySkateParkStrings from '../../../energy-skate-park-strings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import TextPanel from './TextPanel.js';
 
-const zeroMetersString = energySkateParkStrings.zeroMeters;
+const zeroMetersString = energySkateParkStrings.zeroMeters; // REVIEW: inline strings at usage sites
 
 // constants
 const FONT = new PhetFont( 12 );

@@ -18,8 +18,6 @@ import SplineEvaluation from '../SplineEvaluation.js';
 import ControlPointNode from './ControlPointNode.js';
 import TrackDragHandler from './TrackDragHandler.js';
 
-// const Rectangle = require( '/scenery/js/nodes/Rectangle' );
-
 // constants
 const FastArray = dot.FastArray;
 

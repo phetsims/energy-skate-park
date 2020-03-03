@@ -16,6 +16,7 @@ const EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
 
   // By default, the control panels are in a fixed relative location to the sim and cannot float all the way to the
   // sides, but specifying 'floating' allows them to go all the way to the sides.
+  // REVIEW: Can this be deleted?  Is it for end users?  For debugging?  When would someone use this?
   controlPanelLocation: { type: 'string', defaultValue: 'fixed', validValues: [ 'fixed', 'floating' ] },
 
   // Show a testing track (as indicated by testTrackIndex)

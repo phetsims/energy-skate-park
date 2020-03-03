@@ -43,6 +43,8 @@ class IntroScreenView extends EnergySkateParkTrackSetScreenView {
     // in the intro screen, each allowable mass has a unique skater image
     model.skater.massProperty.link( mass => {
       assert && assert( MASS_IMAGE_MAP.has( mass ), 'no image supported for that mass' );
+
+      // REVIEW: I recommend writing this using if/else or ternary expressions instead of Map.
       this.skaterNode.skaterImageProperty.set( MASS_IMAGE_MAP.get( mass ) );
     } );
   }

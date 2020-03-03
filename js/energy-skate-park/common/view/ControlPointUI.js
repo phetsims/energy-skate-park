@@ -46,6 +46,8 @@ class ControlPointUI extends Node {
           this.detach();
         }
         else {
+
+          // REVIEW: Why does clicking away enable the click to dismiss listener?
           enableClickToDismissListener = true;
         }
       }

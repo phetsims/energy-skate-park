@@ -13,8 +13,6 @@ import GravityComboBox from './GravityComboBox.js';
 import GravityNumberControl from './GravityNumberControl.js';
 import GravitySlider from './GravitySlider.js';
 
-// constants
-
 class EnergySkateParkGravityControls extends VBox {
 
   /**

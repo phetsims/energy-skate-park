@@ -14,6 +14,7 @@ import AquaRadioButton from '../../../../../sun/js/AquaRadioButton.js';
 import energySkateParkStrings from '../../../energy-skate-park-strings.js';
 import energySkatePark from '../../../energySkatePark.js';
 
+// REVIEW: Inline strings at usage sites
 const normalString = energySkateParkStrings.normal;
 const slowMotionString = energySkateParkStrings.slow.motion;
 

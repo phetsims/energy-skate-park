@@ -64,8 +64,8 @@ class BackgroundNode extends Node {
   }
 
   /**
-   * Exactly fit the geometry to the screen so  no matter what aspect ratio it will always show something.
-   * Perhaps it will improve performance too?
+   * Exactly fit the geometry to the screen so no matter what aspect ratio it will always show something.
+   * Perhaps it will improve performance too? // REVIEW: How might this improve performance?
    * @public
    *
    * @param {Bounds2} bounds
