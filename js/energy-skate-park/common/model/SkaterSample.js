@@ -7,6 +7,8 @@
  * Generally this information is static, but energy values for sample CAN change. For example, when the reference height
  * line moves, energy data updates according to this line.
  *
+ * REVIEW: Is this used in both the measure screen and graphs screen?  If not, can that be rectified?
+ *
  * @author Jesse Greenberg
  */
 
