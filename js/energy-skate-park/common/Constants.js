@@ -50,12 +50,12 @@ const Constants = {
 
   // coefficients of friction, default values are not common
   MIN_FRICTION: 0,
-  MAX_FRICTION: 0.05 * 2,
+  MAX_FRICTION: 0.05 * 2, // REVIEW: is it important that this value is twice the default?  If so, factor out that default
   DEFAULT_FRICTION: 0.05,
 
   // in m/s^2, including direction (naming aligned with magnitude for readability at usages)
   MAX_GRAVITY: -JUPITER_GRAVITY,
-  MIN_GRAVITY: -1,
+  MIN_GRAVITY: -1, // REVIEW: How was this minimum determined?
 
   // pre-determined gravities
   EARTH_GRAVITY: EARTH_GRAVITY,

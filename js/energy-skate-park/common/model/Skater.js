@@ -98,17 +98,20 @@ class Skater {
     this.gravityMagnitudeProperty = new NumberProperty( 9.8, {
       tandem: tandem.createTandem( 'gravityMagnitudeProperty' ),
       units: 'meters/second/second',
+
+      // REVIEW: Why not a minimum of 0?
+      // REVIEW: Why is the range here different than Constants.MAX_GRAVITY and Constants.MIN_GRAVITY?
       range: new Range( 1E-6, 100 )
     } );
 
-    // @public {number} - Gravity magnitude and direction
+    // @public {number} - Gravity magnitude and direction // REVIEW: instead of "direction" which sounds like a 2D vector, perhaps say "sign"
     this.gravityProperty = new DerivedProperty( [ this.gravityMagnitudeProperty ], gravity => {
       const gravityWithDirection = -gravity;
       assert && assert( gravityWithDirection <= 0, 'this sim only supports negative or 0 gravity' );
       return gravityWithDirection;
     }, {
       units: 'meters/second/second',
-      range: new Range( -100, 1E-6 )
+      range: new Range( -100, 1E-6 ) // REVIEW: These duplicated values should be factored out
     } );
 
     // @public {number} - reference height for potential energy, 0 is at the ground
@@ -257,7 +260,7 @@ class Skater {
       } );
 
     // update energies whenever mass, gravity, or height changes so that energy distribution updates while the sim is paused
-    Property.multilink( [ this.massProperty, this.referenceHeightProperty, this.gravityProperty ], ( mass, height, gravity ) => {
+    Property.multilink( [ this.massProperty, this.referenceHeightProperty, this.gravityProperty ], ( mass, referenceHeight, gravity ) => {
       this.updateEnergy();
     } );
 

@@ -18,7 +18,7 @@ class GravitySlider extends PhysicalSlider {
 
   /**
    * @param {NumberProperty} property
-   * @param {Tandem} tandems
+   * @param {Tandem} tandem
    */
   constructor( property, tandem ) {
     super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, {

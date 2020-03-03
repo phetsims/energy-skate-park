@@ -9,6 +9,7 @@
  */
 
 import Vector2 from '../../../../../dot/js/Vector2.js';
+import Vector2Property from '../../../../../dot/js/Vector2Property.js';
 import ArrowNode from '../../../../../scenery-phet/js/ArrowNode.js';
 import DragListener from '../../../../../scenery/js/listeners/DragListener.js';
 import Line from '../../../../../scenery/js/nodes/Line.js';
@@ -17,7 +18,6 @@ import energySkateParkStrings from '../../../energy-skate-park-strings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TextPanel from './TextPanel.js';
-import Vector2Property from '../../../../../dot/js/Vector2Property.js';
 
 const heightEqualsZeroString = energySkateParkStrings.heightEqualsZero;
 
@@ -97,6 +97,8 @@ class ReferenceHeightLine extends Node {
     } );
 
     // a Vector2Property for DragListener so we can update the NumberProperty ReferenceHeightProperty with dragging
+    // REVIEW: Shouldn't this be a DynamicProperty?  It seems odd to have another independent properly related to the
+    // REVIEW: reference position
     const dragPositionProperty = new Vector2Property( new Vector2( 0, referenceHeightProperty.value ) );
 
     this.addInputListener( new DragListener( {

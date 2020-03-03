@@ -18,7 +18,7 @@ import GravitySlider from './GravitySlider.js';
 class EnergySkateParkGravityControls extends VBox {
 
   /**
-   * @param {NumberProperty} gravityProperty
+   * @param {NumberProperty} gravityProperty // REVIEW: Name this gravityMagnitudeProperty to indicate it is unsigned
    * @param {Emitter} resetEmitter - broadcasts a message when the EnergySkateParkModel is reset
    * @param {Node} listParent - parent Node for the ComboBox, if one is included
    * @param {Tandem} tandem
@@ -52,6 +52,7 @@ class EnergySkateParkGravityControls extends VBox {
 
     const children = [];
 
+    // REVIEW: These local "let" variables should be deleted.
     let gravityNumberControl = null;
     if ( options.includeGravityNumberControl ) {
       gravityNumberControl = new GravityNumberControl( gravityProperty, tandem.createTandem( 'gravityNumberControl' ), options.gravityComboBoxOptions );
