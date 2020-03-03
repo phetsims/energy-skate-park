@@ -206,7 +206,6 @@ class EnergyBarGraph extends Node {
     } );
   }
 
-
   /**
    * Create an icon of the bar graph, to be used in visibility or other controls.
    *
