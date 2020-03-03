@@ -189,7 +189,7 @@ class GraphsModel extends EnergySkateParkSaveSampleModel {
    * double well with unique shapes where only certain control points are draggable.
    *
    * @param {Tandem} tandem
-   * @return
+   * @returns {Track[]}
    */
   createGraphsTrackSet( tandem ) {
     const groupTandem = this.controlPointGroupTandem;

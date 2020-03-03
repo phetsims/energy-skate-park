@@ -31,8 +31,7 @@ const propertiesSpeedString = energySkateParkStrings.properties.speed;
 class EnergySkateParkVisibilityControls extends VBox {
 
   /**
-   * @constructor
-   * @param {Array.<EnergySkateParkCheckboxItem>} checkboxItems
+   * @param {Array.<EnergySkateParkCheckboxItem>} checkboxItems // REVIEW mismatched params
    * @param {Object} [options]
    */
   constructor( model, tandem, options ) {

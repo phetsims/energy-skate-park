@@ -231,7 +231,11 @@ class EnergySkateParkModel extends PhetioObject {
     this.resetEmitter = new Emitter();
 
     // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
-    this.skater.massProperty.link( () => { if ( this.pausedProperty.value ) { this.skater.updatedEmitter.emit(); } } );
+    this.skater.massProperty.link( () => {
+      if ( this.pausedProperty.value ) {
+        this.skater.updatedEmitter.emit();
+      }
+    } );
 
     // @public
     this.tracks = new ObservableArray( {
@@ -267,6 +271,8 @@ class EnergySkateParkModel extends PhetioObject {
     };
     this.tracks.addItemAddedListener( updateTrackEditingButtonProperties );
     this.tracks.addItemRemovedListener( updateTrackEditingButtonProperties );
+
+    // REVIEW: Visibility and documentation?
     this.updateEmitter = new Emitter();
     this.trackChangedEmitter.addListener( updateTrackEditingButtonProperties );
 
@@ -376,6 +382,7 @@ class EnergySkateParkModel extends PhetioObject {
     }
 
     // Clear the track change pending flag for the next step
+    // REVIEW: Visibility annotation
     this.trackChangePending = false;
 
     // If traveling on the ground, face in the direction of motion, see #181
@@ -1388,8 +1395,8 @@ class EnergySkateParkModel extends PhetioObject {
 
     // REVIEW: The dev team recommends to use parentheses around the ternary predicates
     return skaterState.dragging ? skaterState : // User is dragging the skater, nothing to update here
-           !skaterState.track && skaterState.positionY <= 0 ? this.stepGround( dt, skaterState ) :
-           !skaterState.track && skaterState.positionY > 0 ? this.stepFreeFall( dt, skaterState, false ) :
+           ( !skaterState.track && skaterState.positionY <= 0 ) ? this.stepGround( dt, skaterState ) :
+           ( !skaterState.track && skaterState.positionY > 0 ) ? this.stepFreeFall( dt, skaterState, false ) :
            skaterState.track ? this.stepTrack( dt, skaterState ) :
            skaterState; // REVIEW: How could this else trigger?  Should that be an error or assertion case?
   }

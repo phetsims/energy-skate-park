@@ -37,7 +37,7 @@ class Track extends PhetioObject {
   /**
    * Model for a track, which has a fixed number of points.  If you added a point to a Track, you need a new track.
    *
-   * @param {EnergySkateParkModel} model
+   * @param {EnergySkateParkModel} model // REVIEW: Why does the Track need the whole model?  See "Is there any unnecessary coupling?" section in the CRC
    * @param {ObservableArray<Track>} modelTracks all model tracks, so this track can add/remove others when joined/split
    * @param {Array<ControlPoint>} controlPoints
    * @param {null|Array<Track>} parents the original tracks that were used to make this track (if any) so they can be

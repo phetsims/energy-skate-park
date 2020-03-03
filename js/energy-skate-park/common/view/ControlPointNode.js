@@ -172,7 +172,7 @@ class ControlPointNode extends Circle {
             }
           }
 
-          controlPoint.snapTargetProperty.value = bestDistance !== null && bestDistance < 1 ? bestMatch : null;
+          controlPoint.snapTargetProperty.value = ( bestDistance !== null && bestDistance < 1 ) ? bestMatch : null;
         }
 
         // When one control point dragged, update the track and the node shape

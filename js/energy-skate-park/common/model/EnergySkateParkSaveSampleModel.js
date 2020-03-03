@@ -136,9 +136,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
 
       if ( !this.preventSampleSave && this.timeSinceSampleSave > this.saveSampleInterval ) {
         const newSample = new SkaterSample( updatedState, this.sampleTimeProperty.get(), this.sampleFadeDecay );
-
         this.skaterSamples.add( newSample );
-
         this.timeSinceSampleSave = 0;
         this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );
       }

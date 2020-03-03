@@ -37,7 +37,7 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
       // REVIEW: be reversed, but probably unnecessary after addressing the preceding TODO
       initialTracksOffsetVector: new Vector2( -5.1, -0.85 )
     }, options );
-    options = options || {};
+    options = options || {}; // REVIEW: This is unnecessary
 
     assert && assert( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
     options.tracksDraggable = true;
