@@ -108,7 +108,7 @@ class ReferenceHeightLine extends Node {
     } ) );
 
     dragPositionProperty.link( dragPosition => {
-      referenceHeightProperty.set( dragPositionProperty.get().y );
+      referenceHeightProperty.set( referenceHeightProperty.range.constrainValue( dragPositionProperty.get().y ) );
     } );
   }
 }
