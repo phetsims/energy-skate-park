@@ -75,6 +75,7 @@ class SkaterSample {
    * and total energy will be adjusted accordingly to conserve energy. Thermal and kinetic energies should not change.
    *
    * @param {number} referenceHeight
+   * // REVIEW visibility annotation
    */
   setNewReferenceHeight( referenceHeight ) {
 
@@ -100,6 +101,7 @@ class SkaterSample {
    *
    * @param {number} referenceHeight
    * @returns {number}
+   * // REVIEW visibility annotation
    */
   getPotentialEnergyAtReferenceHeight( referenceHeight ) {
     return -this.skaterState.mass * this.skaterState.gravity * ( this.skaterState.positionY - referenceHeight );
@@ -107,6 +109,7 @@ class SkaterSample {
 
   /**
    * @param {number} dt - in seconds
+   * // REVIEW visibility annotation
    */
   step( dt ) {
     if ( this._initiateRemove ) {
@@ -119,6 +122,8 @@ class SkaterSample {
   /**
    * Indicate that this skater sample is about to be removed. Opacity immediately is reduced, and after a short time
    * this sample will be completely removed.
+   *
+   * // REVIEW visibility annotation
    */
   initiateRemove() {
     assert && assert( !this._initiateRemove, 'removal should only be initiated once' );
