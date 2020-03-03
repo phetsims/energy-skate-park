@@ -73,7 +73,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
     // for performance so that we can update once after removing many samples rather than every time
     // a single sample is removed
 
-    // REVIEW: Should an Emitter(Track[]) be used instead?
+    // REVIEW: Should an Emitter(SkaterSample[]) be used instead?
     this.batchRemoveSamplesProperty = new Property( [] );
   }
 
