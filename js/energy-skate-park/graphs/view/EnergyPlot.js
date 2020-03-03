@@ -243,7 +243,7 @@ const calculateRange = scale => {
 
 /**
  * Calculates the domain of the plot as a function of the independent variable.
- * @param {GraphsModel.independentVariable} independentVariable
+ * @param {GraphsModel.IndependentVariable} independentVariable
  * @returns {Range}
  */
 const calculateDomain = independentVariable => {
