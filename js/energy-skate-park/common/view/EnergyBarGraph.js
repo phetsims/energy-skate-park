@@ -64,7 +64,10 @@ class EnergyBarGraph extends Node {
     const hideSmallValues = ( value, scale ) => {
       const height = value * scale;
       const absHeight = Math.abs( height );
-      if ( absHeight < 1 ) {
+
+      // small enough so that energy is invisible at end points of track motion, but still visible
+      // in other cases at slow movement, see https://github.com/phetsims/energy-skate-park/issues/160
+      if ( absHeight < 0.1 ) {
         return 0;
       }
       return height;
