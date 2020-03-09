@@ -187,12 +187,14 @@ class EnergySkateParkModel extends PhetioObject {
 
     // @public {Vector2Property} - model position for the base  of the measuring tape
     this.measuringTapeBasePositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' )
+      tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' ),
+      units: 'm'
     } );
 
     // @public {Vector2Property} - model position for the tip of the measuring tape
     this.measuringTapeTipPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' )
+      tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' ),
+      units: 'm'
     } );
 
     // @public {boolean} - Whether the skater should stick to the track like a roller coaster, or be able to fly off

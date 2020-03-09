@@ -8958,6 +8958,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.measuredDistanceProperty": {
+      "phetioDocumentation": "The distance measured by the measuring tape",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "DerivedPropertyIO<NumberIO>"
+    },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
@@ -8983,6 +8996,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
+    },
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.readoutTextProperty": {
+      "phetioDocumentation": "The text content of the readout on the measuring tape",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "DerivedPropertyIO<StringIO>"
     },
     "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.measuringTapeNode.tipDragHandler": {
       "phetioDocumentation": "",
@@ -20151,6 +20177,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
+    "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.measuredDistanceProperty": {
+      "phetioDocumentation": "The distance measured by the measuring tape",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "DerivedPropertyIO<NumberIO>"
+    },
     "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
@@ -20176,6 +20215,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
+    },
+    "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.readoutTextProperty": {
+      "phetioDocumentation": "The text content of the readout on the measuring tape",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "DerivedPropertyIO<StringIO>"
     },
     "energySkatePark.introScreen.view.introScreenView.measuringTapeNode.tipDragHandler": {
       "phetioDocumentation": "",
@@ -30252,6 +30304,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
+    "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.measuredDistanceProperty": {
+      "phetioDocumentation": "The distance measured by the measuring tape",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "DerivedPropertyIO<NumberIO>"
+    },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
@@ -30277,6 +30342,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
+    },
+    "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.readoutTextProperty": {
+      "phetioDocumentation": "The text content of the readout on the measuring tape",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "DerivedPropertyIO<StringIO>"
     },
     "energySkatePark.labScreen.labScreenView.graphsScreenView.measuringTapeNode.tipDragHandler": {
       "phetioDocumentation": "",
@@ -44812,6 +44890,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
+    "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.measuredDistanceProperty": {
+      "phetioDocumentation": "The distance measured by the measuring tape",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "DerivedPropertyIO<NumberIO>"
+    },
     "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
@@ -44837,6 +44928,19 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioState": true,
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
+    },
+    "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.readoutTextProperty": {
+      "phetioDocumentation": "The text content of the readout on the measuring tape",
+      "phetioDynamicElement": false,
+      "phetioEventType": "MODEL",
+      "phetioFeatured": false,
+      "phetioHighFrequency": false,
+      "phetioIsArchetype": false,
+      "phetioPlayback": false,
+      "phetioReadOnly": true,
+      "phetioState": true,
+      "phetioStudioControl": true,
+      "phetioTypeName": "DerivedPropertyIO<StringIO>"
     },
     "energySkatePark.measureScreen.measureScreenView.measuringTapeNode.tipDragHandler": {
       "phetioDocumentation": "",
