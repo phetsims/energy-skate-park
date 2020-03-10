@@ -4,7 +4,7 @@
  * Much of the text in this sim is surrounded by a transparent white panel to assist with visibility. This type
  * handles that for you.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import merge from '../../../../../phet-core/js/merge.js';

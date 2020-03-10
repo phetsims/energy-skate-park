@@ -3,7 +3,7 @@
 /**
  * The "Lab" screen. No premade tracks. More open space for the user to play with custom tracks.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Screen from '../../../../joist/js/Screen.js';

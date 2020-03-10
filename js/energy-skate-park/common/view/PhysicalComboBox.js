@@ -5,7 +5,7 @@
  * by this combo box, the value can optionally be something else or controlled in other ways. When this happens,
  * the combo box displays 'Custom'.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Property from '../../../../../axon/js/Property.js';

@@ -2,7 +2,8 @@
 
 /**
  * A NumberControl that controls the skater mass Property of energy skate park.
- * @author Jesse Greenberg
+ *
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import energySkateParkStrings from '../../../energy-skate-park-strings.js';

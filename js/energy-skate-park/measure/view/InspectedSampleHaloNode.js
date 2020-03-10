@@ -4,7 +4,7 @@
  * A circle that becomes visible and is positioned under the inspected skater sample to indicate
  * that the user is inspecting that point.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Circle from '../../../../../scenery/js/nodes/Circle.js';

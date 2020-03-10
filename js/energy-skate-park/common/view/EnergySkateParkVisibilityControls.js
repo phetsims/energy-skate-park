@@ -9,7 +9,7 @@
  *
  * At the moment, order of checkboxes cannot be controlled.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import merge from '../../../../../phet-core/js/merge.js';

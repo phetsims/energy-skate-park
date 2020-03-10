@@ -4,6 +4,7 @@
  * Scenery node for the Energy Skate Park view (includes everything you see).
  *
  * @author Sam Reid (PhET Interactive Simulations)
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';

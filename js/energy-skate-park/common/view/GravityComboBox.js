@@ -2,6 +2,8 @@
 
 /**
  * A combo box that can be used to change the gravity in Energy Skate Park.
+ *
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import energySkatePark from '../../../energySkatePark.js';

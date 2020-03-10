@@ -2,7 +2,9 @@
 
 /**
  * Constants used throughout the simulation.
+ *
  * @author Sam Reid (PhET Interactive Simulations)
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Dimension2 from '../../../../dot/js/Dimension2.js';

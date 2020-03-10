@@ -2,7 +2,8 @@
 
 /**
  * A slider that controls the gravity Property of energy skate park.
- * @author Jesse Greenberg
+ *
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Range from '../../../../../dot/js/Range.js';

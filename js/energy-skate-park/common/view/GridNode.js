@@ -8,6 +8,7 @@
  * 0 potential energy.
  *
  * @author Sam Reid (PhET Interactive Simulations)
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Shape from '../../../../../kite/js/Shape.js';

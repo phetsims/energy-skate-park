@@ -4,7 +4,7 @@
  * The sensor that reads information from the samples along the skater path. Includes the body, wire, and sensor. The
  * body is stationary and the sensor can be dragged to sample positions.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import DerivedProperty from '../../../../../axon/js/DerivedProperty.js';

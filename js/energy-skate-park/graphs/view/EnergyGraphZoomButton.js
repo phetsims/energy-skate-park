@@ -3,7 +3,7 @@
 /**
  * Zoom buttons for the energy graphs in the Graphs screens.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import merge from '../../../../../phet-core/js/merge.js';

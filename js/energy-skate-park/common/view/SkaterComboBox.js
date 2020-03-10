@@ -2,7 +2,8 @@
 
 /**
  * A ComboBox that selects a an image for a Skater but has no other impact on physical state of the skater.
- * @author Jesse Greenberg
+ *
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import merge from '../../../../../phet-core/js/merge.js';

@@ -3,7 +3,7 @@
 /**
  * Model for the Graphs screen in Energy Skate Park.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';

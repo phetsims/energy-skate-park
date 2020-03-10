@@ -4,7 +4,7 @@
  * A panel that will contain icons for draggable tools that can be pulled into the view. Forwards drag events from the
  * icons to the tools in the view.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import DerivedProperty from '../../../../../axon/js/DerivedProperty.js';

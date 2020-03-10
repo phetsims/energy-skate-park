@@ -3,7 +3,7 @@
 /**
  * The ScreenView for the "Measure" Screen.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Node from '../../../../../scenery/js/nodes/Node.js';

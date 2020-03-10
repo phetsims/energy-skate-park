@@ -5,7 +5,7 @@
  * splittable, and attachable.
  *
  * @author Sam Reid (PhET Interactive Simulations)
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Node from '../../../../../scenery/js/nodes/Node.js';

@@ -2,7 +2,7 @@
 
 /**
  * View for the graphs screen in Energy Skate Park.
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Node from '../../../../../scenery/js/nodes/Node.js';

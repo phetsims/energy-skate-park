@@ -5,7 +5,7 @@
  * the "scene" of the sim.
  *
  * @author Sam Reid (PhET Interactive Simulations)
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Property from '../../../../../axon/js/Property.js';

@@ -4,7 +4,7 @@
  * The visibility controls for "Graphs" screen - controls for grid and reference height visibility moved to a different
  * panel to create more space in the ScreenView.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Panel from '../../../../../sun/js/Panel.js';

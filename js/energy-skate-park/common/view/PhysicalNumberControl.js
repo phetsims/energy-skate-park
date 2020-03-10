@@ -3,7 +3,7 @@
 /**
  * A NumberControl that controls a physical value of the model in Energy Skate Park.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Utils from '../../../../../dot/js/Utils.js';

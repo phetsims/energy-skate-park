@@ -4,7 +4,7 @@
  * The accordion box in the "Graphs" screen that contains the energy graphs, as well as controls for
  * controlling the data.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Dimension2 from '../../../../../dot/js/Dimension2.js';

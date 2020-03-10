@@ -5,7 +5,7 @@
  * other controls in the EnergySkateParkControlPanel, and so layout is set with matchLayout(). See that
  * function for more information.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Node from '../../../../../scenery/js/nodes/Node.js';

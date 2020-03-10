@@ -3,7 +3,7 @@
 /**
  * The "Measure" screen.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Screen from '../../../../joist/js/Screen.js';

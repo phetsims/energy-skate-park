@@ -5,7 +5,7 @@
  * splittable, or attachable. Premade tracks can be chosen from a set of scenes.
  *
  * @author Sam Reid (PhET Interactive Simulations)
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import energySkatePark from '../../../energySkatePark.js';

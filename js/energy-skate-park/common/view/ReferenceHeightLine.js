@@ -5,7 +5,7 @@
  * line that extends horizontally across the screen. The line can be dragged by clicking on a double headed arrow.
  * The origin for this node is the left edge of the line.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Vector2 from '../../../../../dot/js/Vector2.js';

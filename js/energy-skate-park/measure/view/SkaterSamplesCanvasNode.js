@@ -4,7 +4,7 @@
  * A canvas node that draws the measurable path of the skater. This needed to be done with
  * Canvas for better performance on tablets.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import CanvasNode from '../../../../../scenery/js/nodes/CanvasNode.js';

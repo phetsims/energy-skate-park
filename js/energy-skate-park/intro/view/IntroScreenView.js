@@ -2,7 +2,8 @@
 
 /**
  * Type Documentation  // REVIEW: Type Documentation
- * @author Jesse Greenberg
+ *
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import energySkatePark from '../../../energySkatePark.js';

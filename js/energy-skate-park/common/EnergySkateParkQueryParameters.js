@@ -2,6 +2,8 @@
 
 /**
  * Query parameters supported by this simulation.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import energySkatePark from '../../energySkatePark.js';

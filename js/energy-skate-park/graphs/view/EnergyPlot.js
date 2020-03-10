@@ -5,7 +5,7 @@
  * depending on the selected independent variable. Uses XYCursorPlot because the cursor can be dragged to
  * control playback and restore previous the model to a previous point in time.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Emitter from '../../../../../axon/js/Emitter.js';

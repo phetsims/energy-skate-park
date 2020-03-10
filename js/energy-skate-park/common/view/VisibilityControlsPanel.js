@@ -4,7 +4,7 @@
  * A separate panel just with EnergySkateParkVisibilityControls for this sim, used to save space when there are
  * already too many items in the EnergySkateParkControlPanel.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Panel from '../../../../../sun/js/Panel.js';

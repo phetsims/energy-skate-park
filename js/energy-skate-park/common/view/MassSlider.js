@@ -2,7 +2,8 @@
 
 /**
  * A slider that controls the mass Property of the skater in energy skate park.
- * @author Jesse Greenberg
+ *
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import energySkateParkStrings from '../../../energy-skate-park-strings.js';

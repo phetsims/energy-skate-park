@@ -4,7 +4,7 @@
  * A combo box that can be used to change the masses in Energy Skate Park. Includes a title and the
  * ComboBox.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import energySkateParkStrings from '../../../energy-skate-park-strings.js';
