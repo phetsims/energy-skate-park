@@ -26,7 +26,7 @@ class TrackNode extends Node {
   /**
    * @param {EnergySkateParkModel} model the entire model.
    * @param {Track} track the track for this track node
-   * @param {ModelViewTransform} modelViewTransform the model view transform for the view
+   * @param {ModelViewTransform2} modelViewTransform the model view transform for the view
    * @param {Property.<Bounds2>} availableBoundsProperty
    * @param {Tandem} tandems
    */
