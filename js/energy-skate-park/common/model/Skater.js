@@ -83,10 +83,7 @@ class Skater {
     this.gravityMagnitudeProperty = new NumberProperty( 9.8, {
       tandem: tandem.createTandem( 'gravityMagnitudeProperty' ),
       units: 'meters/second/second',
-
-      // REVIEW: Why not a minimum of 0?
-      // REVIEW: Why is the range here different than Constants.MAX_GRAVITY and Constants.MIN_GRAVITY?
-      range: new Range( 1E-6, 100 )
+      range: new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) )
     } );
 
     // @public {number} - Gravity magnitude and direction // REVIEW: instead of "direction" which sounds like a 2D vector, perhaps say "sign"
