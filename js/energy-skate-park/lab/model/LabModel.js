@@ -1,7 +1,8 @@
 // Copyright 2018-2020, University of Colorado Boulder
 
 /**
- * Type Documentation // REVIEW: Type Documentation
+ * Model for the "Lab" screen in Energy Skate Park. This is an EnergySkateParkPlaygroundModel, with fully
+ * interactive tracks.
  *
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
