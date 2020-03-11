@@ -1,7 +1,7 @@
 // Copyright 2018-2020, University of Colorado Boulder
 
 /**
- * Type Documentation  // REVIEW: Type Documentation
+ * ScreenView for the Intro Screen of Energy Skate Park.
  *
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
