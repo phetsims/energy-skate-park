@@ -29,22 +29,6 @@ import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 import SkaterMasses from '../SkaterMasses.js';
 
-// Compare two arrays, whose elements have 'equals' methods for comparison
-// REVIEW: There should be a lodash or built-in JS function for this
-const arrayEquals = ( a, b ) => {
-  if ( a.length !== b.length ) {
-    return false;
-  }
-  for ( let i = 0; i < a.length; i++ ) {
-    const elm1 = a[ i ];
-    const elm2 = b[ i ];
-    if ( !elm1.equals( elm2 ) ) {
-      return false;
-    }
-  }
-  return true;
-};
-
 class Skater {
 
   /**
@@ -390,7 +374,7 @@ class Skater {
 
     // If the user is on the same track as where he began (and the track hasn't changed), remain on the track,
     // see #143 and #144
-    if ( this.startingTrackProperty.value && this.trackProperty.value === this.startingTrackProperty.value && arrayEquals( this.trackProperty.value.copyControlPointSources(), this.startingTrackControlPointSources ) ) {
+    if ( this.startingTrackProperty.value && this.trackProperty.value === this.startingTrackProperty.value && _.isEqual( this.trackProperty.value.copyControlPointSources(), this.startingTrackControlPointSources ) ) {
       this.parametricPositionProperty.value = this.startingUProperty.value;
       this.angleProperty.value = this.startingAngle;
       this.onTopSideOfTrackProperty.value = this.startingUpProperty.value;
