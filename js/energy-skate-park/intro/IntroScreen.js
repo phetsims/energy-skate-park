@@ -7,7 +7,6 @@
  */
 
 import Screen from '../../../../joist/js/Screen.js';
-import merge from '../../../../phet-core/js/merge.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import iconIntroHomescreen from '../../../images/icon-intro-homescreen_png.js';
 import iconIntroNavbar from '../../../images/icon-intro-navbar_png.js';
@@ -25,12 +24,12 @@ class IntroScreen extends Screen {
    * @constructor
    */
   constructor( tandem ) {
-    const options = merge( {
+    const options = {
       name: screenIntroductionString,
       tandem: tandem,
       homeScreenIcon: new Image( iconIntroHomescreen ),
       navigationScreenIcon: new Image( iconIntroNavbar )
-    }, {} ); // REVIEW: should there be an options parameter to this constructor?
+    };
 
     super(
       () => new EnergySkateParkFullTrackSetModel( tandem.createTandem( 'model' ) ),
