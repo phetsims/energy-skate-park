@@ -35,11 +35,11 @@ class IntroScreenView extends EnergySkateParkTrackSetScreenView {
     // in the intro screen, each allowable mass has a unique skater image
     model.skater.massProperty.link( mass => {
       const newSkaterImage = mass === SkaterMasses.SKATER_1_MASS ? SkaterNode.SkaterImage.SKATER_1 :
-                       SkaterMasses.SKATER_2_MASS ? SkaterNode.SkaterImage.SKATER_2 :
-                       SkaterMasses.SKATER_3_MASS ? SkaterNode.SkaterImage.SKATER_3 :
-                       SkaterMasses.SKATER_4_MASS ? SkaterNode.SkaterImage.SKATER_4 :
-                       SkaterMasses.SKATER_5_MASS ? SkaterNode.SkaterImage.SKATER_5 :
-                       SkaterMasses.DOG_MASS ? SkaterNode.SkaterImage.DOG : null;
+                             mass === SkaterMasses.SKATER_2_MASS ? SkaterNode.SkaterImage.SKATER_2 :
+                             mass === SkaterMasses.SKATER_3_MASS ? SkaterNode.SkaterImage.SKATER_3 :
+                             mass === SkaterMasses.SKATER_4_MASS ? SkaterNode.SkaterImage.SKATER_4 :
+                             mass === SkaterMasses.SKATER_5_MASS ? SkaterNode.SkaterImage.SKATER_5 :
+                             mass === SkaterMasses.DOG_MASS ? SkaterNode.SkaterImage.DOG : null;
       assert && assert( newSkaterImage !== null, 'no image supported for mass ' + mass );
 
       this.skaterNode.skaterImageProperty.set( newSkaterImage );
