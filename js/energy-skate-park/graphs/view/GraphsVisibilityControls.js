@@ -15,12 +15,10 @@ class GraphsVisibilityControls extends Panel {
 
   /**
    * @param {GraphsModel} model
-   * @param {GraphsScreenView} screenView // REVIEW: doesn't appear in constructor
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
   constructor( model, tandem, options ) {
-
     const content = new EnergySkateParkVisibilityControls( model, tandem, {
       showPieChartCheckbox: false,
       showSpeedCheckbox: false,
