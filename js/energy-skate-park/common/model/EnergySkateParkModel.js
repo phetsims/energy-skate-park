@@ -38,6 +38,7 @@ import Utils from '../../../../../dot/js/Utils.js';
 import Vector2 from '../../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../../dot/js/Vector2Property.js';
 import merge from '../../../../../phet-core/js/merge.js';
+import EventTimer from '../../../../../phet-core/js/EventTimer.js';
 import Stopwatch from '../../../../../scenery-phet/js/Stopwatch.js';
 import PhetioObject from '../../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../../tandem/js/Tandem.js';
@@ -62,6 +63,9 @@ const curvatureTemp2 = { r: 1, x: 0, y: 0 };
 
 // Thrust is not currently implemented in Energy Skate Park but may be used in a future version, so left here
 const thrust = new Vector2( 0, 0 );
+
+// for the EventTimer and consistent sim behavior, we assume simulation runs at 60 frames per second
+const FRAME_RATE = 60;
 
 // Flag to enable debugging for physics issues
 const debug = EnergySkateParkQueryParameters.debugLog ? function() {
@@ -278,6 +282,10 @@ class EnergySkateParkModel extends PhetioObject {
     this.updateEmitter = new Emitter();
     this.trackChangedEmitter.addListener( updateTrackEditingButtonProperties );
 
+    // @private {EventTimer} - Updates the model with constant event intervals even if there is a drop in the framerate
+    // so that simulation performance has no impact on physical behavior.
+    this.eventTimer = new EventTimer( new EventTimer.ConstantEventModel( FRAME_RATE ), this.constantStep.bind( this ) );
+
     if ( EnergySkateParkQueryParameters.debugTrack ) {
       DebugTracks.init( this, tandem.createGroupTandem( 'debugTrackControlPoint' ), tandem.createGroupTandem( 'track' ) );
     }
@@ -318,21 +326,22 @@ class EnergySkateParkModel extends PhetioObject {
    */
   manualStep() {
     const skaterState = new SkaterState( this.skater, EMPTY_OBJECT );
-    const dt = 1.0 / 60;
+    const dt = 1.0 / FRAME_RATE;
     const result = this.stepModel( dt, skaterState );
     result.setToSkater( this.skater );
     this.skater.updatedEmitter.emit();
   }
 
   /**
-   * Step the model (automatically called by joist)
-   * @param {number} dt - in seconds
+   * Respond to an update from the EventTimer, assuming 60 frames per second. The time step is standardized so that
+   * play speed has no impact on simulation behavior.
+   *
+   * @private
    */
-  step( dt ) {
+  constantStep() {
 
-    // This simulation uses a fixed time step to make the skater's motion reproducible.  Making the time step fixed
-    // did not significantly reduce performance/speed on iPad3.
-    dt = 1.0 / 60.0;
+    // This simulation uses a fixed time step to make the skater's motion reproducible.
+    const dt = 1.0 / FRAME_RATE;
 
     let initialEnergy = null;
 
@@ -341,12 +350,6 @@ class EnergySkateParkModel extends PhetioObject {
     if ( !this.pausedProperty.value && !this.skater.draggingProperty.value ) {
 
       const initialThermalEnergy = this.skater.thermalEnergyProperty.value;
-
-      // If they switched windows or tabs, just bail on that delta
-      // REVIEW: This should be handled with screen.maxDT
-      if ( dt > 1 || dt <= 0 ) {
-        dt = 1.0 / 60.0;
-      }
 
       const skaterState = new SkaterState( this.skater, EMPTY_OBJECT );
       if ( debug ) {
@@ -399,6 +402,14 @@ class EnergySkateParkModel extends PhetioObject {
         // skater wasn't moving, so don't change directions
       }
     }
+  }
+
+  /**
+   * Step the model (automatically called by joist)
+   * @param {number} dt - in seconds
+   */
+  step( dt ) {
+    this.eventTimer.step( dt );
   }
 
   /**
