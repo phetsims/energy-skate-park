@@ -86,7 +86,7 @@ class Skater {
       range: new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) )
     } );
 
-    // @public {number} - Gravity magnitude and direction // REVIEW: instead of "direction" which sounds like a 2D vector, perhaps say "sign"
+    // @public {number} - Gravity magnitude and sign
     this.gravityProperty = new DerivedProperty( [ this.gravityMagnitudeProperty ], gravity => {
       const gravityWithDirection = -gravity;
       assert && assert( gravityWithDirection <= 0, 'this sim only supports negative or 0 gravity' );
