@@ -18,6 +18,10 @@ import PremadeTracks from '../../common/model/PremadeTracks.js';
 import SkaterState from '../../common/model/SkaterState.js';
 import GraphsConstants from '../GraphsConstants.js';
 
+// constants
+// reusable object for SkaterStates to avoid allocation every animation frame
+const EMPTY_OBJECT = {};
+
 class GraphsModel extends EnergySkateParkSaveSampleModel {
 
   /**
@@ -163,7 +167,7 @@ class GraphsModel extends EnergySkateParkSaveSampleModel {
 
     // for the "Graphs" screen we want to update energies while dragging so that they are recorded on the graph
     if ( this.skater.draggingProperty.get() ) {
-      const initialStateCopy = new SkaterState( this.skater );
+      const initialStateCopy = new SkaterState( this.skater, EMPTY_OBJECT );
       this.stepModel( dt, initialStateCopy );
     }
   }

@@ -34,14 +34,10 @@ class SkaterState {
    * @param {*} overrides the new values to override in the source
    * @returns {SkaterState} the new SkaterState
    *
-   * // REVIEW: visibility annotation
+   * @private
    */
   setState( source, overrides ) {
-
-    // REVIEW: In running with fuzzing for a long time, this was never triggered.  Perhaps it can be removed?
-    if ( !overrides ) {
-      overrides = EMPTY_OBJECT;
-    }
+    assert && assert( overrides !== undefined, 'an object for overrides is required, even if empty' );
 
     // Handle the case of a skater passed in (which has a position vector) or a SkaterState passed in, which has a number
     if ( source.positionProperty ) {
