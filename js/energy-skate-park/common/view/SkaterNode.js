@@ -38,10 +38,9 @@ class SkaterNode extends Node {
    * @param {Skater} skater
    * @param {EnergySkateParkScreenView} view
    * @param {ModelViewTransform2} modelViewTransform
-   *
-   * // REVIEW: indicate type expressions, see "Type expressions for functions have a variety of possibilities," section in CRC
-   * @param {function} getClosestTrackAndPositionAndParameter - function that gets the closest track properties, used when
-   *                                                            the skater is being dragged close to the track
+   * @param {function(Vector2, Track[]):Object} getClosestTrackAndPositionAndParameter - gets the closest track
+   *                                            properties, used when the skater is being dragged close to the track.
+   *                                            See EnergySkateParkModel.getClosestTrackAndPositionAndParameter
    * @param {function} getPhysicalTracks - function that returns the physical tracks in the model, so the skater can try
    *                                       to attach to them while dragging
    * @param {Tandem} tandem
