@@ -35,9 +35,12 @@ class ControlPoint extends PhetioObject {
   constructor( x, y, options ) {
     options = merge( {
 
-      // {boolean} - can this control point specifically be dragged? In order to be draggable, the track itself must
-      // be "configurable" and this must be true.
-      draggable: true,
+      // {boolean} - if true, this control point will be displayed on the track
+      visible: true,
+
+      // {boolean} - can this control point specifically be dragged? If true, the control point is draggable,
+      // changes opacity on over, and supports track splitting at the ControlPoint
+      interactive: true,
 
       // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging, or
       // when the track is bumped above ground, in model coordinates
@@ -55,7 +58,10 @@ class ControlPoint extends PhetioObject {
     this.limitBounds = options.limitBounds;
 
     // @public (read-only) {boolean} - see options for information
-    this.draggable = options.draggable;
+    this.interactive = options.interactive;
+
+    // @public (read-only) {boolean} - true if the ControlPoint is intended to be displayed visually
+    this.visible = options.visible;
 
     // @public (phet-io) {Tandem}
     this.controlPointTandem = tandem; // REVIEW - this is probably unnecessary, because PhetioObject.tandem already exists

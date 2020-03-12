@@ -84,7 +84,7 @@ class TrackNode extends Node {
       for ( let i = 0; i < track.controlPoints.length; i++ ) {
         const controlPoint = track.controlPoints[ i ];
 
-        if ( controlPoint.draggable ) {
+        if ( controlPoint.visible ) {
           const isEndPoint = i === 0 || i === track.controlPoints.length - 1;
           const controlPointNode = new ControlPointNode( this, trackDragHandler, i, isEndPoint, tandem.createTandem( 'controlPointNode' + i ) );
           this.addChild( controlPointNode );

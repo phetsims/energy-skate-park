@@ -87,10 +87,10 @@ const PremadeTracks = {
       trackHeight: 6, // largest height for the parabola
       trackWidth: 8, // width from the left most control point to the right most control point
 
-      // {boolean} - individual points may or may not be draggable
-      p1Draggable: true,
-      p2Draggable: true,
-      p3Draggable: true
+      // {boolean} - individual points may or may not be visible
+      p1Visible: true,
+      p2Visible: true,
+      p3Visible: true
     }, CREATOR_OPTIONS, options );
 
     const p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
@@ -103,19 +103,19 @@ const PremadeTracks = {
 
     return [
       new ControlPoint( p1.x, p1.y, {
-        draggable: options.p1Draggable,
+        visible: options.p1Visible,
         limitBounds: p1Bounds,
         tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
       new ControlPoint( p2.x, p2.y, {
-        draggable: options.p2Draggable,
+        visible: options.p2Visible,
         limitBounds: p2Bounds,
         tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
       new ControlPoint( p3.x, p3.y, {
-        draggable: options.p3Draggable,
+        visible: options.p3Visible,
         limitBounds: p3Bounds,
         tandem: groupTandem.createNextTandem(),
         phetioState: false
@@ -177,12 +177,12 @@ const PremadeTracks = {
       trackWidth: 8, // width from the left most control point to the right most control point
       trackMidHeight: 2, // height of the mid control point that creates the double well
 
-      // {boolean} - individual points may or may not be draggable
-      p1Draggable: true,
-      p2Draggable: true,
-      p3Draggable: true,
-      p4Draggable: true,
-      p5Draggable: true,
+      // {boolean} - individual points may or may not be visible
+      p1Visible: true,
+      p2Visible: true,
+      p3Visible: true,
+      p4Visible: true,
+      p5Visible: true,
 
       // spacing for drag bounds of the first (left) control point for createRelativeSpaceBounds
       p1UpSpacing: 3,
@@ -213,31 +213,31 @@ const PremadeTracks = {
     return [
       new ControlPoint( p1.x, p1.y, {
         limitBounds: p1Bounds,
-        draggable: options.p1Draggable,
+        visible: options.p1Visible,
         phetioState: false,
         tandem: groupTandem.createNextTandem()
       } ),
       new ControlPoint( p2.x, p2.y, {
         limitBounds: p2Bounds,
-        draggable: options.p2Draggable,
+        visible: options.p2Visible,
         phetioState: false,
         tandem: groupTandem.createNextTandem()
       } ),
       new ControlPoint( p3.x, p3.y, {
         limitBounds: p3Bounds,
-        draggable: options.p3Draggable,
+        visible: options.p3Visible,
         phetioState: false,
         tandem: groupTandem.createNextTandem()
       } ),
       new ControlPoint( p4.x, p4.y, {
         limitBounds: p4Bounds,
-        draggable: options.p4Draggable,
+        visible: options.p4Visible,
         phetioState: false,
         tandem: groupTandem.createNextTandem()
       } ),
       new ControlPoint( p5.x, p5.y, {
         limitBounds: p5Bounds,
-        draggable: options.p5Draggable,
+        visible: options.p5Visible,
         phetioState: false,
         tandem: groupTandem.createNextTandem()
       } )

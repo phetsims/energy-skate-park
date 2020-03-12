@@ -205,8 +205,8 @@ class GraphsModel extends EnergySkateParkSaveSampleModel {
     const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( groupTandem, {
       trackHeight: trackHeight,
       trackWidth: trackWidth,
-      p1Draggable: false,
-      p3Draggable: false
+      p1Visible: false,
+      p3Visible: false
     } );
 
     const parabolaTrack = PremadeTracks.createTrack( this, this.tracks, parabolaControlPoints, this.availableModelBoundsProperty, {
@@ -220,8 +220,8 @@ class GraphsModel extends EnergySkateParkSaveSampleModel {
       trackWidth: 10,
       trackMidHeight: 1.5,
 
-      p1Draggable: false,
-      p5Draggable: false,
+      p1Visible: false,
+      p5Visible: false,
 
       // limit vertical bounds for points 1 and 5 so that the track can never overlap with other UI components, including
       // when it is bumped above ground
