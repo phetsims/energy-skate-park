@@ -4,7 +4,7 @@
  * A model for track sets in Energy Skate Park "Full", which has a parabola, slope, loop, and double well tracks.
  * Tracks are not draggable, and may support friction.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import energySkatePark from '../../../energySkatePark.js';

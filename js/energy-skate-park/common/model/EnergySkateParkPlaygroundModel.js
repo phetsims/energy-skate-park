@@ -5,7 +5,7 @@
  * premade tracks, but allows user to build them from scratch from a set of short tracks each with a few draggable
  * control points.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Vector2 from '../../../../../dot/js/Vector2.js';

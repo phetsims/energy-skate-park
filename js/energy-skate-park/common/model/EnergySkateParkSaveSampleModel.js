@@ -8,7 +8,7 @@
  * presentations of this data need to persist in different cases. But maxNumberOfSamples can be specified to keep
  * at most that number of samples at a time.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';

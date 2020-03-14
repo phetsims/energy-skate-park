@@ -2,7 +2,7 @@
 
 /**
  * A model in Energy Skate park with a premade set of tracks. Does not include any configurable or movable tracks.
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Property from '../../../../../axon/js/Property.js';

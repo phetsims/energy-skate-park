@@ -3,7 +3,7 @@
 /**
  * A collection of controls for EnergySkateParkControlPanel that pertain to gravity.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import merge from '../../../../../phet-core/js/merge.js';

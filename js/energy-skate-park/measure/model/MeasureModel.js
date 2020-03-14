@@ -4,7 +4,7 @@
  * Model for the "Measure" screen of this sim. The measure screen allows the user to inspect physical values
  * of the skater through time.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Property from '../../../../../axon/js/Property.js';

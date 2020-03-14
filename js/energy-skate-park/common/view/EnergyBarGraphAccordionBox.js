@@ -3,7 +3,7 @@
 /**
  * An AccordionBox that contains the energy bar graph used in this sim.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import merge from '../../../../../phet-core/js/merge.js';

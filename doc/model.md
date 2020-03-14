@@ -2,7 +2,7 @@
 
 This document describes the equations for energy used extensively in Energy Skate Park. Skater motion and state
 is determined by these equations.<br>
-@author Jesse Greenberg
+@author Jesse Greenberg (PhET Interactive Simulations)
 
 # Friction
 Force of friction is calculated by

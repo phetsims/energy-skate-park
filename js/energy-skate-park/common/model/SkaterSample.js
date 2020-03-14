@@ -9,7 +9,7 @@
  *
  * REVIEW: Is this used in both the measure screen and graphs screen?  If not, can that be rectified?
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';

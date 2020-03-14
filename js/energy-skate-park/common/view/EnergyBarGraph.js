@@ -3,7 +3,7 @@
 /**
  * Bar graph that displays the distribution of energy for this simulation.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Property from '../../../../../axon/js/Property.js';

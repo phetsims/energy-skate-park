@@ -3,7 +3,7 @@
 /**
  * Collection of controls for EnergySkateParkControlPanel that pertain to Skater mass.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import merge from '../../../../../phet-core/js/merge.js';

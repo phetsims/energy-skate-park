@@ -8,7 +8,7 @@
  *
  * Premade tracks are all isolated so they have no "parent" tracks, see Track.js for definition of parent.
  *
- * @author Jesse Greenberg
+ * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
 import Bounds2 from '../../../../../dot/js/Bounds2.js';
