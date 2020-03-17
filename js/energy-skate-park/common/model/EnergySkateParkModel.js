@@ -26,6 +26,7 @@
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../../axon/js/DerivedProperty.js';
 import Emitter from '../../../../../axon/js/Emitter.js';
+import EnumerationProperty from '../../../../../axon/js/EnumerationProperty.js';
 import NumberProperty from '../../../../../axon/js/NumberProperty.js';
 import ObservableArray from '../../../../../axon/js/ObservableArray.js';
 import ObservableArrayIO from '../../../../../axon/js/ObservableArrayIO.js';
@@ -40,6 +41,7 @@ import Vector2Property from '../../../../../dot/js/Vector2Property.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import EventTimer from '../../../../../phet-core/js/EventTimer.js';
 import Stopwatch from '../../../../../scenery-phet/js/Stopwatch.js';
+import TimeControlSpeed from '../../../../../scenery-phet/js/TimeControlSpeed.js';
 import PhetioObject from '../../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../../tandem/js/Tandem.js';
 import ReferenceIO from '../../../../../tandem/js/types/ReferenceIO.js';
@@ -178,9 +180,8 @@ class EnergySkateParkModel extends PhetioObject {
       tandem: tandem.createTandem( 'stopwatch' )
     } );
 
-    // @public {BooleanProperty} - speed of the model, running in slow motion if true
-    this.isSlowMotionProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'isSlowMotionProperty' )
+    this.timeControlSpeedProperty = new EnumerationProperty( TimeControlSpeed, TimeControlSpeed.NORMAL, {
+      tandem: tandem.createTandem( 'playSpeedProperty' )
     } );
 
     // @public {number} - Coefficient of friction (unitless) between skater and track
@@ -309,7 +310,6 @@ class EnergySkateParkModel extends PhetioObject {
     this.clearButtonEnabledProperty.reset();
     this.barGraphScaleProperty.reset();
     this.pausedProperty.reset();
-    this.isSlowMotionProperty.reset();
     this.frictionProperty.reset();
     this.stickingToTrackProperty.reset();
     this.availableModelBoundsProperty.reset();
@@ -362,14 +362,14 @@ class EnergySkateParkModel extends PhetioObject {
       // In either case, 10 subdivisions on iPad3 makes the sim run too slowly, so we may just want to leave it as is
       let updatedState = null;
       modelIterations++;
-      if ( !this.isSlowMotionProperty.get() || modelIterations % 3 === 0 ) {
+      if ( this.timeControlSpeedProperty.get() === TimeControlSpeed.NORMAL || modelIterations % 3 === 0 ) {
         updatedState = this.stepModel( dt, skaterState );
       }
 
       // REVIEW: what if updatedState is null?
       if ( debug && Math.abs( updatedState.getTotalEnergy() - initialEnergy ) > 1E-6 ) {
         const initialStateCopy = new SkaterState( this.skater, EMPTY_OBJECT );
-        const redo = this.stepModel( this.isSlowMotionProperty.value === false ? dt : dt * 0.25, initialStateCopy );
+        const redo = this.stepModel( this.timeControlSpeedProperty.get() === TimeControlSpeed.NORMAL ? dt : dt * 0.25, initialStateCopy );
         debug && debug( redo );
       }
       if ( updatedState ) {
@@ -1403,7 +1403,7 @@ class EnergySkateParkModel extends PhetioObject {
    */
   stepModel( dt, skaterState ) {
 
-    // increment running time - done in stepModel because dt reflects slowMotionProperty here
+    // increment running time - done in stepModel because dt reflects timeControlSpeedProperty here
     this.stopwatch.step( dt );
 
     // REVIEW: The dev team recommends to use parentheses around the ternary predicates
