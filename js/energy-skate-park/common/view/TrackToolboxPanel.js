@@ -12,8 +12,6 @@ import DragListener from '../../../../../scenery/js/listeners/DragListener.js';
 import Panel from '../../../../../sun/js/Panel.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
-import ControlPoint from '../model/ControlPoint.js';
-import Track from '../model/Track.js';
 import TrackNode from './TrackNode.js';
 
 class TrackToolboxPanel extends Panel {
@@ -76,31 +74,13 @@ class TrackToolboxPanel extends Panel {
       trackNode.trackDragHandler.startDrag( event );
     } ) );
 
-    model.tracks.addItemAddedListener( () => {
+    const updateIconVisibility = () => {
       iconNode.visible = model.getNumberOfControlPoints() <= Constants.MAX_NUMBER_CONTROL_POINTS - 3;
-    } );
-    model.tracks.addItemRemovedListener( () => {
-      iconNode.visible = model.getNumberOfControlPoints() <= Constants.MAX_NUMBER_CONTROL_POINTS - 3;
-    } );
+    };
+    model.tracks.addItemAddedListener( updateIconVisibility );
+    model.tracks.addItemRemovedListener( updateIconVisibility );
 
     super( iconNode, options );
-  }
-
-  static createToolboxTrack( model, modelViewTransform, tandem ) {
-    const controlPointIconGroupTandem = tandem.createGroupTandem( 'controlPointIcon' );
-
-    const controlPoints = [
-      new ControlPoint( -1, 0, { interactive: false, tandem: controlPointIconGroupTandem.createNextTandem() } ),
-      new ControlPoint( 0, 0, { interactive: false, tandem: controlPointIconGroupTandem.createNextTandem() } ),
-      new ControlPoint( 1, 0, { interactive: false, tandem: controlPointIconGroupTandem.createNextTandem() } )
-    ];
-    const track = new Track( model, model.tracks, controlPoints, null, model.availableModelBoundsProperty, {
-        configurable: true,
-        tandem: tandem.createTandem( 'iconTrack' )
-      }
-    );
-
-    return new TrackNode( model, track, modelViewTransform, model.availableModelBoundsProperty, tandem );
   }
 }
 
