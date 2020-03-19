@@ -9,7 +9,6 @@
 
 import Sim from '../../../../joist/js/Sim.js';
 import merge from '../../../../phet-core/js/merge.js';
-import platform from '../../../../phet-core/js/platform.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class EnergySkateParkSim extends Sim {
