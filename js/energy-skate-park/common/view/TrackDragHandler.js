@@ -77,9 +77,9 @@ class TrackDragHandler extends SimpleDragHandler {
 
   /**
    * End of a drag interaction.
-   * @param {SceneryEvent} even
+   * @param {SceneryEvent} event
    */
-  handleDragEnd( even ) {
+  handleDragEnd( event ) {
     if ( this.track.dragSource === this ) {
       this.trackDragEnded( event );
     }
@@ -264,7 +264,7 @@ class TrackDragHandler extends SimpleDragHandler {
    *
    * @param {SceneryEvent} event
    */
-  calculateStartOffset( event ) {
+    calculateStartOffset( event ) {
     const startingPosition = this.modelViewTransform.modelToViewPosition( this.track.position );
     this.startOffset = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( startingPosition );
   }

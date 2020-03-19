@@ -127,7 +127,8 @@ class Track extends PhetioObject {
       phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
-    // @public - Keep track of whether the track is dragging, so performance can be optimized while dragging
+    // @public - Keep track of whether the track is dragging, so performance can be optimized while dragging -
+    // only true while track is in the Play Area (physical)
     this.draggingProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'draggingProperty' ),
       phetioState: options.phetioState // Participate in state only if parent track is too

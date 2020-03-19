@@ -11,7 +11,6 @@
 import Vector2 from '../../../../../dot/js/Vector2.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import energySkatePark from '../../../energySkatePark.js';
-import Constants from '../Constants.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 import Track from './Track.js';
@@ -49,81 +48,39 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 
     // @private {Vector2} - see options for documentation
     this.initialTracksOffsetVector = options.initialTracksOffsetVector;
-
-    // add all of the possible draggable tracks
-    this.addDraggableTracks();
   }
 
   /**
-   * Add the draggable tracks that will be in the toolbox of a playground scene.
-   *
+   * Create a new fully interactive Track which can be used to create custom Tracks. Generally  used when
+   * user drags a new Track from  the toolbox.
    * @public
-   */
-  addDraggableTracks() {
-
-    // 3 points per track
-    for ( let i = 0; i < Constants.MAX_NUMBER_CONTROL_POINTS / 3; i++ ) {
-      this.addDraggableTrack();
-    }
-  }
-
-  /**
-   * Add a single draggable track to a control panel.
    *
-   * @public
+   * @param {Object} [options] - options passed along to the Track
+   * @returns {Track}
    */
-  addDraggableTrack() {
+  createDraggableTrack( options ) {
+    options =  merge( {
+
+      // options passed along to ControlPoints of this Track
+      controlPointOptions: null,
+
+      // options passed along to the Track
+      trackOptions: null
+    }, options );
 
     const controlPointGroupTandem = this.controlPointGroupTandem;
     const trackGroupTandem = this.trackGroupTandem;
 
-    // Move the tracks over so they will be in the right position in the view coordinates, under the grass to the left
-    // of the clock controls.  Could use view transform for this, but it would require creating the view first, so just
-    // eyeballing it for now.
-
-    // REVIEW: Let's use the standard pattern of showing an icon in the control panel, then creating the model component
-    // REVIEW: in the corresponding model location when dragged.
-    const offset = this.initialTracksOffsetVector;
     const controlPoints = [
-      new ControlPoint( offset.x - 1, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } ),
-      new ControlPoint( offset.x, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } ),
-      new ControlPoint( offset.x + 1, offset.y, { tandem: controlPointGroupTandem.createNextTandem() } )
+      new ControlPoint( -1, 0, merge( { tandem: controlPointGroupTandem.createNextTandem() }, options.controlPointOptions ) ),
+      new ControlPoint( 0, 0, merge( { tandem: controlPointGroupTandem.createNextTandem() }, options.controlPointOptions ) ),
+      new ControlPoint( 1, 0, merge( { tandem: controlPointGroupTandem.createNextTandem() }, options.controlPointOptions ) )
     ];
-    this.tracks.add( new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, merge( {
+
+    return new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, merge( {
         tandem: trackGroupTandem.createNextTandem()
-      }, Track.FULLY_INTERACTIVE_OPTIONS )
-    ) );
-  }
-
-  /**
-   * After joining tracks, replenish the toolbox if number of control points has gone down enough.
-   * @public
-   * @override
-   *
-   * @param {Track} track
-   */
-  joinTracks( track ) {
-    super.joinTracks( track );
-
-    // if the number of control points is low enough, replenish the toolbox
-    if ( this.getNumberOfControlPoints() <= Constants.MAX_NUMBER_CONTROL_POINTS - 3 ) {
-      this.addDraggableTrack();
-    }
-  }
-
-  /**
-   * After deleting a control point, replenish the toolbox if number of control points has decreased enough.
-   * @public
-   * @override
-   *
-   * @param {Track} track
-   * @param {number} controlPointIndex
-   */
-  deleteControlPoint( track, controlPointIndex ) {
-    super.deleteControlPoint( track, controlPointIndex );
-    if ( this.getNumberOfControlPoints() <= Constants.MAX_NUMBER_CONTROL_POINTS - 3 ) {
-      this.addDraggableTrack();
-    }
+      }, Track.FULLY_INTERACTIVE_OPTIONS, options.trackOptions )
+    );
   }
 
   /**
@@ -136,7 +93,6 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
       track.disposeControlPoints();
     } );
     this.tracks.clear();
-    this.addDraggableTracks();
 
     // If the skater was on a track, then he should fall off, see #97
     if ( this.skater.trackProperty.value ) {

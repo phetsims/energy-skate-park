@@ -9,11 +9,11 @@
  */
 
 import EraserButton from '../../../../../scenery-phet/js/buttons/EraserButton.js';
-import Rectangle from '../../../../../scenery/js/nodes/Rectangle.js';
 import Color from '../../../../../scenery/js/util/Color.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import TrackNode from './TrackNode.js';
+import TrackToolboxPanel from './TrackToolboxPanel.js';
 
 class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 
@@ -26,23 +26,14 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 
     super( model, tandem, options );
 
-    // Create the tracks for the track toolbox
-    const interactiveTrackNodes = model.tracks.getArray().map( this.addTrackNode.bind( this ) );
+    // @private {TrackNode[]}- collection of TrackNodes added to the View
+    this.trackNodes = [];
 
-    const padding = 10;
-
-    // @protected (for layout of other things in subtypes)
-    this.trackCreationPanel = new Rectangle(
-      ( interactiveTrackNodes[ 0 ].left - padding / 2 ),
-      ( interactiveTrackNodes[ 0 ].top - padding / 2 ),
-      ( interactiveTrackNodes[ 0 ].width + padding ),
-      ( interactiveTrackNodes[ 0 ].height + padding ),
-      6,
-      6, {
-        fill: 'white',
-        stroke: 'black'
-      } );
-    this.bottomLayer.addChild( this.trackCreationPanel );
+    // @protected - for layout in subtypes
+    this.trackToolbox = new TrackToolboxPanel( model, this, tandem.createTandem( 'trackToolbox' ), {
+      rightCenter: this.timeControlNode.leftCenter.minusXY( 15, 0 )
+    } );
+    this.bottomLayer.addChild( this.trackToolbox );
 
     model.tracks.addItemAddedListener( this.addTrackNode.bind( this ) );
 
@@ -50,30 +41,34 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
     this.clearButton = new EraserButton( {
       iconWidth: 30,
       baseColor: new Color( 221, 210, 32 ),
+      rightCenter: this.trackToolbox.leftCenter.minusXY( 10, 0 ),
       tandem: tandem.createTandem( 'clearButton' )
     } );
     model.clearButtonEnabledProperty.linkAttribute( this.clearButton, 'enabled' );
     this.clearButton.addListener( () => { model.clearTracks(); } );
-
-    this.bottomLayer.addChild( this.clearButton.mutate( { left: 5, centerY: this.trackCreationPanel.centerY } ) );
-
+    this.addChild( this.clearButton );
   }
 
   /**
    * Add a TrackNode to this ScreenView and add listeners that will
    * handle disposal.
+   * @public
    *
    * @param {Track} track
    * @returns {TrackNode}
    */
   addTrackNode( track ) {
     const trackNode = new TrackNode( this.model, track, this.modelViewTransform, this.availableModelBoundsProperty, this.trackNodeGroupTandem.createTandem( track.tandem.name ) );
+    this.trackNodes.push( trackNode );
     this.trackLayer.addChild( trackNode );
 
     // When track removed, remove its view
     const itemRemovedListener = removed => {
       if ( removed === track ) {
         this.trackLayer.removeChild( trackNode );
+
+        const index = this.trackNodes.indexOf( trackNode );
+        this.trackNodes.splice( index, 1 );
 
         // Clean up memory leak
         this.model.tracks.removeItemRemovedListener( itemRemovedListener );
@@ -83,6 +78,16 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
     this.model.tracks.addItemRemovedListener( itemRemovedListener );
 
     return trackNode;
+  }
+
+  /**
+   * Get the TrackNode used in this ScreeenView from the provided Track model.
+   * @public
+   *
+   * @param {Track} track
+   */
+  getTrackNode( track ) {
+    return _.find( this.trackNodes, trackNode => trackNode.track === track );
   }
 }
 

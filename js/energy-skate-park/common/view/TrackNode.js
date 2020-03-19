@@ -9,6 +9,7 @@
  */
 
 import dot from '../../../../../dot/js/dot.js';
+import merge from '../../../../../phet-core/js/merge.js';
 import Shape from '../../../../../kite/js/Shape.js';
 import LineStyles from '../../../../../kite/js/util/LineStyles.js';
 import Node from '../../../../../scenery/js/nodes/Node.js';
@@ -28,14 +29,22 @@ class TrackNode extends Node {
    * @param {Track} track the track for this track node
    * @param {ModelViewTransform2} modelViewTransform the model view transform for the view
    * @param {Property.<Bounds2>} availableBoundsProperty
-   * @param {Tandem} tandems
+   * @param {Tandem} tandem
+   * @param {Object} [options]
    */
-  constructor( model, track, modelViewTransform, availableBoundsProperty, tandem ) {
+  constructor( model, track, modelViewTransform, availableBoundsProperty, tandem, options ) {
 
-    super( {
+    options = merge( {
+
+      // {null|string} - cursor for the Track road - by default it is a 'pointer' if only draggable, but for some icons
+      //  we want a pointer even when not draggable (like in the toolbox).
+      roadCursorOverride: null,
+
       tandem: tandem,
       phetioComponentOptions: { phetioState: false }
-    } );
+    }, options );
+
+    super( options );
 
     this.track = track;
     this.model = model;
@@ -44,7 +53,7 @@ class TrackNode extends Node {
 
     this.road = new Path( null, {
       fill: 'gray',
-      cursor: track.draggable ? 'pointer' : 'default'
+      cursor: options.roadCursorOverride || track.draggable ? 'pointer' : 'default'
     } );
     this.centerLine = new Path( null, {
       stroke: 'black',
@@ -71,11 +80,12 @@ class TrackNode extends Node {
     this.linSpace = numeric.linspace( 0, this.lastPoint, 20 * ( track.controlPoints.length - 1 ) );
     this.lengthForLinSpace = track.controlPoints.length;
 
-    // created and passed to ControlPointNodes so that dragging a control point can initiate dragging a track
-    let trackDragHandler = null;
+    // @public {TrackDraghandler} - public so that ControlPointNodes so that dragging a control point can initiate
+    // dragging a track and dragging from toolbox can forward input to this listener
+    this.trackDragHandler = null;
     if ( track.draggable ) {
-      trackDragHandler = new TrackDragHandler( this, tandem.createTandem( 'trackDragHandler' ) );
-      this.road.addInputListener( trackDragHandler );
+      this.trackDragHandler = new TrackDragHandler( this, tandem.createTandem( 'trackDragHandler' ) );
+      this.road.addInputListener( this.trackDragHandler );
     }
 
     // only "configurable" tracks have draggable control points, and individual control points may have dragging
@@ -86,7 +96,7 @@ class TrackNode extends Node {
 
         if ( controlPoint.visible ) {
           const isEndPoint = i === 0 || i === track.controlPoints.length - 1;
-          const controlPointNode = new ControlPointNode( this, trackDragHandler, i, isEndPoint, tandem.createTandem( 'controlPointNode' + i ) );
+          const controlPointNode = new ControlPointNode( this, this.trackDragHandler, i, isEndPoint, tandem.createTandem( 'controlPointNode' + i ) );
           this.addChild( controlPointNode );
 
           if ( controlPoint.limitBounds ) {
@@ -134,7 +144,7 @@ class TrackNode extends Node {
       }
 
       if ( track.draggable ) {
-        trackDragHandler.dispose();
+        this.trackDragHandler.dispose();
       }
     };
   }
