@@ -279,7 +279,7 @@ class EnergySkateParkModel extends PhetioObject {
     this.tracks.addItemAddedListener( updateTrackEditingButtonProperties );
     this.tracks.addItemRemovedListener( updateTrackEditingButtonProperties );
 
-    // REVIEW: Visibility and documentation?
+    // @public {Emitter} - Required for PhET-iO state wrapper
     this.updateEmitter = new Emitter();
     this.trackChangedEmitter.addListener( updateTrackEditingButtonProperties );
 

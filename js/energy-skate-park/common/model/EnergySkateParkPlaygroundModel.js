@@ -8,7 +8,6 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import Vector2 from '../../../../../dot/js/Vector2.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import energySkatePark from '../../../energySkatePark.js';
 import ControlPoint from './ControlPoint.js';
@@ -22,32 +21,17 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
    * @param {Object} [options]
    */
   constructor( tandem, options ) {
+    if ( options ) {
+      assert && assert( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
+      assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
+    }
+
     options = merge( {
-
-      // the center of initial tracks in the toolbox, change this to move the panel to a different position
-      // in model coordinates (meters)
-
-      // REVIEW: It seems odd that we would specify the model position of the panel.  This should be view-only, and
-      // REVIEW: When tracks are dragged out, their corresponding model positions should be computed.
-      // REVIEW: For instance, if a designer asked to move this panel 10px to the left, that would be difficult
-      // REVIEW: or impossible with the existing implementation.
-
-      // REVIEW: Also, it seems odd that the default option only applies to "Energy Skate Park: Basics".  That should
-      // REVIEW: be reversed, but probably unnecessary after addressing the preceding TODO
-      initialTracksOffsetVector: new Vector2( -5.1, -0.85 )
+      tracksDraggable: true,
+      tracksConfigurable: true
     }, options );
-    options = options || {}; // REVIEW: This is unnecessary
-
-    assert && assert( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
-    options.tracksDraggable = true;
-
-    assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
-    options.tracksConfigurable = true;
 
     super( tandem, options );
-
-    // @private {Vector2} - see options for documentation
-    this.initialTracksOffsetVector = options.initialTracksOffsetVector;
   }
 
   /**
@@ -59,7 +43,7 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
    * @returns {Track}
    */
   createDraggableTrack( options ) {
-    options =  merge( {
+    options = merge( {
 
       // options passed along to ControlPoints of this Track
       controlPointOptions: null,

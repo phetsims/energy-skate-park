@@ -31,7 +31,9 @@ class PhysicalNumberControl extends NumberControl {
     assert && assert( options.titleFont === undefined, 'PhysicalNumberControl sets title font' );
 
     if ( options.numberDisplayOptions ) {
-      assert && assert( options.numberDisplayOptions.font === undefined, 'PhysicalNumberControl sets font' );
+      if ( options.numberDisplayOptions.textOptions ) {
+        assert && assert( options.numberDisplayOptions.textOptions.font === undefined, 'PhysicalNumberControl sets font' );
+      }
       assert && assert( options.numberDisplayOptions.xMargin === undefined, 'PhysicalNumberControl sets xMargin' );
       assert && assert( options.numberDisplayOptions.yMargin === undefined, 'PhysicalNumberControl sets yMargin' );
     }
@@ -124,8 +126,10 @@ class PhysicalNumberControl extends NumberControl {
       numberDisplayOptions: merge( options.numberDisplayOptions, {
         xMargin: 2,
         yMargin: 2,
-        font: new PhetFont( 10 ),
-        numberMaxWidth: 50
+        textOptions: {
+          font: new PhetFont( 10 ),
+          maxWidth: 50
+        }
       } ),
       titleNodeOptions: {
         font: Constants.CONTROL_TITLE_FONT,

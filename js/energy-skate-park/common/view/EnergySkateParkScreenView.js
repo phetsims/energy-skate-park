@@ -232,8 +232,10 @@ class EnergySkateParkScreenView extends ScreenView {
     this.speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 30 ), {
       numberDisplayOptions: {
         valuePattern: speedometerMetersPerSecondPatternString,
-        numberMaxWidth: gaugeRadius * 1.3,
-        decimalPlaces: 1
+        decimalPlaces: 1,
+        textOptions: {
+          maxWidth: gaugeRadius * 1.3
+        }
       },
 
       // enable/disable updates based on whether the speedometer is visible
