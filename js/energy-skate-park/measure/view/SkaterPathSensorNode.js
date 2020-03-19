@@ -357,10 +357,12 @@ class SkaterPathSensorNode extends Node {
       backgroundStroke: 'black',
       backgroundFill: EnergySkateParkColorScheme.panelFill,
       cornerRadius: 3,
-      font: LABEL_FONT,
+      textOptions: {
+        font: LABEL_FONT,
+        maxWidth: ENTRY_MAX_WIDTH
+      },
       decimalPlaces: 1,
       minBackgroundWidth: 55, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
-      numberMaxWidth: ENTRY_MAX_WIDTH,
       valuePattern: energyJoulesPatternString,
 
       // when there are no values, hide units
