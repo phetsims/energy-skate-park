@@ -492,8 +492,8 @@ class EnergySkateParkScreenView extends ScreenView {
   floatInterface() {
     assert && assert( this.controlPanel, 'much of component layout based on control panel, one should be created.' );
 
-    const maxFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? this.layoutBounds.right + EXTRA_FLOAT : Number.MAX_VALUE;
-    const minFloatAmount = EnergySkateParkQueryParameters.controlPanelLocation === 'fixed' ? this.layoutBounds.left - EXTRA_FLOAT : -Number.MAX_VALUE;
+    const maxFloatAmount = this.layoutBounds.right + EXTRA_FLOAT;
+    const minFloatAmount = this.layoutBounds.left - EXTRA_FLOAT;
 
     // for use in subtypes
     this.fixedRight = Math.min( maxFloatAmount, this.visibleBoundsProperty.get().maxX ) - 5;

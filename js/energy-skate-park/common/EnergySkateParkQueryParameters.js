@@ -16,11 +16,6 @@ const EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
   // Print out console messages related to attaching and detaching from the tracks
   debugAttachDetach: { type: 'flag' },
 
-  // By default, the control panels are in a fixed relative location to the sim and cannot float all the way to the
-  // sides, but specifying 'floating' allows them to go all the way to the sides.
-  // REVIEW: Can this be deleted?  Is it for end users?  For debugging?  When would someone use this?
-  controlPanelLocation: { type: 'string', defaultValue: 'fixed', validValues: [ 'fixed', 'floating' ] },
-
   // Show a testing track (as indicated by testTrackIndex)
   // REVIEW: It seems preferable to eliminate this flag, and just use testTrackIndex for everything.  Perhaps testTrackIndex=0 means no test?
   debugTrack: { type: 'flag' },
