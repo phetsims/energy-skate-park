@@ -611,7 +611,7 @@ class EnergySkateParkModel extends PhetioObject {
    * that the track took.
    *
    * @param {Vector2} position
-   * @param {[].Track} physicalTracks // REVIEW: This is an unconventional type annotation, our team prefers Track[] or Array<Track>
+   * @param {Track[]} physicalTracks
    *
    * @returns {Object|null} - collection of { track: {Track}, parametricPosition: {Vector2}, point: {Vector2} }, or null
    */
@@ -641,16 +641,15 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Check to see if the points crossed the track.
+   * @private
    *
    * @param {Object} closestTrackAndPositionAndParameter - the object returned by getClosestTrackAndPositionAndParameter()
-   * @param {[].Tracks} physicalTracks - all tracks that the skater can physically interact with // REVIEW: This is an unconventional type annotation, our team prefers Track[] or Array<Track>
+   * @param {Track[]} physicalTracks - all tracks that the skater can physically interact with
    * @param {number} beforeX
    * @param {number} beforeY
    * @param {number} afterX
    * @param {number} afterY
-   *
    * @returns {boolean}
-   * // REVIEW: Visibility annotation, is this @public or @private or something else?
    */
   crossedTrack( closestTrackAndPositionAndParameter, physicalTracks, beforeX, beforeY, afterX, afterY ) {
     const track = closestTrackAndPositionAndParameter.track;
