@@ -38,8 +38,8 @@ import Range from '../../../../../dot/js/Range.js';
 import Utils from '../../../../../dot/js/Utils.js';
 import Vector2 from '../../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../../dot/js/Vector2Property.js';
-import merge from '../../../../../phet-core/js/merge.js';
 import EventTimer from '../../../../../phet-core/js/EventTimer.js';
+import merge from '../../../../../phet-core/js/merge.js';
 import Stopwatch from '../../../../../scenery-phet/js/Stopwatch.js';
 import TimeControlSpeed from '../../../../../scenery-phet/js/TimeControlSpeed.js';
 import PhetioObject from '../../../../../tandem/js/PhetioObject.js';
@@ -393,10 +393,10 @@ class EnergySkateParkModel extends PhetioObject {
     // If traveling on the ground, face in the direction of motion, see #181
     if ( this.skater.trackProperty.value === null && this.skater.positionProperty.value.y === 0 ) {
       if ( this.skater.velocityProperty.value.x > 0 ) {
-        this.skater.directionProperty.value = 'right'; // REVIEW: Use Enumeration.byKeys for these values
+        this.skater.directionProperty.value = Skater.Direction.RIGHT;
       }
       if ( this.skater.velocityProperty.value.x < 0 ) {
-        this.skater.directionProperty.value = 'left';
+        this.skater.directionProperty.value = Skater.Direction.LEFT;
       }
       else {
         // skater wasn't moving, so don't change directions

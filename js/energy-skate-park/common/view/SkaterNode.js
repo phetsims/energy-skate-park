@@ -29,6 +29,7 @@ import skater4RightImage from '../../../../images/skater4_right_png.js';
 import skater5LeftImage from '../../../../images/skater5_left_png.js';
 import skater5RightImage from '../../../../images/skater5_right_png.js';
 import energySkatePark from '../../../energySkatePark.js';
+import Skater from '../model/Skater.js';
 
 class SkaterNode extends Node {
 
@@ -77,8 +78,8 @@ class SkaterNode extends Node {
     this.skater = skater;
 
     skater.directionProperty.link( direction => {
-      leftSkaterImageNode.visible = direction === 'left';
-      rightSkaterImageNode.visible = direction === 'right';
+      leftSkaterImageNode.visible = direction === Skater.Direction.LEFT;
+      rightSkaterImageNode.visible = direction === Skater.Direction.RIGHT;
     } );
 
     const imageWidth = this.width;

@@ -12,6 +12,7 @@ import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../../axon/js/DerivedProperty.js';
 import DerivedPropertyIO from '../../../../../axon/js/DerivedPropertyIO.js';
 import Emitter from '../../../../../axon/js/Emitter.js';
+import EnumerationProperty from '../../../../../axon/js/EnumerationProperty.js';
 import NumberProperty from '../../../../../axon/js/NumberProperty.js';
 import Property from '../../../../../axon/js/Property.js';
 import PropertyIO from '../../../../../axon/js/PropertyIO.js';
@@ -19,12 +20,12 @@ import Range from '../../../../../dot/js/Range.js';
 import Utils from '../../../../../dot/js/Utils.js';
 import Vector2 from '../../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../../dot/js/Vector2Property.js';
+import Enumeration from '../../../../../phet-core/js/Enumeration.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import BooleanIO from '../../../../../tandem/js/types/BooleanIO.js';
 import NullableIO from '../../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../../tandem/js/types/NumberIO.js';
 import ReferenceIO from '../../../../../tandem/js/types/ReferenceIO.js';
-import StringIO from '../../../../../tandem/js/types/StringIO.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 import SkaterMasses from '../SkaterMasses.js';
@@ -117,9 +118,8 @@ class Skater {
 
     // @public {string} - Which way the skater is facing, right or left.  Coded as strings instead of boolean in case
     // we add other states later like 'forward'
-    this.directionProperty = new Property( 'left', {
-      tandem: tandem.createTandem( 'directionProperty' ),
-      phetioType: PropertyIO( StringIO )
+    this.directionProperty = new EnumerationProperty( Skater.Direction, Skater.Direction.LEFT, {
+      tandem: tandem.createTandem( 'directionProperty' )
     } );
 
     // @public {Vector2}
@@ -220,10 +220,10 @@ class Skater {
       const speedThreshold = 0.01;
 
       if ( parametricSpeed > speedThreshold ) {
-        this.directionProperty.value = this.onTopSideOfTrackProperty.value ? 'right' : 'left';
+        this.directionProperty.value = this.onTopSideOfTrackProperty.value ? Skater.Direction.RIGHT : Skater.Direction.LEFT;
       }
       else if ( parametricSpeed < -speedThreshold ) {
-        this.directionProperty.value = this.onTopSideOfTrackProperty.value ? 'left' : 'right';
+        this.directionProperty.value = this.onTopSideOfTrackProperty.value ? Skater.Direction.LEFT : Skater.Direction.RIGHT;
       }
       else {
         // Keep the same direction
@@ -463,6 +463,10 @@ class Skater {
     this.updatedEmitter.emit();
   }
 }
+
+// @public {Enumeration}
+// @static
+Skater.Direction = Enumeration.byKeys( [ 'LEFT', 'RIGHT' ] );
 
 energySkatePark.register( 'Skater', Skater );
 export default Skater;
