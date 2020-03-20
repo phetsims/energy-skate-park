@@ -91,7 +91,7 @@ class DebugTracks {
       model.tracks.add( track );
     }
 
-    // Flickering return skater button, PROBLEM // REVIEW: Is this still a "PROBLEM"?
+    // Flickering return skater button, OK (see https://github.com/phetsims/energy-skate-park-basics/issues/121)
     if ( EnergySkateParkQueryParameters.testTrackIndex === 5 ) {
 
       model.stickingToTrackProperty.value = false;
@@ -101,11 +101,11 @@ class DebugTracks {
 
       controlPoints = [ createControlPoint( 4.431091234347049, 7.9252447313977665 ), createControlPoint( 2.4169588550983896, 7.975935759156005 ), createControlPoint( -1.9874106197862114, 4.75700797278857 ), createControlPoint( 0.13992761930286512, 6.207060140642635 ), createControlPoint( 1.447191413237924, 1.0090653610430707 ), createControlPoint( -1.7008228980322002, 1.0717102008522177 ), createControlPoint( -5.37101967799642, 7.0748332823816655 ) ];
       track = new Track( model, model.tracks, controlPoints, null, model.availableModelBoundsProperty, { tandem: trackGroupTandem.createNextTandem() } );
-      track.physicalProperty.value = true; // REVIEW: it seems like physicalProperty should be an option
+      track.physicalProperty.value = true;
       model.tracks.add( track );
     }
 
-    // Passes through track, PROBLEM // REVIEW: Is this still a "PROBLEM"?
+    // Passes through track, OK
     if ( EnergySkateParkQueryParameters.testTrackIndex === 6 ) {
 
       model.stickingToTrackProperty.value = false;
@@ -119,7 +119,7 @@ class DebugTracks {
       model.tracks.add( track );
     }
 
-    // Falls through bottom, PROBLEM // REVIEW: Is this still a "PROBLEM"?
+    // Falls through bottom, OK
     if ( EnergySkateParkQueryParameters.testTrackIndex === 7 ) {
 
       model.stickingToTrackProperty.value = false;
@@ -133,7 +133,7 @@ class DebugTracks {
       model.tracks.add( track );
     }
 
-    // Falls through loop, PROBLEM // REVIEW: Is this still a "PROBLEM"?
+    // Falls through loop, PROBLEM
     if ( EnergySkateParkQueryParameters.testTrackIndex === 8 ) {
 
       model.stickingToTrackProperty.value = false;
@@ -147,7 +147,7 @@ class DebugTracks {
       model.tracks.add( track );
     }
 
-    // Pops upside down in loop, PROBLEM // REVIEW: Is this still a "PROBLEM"?
+    // Pops upside down in loop, PROBLEM
     if ( EnergySkateParkQueryParameters.testTrackIndex === 9 ) {
 
       model.stickingToTrackProperty.value = false;
