@@ -17,7 +17,6 @@ const MAX_MASS = 100;
 const SkaterMasses = {
 
   // masses of skater objects in the intro screen, in kg
-  // REVIEW: Make a note or, better, an assertion that these masses must remain unique if they are to be used as Map keys
   SKATER_1_MASS: 60,
   SKATER_2_MASS: 35,
   SKATER_3_MASS: 40,
@@ -30,6 +29,17 @@ const SkaterMasses = {
   MAX_MASS: 100,
   MASS_RANGE: new Range( MIN_MASS, MAX_MASS )
 };
+
+if ( assert ) {
+  const keys = Object.keys( SkaterMasses );
+  for ( let i = 0; i < keys.length; i++ ) {
+    const mass = SkaterMasses[ keys[ i ] ];
+    for ( let j = i + 1; j < keys.length; j++ ) {
+      const nextMass = SkaterMasses[ keys[ j ] ];
+      assert && assert( mass !== nextMass, 'masses are used as Map keys and must be unique' );
+    }
+  }
+}
 
 energySkatePark.register( 'SkaterMasses', SkaterMasses );
 
