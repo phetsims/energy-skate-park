@@ -1367,25 +1367,49 @@ class EnergySkateParkModel extends PhetioObject {
     }
   }
 
-  // PERFORMANCE/ALLOCATION
-  // REVIEW: JSDoc
+  // PERFORMANCE/ALLOCATION - uses a reusable Object for curvature
+  /**
+   * Get direction of curvature at the location of the Skater.
+   * @private
+   *
+   * @param {Object} curvature - Reusable Object describing curvature (radius and position), see Track.getCurvature
+   * @param {number} x2
+   * @param {number} y2
+   * @returns {Vector2}
+   */
   getCurvatureDirection( curvature, x2, y2 ) {
     const v = new Vector2( curvature.x - x2, curvature.y - y2 );
-    return v.x !== 0 || v.y !== 0 ? v.normalized() : v;
+    return ( v.x !== 0 || v.y !== 0 ) ? v.normalized() : v;
   }
 
-  // REVIEW: JSDoc
+  /**
+   * Get the x component of direction of curvature at the Skater's location.
+   * @private
+   *
+   * @param {Object} curvature - Reusable Object describing curvature, see Track.getCurvature
+   * @param {number} x2
+   * @param {number} y2
+   * @returns {number}
+   */
   getCurvatureDirectionX( curvature, x2, y2 ) {
     const vx = curvature.x - x2;
     const vy = curvature.y - y2;
-    return vx !== 0 || vy !== 0 ? vx / Math.sqrt( vx * vx + vy * vy ) : vx;
+    return ( vx !== 0 || vy !== 0 ) ? vx / Math.sqrt( vx * vx + vy * vy ) : vx;
   }
 
-  // REVIEW: JSDoc
+  /**
+   * Get the y component of direction of curvature at the Skater's location.
+   * @private
+   *
+   * @param {Object} curvature - Reusable Object describing curvature, see Track.getCurvature
+   * @param {number} x2
+   * @param {number} y2
+   * @returns {number}
+   */
   getCurvatureDirectionY( curvature, x2, y2 ) {
     const vx = curvature.x - x2;
     const vy = curvature.y - y2;
-    return vx !== 0 || vy !== 0 ? vy / Math.sqrt( vx * vx + vy * vy ) : vy;
+    return ( vx !== 0 || vy !== 0 ) ? vy / Math.sqrt( vx * vx + vy * vy ) : vy;
   }
 
   /**

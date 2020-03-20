@@ -704,8 +704,8 @@ class Track extends PhetioObject {
    * Sorry, see #50 regarding GC // REVIEW: Is the "sorry" referring to something?  Should it be here?  Should it be "Please" instead?
    * @public
    *
-   * @param parametricPosition // REVIEW: @param types
-   * @param curvature // REVIEW: @param types
+   * @param {number} parametricPosition
+   * @param {Object} curvature // REVIEW: @param types
    */
   getCurvature( parametricPosition, curvature ) {
 
