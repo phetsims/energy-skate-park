@@ -53,7 +53,6 @@ class AttachDetachToggleButtons extends Panel {
       } );
     };
 
-    // REVIEW: factor out a createButtonContent arrow function?
     const radioButtonsContent = [
       {
         value: true,
