@@ -366,22 +366,23 @@ class EnergySkateParkModel extends PhetioObject {
         updatedState = this.stepModel( dt, skaterState );
       }
 
-      // REVIEW: what if updatedState is null?
-      if ( debug && Math.abs( updatedState.getTotalEnergy() - initialEnergy ) > 1E-6 ) {
-        const initialStateCopy = new SkaterState( this.skater, EMPTY_OBJECT );
-        const redo = this.stepModel( this.timeControlSpeedProperty.get() === TimeControlSpeed.NORMAL ? dt : dt * 0.25, initialStateCopy );
-        debug && debug( redo );
-      }
       if ( updatedState ) {
         updatedState.setToSkater( this.skater );
         this.skater.updatedEmitter.emit();
 
-        // Make sure the thermal energy doesn't go negative
-        // REVIEW wrap this whole part in if(debug){...} so it is clear why it is here
-        const finalThermalEnergy = this.skater.thermalEnergyProperty.value;
-        const deltaThermalEnergy = finalThermalEnergy - initialThermalEnergy;
-        if ( deltaThermalEnergy < 0 ) {
-          debug && debug( 'thermal energy wanted to decrease' );
+        if ( debug ) {
+          if ( Math.abs( updatedState.getTotalEnergy() - initialEnergy ) > 1E-6 ) {
+            const initialStateCopy = new SkaterState( this.skater, EMPTY_OBJECT );
+            const redo = this.stepModel( this.timeControlSpeedProperty.get() === TimeControlSpeed.NORMAL ? dt : dt * 0.25, initialStateCopy );
+            debug && debug( redo );
+          }
+
+          // Make sure the thermal energy doesn't go negative
+          const finalThermalEnergy = this.skater.thermalEnergyProperty.value;
+          const deltaThermalEnergy = finalThermalEnergy - initialThermalEnergy;
+          if ( deltaThermalEnergy < 0 ) {
+            debug && debug( 'thermal energy wanted to decrease' );
+          }
         }
       }
     }
