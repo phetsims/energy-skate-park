@@ -39,30 +39,30 @@ class AttachDetachToggleButtons extends Panel {
       yMargin: 5
     }, options );
 
-    // REVIEW: more verbose name, or inline into a createButtonContent arrow function
-    const scale = 0.32;
-
     // This is sort of hack to pass through the tandem of the radioButtonGroupMember to its child.
     const attachRadioButtonTandemName = 'attachRadioButton';
     const detachRadioButtonTandemName = 'detachRadioButton';
     const radioButtonGroupTandem = tandem.createTandem( 'radioButtonGroup' );
 
+    // @param {image} image - data for an Image Node
+    // @param {string} tandemName
+    const createButtonContent = ( image, tandemName ) => {
+      return new Image( image, {
+        scale: 0.32,
+        tandem: radioButtonGroupTandem.createTandem( attachRadioButtonTandemName ).createTandem( tandemName )
+      } );
+    };
+
     // REVIEW: factor out a createButtonContent arrow function?
     const radioButtonsContent = [
       {
         value: true,
-        node: new Image( attachIcon, {
-          scale: scale,
-          tandem: radioButtonGroupTandem.createTandem( attachRadioButtonTandemName ).createTandem( 'attachIcon' )
-        } ),
+        node: createButtonContent( attachIcon, 'attachIcon' ),
         tandemName: attachRadioButtonTandemName
       },
       {
         value: false,
-        node: new Image( detachIcon, {
-          scale: scale,
-          tandem: radioButtonGroupTandem.createTandem( detachRadioButtonTandemName ).createTandem( 'detachIcon' )
-        } ),
+        node: createButtonContent( detachIcon, 'detachIcon' ),
         tandemName: detachRadioButtonTandemName
       }
     ];
