@@ -674,6 +674,7 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Check to see if skater should hit or attach to  track during free fall. Returns a new SkaterState for this.skater
+   * @private
    *
    * @param {Track[]} physicalTracks
    * @param {SkaterState} skaterState
@@ -681,9 +682,7 @@ class EnergySkateParkModel extends PhetioObject {
    * @param {number} initialEnergy
    * @param {number} dt
    * @param {Vector2} proposedVelocity
-   *
    * @returns {SkaterState}
-   * // REVIEW: Visibility annotation, is this @public or @private or something else?
    */
   interactWithTracksWhileFalling( physicalTracks, skaterState, proposedPosition, initialEnergy, dt, proposedVelocity ) {
 
@@ -1139,14 +1138,13 @@ class EnergySkateParkModel extends PhetioObject {
    * 1. When leaving from the sides, adjust the skater under the track so it won't immediately re-collide.
    * 2. When leaving from the middle of the track (say going over a jump or falling upside-down from a loop),
    * adjust the skater so it won't fall through or re-collide.
+   * @private
    *
    * @param {SkaterState} freeSkater
    * @param {number} sideVectorX
    * @param {number} sideVectorY
    * @param {number} sign
-   *
    * @returns {SkaterState}
-   * // REVIEW: Visibility annotation, is this @public or @private or something else?
    */
   nudge( freeSkater, sideVectorX, sideVectorY, sign ) {
 
