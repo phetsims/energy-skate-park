@@ -1013,11 +1013,9 @@ class EnergySkateParkModel extends PhetioObject {
 
     const track = skaterState.track;
 
-    // REVIEW: Rewrite so that 'getUnitNormalVector' only appears once on each line, and the onTopSideOfTrack just applies to the overall sign
-    const sideVectorX = skaterState.onTopSideOfTrack ? track.getUnitNormalVector( skaterState.parametricPosition ).x :
-                        track.getUnitNormalVector( skaterState.parametricPosition ).x * -1;
-    const sideVectorY = skaterState.onTopSideOfTrack ? track.getUnitNormalVector( skaterState.parametricPosition ).y :
-                        track.getUnitNormalVector( skaterState.parametricPosition ).y * -1;
+    const unitNormalVector = track.getUnitNormalVector( skaterState.parametricPosition );
+    const sideVectorX = skaterState.onTopSideOfTrack ? unitNormalVector.x : unitNormalVector.x * -1;
+    const sideVectorY = skaterState.onTopSideOfTrack ? unitNormalVector.y : unitNormalVector.y * -1;
 
     // Dot product written out component-wise to avoid allocations, see #50
     const outsideCircle = sideVectorX * curvatureDirectionX + sideVectorY * curvatureDirectionY < 0;
