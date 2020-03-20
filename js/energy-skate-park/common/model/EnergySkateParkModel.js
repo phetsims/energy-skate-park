@@ -675,7 +675,7 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * Check to see if skater should hit or attach to  track during free fall. Returns a new SkaterState for this.skater
    *
-   * @param {[].Track]} physicalTracks // REVIEW: This is an unconventional type annotation, our team prefers Track[] or Array<Track>
+   * @param {Track[]} physicalTracks
    * @param {SkaterState} skaterState
    * @param {Vector2} proposedPosition
    * @param {number} initialEnergy
