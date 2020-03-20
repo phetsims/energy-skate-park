@@ -19,8 +19,6 @@ import energySkateParkStrings from '../../../energy-skate-park-strings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import TextPanel from './TextPanel.js';
 
-const zeroMetersString = energySkateParkStrings.zeroMeters; // REVIEW: inline strings at usage sites
-
 // constants
 const FONT = new PhetFont( 12 );
 
@@ -162,7 +160,7 @@ class GridNode extends Node {
         // And shift it down a bit so it isn't touching the concrete, see #134
         // It won't be added as a child of the gridParent because we don't want it to be clipped
         if ( y === 0 ) {
-          replacementText = new TextPanel( zeroMetersString, {
+          replacementText = new TextPanel( energySkateParkStrings.zeroMeters, {
             font: FONT,
             top: viewY + 6,
             right: gridLineLabel.right
