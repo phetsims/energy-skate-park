@@ -35,7 +35,11 @@ const SMALL_STEP = 500;
 const TIME_MAX_X = 20; // in seconds
 const TIME_STEP_X = 2; // in seconds
 const POSITION_MAX_X = 10; // in meters
-const POSITION_STEP_X = 1;
+const POSITION_STEP_X = 1; // in meters
+
+// Origin in the model is at center of screen, but plots align 0 meters at the left edge of the track, 5 meters
+// left of origin
+const POSITION_PLOT_OFFSET = 5;
 
 class EnergyPlot extends XYCursorPlot {
 
@@ -172,7 +176,7 @@ class EnergyPlot extends XYCursorPlot {
     // add data points when a SkaterSample is added to the model
     model.skaterSamples.addItemAddedListener( addedSample => {
       const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
-      const independentVariable = plotTime ? addedSample.time : addedSample.position.x + 5;
+      const independentVariable = plotTime ? addedSample.time : addedSample.position.x + POSITION_PLOT_OFFSET;
 
       // keep a reference to the pointStyle so that it can be modified later
       const pointStyle = new PointStyle();
@@ -206,8 +210,7 @@ class EnergyPlot extends XYCursorPlot {
       for ( let i = 0; i < samplesToRemove.length; i++ ) {
         const sampleToRemove = samplesToRemove[ i ];
 
-        // REVIEW: Consider adding parentheses here, it is unclear what is +5.  Also, why is there a +5 at all?
-        const independentVariable = plotTime ? sampleToRemove.time : sampleToRemove.position.x + 5;
+        const independentVariable = plotTime ? sampleToRemove.time : ( sampleToRemove.position.x + POSITION_PLOT_OFFSET );
 
         this.forEachDataSeries( dataSeries => dataSeries.removePointAtX( independentVariable ) );
       }
