@@ -1414,11 +1414,11 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Update the skater based on which state.
+   * @protected
    *
    * @param {number} dt
    * @param {SkaterState} skaterState
    * @returns {SkaterState}
-   * // REVIEW: public/private annotation
    */
   stepModel( dt, skaterState ) {
 
@@ -1436,9 +1436,9 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * Return to the place he was last released by the user. Also restores the track the skater was on so the initial
    * conditions are the same as the previous release.
+   * @public
    *
    * @returns {SkaterState}
-   * // REVIEW: public/private annotation
    */
   returnSkater() {
 
@@ -1847,11 +1847,12 @@ class EnergySkateParkModel extends PhetioObject {
    * Add a track, called by phet-io in setState (to restore a state).
    * TODO: this code should be called by EnergySkateParkModel too, see
    * https://github.com/phetsims/energy-skate-park/issues/165
-   *
-   * // REVIEW: JSDoc
+   * @public
    *
    * @param {Tandem} tandem
-   * @param controlPointTandemIDs
+   * @param {boolean} draggable
+   * @param {boolean} configurable
+   * @param [number[]} controlPointTandemIDs
    */
   addTrack( tandem, draggable, configurable, controlPointTandemIDs ) {
 
