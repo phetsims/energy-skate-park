@@ -388,7 +388,6 @@ class EnergySkateParkModel extends PhetioObject {
     }
 
     // Clear the track change pending flag for the next step
-    // REVIEW: Visibility annotation
     this.trackChangePending = false;
 
     // If traveling on the ground, face in the direction of motion, see #181
