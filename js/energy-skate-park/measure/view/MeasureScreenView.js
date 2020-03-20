@@ -63,19 +63,6 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
   }
 
   /**
-   * Returns true if the no bounds intersects with the EnergySkateParkControlPanel. Useful for changing layout
-   * so that things don't occlude the control panel.
-   * @public
-   *
-   * @param {Node} node
-   * @returns {boolean}
-   * // REVIEW: this method appears unused
-   */
-  intersectsControlPanel( node ) {
-    return this.boundsOf( node ).intersectsBounds( this.controlPanel.bounds );
-  }
-
-  /**
    * Custom floating layout for this screen, dependent on available view bounds.
    * @override
    * // REVIEW: this should be named "layout"
