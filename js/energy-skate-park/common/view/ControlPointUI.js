@@ -47,7 +47,8 @@ class ControlPointUI extends Node {
         }
         else {
 
-          // REVIEW: Why does clicking away enable the click to dismiss listener?
+          // in case pointer goes 'up' after being moved off of the cut button, we still want to enable click
+          // to dismiss
           enableClickToDismissListener = true;
         }
       }
