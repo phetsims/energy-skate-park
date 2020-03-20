@@ -19,6 +19,9 @@ const EARTH_GRAVITY = 9.8;
 const MOON_GRAVITY = 1.62;
 const JUPITER_GRAVITY = 25.96;
 
+// maximum coefficient of friction
+const MAX_FRICTION = 0.1;
+
 const Constants = {
   SLIDER_OPTIONS: {
     thumbSize: new Dimension2( 10, 20 ),
@@ -52,8 +55,8 @@ const Constants = {
 
   // coefficients of friction, default values are not common
   MIN_FRICTION: 0,
-  MAX_FRICTION: 0.05 * 2, // REVIEW: is it important that this value is twice the default?  If so, factor out that default
-  DEFAULT_FRICTION: 0.05,
+  MAX_FRICTION: MAX_FRICTION,
+  DEFAULT_FRICTION: MAX_FRICTION / 2,
 
   // in m/s^2, including direction (naming aligned with magnitude for readability at usages)
   MAX_GRAVITY: -JUPITER_GRAVITY,
