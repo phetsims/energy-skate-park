@@ -60,7 +60,7 @@ const Constants = {
 
   // in m/s^2, including direction (naming aligned with magnitude for readability at usages)
   MAX_GRAVITY: -JUPITER_GRAVITY,
-  MIN_GRAVITY: -1, // REVIEW: How was this minimum determined?
+  MIN_GRAVITY: -1, // minimum value for gravity, as requested by design team
 
   // pre-determined gravities
   EARTH_GRAVITY: EARTH_GRAVITY,
