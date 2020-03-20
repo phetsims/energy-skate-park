@@ -26,7 +26,7 @@ class TrackIO extends ObjectIO {
         draggable: track.draggable,
         configurable: track.configurable,
         controlPointTandemIDs: track.controlPoints.map( controlPoint => {
-          return controlPoint.controlPointTandem.phetioID;
+          return controlPoint.tandem.phetioID;
         } )
       };
     }

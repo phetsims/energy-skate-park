@@ -17,7 +17,6 @@ import Vector2 from '../../../../../dot/js/Vector2.js';
 import Vector2IO from '../../../../../dot/js/Vector2IO.js';
 import Vector2Property from '../../../../../dot/js/Vector2Property.js';
 import merge from '../../../../../phet-core/js/merge.js';
-import required from '../../../../../phet-core/js/required.js';
 import PhetioObject from '../../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../../tandem/js/Tandem.js';
 import NullableIO from '../../../../../tandem/js/types/NullableIO.js';
@@ -27,8 +26,8 @@ import ControlPointIO from './ControlPointIO.js';
 class ControlPoint extends PhetioObject {
 
   /**
-   * @param x // REVIEW: @param types
-   * @param y // REVIEW: @param types
+   * @param {number} x
+   * @param {number} y
    * @param {Object} [options]
    * @constructor
    */
@@ -46,7 +45,7 @@ class ControlPoint extends PhetioObject {
       // when the track is bumped above ground, in model coordinates
       limitBounds: null,
 
-      tandem: required( Tandem.REQUIRED ), // REVIEW: It seems odd to have required(REQUIRED)
+      tandem: Tandem.REQUIRED,
       phetioType: ControlPointIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
     }, options );
@@ -63,20 +62,17 @@ class ControlPoint extends PhetioObject {
     // @public (read-only) {boolean} - true if the ControlPoint is intended to be displayed visually
     this.visible = options.visible;
 
-    // @public (phet-io) {Tandem}
-    this.controlPointTandem = tandem; // REVIEW - this is probably unnecessary, because PhetioObject.tandem already exists
-
     // @public - where it would be if it hadn't snapped to another point during dragging
     this.sourcePositionProperty = new Vector2Property( new Vector2( x, y ), {
       tandem: tandem.createTandem( 'sourcePositionProperty' ),
-      phetioState: options.phetioState // in state only if parent is
+      phetioState: options.phetioState // in state only if containing Track is
     } );
 
     // @public {ControlPoint} - Another ControlPoint that this ControlPoint is going to 'snap' to if released.
     this.snapTargetProperty = new Property( null, {
       tandem: tandem.createTandem( 'snapTargetProperty' ),
       phetioType: PropertyIO( NullableIO( ControlPointIO ) ),
-      phetioState: options.phetioState // in state only if parent is // REVIEW: does parent mean "track this point is in"?
+      phetioState: options.phetioState // in state only if containing Track is
     } );
 
     // Where it is shown on the screen.  Same as sourcePosition (if not snapped) or snapTarget.position (if snapped).
