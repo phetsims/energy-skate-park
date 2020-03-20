@@ -89,12 +89,12 @@ class Skater {
 
     // @public {number} - Gravity magnitude and sign
     this.gravityProperty = new DerivedProperty( [ this.gravityMagnitudeProperty ], gravity => {
-      const gravityWithDirection = -gravity;
-      assert && assert( gravityWithDirection <= 0, 'this sim only supports negative or 0 gravity' );
-      return gravityWithDirection;
+      const gravityWithSign = -gravity;
+      assert && assert( gravityWithSign <= 0, 'this sim only supports negative or 0 gravity' );
+      return gravityWithSign;
     }, {
       units: 'meters/second/second',
-      range: new Range( -100, 1E-6 ) // REVIEW: These duplicated values should be factored out
+      range: new Range( Constants.MAX_GRAVITY, Constants.MIN_GRAVITY ) // MAX_GRAVITY < MIN_GRAVITY due to sign
     } );
 
     // @public {number} - reference height for potential energy, 0 is at the ground
