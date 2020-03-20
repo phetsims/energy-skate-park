@@ -1174,12 +1174,11 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Try to match the target energy by reducing the velocity of the skaterState.
+   * @private
    *
    * @param {SkaterState} skaterState
    * @param {SkaterState} targetState
-   *
    * @returns {SkaterState}
-   * // REVIEW: Visibility annotation, is this @public or @private or something else?
    */
   correctEnergyReduceVelocity( skaterState, targetState ) {
 
@@ -1214,15 +1213,14 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Binary search to find the parametric coordinate along the track that matches the e0 energy.
+   * @private
    *
    * @param {SkaterState} skaterState
    * @param {number} u0
    * @param {number} u1
    * @param {number} e0
    * @param {number} numSteps
-   *
    * @returns {number}
-   * // REVIEW: Visibility annotation, is this @public or @private or something else?
    */
   searchSplineForEnergy( skaterState, u0, u1, e0, numSteps ) {
     const da = ( u1 - u0 ) / numSteps;
