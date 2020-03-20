@@ -1,7 +1,7 @@
 // Copyright 2014-2020, University of Colorado Boulder
 
 /**
- * Debug tracks, which can be enabled using the query parameter 'debugTrack' with the index of the track to debug.
+ * Debug tracks, which can be enabled using the query parameter 'testTrackIndex' with the index of the track to debug.
  * There is no automated testing, you have to launch the track and see if the behavior looks correct.
  *
  * @author Sam Reid (PhET Interactive Simulations)
@@ -20,7 +20,7 @@ class DebugTracks {
   constructor() {}
 
   /**
-   * Initialize the debugging tool. Only done when debug query parameter debugTrack is used. Modifies the model that
+   * Initialize the debugging tool. Only done when debug query parameter testTrackIndex is used. Modifies the model that
    * is passed in.
    *
    * @param {EnergySkateParkModel} model

@@ -246,7 +246,7 @@ class ControlPointNode extends Circle {
 
           }
 
-          if ( EnergySkateParkQueryParameters.debugTrack ) {
+          if ( EnergySkateParkQueryParameters.testTrackIndex > 0 ) {
             console.log( track.getDebugString() );
           }
         }

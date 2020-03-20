@@ -215,7 +215,7 @@ class EnergySkateParkModel extends PhetioObject {
       phetioType: PropertyIO( Bounds2IO )
     } );
 
-    if ( EnergySkateParkQueryParameters.debugTrack ) {
+    if ( EnergySkateParkQueryParameters.testTrackIndex > 0 ) {
       this.frictionProperty.debug( 'friction' );
     }
 
@@ -287,7 +287,7 @@ class EnergySkateParkModel extends PhetioObject {
     // so that simulation performance has no impact on physical behavior.
     this.eventTimer = new EventTimer( new EventTimer.ConstantEventModel( FRAME_RATE ), this.constantStep.bind( this ) );
 
-    if ( EnergySkateParkQueryParameters.debugTrack ) {
+    if ( EnergySkateParkQueryParameters.testTrackIndex > 0 ) {
       DebugTracks.init( this, tandem.createGroupTandem( 'debugTrackControlPoint' ), tandem.createGroupTandem( 'track' ) );
     }
   }

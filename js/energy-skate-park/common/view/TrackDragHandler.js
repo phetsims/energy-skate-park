@@ -250,7 +250,7 @@ class TrackDragHandler extends SimpleDragHandler {
         track.draggingProperty.value = false; // signify that the track shape can be smoothed again
       }
 
-      if ( EnergySkateParkQueryParameters.debugTrack ) {
+      if ( EnergySkateParkQueryParameters.testTrackIndex > 0 ) {
         console.log( track.getDebugString() );
       }
 

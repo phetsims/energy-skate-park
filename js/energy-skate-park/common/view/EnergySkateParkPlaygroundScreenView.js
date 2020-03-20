@@ -47,6 +47,9 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
     model.clearButtonEnabledProperty.linkAttribute( this.clearButton, 'enabled' );
     this.clearButton.addListener( () => { model.clearTracks(); } );
     this.addChild( this.clearButton );
+
+    // add any other TrackNodes eagerly in case model has some initial Tracks, like when we are debugging
+     model.tracks.getArray().map( this.addTrackNode.bind( this ) );
   }
 
   /**

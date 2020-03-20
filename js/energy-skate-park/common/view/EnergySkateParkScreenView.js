@@ -32,7 +32,6 @@ import RectangularPushButton from '../../../../../sun/js/buttons/RectangularPush
 import skaterIconImage from '../../../../images/skater-icon_png.js';
 import energySkateParkStrings from '../../../energy-skate-park-strings.js';
 import energySkatePark from '../../../energySkatePark.js';
-import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import AttachDetachToggleButtons from './AttachDetachToggleButtons.js';
 import BackgroundNode from './BackgroundNode.js';
 import EnergyBarGraphAccordionBox from './EnergyBarGraphAccordionBox.js';
