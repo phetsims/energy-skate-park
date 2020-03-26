@@ -56,7 +56,7 @@ class EnergySkateParkCheckboxItem extends HBox {
     };
 
     const checkboxItemOptions = {
-      boxWidth: 14,
+      boxWidth: 12,
       tandem: tandem
     };
 
