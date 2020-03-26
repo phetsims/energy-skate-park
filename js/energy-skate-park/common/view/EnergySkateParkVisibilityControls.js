@@ -51,6 +51,7 @@ class EnergySkateParkVisibilityControls extends VBox {
     }, options );
 
     const itemAlignGroup = new AlignGroup();
+    const iconAlignGroup = new AlignGroup();
     const checkboxItems = [];
 
     if ( options.showSkaterPathCheckbox ) {
@@ -61,6 +62,7 @@ class EnergySkateParkVisibilityControls extends VBox {
           controlsPathString,
           EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) ),
           itemAlignGroup,
+          iconAlignGroup,
           model.saveSkaterSamplesProperty,
           tandem.createTandem( 'pathCheckbox' ),
           options.itemOptions
@@ -74,6 +76,7 @@ class EnergySkateParkVisibilityControls extends VBox {
           pieChartString,
           EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } ),
           itemAlignGroup,
+          iconAlignGroup,
           model.pieChartVisibleProperty,
           tandem.createTandem( 'pieChartCheckbox' ),
           options.itemOptions
@@ -86,6 +89,7 @@ class EnergySkateParkVisibilityControls extends VBox {
         plotsBarGraphString,
         EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
+        iconAlignGroup,
         model.barGraphVisibleProperty,
         tandem.createTandem( 'barGraphCheckbox' ),
         options.itemOptions
@@ -97,6 +101,7 @@ class EnergySkateParkVisibilityControls extends VBox {
         controlsShowGridString,
         EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
+        iconAlignGroup,
         model.gridVisibleProperty,
         tandem.createTandem( 'gridCheckbox' ),
         options.itemOptions
@@ -108,6 +113,7 @@ class EnergySkateParkVisibilityControls extends VBox {
         propertiesSpeedString,
         EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } ),
         itemAlignGroup,
+        iconAlignGroup,
         model.speedometerVisibleProperty,
         tandem.createTandem( 'speedometerCheckbox' ),
         options.itemOptions
@@ -120,6 +126,7 @@ class EnergySkateParkVisibilityControls extends VBox {
           controlsReferenceHeightString,
           EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) ),
           itemAlignGroup,
+          iconAlignGroup,
           model.referenceHeightVisibleProperty,
           tandem.createTandem( 'referenceHeightCheckbox' ),
           options.itemOptions
@@ -132,6 +139,7 @@ class EnergySkateParkVisibilityControls extends VBox {
         controlsStickToTrackString,
         EnergySkateParkCheckboxItem.createStickingToTrackIcon(),
         itemAlignGroup,
+        iconAlignGroup,
         model.stickingToTrackProperty,
         tandem.createTandem( 'stickToTrackCheckbox' ),
         options.itemOptions

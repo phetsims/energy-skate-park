@@ -28,18 +28,19 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
 const propertiesSpeedString = energySkateParkStrings.properties.speed;
 
-class EnergySkateParkCheckboxItem extends HBox {
+class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
    * @constructor
    * @param {string} label
    * @param {Node} icon
    * @param {AlignGroup} textAlignGroup
+   * @param {AlignGroup} iconAlignGroup
    * @param {Property} property - the checkbox will update this Property
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( label, icon, textAlignGroup, property, tandem, options ) {
+  constructor( label, icon, textAlignGroup, iconAlignGroup, property, tandem, options ) {
 
     assert && assert( textAlignGroup.matchHorizontal === true, 'text content in check boxes must align' );
     assert && assert( textAlignGroup.matchVertical === true, 'text content for checkboxes in group must align' );
@@ -64,13 +65,15 @@ class EnergySkateParkCheckboxItem extends HBox {
     const text = new Text( label, merge( { tandem: tandem.createTandem( 'itemLabel' ) }, textOptions ) );
     const textBox = textAlignGroup.createBox( text, { xAlign: 'left' } );
 
-    const checkbox = new Checkbox( textBox, property, checkboxItemOptions );
+    // so all icons are aligned and still be icon content for the checkbox
+    const iconBox = iconAlignGroup.createBox( icon, { xAlign: 'center' } );
 
-    super( {
-      children: [ checkbox, icon ],
+    const checkboxContent = new HBox( {
+      children: [ textBox, iconBox ],
       spacing: 10
     } );
 
+    super( checkboxContent, property, checkboxItemOptions );
   }
 
   /**
