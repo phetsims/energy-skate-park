@@ -17,7 +17,7 @@ import HBox from '../../../../../scenery/js/nodes/HBox.js';
 import Panel from '../../../../../sun/js/Panel.js';
 import Tandem from '../../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../../energySkatePark.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import Constants from '../Constants.js';
 
 class ToolboxPanel extends Panel {
 
@@ -29,10 +29,8 @@ class ToolboxPanel extends Panel {
    */
   constructor( model, view, tandem, options ) {
     options = merge( {
-      lineWidth: 0,
-      align: 'center',
-      fill: EnergySkateParkColorScheme.panelFill
-    }, options );
+      align: 'center'
+    }, Constants.PANEL_OPTIONS, options );
 
     // create the icons
     const measuringTapeIcon = MeasuringTapeNode.createIcon();

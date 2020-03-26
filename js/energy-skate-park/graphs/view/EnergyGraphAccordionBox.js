@@ -19,6 +19,7 @@ import AccordionBox from '../../../../../sun/js/AccordionBox.js';
 import VerticalCheckboxGroup from '../../../../../sun/js/VerticalCheckboxGroup.js';
 import energySkateParkStrings from '../../../energy-skate-park-strings.js';
 import energySkatePark from '../../../energySkatePark.js';
+import Constants from '../../common/Constants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
@@ -150,7 +151,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
     xLabelText.centerTop = energyPlot.centerBottom.plusXY( 0, 10 );
     checkboxGroup.rightCenter = yLabel.leftCenter.minusXY( 10, 0 );
 
-    super( contentNode, {
+    super( contentNode, merge( {
       titleNode: titleNode,
       titleAlignX: 'left',
       titleXSpacing: 7,
@@ -159,10 +160,10 @@ class EnergyGraphAccordionBox extends AccordionBox {
       contentYMargin: 2,
       contentXMargin: 4,
       contentYSpacing: 0,
-      stroke: EnergySkateParkColorScheme.panelFill,
+
       expandedProperty: model.energyPlotVisibleProperty,
       tandem: tandem.createTandem( 'accordionBox' )
-    } );
+    }, Constants.PANEL_OPTIONS ) );
 
     // position the elements of the titleNode using global positioning after AccordionBox positions its titleNode
     variableSwitch.centerX = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.plotPath.center ) ).x;

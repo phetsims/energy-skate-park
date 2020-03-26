@@ -12,7 +12,7 @@ import VBox from '../../../../../scenery/js/nodes/VBox.js';
 import HSeparator from '../../../../../sun/js/HSeparator.js';
 import Panel from '../../../../../sun/js/Panel.js';
 import energySkatePark from '../../../energySkatePark.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import Constants from '../Constants.js';
 import EnergySkateParkGravityControls from './EnergySkateParkGravityControls.js';
 import EnergySkateParkMassControls from './EnergySkateParkMassControls.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
@@ -104,14 +104,12 @@ class EnergySkateParkControlPanel extends Panel {
 
     const content = new VBox( { resize: false, spacing: 8, children: children } );
 
-    super( content, {
+    super( content, merge( {
       xMargin: 5,
       yMargin: 5,
-      fill: EnergySkateParkColorScheme.panelFill,
-      stroke: null,
       resize: false,
       tandem: tandem
-    } );
+    }, Constants.PANEL_OPTIONS ) );
   }
 }
 

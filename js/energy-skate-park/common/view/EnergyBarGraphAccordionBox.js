@@ -9,6 +9,7 @@
 import merge from '../../../../../phet-core/js/merge.js';
 import AccordionBox from '../../../../../sun/js/AccordionBox.js';
 import energySkatePark from '../../../energySkatePark.js';
+import Constants from '../Constants.js';
 import EnergyBarGraph from './EnergyBarGraph.js';
 
 class EnergyBarGraphAccordionBox extends AccordionBox {
@@ -27,13 +28,12 @@ class EnergyBarGraphAccordionBox extends AccordionBox {
     const energyBarGraph = new EnergyBarGraph( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
 
     const margin = 5;
-    super( energyBarGraph, {
+    super( energyBarGraph, merge( {
 
       contentXMargin: margin,
       contentYMargin: margin,
       buttonXMargin: margin,
       buttonYMargin: margin,
-      cornerRadius: margin,
 
       titleNode: EnergyBarGraph.createLabel(),
 
@@ -44,7 +44,7 @@ class EnergyBarGraphAccordionBox extends AccordionBox {
       barGraphOptions: null,
 
       tandem: tandem
-    } );
+    }, Constants.PANEL_OPTIONS ) );
 
     // create an icon that represents the content, it is invisible when expanded
     const graphIcon = EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } );

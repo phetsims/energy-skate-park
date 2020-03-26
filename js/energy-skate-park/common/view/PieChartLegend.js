@@ -18,6 +18,7 @@ import VStrut from '../../../../../scenery/js/nodes/VStrut.js';
 import Panel from '../../../../../sun/js/Panel.js';
 import energySkateParkStrings from '../../../energy-skate-park-strings.js';
 import energySkatePark from '../../../energySkatePark.js';
+import Constants from '../Constants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
 const energyEnergyString = energySkateParkStrings.energy.energy;
@@ -120,18 +121,14 @@ class PieChartLegend extends Panel {
       ]
     } );
 
-    super( contentWithTitle,
-      {
-        x: 4,
-        y: 4,
-        xMargin: 6,
-        yMargin: 5,
-        fill: 'white',
-        stroke: 'gray',
-        lineWidth: 1,
-        resize: false,
-        tandem: tandem
-      } );
+    super( contentWithTitle, merge( {
+      x: 4,
+      y: 4,
+      xMargin: 6,
+      yMargin: 5,
+      resize: false,
+      tandem: tandem
+    }, Constants.PANEL_OPTIONS ) );
 
     this.addChild( clearThermalButton );
     const strutGlobal = clearThermalButtonStrut.parentToGlobalPoint( clearThermalButtonStrut.center );

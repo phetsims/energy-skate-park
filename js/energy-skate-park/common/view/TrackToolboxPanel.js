@@ -24,9 +24,7 @@ class TrackToolboxPanel extends Panel {
    */
   constructor( model, view, tandem, options ) {
 
-    options = merge( {
-      cornerRadius: 6
-    }, options );
+    options = merge( {}, Constants.PANEL_OPTIONS, options );
 
     const iconTrack = model.createDraggableTrack( {
       trackOptions: {

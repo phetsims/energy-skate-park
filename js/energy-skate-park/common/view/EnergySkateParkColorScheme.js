@@ -39,6 +39,7 @@ const EnergySkateParkColorScheme = {
   referenceArrowFill: new Color( 254, 240, 53 ),
 
   panelFill: new Color( '#F0F0F0' ),
+  panelStroke: new Color( '#ababab' ),
 
   // surrounds text for better visibility
   transparentPanelFill: new Color( 255, 255, 255, 0.5 )

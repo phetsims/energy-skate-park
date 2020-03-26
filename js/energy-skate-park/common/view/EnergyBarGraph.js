@@ -135,24 +135,25 @@ class EnergyBarGraph extends Node {
     let content = null;
     if ( options.showBarGraphZoomButtons ) {
 
-      const zoomOutButton = new ZoomButton( {
-        in: false,
+      const zoomButtonOptions = {
         scale: 0.3,
-        baseColor: ColorConstants.LIGHT_BLUE,
+        baseColor: ColorConstants.LIGHT_BLUE
+      };
+
+      const zoomOutButton = new ZoomButton( merge( {
+        in: false,
         listener: () => {
           barGraphScaleProperty.set( Math.max( barGraphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
         },
         tandem: tandem.createTandem( 'zoomOutButton' )
-      } );
-      const zoomInButton = new ZoomButton( {
+      }, zoomButtonOptions ) );
+      const zoomInButton = new ZoomButton( merge( {
         in: true,
-        scale: 0.3,
-        baseColor: ColorConstants.LIGHT_BLUE,
         listener: () => {
           barGraphScaleProperty.set( Math.min( barGraphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
         },
         tandem: tandem.createTandem( 'zoomInButton' )
-      } );
+      }, zoomButtonOptions ) );
 
       const zoomButtons = new HBox( {
         children: [ zoomOutButton, zoomInButton ],

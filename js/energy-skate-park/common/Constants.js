@@ -11,6 +11,7 @@ import Dimension2 from '../../../../dot/js/Dimension2.js';
 import Range from '../../../../dot/js/Range.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkColorScheme from './view/EnergySkateParkColorScheme.js';
 
 // for zoom buttons for bar graphs, pressing button will increase/decrease scale by this much
 const ZOOM_FACTOR_DELTA = 1 / 60;
@@ -21,6 +22,8 @@ const JUPITER_GRAVITY = 25.96;
 
 // maximum coefficient of friction
 const MAX_FRICTION = 0.1;
+
+const PANEL_CORNER_RADIUS = 8;
 
 const Constants = {
   SLIDER_OPTIONS: {
@@ -37,10 +40,19 @@ const Constants = {
     maxWidth: 25 // selected by choosing the length of widest English string in ?stringTest=double
   },
 
+  // options for boxes and panels
+  PANEL_CORNER_RADIUS: PANEL_CORNER_RADIUS,
+  PANEL_OPTIONS: {
+    cornerRadius: PANEL_CORNER_RADIUS,
+    fill: EnergySkateParkColorScheme.panelFill,
+    stroke: EnergySkateParkColorScheme.panelStroke
+  },
+
   // options for the ComboBoxes in this sim
   COMBO_BOX_OPTIONS: {
     xMargin: 10,
-    yMargin: 6
+    yMargin: 6,
+    cornerRadius: PANEL_CORNER_RADIUS
   },
   COMBO_BOX_ITEM_OPTIONS: { font: new PhetFont( 11 ), maxWidth: 80 },
 
