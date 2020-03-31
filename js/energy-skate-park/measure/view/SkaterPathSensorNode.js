@@ -27,7 +27,7 @@ import Rectangle from '../../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
 import VBox from '../../../../../scenery/js/nodes/VBox.js';
 import SunConstants from '../../../../../sun/js/SunConstants.js';
-import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../../common/Constants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';

@@ -11,7 +11,7 @@
 
 import merge from '../../../../../phet-core/js/merge.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
-import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';

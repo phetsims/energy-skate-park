@@ -17,7 +17,7 @@ import VBox from '../../../../../scenery/js/nodes/VBox.js';
 import ABSwitch from '../../../../../sun/js/ABSwitch.js';
 import AccordionBox from '../../../../../sun/js/AccordionBox.js';
 import VerticalCheckboxGroup from '../../../../../sun/js/VerticalCheckboxGroup.js';
-import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../../common/Constants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';

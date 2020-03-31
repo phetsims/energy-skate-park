@@ -7,7 +7,7 @@
  */
 
 import Range from '../../../../../dot/js/Range.js';
-import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 import PhysicalSlider from './PhysicalSlider.js';

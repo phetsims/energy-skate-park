@@ -14,7 +14,7 @@ import ArrowNode from '../../../../../scenery-phet/js/ArrowNode.js';
 import DragListener from '../../../../../scenery/js/listeners/DragListener.js';
 import Line from '../../../../../scenery/js/nodes/Line.js';
 import Node from '../../../../../scenery/js/nodes/Node.js';
-import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TextPanel from './TextPanel.js';

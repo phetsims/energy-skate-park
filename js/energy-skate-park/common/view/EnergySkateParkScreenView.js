@@ -30,7 +30,7 @@ import Path from '../../../../../scenery/js/nodes/Path.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
 import RectangularPushButton from '../../../../../sun/js/buttons/RectangularPushButton.js';
 import skaterIconImage from '../../../../images/skater-icon_png.js';
-import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import AttachDetachToggleButtons from './AttachDetachToggleButtons.js';
 import BackgroundNode from './BackgroundNode.js';

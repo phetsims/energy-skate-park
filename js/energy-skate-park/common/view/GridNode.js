@@ -15,7 +15,7 @@ import Shape from '../../../../../kite/js/Shape.js';
 import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../../scenery/js/nodes/Path.js';
-import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import TextPanel from './TextPanel.js';
 

@@ -22,7 +22,7 @@ import Path from '../../../../../scenery/js/nodes/Path.js';
 import Rectangle from '../../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
 import Checkbox from '../../../../../sun/js/Checkbox.js';
-import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 

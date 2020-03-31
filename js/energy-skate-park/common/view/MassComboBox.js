@@ -7,7 +7,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import SkaterMasses from '../SkaterMasses.js';
 import LabelledComboBox from './LabelledComboBox.js';

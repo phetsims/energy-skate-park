@@ -10,7 +10,7 @@ import Screen from '../../../../joist/js/Screen.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import iconFrictionHomescreen from '../../../images/icon-friction-homescreen_png.js';
 import iconFrictionNavbar from '../../../images/icon-friction-navbar_png.js';
-import energySkateParkStrings from '../../energy-skate-park-strings.js';
+import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
 import MeasureModel from './model/MeasureModel.js';
 import MeasureScreenView from './view/MeasureScreenView.js';

@@ -10,7 +10,7 @@ import merge from '../../../../../phet-core/js/merge.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
 import ComboBox from '../../../../../sun/js/ComboBox.js';
 import ComboBoxItem from '../../../../../sun/js/ComboBoxItem.js';
-import energySkateParkStrings from '../../../energy-skate-park-strings.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 import LabelledComboBox from './LabelledComboBox.js';
