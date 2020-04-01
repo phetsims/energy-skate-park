@@ -186,6 +186,9 @@ class EnergyBarGraph extends Node {
     skater.allowClearingThermalEnergyProperty.link( allowClearingThermalEnergy => {
       clearThermalButton.enabled = allowClearingThermalEnergy;
     } );
+
+    // this button is small and usability is improved by larger touch areas
+    clearThermalButton.touchArea = clearThermalButton.localBounds.dilated( 10 );
   }
 
   /**
