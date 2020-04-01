@@ -13,7 +13,7 @@ import energySkateParkStrings from './energySkateParkStrings.js';
 import EnergySkateParkSim from './energy-skate-park/common/EnergySkateParkSim.js';
 import GraphsScreen from './energy-skate-park/graphs/GraphsScreen.js';
 import IntroScreen from './energy-skate-park/intro/IntroScreen.js';
-import LabScreen from './energy-skate-park/lab/LabScreen.js';
+import LabScreen from './energy-skate-park/playground/LabScreen.js';
 import MeasureScreen from './energy-skate-park/measure/MeasureScreen.js';
 
 const energySkateParkTitleString = energySkateParkStrings[ 'energy-skate-park' ].title;
