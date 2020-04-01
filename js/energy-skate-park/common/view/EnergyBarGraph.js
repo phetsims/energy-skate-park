@@ -7,6 +7,7 @@
  */
 
 import Property from '../../../../../axon/js/Property.js';
+import Bounds2 from '../../../../../dot/js/Bounds2.js';
 import Range from '../../../../../dot/js/Range.js';
 import BarChartNode from '../../../../../griddle/js/BarChartNode.js';
 import merge from '../../../../../phet-core/js/merge.js';
@@ -29,6 +30,9 @@ const energyKineticString = energySkateParkStrings.energy.kinetic;
 const energyPotentialString = energySkateParkStrings.energy.potential;
 const energyThermalString = energySkateParkStrings.energy.thermal;
 const energyTotalString = energySkateParkStrings.energy.total;
+
+// constants
+const ZOOM_BUTTON_TOUCH_DILATION = 5;
 
 class EnergyBarGraph extends Node {
 
@@ -136,8 +140,15 @@ class EnergyBarGraph extends Node {
     if ( options.showBarGraphZoomButtons ) {
 
       const zoomButtonOptions = {
-        scale: 0.3,
-        baseColor: ColorConstants.LIGHT_BLUE
+        baseColor: ColorConstants.LIGHT_BLUE,
+        radius: 4.5,
+
+        xMargin: 5,
+        yMargin: 4,
+
+        // these buttons are quite small
+        touchAreaXDilation: ZOOM_BUTTON_TOUCH_DILATION,
+        touchAreaYDilation: ZOOM_BUTTON_TOUCH_DILATION
       };
 
       const zoomOutButton = new ZoomButton( merge( {
@@ -145,16 +156,22 @@ class EnergyBarGraph extends Node {
         listener: () => {
           barGraphScaleProperty.set( Math.max( barGraphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
         },
-        tandem: tandem.createTandem( 'zoomOutButton' )
+        tandem: tandem.createTandem( 'zoomOutButton' ),
+
+        touchAreaXShift: -ZOOM_BUTTON_TOUCH_DILATION
       }, zoomButtonOptions ) );
       const zoomInButton = new ZoomButton( merge( {
         in: true,
         listener: () => {
           barGraphScaleProperty.set( Math.min( barGraphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
         },
-        tandem: tandem.createTandem( 'zoomInButton' )
+        tandem: tandem.createTandem( 'zoomInButton' ),
+
+        touchAreaXShift: ZOOM_BUTTON_TOUCH_DILATION
       }, zoomButtonOptions ) );
 
+      // these buttons are pretty small and are more usable with larger touch areas
+      // zoomOutButton.touchArea = new Bounds2( zoomOutButton.left, zoomOutButton.top - 5, zoomOutButton.left + zoomOutButton.width + 5, zoomOutButton.bottom + zoomOutButton.height + 5 );
       const zoomButtons = new HBox( {
         children: [ zoomOutButton, zoomInButton ],
         spacing: 5
