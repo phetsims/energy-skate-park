@@ -44,7 +44,7 @@
   "controls.value.tiny": {
     "value": "Tiny"
   },
-  "controls.gravity": {
+  "controls.gravity.label": {
     "value": "Gravity"
   },
   "controls.skater": {
@@ -67,6 +67,18 @@
   },
   "controls.dogMassPattern": {
     "value": "Dog ({{value}} kg)"
+  },
+  "controls.gravity.custom": {
+    "value": "Custom"
+  },
+  "controls.gravity.earth": {
+    "value": "Earth"
+  },
+  "controls.gravity.moon": {
+    "value": "Moon"
+  },
+  "controls.gravity.jupiter": {
+    "value": "Jupiter"
   },
   "controls.skater1": {
     "value": "Skater 1"

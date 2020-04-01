@@ -17,7 +17,11 @@ import ComboBoxItem from '../../../../../sun/js/ComboBoxItem.js';
 import NullableIO from '../../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../../energySkatePark.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import Constants from '../Constants.js';
+
+// constants
+const controlsGravityCustomString = energySkateParkStrings.controls.gravity.custom;
 
 class PhysicalComboBox extends ComboBox {
 
@@ -48,7 +52,7 @@ class PhysicalComboBox extends ComboBox {
     } );
 
     if ( options.supportCustom ) {
-      itemList.push( new ComboBoxItem( new Text( 'Custom', Constants.COMBO_BOX_ITEM_OPTIONS ), null ) );
+      itemList.push( new ComboBoxItem( new Text( controlsGravityCustomString, Constants.COMBO_BOX_ITEM_OPTIONS ), null ) );
     }
 
     // adapter Property for the ComboBox because the physicalProperty can be set to values other than those defined

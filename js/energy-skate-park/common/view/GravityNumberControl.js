@@ -13,7 +13,7 @@ import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
-const controlsGravityString = energySkateParkStrings.controls.gravity;
+const controlsGravityLabelString = energySkateParkStrings.controls.gravity.label;
 const gravityMetersPerSecondSquaredPatternString = energySkateParkStrings.gravityMetersPerSecondSquaredPattern;
 
 class GravityNumberControl extends PhysicalNumberControl {
@@ -32,7 +32,7 @@ class GravityNumberControl extends PhysicalNumberControl {
         useRichText: true // for the superscript on units
       }
     }, options );
-    super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, options );
+    super( controlsGravityLabelString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, options );
   }
 }
 
