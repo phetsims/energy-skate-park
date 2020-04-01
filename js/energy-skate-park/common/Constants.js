@@ -18,7 +18,7 @@ const ZOOM_FACTOR_DELTA = 1 / 60;
 
 const EARTH_GRAVITY = 9.8;
 const MOON_GRAVITY = 1.62;
-const JUPITER_GRAVITY = 25.96;
+const JUPITER_GRAVITY = 24.8;
 
 // maximum coefficient of friction
 const MAX_FRICTION = 0.1;
