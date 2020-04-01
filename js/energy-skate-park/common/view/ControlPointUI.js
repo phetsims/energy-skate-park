@@ -68,7 +68,7 @@ class ControlPointUI extends Node {
 
     // Add a scissors cut button, but only for interior points and only if there aren't too many control points already
     if ( !isEndPoint && model.canCutTrackControlPoint() ) {
-      const scissorNode = new FontAwesomeNode( 'cut', { fill: 'black', scale: 0.6, rotation: Math.PI / 2 - angle } );
+      const scissorNode = new FontAwesomeNode( 'cut', { fill: 'black', scale: 0.6, rotation: angle - Math.PI / 2 } );
       cutButton = new RoundPushButton( {
         tandem: tandem.createTandem( 'cutButton' ),
         phetioState: false,

@@ -136,6 +136,9 @@ class PieChartLegend extends Panel {
     clearThermalButton.center = buttonLocal;
 
     pieChartVisibleProperty.linkAttribute( this, 'visible' );
+
+    // this button is small and usability is improved by larger touch areas
+    clearThermalButton.touchArea = clearThermalButton.localBounds.dilated( 10 );
   }
 }
 

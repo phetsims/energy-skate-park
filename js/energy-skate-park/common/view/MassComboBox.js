@@ -7,6 +7,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import StringUtils from '../../../../../phetcommon/js/util/StringUtils.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import SkaterMasses from '../SkaterMasses.js';
@@ -14,12 +15,12 @@ import LabelledComboBox from './LabelledComboBox.js';
 import PhysicalComboBox from './PhysicalComboBox.js';
 
 const controlsSkaterString = energySkateParkStrings.controls.skater;
-const controlsSkater1MassString = energySkateParkStrings.controls.skater1Mass;
-const controlsSkater2MassString = energySkateParkStrings.controls.skater2Mass;
-const controlsSkater3MassString = energySkateParkStrings.controls.skater3Mass;
-const controlsSkater4MassString = energySkateParkStrings.controls.skater4Mass;
-const controlsSkater5MassString = energySkateParkStrings.controls.skater5Mass;
-const controlsDogMassString = energySkateParkStrings.controls.dogMass;
+const controlsSkater1MassPatternString = energySkateParkStrings.controls.skater1MassPattern;
+const controlsSkater2MassPatternString = energySkateParkStrings.controls.skater2MassPattern;
+const controlsSkater3MassPatternString = energySkateParkStrings.controls.skater3MassPattern;
+const controlsSkater4MassPatternString = energySkateParkStrings.controls.skater4MassPattern;
+const controlsSkater5MassPatternString = energySkateParkStrings.controls.skater5MassPattern;
+const controlsDogMassPatternString = energySkateParkStrings.controls.dogMassPattern;
 
 class MassComboBox extends LabelledComboBox {
 
@@ -31,12 +32,27 @@ class MassComboBox extends LabelledComboBox {
    */
   constructor( massProperty, resetEmitter, listParent, tandem ) {
     const labelValueList = [
-      { label: controlsSkater1MassString, value: SkaterMasses.SKATER_1_MASS },
-      { label: controlsSkater2MassString, value: SkaterMasses.SKATER_2_MASS },
-      { label: controlsSkater3MassString, value: SkaterMasses.SKATER_3_MASS },
-      { label: controlsSkater4MassString, value: SkaterMasses.SKATER_4_MASS },
-      { label: controlsSkater5MassString, value: SkaterMasses.SKATER_5_MASS },
-      { label: controlsDogMassString, value: SkaterMasses.DOG_MASS }
+      {
+        label: getFormattedLabel( controlsSkater1MassPatternString, SkaterMasses.SKATER_1_MASS ),
+        value: SkaterMasses.SKATER_1_MASS
+      },
+      {
+        label: getFormattedLabel( controlsSkater2MassPatternString, SkaterMasses.SKATER_2_MASS ),
+        value: SkaterMasses.SKATER_2_MASS
+      },
+      {
+        label: getFormattedLabel( controlsSkater3MassPatternString, SkaterMasses.SKATER_3_MASS ),
+        value: SkaterMasses.SKATER_3_MASS
+      },
+      {
+        label: getFormattedLabel( controlsSkater4MassPatternString, SkaterMasses.SKATER_4_MASS ),
+        value: SkaterMasses.SKATER_4_MASS
+      },
+      {
+        label: getFormattedLabel( controlsSkater5MassPatternString, SkaterMasses.SKATER_5_MASS ),
+        value: SkaterMasses.SKATER_5_MASS
+      },
+      { label: getFormattedLabel( controlsDogMassPatternString, SkaterMasses.DOG_MASS ), value: SkaterMasses.DOG_MASS }
     ];
     const comboBox = new PhysicalComboBox( massProperty, labelValueList, resetEmitter, listParent, tandem, {
       supportCustom: false
@@ -45,6 +61,19 @@ class MassComboBox extends LabelledComboBox {
     super( comboBox, controlsSkaterString );
   }
 }
+
+/**
+ * Get the string that labels the mass value.
+ * @param {string} patternString
+ * @param {number} value
+ * @returns {string}
+ */
+const getFormattedLabel = ( patternString, value ) => {
+  return StringUtils.fillIn( patternString, {
+    value: value
+  } );
+};
+
 
 energySkatePark.register( 'MassComboBox', MassComboBox );
 export default MassComboBox;

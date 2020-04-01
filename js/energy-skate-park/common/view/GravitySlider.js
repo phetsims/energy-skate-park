@@ -12,7 +12,7 @@ import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
-const controlsGravityString = energySkateParkStrings.controls.gravity;
+const controlsGravityLabelString = energySkateParkStrings.controls.gravity.label;
 const controlsValueTinyString = energySkateParkStrings.controls.value.tiny;
 
 class GravitySlider extends PhysicalSlider {
@@ -22,7 +22,7 @@ class GravitySlider extends PhysicalSlider {
    * @param {Tandem} tandem
    */
   constructor( property, tandem ) {
-    super( controlsGravityString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, {
+    super( controlsGravityLabelString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, {
       minLabel: controlsValueTinyString
     } );
   }

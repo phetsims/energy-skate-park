@@ -30,6 +30,9 @@ const energyPotentialString = energySkateParkStrings.energy.potential;
 const energyThermalString = energySkateParkStrings.energy.thermal;
 const energyTotalString = energySkateParkStrings.energy.total;
 
+// constants
+const ZOOM_BUTTON_TOUCH_DILATION = 5;
+
 class EnergyBarGraph extends Node {
 
   /**
@@ -136,8 +139,15 @@ class EnergyBarGraph extends Node {
     if ( options.showBarGraphZoomButtons ) {
 
       const zoomButtonOptions = {
-        scale: 0.3,
-        baseColor: ColorConstants.LIGHT_BLUE
+        baseColor: ColorConstants.LIGHT_BLUE,
+        radius: 4.5,
+
+        xMargin: 5,
+        yMargin: 4,
+
+        // these buttons are quite small
+        touchAreaXDilation: ZOOM_BUTTON_TOUCH_DILATION,
+        touchAreaYDilation: ZOOM_BUTTON_TOUCH_DILATION
       };
 
       const zoomOutButton = new ZoomButton( merge( {
@@ -145,6 +155,7 @@ class EnergyBarGraph extends Node {
         listener: () => {
           barGraphScaleProperty.set( Math.max( barGraphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
         },
+        touchAreaXShift: -ZOOM_BUTTON_TOUCH_DILATION,
         tandem: tandem.createTandem( 'zoomOutButton' )
       }, zoomButtonOptions ) );
       const zoomInButton = new ZoomButton( merge( {
@@ -152,6 +163,7 @@ class EnergyBarGraph extends Node {
         listener: () => {
           barGraphScaleProperty.set( Math.min( barGraphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
         },
+        touchAreaXShift: ZOOM_BUTTON_TOUCH_DILATION,
         tandem: tandem.createTandem( 'zoomInButton' )
       }, zoomButtonOptions ) );
 
@@ -186,6 +198,9 @@ class EnergyBarGraph extends Node {
     skater.allowClearingThermalEnergyProperty.link( allowClearingThermalEnergy => {
       clearThermalButton.enabled = allowClearingThermalEnergy;
     } );
+
+    // this button is small and usability is improved by larger touch areas
+    clearThermalButton.touchArea = clearThermalButton.localBounds.dilated( 10 );
   }
 
   /**
