@@ -7,7 +7,6 @@
  */
 
 import Property from '../../../../../axon/js/Property.js';
-import Bounds2 from '../../../../../dot/js/Bounds2.js';
 import Range from '../../../../../dot/js/Range.js';
 import BarChartNode from '../../../../../griddle/js/BarChartNode.js';
 import merge from '../../../../../phet-core/js/merge.js';
@@ -156,22 +155,18 @@ class EnergyBarGraph extends Node {
         listener: () => {
           barGraphScaleProperty.set( Math.max( barGraphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
         },
-        tandem: tandem.createTandem( 'zoomOutButton' ),
-
-        touchAreaXShift: -ZOOM_BUTTON_TOUCH_DILATION
+        touchAreaXShift: -ZOOM_BUTTON_TOUCH_DILATION,
+        tandem: tandem.createTandem( 'zoomOutButton' )
       }, zoomButtonOptions ) );
       const zoomInButton = new ZoomButton( merge( {
         in: true,
         listener: () => {
           barGraphScaleProperty.set( Math.min( barGraphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
         },
-        tandem: tandem.createTandem( 'zoomInButton' ),
-
-        touchAreaXShift: ZOOM_BUTTON_TOUCH_DILATION
+        touchAreaXShift: ZOOM_BUTTON_TOUCH_DILATION,
+        tandem: tandem.createTandem( 'zoomInButton' )
       }, zoomButtonOptions ) );
 
-      // these buttons are pretty small and are more usable with larger touch areas
-      // zoomOutButton.touchArea = new Bounds2( zoomOutButton.left, zoomOutButton.top - 5, zoomOutButton.left + zoomOutButton.width + 5, zoomOutButton.bottom + zoomOutButton.height + 5 );
       const zoomButtons = new HBox( {
         children: [ zoomOutButton, zoomInButton ],
         spacing: 5
