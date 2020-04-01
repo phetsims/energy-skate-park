@@ -12882,7 +12882,7 @@ window.phet.phetio.phetioElementsBaseline = assert &&
       "phetioReadOnly": false,
       "phetioState": true,
       "phetioStudioControl": true,
-      "phetioTypeName": "PropertyIO<ReferenceIO>"
+      "phetioTypeName": "PropertyIO<ScreenIO>"
     },
     "energySkatePark.homeScreen.nameProperty": {
       "phetioDocumentation": "",

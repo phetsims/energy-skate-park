@@ -29,6 +29,7 @@ import ReferenceIO from '../../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 import SkaterMasses from '../SkaterMasses.js';
+import TrackIO from './TrackIO.js';
 
 class Skater {
 
@@ -57,7 +58,7 @@ class Skater {
     // @public - The track the skater is on, or null if free-falling
     this.trackProperty = new Property( null, {
       tandem: tandem.createTandem( 'trackProperty' ),
-      phetioType: PropertyIO( NullableIO( ReferenceIO ) )
+      phetioType: PropertyIO( NullableIO( ReferenceIO( TrackIO ) ) )
     } );
 
     // @public {number} - Parameter along the parametric spline, unitless since it is in parametric space

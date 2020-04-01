@@ -54,6 +54,7 @@ import EnergySkateParkModelIO from './EnergySkateParkModelIO.js';
 import Skater from './Skater.js';
 import SkaterState from './SkaterState.js';
 import Track from './Track.js';
+import TrackIO from './TrackIO.js';
 
 // Reuse empty object for creating SkaterStates to avoid allocations
 const EMPTY_OBJECT = {};
@@ -246,7 +247,7 @@ class EnergySkateParkModel extends PhetioObject {
 
     // @public
     this.tracks = new ObservableArray( {
-      phetioType: ObservableArrayIO( ReferenceIO ),
+      phetioType: ObservableArrayIO( ReferenceIO( TrackIO ) ),
       tandem: tandem.createTandem( 'tracks' )
     } );
 
