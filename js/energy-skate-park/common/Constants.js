@@ -71,7 +71,7 @@ const Constants = {
   DEFAULT_FRICTION: MAX_FRICTION / 2,
 
   // in m/s^2, including direction (naming aligned with magnitude for readability at usages)
-  MAX_GRAVITY: -JUPITER_GRAVITY,
+  MAX_GRAVITY: -26, // maximum value of gravity, as requested by design
   MIN_GRAVITY: -1, // minimum value for gravity, as requested by design team
 
   // pre-determined gravities
