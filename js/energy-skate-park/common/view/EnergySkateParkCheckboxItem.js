@@ -13,14 +13,11 @@ import Vector2 from '../../../../../dot/js/Vector2.js';
 import Shape from '../../../../../kite/js/Shape.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import GaugeNode from '../../../../../scenery-phet/js/GaugeNode.js';
-import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
 import Circle from '../../../../../scenery/js/nodes/Circle.js';
-import HBox from '../../../../../scenery/js/nodes/HBox.js';
 import Line from '../../../../../scenery/js/nodes/Line.js';
 import Node from '../../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../../scenery/js/nodes/Path.js';
 import Rectangle from '../../../../../scenery/js/nodes/Rectangle.js';
-import Text from '../../../../../scenery/js/nodes/Text.js';
 import Checkbox from '../../../../../sun/js/Checkbox.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
@@ -32,48 +29,19 @@ class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
    * @constructor
-   * @param {string} label
    * @param {Node} icon
-   * @param {AlignGroup} textAlignGroup
-   * @param {AlignGroup} iconAlignGroup
    * @param {Property} property - the checkbox will update this Property
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( label, icon, textAlignGroup, iconAlignGroup, property, tandem, options ) {
-
-    assert && assert( textAlignGroup.matchHorizontal === true, 'text content in check boxes must align' );
-    assert && assert( textAlignGroup.matchVertical === true, 'text content for checkboxes in group must align' );
+  constructor( icon, property, tandem, options ) {
 
     options = merge( {
-
-      // {number} - default determined by inspection, certain contexts require shorter width
-      labelMaxWidth: 95
-    }, options );
-
-    const textOptions = {
-      font: new PhetFont( 13 ),
-      maxWidth: options.labelMaxWidth
-    };
-
-    const checkboxItemOptions = {
       boxWidth: 12,
       tandem: tandem
-    };
+    }, options );
 
-    // create text and an align box for it so that all text in a group of items is aligned
-    const text = new Text( label, merge( { tandem: tandem.createTandem( 'itemLabel' ) }, textOptions ) );
-    const textBox = textAlignGroup.createBox( text, { xAlign: 'left' } );
-
-    // so all icons are aligned and still be icon content for the checkbox
-    const iconBox = iconAlignGroup.createBox( icon, { xAlign: 'center' } );
-
-    const checkboxContent = new HBox( {
-      children: [ textBox, iconBox ],
-      spacing: 10
-    } );
-
-    super( checkboxContent, property, checkboxItemOptions );
+    super( icon, property, options );
   }
 
   /**

@@ -13,10 +13,13 @@
  */
 
 import merge from '../../../../../phet-core/js/merge.js';
+import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
 import AlignGroup from '../../../../../scenery/js/nodes/AlignGroup.js';
+import HBox from '../../../../../scenery/js/nodes/HBox.js';
 import VBox from '../../../../../scenery/js/nodes/VBox.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
+import Text from '../../../../../scenery/js/nodes/Text.js';
 import EnergyBarGraph from './EnergyBarGraph.js';
 import EnergySkateParkCheckboxItem from './EnergySkateParkCheckboxItem.js';
 
@@ -27,6 +30,12 @@ const controlsStickToTrackString = energySkateParkStrings.controls.stickToTrack;
 const pieChartString = energySkateParkStrings.pieChart;
 const plotsBarGraphString = energySkateParkStrings.plots[ 'bar-graph' ];
 const propertiesSpeedString = energySkateParkStrings.properties.speed;
+
+// constants
+const TEXT_OPTIONS = {
+  font: new PhetFont( 13 ),
+  maxWidth: 95
+};
 
 class EnergySkateParkVisibilityControls extends VBox {
 
@@ -50,108 +59,110 @@ class EnergySkateParkVisibilityControls extends VBox {
       itemOptions: null
     }, options );
 
-    const itemAlignGroup = new AlignGroup();
-    const iconAlignGroup = new AlignGroup();
-    const checkboxItems = [];
-
-    if ( options.showSkaterPathCheckbox ) {
-      assert && assert( model.saveSkaterSamplesProperty, 'no Property for measuring samples, add to model or dont show this' );
-
-      checkboxItems.push(
-        new EnergySkateParkCheckboxItem(
-          controlsPathString,
-          EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) ),
-          itemAlignGroup,
-          iconAlignGroup,
-          model.saveSkaterSamplesProperty,
-          tandem.createTandem( 'pathCheckbox' ),
-          options.itemOptions
-        )
-      );
-    }
-
-    if ( options.showPieChartCheckbox ) {
-      checkboxItems.push(
-        new EnergySkateParkCheckboxItem(
-          pieChartString,
-          EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } ),
-          itemAlignGroup,
-          iconAlignGroup,
-          model.pieChartVisibleProperty,
-          tandem.createTandem( 'pieChartCheckbox' ),
-          options.itemOptions
-        )
-      );
-    }
-
-    if ( options.showBarGraphCheckbox ) {
-      checkboxItems.push( new EnergySkateParkCheckboxItem(
-        plotsBarGraphString,
-        EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } ),
-        itemAlignGroup,
-        iconAlignGroup,
-        model.barGraphVisibleProperty,
-        tandem.createTandem( 'barGraphCheckbox' ),
-        options.itemOptions
-      ) );
-    }
-
-    if ( options.showGridCheckbox ) {
-      checkboxItems.push( new EnergySkateParkCheckboxItem(
-        controlsShowGridString,
-        EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } ),
-        itemAlignGroup,
-        iconAlignGroup,
-        model.gridVisibleProperty,
-        tandem.createTandem( 'gridCheckbox' ),
-        options.itemOptions
-      ) );
-    }
-
-    if ( options.showSpeedCheckbox ) {
-      checkboxItems.push( new EnergySkateParkCheckboxItem(
-        propertiesSpeedString,
-        EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } ),
-        itemAlignGroup,
-        iconAlignGroup,
-        model.speedometerVisibleProperty,
-        tandem.createTandem( 'speedometerCheckbox' ),
-        options.itemOptions
-      ) );
-    }
-
-    if ( options.showReferenceHeightCheckbox ) {
-      checkboxItems.push(
-        new EnergySkateParkCheckboxItem(
-          controlsReferenceHeightString,
-          EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) ),
-          itemAlignGroup,
-          iconAlignGroup,
-          model.referenceHeightVisibleProperty,
-          tandem.createTandem( 'referenceHeightCheckbox' ),
-          options.itemOptions
-        )
-      );
-    }
-
-    if ( options.showStickToTrackCheckbox ) {
-      checkboxItems.push( new EnergySkateParkCheckboxItem(
-        controlsStickToTrackString,
-        EnergySkateParkCheckboxItem.createStickingToTrackIcon(),
-        itemAlignGroup,
-        iconAlignGroup,
-        model.stickingToTrackProperty,
-        tandem.createTandem( 'stickToTrackCheckbox' ),
-        options.itemOptions
-      ) );
-    }
-
     super( {
-      children: checkboxItems,
       align: 'left',
       spacing: 6.5
     } );
 
+    // @private {AlignGroup} - Used to align labels and icons so that every box in the group has the same dimensions
+    this.textAlignGroup = new AlignGroup();
+    this.iconAlignGroup = new AlignGroup();
+
+    // @private {Tandem}
+    this.tandem = tandem;
+
+    // @private {CheckboxContent[]} - list of contents containing icon nodes and Properties that will be used to
+    // create checkboxes
+    this.checkboxContents = [];
+
+    // {EnergySkateParkCheckboxItem[]}
+    const checkboxItems = [];
+
+    if ( options.showSkaterPathCheckbox ) {
+      const iconNode = EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) );
+      this.addCheckboxContent( controlsPathString, iconNode, model.saveSkaterSamplesProperty );
+    }
+
+    if ( options.showPieChartCheckbox ) {
+      const iconNode = EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } );
+      this.addCheckboxContent( pieChartString, iconNode, model.pieChartVisibleProperty );
+    }
+
+    if ( options.showBarGraphCheckbox ) {
+      const iconNode = EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } );
+      this.addCheckboxContent( plotsBarGraphString, iconNode, model.barGraphVisibleProperty );
+    }
+
+    if ( options.showGridCheckbox ) {
+      const iconNode = EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } );
+      this.addCheckboxContent( controlsShowGridString, iconNode, model.gridVisibleProperty );
+    }
+
+    if ( options.showSpeedCheckbox ) {
+      const iconNode = EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } );
+      this.addCheckboxContent( propertiesSpeedString, iconNode, model.speedometerVisibleProperty );
+    }
+
+    if ( options.showReferenceHeightCheckbox ) {
+      const iconNode = EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) );
+      this.addCheckboxContent( controlsReferenceHeightString, iconNode, model.referenceHeightVisibleProperty );
+    }
+
+    if ( options.showStickToTrackCheckbox ) {
+      const iconNode = EnergySkateParkCheckboxItem.createStickingToTrackIcon();
+      this.addCheckboxContent( controlsStickToTrackString, iconNode, model.stickingToTrackProperty );
+    }
+
+    this.checkboxContents.forEach( content => {
+      checkboxItems.push( new EnergySkateParkCheckboxItem( content.checkboxIcon, content.property, tandem, options.itemOptions ) );
+    } );
+
+    this.children = checkboxItems;
+  }
+
+  /**
+   * Create and add to the list of checkbox contents. These are created eagerly so that layout can complete before
+   * creating checkboxes, as checkboxes do not support icons with variable dimensions.
+   *
+   * @param {string} labelString
+   * @param {Node} iconNode
+   * @param {Property} property
+   */
+  addCheckboxContent( labelString, iconNode, property ) {
+    this.checkboxContents.push( new CheckboxContent( labelString, iconNode, this.textAlignGroup, this.iconAlignGroup, property, this.tandem ) );
+  }
+}
+
+/**
+ * Inner type that collects the contents for a checkbox, and assigns icons and labels to align groups for layout.
+ * This is done BEFORE passing content to checkboxes as checkboxes do not support label nodes with varying dimensions.
+ */
+class CheckboxContent {
+
+  /**
+   * @param {string} labelString
+   * @param {Node} iconNode
+   * @param {AlignGroup} textAlignGroup
+   * @param {AlignGroup} iconAlignGroup
+   * @param {BooleanProperty}property
+   * @param {Tandem} tandem
+   */
+  constructor( labelString, iconNode, textAlignGroup, iconAlignGroup, property, tandem ) {
+
+    // create the text and assign to an AlignBox
+    const text = new Text( labelString, merge( { tandem: tandem.createTandem( 'text' ) }, TEXT_OPTIONS ) );
+    const textBox = textAlignGroup.createBox( text, { xAlign: 'left' } );
+
+    const iconBox = iconAlignGroup.createBox( iconNode, { xAlign: 'center' } );
+
+    // @public {HBox} - contents for the checkbox
+    this.checkboxIcon = new HBox( {
+      children: [ textBox, iconBox ],
+      spacing: 10
+    } );
+
+    // @public {BooleanProperty} - Property for the checkbox
+    this.property = property;
   }
 }
 
