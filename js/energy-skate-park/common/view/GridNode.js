@@ -155,14 +155,14 @@ class GridNode extends Node {
         } );
         this.createdTextPanels.push( gridLineLabel );
 
-        // For the "0 meters" readout, we still need the 0 to line up perfectly (while still using a single
+        // For the "0 m" readout, we still need the 0 to line up perfectly (while still using a single
         // internationalizable string), so use the 0 text bounds
         // And shift it down a bit so it isn't touching the concrete, see #134
         // It won't be added as a child of the gridParent because we don't want it to be clipped
         if ( y === 0 ) {
           replacementText = new TextPanel( energySkateParkStrings.zeroMeters, {
             font: FONT,
-            top: viewY + 6,
+            bottom: viewY - 2,
             right: gridLineLabel.right
           } );
           this.createdTextPanels.push( replacementText );
