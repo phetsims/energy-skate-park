@@ -13,7 +13,7 @@ import energySkateParkStrings from './energySkateParkStrings.js';
 import EnergySkateParkSim from './energy-skate-park/common/EnergySkateParkSim.js';
 import GraphsScreen from './energy-skate-park/graphs/GraphsScreen.js';
 import IntroScreen from './energy-skate-park/intro/IntroScreen.js';
-import LabScreen from './energy-skate-park/playground/LabScreen.js';
+import PlaygroundScreen from './energy-skate-park/playground/PlaygroundScreen.js';
 import MeasureScreen from './energy-skate-park/measure/MeasureScreen.js';
 
 const energySkateParkTitleString = energySkateParkStrings[ 'energy-skate-park' ].title;
@@ -26,7 +26,7 @@ SimLauncher.launch( () => {
     new IntroScreen( tandem.createTandem( 'introScreen' ) ),
     new MeasureScreen( tandem.createTandem( 'measureScreen' ) ),
     new GraphsScreen( tandem.createTandem( 'graphsScreen' ) ),
-    new LabScreen( tandem.createTandem( 'labScreen' ) )
+    new PlaygroundScreen( tandem.createTandem( 'playgroundScreen' ) )
   ];
 
   new EnergySkateParkSim( energySkateParkTitleString, screens, tandem, {

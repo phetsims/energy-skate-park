@@ -12,12 +12,12 @@ import iconPlaygroundHomescreen from '../../../images/icon-playground-homescreen
 import iconPlaygroundNavbar from '../../../images/icon-playground-navbar_png.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
-import LabModel from './model/LabModel.js';
-import LabScreenView from './view/LabScreenView.js';
+import EnergySkateParkPlaygroundModel from './model/EnergySkateParkPlaygroundModel.js';
+import EnergySkateParkPlaygroundScreenView from './view/EnergySkateParkPlaygroundScreenView.js';
 
-const screenLabString = energySkateParkStrings.screen.lab;
+const screenPlaygroundString = energySkateParkStrings.screen.playground;
 
-class LabScreen extends Screen {
+class PlaygroundScreen extends Screen {
 
   /**
    * @param {Tandem} tandem
@@ -26,7 +26,7 @@ class LabScreen extends Screen {
   constructor( tandem ) {
 
     const options = {
-      name: screenLabString,
+      name: screenPlaygroundString,
       homeScreenIcon: new Image( iconPlaygroundHomescreen ),
       navigationBarIcon: new Image( iconPlaygroundNavbar ),
 
@@ -34,12 +34,12 @@ class LabScreen extends Screen {
     };
 
     super(
-      () => new LabModel( tandem.createTandem( 'labModel' ) ),
-      model => new LabScreenView( model, tandem.createTandem( 'labScreenView' ) ),
+      () => new EnergySkateParkPlaygroundModel( tandem.createTandem( 'playgroundModel' ) ),
+      model => new EnergySkateParkPlaygroundScreenView( model, tandem.createTandem( 'playgroundScreenView' ) ),
       options
     );
   }
 }
 
-energySkatePark.register( 'LabScreen', LabScreen );
-export default LabScreen;
+energySkatePark.register( 'PlaygroundScreen', PlaygroundScreen );
+export default PlaygroundScreen;

@@ -128,8 +128,8 @@
   "screen.graphs": {
     "value": "Graphs"
   },
-  "screen.lab": {
-    "value": "Lab"
+  "screen.playground": {
+    "value": "Playground"
   },
   "screen.measure": {
     "value": "Measure"

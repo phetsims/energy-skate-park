@@ -8,12 +8,13 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import merge from '../../../../../phet-core/js/merge.js';
 import EraserButton from '../../../../../scenery-phet/js/buttons/EraserButton.js';
 import Color from '../../../../../scenery/js/util/Color.js';
 import energySkatePark from '../../../energySkatePark.js';
-import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
-import TrackNode from './TrackNode.js';
-import TrackToolboxPanel from './TrackToolboxPanel.js';
+import EnergySkateParkScreenView from '../../common/view/EnergySkateParkScreenView.js';
+import TrackNode from '../../common/view/TrackNode.js';
+import TrackToolboxPanel from '../../common/view/TrackToolboxPanel.js';
 
 class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 
@@ -23,6 +24,24 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
    * @param {Object} [options]
    */
   constructor( model, tandem, options ) {
+
+    options = merge( {
+      controlPanelOptions: {
+        showTrackButtons: false,
+        visibilityControlsOptions: {
+          showPieChartCheckbox: true,
+          showGridCheckbox: false,
+          showSpeedCheckbox: true,
+          showStickToTrackCheckbox: true
+        },
+        massControlsOptions: {
+          includeSkaterComboBox: true
+        },
+        gravityControlsOptions: {
+          includeGravityComboBox: true
+        }
+      }
+    }, options );
 
     super( model, tandem, options );
 
@@ -49,7 +68,11 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
     this.addChild( this.clearButton );
 
     // add any other TrackNodes eagerly in case model has some initial Tracks, like when we are debugging
-     model.tracks.getArray().map( this.addTrackNode.bind( this ) );
+    model.tracks.getArray().map( this.addTrackNode.bind( this ) );
+
+    this.timeControlNode.left = this.modelViewTransform.modelToViewX( 0.5 );
+    this.trackToolbox.right = this.modelViewTransform.modelToViewX( -0.5 );
+    this.clearButton.right = this.trackToolbox.left - 10;
   }
 
   /**
@@ -91,6 +114,18 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
    */
   getTrackNode( track ) {
     return _.find( this.trackNodes, trackNode => trackNode.track === track );
+  }
+
+  /**
+   * Positions the pie chart legend in the correct location as the UI floats.
+   *
+   * @override
+   */
+  floatInterface() {
+    super.floatInterface();
+
+    // the pie chart legend is just to the right of the 5 meter mark, which is where grid labels are
+    this.pieChartLegend.left = this.modelViewTransform.modelToViewX( -5 );
   }
 }
 

@@ -10,9 +10,9 @@
 
 import merge from '../../../../../phet-core/js/merge.js';
 import energySkatePark from '../../../energySkatePark.js';
-import ControlPoint from './ControlPoint.js';
-import EnergySkateParkModel from './EnergySkateParkModel.js';
-import Track from './Track.js';
+import ControlPoint from '../../common/model/ControlPoint.js';
+import EnergySkateParkModel from '../../common/model/EnergySkateParkModel.js';
+import Track from '../../common/model/Track.js';
 
 class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 
