@@ -264,7 +264,7 @@ class Skater {
       } );
 
     // In the state wrapper, when the state changes, we must update the skater node
-    _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( () => {
+    _.hasIn( window, 'phet.phetio.phetioEngine' ) && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( () => {
       this.updatedEmitter.emit();
     } );
   }

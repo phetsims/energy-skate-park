@@ -169,7 +169,7 @@ class Track extends PhetioObject {
       model.trackChangedEmitter.emit();
       model.updateEmitter.emit();
     };
-    _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
+    _.hasIn( window, 'phet.phetio.phetioEngine' ) && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
 
     // when available bounds change, make sure that control points are within - must be disposed
     const boundsListener = bounds => {
@@ -181,7 +181,7 @@ class Track extends PhetioObject {
 
     // @private - make the Track eligible for garbage collection
     this.disposeTrack = () => {
-      _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
+      _.hasIn( window, 'phet.phetio.phetioEngine' ) && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
       if ( self.parents ) {
         self.parents.length = 0;
       }

@@ -129,12 +129,12 @@ class TrackNode extends Node {
     const stateListener = () => {
       this.updateTrackShape();
     };
-    _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
+    _.hasIn( window, 'phet.phetio.phetioEngine' ) && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
 
     // @private - only called by dispose
     this.disposeTrackNode = () => {
       model.stickingToTrackProperty.unlink( stickingToTrackListener );
-      _.hasIn( window, 'phet.phetIo.phetioEngine' ) && phet.phetIo.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
+      _.hasIn( window, 'phet.phetio.phetioEngine' ) && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
       for ( let i = 0; i < this.children.length; i++ ) {
         const child = this.children[ i ];
         if ( child instanceof ControlPointNode ) {
