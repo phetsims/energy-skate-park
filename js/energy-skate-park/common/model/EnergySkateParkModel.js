@@ -1541,7 +1541,7 @@ class EnergySkateParkModel extends PhetioObject {
       const controlPointToDelete = track.controlPoints[ controlPointIndex ];
       const points = _.without( track.controlPoints, controlPointToDelete );
       controlPointToDelete.dispose();
-      const newTrack = new Track( this, this.tracks, points, track.getParentsOrSelf(), this.availableModelBoundsProperty, merge( {
+      const newTrack = new Track( this, points, track.getParentsOrSelf(), merge( {
         tandem: trackGroupTandem.createNextTandem()
       }, Track.FULLY_INTERACTIVE_OPTIONS ) );
       newTrack.physicalProperty.value = true;
@@ -1606,12 +1606,12 @@ class EnergySkateParkModel extends PhetioObject {
     points1.push( newPoint1 );
     points2.unshift( newPoint2 );
 
-    const newTrack1 = new Track( this, this.tracks, points1, track.getParentsOrSelf(), this.availableModelBoundsProperty, merge( {
+    const newTrack1 = new Track( this, points1, track.getParentsOrSelf(), merge( {
       tandem: trackGroupTandem.createNextTandem()
     }, Track.FULLY_INTERACTIVE_OPTIONS ) );
     newTrack1.physicalProperty.value = true;
     newTrack1.droppedProperty.value = true;
-    const newTrack2 = new Track( this, this.tracks, points2, track.getParentsOrSelf(), this.availableModelBoundsProperty, merge( {
+    const newTrack2 = new Track( this, points2, track.getParentsOrSelf(), merge( {
       tandem: trackGroupTandem.createNextTandem()
     }, Track.FULLY_INTERACTIVE_OPTIONS ) );
     newTrack2.physicalProperty.value = true;
@@ -1707,7 +1707,7 @@ class EnergySkateParkModel extends PhetioObject {
       secondTrackBackward();
     }
 
-    const newTrack = new Track( this, this.tracks, points, a.getParentsOrSelf().concat( b.getParentsOrSelf() ), this.availableModelBoundsProperty, merge( {
+    const newTrack = new Track( this, points, a.getParentsOrSelf().concat( b.getParentsOrSelf() ), merge( {
       tandem: trackGroupTandem.createNextTandem()
     }, Track.FULLY_INTERACTIVE_OPTIONS ) );
     newTrack.physicalProperty.value = true;
@@ -1859,7 +1859,7 @@ class EnergySkateParkModel extends PhetioObject {
     const controlPoints = controlPointTandemIDs.map( ( id, index ) => {
       return new ControlPoint( index, 0, { tandem: Tandem.createFromPhetioID( id ) } ); // TODO: create with correct initial x & y values.
     } );
-    const newTrack = new Track( this, this.tracks, controlPoints, [], this.availableModelBoundsProperty, {
+    const newTrack = new Track( this, controlPoints, [], {
       draggable: draggable,
       configurable: configurable,
       tandem: tandem

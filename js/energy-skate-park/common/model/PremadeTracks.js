@@ -328,8 +328,8 @@ const PremadeTracks = {
    * @param  {object} options
    * @returns {Track}
    */
-  createTrack( model, modelTracks, controlPoints, availableBoundsProperty, options ) {
-    return new Track( model, modelTracks, controlPoints, PARENT_TRACKS, availableBoundsProperty, options );
+  createTrack( model, controlPoints, options ) {
+    return new Track( model, controlPoints, PARENT_TRACKS, options );
   }
 };
 

@@ -61,7 +61,7 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
       new ControlPoint( 1, 0, merge( { tandem: controlPointGroupTandem.createNextTandem() }, options.controlPointOptions ) )
     ];
 
-    return new Track( this, this.tracks, controlPoints, null, this.availableModelBoundsProperty, merge( {
+    return new Track( this, controlPoints, null, merge( {
         tandem: trackGroupTandem.createNextTandem()
       }, Track.FULLY_INTERACTIVE_OPTIONS, options.trackOptions )
     );

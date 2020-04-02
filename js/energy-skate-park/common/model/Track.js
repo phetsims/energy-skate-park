@@ -38,16 +38,14 @@ class Track extends PhetioObject {
    * Model for a track, which has a fixed number of points.  If you added a point to a Track, you need a new track.
    *
    * @param {EnergySkateParkModel} model // REVIEW: Why does the Track need the whole model?  See "Is there any unnecessary coupling?" section in the CRC
-   * @param {ObservableArray<Track>} modelTracks all model tracks, so this track can add/remove others when joined/split
    * @param {Array<ControlPoint>} controlPoints
    * @param {null|Array<Track>} parents the original tracks that were used to make this track (if any) so they can be
-   * broken apart when dragged back to control panel
-   * @param {Property<Bounds2>} availableModelBoundsProperty function that provides the visible model bounds, to prevent the
-   * adjusted control point from going offscreen, see #195
+   *                            broken apart when dragged back to control panel adjusted control point from going
+   *                            offscreen, see #195
    * @param {Object} [options] - required for tandem
    * @constructor
    */
-  constructor( model, modelTracks, controlPoints, parents, availableModelBoundsProperty, options ) {
+  constructor( model, controlPoints, parents, options ) {
     options = merge( {
 
       // {boolean} - can this track be dragged and moved in the play area?
@@ -75,9 +73,7 @@ class Track extends PhetioObject {
     // @private
     this.model = model;
     this.parents = parents;
-    this.modelTracks = modelTracks;
     this.trackTandem = tandem;
-    this.availableModelBoundsProperty = availableModelBoundsProperty;
 
     // @public (read-only) - see options
     // REVIEW: When in the sim is a Track configurable but not splittable?
@@ -181,7 +177,7 @@ class Track extends PhetioObject {
         self.containControlPointsInAvailableBounds( bounds );
       }
     };
-    this.availableModelBoundsProperty.link( boundsListener );
+    this.model.availableModelBoundsProperty.link( boundsListener );
 
     // @private - make the Track eligible for garbage collection
     this.disposeTrack = () => {
@@ -195,7 +191,7 @@ class Track extends PhetioObject {
       self.droppedProperty.dispose();
       self.controlPointDraggingProperty.dispose();
 
-      this.availableModelBoundsProperty.unlink( boundsListener );
+      this.model.availableModelBoundsProperty.unlink( boundsListener );
     };
   }
 
@@ -610,11 +606,11 @@ class Track extends PhetioObject {
    */
   returnToControlPanel() {
     if ( this.parents ) {
-      this.modelTracks.remove( this );
+      this.model.tracks.remove( this );
       for ( let i = 0; i < this.parents.length; i++ ) {
         const parent = this.parents[ i ];
         parent.reset();
-        this.modelTracks.add( parent );
+        this.model.tracks.add( parent );
       }
     }
     else {
@@ -796,7 +792,7 @@ class Track extends PhetioObject {
     // ground doesn't push control points out of these bounds - do this without updating splines since we will
     // do that anyway in containControlPointsInAvailableBounds
     this.containControlPointsInLimitBounds( false );
-    this.containControlPointsInAvailableBounds( this.availableModelBoundsProperty.get() );
+    this.containControlPointsInAvailableBounds( this.model.availableModelBoundsProperty.get() );
   }
 
   /**
@@ -878,9 +874,9 @@ class Track extends PhetioObject {
    */
   smooth( i ) {
     assert && assert( i >= 0 && i < this.controlPoints.length );
-    assert && assert( this.availableModelBoundsProperty );
+    assert && assert( this.model.availableModelBoundsProperty );
 
-    const availableModelBounds = this.availableModelBoundsProperty.value;
+    const availableModelBounds = this.model.availableModelBoundsProperty.value;
     assert && assert( availableModelBounds );
 
     let success = false;

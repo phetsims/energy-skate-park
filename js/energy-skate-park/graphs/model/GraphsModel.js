@@ -209,7 +209,7 @@ class GraphsModel extends EnergySkateParkSaveSampleModel {
       p3Visible: false
     } );
 
-    const parabolaTrack = PremadeTracks.createTrack( this, this.tracks, parabolaControlPoints, this.availableModelBoundsProperty, {
+    const parabolaTrack = PremadeTracks.createTrack( this, parabolaControlPoints, {
       configurable: this.tracksConfigurable,
       tandem: tandem.createTandem( 'parabolaTrack' ),
       phetioState: false
@@ -234,7 +234,7 @@ class GraphsModel extends EnergySkateParkSaveSampleModel {
       p3UpSpacing: 2.5,
       p3DownSpacing: 1.5
     } );
-    const doubleWellTrack = PremadeTracks.createTrack( this, this.tracks, doubleWellControlPoints, this.availableModelBoundsProperty, {
+    const doubleWellTrack = PremadeTracks.createTrack( this, doubleWellControlPoints, {
       configurable: this.tracksConfigurable,
       tandem: tandem.createTandem( 'doubleWellTrack' ),
       phetioState: false

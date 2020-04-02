@@ -120,7 +120,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
     const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem, {
       limitPointBounds: model.limitPointBounds
     } );
-    const parabolaTrack = PremadeTracks.createTrack( model, model.tracks, parabolaControlPoints, model.availableModelBoundsProperty, {
+    const parabolaTrack = PremadeTracks.createTrack( model, parabolaControlPoints, {
       configurable: model.tracksConfigurable,
       tandem: tandem.createTandem( 'parabolaTrack' ),
       phetioState: false
@@ -129,7 +129,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
     const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem, {
       limitPointBounds: model.limitPointBounds
     } );
-    const slopeTrack = PremadeTracks.createTrack( model, model.tracks, slopeControlPoints, model.availableModelBoundsProperty, {
+    const slopeTrack = PremadeTracks.createTrack( model, slopeControlPoints, {
       configurable: model.tracksConfigurable,
       tandem: tandem.createTandem( 'slopeTrack' ),
       phetioState: false
@@ -143,7 +143,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
     const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem, {
       limitPointBounds: model.limitPointBounds
     } );
-    const doubleWellTrack = PremadeTracks.createTrack( model, model.tracks, doubleWellControlPoints, model.availableModelBoundsProperty, {
+    const doubleWellTrack = PremadeTracks.createTrack( model, doubleWellControlPoints, {
       configurable: model.tracksConfigurable,
       tandem: tandem.createTandem( 'doubleWellTrack' ),
       phetioState: false
@@ -168,7 +168,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
     const loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem, {
       limitPointBounds: model.limitPointBounds
     } );
-    const loopTrack = PremadeTracks.createTrack( model, model.tracks, loopControlPoints, model.availableModelBoundsProperty, {
+    const loopTrack = PremadeTracks.createTrack( model, loopControlPoints, {
       configurable: model.tracksConfigurable,
       draggable: model.tracksDraggable,
       tandem: tandem.createTandem( 'loopTrack' )
