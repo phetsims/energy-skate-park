@@ -370,11 +370,10 @@ class EnergySkateParkScreenView extends ScreenView {
       timeControlSpeedProperty: model.timeControlSpeedProperty,
       buttonGroupXSpacing: 19, // extra spacing avoids pointer area overlap when play pause button size increases
       playPauseStepButtonOptions: {
-        playPauseOptions: {
-          radius: buttonRadius,
-          scaleFactorWhenPaused: 1.35
+        playPauseButtonOptions: {
+          radius: buttonRadius
         },
-        stepForwardOptions: {
+        stepForwardButtonOptions: {
           radius: buttonRadius,
           listener: model.manualStep.bind( model )
         }
