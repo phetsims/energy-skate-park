@@ -364,17 +364,16 @@ class EnergySkateParkScreenView extends ScreenView {
     } );
 
     // play/pause and step buttons are same size until playingProperty is false
-    const buttonRadius = 18;
     this.timeControlNode = new TimeControlNode( playingProperty, {
       tandem: tandem.createTandem( 'timeControlNode' ),
       timeControlSpeedProperty: model.timeControlSpeedProperty,
       buttonGroupXSpacing: 19, // extra spacing avoids pointer area overlap when play pause button size increases
       playPauseStepButtonOptions: {
         playPauseButtonOptions: {
-          radius: buttonRadius
+          radius: 18
         },
         stepForwardButtonOptions: {
-          radius: buttonRadius,
+          radius: 13,
           listener: model.manualStep.bind( model )
         }
       }
