@@ -15,17 +15,19 @@ import EnergyBarGraph from './EnergyBarGraph.js';
 class EnergyBarGraphAccordionBox extends AccordionBox {
 
   /**
-   * @param {EnergySkateParkModel} model
+   * @param {Skater}
+   * @param {NumberProperty} - controls scale of bar graphs
+   * @param {BooleanProperty} - controls visibility of bar graphs
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( model, tandem, options ) {
+  constructor( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem, options ) {
 
     options = merge( {
       barGraphOptions: null
     }, options );
 
-    const energyBarGraph = new EnergyBarGraph( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
+    const energyBarGraph = new EnergyBarGraph( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
 
     const margin = 5;
     super( energyBarGraph, merge( {
@@ -38,7 +40,7 @@ class EnergyBarGraphAccordionBox extends AccordionBox {
       titleNode: EnergyBarGraph.createLabel(),
 
       // use this model Property because the graph only updates when it is visible
-      expandedProperty: model.barGraphVisibleProperty,
+      expandedProperty: barGraphVisibleProperty,
 
       // {null|*} options for the bar graph itself, passed on to EnergyBarGraph
       barGraphOptions: null,
@@ -52,7 +54,7 @@ class EnergyBarGraphAccordionBox extends AccordionBox {
     graphIcon.right = graphIcon.globalToParentPoint( energyBarGraph.parentToGlobalPoint( energyBarGraph.rightCenter ) ).x;
     graphIcon.top = margin;
 
-    model.barGraphVisibleProperty.link( visible => {
+    barGraphVisibleProperty.link( visible => {
       graphIcon.visible = !visible;
     } );
   }

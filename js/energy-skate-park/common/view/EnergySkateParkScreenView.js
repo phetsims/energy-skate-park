@@ -189,7 +189,7 @@ class EnergySkateParkScreenView extends ScreenView {
 
     // @private - the bar chart showing energy distribution
     if ( this.showBarGraph ) {
-      this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model, tandem.createTandem( 'energyBarGraphAccordionBox' ), {
+      this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraphAccordionBox' ), {
         barGraphOptions: {
           showBarGraphZoomButtons: options.showBarGraphZoomButtons
         }
