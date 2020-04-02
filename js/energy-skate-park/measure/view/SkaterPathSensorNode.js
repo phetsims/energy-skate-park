@@ -58,6 +58,8 @@ const ENERGY_RANGE = new Range( -20000, 20000 );
 // offset so that the center of the probe aligns with sample positions
 const PROBE_CENTER_OFFSET = new Vector2( 5.5, 0 );
 
+const SENSOR_COLOR = 'rgb(47,64,113)'; // deep blue
+
 // max distance between sample and probe center for the sample to be displayed, in view coordinates
 const PROBE_THRESHOLD_DISTANCE = 10;
 
@@ -153,7 +155,7 @@ class SkaterPathSensorNode extends Node {
 
     // the body is a rounded rectangle
     const body = new Rectangle( content.bounds.dilated( 5 ), Constants.PANEL_CORNER_RADIUS, Constants.PANEL_CORNER_RADIUS, {
-      fill: 'rgb(47,64,113)',
+      fill: SENSOR_COLOR,
       stroke: 'rgb(210,210,210)',
       lineWidth: 2
     } );
@@ -167,6 +169,7 @@ class SkaterPathSensorNode extends Node {
     this.probeNode = new ProbeNode( {
       scale: 0.40,
       rotation: Math.PI / 2,
+      color: SENSOR_COLOR,
       sensorTypeFunction: ProbeNode.crosshairs(),
       center: modelViewTransform.modelToViewPosition( sensorProbePositionProperty.get() ),
       cursor: 'pointer'
