@@ -437,9 +437,6 @@ class EnergySkateParkScreenView extends ScreenView {
         this.measuringTapeNode.setDragBounds( this.availableModelBounds );
       }
 
-      // float UI components to provide as much space as possible in the play area
-      this.floatInterface();
-
       // Show it for debugging
       if ( showAvailableBounds ) {
         this.viewBoundsPath.shape = Shape.bounds( this.visibleBoundsProperty.get() );
@@ -458,6 +455,8 @@ class EnergySkateParkScreenView extends ScreenView {
    * @param {number} height
    */
   layout( width, height ) {
+    assert && assert( this.controlPanel, 'much of component layout based on control panel, one should be created.' );
+
     this.resetTransform();
 
     const scale = this.getLayoutScale( width, height );
@@ -479,17 +478,6 @@ class EnergySkateParkScreenView extends ScreenView {
 
     // availableViewBounds in this sim is the visible area above ground (y=0)
     this.visibleBoundsProperty.set( new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) ) );
-  }
-
-  /**
-   * Float the UI controls to provide more play area space when possible to move the skater and create tracks. If
-   * there is extra horizontal space, controls near the edge of the layoutBounds will float outward.
-   *
-   * Override in subtypes for unique layout of various controls.
-   * // REVIEW: A better name for this would be "layout"
-   */
-  floatInterface() {
-    assert && assert( this.controlPanel, 'much of component layout based on control panel, one should be created.' );
 
     const maxFloatAmount = this.layoutBounds.right + EXTRA_FLOAT;
     const minFloatAmount = this.layoutBounds.left - EXTRA_FLOAT;
