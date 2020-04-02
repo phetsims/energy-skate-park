@@ -52,7 +52,7 @@ class EnergySkateParkCheckboxItem extends Checkbox {
     }, options );
 
     const textOptions = {
-      font: new PhetFont( 10 ),
+      font: new PhetFont( 13 ),
       maxWidth: options.labelMaxWidth
     };
 

@@ -27,13 +27,7 @@ class VisibilityControlsPanel extends Panel {
       showPieChartCheckbox: false,
       showSpeedCheckbox: false,
       showGridCheckbox: true,
-      showReferenceHeightCheckbox: true,
-
-      itemOptions: {
-
-        // i18n, smaller than default so that long labels don't occlude the grid labels in the GridNode
-        labelMaxWidth: 75
-      }
+      showReferenceHeightCheckbox: true
     } );
 
     super( content, options );
