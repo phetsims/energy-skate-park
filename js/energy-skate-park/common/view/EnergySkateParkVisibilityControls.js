@@ -68,9 +68,6 @@ class EnergySkateParkVisibilityControls extends VBox {
     this.textAlignGroup = new AlignGroup();
     this.iconAlignGroup = new AlignGroup();
 
-    // @private {Tandem}
-    this.tandem = tandem;
-
     // @private {CheckboxContent[]} - list of contents containing icon nodes and Properties that will be used to
     // create checkboxes
     this.checkboxContents = [];
@@ -80,41 +77,41 @@ class EnergySkateParkVisibilityControls extends VBox {
 
     if ( options.showSkaterPathCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) );
-      this.addCheckboxContent( controlsPathString, iconNode, model.saveSkaterSamplesProperty );
+      this.addCheckboxContent( controlsPathString, iconNode, model.saveSkaterSamplesProperty, tandem.createTandem( 'pathCheckboxContent' ) );
     }
 
     if ( options.showPieChartCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } );
-      this.addCheckboxContent( pieChartString, iconNode, model.pieChartVisibleProperty );
+      this.addCheckboxContent( pieChartString, iconNode, model.pieChartVisibleProperty, tandem.createTandem( 'pieChartCheckboxContent' ) );
     }
 
     if ( options.showBarGraphCheckbox ) {
       const iconNode = EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } );
-      this.addCheckboxContent( plotsBarGraphString, iconNode, model.barGraphVisibleProperty );
+      this.addCheckboxContent( plotsBarGraphString, iconNode, model.barGraphVisibleProperty, tandem.createTandem( 'barGraphCheckboxContent' ) );
     }
 
     if ( options.showGridCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } );
-      this.addCheckboxContent( controlsShowGridString, iconNode, model.gridVisibleProperty );
+      this.addCheckboxContent( controlsShowGridString, iconNode, model.gridVisibleProperty, tandem.createTandem( 'gridCheckboxContent' ) );
     }
 
     if ( options.showSpeedCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } );
-      this.addCheckboxContent( propertiesSpeedString, iconNode, model.speedometerVisibleProperty );
+      this.addCheckboxContent( propertiesSpeedString, iconNode, model.speedometerVisibleProperty, tandem.createTandem( 'speedCheckboxContent' ) );
     }
 
     if ( options.showReferenceHeightCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) );
-      this.addCheckboxContent( controlsReferenceHeightString, iconNode, model.referenceHeightVisibleProperty );
+      this.addCheckboxContent( controlsReferenceHeightString, iconNode, model.referenceHeightVisibleProperty, tandem.createTandem( 'referenceHeightCheckboxContent' ) );
     }
 
     if ( options.showStickToTrackCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createStickingToTrackIcon();
-      this.addCheckboxContent( controlsStickToTrackString, iconNode, model.stickingToTrackProperty );
+      this.addCheckboxContent( controlsStickToTrackString, iconNode, model.stickingToTrackProperty, tandem.createTandem( 'stickingCheckboxContent' ) );
     }
 
     this.checkboxContents.forEach( content => {
-      checkboxItems.push( new EnergySkateParkCheckboxItem( content.checkboxIcon, content.property, tandem, options.itemOptions ) );
+      checkboxItems.push( new EnergySkateParkCheckboxItem( content.checkboxIcon, content.property, content.tandem, options.itemOptions ) );
     } );
 
     this.children = checkboxItems;
@@ -126,10 +123,11 @@ class EnergySkateParkVisibilityControls extends VBox {
    *
    * @param {string} labelString
    * @param {Node} iconNode
-   * @param {Property} property
+   * @param {BooleanProperty} property
+   * @param {Tandem} tandem
    */
-  addCheckboxContent( labelString, iconNode, property ) {
-    this.checkboxContents.push( new CheckboxContent( labelString, iconNode, this.textAlignGroup, this.iconAlignGroup, property, this.tandem ) );
+  addCheckboxContent( labelString, iconNode, property, tandem ) {
+    this.checkboxContents.push( new CheckboxContent( labelString, iconNode, this.textAlignGroup, this.iconAlignGroup, property, tandem ) );
   }
 }
 
@@ -160,6 +158,8 @@ class CheckboxContent {
       children: [ textBox, iconBox ],
       spacing: 10
     } );
+
+    this.tandem = tandem;
 
     // @public {BooleanProperty} - Property for the checkbox
     this.property = property;
