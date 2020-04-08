@@ -81,11 +81,10 @@ class ReferenceHeightLine extends Node {
     } );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
-    const self = this;
     referenceHeightProperty.link( height => {
 
       // position the reference height line, model value in meters
-      self.y = modelViewTransform.modelToViewY( height );
+      this.y = modelViewTransform.modelToViewY( height );
     } );
 
     // update visibility with model Property and reset reference height when node is no longer visible to avoid
@@ -93,7 +92,7 @@ class ReferenceHeightLine extends Node {
     referenceHeightVisibleProperty.link( visible => {
       referenceHeightProperty.reset();
 
-      self.visible = visible;
+      this.visible = visible;
     } );
 
     // a Vector2Property for DragListener so we can update the NumberProperty ReferenceHeightProperty with dragging

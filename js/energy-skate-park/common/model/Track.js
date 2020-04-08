@@ -68,7 +68,6 @@ class Track extends PhetioObject {
     super( options );
 
     const tandem = options.tandem;
-    const self = this;
 
     // @private
     this.model = model;
@@ -166,8 +165,8 @@ class Track extends PhetioObject {
 
     // In the state wrapper, when the state changes, we must update the skater node
     const stateListener = () => {
-      self.updateLinSpace();
-      self.updateSplines();
+      this.updateLinSpace();
+      this.updateSplines();
       model.trackChangedEmitter.emit();
       model.updateEmitter.emit();
     };
@@ -175,8 +174,8 @@ class Track extends PhetioObject {
 
     // when available bounds change, make sure that control points are within - must be disposed
     const boundsListener = bounds => {
-      if ( self.droppedProperty.get() ) {
-        self.containControlPointsInAvailableBounds( bounds );
+      if ( this.droppedProperty.get() ) {
+        this.containControlPointsInAvailableBounds( bounds );
       }
     };
     this.model.availableModelBoundsProperty.link( boundsListener );
@@ -184,14 +183,14 @@ class Track extends PhetioObject {
     // @private - make the Track eligible for garbage collection
     this.disposeTrack = () => {
       _.hasIn( window, 'phet.phetio.phetioEngine' ) && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
-      if ( self.parents ) {
-        self.parents.length = 0;
+      if ( this.parents ) {
+        this.parents.length = 0;
       }
-      self.physicalProperty.dispose();
-      self.leftThePanelProperty.dispose();
-      self.draggingProperty.dispose();
-      self.droppedProperty.dispose();
-      self.controlPointDraggingProperty.dispose();
+      this.physicalProperty.dispose();
+      this.leftThePanelProperty.dispose();
+      this.draggingProperty.dispose();
+      this.droppedProperty.dispose();
+      this.controlPointDraggingProperty.dispose();
 
       this.model.availableModelBoundsProperty.unlink( boundsListener );
     };
