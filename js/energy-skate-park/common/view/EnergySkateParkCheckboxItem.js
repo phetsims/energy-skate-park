@@ -37,7 +37,6 @@ class EnergySkateParkCheckboxItem extends Checkbox {
   constructor( icon, property, tandem, options ) {
 
     options = merge( {
-      boxWidth: 12,
       tandem: tandem
     }, options );
 

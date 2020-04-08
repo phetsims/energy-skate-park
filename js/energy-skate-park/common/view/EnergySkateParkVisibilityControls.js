@@ -37,10 +37,14 @@ const TEXT_OPTIONS = {
   maxWidth: 95
 };
 
+const CHECKBOX_WIDTH = 12;
+const CHECKBOX_SPACING = 5; // spacing between checkbox and its icon content
+
 class EnergySkateParkVisibilityControls extends VBox {
 
   /**
-   * @param {Array.<EnergySkateParkCheckboxItem>} checkboxItems // REVIEW mismatched params
+   * @param {EnergySkateParkModel} model
+   * @param {Tandem} tandem
    * @param {Object} [options]
    */
   constructor( model, tandem, options ) {
@@ -54,6 +58,11 @@ class EnergySkateParkVisibilityControls extends VBox {
       showReferenceHeightCheckbox: false,
       showSkaterPathCheckbox: false,
       showStickToTrackCheckbox: false,
+
+      // {number|null} if specified, the desired width for all checkboxes and icons so that the control can be aligned
+      // with other items in a control panel. This will be used to calculate the spacing between the label and icon
+      // portion of the Checkox content
+      checkboxWidth: null,
 
       // {*|null} options that are passed to each EnergySkateParkCheckboxItem in this group of controls
       itemOptions: null
@@ -110,6 +119,22 @@ class EnergySkateParkVisibilityControls extends VBox {
       this.addCheckboxContent( controlsStickToTrackString, iconNode, model.stickingToTrackProperty, tandem.createTandem( 'stickingCheckboxContent' ) );
     }
 
+    // set spacing of contents for layout
+    if ( options.checkboxWidth ) {
+      this.checkboxContents.forEach( content => {
+        content.setContentWidthForCheckbox( options.checkboxWidth );
+      } );
+    }
+
+    if ( options.itemOptions ) {
+      assert && assert( options.itemOptions.boxWidth === undefined, 'EnergySkateParkVisibilityControls sets boxWidth' );
+      assert && assert( options.itemOptions.spacing === undefined, 'EnergySkateParkVisibilityControls sets spacing' );
+    }
+    options.itemOptions = merge( {}, options.itemOptions, {
+      boxWidth: CHECKBOX_WIDTH,
+      spacing: CHECKBOX_SPACING
+    } );
+
     this.checkboxContents.forEach( content => {
       checkboxItems.push( new EnergySkateParkCheckboxItem( content.checkboxIcon, content.property, content.tandem, options.itemOptions ) );
     } );
@@ -163,6 +188,17 @@ class CheckboxContent {
 
     // @public {BooleanProperty} - Property for the checkbox
     this.property = property;
+  }
+
+  /**
+   * Set width of the content by modifying spacing between items. Includes width of the checkbox and its spacing so
+   * that width can be specified when it is used as Checkbox content. This must be done BEFORE content is passed to
+   * a Checkbox because Checkbox does not support content with variable dimensions.
+   *
+   * @param width
+   */
+  setContentWidthForCheckbox( width ) {
+    this.checkboxIcon.spacing = this.checkboxIcon.spacing + ( width - this.checkboxIcon.width ) - CHECKBOX_WIDTH - CHECKBOX_SPACING;
   }
 }
 

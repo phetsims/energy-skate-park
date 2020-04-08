@@ -58,10 +58,6 @@ class EnergySkateParkControlPanel extends Panel {
     // all contents of the control panel will be added to this array
     const children = [];
 
-    // controls that change visibility of items in the screen
-    const visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), options.visibilityControlsOptions );
-    children.push( visibilityControls );
-
     let trackRadioButtons = null;
     if ( options.showTrackButtons ) {
       trackRadioButtons = new SceneSelectionRadioButtonGroup( model, screenView, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) );
@@ -86,6 +82,14 @@ class EnergySkateParkControlPanel extends Panel {
 
     // horizontal separators added after construction of all controls so that it can match width of widest control
     const separatorWidth = _.maxBy( children, child => child.width ).width;
+
+    // controls that change visibility of items in the screen
+    options.visibilityControlsOptions = merge( {}, options.visibilityControlsOptions, {
+      checkboxWidth: separatorWidth
+    } );
+    options.visibilityControlsOptions.checkboxWidth = separatorWidth;
+    const visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), options.visibilityControlsOptions );
+    children.unshift( visibilityControls );
 
     // one separator after visibility controls
     children.splice( children.indexOf( visibilityControls ) + 1, 0, new HSeparator( separatorWidth ) );
