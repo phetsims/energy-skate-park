@@ -10,6 +10,7 @@
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../../axon/js/Property.js';
+import PropertyIO from '../../../../../axon/js/PropertyIO.js';
 import Bounds2 from '../../../../../dot/js/Bounds2.js';
 import Range from '../../../../../dot/js/Range.js';
 import DotRectangle from '../../../../../dot/js/Rectangle.js'; // eslint-disable-line require-statement-match
@@ -145,7 +146,9 @@ class EnergySkateParkScreenView extends ScreenView {
     const modelViewTransform = ModelViewTransform2.createSinglePointScaleInvertedYMapping( modelPoint, viewPoint, scale );
     this.modelViewTransform = modelViewTransform;
 
-    this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ) );
+    this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
+      valueType: [ Bounds2 ]
+    } );
     this.availableModelBoundsProperty.link( bounds => {
       model.availableModelBoundsProperty.set( bounds );
     } );
