@@ -1344,13 +1344,13 @@ class EnergySkateParkModel extends PhetioObject {
         if ( !isFinite( newState.getTotalEnergy() ) ) { throw new Error( 'not finite' );}
         debug && debug( 'Energy too low' );
         assert && assert( newState.track, 'newState must be still have a track for this energy correction' );
+        assert && assert( newState.parametricSpeed !== 0, 'correction assumes that there is some kinetic energy to add to' );
 
         // increasing the kinetic energy
         // Choose the exact velocity in the same direction as current velocity to ensure total energy conserved.
         const vSq = Math.abs( 2 / newState.mass * ( e0 - newState.getPotentialEnergy() - newState.thermalEnergy ) );
         const v = Math.sqrt( vSq );
 
-        // TODO: What if parametricSpeed ===0?
         const newVelocity = v * ( newState.parametricSpeed > 0 ? +1 : -1 );
         const unitParallelVector = newState.track.getUnitParallelVector( newState.parametricPosition );
         const updatedVelocityX = unitParallelVector.x * newVelocity;
