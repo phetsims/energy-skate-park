@@ -146,6 +146,8 @@ class Track extends PhetioObject {
     // @public - boolean value that is true if any control point on this track is being dragged
     this.controlPointDraggingProperty = new DerivedProperty( _.map( controlPoints, point => point.draggingProperty ), ( ...args ) => {
       return _.reduce( args, ( collapsed, value ) => collapsed || value );
+    }, {
+      valueType: 'boolean'
     } );
 
     // @public {FastArray<number>}

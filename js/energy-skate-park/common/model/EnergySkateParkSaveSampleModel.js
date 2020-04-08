@@ -74,7 +74,9 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
     // a single sample is removed
 
     // REVIEW: Should an Emitter(SkaterSample[]) be used instead?
-    this.batchRemoveSamplesProperty = new Property( [] );
+    this.batchRemoveSamplesProperty = new Property( [], {
+      arrayElementType: SkaterSample
+    } );
   }
 
   /**

@@ -10,7 +10,6 @@
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../../axon/js/Property.js';
-import PropertyIO from '../../../../../axon/js/PropertyIO.js';
 import Bounds2 from '../../../../../dot/js/Bounds2.js';
 import Range from '../../../../../dot/js/Range.js';
 import DotRectangle from '../../../../../dot/js/Rectangle.js'; // eslint-disable-line require-statement-match

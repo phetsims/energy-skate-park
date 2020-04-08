@@ -103,10 +103,11 @@ class SkaterPathSensorNode extends Node {
     } );
 
     // @private {Property.<number|null> for the NumberDisplays, null unless probe is over a skater sample
-    this.kineticValueProperty = new Property( null );
-    this.potentialValueProperty = new Property( null );
-    this.thermalValueProperty = new Property( null );
-    this.totalValueProperty = new Property( null );
+    const validationOptions = { valueType: [ null, 'number' ] };
+    this.kineticValueProperty = new Property( null, validationOptions );
+    this.potentialValueProperty = new Property( null, validationOptions );
+    this.thermalValueProperty = new Property( null, validationOptions );
+    this.totalValueProperty = new Property( null, validationOptions );
 
     // NumberDisplays for the body of the sensor, wrapped in an AlignBox
     this.kineticRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup, this.kineticValueProperty );

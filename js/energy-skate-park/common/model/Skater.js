@@ -29,6 +29,7 @@ import ReferenceIO from '../../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 import SkaterMasses from '../SkaterMasses.js';
+import Track from './Track.js';
 import TrackIO from './TrackIO.js';
 
 class Skater {
@@ -184,8 +185,10 @@ class Skater {
       tandem: tandem.createTandem( 'startingUpProperty' )
     } );
 
-    // @public {Track} - Returns to this track when pressing "return skater"
-    this.startingTrackProperty = new Property( null );
+    // @public {Property.<Track|null>} - Returns to this track when pressing "return skater"
+    this.startingTrackProperty = new Property( null, {
+      valueType: [ null, Track ]
+    } );
 
     // @public {Vector2} - Position of the skater's head, for positioning the pie chart.
     this.headPositionProperty = new Vector2Property( this.getHeadPosition(), {
