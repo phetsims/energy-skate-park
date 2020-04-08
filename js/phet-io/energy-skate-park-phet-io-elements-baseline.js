@@ -11402,7 +11402,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -11415,7 +11415,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal.enabledProperty": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.enabledProperty": {
       "phetioDocumentation": "Determines whether the AquaRadioButton is enabled (pressable) or disabled (grayed-out)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -11428,7 +11428,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.firedEmitter": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.firedEmitter": {
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -11441,7 +11441,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.pressAction": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.pressAction": {
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the SceneryEvent. The arguments are:<br/><ol><li>event: SceneryEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -11454,7 +11454,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<SceneryEventIO>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.releaseAction": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.releaseAction": {
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -11467,7 +11467,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal.opacityProperty": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -11480,7 +11480,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal.pickableProperty": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -11493,7 +11493,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normal.visibleProperty": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -11545,7 +11545,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "LinkedElementIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -11558,7 +11558,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow.enabledProperty": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.enabledProperty": {
       "phetioDocumentation": "Determines whether the AquaRadioButton is enabled (pressable) or disabled (grayed-out)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -11571,7 +11571,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.firedEmitter": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.firedEmitter": {
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -11584,7 +11584,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.pressAction": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.pressAction": {
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the SceneryEvent. The arguments are:<br/><ol><li>event: SceneryEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -11597,7 +11597,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<SceneryEventIO>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.releaseAction": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.releaseAction": {
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -11610,7 +11610,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow.opacityProperty": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -11623,7 +11623,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow.pickableProperty": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -11636,7 +11636,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slow.visibleProperty": {
+    "energySkatePark.graphsScreen.graphsScreenView.graphsScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -22569,7 +22569,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normal": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -22582,7 +22582,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normal.enabledProperty": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.enabledProperty": {
       "phetioDocumentation": "Determines whether the AquaRadioButton is enabled (pressable) or disabled (grayed-out)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -22595,7 +22595,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.firedEmitter": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.firedEmitter": {
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -22608,7 +22608,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.pressAction": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.pressAction": {
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the SceneryEvent. The arguments are:<br/><ol><li>event: SceneryEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -22621,7 +22621,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<SceneryEventIO>"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.releaseAction": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.releaseAction": {
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -22634,7 +22634,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normal.opacityProperty": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -22647,7 +22647,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normal.pickableProperty": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -22660,7 +22660,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normal.visibleProperty": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -22712,7 +22712,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "LinkedElementIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slow": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -22725,7 +22725,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slow.enabledProperty": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.enabledProperty": {
       "phetioDocumentation": "Determines whether the AquaRadioButton is enabled (pressable) or disabled (grayed-out)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -22738,7 +22738,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.firedEmitter": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.firedEmitter": {
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -22751,7 +22751,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.pressAction": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.pressAction": {
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the SceneryEvent. The arguments are:<br/><ol><li>event: SceneryEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -22764,7 +22764,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<SceneryEventIO>"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.releaseAction": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.releaseAction": {
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -22777,7 +22777,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slow.opacityProperty": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -22790,7 +22790,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slow.pickableProperty": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -22803,7 +22803,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slow.visibleProperty": {
+    "energySkatePark.introScreen.view.introScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -35023,7 +35023,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normal": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -35036,7 +35036,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normal.enabledProperty": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.enabledProperty": {
       "phetioDocumentation": "Determines whether the AquaRadioButton is enabled (pressable) or disabled (grayed-out)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -35049,7 +35049,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.firedEmitter": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.firedEmitter": {
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -35062,7 +35062,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.pressAction": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.pressAction": {
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the SceneryEvent. The arguments are:<br/><ol><li>event: SceneryEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -35075,7 +35075,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<SceneryEventIO>"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.releaseAction": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.releaseAction": {
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -35088,7 +35088,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normal.opacityProperty": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -35101,7 +35101,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normal.pickableProperty": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -35114,7 +35114,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normal.visibleProperty": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -35166,7 +35166,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "LinkedElementIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slow": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -35179,7 +35179,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slow.enabledProperty": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.enabledProperty": {
       "phetioDocumentation": "Determines whether the AquaRadioButton is enabled (pressable) or disabled (grayed-out)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -35192,7 +35192,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.firedEmitter": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.firedEmitter": {
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -35205,7 +35205,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.pressAction": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.pressAction": {
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the SceneryEvent. The arguments are:<br/><ol><li>event: SceneryEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -35218,7 +35218,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<SceneryEventIO>"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.releaseAction": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.releaseAction": {
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -35231,7 +35231,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slow.opacityProperty": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -35244,7 +35244,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slow.pickableProperty": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -35257,7 +35257,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slow.visibleProperty": {
+    "energySkatePark.measureScreen.measureScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -46151,7 +46151,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normal": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -46164,7 +46164,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normal.enabledProperty": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.enabledProperty": {
       "phetioDocumentation": "Determines whether the AquaRadioButton is enabled (pressable) or disabled (grayed-out)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -46177,7 +46177,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.firedEmitter": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.firedEmitter": {
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -46190,7 +46190,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.pressAction": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.pressAction": {
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the SceneryEvent. The arguments are:<br/><ol><li>event: SceneryEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -46203,7 +46203,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<SceneryEventIO>"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normal.fireListener.releaseAction": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.fireListener.releaseAction": {
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -46216,7 +46216,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normal.opacityProperty": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -46229,7 +46229,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normal.pickableProperty": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -46242,7 +46242,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normal.visibleProperty": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.normalRadioButton.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -46294,7 +46294,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "LinkedElementIO"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slow": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton": {
       "phetioDocumentation": "",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -46307,7 +46307,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NodeIO"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slow.enabledProperty": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.enabledProperty": {
       "phetioDocumentation": "Determines whether the AquaRadioButton is enabled (pressable) or disabled (grayed-out)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -46320,7 +46320,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<BooleanIO>"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.firedEmitter": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.firedEmitter": {
       "phetioDocumentation": "A function that executes. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -46333,7 +46333,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "EmitterIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.pressAction": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.pressAction": {
       "phetioDocumentation": "Executes whenever a press occurs. The first argument when executing can be used to convey info about the SceneryEvent. The arguments are:<br/><ol><li>event: SceneryEventIO</li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -46346,7 +46346,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<SceneryEventIO>"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slow.fireListener.releaseAction": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.fireListener.releaseAction": {
       "phetioDocumentation": "Executes whenever a release occurs. The arguments are:<br/><ol><li>event: NullableIO<SceneryEventIO></li></ol>",
       "phetioDynamicElement": false,
       "phetioEventType": "USER",
@@ -46359,7 +46359,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "ActionIO<NullableIO<SceneryEventIO>>"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slow.opacityProperty": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.opacityProperty": {
       "phetioDocumentation": "Opacity of the parent NodeIO, between 0 (invisible) and 1 (fully visible)",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -46372,7 +46372,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "NumberPropertyIO"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slow.pickableProperty": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.pickableProperty": {
       "phetioDocumentation": "Sets whether the node will be pickable (and hence interactive), see the NodeIO documentation for more details",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
@@ -46385,7 +46385,7 @@ window.phet.preloads.phetio.phetioElementsBaseline = assert &&
       "phetioStudioControl": true,
       "phetioTypeName": "PropertyIO<NullableIO<BooleanIO>>"
     },
-    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slow.visibleProperty": {
+    "energySkatePark.playgroundScreen.playgroundScreenView.timeControlNode.speedRadioButtonGroup.slowRadioButton.visibleProperty": {
       "phetioDocumentation": "Controls whether the Node will be visible (and interactive), see the NodeIO documentation for more details.",
       "phetioDynamicElement": false,
       "phetioEventType": "MODEL",
