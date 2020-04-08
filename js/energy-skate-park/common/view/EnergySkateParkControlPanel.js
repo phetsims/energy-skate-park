@@ -64,13 +64,15 @@ class EnergySkateParkControlPanel extends Panel {
       children.push( trackRadioButtons );
     }
 
+    let frictionControls = null;
     if ( options.showFrictionControls ) {
-      const frictionControls = new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) );
+      frictionControls = new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) );
       children.push( frictionControls );
     }
 
+    let gravityControls = null;
     if ( options.showGravityControls ) {
-      const gravityControls = new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkGravityControls' ), options.gravityControlsOptions );
+      gravityControls = new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkGravityControls' ), options.gravityControlsOptions );
       children.push( gravityControls );
     }
 
@@ -97,9 +99,17 @@ class EnergySkateParkControlPanel extends Panel {
     // one separator after scene selection buttons
     trackRadioButtons && children.splice( children.indexOf( trackRadioButtons ) + 1, 0, new HSeparator( separatorWidth ) );
 
-    // one separator before mass buttons
+    // one separator after a section for friction and/or gravity controls
+    if ( frictionControls || gravityControls ) {
+      if ( gravityControls ) {
+        children.splice( children.indexOf( gravityControls ) + 1, 0, new HSeparator( separatorWidth ) );
+      }
+      else {
+        children.splice( children.indexOf( frictionControls ) + 1, 0, new HSeparator( separatorWidth ) );
+      }
+    }
+
     if ( massControls ) {
-      children.splice( children.indexOf( massControls ), 0, new HSeparator( separatorWidth ) );
 
       // the layout for the mass controls needs to match the layout of the above controls so that the title matches
       // position with the other NumberControls
