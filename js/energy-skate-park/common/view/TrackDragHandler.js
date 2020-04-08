@@ -15,7 +15,6 @@ class TrackDragHandler extends SimpleDragHandler {
   /**
    * @param {TrackNode} trackNode the track node that this listener will drag
    * @param {Tandem} tandem
-   * @constructor
    */
   constructor( trackNode, tandem ) {
 

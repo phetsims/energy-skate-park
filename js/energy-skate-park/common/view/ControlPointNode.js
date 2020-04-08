@@ -23,7 +23,6 @@ class ControlPointNode extends Circle {
    * @param {number} i
    * @param {boolean} isEndPoint
    * @param {Tandem} tandem
-   * @constructor
    */
   constructor( trackNode, trackDragHandler, i, isEndPoint, tandem ) {
     const track = trackNode.track;

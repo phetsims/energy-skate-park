@@ -34,7 +34,6 @@ class GridNode extends Node {
    * @param {Property.<Bounds2>} visibleBoundsProperty - visible bounds, in view coordinates
    * @param {ModelViewTransform2} modelViewTransform the main model-view transform
    * @param {Tandem} tandem
-   * @constructor
    */
   constructor( gridVisibleProperty, referenceHeightProperty, visibleBoundsProperty, modelViewTransform, tandem ) {
     super( {

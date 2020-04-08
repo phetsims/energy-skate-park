@@ -29,7 +29,6 @@ class ControlPoint extends PhetioObject {
    * @param {number} x
    * @param {number} y
    * @param {Object} [options]
-   * @constructor
    */
   constructor( x, y, options ) {
     options = merge( {

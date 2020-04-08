@@ -28,7 +28,6 @@ const propertiesSpeedString = energySkateParkStrings.properties.speed;
 class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
-   * @constructor
    * @param {Node} icon
    * @param {Property} property - the checkbox will update this Property
    * @param {Tandem} tandem

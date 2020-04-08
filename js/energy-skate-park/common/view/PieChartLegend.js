@@ -35,7 +35,6 @@ class PieChartLegend extends Panel {
    * @param {Property.<boolean>} pieChartVisibleProperty axon Property indicating whether the pie chart is visible
    * @param {Tandem} tandem
    * @param {Object} [options]
-   * @constructor
    */
   constructor( skater, clearThermal, pieChartVisibleProperty, tandem, options ) {
 

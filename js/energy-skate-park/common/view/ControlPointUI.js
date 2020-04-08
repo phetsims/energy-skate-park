@@ -24,7 +24,6 @@ class ControlPointUI extends Node {
    * @param {ModelViewTransform2} modelViewTransform the main model-view transform
    * @param {Node} parentNode
    * @param {Tandem} tandem
-   * @constructor
    */
   constructor( model, track, controlPointIndex, modelViewTransform, parentNode, tandem ) {
     super( {

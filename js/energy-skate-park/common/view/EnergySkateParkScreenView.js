@@ -63,7 +63,6 @@ class EnergySkateParkScreenView extends ScreenView {
    * @param {EnergySkateParkModel} model
    * @param {Tandem} tandem
    * @param {Object} [options]
-   * @constructor
    */
   constructor( model, tandem, options ) {
     options = merge( {

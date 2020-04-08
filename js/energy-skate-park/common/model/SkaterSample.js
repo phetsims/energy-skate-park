@@ -26,8 +26,6 @@ const MIN_OPACITY = 0.05;
 class SkaterSample {
 
   /**
-   * @constructor
-   *
    * @param {SkaterState} skaterState
    * @param {number} time - in seconds
    * @param {number} fadeDecay - samples being removed retain this percent of opacity (opacity = opacity * fadeDecay)

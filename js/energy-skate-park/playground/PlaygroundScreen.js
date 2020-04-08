@@ -21,7 +21,6 @@ class PlaygroundScreen extends Screen {
 
   /**
    * @param {Tandem} tandem
-   * @constructor
    */
   constructor( tandem ) {
 

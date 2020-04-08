@@ -12,7 +12,6 @@ import GraphsConstants from '../GraphsConstants.js';
 import EnergyGraphAccordionBox from './EnergyGraphAccordionBox.js';
 
 /**
- * @constructor
  * @param {GraphsModel} model
  */
 class GraphsScreenView extends EnergySkateParkTrackSetScreenView {

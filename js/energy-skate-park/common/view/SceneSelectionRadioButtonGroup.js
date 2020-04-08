@@ -27,7 +27,6 @@ class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
    * @param {EnergySkateParkBasicsView} view the main view for the entire screen
    * @param {ModelViewTransform2} transform the model view transform
    * @param {Tandem} tandem
-   * @constructor
    */
   constructor( model, view, tandem, options ) {
     assert && assert( model.sceneProperty !== undefined, 'model does not support a scene' );

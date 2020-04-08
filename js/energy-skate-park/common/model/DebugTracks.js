@@ -13,9 +13,6 @@ import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js
 import ControlPoint from './ControlPoint.js';
 import Track from './Track.js';
 
-/**
- * @constructor
- */
 class DebugTracks {
   constructor() {}
 

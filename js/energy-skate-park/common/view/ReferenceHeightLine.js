@@ -24,7 +24,6 @@ const heightEqualsZeroString = energySkateParkStrings.heightEqualsZero;
 class ReferenceHeightLine extends Node {
 
   /**
-   * @constructor
    * @param {ModelViewTransform2} modelViewTransform
    * @param {NumberProperty} referenceHeightProperty
    * @param {BooleanProperty} referenceHeightVisibleProperty

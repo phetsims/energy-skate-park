@@ -21,7 +21,6 @@ class IntroScreen extends Screen {
 
   /**
    * @param {Tandem} tandem
-   * @constructor
    */
   constructor( tandem ) {
     const options = {

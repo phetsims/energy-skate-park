@@ -28,7 +28,6 @@ class AttachDetachToggleButtons extends Panel {
    * @param {number} contentWidth Width for the control panel, to match the layout of the rest of the controls.
    * @param {Tandem} tandem
    * @param {Object} [options]
-   * @constructor
    */
   constructor( stickingToTrackProperty, enabledProperty, contentWidth, tandem, options ) {
 

@@ -23,7 +23,6 @@ class SkaterState {
    * Create a SkaterSate from a SkaterState or Skater
    * @param {Skater|SkaterState} source
    * @param {*} overrides the new values
-   * @constructor
    */
   constructor( source, overrides ) {
     this.setState( source, overrides );

@@ -45,7 +45,6 @@ class SkaterNode extends Node {
    * @param {function} getPhysicalTracks - function that returns the physical tracks in the model, so the skater can try
    *                                       to attach to them while dragging
    * @param {Tandem} tandem
-   * @constructor
    */
   constructor( skater, view, modelViewTransform, getClosestTrackAndPositionAndParameter, getPhysicalTracks, tandem ) {
     super( {

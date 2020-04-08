@@ -43,7 +43,6 @@ class Track extends PhetioObject {
    *                            broken apart when dragged back to control panel adjusted control point from going
    *                            offscreen, see #195
    * @param {Object} [options] - required for tandem
-   * @constructor
    */
   constructor( model, controlPoints, parents, options ) {
     options = merge( {

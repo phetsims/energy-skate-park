@@ -84,7 +84,6 @@ let modelIterations = 0;
 /**
  * @param {Tandem} tandem
  * @param {Object} [options]
- * @constructor
  */
 class EnergySkateParkModel extends PhetioObject {
   constructor( tandem, options ) {
