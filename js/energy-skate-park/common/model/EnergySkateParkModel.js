@@ -1056,10 +1056,8 @@ class EnergySkateParkModel extends PhetioObject {
     else {
       let newState = skaterState;
 
-      // Turning this value to 5 or less causes thermal energy to decrease on some time steps
       // Discrepancy with original version: original version had 10 divisions here.  We have reduced it to make it more
       // smooth and less GC
-      // REVIEW: Is this comment stale?  Does thermal energy still decrease on some time steps because n=4?
       const numDivisions = 4;
       for ( let i = 0; i < numDivisions; i++ ) {
         newState = this.stepEuler( dt / numDivisions, newState );
