@@ -83,6 +83,12 @@ class EnergySkateParkMassControls extends VBox {
     this.skaterComboBox = skaterComboBox;
   }
 
+  /**
+   * Set the width of the component to match the width of other controls in a containing control panel.
+   * @public
+   *
+   * @param width
+   */
   matchLayout( width ) {
     if ( this.massComboBox ) {
       this.massComboBox.matchLayout( width );

@@ -208,6 +208,7 @@ class EnergyBarGraph extends Node {
   /**
    * If model indicates that graph is visible, redraw the graph.
    *
+   * @private
    * @param {boolean} visible
    */
   updateWhenVisible( visible ) {
@@ -218,6 +219,8 @@ class EnergyBarGraph extends Node {
 
   /**
    * Create the label for the bar graph, which can be added in various places depending on layout of the graph.
+   * @public
+   *
    * @returns {Text}
    */
   static createLabel() {
@@ -229,6 +232,7 @@ class EnergyBarGraph extends Node {
 
   /**
    * Create an icon of the bar graph, to be used in visibility or other controls.
+   * @public
    *
    * @param {Tandem} tandem
    * @param {Object} [options]

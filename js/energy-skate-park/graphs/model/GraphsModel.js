@@ -159,6 +159,7 @@ class GraphsModel extends EnergySkateParkSaveSampleModel {
   }
 
   /**
+   * @public
    * @override
    * @param {number} dt - in seconds
    */
@@ -191,6 +192,7 @@ class GraphsModel extends EnergySkateParkSaveSampleModel {
   /**
    * Create the custom set of tracks for the "graphs" screen. The "graphs" screen includes a parabola and a
    * double well with unique shapes where only certain control points are draggable.
+   * @public
    *
    * @param {Tandem} tandem
    * @returns {Track[]}

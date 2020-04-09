@@ -37,6 +37,8 @@ class SkaterSamplesCanvasNode extends CanvasNode {
 
   /**
    * Paints the canvas node.
+   * @public
+   * @override
    *
    * @param {CanvasRenderingContext2D} context
    */
@@ -62,6 +64,7 @@ class SkaterSamplesCanvasNode extends CanvasNode {
 
   /**
    * Repaint in the animation frame if playing.
+   * @public
    *
    * @param {number} dt - in seconds
    */

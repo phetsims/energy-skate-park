@@ -19,6 +19,7 @@ class DebugTracks {
   /**
    * Initialize the debugging tool. Only done when debug query parameter testTrackIndex is used. Modifies the model that
    * is passed in.
+   * @public
    *
    * @param {EnergySkateParkModel} model
    * @param {Tandem} controlPointGroupTandem

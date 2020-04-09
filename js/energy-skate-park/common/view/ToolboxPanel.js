@@ -92,6 +92,7 @@ class ToolboxPanel extends Panel {
    * Create and attach a listener that makes the icon visible/invisible while the tool is invisible/visible.
    * Reference to the DerivedProperty is not returned because there is no need to dispose of it. This listener
    * can be attached for the life of the sim.
+   * @private
    *
    * @param {Node} icon
    * @param {BooleanProperty} visibleProperty

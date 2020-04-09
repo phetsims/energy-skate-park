@@ -56,6 +56,7 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
   }
 
   /**
+   * @public
    * @param {number} dt - in seconds
    */
   step( dt ) {

@@ -406,6 +406,9 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Step the model (automatically called by joist)
+   * @public
+   * @override
+   *
    * @param {number} dt - in seconds
    */
   step( dt ) {
@@ -415,6 +418,7 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * The skater moves along the ground with the same coefficient of fraction as the tracks, see #11. Returns a
    * SkaterState that is applied to this.skater.
+   * @private
    *
    * @param {number} dt
    * @param {SkaterState} skaterState
@@ -474,6 +478,7 @@ class EnergySkateParkModel extends PhetioObject {
    * energies are then updated accordingly. Returns a new SkaterState to modify this.skater.
    *
    * No bouncing on the ground, but the code is very similar to attachment part of interactWithTracksWileFalling.
+   * @private
    *
    * @param {SkaterState} skaterState
    * @param {number} initialEnergy - energy prior to transitioning to ground
@@ -527,6 +532,7 @@ class EnergySkateParkModel extends PhetioObject {
    * energy has gone negative. Attempts to correct by using previous thermal energy and compensate modifying
    * kinetic energy. If this results in negative kinetic energy, we have to accept a change to total energy, but
    * we make sure that it is within an acceptable amount.
+   * @private
    *
    * @param {SkaterState} skaterState
    * @param {Vector2} segment
@@ -559,7 +565,9 @@ class EnergySkateParkModel extends PhetioObject {
   }
 
   /**
-   * Update the skater in free fall
+   * Update the skater in free fall.
+   * @private
+   *
    * @param {number} dt the time that passed, in seconds
    * @param {SkaterState} skaterState the original state of the skater
    * @param {boolean} justLeft true if the skater just fell off or launched off the track: in this case it should not
@@ -604,15 +612,13 @@ class EnergySkateParkModel extends PhetioObject {
     }
   }
 
-  // Find the closest track to the skater, to see what he can bounce off of or attach to, and return the closest point
-  // on that track took.
   /**
    * Find the closest track to the skater, to see what he can bounce off or attach to, and return the closest point
    * that the track took.
+   * @private
    *
    * @param {Vector2} position
    * @param {Track[]} physicalTracks
-   *
    * @returns {Object|null} - collection of { track: {Track}, parametricPosition: {Vector2}, point: {Vector2} }, or null
    */
   getClosestTrackAndPositionAndParameter( position, physicalTracks ) {
@@ -880,6 +886,7 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Get the normal force (Newtons) on the skater.
+   * @private
    *
    * @param {SkaterState} skaterState
    * @returns {number}
@@ -908,10 +915,10 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * Use an Euler integration step to move the skater along the track. This code is in an inner loop of the model
    * physics, and has been heavily optimized. Returns a new SkaterState for this.skater.
+   * @private
    *
    * @param {number} dt
    * @param {SkaterState} skaterState
-   *
    * @returns {SkaterState}
    */
   stepEuler( dt, skaterState ) {
@@ -999,6 +1006,7 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Update the skater as it moves along the track, and fly off the track if it  goes over a jump off the track's end.
+   * @private
    *
    * @param {number} dt
    * @param {SkaterState} skaterState
@@ -1241,10 +1249,10 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * A number of heuristic energy correction steps to ensure energy is conserved while keeping the motion smooth and
    * accurate. Copied from the Java version directly (with a few different magic numbers)
+   * @private
    *
    * @param {SkaterState} skaterState
    * @param {SkaterState} newState
-   *
    * @returns {SkaterState}
    */
   correctEnergy( skaterState, newState ) {
@@ -1526,6 +1534,8 @@ class EnergySkateParkModel extends PhetioObject {
    * The user has pressed the "delete" button for the specified track's specified control point, and it should be
    * deleted. It should be an inner point of a track (not an end point). If there were only 2 points on the track,
    * just delete the entire track.
+   * @public
+   *
    *
    * @param {Track} track
    * @param {number} controlPointIndex [description]
@@ -1576,6 +1586,7 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * The user has pressed the "delete" button for the specified track's specified control point, and it should be
    * deleted. It should be an inner point of a track (not an endpoint).
+   * @public
    *
    * @param {Track} track
    * @param {number} controlPointIndex - integer
@@ -1650,6 +1661,7 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Join the specified tracks together into a single new track and delete the old tracks.
+   * @public
    *
    * @param a {Track}
    * @param b {Track}
@@ -1768,6 +1780,7 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * When a track is dragged or a control point is moved, update the skater's energy (if the sim was paused), since
    * it wouldn't be handled in the update loop.
+   * @public
    *
    * @param {Track} track
    */

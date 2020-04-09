@@ -13,6 +13,8 @@ import energySkatePark from '../../../energySkatePark.js';
 
 class TrackIO extends ObjectIO {
 
+  // @public
+  // @override
   static toStateObject( track ) {
     validate( track, this.validator );
     if ( track instanceof phet.energySkatePark.Track || track === null ) {
@@ -37,6 +39,8 @@ class TrackIO extends ObjectIO {
     }
   }
 
+  // @public
+  // @override
   static fromStateObject( stateObject ) {
 
     // TODO: This is sketchy, see // See https://github.com/phetsims/energy-skate-park-basics/issues/366

@@ -199,6 +199,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
 
   /**
    * Clear all data, removing saved SkaterSamples and removing all data from the series attached to the XYPlot.
+   * @private
    */
   clearEnergyData() {
     this.model.clearEnergyData();
@@ -207,6 +208,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
 
   /**
    * Create an "item" for a checkbox of the VerticalCheckboxGroup, with the label and controlling Property.
+   * @private
    *
    * @param {Property} property
    * @param {string} labelString

@@ -19,6 +19,7 @@ class ControlPointIO extends ObjectIO {
    * @param {ControlPoint} controlPoint
    * @returns {Object}
    * @override
+   * @public
    */
   static toStateObject( controlPoint ) {
     validate( controlPoint, this.validator );
@@ -31,6 +32,7 @@ class ControlPointIO extends ObjectIO {
    * @param {Object} stateObject
    * @returns {ControlPoint}
    * @override
+   * @public
    */
   static fromStateObject( stateObject ) {
     if ( stateObject === 'null' ) {

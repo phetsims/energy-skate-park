@@ -158,8 +158,11 @@ class TrackNode extends Node {
     super.dispose();
   }
 
-  // When a control point has moved, or the track has moved, or the track has been reset, or on initialization
-  // update the shape of the track.
+  /**
+   * When a control point has moved, or the track has moved, or the track has been reset, or on initialization
+   * update the shape of the track.
+   * @public
+   */
   updateTrackShape() {
 
     const track = this.track;

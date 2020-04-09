@@ -119,6 +119,8 @@ class ControlPoint extends PhetioObject {
 
   /**
    * Create a new control point, identical to this one.
+   * @public
+   *
    * @param {Tandem} tandem
    * @returns {ControlPoint}
    */

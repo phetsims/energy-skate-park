@@ -46,6 +46,8 @@ class TrackDragHandler extends SimpleDragHandler {
 
   /**
    * Start of a drag interaction from an event.
+   * @public
+   *
    * @param {SceneryEvent} event
    */
   handleDragStart( event ) {
@@ -66,6 +68,8 @@ class TrackDragHandler extends SimpleDragHandler {
 
   /**
    * Continuation of drag.
+   * @private
+   *
    * @param {SceneryEvent} event
    */
   handleDrag( event ) {
@@ -76,6 +80,8 @@ class TrackDragHandler extends SimpleDragHandler {
 
   /**
    * End of a drag interaction.
+   * @private
+   *
    * @param {SceneryEvent} event
    */
   handleDragEnd( event ) {
@@ -84,13 +90,23 @@ class TrackDragHandler extends SimpleDragHandler {
     }
   }
 
-  // When the user drags the track out of the toolbox, if they drag the track by a control point, it still translates
-  // the track.  In that case (and only that case), the following methods are called by the ControlPointNode drag
-  // handler in order to translate the track.
+
+  /**
+   * When the user drags the track out of the toolbox, if they drag the track by a control point, it still translates
+   * the track.  In that case (and only that case), the following methods are called by the ControlPointNode drag
+   * handler in order to translate the track.
+   * @public
+   *
+   * @param {Event} event
+   */
   trackDragStarted( event ) {
     this.startedDrag = false;
   }
 
+  /**
+   * @private
+   * @param {Event} event
+   */
   trackDragged( event ) {
     let snapTargetChanged = false;
     const model = this.model;
@@ -221,6 +237,10 @@ class TrackDragHandler extends SimpleDragHandler {
     model.trackModified( track );
   }
 
+  /**
+   * @private
+   * @param {Event} event
+   */
   trackDragEnded( event ) {
     const track = this.track;
     const model = this.model;

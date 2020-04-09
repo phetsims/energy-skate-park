@@ -120,6 +120,8 @@ class ControlPointUI extends Node {
 
   /**
    * Make eligible for garbage collection.
+   * @public
+   * @override
    */
   dispose() {
     this.disposeControlPointUI();

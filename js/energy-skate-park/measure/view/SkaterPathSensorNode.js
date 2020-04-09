@@ -303,6 +303,8 @@ class SkaterPathSensorNode extends Node {
 
   /**
    * Each value in this readout will be as precise as one decimal.
+   * @public
+   *
    * @param  {number} value
    * @returns {string}
    */

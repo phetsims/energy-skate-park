@@ -253,6 +253,7 @@ class Track extends PhetioObject {
    * This currently does a flat search, but if more precision is needed, a finer-grained binary search could be done
    * afterwards. This code is used when dragging the skater (to see if he is dragged near the track) and while the
    * skater is falling toward the track (to see if he should bounce/attach).
+   * @public
    *
    * @param {Vector2} point
    * @returns {{parametricPosition: number, point: Vector2, distance: Number}}
@@ -320,6 +321,7 @@ class Track extends PhetioObject {
   /**
    * Get x position at the parametric position.
    * @public
+   *
    * @param {number} parametricPosition
    * @returns {number}
    */
@@ -328,15 +330,16 @@ class Track extends PhetioObject {
   /**
    * Get y position at the parametric position.
    * @public
-   * @param {number}
+   *
+   * @param {number} parametricPosition
    * @returns {number}
-   * //REVIEW: JSDoc doesn't match the parameter
    */
   getY( parametricPosition ) { return SplineEvaluation.atNumber( this.ySpline, parametricPosition ); }
 
   /**
    * Get the model position at the parametric position.
    * @public
+   *
    * @param {number} parametricPosition
    * @returns {Vector2}
    */
@@ -349,6 +352,7 @@ class Track extends PhetioObject {
   /**
    * Translate the track by moving all control points by dx and dy.
    * @private
+   *
    * @param {number} dx
    * @param {number} dy
    */
@@ -381,6 +385,10 @@ class Track extends PhetioObject {
     this._restoreSlopeToGroundOnReset = true;
   }
 
+  /**
+   * @public
+   * @param slopeToGround
+   */
   set slopeToGround( slopeToGround ) { this.setSlopeToGround( slopeToGround ); }
 
   /**
@@ -392,7 +400,6 @@ class Track extends PhetioObject {
   getSlopeToGround() {
     return this._slopeToGround;
   }
-
   get slopeToGround() { return this.getSlopeToGround(); }
 
   /**
@@ -431,6 +438,7 @@ class Track extends PhetioObject {
   /**
    * Get the model unit vector at the specified position on the track.
    * @public
+   *
    * @param {number} parametricPosition
    * @returns {number}
    */
@@ -444,7 +452,13 @@ class Track extends PhetioObject {
     return new Vector2( -SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition ), SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ) ).normalize();
   }
 
-  // Get the model parallel vector at the specified position on the track
+  /**
+   * Get the model parallel vector at the specified position on the track.
+   * @public
+   *
+   * @param parametricPosition
+   * @returns {Vector2|Vector3|Vector4}
+   */
   getUnitParallelVector( parametricPosition ) {
 
     // load xSplineDiff, ySplineDiff here if not already loaded
@@ -475,6 +489,7 @@ class Track extends PhetioObject {
   /**
    * Detect whether a parametric point is in bounds of this track, for purposes of telling whether the skater fell
    * past the edge of the track.
+   * @public
    *
    * @param {Vector2} parametricPosition
    * @returns {boolean}
@@ -483,6 +498,12 @@ class Track extends PhetioObject {
     return parametricPosition >= this.minPoint && parametricPosition <= this.maxPoint;
   }
 
+  /**
+   * Track information as a string for debugging purposes.
+   * @public
+   *
+   * @returns {string}
+   */
   toString() {
     let string = '';
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
@@ -780,8 +801,12 @@ class Track extends PhetioObject {
     return min;
   }
 
-  // If any part of the track is below ground, move the whole track up so it rests at y=0 at its minimum, see #71
-  // Called when user releases track or a control point after dragging
+  /**
+   * If any part of the track is below ground, move the whole track up so it rests at y=0 at its minimum, see #71
+   * Called when user releases track or a control point after dragging.
+   *
+   * @public
+   */
   bumpAboveGround() {
     const lowestY = this.getLowestY();
     if ( lowestY < 0 ) {
@@ -993,6 +1018,8 @@ class Track extends PhetioObject {
 
   /**
    * Find the minimum radius of curvature along the track, in meters
+   * @public
+   *
    * @returns {number} the minimum radius of curvature along the track, in meters.
    */
   getMinimumRadiusOfCurvature() {
@@ -1048,6 +1075,7 @@ class Track extends PhetioObject {
 
   /**
    * Debugging info.
+   * @public
    */
   getDebugString() {
     let string = 'var controlPoints = [';
@@ -1063,7 +1091,7 @@ class Track extends PhetioObject {
 
   /**
    * Disposal for garbage collection.
-   * @returns {[type]} [description]
+   * @public
    */
   dispose() {
     this.disposeTrack();

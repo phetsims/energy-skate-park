@@ -18,6 +18,7 @@ class EnergySkateParkModelIO extends ObjectIO {
    * Remove all instances of the model's dynamic children.
    * This will remove all of the tracks from the model.
    * The ControlPoints are contained in the tracks, and each track will remove its ControlPoints.
+   * @public
    *
    * @param {EnergySkateParkModel} energySkateParkModel
    */
@@ -31,6 +32,8 @@ class EnergySkateParkModelIO extends ObjectIO {
   /**
    * Adds a Track as specified by the phetioID and state.
    * A Track will create its own ControlPoints
+   * @public
+   *
    * @param {EnergySkateParkModel} energySkateParkModel
    * @param {Tandem} tandem
    * @param {Object} stateObject

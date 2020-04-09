@@ -273,6 +273,7 @@ class Skater {
   }
 
   // Get the vector from feet to head, so that when tracks are joined we can make sure he is still pointing up
+  // @public
   get upVector() { return this.headPositionProperty.value.minus( this.positionProperty.value ); }
 
   /**
@@ -409,7 +410,13 @@ class Skater {
     this.energyChangedEmitter.emit();
   }
 
-  // REVIEW: JSDoc
+  /**
+   * Get the position of the skater head from the "point" mass, taking into account the size of the skater
+   * from its mass value.
+   * @public
+   *
+   * @returns {Vector2}
+   */
   getHeadPosition() {
 
     // Center pie chart over skater's head not his feet so it doesn't look awkward when skating in a parabola
@@ -440,9 +447,10 @@ class Skater {
 
   /**
    * If the skater is released, store the initial conditions for when the skater is returned.
-   * @param targetTrack The track to start on (if any)
-   * @param targetU The parametric position along the track to start on (if any)
-   * //REVIEW: @param types and visibility
+   * @private
+   *
+   * @param {Track} targetTrack - The track to start on (if any)
+   * @param {number} targetU - The parametric position along the track to start on (if any)
    */
   released( targetTrack, targetU ) {
     this.draggingProperty.value = false;

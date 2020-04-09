@@ -43,7 +43,9 @@ class EnergySkateParkCheckboxItem extends Checkbox {
   }
 
   /**
-   * In icon for the pie chart..
+   * In icon for the pie chart.
+   * @public
+   *
    * @param {Tandem} tandem
    * @param {Object} [options]
    * @returns {Node}
@@ -70,6 +72,8 @@ class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
    * An icon for the grid.
+   * @public
+   *
    * @param {Tandem} tandem
    * @param {Object} [options]
    * @returns {Node}
@@ -95,6 +99,8 @@ class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
    * An icon for the speedometer.
+   * @public
+   *
    * @param {Tandem} tandem
    * @param {Object} [options]
    * @returns {Node}
@@ -114,6 +120,8 @@ class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
    * An icon for the reference height control.
+   * @public
+   *
    * @param {Tandem} tandem
    * @returns {Node}
    */
@@ -141,6 +149,8 @@ class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
    * An icon for the "Path" control.
+   * @public
+   *
    * @param {Tandem} tandem
    * @returns {Node}
    */
@@ -179,6 +189,7 @@ class EnergySkateParkCheckboxItem extends Checkbox {
   /**
    * Create an icon for the "Sticking to Track" checkbox, a small section of track with the skater's center of
    * mass dot on it.
+   * @public
    *
    * @param {Tandem} tandem
    * @returns {Node}

@@ -145,6 +145,7 @@ class EnergySkateParkVisibilityControls extends VBox {
   /**
    * Create and add to the list of checkbox contents. These are created eagerly so that layout can complete before
    * creating checkboxes, as checkboxes do not support icons with variable dimensions.
+   * @public
    *
    * @param {string} labelString
    * @param {Node} iconNode
@@ -194,6 +195,7 @@ class CheckboxContent {
    * Set width of the content by modifying spacing between items. Includes width of the checkbox and its spacing so
    * that width can be specified when it is used as Checkbox content. This must be done BEFORE content is passed to
    * a Checkbox because Checkbox does not support content with variable dimensions.
+   * @public
    *
    * @param width
    */
