@@ -25,14 +25,6 @@ const PARENT_TRACKS = null;
 const END_BOUNDS_WIDTH = 3;
 const END_BOUNDS_HEIGHT = 4;
 
-const CREATOR_OPTIONS = {
-
-  // {boolean} - premade tracks can have draggable control points, and setting this to true will limit
-  // the drag bounds of control points for each track. Each control point can have unique bounds so limiting
-  // bounds are created in each creator function
-  limitPointBounds: false
-};
-
 /**
  * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the
  * CENTER of the limiting bounds.
@@ -91,7 +83,7 @@ const PremadeTracks = {
       p1Visible: true,
       p2Visible: true,
       p3Visible: true
-    }, CREATOR_OPTIONS, options );
+    }, options );
 
     const p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
     const p2 = new Vector2( 0, 0 );
@@ -127,11 +119,9 @@ const PremadeTracks = {
    * Create a set of control points which create a slope shaped track, touching the ground on the right side.
    *
    * @param {Tandem} groupTandem
-   * @param {Object} [options]
    * @returns {ControlPoint[]}
    */
-  createSlopeControlPoints: ( groupTandem, options ) => {
-    options = merge( CREATOR_OPTIONS, options );
+  createSlopeControlPoints: groupTandem => {
 
     const p1 = new Vector2( -4, 6 );
     const p2 = new Vector2( -2, 1.2 );
@@ -196,7 +186,7 @@ const PremadeTracks = {
       p5UpSpacing: 3,
       p5DownSpacing: 1
 
-    }, CREATOR_OPTIONS, options );
+    }, options );
 
     const p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
     const p2 = new Vector2( -2, 0.0166015 );
@@ -250,8 +240,7 @@ const PremadeTracks = {
    * @param  {Tandem} groupTandem
    * @returns {Array.<ControlPoint>}
    */
-  createLoopControlPoints: ( groupTandem, options ) => {
-    options = merge( CREATOR_OPTIONS, options );
+  createLoopControlPoints: groupTandem => {
 
     // top of the left and right endpoints of the loop, higher than loopTop so that it is easy for the skater to go
     // all the way around the loop

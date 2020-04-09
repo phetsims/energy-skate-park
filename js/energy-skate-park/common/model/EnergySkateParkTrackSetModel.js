@@ -7,7 +7,6 @@
 
 import Property from '../../../../../axon/js/Property.js';
 import PropertyIO from '../../../../../axon/js/PropertyIO.js';
-import merge from '../../../../../phet-core/js/merge.js';
 import NumberIO from '../../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
@@ -20,15 +19,6 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
    * @param {Object} [options]
    */
   constructor( tandem, options ) {
-    options = merge( {
-
-      // if true, tracks created from PremadeTracks that are configurable will have limiting bounds for dragging
-      // control points
-      // REVIEW: It looks like limitPointBounds is set in half a dozen places, but never read from.  Is that correct?
-      // REVIEW: Should it be used somewhere? Can it be deleted?
-      limitPointBounds: false
-    }, options );
-
     super( tandem.createTandem( 'trackSetModel' ), options );
 
     // @public {number} - Indicates the currently selected scene. There can be any number of scenes, do we need
@@ -117,18 +107,14 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
     assert && assert( model.tracksDraggable === false, 'tracks should not be draggable in EnergySkateParkTrackSetModels' );
 
     // REVIEW: This function has many duplicated parts (same pattern occurs 3 times) and should be factored out.
-    const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem, {
-      limitPointBounds: model.limitPointBounds
-    } );
+    const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem );
     const parabolaTrack = PremadeTracks.createTrack( model, parabolaControlPoints, {
       configurable: model.tracksConfigurable,
       tandem: tandem.createTandem( 'parabolaTrack' ),
       phetioState: false
     } );
 
-    const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem, {
-      limitPointBounds: model.limitPointBounds
-    } );
+    const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem );
     const slopeTrack = PremadeTracks.createTrack( model, slopeControlPoints, {
       configurable: model.tracksConfigurable,
       tandem: tandem.createTandem( 'slopeTrack' ),
@@ -140,9 +126,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
     // REVIEW: slopeToGround should be an option
     slopeTrack.slopeToGround = true;
 
-    const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem, {
-      limitPointBounds: model.limitPointBounds
-    } );
+    const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem );
     const doubleWellTrack = PremadeTracks.createTrack( model, doubleWellControlPoints, {
       configurable: model.tracksConfigurable,
       tandem: tandem.createTandem( 'doubleWellTrack' ),
@@ -165,9 +149,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
     // the "full" track set has all of the premade tracks - a parabola,  slope, double well, and loop.
     const trackSet = EnergySkateParkTrackSetModel.createBasicTrackSet( model, tandem );
 
-    const loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem, {
-      limitPointBounds: model.limitPointBounds
-    } );
+    const loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem );
     const loopTrack = PremadeTracks.createTrack( model, loopControlPoints, {
       configurable: model.tracksConfigurable,
       draggable: model.tracksDraggable,
