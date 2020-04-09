@@ -178,7 +178,7 @@ class GraphsModel extends EnergySkateParkSaveSampleModel {
    * @public
    *
    * @param {number} time (in seconds)
-   * @returns {} // REVIEW: Return type
+   * @returns {SkaterSample}
    */
   getClosestSkaterSample( time ) {
     assert && assert( this.skaterSamples.length > 0, 'model has no saved SkaterSamples to retrieve' );

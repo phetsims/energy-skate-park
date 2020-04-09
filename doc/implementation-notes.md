@@ -54,17 +54,16 @@ Tracks in the EnergySkateParkPlayGroundModel have all of these fields set to tru
 
 ### Skater, SkaterStates, and SkaterSamples
 The Skater is the model component for the skater with observable Properties for its state.
-SkaterStates were added to
+SkaterStates were added so that we can save collections of model data at a particular model state to support playing
+back and inspecting previous energy values. SkaterStates are not mutable.
 
-// REVIEW: It doesn't make sense that SkaterState was added primarily for performance.  The more performance way to 
-// REVIEW: it would be with a purely imperative approach that mutates all values.  However, in order to make a functional-style
-// REVIEW: computation which allows backtracking and revising energy, the SkaterState is useful.
+SkaterState is also used to improve performance. In a single model step, energy and state information can be re-calculated
+many times. SkaterStates are created or modified in these calculations so that observable Skater Properties can be set
+once after all calculations are complete. And so many SkaterStates can be created in a single model step.
 
-support the model and are primarily for performance. These contain state information for the skater at a particular snapshot.
-In a single model step, energy and state information can be re-calculated many timBes. SkaterStates are created or modified in these calculations so that SkaterState Properties can be set once
-after all calculations are complete. And so many SkaterStates can be created in a single model step. A SkaterSample contains SkaterState information at a point in time (where the time is specified) as well as other Properties that
-support visualization of this data in data plots or other.
-
+A SkaterSample contains SkaterState information at a point in time (where the time is specified) as well as other
+Properties that support visualization of this data in data plots or other. SkaterSample data *can* be changed,
+for instance when changing the reference height the energy components of the SkaterSample can change.
 
 ## View
 EnergySkateParkScreenView is the entry point for the view. It uses a ModelViewTransform2 with a mapped point and inverted y.
