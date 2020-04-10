@@ -52,7 +52,8 @@ class ToolboxPanel extends Panel {
     const icons = new HBox( {
       children: [ stopwatchIcon, measuringTapeIcon ],
       align: 'center',
-      spacing: 20
+      spacing: 20,
+      excludeInvisibleChildrenFromBounds: false
     } );
 
     super( icons, options );
