@@ -26,7 +26,7 @@ const FONT = new PhetFont( 12 );
 // grid can translate this far up
 const NEGATIVE_HEIGHT = 10;
 
-class GridNode extends Node {
+class EnergySkateParkGridNode extends Node {
 
   /**
    * @param {Property.<boolean>} gridVisibleProperty the axon property indicating whether the grid should be visible
@@ -196,5 +196,5 @@ class GridNode extends Node {
   }
 }
 
-energySkatePark.register( 'GridNode', GridNode );
-export default GridNode;
+energySkatePark.register( 'EnergySkateParkGridNode', EnergySkateParkGridNode );
+export default EnergySkateParkGridNode;

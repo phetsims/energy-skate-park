@@ -37,7 +37,7 @@ import BackgroundNode from './BackgroundNode.js';
 import EnergyBarGraphAccordionBox from './EnergyBarGraphAccordionBox.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import EnergySkateParkControlPanel from './EnergySkateParkControlPanel.js';
-import GridNode from './GridNode.js';
+import EnergySkateParkGridNode from './EnergySkateParkGridNode.js';
 import PieChartLegend from './PieChartLegend.js';
 import PieChartNode from './PieChartNode.js';
 import ReferenceHeightLine from './ReferenceHeightLine.js';
@@ -165,7 +165,7 @@ class EnergySkateParkScreenView extends ScreenView {
     this.backgroundNode = new BackgroundNode( this.layoutBounds, this.visibleBoundsProperty, tandem.createTandem( 'backgroundNode' ) );
     this.bottomLayer.addChild( this.backgroundNode );
 
-    this.gridNode = new GridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, this.visibleBoundsProperty, modelViewTransform, tandem.createTandem( 'gridNode' ) );
+    this.gridNode = new EnergySkateParkGridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, this.visibleBoundsProperty, modelViewTransform, tandem.createTandem( 'energySkateParkGridNode' ) );
     this.bottomLayer.addChild( this.gridNode );
 
     this.controlPanel = new EnergySkateParkControlPanel( model, this, tandem.createTandem( 'controlPanel' ), options.controlPanelOptions );
