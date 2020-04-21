@@ -47,26 +47,23 @@ class EnergySkateParkGridNode extends Node {
         lineWidth: 0.8
       }
     } );
+    this.addChild( gridNode );
 
     // @private
     this.referenceHeightProperty = referenceHeightProperty;
     this.modelViewTransform = modelViewTransform;
     this.gridNode = gridNode;
 
+    // @private {number} - persistent positions for labels that don't depend on reference height or layout
     this.labelXPosition = this.modelViewTransform.modelToViewX( -5 );
-    this.viewGroundHeight = this.modelViewTransform.modelToViewY( 0 );
-
-    this.addChild( gridNode );
 
     // @private {TextPanel} - a unique label for the zero meter reference height position
     this.zeroMeterLabel = new TextPanel( energySkateParkStrings.zeroMeters, {
       font: FONT,
-      bottom: this.viewGroundHeight - 2,
+      bottom: this.modelViewTransform.modelToViewY( 0 ) - 2,
       right: this.labelXPosition - 2
     } );
     this.addChild( this.zeroMeterLabel );
-
-    gridVisibleProperty.linkAttribute( this, 'visible' );
 
     // @private - keep references to all text created so that they can be disposed and removed from scene graph
     // when layout changes
@@ -76,8 +73,7 @@ class EnergySkateParkGridNode extends Node {
     this.gridNode.setMinorHorizontalLineSpacing( Math.abs( this.modelViewTransform.modelToViewDeltaY( 1 ) ) );
     this.gridNode.setMajorHorizontalLineSpacing( Math.abs( this.modelViewTransform.modelToViewDeltaY( 2 ) ) );
 
-    // transform the grid with the reference line - this should be faster than redrawing the grid every time it needs
-    // to translate
+    // redraw grid and reposition labels with reference height
     referenceHeightProperty.lazyLink( ( height, oldHeight ) => {
       const viewDelta = modelViewTransform.modelToViewDeltaY( height - oldHeight );
 
@@ -86,6 +82,7 @@ class EnergySkateParkGridNode extends Node {
     } );
 
     visibleBoundsProperty.link( bounds => this.layout( bounds ) );
+    gridVisibleProperty.linkAttribute( this, 'visible' );
   }
 
   /**
