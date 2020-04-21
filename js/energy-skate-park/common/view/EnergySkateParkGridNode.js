@@ -11,20 +11,15 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import Shape from '../../../../../kite/js/Shape.js';
+import GridNode from '../../../../../scenery-phet/js/GridNode.js';
 import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../../../scenery/js/nodes/Node.js';
-import Path from '../../../../../scenery/js/nodes/Path.js';
-import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import TextPanel from './TextPanel.js';
 
 // constants
 const FONT = new PhetFont( 12 );
-
-// in meters, the grid will extend this far into the earth so that when potential energy reference line is moved the
-// grid can translate this far up
-const NEGATIVE_HEIGHT = 10;
 
 class EnergySkateParkGridNode extends Node {
 
@@ -41,60 +36,62 @@ class EnergySkateParkGridNode extends Node {
       tandem: tandem
     } );
 
+    const visibleBounds = visibleBoundsProperty.get();
+    const gridNode = new GridNode( visibleBounds.width, visibleBounds.height, null, null, {
+      majorLineOptions: {
+        stroke: '#686868',
+        lineWidth: 1.8
+      },
+      minorLineOptions: {
+        stroke: '#686868',
+        lineWidth: 0.8
+      }
+    } );
+
     // @private
-    this.gridNodeTandem = tandem;
     this.referenceHeightProperty = referenceHeightProperty;
     this.modelViewTransform = modelViewTransform;
+    this.gridNode = gridNode;
 
-    // @private {Node} - will contain the gridParent, and therefore most children of the grid except for the
-    // "0 meters" label (which must be outside of the clip area). The clip area is everything above the earth, updated
-    // in layout()
-    this.clipParent = new Node();
-    this.addChild( this.clipParent );
+    this.labelXPosition = this.modelViewTransform.modelToViewX( -5 );
+    this.viewGroundHeight = this.modelViewTransform.modelToViewY( 0 );
 
-    // @private {Node} - will contain most children of the grid node (lines, text, and others), so that this node
-    // can be transformed without moving the clip area.
-    this.gridParent = new Node();
-    this.clipParent.addChild( this.gridParent );
+    this.addChild( gridNode );
 
-    // @private {Node} - parent for the "0 meters" label, outside of the clipParent because we want this text to
-    // always be visible, even if outside of the clip shape (under the ground).
-    this.zeroLabelParent = new Node();
-    this.addChild( this.zeroLabelParent );
+    // @private {TextPanel} - a unique label for the zero meter reference height position
+    this.zeroMeterLabel = new TextPanel( energySkateParkStrings.zeroMeters, {
+      font: FONT,
+      bottom: this.viewGroundHeight - 2,
+      right: this.labelXPosition - 2
+    } );
+    this.addChild( this.zeroMeterLabel );
 
     gridVisibleProperty.linkAttribute( this, 'visible' );
-
-    // @private
-    this.thinLinePath = new Path( null, {
-      stroke: '#686868',
-      lineWidth: 0.8,
-      tandem: tandem.createTandem( 'thinLinePath' )
-    } );
-    this.thickLinePath = new Path( null, {
-      stroke: '#686868',
-      lineWidth: 1.8,
-      tandem: tandem.createTandem( 'thickLinePath' )
-    } );
 
     // @private - keep references to all text created so that they can be disposed and removed from scene graph
     // when layout changes
     this.createdTextPanels = [];
+
+    this.gridNode.setMinorVerticalLineSpacing( this.modelViewTransform.modelToViewDeltaX( 1 ) );
+    this.gridNode.setMinorHorizontalLineSpacing( Math.abs( this.modelViewTransform.modelToViewDeltaY( 1 ) ) );
+    this.gridNode.setMajorHorizontalLineSpacing( Math.abs( this.modelViewTransform.modelToViewDeltaY( 2 ) ) );
 
     // transform the grid with the reference line - this should be faster than redrawing the grid every time it needs
     // to translate
     referenceHeightProperty.lazyLink( ( height, oldHeight ) => {
       const viewDelta = modelViewTransform.modelToViewDeltaY( height - oldHeight );
 
-      // apply transform to grid and "0 meters" label, without translating the clip shape
-      this.gridParent.translate( 0, viewDelta );
-      this.zeroLabelParent.translate( 0, viewDelta );
+      this.zeroMeterLabel.translate( 0, viewDelta );
+      this.layout( visibleBoundsProperty.get() );
     } );
 
     visibleBoundsProperty.link( bounds => this.layout( bounds ) );
   }
 
   /**
-   * Exactly fit the geometry to the screen so no matter what aspect ratio, the grid will fill the entire screen.
+   * Redraw the grid so that grid lines fall exactly on the meter relative to the model origin (center of ground),
+   * and grid lines fill the entire screen above ground. Labels are also added relative to model coordinates.
+   *
    * Perhaps it will improve performance too? Could performance optimize by using visible instead of add/remove child
    * if necessary (would only change performance on screen size change). For more performance improvements on screen size change,
    * only update when the graph is visible, then again when it becomes visible.
@@ -103,96 +100,59 @@ class EnergySkateParkGridNode extends Node {
    * @param {Bounds2} bounds - visible bounds, in view coordinates
    */
   layout( bounds ) {
-    this.clipParent.clipArea = Shape.bounds( bounds );
+    const referenceHeight = this.referenceHeightProperty.get();
+    const viewReferenceHeight = this.modelViewTransform.modelToViewDeltaX( referenceHeight );
 
+    // find the left position and width such that the meter lines will fall exactly on the meter
+    const modelLeft = this.modelViewTransform.viewToModelX( bounds.left );
+    const roundedModelLeft = Math.floor( modelLeft );
+    const modelWidthDifference = modelLeft - roundedModelLeft;
+    const viewWidthDifference = this.modelViewTransform.modelToViewDeltaX( modelWidthDifference );
+    this.gridNode.setGridWidth( bounds.width + viewWidthDifference );
+
+    // find the top position and height so that lines will fall exactly on the meter AND major grid lines
+    // will fall on even meters
+    const modelTop = this.modelViewTransform.viewToModelY( bounds.top );
+    let roundedModelTop = Math.ceil( modelTop );
+
+    if ( roundedModelTop % 2 !== 0 ) {
+      roundedModelTop++;
+    }
+
+    const modelHeightDifference = modelTop - roundedModelTop;
+    const viewHeightDifference = this.modelViewTransform.modelToViewDeltaY( modelHeightDifference );
+    this.gridNode.setGridHeight( bounds.height + viewHeightDifference + viewReferenceHeight );
+
+    this.gridNode.left = this.modelViewTransform.modelToViewX( roundedModelLeft );
+    this.gridNode.top = this.modelViewTransform.modelToViewY( roundedModelTop ) - viewReferenceHeight;
+
+    // detach and destroy old labels
     for ( let k = 0; k < this.createdTextPanels.length; k++ ) {
       this.createdTextPanels[ k ].dispose();
     }
     this.createdTextPanels.length = 0;
 
-    const thickLines = [];
-    const thinLines = [];
-    const texts = [];
+    // create and add new labels along the grid
+    const roundedModelHeight = -Math.floor( this.modelViewTransform.viewToModelDeltaY( bounds.height ) );
+    const roundedReferenceHeight = Math.floor( referenceHeight );
+    for ( let y = -roundedReferenceHeight; y < roundedModelHeight - referenceHeight; y++ ) {
+      const viewY = this.modelViewTransform.modelToViewY( y ) - viewReferenceHeight;
 
-    const lineHeight = bounds.height - this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
-    const lineY1 = bounds.minY + this.modelViewTransform.modelToViewDeltaY( NEGATIVE_HEIGHT );
-
-    // grid lines are drawn on the meter, each still separated by 1 meter
-    for ( let x = 0; x < 100; x++ ) {
-      const viewXPositive = this.modelViewTransform.modelToViewX( x );
-      const viewXNegative = this.modelViewTransform.modelToViewX( -x );
-      thinLines.push( { x1: viewXPositive, y1: lineY1, x2: viewXPositive, y2: lineHeight - lineY1 } );
-      thinLines.push( { x1: viewXNegative, y1: lineY1, x2: viewXNegative, y2: lineHeight - lineY1 } );
-      if ( viewXNegative < bounds.minX ) {
-        break;
-      }
-    }
-
-    // will replace the "0 meters" label at that height
-    let replacementText;
-
-    const separation = bounds.width;
-    for ( let y = -NEGATIVE_HEIGHT; y < 100; y++ ) {
-      const rightX = this.modelViewTransform.modelToViewX( -5 );
-      const viewY = this.modelViewTransform.modelToViewY( y );
-      if ( viewY < lineY1 ) {
-        break;
-      }
-
-      if ( y % 2 === 0 ) {
-        thickLines.push( { x1: bounds.minX, y1: viewY, x2: bounds.minX + separation, y2: viewY } );
-      }
-      else {
-        thinLines.push( { x1: bounds.minX, y1: viewY, x2: bounds.minX + separation, y2: viewY } );
-      }
-
-      if ( y % 2 === 0 ) {
+      // only major grid lines are labeled, and 0 meters has a unique label
+      if ( y % 2 === 0 && y !== 0 ) {
         const gridLineLabel = new TextPanel( '' + y, {
           font: FONT,
           bottom: viewY - 2,
-          right: rightX - 2
+          right: this.labelXPosition - 2
         } );
-        this.createdTextPanels.push( gridLineLabel );
 
-        // For the "0 m" readout, we still need the 0 to line up perfectly (while still using a single
-        // internationalizable string), so use the 0 text bounds
-        // And shift it down a bit so it isn't touching the concrete, see #134
-        // It won't be added as a child of the gridParent because we don't want it to be clipped
-        if ( y === 0 ) {
-          replacementText = new TextPanel( energySkateParkStrings.zeroMeters, {
-            font: FONT,
-            bottom: viewY - 2,
-            right: gridLineLabel.right
-          } );
-          this.createdTextPanels.push( replacementText );
-        }
-        else {
-          texts.push( gridLineLabel );
-        }
+        gridLineLabel.touchArea = gridLineLabel.localBounds;
+        this.addChild( gridLineLabel );
+
+        // so that we can dispose them before next layout
+        this.createdTextPanels.push( gridLineLabel );
       }
     }
-
-    const thinLineShape = new Shape();
-    const thickLineShape = new Shape();
-    for ( let i = 0; i < thinLines.length; i++ ) {
-      const thinLine = thinLines[ i ];
-      thinLineShape.moveTo( thinLine.x1, thinLine.y1 );
-      thinLineShape.lineTo( thinLine.x2, thinLine.y2 );
-    }
-    for ( let m = 0; m < thickLines.length; m++ ) {
-      const thickLine = thickLines[ m ];
-      thickLineShape.moveTo( thickLine.x1, thickLine.y1 );
-      thickLineShape.lineTo( thickLine.x2, thickLine.y2 );
-    }
-    this.thinLinePath.setShape( thinLineShape );
-    this.thickLinePath.setShape( thickLineShape );
-    this.gridParent.children = [
-      this.thinLinePath,
-      this.thickLinePath
-    ].concat( texts );
-
-    assert && assert( replacementText, 'at 0 height, a label should have been created' );
-    this.zeroLabelParent.addChild( replacementText );
   }
 }
 
