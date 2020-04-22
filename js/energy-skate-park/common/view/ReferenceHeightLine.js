@@ -95,8 +95,6 @@ class ReferenceHeightLine extends Node {
     } );
 
     // a Vector2Property for DragListener so we can update the NumberProperty ReferenceHeightProperty with dragging
-    // REVIEW: Shouldn't this be a DynamicProperty?  It seems odd to have another independent properly related to the
-    // REVIEW: reference position
     const dragPositionProperty = new Vector2Property( new Vector2( 0, referenceHeightProperty.value ) );
 
     this.addInputListener( new DragListener( {
