@@ -24,17 +24,15 @@ class GraphsScreen extends Screen {
    * @param {Tandem} tandem
    */
   constructor( tandem ) {
-    const options = merge( {
-      name: screenGraphsString,
-      homeScreenIcon: new Image( iconFrictionHomescreen ),
-      navigationBarIcon: new Image( iconFrictionNavbar ),
-      tandem: tandem
-    }, {} ); // REVIEW: should there be an options parameter to this constructor?
-
     super(
       () => new GraphsModel( tandem.createTandem( 'graphsModel' ) ),
       model => new GraphsScreenView( model, tandem.createTandem( 'graphsScreenView' ) ),
-      options
+      {
+        name: screenGraphsString,
+        homeScreenIcon: new Image( iconFrictionHomescreen ),
+        navigationBarIcon: new Image( iconFrictionNavbar ),
+        tandem: tandem
+      }
     );
   }
 }
