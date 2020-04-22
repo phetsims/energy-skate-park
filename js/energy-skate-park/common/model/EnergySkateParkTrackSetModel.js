@@ -43,10 +43,6 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
   updateActiveTrack( scene ) {
     for ( let i = 0; i < this.tracks.length; i++ ) {
       const track = this.tracks.get( i );
-
-      // REVIEW: other simulations have a pattern for switching between scenes, where each EnergySkateParkScene
-      // REVIEW: would contain its own list of Tracks. Would that pattern work here?  If not, why not?  If yes, should
-      // REVIEW: we use that strategy?
       track.physicalProperty.value = ( i === scene );
 
       // Reset the skater when the track is changed, see #179
