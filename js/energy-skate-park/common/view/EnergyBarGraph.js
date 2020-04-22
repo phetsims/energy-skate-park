@@ -6,6 +6,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import DerivedProperty from '../../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../../axon/js/Property.js';
 import Range from '../../../../../dot/js/Range.js';
 import BarChartNode from '../../../../../griddle/js/BarChartNode.js';
@@ -64,33 +65,6 @@ class EnergyBarGraph extends Node {
       valueType: Range
     } );
 
-    // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
-    //   "The kinetic energy is zero at the top of the trajectory (turning point)
-    const hideSmallValues = ( value, scale ) => {
-      const height = value * scale;
-      const absHeight = Math.abs( height );
-
-      // small enough so that energy is invisible at end points of track motion, but still visible
-      // in other cases at slow movement, see https://github.com/phetsims/energy-skate-park/issues/160
-      if ( absHeight < 0.1 ) {
-        return 0;
-      }
-      return height;
-    };
-
-    // For thermal and total energy, make sure they are big enough to be visible, see #307
-    const showSmallValues = ( value, scale ) => {
-      const valueSign = value < 0 ? -1 : 1;
-
-      const height = value * scale;
-      let absHeight = Math.abs( height );
-      if ( absHeight < 1 && absHeight > 1E-6 ) {
-        absHeight = 1;
-      }
-
-      return absHeight * valueSign;
-    };
-
     // button to remove thermal energy will be below the "thermal" energy label
     const clearThermalButton = new MoveToTrashButton( {
       arrowColor: EnergySkateParkColorScheme.thermalEnergy,
@@ -99,25 +73,58 @@ class EnergyBarGraph extends Node {
       scale: 0.7
     } );
 
+    // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
+    //   "The kinetic energy is zero at the top of the trajectory (turning point)
+    const createHideSmallValuesProperty = energyProperty => {
+      return new DerivedProperty( [ energyProperty ], energy => {
+
+        // determine whether or not to hide the bar if below threshold in view coordinates so it works
+        // with the scaleProperty
+        const height = energy * barGraphScaleProperty.get();
+        const absHeight = Math.abs( height );
+
+        // small enough so that energy is invisible at end points of track motion, but still visible
+        // in other cases at slow movement, see https://github.com/phetsims/energy-skate-park/issues/160
+        if ( absHeight < 0.1 ) {
+          return 0;
+        }
+        return energy;
+      } );
+    };
+
+    // For thermal and total energy, make sure they are big enough to be visible, see #307
+    const createShowSmallValuesProperty = energyProperty => {
+      return new DerivedProperty( [ energyProperty ], energy => {
+        let resultantEnergy = energy;
+        const scale = barGraphScaleProperty.get();
+
+        // determine whether or not to increase bar size if within threshold in view coordinates so it works
+        // with the scaleProperty
+        const height = energy * scale;
+        const absHeight = Math.abs( height );
+        if ( absHeight < 1 && absHeight > 1E-6 ) {
+          const valueSign = energy < 0 ? -1 : 1;
+          resultantEnergy = valueSign / scale; // the energy required to produce a bar with height of 1 view coordinate
+        }
+        return resultantEnergy;
+      } );
+    };
+
     const kineticEntry = {
-      property: skater.kineticEnergyProperty,
-      color: EnergySkateParkColorScheme.kineticEnergy,
-      modifyBarHeight: hideSmallValues
+      property: createHideSmallValuesProperty( skater.kineticEnergyProperty ),
+      color: EnergySkateParkColorScheme.kineticEnergy
     };
     const potentialEntry = {
-      property: skater.potentialEnergyProperty,
-      color: EnergySkateParkColorScheme.potentialEnergy,
-      modifyBarHeight: hideSmallValues
+      property: createHideSmallValuesProperty( skater.potentialEnergyProperty ),
+      color: EnergySkateParkColorScheme.potentialEnergy
     };
     const thermalEntry = {
-      property: skater.thermalEnergyProperty,
-      color: EnergySkateParkColorScheme.thermalEnergy,
-      modifyBarHeight: showSmallValues
+      property: createShowSmallValuesProperty( skater.thermalEnergyProperty ),
+      color: EnergySkateParkColorScheme.thermalEnergy
     };
     const totalEntry = {
-      property: skater.totalEnergyProperty,
-      color: EnergySkateParkColorScheme.totalEnergy,
-      modifyBarHeight: showSmallValues
+      property: createShowSmallValuesProperty( skater.totalEnergyProperty ),
+      color: EnergySkateParkColorScheme.totalEnergy
     };
 
     this.barChartNode = new BarChartNode( [
