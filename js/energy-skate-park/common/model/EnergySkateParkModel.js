@@ -1433,7 +1433,7 @@ class EnergySkateParkModel extends PhetioObject {
            ( !skaterState.track && skaterState.positionY <= 0 ) ? this.stepGround( dt, skaterState ) :
            ( !skaterState.track && skaterState.positionY > 0 ) ? this.stepFreeFall( dt, skaterState, false ) :
            skaterState.track ? this.stepTrack( dt, skaterState ) :
-           skaterState; // REVIEW: How could this else trigger?  Should that be an error or assertion case?
+           skaterState;
   }
 
   /**
