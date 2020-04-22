@@ -1429,7 +1429,6 @@ class EnergySkateParkModel extends PhetioObject {
     // increment running time - done in stepModel because dt reflects timeControlSpeedProperty here
     this.stopwatch.step( dt );
 
-    // REVIEW: The dev team recommends to use parentheses around the ternary predicates
     return skaterState.dragging ? skaterState : // User is dragging the skater, nothing to update here
            ( !skaterState.track && skaterState.positionY <= 0 ) ? this.stepGround( dt, skaterState ) :
            ( !skaterState.track && skaterState.positionY > 0 ) ? this.stepFreeFall( dt, skaterState, false ) :
