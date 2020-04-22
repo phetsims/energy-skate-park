@@ -204,8 +204,7 @@ class EnergyPlot extends XYCursorPlot {
     } );
 
     // remove a batch of of SkaterSamples
-    model.batchRemoveSamplesProperty.lazyLink( samplesToRemove => {
-
+    model.batchRemoveSamplesEmitter.addListener( samplesToRemove => {
       const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
       for ( let i = 0; i < samplesToRemove.length; i++ ) {
         const sampleToRemove = samplesToRemove[ i ];

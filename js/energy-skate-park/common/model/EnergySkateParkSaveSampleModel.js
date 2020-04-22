@@ -12,9 +12,9 @@
  */
 
 import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';
+import Emitter from '../../../../../axon/js/Emitter.js';
 import NumberProperty from '../../../../../axon/js/NumberProperty.js';
 import ObservableArray from '../../../../../axon/js/ObservableArray.js';
-import Property from '../../../../../axon/js/Property.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkTrackSetModel from './EnergySkateParkTrackSetModel.js';
@@ -74,8 +74,10 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
     // a single sample is removed
 
     // REVIEW: Should an Emitter(SkaterSample[]) be used instead?
-    this.batchRemoveSamplesProperty = new Property( [], {
-      arrayElementType: SkaterSample
+    this.batchRemoveSamplesEmitter = new Emitter( {
+      parameters: [ {
+        arrayElementType: SkaterSample
+      } ]
     } );
   }
 
@@ -99,13 +101,11 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
    * @param samplesToRemove // REVIEW: @param type
    */
   batchRemoveSamples( samplesToRemove ) {
-    this.batchRemoveSamplesProperty.set( samplesToRemove ); // REVIEW: What if batchRemoveSamples is called twice?  Should this append, or check that it was empty to begin with?
-
     const indexOfFirstSample = this.skaterSamples.indexOf( samplesToRemove[ 0 ] );
     this.skaterSamples.splice( indexOfFirstSample, samplesToRemove.length );
 
     // broadcast that this batch of samples has been removed
-    this.batchRemoveSamplesProperty.set( samplesToRemove ); // REVIEW: this is identical to another line earlier in this method, probably not sending notifications.  Consider using an Emitter instead?
+    this.batchRemoveSamplesEmitter.emit( samplesToRemove );
   }
 
   /**
