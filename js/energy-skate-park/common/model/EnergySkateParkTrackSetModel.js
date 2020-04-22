@@ -37,7 +37,8 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
    * When the scene changes or tracks are added to the track set, update which track is visible and physically
    * interactive.
    * @private
-   * //REVIEW: JSDoc @param for the scene
+   *
+   * @param {number} scene - index identifying the scene
    */
   updateActiveTrack( scene ) {
     for ( let i = 0; i < this.tracks.length; i++ ) {
