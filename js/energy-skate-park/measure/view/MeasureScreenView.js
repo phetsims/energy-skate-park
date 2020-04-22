@@ -79,15 +79,6 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
 
     // position the body relative to the pie chart legend, this sets the origin of the body (top left)
     this.model.sensorBodyPositionProperty.set( this.modelViewTransform.viewToModelXY( this.fixedLeft, this.pieChartLegend.bottom + 10 ) );
-
-    // control panel is taller for this screen so move the measuring tape  to a different place
-    // REVIEW: It looks like `this.showMeasuringTape` is never declared?
-    if ( this.showMeasuringTape ) {
-
-      // REVIEW: It looks like `this.measuringTapePanel` is never declared?
-      this.measuringTapePanel.top = this.controlPanel.top;
-      this.measuringTapePanel.right = this.controlPanel.left - 5;
-    }
   }
 }
 
