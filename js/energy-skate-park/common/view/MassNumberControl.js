@@ -10,8 +10,8 @@ import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
-const controlsMassString = energySkateParkStrings.controls.mass;
-const massKilogramsPatternString = energySkateParkStrings.massKilogramsPattern;
+const controlsMassString = energySkateParkStrings.physicalControls.massControls.mass;
+const massKilogramsPatternString = energySkateParkStrings.physicalControls.massControls.massKilogramsPattern;
 
 class MassNumberControl extends PhysicalNumberControl {
 

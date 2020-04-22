@@ -12,8 +12,8 @@ import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
-const controlsGravityLabelString = energySkateParkStrings.controls.gravity.label;
-const controlsValueTinyString = energySkateParkStrings.controls.value.tiny;
+const controlsGravityLabelString = energySkateParkStrings.physicalControls.gravityControls.gravity;
+const controlsValueTinyString = energySkateParkStrings.physicalControls.tiny;
 
 class GravitySlider extends PhysicalSlider {
 

@@ -16,13 +16,13 @@ import Constants from '../Constants.js';
 import LabelledComboBox from './LabelledComboBox.js';
 import SkaterNode from './SkaterNode.js';
 
-const controlsSkaterString = energySkateParkStrings.controls.skater;
-const controlsSkater1String = energySkateParkStrings.controls.skater1;
-const controlsSkater2String = energySkateParkStrings.controls.skater2;
-const controlsSkater3String = energySkateParkStrings.controls.skater3;
-const controlsSkater4String = energySkateParkStrings.controls.skater4;
-const controlsSkater5String = energySkateParkStrings.controls.skater5;
-const controlsDogString = energySkateParkStrings.controls.dog;
+const controlsSkaterString = energySkateParkStrings.skaterControls.label;
+const controlsSkater1String = energySkateParkStrings.skaterControls.skater1;
+const controlsSkater2String = energySkateParkStrings.skaterControls.skater2;
+const controlsSkater3String = energySkateParkStrings.skaterControls.skater3;
+const controlsSkater4String = energySkateParkStrings.skaterControls.skater4;
+const controlsSkater5String = energySkateParkStrings.skaterControls.skater5;
+const controlsDogString = energySkateParkStrings.skaterControls.dog;
 
 class SkaterComboBox extends LabelledComboBox {
 

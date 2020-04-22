@@ -23,7 +23,7 @@ import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-const propertiesSpeedString = energySkateParkStrings.properties.speed;
+const propertiesSpeedString = energySkateParkStrings.speedometer.label;
 
 class EnergySkateParkCheckboxItem extends Checkbox {
 

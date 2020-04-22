@@ -16,7 +16,7 @@ import energySkatePark from '../../energySkatePark.js';
 import GraphsModel from './model/GraphsModel.js';
 import GraphsScreenView from './view/GraphsScreenView.js';
 
-const screenGraphsString = energySkateParkStrings.screen.graphs;
+const screenGraphsString = energySkateParkStrings.screens.graphs;
 
 class GraphsScreen extends Screen {
 

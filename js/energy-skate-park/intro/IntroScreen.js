@@ -15,7 +15,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFullTrackSetModel from '../common/model/EnergySkateParkFullTrackSetModel.js';
 import IntroScreenView from './view/IntroScreenView.js';
 
-const screenIntroductionString = energySkateParkStrings.screen.introduction;
+const screenIntroductionString = energySkateParkStrings.screens.intro;
 
 class IntroScreen extends Screen {
 

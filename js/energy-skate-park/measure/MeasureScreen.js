@@ -15,7 +15,7 @@ import energySkatePark from '../../energySkatePark.js';
 import MeasureModel from './model/MeasureModel.js';
 import MeasureScreenView from './view/MeasureScreenView.js';
 
-const screenMeasureString = energySkateParkStrings.screen.measure;
+const screenMeasureString = energySkateParkStrings.screens.measure;
 
 class MeasureScreen extends Screen {
 

@@ -32,14 +32,14 @@ import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../../common/Constants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 
-const energyEnergyString = energySkateParkStrings.energy.energy;
-const energyJoulesPatternString = energySkateParkStrings.energyJoulesPattern;
-const energyKineticString = energySkateParkStrings.energy.kinetic;
-const energyPotentialString = energySkateParkStrings.energy.potential;
-const energyThermalString = energySkateParkStrings.energy.thermal;
-const energyTotalString = energySkateParkStrings.energy.total;
-const heightMetersPatternString = energySkateParkStrings.heightMetersPattern;
-const speedMetersPerSecondPatternString = energySkateParkStrings.speedMetersPerSecondPattern;
+const energyEnergyString = energySkateParkStrings.energies.energy;
+const energyJoulesPatternString = energySkateParkStrings.pathSensor.energyJoulesPattern;
+const energyKineticString = energySkateParkStrings.energies.kinetic;
+const energyPotentialString = energySkateParkStrings.energies.potential;
+const energyThermalString = energySkateParkStrings.energies.thermal;
+const energyTotalString = energySkateParkStrings.energies.total;
+const heightMetersPatternString = energySkateParkStrings.pathSensor.heightMetersPattern;
+const speedMetersPerSecondPatternString = energySkateParkStrings.pathSensor.speedMetersPerSecondPattern;
 
 // constants
 const TITLE_CONTENT_SPACING = 4; // spacing between the "Energy" title and the rest of the content

@@ -15,7 +15,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkPlaygroundModel from './model/EnergySkateParkPlaygroundModel.js';
 import EnergySkateParkPlaygroundScreenView from './view/EnergySkateParkPlaygroundScreenView.js';
 
-const screenPlaygroundString = energySkateParkStrings.screen.playground;
+const screenPlaygroundString = energySkateParkStrings.screens.playground;
 
 class PlaygroundScreen extends Screen {
 

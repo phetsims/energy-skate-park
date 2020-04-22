@@ -23,13 +23,13 @@ import Text from '../../../../../scenery/js/nodes/Text.js';
 import EnergyBarGraph from './EnergyBarGraph.js';
 import EnergySkateParkCheckboxItem from './EnergySkateParkCheckboxItem.js';
 
-const controlsPathString = energySkateParkStrings.controls.path;
-const controlsReferenceHeightString = energySkateParkStrings.controls.referenceHeight;
-const controlsShowGridString = energySkateParkStrings.controls[ 'show-grid' ];
-const controlsStickToTrackString = energySkateParkStrings.controls.stickToTrack;
-const pieChartString = energySkateParkStrings.pieChart;
-const plotsBarGraphString = energySkateParkStrings.plots[ 'bar-graph' ];
-const propertiesSpeedString = energySkateParkStrings.properties.speed;
+const controlsPathString = energySkateParkStrings.visibilityControls.path;
+const controlsReferenceHeightString = energySkateParkStrings.visibilityControls.referenceHeight;
+const controlsShowGridString = energySkateParkStrings.visibilityControls.grid;
+const controlsStickToTrackString = energySkateParkStrings.trackControls.stickToTrack;
+const pieChartString = energySkateParkStrings.plots.pieChart.label;
+const plotsBarGraphString = energySkateParkStrings.plots.barGraph.label;
+const propertiesSpeedString = energySkateParkStrings.visibilityControls.speed;
 
 // constants
 const TEXT_OPTIONS = {

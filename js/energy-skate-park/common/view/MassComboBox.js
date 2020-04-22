@@ -14,13 +14,13 @@ import SkaterMasses from '../SkaterMasses.js';
 import LabelledComboBox from './LabelledComboBox.js';
 import PhysicalComboBox from './PhysicalComboBox.js';
 
-const controlsSkaterString = energySkateParkStrings.controls.skater;
-const controlsSkater1MassPatternString = energySkateParkStrings.controls.skater1MassPattern;
-const controlsSkater2MassPatternString = energySkateParkStrings.controls.skater2MassPattern;
-const controlsSkater3MassPatternString = energySkateParkStrings.controls.skater3MassPattern;
-const controlsSkater4MassPatternString = energySkateParkStrings.controls.skater4MassPattern;
-const controlsSkater5MassPatternString = energySkateParkStrings.controls.skater5MassPattern;
-const controlsDogMassPatternString = energySkateParkStrings.controls.dogMassPattern;
+const controlsSkaterString = energySkateParkStrings.skaterControls.label;
+const controlsSkater1MassPatternString = energySkateParkStrings.skaterControls.skater1MassPattern;
+const controlsSkater2MassPatternString = energySkateParkStrings.skaterControls.skater2MassPattern;
+const controlsSkater3MassPatternString = energySkateParkStrings.skaterControls.skater3MassPattern;
+const controlsSkater4MassPatternString = energySkateParkStrings.skaterControls.skater4MassPattern;
+const controlsSkater5MassPatternString = energySkateParkStrings.skaterControls.skater5MassPattern;
+const controlsDogMassPatternString = energySkateParkStrings.skaterControls.dogMassPattern;
 
 class MassComboBox extends LabelledComboBox {
 

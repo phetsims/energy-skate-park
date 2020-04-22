@@ -45,9 +45,9 @@ import SkaterNode from './SkaterNode.js';
 import ToolboxPanel from './ToolboxPanel.js';
 import VisibilityControlsPanel from './VisibilityControlsPanel.js';
 
-const controlsRestartSkaterString = energySkateParkStrings.controls[ 'restart-skater' ];
-const propertiesSpeedString = energySkateParkStrings.properties.speed;
-const speedometerMetersPerSecondPatternString = energySkateParkStrings.speedometerMetersPerSecondPattern;
+const controlsRestartSkaterString = energySkateParkStrings.skaterControls.restartSkater;
+const propertiesSpeedString = energySkateParkStrings.speedometer.label;
+const speedometerMetersPerSecondPatternString = energySkateParkStrings.speedometer.metersPerSecondPattern;
 const measuringTapeUnitsString = energySkateParkStrings.measuringTape.units;
 
 // constants

@@ -24,11 +24,11 @@ import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-const energyEnergyString = energySkateParkStrings.energy.energy;
-const energyKineticString = energySkateParkStrings.energy.kinetic;
-const energyPotentialString = energySkateParkStrings.energy.potential;
-const energyThermalString = energySkateParkStrings.energy.thermal;
-const energyTotalString = energySkateParkStrings.energy.total;
+const energyEnergyString = energySkateParkStrings.energies.energy;
+const energyKineticString = energySkateParkStrings.energies.kinetic;
+const energyPotentialString = energySkateParkStrings.energies.potential;
+const energyThermalString = energySkateParkStrings.energies.thermal;
+const energyTotalString = energySkateParkStrings.energies.total;
 
 // constants
 const ZOOM_BUTTON_TOUCH_DILATION = 5;
