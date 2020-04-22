@@ -23,7 +23,7 @@ class BackgroundNode extends Node {
 
   /**
    * @param {Bounds2} layoutBounds
-   * @param {Property.<Bounds2>} visibleBoundsProperty
+   * @param {Property.<Bounds2>} visibleBoundsProperty - in the view coordinate frame
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
@@ -65,10 +65,9 @@ class BackgroundNode extends Node {
 
   /**
    * Exactly fit the geometry to the screen so no matter what aspect ratio it will always show something.
-   * Perhaps it will improve performance too? // REVIEW: How might this improve performance?
    * @public
    *
-   * @param {Bounds2} bounds
+   * @param {Bounds2} bounds - in the view coordinate frame
    */
   layout( bounds ) {
     const cementY = this.cementY;
