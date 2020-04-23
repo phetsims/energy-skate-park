@@ -234,7 +234,6 @@ class SkaterState {
 
     const state = new SkaterState( this, EMPTY_OBJECT );
 
-    // REVIEW: Why is this not done through the options object and overrides?
     state.thermalEnergy = thermalEnergy;
     return state;
   }
