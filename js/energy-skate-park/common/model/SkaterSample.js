@@ -33,16 +33,18 @@ class SkaterSample {
   constructor( skaterState, time, fadeDecay ) {
     assert && assert( fadeDecay < 1, 'samples which have initiated removal need to fade away' );
 
-    // REVIEW: Why copy all of the data in skaterState?
-    // @public (read-only)
+    // @public (read-only) - values copied to avoid re-calculating when inspected
     this.speed = skaterState.getSpeed();
+    this.referenceHeight = skaterState.referenceHeight;
+    this.position = new Vector2( skaterState.positionX, skaterState.positionY );
+    this.time = time;
+
+    // @public (read-only) {number} - values copied from SkaterState, but these may change with the reference height
+    // and become out of sync with SkaterState
     this.kineticEnergy = skaterState.getKineticEnergy();
     this.potentialEnergy = skaterState.getPotentialEnergy();
     this.thermalEnergy = skaterState.thermalEnergy;
     this.totalEnergy = skaterState.getTotalEnergy();
-    this.referenceHeight = skaterState.referenceHeight;
-    this.position = new Vector2( skaterState.positionX, skaterState.positionY );
-    this.time = time;
 
     // @public (read-only)
     this.skaterState = skaterState;
