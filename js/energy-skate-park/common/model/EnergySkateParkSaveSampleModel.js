@@ -112,11 +112,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
    */
   initiateSampleRemoval() {
     for ( let i = 0; i < this.skaterSamples.length; i++ ) {
-
-      // REVIEW: Why is the code so careful not to mark something for removal twice?  It seems safe to mark for removal twice (aside from the assertion)
-      if ( !this.skaterSamples.get( i ).removeInitiated ) {
-        this.skaterSamples.get( i ).initiateRemove();
-      }
+      this.skaterSamples.get( i ).initiateRemove();
     }
   }
 
@@ -146,10 +142,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
     if ( this.limitNumberOfSamples && this.skaterSamples.length > this.maxNumberOfSamples ) {
       const numberToRemove = this.skaterSamples.length - this.maxNumberOfSamples;
       for ( let i = 0; i < numberToRemove; i++ ) {
-        const sample = this.skaterSamples.get( i );
-        if ( !sample.removeInitiated ) {
-          sample.initiateRemove();
-        }
+        this.skaterSamples.get( i ).initiateRemove();
       }
     }
 

@@ -125,18 +125,7 @@ class SkaterSample {
    * @public
    */
   initiateRemove() {
-    assert && assert( !this._initiateRemove, 'removal should only be initiated once' );
     this._initiateRemove = true;
-  }
-
-  /**
-   * Returns true if sample removal has been initiated.
-   * @public
-   *
-   * @returns {boolean}
-   */
-  get removeInitiated() {
-    return this._initiateRemove;
   }
 }
 
