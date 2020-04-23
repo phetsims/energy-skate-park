@@ -461,9 +461,7 @@ class SkaterState {
 }
 
 /**
- *
- * REVIEW: Why is this needed?
- * @public
+ * @private
  *
  * @param{string} key
  * @param {Object} source
