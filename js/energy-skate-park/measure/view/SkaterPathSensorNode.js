@@ -245,6 +245,14 @@ class SkaterPathSensorNode extends Node {
       }
     } );
 
+    // clear the display if the inspected sample gets removed - no need for disposal, listener persists for life of
+    // sim
+    samples.addItemRemovedListener( sample => {
+      if ( sample === this.inspectedSample ) {
+        this.clearDisplay( this.inspectedSample );
+      }
+    } );
+
     // add a drag listener to the probe body
     this.probeNode.addInputListener( new DragListener( {
       transform: modelViewTransform,
