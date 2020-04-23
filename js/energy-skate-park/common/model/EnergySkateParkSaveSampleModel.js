@@ -94,9 +94,9 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
    * is such that hundreds of SkaterSamples are frequently removed at a time.
    *
    * Assumes that samplesToRemove is a sub-array of this.skaterSamples, in the right order.
-   *
    * @public
-   * @param samplesToRemove // REVIEW: @param type
+   *
+   * @param {SkaterSample[]} samplesToRemove
    */
   batchRemoveSamples( samplesToRemove ) {
     const indexOfFirstSample = this.skaterSamples.indexOf( samplesToRemove[ 0 ] );
