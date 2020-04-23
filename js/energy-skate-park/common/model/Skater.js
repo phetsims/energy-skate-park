@@ -382,7 +382,6 @@ class Skater {
 
     // Everything needs to be reset except the mass, see #188
     this.resetEverythingExceptMassAndReferenceHeight();
-    this.referenceHeightProperty.reset();
 
     // recalculate energy and re-render
     this.updateEnergy();
