@@ -354,8 +354,8 @@ class SkaterPathSensorNode extends Node {
    * have the same dimensions for layout purposes.
    * @private
    *
-   * @param  {AlignGroup} alignGroup
-   * // REVIEW: JSDOC param
+   * @param {AlignGroup} alignGroup
+   * @param {NumberProperty} valueProperty
    * @returns {AlignBox}
    */
   static createReadoutBox( alignGroup, valueProperty ) {
