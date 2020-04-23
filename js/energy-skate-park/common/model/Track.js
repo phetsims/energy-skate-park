@@ -59,6 +59,10 @@ class Track extends PhetioObject {
       // {boolean} - can this track be attached with another track by dragging track or control points?
       attachable: false,
 
+      // {boolean} - whether the skater transitions from the right edge of this track directly to the ground, see
+      // this._slopeToGround for more information
+      slopeToGround: false,
+
       tandem: Tandem.REQUIRED,
       phetioType: TrackIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
@@ -91,13 +95,14 @@ class Track extends PhetioObject {
     // two sources, which causes a flicker, see #282
     this.dragSource = null;
 
-    // @private - Flag to indicate whether the skater transitions from the right edge of this track directly to the
+    // @private {boolean} - Flag to indicate whether the skater transitions from the right edge of this track directly to the
     // ground, if set to true, additional corrections to skater energy will be applied so that energy is conserved in
     // this case - see phetsims/energy-skate-park-basics#164. Also see the getters/setters for this below.
     this._slopeToGround = false;
 
-    // @private {boolean} - if slopeToGround is set, and we disable the energy corrections when a control point moves,
-    // the "slope to ground" energy corrections should be applied again once the track is reset
+    // @private {boolean} - if slopeToGround is set, and we will set slopeToGround to false if the Track is configurable
+    // and a control point moves because the track presumably no longer slopes to the ground perfectly. But
+    // the track should slope to ground again on reset.
     this._restoreSlopeToGroundOnReset = false;
 
     // @private - Use an arbitrary position for translating the track during dragging.  Only used for deltas in relative
@@ -158,6 +163,9 @@ class Track extends PhetioObject {
 
     this.updateLinSpace();
     this.updateSplines();
+
+    // set fields that correct energy when skater transitions directly to ground, if defined on the track
+    this.setSlopeToGround( options.slopeToGround );
 
     // In the state wrapper, when the state changes, we must update the skater node
     const stateListener = () => {
@@ -379,7 +387,10 @@ class Track extends PhetioObject {
    */
   setSlopeToGround( slopeToGround ) {
     this._slopeToGround = slopeToGround;
-    this._restoreSlopeToGroundOnReset = true;
+
+    if ( slopeToGround ) {
+      this._restoreSlopeToGroundOnReset = true;
+    }
   }
 
   /**
@@ -397,6 +408,7 @@ class Track extends PhetioObject {
   getSlopeToGround() {
     return this._slopeToGround;
   }
+
   get slopeToGround() { return this.getSlopeToGround(); }
 
   /**

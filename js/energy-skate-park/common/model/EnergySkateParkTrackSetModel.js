@@ -137,13 +137,12 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
 
     const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem );
     const slopeTrack = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints, {
+
+      // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
+      // see #164
+      slopeToGround: true,
       tandem: tandem.createTandem( 'slopeTrack' )
     } );
-
-    // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
-    // see #164
-    // REVIEW: slopeToGround should be an option
-    slopeTrack.slopeToGround = true;
 
     const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem );
     const doubleWellTrack = EnergySkateParkTrackSetModel.createPremadeTrack( model, doubleWellControlPoints, {
