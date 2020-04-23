@@ -72,8 +72,6 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
     // @public (read-only) - an array of SkaterSamples that have just been removed from the model. Necessary
     // for performance so that we can update once after removing many samples rather than every time
     // a single sample is removed
-
-    // REVIEW: Should an Emitter(SkaterSample[]) be used instead?
     this.batchRemoveSamplesEmitter = new Emitter( {
       parameters: [ {
         arrayElementType: SkaterSample
