@@ -50,7 +50,6 @@ class EnergySkateParkGravityControls extends VBox {
 
     const children = [];
 
-    // REVIEW: These local "let" variables should be deleted.
     if ( options.includeGravityNumberControl ) {
       const gravityNumberControl = new GravityNumberControl( gravityMagnitudeProperty, tandem.createTandem( 'gravityNumberControl' ), options.gravityComboBoxOptions );
       children.push( gravityNumberControl );
