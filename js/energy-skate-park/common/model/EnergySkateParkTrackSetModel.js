@@ -50,9 +50,17 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
 
       // make sure that the entire track is above ground - points should be, but this makes sure that the
       // entire curve is fully above ground
-      // REVIEW: When would the available model bounds ever have zero area?
-      if ( this.availableModelBoundsProperty.get().hasNonzeroArea() ) {
-        this.tracks.get( i ).bumpAboveGround();
+      if ( track.physicalProperty.get() ) {
+
+        // wait to bump until the model bounds are defined, which doesn't happen until the first view layout since
+        // available model bounds are determined by the size of the screen for this sim
+        const bumpListener = bounds => {
+          if ( bounds.hasNonzeroArea() ) {
+            this.tracks.get( i ).bumpAboveGround();
+            this.availableModelBoundsProperty.unlink( bumpListener );
+          }
+        };
+        this.availableModelBoundsProperty.link( bumpListener );
       }
     }
 
