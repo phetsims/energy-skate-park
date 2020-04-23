@@ -16,13 +16,13 @@ import GravitySlider from './GravitySlider.js';
 class EnergySkateParkGravityControls extends VBox {
 
   /**
-   * @param {NumberProperty} gravityProperty // REVIEW: Name this gravityMagnitudeProperty to indicate it is unsigned
+   * @param {NumberProperty} gravityMagnitudeProperty
    * @param {Emitter} resetEmitter - broadcasts a message when the EnergySkateParkModel is reset
    * @param {Node} listParent - parent Node for the ComboBox, if one is included
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( gravityProperty, resetEmitter, listParent, tandem, options ) {
+  constructor( gravityMagnitudeProperty, resetEmitter, listParent, tandem, options ) {
 
     options = merge( {
 
@@ -53,19 +53,19 @@ class EnergySkateParkGravityControls extends VBox {
     // REVIEW: These local "let" variables should be deleted.
     let gravityNumberControl = null;
     if ( options.includeGravityNumberControl ) {
-      gravityNumberControl = new GravityNumberControl( gravityProperty, tandem.createTandem( 'gravityNumberControl' ), options.gravityComboBoxOptions );
+      gravityNumberControl = new GravityNumberControl( gravityMagnitudeProperty, tandem.createTandem( 'gravityNumberControl' ), options.gravityComboBoxOptions );
       children.push( gravityNumberControl );
     }
 
     let gravitySlider = null;
     if ( options.includeGravitySlider ) {
-      gravitySlider = new GravitySlider( gravityProperty, tandem.createTandem( 'gravitySlider' ) );
+      gravitySlider = new GravitySlider( gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) );
       children.push( gravitySlider );
     }
 
     let gravityComboBox = null;
     if ( options.includeGravityComboBox ) {
-      gravityComboBox = new GravityComboBox( gravityProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ), options );
+      gravityComboBox = new GravityComboBox( gravityMagnitudeProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ), options );
       children.push( gravityComboBox );
     }
 
