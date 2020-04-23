@@ -11,7 +11,7 @@ import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import Constants from '../Constants.js';
 import PhysicalComboBox from './PhysicalComboBox.js';
 
-const gravityMoonString = energySkateParkStrings.physicalControls.custom;
+const gravityMoonString = energySkateParkStrings.physicalControls.gravityControls.moon;
 const gravityEarthString = energySkateParkStrings.physicalControls.gravityControls.earth;
 const gravityJupiterString = energySkateParkStrings.physicalControls.gravityControls.jupiter;
 

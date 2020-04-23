@@ -13,6 +13,9 @@
       "jupiter": {
         "value": "Jupiter"
       },
+      "moon": {
+        "value": "Moon"
+      },
       "gravityMetersPerSecondSquaredPattern": {
         "value": "{{value}} m/s<sup>2</sup>"
       }
