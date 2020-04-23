@@ -1502,7 +1502,6 @@ class EnergySkateParkModel extends PhetioObject {
     const connectedPoint = track.getSnapTarget();
     let otherTrack = null;
 
-    // REVIEW: Array.filter would be clearer here
     for ( let i = 0; i < this.getPhysicalTracks().length; i++ ) {
       otherTrack = this.getPhysicalTracks()[ i ];
       if ( otherTrack.containsControlPoint( connectedPoint ) ) {
