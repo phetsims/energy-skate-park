@@ -290,9 +290,10 @@ class Skater {
    * @public
    */
   reset() {
-    this.resetPositionProperties();
+    this.resetEverythingExceptMassAndReferenceHeight();
 
     this.referenceHeightProperty.reset();
+    this.massProperty.reset();
 
     this.updateEnergy();
 
@@ -305,23 +306,46 @@ class Skater {
    * @public
    */
   resetPosition() {
-    const mass = this.massProperty.value;
-
-    this.resetPositionProperties();
-
-    this.massProperty.value = mass;
-    this.updateEnergy();
+    this.resetEverythingExceptMassAndReferenceHeight();
 
     // Notify the graphics to re-render.  See #223
+    this.updateEnergy();
     this.updatedEmitter.emit();
   }
 
   /**
-   * Reset all Properties of the Skater except for reference height. Useful when resetting skater position only,
-   * but reused in a few places when resetting Skater (to be surrounded by resetting reference height too). After
-   * calling this, be sure to signify updates with this.updateEnergy() and this.updatedEmitter.emit().
+   * Reset all Properties of the Skater except for reference height and mass. Useful when resetting skater position
+   * only, but reused in a few places when resetting Skater (to be surrounded by resetting mass or reference height).
+   * After calling this, be sure to signify updates with this.updateEnergy() and this.updatedEmitter.emit().
    * @private
    */
+  resetEverythingExceptMassAndReferenceHeight() {
+    // set the angle to zero first so that the optimization for SkaterNode.updatePosition is maintained, without
+    // showing the skater at the wrong angle
+    this.angleProperty.value = 0;
+
+    this.trackProperty.reset();
+    this.parametricPositionProperty.reset();
+    this.parametricSpeedProperty.reset();
+    this.onTopSideOfTrackProperty.reset();
+    this.gravityMagnitudeProperty.reset();
+    this.positionProperty.reset();
+    this.directionProperty.reset();
+    this.velocityProperty.reset();
+    this.draggingProperty.reset();
+    this.kineticEnergyProperty.reset();
+    this.potentialEnergyProperty.reset();
+    this.thermalEnergyProperty.reset();
+    this.totalEnergyProperty.reset();
+    this.angleProperty.reset();
+    this.startingPositionProperty.reset();
+    this.startingUProperty.reset();
+    this.startingUpProperty.reset();
+    this.startingTrackProperty.reset();
+    this.headPositionProperty.reset();
+  }
+
+
   resetPositionProperties() {
 
     // set the angle to zero first so that the optimization for SkaterNode.updatePosition is maintained, without
@@ -351,20 +375,18 @@ class Skater {
   }
 
   /**
-   * When the scene (track) is changed, the skater's position & velocity reset, but the mass and other properties
-   * do not reset, see #179
+   * When the scene (track) is changed, the skater's position & velocity reset, but the mass should not be reset.
    * @public
    */
   returnToInitialPosition() {
 
     // Everything needs to be reset except the mass, see #188
+    this.resetEverythingExceptMassAndReferenceHeight();
+    this.referenceHeightProperty.reset();
 
-    // REVIEW: A better way to do this would be to have a function resetEverythingExceptForMass()
-    // REVIEW: which is called from here.  Then reset would call resetEverythingExceptForMass() and also massProperty.reset()
-    // REVIEW: Also, the JSDoc says "and other properties", but I can't figure out what they are?
-    const mass = this.massProperty.value;
-    this.reset();
-    this.massProperty.value = mass;
+    // recalculate energy and re-render
+    this.updateEnergy();
+    this.updatedEmitter.emit();
   }
 
   /**
