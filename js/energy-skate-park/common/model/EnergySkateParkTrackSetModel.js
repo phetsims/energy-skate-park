@@ -7,6 +7,7 @@
 
 import Property from '../../../../../axon/js/Property.js';
 import PropertyIO from '../../../../../axon/js/PropertyIO.js';
+import merge from '../../../../../phet-core/js/merge.js';
 import NumberIO from '../../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
@@ -100,6 +101,24 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
   }
 
   /**
+   *
+   * @private
+   *
+   * @param {EnergySkateParkTrackSetModel} model
+   * @param {ControlPoint[]}controlPoints
+   * @param {Object} [options]
+   * @returns {Track}
+   */
+  static createPremadeTrack( model, controlPoints, options ) {
+    options = merge( {
+      configurable: model.tracksConfigurable,
+      phetioState: false
+    }, options );
+
+    return PremadeTracks.createTrack( model, controlPoints, options );
+  }
+
+  /**
    * The "basic" track set includes the parabola, slope, and double well.
    * @public
    *
@@ -111,19 +130,14 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
     assert && assert( model instanceof EnergySkateParkTrackSetModel, 'PremadeTracks should be used with an EnergySkateParkTrackSetModel' );
     assert && assert( model.tracksDraggable === false, 'tracks should not be draggable in EnergySkateParkTrackSetModels' );
 
-    // REVIEW: This function has many duplicated parts (same pattern occurs 3 times) and should be factored out.
     const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem );
-    const parabolaTrack = PremadeTracks.createTrack( model, parabolaControlPoints, {
-      configurable: model.tracksConfigurable,
-      tandem: tandem.createTandem( 'parabolaTrack' ),
-      phetioState: false
+    const parabolaTrack = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints, {
+      tandem: tandem.createTandem( 'parabolaTrack' )
     } );
 
     const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem );
-    const slopeTrack = PremadeTracks.createTrack( model, slopeControlPoints, {
-      configurable: model.tracksConfigurable,
-      tandem: tandem.createTandem( 'slopeTrack' ),
-      phetioState: false
+    const slopeTrack = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints, {
+      tandem: tandem.createTandem( 'slopeTrack' )
     } );
 
     // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
@@ -132,10 +146,8 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
     slopeTrack.slopeToGround = true;
 
     const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem );
-    const doubleWellTrack = PremadeTracks.createTrack( model, doubleWellControlPoints, {
-      configurable: model.tracksConfigurable,
-      tandem: tandem.createTandem( 'doubleWellTrack' ),
-      phetioState: false
+    const doubleWellTrack = EnergySkateParkTrackSetModel.createPremadeTrack( model, doubleWellControlPoints, {
+      tandem: tandem.createTandem( 'doubleWellTrack' )
     } );
 
     return [ parabolaTrack, slopeTrack, doubleWellTrack ];
@@ -155,8 +167,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
     const trackSet = EnergySkateParkTrackSetModel.createBasicTrackSet( model, tandem );
 
     const loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem );
-    const loopTrack = PremadeTracks.createTrack( model, loopControlPoints, {
-      configurable: model.tracksConfigurable,
+    const loopTrack = EnergySkateParkTrackSetModel.createPremadeTrack( model, loopControlPoints, {
       draggable: model.tracksDraggable,
       tandem: tandem.createTandem( 'loopTrack' )
     } );
