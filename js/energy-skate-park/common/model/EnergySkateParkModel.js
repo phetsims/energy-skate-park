@@ -1489,19 +1489,7 @@ class EnergySkateParkModel extends PhetioObject {
    * @returns {Track[]}
    */
   getNonPhysicalTracks() {
-
-    // REVIEW: it took >30 seconds of fuzzing for this code to be hit, maybe it isn't a performance concern?
-    // REVIEW: if not a performance concern, it seems like Array.filter would be clearest
-    // Use vanilla instead of lodash for speed since this is in an inner loop
-    const nonphysicalTracks = [];
-    for ( let i = 0; i < this.tracks.length; i++ ) {
-      const track = this.tracks.get( i );
-
-      if ( !track.physicalProperty.value ) {
-        nonphysicalTracks.push( track );
-      }
-    }
-    return nonphysicalTracks;
+    return this.tracks.filter( track => !track.physicalProperty.get() );
   }
 
   /**
