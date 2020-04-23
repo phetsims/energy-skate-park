@@ -74,7 +74,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
    * should be visible, physical, and interactive depending on the model sceneProperty.
    * @public
    *
-   * @param {Array.<Track>} tracks // REVIEW: I thought at a recent developer meeting we decided to go with Track[] or Array<Track>?
+   * @param {Track[]} tracks
    */
   addTrackSet( tracks ) {
     this.tracks.addAll( tracks );
