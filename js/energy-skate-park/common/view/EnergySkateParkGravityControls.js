@@ -51,21 +51,18 @@ class EnergySkateParkGravityControls extends VBox {
     const children = [];
 
     // REVIEW: These local "let" variables should be deleted.
-    let gravityNumberControl = null;
     if ( options.includeGravityNumberControl ) {
-      gravityNumberControl = new GravityNumberControl( gravityMagnitudeProperty, tandem.createTandem( 'gravityNumberControl' ), options.gravityComboBoxOptions );
+      const gravityNumberControl = new GravityNumberControl( gravityMagnitudeProperty, tandem.createTandem( 'gravityNumberControl' ), options.gravityComboBoxOptions );
       children.push( gravityNumberControl );
     }
 
-    let gravitySlider = null;
     if ( options.includeGravitySlider ) {
-      gravitySlider = new GravitySlider( gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) );
+      const gravitySlider = new GravitySlider( gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) );
       children.push( gravitySlider );
     }
 
-    let gravityComboBox = null;
     if ( options.includeGravityComboBox ) {
-      gravityComboBox = new GravityComboBox( gravityMagnitudeProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ), options );
+      const gravityComboBox = new GravityComboBox( gravityMagnitudeProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ), options );
       children.push( gravityComboBox );
     }
 
