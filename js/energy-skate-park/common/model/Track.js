@@ -719,7 +719,7 @@ class Track extends PhetioObject {
    * @public
    *
    * @param {number} parametricPosition
-   * @param {Object} curvature // REVIEW: @param types
+   * @param {Object} curvature - object literal with { r: {number}, x: {number}, y: {number} }
    */
   getCurvature( parametricPosition, curvature ) {
 
