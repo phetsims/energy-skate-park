@@ -99,6 +99,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
    * @param {SkaterSample[]} samplesToRemove
    */
   batchRemoveSamples( samplesToRemove ) {
+
     const indexOfFirstSample = this.skaterSamples.indexOf( samplesToRemove[ 0 ] );
     this.skaterSamples.splice( indexOfFirstSample, samplesToRemove.length );
 
@@ -150,7 +151,6 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
     const samplesToRemove = [];
     this.skaterSamples.forEach( sample => {
       sample.step( dt );
-
       if ( sample.opacityProperty.get() < SkaterSample.MIN_OPACITY ) {
         samplesToRemove.push( sample );
       }
@@ -159,7 +159,12 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
     // for performance, we batch removal of SkaterSamples so that we can update once after many have been removed
     // rather than on each data point, see https://github.com/phetsims/energy-skate-park/issues/198
     if ( samplesToRemove.length > 0 ) {
-      this.batchRemoveSamples( samplesToRemove ); // REVIEW: How can you be sure this doesn't violate the assumptions in batchRemoveSamples?
+
+      // BatchRemoveSamples requires that samplesToRemove is a sub array of this.skaterSamples, in the same order.
+      // We can guarantee this is the case because we built samplesToRemove as we iterated through this.skaterSamples
+      // so it must be in the right order. And as soon as we find one sample to remove, the rest in this.skaterSamples
+      // will be ready for removal since they are even older and therefore less opaque.
+      this.batchRemoveSamples( samplesToRemove );
     }
 
     return updatedState;
