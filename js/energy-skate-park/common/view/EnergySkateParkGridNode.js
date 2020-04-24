@@ -37,7 +37,7 @@ class EnergySkateParkGridNode extends Node {
     } );
 
     const visibleBounds = visibleBoundsProperty.get();
-    const gridNode = new GridNode( visibleBounds.width, visibleBounds.height, null, null, {
+    const gridNode = new GridNode( visibleBounds.width, visibleBounds.height, {
       majorLineOptions: {
         stroke: '#686868',
         lineWidth: 1.8
