@@ -38,6 +38,9 @@ class EnergySkateParkGridNode extends Node {
 
     const visibleBounds = visibleBoundsProperty.get();
     const gridNode = new GridNode( visibleBounds.width, visibleBounds.height, {
+      minorVerticalLineSpacing: modelViewTransform.modelToViewDeltaX( 1 ),
+      minorHorizontalLineSpacing: Math.abs( modelViewTransform.modelToViewDeltaY( 1 ) ),
+      majorHorizontalLineSpacing: Math.abs( modelViewTransform.modelToViewDeltaY( 2 ) ),
       majorLineOptions: {
         stroke: '#686868',
         lineWidth: 1.8
@@ -68,10 +71,6 @@ class EnergySkateParkGridNode extends Node {
     // @private - keep references to all text created so that they can be disposed and removed from scene graph
     // when layout changes
     this.createdTextPanels = [];
-
-    this.gridNode.setMinorVerticalLineSpacing( this.modelViewTransform.modelToViewDeltaX( 1 ) );
-    this.gridNode.setMinorHorizontalLineSpacing( Math.abs( this.modelViewTransform.modelToViewDeltaY( 1 ) ) );
-    this.gridNode.setMajorHorizontalLineSpacing( Math.abs( this.modelViewTransform.modelToViewDeltaY( 2 ) ) );
 
     // redraw grid and reposition labels with reference height
     referenceHeightProperty.lazyLink( ( height, oldHeight ) => {
