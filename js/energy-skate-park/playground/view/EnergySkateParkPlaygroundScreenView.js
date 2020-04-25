@@ -107,12 +107,14 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
   }
 
   /**
-   * Get the TrackNode used in this ScreeenView from the provided Track model.
+   * Get the TrackNode used in this ScreenView from the provided Track model.
    * @public
    *
    * @param {Track} track
    */
   getTrackNode( track ) {
+
+    // REVIEW: assert that there is exactly one match
     return _.find( this.trackNodes, trackNode => trackNode.track === track );
   }
 
