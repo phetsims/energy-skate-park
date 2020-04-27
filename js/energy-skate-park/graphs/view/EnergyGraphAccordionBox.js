@@ -221,7 +221,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
   static createCheckboxItem( property, labelString ) {
     return {
       node: new Text( labelString, {
-        font: new PhetFont( { size: 11 } ),
+        font: Constants.CHECKBOX_LABEL_FONT,
         maxWidth: 50
       } ),
       property: property

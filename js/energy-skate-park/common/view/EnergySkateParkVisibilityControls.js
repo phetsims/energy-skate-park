@@ -13,13 +13,12 @@
  */
 
 import merge from '../../../../../phet-core/js/merge.js';
-import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
 import AlignGroup from '../../../../../scenery/js/nodes/AlignGroup.js';
 import HBox from '../../../../../scenery/js/nodes/HBox.js';
-import VBox from '../../../../../scenery/js/nodes/VBox.js';
-import energySkateParkStrings from '../../../energySkateParkStrings.js';
-import energySkatePark from '../../../energySkatePark.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
+import VBox from '../../../../../scenery/js/nodes/VBox.js';
+import energySkatePark from '../../../energySkatePark.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import Constants from '../Constants.js';
 import EnergyBarGraph from './EnergyBarGraph.js';
 import EnergySkateParkCheckboxItem from './EnergySkateParkCheckboxItem.js';
@@ -34,11 +33,10 @@ const propertiesSpeedString = energySkateParkStrings.visibilityControls.speed;
 
 // constants
 const TEXT_OPTIONS = {
-  font: new PhetFont( 13 ),
+  font: Constants.CHECKBOX_LABEL_FONT,
   maxWidth: 95
 };
 
-const CHECKBOX_WIDTH = 12;
 const CHECKBOX_SPACING = 5; // spacing between checkbox and its icon content
 
 class EnergySkateParkVisibilityControls extends VBox {
@@ -201,7 +199,7 @@ class CheckboxContent {
    * @param width
    */
   setContentWidthForCheckbox( width ) {
-    this.checkboxIcon.spacing = this.checkboxIcon.spacing + ( width - this.checkboxIcon.width ) - CHECKBOX_WIDTH - CHECKBOX_SPACING;
+    this.checkboxIcon.spacing = this.checkboxIcon.spacing + ( width - this.checkboxIcon.width ) - Constants.CHECKBOX_WIDTH - CHECKBOX_SPACING;
   }
 }
 
