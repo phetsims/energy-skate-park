@@ -164,6 +164,9 @@ class EnergyGraphAccordionBox extends AccordionBox {
       contentXMargin: 4,
       contentYSpacing: 0,
 
+      // clicking doesn't expand since the title contains other controls
+      titleBarExpandCollapse: false,
+
       expandedProperty: model.energyPlotVisibleProperty,
       tandem: tandem.createTandem( 'accordionBox' )
     }, Constants.PANEL_OPTIONS ) );
