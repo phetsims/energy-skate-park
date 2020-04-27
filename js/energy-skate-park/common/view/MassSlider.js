@@ -6,6 +6,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import Utils from '../../../../../dot/js/Utils.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import PhysicalSlider from './PhysicalSlider.js';
@@ -24,7 +25,10 @@ class MassSlider extends PhysicalSlider {
   constructor( property, massRange, tandem ) {
     super( controlsMassString, property, massRange, tandem, {
       minLabel: smallString,
-      maxLabel: largeString
+      maxLabel: largeString,
+      sliderOptions: {
+        constrainValue: value => Utils.roundToInterval( value, 5 )
+      }
     } );
   }
 }
