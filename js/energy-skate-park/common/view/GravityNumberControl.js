@@ -7,6 +7,7 @@
  */
 
 import Range from '../../../../../dot/js/Range.js';
+import Utils from '../../../../../dot/js/Utils.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
@@ -30,6 +31,10 @@ class GravityNumberControl extends PhysicalNumberControl {
       numberDisplayOptions: {
         valuePattern: gravityMetersPerSecondSquaredPatternString,
         useRichText: true // for the superscript on units
+      },
+      delta: 0.1,
+      sliderOptions: {
+        constrainValue: value => Utils.roundToInterval( value, 1 )
       }
     }, options );
     super( controlsGravityLabelString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, options );

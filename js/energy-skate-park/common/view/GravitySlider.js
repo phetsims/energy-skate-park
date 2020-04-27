@@ -7,6 +7,7 @@
  */
 
 import Range from '../../../../../dot/js/Range.js';
+import Utils from '../../../../../dot/js/Utils.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Constants from '../Constants.js';
@@ -23,7 +24,10 @@ class GravitySlider extends PhysicalSlider {
    */
   constructor( property, tandem ) {
     super( controlsGravityLabelString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, {
-      minLabel: controlsValueTinyString
+      minLabel: controlsValueTinyString,
+      sliderOptions: {
+        constrainValue: value => Utils.roundToInterval( value, 1 )
+      }
     } );
   }
 }
