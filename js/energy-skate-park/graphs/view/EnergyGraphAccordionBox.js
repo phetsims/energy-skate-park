@@ -90,7 +90,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
 
     // ABSwitch to change plotting variables
     const switchLabelOptions = {
-      font: new PhetFont( { size: 11 } ),
+      font: LABEL_FONT,
       maxWidth: 100
     };
     const variables = GraphsModel.IndependentVariable;
