@@ -161,7 +161,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
       buttonXMargin: 5,
       buttonYMargin: 5,
       contentYMargin: 2,
-      contentXMargin: 4,
+      contentXMargin: 5,
       contentYSpacing: 0,
 
       // clicking doesn't expand since the title contains other controls
