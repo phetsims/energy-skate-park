@@ -65,15 +65,6 @@
     },
     "energy": {
       "value": "Energy"
-    },
-    "kineticEnergyLabel": {
-      "value": "KE"
-    },
-    "potentialEnergyLabel": {
-      "value": "PE"
-    },
-    "thermalEnergyLabel": {
-      "value": "Thermal"
     }
   },
   "plots": {

@@ -26,8 +26,8 @@ import GraphsModel from '../model/GraphsModel.js';
 import EnergyGraphZoomButton from './EnergyGraphZoomButton.js';
 import EnergyPlot from './EnergyPlot.js';
 
-const kineticEnergyLabelString = energySkateParkStrings.energies.kineticEnergyLabel;
-const potentialEnergyLabelString = energySkateParkStrings.energies.potentialEnergyLabel;
+const kineticEnergyLabelString = energySkateParkStrings.energies.kinetic;
+const potentialEnergyLabelString = energySkateParkStrings.energies.potential;
 const thermalEnergyLabelString = energySkateParkStrings.energies.thermal;
 const totalEnergyLabelString = energySkateParkStrings.energies.total;
 const timeSwitchLabelString = energySkateParkStrings.plots.timeSwitchLabel;
