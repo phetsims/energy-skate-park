@@ -89,7 +89,7 @@ class SkaterNode extends Node {
     const massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.38, 0.5 );
 
     // Update the position and angle.  Normally the angle would only change if the position has also changed, so no need
-    // for a duplicate callback there.  Uses pooling to avoid allocations, see #50
+    // for a duplicate callback there.
     this.skater.updatedEmitter.addListener( () => {
       const mass = skater.massProperty.value;
       const position = skater.positionProperty.value;
