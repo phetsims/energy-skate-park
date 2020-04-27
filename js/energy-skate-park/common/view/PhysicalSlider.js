@@ -35,23 +35,21 @@ class PhysicalSlider extends PhysicalNumberControl {
       maxLabel: controlsValueLotsString,
       minLabel: controlsValueNoneString,
 
-      // {null|*} - passed to the Slider of this NumberControl
-      sliderOptions: null
+      // {*} - passed to the Slider of this NumberControl
+      sliderOptions: {}
     }, options );
 
-    super( titleString, property, valueRange, tandem, {
+    // don't include any arrow buttons or the NumberDisplay for this control
+    assert && assert( options.sliderOnly === undefined, 'The PhysicalSlider sets sliderOnly option' );
+    options.sliderOnly = true;
 
-      // don't include any arrow buttons or the NumberDisplay for this control
-      sliderOnly: true,
+    assert && assert( options.sliderOptions.majorTicks === undefined, 'The PhysicalSlider sets its own major ticks' );
+    options.sliderOptions.majorTicks = [
+      createTickEntry( valueRange.min, options.minLabel, tandem, 'minLabel' ),
+      createTickEntry( valueRange.max, options.maxLabel, tandem, 'maxLabel' )
+    ];
 
-      sliderOptions: merge( {}, Constants.SLIDER_OPTIONS, {
-          majorTicks: [
-            createTickEntry( valueRange.min, options.minLabel, tandem, 'minLabel' ),
-            createTickEntry( valueRange.max, options.maxLabel, tandem, 'maxLabel' )
-          ]
-        }
-      )
-    } );
+    super( titleString, property, valueRange, tandem, options );
   }
 }
 
