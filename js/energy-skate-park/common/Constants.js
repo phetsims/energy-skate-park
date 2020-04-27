@@ -33,6 +33,9 @@ const Constants = {
     majorTickLength: 10
   },
 
+  // consistent width for all checkboxesz
+  CHECKBOX_WIDTH: 12,
+
   // font for labels of physical controls
   CONTROL_TITLE_FONT: new PhetFont( { weight: 'bold', size: 12 } ),
   CONTROL_TICK_LABEL_OPTIONS: {

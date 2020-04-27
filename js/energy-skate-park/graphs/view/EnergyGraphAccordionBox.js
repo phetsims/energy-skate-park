@@ -66,7 +66,11 @@ class EnergyGraphAccordionBox extends AccordionBox {
       EnergyGraphAccordionBox.createCheckboxItem( model.potentialEnergyDataVisibleProperty, potentialEnergyLabelString, EnergySkateParkColorScheme.potentialEnergy ),
       EnergyGraphAccordionBox.createCheckboxItem( model.thermalEnergyDataVisibleProperty, thermalEnergyLabelString, EnergySkateParkColorScheme.thermalEnergy ),
       EnergyGraphAccordionBox.createCheckboxItem( model.totalEnergyDataVisibleProperty, totalEnergyLabelString, EnergySkateParkColorScheme.totalEnergy )
-    ] );
+    ], {
+      checkboxOptions: {
+        boxWidth: Constants.CHECKBOX_WIDTH
+      }
+    } );
     contentNode.addChild( checkboxGroup );
 
     // the graph is as long as the tracks in the Graphs screen so that position of the skater matches

@@ -20,6 +20,7 @@ import VBox from '../../../../../scenery/js/nodes/VBox.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
+import Constants from '../Constants.js';
 import EnergyBarGraph from './EnergyBarGraph.js';
 import EnergySkateParkCheckboxItem from './EnergySkateParkCheckboxItem.js';
 
@@ -131,7 +132,7 @@ class EnergySkateParkVisibilityControls extends VBox {
       assert && assert( options.itemOptions.spacing === undefined, 'EnergySkateParkVisibilityControls sets spacing' );
     }
     options.itemOptions = merge( {}, options.itemOptions, {
-      boxWidth: CHECKBOX_WIDTH,
+      boxWidth: Constants.CHECKBOX_WIDTH,
       spacing: CHECKBOX_SPACING
     } );
 
