@@ -107,11 +107,14 @@ class EnergyGraphAccordionBox extends AccordionBox {
     } );
 
     // zoom buttons
+    const touchAreaShift = 3;
     const zoomInButton = new EnergyGraphZoomButton( model.lineGraphScaleProperty, {
+      touchAreaYShift: -touchAreaShift,
       tandem: tandem.createTandem( 'zoomInButton' )
     } );
     const zoomOutButton = new EnergyGraphZoomButton( model.lineGraphScaleProperty, {
       in: false,
+      touchAreaYShift: touchAreaShift,
       tandem: tandem.createTandem( 'zoomOutButton' )
     } );
     const zoomButtons = new VBox( {

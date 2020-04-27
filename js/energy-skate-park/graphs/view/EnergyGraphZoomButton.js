@@ -22,8 +22,12 @@ class EnergyGraphZoomButton extends ZoomButton {
     options = merge( {
       in: true, // true: zoom-in button, false: zoom-out button
       scaleDelta: 1, // how much to change scaleProperty when zooming in or out
+      radius: 5,
+      xMargin: 3,
+      yMargin: 3,
+      touchAreaXDilation: 3,
+      touchAreaYDilation: 3,
 
-      scale: 0.4,
       baseColor: PhetColorScheme.PHET_LOGO_BLUE
     }, options );
 
