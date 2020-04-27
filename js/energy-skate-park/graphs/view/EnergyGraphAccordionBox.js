@@ -133,34 +133,24 @@ class EnergyGraphAccordionBox extends AccordionBox {
     contentNode.addChild( yLabel );
     contentNode.addChild( xLabelText );
 
-    const labelNode = new Text( plotsEnergyGraphString, {
+    const titleNode = new Text( plotsEnergyGraphString, {
       font: new PhetFont( { size: 16 } ),
       maxWidth: energyPlot.width / 3
     } );
-    const titleNode = new Node( {
-      children: [
-        labelNode,
-        variableSwitch,
-        eraserButton
-      ]
-    } );
-
-    // initial positioning for titleNode and content before passing to AccordionBox
-    variableSwitch.left = labelNode.right;
-    variableSwitch.centerY = labelNode.centerY;
-    eraserButton.centerY = labelNode.centerY;
 
     yLabel.rightCenter = energyPlot.leftCenter.minusXY( 10, 0 );
     xLabelText.centerTop = energyPlot.centerBottom.plusXY( 0, 10 );
     checkboxGroup.rightCenter = yLabel.leftCenter.minusXY( 10, 0 );
 
+    const buttonYMargin = 5;
+    const contentYMargin = 3;
     super( contentNode, merge( {
       titleNode: titleNode,
       titleAlignX: 'left',
       titleXSpacing: 7,
       buttonXMargin: 5,
-      buttonYMargin: 5,
-      contentYMargin: 2,
+      buttonYMargin: buttonYMargin,
+      contentYMargin: contentYMargin,
       contentXMargin: 5,
       contentYSpacing: 0,
 
@@ -171,9 +161,13 @@ class EnergyGraphAccordionBox extends AccordionBox {
       tandem: tandem.createTandem( 'accordionBox' )
     }, Constants.PANEL_OPTIONS ) );
 
-    // position the elements of the titleNode using global positioning after AccordionBox positions its titleNode
-    variableSwitch.centerX = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.plotPath.center ) ).x;
+    // decorate this Node with additional controls that are positioned along the title
+    this.addChild( variableSwitch );
+    this.addChild( eraserButton );
+
+    variableSwitch.centerBottom = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.plotPath.centerTop ) ).minusXY( 0, buttonYMargin + contentYMargin );
     eraserButton.right = eraserButton.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.plotPath.rightCenter ) ).x;
+    eraserButton.centerY = variableSwitch.centerY;
 
     // The variable switch and eraser button are part of the title layout but should only be visible when
     // expanded
