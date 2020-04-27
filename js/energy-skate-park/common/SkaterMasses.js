@@ -11,7 +11,7 @@ import Range from '../../../../dot/js/Range.js';
 import energySkatePark from '../../energySkatePark.js';
 
 // constants
-const MIN_MASS = 1;
+const MIN_MASS = 5;
 const MAX_MASS = 100;
 
 const SkaterMasses = {
@@ -25,8 +25,8 @@ const SkaterMasses = {
   DOG_MASS: 30,
 
   // min/max masses for the skater when a range of masses is allowed
-  MIN_MASS: 1,
-  MAX_MASS: 100,
+  MIN_MASS: MIN_MASS,
+  MAX_MASS: MAX_MASS,
   MASS_RANGE: new Range( MIN_MASS, MAX_MASS )
 };
 
