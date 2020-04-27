@@ -38,10 +38,6 @@ class PhysicalNumberControl extends NumberControl {
       assert && assert( options.numberDisplayOptions.yMargin === undefined, 'PhysicalNumberControl sets yMargin' );
     }
 
-    if ( options.sliderOptions ) {
-      assert && assert( options.sliderOptions.constrainValue === undefined, 'PhysicalNumberControl sets constrainValue on slider' );
-    }
-
     // slider options are passed directly to the Slider in NumberControl
     options = merge( {
 
@@ -75,7 +71,7 @@ class PhysicalNumberControl extends NumberControl {
     if ( options.sliderOnly ) {
 
       // if we are not including tweaker buttons, don't constrain slider value to tweaker deltas
-      options.sliderOptions.constrainValue = _.identity;
+      options.sliderOptions.constrainValue = options.sliderOptions.constrainValue || _.identity;
     }
 
     options.numberDisplayOptions = merge( {

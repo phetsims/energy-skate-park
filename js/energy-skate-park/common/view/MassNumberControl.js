@@ -6,6 +6,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import Utils from '../../../../../dot/js/Utils.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
@@ -24,6 +25,11 @@ class MassNumberControl extends PhysicalNumberControl {
     super( controlsMassString, massProperty, massRange, tandem, {
       numberDisplayOptions: {
         valuePattern: massKilogramsPatternString
+      },
+      sliderOptions: {
+
+        // round to nearest 5 kg, as requested by design team
+        constrainValue: value => Utils.roundToInterval( value, 5 )
       }
     } );
   }
