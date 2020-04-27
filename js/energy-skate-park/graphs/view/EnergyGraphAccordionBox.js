@@ -17,10 +17,9 @@ import VBox from '../../../../../scenery/js/nodes/VBox.js';
 import ABSwitch from '../../../../../sun/js/ABSwitch.js';
 import AccordionBox from '../../../../../sun/js/AccordionBox.js';
 import VerticalCheckboxGroup from '../../../../../sun/js/VerticalCheckboxGroup.js';
-import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import Constants from '../../common/Constants.js';
-import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 import EnergyGraphZoomButton from './EnergyGraphZoomButton.js';
@@ -62,10 +61,10 @@ class EnergyGraphAccordionBox extends AccordionBox {
 
     // check boxes for visibility of energy data
     const checkboxGroup = new VerticalCheckboxGroup( [
-      EnergyGraphAccordionBox.createCheckboxItem( model.kineticEnergyDataVisibleProperty, kineticEnergyLabelString, EnergySkateParkColorScheme.kineticEnergy ),
-      EnergyGraphAccordionBox.createCheckboxItem( model.potentialEnergyDataVisibleProperty, potentialEnergyLabelString, EnergySkateParkColorScheme.potentialEnergy ),
-      EnergyGraphAccordionBox.createCheckboxItem( model.thermalEnergyDataVisibleProperty, thermalEnergyLabelString, EnergySkateParkColorScheme.thermalEnergy ),
-      EnergyGraphAccordionBox.createCheckboxItem( model.totalEnergyDataVisibleProperty, totalEnergyLabelString, EnergySkateParkColorScheme.totalEnergy )
+      EnergyGraphAccordionBox.createCheckboxItem( model.kineticEnergyDataVisibleProperty, kineticEnergyLabelString ),
+      EnergyGraphAccordionBox.createCheckboxItem( model.potentialEnergyDataVisibleProperty, potentialEnergyLabelString ),
+      EnergyGraphAccordionBox.createCheckboxItem( model.thermalEnergyDataVisibleProperty, thermalEnergyLabelString ),
+      EnergyGraphAccordionBox.createCheckboxItem( model.totalEnergyDataVisibleProperty, totalEnergyLabelString )
     ], {
       checkboxOptions: {
         boxWidth: Constants.CHECKBOX_WIDTH
@@ -216,14 +215,12 @@ class EnergyGraphAccordionBox extends AccordionBox {
    *
    * @param {Property} property
    * @param {string} labelString
-   * @param {PaintDef|Color} labelFill
    *
    * @returns {*} - Conforms to the item object of VerticalCheckboxGroup
    */
-  static createCheckboxItem( property, labelString, labelFill ) {
+  static createCheckboxItem( property, labelString ) {
     return {
       node: new Text( labelString, {
-        fill: labelFill,
         font: new PhetFont( { size: 11 } ),
         maxWidth: 50
       } ),
