@@ -111,16 +111,6 @@ class SkaterState {
   }
 
   /**
-   * Update and return a new skater state with the values of this skater state and an object that will override
-   * the values.
-   * @public
-   *
-   * @param {Object} overrides
-   * @returns {SkaterState}
-   */
-  update( overrides ) { return new SkaterState( this, overrides ); }
-
-  /**
    * Get the curvature at the skater's point on the track, by setting it to the pass-by-reference argument.
    *
    * @public
