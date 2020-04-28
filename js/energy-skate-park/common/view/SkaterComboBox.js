@@ -41,9 +41,15 @@ class SkaterComboBox extends LabelledComboBox {
       new ComboBoxItem( new Text( controlsDogString, Constants.COMBO_BOX_ITEM_OPTIONS ), SkaterNode.SkaterImage.DOG )
     ];
 
-    const comboBox = new ComboBox( itemList, skaterImageProperty, listParent, merge( {
+    const options = merge( {
       tandem: tandem.createTandem( 'comboBox' )
-    }, Constants.COMBO_BOX_OPTIONS ) );
+    }, Constants.COMBO_BOX_OPTIONS );
+
+    // i18n - if the text gets scaled way down, make sure that the button corner radii aren't larger than content height
+    const maxItemHeight = _.maxBy( itemList, item => item.node.height ).node.height;
+    options.cornerRadius = Math.min( options.cornerRadius, maxItemHeight / 2 );
+
+    const comboBox = new ComboBox( itemList, skaterImageProperty, listParent, options );
 
     super( comboBox, controlsSkaterString );
   }

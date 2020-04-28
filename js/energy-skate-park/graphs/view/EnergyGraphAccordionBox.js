@@ -11,6 +11,9 @@ import Dimension2 from '../../../../../dot/js/Dimension2.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import EraserButton from '../../../../../scenery-phet/js/buttons/EraserButton.js';
 import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
+import AlignGroup from '../../../../../scenery/js/nodes/AlignGroup.js';
+import Circle from '../../../../../scenery/js/nodes/Circle.js';
+import HBox from '../../../../../scenery/js/nodes/HBox.js';
 import Node from '../../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
 import VBox from '../../../../../scenery/js/nodes/VBox.js';
@@ -20,6 +23,7 @@ import VerticalCheckboxGroup from '../../../../../sun/js/VerticalCheckboxGroup.j
 import energySkatePark from '../../../energySkatePark.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import Constants from '../../common/Constants.js';
+import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 import EnergyGraphZoomButton from './EnergyGraphZoomButton.js';
@@ -59,12 +63,14 @@ class EnergyGraphAccordionBox extends AccordionBox {
     // the parent for all content of the accordion box
     const contentNode = new Node();
 
+    const labelAlignGroup = new AlignGroup( { matchVertical: false } );
+
     // check boxes for visibility of energy data
     const checkboxGroup = new VerticalCheckboxGroup( [
-      EnergyGraphAccordionBox.createCheckboxItem( model.kineticEnergyDataVisibleProperty, kineticEnergyLabelString ),
-      EnergyGraphAccordionBox.createCheckboxItem( model.potentialEnergyDataVisibleProperty, potentialEnergyLabelString ),
-      EnergyGraphAccordionBox.createCheckboxItem( model.thermalEnergyDataVisibleProperty, thermalEnergyLabelString ),
-      EnergyGraphAccordionBox.createCheckboxItem( model.totalEnergyDataVisibleProperty, totalEnergyLabelString )
+      EnergyGraphAccordionBox.createCheckboxItem( model.kineticEnergyDataVisibleProperty, kineticEnergyLabelString, EnergySkateParkColorScheme.kineticEnergy, labelAlignGroup ),
+      EnergyGraphAccordionBox.createCheckboxItem( model.potentialEnergyDataVisibleProperty, potentialEnergyLabelString, EnergySkateParkColorScheme.potentialEnergy, labelAlignGroup ),
+      EnergyGraphAccordionBox.createCheckboxItem( model.thermalEnergyDataVisibleProperty, thermalEnergyLabelString, EnergySkateParkColorScheme.thermalEnergy, labelAlignGroup ),
+      EnergyGraphAccordionBox.createCheckboxItem( model.totalEnergyDataVisibleProperty, totalEnergyLabelString, EnergySkateParkColorScheme.totalEnergy, labelAlignGroup )
     ], {
       checkboxOptions: {
         boxWidth: Constants.CHECKBOX_WIDTH
@@ -215,15 +221,28 @@ class EnergyGraphAccordionBox extends AccordionBox {
    *
    * @param {Property} property
    * @param {string} labelString
+   * @param {PaintDef|Color} energyColor
+   * @param {AlignGroup} labelAlignGroup - for icon layout, so all lable Text has the same dimensions
    *
    * @returns {*} - Conforms to the item object of VerticalCheckboxGroup
    */
-  static createCheckboxItem( property, labelString ) {
+  static createCheckboxItem( property, labelString, energyColor, labelAlignGroup ) {
+    const labelText = new Text( labelString, {
+      font: Constants.CHECKBOX_LABEL_FONT,
+      maxWidth: 50
+    } );
+    const labelBox = labelAlignGroup.createBox( labelText, { xAlign: 'left' } );
+
+    // filled circle identifying the energy this label represents
+    const iconNode = new Circle( 5, {
+      lineWidth: 0.5,
+      stroke: 'black',
+      fill: energyColor,
+      leftCenter: labelBox.rightCenter.plusXY( 5, 0 )
+    } );
+
     return {
-      node: new Text( labelString, {
-        font: Constants.CHECKBOX_LABEL_FONT,
-        maxWidth: 50
-      } ),
+      node: new HBox( { children: [ labelBox, iconNode ], spacing: 5 } ),
       property: property
     };
   }

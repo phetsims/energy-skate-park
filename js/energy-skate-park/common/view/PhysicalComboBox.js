@@ -51,6 +51,10 @@ class PhysicalComboBox extends ComboBox {
       itemList.push( new ComboBoxItem( new Text( entry.label, Constants.COMBO_BOX_ITEM_OPTIONS ), entry.value ) );
     } );
 
+    // i18n - if the text gets scaled way down, make sure that the button corner radii aren't larger than content height
+    const maxItemHeight = _.maxBy( itemList, item => item.node.height ).node.height;
+    options.cornerRadius = Math.min( options.cornerRadius, maxItemHeight / 2 );
+
     if ( options.supportCustom ) {
       itemList.push( new ComboBoxItem( new Text( controlsGravityCustomString, Constants.COMBO_BOX_ITEM_OPTIONS ), null ) );
     }
