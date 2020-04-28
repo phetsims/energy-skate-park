@@ -1323,7 +1323,7 @@ class EnergySkateParkModel extends PhetioObject {
               if ( newState.thermalEnergy > skaterState.thermalEnergy ) {
                 const increasedThermalEnergy = newState.thermalEnergy - skaterState.thermalEnergy;
                 if ( increasedThermalEnergy > dE ) {
-                  const reducedThermalEnergyState = newState.update( { thermalEnergy: newState.thermalEnergy - dE } );
+                  const reducedThermalEnergyState = newState.updateThermalEnergy( newState.thermalEnergy - dE );
                   assert && assert( Math.abs( reducedThermalEnergyState.getTotalEnergy() - e0 ) < 1E-6, 'energy should be corrected' );
                   debug && debug( 'Corrected energy by reducing thermal overestimate' + dE );
                   return reducedThermalEnergyState;
@@ -1331,7 +1331,7 @@ class EnergySkateParkModel extends PhetioObject {
                 else {
 
                   // Take as much thermal energy out as possible
-                  const originalThermalEnergyState = newState.update( { thermalEnergy: skaterState.thermalEnergy } );
+                  const originalThermalEnergyState = newState.updateThermalEnergy( skaterState.thermalEnergy );
                   const correctedState3 = this.correctEnergyReduceVelocity( skaterState, originalThermalEnergyState );
                   if ( !Utils.equalsEpsilon( e0, correctedState3.getTotalEnergy(), 1E-8 ) ) {
                     debug && debug( 'Changed position & Velocity and still had energy error, error[124]' );
