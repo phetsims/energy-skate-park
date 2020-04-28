@@ -1426,11 +1426,23 @@ class EnergySkateParkModel extends PhetioObject {
     // increment running time - done in stepModel because dt reflects timeControlSpeedProperty here
     this.stopwatch.step( dt );
 
-    return skaterState.dragging ? skaterState : // User is dragging the skater, nothing to update here
-           ( !skaterState.track && skaterState.positionY <= 0 ) ? this.stepGround( dt, skaterState ) :
-           ( !skaterState.track && skaterState.positionY > 0 ) ? this.stepFreeFall( dt, skaterState, false ) :
-           skaterState.track ? this.stepTrack( dt, skaterState ) :
-           skaterState;
+    if ( skaterState.dragging ) {
+
+      // User is dragging the skater, nothing to update here
+      return skaterState;
+    }
+    else if ( skaterState.track ) {
+      return this.stepTrack( dt, skaterState );
+    }
+    else if ( skaterState.positionY <= 0 ) {
+      return this.stepGround( dt, skaterState );
+    }
+    else if ( skaterState.positionY > 0 ) {
+      return this.stepFreeFall( dt, skaterState, false );
+    }
+    else {
+      assert && assert( false, 'Impossible condition for skater, can\'t step' );
+    }
   }
 
   /**
