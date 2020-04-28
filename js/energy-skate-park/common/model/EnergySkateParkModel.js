@@ -1496,19 +1496,14 @@ class EnergySkateParkModel extends PhetioObject {
    * @param {Track} track
    */
   joinTracks( track ) {
-    const connectedPoint = track.getSnapTarget();
-    let otherTrack = null;
-
-    for ( let i = 0; i < this.getPhysicalTracks().length; i++ ) {
-      otherTrack = this.getPhysicalTracks()[ i ];
-      if ( otherTrack.containsControlPoint( connectedPoint ) ) {
-        this.joinTrackToTrack( track, otherTrack );
-        break;
-      }
-    }
-
     assert && assert( track.attachable, 'trying to join tracks, but track is not attachable' );
+
+    const connectedPoint = track.getSnapTarget();
+    const otherTrack = _.find( this.getPhysicalTracks(), track => track.containsControlPoint( connectedPoint ) );
+    assert && assert( otherTrack, 'trying to attach tracks, but other track was not found' );
     assert && assert( otherTrack.attachable, 'trying to join tracks, but other track is not attachable' );
+
+    this.joinTrackToTrack( track, otherTrack );
   }
 
   /**
