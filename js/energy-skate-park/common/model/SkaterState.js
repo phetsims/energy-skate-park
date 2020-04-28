@@ -14,59 +14,53 @@
 import Vector2 from '../../../../../dot/js/Vector2.js';
 import energySkatePark from '../../../energySkatePark.js';
 
-// constants
-const EMPTY_OBJECT = {};
-
 class SkaterState {
 
   /**
    * Create a SkaterSate from a SkaterState or Skater
    * @param {Skater|SkaterState} source
-   * @param {*} overrides the new values
    */
-  constructor( source, overrides ) {
-    this.setState( source, overrides );
+  constructor( source ) {
+    this.setState( source );
   }
 
   /**
    * Create a new SkaterState.
    * @param {Skater|SkaterState} source the initial values to use
-   * @param {*} overrides the new values to override in the source
    * @returns {SkaterState} the new SkaterState
    *
    * @private
    */
-  setState( source, overrides ) {
-    assert && assert( overrides !== undefined, 'an object for overrides is required, even if empty' );
+  setState( source ) {
 
     // Handle the case of a skater passed in (which has a position vector) or a SkaterState passed in, which has a number
     if ( source.positionProperty ) {
-      this.positionX = 'positionX' in overrides ? overrides.positionX : source.positionProperty.value.x;
-      this.positionY = 'positionY' in overrides ? overrides.positionY : source.positionProperty.value.y;
+      this.positionX = source.positionProperty.value.x;
+      this.positionY = source.positionProperty.value.y;
 
-      this.velocityX = 'velocityX' in overrides ? overrides.velocityX : source.velocityProperty.value.x;
-      this.velocityY = 'velocityY' in overrides ? overrides.velocityY : source.velocityProperty.value.y;
+      this.velocityX = source.velocityProperty.value.x;
+      this.velocityY = source.velocityProperty.value.y;
     }
     else {
-      this.positionX = 'positionX' in overrides ? overrides.positionX : source.positionX;
-      this.positionY = 'positionY' in overrides ? overrides.positionY : source.positionY;
+      this.positionX = source.positionX;
+      this.positionY = source.positionY;
 
-      this.velocityX = 'velocityX' in overrides ? overrides.velocityX : source.velocityX;
-      this.velocityY = 'velocityY' in overrides ? overrides.velocityY : source.velocityY;
+      this.velocityX = source.velocityX;
+      this.velocityY = source.velocityY;
     }
 
     // This code is called many times from the physics loop, so must be optimized for speed and memory
     // Special handling for values that can be null, false or zero
-    this.gravity = getValue( 'gravity', source, overrides );
-    this.referenceHeight = getValue( 'referenceHeight', source, overrides );
-    this.mass = getValue( 'mass', source, overrides );
-    this.track = getValue( 'track', source, overrides );
-    this.angle = getValue( 'angle', source, overrides );
-    this.onTopSideOfTrack = getValue( 'onTopSideOfTrack', source, overrides );
-    this.parametricPosition = getValue( 'parametricPosition', source, overrides );
-    this.parametricSpeed = getValue( 'parametricSpeed', source, overrides );
-    this.dragging = getValue( 'dragging', source, overrides );
-    this.thermalEnergy = getValue( 'thermalEnergy', source, overrides );
+    this.gravity = getValue( 'gravity', source );
+    this.referenceHeight = getValue( 'referenceHeight', source );
+    this.mass = getValue( 'mass', source );
+    this.track = getValue( 'track', source );
+    this.angle = getValue( 'angle', source );
+    this.onTopSideOfTrack = getValue( 'onTopSideOfTrack', source );
+    this.parametricPosition = getValue( 'parametricPosition', source );
+    this.parametricSpeed = getValue( 'parametricSpeed', source );
+    this.dragging = getValue( 'dragging', source );
+    this.thermalEnergy = getValue( 'thermalEnergy', source );
 
     // Some sanity tests
     assert && assert( isFinite( this.thermalEnergy ) );
@@ -159,7 +153,7 @@ class SkaterState {
    * @returns {SkaterState}
    */
   updateTrackUD( track, parametricSpeed ) {
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
     state.track = track;
     state.parametricSpeed = parametricSpeed;
     return state;
@@ -179,7 +173,7 @@ class SkaterState {
    * @returns {SkaterState}
    */
   updateUUDVelocityPosition( parametricPosition, parametricSpeed, velocityX, velocityY, positionX, positionY ) {
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
     state.parametricPosition = parametricPosition;
     state.parametricSpeed = parametricSpeed;
     state.velocityX = velocityX;
@@ -202,7 +196,7 @@ class SkaterState {
    * @returns {SkaterState}
    */
   updatePositionAngleUpVelocity( positionX, positionY, angle, onTopSideOfTrack, velocityX, velocityY ) {
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
     state.angle = angle;
     state.onTopSideOfTrack = onTopSideOfTrack;
     state.velocityX = velocityX;
@@ -222,7 +216,7 @@ class SkaterState {
   updateThermalEnergy( thermalEnergy ) {
     assert && assert( thermalEnergy >= 0 );
 
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
 
     state.thermalEnergy = thermalEnergy;
     return state;
@@ -238,7 +232,7 @@ class SkaterState {
    * @returns {SkaterState}
    */
   updateUPosition( parametricPosition, positionX, positionY ) {
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
     state.parametricPosition = parametricPosition;
     state.positionX = positionX;
     state.positionY = positionY;
@@ -260,7 +254,7 @@ class SkaterState {
   switchToGround( thermalEnergy, velocityX, velocityY, positionX, positionY ) {
     assert && assert( thermalEnergy >= 0 );
 
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
     state.thermalEnergy = thermalEnergy;
     state.track = null;
     state.onTopSideOfTrack = true;
@@ -283,7 +277,7 @@ class SkaterState {
   strikeGround( thermalEnergy, positionX ) {
     assert && assert( thermalEnergy >= 0 );
 
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
     state.thermalEnergy = thermalEnergy;
     state.positionX = positionX;
     state.positionY = 0;
@@ -301,7 +295,7 @@ class SkaterState {
    * @returns {SkaterState}
    */
   copy() {
-    return new SkaterState( this, EMPTY_OBJECT );
+    return new SkaterState( this );
   }
 
   /**
@@ -311,7 +305,7 @@ class SkaterState {
    * @returns {SkaterState}
    */
   leaveTrack() {
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
     state.parametricSpeed = 0;
     state.track = null;
     return state;
@@ -326,7 +320,7 @@ class SkaterState {
    * @returns {SkaterState}
    */
   updatePosition( positionX, positionY ) {
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
     state.positionX = positionX;
     state.positionY = positionY;
     return state;
@@ -343,7 +337,7 @@ class SkaterState {
    * @returns {SkaterState}
    */
   updateUDVelocity( parametricSpeed, velocityX, velocityY ) {
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
     state.parametricSpeed = parametricSpeed;
     state.velocityX = velocityX;
     state.velocityY = velocityY;
@@ -363,7 +357,7 @@ class SkaterState {
    * @returns {SkaterState}
    */
   continueFreeFall( velocityX, velocityY, positionX, positionY ) {
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
     state.velocityX = velocityX;
     state.velocityY = velocityY;
     state.positionX = positionX;
@@ -389,7 +383,7 @@ class SkaterState {
   attachToTrack( thermalEnergy, track, onTopSideOfTrack, parametricPosition, parametricSpeed, velocityX, velocityY, positionX, positionY ) {
     assert && assert( thermalEnergy >= 0 );
 
-    const state = new SkaterState( this, EMPTY_OBJECT );
+    const state = new SkaterState( this );
     state.thermalEnergy = thermalEnergy;
     state.track = track;
     state.onTopSideOfTrack = onTopSideOfTrack;
@@ -450,12 +444,10 @@ class SkaterState {
  *
  * @param{string} key
  * @param {Object} source
- * @param {Object} overrides
  * @returns {*}
  */
-const getValue = ( key, source, overrides ) => {
-  return key in overrides ? overrides[ key ] :
-         typeof source[ key + 'Property' ] === 'object' ? source[ key + 'Property' ].value :
+const getValue = ( key, source ) => {
+  return typeof source[ key + 'Property' ] === 'object' ? source[ key + 'Property' ].value :
          source[ key ];
 };
 

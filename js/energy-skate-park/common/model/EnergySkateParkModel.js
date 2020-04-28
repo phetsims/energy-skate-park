@@ -56,9 +56,6 @@ import SkaterState from './SkaterState.js';
 import Track from './Track.js';
 import TrackIO from './TrackIO.js';
 
-// Reuse empty object for creating SkaterStates to avoid allocations
-const EMPTY_OBJECT = {};
-
 // Use a separate pooled curvature variable to reduce memory allocations - object values
 // will be modified as the skater moves
 const curvatureTemp = { r: 1, x: 0, y: 0 };
@@ -325,7 +322,7 @@ class EnergySkateParkModel extends PhetioObject {
    * @public
    */
   manualStep() {
-    const skaterState = new SkaterState( this.skater, EMPTY_OBJECT );
+    const skaterState = new SkaterState( this.skater );
     const dt = 1.0 / FRAME_RATE;
     const result = this.stepModel( dt, skaterState );
     result.setToSkater( this.skater );
@@ -351,7 +348,7 @@ class EnergySkateParkModel extends PhetioObject {
 
       const initialThermalEnergy = this.skater.thermalEnergyProperty.value;
 
-      const skaterState = new SkaterState( this.skater, EMPTY_OBJECT );
+      const skaterState = new SkaterState( this.skater );
       if ( debug ) {
         initialEnergy = skaterState.getTotalEnergy();
       }
@@ -372,7 +369,7 @@ class EnergySkateParkModel extends PhetioObject {
 
         if ( debug ) {
           if ( Math.abs( updatedState.getTotalEnergy() - initialEnergy ) > 1E-6 ) {
-            const initialStateCopy = new SkaterState( this.skater, EMPTY_OBJECT );
+            const initialStateCopy = new SkaterState( this.skater );
             const redo = this.stepModel( this.timeControlSpeedProperty.get() === TimeControlSpeed.NORMAL ? dt : dt * 0.25, initialStateCopy );
             debug && debug( redo );
           }
