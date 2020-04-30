@@ -135,24 +135,6 @@
     "dogMassPattern": {
       "value": "Dog ({{value}} kg)"
     },
-    "skater1": {
-      "value": "Skater 1"
-    },
-    "skater2": {
-      "value": "Skater 2"
-    },
-    "skater3": {
-      "value": "Skater 3"
-    },
-    "skater4": {
-      "value": "Skater 4"
-    },
-    "skater5": {
-      "value": "Skater 5"
-    },
-    "dog": {
-      "value": "Dog"
-    },
     "restartSkater": {
       "value": "Restart Skater"
     }

@@ -33,6 +33,10 @@ const Constants = {
     majorTickLength: 10
   },
 
+  // for radio buttons
+  RADIO_BUTTON_CONTENT_MARGIN: 3,
+  RADIO_BUTTON_CORNER_RADIUS: 2,
+
   // consistent width for all checkboxesz
   CHECKBOX_WIDTH: 12,
   CHECKBOX_LABEL_FONT: new PhetFont( { size: 12 } ),

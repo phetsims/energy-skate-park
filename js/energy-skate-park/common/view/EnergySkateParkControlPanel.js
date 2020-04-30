@@ -18,6 +18,7 @@ import EnergySkateParkMassControls from './EnergySkateParkMassControls.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
 import FrictionSlider from './FrictionSlider.js';
 import SceneSelectionRadioButtonGroup from './SceneSelectionRadioButtonGroup.js';
+import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
 
 class EnergySkateParkControlPanel extends Panel {
 
@@ -42,6 +43,9 @@ class EnergySkateParkControlPanel extends Panel {
 
       // {boolean} whether or not mass controls will be included in this control panel
       showMassControls: true,
+
+      // {boolean} whether or not to include radio buttons that control the skater in energy skate park.
+      showSkaterControls: true,
 
       // {Object|null} options passed along to the EnergySkateParkVisibilityControls
       visibilityControlsOptions: null,
@@ -80,6 +84,12 @@ class EnergySkateParkControlPanel extends Panel {
     if ( options.showMassControls ) {
       massControls = new EnergySkateParkMassControls( model.skater.massProperty, model.skater.massRange, screenView.skaterNode.skaterImageProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
       children.push( massControls );
+    }
+
+    let skaterControls = null;
+    if ( options.showSkaterControls ) {
+      skaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageProperty );
+      children.push( skaterControls );
     }
 
     // horizontal separators added after construction of all controls so that it can match width of widest control

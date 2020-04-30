@@ -12,7 +12,6 @@ import energySkatePark from '../../../energySkatePark.js';
 import MassComboBox from './MassComboBox.js';
 import MassNumberControl from './MassNumberControl.js';
 import MassSlider from './MassSlider.js';
-import SkaterComboBox from './SkaterComboBox.js';
 
 class EnergySkateParkMassControls extends VBox {
 
@@ -39,9 +38,6 @@ class EnergySkateParkMassControls extends VBox {
       // {boolean} whether or not a MassComboBox is included in this set of controls
       includeMassComboBox: false,
 
-      // {boolean} whether or not a SkaterComboBox is included in this set of controls
-      includeSkaterComboBox: false,
-
       // {Object|null} - options passed along to the MassNumberControl, if one is included
       massNumberControlOptions: null,
 
@@ -59,12 +55,6 @@ class EnergySkateParkMassControls extends VBox {
       children.push( massComboBox );
     }
 
-    let skaterComboBox = null;
-    if ( options.includeSkaterComboBox ) {
-      skaterComboBox = new SkaterComboBox( skaterImageProperty, listParent, tandem.createTandem( 'skaterComboBox' ) );
-      children.push( skaterComboBox );
-    }
-
     let massNumberControl = null;
     if ( options.includeMassNumberControl ) {
       massNumberControl = new MassNumberControl( massProperty, massRange, tandem.createTandem( 'massNumberControl' ), options.massNumberControlOptions );
@@ -80,7 +70,6 @@ class EnergySkateParkMassControls extends VBox {
     super( { spacing: 8, children: children } );
 
     this.massComboBox = massComboBox;
-    this.skaterComboBox = skaterComboBox;
   }
 
   /**
@@ -92,9 +81,6 @@ class EnergySkateParkMassControls extends VBox {
   matchLayout( width ) {
     if ( this.massComboBox ) {
       this.massComboBox.matchLayout( width );
-    }
-    if ( this.skaterComboBox ) {
-      this.skaterComboBox.matchLayout( width );
     }
   }
 }

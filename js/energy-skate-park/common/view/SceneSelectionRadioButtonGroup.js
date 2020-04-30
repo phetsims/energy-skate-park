@@ -15,7 +15,9 @@ import AlignGroup from '../../../../../scenery/js/nodes/AlignGroup.js';
 import Node from '../../../../../scenery/js/nodes/Node.js';
 import RadioButtonGroup from '../../../../../sun/js/buttons/RadioButtonGroup.js';
 import energySkatePark from '../../../energySkatePark.js';
+import Constants from '../Constants.js';
 import BackgroundNode from './BackgroundNode.js';
+import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TrackNode from './TrackNode.js';
 
 class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
@@ -35,11 +37,11 @@ class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
 
       // specific and passed to RadioButtonGroup
       orientation: 'horizontal',
-      buttonContentXMargin: 3,
-      buttonContentYMargin: 3,
-      cornerRadius: 2,
-      selectedStroke: 'rgb(87,178,226)',
-      baseColor: 'white',
+      buttonContentXMargin: Constants.RADIO_BUTTON_CONTENT_MARGIN,
+      buttonContentYMargin: Constants.RADIO_BUTTON_CONTENT_MARGIN,
+      cornerRadius: Constants.RADIO_BUTTON_CORNER_RADIUS,
+      selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke,
+      baseColor: EnergySkateParkColorScheme.radioButtonBaseColor,
       tandem: tandem,
 
       // {boolean} - should mountains, background, and sky be included in the icon for track buttons?

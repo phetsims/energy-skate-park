@@ -24,6 +24,10 @@ const EnergySkateParkColorScheme = {
   pathStroke: new Color( 'black' ),
   haloFill: new Color( 225, 231, 86, 0.75 ),
 
+  // for radio buttons
+  radioButtonBaseColor: 'white',
+  radioButtonSelectedStroke: 'rgb(87,178,226)',
+
   // associated with the Skater to represent position of the important particle coordinate
   particleCircle: 'red',
 
