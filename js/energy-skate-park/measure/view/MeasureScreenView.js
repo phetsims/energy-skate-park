@@ -34,7 +34,8 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
         },
         gravityControlsOptions: {
           includeGravityComboBox: true
-        }
+        },
+        showSkaterControls: false
       }
     } );
 
