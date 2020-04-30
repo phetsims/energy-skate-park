@@ -50,13 +50,17 @@ class Track extends PhetioObject {
       // {boolean} - can this track be dragged and moved in the play area?
       draggable: false,
 
-      // {boolean} - can this track be changed by dragging control points?
+      // {boolean} - can this track be changed by dragging control points? Some tracks can have their
+      // control points moved but cannot be dragged as a whole.
       configurable: false,
 
-      // {boolean} - can this track be changed or broken by removing control points?
+      // {boolean} - can this track be changed or broken by removing control points? I so, clicking on a control
+      // point will create a UI to split the track or delete the control point.
       splittable: false,
 
-      // {boolean} - can this track be attached with another track by dragging track or control points?
+      // {boolean} - can this track be attached with another track by dragging track or control points? When a track
+      // is attachable control points at the end of the track have a different visualization to indicate that
+      // the track can be attached to another.
       attachable: false,
 
       // {boolean} - whether the skater transitions from the right edge of this track directly to the ground, see
