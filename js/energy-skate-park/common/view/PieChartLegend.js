@@ -127,7 +127,7 @@ class PieChartLegend extends Panel {
       yMargin: 5,
       resize: false,
       tandem: tandem
-    }, Constants.PANEL_OPTIONS ) );
+    }, Constants.GRAPH_PANEL_OPTONS ) );
 
     this.addChild( clearThermalButton );
     const strutGlobal = clearThermalButtonStrut.parentToGlobalPoint( clearThermalButtonStrut.center );

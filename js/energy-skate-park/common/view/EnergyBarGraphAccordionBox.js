@@ -23,21 +23,15 @@ class EnergyBarGraphAccordionBox extends AccordionBox {
    */
   constructor( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem, options ) {
 
+    const defaultMargin = 5;
     options = merge( {
-      barGraphOptions: null
-    }, options );
-
-    const energyBarGraph = new EnergyBarGraph( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
-
-    const margin = 5;
-    super( energyBarGraph, merge( {
-
-      contentXMargin: margin,
-      contentYMargin: margin,
-      buttonXMargin: margin,
-      buttonYMargin: margin,
 
       titleNode: EnergyBarGraph.createLabel(),
+
+      contentXMargin: defaultMargin,
+      contentYMargin: defaultMargin,
+      buttonXMargin: defaultMargin,
+      buttonYMargin: defaultMargin,
 
       // use this model Property because the graph only updates when it is visible
       expandedProperty: barGraphVisibleProperty,
@@ -46,13 +40,17 @@ class EnergyBarGraphAccordionBox extends AccordionBox {
       barGraphOptions: null,
 
       tandem: tandem
-    }, Constants.PANEL_OPTIONS ) );
+    }, Constants.GRAPH_PANEL_OPTONS, options );
+
+    const energyBarGraph = new EnergyBarGraph( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
+
+    super( energyBarGraph, options );
 
     // create an icon that represents the content, it is invisible when expanded
     const graphIcon = EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } );
     this.addChild( graphIcon );
     graphIcon.right = graphIcon.globalToParentPoint( energyBarGraph.parentToGlobalPoint( energyBarGraph.rightCenter ) ).x;
-    graphIcon.top = margin;
+    graphIcon.top = options.buttonYMargin;
 
     barGraphVisibleProperty.link( visible => {
       graphIcon.visible = !visible;
