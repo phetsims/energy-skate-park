@@ -29,7 +29,10 @@ class ToolboxPanel extends Panel {
    */
   constructor( model, view, tandem, options ) {
     options = merge( {
-      align: 'center'
+      align: 'center',
+
+      // smaller y margin to save space when used with very tall ControlPanels (like in the intro screen)
+      yMargin: 2
     }, Constants.PANEL_OPTIONS, options );
 
     // create the icons
