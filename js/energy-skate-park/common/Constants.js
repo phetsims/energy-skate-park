@@ -24,7 +24,7 @@ const JUPITER_GRAVITY = 24.8;
 // maximum coefficient of friction
 const MAX_FRICTION = 0.1;
 
-const PANEL_CORNER_RADIUS = 8;
+const PANEL_CORNER_RADIUS = 5;
 
 const PANEL_OPTIONS = {
     cornerRadius: PANEL_CORNER_RADIUS,
