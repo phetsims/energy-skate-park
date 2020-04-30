@@ -29,7 +29,7 @@ import Node from '../../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../../scenery/js/nodes/Path.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
 import RectangularPushButton from '../../../../../sun/js/buttons/RectangularPushButton.js';
-import skaterIconImage from '../../../../images/skater-icon_png.js';
+import skaterIconImage from '../../../../images/skater1_left_png.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
 import AttachDetachToggleButtons from './AttachDetachToggleButtons.js';
@@ -325,7 +325,7 @@ class EnergySkateParkScreenView extends ScreenView {
     this.referenceHeightLine.centerX = this.layoutBounds.centerX;
 
     // Buttons to return the skater when she is offscreen, see #219
-    const iconScale = 0.4;
+    const iconScale = 0.15;
     const returnSkaterToPreviousStartingPositionButton = new RectangularPushButton( {
       content: new Image( skaterIconImage, {
         scale: iconScale,
