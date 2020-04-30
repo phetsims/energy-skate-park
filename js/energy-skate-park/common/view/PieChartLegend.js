@@ -45,10 +45,9 @@ class PieChartLegend extends Panel {
     }, options );
 
     // The x-coordinate of a bar chart bar
-    const createLabel = ( index, title, color, tandemName ) => {
+    const createLabel = ( index, title, tandemName ) => {
       return new Text( title, {
         tandem: tandem.createTandem( tandemName ),
-        fill: color,
         font: new PhetFont( 12 ),
         pickable: false,
         maxWidth: 97 // selected by choosing the length of widest English string in ?stringTest=double
@@ -68,10 +67,10 @@ class PieChartLegend extends Panel {
     const thermalBar = createBar( 2, EnergySkateParkColorScheme.thermalEnergy );
     const totalBar = createBar( 3, EnergySkateParkColorScheme.totalEnergy );
 
-    const kineticLabel = createLabel( 0, energyKineticString, EnergySkateParkColorScheme.kineticEnergy, 'kineticEnergyLabel' );
-    const potentialLabel = createLabel( 1, energyPotentialString, EnergySkateParkColorScheme.potentialEnergy, 'potentialEnergyLabel' );
-    const thermalLabel = createLabel( 2, energyThermalString, EnergySkateParkColorScheme.thermalEnergy, 'thermalEnergyLabel' );
-    const totalLabel = createLabel( 3, energyTotalString, EnergySkateParkColorScheme.totalEnergy, 'totalEnergyLabel' );
+    const kineticLabel = createLabel( 0, energyKineticString, 'kineticEnergyLabel' );
+    const potentialLabel = createLabel( 1, energyPotentialString, 'potentialEnergyLabel' );
+    const thermalLabel = createLabel( 2, energyThermalString, 'thermalEnergyLabel' );
+    const totalLabel = createLabel( 3, energyTotalString, 'totalEnergyLabel' );
 
     const clearThermalButton = new MoveToTrashButton( {
       arrowColor: EnergySkateParkColorScheme.thermalEnergy,
