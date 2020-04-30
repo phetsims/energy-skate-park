@@ -39,12 +39,12 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
    * interactive.
    * @private
    *
-   * @param {number} scene - index identifying the scene
+   * @param {number} sceneIndex - index identifying the scene
    */
-  updateActiveTrack( scene ) {
+  updateActiveTrack( sceneIndex ) {
     for ( let i = 0; i < this.tracks.length; i++ ) {
       const track = this.tracks.get( i );
-      track.physicalProperty.value = ( i === scene );
+      track.physicalProperty.value = ( i === sceneIndex );
 
       // Reset the skater when the track is changed, see #179
       this.skater.returnToInitialPosition();
