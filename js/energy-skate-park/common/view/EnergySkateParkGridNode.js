@@ -12,14 +12,10 @@
  */
 
 import GridNode from '../../../../../scenery-phet/js/GridNode.js';
-import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../../../scenery/js/nodes/Node.js';
 import energySkatePark from '../../../energySkatePark.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import TextPanel from './TextPanel.js';
-
-// constants
-const FONT = new PhetFont( 12 );
 
 class EnergySkateParkGridNode extends Node {
 
@@ -62,7 +58,6 @@ class EnergySkateParkGridNode extends Node {
 
     // @private {TextPanel} - a unique label for the zero meter reference height position
     this.zeroMeterLabel = new TextPanel( energySkateParkStrings.heightLabels.zeroM, {
-      font: FONT,
       bottom: this.modelViewTransform.modelToViewY( 0 ) - 2,
       right: this.labelXPosition - 2
     } );
@@ -137,7 +132,6 @@ class EnergySkateParkGridNode extends Node {
       // only major grid lines are labeled, and 0 meters has a unique label
       if ( y % 2 === 0 && y !== 0 ) {
         const gridLineLabel = new TextPanel( '' + y, {
-          font: FONT,
           bottom: viewY - 2,
           right: this.labelXPosition - 2
         } );

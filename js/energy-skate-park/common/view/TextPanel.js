@@ -25,7 +25,7 @@ class TextPanel extends Panel {
     options = merge( {
 
       // Text options
-      font: new PhetFont( 10 ),
+      font: new PhetFont( 12 ),
       textMaxWidth: 150,
 
       // panel options
