@@ -58,7 +58,7 @@ const ENERGY_RANGE = new Range( -20000, 20000 );
 // offset so that the center of the probe aligns with sample positions
 const PROBE_CENTER_OFFSET = new Vector2( 5.5, 0 );
 
-const SENSOR_COLOR = 'rgb(47,64,113)'; // deep blue
+const SENSOR_COLOR = 'rgb( 103, 80, 113 )';
 
 // max distance between sample and probe center for the sample to be displayed, in view coordinates
 const PROBE_THRESHOLD_DISTANCE = 10;
