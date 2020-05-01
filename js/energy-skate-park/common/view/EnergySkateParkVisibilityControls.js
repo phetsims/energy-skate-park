@@ -69,7 +69,7 @@ class EnergySkateParkVisibilityControls extends VBox {
 
     super( {
       align: 'left',
-      spacing: 6.5
+      spacing: 3
     } );
 
     // @private {AlignGroup} - Used to align labels and icons so that every box in the group has the same dimensions
