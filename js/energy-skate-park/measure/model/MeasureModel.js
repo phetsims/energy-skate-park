@@ -11,10 +11,9 @@ import Property from '../../../../../axon/js/Property.js';
 import Vector2 from '../../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../../dot/js/Vector2Property.js';
 import energySkatePark from '../../../energySkatePark.js';
-import EnergySkateParkSaveSampleModel from '../../common/model/EnergySkateParkSaveSampleModel.js';
 import EnergySkateParkTrackSetModel from '../../common/model/EnergySkateParkTrackSetModel.js';
 
-class MeasureModel extends EnergySkateParkSaveSampleModel {
+class MeasureModel extends EnergySkateParkTrackSetModel {
 
   /**
    * @param {Tandem} tandem

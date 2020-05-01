@@ -10,10 +10,10 @@ import PropertyIO from '../../../../../axon/js/PropertyIO.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import NumberIO from '../../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../../energySkatePark.js';
-import EnergySkateParkModel from './EnergySkateParkModel.js';
+import EnergySkateParkSaveSampleModel from './EnergySkateParkSaveSampleModel.js';
 import PremadeTracks from './PremadeTracks.js';
 
-class EnergySkateParkTrackSetModel extends EnergySkateParkModel {
+class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
   /**
    * @param {Tandem} tandem

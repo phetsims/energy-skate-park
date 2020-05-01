@@ -13,12 +13,12 @@ import Range from '../../../../../dot/js/Range.js';
 import Utils from '../../../../../dot/js/Utils.js';
 import Enumeration from '../../../../../phet-core/js/Enumeration.js';
 import energySkatePark from '../../../energySkatePark.js';
-import EnergySkateParkSaveSampleModel from '../../common/model/EnergySkateParkSaveSampleModel.js';
+import EnergySkateParkTrackSetModel from '../../common/model/EnergySkateParkTrackSetModel.js';
 import PremadeTracks from '../../common/model/PremadeTracks.js';
 import SkaterState from '../../common/model/SkaterState.js';
 import GraphsConstants from '../GraphsConstants.js';
 
-class GraphsModel extends EnergySkateParkSaveSampleModel {
+class GraphsModel extends EnergySkateParkTrackSetModel {
 
   /**
    * @param {Tandem} tandem

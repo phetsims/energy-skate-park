@@ -17,10 +17,10 @@ import NumberProperty from '../../../../../axon/js/NumberProperty.js';
 import ObservableArray from '../../../../../axon/js/ObservableArray.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import energySkatePark from '../../../energySkatePark.js';
-import EnergySkateParkTrackSetModel from './EnergySkateParkTrackSetModel.js';
+import EnergySkateParkModel from './EnergySkateParkModel.js';
 import SkaterSample from './SkaterSample.js';
 
-class EnergySkateParkSaveSampleModel extends EnergySkateParkTrackSetModel {
+class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
   /**
    * @param {Tandem} tandem
