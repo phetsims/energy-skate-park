@@ -83,11 +83,6 @@ class EnergySkateParkVisibilityControls extends VBox {
     // {EnergySkateParkCheckboxItem[]}
     const checkboxItems = [];
 
-    if ( options.showSkaterPathCheckbox ) {
-      const iconNode = EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) );
-      this.addCheckboxContent( controlsPathString, iconNode, model.saveSkaterSamplesProperty, tandem.createTandem( 'pathCheckboxContent' ) );
-    }
-
     if ( options.showPieChartCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } );
       this.addCheckboxContent( pieChartString, iconNode, model.pieChartVisibleProperty, tandem.createTandem( 'pieChartCheckboxContent' ) );
@@ -106,6 +101,11 @@ class EnergySkateParkVisibilityControls extends VBox {
     if ( options.showSpeedCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } );
       this.addCheckboxContent( propertiesSpeedString, iconNode, model.speedometerVisibleProperty, tandem.createTandem( 'speedCheckboxContent' ) );
+    }
+
+    if ( options.showSkaterPathCheckbox ) {
+      const iconNode = EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) );
+      this.addCheckboxContent( controlsPathString, iconNode, model.saveSkaterSamplesProperty, tandem.createTandem( 'pathCheckboxContent' ) );
     }
 
     if ( options.showReferenceHeightCheckbox ) {
