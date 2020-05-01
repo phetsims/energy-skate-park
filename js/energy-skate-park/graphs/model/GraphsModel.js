@@ -59,9 +59,9 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
     this.thermalEnergyDataVisibleProperty = new BooleanProperty( true );
     this.totalEnergyDataVisibleProperty = new BooleanProperty( true );
 
-    // @public - scale for the graph
-    this.lineGraphScaleProperty = new NumberProperty( 3, {
-      range: new Range( 1, 5 )
+    // @private - index pointing to the range plotted on the energy plot, see GraphsConstants.PLOT_RANGES
+    this.energyPlotScaleIndexProperty = new NumberProperty( 8, {
+      range: new Range( 1, GraphsConstants.PLOT_RANGES.length - 1 )
     } );
 
     // @public - sets the independent variable for the graph display
@@ -145,7 +145,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
     this.thermalEnergyDataVisibleProperty.reset();
     this.totalEnergyDataVisibleProperty.reset();
 
-    this.lineGraphScaleProperty.reset();
+    this.energyPlotScaleIndexProperty.reset();
     this.independentVariableProperty.reset();
 
     this.clearEnergyData();

@@ -115,11 +115,11 @@ class EnergyGraphAccordionBox extends AccordionBox {
 
     // zoom buttons
     const touchAreaShift = 3;
-    const zoomInButton = new EnergyGraphZoomButton( model.lineGraphScaleProperty, {
+    const zoomInButton = new EnergyGraphZoomButton( model.energyPlotScaleIndexProperty, {
       touchAreaYShift: -touchAreaShift,
       tandem: tandem.createTandem( 'zoomInButton' )
     } );
-    const zoomOutButton = new EnergyGraphZoomButton( model.lineGraphScaleProperty, {
+    const zoomOutButton = new EnergyGraphZoomButton( model.energyPlotScaleIndexProperty, {
       in: false,
       touchAreaYShift: touchAreaShift,
       tandem: tandem.createTandem( 'zoomOutButton' )
@@ -199,11 +199,11 @@ class EnergyGraphAccordionBox extends AccordionBox {
       this.clearEnergyData();
     } );
 
-    model.lineGraphScaleProperty.link( scale => {
-      const range = model.lineGraphScaleProperty.range;
-      assert && assert( model.lineGraphScaleProperty.range, 'please define a range for lineGraphScaleProperty' );
-      zoomInButton.enabled = scale > range.min;
-      zoomOutButton.enabled = scale < range.max;
+    model.energyPlotScaleIndexProperty.link( scaleIndex => {
+      const range = model.energyPlotScaleIndexProperty.range;
+      assert && assert( model.energyPlotScaleIndexProperty.range, 'please define a range for energyPlotScaleIndexProperty' );
+      zoomInButton.enabled = scaleIndex > range.min;
+      zoomOutButton.enabled = scaleIndex < range.max;
     } );
   }
 

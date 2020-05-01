@@ -7,6 +7,7 @@
  */
 
 import energySkatePark from '../../energySkatePark.js';
+import Range from '../../../../dot/js/Range.js';
 
 // constants
 const TIME_PER_SAMPLE = 1 / 60; // in seconds (assuming 60 fps, one sample per frame)
@@ -22,6 +23,33 @@ const GraphsConstants = {
   // determined to be reasonable by inspecting energies at large skater heights - anything
   // above this will be off of the graph
   MAX_PLOTTED_ENERGY: 3000,
+
+  // ranges for the energy plot, when scale changes
+  PLOT_RANGES: [
+    new Range( -25, 25 ),
+    new Range( -50, 50 ),
+    new Range( -100, 100 ),
+    new Range( -200, 200 ),
+    new Range( -500, 500 ),
+    new Range( -1000, 1000 ),
+    new Range( -1500, 1500 ),
+    new Range( -2000, 2000 ),
+    new Range( -2500, 2500 ), // default
+    new Range( -3000, 3000 ),
+    new Range( -4000, 4000 ),
+    new Range( -5000, 5000 ),
+    new Range( -6000, 6000 ),
+    new Range( -7000, 7000 ),
+    new Range( -8000, 8000 ),
+    new Range( -9000, 9000 ),
+    new Range( -10000, 10000 ),
+    new Range( -12500, 12500 ),
+    new Range( -15000, 15000 ),
+    new Range( -17500, 17500 ),
+    new Range( -20000, 20000 ),
+    new Range( -22500, 22500 ),
+    new Range( -25000, 25000 )
+  ],
 
   // dimensions for the tracks in the graphs screen, reused and referenced by many components in this screen
   // in model coordinates (meters)

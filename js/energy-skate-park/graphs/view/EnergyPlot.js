@@ -19,18 +19,10 @@ import merge from '../../../../../phet-core/js/merge.js';
 import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
+import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 
 // constants
-// determines a range for the energy plot as a function of the scale
-const Y_OFFSET = 500;
-const Y_SLOPE = 500;
-
-// when the plot range is larger than this threshold, a larger step is used for vertical grid lines on the plot
-const LARGE_RANGE_THRESHOLD = 5000;
-const LARGE_STEP = 1000;
-const SMALL_STEP = 500;
-
 // determines properties of the plot that may depend on the independent variable
 const TIME_MAX_X = 20; // in seconds
 const TIME_STEP_X = 2; // in seconds
@@ -58,7 +50,7 @@ class EnergyPlot extends XYCursorPlot {
     // sim play when dragging ends
     let pausedOnDragStart = false;
 
-    const plotRange = calculateRange( model.lineGraphScaleProperty.get() );
+    const plotRange = GraphsConstants.PLOT_RANGES[ model.energyPlotScaleIndexProperty.get() ];
 
     super( {
 
@@ -70,7 +62,6 @@ class EnergyPlot extends XYCursorPlot {
       maxX: TIME_MAX_X,
       minY: plotRange.min,
       maxY: plotRange.max,
-      stepY: SMALL_STEP,
 
       // no arrows along x and y
       showAxis: false,
@@ -141,11 +132,11 @@ class EnergyPlot extends XYCursorPlot {
     } );
 
     // calculate new range of plot when zooming in or out
-    model.lineGraphScaleProperty.link( scale => {
-      const newRange = calculateRange( scale );
+    model.energyPlotScaleIndexProperty.link( scaleIndex => {
+      const newRange = GraphsConstants.PLOT_RANGES[ scaleIndex ];
       const newMaxY = newRange.max;
       const newMinY = newRange.min;
-      const newStepY = ( newMaxY - newMinY ) >= LARGE_RANGE_THRESHOLD ? LARGE_STEP : SMALL_STEP;
+      const newStepY = ( newMaxY - newMinY ) / 4;
 
       this.setMinY( newMinY );
       this.setMaxY( newMaxY );
@@ -233,16 +224,6 @@ class EnergyPlot extends XYCursorPlot {
 //--------------------------------------------------------------------------
 // helper functions
 //-------------------------------------------------------------------------
-/**
- * Calculates the range of the plot as a function of scale.
- * @param {number} scale
- * @returns {Range}
- */
-const calculateRange = scale => {
-  const max = Y_OFFSET + scale * Y_SLOPE;
-  return new Range( -max, max );
-};
-
 /**
  * Calculates the domain of the plot as a function of the independent variable.
  * @param {GraphsModel.IndependentVariable} independentVariable
