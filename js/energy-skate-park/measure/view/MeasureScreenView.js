@@ -29,7 +29,6 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
       showSkaterPath: true,
       controlPanelOptions: {
         visibilityControlsOptions: {
-          showSkaterPathCheckbox: true,
           showStickToTrackCheckbox: true
         },
         gravityControlsOptions: {
