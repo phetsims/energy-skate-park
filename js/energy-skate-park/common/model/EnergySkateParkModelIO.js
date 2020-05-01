@@ -38,7 +38,7 @@ class EnergySkateParkModelIO extends ObjectIO {
    * @param {Tandem} tandem
    * @param {Object} stateObject
    */
-  static addChildInstanceDeprecated( energySkateParkModel, tandem, stateObject ) {
+  static addChildElementDeprecated( energySkateParkModel, tandem, stateObject ) {
     validate( energySkateParkModel, this.validator );
     const isControlPoint = tandem.phetioID.indexOf( '.controlPoint' ) >= 0;
 
