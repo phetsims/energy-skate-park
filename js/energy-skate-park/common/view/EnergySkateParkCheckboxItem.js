@@ -156,7 +156,7 @@ class EnergySkateParkCheckboxItem extends Checkbox {
    */
   static createSamplesIcon( tandem ) {
 
-    const circleRadius = 3;
+    const circleRadius = 2.5;
 
     // positions of circles, for circles and path
     const pointDistance = 3 * circleRadius;
@@ -180,7 +180,7 @@ class EnergySkateParkCheckboxItem extends Checkbox {
       .quadraticCurveToPoint( thirdCenter.plusXY( 0, pointDistance ), thirdCenter );
     const linePath = new Path( lineShape, {
       stroke: EnergySkateParkColorScheme.pathStroke,
-      lineWidth: 2
+      lineWidth: 1
     } );
 
     return new Node( { children: [ linePath, circlesPath ] } );
