@@ -47,8 +47,8 @@ const LABEL_VALUE_SPACING = 4; // spacing between label text and the value reado
 const PROBE_READOUT_SPACING = 5; // spacing between the probe and the height/speed readouts
 const LAYOUT_SPACING = 1;
 const TEXT_COLOR = 'white';
-const TITLE_FONT = new PhetFont( 11 );
-const LABEL_FONT = new PhetFont( 9 );
+const TITLE_FONT = new PhetFont( 14 );
+const LABEL_FONT = new PhetFont( 12 );
 const ENTRY_MAX_WIDTH = 60;
 
 // arbitrary range for energies, but required so that this can use NumberDisplay. With this value, the width of the
@@ -117,8 +117,8 @@ class SkaterPathSensorNode extends Node {
 
     // @private - Height and speed are read to the right of the probe in a transparent panel for enhanced
     // visibility. We want the panel to resize as the text changes for different skater samples
-    this.heightReadout = new Text( '' );
-    this.speedReadout = new Text( '' );
+    this.heightReadout = new Text( '', { font: LABEL_FONT } );
+    this.speedReadout = new Text( '', { font: LABEL_FONT } );
     this.heightSpeedVBox = new VBox( {
       children: [ this.heightReadout, this.speedReadout ],
       align: 'left'
