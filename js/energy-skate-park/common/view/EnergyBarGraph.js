@@ -53,7 +53,7 @@ class EnergyBarGraph extends Node {
       // @param {Range} - The range for the visible portion of the graph, in joules - note this is somewhat arbitrary
       // because the bars will have difference scales, but size should be about 1.5 times larger than the energy would
       // extend bars at default scale. A negative min value will allow some space to represent negative energies.
-      graphRange: new Range( -100, 265 )
+      graphRange: new Range( -100, 260 )
     }, options );
 
     super( options );

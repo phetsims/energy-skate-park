@@ -126,7 +126,7 @@ class EnergySkateParkControlPanel extends Panel {
       massControls.matchLayout( separatorWidth );
     }
 
-    const content = new VBox( { resize: false, spacing: 8, children: children } );
+    const content = new VBox( { resize: false, spacing: 6, children: children } );
 
     super( content, merge( {
       xMargin: 5,
