@@ -11,7 +11,6 @@ import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
 import InspectedSampleHaloNode from './InspectedSampleHaloNode.js';
 import SkaterPathSensorNode from './SkaterPathSensorNode.js';
-import SkaterSamplesCanvasNode from './SkaterSamplesCanvasNode.js';
 
 class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
 
@@ -40,27 +39,15 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
 
     this.addChild( comboBoxParent );
 
+    const inspectedSampleHaloNode = new InspectedSampleHaloNode( model.skaterSamples, this.modelViewTransform );
+    this.topLayer.addChild( inspectedSampleHaloNode );
+
     // @private - for layout
     this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorProbePositionProperty, model.sensorBodyPositionProperty, model.availableModelBoundsProperty, this.modelViewTransform, this.controlPanel, {
       tandem: tandem.createTandem( 'pathSensor' )
     } );
 
-    const inspectedSampleHaloNode = new InspectedSampleHaloNode( model.skaterSamples, this.modelViewTransform );
-    this.topLayer.addChild( inspectedSampleHaloNode );
-
-    // @private - so it can be repainted in step
-    this.skaterSamplesNode = new SkaterSamplesCanvasNode( model, this.modelViewTransform );
-    this.topLayer.addChild( this.skaterSamplesNode );
-
     this.topLayer.addChild( this.pathSensor );
-  }
-
-  /**
-   * @public
-   * @param {number} dt - in seconds
-   */
-  step( dt ) {
-    this.skaterSamplesNode.step( dt );
   }
 
   /**

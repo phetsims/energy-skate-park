@@ -7,7 +7,6 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import Property from '../../../../../axon/js/Property.js';
 import Vector2 from '../../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../../dot/js/Vector2Property.js';
 import energySkatePark from '../../../energySkatePark.js';
@@ -48,11 +47,6 @@ class MeasureModel extends EnergySkateParkTrackSetModel {
       }
     } );
 
-    // existing data fades away before removal when the skater direction changes
-    this.skater.directionProperty.link( direction => {
-      this.initiateSampleRemoval();
-    } );
-
     // Don't save any SkaterSamples while control points are being dragged. This can be done during construction
     // because MeasureModel tracks are static and no new tracks are introduced. For the same reason disposal
     // of these listeners is not necessary.
@@ -62,11 +56,8 @@ class MeasureModel extends EnergySkateParkTrackSetModel {
       } );
     } );
 
-    // existing data is removed immediately when any of these Properties change
-    const boundClearSamples = this.clearEnergyData.bind( this );
-    Property.multilink( [ this.saveSkaterSamplesProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
-    this.skater.returnedEmitter.addListener( boundClearSamples );
-    this.trackChangedEmitter.addListener( boundClearSamples );
+    // attach listeners that clear skater path when Properties like direction and dragging change
+    this.attachPathRemovalListeners();
   }
 
   /**

@@ -26,6 +26,7 @@ class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
     const comboBoxParent = new Node();
 
     super( model, tandem.createTandem( 'graphsScreenView' ), {
+      drawSkaterPath: false,
       showBarGraph: false,
       controlPanelOptions: {
         visibilityControlsOptions: {

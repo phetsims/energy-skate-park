@@ -15,6 +15,7 @@ import BooleanProperty from '../../../../../axon/js/BooleanProperty.js';
 import Emitter from '../../../../../axon/js/Emitter.js';
 import NumberProperty from '../../../../../axon/js/NumberProperty.js';
 import ObservableArray from '../../../../../axon/js/ObservableArray.js';
+import Property from '../../../../../axon/js/Property.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
@@ -168,6 +169,25 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
     }
 
     return updatedState;
+  }
+
+  /**
+   * Attach listeners that will remove and clear samples in response to Skater and model Properties. These are attached
+   * for some EnergySkateParkSaveSampleModels but not all of them. They are generally useful when SkaterSamples are
+   * used to draw the skater path.
+   */
+  attachPathRemovalListeners() {
+
+    // existing data fades away before removal when the skater direction changes
+    this.skater.directionProperty.link( direction => {
+      this.initiateSampleRemoval();
+    } );
+
+    // existing data is removed immediately when any of these Properties change
+    const boundClearSamples = this.clearEnergyData.bind( this );
+    Property.multilink( [ this.saveSkaterSamplesProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
+    this.skater.returnedEmitter.addListener( boundClearSamples );
+    this.trackChangedEmitter.addListener( boundClearSamples );
   }
 
   /**

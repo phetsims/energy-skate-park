@@ -9,10 +9,10 @@
  */
 
 import energySkatePark from '../../../energySkatePark.js';
-import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
+import EnergySkateParkSaveSampleScreenView from './EnergySkateParkSaveSampleScreenView.js';
 import TrackNode from './TrackNode.js';
 
-class EnergySkateParkTrackSetScreenView extends EnergySkateParkScreenView {
+class EnergySkateParkTrackSetScreenView extends EnergySkateParkSaveSampleScreenView {
 
   /**
    * @param {EnergySkateParkTrackSetModel} model

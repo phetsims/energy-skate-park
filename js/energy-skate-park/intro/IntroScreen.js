@@ -12,7 +12,7 @@ import iconIntroHomescreen from '../../../images/icon-intro-homescreen_png.js';
 import iconIntroNavbar from '../../../images/icon-intro-navbar_png.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkFullTrackSetModel from '../common/model/EnergySkateParkFullTrackSetModel.js';
+import IntroModel from './model/IntroModel.js';
 import IntroScreenView from './view/IntroScreenView.js';
 
 const screenIntroductionString = energySkateParkStrings.screens.intro;
@@ -31,7 +31,7 @@ class IntroScreen extends Screen {
     };
 
     super(
-      () => new EnergySkateParkFullTrackSetModel( tandem.createTandem( 'model' ) ),
+      () => new IntroModel( tandem.createTandem( 'model' ) ),
       model => new IntroScreenView( model, tandem.createTandem( 'view' ) ),
       options
     );

@@ -24,7 +24,8 @@ class IntroScreenView extends EnergySkateParkTrackSetScreenView {
           includeGravitySlider: true
         },
         visibilityControlsOptions: {
-          showStickToTrackCheckbox: true
+          showStickToTrackCheckbox: true,
+          showSkaterPathCheckbox: true
         }
       }
     } );
