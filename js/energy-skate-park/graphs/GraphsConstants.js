@@ -26,7 +26,6 @@ const GraphsConstants = {
 
   // ranges for the energy plot, when scale changes
   PLOT_RANGES: [
-    new Range( -25, 25 ),
     new Range( -50, 50 ),
     new Range( -100, 100 ),
     new Range( -200, 200 ),
@@ -46,9 +45,7 @@ const GraphsConstants = {
     new Range( -12500, 12500 ),
     new Range( -15000, 15000 ),
     new Range( -17500, 17500 ),
-    new Range( -20000, 20000 ),
-    new Range( -22500, 22500 ),
-    new Range( -25000, 25000 )
+    new Range( -20000, 20000 )
   ],
 
   // dimensions for the tracks in the graphs screen, reused and referenced by many components in this screen

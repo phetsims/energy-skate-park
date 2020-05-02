@@ -61,7 +61,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
 
     // @private - index pointing to the range plotted on the energy plot, see GraphsConstants.PLOT_RANGES
     this.energyPlotScaleIndexProperty = new NumberProperty( 8, {
-      range: new Range( 1, GraphsConstants.PLOT_RANGES.length - 1 )
+      range: new Range( 0, GraphsConstants.PLOT_RANGES.length - 1 )
     } );
 
     // @public - sets the independent variable for the graph display
