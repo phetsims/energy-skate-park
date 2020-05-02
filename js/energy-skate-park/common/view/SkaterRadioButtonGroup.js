@@ -31,8 +31,9 @@ class SkaterRadioButtonGroup extends Node {
 
   /**
    * @param {Property.<Image>} skaterImageProperty
+   * @param {Tandem} tandem
    */
-  constructor( skaterImageProperty ) {
+  constructor( skaterImageProperty, tandem ) {
     super();
 
     const buttonOptions = {
@@ -49,34 +50,41 @@ class SkaterRadioButtonGroup extends Node {
     const contentArray = [
       {
         value: SkaterNode.SkaterImage.SKATER_1,
-        node: new Image( skater1Headshot, { scale: imageScale } )
+        node: new Image( skater1Headshot, { scale: imageScale } ),
+        tandemName: 'skater1'
       },
       {
         value: SkaterNode.SkaterImage.SKATER_2,
-        node: new Image( skater2Headshot, { scale: imageScale } )
+        node: new Image( skater2Headshot, { scale: imageScale } ),
+        tandemName: 'skater2'
       },
       {
         value: SkaterNode.SkaterImage.SKATER_3,
-        node: new Image( skater3Headshot, { scale: imageScale } )
+        node: new Image( skater3Headshot, { scale: imageScale } ),
+        tandemName: 'skater3'
       },
       {
         value: SkaterNode.SkaterImage.SKATER_4,
-        node: new Image( skater4Headshot, { scale: imageScale } )
+        node: new Image( skater4Headshot, { scale: imageScale } ),
+        tandemName: 'skater4'
       },
       {
         value: SkaterNode.SkaterImage.SKATER_5,
-        node: new Image( skater5Headshot, { scale: imageScale } )
+        node: new Image( skater5Headshot, { scale: imageScale } ),
+        tandemName: 'skater5'
       },
       {
         value: SkaterNode.SkaterImage.DOG,
-        node: new Image( dogHeadshot, { scale: imageScale } )
+        node: new Image( dogHeadshot, { scale: imageScale } ),
+        tandemName: 'dog'
       }
     ];
 
     const buttons = [];
     contentArray.forEach( content => {
       buttons.push( new RadioButtonGroupMember( skaterImageProperty, content.value, merge( {
-        content: content.node
+        content: content.node,
+        tandem: tandem.createTandem( content.tandemName )
       }, buttonOptions ) ) );
     } );
 

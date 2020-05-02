@@ -88,7 +88,7 @@ class EnergySkateParkControlPanel extends Panel {
 
     let skaterControls = null;
     if ( options.showSkaterControls ) {
-      skaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageProperty );
+      skaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageProperty, tandem.createTandem( 'skaterControls' ) );
       children.push( skaterControls );
     }
 
