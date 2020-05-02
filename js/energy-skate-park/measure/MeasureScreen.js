@@ -7,9 +7,9 @@
  */
 
 import Screen from '../../../../joist/js/Screen.js';
+import ScreenIcon from '../../../../joist/js/ScreenIcon.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
-import iconFrictionHomescreen from '../../../images/icon-friction-homescreen_png.js';
-import iconFrictionNavbar from '../../../images/icon-friction-navbar_png.js';
+import measureScreenIcon from '../../../images/measure-screen-icon_png.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
 import MeasureModel from './model/MeasureModel.js';
@@ -25,9 +25,10 @@ class MeasureScreen extends Screen {
   constructor( tandem ) {
     const options = {
       name: screenMeasureString,
-      homeScreenIcon: new Image( iconFrictionHomescreen ),
-      navigationBarIcon: new Image( iconFrictionNavbar ),
-
+      homeScreenIcon: new ScreenIcon( new Image( measureScreenIcon ), {
+        maxIconWidthProportion: 1,
+        maxIconHeightProportion: 1
+      } ),
       tandem: tandem
     };
 

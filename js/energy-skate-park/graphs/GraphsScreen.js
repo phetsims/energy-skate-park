@@ -7,9 +7,9 @@
  */
 
 import Screen from '../../../../joist/js/Screen.js';
+import ScreenIcon from '../../../../joist/js/ScreenIcon.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
-import iconFrictionHomescreen from '../../../images/icon-friction-homescreen_png.js';
-import iconFrictionNavbar from '../../../images/icon-friction-navbar_png.js';
+import graphsScreenIcon from '../../../images/graphs-screen-icon_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import GraphsModel from './model/GraphsModel.js';
@@ -28,8 +28,10 @@ class GraphsScreen extends Screen {
       model => new GraphsScreenView( model, tandem.createTandem( 'graphsScreenView' ) ),
       {
         name: screenGraphsString,
-        homeScreenIcon: new Image( iconFrictionHomescreen ),
-        navigationBarIcon: new Image( iconFrictionNavbar ),
+        homeScreenIcon: new ScreenIcon( new Image( graphsScreenIcon ), {
+          maxIconWidthProportion: 1,
+          maxIconHeightProportion: 1
+        } ),
         tandem: tandem
       }
     );
