@@ -230,5 +230,37 @@
     "projectURL": "http://phet.colorado.edu",
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Amy Rouinfar"
+  },
+  "intro-screen-icon.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "http://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Amy Rouinfar"
+  },
+  "measure-screen-icon.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "http://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Amy Rouinfar"
+  },
+  "graphs-screen-icon.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "http://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Amy Rouinfar"
+  },
+  "playground-screen-icon.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "http://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Amy Rouinfar"
   }
 }
