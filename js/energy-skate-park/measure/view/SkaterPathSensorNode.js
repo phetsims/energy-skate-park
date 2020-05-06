@@ -388,5 +388,5 @@ class SkaterPathSensorNode extends Node {
     return alignGroup.createBox( numberDisplay, { xAlign: 'right' } );
   }
 }
-
-export default energySkatePark.register( 'SkaterPathSensorNode', SkaterPathSensorNode, {} );
+energySkatePark.register( 'SkaterPathSensorNode', SkaterPathSensorNode );
+export default SkaterPathSensorNode;
