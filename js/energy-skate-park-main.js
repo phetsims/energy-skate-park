@@ -6,7 +6,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import SimLauncher from '../../joist/js/SimLauncher.js';
+import simLauncher from '../../joist/js/simLauncher.js';
 import '../../scenery/js/util/Color.js'; // Fix a circular loading problem when using this in EnergySkateParkColorScheme
 import Tandem from '../../tandem/js/Tandem.js';
 import energySkateParkStrings from './energySkateParkStrings.js';
@@ -21,7 +21,7 @@ const energySkateParkTitleString = energySkateParkStrings[ 'energy-skate-park' ]
 // constants
 const tandem = Tandem.ROOT;
 
-SimLauncher.launch( () => {
+simLauncher.launch( () => {
   const screens = [
     new IntroScreen( tandem.createTandem( 'introScreen' ) ),
     new MeasureScreen( tandem.createTandem( 'measureScreen' ) ),
