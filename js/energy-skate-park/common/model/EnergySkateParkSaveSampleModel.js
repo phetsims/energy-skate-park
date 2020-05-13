@@ -175,6 +175,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
    * Attach listeners that will remove and clear samples in response to Skater and model Properties. These are attached
    * for some EnergySkateParkSaveSampleModels but not all of them. They are generally useful when SkaterSamples are
    * used to draw the skater path.
+   * @public
    */
   attachPathRemovalListeners() {
 

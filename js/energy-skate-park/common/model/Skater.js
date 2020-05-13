@@ -345,35 +345,6 @@ class Skater {
     this.headPositionProperty.reset();
   }
 
-
-  resetPositionProperties() {
-
-    // set the angle to zero first so that the optimization for SkaterNode.updatePosition is maintained, without
-    // showing the skater at the wrong angle
-    this.angleProperty.value = 0;
-
-    this.trackProperty.reset();
-    this.parametricPositionProperty.reset();
-    this.parametricSpeedProperty.reset();
-    this.onTopSideOfTrackProperty.reset();
-    this.gravityMagnitudeProperty.reset();
-    this.positionProperty.reset();
-    this.massProperty.reset();
-    this.directionProperty.reset();
-    this.velocityProperty.reset();
-    this.draggingProperty.reset();
-    this.kineticEnergyProperty.reset();
-    this.potentialEnergyProperty.reset();
-    this.thermalEnergyProperty.reset();
-    this.totalEnergyProperty.reset();
-    this.angleProperty.reset();
-    this.startingPositionProperty.reset();
-    this.startingUProperty.reset();
-    this.startingUpProperty.reset();
-    this.startingTrackProperty.reset();
-    this.headPositionProperty.reset();
-  }
-
   /**
    * When the scene (track) is changed, the skater's position & velocity reset, but the mass should not be reset.
    * @public
