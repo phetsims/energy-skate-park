@@ -47,8 +47,6 @@ class TrackToolboxPanel extends Panel {
       const track = model.createDraggableTrack();
       model.tracks.add( track );
 
-      const trackNode = view.getTrackNode( track );
-
       // all in ScreenView coordinates
       const viewPoint = view.globalToLocalPoint( event.pointer.point );
       const iconViewCenter = view.globalToLocalPoint( iconNode.parentToGlobalPoint( iconNode.center ) );
@@ -58,18 +56,8 @@ class TrackToolboxPanel extends Panel {
       // initial model position
       track.position = view.modelViewTransform.viewToModelPosition( viewPointWithOffset );
 
-      const releaseListener = dragging => {
-        if ( !dragging && !track.physicalProperty.value ) {
-
-          // track was released underground and was never added to the play area, so remove it
-          model.tracks.remove( track );
-          trackNode.trackDragHandler.isDraggingProperty.unlink( releaseListener );
-        }
-      };
-      trackNode.trackDragHandler.isDraggingProperty.lazyLink( releaseListener );
-
-      // forward the event to the TrackDragHandler
-      trackNode.trackDragHandler.startDrag( event );
+      // signify that dragging has begun so that we can start the drag on the Node's drag listener
+      track.forwardingDragStartEmitter.emit( event );
     } ) );
 
     const updateIconVisibility = () => {

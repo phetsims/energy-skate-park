@@ -13,6 +13,7 @@ import Emitter from '../../../../../axon/js/Emitter.js';
 import dot from '../../../../../dot/js/dot.js';
 import Vector2 from '../../../../../dot/js/Vector2.js';
 import merge from '../../../../../phet-core/js/merge.js';
+import SceneryEvent from '../../../../../scenery/js/input/SceneryEvent.js';
 import PhetioObject from '../../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../../energySkatePark.js';
@@ -93,6 +94,7 @@ class Track extends PhetioObject {
     this.smoothedEmitter = new Emitter();
     this.updateEmitter = new Emitter();
     this.removeEmitter = new Emitter();
+    this.forwardingDragStartEmitter = new Emitter( { parameters: [ { valueType: SceneryEvent } ] } );
 
     // @public {SimpleDragHandler} Keep track of what component (control point or track body) is dragging the track, so
     // that it can't be dragged by

@@ -125,6 +125,11 @@ class TrackNode extends Node {
     track.smoothedEmitter.addListener( this.updateTrackShape.bind( this ) );
     track.updateEmitter.addListener( this.updateTrackShape.bind( this ) );
 
+    // track was pulled from the tool box, start drag event to the drag listener
+    track.forwardingDragStartEmitter.addListener( event => {
+      this.trackDragHandler.startDrag( event );
+    } );
+
     // In the state wrapper, when the state changes, we must update the skater node
     const stateListener = () => {
       this.updateTrackShape();

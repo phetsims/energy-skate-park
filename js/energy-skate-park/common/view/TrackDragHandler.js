@@ -254,6 +254,11 @@ class TrackDragHandler extends SimpleDragHandler {
     // Check whether the model contains a track so that input listeners for detached elements can't create bugs, see #230
     if ( !model.containsTrack( track ) ) { return; }
 
+    // track was released underground and was never added to the play area, so remove it
+    if ( !this.isDraggingProperty.get() && !track.physicalProperty.get() ) {
+      model.tracks.remove( track );
+    }
+
     // If the user never dragged the object, then there is no track to drop in this case, see #205
     if ( this.startedDrag ) {
       const myPoints = [ track.controlPoints[ 0 ], track.controlPoints[ track.controlPoints.length - 1 ] ];
@@ -283,7 +288,7 @@ class TrackDragHandler extends SimpleDragHandler {
    *
    * @param {SceneryEvent} event
    */
-    calculateStartOffset( event ) {
+  calculateStartOffset( event ) {
     const startingPosition = this.modelViewTransform.modelToViewPosition( this.track.position );
     this.startOffset = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( startingPosition );
   }

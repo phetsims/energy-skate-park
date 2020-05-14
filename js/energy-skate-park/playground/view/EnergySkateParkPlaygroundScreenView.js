@@ -107,18 +107,6 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
   }
 
   /**
-   * Get the TrackNode used in this ScreenView from the provided Track model.
-   * @public
-   *
-   * @param {Track} track
-   */
-  getTrackNode( track ) {
-
-    // REVIEW: assert that there is exactly one match
-    return _.find( this.trackNodes, trackNode => trackNode.track === track );
-  }
-
-  /**
    * Positions the pie chart legend in the correct location as the UI floats.
    * @public
    *
