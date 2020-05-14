@@ -7,6 +7,7 @@
  */
 
 import Screen from '../../../../joist/js/Screen.js';
+import ScreenIcon from '../../../../joist/js/ScreenIcon.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import playgroundScreenIcon from '../../../images/playground-screen-icon_png.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
@@ -25,7 +26,10 @@ class PlaygroundScreen extends Screen {
 
     const options = {
       name: screenPlaygroundString,
-      homeScreenIcon: new Image( playgroundScreenIcon ),
+      homeScreenIcon: new ScreenIcon( new Image( playgroundScreenIcon ), {
+        maxIconWidthProportion: 1,
+        maxIconHeightProportion: 1
+      } ),
       tandem: tandem
     };
 
