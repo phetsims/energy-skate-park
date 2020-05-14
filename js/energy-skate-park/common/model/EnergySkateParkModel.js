@@ -178,7 +178,7 @@ class EnergySkateParkModel extends PhetioObject {
     } );
 
     this.timeSpeedProperty = new EnumerationProperty( TimeSpeed, TimeSpeed.NORMAL, {
-      tandem: tandem.createTandem( 'playSpeedProperty' )
+      tandem: tandem.createTandem( 'timeSpeedProperty' )
     } );
 
     // @public {number} - Coefficient of friction (unitless) between skater and track
