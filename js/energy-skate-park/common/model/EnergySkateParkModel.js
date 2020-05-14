@@ -41,7 +41,7 @@ import Vector2Property from '../../../../../dot/js/Vector2Property.js';
 import EventTimer from '../../../../../phet-core/js/EventTimer.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import Stopwatch from '../../../../../scenery-phet/js/Stopwatch.js';
-import TimeControlSpeed from '../../../../../scenery-phet/js/TimeControlSpeed.js';
+import TimeSpeed from '../../../../../scenery-phet/js/TimeSpeed.js';
 import PhetioObject from '../../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../../tandem/js/Tandem.js';
 import ReferenceIO from '../../../../../tandem/js/types/ReferenceIO.js';
@@ -177,7 +177,7 @@ class EnergySkateParkModel extends PhetioObject {
       tandem: tandem.createTandem( 'stopwatch' )
     } );
 
-    this.timeControlSpeedProperty = new EnumerationProperty( TimeControlSpeed, TimeControlSpeed.NORMAL, {
+    this.timeSpeedProperty = new EnumerationProperty( TimeSpeed, TimeSpeed.NORMAL, {
       tandem: tandem.createTandem( 'playSpeedProperty' )
     } );
 
@@ -359,7 +359,7 @@ class EnergySkateParkModel extends PhetioObject {
       // In either case, 10 subdivisions on iPad3 makes the sim run too slowly, so we may just want to leave it as is
       let updatedState = null;
       modelIterations++;
-      if ( this.timeControlSpeedProperty.get() === TimeControlSpeed.NORMAL || modelIterations % 3 === 0 ) {
+      if ( this.timeSpeedProperty.get() === TimeSpeed.NORMAL || modelIterations % 3 === 0 ) {
         updatedState = this.stepModel( dt, skaterState );
       }
 
@@ -370,7 +370,7 @@ class EnergySkateParkModel extends PhetioObject {
         if ( debug ) {
           if ( Math.abs( updatedState.getTotalEnergy() - initialEnergy ) > 1E-6 ) {
             const initialStateCopy = new SkaterState( this.skater );
-            const redo = this.stepModel( this.timeControlSpeedProperty.get() === TimeControlSpeed.NORMAL ? dt : dt * 0.25, initialStateCopy );
+            const redo = this.stepModel( this.timeSpeedProperty.get() === TimeSpeed.NORMAL ? dt : dt * 0.25, initialStateCopy );
             debug && debug( redo );
           }
 
@@ -1423,7 +1423,7 @@ class EnergySkateParkModel extends PhetioObject {
    */
   stepModel( dt, skaterState ) {
 
-    // increment running time - done in stepModel because dt reflects timeControlSpeedProperty here
+    // increment running time - done in stepModel because dt reflects timeSpeedProperty here
     this.stopwatch.step( dt );
 
     if ( skaterState.dragging ) {

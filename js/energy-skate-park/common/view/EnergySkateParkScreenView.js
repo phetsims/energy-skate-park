@@ -30,8 +30,8 @@ import Path from '../../../../../scenery/js/nodes/Path.js';
 import Text from '../../../../../scenery/js/nodes/Text.js';
 import RectangularPushButton from '../../../../../sun/js/buttons/RectangularPushButton.js';
 import skaterIconImage from '../../../../images/skater1_left_png.js';
-import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import energySkatePark from '../../../energySkatePark.js';
+import energySkateParkStrings from '../../../energySkateParkStrings.js';
 import AttachDetachToggleButtons from './AttachDetachToggleButtons.js';
 import BackgroundNode from './BackgroundNode.js';
 import EnergyBarGraphAccordionBox from './EnergyBarGraphAccordionBox.js';
@@ -367,7 +367,7 @@ class EnergySkateParkScreenView extends ScreenView {
     // play/pause and step buttons are same size until playingProperty is false
     this.timeControlNode = new TimeControlNode( playingProperty, {
       tandem: tandem.createTandem( 'timeControlNode' ),
-      timeControlSpeedProperty: model.timeControlSpeedProperty,
+      timeSpeedProperty: model.timeSpeedProperty,
       buttonGroupXSpacing: 19, // extra spacing avoids pointer area overlap when play pause button size increases
       playPauseStepButtonOptions: {
         playPauseButtonOptions: {
