@@ -1370,7 +1370,7 @@ class EnergySkateParkModel extends PhetioObject {
 
   // PERFORMANCE/ALLOCATION - uses a reusable Object for curvature
   /**
-   * Get direction of curvature at the location of the Skater.
+   * Get direction of curvature at the position of the Skater.
    * @private
    *
    * @param {Object} curvature - Reusable Object describing curvature (radius and position), see Track.getCurvature
@@ -1384,7 +1384,7 @@ class EnergySkateParkModel extends PhetioObject {
   }
 
   /**
-   * Get the x component of direction of curvature at the Skater's location.
+   * Get the x component of direction of curvature at the Skater's position.
    * @private
    *
    * @param {Object} curvature - Reusable Object describing curvature, see Track.getCurvature
@@ -1399,7 +1399,7 @@ class EnergySkateParkModel extends PhetioObject {
   }
 
   /**
-   * Get the y component of direction of curvature at the Skater's location.
+   * Get the y component of direction of curvature at the Skater's position.
    * @private
    *
    * @param {Object} curvature - Reusable Object describing curvature, see Track.getCurvature

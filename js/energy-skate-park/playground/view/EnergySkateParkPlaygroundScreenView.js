@@ -107,7 +107,7 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
   }
 
   /**
-   * Positions the pie chart legend in the correct location as the UI floats.
+   * Positions the pie chart legend in the correct position as the UI floats.
    * @public
    *
    * @param {number} width
