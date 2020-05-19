@@ -68,7 +68,7 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
     this.addChild( this.clearButton );
 
     // add any other TrackNodes eagerly in case model has some initial Tracks, like when we are debugging
-    model.tracks.getArray().map( this.addTrackNode.bind( this ) );
+    model.tracks.map( this.addTrackNode.bind( this ) );
 
     this.timeControlNode.left = this.modelViewTransform.modelToViewX( 0.5 );
     this.trackToolbox.right = this.modelViewTransform.modelToViewX( -0.5 );
