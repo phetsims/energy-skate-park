@@ -11,7 +11,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import GridNode from '../../../../../scenery-phet/js/GridNode.js';
+import GridNode from '../../../../../griddle/js/GridNode.js';
 import Node from '../../../../../scenery/js/nodes/Node.js';
 import energySkatePark from '../../../energySkatePark.js';
 import energySkateParkStrings from '../../../energySkateParkStrings.js';
