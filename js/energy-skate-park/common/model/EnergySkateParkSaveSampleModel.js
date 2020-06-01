@@ -57,10 +57,10 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
     this.limitNumberOfSamples = true;
 
     // @public {BooleanProperty} - controls whether or not samples are saved as the model steps through time
-    this.saveSkaterSamplesProperty = new BooleanProperty( true, { tandem: tandem.createTandem( 'saveSkaterSamplesProperty' ) } );
+    this.saveSamplesProperty = new BooleanProperty( true, { tandem: tandem.createTandem( 'saveSamplesProperty' ) } );
 
     // @public {boolean} - set to true to prevent the model from saving any more samples, even if
-    // saveSkaterSamplesProperty is true - this can be used instead of (or in combination with) maxNumberOfSamples\
+    // saveSamplesProperty is true - this can be used instead of (or in combination with) maxNumberOfSamples\
     // to prevent the model from saving too many samples for reasons other than array length
     this.preventSampleSave = false;
 
@@ -150,7 +150,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
   stepModel( dt, skaterState ) {
     const updatedState = super.stepModel( dt, skaterState );
 
-    if ( this.saveSkaterSamplesProperty.get() ) {
+    if ( this.saveSamplesProperty.get() ) {
       this.timeSinceSampleSave = this.timeSinceSampleSave + dt;
 
       if ( !this.preventSampleSave && this.timeSinceSampleSave > this.saveSampleInterval ) {
@@ -207,7 +207,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
     // existing data is removed immediately when any of these Properties change
     const boundClearSamples = this.clearEnergyData.bind( this );
-    Property.multilink( [ this.saveSkaterSamplesProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
+    Property.multilink( [ this.saveSamplesProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
     this.skater.returnedEmitter.addListener( boundClearSamples );
     this.trackChangedEmitter.addListener( boundClearSamples );
   }
@@ -221,7 +221,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
     this.clearEnergyData();
 
     this.sampleTimeProperty.reset();
-    this.saveSkaterSamplesProperty.reset();
+    this.saveSamplesProperty.reset();
   }
 }
 

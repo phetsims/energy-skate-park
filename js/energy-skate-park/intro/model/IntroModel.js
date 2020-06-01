@@ -12,7 +12,7 @@ class IntroModel extends EnergySkateParkFullTrackSetModel {
     super( tandem );
 
     // by default the Intro screen does not save samples
-    this.saveSkaterSamplesProperty.set( false );
+    this.saveSamplesProperty.set( false );
 
     // attach listeners that clear skater path when Properties like direction and dragging change
     this.attachPathRemovalListeners();

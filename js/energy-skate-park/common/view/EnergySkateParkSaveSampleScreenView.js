@@ -7,7 +7,7 @@
 import merge from '../../../../../phet-core/js/merge.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkScreenView from '../../common/view/EnergySkateParkScreenView.js';
-import SkaterSamplesCanvasNode from '../../measure/view/SkaterSamplesCanvasNode.js';
+import SamplesCanvasNode from '../../measure/view/SamplesCanvasNode.js';
 
 class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
   constructor( model, tandem, options ) {
@@ -19,11 +19,11 @@ class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
     }, options );
     super( model, tandem, options );
 
-    // @private {SkaterSamplesCanvasNode|null}
+    // @private {SamplesCanvasNode|null}
     this.skaterSamplesNode = null;
 
     if ( options.drawSkaterPath ) {
-      this.skaterSamplesNode = new SkaterSamplesCanvasNode( model, this.modelViewTransform );
+      this.skaterSamplesNode = new SamplesCanvasNode( model, this.modelViewTransform );
       this.topLayer.addChild( this.skaterSamplesNode );
     }
   }

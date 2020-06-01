@@ -105,7 +105,7 @@ class EnergySkateParkVisibilityControls extends VBox {
 
     if ( options.showSkaterPathCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) );
-      this.addCheckboxContent( controlsPathString, iconNode, model.saveSkaterSamplesProperty, tandem.createTandem( 'pathCheckboxContent' ) );
+      this.addCheckboxContent( controlsPathString, iconNode, model.saveSamplesProperty, tandem.createTandem( 'pathCheckboxContent' ) );
     }
 
     if ( options.showReferenceHeightCheckbox ) {

@@ -14,7 +14,7 @@ import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorSc
 // constants
 const SAMPLE_RADIUS = 3;
 
-class SkaterSamplesCanvasNode extends CanvasNode {
+class SamplesCanvasNode extends CanvasNode {
 
   /**
    * @param {MeasureModel} model
@@ -71,5 +71,5 @@ class SkaterSamplesCanvasNode extends CanvasNode {
   }
 }
 
-energySkatePark.register( 'SkaterSamplesCanvasNode', SkaterSamplesCanvasNode );
-export default SkaterSamplesCanvasNode;
+energySkatePark.register( 'SamplesCanvasNode', SamplesCanvasNode );
+export default SamplesCanvasNode;
