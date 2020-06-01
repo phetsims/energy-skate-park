@@ -87,7 +87,7 @@ class EnergyPlot extends XYCursorPlot {
 
           // when we drag the cursor, get the skater sample at the closest cursor time and set skater to found SkaterState
           const closestSample = model.getClosestSkaterSample( this.getCursorValue() );
-          closestSample.skaterState.setToSkater( model.skater );
+          model.setFromSample( closestSample );
           model.skater.updatedEmitter.emit();
         },
         endDrag: ( event, listener ) => {

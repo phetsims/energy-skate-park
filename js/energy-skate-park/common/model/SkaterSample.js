@@ -37,6 +37,17 @@ class SkaterSample {
     this.position = new Vector2( skaterState.positionX, skaterState.positionY );
     this.time = time;
 
+    // @public (read-only) {Track} - Skater's track at time of save
+    this.track = skaterState.track;
+
+    // @private {Vector2[]} - positions of the control points for the saved track, if there is one
+    this.trackControlPointPositions = [];
+    if ( this.track ) {
+      this.track.controlPoints.forEach( controlPoint => {
+        this.trackControlPointPositions.push( controlPoint.positionProperty.get() );
+      } );
+    }
+
     // @public (read-only) {number} - values copied from SkaterState, but these may change with the reference height
     // and become out of sync with SkaterState
     this.kineticEnergy = skaterState.getKineticEnergy();

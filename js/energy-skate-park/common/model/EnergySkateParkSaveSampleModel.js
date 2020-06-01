@@ -81,6 +81,27 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
   }
 
   /**
+   * Set model state from a saved sample, potentially modifying Skater, Track, and other things.
+   * @public
+   *
+   * @param {SkaterSample} skaterSample
+   */
+  setFromSample( skaterSample ) {
+    skaterSample.skaterState.setToSkater( this.skater );
+
+    if ( skaterSample.track ) {
+      assert && assert( skaterSample.track === this.skater.trackProperty.get(), 'only the active track can be set from sample' );
+
+      skaterSample.trackControlPointPositions.forEach( ( position, i ) => {
+        this.skater.trackProperty.get().controlPoints[ i ].sourcePositionProperty.set( position );
+      } );
+
+      // make sure control points are constrained, and update splines and shape
+      this.skater.trackProperty.get().containControlPointsInLimitBounds( true );
+    }
+  }
+
+  /**
    * Clear all saved data immediately and prepare to save data again.
    * @public
    */
