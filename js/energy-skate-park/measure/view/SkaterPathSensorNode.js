@@ -265,29 +265,29 @@ class SkaterPathSensorNode extends Node {
   /**
    * Display values associated with a sample of skater state.
    * @private
-   * @param  {EnergySkateParkDataSample} skaterSample
+   * @param  {EnergySkateParkDataSample} dataSample
    */
-  displayState( skaterSample ) {
-    this.inspectedSample = skaterSample;
+  displayState( dataSample ) {
+    this.inspectedSample = dataSample;
 
-    skaterSample.inspectedProperty.set( true );
+    dataSample.inspectedProperty.set( true );
 
     // set values for display
-    this.kineticValueProperty.value = skaterSample.kineticEnergy;
-    this.potentialValueProperty.value = skaterSample.potentialEnergy;
-    this.thermalValueProperty.value = skaterSample.thermalEnergy;
-    this.totalValueProperty.value = skaterSample.totalEnergy;
+    this.kineticValueProperty.value = dataSample.kineticEnergy;
+    this.potentialValueProperty.value = dataSample.potentialEnergy;
+    this.thermalValueProperty.value = dataSample.thermalEnergy;
+    this.totalValueProperty.value = dataSample.totalEnergy;
 
     // set values for height and speed readout
     this.heightReadout.text = StringUtils.fillIn( heightMetersPatternString, {
-      value: this.formatValue( skaterSample.position.y - skaterSample.referenceHeight )
+      value: this.formatValue( dataSample.position.y - dataSample.referenceHeight )
     } );
     this.speedReadout.text = StringUtils.fillIn( speedMetersPerSecondPatternString, {
-      value: this.formatValue( skaterSample.speed )
+      value: this.formatValue( dataSample.speed )
     } );
 
     this.heightSpeedRectangle.visible = true;
-    this.positionReadouts( skaterSample );
+    this.positionReadouts( dataSample );
   }
 
   /**
@@ -296,14 +296,14 @@ class SkaterPathSensorNode extends Node {
    *
    * @private
    */
-  positionReadouts( skaterSample ) {
+  positionReadouts( dataSample ) {
     this.heightSpeedRectangle.setRectBounds( this.heightSpeedVBox.bounds );
     this.heightSpeedRectangle.leftCenter = this.probeNode.rightCenter.plusXY( PROBE_READOUT_SPACING, 0 );
 
     // determine occlusion case from position of the sample point rather than the probe position so that
     // the display doesn't move around when measuring a single point
     const spacing = this.heightSpeedRectangle.width + this.probeNode.width / 2;
-    const sampleViewPoint = this.modelViewTransform.modelToViewPosition( skaterSample.position );
+    const sampleViewPoint = this.modelViewTransform.modelToViewPosition( dataSample.position );
     if ( Math.abs( sampleViewPoint.x - this.screenViewControlPanel.left ) < spacing ) {
       this.heightSpeedRectangle.leftTop = this.probeNode.leftBottom.plusXY( 0, PROBE_READOUT_SPACING );
     }
@@ -324,9 +324,9 @@ class SkaterPathSensorNode extends Node {
    * Clear all values in the displays.
    * @private
    *
-   * @param {EnergySkateParkDataSample} skaterSample
+   * @param {EnergySkateParkDataSample} dataSample
    */
-  clearDisplay( skaterSample ) {
+  clearDisplay( dataSample ) {
 
     // setting Properties to null will show MathSymbols.NO_VALUE in NumberDisplay
     this.kineticValueProperty.value = null;
@@ -334,13 +334,13 @@ class SkaterPathSensorNode extends Node {
     this.thermalValueProperty.value = null;
     this.totalValueProperty.value = null;
 
-    assert && assert( this.updateDisplayListener, 'listener not attached to skaterSample emitter' );
+    assert && assert( this.updateDisplayListener, 'listener not attached to dataSample emitter' );
     this.inspectedSample.updatedEmitter.removeListener( this.updateDisplayListener );
 
     this.inspectedSample = null;
     this.updateDisplayListener = null;
 
-    skaterSample.inspectedProperty.set( false );
+    dataSample.inspectedProperty.set( false );
     this.heightSpeedRectangle.visible = false;
   }
 

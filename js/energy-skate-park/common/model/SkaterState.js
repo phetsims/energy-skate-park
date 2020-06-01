@@ -138,6 +138,9 @@ class SkaterState {
     skater.thermalEnergyProperty.value = this.thermalEnergy;
     skater.onTopSideOfTrackProperty.value = this.onTopSideOfTrack;
 
+    skater.massProperty.value = this.mass;
+    skater.gravityMagnitudeProperty.value = Math.abs( this.gravity );
+
     // only an angle to restore if skater is attached to a track and skater is not being dragged
     skater.angleProperty.value = ( skater.trackProperty.value && !this.dragging ) ? skater.trackProperty.value.getViewAngleAt( this.parametricPosition ) + ( this.onTopSideOfTrack ? 0 : Math.PI ) : this.angle;
     skater.updateEnergy();

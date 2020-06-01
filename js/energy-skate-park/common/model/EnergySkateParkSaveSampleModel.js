@@ -84,15 +84,18 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
    * Set model state from a saved sample, potentially modifying Skater, Track, and other things.
    * @public
    *
-   * @param {EnergySkateParkDataSample} skaterSample
+   * @param {EnergySkateParkDataSample} dataSample
    */
-  setFromSample( skaterSample ) {
-    skaterSample.skaterState.setToSkater( this.skater );
+  setFromSample( dataSample ) {
+    dataSample.skaterState.setToSkater( this.skater );
 
-    if ( skaterSample.track ) {
-      assert && assert( skaterSample.track === this.skater.trackProperty.get(), 'only the active track can be set from sample' );
+    // restore friction (all other Properties are set on Skater)
+    this.frictionProperty.set( dataSample.friction );
 
-      skaterSample.trackControlPointPositions.forEach( ( position, i ) => {
+    if ( dataSample.track ) {
+      assert && assert( dataSample.track === this.skater.trackProperty.get(), 'only the active track can be set from sample' );
+
+      dataSample.trackControlPointPositions.forEach( ( position, i ) => {
         this.skater.trackProperty.get().controlPoints[ i ].sourcePositionProperty.set( position );
       } );
 
@@ -154,7 +157,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
       this.timeSinceSampleSave = this.timeSinceSampleSave + dt;
 
       if ( !this.preventSampleSave && this.timeSinceSampleSave > this.saveSampleInterval ) {
-        const newSample = new EnergySkateParkDataSample( updatedState, this.sampleTimeProperty.get(), this.sampleFadeDecay );
+        const newSample = new EnergySkateParkDataSample( updatedState, this.frictionProperty.get(), this.sampleTimeProperty.get(), this.sampleFadeDecay );
         this.dataSamples.add( newSample );
         this.timeSinceSampleSave = 0;
         this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );

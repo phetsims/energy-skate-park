@@ -25,10 +25,11 @@ class EnergySkateParkDataSample {
 
   /**
    * @param {SkaterState} skaterState
+   * @param {number} friction - to be restored when scrubbing through data
    * @param {number} time - in seconds
    * @param {number} fadeDecay - samples being removed retain this percent of opacity (opacity = opacity * fadeDecay)
    */
-  constructor( skaterState, time, fadeDecay ) {
+  constructor( skaterState, friction, time, fadeDecay ) {
     assert && assert( fadeDecay < 1, 'samples which have initiated removal need to fade away' );
 
     // @public (read-only) - values copied to avoid re-calculating when inspected
@@ -57,6 +58,9 @@ class EnergySkateParkDataSample {
 
     // @public (read-only)
     this.skaterState = skaterState;
+
+    // @public (read-only) {number}
+    this.friction = friction;
 
     // @public - in seconds, time since this sample was added to the model
     this.timeSinceAdded = 0;
