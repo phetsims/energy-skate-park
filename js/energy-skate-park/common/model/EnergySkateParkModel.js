@@ -313,6 +313,7 @@ class EnergySkateParkModel extends PhetioObject {
     this.stopwatch.reset();
     this.availableModelBoundsProperty.value = availableModelBounds;
     this.skater.reset();
+    this.timeSpeedProperty.reset();
 
     this.resetEmitter.emit();
   }
