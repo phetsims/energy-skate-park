@@ -21,7 +21,7 @@ import energySkatePark from '../../../energySkatePark.js';
 // samples will fade out to this opacity before being fully removed from the model
 const MIN_OPACITY = 0.05;
 
-class SkaterSample {
+class EnergySkateParkDataSample {
 
   /**
    * @param {SkaterState} skaterState
@@ -67,11 +67,11 @@ class SkaterSample {
     // @public - the opacity of this skater sample, tied to visual representation
     this.opacityProperty = new NumberProperty( 1 );
 
-    // @public - emits an event when this SkaterSample has updated in some way, like when energies change
+    // @public - emits an event when this EnergySkateParkDataSample has updated in some way, like when energies change
     // due to a change in reference height
     this.updatedEmitter = new Emitter();
 
-    // @private {number} - SkaterSamples which have initiated removal will retain this percentage of opacity
+    // @private {number} - EnergySkateParkDataSamples which have initiated removal will retain this percentage of opacity
     // every animation frame. opacity = opacity * fadeDecay
     this.fadeDecay = fadeDecay;
 
@@ -80,7 +80,7 @@ class SkaterSample {
   }
 
   /**
-   * Calculate new energies for this SkaterSample with the new reference height. Potential energy will be recalculated
+   * Calculate new energies for this EnergySkateParkDataSample with the new reference height. Potential energy will be recalculated
    * and total energy will be adjusted accordingly to conserve energy. Thermal and kinetic energies should not change.
    * @public
    *
@@ -140,7 +140,7 @@ class SkaterSample {
 
 // @public
 // @static
-SkaterSample.MIN_OPACITY = MIN_OPACITY;
+EnergySkateParkDataSample.MIN_OPACITY = MIN_OPACITY;
 
-energySkatePark.register( 'SkaterSample', SkaterSample );
-export default SkaterSample;
+energySkatePark.register( 'EnergySkateParkDataSample', EnergySkateParkDataSample );
+export default EnergySkateParkDataSample;

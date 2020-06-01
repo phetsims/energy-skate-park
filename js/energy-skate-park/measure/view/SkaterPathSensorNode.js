@@ -66,7 +66,7 @@ const PROBE_THRESHOLD_DISTANCE = 10;
 class SkaterPathSensorNode extends Node {
 
   /**
-   * @param {ObservableArray.<SkaterSample>} samples
+   * @param {ObservableArray.<EnergySkateParkDataSample>} samples
    * @param {Vector2Property} sensorProbePositionProperty
    * @param {Vector2Property} sensorBodyPositionProperty
    * @param {Property.<Bounds2>} modelBoundsProperty
@@ -210,7 +210,7 @@ class SkaterPathSensorNode extends Node {
     this.addChild( this.probeNode );
     this.addChild( this.heightSpeedRectangle );
 
-    // @private - {SkaterSample|null} - the skater sample currently being inspected, reference so we can un-inspect
+    // @private - {EnergySkateParkDataSample|null} - the skater sample currently being inspected, reference so we can un-inspect
     // without looping through all samples
     this.inspectedSample = null;
 
@@ -221,7 +221,7 @@ class SkaterPathSensorNode extends Node {
       // clear the previous sample
       this.inspectedSample && this.clearDisplay( this.inspectedSample );
 
-      // {SkaterSample|null} - the sample closest to the exact center of the probe and within threshold distance
+      // {EnergySkateParkDataSample|null} - the sample closest to the exact center of the probe and within threshold distance
       let sampleToDisplay = null;
 
       const viewProbePoint = this.localToParentPoint( this.probeNode.getCenter().plus( PROBE_CENTER_OFFSET ) );
@@ -265,7 +265,7 @@ class SkaterPathSensorNode extends Node {
   /**
    * Display values associated with a sample of skater state.
    * @private
-   * @param  {SkaterSample} skaterSample
+   * @param  {EnergySkateParkDataSample} skaterSample
    */
   displayState( skaterSample ) {
     this.inspectedSample = skaterSample;
@@ -324,7 +324,7 @@ class SkaterPathSensorNode extends Node {
    * Clear all values in the displays.
    * @private
    *
-   * @param {SkaterSample} skaterSample
+   * @param {EnergySkateParkDataSample} skaterSample
    */
   clearDisplay( skaterSample ) {
 

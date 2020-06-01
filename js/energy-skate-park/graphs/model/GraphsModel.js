@@ -174,15 +174,15 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
    * @public
    *
    * @param {number} time (in seconds)
-   * @returns {SkaterSample}
+   * @returns {EnergySkateParkDataSample}
    */
   getClosestSkaterSample( time ) {
-    assert && assert( this.skaterSamples.length > 0, 'model has no saved SkaterSamples to retrieve' );
+    assert && assert( this.dataSamples.length > 0, 'model has no saved EnergySkateParkDataSamples to retrieve' );
 
-    let nearestIndex = _.sortedIndexBy( this.skaterSamples.getArray(), { time: time }, entry => entry.time );
-    nearestIndex = Utils.clamp( nearestIndex, 0, this.skaterSamples.length - 1 );
+    let nearestIndex = _.sortedIndexBy( this.dataSamples.getArray(), { time: time }, entry => entry.time );
+    nearestIndex = Utils.clamp( nearestIndex, 0, this.dataSamples.length - 1 );
 
-    return this.skaterSamples.get( nearestIndex );
+    return this.dataSamples.get( nearestIndex );
   }
 
   /**

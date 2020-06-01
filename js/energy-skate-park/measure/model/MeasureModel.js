@@ -42,12 +42,12 @@ class MeasureModel extends EnergySkateParkTrackSetModel {
 
     // when the reference height changes, update energies for all skater samples
     this.skater.referenceHeightProperty.link( referenceHeight => {
-      for ( let i = 0; i < this.skaterSamples.length; i++ ) {
-        this.skaterSamples.get( i ).setNewReferenceHeight( referenceHeight );
+      for ( let i = 0; i < this.dataSamples.length; i++ ) {
+        this.dataSamples.get( i ).setNewReferenceHeight( referenceHeight );
       }
     } );
 
-    // Don't save any SkaterSamples while control points are being dragged. This can be done during construction
+    // Don't save any EnergySkateParkDataSamples while control points are being dragged. This can be done during construction
     // because MeasureModel tracks are static and no new tracks are introduced. For the same reason disposal
     // of these listeners is not necessary.
     this.tracks.forEach( track => {

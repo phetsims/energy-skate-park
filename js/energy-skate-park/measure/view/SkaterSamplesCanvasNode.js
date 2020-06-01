@@ -43,8 +43,8 @@ class SkaterSamplesCanvasNode extends CanvasNode {
    * @param {CanvasRenderingContext2D} context
    */
   paintCanvas( context ) {
-    for ( let i = 0; i < this.model.skaterSamples.length; i++ ) {
-      const sample = this.model.skaterSamples.get( i );
+    for ( let i = 0; i < this.model.dataSamples.length; i++ ) {
+      const sample = this.model.dataSamples.get( i );
       const viewPosition = this.modelViewTransform.modelToViewPosition( sample.position );
 
       context.beginPath();

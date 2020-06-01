@@ -122,11 +122,11 @@ class EnergyPlot extends XYCursorPlot {
       model.sampleTimeProperty.set( timeOnEnd );
 
       const closestSample = model.getClosestSkaterSample( timeOnEnd );
-      const indexOfSample = model.skaterSamples.indexOf( closestSample );
+      const indexOfSample = model.dataSamples.indexOf( closestSample );
 
       assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
 
-      model.batchRemoveSamples( model.skaterSamples.getArray().slice( indexOfSample ) );
+      model.batchRemoveSamples( model.dataSamples.getArray().slice( indexOfSample ) );
 
       this.setCursorValue( timeOnEnd );
     } );
@@ -164,15 +164,15 @@ class EnergyPlot extends XYCursorPlot {
     model.thermalEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.thermalEnergyDataSeries ), 'visible' );
     model.totalEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.totalEnergyDataSeries ), 'visible' );
 
-    // add data points when a SkaterSample is added to the model
-    model.skaterSamples.addItemAddedListener( addedSample => {
+    // add data points when a EnergySkateParkDataSample is added to the model
+    model.dataSamples.addItemAddedListener( addedSample => {
       const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
       const independentVariable = plotTime ? addedSample.time : addedSample.position.x + POSITION_PLOT_OFFSET;
 
       // keep a reference to the pointStyle so that it can be modified later
       const pointStyle = new PointStyle();
 
-      // add a listener that updates opacity with the SkaterSample Property, dispose it on removal
+      // add a listener that updates opacity with the EnergySkateParkDataSample Property, dispose it on removal
       const opacityListener = opacity => {
         pointStyle.opacity = opacity;
       };
@@ -186,15 +186,15 @@ class EnergyPlot extends XYCursorPlot {
       const removalListener = removedSample => {
         if ( removedSample === addedSample ) {
           removedSample.opacityProperty.unlink( opacityListener );
-          model.skaterSamples.removeItemRemovedListener( removalListener );
+          model.dataSamples.removeItemRemovedListener( removalListener );
         }
       };
-      model.skaterSamples.addItemRemovedListener( removalListener );
+      model.dataSamples.addItemRemovedListener( removalListener );
 
       this.setCursorValue( independentVariable );
     } );
 
-    // remove a batch of of SkaterSamples
+    // remove a batch of of EnergySkateParkDataSamples
     model.batchRemoveSamplesEmitter.addListener( samplesToRemove => {
       const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
       for ( let i = 0; i < samplesToRemove.length; i++ ) {

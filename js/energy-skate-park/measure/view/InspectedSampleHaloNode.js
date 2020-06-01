@@ -17,14 +17,14 @@ const HALO_RADIUS = 7;
 class InspectedSampleHaloNode extends Circle {
 
   /**
-   * @param {ObservableArray.<SkaterSample>} skaterSamples
+   * @param {ObservableArray.<EnergySkateParkDataSample>} dataSamples
    * @param {ModelViewTransform2} modelViewTransform
    */
-  constructor( skaterSamples, modelViewTransform ) {
+  constructor( dataSamples, modelViewTransform ) {
     super( HALO_RADIUS, {
       fill: EnergySkateParkColorScheme.haloFill,
 
-      // not visible until a SkaterSample becomes inspected
+      // not visible until a EnergySkateParkDataSample becomes inspected
       visible: false
     } );
 
@@ -55,13 +55,13 @@ class InspectedSampleHaloNode extends Circle {
           }
 
           removedSample.inspectedProperty.unlink( inspectedListener );
-          skaterSamples.removeItemRemovedListener( sampleRemovedListener );
+          dataSamples.removeItemRemovedListener( sampleRemovedListener );
         }
       };
-      skaterSamples.addItemRemovedListener( sampleRemovedListener );
+      dataSamples.addItemRemovedListener( sampleRemovedListener );
     };
 
-    skaterSamples.addItemAddedListener( sampleAddedListener );
+    dataSamples.addItemAddedListener( sampleAddedListener );
   }
 }
 

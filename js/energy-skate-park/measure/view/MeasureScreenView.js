@@ -39,11 +39,11 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
 
     this.addChild( comboBoxParent );
 
-    const inspectedSampleHaloNode = new InspectedSampleHaloNode( model.skaterSamples, this.modelViewTransform );
+    const inspectedSampleHaloNode = new InspectedSampleHaloNode( model.dataSamples, this.modelViewTransform );
     this.topLayer.addChild( inspectedSampleHaloNode );
 
     // @private - for layout
-    this.pathSensor = new SkaterPathSensorNode( model.skaterSamples, model.sensorProbePositionProperty, model.sensorBodyPositionProperty, model.availableModelBoundsProperty, this.modelViewTransform, this.controlPanel, {
+    this.pathSensor = new SkaterPathSensorNode( model.dataSamples, model.sensorProbePositionProperty, model.sensorBodyPositionProperty, model.availableModelBoundsProperty, this.modelViewTransform, this.controlPanel, {
       tandem: tandem.createTandem( 'pathSensor' )
     } );
 

@@ -38,7 +38,7 @@ is an EnergySkateParkModel where custom tracks can be built by the user. This mo
 interactive (see Tracks section below). EnergySkateParkTrackSetModel is an EnergySkateParkModel with a set of premade tracks that cannot be as freely customized. Subtypes of this model
 generally add a set of premade Tracks. The frequently reused tracks can be found in PremadeTracks.
 
-EnergySkateParkSaveSampleModel is a model which saves samples of SkaterState data in SkaterSamples to be presented in some way to the user.
+EnergySkateParkSaveSampleModel is a model which saves samples of SkaterState data in EnergySkateParkDataSamples to be presented in some way to the user.
 
 ### Tracks
 Tracks are composed of ControlPoint and cubic splines which create the shape between them. The algorithm for interpolation is borrowed from a library called [numericjs](http://www.numericjs.com/),
@@ -52,7 +52,7 @@ To support various levels of user customization, Tracks have fields that define 
 
 Tracks in the EnergySkateParkPlayGroundModel have all of these fields set to true.
 
-### Skater, SkaterStates, and SkaterSamples
+### Skater, SkaterStates, and EnergySkateParkDataSamples
 The Skater is the model component for the skater with observable Properties for its state.
 SkaterStates were added so that we can save collections of model data at a particular model state to support playing
 back and inspecting previous energy values. SkaterStates are not mutable.
@@ -61,9 +61,9 @@ SkaterState is also used to improve performance. In a single model step, energy 
 many times. SkaterStates are created or modified in these calculations so that observable Skater Properties can be set
 once after all calculations are complete. And so many SkaterStates can be created in a single model step.
 
-A SkaterSample contains SkaterState information at a point in time (where the time is specified) as well as other
-Properties that support visualization of this data in data plots or other. SkaterSample data *can* be changed,
-for instance when changing the reference height the energy components of the SkaterSample can change.
+A EnergySkateParkDataSample contains SkaterState information at a point in time (where the time is specified) as well as other
+Properties that support visualization of this data in data plots or other. EnergySkateParkDataSample data *can* be changed,
+for instance when changing the reference height the energy components of the EnergySkateParkDataSample can change.
 
 ## View
 EnergySkateParkScreenView is the entry point for the view. It uses a ModelViewTransform2 with a mapped point and inverted y.

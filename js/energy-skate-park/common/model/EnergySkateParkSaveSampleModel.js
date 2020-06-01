@@ -1,7 +1,7 @@
 // Copyright 2019-2020, University of Colorado Boulder
 
 /**
- * An EnergySkateParkTrackSetModel that can save SkaterSamples. SkaterSamples contain information about the physical
+ * An EnergySkateParkTrackSetModel that can save EnergySkateParkDataSamples. EnergySkateParkDataSamples contain information about the physical
  * state of the skater at a point in time.
  *
  * Generally, it is up to the subtype of EnergySkateParkSaveSampleModel to clear data at the correct time, as different
@@ -19,7 +19,7 @@ import Property from '../../../../../axon/js/Property.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
-import SkaterSample from './SkaterSample.js';
+import EnergySkateParkDataSample from './EnergySkateParkDataSample.js';
 
 class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
@@ -30,14 +30,14 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
   constructor( tandem, options ) {
     options = merge( {
 
-      // {number} - the interval at which we save SkaterSamples, in seconds
+      // {number} - the interval at which we save EnergySkateParkDataSamples, in seconds
       saveSampleInterval: 0.1,
 
       // {number} skater samples which are being removed will fade away at this rate every animation frame
       // like opacity = opacity * sampleFadeDecay
       sampleFadeDecay: 0.95,
 
-      // {number} - the maximum number of SkaterSamples saved by this model, to prevent from saving too many if we
+      // {number} - the maximum number of EnergySkateParkDataSamples saved by this model, to prevent from saving too many if we
       // run without encountering a case that clears old samples
       maxNumberOfSamples: 50
     }, options );
@@ -67,15 +67,15 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
     // @public - in seconds, how much time has passed since beginning to record skater states
     this.sampleTimeProperty = new NumberProperty( 0 );
 
-    // @protected {ObservableArray.<SkaterSample>} - observable list of all saved SkaterSamples
-    this.skaterSamples = new ObservableArray();
+    // @protected {ObservableArray.<EnergySkateParkDataSample>} - observable list of all saved EnergySkateParkDataSamples
+    this.dataSamples = new ObservableArray();
 
-    // @public (read-only) - an array of SkaterSamples that have just been removed from the model. Necessary
+    // @public (read-only) - an array of EnergySkateParkDataSamples that have just been removed from the model. Necessary
     // for performance so that we can update once after removing many samples rather than every time
     // a single sample is removed
     this.batchRemoveSamplesEmitter = new Emitter( {
       parameters: [ {
-        arrayElementType: SkaterSample
+        arrayElementType: EnergySkateParkDataSample
       } ]
     } );
   }
@@ -84,7 +84,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
    * Set model state from a saved sample, potentially modifying Skater, Track, and other things.
    * @public
    *
-   * @param {SkaterSample} skaterSample
+   * @param {EnergySkateParkDataSample} skaterSample
    */
   setFromSample( skaterSample ) {
     skaterSample.skaterState.setToSkater( this.skater );
@@ -106,24 +106,24 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
    * @public
    */
   clearEnergyData() {
-    this.batchRemoveSamples( this.skaterSamples.getArray().slice() );
+    this.batchRemoveSamples( this.dataSamples.getArray().slice() );
     this.sampleTimeProperty.reset();
   }
 
   /**
-   * SkaterSamples are removed from the model in batches for performance. This way we can remove many
-   * SkaterSamples and then update the view once after several are removed. The behavior of this sim
-   * is such that hundreds of SkaterSamples are frequently removed at a time.
+   * EnergySkateParkDataSamples are removed from the model in batches for performance. This way we can remove many
+   * EnergySkateParkDataSamples and then update the view once after several are removed. The behavior of this sim
+   * is such that hundreds of EnergySkateParkDataSamples are frequently removed at a time.
    *
-   * Assumes that samplesToRemove is a sub-array of this.skaterSamples, in the right order.
+   * Assumes that samplesToRemove is a sub-array of this.dataSamples, in the right order.
    * @public
    *
-   * @param {SkaterSample[]} samplesToRemove
+   * @param {EnergySkateParkDataSample[]} samplesToRemove
    */
   batchRemoveSamples( samplesToRemove ) {
 
-    const indexOfFirstSample = this.skaterSamples.indexOf( samplesToRemove[ 0 ] );
-    this.skaterSamples.splice( indexOfFirstSample, samplesToRemove.length );
+    const indexOfFirstSample = this.dataSamples.indexOf( samplesToRemove[ 0 ] );
+    this.dataSamples.splice( indexOfFirstSample, samplesToRemove.length );
 
     // broadcast that this batch of samples has been removed
     this.batchRemoveSamplesEmitter.emit( samplesToRemove );
@@ -134,8 +134,8 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
    * @protected
    */
   initiateSampleRemoval() {
-    for ( let i = 0; i < this.skaterSamples.length; i++ ) {
-      this.skaterSamples.get( i ).initiateRemove();
+    for ( let i = 0; i < this.dataSamples.length; i++ ) {
+      this.dataSamples.get( i ).initiateRemove();
     }
   }
 
@@ -154,37 +154,37 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
       this.timeSinceSampleSave = this.timeSinceSampleSave + dt;
 
       if ( !this.preventSampleSave && this.timeSinceSampleSave > this.saveSampleInterval ) {
-        const newSample = new SkaterSample( updatedState, this.sampleTimeProperty.get(), this.sampleFadeDecay );
-        this.skaterSamples.add( newSample );
+        const newSample = new EnergySkateParkDataSample( updatedState, this.sampleTimeProperty.get(), this.sampleFadeDecay );
+        this.dataSamples.add( newSample );
         this.timeSinceSampleSave = 0;
         this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );
       }
     }
 
     // old samples fade out if we have collected too many
-    if ( this.limitNumberOfSamples && this.skaterSamples.length > this.maxNumberOfSamples ) {
-      const numberToRemove = this.skaterSamples.length - this.maxNumberOfSamples;
+    if ( this.limitNumberOfSamples && this.dataSamples.length > this.maxNumberOfSamples ) {
+      const numberToRemove = this.dataSamples.length - this.maxNumberOfSamples;
       for ( let i = 0; i < numberToRemove; i++ ) {
-        this.skaterSamples.get( i ).initiateRemove();
+        this.dataSamples.get( i ).initiateRemove();
       }
     }
 
-    // update opacity of SkaterSamples and determine if it is time for them to be removed from model
+    // update opacity of EnergySkateParkDataSamples and determine if it is time for them to be removed from model
     const samplesToRemove = [];
-    this.skaterSamples.forEach( sample => {
+    this.dataSamples.forEach( sample => {
       sample.step( dt );
-      if ( sample.opacityProperty.get() < SkaterSample.MIN_OPACITY ) {
+      if ( sample.opacityProperty.get() < EnergySkateParkDataSample.MIN_OPACITY ) {
         samplesToRemove.push( sample );
       }
     } );
 
-    // for performance, we batch removal of SkaterSamples so that we can update once after many have been removed
+    // for performance, we batch removal of EnergySkateParkDataSamples so that we can update once after many have been removed
     // rather than on each data point, see https://github.com/phetsims/energy-skate-park/issues/198
     if ( samplesToRemove.length > 0 ) {
 
-      // BatchRemoveSamples requires that samplesToRemove is a sub array of this.skaterSamples, in the same order.
-      // We can guarantee this is the case because we built samplesToRemove as we iterated through this.skaterSamples
-      // so it must be in the right order. And as soon as we find one sample to remove, the rest in this.skaterSamples
+      // BatchRemoveSamples requires that samplesToRemove is a sub array of this.dataSamples, in the same order.
+      // We can guarantee this is the case because we built samplesToRemove as we iterated through this.dataSamples
+      // so it must be in the right order. And as soon as we find one sample to remove, the rest in this.dataSamples
       // will be ready for removal since they are even older and therefore less opaque.
       this.batchRemoveSamples( samplesToRemove );
     }
@@ -194,7 +194,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
   /**
    * Attach listeners that will remove and clear samples in response to Skater and model Properties. These are attached
-   * for some EnergySkateParkSaveSampleModels but not all of them. They are generally useful when SkaterSamples are
+   * for some EnergySkateParkSaveSampleModels but not all of them. They are generally useful when EnergySkateParkDataSamples are
    * used to draw the skater path.
    * @public
    */
