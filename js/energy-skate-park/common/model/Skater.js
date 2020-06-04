@@ -22,6 +22,7 @@ import Vector2 from '../../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../../dot/js/Vector2Property.js';
 import Enumeration from '../../../../../phet-core/js/Enumeration.js';
 import merge from '../../../../../phet-core/js/merge.js';
+import Tandem from '../../../../../tandem/js/Tandem.js';
 import BooleanIO from '../../../../../tandem/js/types/BooleanIO.js';
 import NullableIO from '../../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../../tandem/js/types/NumberIO.js';
@@ -267,7 +268,7 @@ class Skater {
       } );
 
     // In the state wrapper, when the state changes, we must update the skater node
-    _.hasIn( window, 'phet.phetio.phetioEngine' ) && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( () => {
+    Tandem.PHET_IO_ENABLED && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( () => {
       this.updatedEmitter.emit();
     } );
   }
