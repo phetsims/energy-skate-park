@@ -175,8 +175,8 @@ class EnergyGraphAccordionBox extends AccordionBox {
     this.addChild( variableSwitch );
     this.addChild( eraserButton );
 
-    variableSwitch.centerBottom = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.plotPath.centerTop ) ).minusXY( 0, buttonYMargin + contentYMargin );
-    eraserButton.right = eraserButton.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.plotPath.rightCenter ) ).x;
+    variableSwitch.centerBottom = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.centerTop ) ).minusXY( 0, buttonYMargin + contentYMargin );
+    eraserButton.right = eraserButton.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.rightCenter ) ).x;
     eraserButton.centerY = variableSwitch.centerY;
 
     // The variable switch and eraser button are part of the title layout but should only be visible when
@@ -195,7 +195,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
     // listeners - when the independent variable changes, clear all data and update labels
     model.independentVariableProperty.link( independentVariable => {
       xLabelText.text = independentVariable === GraphsModel.IndependentVariable.TIME ? plotsTimeLabelString : plotsPositionLabelString;
-      xLabelText.centerX = xLabelText.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.plotPath.center ) ).x;
+      xLabelText.centerX = xLabelText.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.center ) ).x;
       this.clearEnergyData();
     } );
 

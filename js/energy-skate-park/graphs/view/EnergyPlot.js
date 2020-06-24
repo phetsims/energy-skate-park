@@ -9,13 +9,16 @@
  */
 
 import Emitter from '../../../../../axon/js/Emitter.js';
+import Property from '../../../../../axon/js/Property.js';
 import Range from '../../../../../dot/js/Range.js';
 import DynamicSeries from '../../../../../griddle/js/DynamicSeries.js';
+import DynamicSeriesNode from '../../../../../griddle/js/DynamicSeriesNode.js';
 import PointStyle from '../../../../../griddle/js/PointStyle.js';
 import PointStyledVector2 from '../../../../../griddle/js/PointStyledVector2.js';
 import XYCursorPlot from '../../../../../griddle/js/XYCursorPlot.js';
-import XYDataSeriesNode from '../../../../../griddle/js/XYDataSeriesNode.js';
+import Bounds2 from '../../../../../dot/js/Bounds2.js';
 import merge from '../../../../../phet-core/js/merge.js';
+import ModelViewTransform2 from '../../../../../phetcommon/js/view/ModelViewTransform2.js';
 import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
@@ -52,11 +55,20 @@ class EnergyPlot extends XYCursorPlot {
 
     const plotRange = GraphsConstants.PLOT_RANGES[ model.energyPlotScaleIndexProperty.get() ];
 
-    super( {
+    const modelViewTransformProperty = new Property( ModelViewTransform2.createRectangleInvertedYMapping(
+      new Bounds2( 0, plotRange.min, TIME_MAX_X, plotRange.max ),
+      new Bounds2( 0, 0, graphWidth, graphHeight )
+    ) );
+
+    super( model.sampleTimeProperty, {
 
       // dimensions of the graph
       width: graphWidth,
       height: graphHeight,
+      majorHorizontalLineSpacing: 500,
+      majorVerticalLineSpacing: 1,
+
+      modelViewTransformProperty: modelViewTransformProperty,
 
       // plot domain, range, and grid increments
       maxX: TIME_MAX_X,
@@ -110,10 +122,10 @@ class EnergyPlot extends XYCursorPlot {
     this.totalEnergyDataSeries = new DynamicSeries( merge( { color: EnergySkateParkColorScheme.totalEnergy }, seriesOptions ) );
 
     // second parameter allows data to be scaled correctly so it is in the correct spot relative to plot range
-    this.addSeries( this.thermalEnergyDataSeries, true );
-    this.addSeries( this.potentialEnergyDataSeries, true );
-    this.addSeries( this.kineticEnergyDataSeries, true );
-    this.addSeries( this.totalEnergyDataSeries, true );
+    this.addDynamicSeries( this.thermalEnergyDataSeries, true );
+    this.addDynamicSeries( this.potentialEnergyDataSeries, true );
+    this.addDynamicSeries( this.kineticEnergyDataSeries, true );
+    this.addDynamicSeries( this.totalEnergyDataSeries, true );
 
     // when cursor drag finishes, clear all data that has time greater than cursor time and set model time
     // to the selected cursor time
@@ -136,33 +148,55 @@ class EnergyPlot extends XYCursorPlot {
       const newRange = GraphsConstants.PLOT_RANGES[ scaleIndex ];
       const newMaxY = newRange.max;
       const newMinY = newRange.min;
-      const newStepY = ( newMaxY - newMinY ) / 4;
+      const horizontalLineSpacing = ( newMaxY - newMinY ) / 4;
 
-      this.setMinY( newMinY );
-      this.setMaxY( newMaxY );
-      this.setStepY( newStepY );
+      const horizontalMaxX = calculateDomain( model.independentVariableProperty.get() ).max;
+      const verticalLineSpacing = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ?
+                                  POSITION_STEP_X : TIME_STEP_X;
+
+
+      modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
+        new Bounds2( 0, newMinY, horizontalMaxX, newMaxY ),
+        new Bounds2( 0, 0, graphWidth, graphHeight )
+      ) );
+
+      this.setLineSpacings( verticalLineSpacing, horizontalLineSpacing, null, null );
     } );
 
-    // update range, domain, and plot style of plot when the independent variable changes - cursor is invisible for
-    // plots against position
+    // // update range, domain, and plot style of plot when the independent variable changes - cursor is invisible for
+    // // plots against position
     model.independentVariableProperty.link( independentVariable => {
-      this.setMaxX( calculateDomain( independentVariable ).max );
+      const newRange = GraphsConstants.PLOT_RANGES[ model.energyPlotScaleIndexProperty.get() ];
+      const newMaxY = newRange.max;
+      const newMinY = newRange.min;
+      const horizontalLineSpacing = ( newMaxY - newMinY ) / 4;
+
+      const horizontalMaxX = calculateDomain( independentVariable ).max;
+
+      let verticalLineSpacing;
       if ( independentVariable === GraphsModel.IndependentVariable.POSITION ) {
         this.setCursorVisibleOverride( false );
-        this.setPlotStyle( XYDataSeriesNode.PlotStyle.SCATTER );
-        this.setStepX( POSITION_STEP_X );
+        this.setPlotStyle( DynamicSeriesNode.PlotStyle.SCATTER );
+        verticalLineSpacing = POSITION_STEP_X;
       }
       else {
         this.setCursorVisibleOverride( null );
-        this.setPlotStyle( XYDataSeriesNode.PlotStyle.LINE );
-        this.setStepX( TIME_STEP_X );
+        this.setPlotStyle( DynamicSeriesNode.PlotStyle.LINE );
+        verticalLineSpacing = TIME_STEP_X;
       }
+
+      modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
+        new Bounds2( 0, newMinY, horizontalMaxX, newMaxY ),
+        new Bounds2( 0, 0, graphWidth, graphHeight )
+      ) );
+
+      this.setLineSpacings( verticalLineSpacing, horizontalLineSpacing, null, null );
     } );
 
-    model.kineticEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.kineticEnergyDataSeries ), 'visible' );
-    model.potentialEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.potentialEnergyDataSeries ), 'visible' );
-    model.thermalEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.thermalEnergyDataSeries ), 'visible' );
-    model.totalEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.totalEnergyDataSeries ), 'visible' );
+    // model.kineticEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.kineticEnergyDataSeries ), 'visible' );
+    // model.potentialEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.potentialEnergyDataSeries ), 'visible' );
+    // model.thermalEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.thermalEnergyDataSeries ), 'visible' );
+    // model.totalEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.totalEnergyDataSeries ), 'visible' );
 
     // add data points when a EnergySkateParkDataSample is added to the model
     model.dataSamples.addItemAddedListener( addedSample => {
@@ -202,7 +236,9 @@ class EnergyPlot extends XYCursorPlot {
 
         const independentVariable = plotTime ? sampleToRemove.time : ( sampleToRemove.position.x + POSITION_PLOT_OFFSET );
 
-        this.forEachDataSeries( dataSeries => dataSeries.removePointAtX( independentVariable ) );
+        this.dynamicSeriesList.forEach( dynamicSeries => {
+          dynamicSeries.removePointAtX( independentVariable );
+        } );
       }
     } );
   }
