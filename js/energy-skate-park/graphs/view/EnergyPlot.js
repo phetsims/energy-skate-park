@@ -122,16 +122,27 @@ class EnergyPlot extends XYCursorPlot {
     const seriesOptions = { lineWidth: 2 };
 
     // @private {DynamicSeries}
-    this.kineticEnergyDataSeries = new DynamicSeries( merge( { color: EnergySkateParkColorScheme.kineticEnergy }, seriesOptions ) );
-    this.potentialEnergyDataSeries = new DynamicSeries( merge( { color: EnergySkateParkColorScheme.potentialEnergy }, seriesOptions ) );
-    this.thermalEnergyDataSeries = new DynamicSeries( merge( { color: EnergySkateParkColorScheme.thermalEnergy }, seriesOptions ) );
-    this.totalEnergyDataSeries = new DynamicSeries( merge( { color: EnergySkateParkColorScheme.totalEnergy }, seriesOptions ) );
+    this.kineticEnergyDataSeries = new DynamicSeries( merge( {
+      color: EnergySkateParkColorScheme.kineticEnergy,
+      visibleProperty: model.kineticEnergyDataVisibleProperty
+    }, seriesOptions ) );
+    this.potentialEnergyDataSeries = new DynamicSeries( merge( {
+      color: EnergySkateParkColorScheme.potentialEnergy,
+      visibleProperty: model.potentialEnergyDataVisibleProperty
+    }, seriesOptions ) );
+    this.thermalEnergyDataSeries = new DynamicSeries( merge( {
+      color: EnergySkateParkColorScheme.thermalEnergy,
+      visibleProperty: model.thermalEnergyDataVisibleProperty
+    }, seriesOptions ) );
+    this.totalEnergyDataSeries = new DynamicSeries( merge( {
+      color: EnergySkateParkColorScheme.totalEnergy,
+      visibleProperty: model.totalEnergyDataVisibleProperty
+    }, seriesOptions ) );
 
-    // second parameter allows data to be scaled correctly so it is in the correct spot relative to plot range
-    this.addDynamicSeries( this.thermalEnergyDataSeries, true );
-    this.addDynamicSeries( this.potentialEnergyDataSeries, true );
-    this.addDynamicSeries( this.kineticEnergyDataSeries, true );
-    this.addDynamicSeries( this.totalEnergyDataSeries, true );
+    this.addDynamicSeries( this.thermalEnergyDataSeries );
+    this.addDynamicSeries( this.potentialEnergyDataSeries );
+    this.addDynamicSeries( this.kineticEnergyDataSeries );
+    this.addDynamicSeries( this.totalEnergyDataSeries );
 
     // when cursor drag finishes, clear all data that has time greater than cursor time and set model time
     // to the selected cursor time
