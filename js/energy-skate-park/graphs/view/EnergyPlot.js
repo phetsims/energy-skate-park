@@ -243,7 +243,7 @@ class EnergyPlot extends XYCursorPlot {
         const independentVariable = plotTime ? sampleToRemove.time : ( sampleToRemove.position.x + POSITION_PLOT_OFFSET );
 
         this.dynamicSeriesList.forEach( dynamicSeries => {
-          dynamicSeries.removePointAtX( independentVariable );
+          dynamicSeries.removePointAtX( independentVariable, true );
         } );
       }
     } );
