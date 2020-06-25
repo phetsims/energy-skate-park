@@ -175,8 +175,8 @@ class EnergyGraphAccordionBox extends AccordionBox {
     this.addChild( variableSwitch );
     this.addChild( eraserButton );
 
-    variableSwitch.centerBottom = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.centerTop ) ).minusXY( 0, buttonYMargin + contentYMargin );
-    eraserButton.right = eraserButton.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.rightCenter ) ).x;
+    variableSwitch.centerBottom = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.graphPanel.centerTop ) ).minusXY( 0, buttonYMargin + contentYMargin );
+    eraserButton.right = eraserButton.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.graphPanel.rightCenter ) ).x;
     eraserButton.centerY = variableSwitch.centerY;
 
     // The variable switch and eraser button are part of the title layout but should only be visible when

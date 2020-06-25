@@ -19,7 +19,6 @@ import XYCursorPlot from '../../../../../griddle/js/XYCursorPlot.js';
 import Bounds2 from '../../../../../dot/js/Bounds2.js';
 import merge from '../../../../../phet-core/js/merge.js';
 import ModelViewTransform2 from '../../../../../phetcommon/js/view/ModelViewTransform2.js';
-import PhetFont from '../../../../../scenery-phet/js/PhetFont.js';
 import energySkatePark from '../../../energySkatePark.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import GraphsConstants from '../GraphsConstants.js';
@@ -79,10 +78,17 @@ class EnergyPlot extends XYCursorPlot {
       showAxis: false,
 
       // for the grid lines
-      lineDash: [ 4, 4 ],
       showVerticalIntermediateLines: false,
       showHorizontalIntermediateLines: false,
-      tickLabelFont: new PhetFont( 10 ),
+      cornerRadius: 0,
+      gridLineOptions: {
+        lineDash: [ 4, 4 ],
+        stroke: 'gray'
+      },
+
+      graphPanelOverlayOptions: {
+        stroke: 'gray'
+      },
 
       // for the cursor that shows current time
       cursorOptions: {
