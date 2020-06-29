@@ -112,10 +112,21 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
       const plottingTime = this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
       const overTime = time > GraphsConstants.MAX_PLOTTED_TIME;
       if ( plottingTime && overTime ) {
-        this.preventSampleSave = true;
-      }
-      else {
-        this.preventSampleSave = false;
+
+        // clear all samples prior to time - maxTime (the horizontal range of the data)
+        const samplesToRemove =  [];
+        const minSavedTime = time - GraphsConstants.MAX_PLOTTED_TIME;
+        for ( let i = 0; i < this.dataSamples.length; i++ ) {
+          if ( this.dataSamples.get( i ).time < minSavedTime ) {
+            samplesToRemove.push( this.dataSamples.get( i ) );
+          }
+          else {
+            break;
+          }
+        }
+
+        this.batchRemoveSamples( samplesToRemove );
+        assert &&  assert( this.dataSamples.get( 0 ).time >= minSavedTime, 'data still exists that is less than plot min' );
       }
     } );
 

@@ -160,6 +160,34 @@ class EnergyPlot extends XYCursorPlot {
       this.setCursorValue( timeOnEnd );
     } );
 
+    const updateModelViewTransformProperty = () => {
+      const newRange = GraphsConstants.PLOT_RANGES[ model.energyPlotScaleIndexProperty.get() ];
+      const newMaxY = newRange.max;
+      const newMinY = newRange.min;
+
+      const independentVariable = model.independentVariableProperty.get();
+      const horizontalMaxX = calculateDomain( independentVariable ).max;
+
+      const sampleTime = model.sampleTimeProperty.get();
+      if ( sampleTime > horizontalMaxX && independentVariable === GraphsModel.IndependentVariable.TIME ) {
+        modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
+          new Bounds2( sampleTime - horizontalMaxX, newMinY, sampleTime, newMaxY ),
+          new Bounds2( 0, 0, graphWidth, graphHeight )
+        ) );
+      }
+      else {
+        modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
+          new Bounds2( 0, newMinY, horizontalMaxX, newMaxY ),
+          new Bounds2( 0, 0, graphWidth, graphHeight )
+        ) );
+      }
+    };
+
+    // update model view transform as time moves forward, so that we scroll forward in time
+    model.sampleTimeProperty.link( () => {
+      updateModelViewTransformProperty();
+    } );
+
     // calculate new range of plot when zooming in or out
     model.energyPlotScaleIndexProperty.link( scaleIndex => {
       const newRange = GraphsConstants.PLOT_RANGES[ scaleIndex ];
@@ -167,16 +195,11 @@ class EnergyPlot extends XYCursorPlot {
       const newMinY = newRange.min;
       const horizontalLineSpacing = ( newMaxY - newMinY ) / 4;
 
-      const horizontalMaxX = calculateDomain( model.independentVariableProperty.get() ).max;
       const verticalLineSpacing = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ?
                                   POSITION_STEP_X : TIME_STEP_X;
 
 
-      modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
-        new Bounds2( 0, newMinY, horizontalMaxX, newMaxY ),
-        new Bounds2( 0, 0, graphWidth, graphHeight )
-      ) );
-
+      updateModelViewTransformProperty();
       this.setLineSpacings( verticalLineSpacing, horizontalLineSpacing, null, null );
     } );
 
@@ -187,8 +210,6 @@ class EnergyPlot extends XYCursorPlot {
       const newMaxY = newRange.max;
       const newMinY = newRange.min;
       const horizontalLineSpacing = ( newMaxY - newMinY ) / 4;
-
-      const horizontalMaxX = calculateDomain( independentVariable ).max;
 
       let verticalLineSpacing;
       if ( independentVariable === GraphsModel.IndependentVariable.POSITION ) {
@@ -202,18 +223,10 @@ class EnergyPlot extends XYCursorPlot {
         verticalLineSpacing = TIME_STEP_X;
       }
 
-      modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
-        new Bounds2( 0, newMinY, horizontalMaxX, newMaxY ),
-        new Bounds2( 0, 0, graphWidth, graphHeight )
-      ) );
-
+      updateModelViewTransformProperty();
       this.setLineSpacings( verticalLineSpacing, horizontalLineSpacing, null, null );
     } );
 
-    // model.kineticEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.kineticEnergyDataSeries ), 'visible' );
-    // model.potentialEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.potentialEnergyDataSeries ), 'visible' );
-    // model.thermalEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.thermalEnergyDataSeries ), 'visible' );
-    // model.totalEnergyDataVisibleProperty.linkAttribute( this.getXYDataSeriesNode( this.totalEnergyDataSeries ), 'visible' );
 
     // add data points when a EnergySkateParkDataSample is added to the model
     model.dataSamples.addItemAddedListener( addedSample => {
