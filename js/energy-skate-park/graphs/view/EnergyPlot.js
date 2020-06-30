@@ -160,26 +160,50 @@ class EnergyPlot extends XYCursorPlot {
       this.setCursorValue( timeOnEnd );
     } );
 
+    // update the transform for the plot so that recorded data is visible
     const updateModelViewTransformProperty = () => {
       const newRange = GraphsConstants.PLOT_RANGES[ model.energyPlotScaleIndexProperty.get() ];
       const newMaxY = newRange.max;
       const newMinY = newRange.min;
 
       const independentVariable = model.independentVariableProperty.get();
-      const horizontalMaxX = calculateDomain( independentVariable ).max;
+      const horizontalXRange = calculateDomain( independentVariable ).max;
 
-      const sampleTime = model.sampleTimeProperty.get();
-      if ( sampleTime > horizontalMaxX && independentVariable === GraphsModel.IndependentVariable.TIME ) {
-        modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
-          new Bounds2( sampleTime - horizontalMaxX, newMinY, sampleTime, newMaxY ),
-          new Bounds2( 0, 0, graphWidth, graphHeight )
-        ) );
-      }
-      else {
-        modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
-          new Bounds2( 0, newMinY, horizontalMaxX, newMaxY ),
-          new Bounds2( 0, 0, graphWidth, graphHeight )
-        ) );
+      if ( model.dataSamples.length > 0 ) {
+
+        const minRecordedX = model.dataSamples.get( 0 ).time;
+        const maxRecordedX = model.dataSamples.get( model.dataSamples.length - 1 ).time;
+        const dataXRange = maxRecordedX - minRecordedX;
+        const sampleTime = model.sampleTimeProperty.get();
+
+        if ( dataXRange >= horizontalXRange ) {
+
+          // we have filled up the range of the plot and so we translate our entire plot
+          // as time moves forward
+          modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
+            new Bounds2( sampleTime - horizontalXRange, newMinY, sampleTime, newMaxY ),
+            new Bounds2( 0, 0, graphWidth, graphHeight )
+          ) );
+        }
+        else if ( minRecordedX > 0 ) {
+
+          // we don't have data to fill the plot, but our time is greater than the horizontal range
+          // (likely after dragging the cursor) - the plot should start at min recorded value
+          // we have filled up the range of the plot and so we translate our entire plot
+          // as time moves forward
+          modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
+            new Bounds2( minRecordedX, newMinY, minRecordedX + horizontalXRange, newMaxY ),
+            new Bounds2( 0, 0, graphWidth, graphHeight )
+          ) );
+        }
+        else {
+
+          // just plot from 0 to the horizontal range
+          modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
+            new Bounds2( 0, newMinY, horizontalXRange, newMaxY ),
+            new Bounds2( 0, 0, graphWidth, graphHeight )
+          ) );
+        }
       }
     };
 
