@@ -169,7 +169,7 @@ class EnergyPlot extends XYCursorPlot {
       const independentVariable = model.independentVariableProperty.get();
       const horizontalXRange = calculateDomain( independentVariable ).max;
 
-      if ( model.dataSamples.length > 0 ) {
+      if ( model.dataSamples.length > 0 && independentVariable === GraphsModel.IndependentVariable.TIME ) {
 
         const minRecordedX = model.dataSamples.get( 0 ).time;
         const maxRecordedX = model.dataSamples.get( model.dataSamples.length - 1 ).time;
@@ -185,7 +185,7 @@ class EnergyPlot extends XYCursorPlot {
             new Bounds2( 0, 0, graphWidth, graphHeight )
           ) );
         }
-        else if ( minRecordedX > 0 ) {
+        else {
 
           // we don't have data to fill the plot, but our time is greater than the horizontal range
           // (likely after dragging the cursor) - the plot should start at min recorded value
@@ -196,14 +196,14 @@ class EnergyPlot extends XYCursorPlot {
             new Bounds2( 0, 0, graphWidth, graphHeight )
           ) );
         }
-        else {
+      }
+      else {
 
-          // just plot from 0 to the horizontal range
-          modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
-            new Bounds2( 0, newMinY, horizontalXRange, newMaxY ),
-            new Bounds2( 0, 0, graphWidth, graphHeight )
-          ) );
-        }
+        // just plot from 0 to the horizontal range
+        modelViewTransformProperty.set( ModelViewTransform2.createRectangleInvertedYMapping(
+          new Bounds2( 0, newMinY, horizontalXRange, newMaxY ),
+          new Bounds2( 0, 0, graphWidth, graphHeight )
+        ) );
       }
     };
 
