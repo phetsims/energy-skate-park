@@ -290,15 +290,14 @@ class EnergyPlot extends XYCursorPlot {
     // remove a batch of of EnergySkateParkDataSamples
     model.batchRemoveSamplesEmitter.addListener( samplesToRemove => {
       const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
-      for ( let i = 0; i < samplesToRemove.length; i++ ) {
-        const sampleToRemove = samplesToRemove[ i ];
 
-        const independentVariable = plotTime ? sampleToRemove.time : ( sampleToRemove.position.x + POSITION_PLOT_OFFSET );
+      const xValuesToRemove = samplesToRemove.map( sampleToRemove => {
+        return plotTime ? sampleToRemove.time : ( sampleToRemove.position.x + POSITION_PLOT_OFFSET );
+      } );
 
-        this.dynamicSeriesList.forEach( dynamicSeries => {
-          dynamicSeries.removePointAtX( independentVariable, true );
-        } );
-      }
+      this.dynamicSeriesList.forEach( dynamicSeries => {
+        dynamicSeries.removeDataPointsAtX( xValuesToRemove );
+      } );
     } );
   }
 
