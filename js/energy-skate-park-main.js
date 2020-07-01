@@ -10,11 +10,11 @@ import simLauncher from '../../joist/js/simLauncher.js';
 import '../../scenery/js/util/Color.js'; // Fix a circular loading problem when using this in EnergySkateParkColorScheme
 import Tandem from '../../tandem/js/Tandem.js';
 import energySkateParkStrings from './energySkateParkStrings.js';
-import EnergySkateParkSim from './energy-skate-park/common/EnergySkateParkSim.js';
-import GraphsScreen from './energy-skate-park/graphs/GraphsScreen.js';
-import IntroScreen from './energy-skate-park/intro/IntroScreen.js';
-import PlaygroundScreen from './energy-skate-park/playground/PlaygroundScreen.js';
-import MeasureScreen from './energy-skate-park/measure/MeasureScreen.js';
+import EnergySkateParkSim from './common/EnergySkateParkSim.js';
+import GraphsScreen from './graphs/GraphsScreen.js';
+import IntroScreen from './intro/IntroScreen.js';
+import PlaygroundScreen from './playground/PlaygroundScreen.js';
+import MeasureScreen from './measure/MeasureScreen.js';
 
 const energySkateParkTitleString = energySkateParkStrings[ 'energy-skate-park' ].title;
 
