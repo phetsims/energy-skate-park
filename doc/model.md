@@ -24,6 +24,11 @@ Tracks are modeled using a set of control points and cubic splines. They use an 
  
  The model uses the Euler method to move the skater along the track each time step. For more information see https://en.wikipedia.org/wiki/Euler_method, and
  the implementation in EnergySkateParkModel.stepEuler.
+ 
+ To determine whether the skater leaves the track by going off a "jump" or by falling upsidown from a loop, the
+ circular motion approximation is used, where the radius of curvature is the local radius of the track at a particular
+ skater point. For more information, please see http://farside.ph.utexas.edu/teaching/301/lectures/node91.html
+ regarding the circular motion approximation for modeling an object of mass moving around a circle.
 
 ## Friction
 Force of friction is calculated by
