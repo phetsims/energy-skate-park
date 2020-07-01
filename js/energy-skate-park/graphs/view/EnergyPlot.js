@@ -147,17 +147,22 @@ class EnergyPlot extends XYCursorPlot {
     // when cursor drag finishes, clear all data that has time greater than cursor time and set model time
     // to the selected cursor time
     dragEndedEmitter.addListener( () => {
-      const timeOnEnd = this.getCursorValue();
-      model.sampleTimeProperty.set( timeOnEnd );
 
-      const closestSample = model.getClosestSkaterSample( timeOnEnd );
-      const indexOfSample = model.dataSamples.indexOf( closestSample );
+      // dragging may have ended (or was interrupted) due to Reset All, Eraser Button, or other
+      // cases during multitouch, only do this work if we still have dataSamples
+      if ( model.dataSamples.length > 0 ) {
+        const timeOnEnd = this.getCursorValue();
+        model.sampleTimeProperty.set( timeOnEnd );
 
-      assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
+        const closestSample = model.getClosestSkaterSample( timeOnEnd );
+        const indexOfSample = model.dataSamples.indexOf( closestSample );
 
-      model.batchRemoveSamples( model.dataSamples.getArray().slice( indexOfSample ) );
+        assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
 
-      this.setCursorValue( timeOnEnd );
+        model.batchRemoveSamples( model.dataSamples.getArray().slice( indexOfSample ) );
+
+        this.setCursorValue( timeOnEnd );
+      }
     } );
 
     // update the transform for the plot so that recorded data is visible
