@@ -189,7 +189,6 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
   }
 
   /**
-   *
    * @private
    *
    * @param {EnergySkateParkTrackSetModel} model
@@ -204,63 +203,6 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
     }, options );
 
     return PremadeTracks.createTrack( model, controlPoints, options );
-  }
-
-  /**
-   * The "basic" track set includes the parabola, slope, and double well.
-   * @public
-   *
-   * @param {EnergySkateParkTrackSetModel} model
-   * @param {Tandem} tandem
-   * @returns {Array.<Track>}
-   */
-  static createBasicTrackSet( model, tandem ) {
-    assert && assert( model instanceof EnergySkateParkTrackSetModel, 'PremadeTracks should be used with an EnergySkateParkTrackSetModel' );
-    assert && assert( model.tracksDraggable === false, 'tracks should not be draggable in EnergySkateParkTrackSetModels' );
-
-    const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem );
-    const parabolaTrack = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints, {
-      tandem: tandem.createTandem( 'parabolaTrack' )
-    } );
-
-    const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem );
-    const slopeTrack = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints, {
-
-      // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
-      // see #164
-      slopeToGround: true,
-      tandem: tandem.createTandem( 'slopeTrack' )
-    } );
-
-    const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem );
-    const doubleWellTrack = EnergySkateParkTrackSetModel.createPremadeTrack( model, doubleWellControlPoints, {
-      tandem: tandem.createTandem( 'doubleWellTrack' )
-    } );
-
-    return [ parabolaTrack, slopeTrack, doubleWellTrack ];
-  }
-
-  /**
-   * The "full" track set has all of the premade tracks - a parabola, slope, double well, and loop.
-   *
-   * @param {EnergySkateParkModel} model
-   * @param {Tandem} tandem
-   * @returns {Array.<Track>}
-   * @public
-   */
-  static createFullTrackSet( model, tandem ) {
-
-    // the "full" track set has all of the premade tracks - a parabola,  slope, double well, and loop.
-    const trackSet = EnergySkateParkTrackSetModel.createBasicTrackSet( model, tandem );
-
-    const loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem );
-    const loopTrack = EnergySkateParkTrackSetModel.createPremadeTrack( model, loopControlPoints, {
-      draggable: model.tracksDraggable,
-      tandem: tandem.createTandem( 'loopTrack' )
-    } );
-    trackSet.push( loopTrack );
-
-    return trackSet;
   }
 }
 
