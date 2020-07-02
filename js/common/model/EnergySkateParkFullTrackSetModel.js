@@ -18,9 +18,6 @@ class EnergySkateParkFullTrackSetModel extends EnergySkateParkTrackSetModel {
    */
   constructor( tandem, options ) {
     super( tandem, options );
-
-    const trackSet = EnergySkateParkTrackSetModel.createFullTrackSet( this, tandem );
-    this.addTrackSet( trackSet );
   }
 }
 

@@ -13,6 +13,7 @@
 
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
+import Enumeration from '../../../../phet-core/js/Enumeration.js';
 import merge from '../../../../phet-core/js/merge.js';
 import energySkatePark from '../../energySkatePark.js';
 import ControlPoint from './ControlPoint.js';
@@ -24,6 +25,9 @@ const PARENT_TRACKS = null;
 // limiting bounds for dragging control points
 const END_BOUNDS_WIDTH = 3;
 const END_BOUNDS_HEIGHT = 4;
+
+// the supported premade tracks, used in EnegySkateParkTrackSetModels
+const TrackType = Enumeration.byKeys( [ 'PARABOLA', 'SLOPE', 'DOUBLE_WELL', 'LOOP' ] );
 
 /**
  * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the
@@ -121,11 +125,16 @@ const PremadeTracks = {
    * @param {Tandem} groupTandem
    * @returns {ControlPoint[]}
    */
-  createSlopeControlPoints: groupTandem => {
+  createSlopeControlPoints: ( groupTandem, options ) => {
 
-    const p1 = new Vector2( -4, 6 );
+    options = merge( {
+      trackWidth: 6,
+      trackHeight: 6
+    }, options );
+
+    const p1 = new Vector2( -4, options.trackHeight );
     const p2 = new Vector2( -2, 1.2 );
-    const p3 = new Vector2( 2, 0 );
+    const p3 = new Vector2( -4 + options.trackWidth, 0 );
 
     const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
@@ -240,16 +249,22 @@ const PremadeTracks = {
    * @param  {Tandem} groupTandem
    * @returns {Array.<ControlPoint>}
    */
-  createLoopControlPoints: groupTandem => {
+  createLoopControlPoints: ( groupTandem, options ) => {
+    options = merge( {
+      trackWidth: 9,
+      trackHeight: 6,
+      innerLoopWidth: 3,
+      innerLoopTop: 4
+    }, options );
 
     // top of the left and right endpoints of the loop, higher than loopTop so that it is easy for the skater to go
     // all the way around the loop
-    const trackTop = 6;
+    const trackTop = options.trackHeight;
 
     const trackBottom = 0.3; // bottom points, so that the skater doesn't go below y = 0
-    const loopTop = 4; // adjust to make the loop top point higher or lower
-    const loopWidth = 9; // adjust to make the loop more or less wide
-    const innerLoopWidth = 3; // roughly adjusts the width of the innerloop
+    const loopTop = options.innerLoopTop; // adjust to make the loop top point higher or lower
+    const loopWidth = options.trackWidth; // adjust to make the loop more or less wide
+    const innerLoopWidth = options.innerLoopWidth; // roughly adjusts the width of the innerloop
     const innerLoopHeight = 2; // roughly adjust inner loop height (for control points, actual loop will be higher)
 
     const p1 = new Vector2( -loopWidth / 2, trackTop );
@@ -321,6 +336,10 @@ const PremadeTracks = {
     return new Track( model, controlPoints, PARENT_TRACKS, options );
   }
 };
+
+// @public
+// @static
+PremadeTracks.TrackType = TrackType;
 
 energySkatePark.register( 'PremadeTracks', PremadeTracks );
 

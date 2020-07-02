@@ -25,10 +25,64 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
    */
   constructor( tandem ) {
 
+    // all tracks in the Graphs screen are configurable
+    const tracksConfigurable = true;
+
+    // all tracks in graphs screen are bound by these dimensions (in meters)
+    const trackHeight = GraphsConstants.TRACK_HEIGHT;
+    const trackWidth = GraphsConstants.TRACK_WIDTH;
+
     // track set model with no friction
     super( tandem.createTandem( 'graphsModel' ), {
 
       includeFriction: false,
+
+      // the Graphs screen contains a parabola and double well premade track
+      trackTypes: [
+        PremadeTracks.TrackType.PARABOLA,
+        PremadeTracks.TrackType.DOUBLE_WELL
+      ],
+
+      // the Graphs screen has a double well and parabola track, but they look and act a bit different from the other
+      // screens, these options define the differences
+      initializePremadeTracksOptions: {
+        doubleWellControlPointOptions: {
+          trackHeight: 4,
+          trackWidth: 10,
+          trackMidHeight: 1.5,
+
+          p1Visible: false,
+          p5Visible: false,
+
+          // limit vertical bounds for points 1 and 5 so that the track can never overlap with other UI components, including
+          // when it is bumped above ground
+          p1UpSpacing: 0,
+          p1DownSpacing: 0,
+          p5UpSpacing: 0,
+          p5DownSpacing: 0,
+
+          // spacing for the limiting drag bounds of the third control point
+          p3UpSpacing: 2.5,
+          p3DownSpacing: 1.5
+        },
+        doubleWellTrackOptions: {
+          configurable: tracksConfigurable,
+          tandem: tandem.createTandem( 'doubleWellTrack' ),
+          phetioState: false
+        },
+
+        parabolaControlPointOptions: {
+          trackHeight: trackHeight,
+          trackWidth: trackWidth,
+          p1Visible: false,
+          p3Visible: false
+        },
+        parabolaTrackOptions: {
+          configurable: tracksConfigurable,
+          tandem: tandem.createTandem( 'parabolaTrack' ),
+          phetioState: false
+        }
+      },
 
       // limited reference height range for this Screen because the graph takes up so much space
       skaterOptions: {
@@ -36,7 +90,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
       },
 
       // premade tracks can be modified
-      tracksConfigurable: true,
+      tracksConfigurable: tracksConfigurable,
 
       // interval at which we save skater samples
       saveSampleInterval: 0.01,
@@ -48,10 +102,6 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
       // to prevent a memory leak if we run for a long time without clearing
       maxNumberOfSamples: 1000
     } );
-
-    // the 'graphs' screen uses a unique set of premade tracks
-    const trackSet = this.createGraphsTrackSet( tandem );
-    this.addTrackSet( trackSet );
 
     // @public - properties for visibility and settings for the graph
     this.kineticEnergyDataVisibleProperty = new BooleanProperty( true );
@@ -114,7 +164,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
       if ( plottingTime && overTime ) {
 
         // clear all samples prior to time - maxTime (the horizontal range of the data)
-        const samplesToRemove =  [];
+        const samplesToRemove = [];
         const minSavedTime = time - GraphsConstants.MAX_PLOTTED_TIME;
         for ( let i = 0; i < this.dataSamples.length; i++ ) {
           if ( this.dataSamples.get( i ).time < minSavedTime ) {
@@ -126,7 +176,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
         }
 
         this.batchRemoveSamples( samplesToRemove );
-        assert &&  assert( this.dataSamples.get( 0 ).time >= minSavedTime, 'data still exists that is less than plot min' );
+        assert && assert( this.dataSamples.get( 0 ).time >= minSavedTime, 'data still exists that is less than plot min' );
       }
     } );
 

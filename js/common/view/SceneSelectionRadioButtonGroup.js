@@ -16,6 +16,8 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import RadioButtonGroup from '../../../../sun/js/buttons/RadioButtonGroup.js';
 import energySkatePark from '../../energySkatePark.js';
 import Constants from '../Constants.js';
+import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
+import PremadeTracks from '../model/PremadeTracks.js';
 import BackgroundNode from './BackgroundNode.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TrackNode from './TrackNode.js';
@@ -26,9 +28,9 @@ class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
    * Construct a SceneSelectionRadioButtonGroup.  Pass the entire model since it is used to create TrackNode
    *
    * @param {EnergySkateParkModel} model the main model for the entire screen
-   * @param {EnergySkateParkBasicsView} view the main view for the entire screen
-   * @param {ModelViewTransform2} transform the model view transform
+   * @param {EnergySkateParkScreenView} view the main view for the entire screen
    * @param {Tandem} tandem
+   * @param {Object} [options]
    */
   constructor( model, view, tandem, options ) {
     assert && assert( model.sceneProperty !== undefined, 'model does not support a scene' );
@@ -53,6 +55,47 @@ class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
     assert && assert( options.spacing === undefined, 'SceneSelectionRadioButtonGroup sets spacing from number of premade tracks' );
     options.spacing = 20 / model.tracks.length;
 
+    // Create a track to be used specifically for an icon - must be one of the premade tracks defined in
+    // PremadeTracks.TrackType. These Tracks are a bit different from the actual tracks used in the model
+    // because their sizing and dimensions need to be different to look better as icons for radio buttons
+    const createIconTrack = trackType => {
+
+      // all tracks have the same width and height so they take up the same dimensions in a radio button, so one
+      // doesn't get scaled down more than another and look more thin
+      const controlPointOptions = {
+        trackWidth: 6,
+        trackHeight: 6
+      };
+
+      let track = null;
+      if ( trackType === PremadeTracks.TrackType.PARABOLA ) {
+        const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem, merge( {
+          trackMidHeight: 1
+        }, controlPointOptions ) );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints );
+      }
+      else if ( trackType === PremadeTracks.TrackType.SLOPE ) {
+        const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem, controlPointOptions );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints );
+      }
+      else if ( trackType === PremadeTracks.TrackType.DOUBLE_WELL ) {
+        const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem, controlPointOptions);
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, doubleWellControlPoints );
+      }
+      else if ( trackType === PremadeTracks.TrackType.LOOP ) {
+        const loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem, merge( {
+          innerLoopWidth: 2.5,
+          innerLoopTop: 3.5
+        }, controlPointOptions ) );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, loopControlPoints );
+      }
+      else {
+        throw new Error( `unsupported TrackType: ${trackType}` );
+      }
+
+      return track;
+    };
+
     // Create a button with a scene like the track in the index
     const createNode = index => {
       const children = [];
@@ -63,8 +106,11 @@ class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
         children.push( background );
       }
 
-      const track = model.tracks.get( index );
-      const trackNode = new TrackNode( model, track, view.modelViewTransform, new Property(), tandem.createTandem( 'trackNode' + index ) );
+      // const track = model.tracks.get( index );
+      const track = createIconTrack( model.trackTypes[ index ] );
+      const trackNode = new TrackNode( model, track, view.modelViewTransform, new Property(), tandem.createTandem( 'trackNode' + index ), {
+        isIcon: true
+      } );
 
       // use a rasterized version of the node so that the icon doesn't change with the model for configurable tracks
       const iconNode = trackNode.rasterized();
@@ -73,12 +119,10 @@ class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
       // Fixes: Cursor turns into a hand over the track in the track selection panel, see #204
       iconNode.pickable = false;
 
-      const contentNode = new Node( {
+      return new Node( {
         tandem: tandem.createTandem( 'contentNode' + index ),
         children: children
       } );
-
-      return contentNode;
     };
 
     // create the contents for the radio buttons

@@ -41,16 +41,24 @@ class TrackNode extends Node {
       //  we want a pointer even when not draggable (like in the toolbox).
       roadCursorOverride: null,
 
+      // {boolean} - whether or not this TrackNode is being used as an icon - if so, its
+      // representation is a little different, mostly it has no visible control points
+      // and its road path is a bit thicker to be more visible since the track will likley
+      // be smaller
+      isIcon: false,
+
       tandem: tandem,
       phetioComponentOptions: { phetioState: false }
     }, options );
 
     super( options );
 
+    // @private
     this.track = track;
     this.model = model;
     this.modelViewTransform = modelViewTransform;
     this.availableBoundsProperty = availableBoundsProperty;
+    this.isIcon = options.isIcon;
 
     this.road = new Path( null, {
       fill: 'gray',
@@ -90,8 +98,8 @@ class TrackNode extends Node {
     }
 
     // only "configurable" tracks have draggable control points, and individual control points may have dragging
-    // disabled
-    if ( track.configurable ) {
+    // disabled - also, "icon" TrackNodes do not display ControlPoints
+    if ( track.configurable && !options.isIcon ) {
       for ( let i = 0; i < track.controlPoints.length; i++ ) {
         const controlPoint = track.controlPoints[ i ];
 
@@ -212,7 +220,7 @@ class TrackNode extends Node {
     }
 
     const strokeStyles = new LineStyles( {
-      lineWidth: 10,
+      lineWidth: this.isIcon ? 25 : 10,
       lineCap: 'butt',
       lineJoin: 'miter',
       miterLimit: 10

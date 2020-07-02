@@ -9,10 +9,10 @@
 
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
+import EnergySkateParkFullTrackSetModel from '../../common/model/EnergySkateParkFullTrackSetModel.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkTrackSetModel from '../../common/model/EnergySkateParkTrackSetModel.js';
 
-class MeasureModel extends EnergySkateParkTrackSetModel {
+class MeasureModel extends EnergySkateParkFullTrackSetModel {
 
   /**
    * @param {Tandem} tandem
@@ -22,12 +22,6 @@ class MeasureModel extends EnergySkateParkTrackSetModel {
     super( tandem, {
       tracksConfigurable: true
     } );
-
-    const trackSet = EnergySkateParkTrackSetModel.createFullTrackSet( this, tandem );
-
-    // NOTE: It would have been nice to pass the tracks to EnergySkateParkTrackSetModel, but tracks require knowledge
-    // of the model they are being added to so this isn't possible.
-    this.addTrackSet( trackSet );
 
     // @public - the position of the sensor, in model coordinates (meters)
     this.sensorProbePositionProperty = new Vector2Property( new Vector2( -4, 1.5 ) );

@@ -32,7 +32,6 @@ const FULLY_INTERACTIVE_OPTIONS = {
   attachable: true
 };
 
-
 class Track extends PhetioObject {
 
   /**
