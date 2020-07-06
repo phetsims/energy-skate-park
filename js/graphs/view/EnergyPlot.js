@@ -86,10 +86,6 @@ class EnergyPlot extends XYCursorPlot {
         stroke: 'gray'
       },
 
-      graphPanelOverlayOptions: {
-        stroke: 'gray'
-      },
-
       // for the cursor that shows current time
       cursorOptions: {
         startDrag: ( event, listener ) => {
