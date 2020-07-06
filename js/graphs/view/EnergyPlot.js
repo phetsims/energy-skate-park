@@ -81,9 +81,11 @@ class EnergyPlot extends XYCursorPlot {
       showVerticalIntermediateLines: false,
       showHorizontalIntermediateLines: false,
       cornerRadius: 0,
-      gridLineOptions: {
-        lineDash: [ 4, 4 ],
-        stroke: 'gray'
+      gridNodeOptions: {
+        majorLineOptions: {
+          lineDash: [ 4, 4 ],
+          stroke: 'gray'
+        }
       },
 
       // for the cursor that shows current time
