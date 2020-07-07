@@ -1827,7 +1827,7 @@ class EnergySkateParkModel extends PhetioObject {
    * @returns {boolean}
    */
   containsTrack( track ) {
-    return this.tracks.contains( track );
+    return this.tracks.includes( track );
   }
 
   /**
