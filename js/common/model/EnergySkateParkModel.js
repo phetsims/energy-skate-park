@@ -174,6 +174,9 @@ class EnergySkateParkModel extends PhetioObject {
 
     // @public {StopWatch} - model element for the stop watch in this sim
     this.stopwatch = new Stopwatch( {
+      timePropertyOptions: {
+        range: Stopwatch.ZERO_TO_ALMOST_SIXTY
+      },
       tandem: tandem.createTandem( 'stopwatch' )
     } );
 
