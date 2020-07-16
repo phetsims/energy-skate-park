@@ -32,6 +32,7 @@ import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushBut
 import skaterIconImage from '../../../images/skater1_left_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
+import Constants from '../Constants.js';
 import AttachDetachToggleButtons from './AttachDetachToggleButtons.js';
 import BackgroundNode from './BackgroundNode.js';
 import EnergyBarGraphAccordionBox from './EnergyBarGraphAccordionBox.js';
@@ -105,7 +106,7 @@ class EnergySkateParkScreenView extends ScreenView {
     }, options );
 
     super( {
-      layoutBounds: new Bounds2( 0, 0, 834, 504 ),
+      // layoutBounds: new Bounds2( 0, 0, 834, 504 ),
       tandem: tandem
     } );
 
@@ -138,9 +139,12 @@ class EnergySkateParkScreenView extends ScreenView {
 
     const modelPoint = new Vector2( 0, 0 );
 
-    // earth is 70px high in stage coordinates
+    // earth is 86px high in stage coordinates
     const viewPoint = new Vector2( this.layoutBounds.width / 2, this.layoutBounds.height - BackgroundNode.earthHeight );
-    const scale = 50;
+
+    // scale chosen so that displayed model is the same as it was for energy-skate-park-basics when that sim
+    // used non-default layout bounds
+    const scale = 61.40;
     const modelViewTransform = ModelViewTransform2.createSinglePointScaleInvertedYMapping( modelPoint, viewPoint, scale );
     this.modelViewTransform = modelViewTransform;
 
@@ -201,7 +205,6 @@ class EnergySkateParkScreenView extends ScreenView {
 
     this.resetAllButton = new ResetAllButton( {
       listener: model.reset.bind( model ),
-      scale: 0.85,
 
       // Align vertically with other controls, see #134
       centerY: ( modelViewTransform.modelToViewY( 0 ) + this.layoutBounds.maxY ) / 2,
@@ -214,7 +217,8 @@ class EnergySkateParkScreenView extends ScreenView {
     this.returnSkaterButton = new RectangularPushButton( {
       content: new Text( controlsRestartSkaterString, {
         tandem: tandem.createTandem( 'restartSkaterTextNode' ),
-        maxWidth: 90
+        maxWidth: 90,
+        font: Constants.CONTROL_LABEL_FONT
       } ),
       listener: model.returnSkater.bind( model ),
       centerY: this.resetAllButton.centerY,
@@ -226,7 +230,7 @@ class EnergySkateParkScreenView extends ScreenView {
     model.skater.movedProperty.linkAttribute( this.returnSkaterButton, 'enabled' );
     this.bottomLayer.addChild( this.returnSkaterButton );
 
-    const gaugeRadius = 62;
+    const gaugeRadius = 76;
 
     // @protected (read-only) - for layout or repositioning in subtypes
     this.speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 30 ), {
@@ -234,7 +238,8 @@ class EnergySkateParkScreenView extends ScreenView {
         valuePattern: speedometerMetersPerSecondPatternString,
         decimalPlaces: 1,
         textOptions: {
-          maxWidth: gaugeRadius * 1.3
+          maxWidth: gaugeRadius * 1.3,
+          font: new PhetFont( 20 )
         }
       },
 
@@ -325,7 +330,7 @@ class EnergySkateParkScreenView extends ScreenView {
     this.referenceHeightLine.centerX = this.layoutBounds.centerX;
 
     // Buttons to return the skater when she is offscreen, see #219
-    const iconScale = 0.15;
+    const iconScale = 0.19;
     const returnSkaterToPreviousStartingPositionButton = new RectangularPushButton( {
       content: new Image( skaterIconImage, {
         scale: iconScale,
@@ -368,21 +373,31 @@ class EnergySkateParkScreenView extends ScreenView {
     this.timeControlNode = new TimeControlNode( playingProperty, {
       tandem: tandem.createTandem( 'timeControlNode' ),
       timeSpeedProperty: model.timeSpeedProperty,
-      buttonGroupXSpacing: 19, // extra spacing avoids pointer area overlap when play pause button size increases
+      buttonGroupXSpacing: 23.3, // extra spacing avoids pointer area overlap when play pause button size increases
       playPauseStepButtonOptions: {
         playPauseButtonOptions: {
-          radius: 18
+          radius: 22.1
         },
         stepForwardButtonOptions: {
-          radius: 13,
+          radius: 16,
           listener: model.manualStep.bind( model )
+        }
+      },
+      speedRadioButtonGroupOptions: {
+        labelOptions: {
+          font: new PhetFont( 17 )
+        },
+        radioButtonGroupOptions: {
+          radioButtonOptions: {
+            radius: 10
+          }
         }
       }
     } );
 
     this.topLayer.addChild( this.timeControlNode );
 
-    this.timeControlNode.setCenterBottom( this.layoutBounds.centerBottom.minusXY( 0, 15 ) );
+    this.timeControlNode.setCenterBottom( this.layoutBounds.centerBottom.minusXY( 0, 20 ) );
 
     // grid and reference height visibility are controlled from a separate panel
     if ( this.showSeparateVisibilityControlsPanel ) {
@@ -482,10 +497,10 @@ class EnergySkateParkScreenView extends ScreenView {
     const minFloatAmount = this.layoutBounds.left - EXTRA_FLOAT;
 
     // for use in subtypes
-    this.fixedRight = Math.min( maxFloatAmount, this.visibleBoundsProperty.get().maxX ) - 5;
-    this.fixedLeft = Math.max( minFloatAmount, this.visibleBoundsProperty.get().minX ) + 5;
+    this.fixedRight = Math.min( maxFloatAmount, this.visibleBoundsProperty.get().maxX ) - 6;
+    this.fixedLeft = Math.max( minFloatAmount, this.visibleBoundsProperty.get().minX ) + 6;
 
-    this.controlPanel.top = 5;
+    this.controlPanel.top = 6;
     this.controlPanel.right = this.fixedRight;
 
     if ( this.attachDetachToggleButtons ) {
@@ -505,7 +520,7 @@ class EnergySkateParkScreenView extends ScreenView {
     let pieChartLegendLeftTop = null;
     if ( this.showBarGraph ) {
       this.energyBarGraphAccordionBox.x = this.fixedLeft;
-      pieChartLegendLeftTop = new Vector2( this.energyBarGraphAccordionBox.right + 32, this.energyBarGraphAccordionBox.top );
+      pieChartLegendLeftTop = new Vector2( this.energyBarGraphAccordionBox.right + 45, this.energyBarGraphAccordionBox.top );
     }
     else {
       pieChartLegendLeftTop = new Vector2( this.fixedLeft, this.controlPanel.top );

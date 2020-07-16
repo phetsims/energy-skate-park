@@ -15,9 +15,9 @@ import EnergyBarGraph from './EnergyBarGraph.js';
 class EnergyBarGraphAccordionBox extends AccordionBox {
 
   /**
-   * @param {Skater}
-   * @param {NumberProperty} - controls scale of bar graphs
-   * @param {BooleanProperty} - controls visibility of bar graphs
+   * @param {Skater} skater
+   * @param {NumberProperty} barGraphScaleProperty - controls scale of bar graphs
+   * @param {BooleanProperty} barGraphVisibleProperty - controls visibility of bar graphs
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
@@ -39,6 +39,10 @@ class EnergyBarGraphAccordionBox extends AccordionBox {
       // {null|*} options for the bar graph itself, passed on to EnergyBarGraph
       barGraphOptions: null,
 
+      expandCollapseButtonOptions: {
+        sideLength: 19
+      },
+
       tandem: tandem
     }, Constants.GRAPH_PANEL_OPTONS, options );
 
@@ -47,7 +51,7 @@ class EnergyBarGraphAccordionBox extends AccordionBox {
     super( energyBarGraph, options );
 
     // create an icon that represents the content, it is invisible when expanded
-    const graphIcon = EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } );
+    const graphIcon = EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ) );
     this.addChild( graphIcon );
     graphIcon.right = graphIcon.globalToParentPoint( energyBarGraph.parentToGlobalPoint( energyBarGraph.rightCenter ) ).x;
     graphIcon.top = options.buttonYMargin;

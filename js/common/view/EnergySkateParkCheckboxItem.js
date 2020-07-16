@@ -129,8 +129,8 @@ class EnergySkateParkCheckboxItem extends Checkbox {
 
     // a dashed, stroked line will be drawn with overlapping rectangles, the background rectangle is slightly taller
     // to mimic stroke
-    const width = 16;
-    const height = 3;
+    const width = 19.65;
+    const height = 3.7;
     const lineDash = [ width / 5, width / 5 ]; // produces 3 segments
     const lineShape = Shape.lineSegment( 0, 0, width, 0 );
     const backgroundLine = new Path( lineShape, {
@@ -156,7 +156,7 @@ class EnergySkateParkCheckboxItem extends Checkbox {
    */
   static createSamplesIcon( tandem ) {
 
-    const circleRadius = 2.5;
+    const circleRadius = 3;
 
     // positions of circles, for circles and path
     const pointDistance = 3 * circleRadius;
@@ -195,9 +195,9 @@ class EnergySkateParkCheckboxItem extends Checkbox {
    * @returns {Node}
    */
   static createStickingToTrackIcon() {
-    const iconWidth = 16;
+    const iconWidth = 19;
 
-    const trackRectangle = new Rectangle( 0, 0, iconWidth, 5, {
+    const trackRectangle = new Rectangle( 0, 0, iconWidth, 6.8, {
       fill: EnergySkateParkColorScheme.roadFill
     } );
 
@@ -206,7 +206,7 @@ class EnergySkateParkCheckboxItem extends Checkbox {
       stroke: EnergySkateParkColorScheme.roadLine,
       center: trackRectangle.center,
       lineWidth: 1,
-      lineDash: [ 2, 1.5 ]
+      lineDash: [ 2.5, 1.8 ]
     } );
 
     const centerOfMassCircle = new Circle( 2, {

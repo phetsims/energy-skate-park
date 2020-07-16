@@ -48,8 +48,8 @@ class ToolboxPanel extends Panel {
       tandem: tandem.createTandem( 'timerIcon' )
     } );
 
-    measuringTapeIcon.setScaleMagnitude( 0.65 );
-    stopwatchIcon.setScaleMagnitude( 0.4 );
+    measuringTapeIcon.setScaleMagnitude( 0.8 );
+    stopwatchIcon.setScaleMagnitude( 0.5 );
 
     // align icons for panel
     const icons = new HBox( {

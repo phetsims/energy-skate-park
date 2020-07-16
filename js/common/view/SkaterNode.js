@@ -89,7 +89,7 @@ class SkaterNode extends Node {
 
     // @private - Map from mass(kg) to the amount to scale the image
     const centerMassValue = skater.massRange.getCenter();
-    const massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.38, 0.5 );
+    const massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.46, 0.614 );
 
     // Update the position and angle.  Normally the angle would only change if the position has also changed, so no need
     // for a duplicate callback there.

@@ -34,8 +34,8 @@ const PANEL_OPTIONS = {
 
 const Constants = {
   SLIDER_OPTIONS: {
-    thumbSize: new Dimension2( 10, 20 ),
-    trackSize: new Dimension2( 80, 3 ),
+    thumbSize: new Dimension2( 12, 24 ),
+    trackSize: new Dimension2( 98, 3 ),
     tickLabelSpacing: 0,
     majorTickLength: 10
   },
@@ -45,14 +45,16 @@ const Constants = {
   RADIO_BUTTON_CORNER_RADIUS: 2,
 
   // consistent width for all checkboxesz
-  CHECKBOX_WIDTH: 12,
-  CHECKBOX_LABEL_FONT: new PhetFont( { size: 12 } ),
+  CHECKBOX_WIDTH: 14.7,
+  CHECKBOX_LABEL_FONT: new PhetFont( { size: 14.7 } ),
+
+  CONTROL_LABEL_FONT: new PhetFont( { size: 14.7 } ),
 
   // font for labels of physical controls
-  CONTROL_TITLE_FONT: new PhetFont( { weight: 'bold', size: 12 } ),
+  CONTROL_TITLE_FONT: new PhetFont( { weight: 'bold', size: 14.7 } ),
   CONTROL_TICK_LABEL_OPTIONS: {
-    font: new PhetFont( 10 ),
-    maxWidth: 25 // selected by choosing the length of widest English string in ?stringTest=double
+    font: new PhetFont( 12.3 ),
+    maxWidth: 31 // selected by choosing the length of widest English string in ?stringTest=double
   },
 
   // options for boxes and panels
@@ -69,7 +71,7 @@ const Constants = {
     yMargin: 6,
     cornerRadius: PANEL_CORNER_RADIUS
   },
-  COMBO_BOX_ITEM_OPTIONS: { font: new PhetFont( 11 ), maxWidth: 80 },
+  COMBO_BOX_ITEM_OPTIONS: { font: new PhetFont( 13.5 ), maxWidth: 98 },
 
   // Control points are replenished in the toolbox as they are destroyed (by connecting) in the play area
   // This is the maximum number of control points available to the user.

@@ -82,7 +82,7 @@ class PhysicalNumberControl extends NumberControl {
     // changed with options!)
     merge( options, {
       arrowButtonOptions: {
-        scale: 0.5
+        scale: 0.61
       },
 
       /**
@@ -123,7 +123,7 @@ class PhysicalNumberControl extends NumberControl {
         xMargin: 2,
         yMargin: 2,
         textOptions: {
-          font: new PhetFont( 10 ),
+          font: new PhetFont( 12 ),
           maxWidth: 50
         }
       } ),

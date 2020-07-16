@@ -16,8 +16,8 @@ import mountainImage from '../../../images/mountains_png.js';
 import energySkatePark from '../../energySkatePark.js';
 
 // constants
-const earthHeight = 70;
-const cementWidth = 4;
+const earthHeight = 86;
+const cementWidth = 5;
 
 class BackgroundNode extends Node {
 

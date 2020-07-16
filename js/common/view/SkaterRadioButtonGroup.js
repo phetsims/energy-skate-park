@@ -44,7 +44,7 @@ class SkaterRadioButtonGroup extends Node {
       baseColor: EnergySkateParkColorScheme.radioButtonBaseColor
     };
 
-    const imageScale = 0.4;
+    const imageScale = 0.5;
 
     // matches the API of RadioButtonGroup
     const contentArray = [
@@ -92,7 +92,7 @@ class SkaterRadioButtonGroup extends Node {
     for ( let i = 0; i < buttons.length; i += 3 ) {
       rows.push( new HBox( {
         children: buttons.slice( i, i + 3 ),
-        spacing: 8,
+        spacing: 10,
         resize: false
       } ) );
     }
@@ -100,7 +100,7 @@ class SkaterRadioButtonGroup extends Node {
     // arrange buttons in a 2D grid
     this.addChild( new VBox( {
       children: rows,
-      spacing: 2,
+      spacing: 3,
       resize: false
     } ) );
 

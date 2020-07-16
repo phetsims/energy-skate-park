@@ -108,7 +108,7 @@ class PieChartNode extends Node {
 
       // Make the radius proportional to the square root of the energy so that the area will grow linearly with energy,
       // handling negative energy in case skater is below potential energy reference line
-      const radius = 0.4 * Math.sqrt( Math.abs( totalEnergy ) );
+      const radius = 0.5 * Math.sqrt( Math.abs( totalEnergy ) );
 
       // If any value is too low, then don't show it, see #136
       const THRESHOLD = 1E-4;

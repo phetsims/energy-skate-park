@@ -25,8 +25,8 @@ class TextPanel extends Panel {
     options = merge( {
 
       // Text options
-      font: new PhetFont( 12 ),
-      textMaxWidth: 150,
+      font: new PhetFont( 15 ),
+      textMaxWidth: 180,
 
       // panel options
       fill: EnergySkateParkColorScheme.transparentPanelFill,

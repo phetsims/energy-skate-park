@@ -48,14 +48,14 @@ class PieChartLegend extends Panel {
     const createLabel = ( index, title, tandemName ) => {
       return new Text( title, {
         tandem: tandem.createTandem( tandemName ),
-        font: new PhetFont( 12 ),
+        font: Constants.CONTROL_LABEL_FONT,
         pickable: false,
         maxWidth: 97 // selected by choosing the length of widest English string in ?stringTest=double
       } );
     };
 
     const createBar = ( index, color ) => {
-      return new Rectangle( 0, 0, 16.5, 16.5, {
+      return new Rectangle( 0, 0, 20.26, 20.26, {
         fill: color,
         stroke: 'black',
         lineWidth: 1
@@ -78,7 +78,7 @@ class PieChartLegend extends Panel {
       listener: clearThermal,
       centerX: thermalLabel.centerX,
       y: thermalLabel.bottom + 15,
-      scale: 0.65
+      scale: 0.8
     } );
     skater.allowClearingThermalEnergyProperty.link( allowClearingThermalEnergy => {
       clearThermalButton.enabled = allowClearingThermalEnergy;
@@ -88,11 +88,12 @@ class PieChartLegend extends Panel {
     // get the width right, then add the undo button later
     const clearThermalButtonStrut = new Rectangle( 0, 0, clearThermalButton.width, 1, {} );
 
+    const spacing = 5;
     const children = [
-      new HBox( { spacing: 4, children: [ kineticBar, kineticLabel ] } ),
-      new HBox( { spacing: 4, children: [ potentialBar, potentialLabel ] } ),
+      new HBox( { spacing: spacing, children: [ kineticBar, kineticLabel ] } ),
+      new HBox( { spacing: spacing, children: [ potentialBar, potentialLabel ] } ),
       new HBox( {
-        spacing: 4,
+        spacing: spacing,
         children: [ thermalBar, thermalLabel, new HStrut( 1 ), clearThermalButtonStrut, new HStrut( 3 ) ]
       } )
     ];
@@ -101,19 +102,19 @@ class PieChartLegend extends Panel {
       children.push( new HBox( { spacing: 4, children: [ totalBar, totalLabel ] } ) );
     }
 
-    children.push( new VStrut( 1 ) );
+    children.push( new VStrut( 1.2 ) );
 
-    const contentNode = new VBox( { spacing: 5, align: 'left', children: children } );
+    const contentNode = new VBox( { spacing: 6, align: 'left', children: children } );
 
     const titleNode = new Text( energyEnergyString, {
       tandem: tandem.createTandem( 'titleNode' ),
       fill: 'black',
-      font: new PhetFont( 14 ),
+      font: new PhetFont( 17 ),
       pickable: false,
       maxWidth: 93 // selected by choosing the length of widest English string in ?stringTest=double
     } );
     const contentWithTitle = new VBox( {
-      spacing: 5, align: 'center', children: [
+      spacing: 6.14, align: 'center', children: [
         titleNode,
         contentNode
       ]
@@ -122,8 +123,8 @@ class PieChartLegend extends Panel {
     super( contentWithTitle, merge( {
       x: 4,
       y: 4,
-      xMargin: 6,
-      yMargin: 5,
+      xMargin: 7,
+      yMargin: 6,
       resize: false,
       tandem: tandem
     }, Constants.GRAPH_PANEL_OPTONS ) );

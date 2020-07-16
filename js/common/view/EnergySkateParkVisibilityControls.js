@@ -34,10 +34,10 @@ const propertiesSpeedString = energySkateParkStrings.visibilityControls.speed;
 // constants
 const TEXT_OPTIONS = {
   font: Constants.CHECKBOX_LABEL_FONT,
-  maxWidth: 95
+  maxWidth: 117
 };
 
-const CHECKBOX_SPACING = 5; // spacing between checkbox and its icon content
+const CHECKBOX_SPACING = 6; // spacing between checkbox and its icon content
 
 class EnergySkateParkVisibilityControls extends VBox {
 
@@ -69,7 +69,7 @@ class EnergySkateParkVisibilityControls extends VBox {
 
     super( {
       align: 'left',
-      spacing: 3
+      spacing: 5
     } );
 
     // @private {AlignGroup} - Used to align labels and icons so that every box in the group has the same dimensions
@@ -84,22 +84,22 @@ class EnergySkateParkVisibilityControls extends VBox {
     const checkboxItems = [];
 
     if ( options.showPieChartCheckbox ) {
-      const iconNode = EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ), { scale: 0.8 } );
+      const iconNode = EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ) );
       this.addCheckboxContent( pieChartString, iconNode, model.pieChartVisibleProperty, tandem.createTandem( 'pieChartCheckboxContent' ) );
     }
 
     if ( options.showBarGraphCheckbox ) {
-      const iconNode = EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ), { scale: 0.8 } );
+      const iconNode = EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ) );
       this.addCheckboxContent( plotsBarGraphString, iconNode, model.barGraphVisibleProperty, tandem.createTandem( 'barGraphCheckboxContent' ) );
     }
 
     if ( options.showGridCheckbox ) {
-      const iconNode = EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ), { scale: 0.8 } );
+      const iconNode = EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ) );
       this.addCheckboxContent( controlsShowGridString, iconNode, model.gridVisibleProperty, tandem.createTandem( 'gridCheckboxContent' ) );
     }
 
     if ( options.showSpeedCheckbox ) {
-      const iconNode = EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ), { scale: 0.8 } );
+      const iconNode = EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ) );
       this.addCheckboxContent( propertiesSpeedString, iconNode, model.speedometerVisibleProperty, tandem.createTandem( 'speedCheckboxContent' ) );
     }
 

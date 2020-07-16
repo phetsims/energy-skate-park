@@ -12,7 +12,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 
 // constants
-const SAMPLE_RADIUS = 3;
+const SAMPLE_RADIUS = 3.5;
 
 class SamplesCanvasNode extends CanvasNode {
 

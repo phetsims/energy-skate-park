@@ -220,7 +220,7 @@ class TrackNode extends Node {
     }
 
     const strokeStyles = new LineStyles( {
-      lineWidth: this.isIcon ? 25 : 10,
+      lineWidth: this.isIcon ? 30 : 12,
       lineCap: 'butt',
       lineJoin: 'miter',
       miterLimit: 10

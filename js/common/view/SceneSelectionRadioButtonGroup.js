@@ -140,7 +140,7 @@ class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
     _.forEach( contents, ( node, i ) => {
 
       // scalar chosen so that buttons are appropriately sized in the control panel
-      const contentScale = ( 22 / minWidth );
+      const contentScale = ( 27 / minWidth );
 
       // if there isn't a background, scale the tracks so that they are all the same width
       if ( !options.includeBackground ) {

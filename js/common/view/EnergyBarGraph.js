@@ -53,7 +53,7 @@ class EnergyBarGraph extends Node {
       // @param {Range} - The range for the visible portion of the graph, in joules - note this is somewhat arbitrary
       // because the bars will have difference scales, but size should be about 1.5 times larger than the energy would
       // extend bars at default scale. A negative min value will allow some space to represent negative energies.
-      graphRange: new Range( -100, 260 )
+      graphRange: new Range( -122.8, 325 )
     }, options );
 
     super( options );
@@ -70,7 +70,7 @@ class EnergyBarGraph extends Node {
       arrowColor: EnergySkateParkColorScheme.thermalEnergy,
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: skater.clearThermal.bind( skater ),
-      scale: 0.7
+      scale: 0.86
     } );
 
     // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
@@ -134,12 +134,16 @@ class EnergyBarGraph extends Node {
       { entries: [ totalEntry ], labelString: energyTotalString }
     ], graphRangeProperty, {
       barLabelOptions: {
-        maxWidth: 50, // i18n, by inspection
-        font: new PhetFont( 12 )
+        maxWidth: 61.4, // i18n, by inspection
+        font: new PhetFont( 14.5 )
       },
       barOptions: {
-        scaleProperty: barGraphScaleProperty
+        scaleProperty: barGraphScaleProperty,
+        barWidth: 18.5
       },
+
+      barSpacing: 15,
+
       labelBackgroundColor: EnergySkateParkColorScheme.transparentPanelFill
     } );
 
@@ -149,10 +153,10 @@ class EnergyBarGraph extends Node {
 
       const zoomButtonOptions = {
         baseColor: ColorConstants.LIGHT_BLUE,
-        radius: 4.5,
+        radius: 6,
 
-        xMargin: 5,
-        yMargin: 4,
+        xMargin: 7,
+        yMargin: 5,
 
         // these buttons are quite small
         touchAreaXDilation: ZOOM_BUTTON_TOUCH_DILATION,
@@ -232,7 +236,7 @@ class EnergyBarGraph extends Node {
    */
   static createLabel() {
     return new Text( energyEnergyString, {
-      font: new PhetFont( { size: 14, weight: 'bold' } ),
+      font: new PhetFont( { size: 17, weight: 'bold' } ),
       maxWidth: 75 // i18n, by inspection
     } );
   }
