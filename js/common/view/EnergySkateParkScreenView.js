@@ -107,7 +107,6 @@ class EnergySkateParkScreenView extends ScreenView {
     }, options );
 
     super( {
-      // layoutBounds: new Bounds2( 0, 0, 834, 504 ),
       tandem: tandem
     } );
 
