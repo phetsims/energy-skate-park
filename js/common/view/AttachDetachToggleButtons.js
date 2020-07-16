@@ -46,7 +46,7 @@ class AttachDetachToggleButtons extends Panel {
     // @param {string} tandemName
     const createButtonContent = ( image, tandemName ) => {
       return new Image( image, {
-        scale: 0.32,
+        scale: 0.4,
         tandem: radioButtonGroupTandem.createTandem( attachRadioButtonTandemName ).createTandem( tandemName )
       } );
     };

@@ -189,7 +189,7 @@ class EnergySkateParkScreenView extends ScreenView {
     if ( options.showAttachDetachRadioButtons ) {
       const property = model.tracksDraggable ? new Property( true ) :
                        new DerivedProperty( [ model.sceneProperty ], scene => { scene === 2; } );
-      this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.stickingToTrackProperty, property, 150, tandem.createTandem( 'attachDetachToggleButtons' ) );
+      this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.stickingToTrackProperty, property, 184, tandem.createTandem( 'attachDetachToggleButtons' ) );
       this.bottomLayer.addChild( this.attachDetachToggleButtons );
     }
 

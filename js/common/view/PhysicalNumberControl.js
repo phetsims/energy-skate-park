@@ -124,12 +124,12 @@ class PhysicalNumberControl extends NumberControl {
         yMargin: 2,
         textOptions: {
           font: new PhetFont( 12 ),
-          maxWidth: 50
+          maxWidth: 61
         }
       } ),
       titleNodeOptions: {
         font: Constants.CONTROL_TITLE_FONT,
-        maxWidth: 50
+        maxWidth: 61
       },
 
       // phet-io
