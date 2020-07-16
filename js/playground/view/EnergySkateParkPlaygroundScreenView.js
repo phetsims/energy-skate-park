@@ -105,21 +105,6 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 
     return trackNode;
   }
-
-  /**
-   * Positions the pie chart legend in the correct position as the UI floats.
-   * @public
-   *
-   * @param {number} width
-   * @param {number} height
-   * @override
-   */
-  layout( width, height ) {
-    super.layout( width, height );
-
-    // the pie chart legend is just to the right of the 5 meter mark, which is where grid labels are
-    this.pieChartLegend.left = this.modelViewTransform.modelToViewX( -5 );
-  }
 }
 
 energySkatePark.register( 'EnergySkateParkPlaygroundScreenView', EnergySkateParkPlaygroundScreenView );

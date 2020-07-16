@@ -22,9 +22,9 @@ class EnergyGraphZoomButton extends ZoomButton {
     options = merge( {
       in: true, // true: zoom-in button, false: zoom-out button
       scaleDelta: 1, // how much to change scaleProperty when zooming in or out
-      radius: 5,
-      xMargin: 3,
-      yMargin: 3,
+      radius: 6,
+      xMargin: 4,
+      yMargin: 4,
       touchAreaXDilation: 3,
       touchAreaYDilation: 3,
 

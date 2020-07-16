@@ -41,15 +41,15 @@ const plotsEnergyLabelString = energySkateParkStrings.plots.energyLabel;
 const plotsTimeLabelString = energySkateParkStrings.plots.timeLabel;
 
 // constants
-const GRAPH_HEIGHT = 115;
+const GRAPH_HEIGHT = 141;
 
 // margin for content within the panel
 const CONTENT_X_MARGIN = 4;
 
 // size of the ABSwitch that changes from plotting position vs time
-const SWITCH_SIZE = new Dimension2( 30, 15 );
+const SWITCH_SIZE = new Dimension2( 37, 18 );
 
-const LABEL_FONT = new PhetFont( { size: 12 } );
+const LABEL_FONT = new PhetFont( { size: 15 } );
 
 class EnergyGraphAccordionBox extends AccordionBox {
 
@@ -74,7 +74,8 @@ class EnergyGraphAccordionBox extends AccordionBox {
     ], {
       checkboxOptions: {
         boxWidth: Constants.CHECKBOX_WIDTH
-      }
+      },
+      spacing: 12
     } );
     contentNode.addChild( checkboxGroup );
 
@@ -87,7 +88,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
 
     // eraser button to clear all data from the graph
     const eraserButton = new EraserButton( {
-      iconWidth: 18,
+      iconWidth: 22,
       listener: () => {
         this.clearEnergyData();
       },
@@ -126,7 +127,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
     } );
     const zoomButtons = new VBox( {
       children: [ zoomInButton, zoomOutButton ],
-      spacing: 5
+      spacing: 7
     } );
 
     // graph labels - y axis includes zoom buttons as part of the label
@@ -144,7 +145,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
     contentNode.addChild( xLabelText );
 
     const titleNode = new Text( plotsEnergyGraphString, {
-      font: new PhetFont( { size: 16 } ),
+      font: new PhetFont( { size: 20 } ),
       maxWidth: energyPlot.width / 3
     } );
 
@@ -158,14 +159,18 @@ class EnergyGraphAccordionBox extends AccordionBox {
       titleNode: titleNode,
       titleAlignX: 'left',
       titleXSpacing: 7,
-      buttonXMargin: 5,
+      buttonXMargin: 6,
       buttonYMargin: buttonYMargin,
       contentYMargin: contentYMargin,
-      contentXMargin: 5,
+      contentXMargin: 7,
       contentYSpacing: 0,
 
       // clicking doesn't expand since the title contains other controls
       titleBarExpandCollapse: false,
+
+      expandCollapseButtonOptions: {
+        sideLength: 19
+      },
 
       expandedProperty: model.energyPlotVisibleProperty,
       tandem: tandem.createTandem( 'accordionBox' )

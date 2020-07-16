@@ -34,7 +34,7 @@ const PANEL_OPTIONS = {
 
 const Constants = {
   SLIDER_OPTIONS: {
-    thumbSize: new Dimension2( 12, 24 ),
+    thumbSize: new Dimension2( 12, 25 ),
     trackSize: new Dimension2( 98, 3 ),
     tickLabelSpacing: 0,
     majorTickLength: 10

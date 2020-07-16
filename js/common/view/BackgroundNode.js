@@ -46,6 +46,7 @@ class BackgroundNode extends Node {
 
     // @private
     this.mountain = new Image( mountainImage, {
+      scale: 1.23,
       bottom: this.cementY,
       tandem: tandem.createTandem( 'mountainImage' )
     } );
