@@ -42,14 +42,14 @@ const heightMetersPatternString = energySkateParkStrings.pathSensor.heightMeters
 const speedMetersPerSecondPatternString = energySkateParkStrings.pathSensor.speedMetersPerSecondPattern;
 
 // constants
-const TITLE_CONTENT_SPACING = 4; // spacing between the "Energy" title and the rest of the content
-const LABEL_VALUE_SPACING = 4; // spacing between label text and the value readout rectangle
+const TITLE_CONTENT_SPACING = 5.5; // spacing between the "Energy" title and the rest of the content
+const LABEL_VALUE_SPACING = 5.5; // spacing between label text and the value readout rectangle
 const PROBE_READOUT_SPACING = 5; // spacing between the probe and the height/speed readouts
-const LAYOUT_SPACING = 1;
+const LAYOUT_SPACING = 2;
 const TEXT_COLOR = 'white';
-const TITLE_FONT = new PhetFont( 14 );
-const LABEL_FONT = new PhetFont( 12 );
-const ENTRY_MAX_WIDTH = 60;
+const TITLE_FONT = new PhetFont( 16 );
+const LABEL_FONT = new PhetFont( 15.5 );
+const ENTRY_MAX_WIDTH = 75;
 
 // arbitrary range for energies, but required so that this can use NumberDisplay. With this value, the width of the
 // NumberDisplay looks good and if released from within dev bounds, the energy will never get this large.
@@ -99,7 +99,7 @@ class SkaterPathSensorNode extends Node {
     const energyLabel = new Text( energyEnergyString, {
       font: TITLE_FONT,
       fill: TEXT_COLOR,
-      maxWidth: 80
+      maxWidth: 90
     } );
 
     // @private {Property.<number|null> for the NumberDisplays, null unless probe is over a skater sample
@@ -155,7 +155,7 @@ class SkaterPathSensorNode extends Node {
     } );
 
     // the body is a rounded rectangle
-    const body = new Rectangle( content.bounds.dilated( 5 ), Constants.PANEL_CORNER_RADIUS, Constants.PANEL_CORNER_RADIUS, {
+    const body = new Rectangle( content.bounds.dilated( 7 ), Constants.PANEL_CORNER_RADIUS, Constants.PANEL_CORNER_RADIUS, {
       fill: SENSOR_COLOR,
       stroke: 'rgb(210,210,210)',
       lineWidth: 2
@@ -168,7 +168,7 @@ class SkaterPathSensorNode extends Node {
 
     // the probe
     this.probeNode = new ProbeNode( {
-      scale: 0.40,
+      scale: 0.5,
       rotation: Math.PI / 2,
       color: SENSOR_COLOR,
       sensorTypeFunction: ProbeNode.crosshairs(),
@@ -377,7 +377,7 @@ class SkaterPathSensorNode extends Node {
         maxWidth: ENTRY_MAX_WIDTH
       },
       decimalPlaces: 1,
-      minBackgroundWidth: 55, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
+      minBackgroundWidth: 68, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
       valuePattern: energyJoulesPatternString,
 
       // when there are no values, hide units

@@ -42,7 +42,7 @@ class ControlPointNode extends Circle {
     const opacity = 0.7;
     const highlightedOpacity = 0.85;
 
-    super( 14, {
+    super( 17, {
       pickable: true,
       opacity: opacity,
       stroke: 'black',

@@ -36,19 +36,19 @@ class ReferenceHeightLine extends Node {
 
     // the line will be composed of two lines on top of each other to assist with line visibility but still look like
     // a dashed line - a taller black line to mimic stroke behind a shorter blue line
-    const lineDash = [ 10, 8 ];
+    const lineDash = [ 12, 9 ];
     const lineStart = new Vector2( 0, 0 );
     const lineEnd = new Vector2( lineLength, 0 );
     const frontLine = new Line( lineStart, lineEnd, {
 
       // strokes are not generally pickable, this allows the line itself to be dragged
       strokePickable: true,
-      lineWidth: 3,
+      lineWidth: 4,
       lineDash: lineDash,
       stroke: 'rgb(74,133,208)'
     } );
     const backLine = new Line( lineStart, lineEnd, {
-      lineWidth: 5,
+      lineWidth: 6,
       lineDash: lineDash,
       stroke: 'black'
     } );
@@ -58,10 +58,10 @@ class ReferenceHeightLine extends Node {
     frontLine.touchArea = frontLine.mouseArea;
 
     // double headed arrow indicates this line is draggable
-    const doubleArrowNode = new ArrowNode( 0, -12, 0, 12, {
+    const doubleArrowNode = new ArrowNode( 0, -14, 0, 14, {
       doubleHead: true,
-      headWidth: 13,
-      tailWidth: 5,
+      headWidth: 15,
+      tailWidth: 7,
 
       left: 30,
       fill: EnergySkateParkColorScheme.referenceArrowFill
