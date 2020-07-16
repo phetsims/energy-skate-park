@@ -8,8 +8,9 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import DynamicProperty from '../../../../axon/js/DynamicProperty.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
-import Vector2Property from '../../../../dot/js/Vector2Property.js';
+import Property from '../../../../axon/js/Property.js';
 import ArrowNode from '../../../../scenery-phet/js/ArrowNode.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
 import Line from '../../../../scenery/js/nodes/Line.js';
@@ -94,18 +95,29 @@ class ReferenceHeightLine extends Node {
       this.visible = visible;
     } );
 
-    // a Vector2Property for DragListener so we can update the NumberProperty ReferenceHeightProperty with dragging
-    const dragPositionProperty = new Vector2Property( new Vector2( 0, referenceHeightProperty.value ) );
+    // Maps the referenceHeightProperty (NumberProperty) to a Vector2Property required by DragListener, bidirectional
+    // so that changing the dragPositionProperty updates the referenceHeightProperty correctly
+    const dragPositionProperty = new DynamicProperty( new Property( referenceHeightProperty ), {
+
+      // so that this Property can be set by the DragListener
+      bidirectional: true,
+      map: referenceHeight => {
+
+        // maps referenceHeightProperty value to a Vector2Property for the drag listener
+        return new Vector2( 0, referenceHeight );
+      },
+      inverseMap: positionVector => {
+
+        // maps drag position Vector2 to the new value for referenceHeightProperty
+        return referenceHeightProperty.range.constrainValue( positionVector.y );
+      }
+    } );
 
     this.addInputListener( new DragListener( {
       transform: modelViewTransform,
       positionProperty: dragPositionProperty,
       tandem: tandem.createTandem( 'dragListener' )
     } ) );
-
-    dragPositionProperty.link( dragPosition => {
-      referenceHeightProperty.set( referenceHeightProperty.range.constrainValue( dragPositionProperty.get().y ) );
-    } );
   }
 }
 
