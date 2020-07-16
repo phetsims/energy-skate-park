@@ -12,7 +12,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 
 // constants
-const HALO_RADIUS = 7;
+const HALO_RADIUS = 9;
 
 class InspectedSampleHaloNode extends Circle {
 

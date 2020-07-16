@@ -10,6 +10,7 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import StringProperty from '../../../../axon/js/StringProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import DotRectangle from '../../../../dot/js/Rectangle.js'; // eslint-disable-line require-statement-match
@@ -278,7 +279,7 @@ class EnergySkateParkScreenView extends ScreenView {
         dragBounds: this.availableModelBoundsProperty.get(),
         textBackgroundColor: EnergySkateParkColorScheme.transparentPanelFill,
         textColor: 'black',
-        textFont: new PhetFont( { size: 12 } ),
+        textFont: new PhetFont( { size: 14.7 } ),
         baseDragEnded: () => {
           if ( this.measuringTapeNode.getLocalBaseBounds().intersectsBounds( this.toolboxPanel.bounds ) ) {
             model.measuringTapeVisibleProperty.set( false );
@@ -291,6 +292,13 @@ class EnergySkateParkScreenView extends ScreenView {
       this.stopwatchNode = new StopwatchNode( model.stopwatch, {
         visibleBoundsProperty: this.visibleBoundsProperty,
         tandem: tandem.createTandem( 'stopwatchNode' ),
+        stopwatchNumberDisplayOptions: {
+          numberFormatter: StopwatchNode.getRichNumberFormatter( {
+            bigNumberFont: 25,
+            smallNumberFont: 17,
+            unitsProperty: new StringProperty( '' ) // no units
+          } )
+        },
         dragListenerOptions: {
           end: () => {
             if ( this.stopwatchNode.bounds.intersectsBounds( this.toolboxPanel.bounds ) ) {
