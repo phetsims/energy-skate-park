@@ -1463,12 +1463,18 @@ class EnergySkateParkModel extends PhetioObject {
    */
   returnSkater() {
 
+    // returning the skater moves it to a new position - signify that it is being controlled outside of the physical
+    // model
+    this.userControlledPropertySet.skaterControlledProperty.set( true );
+
     // if the skater's original track is available, restore her to it, see #143
     const originalTrackAvailable = _.includes( this.getPhysicalTracks(), this.skater.startingTrackProperty.value );
     if ( originalTrackAvailable ) {
       this.skater.trackProperty.value = this.skater.startingTrackProperty.value;
     }
     this.skater.returnSkater();
+
+    this.userControlledPropertySet.skaterControlledProperty.set( false );
   }
 
 

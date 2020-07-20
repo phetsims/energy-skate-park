@@ -186,13 +186,15 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
     Property.lazyMultilink( this.userControlledPropertySet.properties, () => {
       if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME ) {
         if ( this.dataSamples.length > 0 ) {
-          const closestSample = this.getClosestSkaterSample( this.sampleTimeProperty.get() );
 
-          // remove the NEXT sample so that we don't remove the last sample while changing physical Properties
-          const indexOfSample = this.dataSamples.indexOf( closestSample ) + 1;
+          // only remove data if the cursor time is earlier than the last saved sample
+          if ( this.sampleTimeProperty.get() < this.dataSamples.get( this.dataSamples.length - 1 ).time ) {
+            const closestSample = this.getClosestSkaterSample( this.sampleTimeProperty.get() );
+            const indexOfSample = this.dataSamples.indexOf( closestSample );
 
-          assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
-          this.batchRemoveSamples( this.dataSamples.getArray().slice( indexOfSample ) );
+            assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
+            this.batchRemoveSamples( this.dataSamples.getArray().slice( indexOfSample ) );
+          }
         }
       }
     } );

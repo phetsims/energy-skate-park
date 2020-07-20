@@ -359,7 +359,13 @@ class EnergySkateParkScreenView extends ScreenView {
       } ),
       centerBottom: modelViewTransform.modelToViewPosition( model.skater.startingPositionProperty.value ),
       baseColor: '#f4514e', // red for stop, since the skater will be stopped on the ground.
-      listener: () => { model.skater.resetPosition(); },
+      listener: () => {
+
+        // resetting the skater position will change state of simulation
+        model.userControlledPropertySet.skaterControlledProperty.set( true );
+        model.skater.resetPosition();
+        model.userControlledPropertySet.skaterControlledProperty.set( false );
+      },
       tandem: tandem.createTandem( 'returnSkaterToGroundButton' )
     } );
 
