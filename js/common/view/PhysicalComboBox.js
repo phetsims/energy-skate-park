@@ -27,13 +27,14 @@ class PhysicalComboBox extends ComboBox {
 
   /**
    * @param {Property} physicalProperty
+   * @param {BooleanProperty} userControlledProperty
    * @param {Array.<Object>} labelValueList - entries like {label:{string}, value:{number}}
    * @param {Emitter} resetEmitter
    * @param {Node} listParent - parent for the ComboBoxListBox
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( physicalProperty, labelValueList, resetEmitter, listParent, tandem, options ) {
+  constructor( physicalProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, options ) {
     assert && assert( _.find( labelValueList, entry => entry.value === null ) === undefined, 'PhysicalComboBox adds "Custom" item' );
 
     options = merge( {
@@ -68,8 +69,12 @@ class PhysicalComboBox extends ComboBox {
     } );
 
     // if an entry in the combo box is selected to any entry other than "custom", update the actual Property
-    adapterProperty.link( value => {
+    adapterProperty.lazyLink( value => {
+
+      // if the adapter Property is set directly, user is controlling the ComboBox
+      userControlledProperty.set( true );
       if ( value ) { physicalProperty.set( value ); }
+      userControlledProperty.set( false );
     } );
 
     // if the physical Property changes as a result of anything other than the adapter Property, set to null

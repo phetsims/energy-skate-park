@@ -21,10 +21,11 @@ class GravityNumberControl extends PhysicalNumberControl {
 
   /**
    * @param {NumberProperty} property
+   * @param {BooleanProperty} userControlledProperty
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( property, tandem, options ) {
+  constructor( property, userControlledProperty, tandem, options ) {
 
     options = merge( {
       decimalPlaces: 1,
@@ -37,7 +38,7 @@ class GravityNumberControl extends PhysicalNumberControl {
         constrainValue: value => Utils.roundToInterval( value, 1 )
       }
     }, options );
-    super( controlsGravityLabelString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, options );
+    super( controlsGravityLabelString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), userControlledProperty, tandem, options );
   }
 }
 

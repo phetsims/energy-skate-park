@@ -157,13 +157,6 @@ class EnergyPlot extends XYCursorPlot {
         const timeOnEnd = this.getCursorValue();
         model.sampleTimeProperty.set( timeOnEnd );
 
-        const closestSample = model.getClosestSkaterSample( timeOnEnd );
-        const indexOfSample = model.dataSamples.indexOf( closestSample );
-
-        assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
-
-        model.batchRemoveSamples( model.dataSamples.getArray().slice( indexOfSample ) );
-
         this.setCursorValue( timeOnEnd );
       }
     } );
@@ -216,8 +209,9 @@ class EnergyPlot extends XYCursorPlot {
     };
 
     // update model view transform as time moves forward, so that we scroll forward in time
-    model.sampleTimeProperty.link( () => {
+    model.sampleTimeProperty.link( time => {
       updateModelViewTransformProperty();
+      this.setCursorValue( time );
     } );
 
     // calculate new range of plot when zooming in or out
@@ -287,7 +281,7 @@ class EnergyPlot extends XYCursorPlot {
       };
       model.dataSamples.addItemRemovedListener( removalListener );
 
-      this.setCursorValue( independentVariable );
+      //this.setCursorValue( independentVariable );
     } );
 
     // remove a batch of of EnergySkateParkDataSamples

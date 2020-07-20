@@ -18,10 +18,11 @@ class FrictionSlider extends PhysicalSlider {
 
   /**
    * @param {NumberProperty} property - Property for friction
+   * @param {BooleanProperty} userControlledProperty - is the user actively controlling friction?
    * @param {Tandem} tandem
    */
-  constructor( property, tandem ) {
-    super( controlsFrictionTitleString, property, new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ), tandem );
+  constructor( property, userControlledProperty, tandem ) {
+    super( controlsFrictionTitleString, property, new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ), userControlledProperty, tandem );
   }
 }
 

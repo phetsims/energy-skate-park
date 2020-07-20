@@ -25,10 +25,11 @@ class PhysicalSlider extends PhysicalNumberControl {
    * @param {string} titleString
    * @param {NumberProperty} property
    * @param {Range} valueRange
+   * @param {BooleanProperty} userControlledProperty
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( titleString, property, valueRange, tandem, options ) {
+  constructor( titleString, property, valueRange, userControlledProperty, tandem, options ) {
 
     options = merge( {
       // {string} - labels for the min and max values of this control
@@ -49,7 +50,7 @@ class PhysicalSlider extends PhysicalNumberControl {
       createTickEntry( valueRange.max, options.maxLabel, tandem, 'maxLabel' )
     ];
 
-    super( titleString, property, valueRange, tandem, options );
+    super( titleString, property, valueRange, userControlledProperty, tandem, options );
   }
 }
 

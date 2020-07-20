@@ -24,7 +24,7 @@ class GravityComboBox extends PhysicalComboBox {
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( gravityProperty, resetEmitter, listParent, tandem, options ) {
+  constructor( gravityProperty, userControlledProperty, resetEmitter, listParent, tandem, options ) {
 
     const labelValueList = [
       { label: gravityMoonString, value: Constants.MOON_GRAVITY },
@@ -32,7 +32,7 @@ class GravityComboBox extends PhysicalComboBox {
       { label: gravityJupiterString, value: Constants.JUPITER_GRAVITY }
     ];
 
-    super( gravityProperty, labelValueList, resetEmitter, listParent, tandem, options );
+    super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, options );
   }
 }
 

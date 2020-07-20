@@ -26,11 +26,12 @@ class MassComboBox extends LabelledComboBox {
 
   /**
    * @param {NumberProperty} massProperty
+   * @param {BooleanProperty} userControlledProperty
    * @param {Emitter} resetEmitter - broadcasts when the EnergySkateParkModel has been reset
    * @param {Node} listParent - parent of the list, to make sure the list is on top other things in the vie
    * @param {Tandem} tandem
    */
-  constructor( massProperty, resetEmitter, listParent, tandem ) {
+  constructor( massProperty, userControlledProperty, resetEmitter, listParent, tandem ) {
     const labelValueList = [
       {
         label: getFormattedLabel( controlsSkater1MassPatternString, SkaterMasses.SKATER_1_MASS ),
@@ -54,7 +55,7 @@ class MassComboBox extends LabelledComboBox {
       },
       { label: getFormattedLabel( controlsDogMassPatternString, SkaterMasses.DOG_MASS ), value: SkaterMasses.DOG_MASS }
     ];
-    const comboBox = new PhysicalComboBox( massProperty, labelValueList, resetEmitter, listParent, tandem, {
+    const comboBox = new PhysicalComboBox( massProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, {
       supportCustom: false
     } );
 

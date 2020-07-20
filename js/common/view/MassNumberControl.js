@@ -18,11 +18,12 @@ class MassNumberControl extends PhysicalNumberControl {
 
   /**
    * @param {NumberProperty} massProperty
+   * @param {BooleanProperty} userControlledProperty
    * @param {Range} massRange
    * @param {Tandem} tandem
    */
-  constructor( massProperty, massRange, tandem ) {
-    super( controlsMassString, massProperty, massRange, tandem, {
+  constructor( massProperty, userControlledProperty, massRange, tandem ) {
+    super( controlsMassString, massProperty, massRange, userControlledProperty, tandem, {
       numberDisplayOptions: {
         valuePattern: massKilogramsPatternString
       },

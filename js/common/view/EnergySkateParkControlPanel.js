@@ -59,6 +59,8 @@ class EnergySkateParkControlPanel extends Panel {
 
     }, options );
 
+    const userControlledPropertySet = model.userControlledPropertySet;
+
     // all contents of the control panel will be added to this array
     const children = [];
 
@@ -70,19 +72,19 @@ class EnergySkateParkControlPanel extends Panel {
 
     let frictionControls = null;
     if ( options.showFrictionControls ) {
-      frictionControls = new FrictionSlider( model.frictionProperty, tandem.createTandem( 'frictionSlider' ) );
+      frictionControls = new FrictionSlider( model.frictionProperty, userControlledPropertySet.frictionControlledProperty, tandem.createTandem( 'frictionSlider' ) );
       children.push( frictionControls );
     }
 
     let gravityControls = null;
     if ( options.showGravityControls ) {
-      gravityControls = new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkGravityControls' ), options.gravityControlsOptions );
+      gravityControls = new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, userControlledPropertySet.gravityControlledProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkGravityControls' ), options.gravityControlsOptions );
       children.push( gravityControls );
     }
 
     let massControls = null;
     if ( options.showMassControls ) {
-      massControls = new EnergySkateParkMassControls( model.skater.massProperty, model.skater.massRange, screenView.skaterNode.skaterImageProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
+      massControls = new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, screenView.skaterNode.skaterImageProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
       children.push( massControls );
     }
 

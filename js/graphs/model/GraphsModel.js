@@ -9,6 +9,7 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import Property from '../../../../axon/js/Property.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Enumeration from '../../../../phet-core/js/Enumeration.js';
@@ -157,7 +158,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
       }
     } );
 
-    // stop saving samples after the time limit if we are plotting against time
+    // clear old samples if we are plotting for longer than the range
     this.sampleTimeProperty.link( time => {
       const plottingTime = this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
       const overTime = time > GraphsConstants.MAX_PLOTTED_TIME;
@@ -180,6 +181,22 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
       }
     } );
 
+    // if any of the UserControlledPropertySet changes, the user is changing something that would modify the
+    // physical system and changes everything in saved EnergySkateParkDataSamples
+    Property.lazyMultilink( this.userControlledPropertySet.properties, () => {
+      if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME ) {
+        if ( this.dataSamples.length > 0 ) {
+          const closestSample = this.getClosestSkaterSample( this.sampleTimeProperty.get() );
+
+          // remove the NEXT sample so that we don't remove the last sample while changing physical Properties
+          const indexOfSample = this.dataSamples.indexOf( closestSample ) + 1;
+
+          assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
+          this.batchRemoveSamples( this.dataSamples.getArray().slice( indexOfSample ) );
+        }
+      }
+    } );
+
     // if plotting against position we want to clear data when skater returns, but it is useful to
     // see previous data when plotting against time so don't clear in that case
     this.skater.returnedEmitter.addListener( () => {
@@ -187,7 +204,6 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
         this.clearEnergyData();
       }
     } );
-
   }
 
   /**
@@ -224,10 +240,54 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
     super.step( dt );
 
     // for the "Graphs" screen we want to update energies while dragging so that they are recorded on the graph
-    if ( this.skater.draggingProperty.get() ) {
+    if ( this.skater.draggingProperty.get() && !this.pausedProperty.get() ) {
       const initialStateCopy = new SkaterState( this.skater );
       this.stepModel( dt, initialStateCopy );
     }
+  }
+
+  /**
+   * If plotting against time and the graph cursor is at a time that is older than the newest saved sample,
+   * we are playing back through recorded data rather than stepping through the model manually. This is
+   * guaranteed to be correct because ANY change to physical Properties that would change data will clear
+   * all data newer than the cursor.
+   * @override
+   * @protected
+   *
+   * @param dt
+   * @param skaterState
+   * @returns {SkaterState}
+   */
+  stepModel( dt, skaterState ) {
+    let updatedState;
+
+    const plottingTime = this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
+    const numSamples = this.dataSamples.length;
+    if ( numSamples > 0 && plottingTime ) {
+      if ( this.sampleTimeProperty.get() < this.dataSamples.get( numSamples - 1 ).time ) {
+        this.preventSampleSave = true;
+
+        // skater samples are updated not by step, but by setting model to closest skater sample at time
+        const closestSample = this.getClosestSkaterSample( this.sampleTimeProperty.get() );
+        this.setFromSample( closestSample );
+        this.skater.updatedEmitter.emit();
+
+        this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );
+        this.stopwatch.step( dt );
+
+        return closestSample.skaterState;
+      }
+      else {
+
+        this.preventSampleSave = this.skater.draggingProperty.get() && this.pausedProperty.get();
+        updatedState = super.stepModel( dt, skaterState );
+      }
+    }
+    else {
+      updatedState = super.stepModel( dt, skaterState );
+    }
+
+    return updatedState;
   }
 
   /**

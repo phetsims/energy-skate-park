@@ -17,6 +17,7 @@ class EnergySkateParkMassControls extends VBox {
 
   /**
    * @param {NumberProperty} massProperty
+   * @param {BooleanProperty} userControlledProperty
    * @param {Range} massRange - allowable range for the Skater mass
    * @param {Property} skaterImageProperty - controls the current image for the SkaterNode
    * @param {[type]} resetEmitter - broadcasts when EnergySkateParkModel has been reset
@@ -24,7 +25,7 @@ class EnergySkateParkMassControls extends VBox {
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( massProperty, massRange, skaterImageProperty, resetEmitter, listParent, tandem, options ) {
+  constructor( massProperty, userControlledProperty, massRange, skaterImageProperty, resetEmitter, listParent, tandem, options ) {
 
     options = merge( {
 
@@ -51,19 +52,19 @@ class EnergySkateParkMassControls extends VBox {
 
     let massComboBox = null;
     if ( options.includeMassComboBox ) {
-      massComboBox = new MassComboBox( massProperty, resetEmitter, listParent, tandem.createTandem( 'massComboBox' ), options.massComboBoxOptions );
+      massComboBox = new MassComboBox( massProperty, userControlledProperty, resetEmitter, listParent, tandem.createTandem( 'massComboBox' ), options.massComboBoxOptions );
       children.push( massComboBox );
     }
 
     let massNumberControl = null;
     if ( options.includeMassNumberControl ) {
-      massNumberControl = new MassNumberControl( massProperty, massRange, tandem.createTandem( 'massNumberControl' ), options.massNumberControlOptions );
+      massNumberControl = new MassNumberControl( massProperty, userControlledProperty, massRange, tandem.createTandem( 'massNumberControl' ), options.massNumberControlOptions );
       children.push( massNumberControl );
     }
 
     let massSlider = null;
     if ( options.includeMassSlider ) {
-      massSlider = new MassSlider( massProperty, massRange, tandem.createTandem( 'massSlider' ) );
+      massSlider = new MassSlider( massProperty, userControlledProperty, massRange, tandem.createTandem( 'massSlider' ) );
       children.push( massSlider );
     }
 

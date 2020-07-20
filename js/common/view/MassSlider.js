@@ -19,11 +19,12 @@ class MassSlider extends PhysicalSlider {
 
   /**
    * @param {NumberProperty} property
+   * @param {BooleanProperty} userControlledProperty
    * @param {Range} massRange
    * @param {Tandem} tandem
    */
-  constructor( property, massRange, tandem ) {
-    super( controlsMassString, property, massRange, tandem, {
+  constructor( property, userControlledProperty, massRange, tandem ) {
+    super( controlsMassString, property, massRange, userControlledProperty, {
       minLabel: smallString,
       maxLabel: largeString,
       sliderOptions: {

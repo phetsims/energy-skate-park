@@ -159,6 +159,7 @@ class EnergySkateParkScreenView extends ScreenView {
     this.skaterNode = new SkaterNode(
       model.skater,
       this,
+      model.userControlledPropertySet.skaterControlledProperty,
       modelViewTransform,
       model.getClosestTrackAndPositionAndParameter.bind( model ),
       model.getPhysicalTracks.bind( model ),

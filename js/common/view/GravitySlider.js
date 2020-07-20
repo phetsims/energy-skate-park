@@ -20,15 +20,21 @@ class GravitySlider extends PhysicalSlider {
 
   /**
    * @param {NumberProperty} property
+   * @param {BooleanProperty} userControlledProperty
    * @param {Tandem} tandem
    */
-  constructor( property, tandem ) {
-    super( controlsGravityLabelString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), tandem, {
-      minLabel: controlsValueTinyString,
-      sliderOptions: {
-        constrainValue: value => Utils.roundToInterval( value, 1 )
-      }
-    } );
+  constructor( property, userControlledProperty, tandem ) {
+    super(
+      controlsGravityLabelString,
+      property,
+      new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ),
+      userControlledProperty,
+      tandem, {
+        minLabel: controlsValueTinyString,
+        sliderOptions: {
+          constrainValue: value => Utils.roundToInterval( value, 1 )
+        }
+      } );
   }
 }
 

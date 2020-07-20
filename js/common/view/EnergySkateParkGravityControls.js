@@ -17,12 +17,13 @@ class EnergySkateParkGravityControls extends VBox {
 
   /**
    * @param {NumberProperty} gravityMagnitudeProperty
+   * @param {BooleanProperty} userControlledProperty
    * @param {Emitter} resetEmitter - broadcasts a message when the EnergySkateParkModel is reset
    * @param {Node} listParent - parent Node for the ComboBox, if one is included
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( gravityMagnitudeProperty, resetEmitter, listParent, tandem, options ) {
+  constructor( gravityMagnitudeProperty, userControlledProperty, resetEmitter, listParent, tandem, options ) {
 
     options = merge( {
 
@@ -51,17 +52,17 @@ class EnergySkateParkGravityControls extends VBox {
     const children = [];
 
     if ( options.includeGravityNumberControl ) {
-      const gravityNumberControl = new GravityNumberControl( gravityMagnitudeProperty, tandem.createTandem( 'gravityNumberControl' ), options.gravityComboBoxOptions );
+      const gravityNumberControl = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityNumberControl' ), options.gravityComboBoxOptions );
       children.push( gravityNumberControl );
     }
 
     if ( options.includeGravitySlider ) {
-      const gravitySlider = new GravitySlider( gravityMagnitudeProperty, tandem.createTandem( 'gravitySlider' ) );
+      const gravitySlider = new GravitySlider( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravitySlider' ) );
       children.push( gravitySlider );
     }
 
     if ( options.includeGravityComboBox ) {
-      const gravityComboBox = new GravityComboBox( gravityMagnitudeProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ), options );
+      const gravityComboBox = new GravityComboBox( gravityMagnitudeProperty, userControlledProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ), options );
       children.push( gravityComboBox );
     }
 

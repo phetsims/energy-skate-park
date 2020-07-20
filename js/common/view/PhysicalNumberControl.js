@@ -20,10 +20,11 @@ class PhysicalNumberControl extends NumberControl {
    * @param {string} titleString
    * @param {NumberProperty} property
    * @param {Range} valueRange
+   * @param {BooleanProperty} userControlledProperty
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( titleString, property, valueRange, tandem, options ) {
+  constructor( titleString, property, valueRange, userControlledProperty, tandem, options ) {
     options = options || {};
     assert && assert( options.layoutFunction === undefined, 'PhysicalNumberControl sets layoutFunction' );
     assert && assert( options.tandem === undefined, 'PhysicalNumberControl shouldn\'t set tandem in options' );
@@ -43,6 +44,13 @@ class PhysicalNumberControl extends NumberControl {
 
       // decimal places for the ticks and (by default) the NumberControl's NumberDisplay
       decimalPlaces: 0,
+
+      startCallback: () => {
+        userControlledProperty.set( true );
+      },
+      endCallback: () => {
+        userControlledProperty.set( false );
+      },
 
       // {boolean} - if true, the tweaker buttons and number display will be hidden (but rest of NumberControl title
       // and layout will be preserved)

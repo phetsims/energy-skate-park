@@ -55,6 +55,7 @@ import Skater from './Skater.js';
 import SkaterState from './SkaterState.js';
 import Track from './Track.js';
 import TrackIO from './TrackIO.js';
+import UserControlledPropertySet from './UserControlledPropertySet.js';
 
 // Use a separate pooled curvature variable to reduce memory allocations - object values
 // will be modified as the skater moves
@@ -214,6 +215,10 @@ class EnergySkateParkModel extends PhetioObject {
       tandem: tandem.createTandem( 'availableModelBoundsProperty' ),
       phetioType: PropertyIO( Bounds2IO )
     } );
+
+    // @public {UserControlledPropertySet} - collection of Properties that indicate that a user is
+    // modifying some variable that will change physical system and modify all saved energy data
+    this.userControlledPropertySet = new UserControlledPropertySet();
 
     if ( EnergySkateParkQueryParameters.testTrackIndex > 0 ) {
       this.frictionProperty.debug( 'friction' );

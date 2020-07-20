@@ -38,6 +38,7 @@ class SkaterNode extends Node {
    *
    * @param {Skater} skater
    * @param {EnergySkateParkScreenView} view
+   * @param {BooleanProperty} userControlledProperty
    * @param {ModelViewTransform2} modelViewTransform
    * @param {function(Vector2, Track[]):Object} getClosestTrackAndPositionAndParameter - gets the closest track
    *                                            properties, used when the skater is being dragged close to the track.
@@ -46,7 +47,7 @@ class SkaterNode extends Node {
    *                                       to attach to them while dragging
    * @param {Tandem} tandem
    */
-  constructor( skater, view, modelViewTransform, getClosestTrackAndPositionAndParameter, getPhysicalTracks, tandem ) {
+  constructor( skater, view, userControlledProperty, modelViewTransform, getClosestTrackAndPositionAndParameter, getPhysicalTracks, tandem ) {
     super( {
 
       // rendering the skater with canvas makes it move smoothly around the screen edges in iOS Safari, see
@@ -181,6 +182,7 @@ class SkaterNode extends Node {
     this.dragHandler = new SimpleDragHandler( {
       tandem: tandem.createTandem( 'inputListener' ),
       start: event => {
+        userControlledProperty.set( true );
         skater.draggingProperty.value = true;
 
         // Clear thermal energy whenever skater is grabbed, see #32
@@ -196,6 +198,8 @@ class SkaterNode extends Node {
 
         // Record the state of the skater for "return skater"
         skater.released( targetTrack, targetU );
+
+        userControlledProperty.set( false );
       }
     } );
     this.addInputListener( this.dragHandler );
