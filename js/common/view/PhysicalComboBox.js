@@ -68,21 +68,36 @@ class PhysicalComboBox extends ComboBox {
       tandem: tandem.createTandem( 'adapterProperty' )
     } );
 
+    // {boolean} - if true, we will prevent the userControlProperty from being set when the adapterProperty changes.
+    // The adapterProperty may change from direct control of the ComboBox OR if the physicalProperty changes
+    // from somewhere else in the simulation (such as playback of EnergySkateParkDataSamples, or ResetAll). If
+    // changed internally, we do NOT want to indicate that user is in control of the physicalProperty.
+    let preventUserControl = false;
+
     // if an entry in the combo box is selected to any entry other than "custom", update the actual Property
     adapterProperty.lazyLink( value => {
-
-      // if the adapter Property is set directly, user is controlling the ComboBox
-      userControlledProperty.set( true );
+      !preventUserControl && userControlledProperty.set( true );
       if ( value ) { physicalProperty.set( value ); }
-      userControlledProperty.set( false );
+      !preventUserControl && userControlledProperty.set( false );
     } );
 
     // if the physical Property changes as a result of anything other than the adapter Property, set to null
     if ( options.supportCustom ) {
       physicalProperty.link( physicalValue => {
-        if ( physicalValue !== adapterProperty.value ) {
-          adapterProperty.set( null );
-        }
+
+        // physicalProperty is getting set from within simulatuion, do not set userControlledProperty
+        preventUserControl = true;
+
+        // if the new value is one of the ComboBox values, update so that selected value is read on ComboBox display
+        let adapterValue = null;
+        labelValueList.forEach( entry => {
+          if (entry.value === physicalValue) {
+            adapterValue = entry.value;
+          }
+        } );
+        adapterProperty.set( adapterValue );
+
+        preventUserControl = false;
       } );
     }
 
