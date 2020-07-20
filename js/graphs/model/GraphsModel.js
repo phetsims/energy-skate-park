@@ -249,50 +249,6 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
   }
 
   /**
-   * If plotting against time and the graph cursor is at a time that is older than the newest saved sample,
-   * we are playing back through recorded data rather than stepping through the model manually. This is
-   * guaranteed to be correct because ANY change to physical Properties that would change data will clear
-   * all data newer than the cursor.
-   * @override
-   * @protected
-   *
-   * @param dt
-   * @param skaterState
-   * @returns {SkaterState}
-   */
-  stepModel( dt, skaterState ) {
-    let updatedState;
-
-    const plottingTime = this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
-    const numSamples = this.dataSamples.length;
-    if ( numSamples > 0 && plottingTime ) {
-      if ( this.sampleTimeProperty.get() < this.dataSamples.get( numSamples - 1 ).time ) {
-        this.preventSampleSave = true;
-
-        // skater samples are updated not by step, but by setting model to closest skater sample at time
-        const closestSample = this.getClosestSkaterSample( this.sampleTimeProperty.get() );
-        this.setFromSample( closestSample );
-        this.skater.updatedEmitter.emit();
-
-        this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );
-        this.stopwatch.step( dt );
-
-        return closestSample.skaterState;
-      }
-      else {
-
-        this.preventSampleSave = this.skater.draggingProperty.get() && this.pausedProperty.get();
-        updatedState = super.stepModel( dt, skaterState );
-      }
-    }
-    else {
-      updatedState = super.stepModel( dt, skaterState );
-    }
-
-    return updatedState;
-  }
-
-  /**
    * Get the closest SkaterState that was saved at the time provided.
    * @public
    *

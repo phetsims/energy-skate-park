@@ -156,7 +156,6 @@ class EnergyPlot extends XYCursorPlot {
       if ( model.dataSamples.length > 0 ) {
         const timeOnEnd = this.getCursorValue();
         model.sampleTimeProperty.set( timeOnEnd );
-
         this.setCursorValue( timeOnEnd );
       }
     } );
