@@ -89,6 +89,8 @@ class ControlPointNode extends Circle {
         allowTouchSnag: true,
         start: event => {
 
+          model.userControlledPropertySet.trackControlledProperty.set( true );
+
           // Move the track to the front when it starts dragging, see #296
           // The track is in a layer of tracks (without other nodes) so moving it to the front will work perfectly
           trackNode.moveToFront();
@@ -187,6 +189,8 @@ class ControlPointNode extends Circle {
 
           // Check whether the model contains a track so that input listeners for detached elements can't create bugs, see #230
           if ( !model.containsTrack( track ) ) { return; }
+
+          model.userControlledPropertySet.trackControlledProperty.set( false );
 
           // If control point dragged out of the control panel, translate the entire track, see #130
           if ( !track.physicalProperty.value || ( !track.droppedProperty.value && track.draggable ) ) {
