@@ -28,9 +28,10 @@ class ReferenceHeightLine extends Node {
    * @param {ModelViewTransform2} modelViewTransform
    * @param {NumberProperty} referenceHeightProperty
    * @param {BooleanProperty} referenceHeightVisibleProperty
+   * @param {BooleanProperty} userControlledProperty
    * @param {Tandem} tandem
    */
-  constructor( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, tandem ) {
+  constructor( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, userControlledProperty, tandem ) {
 
     // line will extend 9.5 meters through along the grid in model coordinates
     const lineLength = modelViewTransform.modelToViewDeltaX( 9.5 );
@@ -116,6 +117,14 @@ class ReferenceHeightLine extends Node {
     this.addInputListener( new DragListener( {
       transform: modelViewTransform,
       positionProperty: dragPositionProperty,
+
+      // signify when user is using this control so that
+      start: () => {
+        userControlledProperty.set( true );
+      },
+      end: () => {
+        userControlledProperty.set( false );
+      },
       tandem: tandem.createTandem( 'dragListener' )
     } ) );
   }

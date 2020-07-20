@@ -324,6 +324,7 @@ class EnergySkateParkScreenView extends ScreenView {
       modelViewTransform,
       model.skater.referenceHeightProperty,
       model.referenceHeightVisibleProperty,
+      model.userControlledPropertySet.referenceHeightControlledProperty,
       tandem.createTandem( 'referenceHeightLine' )
     );
     this.topLayer.addChild( this.referenceHeightLine );
