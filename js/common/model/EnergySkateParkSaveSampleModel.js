@@ -18,7 +18,6 @@ import ObservableArray from '../../../../axon/js/ObservableArray.js';
 import Property from '../../../../axon/js/Property.js';
 import merge from '../../../../phet-core/js/merge.js';
 import energySkatePark from '../../energySkatePark.js';
-import GraphsModel from '../../graphs/model/GraphsModel.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 import EnergySkateParkDataSample from './EnergySkateParkDataSample.js';
 
@@ -151,9 +150,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
   }
 
   /**
-   * Custom stepModel for the SaveSampleModel. If the sampleTimeProperty is *older* than the most recent saved
-   * sample, we are playing back through saved data and stepping through saved samples rather than stepping
-   * the model. If we are actually stepping the model physics, we are also recording new EnergySkateParkDataSamples.
+   * Custom stepModel for the SaveSampleModel. Saves and clears EnergySkateParkDataSamples.
    * @override
    * @public
    *
@@ -162,70 +159,48 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
    * @returns {SkaterState}
    */
   stepModel( dt, skaterState ) {
-    const hasData = this.dataSamples.length > 0;
+    const updatedState = super.stepModel( dt, skaterState );
 
-    // only if we have data, so that we don't try to get a data sample if length is 0
-    const cursorOlderThanNewestSample = hasData && ( this.sampleTimeProperty.get() < this.dataSamples.get( this.dataSamples.length - 1 ).time );
-    const plottingTime = this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
+    if ( this.saveSamplesProperty.get() ) {
+      this.timeSinceSampleSave = this.timeSinceSampleSave + dt;
 
-    // we are playing back through data if plotting against time and the cursor is older than the
-    if ( cursorOlderThanNewestSample && plottingTime ) {
-
-      // skater samples are updated not by step, but by setting model to closest skater sample at time
-      const closestSample = this.getClosestSkaterSample( this.sampleTimeProperty.get() );
-      this.setFromSample( closestSample );
-      this.skater.updatedEmitter.emit();
-
-      this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );
-      this.stopwatch.step( dt );
-
-      return closestSample.skaterState;
+      if ( !this.preventSampleSave && this.timeSinceSampleSave > this.saveSampleInterval ) {
+        const newSample = new EnergySkateParkDataSample( updatedState, this.frictionProperty.get(), this.sampleTimeProperty.get(), this.sampleFadeDecay );
+        this.dataSamples.add( newSample );
+        this.timeSinceSampleSave = 0;
+        this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );
+      }
     }
-    else {
 
-      const updatedState = super.stepModel( dt, skaterState );
-
-      if ( this.saveSamplesProperty.get() ) {
-        this.timeSinceSampleSave = this.timeSinceSampleSave + dt;
-
-        if ( !this.preventSampleSave && this.timeSinceSampleSave > this.saveSampleInterval ) {
-          const newSample = new EnergySkateParkDataSample( updatedState, this.frictionProperty.get(), this.sampleTimeProperty.get(), this.sampleFadeDecay );
-          this.dataSamples.add( newSample );
-          this.timeSinceSampleSave = 0;
-          this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );
-        }
+    // old samples fade out if we have collected too many
+    if ( this.limitNumberOfSamples && this.dataSamples.length > this.maxNumberOfSamples ) {
+      const numberToRemove = this.dataSamples.length - this.maxNumberOfSamples;
+      for ( let i = 0; i < numberToRemove; i++ ) {
+        this.dataSamples.get( i ).initiateRemove();
       }
-
-      // old samples fade out if we have collected too many
-      if ( this.limitNumberOfSamples && this.dataSamples.length > this.maxNumberOfSamples ) {
-        const numberToRemove = this.dataSamples.length - this.maxNumberOfSamples;
-        for ( let i = 0; i < numberToRemove; i++ ) {
-          this.dataSamples.get( i ).initiateRemove();
-        }
-      }
-
-      // update opacity of EnergySkateParkDataSamples and determine if it is time for them to be removed from model
-      const samplesToRemove = [];
-      this.dataSamples.forEach( sample => {
-        sample.step( dt );
-        if ( sample.opacityProperty.get() < EnergySkateParkDataSample.MIN_OPACITY ) {
-          samplesToRemove.push( sample );
-        }
-      } );
-
-      // for performance, we batch removal of EnergySkateParkDataSamples so that we can update once after many have been removed
-      // rather than on each data point, see https://github.com/phetsims/energy-skate-park/issues/198
-      if ( samplesToRemove.length > 0 ) {
-
-        // BatchRemoveSamples requires that samplesToRemove is a sub array of this.dataSamples, in the same order.
-        // We can guarantee this is the case because we built samplesToRemove as we iterated through this.dataSamples
-        // so it must be in the right order. And as soon as we find one sample to remove, the rest in this.dataSamples
-        // will be ready for removal since they are even older and therefore less opaque.
-        this.batchRemoveSamples( samplesToRemove );
-      }
-
-      return updatedState;
     }
+
+    // update opacity of EnergySkateParkDataSamples and determine if it is time for them to be removed from model
+    const samplesToRemove = [];
+    this.dataSamples.forEach( sample => {
+      sample.step( dt );
+      if ( sample.opacityProperty.get() < EnergySkateParkDataSample.MIN_OPACITY ) {
+        samplesToRemove.push( sample );
+      }
+    } );
+
+    // for performance, we batch removal of EnergySkateParkDataSamples so that we can update once after many have been removed
+    // rather than on each data point, see https://github.com/phetsims/energy-skate-park/issues/198
+    if ( samplesToRemove.length > 0 ) {
+
+      // BatchRemoveSamples requires that samplesToRemove is a sub array of this.dataSamples, in the same order.
+      // We can guarantee this is the case because we built samplesToRemove as we iterated through this.dataSamples
+      // so it must be in the right order. And as soon as we find one sample to remove, the rest in this.dataSamples
+      // will be ready for removal since they are even older and therefore less opaque.
+      this.batchRemoveSamples( samplesToRemove );
+    }
+
+    return updatedState;
   }
 
   /**

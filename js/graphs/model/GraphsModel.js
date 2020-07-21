@@ -249,6 +249,43 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
   }
 
   /**
+   * Custom stepModel for the SaveSampleModel. If the sampleTimeProperty is *older* than the most recent saved
+   * sample, we are playing back through saved data and stepping through saved samples rather than stepping
+   * the model. If we are actually stepping the model physics, we are also recording new EnergySkateParkDataSamples
+   * in the supertype function.
+   * @override
+   * @public
+   *
+   * @param {number} dt - in seconds
+   * @param {SkaterState} skaterState
+   * @returns {SkaterState}
+   */
+  stepModel( dt, skaterState ) {
+    const hasData = this.dataSamples.length > 0;
+
+    // only if we have data, so that we don't try to get a data sample if length is 0
+    const cursorOlderThanNewestSample = hasData && ( this.sampleTimeProperty.get() < this.dataSamples.get( this.dataSamples.length - 1 ).time );
+    const plottingTime = this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
+
+    // we are playing back through data if plotting against time and the cursor is older than the
+    if ( cursorOlderThanNewestSample && plottingTime ) {
+
+      // skater samples are updated not by step, but by setting model to closest skater sample at time
+      const closestSample = this.getClosestSkaterSample( this.sampleTimeProperty.get() );
+      this.setFromSample( closestSample );
+      this.skater.updatedEmitter.emit();
+
+      this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );
+      this.stopwatch.step( dt );
+
+      return closestSample.skaterState;
+    }
+    else {
+      return super.stepModel( dt, skaterState );
+    }
+  }
+
+  /**
    * Get the closest SkaterState that was saved at the time provided.
    * @public
    *
