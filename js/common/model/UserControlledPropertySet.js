@@ -20,6 +20,7 @@ class UserControlledPropertySet {
     this.referenceHeightControlledProperty = new BooleanProperty( false );
     this.trackControlledProperty = new BooleanProperty( false );
     this.skaterControlledProperty = new BooleanProperty( false );
+    this.stickingToTrackControlledProperty = new BooleanProperty( false );
 
     // @public {BooleanProperty[]} - collection of the Properties above, so they can conveniently be
     // used in a multilink
@@ -29,7 +30,8 @@ class UserControlledPropertySet {
       this.massControlledProperty,
       this.referenceHeightControlledProperty,
       this.trackControlledProperty,
-      this.skaterControlledProperty
+      this.skaterControlledProperty,
+      this.stickingToTrackControlledProperty
     ];
   }
 }

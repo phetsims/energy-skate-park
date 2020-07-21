@@ -79,6 +79,13 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
         arrayElementType: EnergySkateParkDataSample
       } ]
     } );
+
+    // if the user modifies the "sticking to track" property, it can change the entire physical state - indicate
+    // that this is controlled by the user so we can clear saved EnergySkateParkDataSamples if we need to
+    this.stickingToTrackProperty.lazyLink( stickingToTrack => {
+      this.userControlledPropertySet.stickingToTrackControlledProperty.set( true );
+      this.userControlledPropertySet.stickingToTrackControlledProperty.set( false );
+    } );
   }
 
   /**
