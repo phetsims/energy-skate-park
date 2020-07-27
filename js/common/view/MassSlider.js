@@ -24,7 +24,7 @@ class MassSlider extends PhysicalSlider {
    * @param {Tandem} tandem
    */
   constructor( property, userControlledProperty, massRange, tandem ) {
-    super( controlsMassString, property, massRange, userControlledProperty, {
+    super( controlsMassString, property, massRange, userControlledProperty, tandem, {
       minLabel: smallString,
       maxLabel: largeString,
       sliderOptions: {
