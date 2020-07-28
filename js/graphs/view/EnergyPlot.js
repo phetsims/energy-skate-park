@@ -95,6 +95,7 @@ class EnergyPlot extends XYCursorPlot {
 
       // for the cursor that shows current time
       cursorOptions: {
+        includeDragCue: true,
         startDrag: ( event, listener ) => {
           pausedOnDragStart = model.pausedProperty.get();
 
@@ -295,6 +296,9 @@ class EnergyPlot extends XYCursorPlot {
         dynamicSeries.removeDataPointsAtX( xValuesToRemove );
       } );
     } );
+
+    // reset the ChartCursor, making the drag cue visible again upon "Reset All"
+    model.resetEmitter.addListener( this.resetCursor.bind( this ) );
   }
 
   /**
