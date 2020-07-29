@@ -46,7 +46,7 @@ import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPoint from './ControlPoint.js';
 import DebugTracks from './DebugTracks.js';
@@ -94,7 +94,7 @@ class EnergySkateParkModel extends PhetioObject {
     options = merge( {
 
       // {number} - initial/default value of friction for the model
-      defaultFriction: Constants.DEFAULT_FRICTION,
+      defaultFriction: EnergySkateParkConstants.DEFAULT_FRICTION,
 
       // {boolean} - if true, tracks can be dragged around the play area
       tracksDraggable: false,
@@ -187,7 +187,7 @@ class EnergySkateParkModel extends PhetioObject {
 
     // @public {number} - Coefficient of friction (unitless) between skater and track
     this.frictionProperty = new NumberProperty( this.defaultFriction, {
-      range: new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ),
+      range: new Range( EnergySkateParkConstants.MIN_FRICTION, EnergySkateParkConstants.MAX_FRICTION ),
       tandem: tandem.createTandem( 'frictionProperty' )
     } );
 
@@ -1649,7 +1649,7 @@ class EnergySkateParkModel extends PhetioObject {
 
     // If a control point was split and that makes too many "live" control points total, remove a piece of track from
     // the toolbox to keep the total number of control points low enough.
-    if ( this.getNumberOfControlPoints() > Constants.MAX_NUMBER_CONTROL_POINTS ) {
+    if ( this.getNumberOfControlPoints() > EnergySkateParkConstants.MAX_NUMBER_CONTROL_POINTS ) {
       // find a nonphysical track, then remove it
 
       const trackToRemove = this.getNonPhysicalTracks()[ 0 ];
@@ -1829,7 +1829,7 @@ class EnergySkateParkModel extends PhetioObject {
    * @returns {boolean}
    */
   canCutTrackControlPoint() {
-    return this.getNumberOfPhysicalControlPoints() < Constants.MAX_NUMBER_CONTROL_POINTS;
+    return this.getNumberOfPhysicalControlPoints() < EnergySkateParkConstants.MAX_NUMBER_CONTROL_POINTS;
   }
 
   /**

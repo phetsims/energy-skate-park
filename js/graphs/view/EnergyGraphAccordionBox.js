@@ -22,7 +22,7 @@ import AccordionBox from '../../../../sun/js/AccordionBox.js';
 import VerticalCheckboxGroup from '../../../../sun/js/VerticalCheckboxGroup.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
-import Constants from '../../common/Constants.js';
+import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
@@ -73,7 +73,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
       EnergyGraphAccordionBox.createCheckboxItem( model.totalEnergyDataVisibleProperty, totalEnergyLabelString, EnergySkateParkColorScheme.totalEnergy, labelAlignGroup )
     ], {
       checkboxOptions: {
-        boxWidth: Constants.CHECKBOX_WIDTH
+        boxWidth: EnergySkateParkConstants.CHECKBOX_WIDTH
       },
       spacing: 12
     } );
@@ -174,7 +174,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
 
       expandedProperty: model.energyPlotVisibleProperty,
       tandem: tandem.createTandem( 'accordionBox' )
-    }, Constants.PANEL_OPTIONS ) );
+    }, EnergySkateParkConstants.PANEL_OPTIONS ) );
 
     // decorate this Node with additional controls that are positioned along the title
     this.addChild( variableSwitch );
@@ -234,7 +234,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
    */
   static createCheckboxItem( property, labelString, energyColor, labelAlignGroup ) {
     const labelText = new Text( labelString, {
-      font: Constants.CHECKBOX_LABEL_FONT,
+      font: EnergySkateParkConstants.CHECKBOX_LABEL_FONT,
       maxWidth: 50
     } );
     const labelBox = labelAlignGroup.createBox( labelText, { xAlign: 'left' } );

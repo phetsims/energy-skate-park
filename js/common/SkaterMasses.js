@@ -1,7 +1,7 @@
 // Copyright 2018-2020, University of Colorado Boulder
 
 /**
- * Constants related to the skater in Energy Skate Park.
+ * EnergySkateParkConstants related to the skater in Energy Skate Park.
  *
  * @author Sam Reid (PhET Interactive Simulations)
  * @author Jesse Greenberg (PhET Interactive Simulations)

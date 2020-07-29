@@ -13,7 +13,7 @@ import merge from '../../../../phet-core/js/merge.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
 const controlsValueLotsString = energySkateParkStrings.physicalControls.lots;
@@ -67,7 +67,7 @@ const createTickEntry = ( value, label, tandem, tandemName ) => {
     value: value,
     label: new Text( label, merge( {
       tandem: tandem.createTandem( tandemName )
-    }, Constants.CONTROL_TICK_LABEL_OPTIONS ) )
+    }, EnergySkateParkConstants.CONTROL_TICK_LABEL_OPTIONS ) )
   };
 };
 

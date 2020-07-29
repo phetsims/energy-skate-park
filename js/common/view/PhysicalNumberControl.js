@@ -12,7 +12,7 @@ import NumberControl from '../../../../scenery-phet/js/NumberControl.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 class PhysicalNumberControl extends NumberControl {
 
@@ -67,14 +67,14 @@ class PhysicalNumberControl extends NumberControl {
       majorTicks: [
         {
           value: valueRange.min,
-          label: new Text( Utils.toFixed( valueRange.min, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
+          label: new Text( Utils.toFixed( valueRange.min, options.decimalPlaces ), EnergySkateParkConstants.CONTROL_TICK_LABEL_OPTIONS )
         },
         {
           value: valueRange.max,
-          label: new Text( Utils.toFixed( valueRange.max, options.decimalPlaces ), Constants.CONTROL_TICK_LABEL_OPTIONS )
+          label: new Text( Utils.toFixed( valueRange.max, options.decimalPlaces ), EnergySkateParkConstants.CONTROL_TICK_LABEL_OPTIONS )
         }
       ]
-    }, Constants.SLIDER_OPTIONS, options.sliderOptions );
+    }, EnergySkateParkConstants.SLIDER_OPTIONS, options.sliderOptions );
 
     if ( options.sliderOnly ) {
 
@@ -136,7 +136,7 @@ class PhysicalNumberControl extends NumberControl {
         }
       } ),
       titleNodeOptions: {
-        font: Constants.CONTROL_TITLE_FONT,
+        font: EnergySkateParkConstants.CONTROL_TITLE_FONT,
         maxWidth: 61
       },
 

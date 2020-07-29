@@ -1,7 +1,7 @@
 // Copyright 2013-2020, University of Colorado Boulder
 
 /**
- * Constants used throughout the simulation.
+ * EnergySkateParkConstants used throughout the simulation.
  *
  * @author Sam Reid (PhET Interactive Simulations)
  * @author Jesse Greenberg (PhET Interactive Simulations)
@@ -33,7 +33,7 @@ const PANEL_OPTIONS = {
     stroke: EnergySkateParkColorScheme.panelStroke
   };
 
-const Constants = {
+const EnergySkateParkConstants = {
   SLIDER_OPTIONS: {
     thumbSize: new Dimension2( 12, 25 ),
     trackSize: new Dimension2( 98, 3 ),
@@ -102,6 +102,6 @@ const Constants = {
   REFERENCE_HEIGHT_RANGE: new Range( 0, 8 ) // in meters
 };
 
-energySkatePark.register( 'Constants', Constants );
+energySkatePark.register( 'EnergySkateParkConstants', EnergySkateParkConstants );
 
-export default Constants;
+export default EnergySkateParkConstants;

@@ -19,7 +19,7 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import VBox from '../../../../scenery/js/nodes/VBox.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergyBarGraph from './EnergyBarGraph.js';
 import EnergySkateParkCheckboxItem from './EnergySkateParkCheckboxItem.js';
 
@@ -33,7 +33,7 @@ const propertiesSpeedString = energySkateParkStrings.visibilityControls.speed;
 
 // constants
 const TEXT_OPTIONS = {
-  font: Constants.CHECKBOX_LABEL_FONT,
+  font: EnergySkateParkConstants.CHECKBOX_LABEL_FONT,
   maxWidth: 117
 };
 
@@ -136,7 +136,7 @@ class EnergySkateParkVisibilityControls extends VBox {
       assert && assert( options.itemOptions.spacing === undefined, 'EnergySkateParkVisibilityControls sets spacing' );
     }
     options.itemOptions = merge( {}, options.itemOptions, {
-      boxWidth: Constants.CHECKBOX_WIDTH,
+      boxWidth: EnergySkateParkConstants.CHECKBOX_WIDTH,
       spacing: CHECKBOX_SPACING
     } );
 
@@ -221,7 +221,7 @@ class CheckboxContent {
    * @param width
    */
   setContentWidthForCheckbox( width ) {
-    this.checkboxIcon.spacing = this.checkboxIcon.spacing + ( width - this.checkboxIcon.width ) - Constants.CHECKBOX_WIDTH - CHECKBOX_SPACING;
+    this.checkboxIcon.spacing = this.checkboxIcon.spacing + ( width - this.checkboxIcon.width ) - EnergySkateParkConstants.CHECKBOX_WIDTH - CHECKBOX_SPACING;
   }
 }
 

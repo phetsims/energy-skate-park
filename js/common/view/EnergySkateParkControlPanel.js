@@ -12,7 +12,7 @@ import VBox from '../../../../scenery/js/nodes/VBox.js';
 import HSeparator from '../../../../sun/js/HSeparator.js';
 import Panel from '../../../../sun/js/Panel.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkGravityControls from './EnergySkateParkGravityControls.js';
 import EnergySkateParkMassControls from './EnergySkateParkMassControls.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
@@ -135,7 +135,7 @@ class EnergySkateParkControlPanel extends Panel {
       yMargin: 5,
       resize: false,
       tandem: tandem
-    }, Constants.PANEL_OPTIONS ) );
+    }, EnergySkateParkConstants.PANEL_OPTIONS ) );
   }
 }
 

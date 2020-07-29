@@ -14,7 +14,7 @@ import merge from '../../../../phet-core/js/merge.js';
 import RadioButtonGroupMember from '../../../../sun/js/buttons/RadioButtonGroupMember.js';
 import energySkatePark from '../../energySkatePark.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import SkaterNode from './SkaterNode.js';
 import VBox from '../../../../scenery/js/nodes/VBox.js';
@@ -37,9 +37,9 @@ class SkaterRadioButtonGroup extends Node {
     super();
 
     const buttonOptions = {
-      xMargin: Constants.RADIO_BUTTON_CONTENT_MARGIN,
+      xMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
       yMargin: 0,
-      cornerRadius: Constants.RADIO_BUTTON_CORNER_RADIUS,
+      cornerRadius: EnergySkateParkConstants.RADIO_BUTTON_CORNER_RADIUS,
       selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke,
       baseColor: EnergySkateParkColorScheme.radioButtonBaseColor
     };

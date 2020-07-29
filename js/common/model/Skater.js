@@ -28,7 +28,7 @@ import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import SkaterMasses from '../SkaterMasses.js';
 import Track from './Track.js';
 import TrackIO from './TrackIO.js';
@@ -49,7 +49,7 @@ class Skater {
       massRange: SkaterMasses.MASS_RANGE,
 
       // {Range} - Range for the reference height, in meters
-      referenceHeightRange: Constants.REFERENCE_HEIGHT_RANGE
+      referenceHeightRange: EnergySkateParkConstants.REFERENCE_HEIGHT_RANGE
     }, options );
 
     assert && assert( options.referenceHeightRange.min === 0, 'reference height range needs to start from ground' );
@@ -87,7 +87,7 @@ class Skater {
     this.gravityMagnitudeProperty = new NumberProperty( 9.8, {
       tandem: tandem.createTandem( 'gravityMagnitudeProperty' ),
       units: 'meters/second/second',
-      range: new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) )
+      range: new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) )
     } );
 
     // @public {number} - Gravity magnitude and sign
@@ -97,7 +97,7 @@ class Skater {
       return gravityWithSign;
     }, {
       units: 'meters/second/second',
-      range: new Range( Constants.MAX_GRAVITY, Constants.MIN_GRAVITY ) // MAX_GRAVITY < MIN_GRAVITY due to sign
+      range: new Range( EnergySkateParkConstants.MAX_GRAVITY, EnergySkateParkConstants.MIN_GRAVITY ) // MAX_GRAVITY < MIN_GRAVITY due to sign
     } );
 
     // @public {number} - reference height for potential energy, 0 is at the ground

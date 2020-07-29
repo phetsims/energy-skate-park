@@ -18,7 +18,7 @@ import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 // constants
 const controlsGravityCustomString = energySkateParkStrings.physicalControls.custom;
@@ -44,12 +44,12 @@ class PhysicalComboBox extends ComboBox {
       supportCustom: true,
 
       tandem: tandem
-    }, Constants.COMBO_BOX_OPTIONS, options );
+    }, EnergySkateParkConstants.COMBO_BOX_OPTIONS, options );
 
     // {[].ComboBoxItem}
     const itemList = [];
     labelValueList.forEach( entry => {
-      itemList.push( new ComboBoxItem( new Text( entry.label, Constants.COMBO_BOX_ITEM_OPTIONS ), entry.value ) );
+      itemList.push( new ComboBoxItem( new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), entry.value ) );
     } );
 
     // i18n - if the text gets scaled way down, make sure that the button corner radii aren't larger than content height
@@ -57,7 +57,7 @@ class PhysicalComboBox extends ComboBox {
     options.cornerRadius = Math.min( options.cornerRadius, maxItemHeight / 2 );
 
     if ( options.supportCustom ) {
-      itemList.push( new ComboBoxItem( new Text( controlsGravityCustomString, Constants.COMBO_BOX_ITEM_OPTIONS ), null ) );
+      itemList.push( new ComboBoxItem( new Text( controlsGravityCustomString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), null ) );
     }
 
     // adapter Property for the ComboBox because the physicalProperty can be set to values other than those defined

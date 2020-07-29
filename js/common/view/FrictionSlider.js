@@ -9,7 +9,7 @@
 import Range from '../../../../dot/js/Range.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
 const controlsFrictionTitleString = energySkateParkStrings.physicalControls.friction;
@@ -22,7 +22,7 @@ class FrictionSlider extends PhysicalSlider {
    * @param {Tandem} tandem
    */
   constructor( property, userControlledProperty, tandem ) {
-    super( controlsFrictionTitleString, property, new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ), userControlledProperty, tandem );
+    super( controlsFrictionTitleString, property, new Range( EnergySkateParkConstants.MIN_FRICTION, EnergySkateParkConstants.MAX_FRICTION ), userControlledProperty, tandem );
   }
 }
 

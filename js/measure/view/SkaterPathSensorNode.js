@@ -29,7 +29,7 @@ import VBox from '../../../../scenery/js/nodes/VBox.js';
 import SunConstants from '../../../../sun/js/SunConstants.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../../common/Constants.js';
+import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 
 const energyEnergyString = energySkateParkStrings.energies.energy;
@@ -155,7 +155,7 @@ class SkaterPathSensorNode extends Node {
     } );
 
     // the body is a rounded rectangle
-    const body = new Rectangle( content.bounds.dilated( 7 ), Constants.PANEL_CORNER_RADIUS, Constants.PANEL_CORNER_RADIUS, {
+    const body = new Rectangle( content.bounds.dilated( 7 ), EnergySkateParkConstants.PANEL_CORNER_RADIUS, EnergySkateParkConstants.PANEL_CORNER_RADIUS, {
       fill: SENSOR_COLOR,
       stroke: 'rgb(210,210,210)',
       lineWidth: 2

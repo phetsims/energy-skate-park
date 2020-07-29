@@ -1,7 +1,7 @@
 // Copyright 2019-2020, University of Colorado Boulder
 
 /**
- * Constants for the Graphs screen of Energy Skate Park.\
+ * EnergySkateParkConstants for the Graphs screen of Energy Skate Park.\
  *
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */

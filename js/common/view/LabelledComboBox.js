@@ -13,7 +13,7 @@ import Spacer from '../../../../scenery/js/nodes/Spacer.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import VBox from '../../../../scenery/js/nodes/VBox.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 class LabelledComboBox extends VBox {
 
@@ -32,7 +32,7 @@ class LabelledComboBox extends VBox {
 
     // @private {Text}
     this.titleNode = new Text( titleString, {
-      font: Constants.CONTROL_TITLE_FONT,
+      font: EnergySkateParkConstants.CONTROL_TITLE_FONT,
       maxWidth: this.comboBox.width / 2
     } );
 

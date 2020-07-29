@@ -10,7 +10,7 @@ import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
 const controlsGravityLabelString = energySkateParkStrings.physicalControls.gravityControls.gravity;
@@ -27,7 +27,7 @@ class GravitySlider extends PhysicalSlider {
     super(
       controlsGravityLabelString,
       property,
-      new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ),
+      new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) ),
       userControlledProperty,
       tandem, {
         minLabel: controlsValueTinyString,

@@ -10,7 +10,7 @@
 import merge from '../../../../phet-core/js/merge.js';
 import Panel from '../../../../sun/js/Panel.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
 
 class VisibilityControlsPanel extends Panel {
@@ -21,7 +21,7 @@ class VisibilityControlsPanel extends Panel {
    * @param {Object} [options]
    */
   constructor( model, tandem, options ) {
-    options = merge( {}, Constants.PANEL_OPTIONS, options );
+    options = merge( {}, EnergySkateParkConstants.PANEL_OPTIONS, options );
 
     const content = new EnergySkateParkVisibilityControls( model, tandem, {
       showPieChartCheckbox: false,

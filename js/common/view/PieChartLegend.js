@@ -18,7 +18,7 @@ import VStrut from '../../../../scenery/js/nodes/VStrut.js';
 import Panel from '../../../../sun/js/Panel.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
 const energyEnergyString = energySkateParkStrings.energies.energy;
@@ -48,7 +48,7 @@ class PieChartLegend extends Panel {
     const createLabel = ( index, title, tandemName ) => {
       return new Text( title, {
         tandem: tandem.createTandem( tandemName ),
-        font: Constants.CONTROL_LABEL_FONT,
+        font: EnergySkateParkConstants.CONTROL_LABEL_FONT,
         pickable: false,
         maxWidth: 97 // selected by choosing the length of widest English string in ?stringTest=double
       } );
@@ -127,7 +127,7 @@ class PieChartLegend extends Panel {
       yMargin: 6,
       resize: false,
       tandem: tandem
-    }, Constants.GRAPH_PANEL_OPTONS ) );
+    }, EnergySkateParkConstants.GRAPH_PANEL_OPTONS ) );
 
     this.addChild( clearThermalButton );
     const strutGlobal = clearThermalButtonStrut.parentToGlobalPoint( clearThermalButtonStrut.center );

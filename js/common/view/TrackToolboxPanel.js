@@ -11,7 +11,7 @@ import merge from '../../../../phet-core/js/merge.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
 import Panel from '../../../../sun/js/Panel.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import TrackNode from './TrackNode.js';
 
 class TrackToolboxPanel extends Panel {
@@ -24,7 +24,7 @@ class TrackToolboxPanel extends Panel {
    */
   constructor( model, view, tandem, options ) {
 
-    options = merge( {}, Constants.PANEL_OPTIONS, options );
+    options = merge( {}, EnergySkateParkConstants.PANEL_OPTIONS, options );
 
     const iconTrack = model.createDraggableTrack( {
       trackOptions: {
@@ -61,7 +61,7 @@ class TrackToolboxPanel extends Panel {
     } ) );
 
     const updateIconVisibility = () => {
-      iconNode.visible = model.getNumberOfControlPoints() <= Constants.MAX_NUMBER_CONTROL_POINTS - 3;
+      iconNode.visible = model.getNumberOfControlPoints() <= EnergySkateParkConstants.MAX_NUMBER_CONTROL_POINTS - 3;
     };
     model.tracks.addItemAddedListener( updateIconVisibility );
     model.tracks.addItemRemovedListener( updateIconVisibility );

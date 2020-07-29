@@ -14,7 +14,7 @@ import Panel from '../../../../sun/js/Panel.js';
 import attachIcon from '../../../images/attach_png.js';
 import detachIcon from '../../../images/detach_png.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 // constants
 const SELECTED_LINE_WIDTH = 2.3;
@@ -35,7 +35,7 @@ class AttachDetachToggleButtons extends Panel {
     options = merge( {
       xMargin: 15,
       yMargin: 5
-    }, Constants.PANEL_OPTIONS, options );
+    }, EnergySkateParkConstants.PANEL_OPTIONS, options );
 
     // This is sort of hack to pass through the tandem of the radioButtonGroupMember to its child.
     const attachRadioButtonTandemName = 'attachRadioButton';

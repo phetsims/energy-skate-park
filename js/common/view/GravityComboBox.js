@@ -8,7 +8,7 @@
 
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalComboBox from './PhysicalComboBox.js';
 
 const gravityMoonString = energySkateParkStrings.physicalControls.gravityControls.moon;
@@ -27,9 +27,9 @@ class GravityComboBox extends PhysicalComboBox {
   constructor( gravityProperty, userControlledProperty, resetEmitter, listParent, tandem, options ) {
 
     const labelValueList = [
-      { label: gravityMoonString, value: Constants.MOON_GRAVITY },
-      { label: gravityEarthString, value: Constants.EARTH_GRAVITY },
-      { label: gravityJupiterString, value: Constants.JUPITER_GRAVITY }
+      { label: gravityMoonString, value: EnergySkateParkConstants.MOON_GRAVITY },
+      { label: gravityEarthString, value: EnergySkateParkConstants.EARTH_GRAVITY },
+      { label: gravityJupiterString, value: EnergySkateParkConstants.JUPITER_GRAVITY }
     ];
 
     super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, options );

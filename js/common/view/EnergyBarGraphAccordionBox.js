@@ -9,7 +9,7 @@
 import merge from '../../../../phet-core/js/merge.js';
 import AccordionBox from '../../../../sun/js/AccordionBox.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergyBarGraph from './EnergyBarGraph.js';
 
 class EnergyBarGraphAccordionBox extends AccordionBox {
@@ -44,7 +44,7 @@ class EnergyBarGraphAccordionBox extends AccordionBox {
       },
 
       tandem: tandem
-    }, Constants.GRAPH_PANEL_OPTONS, options );
+    }, EnergySkateParkConstants.GRAPH_PANEL_OPTONS, options );
 
     const energyBarGraph = new EnergyBarGraph( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
 

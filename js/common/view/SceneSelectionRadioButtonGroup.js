@@ -15,7 +15,7 @@ import AlignGroup from '../../../../scenery/js/nodes/AlignGroup.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import RadioButtonGroup from '../../../../sun/js/buttons/RadioButtonGroup.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
 import PremadeTracks from '../model/PremadeTracks.js';
 import BackgroundNode from './BackgroundNode.js';
@@ -39,9 +39,9 @@ class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
 
       // specific and passed to RadioButtonGroup
       orientation: 'horizontal',
-      buttonContentXMargin: Constants.RADIO_BUTTON_CONTENT_MARGIN,
-      buttonContentYMargin: Constants.RADIO_BUTTON_CONTENT_MARGIN,
-      cornerRadius: Constants.RADIO_BUTTON_CORNER_RADIUS,
+      buttonContentXMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
+      buttonContentYMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
+      cornerRadius: EnergySkateParkConstants.RADIO_BUTTON_CORNER_RADIUS,
       selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke,
       baseColor: EnergySkateParkColorScheme.radioButtonBaseColor,
       tandem: tandem,

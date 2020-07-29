@@ -33,7 +33,7 @@ import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushBut
 import skaterIconImage from '../../../images/skater1_left_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import AttachDetachToggleButtons from './AttachDetachToggleButtons.js';
 import BackgroundNode from './BackgroundNode.js';
 import EnergyBarGraphAccordionBox from './EnergyBarGraphAccordionBox.js';
@@ -219,7 +219,7 @@ class EnergySkateParkScreenView extends ScreenView {
       content: new Text( controlsRestartSkaterString, {
         tandem: tandem.createTandem( 'restartSkaterTextNode' ),
         maxWidth: 90,
-        font: Constants.CONTROL_LABEL_FONT
+        font: EnergySkateParkConstants.CONTROL_LABEL_FONT
       } ),
       listener: model.returnSkater.bind( model ),
       centerY: this.resetAllButton.centerY,

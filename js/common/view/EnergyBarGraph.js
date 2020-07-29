@@ -22,7 +22,7 @@ import VBox from '../../../../scenery/js/nodes/VBox.js';
 import ColorConstants from '../../../../sun/js/ColorConstants.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
 const energyEnergyString = energySkateParkStrings.energies.energy;
@@ -166,7 +166,7 @@ class EnergyBarGraph extends Node {
       const zoomOutButton = new ZoomButton( merge( {
         in: false,
         listener: () => {
-          barGraphScaleProperty.set( Math.max( barGraphScaleProperty.get() - Constants.ZOOM_FACTOR_DELTA, Constants.MIN_ZOOM_FACTOR ) );
+          barGraphScaleProperty.set( Math.max( barGraphScaleProperty.get() - EnergySkateParkConstants.ZOOM_FACTOR_DELTA, EnergySkateParkConstants.MIN_ZOOM_FACTOR ) );
         },
         touchAreaXShift: -ZOOM_BUTTON_TOUCH_DILATION,
         tandem: tandem.createTandem( 'zoomOutButton' )
@@ -174,7 +174,7 @@ class EnergyBarGraph extends Node {
       const zoomInButton = new ZoomButton( merge( {
         in: true,
         listener: () => {
-          barGraphScaleProperty.set( Math.min( barGraphScaleProperty.get() + Constants.ZOOM_FACTOR_DELTA, Constants.MAX_ZOOM_FACTOR ) );
+          barGraphScaleProperty.set( Math.min( barGraphScaleProperty.get() + EnergySkateParkConstants.ZOOM_FACTOR_DELTA, EnergySkateParkConstants.MAX_ZOOM_FACTOR ) );
         },
         touchAreaXShift: ZOOM_BUTTON_TOUCH_DILATION,
         tandem: tandem.createTandem( 'zoomInButton' )
@@ -192,8 +192,8 @@ class EnergyBarGraph extends Node {
       } );
 
       barGraphScaleProperty.link( scale => {
-        zoomInButton.enabled = scale < Constants.MAX_ZOOM_FACTOR;
-        zoomOutButton.enabled = scale > Constants.MIN_ZOOM_FACTOR;
+        zoomInButton.enabled = scale < EnergySkateParkConstants.MAX_ZOOM_FACTOR;
+        zoomOutButton.enabled = scale > EnergySkateParkConstants.MIN_ZOOM_FACTOR;
       } );
 
       barGraphScaleProperty.link( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );

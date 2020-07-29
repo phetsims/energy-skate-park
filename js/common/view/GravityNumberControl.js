@@ -11,7 +11,7 @@ import Utils from '../../../../dot/js/Utils.js';
 import merge from '../../../../phet-core/js/merge.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
 const controlsGravityLabelString = energySkateParkStrings.physicalControls.gravityControls.gravity;
@@ -38,7 +38,7 @@ class GravityNumberControl extends PhysicalNumberControl {
         constrainValue: value => Utils.roundToInterval( value, 1 )
       }
     }, options );
-    super( controlsGravityLabelString, property, new Range( Math.abs( Constants.MIN_GRAVITY ), Math.abs( Constants.MAX_GRAVITY ) ), userControlledProperty, tandem, options );
+    super( controlsGravityLabelString, property, new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) ), userControlledProperty, tandem, options );
   }
 }
 

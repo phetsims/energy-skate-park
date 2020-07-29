@@ -17,7 +17,7 @@ import HBox from '../../../../scenery/js/nodes/HBox.js';
 import Panel from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import Constants from '../Constants.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 class ToolboxPanel extends Panel {
 
@@ -33,7 +33,7 @@ class ToolboxPanel extends Panel {
 
       // smaller y margin to save space when used with very tall ControlPanels (like in the intro screen)
       yMargin: 2
-    }, Constants.PANEL_OPTIONS, options );
+    }, EnergySkateParkConstants.PANEL_OPTIONS, options );
 
     // create the icons
     const measuringTapeIcon = MeasuringTapeNode.createIcon();
