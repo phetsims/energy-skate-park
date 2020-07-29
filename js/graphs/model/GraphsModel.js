@@ -36,8 +36,6 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
     // track set model with no friction
     super( tandem.createTandem( 'graphsModel' ), {
 
-      includeFriction: false,
-
       // the Graphs screen contains a parabola and double well premade track
       trackTypes: [
         PremadeTracks.TrackType.PARABOLA,

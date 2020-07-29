@@ -22,6 +22,7 @@ const MOON_GRAVITY = 1.62;
 const JUPITER_GRAVITY = 24.8;
 
 // maximum coefficient of friction
+const MIN_FRICTION = 0;
 const MAX_FRICTION = 0.1;
 
 const PANEL_CORNER_RADIUS = 5;
@@ -83,9 +84,11 @@ const Constants = {
   MIN_ZOOM_FACTOR: ZOOM_FACTOR_DELTA / 3,
 
   // coefficients of friction, default values are not common
-  MIN_FRICTION: 0,
+  MIN_FRICTION: MIN_FRICTION,
   MAX_FRICTION: MAX_FRICTION,
-  DEFAULT_FRICTION: MAX_FRICTION / 2,
+
+   // it was decided that default friction for this sim should be zero on all screens
+  DEFAULT_FRICTION: MIN_FRICTION,
 
   // in m/s^2, including direction (naming aligned with magnitude for readability at usages)
   MAX_GRAVITY: -26, // maximum value of gravity, as requested by design

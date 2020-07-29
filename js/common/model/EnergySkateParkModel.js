@@ -93,8 +93,8 @@ class EnergySkateParkModel extends PhetioObject {
 
     options = merge( {
 
-      // {boolean} - if true, friction is included in the model and may be configurable by the user
-      includeFriction: true,
+      // {number} - initial/default value of friction for the model
+      defaultFriction: Constants.DEFAULT_FRICTION,
 
       // {boolean} - if true, tracks can be dragged around the play area
       tracksDraggable: false,
@@ -111,9 +111,9 @@ class EnergySkateParkModel extends PhetioObject {
     }, options );
 
     // @public (read-only)
-    this.includeFriction = options.includeFriction;
     this.tracksDraggable = options.tracksDraggable;
     this.tracksConfigurable = options.tracksConfigurable;
+    this.defaultFriction = options.defaultFriction;
 
     const controlPointGroupTandem = tandem.createGroupTandem( 'controlPoint' );
     const trackGroupTandem = tandem.createGroupTandem( 'track' );
@@ -186,7 +186,7 @@ class EnergySkateParkModel extends PhetioObject {
     } );
 
     // @public {number} - Coefficient of friction (unitless) between skater and track
-    this.frictionProperty = new NumberProperty( this.includeFriction ? Constants.DEFAULT_FRICTION : 0, {
+    this.frictionProperty = new NumberProperty( this.defaultFriction, {
       range: new Range( Constants.MIN_FRICTION, Constants.MAX_FRICTION ),
       tandem: tandem.createTandem( 'frictionProperty' )
     } );
