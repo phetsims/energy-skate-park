@@ -13,6 +13,7 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import Shape from '../../../../kite/js/Shape.js';
 import merge from '../../../../phet-core/js/merge.js';
 import GaugeNode from '../../../../scenery-phet/js/GaugeNode.js';
+import PressListener from '../../../../scenery/js/listeners/PressListener.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Line from '../../../../scenery/js/nodes/Line.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
@@ -36,10 +37,28 @@ class EnergySkateParkCheckboxItem extends Checkbox {
   constructor( icon, property, tandem, options ) {
 
     options = merge( {
+
+      // {BooleanProperty|null} - whether or not the user has controlled this checkbox
+      // we set to true if we detect input on this control. The simulation has
+      // different behavior for when the user directly controls the Checkbox Property
+      // vs whether the Property gets set internally by the simulation
+      userControlledProperty: null,
+
+      // {Tandem}
       tandem: tandem
     }, options );
 
     super( icon, property, options );
+
+    if ( options.userControlledProperty ) {
+
+      // add a listener to the Checkbox that resets the data upon user interaction
+      const userControlledListener = new PressListener( {
+        press: () => options.userControlledProperty.set( true ),
+        release: () => options.userControlledProperty.set( false )
+      } );
+      this.addInputListener( userControlledListener );
+    }
   }
 
   /**

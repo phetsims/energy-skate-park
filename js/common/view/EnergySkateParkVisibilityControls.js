@@ -115,7 +115,13 @@ class EnergySkateParkVisibilityControls extends VBox {
 
     if ( options.showStickToTrackCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createStickingToTrackIcon();
-      this.addCheckboxContent( controlsStickToTrackString, iconNode, model.stickingToTrackProperty, tandem.createTandem( 'stickingCheckboxContent' ) );
+
+      // this is the only checkbox that controls model physics, if it gets changed
+      // by the user we may need to clear saved data or do other things
+      const userControlledProperty = model.userControlledPropertySet.stickingToTrackControlledProperty;
+      this.addCheckboxContent( controlsStickToTrackString, iconNode, model.stickingToTrackProperty, tandem.createTandem( 'stickingCheckboxContent' ), {
+        userControlledProperty: userControlledProperty
+      } );
     }
 
     // set spacing of contents for layout
@@ -135,6 +141,10 @@ class EnergySkateParkVisibilityControls extends VBox {
     } );
 
     this.checkboxContents.forEach( content => {
+      options.itemOptions = merge( {}, options.itemOptions, {
+        userControlledProperty: content.userControlledProperty
+      } );
+
       checkboxItems.push( new EnergySkateParkCheckboxItem( content.checkboxIcon, content.property, content.tandem, options.itemOptions ) );
     } );
 
@@ -150,9 +160,10 @@ class EnergySkateParkVisibilityControls extends VBox {
    * @param {Node} iconNode
    * @param {BooleanProperty} property
    * @param {Tandem} tandem
+   * @param {Object} [options]
    */
-  addCheckboxContent( labelString, iconNode, property, tandem ) {
-    this.checkboxContents.push( new CheckboxContent( labelString, iconNode, this.textAlignGroup, this.iconAlignGroup, property, tandem ) );
+  addCheckboxContent( labelString, iconNode, property, tandem, options ) {
+    this.checkboxContents.push( new CheckboxContent( labelString, iconNode, this.textAlignGroup, this.iconAlignGroup, property, tandem, options ) );
   }
 }
 
@@ -169,8 +180,16 @@ class CheckboxContent {
    * @param {AlignGroup} iconAlignGroup
    * @param {BooleanProperty}property
    * @param {Tandem} tandem
+   * @param {Object} [options]
    */
-  constructor( labelString, iconNode, textAlignGroup, iconAlignGroup, property, tandem ) {
+  constructor( labelString, iconNode, textAlignGroup, iconAlignGroup, property, tandem, options ) {
+    options = merge( {
+
+      // {BooleanProperty} - Property indicating that the checkbox Property has been
+      // changed by the user (rather than internally by the sim), allowing us
+      // to do extra work if user changes directly
+      userControlledProperty: null
+    }, options );
 
     // create the text and assign to an AlignBox
     const text = new Text( labelString, merge( { tandem: tandem.createTandem( 'text' ) }, TEXT_OPTIONS ) );
@@ -188,6 +207,9 @@ class CheckboxContent {
 
     // @public {BooleanProperty} - Property for the checkbox
     this.property = property;
+
+    // @public {BooleanProperty}
+    this.userControlledProperty = options.userControlledProperty;
   }
 
   /**
