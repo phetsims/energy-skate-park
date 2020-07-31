@@ -72,22 +72,30 @@ class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
         const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem, merge( {
           trackMidHeight: 1
         }, controlPointOptions ) );
-        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints, {
+          tandem: tandem.createTandem( 'parabolaTrackIcon' )
+        } );
       }
       else if ( trackType === PremadeTracks.TrackType.SLOPE ) {
         const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem, controlPointOptions );
-        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints, {
+          tandem: tandem.createTandem( 'slopeTrackIcon' )
+        } );
       }
       else if ( trackType === PremadeTracks.TrackType.DOUBLE_WELL ) {
         const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem, controlPointOptions);
-        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, doubleWellControlPoints );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, doubleWellControlPoints, {
+          tandem: tandem.createTandem( 'doubleWellTrackIcon' )
+        } );
       }
       else if ( trackType === PremadeTracks.TrackType.LOOP ) {
         const loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem, merge( {
           innerLoopWidth: 2.5,
           innerLoopTop: 3.5
         }, controlPointOptions ) );
-        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, loopControlPoints );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, loopControlPoints, {
+          tandem: tandem.createTandem( 'loopTrackIcon' )
+        } );
       }
       else {
         throw new Error( `unsupported TrackType: ${trackType}` );
