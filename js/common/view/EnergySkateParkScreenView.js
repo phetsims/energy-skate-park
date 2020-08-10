@@ -292,7 +292,7 @@ class EnergySkateParkScreenView extends ScreenView {
       this.stopwatchNode = new StopwatchNode( model.stopwatch, {
         visibleBoundsProperty: this.visibleBoundsProperty,
         tandem: tandem.createTandem( 'stopwatchNode' ),
-        stopwatchNumberDisplayOptions: {
+        numberDisplayOptions: {
           numberFormatter: StopwatchNode.getRichNumberFormatter( {
             bigNumberFont: 25,
             smallNumberFont: 17,
