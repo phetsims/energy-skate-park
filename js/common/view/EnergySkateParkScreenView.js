@@ -10,7 +10,6 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
-import StringProperty from '../../../../axon/js/StringProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import DotRectangle from '../../../../dot/js/Rectangle.js'; // eslint-disable-line require-statement-match
@@ -295,8 +294,7 @@ class EnergySkateParkScreenView extends ScreenView {
         numberDisplayOptions: {
           numberFormatter: StopwatchNode.getRichNumberFormatter( {
             bigNumberFont: 25,
-            smallNumberFont: 17,
-            unitsProperty: new StringProperty( '' ) // no units
+            smallNumberFont: 17
           } )
         },
         dragListenerOptions: {
