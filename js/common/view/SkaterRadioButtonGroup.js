@@ -11,21 +11,21 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import RadioButtonGroupMember from '../../../../sun/js/buttons/RadioButtonGroupMember.js';
-import energySkatePark from '../../energySkatePark.js';
-import Node from '../../../../scenery/js/nodes/Node.js';
-import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
-import SkaterNode from './SkaterNode.js';
-import VBox from '../../../../scenery/js/nodes/VBox.js';
-import Image from '../../../../scenery/js/nodes/Image.js';
 import HBox from '../../../../scenery/js/nodes/HBox.js';
+import Image from '../../../../scenery/js/nodes/Image.js';
+import Node from '../../../../scenery/js/nodes/Node.js';
+import VBox from '../../../../scenery/js/nodes/VBox.js';
+import RadioButtonGroupMember from '../../../../sun/js/buttons/RadioButtonGroupMember.js';
+import dogHeadshot from '../../../images/dog-headshot_png.js';
 import skater1Headshot from '../../../images/skater1-headshot_png.js';
 import skater2Headshot from '../../../images/skater2-headshot_png.js';
 import skater3Headshot from '../../../images/skater3-headshot_png.js';
 import skater4Headshot from '../../../images/skater4-headshot_png.js';
 import skater5Headshot from '../../../images/skater5-headshot_png.js';
-import dogHeadshot from '../../../images/dog-headshot_png.js';
+import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import SkaterNode from './SkaterNode.js';
 
 class SkaterRadioButtonGroup extends Node {
 
@@ -51,32 +51,32 @@ class SkaterRadioButtonGroup extends Node {
       {
         value: SkaterNode.SkaterImage.SKATER_1,
         node: new Image( skater1Headshot, { scale: imageScale } ),
-        tandemName: 'skater1'
+        tandemName: 'skater1RadioButton'
       },
       {
         value: SkaterNode.SkaterImage.SKATER_2,
         node: new Image( skater2Headshot, { scale: imageScale } ),
-        tandemName: 'skater2'
+        tandemName: 'skater2RadioButton'
       },
       {
         value: SkaterNode.SkaterImage.SKATER_3,
         node: new Image( skater3Headshot, { scale: imageScale } ),
-        tandemName: 'skater3'
+        tandemName: 'skater3RadioButton'
       },
       {
         value: SkaterNode.SkaterImage.SKATER_4,
         node: new Image( skater4Headshot, { scale: imageScale } ),
-        tandemName: 'skater4'
+        tandemName: 'skater4RadioButton'
       },
       {
         value: SkaterNode.SkaterImage.SKATER_5,
         node: new Image( skater5Headshot, { scale: imageScale } ),
-        tandemName: 'skater5'
+        tandemName: 'skater5RadioButton'
       },
       {
         value: SkaterNode.SkaterImage.DOG,
         node: new Image( dogHeadshot, { scale: imageScale } ),
-        tandemName: 'dog'
+        tandemName: 'dogRadioButton'
       }
     ];
 
