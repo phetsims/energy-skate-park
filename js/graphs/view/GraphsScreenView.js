@@ -60,9 +60,9 @@ class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
   layout( width, height ) {
     super.layout( width, height );
 
-    // the graph within the accordion box needs to line up with the track so that skater positions on the
-    // track align perfectly with positions along the graph
-    this.graphAccordionBox.right = this.trackLayer.right + EnergyGraphAccordionBox.GRAPH_OFFSET;
+    // the graph within the accordion box needs to line up with the right edge of the track and grid lines so that
+    // skater positions on track align perfectly with positions along the graph
+    this.graphAccordionBox.right = this.modelViewTransform.modelToViewX( 5 ) + this.graphAccordionBox.getContentRight();
     this.graphAccordionBox.top = this.controlPanel.top;
 
     // special layout for the speedometer in this screen

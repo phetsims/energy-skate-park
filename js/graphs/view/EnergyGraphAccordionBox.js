@@ -222,6 +222,20 @@ class EnergyGraphAccordionBox extends AccordionBox {
   }
 
   /**
+   * Gets the spacing in view coordinates between the right edge of the panel and the right most
+   * content within the panel. Useful for layout since we want the grid lines in the ScreenView to
+   * perfectly align with grid lines in the plot.
+   * @public
+   *
+   * @returns {number}
+   */
+  getContentRight() {
+    const localContentRight = this.globalToLocalBounds( this.energyPlot.localToGlobalBounds( this.energyPlot.graphPanel.localBounds ) ).right;
+    const localPanelRight = this.localBounds.right;
+    return localPanelRight - localContentRight;
+  }
+
+  /**
    * Create an "item" for a checkbox of the VerticalCheckboxGroup, with the label and controlling Property.
    * @private
    *
