@@ -31,9 +31,9 @@ simLauncher.launch( () => {
 
   new EnergySkateParkSim( energySkateParkTitleString, screens, tandem, {
     credits: {
-      leadDesign: 'Ariel Paul, Noah Podolefsky, Sam Reid, Amy Rouinfar',
+      leadDesign: 'Noah Podolefsky, Sam Reid, Amy Rouinfar',
       softwareDevelopment: 'Sam Reid, Jesse Greenberg',
-      team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Emily B. Moore, Kathy Perkins, Diana López Tavares',
+      team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Emily B. Moore, Ariel Paul, Kathy Perkins, Diana López Tavares',
       graphicArts: 'Sharon Siman-Tov, Amanda McGarry, Megan Lai',
       qualityAssurance: 'Steele Dalton, Oliver Orejola, Arnab Purkayastha, Bryan Yoelin'
     }
