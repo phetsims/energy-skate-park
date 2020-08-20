@@ -92,9 +92,19 @@ class SkaterNode extends Node {
     const centerMassValue = skater.massRange.getCenter();
     const massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.46, 0.614 );
 
+    // make the SkaterNode invisible  until the first update so it isn't displayed in the wrong location before
+    // the matrix is set on the first update
+    this.visible = false;
+
     // Update the position and angle.  Normally the angle would only change if the position has also changed, so no need
     // for a duplicate callback there.
     this.skater.updatedEmitter.addListener( () => {
+
+      // update visibility on first model update
+      if ( !this.visible ) {
+        this.visible = true;
+      }
+
       const mass = skater.massProperty.value;
       const position = skater.positionProperty.value;
       const angle = skater.angleProperty.value;
