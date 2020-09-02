@@ -1,7 +1,7 @@
 // Copyright 2017-2020, University of Colorado Boulder
 
 /**
- * IO type for ControlPoint
+ * IO Type for ControlPoint
  *
  * @author Sam Reid (PhET Interactive Simulations)
  * @author Andrew Adare (PhET Interactive Simulations)
