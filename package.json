@@ -26,8 +26,7 @@
     "simulation": true,
     "phet-io": {
       "validation": false
-    },
-    "supportsZoom": true
+    }
   },
   "eslintConfig": {
     "extends": "../chipper/eslint/sim_eslintrc.js",
