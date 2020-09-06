@@ -55,7 +55,7 @@ class EnergySkateParkModelIO extends ObjectIO {
 EnergySkateParkModelIO.documentation = 'The model for the Skate Park.';
 EnergySkateParkModelIO.validator = { isValidValue: v => v instanceof phet.energySkatePark.EnergySkateParkModel };
 EnergySkateParkModelIO.typeName = 'EnergySkateParkModelIO';
-ObjectIO.validateSubtype( EnergySkateParkModelIO );
+ObjectIO.validateIOType( EnergySkateParkModelIO );
 
 energySkatePark.register( 'EnergySkateParkModelIO', EnergySkateParkModelIO );
 export default EnergySkateParkModelIO;

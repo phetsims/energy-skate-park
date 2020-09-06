@@ -51,7 +51,7 @@ class TrackIO extends ObjectIO {
 TrackIO.documentation = 'A skate track.';
 TrackIO.validator = { isValidValue: v => v instanceof phet.energySkatePark.Track };
 TrackIO.typeName = 'TrackIO';
-ObjectIO.validateSubtype( TrackIO );
+ObjectIO.validateIOType( TrackIO );
 
 energySkatePark.register( 'TrackIO', TrackIO );
 export default TrackIO;

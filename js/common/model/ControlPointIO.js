@@ -47,7 +47,7 @@ class ControlPointIO extends ObjectIO {
 ControlPointIO.documentation = 'A control point that can manipulate the track.';
 ControlPointIO.validator = { isValidValue: v => v instanceof ControlPoint };
 ControlPointIO.typeName = 'ControlPointIO';
-ObjectIO.validateSubtype( ControlPointIO );
+ObjectIO.validateIOType( ControlPointIO );
 
 energySkatePark.register( 'ControlPointIO', ControlPointIO );
 export default ControlPointIO;
