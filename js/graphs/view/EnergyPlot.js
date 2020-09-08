@@ -226,7 +226,10 @@ class EnergyPlot extends XYCursorPlot {
 
 
       updateModelViewTransformProperty();
-      this.setLineSpacings( verticalLineSpacing, horizontalLineSpacing, null, null );
+      this.setLineSpacings( {
+        majorVerticalLineSpacing: verticalLineSpacing,
+        majorHorizontalLineSpacing: horizontalLineSpacing
+      } );
     } );
 
     // // update range, domain, and plot style of plot when the independent variable changes - cursor is invisible for
@@ -250,7 +253,10 @@ class EnergyPlot extends XYCursorPlot {
       }
 
       updateModelViewTransformProperty();
-      this.setLineSpacings( verticalLineSpacing, horizontalLineSpacing, null, null );
+      this.setLineSpacings( {
+        majorVerticalLineSpacing: verticalLineSpacing,
+        majorHorizontalLineSpacing: horizontalLineSpacing
+      } );
     } );
 
 
