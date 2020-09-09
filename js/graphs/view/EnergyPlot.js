@@ -60,7 +60,7 @@ class EnergyPlot extends XYCursorPlot {
       new Bounds2( 0, 0, graphWidth, graphHeight )
     ) );
 
-    super( model.sampleTimeProperty, {
+    super( {
 
       // dimensions of the graph
       width: graphWidth,
