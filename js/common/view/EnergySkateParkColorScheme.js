@@ -45,8 +45,8 @@ const EnergySkateParkColorScheme = {
   panelFill: new Color( '#F0F0F0' ),
   panelStroke: new Color( '#ababab' ),
 
-  // graph panels have a white fill so that energy colors are easier to see
-  graphPanelFill: 'white',
+  // chart panels have a white fill so that energy colors are easier to see
+  chartPanelFill: 'white',
 
   // surrounds text for better visibility
   transparentPanelFill: new Color( 255, 255, 255, 0.5 )

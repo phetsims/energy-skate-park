@@ -180,8 +180,8 @@ class EnergyGraphAccordionBox extends AccordionBox {
     this.addChild( variableSwitch );
     this.addChild( eraserButton );
 
-    variableSwitch.centerBottom = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.graphPanel.centerTop ) ).minusXY( 0, buttonYMargin + contentYMargin );
-    eraserButton.right = eraserButton.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.graphPanel.rightCenter ) ).x;
+    variableSwitch.centerBottom = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.chartPanel.centerTop ) ).minusXY( 0, buttonYMargin + contentYMargin );
+    eraserButton.right = eraserButton.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.chartPanel.rightCenter ) ).x;
     eraserButton.centerY = variableSwitch.centerY;
 
     // The variable switch and eraser button are part of the title layout but should only be visible when
@@ -230,7 +230,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
    * @returns {number}
    */
   getContentRight() {
-    const localContentRight = this.globalToLocalBounds( this.energyPlot.localToGlobalBounds( this.energyPlot.graphPanel.localBounds ) ).right;
+    const localContentRight = this.globalToLocalBounds( this.energyPlot.localToGlobalBounds( this.energyPlot.chartPanel.localBounds ) ).right;
     const localPanelRight = this.localBounds.right;
     return localPanelRight - localContentRight;
   }

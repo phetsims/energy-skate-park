@@ -63,7 +63,7 @@ const EnergySkateParkConstants = {
   PANEL_OPTIONS: PANEL_OPTIONS,
 
   GRAPH_PANEL_OPTONS: merge( {}, PANEL_OPTIONS, {
-    fill: EnergySkateParkColorScheme.graphPanelFill
+    fill: EnergySkateParkColorScheme.chartPanelFill
   } ),
 
   // options for the ComboBoxes in this sim
