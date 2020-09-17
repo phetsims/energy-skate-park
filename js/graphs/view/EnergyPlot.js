@@ -298,7 +298,7 @@ class EnergyPlot extends XYCursorPlot {
         return plotTime ? sampleToRemove.time : ( sampleToRemove.position.x + POSITION_PLOT_OFFSET );
       } );
 
-      this.dynamicSeriesList.forEach( dynamicSeries => {
+      this.dynamicSeriesArray.forEach( dynamicSeries => {
         dynamicSeries.removeDataPointsAtX( xValuesToRemove );
       } );
     } );
