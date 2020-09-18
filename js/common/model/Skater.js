@@ -10,7 +10,6 @@
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
-import DerivedPropertyIO from '../../../../axon/js/DerivedPropertyIO.js';
 import Emitter from '../../../../axon/js/Emitter.js';
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
@@ -208,7 +207,7 @@ class Skater {
     this.speedProperty = new DerivedProperty( [ this.velocityProperty ], velocity => velocity.magnitude, {
       tandem: tandem.createTandem( 'speedProperty' ),
       units: 'meters/second',
-      phetioType: DerivedPropertyIO( NumberIO )
+      phetioType: DerivedProperty.DerivedPropertyIO( NumberIO )
     } );
 
     // Derived - Zero the kinetic energy when draggingDerived, see #22
@@ -243,7 +242,7 @@ class Skater {
         return !dragging && ( x.x !== x0.x || x.y !== x0.y );
       }, {
         tandem: tandem.createTandem( 'movedProperty' ),
-        phetioType: DerivedPropertyIO( BooleanIO )
+        phetioType: DerivedProperty.DerivedPropertyIO( BooleanIO )
       } );
 
     // update energies whenever mass, gravity, or height changes so that energy distribution updates while the sim is paused
@@ -264,7 +263,7 @@ class Skater {
         return thermalEnergy > 1E-2;
       }, {
         tandem: tandem.createTandem( 'allowClearingThermalEnergyProperty' ),
-        phetioType: DerivedPropertyIO( BooleanIO )
+        phetioType: DerivedProperty.DerivedPropertyIO( BooleanIO )
       } );
 
     // In the state wrapper, when the state changes, we must update the skater node

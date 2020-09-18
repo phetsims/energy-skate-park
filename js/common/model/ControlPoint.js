@@ -10,7 +10,6 @@
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
-import DerivedPropertyIO from '../../../../axon/js/DerivedPropertyIO.js';
 import Property from '../../../../axon/js/Property.js';
 import PropertyIO from '../../../../axon/js/PropertyIO.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
@@ -81,7 +80,7 @@ class ControlPoint extends PhetioObject {
     this.positionProperty = new DerivedProperty( [ this.sourcePositionProperty, this.snapTargetProperty ],
       ( sourcePosition, snapTarget ) => snapTarget ? snapTarget.positionProperty.value : sourcePosition, {
         tandem: tandem.createTandem( 'positionProperty' ),
-        phetioType: DerivedPropertyIO( Vector2IO ),
+        phetioType: DerivedProperty.DerivedPropertyIO( Vector2IO ),
         phetioState: options.phetioState
       } );
 
