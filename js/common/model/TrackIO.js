@@ -7,16 +7,13 @@
  * @author Andrew Adare (PhET Interactive Simulations)
  */
 
-import validate from '../../../../axon/js/validate.js';
-import ObjectIO from '../../../../tandem/js/types/ObjectIO.js';
+import IOType from '../../../../tandem/js/types/IOType.js';
 import energySkatePark from '../../energySkatePark.js';
 
-class TrackIO extends ObjectIO {
-
-  // @public
-  // @override
-  static toStateObject( track ) {
-    validate( track, this.validator );
+const TrackIO = new IOType( 'TrackIO', {
+  isValidValue: v => v instanceof phet.energySkatePark.Track,
+  documentation: 'A skate track',
+  toStateObject( track ) {
     if ( track instanceof phet.energySkatePark.Track || track === null ) {
 
       // Since skater.trackProperty is of type Property.<Track|null>, we must support null here.
@@ -37,21 +34,16 @@ class TrackIO extends ObjectIO {
       // See https://github.com/phetsims/energy-skate-park-basics/issues/366
       return track;
     }
-  }
+  },
 
-  // @public
-  // @override
-  static fromStateObject( stateObject ) {
+// @public
+// @override
+  fromStateObject( stateObject ) {
 
     // TODO: This is sketchy, see // See https://github.com/phetsims/energy-skate-park-basics/issues/366
     return stateObject;
   }
-}
-
-TrackIO.documentation = 'A skate track.';
-TrackIO.validator = { isValidValue: v => v instanceof phet.energySkatePark.Track };
-TrackIO.typeName = 'TrackIO';
-ObjectIO.validateIOType( TrackIO );
+} );
 
 energySkatePark.register( 'TrackIO', TrackIO );
 export default TrackIO;

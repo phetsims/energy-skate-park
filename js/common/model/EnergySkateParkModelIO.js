@@ -7,12 +7,13 @@
  * @author Andrew Adare (PhET Interactive Simulations)
  */
 
-import validate from '../../../../axon/js/validate.js';
 import CouldNotYetDeserializeError from '../../../../tandem/js/CouldNotYetDeserializeError.js';
-import ObjectIO from '../../../../tandem/js/types/ObjectIO.js';
+import IOType from '../../../../tandem/js/types/IOType.js';
 import energySkatePark from '../../energySkatePark.js';
 
-class EnergySkateParkModelIO extends ObjectIO {
+const EnergySkateParkModelIO = new IOType( 'EnergySkateParkModelIO', {
+  isValidValue: v => v instanceof phet.energySkatePark.EnergySkateParkModel,
+  documentation: 'The model for the Skate Park.',
 
   /**
    * Remove all instances of the model's dynamic children.
@@ -22,12 +23,11 @@ class EnergySkateParkModelIO extends ObjectIO {
    *
    * @param {EnergySkateParkModel} energySkateParkModel
    */
-  static clearChildInstances( energySkateParkModel ) {
-    validate( energySkateParkModel, this.validator );
+  clearChildInstances( energySkateParkModel ) {
     if ( energySkateParkModel.tracksDraggable ) {
       energySkateParkModel.removeAllTracks();
     }
-  }
+  },
 
   /**
    * Adds a Track as specified by the phetioID and state.
@@ -38,8 +38,7 @@ class EnergySkateParkModelIO extends ObjectIO {
    * @param {Tandem} tandem
    * @param {Object} stateObject
    */
-  static addChildElementDeprecated( energySkateParkModel, tandem, stateObject ) {
-    validate( energySkateParkModel, this.validator );
+  addChildElementDeprecated( energySkateParkModel, tandem, stateObject ) {
     const isControlPoint = tandem.phetioID.indexOf( '.controlPoint' ) >= 0;
 
     // Control Points are already being created when the tracks are made, so if the tandem is a controlPoint it's a no-op
@@ -50,12 +49,7 @@ class EnergySkateParkModelIO extends ObjectIO {
     // If it isn't a ControlPoint, then it is a Track
     return energySkateParkModel.addTrack( tandem, stateObject.draggable, stateObject.configurable, stateObject.controlPointTandemIDs );
   }
-}
-
-EnergySkateParkModelIO.documentation = 'The model for the Skate Park.';
-EnergySkateParkModelIO.validator = { isValidValue: v => v instanceof phet.energySkatePark.EnergySkateParkModel };
-EnergySkateParkModelIO.typeName = 'EnergySkateParkModelIO';
-ObjectIO.validateIOType( EnergySkateParkModelIO );
+} );
 
 energySkatePark.register( 'EnergySkateParkModelIO', EnergySkateParkModelIO );
 export default EnergySkateParkModelIO;
