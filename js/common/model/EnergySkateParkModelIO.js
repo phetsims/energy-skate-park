@@ -22,6 +22,7 @@ const EnergySkateParkModelIO = new IOType( 'EnergySkateParkModelIO', {
    * @public
    *
    * @param {EnergySkateParkModel} energySkateParkModel
+   * // TODO: https://github.com/phetsims/tandem/issues/211 is never called
    */
   clearChildInstances( energySkateParkModel ) {
     if ( energySkateParkModel.tracksDraggable ) {
