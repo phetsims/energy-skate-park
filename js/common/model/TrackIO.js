@@ -13,7 +13,7 @@ import energySkatePark from '../../energySkatePark.js';
 const TrackIO = new IOType( 'TrackIO', {
   isValidValue: v => v instanceof phet.energySkatePark.Track,
   documentation: 'A skate track',
-  toStateObject( track ) {
+  toStateObject: track => {
     if ( track instanceof phet.energySkatePark.Track || track === null ) {
 
       // Since skater.trackProperty is of type Property.<Track|null>, we must support null here.
@@ -36,13 +36,8 @@ const TrackIO = new IOType( 'TrackIO', {
     }
   },
 
-// @public
-// @override
-  fromStateObject( stateObject ) {
-
-    // TODO: This is sketchy, see // See https://github.com/phetsims/energy-skate-park-basics/issues/366
-    return stateObject;
-  }
+  // TODO: This is sketchy, see // See https://github.com/phetsims/energy-skate-park-basics/issues/366
+  fromStateObject: stateObject => stateObject
 } );
 
 energySkatePark.register( 'TrackIO', TrackIO );
