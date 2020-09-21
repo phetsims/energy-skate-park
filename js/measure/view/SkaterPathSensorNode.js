@@ -310,14 +310,15 @@ class SkaterPathSensorNode extends Node {
   }
 
   /**
-   * Each value in this readout will be as precise as one decimal.
+   * Formats values in the height/speed display adjacent to the sensor when a data
+   * point is under the wand.
    * @public
    *
    * @param  {number} value
    * @returns {string}
    */
   formatValue( value ) {
-    return Utils.toFixed( value, 1 );
+    return Utils.toFixed( value, 2 );
   }
 
   /**
