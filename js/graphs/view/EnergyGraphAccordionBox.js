@@ -27,7 +27,7 @@ import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorSc
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 import EnergyGraphZoomButton from './EnergyGraphZoomButton.js';
-import EnergyPlot from './EnergyPlot.js';
+import EnergyChart from './EnergyChart.js';
 
 const kineticEnergyLabelString = energySkateParkStrings.energies.kinetic;
 const potentialEnergyLabelString = energySkateParkStrings.energies.potential;
@@ -83,7 +83,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
     // with position along the plot
     const graphWidth = modelViewTransform.modelToViewDeltaX( GraphsConstants.TRACK_WIDTH );
 
-    const energyPlot = new EnergyPlot( model, graphWidth, GRAPH_HEIGHT, tandem.createTandem( 'energyPlot' ) );
+    const energyPlot = new EnergyChart( model, graphWidth, GRAPH_HEIGHT, tandem.createTandem( 'energyPlot' ) );
     contentNode.addChild( energyPlot );
 
     // eraser button to clear all data from the graph

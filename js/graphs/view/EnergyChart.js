@@ -36,7 +36,7 @@ const POSITION_STEP_X = 1; // in meters
 // left of origin
 const POSITION_PLOT_OFFSET = 5;
 
-class EnergyPlot extends XYCursorPlotNode {
+class EnergyChart extends XYCursorPlotNode {
 
   /**
    * @param {GraphsModel} model
@@ -334,5 +334,5 @@ const calculateDomain = independentVariable => {
   return new Range( 0, maxX );
 };
 
-energySkatePark.register( 'EnergyPlot', EnergyPlot );
-export default EnergyPlot;
+energySkatePark.register( 'EnergyChart', EnergyChart );
+export default EnergyChart;
