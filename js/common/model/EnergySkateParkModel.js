@@ -1818,7 +1818,7 @@ class EnergySkateParkModel extends PhetioObject {
    * @returns {number}
    */
   getNumberOfControlPoints() {
-    return this.tracks.reduce( 0, ( total, track ) => total + track.controlPoints.length );
+    return this.tracks.reduce( ( total, track ) => total + track.controlPoints.length, 0 );
   }
 
   /**
