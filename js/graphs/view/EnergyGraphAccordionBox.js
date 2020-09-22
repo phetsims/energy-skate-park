@@ -213,7 +213,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
   }
 
   /**
-   * Clear all data, removing saved EnergySkateParkDataSamples and removing all data from the series attached to the ScrollingChartNode.
+   * Clear all data, removing saved EnergySkateParkDataSamples and removing all data from the series attached to the XYPlotNode.
    * @private
    */
   clearEnergyData() {
