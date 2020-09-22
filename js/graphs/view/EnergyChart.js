@@ -1,9 +1,9 @@
 // Copyright 2019-2020, University of Colorado Boulder
 
 /**
- * The energy plot in the Graphs screen of energy skate park. Plots Energy against time OR energy against position
+ * The energy chart in the Graphs screen of energy skate park. Plots Energy against time OR energy against position
  * depending on the selected independent variable. Uses XYCursorPlotNode because the cursor can be dragged to
- * control playback and restore previous the model to a previous point in time.
+ * control playback and restore the model to a previous point in time.
  *
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
@@ -26,7 +26,7 @@ import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 
 // constants
-// determines properties of the plot that may depend on the independent variable
+// determines properties of the chart that may depend on the independent variable
 const TIME_MAX_X = 20; // in seconds
 const TIME_STEP_X = 2; // in seconds
 const POSITION_MAX_X = 10; // in meters
@@ -232,8 +232,8 @@ class EnergyChart extends XYCursorPlotNode {
       } );
     } );
 
-    // // update range, domain, and plot style of plot when the independent variable changes - cursor is invisible for
-    // // plots against position
+    // update range, domain, and plot style of plot when the independent variable changes - cursor is invisible for
+    // plots against position
     model.independentVariableProperty.link( independentVariable => {
       const newRange = GraphsConstants.PLOT_RANGES[ model.energyPlotScaleIndexProperty.get() ];
       const newMaxY = newRange.max;
