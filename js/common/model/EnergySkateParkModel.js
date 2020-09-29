@@ -39,15 +39,16 @@ import EventTimer from '../../../../phet-core/js/EventTimer.js';
 import merge from '../../../../phet-core/js/merge.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import TimeSpeed from '../../../../scenery-phet/js/TimeSpeed.js';
+import CouldNotYetDeserializeError from '../../../../tandem/js/CouldNotYetDeserializeError.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import IOType from '../../../../tandem/js/types/IOType.js';
 import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPoint from './ControlPoint.js';
 import DebugTracks from './DebugTracks.js';
-import EnergySkateParkModelIO from './EnergySkateParkModelIO.js';
 import Skater from './Skater.js';
 import SkaterState from './SkaterState.js';
 import Track from './Track.js';
@@ -82,7 +83,7 @@ let modelIterations = 0;
 class EnergySkateParkModel extends PhetioObject {
   constructor( tandem, options ) {
     super( {
-      phetioType: EnergySkateParkModelIO,
+      phetioType: EnergySkateParkModel.EnergySkateParkModelIO,
       tandem: tandem,
       phetioState: false
     } );
@@ -1892,6 +1893,47 @@ class EnergySkateParkModel extends PhetioObject {
 const containsAbove = ( bounds, x, y ) => {
   return bounds.minX <= x && x <= bounds.maxX && y <= bounds.maxY;
 };
+
+EnergySkateParkModel.EnergySkateParkModelIO = new IOType( 'EnergySkateParkModelIO', {
+  valueType: EnergySkateParkModel,
+  documentation: 'The model for the Skate Park.',
+
+  /**
+   * Remove all instances of the model's dynamic children.
+   * This will remove all of the tracks from the model.
+   * The ControlPoints are contained in the tracks, and each track will remove its ControlPoints.
+   * @public
+   *
+   * @param {EnergySkateParkModel} energySkateParkModel
+   * TODO: eliminate this legacy pattern, see https://github.com/phetsims/tandem/issues/87
+   */
+  clearChildInstances( energySkateParkModel ) {
+    if ( energySkateParkModel.tracksDraggable ) {
+      energySkateParkModel.removeAllTracks();
+    }
+  },
+
+  /**
+   * Adds a Track as specified by the phetioID and state.
+   * A Track will create its own ControlPoints
+   * @public
+   *
+   * @param {EnergySkateParkModel} energySkateParkModel
+   * @param {Tandem} tandem
+   * @param {Object} stateObject
+   */
+  addChildElementDeprecated( energySkateParkModel, tandem, stateObject ) {
+    const isControlPoint = tandem.phetioID.indexOf( '.controlPoint' ) >= 0;
+
+    // Control Points are already being created when the tracks are made, so if the tandem is a controlPoint it's a no-op
+    if ( isControlPoint ) {
+      throw new CouldNotYetDeserializeError();
+    }
+
+    // If it isn't a ControlPoint, then it is a Track
+    return energySkateParkModel.addTrack( tandem, stateObject.draggable, stateObject.configurable, stateObject.controlPointTandemIDs );
+  }
+} );
 
 energySkatePark.register( 'EnergySkateParkModel', EnergySkateParkModel );
 export default EnergySkateParkModel;
