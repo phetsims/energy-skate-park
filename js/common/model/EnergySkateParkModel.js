@@ -30,7 +30,6 @@ import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import ObservableArray from '../../../../axon/js/ObservableArray.js';
 import Property from '../../../../axon/js/Property.js';
-import PropertyIO from '../../../../axon/js/PropertyIO.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Bounds2IO from '../../../../dot/js/Bounds2IO.js';
 import Range from '../../../../dot/js/Range.js';
@@ -213,7 +212,7 @@ class EnergySkateParkModel extends PhetioObject {
     // bounds when adjusted, see #195
     this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
       tandem: tandem.createTandem( 'availableModelBoundsProperty' ),
-      phetioType: PropertyIO( Bounds2IO )
+      phetioType: Property.PropertyIO( Bounds2IO )
     } );
 
     // @public {UserControlledPropertySet} - collection of Properties that indicate that a user is

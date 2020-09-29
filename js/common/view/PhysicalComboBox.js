@@ -9,7 +9,6 @@
  */
 
 import Property from '../../../../axon/js/Property.js';
-import PropertyIO from '../../../../axon/js/PropertyIO.js';
 import merge from '../../../../phet-core/js/merge.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import ComboBox from '../../../../sun/js/ComboBox.js';
@@ -64,7 +63,7 @@ class PhysicalComboBox extends ComboBox {
     // in labelValueList - value is null which means 'Custom'
     const adapterProperty = new Property( physicalProperty.value, {
       reentrant: true,
-      phetioType: PropertyIO( NullableIO( NumberIO ) ),
+      phetioType: Property.PropertyIO( NullableIO( NumberIO ) ),
       tandem: tandem.createTandem( 'adapterProperty' )
     } );
 

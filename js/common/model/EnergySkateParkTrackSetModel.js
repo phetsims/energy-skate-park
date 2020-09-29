@@ -6,7 +6,6 @@
  */
 
 import Property from '../../../../axon/js/Property.js';
-import PropertyIO from '../../../../axon/js/PropertyIO.js';
 import merge from '../../../../phet-core/js/merge.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -45,7 +44,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
     this.sceneProperty = new Property( 0, {
       tandem: tandem.createTandem( 'sceneProperty' ),
       validValues: [ 0, 1, 2, 3 ],
-      phetioType: PropertyIO( NumberIO )
+      phetioType: Property.PropertyIO( NumberIO )
     } );
 
     // When the scene changes, also change the tracks.

@@ -14,7 +14,6 @@ import Emitter from '../../../../axon/js/Emitter.js';
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
-import PropertyIO from '../../../../axon/js/PropertyIO.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
@@ -59,13 +58,13 @@ class Skater {
     // @public - The track the skater is on, or null if free-falling
     this.trackProperty = new Property( null, {
       tandem: tandem.createTandem( 'trackProperty' ),
-      phetioType: PropertyIO( NullableIO( ReferenceIO( TrackIO ) ) )
+      phetioType: Property.PropertyIO( NullableIO( ReferenceIO( TrackIO ) ) )
     } );
 
     // @public {number} - Parameter along the parametric spline, unitless since it is in parametric space
     this.parametricPositionProperty = new Property( 0, {
       tandem: tandem.createTandem( 'parametricPositionProperty' ),
-      phetioType: PropertyIO( NullableIO( NumberIO ) )
+      phetioType: Property.PropertyIO( NullableIO( NumberIO ) )
     } );
 
     // @public {number} - Speed along the parametric spline dimension, formally 'u dot', indicating speed and direction
@@ -177,7 +176,7 @@ class Skater {
     // @public {number} - Returns to this parametric position along the track when pressing "return skater"
     this.startingUProperty = new Property( 0, {
       tandem: tandem.createTandem( 'startingUProperty' ),
-      phetioType: PropertyIO( NullableIO( NumberIO ) )
+      phetioType: Property.PropertyIO( NullableIO( NumberIO ) )
     } );
 
     // @private {boolean} - Tracks whether or not the skater is above or below the track when it is released

@@ -11,7 +11,6 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
-import PropertyIO from '../../../../axon/js/PropertyIO.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2IO from '../../../../dot/js/Vector2IO.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
@@ -69,7 +68,7 @@ class ControlPoint extends PhetioObject {
     // @public {ControlPoint} - Another ControlPoint that this ControlPoint is going to 'snap' to if released.
     this.snapTargetProperty = new Property( null, {
       tandem: tandem.createTandem( 'snapTargetProperty' ),
-      phetioType: PropertyIO( NullableIO( ControlPointIO ) ),
+      phetioType: Property.PropertyIO( NullableIO( ControlPointIO ) ),
       phetioState: options.phetioState // in state only if containing Track is
     } );
 
