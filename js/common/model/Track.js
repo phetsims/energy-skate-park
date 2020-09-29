@@ -16,9 +16,9 @@ import merge from '../../../../phet-core/js/merge.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import IOType from '../../../../tandem/js/types/IOType.js';
 import energySkatePark from '../../energySkatePark.js';
 import SplineEvaluation from '../SplineEvaluation.js';
-import TrackIO from './TrackIO.js';
 
 // constants
 const FastArray = dot.FastArray;
@@ -68,7 +68,7 @@ class Track extends PhetioObject {
       slopeToGround: false,
 
       tandem: Tandem.REQUIRED,
-      phetioType: TrackIO,
+      phetioType: Track.TrackIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
     }, options );
 
@@ -1125,6 +1125,36 @@ class Track extends PhetioObject {
 
 // @public @public
 Track.FULLY_INTERACTIVE_OPTIONS = FULLY_INTERACTIVE_OPTIONS;
+
+Track.TrackIO = new IOType( 'TrackIO', {
+  valueType: Track,
+  documentation: 'A skate track',
+  toStateObject: track => {
+    if ( track instanceof phet.energySkatePark.Track || track === null ) {
+
+      // Since skater.trackProperty is of type Property.<Track|null>, we must support null here.
+      if ( !track ) {
+        return null;
+      }
+      assert && assert( track.controlPoints, 'control points should be defined' );
+      return {
+        draggable: track.draggable,
+        configurable: track.configurable,
+        controlPointTandemIDs: track.controlPoints.map( controlPoint => {
+          return controlPoint.tandem.phetioID;
+        } )
+      };
+    }
+    else {
+      /// TODO: Major hack to support data stream, which for unknown reasons was already calling this method with a state object
+      // See https://github.com/phetsims/energy-skate-park-basics/issues/366
+      return track;
+    }
+  },
+
+  // TODO: This is sketchy, see // See https://github.com/phetsims/energy-skate-park-basics/issues/366
+  fromStateObject: stateObject => stateObject
+} );
 
 energySkatePark.register( 'Track', Track );
 export default Track;

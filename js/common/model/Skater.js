@@ -29,7 +29,6 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import SkaterMasses from '../SkaterMasses.js';
 import Track from './Track.js';
-import TrackIO from './TrackIO.js';
 
 class Skater {
 
@@ -58,7 +57,7 @@ class Skater {
     // @public - The track the skater is on, or null if free-falling
     this.trackProperty = new Property( null, {
       tandem: tandem.createTandem( 'trackProperty' ),
-      phetioType: Property.PropertyIO( NullableIO( ReferenceIO( TrackIO ) ) )
+      phetioType: Property.PropertyIO( NullableIO( ReferenceIO( Track.TrackIO ) ) )
     } );
 
     // @public {number} - Parameter along the parametric spline, unitless since it is in parametric space

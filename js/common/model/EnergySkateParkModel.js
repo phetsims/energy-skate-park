@@ -51,7 +51,6 @@ import EnergySkateParkModelIO from './EnergySkateParkModelIO.js';
 import Skater from './Skater.js';
 import SkaterState from './SkaterState.js';
 import Track from './Track.js';
-import TrackIO from './TrackIO.js';
 import UserControlledPropertySet from './UserControlledPropertySet.js';
 
 // Use a separate pooled curvature variable to reduce memory allocations - object values
@@ -249,7 +248,7 @@ class EnergySkateParkModel extends PhetioObject {
 
     // @public
     this.tracks = new ObservableArray( {
-      phetioType: ObservableArray.ObservableArrayIO( ReferenceIO( TrackIO ) ),
+      phetioType: ObservableArray.ObservableArrayIO( ReferenceIO( Track.TrackIO ) ),
       tandem: tandem.createTandem( 'tracks' )
     } );
 
