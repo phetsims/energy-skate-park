@@ -67,7 +67,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
     // @public - in seconds, how much time has passed since beginning to record skater states
     this.sampleTimeProperty = new NumberProperty( 0 );
 
-    // @protected {ObservableArray.<EnergySkateParkDataSample>} - observable list of all saved EnergySkateParkDataSamples
+    // @protected {ObservableArrayDef.<EnergySkateParkDataSample>} - observable list of all saved EnergySkateParkDataSamples
     this.dataSamples = createObservableArray();
 
     // @public (read-only) - an array of EnergySkateParkDataSamples that have just been removed from the model. Necessary

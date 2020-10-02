@@ -17,7 +17,7 @@ const HALO_RADIUS = 9;
 class InspectedSampleHaloNode extends Circle {
 
   /**
-   * @param {ObservableArray.<EnergySkateParkDataSample>} dataSamples
+   * @param {ObservableArrayDef.<EnergySkateParkDataSample>} dataSamples
    * @param {ModelViewTransform2} modelViewTransform
    */
   constructor( dataSamples, modelViewTransform ) {

@@ -66,7 +66,7 @@ const PROBE_THRESHOLD_DISTANCE = 10;
 class SkaterPathSensorNode extends Node {
 
   /**
-   * @param {ObservableArray.<EnergySkateParkDataSample>} samples
+   * @param {ObservableArrayDef.<EnergySkateParkDataSample>} samples
    * @param {Vector2Property} sensorProbePositionProperty
    * @param {Vector2Property} sensorBodyPositionProperty
    * @param {Property.<Bounds2>} modelBoundsProperty

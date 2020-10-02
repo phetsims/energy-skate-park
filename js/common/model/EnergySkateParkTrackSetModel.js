@@ -157,7 +157,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
   }
 
   /**
-   * Add all tracks in the set. In addition to adding all to the ObservableArray, this will initialize which track
+   * Add all tracks in the set. In addition to adding all to the ObservableArrayDef, this will initialize which track
    * should be visible, physical, and interactive depending on the model sceneProperty.
    * @public
    *
