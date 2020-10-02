@@ -14,7 +14,7 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import Emitter from '../../../../axon/js/Emitter.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
-import ObservableArray from '../../../../axon/js/ObservableArray.js';
+import createObservableArray from '../../../../axon/js/createObservableArray.js';
 import Property from '../../../../axon/js/Property.js';
 import merge from '../../../../phet-core/js/merge.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -68,7 +68,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
     this.sampleTimeProperty = new NumberProperty( 0 );
 
     // @protected {ObservableArray.<EnergySkateParkDataSample>} - observable list of all saved EnergySkateParkDataSamples
-    this.dataSamples = new ObservableArray();
+    this.dataSamples = createObservableArray();
 
     // @public (read-only) - an array of EnergySkateParkDataSamples that have just been removed from the model. Necessary
     // for performance so that we can update once after removing many samples rather than every time

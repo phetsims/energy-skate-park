@@ -28,7 +28,7 @@ import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Emitter from '../../../../axon/js/Emitter.js';
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
-import ObservableArray from '../../../../axon/js/ObservableArray.js';
+import createObservableArray from '../../../../axon/js/createObservableArray.js';
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
@@ -248,8 +248,8 @@ class EnergySkateParkModel extends PhetioObject {
     } );
 
     // @public
-    this.tracks = new ObservableArray( {
-      phetioType: ObservableArray.ObservableArrayIO( ReferenceIO( Track.TrackIO ) ),
+    this.tracks = createObservableArray( {
+      phetioType: createObservableArray.ObservableArrayIO( ReferenceIO( Track.TrackIO ) ),
       tandem: tandem.createTandem( 'tracks' )
     } );
 
