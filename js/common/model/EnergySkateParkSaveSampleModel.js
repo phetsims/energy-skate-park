@@ -110,7 +110,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
    * @public
    */
   clearEnergyData() {
-    this.batchRemoveSamples( this.dataSamples.getArray().slice() );
+    this.batchRemoveSamples( this.dataSamples.slice() );
     this.sampleTimeProperty.reset();
   }
 

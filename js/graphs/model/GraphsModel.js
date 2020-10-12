@@ -191,7 +191,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
             const indexOfSample = this.dataSamples.indexOf( closestSample );
 
             assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
-            this.batchRemoveSamples( this.dataSamples.getArray().slice( indexOfSample ) );
+            this.batchRemoveSamples( this.dataSamples.slice( indexOfSample ) );
           }
         }
       }
@@ -293,7 +293,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
   getClosestSkaterSample( time ) {
     assert && assert( this.dataSamples.length > 0, 'model has no saved EnergySkateParkDataSamples to retrieve' );
 
-    let nearestIndex = _.sortedIndexBy( this.dataSamples.getArray(), { time: time }, entry => entry.time );
+    let nearestIndex = _.sortedIndexBy( this.dataSamples, { time: time }, entry => entry.time );
     nearestIndex = Utils.clamp( nearestIndex, 0, this.dataSamples.length - 1 );
 
     return this.dataSamples.get( nearestIndex );
