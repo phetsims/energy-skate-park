@@ -48,7 +48,7 @@ class TrackNode extends Node {
       isIcon: false,
 
       tandem: tandem,
-      phetioComponentOptions: { phetioState: false }
+      visiblePropertyOptions: { phetioState: false }
     }, options );
 
     super( options );

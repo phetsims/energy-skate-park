@@ -51,7 +51,7 @@ class ControlPointNode extends Circle {
       cursor: 'pointer',
       translation: modelViewTransform.modelToViewPosition( controlPoint.positionProperty.value ),
       tandem: tandem,
-      phetioComponentOptions: { phetioState: false }
+      visiblePropertyOptions: { phetioState: false }
     } );
 
     // Show a dotted line for the exterior track points, which can be connected to other track

@@ -29,7 +29,7 @@ class ControlPointUI extends Node {
     super( {
       tandem: tandem,
       phetioState: false,
-      phetioComponentOptions: { phetioState: false }
+      visiblePropertyOptions: { phetioState: false }
     } );
 
     // See ComboBox.js
@@ -71,7 +71,7 @@ class ControlPointUI extends Node {
       cutButton = new RoundPushButton( {
         tandem: tandem.createTandem( 'cutButton' ),
         phetioState: false,
-        phetioComponentOptions: { phetioState: false },
+        visiblePropertyOptions: { phetioState: false },
 
         content: scissorNode,
         listener: () => {
@@ -93,7 +93,7 @@ class ControlPointUI extends Node {
     const deleteButton = new RoundPushButton( {
       tandem: tandem.createTandem( 'deleteButton' ),
       phetioState: false,
-      phetioComponentOptions: { phetioState: false },
+      visiblePropertyOptions: { phetioState: false },
 
       listener: () => {
         model.deleteControlPoint( track, controlPointIndex );
