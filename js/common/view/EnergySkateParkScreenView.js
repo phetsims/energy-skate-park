@@ -242,9 +242,7 @@ class EnergySkateParkScreenView extends ScreenView {
           font: new PhetFont( 20 )
         }
       },
-
-      // enable/disable updates based on whether the speedometer is visible
-      enabledProperty: model.speedometerVisibleProperty,
+      updateWhenInvisible: false,
       pickable: false,
       radius: gaugeRadius,
       tandem: tandem.createTandem( 'speedometerNode' )
