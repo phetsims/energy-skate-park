@@ -15,7 +15,7 @@ import HBox from '../../../../scenery/js/nodes/HBox.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import VBox from '../../../../scenery/js/nodes/VBox.js';
-import RadioButtonGroupMember from '../../../../sun/js/buttons/RadioButtonGroupMember.js';
+import RectangularRadioButton from '../../../../sun/js/buttons/RectangularRadioButton.js';
 import dogHeadshot from '../../../images/dog-headshot_png.js';
 import skater1Headshot from '../../../images/skater1-headshot_png.js';
 import skater2Headshot from '../../../images/skater2-headshot_png.js';
@@ -82,7 +82,7 @@ class SkaterRadioButtonGroup extends Node {
 
     const buttons = [];
     contentArray.forEach( content => {
-      buttons.push( new RadioButtonGroupMember( skaterImageProperty, content.value, merge( {
+      buttons.push( new RectangularRadioButton( skaterImageProperty, content.value, merge( {
         content: content.node,
         tandem: tandem.createTandem( content.tandemName )
       }, buttonOptions ) ) );
