@@ -1,9 +1,9 @@
 // Copyright 2020, University of Colorado Boulder
 
 /**
- * A collection of radio buttons that controls skater image, independent of mass. Does not use RadioButtonGroup
- * because the buttons are in a layout that RadioButtonGroup does not yet support. But in the future, improvements
- * to RadioButtonGroup may make it possible to use that class, and this should be re-written accordingly.
+ * A collection of radio buttons that controls skater image, independent of mass. Does not use RectangularRadioButtonGroup
+ * because the buttons are in a layout that RectangularRadioButtonGroup does not yet support. But in the future, improvements
+ * to RectangularRadioButtonGroup may make it possible to use that class, and this should be re-written accordingly.
  *
  * See https://github.com/phetsims/energy-skate-park/issues/263#issuecomment-620829413
  *
@@ -46,7 +46,7 @@ class SkaterRadioButtonGroup extends Node {
 
     const imageScale = 0.5;
 
-    // matches the API of RadioButtonGroup
+    // Description of the radio buttons
     const contentArray = [
       {
         value: SkaterNode.SkaterImage.SKATER_1,
@@ -104,7 +104,7 @@ class SkaterRadioButtonGroup extends Node {
       resize: false
     } ) );
 
-    // so that the selected button cannot continue to be clicked, a feature of RadioButtonGroup - this component is
+    // so that the selected button cannot continue to be clicked, a feature of RectangularRadioButtonGroup - this component is
     // never destroyed, no need to dispose
     skaterImageProperty.link( value => {
       for ( let i = 0; i < contentArray.length; i++ ) {

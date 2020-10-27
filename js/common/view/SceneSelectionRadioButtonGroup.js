@@ -13,7 +13,7 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import merge from '../../../../phet-core/js/merge.js';
 import AlignGroup from '../../../../scenery/js/nodes/AlignGroup.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
-import RadioButtonGroup from '../../../../sun/js/buttons/RadioButtonGroup.js';
+import RectangularRadioButtonGroup from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
@@ -22,7 +22,7 @@ import BackgroundNode from './BackgroundNode.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TrackNode from './TrackNode.js';
 
-class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
+class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
 
   /**
    * Construct a SceneSelectionRadioButtonGroup.  Pass the entire model since it is used to create TrackNode
@@ -37,7 +37,7 @@ class SceneSelectionRadioButtonGroup extends RadioButtonGroup {
 
     options = merge( {
 
-      // specific and passed to RadioButtonGroup
+      // specific and passed to RectangularRadioButtonGroup
       orientation: 'horizontal',
       buttonContentXMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
       buttonContentYMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,

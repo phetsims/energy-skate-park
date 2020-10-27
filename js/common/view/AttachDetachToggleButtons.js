@@ -9,7 +9,7 @@
 
 import merge from '../../../../phet-core/js/merge.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
-import RadioButtonGroup from '../../../../sun/js/buttons/RadioButtonGroup.js';
+import RectangularRadioButtonGroup from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
 import Panel from '../../../../sun/js/Panel.js';
 import attachIcon from '../../../images/attach_png.js';
 import detachIcon from '../../../images/detach_png.js';
@@ -67,7 +67,7 @@ class AttachDetachToggleButtons extends Panel {
     const buttonSpacing = contentWidth - ( options.xMargin * 2 ) - ( radioButtonsContent[ 0 ].node.width * 2 ) - SELECTED_LINE_WIDTH * 2;
     assert && assert( buttonSpacing > 0, 'buttons must have non zero spacing' );
 
-    const radioButtons = new RadioButtonGroup( stickingToTrackProperty, radioButtonsContent,
+    const radioButtonGroup = new RectangularRadioButtonGroup( stickingToTrackProperty, radioButtonsContent,
       {
         buttonContentXMargin: 0,
         buttonContentYMargin: 0,
@@ -83,7 +83,7 @@ class AttachDetachToggleButtons extends Panel {
       } );
 
     const panelOptions = merge( { tandem: tandem }, options );
-    super( radioButtons, panelOptions );
+    super( radioButtonGroup, panelOptions );
   }
 }
 
