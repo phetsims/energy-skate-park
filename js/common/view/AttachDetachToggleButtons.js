@@ -72,7 +72,6 @@ class AttachDetachToggleButtons extends Panel {
         buttonContentXMargin: 0,
         buttonContentYMargin: 0,
         baseColor: 'white',
-        disabledBaseColor: 'rgba(255,255,255,0.5)',
         spacing: buttonSpacing,
         cornerRadius: 6,
         selectedLineWidth: SELECTED_LINE_WIDTH,
