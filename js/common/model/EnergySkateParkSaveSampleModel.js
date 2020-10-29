@@ -30,6 +30,10 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
   constructor( tandem, options ) {
     options = merge( {
 
+      // {boolean} - the default value for whether or not the model is saving
+      // samples of data for display
+      defaultSaveSamples: true,
+
       // {number} - the interval at which we save EnergySkateParkDataSamples, in seconds
       saveSampleInterval: 0.1,
 
@@ -57,7 +61,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
     this.limitNumberOfSamples = true;
 
     // @public {BooleanProperty} - controls whether or not samples are saved as the model steps through time
-    this.saveSamplesProperty = new BooleanProperty( true, { tandem: tandem.createTandem( 'saveSamplesProperty' ) } );
+    this.saveSamplesProperty = new BooleanProperty( options.defaultSaveSamples, { tandem: tandem.createTandem( 'saveSamplesProperty' ) } );
 
     // @public {boolean} - set to true to prevent the model from saving any more samples, even if
     // saveSamplesProperty is true - this can be used instead of (or in combination with) maxNumberOfSamples\
