@@ -442,6 +442,11 @@ class EnergySkateParkScreenView extends ScreenView {
       }
     } );
 
+    // when the simulation resets, also reset view specific Properties
+    this.model.resetEmitter.addListener( () => {
+      this.skaterNode.skaterImageProperty.reset();
+    } );
+
     // For debugging the visible bounds
     if ( showAvailableBounds ) {
       this.viewBoundsPath = new Path( null, {
