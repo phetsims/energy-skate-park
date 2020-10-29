@@ -23,7 +23,7 @@ import Track from './Track.js';
 const PARENT_TRACKS = null;
 
 // limiting bounds for dragging control points
-const END_BOUNDS_WIDTH = 3;
+const END_BOUNDS_WIDTH = 2.5;
 const END_BOUNDS_HEIGHT = 4;
 
 // the supported premade tracks, used in EnegySkateParkTrackSetModels
@@ -203,11 +203,11 @@ const PremadeTracks = {
     const p4 = new Vector2( 2, 1 );
     const p5 = new Vector2( options.trackWidth / 2, options.trackHeight );
 
-    const p1Bounds = createRelativeSpaceBounds( p1, 1.5, 1.5, options.p1UpSpacing, options.p1DownSpacing );
+    const p1Bounds = createRelativeSpaceBounds( p1, 1.0, 1.5, options.p1UpSpacing, options.p1DownSpacing );
     const p2Bounds = createRelativeSpaceBounds( p2, 1.5, 0.5, 3, 0 );
     const p3Bounds = createRelativeSpaceBounds( p3, 1, 1, options.p3UpSpacing, options.p3DownSpacing );
     const p4Bounds = createRelativeSpaceBounds( p4, 0.5, 1.5, 2, 1 );
-    const p5Bounds = createRelativeSpaceBounds( p5, 1.5, 1.5, options.p5UpSpacing, options.p5DownSpacing );
+    const p5Bounds = createRelativeSpaceBounds( p5, 1.5, 1.0, options.p5UpSpacing, options.p5DownSpacing );
 
     return [
       new ControlPoint( p1.x, p1.y, {
@@ -275,13 +275,13 @@ const PremadeTracks = {
     const p6 = new Vector2( innerLoopWidth / 2, trackBottom );
     const p7 = new Vector2( loopWidth / 2, trackTop );
 
-    const p1Bounds = createRelativeSpaceBounds( p1, 1, 1, 2, 3 );
+    const p1Bounds = createRelativeSpaceBounds( p1, 0.5, 1.5, 2, 3 );
     const p2Bounds = createRelativeSpaceBounds( p2, 1, 1, 1 - trackBottom, trackBottom );
     const p3Bounds = createCenteredLimitBounds( p3, 2, 1 );
     const p4Bounds = createRelativeSpaceBounds( p4, 1.5, 1.5, 2, 1 );
     const p5Bounds = createCenteredLimitBounds( p5, 2, 1 );
     const p6Bounds = createRelativeSpaceBounds( p6, 1, 1, 1 - trackBottom, trackBottom );
-    const p7Bounds = createRelativeSpaceBounds( p7, 1, 1, 2, 3 );
+    const p7Bounds = createRelativeSpaceBounds( p7, 1.5, 0.5, 2, 3 );
 
     return [
       new ControlPoint( p1.x, p1.y, {
