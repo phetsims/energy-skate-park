@@ -2,7 +2,7 @@
 
 /**
  * The energy chart in the Graphs screen of energy skate park. Plots Energy against time OR energy against position
- * depending on the selected independent variable. Uses XYCursorPlotNode because the cursor can be dragged to
+ * depending on the selected independent variable. Uses XYCursorChartNode because the cursor can be dragged to
  * control playback and restore the model to a previous point in time.
  *
  * @author Jesse Greenberg (PhET Interactive Simulations)
@@ -15,7 +15,7 @@ import DynamicSeries from '../../../../griddle/js/DynamicSeries.js';
 import DynamicSeriesNode from '../../../../griddle/js/DynamicSeriesNode.js';
 import PointStyle from '../../../../griddle/js/PointStyle.js';
 import PointStyledVector2 from '../../../../griddle/js/PointStyledVector2.js';
-import XYCursorPlotNode from '../../../../griddle/js/XYCursorPlotNode.js';
+import XYCursorChartNode from '../../../../griddle/js/XYCursorChartNode.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import merge from '../../../../phet-core/js/merge.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
@@ -36,7 +36,7 @@ const POSITION_STEP_X = 1; // in meters
 // left of origin
 const POSITION_PLOT_OFFSET = 5;
 
-class EnergyChart extends XYCursorPlotNode {
+class EnergyChart extends XYCursorChartNode {
 
   /**
    * @param {GraphsModel} model
