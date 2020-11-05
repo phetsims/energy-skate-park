@@ -17,8 +17,10 @@ import EnergySkateParkColorScheme from './view/EnergySkateParkColorScheme.js';
 // for zoom buttons for bar graphs, pressing button will increase/decrease scale by this much
 const ZOOM_FACTOR_DELTA = 1 / 60;
 
+// precision of constants here must match precision of the physical control so that user
+// can find this exact value so that it is correctly labelled
 const EARTH_GRAVITY = 9.8;
-const MOON_GRAVITY = 1.62;
+const MOON_GRAVITY = 1.6;
 const JUPITER_GRAVITY = 24.8;
 
 // maximum coefficient of friction
