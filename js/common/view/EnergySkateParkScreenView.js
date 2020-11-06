@@ -408,7 +408,7 @@ class EnergySkateParkScreenView extends ScreenView {
 
     this.topLayer.addChild( this.timeControlNode );
 
-    this.timeControlNode.setCenterBottom( this.layoutBounds.centerBottom.minusXY( 0, 20 ) );
+    this.timeControlNode.setCenterBottom( this.layoutBounds.centerBottom.minusXY( 0, 15 ) );
 
     // grid and reference height visibility are controlled from a separate panel
     if ( this.showSeparateVisibilityControlsPanel ) {
