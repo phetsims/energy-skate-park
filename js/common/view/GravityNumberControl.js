@@ -12,10 +12,12 @@ import merge from '../../../../phet-core/js/merge.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
 const controlsGravityLabelString = energySkateParkStrings.physicalControls.gravityControls.gravity;
 const gravityMetersPerSecondSquaredPatternString = energySkateParkStrings.physicalControls.gravityControls.gravityMetersPerSecondSquaredPattern;
+const gravityNewtonsPerKilogramPatternString = energySkateParkStrings.physicalControls.gravityControls.gravityNewtonsPerKilogramPattern;
 
 class GravityNumberControl extends PhysicalNumberControl {
 
@@ -27,10 +29,14 @@ class GravityNumberControl extends PhysicalNumberControl {
    */
   constructor( property, userControlledProperty, tandem, options ) {
 
+    const valuePattern = EnergySkateParkQueryParameters.altAccelerationUnits ?
+                         gravityNewtonsPerKilogramPatternString :
+                         gravityMetersPerSecondSquaredPatternString;
+
     options = merge( {
       decimalPlaces: 1,
       numberDisplayOptions: {
-        valuePattern: gravityMetersPerSecondSquaredPatternString,
+        valuePattern: valuePattern,
         useRichText: true // for the superscript on units
       },
       delta: 0.1,

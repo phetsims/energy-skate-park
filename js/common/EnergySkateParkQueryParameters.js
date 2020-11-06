@@ -20,6 +20,10 @@ const EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
   // visible during drag
   showPointBounds: { type: 'flag' },
 
+  // Changes the units for acceleration due to gravity from m/s^2 to N/kg, as requested by
+  // a user - see https://github.com/phetsims/energy-skate-park/issues/293 for request issue
+  altAccelerationUnits: { type: 'flag' },
+
   // This indicates the index (1-based) of the track to show, and enables some other track debugging
   testTrackIndex: {
     type: 'number',

@@ -18,6 +18,9 @@
       },
       "gravityMetersPerSecondSquaredPattern": {
         "value": "{{value}} m/s<sup>2</sup>"
+      },
+      "gravityNewtonsPerKilogramPattern": {
+        "value": "{{value}} N/kg"
       }
     },
     "massControls": {
