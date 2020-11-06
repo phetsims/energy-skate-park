@@ -42,7 +42,14 @@ class ToolboxPanel extends Panel {
     const stopwatchIcon = new StopwatchNode( new Stopwatch( {
       isVisible: true,
       tandem: Tandem.OPT_OUT
-    } ), { tandem: Tandem.OPT_OUT } ).rasterized( {
+    } ), {
+      numberDisplayOptions: {
+        textOptions: {
+          maxWidth: 100
+        }
+      },
+      tandem: Tandem.OPT_OUT
+    } ).rasterized( {
       cursor: 'pointer',
       resolution: 5,
       tandem: tandem.createTandem( 'timerIcon' )
