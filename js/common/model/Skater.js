@@ -288,10 +288,11 @@ class Skater {
    * @public
    */
   reset() {
-    this.resetEverythingExceptMassAndReferenceHeight();
+    this.resetEverythingExceptGravityMassAndReferenceHeight();
 
     this.referenceHeightProperty.reset();
     this.massProperty.reset();
+    this.gravityMagnitudeProperty.reset();
 
     this.updateEnergy();
 
@@ -300,11 +301,12 @@ class Skater {
   }
 
   /**
-   * Move the skater to her initial position, but leave the reference height, friction, and mass the same, see #237
+   * Move the skater to her initial position, but leave the reference height, friction, and mass, and
+   * gravity the same, see #237
    * @public
    */
   resetPosition() {
-    this.resetEverythingExceptMassAndReferenceHeight();
+    this.resetEverythingExceptGravityMassAndReferenceHeight();
 
     // Notify the graphics to re-render.  See #223
     this.updateEnergy();
@@ -317,7 +319,7 @@ class Skater {
    * After calling this, be sure to signify updates with this.updateEnergy() and this.updatedEmitter.emit().
    * @private
    */
-  resetEverythingExceptMassAndReferenceHeight() {
+  resetEverythingExceptGravityMassAndReferenceHeight() {
     // set the angle to zero first so that the optimization for SkaterNode.updatePosition is maintained, without
     // showing the skater at the wrong angle
     this.angleProperty.value = 0;
@@ -326,7 +328,6 @@ class Skater {
     this.parametricPositionProperty.reset();
     this.parametricSpeedProperty.reset();
     this.onTopSideOfTrackProperty.reset();
-    this.gravityMagnitudeProperty.reset();
     this.positionProperty.reset();
     this.directionProperty.reset();
     this.velocityProperty.reset();
@@ -350,7 +351,7 @@ class Skater {
   returnToInitialPosition() {
 
     // Everything needs to be reset except the mass, see #188
-    this.resetEverythingExceptMassAndReferenceHeight();
+    this.resetEverythingExceptGravityMassAndReferenceHeight();
 
     // recalculate energy and re-render
     this.updateEnergy();
