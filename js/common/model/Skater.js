@@ -302,7 +302,7 @@ class Skater {
 
   /**
    * Move the skater to her initial position, but leave the reference height, friction, and mass, and
-   * gravity the same, see #237
+   * gravity the same, see #237 and #188
    * @public
    */
   resetPosition() {
@@ -342,20 +342,6 @@ class Skater {
     this.startingUpProperty.reset();
     this.startingTrackProperty.reset();
     this.headPositionProperty.reset();
-  }
-
-  /**
-   * When the scene (track) is changed, the skater's position & velocity reset, but the mass should not be reset.
-   * @public
-   */
-  returnToInitialPosition() {
-
-    // Everything needs to be reset except the mass, see #188
-    this.resetEverythingExceptGravityMassAndReferenceHeight();
-
-    // recalculate energy and re-render
-    this.updateEnergy();
-    this.updatedEmitter.emit();
   }
 
   /**

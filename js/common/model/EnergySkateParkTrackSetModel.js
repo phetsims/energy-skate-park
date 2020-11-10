@@ -69,8 +69,8 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
       const track = this.tracks.get( i );
       track.physicalProperty.value = ( i === sceneIndex );
 
-      // Reset the skater when the track is changed, see #179
-      this.skater.returnToInitialPosition();
+      // Reset the skater position when the track is changed, see #179
+      this.skater.resetPosition();
 
       // make sure that the entire track is above ground - points should be, but this makes sure that the
       // entire curve is fully above ground
