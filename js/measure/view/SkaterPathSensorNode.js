@@ -86,6 +86,8 @@ class SkaterPathSensorNode extends Node {
     this.screenViewControlPanel = controlPanel;
     this.modelViewTransform = modelViewTransform;
 
+    this.samples = samples;
+
     // labels and value rectangles are in the same align group so that all entries have same width and height for
     // layout
     const alignGroup = new AlignGroup( { matchHorizontal: false } );
@@ -214,44 +216,13 @@ class SkaterPathSensorNode extends Node {
     // without looping through all samples
     this.inspectedSample = null;
 
-    // display the sample that is close to the sample of the probe - find the closest one in case multiple samples
-    // are near the probe center
-    sensorProbePositionProperty.link( modelPosition => {
+    this.boundUpdateSensorDisplay = this.updateSensorDisplay.bind( this );
 
-      // clear the previous sample
-      this.inspectedSample && this.clearDisplay( this.inspectedSample );
-
-      // {EnergySkateParkDataSample|null} - the sample closest to the exact center of the probe and within threshold distance
-      let sampleToDisplay = null;
-
-      const viewProbePoint = this.localToParentPoint( this.probeNode.getCenter().plus( PROBE_CENTER_OFFSET ) );
-      let minDistance = Number.POSITIVE_INFINITY;
-      for ( let i = 0; i < samples.length; i++ ) {
-        const sampleViewPoint = modelViewTransform.modelToViewPosition( samples.get( i ).position );
-        const distanceToSample = Vector2.getDistanceBetweenVectors( sampleViewPoint, viewProbePoint );
-
-        if ( distanceToSample < PROBE_THRESHOLD_DISTANCE && distanceToSample < minDistance ) {
-          sampleToDisplay = samples.get( i );
-          minDistance = distanceToSample;
-        }
-      }
-
-      if ( sampleToDisplay ) {
-        this.displayState( sampleToDisplay );
-
-        // update the display whenever sample energies update, listener removed in clearDisplay
-        this.updateDisplayListener = this.displayState.bind( this, sampleToDisplay );
-        sampleToDisplay.updatedEmitter.addListener( this.updateDisplayListener );
-      }
-    } );
-
-    // clear the display if the inspected sample gets removed - no need for disposal, listener persists for life of
-    // sim
-    samples.addItemRemovedListener( sample => {
-      if ( sample === this.inspectedSample ) {
-        this.clearDisplay( this.inspectedSample );
-      }
-    } );
+    // display the inspected sample, which could change if the sensor is being dragged, or if a sample is added/removed
+    // from under the sensor
+    sensorProbePositionProperty.link( this.boundUpdateSensorDisplay );
+    samples.addItemRemovedListener( this.boundUpdateSensorDisplay );
+    samples.addItemAddedListener( this.boundUpdateSensorDisplay );
 
     // add a drag listener to the probe body
     this.probeNode.addInputListener( new DragListener( {
@@ -263,13 +234,51 @@ class SkaterPathSensorNode extends Node {
   }
 
   /**
+   * Update the sensor display, showing information about the inspected sample if one is underneath the sensor. If
+   * no sample is under the sensor, the display is cleared.
+   *
+   * @private
+   */
+  updateSensorDisplay() {
+    let sampleToDisplay = null;
+
+    // finds sample under the sensor, or the closest one to the center point if there are multiple
+    const probeCenterWithOffset = this.probeNode.getCenter().plus( PROBE_CENTER_OFFSET );
+    const viewProbePoint = this.localToParentPoint( probeCenterWithOffset );
+    let minDistance = Number.POSITIVE_INFINITY;
+    for ( let i = 0; i < this.samples.length; i++ ) {
+      const sampleViewPoint = this.modelViewTransform.modelToViewPosition( this.samples.get( i ).position );
+      const distanceToSample = Vector2.getDistanceBetweenVectors( sampleViewPoint, viewProbePoint );
+
+      if ( distanceToSample < PROBE_THRESHOLD_DISTANCE && distanceToSample < minDistance ) {
+        sampleToDisplay = this.samples.get( i );
+        minDistance = distanceToSample;
+      }
+    }
+
+    if ( sampleToDisplay ) {
+      this.displayState( sampleToDisplay );
+
+      // update the display whenever sample energies update, listener removed in clearDisplay
+      this.updateDisplayListener = this.displayState.bind( this, sampleToDisplay );
+      sampleToDisplay.updatedEmitter.addListener( this.updateDisplayListener );
+    }
+    else if ( this.inspectedSample ) {
+      this.clearDisplay( this.inspectedSample );
+    }
+  }
+
+  /**
    * Display values associated with a sample of skater state.
    * @private
    * @param  {EnergySkateParkDataSample} dataSample
    */
   displayState( dataSample ) {
-    this.inspectedSample = dataSample;
+    if ( this.inspectedSample ) {
+      this.inspectedSample.inspectedProperty.set( false );
+    }
 
+    this.inspectedSample = dataSample;
     dataSample.inspectedProperty.set( true );
 
     // set values for display
@@ -389,5 +398,6 @@ class SkaterPathSensorNode extends Node {
     return alignGroup.createBox( numberDisplay, { xAlign: 'right' } );
   }
 }
+
 energySkatePark.register( 'SkaterPathSensorNode', SkaterPathSensorNode );
 export default SkaterPathSensorNode;
