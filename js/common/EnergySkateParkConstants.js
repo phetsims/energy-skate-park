@@ -37,10 +37,10 @@ const PANEL_OPTIONS = {
 
 const EnergySkateParkConstants = {
   SLIDER_OPTIONS: {
-    thumbSize: new Dimension2( 12, 25 ),
+    thumbSize: new Dimension2( 12, 23 ),
     trackSize: new Dimension2( 95, 3 ),
     tickLabelSpacing: 0,
-    majorTickLength: 10
+    majorTickLength: 11
   },
 
   // for radio buttons
