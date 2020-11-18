@@ -390,6 +390,10 @@ class SkaterPathSensorNode extends Node {
       minBackgroundWidth: 68, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
       valuePattern: energyJoulesPatternString,
 
+      // these value displays get smaller than their cordner radius with very long
+      // strings, so we will always use full height for consistent layout
+      useFullHeight: true,
+
       // when there are no values, hide units
       noValuePattern: SunConstants.VALUE_NAMED_PLACEHOLDER,
       noValueAlign: 'center'
