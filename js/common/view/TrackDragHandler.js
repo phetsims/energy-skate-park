@@ -37,11 +37,6 @@ class TrackDragHandler extends SimpleDragHandler {
     this.modelViewTransform = trackNode.modelViewTransform;
     this.availableBoundsProperty = trackNode.availableBoundsProperty;
     this.startOffset = null;
-
-    // Keep track of whether the user has started to drag the track.  Click events should not create tracks, only drag
-    // events.  See #205
-    // @private
-    this.startedDrag = false;
   }
 
   /**
@@ -57,13 +52,6 @@ class TrackDragHandler extends SimpleDragHandler {
     this.trackNode.moveToFront();
 
     this.calculateStartOffset( event );
-
-    if ( this.track.dragSource === null ) {
-
-      // A new press has started, but the user has not moved the track yet, so do not create it yet.  See #205
-      this.track.dragSource = this;
-      this.trackDragStarted( event );
-    }
   }
 
   /**
@@ -73,9 +61,7 @@ class TrackDragHandler extends SimpleDragHandler {
    * @param {SceneryEvent} event
    */
   handleDrag( event ) {
-    if ( this.track.dragSource === this ) {
-      this.trackDragged( event );
-    }
+    this.trackDragged( event );
   }
 
   /**
@@ -85,22 +71,7 @@ class TrackDragHandler extends SimpleDragHandler {
    * @param {SceneryEvent} event
    */
   handleDragEnd( event ) {
-    if ( this.track.dragSource === this ) {
-      this.trackDragEnded( event );
-    }
-  }
-
-
-  /**
-   * When the user drags the track out of the toolbox, if they drag the track by a control point, it still translates
-   * the track.  In that case (and only that case), the following methods are called by the ControlPointNode drag
-   * handler in order to translate the track.
-   * @public
-   *
-   * @param {Event} event
-   */
-  trackDragStarted( event ) {
-    this.startedDrag = false;
+    this.trackDragEnded( event );
   }
 
   /**
@@ -115,14 +86,6 @@ class TrackDragHandler extends SimpleDragHandler {
     // Check whether the model contains a track so that input listeners for detached elements can't create bugs, see #230
     if ( !model.containsTrack( track ) ) { return; }
 
-    // On the first drag event, move the track out of the toolbox, see #205
-    if ( !this.startedDrag ) {
-      track.draggingProperty.value = true;
-
-      // we may not have determined point offset if first down hit toolbox
-      this.calculateStartOffset( event );
-      this.startedDrag = true;
-    }
     track.draggingProperty.value = true;
 
     const parentPoint = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( this.startOffset );
@@ -249,8 +212,6 @@ class TrackDragHandler extends SimpleDragHandler {
     // reshapes the track instead of translating it
     track.droppedProperty.value = true;
 
-    track.dragSource = null;
-
     // Check whether the model contains a track so that input listeners for detached elements can't create bugs, see #230
     if ( !model.containsTrack( track ) ) { return; }
 
@@ -260,25 +221,21 @@ class TrackDragHandler extends SimpleDragHandler {
     }
 
     // If the user never dragged the object, then there is no track to drop in this case, see #205
-    if ( this.startedDrag ) {
-      const myPoints = [ track.controlPoints[ 0 ], track.controlPoints[ track.controlPoints.length - 1 ] ];
-      if ( myPoints[ 0 ].snapTargetProperty.value || myPoints[ 1 ].snapTargetProperty.value ) {
-        model.joinTracks( track ); // Track will be joined to compatible track, then both will be disposed, and new track created.
-      }
+    const myPoints = [ track.controlPoints[ 0 ], track.controlPoints[ track.controlPoints.length - 1 ] ];
+    if ( myPoints[ 0 ].snapTargetProperty.value || myPoints[ 1 ].snapTargetProperty.value ) {
+      model.joinTracks( track ); // Track will be joined to compatible track, then both will be disposed, and new track created.
+    }
 
-      // If the track hasn't been disposed (see #393), bump it above ground and make it physical if user has started
-      // dragging, see #384 and #205
-      if ( !track.isDisposed && track.controlPoints.filter( point => {return !point.isDisposed;} ).length !== 0 ) {
-        track.bumpAboveGround();
-        track.physicalProperty.value = true; // for interactivity, but also for #414
-        track.draggingProperty.value = false; // signify that the track shape can be smoothed again
-      }
+    // If the track hasn't been disposed (see #393), bump it above ground and make it physical if user has started
+    // dragging, see #384 and #205
+    if ( !track.isDisposed && track.controlPoints.filter( point => {return !point.isDisposed;} ).length !== 0 ) {
+      track.bumpAboveGround();
+      track.physicalProperty.value = true; // for interactivity, but also for #414
+      track.draggingProperty.value = false; // signify that the track shape can be smoothed again
+    }
 
-      if ( EnergySkateParkQueryParameters.testTrackIndex > 0 ) {
-        console.log( track.getDebugString() );
-      }
-
-      this.startedDrag = false;
+    if ( EnergySkateParkQueryParameters.testTrackIndex > 0 ) {
+      console.log( track.getDebugString() );
     }
   }
 
