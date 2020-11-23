@@ -153,7 +153,7 @@ class EnergyBarGraph extends Node {
 
       const zoomButtonOptions = {
         baseColor: ColorConstants.LIGHT_BLUE,
-        radius: 6,
+        magnifyingGlassRadius: 6,
 
         xMargin: 7,
         yMargin: 5,
