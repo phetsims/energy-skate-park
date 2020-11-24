@@ -18,6 +18,7 @@ import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
+import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class ControlPoint extends PhetioObject {
@@ -131,17 +132,7 @@ class ControlPoint extends PhetioObject {
 ControlPoint.ControlPointIO = new IOType( 'ControlPointIO', {
   valueType: ControlPoint,
   documentation: 'A control point that can manipulate the track.',
-
-  // TODO: https://github.com/phetsims/tandem/issues/215
-  toStateObject: controlPoint => controlPoint ? controlPoint.tandem.phetioID : 'null',
-  fromStateObject( stateObject ) {
-    if ( stateObject === 'null' ) {
-      return null;
-    }
-    else {
-      return phet.phetio.phetioEngine.getPhetioObject( stateObject );
-    }
-  }
+  supertype: ReferenceIO( IOType.ObjectIO )
 } );
 
 energySkatePark.register( 'ControlPoint', ControlPoint );
