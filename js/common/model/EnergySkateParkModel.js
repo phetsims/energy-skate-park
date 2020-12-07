@@ -1727,11 +1727,15 @@ class EnergySkateParkModel extends PhetioObject {
 
     a.disposeControlPoints();
     a.removeEmitter.emit();
-    this.tracks.remove( a );
+    if (this.tracks.includes(a)) {
+      this.tracks.remove( a );
+    }
 
     b.disposeControlPoints();
     b.removeEmitter.emit();
-    this.tracks.remove( b );
+    if (this.tracks.includes(b)) {
+      this.tracks.remove( b );
+    }
 
     // When tracks are joined, bump the new track above ground so the y value (and potential energy) cannot go negative,
     // and so it won't make the "return skater" button get bigger, see #158
