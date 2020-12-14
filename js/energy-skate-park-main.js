@@ -35,7 +35,7 @@ simLauncher.launch( () => {
       softwareDevelopment: 'Sam Reid, Jesse Greenberg',
       team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Diana López Tavares, Emily B. Moore, Ariel Paul, Kathy Perkins',
       graphicArts: 'Sharon Siman-Tov, Amanda McGarry, Megan Lai',
-      qualityAssurance: 'Steele Dalton, Oliver Orejola, Arnab Purkayastha, Bryan Yoelin'
+      qualityAssurance: 'Jaspe Arias, Steele Dalton, Megan Lai, Brooklyn Lash, Oliver Orejola, Arnab Purkayastha, Devon Quispe, Kathryn Woessner, Bryan Yoelin'
     }
   } ).start();
 } );
