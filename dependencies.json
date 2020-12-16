@@ -1,5 +1,5 @@
 {
-  "comment": "# energy-skate-park 1.1.1-rc.1 Wed Dec 16 2020 13:51:29 GMT-0500 (Eastern Standard Time)",
+  "comment": "# energy-skate-park 1.1.1 Wed Dec 16 2020 17:51:06 GMT-0500 (Eastern Standard Time)",
   "assert": {
     "sha": "1a41cef653bbed1025af5768bea958d7e3e0f8ae",
     "branch": "HEAD"
@@ -21,7 +21,7 @@
     "branch": "HEAD"
   },
   "energy-skate-park": {
-    "sha": "cdd712ce27d389a2ac477d9120be2b8dff92b399",
+    "sha": "7f4e3e5c66a6603f83ed9afa0b9bc7b320883c86",
     "branch": "1.1"
   },
   "griddle": {
