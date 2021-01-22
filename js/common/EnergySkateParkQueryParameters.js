@@ -23,7 +23,7 @@ const EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
   // Changes the units for acceleration due to gravity from m/s^2 to N/kg, as requested by
   // a user. So this is definitely public. - see https://github.com/phetsims/energy-skate-park/issues/293 for request issue
   // @public
-  altAccelerationUnits: { type: 'flag' },
+  altAccelerationUnits: { type: 'flag', public: true },
 
   // This indicates the index (1-based) of the track to show, and enables some other track debugging
   testTrackIndex: {
