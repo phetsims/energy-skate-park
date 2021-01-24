@@ -132,9 +132,10 @@ class EnergySkateParkScreenView extends ScreenView {
     // @public {PhetioGroup.<Track>} group of TrackNodes
     this.trackNodeGroup = new PhetioGroup( ( tandem, track, modelViewTransform, availableBoundsProperty, options ) => {
       assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
+      options = merge( { phetioDynamicElement: true }, options );
       return new TrackNode( track, modelViewTransform, availableBoundsProperty, tandem, options );
     }, [ model.trackGroup.archetype, modelViewTransform, this.availableModelBoundsProperty, {} ], {
-      tandem: tandem.createTandem( 'trackNodes' ),
+      tandem: tandem.createTandem( 'trackNodeGroup' ),
       phetioType: PhetioGroup.PhetioGroupIO( Node.NodeIO ),
       phetioDynamicElementName: 'trackNode',
 
