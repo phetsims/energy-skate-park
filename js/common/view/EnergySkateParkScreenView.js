@@ -29,6 +29,7 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
+import PhetioGroup from '../../../../tandem/js/PhetioGroup.js';
 import skaterIconImage from '../../../images/skater1_left_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
@@ -44,6 +45,7 @@ import PieChartNode from './PieChartNode.js';
 import ReferenceHeightLine from './ReferenceHeightLine.js';
 import SkaterNode from './SkaterNode.js';
 import ToolboxPanel from './ToolboxPanel.js';
+import TrackNode from './TrackNode.js';
 import VisibilityControlsPanel from './VisibilityControlsPanel.js';
 
 const controlsRestartSkaterString = energySkateParkStrings.skaterControls.restartSkater;
@@ -109,8 +111,37 @@ class EnergySkateParkScreenView extends ScreenView {
       tandem: tandem
     } );
 
-    // @protected
-    this.trackNodeGroupTandem = tandem.createGroupTandem( 'trackNode' );
+    const modelPoint = new Vector2( 0, 0 );
+
+    // earth is 86px high in stage coordinates
+    const viewPoint = new Vector2( this.layoutBounds.width / 2, this.layoutBounds.height - BackgroundNode.earthHeight );
+
+    // scale chosen so that displayed model is the same as it was for energy-skate-park-basics when that sim
+    // used non-default layout bounds
+    const scale = 61.40;
+    const modelViewTransform = ModelViewTransform2.createSinglePointScaleInvertedYMapping( modelPoint, viewPoint, scale );
+    this.modelViewTransform = modelViewTransform;
+
+    this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
+      valueType: [ Bounds2 ]
+    } );
+    this.availableModelBoundsProperty.link( bounds => {
+      model.availableModelBoundsProperty.set( bounds );
+    } );
+
+    // @public {PhetioGroup.<Track>} group of TrackNodes
+    this.trackNodeGroup = new PhetioGroup( ( tandem, track, modelViewTransform, availableBoundsProperty, options ) => {
+      assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
+      return new TrackNode( track, modelViewTransform, availableBoundsProperty, tandem, options );
+    }, [ model.trackGroup.archetype, modelViewTransform, this.availableModelBoundsProperty, {} ], {
+      tandem: tandem.createTandem( 'trackNodes' ),
+      phetioType: PhetioGroup.PhetioGroupIO( Node.NodeIO ),
+      phetioDynamicElementName: 'trackNode',
+
+      // These elements are not created by the PhET-IO state engine, they can just listen to the model for supporting
+      // state in the same way they do for sim logic.
+      supportsDynamicState: false
+    } );
 
     // @protected
     this.model = model;
@@ -135,24 +166,6 @@ class EnergySkateParkScreenView extends ScreenView {
     this.bottomLayer = new Node();
     this.topLayer = new Node();
     this.children = [ this.bottomLayer, this.topLayer ];
-
-    const modelPoint = new Vector2( 0, 0 );
-
-    // earth is 86px high in stage coordinates
-    const viewPoint = new Vector2( this.layoutBounds.width / 2, this.layoutBounds.height - BackgroundNode.earthHeight );
-
-    // scale chosen so that displayed model is the same as it was for energy-skate-park-basics when that sim
-    // used non-default layout bounds
-    const scale = 61.40;
-    const modelViewTransform = ModelViewTransform2.createSinglePointScaleInvertedYMapping( modelPoint, viewPoint, scale );
-    this.modelViewTransform = modelViewTransform;
-
-    this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
-      valueType: [ Bounds2 ]
-    } );
-    this.availableModelBoundsProperty.link( bounds => {
-      model.availableModelBoundsProperty.set( bounds );
-    } );
 
     // @protected (read-only)
     this.skaterNode = new SkaterNode(

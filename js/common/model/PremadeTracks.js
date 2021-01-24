@@ -16,11 +16,10 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import Enumeration from '../../../../phet-core/js/Enumeration.js';
 import merge from '../../../../phet-core/js/merge.js';
 import energySkatePark from '../../energySkatePark.js';
-import ControlPoint from './ControlPoint.js';
 import Track from './Track.js';
 
 // constants
-const PARENT_TRACKS = null;
+const PARENT_TRACKS = [];
 
 // limiting bounds for dragging control points
 const END_BOUNDS_WIDTH = 2.5;
@@ -74,11 +73,11 @@ const PremadeTracks = {
 
   /**
    * Create a set of control points that create a parabola shaped track.
-   * @param {Tandem} groupTandem
+   * @param {EnergySkateParkModel} model
    * @param {Object} [options]
    * @returns {ControlPoint[]}
    */
-  createParabolaControlPoints: ( groupTandem, options ) => {
+  createParabolaControlPoints: ( model, options ) => {
     options = merge( {
       trackHeight: 6, // largest height for the parabola
       trackWidth: 8, // width from the left most control point to the right most control point
@@ -98,22 +97,19 @@ const PremadeTracks = {
     const p3Bounds = createCenteredLimitBounds( p3, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
     return [
-      new ControlPoint( p1.x, p1.y, {
+      model.controlPointGroup.createNextElement( p1.x, p1.y, {
         visible: options.p1Visible,
         limitBounds: p1Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
-      new ControlPoint( p2.x, p2.y, {
+      model.controlPointGroup.createNextElement( p2.x, p2.y, {
         visible: options.p2Visible,
         limitBounds: p2Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
-      new ControlPoint( p3.x, p3.y, {
+      model.controlPointGroup.createNextElement( p3.x, p3.y, {
         visible: options.p3Visible,
         limitBounds: p3Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } )
     ];
@@ -122,10 +118,11 @@ const PremadeTracks = {
   /**
    * Create a set of control points which create a slope shaped track, touching the ground on the right side.
    *
-   * @param {Tandem} groupTandem
+   * @param {EnergySkateParkModel} model
+   * @param {Object} [options]
    * @returns {ControlPoint[]}
    */
-  createSlopeControlPoints: ( groupTandem, options ) => {
+  createSlopeControlPoints: ( model, options ) => {
 
     options = merge( {
       trackWidth: 6,
@@ -143,19 +140,16 @@ const PremadeTracks = {
     const p3Bounds = createRelativeSpaceBounds( p3, 0.5, 2.5, 3, 0 );
 
     return [
-      new ControlPoint( p1.x, p1.y, {
+      model.controlPointGroup.createNextElement( p1.x, p1.y, {
         limitBounds: p1Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
-      new ControlPoint( p2.x, p2.y, {
+      model.controlPointGroup.createNextElement( p2.x, p2.y, {
         limitBounds: p2Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
-      new ControlPoint( p3.x, p3.y, {
+      model.controlPointGroup.createNextElement( p3.x, p3.y, {
         limitBounds: p3Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } )
     ];
@@ -166,11 +160,11 @@ const PremadeTracks = {
    * a but since the interpolation moves it down by that much and we don't want the skater to go below ground
    * while on the track. Numbers determined by trial and error.
    *
-   * @param {Tandem} groupTandem
+   * @param {EnergySkateParkModel} model
    * @param {Object} [options]
    * @returns {ControlPoint[]}
    */
-  createDoubleWellControlPoints: ( groupTandem, options ) => {
+  createDoubleWellControlPoints: ( model, options ) => {
     options = merge( {
       trackHeight: 5, // largest height for the well
       trackWidth: 8, // width from the left most control point to the right most control point
@@ -210,35 +204,30 @@ const PremadeTracks = {
     const p5Bounds = createRelativeSpaceBounds( p5, 1.5, 1.0, options.p5UpSpacing, options.p5DownSpacing );
 
     return [
-      new ControlPoint( p1.x, p1.y, {
+      model.controlPointGroup.createNextElement( p1.x, p1.y, {
         limitBounds: p1Bounds,
         visible: options.p1Visible,
-        phetioState: false,
-        tandem: groupTandem.createNextTandem()
+        phetioState: false
       } ),
-      new ControlPoint( p2.x, p2.y, {
+      model.controlPointGroup.createNextElement( p2.x, p2.y, {
         limitBounds: p2Bounds,
         visible: options.p2Visible,
-        phetioState: false,
-        tandem: groupTandem.createNextTandem()
+        phetioState: false
       } ),
-      new ControlPoint( p3.x, p3.y, {
+      model.controlPointGroup.createNextElement( p3.x, p3.y, {
         limitBounds: p3Bounds,
         visible: options.p3Visible,
-        phetioState: false,
-        tandem: groupTandem.createNextTandem()
+        phetioState: false
       } ),
-      new ControlPoint( p4.x, p4.y, {
+      model.controlPointGroup.createNextElement( p4.x, p4.y, {
         limitBounds: p4Bounds,
         visible: options.p4Visible,
-        phetioState: false,
-        tandem: groupTandem.createNextTandem()
+        phetioState: false
       } ),
-      new ControlPoint( p5.x, p5.y, {
+      model.controlPointGroup.createNextElement( p5.x, p5.y, {
         limitBounds: p5Bounds,
         visible: options.p5Visible,
-        phetioState: false,
-        tandem: groupTandem.createNextTandem()
+        phetioState: false
       } )
     ];
   },
@@ -246,10 +235,11 @@ const PremadeTracks = {
   /**
    * Create a set of control points that will form a track that takes the shape of a loop.
    *
-   * @param  {Tandem} groupTandem
+   * @param {EnergySkateParkModel} model
+   * @param {Object} [options]
    * @returns {Array.<ControlPoint>}
    */
-  createLoopControlPoints: ( groupTandem, options ) => {
+  createLoopControlPoints: ( model,  options ) => {
     options = merge( {
       trackWidth: 9,
       trackHeight: 6,
@@ -284,39 +274,32 @@ const PremadeTracks = {
     const p7Bounds = createRelativeSpaceBounds( p7, 1.5, 0.5, 2, 3 );
 
     return [
-      new ControlPoint( p1.x, p1.y, {
+      model.controlPointGroup.createNextElement( p1.x, p1.y, {
         limitBounds: p1Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
-      new ControlPoint( p2.x, p2.y, {
+      model.controlPointGroup.createNextElement( p2.x, p2.y, {
         limitBounds: p2Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
-      new ControlPoint( p3.x, p3.y, {
+      model.controlPointGroup.createNextElement( p3.x, p3.y, {
         limitBounds: p3Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
-      new ControlPoint( p4.x, p4.y, {
+      model.controlPointGroup.createNextElement( p4.x, p4.y, {
         limitBounds: p4Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
-      new ControlPoint( p5.x, p5.y, {
+      model.controlPointGroup.createNextElement( p5.x, p5.y, {
         limitBounds: p5Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
-      new ControlPoint( p6.x, p6.y, {
+      model.controlPointGroup.createNextElement( p6.x, p6.y, {
         limitBounds: p6Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } ),
-      new ControlPoint( p7.x, p7.y, {
+      model.controlPointGroup.createNextElement( p7.x, p7.y, {
         limitBounds: p7Bounds,
-        tandem: groupTandem.createNextTandem(),
         phetioState: false
       } )
     ];
@@ -325,11 +308,9 @@ const PremadeTracks = {
   /**
    * Create a track from the provided control points.
    *
-   * @param  {EnergySkateParkModel} model
-   * @param  {Array.<Track>} modelTracks
-   * @param  {Array.<ControlPoint>} controlPoints
-   * @param  {Property.<Bounds2>} availableBoundsProperty
-   * @param  {object} options
+   * @param {EnergySkateParkModel} model
+   * @param {Array.<ControlPoint>} controlPoints
+   * @param {Object} [options]
    * @returns {Track}
    */
   createTrack( model, controlPoints, options ) {
@@ -337,8 +318,7 @@ const PremadeTracks = {
   }
 };
 
-// @public
-// @static
+// @public @static
 PremadeTracks.TrackType = TrackType;
 
 energySkatePark.register( 'PremadeTracks', PremadeTracks );

@@ -69,7 +69,7 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
 
       let track = null;
       if ( trackType === PremadeTracks.TrackType.PARABOLA ) {
-        const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model.controlPointGroupTandem, merge( {
+        const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model, merge( {
           trackMidHeight: 1
         }, controlPointOptions ) );
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints, {
@@ -77,19 +77,19 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
         } );
       }
       else if ( trackType === PremadeTracks.TrackType.SLOPE ) {
-        const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model.controlPointGroupTandem, controlPointOptions );
+        const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model, controlPointOptions );
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints, {
           tandem: tandem.createTandem( 'slopeTrackIcon' )
         } );
       }
       else if ( trackType === PremadeTracks.TrackType.DOUBLE_WELL ) {
-        const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model.controlPointGroupTandem, controlPointOptions);
+        const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model, controlPointOptions);
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, doubleWellControlPoints, {
           tandem: tandem.createTandem( 'doubleWellTrackIcon' )
         } );
       }
       else if ( trackType === PremadeTracks.TrackType.LOOP ) {
-        const loopControlPoints = PremadeTracks.createLoopControlPoints( model.controlPointGroupTandem, merge( {
+        const loopControlPoints = PremadeTracks.createLoopControlPoints( model, merge( {
           innerLoopWidth: 2.5,
           innerLoopTop: 3.5
         }, controlPointOptions ) );
@@ -114,9 +114,8 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
         children.push( background );
       }
 
-      // const track = model.tracks.get( index );
       const track = createIconTrack( model.trackTypes[ index ] );
-      const trackNode = new TrackNode( model, track, view.modelViewTransform, new Property(), tandem.createTandem( 'trackNode' + index ), {
+      const trackNode = new TrackNode( track, view.modelViewTransform, new Property(), tandem.createTandem( 'trackNode' + index ), {
         isIcon: true
       } );
 

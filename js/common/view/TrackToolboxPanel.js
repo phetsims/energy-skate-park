@@ -35,7 +35,7 @@ class TrackToolboxPanel extends Panel {
         interactive: false
       }
     } );
-    const iconNode = new TrackNode( model, iconTrack, view.modelViewTransform, model.availableModelBoundsProperty, tandem.createTandem( 'iconNode' ), {
+    const iconNode = new TrackNode( iconTrack, view.modelViewTransform, model.availableModelBoundsProperty, tandem.createTandem( 'iconNode' ), {
 
       // want the icon to look pickable, even though it isn't really draggable (forwarding listener makes the new
       // TrackNode draggable)

@@ -10,7 +10,6 @@
 
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkSaveSampleScreenView from './EnergySkateParkSaveSampleScreenView.js';
-import TrackNode from './TrackNode.js';
 
 class EnergySkateParkTrackSetScreenView extends EnergySkateParkSaveSampleScreenView {
 
@@ -23,7 +22,7 @@ class EnergySkateParkTrackSetScreenView extends EnergySkateParkSaveSampleScreenV
     super( model, tandem, options );
 
     const trackNodes = model.tracks.map( track => {
-      return new TrackNode( model, track, this.modelViewTransform, this.availableModelBoundsProperty, this.trackNodeGroupTandem.createNextTandem() );
+      return this.trackNodeGroup.createNextElement( track, this.modelViewTransform, this.availableModelBoundsProperty);
     } );
 
     trackNodes.forEach( trackNode => {

@@ -17,11 +17,15 @@ import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
+import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import SplineEvaluation from '../SplineEvaluation.js';
+import ControlPoint from './ControlPoint.js';
 
 // constants
 const FastArray = dot.FastArray;
+
+const ControlPointReferenceIO = ReferenceIO( ControlPoint.ControlPointIO );
 
 // options for a track that is fully interactive - it can be dragged, control points can be moved, broken into
 // different tracks, and combined with another track
@@ -39,12 +43,13 @@ class Track extends PhetioObject {
    *
    * @param {EnergySkateParkModel} model
    * @param {Array<ControlPoint>} controlPoints
-   * @param {null|Array<Track>} parents the original tracks that were used to make this track (if any) so they can be
+   * @param {Array<Track>} parents the original tracks that were used to make this track (if any) so they can be
    *                            broken apart when dragged back to control panel adjusted control point from going
    *                            offscreen, see #195
    * @param {Object} [options] - required for tandem
    */
   constructor( model, controlPoints, parents, options ) {
+    assert && assert( Array.isArray( parents ), 'parents must be array' );
     options = merge( {
 
       // {boolean} - can this track be dragged and moved in the play area?
@@ -77,11 +82,11 @@ class Track extends PhetioObject {
     const tandem = options.tandem;
 
     // @private
-    this.model = model;
     this.parents = parents;
     this.trackTandem = tandem;
 
     // @public (read-only) - see options
+    this.model = model;
     this.draggable = options.draggable;
     this.configurable = options.configurable;
     this.splittable = options.splittable;
@@ -192,9 +197,7 @@ class Track extends PhetioObject {
     // @private - make the Track eligible for garbage collection
     this.disposeTrack = () => {
       Tandem.PHET_IO_ENABLED && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
-      if ( this.parents ) {
-        this.parents.length = 0;
-      }
+      this.parents.length = 0;
       this.physicalProperty.dispose();
       this.leftThePanelProperty.dispose();
       this.draggingProperty.dispose();
@@ -202,7 +205,27 @@ class Track extends PhetioObject {
       this.controlPointDraggingProperty.dispose();
 
       this.model.availableModelBoundsProperty.unlink( boundsListener );
+      // this.disposeControlPoints();
     };
+  }
+
+  // @public (phet-io)
+  toStateObject() {
+    return {
+      controlPoints: this.controlPoints.map( ControlPointReferenceIO.toStateObject ),
+      parents: this.parents.map( Track.TrackIO.toStateObject ),
+      options: {
+        draggable: this.draggable,
+        configurable: this.configurable
+      }
+    };
+  }
+
+  // @public
+  static stateToArgsForConstructor( stateObject ) {
+    const controlPoints = stateObject.controlPoints.map( ControlPointReferenceIO.fromStateObject );
+    const parents = stateObject.parents.map( Track.Track.IO.fromStateObject );
+    return [ controlPoints, parents, stateObject.options ];
   }
 
   /**
@@ -633,14 +656,16 @@ class Track extends PhetioObject {
    *
    * @returns {Track[]}
    */
-  getParentsOrSelf() { return this.parents || [ this ]; }
+  getParentsOrSelf() {
+    return this.parents.length > 0 ? this.parents : [ this ];
+  }
 
   /**
    * Return this track to its control panel by resetting it to its initial state.
    * @public
    */
   returnToControlPanel() {
-    if ( this.parents ) {
+    if ( this.parents.length > 0 ) {
       this.model.tracks.remove( this );
       for ( let i = 0; i < this.parents.length; i++ ) {
         const parent = this.parents[ i ];
@@ -1117,9 +1142,7 @@ class Track extends PhetioObject {
    * @public
    */
   disposeControlPoints() {
-    this.controlPoints.forEach( controlPoint => {
-      controlPoint.dispose();
-    } );
+    this.controlPoints.forEach( controlPoint => controlPoint.dispose() );
   }
 }
 
@@ -1129,31 +1152,8 @@ Track.FULLY_INTERACTIVE_OPTIONS = FULLY_INTERACTIVE_OPTIONS;
 Track.TrackIO = new IOType( 'TrackIO', {
   valueType: Track,
   documentation: 'A skate track',
-  toStateObject: track => {
-    if ( track instanceof phet.energySkatePark.Track || track === null ) {
-
-      // Since skater.trackProperty is of type Property.<Track|null>, we must support null here.
-      if ( !track ) {
-        return null;
-      }
-      assert && assert( track.controlPoints, 'control points should be defined' );
-      return {
-        draggable: track.draggable,
-        configurable: track.configurable,
-        controlPointTandemIDs: track.controlPoints.map( controlPoint => {
-          return controlPoint.tandem.phetioID;
-        } )
-      };
-    }
-    else {
-      /// TODO: Major hack to support data stream, which for unknown reasons was already calling this method with a state object
-      // See https://github.com/phetsims/energy-skate-park-basics/issues/366
-      return track;
-    }
-  },
-
-  // TODO: This is sketchy, see // See https://github.com/phetsims/energy-skate-park-basics/issues/366
-  fromStateObject: stateObject => stateObject
+  toStateObject: track => track.toStateObject(),
+  stateToArgsForConstructor: stateObject => Track.stateToArgsForConstructor
 } );
 
 energySkatePark.register( 'Track', Track );

@@ -39,6 +39,7 @@ import EventTimer from '../../../../phet-core/js/EventTimer.js';
 import merge from '../../../../phet-core/js/merge.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import TimeSpeed from '../../../../scenery-phet/js/TimeSpeed.js';
+import PhetioGroup from '../../../../tandem/js/PhetioGroup.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
@@ -106,19 +107,43 @@ class EnergySkateParkModel extends PhetioObject {
       skaterOptions: null
     }, options );
 
+    // @public - emits an event whenever a track changes in some way (control points dragged, track split apart,
+    // track dragged, track deleted or scene changed, etc...)
+    this.trackChangedEmitter = new Emitter();
+
     // @public (read-only)
     this.tracksDraggable = options.tracksDraggable;
     this.tracksConfigurable = options.tracksConfigurable;
     this.defaultFriction = options.defaultFriction;
 
-    const controlPointGroupTandem = tandem.createGroupTandem( 'controlPoint' );
-    const trackGroupTandem = tandem.createGroupTandem( 'track' );
+    // @public - Will be filled in by the view, used to prevent control points from moving outside the visible model
+    // bounds when adjusted, see #195
+    this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
+      tandem: tandem.createTandem( 'availableModelBoundsProperty' ),
+      phetioType: Property.PropertyIO( Bounds2.Bounds2IO )
+    } );
 
-    // @protected
-    this.controlPointGroupTandem = controlPointGroupTandem;
+    // @public {PhetioGroup.<ControlPoint>} group of control points
+    this.controlPointGroup = new PhetioGroup( ( tandem, x, y, options ) => {
+      assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
+      return new ControlPoint( x, y, merge( {}, options, { tandem: tandem } ) );
+    }, [ 0, 0, {} ], {
+      tandem: tandem.createTandem( 'controlPointGroup' ),
+      phetioType: PhetioGroup.PhetioGroupIO( ControlPoint.ControlPointIO ),
+      phetioDynamicElementName: 'controlPoint'
+    } );
 
-    // @public
-    this.trackGroupTandem = trackGroupTandem;
+    // TODO: https://github.com/phetsims/energy-skate-park/issues/123 the control point group doesn't have enough archetypes to
+    // TODO: create an archetype track
+    // @public {PhetioGroup.<Track>} group of tracks
+    this.trackGroup = new PhetioGroup( ( tandem, controlPoints, parents, options ) => {
+      assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
+      return new Track( this, controlPoints, parents, merge( {}, options, { tandem: tandem } ) );
+    }, [ [ this.controlPointGroup.createNextElement( 0, 0 ), this.controlPointGroup.createNextElement( 100, 0 ) ], [], {} ], {
+      tandem: tandem.createTandem( 'trackGroup' ),
+      phetioType: PhetioGroup.PhetioGroupIO( Track.TrackIO ),
+      phetioDynamicElementName: 'track'
+    } );
 
     // {boolean} - Temporary flag that keeps track of whether the track was changed in the step before the physics
     // update. True if the skater's track is being dragged by the user, so that energy conservation no longer applies.
@@ -206,13 +231,6 @@ class EnergySkateParkModel extends PhetioObject {
       tandem: tandem.createTandem( 'stickingToTrackProperty' )
     } );
 
-    // @public - Will be filled in by the view, used to prevent control points from moving outside the visible model
-    // bounds when adjusted, see #195
-    this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
-      tandem: tandem.createTandem( 'availableModelBoundsProperty' ),
-      phetioType: Property.PropertyIO( Bounds2.Bounds2IO )
-    } );
-
     // @public {UserControlledPropertySet} - collection of Properties that indicate that a user is
     // modifying some variable that will change physical system and modify all saved energy data
     this.userControlledPropertySet = new UserControlledPropertySet();
@@ -259,10 +277,6 @@ class EnergySkateParkModel extends PhetioObject {
       track.dispose();
     } );
 
-    // @public - emits an event whenever a track changes in some way (control points dragged, track split apart,
-    // track dragged, track deleted or scene changed, etc...)
-    this.trackChangedEmitter = new Emitter();
-
     // Determine when to show/hide the track edit buttons (cut track or delete control point)
     const updateTrackEditingButtonProperties = () => {
       let editEnabled = false;
@@ -290,7 +304,7 @@ class EnergySkateParkModel extends PhetioObject {
     this.eventTimer = new EventTimer( new EventTimer.ConstantEventModel( FRAME_RATE ), this.constantStep.bind( this ) );
 
     if ( EnergySkateParkQueryParameters.testTrackIndex > 0 ) {
-      DebugTracks.init( this, tandem.createGroupTandem( 'debugTrackControlPoint' ), tandem.createGroupTandem( 'track' ) );
+      DebugTracks.init( this );
     }
   }
 
@@ -1544,15 +1558,12 @@ class EnergySkateParkModel extends PhetioObject {
 
     track.removeEmitter.emit();
     this.tracks.remove( track );
-    const trackGroupTandem = this.trackGroupTandem;
 
     if ( track.controlPoints.length > 2 ) {
       const controlPointToDelete = track.controlPoints[ controlPointIndex ];
       const points = _.without( track.controlPoints, controlPointToDelete );
       controlPointToDelete.dispose();
-      const newTrack = new Track( this, points, track.getParentsOrSelf(), merge( {
-        tandem: trackGroupTandem.createNextTandem()
-      }, Track.FULLY_INTERACTIVE_OPTIONS ) );
+      const newTrack = this.trackGroup.createNextElement( points, track.getParentsOrSelf(), Track.FULLY_INTERACTIVE_OPTIONS );
       newTrack.physicalProperty.value = true;
       newTrack.droppedProperty.value = true;
 
@@ -1596,18 +1607,14 @@ class EnergySkateParkModel extends PhetioObject {
     assert && assert( track.splittable, 'trying to split a track that is not splittable!' );
     const controlPointToSplit = track.controlPoints[ controlPointIndex ];
 
-    const trackGroupTandem = this.trackGroupTandem;
-
     const vector = Vector2.createPolar( 0.5, modelAngle );
-    const newPoint1 = new ControlPoint(
+    const newPoint1 = this.controlPointGroup.createNextElement(
       track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.x - vector.x,
-      track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.y - vector.y,
-      { tandem: this.controlPointGroupTandem.createNextTandem() }
+      track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.y - vector.y
     );
-    const newPoint2 = new ControlPoint(
+    const newPoint2 = this.controlPointGroup.createNextElement(
       track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.x + vector.x,
-      track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.y + vector.y,
-      { tandem: this.controlPointGroupTandem.createNextTandem() }
+      track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.y + vector.y
     );
 
     const points1 = track.controlPoints.slice( 0, controlPointIndex );
@@ -1616,14 +1623,10 @@ class EnergySkateParkModel extends PhetioObject {
     points1.push( newPoint1 );
     points2.unshift( newPoint2 );
 
-    const newTrack1 = new Track( this, points1, track.getParentsOrSelf(), merge( {
-      tandem: trackGroupTandem.createNextTandem()
-    }, Track.FULLY_INTERACTIVE_OPTIONS ) );
+    const newTrack1 = this.trackGroup.createNextElement( points1, track.getParentsOrSelf(), Track.FULLY_INTERACTIVE_OPTIONS );
     newTrack1.physicalProperty.value = true;
     newTrack1.droppedProperty.value = true;
-    const newTrack2 = new Track( this, points2, track.getParentsOrSelf(), merge( {
-      tandem: trackGroupTandem.createNextTandem()
-    }, Track.FULLY_INTERACTIVE_OPTIONS ) );
+    const newTrack2 = this.trackGroup.createNextElement( points2, track.getParentsOrSelf(), Track.FULLY_INTERACTIVE_OPTIONS );
     newTrack2.physicalProperty.value = true;
     newTrack2.droppedProperty.value = true;
 
@@ -1669,27 +1672,25 @@ class EnergySkateParkModel extends PhetioObject {
   joinTrackToTrack( a, b ) {
     const points = [];
     let i;
-    const controlPointGroupTandem = this.controlPointGroupTandem;
-    const trackGroupTandem = this.trackGroupTandem;
 
     const firstTrackForward = () => {
       for ( i = 0; i < a.controlPoints.length; i++ ) {
-        points.push( a.controlPoints[ i ].copy( controlPointGroupTandem.createNextTandem() ) );
+        points.push( a.controlPoints[ i ].copy( this ) );
       }
     };
     const firstTrackBackward = () => {
       for ( i = a.controlPoints.length - 1; i >= 0; i-- ) {
-        points.push( a.controlPoints[ i ].copy( controlPointGroupTandem.createNextTandem() ) );
+        points.push( a.controlPoints[ i ].copy( this ) );
       }
     };
     const secondTrackForward = () => {
       for ( i = 1; i < b.controlPoints.length; i++ ) {
-        points.push( b.controlPoints[ i ].copy( controlPointGroupTandem.createNextTandem() ) );
+        points.push( b.controlPoints[ i ].copy( this ) );
       }
     };
     const secondTrackBackward = () => {
       for ( i = b.controlPoints.length - 2; i >= 0; i-- ) {
-        points.push( b.controlPoints[ i ].copy( controlPointGroupTandem.createNextTandem() ) );
+        points.push( b.controlPoints[ i ].copy( this ) );
       }
     };
 
@@ -1718,21 +1719,19 @@ class EnergySkateParkModel extends PhetioObject {
       secondTrackBackward();
     }
 
-    const newTrack = new Track( this, points, a.getParentsOrSelf().concat( b.getParentsOrSelf() ), merge( {
-      tandem: trackGroupTandem.createNextTandem()
-    }, Track.FULLY_INTERACTIVE_OPTIONS ) );
+    const newTrack = this.trackGroup.createNextElement( points, a.getParentsOrSelf().concat( b.getParentsOrSelf() ), Track.FULLY_INTERACTIVE_OPTIONS );
     newTrack.physicalProperty.value = true;
     newTrack.droppedProperty.value = true;
 
     a.disposeControlPoints();
     a.removeEmitter.emit();
-    if (this.tracks.includes(a)) {
+    if ( this.tracks.includes( a ) ) {
       this.tracks.remove( a );
     }
 
     b.disposeControlPoints();
     b.removeEmitter.emit();
-    if (this.tracks.includes(b)) {
+    if ( this.tracks.includes( b ) ) {
       this.tracks.remove( b );
     }
 
@@ -1866,15 +1865,17 @@ class EnergySkateParkModel extends PhetioObject {
    * @param {Tandem} tandem
    * @param {boolean} draggable
    * @param {boolean} configurable
-   * @param [number[]} controlPointTandemIDs
+   * @param {number[]} controlPointTandemIDs
    */
   addTrack( tandem, draggable, configurable, controlPointTandemIDs ) {
 
     assert && assert( controlPointTandemIDs, 'controlPointTandemIDs should exist' );
     const controlPoints = controlPointTandemIDs.map( ( id, index ) => {
-      return new ControlPoint( index, 0, { tandem: Tandem.createFromPhetioID( id ) } ); // TODO: create with correct initial x & y values.
+
+      // TODO: https://github.com/phetsims/energy-skate-park/issues/123 create with correct initial x & y values.
+      return this.controlPointGroup.createNextElement( index, 0, { tandem: Tandem.createFromPhetioID( id ) } );
     } );
-    const newTrack = new Track( this, controlPoints, [], {
+    const newTrack = this.trackGroup.createNextElement( controlPoints, [], {
       draggable: draggable,
       configurable: configurable,
       tandem: tandem

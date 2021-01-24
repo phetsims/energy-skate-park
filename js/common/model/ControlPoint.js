@@ -18,7 +18,6 @@ import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
-import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class ControlPoint extends PhetioObject {
@@ -117,22 +116,27 @@ class ControlPoint extends PhetioObject {
 
   /**
    * Create a new control point, identical to this one.
+   * TODO: https://github.com/phetsims/energy-skate-park/issues/123 is this reversed?  Maybe call on the model
    * @public
    *
-   * @param {Tandem} tandem
+   * @param {EnergySkateParkModel} model
    * @returns {ControlPoint}
    */
-  copy( tandem ) {
-    return new ControlPoint( this.positionProperty.value.x, this.positionProperty.value.y, {
-      tandem: tandem
-    } );
+  copy( model ) {
+    return model.controlPointGroup.createNextElement( this.positionProperty.value.x, this.positionProperty.value.y );
   }
 }
 
 ControlPoint.ControlPointIO = new IOType( 'ControlPointIO', {
   valueType: ControlPoint,
   documentation: 'A control point that can manipulate the track.',
-  supertype: ReferenceIO( IOType.ObjectIO )
+  toStateObject: controlPoint => {
+    return { x: controlPoint.positionProperty.value.x, y: controlPoint.positionProperty.value.y };
+  },
+  stateToArgsForConstructor: stateObject => {
+    assert && assert( typeof stateObject.x === 'number' );
+    return [ stateObject.x, stateObject.y ];
+  }
 } );
 
 energySkatePark.register( 'ControlPoint', ControlPoint );

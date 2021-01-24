@@ -10,7 +10,6 @@
 
 import merge from '../../../../phet-core/js/merge.js';
 import energySkatePark from '../../energySkatePark.js';
-import ControlPoint from '../../common/model/ControlPoint.js';
 import EnergySkateParkModel from '../../common/model/EnergySkateParkModel.js';
 import Track from '../../common/model/Track.js';
 
@@ -52,18 +51,17 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
       trackOptions: null
     }, options );
 
-    const controlPointGroupTandem = this.controlPointGroupTandem;
-    const trackGroupTandem = this.trackGroupTandem;
-
     const controlPoints = [
-      new ControlPoint( -1, 0, merge( { tandem: controlPointGroupTandem.createNextTandem() }, options.controlPointOptions ) ),
-      new ControlPoint( 0, 0, merge( { tandem: controlPointGroupTandem.createNextTandem() }, options.controlPointOptions ) ),
-      new ControlPoint( 1, 0, merge( { tandem: controlPointGroupTandem.createNextTandem() }, options.controlPointOptions ) )
+      this.controlPointGroup.createNextElement( -1, 0, options.controlPointOptions ),
+      this.controlPointGroup.createNextElement( 0, 0, options.controlPointOptions ),
+      this.controlPointGroup.createNextElement( 1, 0, options.controlPointOptions )
     ];
 
-    return new Track( this, controlPoints, null, merge( {
-        tandem: trackGroupTandem.createNextTandem()
-      }, Track.FULLY_INTERACTIVE_OPTIONS, options.trackOptions )
+    return this.trackGroup.createNextElement( controlPoints, [], merge(
+      {},
+      Track.FULLY_INTERACTIVE_OPTIONS,
+      options.trackOptions
+      )
     );
   }
 

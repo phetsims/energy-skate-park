@@ -13,7 +13,6 @@ import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
 import Color from '../../../../scenery/js/util/Color.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkScreenView from '../../common/view/EnergySkateParkScreenView.js';
-import TrackNode from '../../common/view/TrackNode.js';
 import TrackToolboxPanel from '../../common/view/TrackToolboxPanel.js';
 
 class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
@@ -84,7 +83,7 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
    * @returns {TrackNode}
    */
   addTrackNode( track ) {
-    const trackNode = new TrackNode( this.model, track, this.modelViewTransform, this.availableModelBoundsProperty, this.trackNodeGroupTandem.createTandem( track.tandem.name ) );
+    const trackNode = this.trackNodeGroup.createNextElement( track, this.modelViewTransform, this.availableModelBoundsProperty );
     this.trackNodes.push( trackNode );
     this.trackLayer.addChild( trackNode );
 

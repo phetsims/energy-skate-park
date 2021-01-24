@@ -26,14 +26,14 @@ const FastArray = dot.FastArray;
 class TrackNode extends Node {
 
   /**
-   * @param {EnergySkateParkModel} model the entire model.
    * @param {Track} track the track for this track node
    * @param {ModelViewTransform2} modelViewTransform the model view transform for the view
    * @param {Property.<Bounds2>} availableBoundsProperty
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( model, track, modelViewTransform, availableBoundsProperty, tandem, options ) {
+  constructor( track, modelViewTransform, availableBoundsProperty, tandem, options ) {
+    const model = track.model;
 
     options = merge( {
 

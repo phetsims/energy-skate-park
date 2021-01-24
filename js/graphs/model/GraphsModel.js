@@ -308,13 +308,12 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
    * @returns {Track[]}
    */
   createGraphsTrackSet( tandem ) {
-    const groupTandem = this.controlPointGroupTandem;
 
     // all tracks in graphs screen are bound by these dimensions (in meters)
     const trackHeight = GraphsConstants.TRACK_HEIGHT;
     const trackWidth = GraphsConstants.TRACK_WIDTH;
 
-    const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( groupTandem, {
+    const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, {
       trackHeight: trackHeight,
       trackWidth: trackWidth,
       p1Visible: false,
@@ -327,7 +326,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
       phetioState: false
     } );
 
-    const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( groupTandem, {
+    const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( this, {
       trackHeight: 4,
       trackWidth: 10,
       trackMidHeight: 1.5,
