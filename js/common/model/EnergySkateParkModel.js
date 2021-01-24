@@ -41,7 +41,6 @@ import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import TimeSpeed from '../../../../scenery-phet/js/TimeSpeed.js';
 import PhetioGroup from '../../../../tandem/js/PhetioGroup.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
-import Tandem from '../../../../tandem/js/Tandem.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
 import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -1854,34 +1853,6 @@ class EnergySkateParkModel extends PhetioObject {
       track.disposeControlPoints();
       this.tracks.remove( track );
     }
-  }
-
-  /**
-   * Add a track, called by phet-io in setState (to restore a state).
-   * TODO: this code should be called by EnergySkateParkModel too, see
-   * https://github.com/phetsims/energy-skate-park/issues/165
-   * @public
-   *
-   * @param {Tandem} tandem
-   * @param {boolean} draggable
-   * @param {boolean} configurable
-   * @param {number[]} controlPointTandemIDs
-   */
-  addTrack( tandem, draggable, configurable, controlPointTandemIDs ) {
-
-    assert && assert( controlPointTandemIDs, 'controlPointTandemIDs should exist' );
-    const controlPoints = controlPointTandemIDs.map( ( id, index ) => {
-
-      // TODO: https://github.com/phetsims/energy-skate-park/issues/123 create with correct initial x & y values.
-      return this.controlPointGroup.createNextElement( index, 0, { tandem: Tandem.createFromPhetioID( id ) } );
-    } );
-    const newTrack = this.trackGroup.createNextElement( controlPoints, [], {
-      draggable: draggable,
-      configurable: configurable,
-      tandem: tandem
-    } );
-    this.tracks.add( newTrack );
-    return newTrack;
   }
 }
 
