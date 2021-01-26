@@ -201,7 +201,7 @@ class TrackDragHandler extends SimpleDragHandler {
   }
 
   /**
-   * @private
+   * @public
    * @param {Event} event
    */
   trackDragEnded( event ) {
