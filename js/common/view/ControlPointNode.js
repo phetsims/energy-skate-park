@@ -98,10 +98,9 @@ class ControlPointNode extends Circle {
           // If control point dragged out of the control panel, translate the entire track, see #130
           if ( !track.physicalProperty.value || ( !track.droppedProperty.value && track.draggable ) ) {
 
-            // Only start a track drag if nothing else was dragging the track (which caused a flicker), see #282
+            // save drag handler so we can end the drag if we need to after forwarding
             if ( track.dragSource === null ) {
               track.dragSource = inputListener;
-              trackDragHandler && trackDragHandler.trackDragStarted( event );
             }
             return;
           }
