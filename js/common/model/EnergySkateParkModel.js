@@ -137,8 +137,13 @@ class EnergySkateParkModel extends PhetioObject {
     // @public {PhetioGroup.<Track>} group of tracks
     this.trackGroup = new PhetioGroup( ( tandem, controlPoints, parents, options ) => {
       assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
-      return new Track( this, controlPoints, parents, merge( {}, options, { tandem: tandem, phetioDynamicElement: true } ) );
-    }, [ [ this.controlPointGroup.createNextElement( 0, 0 ), this.controlPointGroup.createNextElement( 100, 0 ) ], [], {} ], {
+      return new Track( this, controlPoints, parents, merge( {}, options, {
+        tandem: tandem,
+        phetioDynamicElement: true
+      } ) );
+    }, [ [ this.controlPointGroup.createNextElement( 0, 0 ), this.controlPointGroup.createNextElement( 100, 0 ) ], [], {
+      draggable: true
+    } ], {
       tandem: tandem.createTandem( 'trackGroup' ),
       phetioType: PhetioGroup.PhetioGroupIO( Track.TrackIO ),
       phetioDynamicElementName: 'track'
