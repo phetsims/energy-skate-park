@@ -141,8 +141,9 @@ class EnergySkateParkModel extends PhetioObject {
         tandem: tandem,
         phetioDynamicElement: true
       } ) );
-    }, [ [ this.controlPointGroup.createNextElement( 0, 0 ), this.controlPointGroup.createNextElement( 100, 0 ) ], [], {
-      draggable: true
+    }, [ _.range( 20 ).map( n => this.controlPointGroup.createNextElement( n * 100, 0 ) ), [], {
+      draggable: true,
+      configurable: true
     } ], {
       tandem: tandem.createTandem( 'trackGroup' ),
       phetioType: PhetioGroup.PhetioGroupIO( Track.TrackIO ),
