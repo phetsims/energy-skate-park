@@ -29,7 +29,7 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
-import PhetioGroup from '../../../../tandem/js/PhetioGroup.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import skaterIconImage from '../../../images/skater1_left_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
@@ -129,20 +129,13 @@ class EnergySkateParkScreenView extends ScreenView {
       model.availableModelBoundsProperty.set( bounds );
     } );
 
-    // @public {PhetioGroup.<Track>} group of TrackNodes
-    this.trackNodeGroup = new PhetioGroup( ( tandem, track, modelViewTransform, availableBoundsProperty, options ) => {
-      assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
-      options = merge( { phetioDynamicElement: true }, options );
-      return new TrackNode( track, modelViewTransform, availableBoundsProperty, tandem, options );
-    }, [ model.trackGroup.archetype, modelViewTransform, this.availableModelBoundsProperty, {} ], {
-      tandem: tandem.createTandem( 'trackNodeGroup' ),
-      phetioType: PhetioGroup.PhetioGroupIO( Node.NodeIO ),
-      phetioDynamicElementName: 'trackNode',
-
-      // These elements are not created by the PhET-IO state engine, they can just listen to the model for supporting
-      // state in the same way they do for sim logic.
-      supportsDynamicState: false
-    } );
+    // Mimic the PhetioGroup API until we implement the full instrumentation
+    this.trackNodeGroup = {
+      createNextElement( track, modelViewTransform, availableBoundsProperty, options ) {
+        assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
+        return new TrackNode( track, modelViewTransform, availableBoundsProperty, Tandem.OPT_OUT, options );
+      }
+    };
 
     // @protected
     this.model = model;
