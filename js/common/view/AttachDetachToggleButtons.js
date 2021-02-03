@@ -23,8 +23,8 @@ class AttachDetachToggleButtons extends Panel {
 
   /**
    * Constructor for the AttachDetachToggleButtons
-   * @param {Property<Boolean>} stickingToTrackProperty Axon property that is false if the model state allows the skater to detach
-   * @param {Property<Boolean>} enabledProperty Axon property that is true if the control is enabled
+   * @param {Property.<Boolean>} stickingToTrackProperty Axon property that is false if the model state allows the skater to detach
+   * @param {Property.<Boolean>} enabledProperty Axon property that is true if the control is enabled
    * @param {number} contentWidth Width for the control panel, to match the layout of the rest of the controls.
    * @param {Tandem} tandem
    * @param {Object} [options]
