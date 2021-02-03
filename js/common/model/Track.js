@@ -42,8 +42,8 @@ class Track extends PhetioObject {
    * Model for a track, which has a fixed number of points.  If you added a point to a Track, you need a new track.
    *
    * @param {EnergySkateParkModel} model
-   * @param {Array<ControlPoint>} controlPoints
-   * @param {Array<Track>} parents the original tracks that were used to make this track (if any) so they can be
+   * @param {Array.<ControlPoint>} controlPoints
+   * @param {Array.<Track>} parents the original tracks that were used to make this track (if any) so they can be
    *                            broken apart when dragged back to control panel adjusted control point from going
    *                            offscreen, see #195
    * @param {Object} [options] - required for tandem
@@ -160,7 +160,7 @@ class Track extends PhetioObject {
       valueType: 'boolean'
     } );
 
-    // @public {FastArray<number>}
+    // @public {FastArray.<number>}
     this.parametricPosition = new FastArray( this.controlPoints.length );
     this.x = new FastArray( this.controlPoints.length );
     this.y = new FastArray( this.controlPoints.length );
