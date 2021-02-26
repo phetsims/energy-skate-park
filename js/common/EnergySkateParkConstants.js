@@ -30,10 +30,10 @@ const MAX_FRICTION = 0.1;
 const PANEL_CORNER_RADIUS = 5;
 
 const PANEL_OPTIONS = {
-    cornerRadius: PANEL_CORNER_RADIUS,
-    fill: EnergySkateParkColorScheme.panelFill,
-    stroke: EnergySkateParkColorScheme.panelStroke
-  };
+  cornerRadius: PANEL_CORNER_RADIUS,
+  fill: EnergySkateParkColorScheme.panelFill,
+  stroke: EnergySkateParkColorScheme.panelStroke
+};
 
 const EnergySkateParkConstants = {
   SLIDER_OPTIONS: {
@@ -89,7 +89,7 @@ const EnergySkateParkConstants = {
   MIN_FRICTION: MIN_FRICTION,
   MAX_FRICTION: MAX_FRICTION,
 
-   // it was decided that default friction for this sim should be zero on all screens
+  // it was decided that default friction for this sim should be zero on all screens
   DEFAULT_FRICTION: MIN_FRICTION,
 
   // in m/s^2, including direction (naming aligned with magnitude for readability at usages)

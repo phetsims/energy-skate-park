@@ -118,7 +118,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
     this.trackTypes.forEach( trackType => {
       if ( trackType === PremadeTracks.TrackType.PARABOLA ) {
-        const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this,options.parabolaControlPointOptions );
+        const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, options.parabolaControlPointOptions );
         const parabolaTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, parabolaControlPoints, merge( {
           tandem: tandem.createTandem( 'parabolaTrack' )
         }, options.parabolaTrackOptions ) );
@@ -148,7 +148,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
         const loopTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, loopControlPoints, merge( {
           draggable: this.tracksDraggable,
           tandem: tandem.createTandem( 'loopTrack' )
-        }, options.loopTrackOptions) );
+        }, options.loopTrackOptions ) );
         tracks.push( loopTrack );
       }
     } );

@@ -22,7 +22,7 @@ class EnergySkateParkTrackSetScreenView extends EnergySkateParkSaveSampleScreenV
     super( model, tandem, options );
 
     const trackNodes = model.tracks.map( track => {
-      return this.trackNodeGroup.createNextElement( track, this.modelViewTransform, this.availableModelBoundsProperty);
+      return this.trackNodeGroup.createNextElement( track, this.modelViewTransform, this.availableModelBoundsProperty );
     } );
 
     trackNodes.forEach( trackNode => {

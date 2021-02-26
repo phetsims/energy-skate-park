@@ -83,7 +83,7 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
         } );
       }
       else if ( trackType === PremadeTracks.TrackType.DOUBLE_WELL ) {
-        const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model, controlPointOptions);
+        const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model, controlPointOptions );
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, doubleWellControlPoints, {
           tandem: tandem.createTandem( 'doubleWellTrackIcon' )
         } );

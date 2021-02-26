@@ -21,7 +21,7 @@ class DebugTracks {
    *
    * @param {EnergySkateParkModel} model
    */
-  static init( model) {
+  static init( model ) {
     // Tracks to help demonstrate issues
 
     let controlPoints = null;

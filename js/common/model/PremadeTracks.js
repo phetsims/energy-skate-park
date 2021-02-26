@@ -239,7 +239,7 @@ const PremadeTracks = {
    * @param {Object} [options]
    * @returns {Array.<ControlPoint>}
    */
-  createLoopControlPoints: ( model,  options ) => {
+  createLoopControlPoints: ( model, options ) => {
     options = merge( {
       trackWidth: 9,
       trackHeight: 6,

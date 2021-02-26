@@ -90,7 +90,7 @@ class PhysicalComboBox extends ComboBox {
         // if the new value is one of the ComboBox values, update so that selected value is read on ComboBox display
         let adapterValue = null;
         labelValueList.forEach( entry => {
-          if (entry.value === physicalValue) {
+          if ( entry.value === physicalValue ) {
             adapterValue = entry.value;
           }
         } );
