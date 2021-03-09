@@ -33,8 +33,8 @@ class MeasureScreen extends Screen {
     };
 
     super(
-      () => new MeasureModel( tandem.createTandem( 'measureModel' ) ),
-      model => new MeasureScreenView( model, tandem.createTandem( 'measureScreenView' ) ),
+      () => new MeasureModel( tandem.createTandem( 'model' ) ),
+      model => new MeasureScreenView( model, tandem.createTandem( 'view' ) ),
       options
     );
 

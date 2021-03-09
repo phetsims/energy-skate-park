@@ -24,8 +24,8 @@ class GraphsScreen extends Screen {
    */
   constructor( tandem ) {
     super(
-      () => new GraphsModel( tandem.createTandem( 'graphsModel' ) ),
-      model => new GraphsScreenView( model, tandem.createTandem( 'graphsScreenView' ) ),
+      () => new GraphsModel( tandem.createTandem( 'model' ) ),
+      model => new GraphsScreenView( model, tandem.createTandem( 'view' ) ),
       {
         name: screenGraphsString,
         homeScreenIcon: new ScreenIcon( new Image( graphsScreenIcon ), {

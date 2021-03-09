@@ -25,7 +25,7 @@ class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
     // parent layer for ComboBox, would use "this" but it is not available until after super
     const comboBoxParent = new Node();
 
-    super( model, tandem.createTandem( 'graphsScreenView' ), {
+    super( model, tandem, {
       drawSkaterPath: false,
       showBarGraph: false,
       controlPanelOptions: {

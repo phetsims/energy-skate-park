@@ -34,8 +34,8 @@ class PlaygroundScreen extends Screen {
     };
 
     super(
-      () => new EnergySkateParkPlaygroundModel( tandem.createTandem( 'playgroundModel' ) ),
-      model => new EnergySkateParkPlaygroundScreenView( model, tandem.createTandem( 'playgroundScreenView' ) ),
+      () => new EnergySkateParkPlaygroundModel( tandem.createTandem( 'model' ) ),
+      model => new EnergySkateParkPlaygroundScreenView( model, tandem.createTandem( 'view' ) ),
       options
     );
   }

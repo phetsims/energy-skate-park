@@ -16,7 +16,7 @@ class IntroScreenView extends EnergySkateParkTrackSetScreenView {
    * @param {Tandem} tandem
    */
   constructor( model, tandem ) {
-    super( model, tandem.createTandem( 'introScreenView' ), {
+    super( model, tandem, {
       controlPanelOptions: {
         showMassControls: true,
         gravityControlsOptions: {
