@@ -5,9 +5,8 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import Property from '../../../../axon/js/Property.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
-import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkSaveSampleModel from './EnergySkateParkSaveSampleModel.js';
 import PremadeTracks from './PremadeTracks.js';
@@ -41,10 +40,9 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
     // @public {number} - Indicates the currently selected scene. There can be any number of scenes, do we need
     // to pass this in as a param
-    this.sceneProperty = new Property( 0, {
+    this.sceneProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'sceneProperty' ),
-      validValues: [ 0, 1, 2, 3 ],
-      phetioType: Property.PropertyIO( NumberIO )
+      validValues: [ 0, 1, 2, 3 ]
     } );
 
     // When the scene changes, also change the tracks.
