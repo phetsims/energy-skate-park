@@ -83,7 +83,7 @@ class Skater {
     // conceptual minimum value is less than maximum value.
     this.gravityMagnitudeProperty = new NumberProperty( 9.8, {
       tandem: tandem.createTandem( 'gravityMagnitudeProperty' ),
-      units: 'meters/second/second',
+      units: 'm/s/s',
       range: new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) )
     } );
 
@@ -93,14 +93,14 @@ class Skater {
       assert && assert( gravityWithSign <= 0, 'this sim only supports negative or 0 gravity' );
       return gravityWithSign;
     }, {
-      units: 'meters/second/second',
+      units: 'm/s/s',
       range: new Range( EnergySkateParkConstants.MAX_GRAVITY, EnergySkateParkConstants.MIN_GRAVITY ) // MAX_GRAVITY < MIN_GRAVITY due to sign
     } );
 
     // @public {number} - reference height for potential energy, 0 is at the ground
     this.referenceHeightProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'referenceHeightProperty' ),
-      units: 'meters',
+      units: 'm',
       range: options.referenceHeightRange
     } );
 
@@ -113,7 +113,7 @@ class Skater {
     this.massProperty = new NumberProperty( options.defaultMass, {
       range: options.massRange,
       tandem: tandem.createTandem( 'massProperty' ),
-      units: 'kilograms'
+      units: 'kg'
     } );
 
     // @public {string} - Which way the skater is facing, right or left.  Coded as strings instead of boolean in case
@@ -135,28 +135,28 @@ class Skater {
     // @public {number} - Energies are in Joules
     this.kineticEnergyProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'kineticEnergyProperty' ),
-      units: 'joules',
-      phetioReadOnly: true
+      units: 'J',
+      J: true
     } );
 
     // @public {number}
     this.potentialEnergyProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'potentialEnergyProperty' ),
-      units: 'joules',
+      units: 'J',
       phetioReadOnly: true
     } );
 
     // @public {number}
     this.thermalEnergyProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'thermalEnergyProperty' ),
-      units: 'joules',
+      units: 'J',
       phetioReadOnly: true
     } );
 
     // @public {number}
     this.totalEnergyProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'totalEnergyProperty' ),
-      units: 'joules',
+      units: 'J',
       phetioReadOnly: true
     } );
 
@@ -204,7 +204,7 @@ class Skater {
     // @public {number}
     this.speedProperty = new DerivedProperty( [ this.velocityProperty ], velocity => velocity.magnitude, {
       tandem: tandem.createTandem( 'speedProperty' ),
-      units: 'meters/second',
+      units: 'm/s',
       phetioType: DerivedProperty.DerivedPropertyIO( NumberIO )
     } );
 
