@@ -779,7 +779,7 @@ class EnergySkateParkModel extends PhetioObject {
       let parametricSpeed = ( dot > 0 ? +1 : -1 ) * newSpeed;
       const onTopSideOfTrack = beforeVector.dot( normal ) > 0;
 
-      debug && debug( 'attach to track, ' + ', ' + parametricPosition + ', ' + track.maxPoint );
+      debug && debug( 'attach to track, ' + parametricPosition + ', ' + track.maxPoint );
 
       // Double check the velocities and invert parametricSpeed if incorrect, see #172
       // Compute the new velocities same as in stepTrack
