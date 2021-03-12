@@ -545,7 +545,7 @@ class Track extends PhetioObject {
     let string = '';
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       const point = this.controlPoints[ i ];
-      string = string + '(' + point.positionProperty.value.x + ',' + point.positionProperty.value.y + ')';
+      string = `${string}(${point.positionProperty.value.x},${point.positionProperty.value.y})`;
     }
     return string;
   }
@@ -1120,12 +1120,12 @@ class Track extends PhetioObject {
     let string = 'var controlPoints = [';
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       const controlPoint = this.controlPoints[ i ];
-      string += 'new ControlPoint(' + controlPoint.positionProperty.value.x + ',' + controlPoint.positionProperty.value.y + ')';
+      string += `new ControlPoint(${controlPoint.positionProperty.value.x},${controlPoint.positionProperty.value.y})`;
       if ( i < this.controlPoints.length - 1 ) {
         string += ',';
       }
     }
-    return string + '];';
+    return `${string}];`;
   }
 
   /**

@@ -531,19 +531,19 @@ class EnergySkateParkModel extends PhetioObject {
     // Supply information about a very rare problem that occurs when thermal energy goes negative,
     // see https://github.com/phetsims/energy-skate-park/issues/45
     assert && assert( newThermalEnergy >= 0,
-      'Thermal energy should be non-negative: ' +
-      'skaterState: ' + skaterState + ', ' +
-      'oldPotentialEnergy:' + skaterState.getPotentialEnergy() + ', ' +
-      'skaterPositionY:' + skaterState.positionY + ', ' +
-      'initialEnergy: ' + initialEnergy + ', ' +
-      'proposedPosition: ' + proposedPosition + ', ' +
-      'proposedVelocity: ' + proposedVelocity + ', ' +
-      'dt: ' + dt + ', ' +
-      'newSpeed: ' + newSpeed + ', ' +
-      'newKineticEnergy: ' + newKineticEnergy + ', ' +
-      'newPotentialEnergy: ' + newPotentialEnergy + ', ' +
-      'newThermalEnergy: ' + newThermalEnergy + ', ' +
-      'referenceHeight: ' + skaterState.referenceHeight + ', tracked in https://github.com/phetsims/energy-skate-park/issues/45' );
+      `${'Thermal energy should be non-negative: ' +
+      'skaterState: '}${skaterState}, ` +
+      `oldPotentialEnergy:${skaterState.getPotentialEnergy()}, ` +
+      `skaterPositionY:${skaterState.positionY}, ` +
+      `initialEnergy: ${initialEnergy}, ` +
+      `proposedPosition: ${proposedPosition}, ` +
+      `proposedVelocity: ${proposedVelocity}, ` +
+      `dt: ${dt}, ` +
+      `newSpeed: ${newSpeed}, ` +
+      `newKineticEnergy: ${newKineticEnergy}, ` +
+      `newPotentialEnergy: ${newPotentialEnergy}, ` +
+      `newThermalEnergy: ${newThermalEnergy}, ` +
+      `referenceHeight: ${skaterState.referenceHeight}, tracked in https://github.com/phetsims/energy-skate-park/issues/45` );
 
     if ( !isFinite( newThermalEnergy ) ) { throw new Error( 'not finite' ); }
     return skaterState.switchToGround( newThermalEnergy, newSpeed, 0, proposedPosition.x, proposedPosition.y );
@@ -779,7 +779,7 @@ class EnergySkateParkModel extends PhetioObject {
       let parametricSpeed = ( dot > 0 ? +1 : -1 ) * newSpeed;
       const onTopSideOfTrack = beforeVector.dot( normal ) > 0;
 
-      debug && debug( 'attach to track, ' + parametricPosition + ', ' + track.maxPoint );
+      debug && debug( `attach to track, ${parametricPosition}, ${track.maxPoint}` );
 
       // Double check the velocities and invert parametricSpeed if incorrect, see #172
       // Compute the new velocities same as in stepTrack
@@ -1000,7 +1000,7 @@ class EnergySkateParkModel extends PhetioObject {
         if ( newTotalEnergy < origEnergy ) {
           thermalEnergy += Math.abs( newTotalEnergy - origEnergy );// add some thermal to exactly match
           if ( Math.abs( newTotalEnergy - origEnergy ) > 1E-6 ) {
-            debug && debug( 'Added thermal, dE=' + ( newState.getTotalEnergy() - origEnergy ) );
+            debug && debug( `Added thermal, dE=${newState.getTotalEnergy() - origEnergy}` );
           }
         }
         if ( newTotalEnergy > origEnergy ) {
@@ -1010,7 +1010,7 @@ class EnergySkateParkModel extends PhetioObject {
           else {
             thermalEnergy -= Math.abs( newTotalEnergy - origEnergy );
             if ( Math.abs( newTotalEnergy - origEnergy ) > 1E-6 ) {
-              debug && debug( 'Removed thermal, dE=' + ( newTotalEnergy - origEnergy ) );
+              debug && debug( `Removed thermal, dE=${newTotalEnergy - origEnergy}` );
             }
           }
         }
@@ -1134,7 +1134,7 @@ class EnergySkateParkModel extends PhetioObject {
           return this.correctEnergy( skaterState, result );
         }
         else {
-          debugAttachDetach && debugAttachDetach( 'left edge track: ' + correctedState.parametricPosition + ', ' + skaterState.track.maxPoint );
+          debugAttachDetach && debugAttachDetach( `left edge track: ${correctedState.parametricPosition}, ${skaterState.track.maxPoint}` );
 
           // There is a situation in which the `u` of the skater exceeds the track bounds before the
           // getClosestPositionAndParameter.parametricPosition does, which can cause the skater to immediately reattach
@@ -1262,7 +1262,7 @@ class EnergySkateParkModel extends PhetioObject {
         bestAlpha = proposedAlpha;
       }// continue to find best value closest to proposed u, even if several values give dE=0.0
     }
-    debug && debug( 'After ' + numSteps + ' steps, origAlpha=' + u0 + ', bestAlpha=' + bestAlpha + ', dE=' + bestDE );
+    debug && debug( `After ${numSteps} steps, origAlpha=${u0}, bestAlpha=${bestAlpha}, dE=${bestDE}` );
     return bestAlpha;
   }
 
@@ -1300,7 +1300,7 @@ class EnergySkateParkModel extends PhetioObject {
           // if all velocity is not converted?
           debug && debug( 'Could fix all energy by changing velocity.' );
           const correctedStateA = this.correctEnergyReduceVelocity( skaterState, newState );
-          debug && debug( 'changed velocity: dE=' + ( correctedStateA.getTotalEnergy() - e0 ) );
+          debug && debug( `changed velocity: dE=${correctedStateA.getTotalEnergy() - e0}` );
           if ( !Utils.equalsEpsilon( e0, correctedStateA.getTotalEnergy(), 1E-8 ) ) {
             debug && debug( 'Energy error[0]' );
           }
@@ -1308,7 +1308,7 @@ class EnergySkateParkModel extends PhetioObject {
         }
         else {
           debug && debug( 'Not enough KE to fix with velocity alone: normal:' );
-          debug && debug( 'changed position u: dE=' + ( newState.getTotalEnergy() - e0 ) );
+          debug && debug( `changed position u: dE=${newState.getTotalEnergy() - e0}` );
           // search for a place between u and u0 with a better energy
 
           const numRecursiveSearches = 10;
@@ -1323,7 +1323,7 @@ class EnergySkateParkModel extends PhetioObject {
 
           const point = newState.track.getPoint( bestAlpha );
           const correctedState = newState.updateUPosition( bestAlpha, point.x, point.y );
-          debug && debug( 'changed position u: dE=' + ( correctedState.getTotalEnergy() - e0 ) );
+          debug && debug( `changed position u: dE=${correctedState.getTotalEnergy() - e0}` );
           if ( !Utils.equalsEpsilon( e0, correctedState.getTotalEnergy(), 1E-8 ) ) {
 
             // amount we could reduce the energy if we deleted all the kinetic energy:
@@ -1341,13 +1341,13 @@ class EnergySkateParkModel extends PhetioObject {
             else {
 
               // This error seems to occur with friction turned on at the top of a hill, see https://github.com/phetsims/energy-skate-park-basics/issues/127
-              debug && debug( 'Changed position, wanted to change velocity, but didn\'t have enough to fix it..., dE=' + ( newState.getTotalEnergy() - e0 ) );
+              debug && debug( `Changed position, wanted to change velocity, but didn't have enough to fix it..., dE=${newState.getTotalEnergy() - e0}` );
               if ( newState.thermalEnergy > skaterState.thermalEnergy ) {
                 const increasedThermalEnergy = newState.thermalEnergy - skaterState.thermalEnergy;
                 if ( increasedThermalEnergy > dE ) {
                   const reducedThermalEnergyState = newState.updateThermalEnergy( newState.thermalEnergy - dE );
                   assert && assert( Math.abs( reducedThermalEnergyState.getTotalEnergy() - e0 ) < 1E-6, 'energy should be corrected' );
-                  debug && debug( 'Corrected energy by reducing thermal overestimate' + dE );
+                  debug && debug( `Corrected energy by reducing thermal overestimate${dE}` );
                   return reducedThermalEnergyState;
                 }
                 else {
@@ -1384,7 +1384,7 @@ class EnergySkateParkModel extends PhetioObject {
         const updatedVelocityY = unitParallelVector.y * newVelocity;
         const fixedState = newState.updateUDVelocity( newVelocity, updatedVelocityX, updatedVelocityY );
         debug && debug( 'Set velocity to match energy, when energy was low: ' );
-        debug && debug( 'INC changed velocity: dE=' + ( fixedState.getTotalEnergy() - e0 ) );
+        debug && debug( `INC changed velocity: dE=${fixedState.getTotalEnergy() - e0}` );
         if ( !Utils.equalsEpsilon( e0, fixedState.getTotalEnergy(), 1E-8 ) ) {
           new Error( 'Energy error[2]' ).printStackTrace();
         }

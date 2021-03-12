@@ -109,13 +109,13 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
       const children = [];
 
       if ( options.includeBackground ) {
-        const background = new BackgroundNode( view.layoutBounds, tandem.createTandem( 'backgroundNode' + index ) );
+        const background = new BackgroundNode( view.layoutBounds, tandem.createTandem( `backgroundNode${index}` ) );
         background.layout( new Bounds2( 0, 0, view.layoutBounds.width, view.layoutBounds.height ), 1 );
         children.push( background );
       }
 
       const track = createIconTrack( model.trackTypes[ index ] );
-      const trackNode = new TrackNode( track, view.modelViewTransform, new Property(), tandem.createTandem( 'trackNode' + index ), {
+      const trackNode = new TrackNode( track, view.modelViewTransform, new Property(), tandem.createTandem( `trackNode${index}` ), {
         isIcon: true
       } );
 
@@ -127,7 +127,7 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
       iconNode.pickable = false;
 
       return new Node( {
-        tandem: tandem.createTandem( 'contentNode' + index ),
+        tandem: tandem.createTandem( `contentNode${index}` ),
         children: children
       } );
     };
@@ -168,7 +168,7 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
       radioButtonContent.push( {
         value: i,
         node: alignedNode,
-        tandemName: 'scene' + ( i + 1 ) + 'RadioButton'
+        tandemName: `scene${i + 1}RadioButton`
       } );
     } );
 

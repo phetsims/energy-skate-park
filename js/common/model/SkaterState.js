@@ -452,7 +452,7 @@ class SkaterState {
  * @returns {*}
  */
 const getValue = ( key, source ) => {
-  return typeof source[ key + 'Property' ] === 'object' ? source[ key + 'Property' ].value :
+  return typeof source[ `${key}Property` ] === 'object' ? source[ `${key}Property` ].value :
          source[ key ];
 };
 
