@@ -1,5 +1,5 @@
 {
-  "comment": "# energy-skate-park 1.1.1 Thu Apr 22 2021 12:10:11 GMT-0600 (Mountain Daylight Time)",
+  "comment": "# energy-skate-park 1.1.2-rc.1 Fri Apr 23 2021 12:37:53 GMT-0600 (Mountain Daylight Time)",
   "assert": {
     "sha": "1a41cef653bbed1025af5768bea958d7e3e0f8ae",
     "branch": "HEAD"
@@ -21,7 +21,7 @@
     "branch": "HEAD"
   },
   "energy-skate-park": {
-    "sha": "0d9c51b1b4fe4a13775c0f133a8626aed612e039",
+    "sha": "693e9ea5bf63505a01cd45f6103b0d5ea7d89d14",
     "branch": "1.1"
   },
   "griddle": {
@@ -66,7 +66,7 @@
   },
   "scenery": {
     "sha": "c19667ea09e1fecadbcbe3a48d4093b58d5c31af",
-    "branch": "energy-skate-park-1.1"
+    "branch": "HEAD"
   },
   "scenery-phet": {
     "sha": "bc505a0f31aa12df936041d68858cefa99fdbe8d",
