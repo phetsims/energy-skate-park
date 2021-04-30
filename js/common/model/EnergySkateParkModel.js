@@ -1467,6 +1467,7 @@ class EnergySkateParkModel extends PhetioObject {
     }
     else {
       assert && assert( false, 'Impossible condition for skater, can\'t step' );
+      return skaterState;
     }
   }
 
