@@ -18,6 +18,7 @@ import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
+import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class ControlPoint extends PhetioObject {
@@ -132,6 +133,10 @@ ControlPoint.ControlPointIO = new IOType( 'ControlPointIO', {
   documentation: 'A control point that can manipulate the track.',
   toStateObject: controlPoint => {
     return { x: controlPoint.positionProperty.value.x, y: controlPoint.positionProperty.value.y };
+  },
+  stateSchema: {
+    x: NumberIO,
+    y: NumberIO
   },
   stateToArgsForConstructor: stateObject => {
     assert && assert( typeof stateObject.x === 'number' );

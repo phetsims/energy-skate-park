@@ -16,7 +16,9 @@ import merge from '../../../../phet-core/js/merge.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import ArrayIO from '../../../../tandem/js/types/ArrayIO.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
+import ObjectLiteralIO from '../../../../tandem/js/types/ObjectLiteralIO.js';
 import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import SplineEvaluation from '../SplineEvaluation.js';
@@ -219,13 +221,6 @@ class Track extends PhetioObject {
         configurable: this.configurable
       }
     };
-  }
-
-  // @public
-  static stateToArgsForConstructor( stateObject ) {
-    const controlPoints = stateObject.controlPoints.map( ControlPointReferenceIO.fromStateObject );
-    const parents = stateObject.parents.map( Track.Track.IO.fromStateObject );
-    return [ controlPoints, parents, stateObject.options ];
   }
 
   /**
@@ -1153,7 +1148,18 @@ Track.TrackIO = new IOType( 'TrackIO', {
   valueType: Track,
   documentation: 'A skate track',
   toStateObject: track => track.toStateObject(),
-  stateToArgsForConstructor: stateObject => Track.stateToArgsForConstructor
+
+  // TODO https://github.com/phetsims/phet-io/issues/1774 how to deal with args for schema?
+  stateToArgsForConstructor: stateObject => {
+    const controlPoints = stateObject.controlPoints.map( ControlPointReferenceIO.fromStateObject );
+    const parents = stateObject.parents.map( Track.TrackIO.fromStateObject );
+    return [ controlPoints, parents, stateObject.options ];
+  },
+  stateSchema: TrackIO => ( {
+    controlPoints: ArrayIO( ControlPointReferenceIO ),
+    parents: ArrayIO( TrackIO ),
+    options: ObjectLiteralIO // TODO: https://github.com/phetsims/phet-io/issues/1774
+  } )
 } );
 
 energySkatePark.register( 'Track', Track );
