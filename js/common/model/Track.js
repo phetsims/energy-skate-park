@@ -17,8 +17,8 @@ import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import ArrayIO from '../../../../tandem/js/types/ArrayIO.js';
+import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
-import ObjectLiteralIO from '../../../../tandem/js/types/ObjectLiteralIO.js';
 import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import SplineEvaluation from '../SplineEvaluation.js';
@@ -216,10 +216,8 @@ class Track extends PhetioObject {
     return {
       controlPoints: this.controlPoints.map( ControlPointReferenceIO.toStateObject ),
       parents: this.parents.map( Track.TrackIO.toStateObject ),
-      options: {
-        draggable: this.draggable,
-        configurable: this.configurable
-      }
+      draggable: this.draggable,
+      configurable: this.configurable
     };
   }
 
@@ -1151,12 +1149,16 @@ Track.TrackIO = new IOType( 'TrackIO', {
   stateToArgsForConstructor: stateObject => {
     const controlPoints = stateObject.controlPoints.map( ControlPointReferenceIO.fromStateObject );
     const parents = stateObject.parents.map( Track.TrackIO.fromStateObject );
-    return [ controlPoints, parents, stateObject.options ];
+    return [ controlPoints, parents, {
+      draggable: stateObject.draggable,
+      configurable: stateObject.configurable
+    } ];
   },
   stateSchema: TrackIO => ( {
     controlPoints: ArrayIO( ControlPointReferenceIO ),
     parents: ArrayIO( TrackIO ),
-    options: ObjectLiteralIO // TODO: https://github.com/phetsims/phet-io/issues/1774
+    draggable: BooleanIO,
+    configurable: BooleanIO
   } )
 } );
 
