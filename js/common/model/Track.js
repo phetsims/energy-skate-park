@@ -1148,8 +1148,6 @@ Track.TrackIO = new IOType( 'TrackIO', {
   valueType: Track,
   documentation: 'A skate track',
   toStateObject: track => track.toStateObject(),
-
-  // TODO https://github.com/phetsims/phet-io/issues/1774 how to deal with args for schema?
   stateToArgsForConstructor: stateObject => {
     const controlPoints = stateObject.controlPoints.map( ControlPointReferenceIO.fromStateObject );
     const parents = stateObject.parents.map( Track.TrackIO.fromStateObject );
