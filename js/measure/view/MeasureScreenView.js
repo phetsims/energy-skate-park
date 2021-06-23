@@ -54,12 +54,11 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
    * Custom floating layout for this screen, dependent on available view bounds.
    * @public
    *
-   * @param {number} width
-   * @param {number} height
+   * @param {Bounds2} viewBounds
    * @override
    */
-  layout( width, height ) {
-    super.layout( width, height );
+  layout( viewBounds ) {
+    super.layout( viewBounds );
 
     // in the measure screen the legend is in the top left of the screen
     this.pieChartLegend.mutate( { top: this.controlPanel.top, left: this.fixedLeft } );

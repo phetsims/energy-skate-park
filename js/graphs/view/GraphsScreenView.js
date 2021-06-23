@@ -53,12 +53,11 @@ class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
    * Special layout for the energy-skate-park, contents can float to the available bounds.
    * @public
    *
-   * @param {number} width
-   * @param {number} height
+   * @param {Bounds2} viewBounds
    * @override
    */
-  layout( width, height ) {
-    super.layout( width, height );
+  layout( viewBounds ) {
+    super.layout( viewBounds );
 
     // the graph within the accordion box needs to line up with the right edge of the track and grid lines so that
     // skater positions on track align perfectly with positions along the graph

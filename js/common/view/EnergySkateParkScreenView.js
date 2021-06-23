@@ -488,15 +488,17 @@ class EnergySkateParkScreenView extends ScreenView {
    * @public
    * @override
    *
-   * @param {number} width
-   * @param {number} height
+   * @param {Bounds2} viewBounds
    */
-  layout( width, height ) {
+  layout( viewBounds ) {
     assert && assert( this.controlPanel, 'much of component layout based on control panel, one should be created.' );
 
     this.resetTransform();
 
-    const scale = this.getLayoutScale( width, height );
+    const scale = this.getLayoutScale( viewBounds );
+    const width = viewBounds.width;
+    const height = viewBounds.height;
+
     this.setScaleMagnitude( scale );
 
     let offsetX = 0;
@@ -511,7 +513,7 @@ class EnergySkateParkScreenView extends ScreenView {
     else if ( scale === height / this.layoutBounds.height ) {
       offsetX = ( width - this.layoutBounds.width * scale ) / 2 / scale;
     }
-    this.translate( offsetX, offsetY );
+    this.translate( offsetX + viewBounds.left / scale, offsetY + viewBounds.top / scale );
 
     // availableViewBounds in this sim is the visible area above ground (y=0)
     this.visibleBoundsProperty.set( new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) ) );
