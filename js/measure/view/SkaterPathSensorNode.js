@@ -344,7 +344,12 @@ class SkaterPathSensorNode extends Node {
     this.thermalValueProperty.value = null;
     this.totalValueProperty.value = null;
 
-    assert && assert( this.updateDisplayListener, 'listener not attached to dataSample emitter' );
+    assert && assert( this.updateDisplayListener,
+      `listener not attached to dataSample emitter,
+       dataSample: ${dataSample},
+       this.inspectedSample: ${this.inspectedSample}`,
+       `update listenerL:  ${this.updateDisplayListener}`
+    );
     this.inspectedSample.updatedEmitter.removeListener( this.updateDisplayListener );
 
     this.inspectedSample = null;
