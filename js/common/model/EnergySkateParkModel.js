@@ -65,11 +65,11 @@ const thrust = new Vector2( 0, 0 );
 const FRAME_RATE = 60;
 
 // Flag to enable debugging for physics issues
-const debug = EnergySkateParkQueryParameters.debugLog ? function() {
-  console.log.apply( console, arguments );
+const debug = EnergySkateParkQueryParameters.debugLog ? function( ...args ) {
+  console.log.apply( console, args );
 } : null;
-const debugAttachDetach = EnergySkateParkQueryParameters.debugAttachDetach ? function() {
-  console.log.apply( console, arguments );
+const debugAttachDetach = EnergySkateParkQueryParameters.debugAttachDetach ? function( ...args ) {
+  console.log.apply( console, args );
 } : null;
 
 // Track the model iterations to implement "slow motion" by stepping every Nth frame, see #210
