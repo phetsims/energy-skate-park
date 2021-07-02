@@ -50,9 +50,11 @@ class ToolboxPanel extends Panel {
       },
       tandem: Tandem.OPT_OUT
     } ).rasterized( {
-      cursor: 'pointer',
       resolution: 5,
-      tandem: tandem.createTandem( 'timerIcon' )
+      imageOptions: {
+        cursor: 'pointer',
+        tandem: tandem.createTandem( 'timerIcon' )
+      }
     } );
 
     measuringTapeIcon.setScaleMagnitude( 0.8 );
