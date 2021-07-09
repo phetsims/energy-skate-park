@@ -7,7 +7,7 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import MoveToTrashButton from '../../../../scenery-phet/js/MoveToTrashButton.js';
+import MoveToTrashButton from '../../../../scenery-phet/js/buttons/MoveToTrashButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import HBox from '../../../../scenery/js/nodes/HBox.js';
 import HStrut from '../../../../scenery/js/nodes/HStrut.js';
