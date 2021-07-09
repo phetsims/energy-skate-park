@@ -9,9 +9,11 @@
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
+import Path from '../../../../scenery/js/nodes/Path.js';
 import Color from '../../../../scenery/js/util/Color.js';
+import cutSolidShape from '../../../../sherpa/js/fontawesome-5/cutSolidShape.js';
+import timesCircleSolidShape from '../../../../sherpa/js/fontawesome-5/timesCircleSolidShape.js';
 import RoundPushButton from '../../../../sun/js/buttons/RoundPushButton.js';
-import FontAwesomeNode from '../../../../sun/js/FontAwesomeNode.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class ControlPointUI extends Node {
@@ -67,7 +69,7 @@ class ControlPointUI extends Node {
 
     // Add a scissors cut button, but only for interior points and only if there aren't too many control points already
     if ( !isEndPoint && model.canCutTrackControlPoint() ) {
-      const scissorNode = new FontAwesomeNode( 'cut', { fill: 'black', scale: 0.6, rotation: angle - Math.PI / 2 } );
+      const scissorNode = new Path( cutSolidShape, { fill: 'black', rotation: angle - Math.PI / 2 } );
       cutButton = new RoundPushButton( {
         tandem: tandem.createTandem( 'cutButton' ),
         phetioState: false,
@@ -81,6 +83,9 @@ class ControlPointUI extends Node {
         radius: 20,
         touchAreaRadius: 20 * 1.3,
 
+        xMargin: 8,
+        yMargin: 8,
+
         // yellow color scheme
         baseColor: new Color( '#fefd53' )
       } );
@@ -89,7 +94,7 @@ class ControlPointUI extends Node {
     }
 
     // Show the delete button.
-    const deleteNode = new FontAwesomeNode( 'times_circle', { fill: 'red', scale: 0.6 } );
+    const deleteNode = new Path( timesCircleSolidShape, { fill: 'red', scale: 0.6 } );
     const deleteButton = new RoundPushButton( {
       tandem: tandem.createTandem( 'deleteButton' ),
       phetioState: false,
