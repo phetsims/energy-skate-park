@@ -11,7 +11,7 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import Color from '../../../../scenery/js/util/Color.js';
-import cutSolidShape from '../../../../sherpa/js/fontawesome-5/cutSolidShape.js';
+import scissorsShape from '../../../../sherpa/js/fontawesome-4/scissorsShape.js';
 import timesCircleSolidShape from '../../../../sherpa/js/fontawesome-5/timesCircleSolidShape.js';
 import RoundPushButton from '../../../../sun/js/buttons/RoundPushButton.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -69,7 +69,7 @@ class ControlPointUI extends Node {
 
     // Add a scissors cut button, but only for interior points and only if there aren't too many control points already
     if ( !isEndPoint && model.canCutTrackControlPoint() ) {
-      const scissorNode = new Path( cutSolidShape, { fill: 'black', rotation: angle - Math.PI / 2 } );
+      const scissorNode = new Path( scissorsShape, { fill: 'black', rotation: angle - Math.PI / 2 } );
       cutButton = new RoundPushButton( {
         tandem: tandem.createTandem( 'cutButton' ),
         phetioState: false,
