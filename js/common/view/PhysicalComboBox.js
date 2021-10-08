@@ -48,7 +48,9 @@ class PhysicalComboBox extends ComboBox {
     // {[].ComboBoxItem}
     const itemList = [];
     labelValueList.forEach( entry => {
-      itemList.push( new ComboBoxItem( new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), entry.value ) );
+      itemList.push( new ComboBoxItem( new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), entry.value, {
+        tandemName: entry.tandemName
+      } ) );
     } );
 
     // i18n - if the text gets scaled way down, make sure that the button corner radii aren't larger than content height

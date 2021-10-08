@@ -8,8 +8,8 @@
  */
 
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
+import energySkateParkStrings from '../../energySkateParkStrings.js';
 import SkaterMasses from '../SkaterMasses.js';
 import LabelledComboBox from './LabelledComboBox.js';
 import PhysicalComboBox from './PhysicalComboBox.js';
@@ -35,25 +35,34 @@ class MassComboBox extends LabelledComboBox {
     const labelValueList = [
       {
         label: getFormattedLabel( controlsSkater1MassPatternString, SkaterMasses.SKATER_1_MASS ),
-        value: SkaterMasses.SKATER_1_MASS
+        value: SkaterMasses.SKATER_1_MASS,
+        tandemName: 'skater1MassItem'
       },
       {
         label: getFormattedLabel( controlsSkater2MassPatternString, SkaterMasses.SKATER_2_MASS ),
-        value: SkaterMasses.SKATER_2_MASS
+        value: SkaterMasses.SKATER_2_MASS,
+        tandemName: 'skater2MassItem'
       },
       {
         label: getFormattedLabel( controlsSkater3MassPatternString, SkaterMasses.SKATER_3_MASS ),
-        value: SkaterMasses.SKATER_3_MASS
+        value: SkaterMasses.SKATER_3_MASS,
+        tandemName: 'skater3MassItem'
       },
       {
         label: getFormattedLabel( controlsSkater4MassPatternString, SkaterMasses.SKATER_4_MASS ),
-        value: SkaterMasses.SKATER_4_MASS
+        value: SkaterMasses.SKATER_4_MASS,
+        tandemName: 'skater4MassItem'
       },
       {
         label: getFormattedLabel( controlsSkater5MassPatternString, SkaterMasses.SKATER_5_MASS ),
-        value: SkaterMasses.SKATER_5_MASS
+        value: SkaterMasses.SKATER_5_MASS,
+        tandemName: 'skater5MassItem'
       },
-      { label: getFormattedLabel( controlsDogMassPatternString, SkaterMasses.DOG_MASS ), value: SkaterMasses.DOG_MASS }
+      {
+        label: getFormattedLabel( controlsDogMassPatternString, SkaterMasses.DOG_MASS ),
+        value: SkaterMasses.DOG_MASS,
+        tandemName: 'dogMassItem'
+      }
     ];
     const comboBox = new PhysicalComboBox( massProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, {
       supportCustom: false
