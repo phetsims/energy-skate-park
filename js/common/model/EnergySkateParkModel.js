@@ -24,11 +24,11 @@
  */
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import createObservableArray from '../../../../axon/js/createObservableArray.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Emitter from '../../../../axon/js/Emitter.js';
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
-import createObservableArray from '../../../../axon/js/createObservableArray.js';
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
@@ -273,13 +273,6 @@ class EnergySkateParkModel extends PhetioObject {
     this.tracks = createObservableArray( {
       phetioType: createObservableArray.ObservableArrayIO( ReferenceIO( Track.TrackIO ) ),
       tandem: tandem.createTandem( 'tracks' )
-    } );
-
-    // When tracks are removed, they are no longer used by the application and should be disposed
-    this.tracks.addItemRemovedListener( track => {
-
-      // TODO: may need to add an isDisposedCheck to support PhET-iO state
-      track.dispose();
     } );
 
     // Determine when to show/hide the track edit buttons (cut track or delete control point)
@@ -1534,6 +1527,18 @@ class EnergySkateParkModel extends PhetioObject {
   }
 
   /**
+   * Remove a track from the observable array of tracks and dispose it.
+   * @public
+   *
+   * @param {Track} trackToRemove
+   */
+  removeAndDisposeTrack( trackToRemove ) {
+    assert && assert( this.tracks.includes( trackToRemove ), 'trying to remove track that is not in the list' );
+    this.tracks.remove( trackToRemove );
+    trackToRemove.dispose();
+  }
+
+  /**
    * Find whatever track is connected to the specified track and join them together to a new track.
    * @public
    *
@@ -1563,7 +1568,7 @@ class EnergySkateParkModel extends PhetioObject {
   deleteControlPoint( track, controlPointIndex ) {
 
     track.removeEmitter.emit();
-    this.tracks.remove( track );
+    this.removeAndDisposeTrack( track );
 
     if ( track.controlPoints.length > 2 ) {
       const controlPointToDelete = track.controlPoints[ controlPointIndex ];
@@ -1637,7 +1642,8 @@ class EnergySkateParkModel extends PhetioObject {
     newTrack2.droppedProperty.value = true;
 
     track.removeEmitter.emit();
-    this.tracks.remove( track );
+    this.removeAndDisposeTrack( track );
+
     this.tracks.add( newTrack1 );
     this.tracks.add( newTrack2 );
 
@@ -1660,7 +1666,8 @@ class EnergySkateParkModel extends PhetioObject {
 
       const trackToRemove = this.getNonPhysicalTracks()[ 0 ];
       trackToRemove.removeEmitter.emit();
-      this.tracks.remove( trackToRemove );
+      this.removeAndDisposeTrack( trackToRemove );
+
       trackToRemove.disposeControlPoints();
     }
 
@@ -1732,13 +1739,13 @@ class EnergySkateParkModel extends PhetioObject {
     a.disposeControlPoints();
     a.removeEmitter.emit();
     if ( this.tracks.includes( a ) ) {
-      this.tracks.remove( a );
+      this.removeAndDisposeTrack( a );
     }
 
     b.disposeControlPoints();
     b.removeEmitter.emit();
     if ( this.tracks.includes( b ) ) {
-      this.tracks.remove( b );
+      this.removeAndDisposeTrack( b );
     }
 
     // When tracks are joined, bump the new track above ground so the y value (and potential energy) cannot go negative,
@@ -1858,7 +1865,7 @@ class EnergySkateParkModel extends PhetioObject {
     while ( this.tracks.length > 0 ) {
       const track = this.tracks.get( 0 );
       track.disposeControlPoints();
-      this.tracks.remove( track );
+      this.removeAndDisposeTrack( track );
     }
   }
 }

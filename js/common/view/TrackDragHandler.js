@@ -217,7 +217,7 @@ class TrackDragHandler extends SimpleDragHandler {
 
     // track was released underground and was never added to the play area, so remove it
     if ( !this.isDraggingProperty.get() && !track.physicalProperty.get() ) {
-      model.tracks.remove( track );
+      model.removeAndDisposeTrack( track );
     }
 
     // If the user never dragged the object, then there is no track to drop in this case, see #205

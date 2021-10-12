@@ -659,7 +659,8 @@ class Track extends PhetioObject {
    */
   returnToControlPanel() {
     if ( this.parents.length > 0 ) {
-      this.model.tracks.remove( this );
+      this.model.removeAndDisposeTrack( this );
+
       for ( let i = 0; i < this.parents.length; i++ ) {
         const parent = this.parents[ i ];
         parent.reset();
