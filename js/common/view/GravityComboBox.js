@@ -29,7 +29,7 @@ class GravityComboBox extends PhysicalComboBox {
     const labelValueList = [
       { label: gravityMoonString, value: EnergySkateParkConstants.MOON_GRAVITY, tandemName: 'moonItem' },
       { label: gravityEarthString, value: EnergySkateParkConstants.EARTH_GRAVITY, tandemName: 'earthItem' },
-      { label: gravityJupiterString, value: EnergySkateParkConstants.JUPITER_GRAVITY, tandemName: 'earthItem' }
+      { label: gravityJupiterString, value: EnergySkateParkConstants.JUPITER_GRAVITY, tandemName: 'jupiterItem' }
     ];
 
     super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, options );
