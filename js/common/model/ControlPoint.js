@@ -85,7 +85,8 @@ class ControlPoint extends PhetioObject {
 
     // @public {BooleanProperty} - whether the control point is currently being dragged
     this.draggingProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'draggingProperty' )
+      tandem: tandem.createTandem( 'draggingProperty' ),
+      phetioState: options.phetioState
     } );
 
     // @private
