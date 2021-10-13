@@ -78,7 +78,12 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
         // available model bounds are determined by the size of the screen for this sim
         const bumpListener = bounds => {
           if ( bounds.hasNonzeroArea() ) {
-            this.tracks.get( i ).bumpAboveGround();
+
+            // During state set, nodes can temporarily go below ground, but it will be above ground after the state is
+            // fully set.
+            if ( !phet.joist.sim.isSettingPhetioStateProperty.value ) {
+              this.tracks.get( i ).bumpAboveGround();
+            }
             this.availableModelBoundsProperty.unlink( bumpListener );
           }
         };
