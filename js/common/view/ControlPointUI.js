@@ -57,7 +57,7 @@ class ControlPointUI extends Node {
     phet.joist.display.addInputListener( this.clickToDismissListener );
 
     const isEndPoint = controlPointIndex === 0 || controlPointIndex === track.controlPoints.length - 1;
-    const alpha = new LinearFunction( 0, track.controlPoints.length - 1, track.minPoint, track.maxPoint )( controlPointIndex );
+    const alpha = new LinearFunction( 0, track.controlPoints.length - 1, track.minPoint, track.maxPoint ).evaluate( controlPointIndex );
     const position = track.getPoint( alpha );
     const angle = track.getViewAngleAt( alpha );
     const modelAngle = track.getModelAngleAt( alpha );

@@ -119,7 +119,7 @@ class SkaterNode extends Node {
       matrix.multiplyMatrix( rotationMatrix );
       rotationMatrix.freeToPool();
 
-      const scale = massToScale( mass );
+      const scale = massToScale.evaluate( mass );
       const scalingMatrix = Matrix3.scaling( scale );
       matrix.multiplyMatrix( scalingMatrix );
       scalingMatrix.freeToPool();
