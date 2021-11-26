@@ -1,4 +1,4 @@
-// Copyright 2020, University of Colorado Boulder
+// Copyright 2020-2021, University of Colorado Boulder
 
 /**
  * A ComboBox that selects a an image for a Skater but has no other impact on physical state of the skater.

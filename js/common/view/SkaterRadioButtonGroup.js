@@ -1,4 +1,4 @@
-// Copyright 2020, University of Colorado Boulder
+// Copyright 2020-2021, University of Colorado Boulder
 
 /**
  * A collection of radio buttons that controls skater image, independent of mass. Does not use RectangularRadioButtonGroup
