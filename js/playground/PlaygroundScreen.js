@@ -8,7 +8,7 @@
 
 import Screen from '../../../joist/js/Screen.js';
 import ScreenIcon from '../../../joist/js/ScreenIcon.js';
-import Image from '../../../scenery/js/nodes/Image.js';
+import { Image } from '../../../scenery/js/imports.js';
 import playgroundScreenIcon from '../../images/playground-screen-icon_png.js';
 import energySkateParkStrings from '../energySkateParkStrings.js';
 import energySkatePark from '../energySkatePark.js';

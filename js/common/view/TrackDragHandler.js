@@ -6,7 +6,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import SimpleDragHandler from '../../../../scenery/js/input/SimpleDragHandler.js';
+import { SimpleDragHandler } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 

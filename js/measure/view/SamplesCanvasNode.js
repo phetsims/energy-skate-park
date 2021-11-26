@@ -7,7 +7,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import CanvasNode from '../../../../scenery/js/nodes/CanvasNode.js';
+import { CanvasNode } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 

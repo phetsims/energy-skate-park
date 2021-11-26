@@ -7,7 +7,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import Circle from '../../../../scenery/js/nodes/Circle.js';
+import { Circle } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 

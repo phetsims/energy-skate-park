@@ -8,7 +8,7 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import Image from '../../../../scenery/js/nodes/Image.js';
+import { Image } from '../../../../scenery/js/imports.js';
 import RectangularRadioButtonGroup from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
 import Panel from '../../../../sun/js/Panel.js';
 import attachIcon from '../../../images/attach_png.js';

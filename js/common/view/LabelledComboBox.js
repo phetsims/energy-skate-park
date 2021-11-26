@@ -8,10 +8,10 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import Node from '../../../../scenery/js/nodes/Node.js';
-import Spacer from '../../../../scenery/js/nodes/Spacer.js';
-import Text from '../../../../scenery/js/nodes/Text.js';
-import VBox from '../../../../scenery/js/nodes/VBox.js';
+import { Node } from '../../../../scenery/js/imports.js';
+import { Spacer } from '../../../../scenery/js/imports.js';
+import { Text } from '../../../../scenery/js/imports.js';
+import { VBox } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 

@@ -5,7 +5,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import Node from '../../../../scenery/js/nodes/Node.js';
+import { Node } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
 import GraphsConstants from '../GraphsConstants.js';

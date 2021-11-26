@@ -7,7 +7,6 @@
  */
 
 import simLauncher from '../../joist/js/simLauncher.js';
-import '../../scenery/js/util/Color.js'; // Fix a circular loading problem when using this in EnergySkateParkColorScheme
 import Tandem from '../../tandem/js/Tandem.js';
 import energySkateParkStrings from './energySkateParkStrings.js';
 import EnergySkateParkSim from './common/EnergySkateParkSim.js';

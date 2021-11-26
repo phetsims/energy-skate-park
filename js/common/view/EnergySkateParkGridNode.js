@@ -12,7 +12,7 @@
  */
 
 import GridNode from '../../../../griddle/js/GridNode.js';
-import Node from '../../../../scenery/js/nodes/Node.js';
+import { Node } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import TextPanel from './TextPanel.js';

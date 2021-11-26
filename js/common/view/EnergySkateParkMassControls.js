@@ -7,7 +7,7 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import VBox from '../../../../scenery/js/nodes/VBox.js';
+import { VBox } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import MassComboBox from './MassComboBox.js';
 import MassNumberControl from './MassNumberControl.js';

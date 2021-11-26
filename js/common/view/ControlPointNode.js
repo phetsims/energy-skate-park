@@ -8,9 +8,9 @@
  */
 
 import Emitter from '../../../../axon/js/Emitter.js';
-import SimpleDragHandler from '../../../../scenery/js/input/SimpleDragHandler.js';
-import Circle from '../../../../scenery/js/nodes/Circle.js';
-import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
+import { SimpleDragHandler } from '../../../../scenery/js/imports.js';
+import { Circle } from '../../../../scenery/js/imports.js';
+import { Rectangle } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPointUI from './ControlPointUI.js';

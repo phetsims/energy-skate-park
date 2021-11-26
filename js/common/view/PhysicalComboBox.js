@@ -10,7 +10,7 @@
 
 import Property from '../../../../axon/js/Property.js';
 import merge from '../../../../phet-core/js/merge.js';
-import Text from '../../../../scenery/js/nodes/Text.js';
+import { Text } from '../../../../scenery/js/imports.js';
 import ComboBox from '../../../../sun/js/ComboBox.js';
 import ComboBoxItem from '../../../../sun/js/ComboBoxItem.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';

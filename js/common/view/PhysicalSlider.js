@@ -10,7 +10,7 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import Text from '../../../../scenery/js/nodes/Text.js';
+import { Text } from '../../../../scenery/js/imports.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';

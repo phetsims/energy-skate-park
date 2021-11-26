@@ -8,7 +8,7 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import DragListener from '../../../../scenery/js/listeners/DragListener.js';
+import { DragListener } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';

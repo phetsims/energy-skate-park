@@ -13,10 +13,10 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import AlignGroup from '../../../../scenery/js/nodes/AlignGroup.js';
-import HBox from '../../../../scenery/js/nodes/HBox.js';
-import Text from '../../../../scenery/js/nodes/Text.js';
-import VBox from '../../../../scenery/js/nodes/VBox.js';
+import { AlignGroup } from '../../../../scenery/js/imports.js';
+import { HBox } from '../../../../scenery/js/imports.js';
+import { Text } from '../../../../scenery/js/imports.js';
+import { VBox } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';

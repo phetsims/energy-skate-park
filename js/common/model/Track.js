@@ -13,7 +13,7 @@ import Emitter from '../../../../axon/js/Emitter.js';
 import dot from '../../../../dot/js/dot.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import merge from '../../../../phet-core/js/merge.js';
-import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
+import { SceneryEvent } from '../../../../scenery/js/imports.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import ArrayIO from '../../../../tandem/js/types/ArrayIO.js';
