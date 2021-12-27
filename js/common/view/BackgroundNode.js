@@ -11,8 +11,8 @@ import { Node } from '../../../../scenery/js/imports.js';
 import { Rectangle } from '../../../../scenery/js/imports.js';
 import { LinearGradient } from '../../../../scenery/js/imports.js';
 import { Pattern } from '../../../../scenery/js/imports.js';
-import cementImg from '../../../images/cement-texture-dark_jpg.js';
-import mountainImage from '../../../images/mountains_png.js';
+import cementTextureDark_jpg from '../../../images/cementTextureDark_jpg.js';
+import mountains_png from '../../../images/mountains_png.js';
 import energySkatePark from '../../energySkatePark.js';
 
 // constants
@@ -45,7 +45,7 @@ class BackgroundNode extends Node {
     this.cementY = layoutBounds.height - earthHeight;
 
     // @private
-    this.mountain = new Image( mountainImage, {
+    this.mountain = new Image( mountains_png, {
       scale: 1.23,
       bottom: this.cementY,
       tandem: tandem.createTandem( 'mountainImage' )
@@ -53,7 +53,7 @@ class BackgroundNode extends Node {
     this.addChild( this.mountain );
 
     // @private
-    this.cement = new Rectangle( 0, 0, 0, cementWidth, { fill: new Pattern( cementImg ) } );
+    this.cement = new Rectangle( 0, 0, 0, cementWidth, { fill: new Pattern( cementTextureDark_jpg ) } );
     this.addChild( this.cement );
 
     if ( options ) {

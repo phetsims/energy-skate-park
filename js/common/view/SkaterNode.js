@@ -16,18 +16,18 @@ import { SimpleDragHandler } from '../../../../scenery/js/imports.js';
 import { Circle } from '../../../../scenery/js/imports.js';
 import { Image } from '../../../../scenery/js/imports.js';
 import { Node } from '../../../../scenery/js/imports.js';
-import dogLeftImage from '../../../images/dog_left_png.js';
-import dogRightImage from '../../../images/dog_right_png.js';
-import skater1LeftImage from '../../../images/skater1_left_png.js';
-import skater1RightImage from '../../../images/skater1_right_png.js';
-import skater2LeftImage from '../../../images/skater2_left_png.js';
-import skater2RightImage from '../../../images/skater2_right_png.js';
-import skater3LeftImage from '../../../images/skater3_left_png.js';
-import skater3RightImage from '../../../images/skater3_right_png.js';
-import skater4LeftImage from '../../../images/skater4_left_png.js';
-import skater4RightImage from '../../../images/skater4_right_png.js';
-import skater5LeftImage from '../../../images/skater5_left_png.js';
-import skater5RightImage from '../../../images/skater5_right_png.js';
+import dog_left_png from '../../../images/dog_left_png.js';
+import dog_right_png from '../../../images/dog_right_png.js';
+import skater1_left_png from '../../../images/skater1_left_png.js';
+import skater1_right_png from '../../../images/skater1_right_png.js';
+import skater2_left_png from '../../../images/skater2_left_png.js';
+import skater2_right_png from '../../../images/skater2_right_png.js';
+import skater3_left_png from '../../../images/skater3_left_png.js';
+import skater3_right_png from '../../../images/skater3_right_png.js';
+import skater4_left_png from '../../../images/skater4_left_png.js';
+import skater4_right_png from '../../../images/skater4_right_png.js';
+import skater5_left_png from '../../../images/skater5_left_png.js';
+import skater5_right_png from '../../../images/skater5_right_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from '../model/Skater.js';
 
@@ -60,11 +60,11 @@ class SkaterNode extends Node {
     } );
 
     // @private {Image} - left and right Images for the skater
-    const leftSkaterImageNode = new Image( skater1LeftImage, {
+    const leftSkaterImageNode = new Image( skater1_left_png, {
       cursor: 'pointer',
       tandem: tandem.createTandem( 'leftSkaterImageNode' )
     } );
-    const rightSkaterImageNode = new Image( skater1RightImage, {
+    const rightSkaterImageNode = new Image( skater1_right_png, {
       cursor: 'pointer',
       tandem: tandem.createTandem( 'rightSkaterImageNode' )
     } );
@@ -231,28 +231,28 @@ class SkaterNode extends Node {
 // @static
 SkaterNode.SkaterImage = Enumeration.byMap( {
   SKATER_1: {
-    leftImage: skater1LeftImage,
-    rightImage: skater1RightImage
+    leftImage: skater1_left_png,
+    rightImage: skater1_right_png
   },
   SKATER_2: {
-    leftImage: skater2LeftImage,
-    rightImage: skater2RightImage
+    leftImage: skater2_left_png,
+    rightImage: skater2_right_png
   },
   SKATER_3: {
-    leftImage: skater3LeftImage,
-    rightImage: skater3RightImage
+    leftImage: skater3_left_png,
+    rightImage: skater3_right_png
   },
   SKATER_4: {
-    leftImage: skater4LeftImage,
-    rightImage: skater4RightImage
+    leftImage: skater4_left_png,
+    rightImage: skater4_right_png
   },
   SKATER_5: {
-    leftImage: skater5LeftImage,
-    rightImage: skater5RightImage
+    leftImage: skater5_left_png,
+    rightImage: skater5_right_png
   },
   DOG: {
-    leftImage: dogLeftImage,
-    rightImage: dogRightImage
+    leftImage: dog_left_png,
+    rightImage: dog_right_png
   }
 } );
 

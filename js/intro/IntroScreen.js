@@ -9,7 +9,7 @@
 import Screen from '../../../joist/js/Screen.js';
 import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import { Image } from '../../../scenery/js/imports.js';
-import introScreenIcon from '../../images/intro-screen-icon_png.js';
+import introScreenIcon_png from '../../images/introScreenIcon_png.js';
 import energySkateParkStrings from '../energySkateParkStrings.js';
 import energySkatePark from '../energySkatePark.js';
 import IntroModel from './model/IntroModel.js';
@@ -26,7 +26,7 @@ class IntroScreen extends Screen {
     const options = {
       name: screenIntroductionString,
       tandem: tandem,
-      homeScreenIcon: new ScreenIcon( new Image( introScreenIcon ), {
+      homeScreenIcon: new ScreenIcon( new Image( introScreenIcon_png ), {
         maxIconWidthProportion: 1,
         maxIconHeightProportion: 1
       } )

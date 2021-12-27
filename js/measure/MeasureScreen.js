@@ -9,7 +9,7 @@
 import Screen from '../../../joist/js/Screen.js';
 import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import { Image } from '../../../scenery/js/imports.js';
-import measureScreenIcon from '../../images/measure-screen-icon_png.js';
+import measureScreenIcon_png from '../../images/measureScreenIcon_png.js';
 import energySkateParkStrings from '../energySkateParkStrings.js';
 import energySkatePark from '../energySkatePark.js';
 import MeasureModel from './model/MeasureModel.js';
@@ -25,7 +25,7 @@ class MeasureScreen extends Screen {
   constructor( tandem ) {
     const options = {
       name: screenMeasureString,
-      homeScreenIcon: new ScreenIcon( new Image( measureScreenIcon ), {
+      homeScreenIcon: new ScreenIcon( new Image( measureScreenIcon_png ), {
         maxIconWidthProportion: 1,
         maxIconHeightProportion: 1
       } ),
