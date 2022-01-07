@@ -12,7 +12,7 @@ import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
-import Enumeration from '../../../../phet-core/js/Enumeration.js';
+import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkTrackSetModel from '../../common/model/EnergySkateParkTrackSetModel.js';
 import PremadeTracks from '../../common/model/PremadeTracks.js';
@@ -355,7 +355,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
   }
 }
 
-GraphsModel.IndependentVariable = Enumeration.byKeys( [ 'POSITION', 'TIME' ] );
+GraphsModel.IndependentVariable = EnumerationDeprecated.byKeys( [ 'POSITION', 'TIME' ] );
 
 energySkatePark.register( 'GraphsModel', GraphsModel );
 export default GraphsModel;

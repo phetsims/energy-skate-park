@@ -11,7 +11,7 @@
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
-import Enumeration from '../../../../phet-core/js/Enumeration.js';
+import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
 import { SimpleDragHandler } from '../../../../scenery/js/imports.js';
 import { Circle } from '../../../../scenery/js/imports.js';
 import { Image } from '../../../../scenery/js/imports.js';
@@ -229,7 +229,7 @@ class SkaterNode extends Node {
 // Collection of possible left and right images for the Skater.
 // @public
 // @static
-SkaterNode.SkaterImage = Enumeration.byMap( {
+SkaterNode.SkaterImage = EnumerationDeprecated.byMap( {
   SKATER_1: {
     leftImage: skater1_left_png,
     rightImage: skater1_right_png

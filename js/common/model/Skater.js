@@ -18,7 +18,7 @@ import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
-import Enumeration from '../../../../phet-core/js/Enumeration.js';
+import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
 import merge from '../../../../phet-core/js/merge.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
@@ -453,9 +453,9 @@ class Skater {
   }
 }
 
-// @public {Enumeration}
+// @public {EnumerationDeprecated}
 // @static
-Skater.Direction = Enumeration.byKeys( [ 'LEFT', 'RIGHT' ] );
+Skater.Direction = EnumerationDeprecated.byKeys( [ 'LEFT', 'RIGHT' ] );
 
 energySkatePark.register( 'Skater', Skater );
 export default Skater;

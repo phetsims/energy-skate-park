@@ -13,7 +13,7 @@
 
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
-import Enumeration from '../../../../phet-core/js/Enumeration.js';
+import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
 import merge from '../../../../phet-core/js/merge.js';
 import energySkatePark from '../../energySkatePark.js';
 import Track from './Track.js';
@@ -26,7 +26,7 @@ const END_BOUNDS_WIDTH = 2.5;
 const END_BOUNDS_HEIGHT = 4;
 
 // the supported premade tracks, used in EnegySkateParkTrackSetModels
-const TrackType = Enumeration.byKeys( [ 'PARABOLA', 'SLOPE', 'DOUBLE_WELL', 'LOOP' ] );
+const TrackType = EnumerationDeprecated.byKeys( [ 'PARABOLA', 'SLOPE', 'DOUBLE_WELL', 'LOOP' ] );
 
 /**
  * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the
