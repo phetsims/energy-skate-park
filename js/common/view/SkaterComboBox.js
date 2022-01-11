@@ -27,7 +27,7 @@ const controlsDogString = energySkateParkStrings.skaterControls.dog;
 class SkaterComboBox extends LabelledComboBox {
 
   /**
-   * @param {EnumerationProperty} skaterImageProperty - one of SkaterNode.SkaterImage
+   * @param {EnumerationDeprecatedProperty} skaterImageProperty - one of SkaterNode.SkaterImage
    * @param {Node} listParent - parent Node for the ComboBox
    * @param {Tandem} tandem
    */

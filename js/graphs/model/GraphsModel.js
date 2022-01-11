@@ -7,7 +7,7 @@
  */
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
-import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
+import EnumerationDeprecatedProperty from '../../../../axon/js/EnumerationDeprecatedProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import Range from '../../../../dot/js/Range.js';
@@ -114,7 +114,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
     } );
 
     // @public - sets the independent variable for the graph display
-    this.independentVariableProperty = new EnumerationProperty( GraphsModel.IndependentVariable, GraphsModel.IndependentVariable.POSITION );
+    this.independentVariableProperty = new EnumerationDeprecatedProperty( GraphsModel.IndependentVariable, GraphsModel.IndependentVariable.POSITION );
 
     // @public - whether or not the energy plot is visible
     this.energyPlotVisibleProperty = new BooleanProperty( true, {

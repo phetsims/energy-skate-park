@@ -11,7 +11,7 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Emitter from '../../../../axon/js/Emitter.js';
-import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
+import EnumerationDeprecatedProperty from '../../../../axon/js/EnumerationDeprecatedProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import Range from '../../../../dot/js/Range.js';
@@ -118,7 +118,7 @@ class Skater {
 
     // @public {string} - Which way the skater is facing, right or left.  Coded as strings instead of boolean in case
     // we add other states later like 'forward'
-    this.directionProperty = new EnumerationProperty( Skater.Direction, Skater.Direction.LEFT, {
+    this.directionProperty = new EnumerationDeprecatedProperty( Skater.Direction, Skater.Direction.LEFT, {
       tandem: tandem.createTandem( 'directionProperty' )
     } );
 

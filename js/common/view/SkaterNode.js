@@ -8,7 +8,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
+import EnumerationDeprecatedProperty from '../../../../axon/js/EnumerationDeprecatedProperty.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
 import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
@@ -70,8 +70,8 @@ class SkaterNode extends Node {
     } );
     this.children = [ leftSkaterImageNode, rightSkaterImageNode ];
 
-    // @public {EnumerationProperty} - one of SkaterNode.SkaterImage, set this Property to change the Skater image
-    this.skaterImageProperty = new EnumerationProperty( SkaterNode.SkaterImage, SkaterNode.SkaterImage.SKATER_1 );
+    // @public {EnumerationDeprecatedProperty} - one of SkaterNode.SkaterImage, set this Property to change the Skater image
+    this.skaterImageProperty = new EnumerationDeprecatedProperty( SkaterNode.SkaterImage, SkaterNode.SkaterImage.SKATER_1 );
     this.skaterImageProperty.link( skaterImage => {
       leftSkaterImageNode.image = skaterImage.leftImage;
       rightSkaterImageNode.image = skaterImage.rightImage;
