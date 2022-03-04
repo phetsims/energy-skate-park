@@ -42,9 +42,6 @@ class ReferenceHeightLine extends Node {
     const lineStart = new Vector2( 0, 0 );
     const lineEnd = new Vector2( lineLength, 0 );
     const frontLine = new Line( lineStart, lineEnd, {
-
-      // strokes are not generally pickable, this allows the line itself to be dragged
-      strokePickable: true,
       lineWidth: 4,
       lineDash: lineDash,
       stroke: 'rgb(74,133,208)'
