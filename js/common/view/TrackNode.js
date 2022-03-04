@@ -10,8 +10,7 @@
 
 import dot from '../../../../dot/js/dot.js';
 import merge from '../../../../phet-core/js/merge.js';
-import Shape from '../../../../kite/js/Shape.js';
-import LineStyles from '../../../../kite/js/util/LineStyles.js';
+import { Shape, LineStyles } from '../../../../kite/js/imports.js';
 import { Node } from '../../../../scenery/js/imports.js';
 import { Path } from '../../../../scenery/js/imports.js';
 import Tandem from '../../../../tandem/js/Tandem.js';

@@ -10,7 +10,7 @@
 import Property from '../../../../axon/js/Property.js';
 import Range from '../../../../dot/js/Range.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
-import Shape from '../../../../kite/js/Shape.js';
+import { Shape } from '../../../../kite/js/imports.js';
 import merge from '../../../../phet-core/js/merge.js';
 import GaugeNode from '../../../../scenery-phet/js/GaugeNode.js';
 import { PressListener } from '../../../../scenery/js/imports.js';
