@@ -405,10 +405,8 @@ class EnergySkateParkScreenView extends ScreenView {
         labelOptions: {
           font: new PhetFont( 17 )
         },
-        radioButtonGroupOptions: {
-          radioButtonOptions: {
-            radius: 10
-          }
+        radioButtonOptions: {
+          radius: 10
         }
       }
     } );
