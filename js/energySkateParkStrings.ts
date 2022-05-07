@@ -9,92 +9,92 @@ import energySkatePark from './energySkatePark.js';
 
 type StringsType = {
   'energy-skate-park': {
-    'title': string
-  },
+    'title': string;
+  };
   'physicalControls': {
     'gravityControls': {
-      'gravity': string,
-      'earth': string,
-      'jupiter': string,
-      'moon': string,
-      'gravityMetersPerSecondSquaredPattern': string,
-      'gravityNewtonsPerKilogramPattern': string
-    },
+      'gravity': string;
+      'earth': string;
+      'jupiter': string;
+      'moon': string;
+      'gravityMetersPerSecondSquaredPattern': string;
+      'gravityNewtonsPerKilogramPattern': string;
+    };
     'massControls': {
-      'mass': string,
-      'massKilogramsPattern': string
-    },
-    'friction': string,
-    'custom': string,
-    'small': string,
-    'large': string,
-    'lots': string,
-    'none': string,
-    'tiny': string
-  },
+      'mass': string;
+      'massKilogramsPattern': string;
+    };
+    'friction': string;
+    'custom': string;
+    'small': string;
+    'large': string;
+    'lots': string;
+    'none': string;
+    'tiny': string;
+  };
   'energies': {
-    'thermal': string,
-    'total': string,
-    'kinetic': string,
-    'potential': string,
-    'energy': string
-  },
+    'thermal': string;
+    'total': string;
+    'kinetic': string;
+    'potential': string;
+    'energy': string;
+  };
   'plots': {
     'barGraph': {
-      'label': string
-    },
+      'label': string;
+    };
     'energyGraph': {
-      'label': string
-    },
+      'label': string;
+    };
     'pieChart': {
-      'label': string
-    },
-    'timeSwitchLabel': string,
-    'positionSwitchLabel': string,
-    'timeLabel': string,
-    'positionLabel': string,
-    'energyLabel': string
-  },
+      'label': string;
+    };
+    'timeSwitchLabel': string;
+    'positionSwitchLabel': string;
+    'timeLabel': string;
+    'positionLabel': string;
+    'energyLabel': string;
+  };
   'visibilityControls': {
-    'grid': string,
-    'referenceHeight': string,
-    'path': string,
-    'speed': string
-  },
+    'grid': string;
+    'referenceHeight': string;
+    'path': string;
+    'speed': string;
+  };
   'skaterControls': {
-    'label': string,
-    'skater1MassPattern': string,
-    'skater2MassPattern': string,
-    'skater3MassPattern': string,
-    'skater4MassPattern': string,
-    'skater5MassPattern': string,
-    'dogMassPattern': string,
-    'restartSkater': string
-  },
+    'label': string;
+    'skater1MassPattern': string;
+    'skater2MassPattern': string;
+    'skater3MassPattern': string;
+    'skater4MassPattern': string;
+    'skater5MassPattern': string;
+    'dogMassPattern': string;
+    'restartSkater': string;
+  };
   'trackControls': {
-    'stickToTrack': string
-  },
+    'stickToTrack': string;
+  };
   'screens': {
-    'intro': string,
-    'graphs': string,
-    'playground': string,
-    'measure': string
-  },
+    'intro': string;
+    'graphs': string;
+    'playground': string;
+    'measure': string;
+  };
   'heightLabels': {
-    'zeroM': string,
-    'heightEqualsZero': string
-  },
+    'zeroM': string;
+    'heightEqualsZero': string;
+  };
   'pathSensor': {
-    'energyJoulesPattern': string,
-    'heightMetersPattern': string,
-    'speedMetersPerSecondPattern': string
-  },
+    'energyJoulesPattern': string;
+    'heightMetersPattern': string;
+    'speedMetersPerSecondPattern': string;
+  };
   'speedometer': {
-    'label': string,
-    'metersPerSecondPattern': string
-  },
+    'label': string;
+    'metersPerSecondPattern': string;
+  };
   'measuringTape': {
-    'units': string
+    'units': string;
   }
 };
 
