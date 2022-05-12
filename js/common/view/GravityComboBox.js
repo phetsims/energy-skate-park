@@ -10,6 +10,7 @@ import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalComboBox from './PhysicalComboBox.js';
+import merge from '../../../../phet-core/js/merge.js';
 
 const gravityMoonString = energySkateParkStrings.physicalControls.gravityControls.moon;
 const gravityEarthString = energySkateParkStrings.physicalControls.gravityControls.earth;
@@ -26,6 +27,10 @@ class GravityComboBox extends PhysicalComboBox {
    * @param {Object} [options]
    */
   constructor( gravityProperty, userControlledProperty, resetEmitter, listParent, tandem, options ) {
+
+    options = merge( {
+      yMargin: 4
+    }, options );
 
     const labelValueList = [
       { label: gravityMoonString, value: EnergySkateParkConstants.MOON_GRAVITY, tandemName: 'moonItem' },

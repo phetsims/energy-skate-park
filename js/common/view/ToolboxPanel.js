@@ -57,8 +57,8 @@ class ToolboxPanel extends Panel {
       }
     } );
 
-    measuringTapeIcon.setScaleMagnitude( 0.8 );
-    stopwatchIcon.setScaleMagnitude( 0.5 );
+    measuringTapeIcon.setScaleMagnitude( 0.7 );
+    stopwatchIcon.setScaleMagnitude( 0.4 );
 
     // align icons for panel
     const icons = new HBox( {
