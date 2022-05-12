@@ -19,6 +19,7 @@ class GravityComboBox extends PhysicalComboBox {
 
   /**
    * @param {NumberProperty} gravityProperty
+   * @param {BooleanProperty} userControlledProperty
    * @param {Emitter} resetEmitter
    * @param {Node} listParent - node which the ComboBoxListBox will be added
    * @param {Tandem} tandem
