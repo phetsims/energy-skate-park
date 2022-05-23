@@ -9,7 +9,7 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import EnumerationDeprecatedProperty from '../../../../axon/js/EnumerationDeprecatedProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
-import Property from '../../../../axon/js/Property.js';
+import Multilink from '../../../../axon/js/Multilink.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
@@ -181,7 +181,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
 
     // if any of the UserControlledPropertySet changes, the user is changing something that would modify the
     // physical system and changes everything in saved EnergySkateParkDataSamples
-    Property.lazyMultilink( this.userControlledPropertySet.properties, () => {
+    Multilink.lazyMultilink( this.userControlledPropertySet.properties, () => {
       if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME ) {
         if ( this.dataSamples.length > 0 ) {
 

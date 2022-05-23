@@ -10,6 +10,7 @@
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import Multilink from '../../../../axon/js/Multilink.js';
 import Emitter from '../../../../axon/js/Emitter.js';
 import EnumerationDeprecatedProperty from '../../../../axon/js/EnumerationDeprecatedProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
@@ -244,7 +245,7 @@ class Skater {
       } );
 
     // update energies whenever mass, gravity, or height changes so that energy distribution updates while the sim is paused
-    Property.multilink( [ this.massProperty, this.referenceHeightProperty, this.gravityProperty ], ( mass, referenceHeight, gravity ) => {
+    Multilink.multilink( [ this.massProperty, this.referenceHeightProperty, this.gravityProperty ], ( mass, referenceHeight, gravity ) => {
       this.updateEnergy();
     } );
 

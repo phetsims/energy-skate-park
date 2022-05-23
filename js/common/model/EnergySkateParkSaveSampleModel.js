@@ -15,7 +15,7 @@ import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import Emitter from '../../../../axon/js/Emitter.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import createObservableArray from '../../../../axon/js/createObservableArray.js';
-import Property from '../../../../axon/js/Property.js';
+import Multilink from '../../../../axon/js/Multilink.js';
 import merge from '../../../../phet-core/js/merge.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
@@ -217,7 +217,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
     // existing data is removed immediately when any of these Properties change
     const boundClearSamples = this.clearEnergyData.bind( this );
-    Property.multilink( [ this.saveSamplesProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
+    Multilink.multilink( [ this.saveSamplesProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
     this.skater.returnedEmitter.addListener( boundClearSamples );
     this.trackChangedEmitter.addListener( boundClearSamples );
   }
