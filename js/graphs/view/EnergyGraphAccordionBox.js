@@ -10,23 +10,19 @@
 import Dimension2 from '../../../../dot/js/Dimension2.js';
 import merge from '../../../../phet-core/js/merge.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
+import MagnifyingGlassZoomButtonGroup from '../../../../scenery-phet/js/MagnifyingGlassZoomButtonGroup.js';
+import PhetColorScheme from '../../../../scenery-phet/js/PhetColorScheme.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { AlignGroup } from '../../../../scenery/js/imports.js';
-import { Circle } from '../../../../scenery/js/imports.js';
-import { HBox } from '../../../../scenery/js/imports.js';
-import { Node } from '../../../../scenery/js/imports.js';
-import { Text } from '../../../../scenery/js/imports.js';
-import { VBox } from '../../../../scenery/js/imports.js';
+import { AlignGroup, Circle, HBox, Node, Text, VBox } from '../../../../scenery/js/imports.js';
 import ABSwitch from '../../../../sun/js/ABSwitch.js';
 import AccordionBox from '../../../../sun/js/AccordionBox.js';
 import VerticalCheckboxGroup from '../../../../sun/js/VerticalCheckboxGroup.js';
-import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
+import energySkatePark from '../../energySkatePark.js';
+import energySkateParkStrings from '../../energySkateParkStrings.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
-import EnergyGraphZoomButton from './EnergyGraphZoomButton.js';
 import EnergyChart from './EnergyChart.js';
 
 const kineticEnergyLabelString = energySkateParkStrings.energies.kinetic;
@@ -114,20 +110,22 @@ class EnergyGraphAccordionBox extends AccordionBox {
       tandem: variableSwitchTandem
     } );
 
-    // zoom buttons
-    const touchAreaShift = 3;
-    const zoomInButton = new EnergyGraphZoomButton( model.energyPlotScaleIndexProperty, {
-      touchAreaYShift: -touchAreaShift,
-      tandem: tandem.createTandem( 'zoomInButton' )
-    } );
-    const zoomOutButton = new EnergyGraphZoomButton( model.energyPlotScaleIndexProperty, {
-      in: false,
-      touchAreaYShift: touchAreaShift,
-      tandem: tandem.createTandem( 'zoomOutButton' )
-    } );
-    const zoomButtons = new VBox( {
-      children: [ zoomInButton, zoomOutButton ],
-      spacing: 7
+    const zoomButtonGroup = new MagnifyingGlassZoomButtonGroup( model.energyPlotScaleIndexProperty, {
+      magnifyingGlassNodeOptions: {
+        glassRadius: 6
+      },
+      buttonOptions: {
+        xMargin: 4,
+        yMargin: 4,
+        touchAreaXDilation: 3,
+        touchAreaYDilation: 3,
+
+        baseColor: PhetColorScheme.PHET_LOGO_BLUE
+      },
+
+      spacing: 7,
+      orientation: 'vertical',
+      tandem: tandem.createTandem( 'zoomButtonGroup' )
     } );
 
     // graph labels - y axis includes zoom buttons as part of the label
@@ -138,7 +136,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
     } );
     const xLabelText = new Text( '', { font: LABEL_FONT, maxWidth: energyPlot.width } );
     const yLabel = new VBox( {
-      children: [ yLabelText, zoomButtons ],
+      children: [ yLabelText, zoomButtonGroup ],
       spacing: 10
     } );
     contentNode.addChild( yLabel );
@@ -202,13 +200,6 @@ class EnergyGraphAccordionBox extends AccordionBox {
       xLabelText.text = independentVariable === GraphsModel.IndependentVariable.TIME ? plotsTimeLabelString : plotsPositionLabelString;
       xLabelText.centerX = xLabelText.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.center ) ).x;
       this.clearEnergyData();
-    } );
-
-    model.energyPlotScaleIndexProperty.link( scaleIndex => {
-      const range = model.energyPlotScaleIndexProperty.range;
-      assert && assert( model.energyPlotScaleIndexProperty.range, 'please define a range for energyPlotScaleIndexProperty' );
-      zoomInButton.enabled = scaleIndex > range.min;
-      zoomOutButton.enabled = scaleIndex < range.max;
     } );
   }
 

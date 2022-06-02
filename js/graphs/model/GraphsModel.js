@@ -109,7 +109,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
     this.totalEnergyDataVisibleProperty = new BooleanProperty( true );
 
     // @private - index pointing to the range plotted on the energy plot, see GraphsConstants.PLOT_RANGES
-    this.energyPlotScaleIndexProperty = new NumberProperty( 8, {
+    this.energyPlotScaleIndexProperty = new NumberProperty( 11, {
       range: new Range( 0, GraphsConstants.PLOT_RANGES.length - 1 )
     } );
 
