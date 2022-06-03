@@ -9,21 +9,27 @@
 import merge from '../../../../phet-core/js/merge.js';
 import { VBox } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
+import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import GravityComboBox from './GravityComboBox.js';
 import GravityNumberControl from './GravityNumberControl.js';
 import GravitySlider from './GravitySlider.js';
+
+// constants
+const gravityNewtonsPerKilogramPatternString = energySkateParkStrings.physicalControls.gravityControls.gravityNewtonsPerKilogramPattern;
 
 class EnergySkateParkGravityControls extends VBox {
 
   /**
    * @param {NumberProperty} gravityMagnitudeProperty
    * @param {BooleanProperty} userControlledProperty
+   * @param {EnumerationProperty} accelerationUnitsProperty - controls the units to display acceleration
    * @param {Emitter} resetEmitter - broadcasts a message when the EnergySkateParkModel is reset
    * @param {Node} listParent - parent Node for the ComboBox, if one is included
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( gravityMagnitudeProperty, userControlledProperty, resetEmitter, listParent, tandem, options ) {
+  constructor( gravityMagnitudeProperty, userControlledProperty, accelerationUnitsProperty, resetEmitter, listParent, tandem, options ) {
 
     options = merge( {
 
@@ -52,8 +58,30 @@ class EnergySkateParkGravityControls extends VBox {
     const children = [];
 
     if ( options.includeGravityNumberControl ) {
-      const gravityNumberControl = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityNumberControl' ), options.gravityComboBoxOptions );
-      children.push( gravityNumberControl );
+
+      // The user is able to control the units of gravity with query parameter and checkbox. NumberControl/NumberDisplay
+      // does not support changing the valuePattern so we need to create two NumberControls and swap visibility.
+      if ( options.gravityNumberControlOptions && options.gravityNumberControlOptions.numberDisplayOptions ) {
+        assert && assert( !options.gravityNumberControlOptions.numberDisplayOptions.valuePattern,
+          'valuePattern of the gravity number control is set by EnergySkateParkGravityControls' );
+      }
+      const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityControlInNewtonsPerKilogram' ), options.gravityNumberControlOptions );
+      const gravityControlInNewtonsPerKilogram = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityControlInNewtonsPerKilogram' ), merge( {}, options.gravityNumberControlOptions, {
+          numberDisplayOptions: {
+            valuePattern: gravityNewtonsPerKilogramPatternString
+          }
+        } )
+      );
+
+      children.push( gravityControlInMetersPerSecondSquared );
+      children.push( gravityControlInNewtonsPerKilogram );
+
+      // the units of acceleration determine which control is visible
+      accelerationUnitsProperty.link( accelerationUnits => {
+        const inMetersPerSecond = accelerationUnits === EnergySkateParkModel.AccelerationUnits.METERS_PER_SECOND_SQUARED;
+        gravityControlInMetersPerSecondSquared.visible = inMetersPerSecond;
+        gravityControlInNewtonsPerKilogram.visible = !inMetersPerSecond;
+      } );
     }
 
     if ( options.includeGravitySlider ) {

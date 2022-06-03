@@ -35,6 +35,8 @@ import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
+import Enumeration from '../../../../phet-core/js/Enumeration.js';
+import EnumerationValue from '../../../../phet-core/js/EnumerationValue.js';
 import EventTimer from '../../../../phet-core/js/EventTimer.js';
 import merge from '../../../../phet-core/js/merge.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
@@ -74,6 +76,14 @@ const debugAttachDetach = EnergySkateParkQueryParameters.debugAttachDetach ? fun
 
 // Track the model iterations to implement "slow motion" by stepping every Nth frame, see #210
 let modelIterations = 0;
+
+// Possible representations of units for acceleration in this sim, can be set by query parameter or in preferences
+class AccelerationUnits extends EnumerationValue {
+  static METERS_PER_SECOND_SQUARED = new AccelerationUnits();
+  static NEWTONS_PER_KILOGRAM = new AccelerationUnits();
+
+  static enumeration = new Enumeration( AccelerationUnits );
+}
 
 /**
  * @param {Tandem} tandem
@@ -168,6 +178,12 @@ class EnergySkateParkModel extends PhetioObject {
     } );
     this.speedometerVisibleProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'speedometerVisibleProperty' )
+    } );
+
+    // A Property that controls the acceleration units in the sim, "altAccelerationUnits" changes the default to N/kg
+    const defaultUnits = EnergySkateParkQueryParameters.altAccelerationUnits ? AccelerationUnits.NEWTONS_PER_KILOGRAM : AccelerationUnits.METERS_PER_SECOND_SQUARED;
+    this.accelerationUnitsProperty = new EnumerationProperty( defaultUnits, {
+      tandem: tandem.createTandem( 'accelerationUnitsProperty' )
     } );
 
     // whether the speed value is visible on the speedometer
@@ -1882,6 +1898,10 @@ class EnergySkateParkModel extends PhetioObject {
 const containsAbove = ( bounds, x, y ) => {
   return bounds.minX <= x && x <= bounds.maxX && y <= bounds.maxY;
 };
+
+// @public
+// @static
+EnergySkateParkModel.AccelerationUnits = AccelerationUnits;
 
 EnergySkateParkModel.EnergySkateParkModelIO = new IOType( 'EnergySkateParkModelIO', {
   valueType: EnergySkateParkModel,
