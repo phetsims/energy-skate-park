@@ -24,10 +24,11 @@ import EnergySkateParkDataSample from './EnergySkateParkDataSample.js';
 class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
   /**
+   * @param {EnergySkateParkPreferencesModel} preferencesModel
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( tandem, options ) {
+  constructor( preferencesModel, tandem, options ) {
     options = merge( {
 
       // {boolean} - the default value for whether or not the model is saving
@@ -46,7 +47,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
       maxNumberOfSamples: 50
     }, options );
 
-    super( tandem, options );
+    super( preferencesModel, tandem, options );
 
     // @private {number}
     this.saveSampleInterval = options.saveSampleInterval;

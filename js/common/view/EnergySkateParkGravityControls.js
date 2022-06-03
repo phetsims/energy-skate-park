@@ -10,7 +10,7 @@ import merge from '../../../../phet-core/js/merge.js';
 import { VBox } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
-import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
+import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
 import GravityComboBox from './GravityComboBox.js';
 import GravityNumberControl from './GravityNumberControl.js';
 import GravitySlider from './GravitySlider.js';
@@ -78,7 +78,7 @@ class EnergySkateParkGravityControls extends VBox {
 
       // the units of acceleration determine which control is visible
       accelerationUnitsProperty.link( accelerationUnits => {
-        const inMetersPerSecond = accelerationUnits === EnergySkateParkModel.AccelerationUnits.METERS_PER_SECOND_SQUARED;
+        const inMetersPerSecond = accelerationUnits === EnergySkateParkPreferencesModel.AccelerationUnits.METERS_PER_SECOND_SQUARED;
         gravityControlInMetersPerSecondSquared.visible = inMetersPerSecond;
         gravityControlInNewtonsPerKilogram.visible = !inMetersPerSecond;
       } );
@@ -94,7 +94,7 @@ class EnergySkateParkGravityControls extends VBox {
       children.push( gravityComboBox );
     }
 
-    super( { resize: false, spacing: 8, children: children } );
+    super( { resize: true, spacing: 8, children: children } );
   }
 }
 

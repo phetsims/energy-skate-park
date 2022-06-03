@@ -15,11 +15,11 @@ import energySkatePark from '../../energySkatePark.js';
 class MeasureModel extends EnergySkateParkFullTrackSetModel {
 
   /**
+   * @param {EnergySkateParkPreferencesModel} preferencesModel
    * @param {Tandem} tandem
    */
-  constructor( tandem ) {
-
-    super( tandem, {
+  constructor( preferencesModel, tandem ) {
+    super( preferencesModel, tandem, {
       tracksConfigurable: true
     } );
 

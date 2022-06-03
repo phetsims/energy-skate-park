@@ -8,8 +8,13 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFullTrackSetModel from '../../common/model/EnergySkateParkFullTrackSetModel.js';
 
 class IntroModel extends EnergySkateParkFullTrackSetModel {
-  constructor( tandem ) {
-    super( tandem, {
+
+  /**
+   * @param {EnergySkateParkPreferencesModel} preferencesModel
+   * @param tandem
+   */
+  constructor( preferencesModel, tandem ) {
+    super( preferencesModel, tandem, {
 
       // by default the Intro screen does not save samples
       defaultSaveSamples: false

@@ -8,27 +8,37 @@
 
 import simLauncher from '../../joist/js/simLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
-import energySkateParkStrings from './energySkateParkStrings.js';
+import PreferencesConfiguration from './../../joist/js/preferences/PreferencesConfiguration.js';
 import EnergySkateParkSim from './common/EnergySkateParkSim.js';
+import EnergySkateParkPreferencesModel from './common/model/EnergySkateParkPreferencesModel.js';
+import EnergySkateParkPreferencesNode from './common/view/EnergySkateParkPreferencesNode.js';
+import energySkateParkStrings from './energySkateParkStrings.js';
 import GraphsScreen from './graphs/GraphsScreen.js';
 import IntroScreen from './intro/IntroScreen.js';
-import PlaygroundScreen from './playground/PlaygroundScreen.js';
 import MeasureScreen from './measure/MeasureScreen.js';
+import PlaygroundScreen from './playground/PlaygroundScreen.js';
 
 const energySkateParkTitleString = energySkateParkStrings[ 'energy-skate-park' ].title;
+
+const energySkateParkPreferencesModel = new EnergySkateParkPreferencesModel( Tandem.GENERAL_MODEL.createTandem( 'preferencesModel' ) );
 
 // constants
 const tandem = Tandem.ROOT;
 
 simLauncher.launch( () => {
   const screens = [
-    new IntroScreen( tandem.createTandem( 'introScreen' ) ),
-    new MeasureScreen( tandem.createTandem( 'measureScreen' ) ),
-    new GraphsScreen( tandem.createTandem( 'graphsScreen' ) ),
-    new PlaygroundScreen( tandem.createTandem( 'playgroundScreen' ) )
+    new IntroScreen( energySkateParkPreferencesModel, tandem.createTandem( 'introScreen' ) ),
+    new MeasureScreen( energySkateParkPreferencesModel, tandem.createTandem( 'measureScreen' ) ),
+    new GraphsScreen( energySkateParkPreferencesModel, tandem.createTandem( 'graphsScreen' ) ),
+    new PlaygroundScreen( energySkateParkPreferencesModel, tandem.createTandem( 'playgroundScreen' ) )
   ];
 
   new EnergySkateParkSim( energySkateParkTitleString, screens, tandem, {
+    preferencesConfiguration: new PreferencesConfiguration( {
+      generalOptions: {
+        simControls: new EnergySkateParkPreferencesNode( energySkateParkPreferencesModel, Tandem.GENERAL_VIEW.createTandem( 'preferencesNode' ) )
+      }
+    } ),
     credits: {
       leadDesign: 'Noah Podolefsky, Sam Reid, Amy Rouinfar',
       softwareDevelopment: 'Sam Reid, Jesse Greenberg',

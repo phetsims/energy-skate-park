@@ -20,9 +20,10 @@ const screenMeasureString = energySkateParkStrings.screens.measure;
 class MeasureScreen extends Screen {
 
   /**
+   * @param {EnergySkateParkPreferencesModel} preferencesModel
    * @param {Tandem} tandem
    */
-  constructor( tandem ) {
+  constructor( preferencesModel, tandem ) {
     const options = {
       name: screenMeasureString,
       homeScreenIcon: new ScreenIcon( new Image( measureScreenIcon_png ), {
@@ -33,7 +34,7 @@ class MeasureScreen extends Screen {
     };
 
     super(
-      () => new MeasureModel( tandem.createTandem( 'model' ) ),
+      () => new MeasureModel( preferencesModel, tandem.createTandem( 'model' ) ),
       model => new MeasureScreenView( model, tandem.createTandem( 'view' ) ),
       options
     );

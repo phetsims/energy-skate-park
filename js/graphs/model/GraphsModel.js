@@ -22,9 +22,10 @@ import GraphsConstants from '../GraphsConstants.js';
 class GraphsModel extends EnergySkateParkTrackSetModel {
 
   /**
+   * @param {EnergySkateParkPreferencesModel} preferencesModel
    * @param {Tandem} tandem
    */
-  constructor( tandem ) {
+  constructor( preferencesModel, tandem ) {
 
     // all tracks in the Graphs screen are configurable
     const tracksConfigurable = true;
@@ -34,7 +35,7 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
     const trackWidth = GraphsConstants.TRACK_WIDTH;
 
     // track set model with no friction
-    super( tandem.createTandem( 'graphsModel' ), {
+    super( preferencesModel, tandem.createTandem( 'graphsModel' ), {
 
       // the Graphs screen contains a parabola and double well premade track
       trackTypes: [

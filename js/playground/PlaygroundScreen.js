@@ -20,9 +20,10 @@ const screenPlaygroundString = energySkateParkStrings.screens.playground;
 class PlaygroundScreen extends Screen {
 
   /**
+   * @param {EnergySkateParkPreferencesModel} preferencesModel
    * @param {Tandem} tandem
    */
-  constructor( tandem ) {
+  constructor( preferencesModel, tandem ) {
 
     const options = {
       name: screenPlaygroundString,
@@ -34,7 +35,7 @@ class PlaygroundScreen extends Screen {
     };
 
     super(
-      () => new EnergySkateParkPlaygroundModel( tandem.createTandem( 'model' ) ),
+      () => new EnergySkateParkPlaygroundModel( preferencesModel, tandem.createTandem( 'model' ) ),
       model => new EnergySkateParkPlaygroundScreenView( model, tandem.createTandem( 'view' ) ),
       options
     );

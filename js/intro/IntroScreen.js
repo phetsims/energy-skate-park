@@ -20,9 +20,10 @@ const screenIntroductionString = energySkateParkStrings.screens.intro;
 class IntroScreen extends Screen {
 
   /**
+   * @param {EnergySkateParkPreferencesModel} preferencesModel
    * @param {Tandem} tandem
    */
-  constructor( tandem ) {
+  constructor( preferencesModel, tandem ) {
     const options = {
       name: screenIntroductionString,
       tandem: tandem,
@@ -33,7 +34,7 @@ class IntroScreen extends Screen {
     };
 
     super(
-      () => new IntroModel( tandem.createTandem( 'model' ) ),
+      () => new IntroModel( preferencesModel, tandem.createTandem( 'model' ) ),
       model => new IntroScreenView( model, tandem.createTandem( 'view' ) ),
       options
     );

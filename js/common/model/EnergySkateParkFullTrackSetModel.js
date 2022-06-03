@@ -13,11 +13,12 @@ import EnergySkateParkTrackSetModel from './EnergySkateParkTrackSetModel.js';
 class EnergySkateParkFullTrackSetModel extends EnergySkateParkTrackSetModel {
 
   /**
+   * @param {EnergySkateParkPreferencesModel} preferencesModel
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( tandem, options ) {
-    super( tandem, options );
+  constructor( preferencesModel, tandem, options ) {
+    super( preferencesModel, tandem, options );
   }
 }
 

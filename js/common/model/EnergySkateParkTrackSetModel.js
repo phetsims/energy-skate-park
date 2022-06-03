@@ -14,10 +14,11 @@ import PremadeTracks from './PremadeTracks.js';
 class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
   /**
+   * @param {EnergySkateParkPreferencesModel} preferencesModel
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( tandem, options ) {
+  constructor( preferencesModel, tandem, options ) {
     options = merge( {
 
       // {PremadeTracks.TrackType[]} - list of the premade tracks used in this model. Currently,
@@ -36,7 +37,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
       initializePremadeTracksOptions: null
     }, options );
 
-    super( tandem.createTandem( 'trackSetModel' ), options );
+    super( preferencesModel, tandem.createTandem( 'trackSetModel' ), options );
 
     // @public {number} - Indicates the currently selected scene. There can be any number of scenes, do we need
     // to pass this in as a param

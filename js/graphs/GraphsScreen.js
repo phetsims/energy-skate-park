@@ -20,11 +20,12 @@ const screenGraphsString = energySkateParkStrings.screens.graphs;
 class GraphsScreen extends Screen {
 
   /**
+   * @param {EnergySkateParkPreferencesModel} preferencesModel
    * @param {Tandem} tandem
    */
-  constructor( tandem ) {
+  constructor( preferencesModel, tandem ) {
     super(
-      () => new GraphsModel( tandem.createTandem( 'model' ) ),
+      () => new GraphsModel( preferencesModel, tandem.createTandem( 'model' ) ),
       model => new GraphsScreenView( model, tandem.createTandem( 'view' ) ),
       {
         name: screenGraphsString,

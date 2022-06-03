@@ -9,17 +9,18 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkModel from '../../common/model/EnergySkateParkModel.js';
 import Track from '../../common/model/Track.js';
+import energySkatePark from '../../energySkatePark.js';
 
 class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 
   /**
+   * @param {EnergySkateParkPreferencesModel} preferencesModel
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( tandem, options ) {
+  constructor( preferencesModel, tandem, options ) {
     if ( options ) {
       assert && assert( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
       assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
@@ -30,7 +31,7 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
       tracksConfigurable: true
     }, options );
 
-    super( tandem, options );
+    super( preferencesModel, tandem, options );
   }
 
   /**
@@ -58,9 +59,9 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
     ];
 
     return this.trackGroup.createNextElement( controlPoints, [], merge(
-      {},
-      Track.FULLY_INTERACTIVE_OPTIONS,
-      options.trackOptions
+        {},
+        Track.FULLY_INTERACTIVE_OPTIONS,
+        options.trackOptions
       )
     );
   }
