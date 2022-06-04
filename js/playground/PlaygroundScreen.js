@@ -1,4 +1,4 @@
-// Copyright 2018-2021, University of Colorado Boulder
+// Copyright 2018-2022, University of Colorado Boulder
 
 /**
  * The "Lab" screen. No premade tracks. More open space for the user to play with custom tracks.

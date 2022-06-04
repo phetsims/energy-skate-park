@@ -1,4 +1,4 @@
-// Copyright 2018-2020, University of Colorado Boulder
+// Copyright 2018-2022, University of Colorado Boulder
 
 /**
  * A model for track sets in Energy Skate Park "Full", which has a parabola, slope, loop, and double well tracks.
