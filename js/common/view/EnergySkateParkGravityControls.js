@@ -65,7 +65,7 @@ class EnergySkateParkGravityControls extends VBox {
         assert && assert( !options.gravityNumberControlOptions.numberDisplayOptions.valuePattern,
           'valuePattern of the gravity number control is set by EnergySkateParkGravityControls' );
       }
-      const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityControlInNewtonsPerKilogram' ), options.gravityNumberControlOptions );
+      const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityControlInMetersPerSecondSquared' ), options.gravityNumberControlOptions );
       const gravityControlInNewtonsPerKilogram = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityControlInNewtonsPerKilogram' ), merge( {}, options.gravityNumberControlOptions, {
           numberDisplayOptions: {
             valuePattern: gravityNewtonsPerKilogramPatternString
