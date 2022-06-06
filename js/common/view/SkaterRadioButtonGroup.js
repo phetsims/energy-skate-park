@@ -11,29 +11,20 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import { HBox } from '../../../../scenery/js/imports.js';
-import { Image } from '../../../../scenery/js/imports.js';
-import { Node } from '../../../../scenery/js/imports.js';
-import { VBox } from '../../../../scenery/js/imports.js';
+import { HBox, Image, Node, VBox } from '../../../../scenery/js/imports.js';
 import RectangularRadioButton from '../../../../sun/js/buttons/RectangularRadioButton.js';
-import dogHeadshot_png from '../../../images/dogHeadshot_png.js';
-import skater1Headshot_png from '../../../images/skater1Headshot_png.js';
-import skater2Headshot_png from '../../../images/skater2Headshot_png.js';
-import skater3Headshot_png from '../../../images/skater3Headshot_png.js';
-import skater4Headshot_png from '../../../images/skater4Headshot_png.js';
-import skater5Headshot_png from '../../../images/skater5Headshot_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
-import SkaterNode from './SkaterNode.js';
 
 class SkaterRadioButtonGroup extends Node {
 
   /**
-   * @param {Property.<Image>} skaterImageProperty
+   * @param {Property.<Image>} skaterImageSetProperty - Property for the skater image
+   * @param {SkaterCharacterSet} skaterCharacterSet - The set of characters that this button group selects from
    * @param {Tandem} tandem
    */
-  constructor( skaterImageProperty, tandem ) {
+  constructor( skaterImageSetProperty, skaterCharacterSet, tandem ) {
     super();
 
     const buttonOptions = {
@@ -49,40 +40,40 @@ class SkaterRadioButtonGroup extends Node {
     // Description of the radio buttons
     const contentArray = [
       {
-        value: SkaterNode.SkaterImage.SKATER_1,
-        node: new Image( skater1Headshot_png, { scale: imageScale } ),
+        value: skaterCharacterSet.imageSet1,
+        node: new Image( skaterCharacterSet.imageSet1.headshotImage, { scale: imageScale } ),
         tandemName: 'skater1RadioButton'
       },
       {
-        value: SkaterNode.SkaterImage.SKATER_2,
-        node: new Image( skater2Headshot_png, { scale: imageScale } ),
+        value: skaterCharacterSet.imageSet2,
+        node: new Image( skaterCharacterSet.imageSet2.headshotImage, { scale: imageScale } ),
         tandemName: 'skater2RadioButton'
       },
       {
-        value: SkaterNode.SkaterImage.SKATER_3,
-        node: new Image( skater3Headshot_png, { scale: imageScale } ),
+        value: skaterCharacterSet.imageSet3,
+        node: new Image( skaterCharacterSet.imageSet3.headshotImage, { scale: imageScale } ),
         tandemName: 'skater3RadioButton'
       },
       {
-        value: SkaterNode.SkaterImage.SKATER_4,
-        node: new Image( skater4Headshot_png, { scale: imageScale } ),
+        value: skaterCharacterSet.imageSet4,
+        node: new Image( skaterCharacterSet.imageSet4.headshotImage, { scale: imageScale } ),
         tandemName: 'skater4RadioButton'
       },
       {
-        value: SkaterNode.SkaterImage.SKATER_5,
-        node: new Image( skater5Headshot_png, { scale: imageScale } ),
+        value: skaterCharacterSet.imageSet5,
+        node: new Image( skaterCharacterSet.imageSet5.headshotImage, { scale: imageScale } ),
         tandemName: 'skater5RadioButton'
       },
       {
-        value: SkaterNode.SkaterImage.DOG,
-        node: new Image( dogHeadshot_png, { scale: imageScale } ),
+        value: skaterCharacterSet.imageSet6,
+        node: new Image( skaterCharacterSet.imageSet6.headshotImage, { scale: imageScale } ),
         tandemName: 'dogRadioButton'
       }
     ];
 
     const buttons = [];
     contentArray.forEach( content => {
-      buttons.push( new RectangularRadioButton( skaterImageProperty, content.value, merge( {
+      buttons.push( new RectangularRadioButton( skaterImageSetProperty, content.value, merge( {
         content: content.node,
         tandem: tandem.createTandem( content.tandemName )
       }, buttonOptions ) ) );
@@ -106,7 +97,7 @@ class SkaterRadioButtonGroup extends Node {
 
     // so that the selected button cannot continue to be clicked, a feature of RectangularRadioButtonGroup - this component is
     // never destroyed, no need to dispose
-    skaterImageProperty.link( value => {
+    skaterImageSetProperty.link( value => {
       for ( let i = 0; i < contentArray.length; i++ ) {
         if ( contentArray[ i ].value === value ) {
           buttons[ i ].pickable = false;

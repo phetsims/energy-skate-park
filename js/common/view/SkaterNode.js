@@ -8,28 +8,15 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import EnumerationDeprecatedProperty from '../../../../axon/js/EnumerationDeprecatedProperty.js';
+import Property from '../../../../axon/js/Property.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
-import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
-import { SimpleDragHandler } from '../../../../scenery/js/imports.js';
-import { Circle } from '../../../../scenery/js/imports.js';
-import { Image } from '../../../../scenery/js/imports.js';
-import { Node } from '../../../../scenery/js/imports.js';
-import dog_left_png from '../../../images/dog_left_png.js';
-import dog_right_png from '../../../images/dog_right_png.js';
+import { Circle, Image, Node, SimpleDragHandler } from '../../../../scenery/js/imports.js';
 import skater1_left_png from '../../../images/skater1_left_png.js';
 import skater1_right_png from '../../../images/skater1_right_png.js';
-import skater2_left_png from '../../../images/skater2_left_png.js';
-import skater2_right_png from '../../../images/skater2_right_png.js';
-import skater3_left_png from '../../../images/skater3_left_png.js';
-import skater3_right_png from '../../../images/skater3_right_png.js';
-import skater4_left_png from '../../../images/skater4_left_png.js';
-import skater4_right_png from '../../../images/skater4_right_png.js';
-import skater5_left_png from '../../../images/skater5_left_png.js';
-import skater5_right_png from '../../../images/skater5_right_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from '../model/Skater.js';
+import SkaterImages from './SkaterImages.js';
 
 class SkaterNode extends Node {
 
@@ -70,9 +57,11 @@ class SkaterNode extends Node {
     } );
     this.children = [ leftSkaterImageNode, rightSkaterImageNode ];
 
-    // @public {EnumerationDeprecatedProperty} - one of SkaterNode.SkaterImage, set this Property to change the Skater image
-    this.skaterImageProperty = new EnumerationDeprecatedProperty( SkaterNode.SkaterImage, SkaterNode.SkaterImage.SKATER_1 );
-    this.skaterImageProperty.link( skaterImage => {
+    // @public - One of SkaterImages.SkaterImageSet, with images for left and right motion. Controls the skater
+    // character.
+    this.skaterImageSetProperty = new Property( SkaterImages.SkaterCharacterSets[ 0 ].imageSet1 );
+
+    this.skaterImageSetProperty.link( skaterImage => {
       leftSkaterImageNode.image = skaterImage.leftImage;
       rightSkaterImageNode.image = skaterImage.rightImage;
     } );
@@ -225,36 +214,6 @@ class SkaterNode extends Node {
     }
   }
 }
-
-// Collection of possible left and right images for the Skater.
-// @public
-// @static
-SkaterNode.SkaterImage = EnumerationDeprecated.byMap( {
-  SKATER_1: {
-    leftImage: skater1_left_png,
-    rightImage: skater1_right_png
-  },
-  SKATER_2: {
-    leftImage: skater2_left_png,
-    rightImage: skater2_right_png
-  },
-  SKATER_3: {
-    leftImage: skater3_left_png,
-    rightImage: skater3_right_png
-  },
-  SKATER_4: {
-    leftImage: skater4_left_png,
-    rightImage: skater4_right_png
-  },
-  SKATER_5: {
-    leftImage: skater5_left_png,
-    rightImage: skater5_right_png
-  },
-  DOG: {
-    leftImage: dog_left_png,
-    rightImage: dog_right_png
-  }
-} );
 
 energySkatePark.register( 'SkaterNode', SkaterNode );
 export default SkaterNode;

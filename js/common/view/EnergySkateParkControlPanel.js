@@ -18,6 +18,7 @@ import EnergySkateParkMassControls from './EnergySkateParkMassControls.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
 import FrictionSlider from './FrictionSlider.js';
 import SceneSelectionRadioButtonGroup from './SceneSelectionRadioButtonGroup.js';
+import SkaterImages from './SkaterImages.js';
 import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
 
 class EnergySkateParkControlPanel extends Panel {
@@ -84,14 +85,26 @@ class EnergySkateParkControlPanel extends Panel {
 
     let massControls = null;
     if ( options.showMassControls ) {
-      massControls = new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, screenView.skaterNode.skaterImageProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
+      massControls = new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, screenView.skaterNode.skaterImageSetProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
       children.push( massControls );
     }
 
-    let skaterControls = null;
     if ( options.showSkaterControls ) {
-      skaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageProperty, tandem.createTandem( 'skaterControls' ) );
-      children.push( skaterControls );
+
+      // The set of characters for this control can change. Instead of instantiating a new control we create all
+      // eagerly and swap visibility.
+      const characterSet1SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SkaterCharacterSets[ 0 ], tandem.createTandem( 'skaterControls' ) );
+      const characterSet2SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SkaterCharacterSets[ 1 ], tandem.createTandem( 'skaterControls' ) );
+      children.push( characterSet1SkaterControls );
+      children.push( characterSet2SkaterControls );
+
+      model.preferencesModel.skaterCharacterSetProperty.link( characterSet => {
+        characterSet1SkaterControls.visible = characterSet === SkaterImages.CHARACTER_SET_1;
+        characterSet2SkaterControls.visible = characterSet === SkaterImages.CHARACTER_SET_2;
+
+        // change selected image to first in the character set
+        screenView.skaterNode.skaterImageSetProperty.value = characterSet.imageSet1;
+      } );
     }
 
     // horizontal separators added after construction of all controls so that it can match width of widest control
@@ -128,7 +141,7 @@ class EnergySkateParkControlPanel extends Panel {
       massControls.matchLayout( separatorWidth );
     }
 
-    const content = new VBox( { resize: false, spacing: 8, children: children } );
+    const content = new VBox( { spacing: 8, children: children } );
 
     super( content, merge( {
       xMargin: 5,

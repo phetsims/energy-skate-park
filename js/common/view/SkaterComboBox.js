@@ -10,11 +10,11 @@ import merge from '../../../../phet-core/js/merge.js';
 import { Text } from '../../../../scenery/js/imports.js';
 import ComboBox from '../../../../sun/js/ComboBox.js';
 import ComboBoxItem from '../../../../sun/js/ComboBoxItem.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
+import energySkateParkStrings from '../../energySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import LabelledComboBox from './LabelledComboBox.js';
-import SkaterNode from './SkaterNode.js';
+import SkaterImages from './SkaterImages.js';
 
 const controlsSkaterString = energySkateParkStrings.skaterControls.label;
 const controlsSkater1String = energySkateParkStrings.skaterControls.skater1;
@@ -27,18 +27,18 @@ const controlsDogString = energySkateParkStrings.skaterControls.dog;
 class SkaterComboBox extends LabelledComboBox {
 
   /**
-   * @param {EnumerationDeprecatedProperty} skaterImageProperty - one of SkaterNode.SkaterImage
+   * @param {EnumerationDeprecatedProperty} skaterImageSetProperty - one of SkaterImages.SkaterImageSet
    * @param {Node} listParent - parent Node for the ComboBox
    * @param {Tandem} tandem
    */
-  constructor( skaterImageProperty, listParent, tandem ) {
+  constructor( skaterImageSetProperty, listParent, tandem ) {
     const itemList = [
-      new ComboBoxItem( new Text( controlsSkater1String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterNode.SkaterImage.SKATER_1 ),
-      new ComboBoxItem( new Text( controlsSkater2String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterNode.SkaterImage.SKATER_2 ),
-      new ComboBoxItem( new Text( controlsSkater3String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterNode.SkaterImage.SKATER_3 ),
-      new ComboBoxItem( new Text( controlsSkater4String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterNode.SkaterImage.SKATER_4 ),
-      new ComboBoxItem( new Text( controlsSkater5String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterNode.SkaterImage.SKATER_5 ),
-      new ComboBoxItem( new Text( controlsDogString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterNode.SkaterImage.DOG )
+      new ComboBoxItem( new Text( controlsSkater1String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet1 ),
+      new ComboBoxItem( new Text( controlsSkater2String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet2 ),
+      new ComboBoxItem( new Text( controlsSkater3String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet3 ),
+      new ComboBoxItem( new Text( controlsSkater4String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet4 ),
+      new ComboBoxItem( new Text( controlsSkater5String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet5 ),
+      new ComboBoxItem( new Text( controlsDogString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet6 )
     ];
 
     const options = merge( {
@@ -49,7 +49,7 @@ class SkaterComboBox extends LabelledComboBox {
     const maxItemHeight = _.maxBy( itemList, item => item.node.height ).node.height;
     options.cornerRadius = Math.min( options.cornerRadius, maxItemHeight / 2 );
 
-    const comboBox = new ComboBox( itemList, skaterImageProperty, listParent, options );
+    const comboBox = new ComboBox( itemList, skaterImageSetProperty, listParent, options );
 
     super( comboBox, controlsSkaterString );
   }

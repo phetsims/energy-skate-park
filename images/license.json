@@ -135,7 +135,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Megan Lai"
   },
-  "dogHeadshot.png": {
+  "dog_headshot.png": {
     "text": [
       "Copyright 2002-2020 University of Colorado Boulder"
     ],
@@ -143,7 +143,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Amy Rouinfar"
   },
-  "skater1Headshot.png": {
+  "skater1_headshot.png": {
     "text": [
       "Copyright 2002-2020 University of Colorado Boulder"
     ],
@@ -151,7 +151,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Amy Rouinfar"
   },
-  "skater2Headshot.png": {
+  "skater2_headshot.png": {
     "text": [
       "Copyright 2002-2020 University of Colorado Boulder"
     ],
@@ -159,7 +159,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Amy Rouinfar"
   },
-  "skater3Headshot.png": {
+  "skater3_headshot.png": {
     "text": [
       "Copyright 2002-2020 University of Colorado Boulder"
     ],
@@ -167,7 +167,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Amy Rouinfar"
   },
-  "skater4Headshot.png": {
+  "skater4_headshot.png": {
     "text": [
       "Copyright 2002-2020 University of Colorado Boulder"
     ],
@@ -175,7 +175,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Amy Rouinfar"
   },
-  "skater5Headshot.png": {
+  "skater5_headshot.png": {
     "text": [
       "Copyright 2002-2020 University of Colorado Boulder"
     ],
@@ -214,5 +214,149 @@
     "projectURL": "https://phet.colorado.edu",
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Amy Rouinfar"
+  },
+  "skater1_set2_headshot.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "TODO: Update creation attribution"
+  },
+  "skater2_set2_headshot.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "TODO: Update creation attribution"
+  },
+  "skater3_set2_headshot.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "TODO: Update creation attribution"
+  },
+  "skater4_set2_headshot.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "TODO: Update creation attribution"
+  },
+  "skater5_set2_headshot.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "TODO: Update creation attribution"
+  },
+  "skater6_set2_headshot.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "TODO: Update creation attribution"
+  },
+  "skater1_set2_left.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": ""
+  },
+  "skater1_set2_right.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Megan Lai"
+  },
+  "skater2_set2_left.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Megan Lai"
+  },
+  "skater2_set2_right.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Megan Lai"
+  },
+  "skater3_set2_left.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Megan Lai"
+  },
+  "skater3_set2_right.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Megan Lai"
+  },
+  "skater4_set2_left.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Megan Lai"
+  },
+  "skater4_set2_right.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Megan Lai"
+  },
+  "skater5_set2_left.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Megan Lai"
+  },
+  "skater5_set2_right.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Megan Lai"
+  },
+  "skater6_set2_left.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Megan Lai"
+  },
+  "skater6_set2_right.png": {
+    "text": [
+      "Copyright 2002-2020 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Megan Lai"
   }
 }
