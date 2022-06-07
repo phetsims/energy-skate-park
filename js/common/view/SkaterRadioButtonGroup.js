@@ -17,6 +17,8 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
+const BUTTON_SPACING = 5;
+
 class SkaterRadioButtonGroup extends Node {
 
   /**
@@ -28,7 +30,7 @@ class SkaterRadioButtonGroup extends Node {
     super();
 
     const buttonOptions = {
-      xMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
+      xMargin: 0,
       yMargin: 0,
       cornerRadius: EnergySkateParkConstants.RADIO_BUTTON_CORNER_RADIUS,
       selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke,
@@ -68,6 +70,16 @@ class SkaterRadioButtonGroup extends Node {
         value: skaterCharacterSet.imageSet6,
         node: new Image( skaterCharacterSet.imageSet6.headshotImage, { scale: imageScale } ),
         tandemName: 'dogRadioButton'
+      },
+      {
+        value: skaterCharacterSet.imageSet7,
+        node: new Image( skaterCharacterSet.imageSet7.headshotImage, { scale: imageScale } ),
+        tandemName: 'dogRadioButton'
+      },
+      {
+        value: skaterCharacterSet.imageSet8,
+        node: new Image( skaterCharacterSet.imageSet8.headshotImage, { scale: imageScale } ),
+        tandemName: 'dogRadioButton'
       }
     ];
 
@@ -80,10 +92,10 @@ class SkaterRadioButtonGroup extends Node {
     } );
 
     const rows = [];
-    for ( let i = 0; i < buttons.length; i += 3 ) {
+    for ( let i = 0; i < buttons.length; i += 4 ) {
       rows.push( new HBox( {
-        children: buttons.slice( i, i + 3 ),
-        spacing: 10,
+        children: buttons.slice( i, i + 4 ),
+        spacing: BUTTON_SPACING,
         resize: false
       } ) );
     }
@@ -91,7 +103,7 @@ class SkaterRadioButtonGroup extends Node {
     // arrange buttons in a 2D grid
     this.addChild( new VBox( {
       children: rows,
-      spacing: 3,
+      spacing: BUTTON_SPACING,
       resize: false
     } ) );
 
