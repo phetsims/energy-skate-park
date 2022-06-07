@@ -76,7 +76,7 @@ class EnergySkateParkPreferencesNode extends VBox {
     } );
 
     super( {
-      children: options.accelerationUnitsProperty ? [ accelerationUnitsSwitch, skaterImageSetCarousel ] : [ skaterImageSetCarousel ],
+      children: options.includeAccelerationUnitsControl ? [ accelerationUnitsSwitch, skaterImageSetCarousel ] : [ skaterImageSetCarousel ],
       spacing: 10,
       align: 'left'
     } );
