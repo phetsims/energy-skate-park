@@ -39,7 +39,10 @@ class EnergySkateParkPreferencesModel {
     // Controls the selected SkaterImages.SkaterCharacterSet. A set of characters is selected from Preferences
     // and the actual skater character is chosen from in-screen UI.
     this.skaterCharacterSetProperty = new Property( SkaterImages.CHARACTER_SET_1, {
-      tandem: tandem.createTandem( 'skaterCharacterSetProperty' )
+      tandem: tandem.createTandem( 'skaterCharacterSetProperty' ),
+
+      // TODO: To get it running in Studio, either supply this or create a generalized type for this Property in joist.
+      phetioState: false
     } );
   }
 }

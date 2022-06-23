@@ -69,17 +69,17 @@ class SkaterRadioButtonGroup extends Node {
       {
         value: skaterCharacterSet.imageSet6,
         node: new Image( skaterCharacterSet.imageSet6.headshotImage, { scale: imageScale } ),
-        tandemName: 'dogRadioButton'
+        tandemName: 'skater6RadioButton'
       },
       {
         value: skaterCharacterSet.imageSet7,
         node: new Image( skaterCharacterSet.imageSet7.headshotImage, { scale: imageScale } ),
-        tandemName: 'dogRadioButton'
+        tandemName: 'skater7RadioButton'
       },
       {
         value: skaterCharacterSet.imageSet8,
         node: new Image( skaterCharacterSet.imageSet8.headshotImage, { scale: imageScale } ),
-        tandemName: 'dogRadioButton'
+        tandemName: 'skater8RadioButton'
       }
     ];
 
