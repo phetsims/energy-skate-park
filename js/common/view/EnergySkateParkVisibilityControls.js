@@ -20,7 +20,6 @@ import { VBox } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
-import EnergyBarGraph from './EnergyBarGraph.js';
 import EnergySkateParkCheckboxItem from './EnergySkateParkCheckboxItem.js';
 
 const controlsPathString = energySkateParkStrings.visibilityControls.path;
@@ -51,7 +50,6 @@ class EnergySkateParkVisibilityControls extends VBox {
 
       // {boolean} - whether or not Checkboxes for these Properties are included in the controls
       showPieChartCheckbox: true,
-      showBarGraphCheckbox: false,
       showGridCheckbox: false,
       showSpeedCheckbox: true,
       showReferenceHeightCheckbox: false,
@@ -86,11 +84,6 @@ class EnergySkateParkVisibilityControls extends VBox {
     if ( options.showPieChartCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ) );
       this.addCheckboxContent( pieChartString, iconNode, model.pieChartVisibleProperty, tandem.createTandem( 'pieChartCheckboxContent' ) );
-    }
-
-    if ( options.showBarGraphCheckbox ) {
-      const iconNode = EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ) );
-      this.addCheckboxContent( plotsBarGraphString, iconNode, model.barGraphVisibleProperty, tandem.createTandem( 'barGraphCheckboxContent' ) );
     }
 
     if ( options.showGridCheckbox ) {
