@@ -27,7 +27,6 @@ const controlsReferenceHeightString = energySkateParkStrings.visibilityControls.
 const controlsShowGridString = energySkateParkStrings.visibilityControls.grid;
 const controlsStickToTrackString = energySkateParkStrings.trackControls.stickToTrack;
 const pieChartString = energySkateParkStrings.plots.pieChart.label;
-const plotsBarGraphString = energySkateParkStrings.plots.barGraph.label;
 const propertiesSpeedString = energySkateParkStrings.visibilityControls.speed;
 
 // constants
