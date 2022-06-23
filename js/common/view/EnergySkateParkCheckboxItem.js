@@ -29,12 +29,12 @@ const propertiesSpeedString = energySkateParkStrings.speedometer.label;
 class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
-   * @param {Node} icon
    * @param {Property} property - the checkbox will update this Property
+   * @param {Node} icon
    * @param {Tandem} tandem
    * @param {Object} [options]
    */
-  constructor( icon, property, tandem, options ) {
+  constructor( property, icon, tandem, options ) {
 
     options = merge( {
 
@@ -48,7 +48,7 @@ class EnergySkateParkCheckboxItem extends Checkbox {
       tandem: tandem
     }, options );
 
-    super( icon, property, options );
+    super( property, icon, options );
 
     if ( options.userControlledProperty ) {
 

@@ -145,7 +145,7 @@ class EnergySkateParkVisibilityControls extends VBox {
         userControlledProperty: content.userControlledProperty
       } );
 
-      checkboxItems.push( new EnergySkateParkCheckboxItem( content.checkboxIcon, content.property, content.tandem, options.itemOptions ) );
+      checkboxItems.push( new EnergySkateParkCheckboxItem( content.property, content.checkboxIcon, content.tandem, options.itemOptions ) );
     } );
 
     this.children = checkboxItems;
