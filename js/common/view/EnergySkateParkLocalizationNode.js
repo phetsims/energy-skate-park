@@ -38,7 +38,7 @@ class EnergySkateParkLocalizationNode extends VBox {
     ];
 
     const languageProperty = new Property( 'en' );
-    const languageComboBox = new LanguageComboBox( languageDescriptors, languageProperty, {
+    const languageComboBox = new LanguageComboBox( languageProperty, languageDescriptors, {
       tandem: tandem.createTandem( 'languageComboBox' ),
       phetioState: false
     } );
@@ -57,7 +57,7 @@ class EnergySkateParkLocalizationNode extends VBox {
       }
     ];
 
-    const characterSetComboBox = new CharacterSetComboBox( characterSetDescriptors, preferencesModel.skaterCharacterSetProperty, phet.joist.sim.topLayer, {
+    const characterSetComboBox = new CharacterSetComboBox( preferencesModel.skaterCharacterSetProperty, characterSetDescriptors, phet.joist.sim.topLayer, {
       tandem: tandem.createTandem( 'characterSetComboBox' ),
       phetioState: false
     } );

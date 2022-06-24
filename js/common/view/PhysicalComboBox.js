@@ -107,7 +107,7 @@ class PhysicalComboBox extends ComboBox {
       adapterProperty.reset();
     } );
 
-    super( itemList, adapterProperty, listParent, options );
+    super( adapterProperty, itemList, listParent, options );
   }
 }
 

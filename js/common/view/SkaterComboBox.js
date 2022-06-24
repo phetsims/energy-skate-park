@@ -49,7 +49,7 @@ class SkaterComboBox extends LabelledComboBox {
     const maxItemHeight = _.maxBy( itemList, item => item.node.height ).node.height;
     options.cornerRadius = Math.min( options.cornerRadius, maxItemHeight / 2 );
 
-    const comboBox = new ComboBox( itemList, skaterImageSetProperty, listParent, options );
+    const comboBox = new ComboBox( skaterImageSetProperty, itemList, listParent, options );
 
     super( comboBox, controlsSkaterString );
   }
