@@ -12,7 +12,6 @@ import Property from '../../../../axon/js/Property.js';
 import merge from '../../../../phet-core/js/merge.js';
 import { Text } from '../../../../scenery/js/imports.js';
 import ComboBox from '../../../../sun/js/ComboBox.js';
-import ComboBoxItem from '../../../../sun/js/ComboBoxItem.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -48,9 +47,11 @@ class PhysicalComboBox extends ComboBox {
     // {[].ComboBoxItem}
     const itemList = [];
     labelValueList.forEach( entry => {
-      itemList.push( new ComboBoxItem( new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), entry.value, {
+      itemList.push( {
+        value: entry.value,
+        node: new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ),
         tandemName: entry.tandemName
-      } ) );
+      } );
     } );
 
     // i18n - if the text gets scaled way down, make sure that the button corner radii aren't larger than content height
@@ -58,7 +59,10 @@ class PhysicalComboBox extends ComboBox {
     options.cornerRadius = Math.min( options.cornerRadius, maxItemHeight / 2 );
 
     if ( options.supportCustom ) {
-      itemList.push( new ComboBoxItem( new Text( controlsGravityCustomString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), null ) );
+      itemList.push( {
+        value: null,
+        node: new Text( controlsGravityCustomString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS )
+      } );
     }
 
     // adapter Property for the ComboBox because the physicalProperty can be set to values other than those defined

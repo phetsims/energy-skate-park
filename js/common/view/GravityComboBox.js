@@ -6,11 +6,12 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import merge from '../../../../phet-core/js/merge.js';
+import ComboBox from '../../../../sun/js/ComboBox.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalComboBox from './PhysicalComboBox.js';
-import merge from '../../../../phet-core/js/merge.js';
 
 const gravityMoonString = energySkateParkStrings.physicalControls.gravityControls.moon;
 const gravityEarthString = energySkateParkStrings.physicalControls.gravityControls.earth;
@@ -33,9 +34,9 @@ class GravityComboBox extends PhysicalComboBox {
     }, options );
 
     const labelValueList = [
-      { label: gravityMoonString, value: EnergySkateParkConstants.MOON_GRAVITY, tandemName: 'moonItem' },
-      { label: gravityEarthString, value: EnergySkateParkConstants.EARTH_GRAVITY, tandemName: 'earthItem' },
-      { label: gravityJupiterString, value: EnergySkateParkConstants.JUPITER_GRAVITY, tandemName: 'jupiterItem' }
+      { label: gravityMoonString, value: EnergySkateParkConstants.MOON_GRAVITY, tandemName: `moon${ComboBox.ITEM_TANDEM_NAME_SUFFIX}` },
+      { label: gravityEarthString, value: EnergySkateParkConstants.EARTH_GRAVITY, tandemName: `earth${ComboBox.ITEM_TANDEM_NAME_SUFFIX}` },
+      { label: gravityJupiterString, value: EnergySkateParkConstants.JUPITER_GRAVITY, tandemName: `jupiterItem${ComboBox.ITEM_TANDEM_NAME_SUFFIX}` }
     ];
 
     super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, options );

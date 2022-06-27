@@ -1,7 +1,7 @@
 // Copyright 2020-2022, University of Colorado Boulder
 
 /**
- * A ComboBox that selects a an image for a Skater but has no other impact on physical state of the skater.
+ * A ComboBox that selects an image for a Skater but has no other impact on physical state of the skater.
  *
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
@@ -9,7 +9,6 @@
 import merge from '../../../../phet-core/js/merge.js';
 import { Text } from '../../../../scenery/js/imports.js';
 import ComboBox from '../../../../sun/js/ComboBox.js';
-import ComboBoxItem from '../../../../sun/js/ComboBoxItem.js';
 import energySkatePark from '../../energySkatePark.js';
 import energySkateParkStrings from '../../energySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -33,12 +32,12 @@ class SkaterComboBox extends LabelledComboBox {
    */
   constructor( skaterImageSetProperty, listParent, tandem ) {
     const itemList = [
-      new ComboBoxItem( new Text( controlsSkater1String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet1 ),
-      new ComboBoxItem( new Text( controlsSkater2String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet2 ),
-      new ComboBoxItem( new Text( controlsSkater3String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet3 ),
-      new ComboBoxItem( new Text( controlsSkater4String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet4 ),
-      new ComboBoxItem( new Text( controlsSkater5String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet5 ),
-      new ComboBoxItem( new Text( controlsDogString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ), SkaterImages.SkaterCharacterSets[ 0 ].imageSet6 )
+      { value: SkaterImages.SkaterCharacterSets[ 0 ].imageSet1, node: new Text( controlsSkater1String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ) },
+      { value: SkaterImages.SkaterCharacterSets[ 0 ].imageSet2, node: new Text( controlsSkater2String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ) },
+      { value: SkaterImages.SkaterCharacterSets[ 0 ].imageSet3, node: new Text( controlsSkater3String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ) },
+      { value: SkaterImages.SkaterCharacterSets[ 0 ].imageSet4, node: new Text( controlsSkater4String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ) },
+      { value: SkaterImages.SkaterCharacterSets[ 0 ].imageSet5, node: new Text( controlsSkater5String, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ) },
+      { value: SkaterImages.SkaterCharacterSets[ 0 ].imageSet6, node: new Text( controlsDogString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ) }
     ];
 
     const options = merge( {
