@@ -7,11 +7,12 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Enumeration from '../../../../phet-core/js/Enumeration.js';
 import EnumerationValue from '../../../../phet-core/js/EnumerationValue.js';
 import energySkatePark from '../../energySkatePark.js';
-import Property from '../../../../axon/js/Property.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import SkaterImages from '../view/SkaterImages.js';
 
@@ -36,13 +37,17 @@ class EnergySkateParkPreferencesModel {
       tandem: tandem.createTandem( 'accelerationUnitsProperty' )
     } );
 
+    // A value indicating the selected character set for the Character Set combo box.
+    this.characterSetProperty = new NumberProperty( 0, {
+      tandem: tandem.createTandem( 'characterSetProperty' )
+    } );
+
     // Controls the selected SkaterImages.SkaterCharacterSet. A set of characters is selected from Preferences
     // and the actual skater character is chosen from in-screen UI.
-    this.skaterCharacterSetProperty = new Property( SkaterImages.CHARACTER_SET_1, {
-      tandem: tandem.createTandem( 'skaterCharacterSetProperty' ),
+    this.skaterCharacterSetProperty = new DerivedProperty( [ this.characterSetProperty ], characterSet => {
 
-      // TODO: To get it running in Studio, either supply this or create a generalized type for this Property in joist.
-      phetioState: false
+      // TODO: more character sets here from other characterSet values when read
+      return characterSet === 0 ? SkaterImages.CHARACTER_SET_1 : SkaterImages.CHARACTER_SET_2;
     } );
   }
 }
