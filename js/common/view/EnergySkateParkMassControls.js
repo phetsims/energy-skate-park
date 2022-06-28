@@ -46,7 +46,6 @@ class EnergySkateParkMassControls extends VBox {
       massComboBoxOptions: null
     }, options );
     assert && assert( !( options.includeMassSlider && options.includeMassNumberControl ), 'only MassSlider OR MassNumberControl can be used at one time' );
-    assert && assert( !( options.includeMassComboBox && options.includeSkaterComboBox ), 'only MassComboBox OR SkaterComboBox can be used at one time' );
 
     const children = [];
 

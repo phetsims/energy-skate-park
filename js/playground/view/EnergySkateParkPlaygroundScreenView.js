@@ -33,9 +33,6 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
           showSpeedCheckbox: true,
           showStickToTrackCheckbox: true
         },
-        massControlsOptions: {
-          includeSkaterComboBox: true
-        },
         gravityControlsOptions: {
           includeGravityComboBox: true
         }
