@@ -61,7 +61,8 @@ class PhysicalComboBox extends ComboBox {
     if ( options.supportCustom ) {
       itemList.push( {
         value: null,
-        node: new Text( controlsGravityCustomString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS )
+        node: new Text( controlsGravityCustomString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ),
+        tandemName: 'customItem'
       } );
     }
 
