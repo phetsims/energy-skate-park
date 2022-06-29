@@ -7,11 +7,9 @@
  */
 
 import CharacterSetComboBox from '../../../../joist/js/preferences/CharacterSetComboBox.js';
-import { VBox, Image } from '../../../../scenery/js/imports.js';
+import { Image, VBox } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import SkaterImages from './SkaterImages.js';
-import Property from '../../../../axon/js/Property.js';
-import LanguageComboBox from '../../../../joist/js/preferences/LanguageComboBox.js';
 
 // strings are not translatable until design is complete, see https://github.com/phetsims/joist/issues/814
 const unitedStatesOfAmerica = 'United States of America';
@@ -19,29 +17,6 @@ const africaConservative = 'Africa - Conservative';
 
 class EnergySkateParkLocalizationNode extends VBox {
   constructor( preferencesModel, tandem ) {
-
-    // language controls
-    // TODO: How do we populate these? Maybe someday the runnable will know all of its supported locales?
-    const languageDescriptors = [
-      {
-        locale: 'en',
-        localeLabel: 'English'
-      },
-      {
-        locale: 'es',
-        localeLabel: 'Spanish'
-      },
-      {
-        locale: 'af',
-        localeLabel: 'Afrikaans'
-      }
-    ];
-
-    const languageProperty = new Property( 'en' );
-    const languageComboBox = new LanguageComboBox( languageProperty, languageDescriptors, {
-      tandem: tandem.createTandem( 'languageComboBox' ),
-      phetioState: false
-    } );
 
     // character set controls
     const characterSetDescriptors = [
@@ -65,13 +40,12 @@ class EnergySkateParkLocalizationNode extends VBox {
     super( {
       align: 'left',
       spacing: 15,
-      children: [ languageComboBox, characterSetComboBox ],
+      children: [ characterSetComboBox ],
       tandem: tandem
     } );
 
     // @private
     this.disposeEnergySkateParkLocalizationNode = () => {
-      languageComboBox.dispose();
       characterSetComboBox.dispose();
     };
   }
