@@ -276,7 +276,8 @@ class EnergySkateParkScreenView extends ScreenView {
       const unitsProperty = new Property( { name: measuringTapeUnitsString, multiplier: 1 } );
 
       // @private {MeasuringTapeNode}
-      this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, model.measuringTapeVisibleProperty, {
+      this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, {
+        visibleProperty: model.measuringTapeVisibleProperty,
         basePositionProperty: model.measuringTapeBasePositionProperty,
         tipPositionProperty: model.measuringTapeTipPositionProperty,
         modelViewTransform: modelViewTransform,

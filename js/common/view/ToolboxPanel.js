@@ -36,8 +36,9 @@ class ToolboxPanel extends Panel {
     }, EnergySkateParkConstants.PANEL_OPTIONS, options );
 
     // create the icons
-    const measuringTapeIcon = MeasuringTapeNode.createIcon();
-    measuringTapeIcon.cursor = 'pointer';
+    const measuringTapeIcon = MeasuringTapeNode.createIcon( {
+      cursor: 'pointer'
+    } );
 
     const stopwatchIcon = new StopwatchNode( new Stopwatch( {
       isVisible: true,
