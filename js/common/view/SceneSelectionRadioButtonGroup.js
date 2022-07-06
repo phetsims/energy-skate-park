@@ -39,11 +39,13 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
 
       // specific and passed to RectangularRadioButtonGroup
       orientation: 'horizontal',
-      buttonContentXMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
-      buttonContentYMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
-      cornerRadius: EnergySkateParkConstants.RADIO_BUTTON_CORNER_RADIUS,
-      selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke,
-      baseColor: EnergySkateParkColorScheme.radioButtonBaseColor,
+      radioButtonOptions: {
+        xMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
+        yMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
+        cornerRadius: EnergySkateParkConstants.RADIO_BUTTON_CORNER_RADIUS,
+        selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke,
+        baseColor: EnergySkateParkColorScheme.radioButtonBaseColor
+      },
       tandem: tandem,
 
       // {boolean} - should mountains, background, and sky be included in the icon for track buttons?

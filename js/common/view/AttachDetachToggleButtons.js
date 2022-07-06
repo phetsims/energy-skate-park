@@ -69,15 +69,17 @@ class AttachDetachToggleButtons extends Panel {
 
     const radioButtonGroup = new RectangularRadioButtonGroup( stickingToTrackProperty, radioButtonsContent,
       {
-        buttonContentXMargin: 0,
-        buttonContentYMargin: 0,
-        baseColor: 'white',
-        spacing: buttonSpacing,
-        cornerRadius: 6,
-        selectedLineWidth: SELECTED_LINE_WIDTH,
-        selectedStroke: '#3291b8',
-        deselectedStroke: 'gray',
         orientation: 'horizontal',
+        spacing: buttonSpacing,
+        radioButtonOptions: {
+          xMargin: 0,
+          yMargin: 0,
+          baseColor: 'white',
+          cornerRadius: 6,
+          selectedLineWidth: SELECTED_LINE_WIDTH,
+          selectedStroke: '#3291b8',
+          deselectedStroke: 'gray'
+        },
         tandem: radioButtonGroupTandem
       } );
 
