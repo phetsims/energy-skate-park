@@ -1,4 +1,4 @@
-// Copyright 2013-2021, University of Colorado Boulder
+// Copyright 2013-2022, University of Colorado Boulder
 
 /**
  * Radio button group for choosing one of the tracks, used in a "Track Set" screen of EnergySkatePark. This changes
