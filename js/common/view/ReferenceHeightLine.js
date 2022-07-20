@@ -9,14 +9,12 @@
  */
 
 import DynamicProperty from '../../../../axon/js/DynamicProperty.js';
-import Vector2 from '../../../../dot/js/Vector2.js';
 import Property from '../../../../axon/js/Property.js';
+import Vector2 from '../../../../dot/js/Vector2.js';
 import ArrowNode from '../../../../scenery-phet/js/ArrowNode.js';
-import { DragListener } from '../../../../scenery/js/imports.js';
-import { Line } from '../../../../scenery/js/imports.js';
-import { Node } from '../../../../scenery/js/imports.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import { DragListener, Line, Node } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
+import energySkateParkStrings from '../../energySkateParkStrings.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TextPanel from './TextPanel.js';
 

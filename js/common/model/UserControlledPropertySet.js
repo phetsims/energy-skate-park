@@ -6,8 +6,8 @@
  * @author Jesse Greenberg
  */
 
-import energySkatePark from '../../energySkatePark.js';
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import energySkatePark from '../../energySkatePark.js';
 
 class UserControlledPropertySet {
   constructor() {

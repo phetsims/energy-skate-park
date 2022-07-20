@@ -6,8 +6,8 @@
 
 import merge from '../../../../phet-core/js/merge.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import SamplesCanvasNode from '../../measure/view/SamplesCanvasNode.js';
+import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 
 class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
   constructor( model, tandem, options ) {

@@ -4,8 +4,8 @@
  * @author Jesse Greenberg
  */
 
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFullTrackSetModel from '../../common/model/EnergySkateParkFullTrackSetModel.js';
+import energySkatePark from '../../energySkatePark.js';
 
 class IntroModel extends EnergySkateParkFullTrackSetModel {
 

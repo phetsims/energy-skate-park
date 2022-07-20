@@ -8,8 +8,8 @@
  */
 
 import Panel from '../../../../sun/js/Panel.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkVisibilityControls from '../../common/view/EnergySkateParkVisibilityControls.js';
+import energySkatePark from '../../energySkatePark.js';
 
 class GraphsVisibilityControls extends Panel {
 

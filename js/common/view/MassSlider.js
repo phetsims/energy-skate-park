@@ -7,8 +7,8 @@
  */
 
 import Utils from '../../../../dot/js/Utils.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
+import energySkateParkStrings from '../../energySkateParkStrings.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
 const controlsMassString = energySkateParkStrings.physicalControls.massControls.mass;

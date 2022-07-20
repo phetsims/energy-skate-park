@@ -10,18 +10,18 @@
 
 import Emitter from '../../../../axon/js/Emitter.js';
 import Property from '../../../../axon/js/Property.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import DynamicSeries from '../../../../griddle/js/DynamicSeries.js';
 import DynamicSeriesNode from '../../../../griddle/js/DynamicSeriesNode.js';
 import PointStyle from '../../../../griddle/js/PointStyle.js';
 import PointStyledVector2 from '../../../../griddle/js/PointStyledVector2.js';
 import XYCursorChartNode from '../../../../griddle/js/XYCursorChartNode.js';
-import Bounds2 from '../../../../dot/js/Bounds2.js';
 import merge from '../../../../phet-core/js/merge.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
+import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 

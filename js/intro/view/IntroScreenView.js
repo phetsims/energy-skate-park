@@ -6,8 +6,8 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
+import energySkatePark from '../../energySkatePark.js';
 
 class IntroScreenView extends EnergySkateParkTrackSetScreenView {
 

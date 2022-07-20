@@ -11,9 +11,9 @@
 import merge from '../../../../phet-core/js/merge.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
 import { Color } from '../../../../scenery/js/imports.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkScreenView from '../../common/view/EnergySkateParkScreenView.js';
 import TrackToolboxPanel from '../../common/view/TrackToolboxPanel.js';
+import energySkatePark from '../../energySkatePark.js';
 
 class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 

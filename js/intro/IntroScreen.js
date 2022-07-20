@@ -10,8 +10,8 @@ import Screen from '../../../joist/js/Screen.js';
 import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import { Image } from '../../../scenery/js/imports.js';
 import introScreenIcon_png from '../../images/introScreenIcon_png.js';
-import energySkateParkStrings from '../energySkateParkStrings.js';
 import energySkatePark from '../energySkatePark.js';
+import energySkateParkStrings from '../energySkateParkStrings.js';
 import IntroModel from './model/IntroModel.js';
 import IntroScreenView from './view/IntroScreenView.js';
 

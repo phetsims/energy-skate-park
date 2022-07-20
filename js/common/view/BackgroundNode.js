@@ -6,11 +6,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import { Image } from '../../../../scenery/js/imports.js';
-import { Node } from '../../../../scenery/js/imports.js';
-import { Rectangle } from '../../../../scenery/js/imports.js';
-import { LinearGradient } from '../../../../scenery/js/imports.js';
-import { Pattern } from '../../../../scenery/js/imports.js';
+import { Image, LinearGradient, Node, Pattern, Rectangle } from '../../../../scenery/js/imports.js';
 import cementTextureDark_jpg from '../../../images/cementTextureDark_jpg.js';
 import mountains_png from '../../../images/mountains_png.js';
 import energySkatePark from '../../energySkatePark.js';

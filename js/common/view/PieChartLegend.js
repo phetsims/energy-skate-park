@@ -9,15 +9,10 @@
 import merge from '../../../../phet-core/js/merge.js';
 import MoveToTrashButton from '../../../../scenery-phet/js/buttons/MoveToTrashButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { HBox } from '../../../../scenery/js/imports.js';
-import { HStrut } from '../../../../scenery/js/imports.js';
-import { Rectangle } from '../../../../scenery/js/imports.js';
-import { Text } from '../../../../scenery/js/imports.js';
-import { VBox } from '../../../../scenery/js/imports.js';
-import { VStrut } from '../../../../scenery/js/imports.js';
+import { HBox, HStrut, Rectangle, Text, VBox, VStrut } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
 import energySkatePark from '../../energySkatePark.js';
+import energySkateParkStrings from '../../energySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 

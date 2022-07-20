@@ -12,14 +12,14 @@
  */
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
-import Emitter from '../../../../axon/js/Emitter.js';
-import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import createObservableArray from '../../../../axon/js/createObservableArray.js';
+import Emitter from '../../../../axon/js/Emitter.js';
 import Multilink from '../../../../axon/js/Multilink.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkModel from './EnergySkateParkModel.js';
 import EnergySkateParkDataSample from './EnergySkateParkDataSample.js';
+import EnergySkateParkModel from './EnergySkateParkModel.js';
 
 class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 

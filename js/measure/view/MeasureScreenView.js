@@ -7,8 +7,8 @@
  */
 
 import { Node } from '../../../../scenery/js/imports.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
+import energySkatePark from '../../energySkatePark.js';
 import InspectedSampleHaloNode from './InspectedSampleHaloNode.js';
 import SkaterPathSensorNode from './SkaterPathSensorNode.js';
 

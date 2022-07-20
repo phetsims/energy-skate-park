@@ -6,8 +6,8 @@
  */
 
 import { Node } from '../../../../scenery/js/imports.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
+import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
 import EnergyGraphAccordionBox from './EnergyGraphAccordionBox.js';
 

@@ -8,15 +8,15 @@
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import EnumerationDeprecatedProperty from '../../../../axon/js/EnumerationDeprecatedProperty.js';
-import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Multilink from '../../../../axon/js/Multilink.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkTrackSetModel from '../../common/model/EnergySkateParkTrackSetModel.js';
 import PremadeTracks from '../../common/model/PremadeTracks.js';
 import SkaterState from '../../common/model/SkaterState.js';
+import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
 
 class GraphsModel extends EnergySkateParkTrackSetModel {
