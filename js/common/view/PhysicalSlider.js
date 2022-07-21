@@ -1,4 +1,4 @@
-// Copyright 2018-2021, University of Colorado Boulder
+// Copyright 2018-2022, University of Colorado Boulder
 
 /**
  * Controls a physical value of the model. This is just a slider with a label and labeled tick marks. It extends
