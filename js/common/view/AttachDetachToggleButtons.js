@@ -67,21 +67,22 @@ class AttachDetachToggleButtons extends Panel {
     const buttonSpacing = contentWidth - ( options.xMargin * 2 ) - ( radioButtonsContent[ 0 ].node.width * 2 ) - SELECTED_LINE_WIDTH * 2;
     assert && assert( buttonSpacing > 0, 'buttons must have non zero spacing' );
 
-    const radioButtonGroup = new RectangularRadioButtonGroup( stickingToTrackProperty, radioButtonsContent,
-      {
-        orientation: 'horizontal',
-        spacing: buttonSpacing,
-        radioButtonOptions: {
-          xMargin: 0,
-          yMargin: 0,
-          baseColor: 'white',
-          cornerRadius: 6,
+    const radioButtonGroup = new RectangularRadioButtonGroup( stickingToTrackProperty, radioButtonsContent, {
+      orientation: 'horizontal',
+      spacing: buttonSpacing,
+      radioButtonOptions: {
+        xMargin: 0,
+        yMargin: 0,
+        baseColor: 'white',
+        cornerRadius: 6,
+        buttonAppearanceStrategyOptions: {
           selectedLineWidth: SELECTED_LINE_WIDTH,
           selectedStroke: '#3291b8',
           deselectedStroke: 'gray'
-        },
-        tandem: radioButtonGroupTandem
-      } );
+        }
+      },
+      tandem: radioButtonGroupTandem
+    } );
 
     const panelOptions = merge( { tandem: tandem }, options );
     super( radioButtonGroup, panelOptions );
