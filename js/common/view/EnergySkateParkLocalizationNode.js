@@ -32,10 +32,8 @@ class EnergySkateParkLocalizationNode extends VBox {
       }
     ];
 
-    const characterSetComboBox = new CharacterSetComboBox( preferencesModel.skaterCharacterSetProperty, characterSetDescriptors, phet.joist.sim.topLayer, {
-      tandem: tandem.createTandem( 'characterSetComboBox' ),
-      phetioState: false
-    } );
+    const characterSetComboBox = new CharacterSetComboBox( preferencesModel.skaterCharacterSetProperty,
+      characterSetDescriptors, phet.joist.sim.topLayer );
 
     super( {
       align: 'left',
