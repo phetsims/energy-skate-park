@@ -114,7 +114,9 @@ class PhysicalNumberControl extends NumberControl {
           arrowButtonSpacing: 2,
 
           // can be multiple physical controls in a panel, need to make some extra space
-          verticalSpacing: 2
+          verticalSpacing: 2,
+
+          layoutInvisibleButtons: true
         } );
         const children = defaultLayoutFunction( titleNode, numberDisplay, slider, leftArrowButton, rightArrowButton );
 
