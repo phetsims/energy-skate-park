@@ -11,7 +11,7 @@ import Property from '../../../../axon/js/Property.js';
 import Range from '../../../../dot/js/Range.js';
 import BarChartNode from '../../../../griddle/js/BarChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
-import MoveToTrashButton from '../../../../scenery-phet/js/buttons/MoveToTrashButton.js';
+import MoveToTrashLegendButton from '../../../../scenery-phet/js/buttons/MoveToTrashLegendButton.js';
 import ZoomButton from '../../../../scenery-phet/js/buttons/ZoomButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { HBox, Node, Rectangle, Text, VBox } from '../../../../scenery/js/imports.js';
@@ -62,7 +62,7 @@ class EnergyBarGraph extends Node {
     } );
 
     // button to remove thermal energy will be below the "thermal" energy label
-    const clearThermalButton = new MoveToTrashButton( {
+    const clearThermalButton = new MoveToTrashLegendButton( {
       arrowColor: EnergySkateParkColorScheme.thermalEnergy,
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: skater.clearThermal.bind( skater ),

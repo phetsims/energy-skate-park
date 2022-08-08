@@ -7,7 +7,7 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import MoveToTrashButton from '../../../../scenery-phet/js/buttons/MoveToTrashButton.js';
+import MoveToTrashLegendButton from '../../../../scenery-phet/js/buttons/MoveToTrashLegendButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { HBox, HStrut, Rectangle, Text, VBox, VStrut } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
@@ -67,7 +67,7 @@ class PieChartLegend extends Panel {
     const thermalLabel = createLabel( 2, energyThermalString, 'thermalEnergyLabel' );
     const totalLabel = createLabel( 3, energyTotalString, 'totalEnergyLabel' );
 
-    const clearThermalButton = new MoveToTrashButton( {
+    const clearThermalButton = new MoveToTrashLegendButton( {
       arrowColor: EnergySkateParkColorScheme.thermalEnergy,
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: clearThermal,
@@ -79,7 +79,7 @@ class PieChartLegend extends Panel {
       clearThermalButton.enabled = allowClearingThermalEnergy;
     } );
 
-    // Don't let the MoveToTrashButton participate in the layout since it is too big vertically.  Just use a strut to
+    // Don't let the MoveToTrashLegendButton participate in the layout since it is too big vertically.  Just use a strut to
     // get the width right, then add the undo button later
     const clearThermalButtonStrut = new Rectangle( 0, 0, clearThermalButton.width, 1, {} );
 
