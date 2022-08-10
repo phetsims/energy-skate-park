@@ -125,7 +125,7 @@ class EnergySkateParkModel extends PhetioObject {
     // bounds when adjusted, see #195
     this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
       tandem: tandem.createTandem( 'availableModelBoundsProperty' ),
-      phetioType: Property.PropertyIO( Bounds2.Bounds2IO )
+      phetioValueType: Bounds2.Bounds2IO
     } );
 
     // @public {PhetioGroup.<ControlPoint>} group of control points

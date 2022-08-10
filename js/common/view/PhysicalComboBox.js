@@ -70,7 +70,7 @@ class PhysicalComboBox extends ComboBox {
     // in labelValueList - value is null which means 'Custom'
     const adapterProperty = new Property( physicalProperty.value, {
       reentrant: true,
-      phetioType: Property.PropertyIO( NullableIO( NumberIO ) ),
+      phetioValueType: NullableIO( NumberIO ),
       tandem: tandem.createTandem( 'adapterProperty' )
     } );
 

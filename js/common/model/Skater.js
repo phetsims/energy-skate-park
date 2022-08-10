@@ -58,13 +58,13 @@ class Skater {
     // @public - The track the skater is on, or null if free-falling
     this.trackProperty = new Property( null, {
       tandem: tandem.createTandem( 'trackProperty' ),
-      phetioType: Property.PropertyIO( NullableIO( ReferenceIO( Track.TrackIO ) ) )
+      phetioValueType: NullableIO( ReferenceIO( Track.TrackIO ) )
     } );
 
     // @public {number} - Parameter along the parametric spline, unitless since it is in parametric space
     this.parametricPositionProperty = new Property( 0, {
       tandem: tandem.createTandem( 'parametricPositionProperty' ),
-      phetioType: Property.PropertyIO( NullableIO( NumberIO ) )
+      phetioValueType: NullableIO( NumberIO )
     } );
 
     // @public {number} - Speed along the parametric spline dimension, formally 'u dot', indicating speed and direction
@@ -176,7 +176,7 @@ class Skater {
     // @public {number} - Returns to this parametric position along the track when pressing "return skater"
     this.startingUProperty = new Property( 0, {
       tandem: tandem.createTandem( 'startingUProperty' ),
-      phetioType: Property.PropertyIO( NullableIO( NumberIO ) )
+      phetioValueType: NullableIO( NumberIO )
     } );
 
     // @private {boolean} - Tracks whether or not the skater is above or below the track when it is released
@@ -206,7 +206,7 @@ class Skater {
     this.speedProperty = new DerivedProperty( [ this.velocityProperty ], velocity => velocity.magnitude, {
       tandem: tandem.createTandem( 'speedProperty' ),
       units: 'm/s',
-      phetioType: DerivedProperty.DerivedPropertyIO( NumberIO )
+      phetioValueType: NumberIO
     } );
 
     // Derived - Zero the kinetic energy when draggingDerived, see #22
@@ -241,7 +241,7 @@ class Skater {
         return !dragging && ( x.x !== x0.x || x.y !== x0.y );
       }, {
         tandem: tandem.createTandem( 'movedProperty' ),
-        phetioType: DerivedProperty.DerivedPropertyIO( BooleanIO )
+        phetioValueType: BooleanIO
       } );
 
     // update energies whenever mass, gravity, or height changes so that energy distribution updates while the sim is paused
@@ -262,7 +262,7 @@ class Skater {
         return thermalEnergy > 1E-2;
       }, {
         tandem: tandem.createTandem( 'allowClearingThermalEnergyProperty' ),
-        phetioType: DerivedProperty.DerivedPropertyIO( BooleanIO )
+        phetioValueType: BooleanIO
       } );
 
     // In the state wrapper, when the state changes, we must update the skater node

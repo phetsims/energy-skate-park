@@ -68,7 +68,7 @@ class ControlPoint extends PhetioObject {
     // @public {ControlPoint} - Another ControlPoint that this ControlPoint is going to 'snap' to if released.
     this.snapTargetProperty = new Property( null, {
       tandem: tandem.createTandem( 'snapTargetProperty' ),
-      phetioType: Property.PropertyIO( NullableIO( ControlPoint.ControlPointIO ) ),
+      phetioValueType: NullableIO( ControlPoint.ControlPointIO ),
       phetioState: options.phetioState // in state only if containing Track is
     } );
 
@@ -79,7 +79,7 @@ class ControlPoint extends PhetioObject {
     this.positionProperty = new DerivedProperty( [ this.sourcePositionProperty, this.snapTargetProperty ],
       ( sourcePosition, snapTarget ) => snapTarget ? snapTarget.positionProperty.value : sourcePosition, {
         tandem: tandem.createTandem( 'positionProperty' ),
-        phetioType: DerivedProperty.DerivedPropertyIO( Vector2.Vector2IO ),
+        phetioValueType: Vector2.Vector2IO,
         phetioState: options.phetioState
       } );
 
