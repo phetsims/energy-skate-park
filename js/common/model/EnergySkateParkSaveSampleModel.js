@@ -80,7 +80,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
     // a single sample is removed
     this.batchRemoveSamplesEmitter = new Emitter( {
       parameters: [ {
-        arrayElementType: EnergySkateParkDataSample
+        isValidValue: value => Array.isArray( value ) && value.every( element => element instanceof EnergySkateParkDataSample )
       } ]
     } );
   }
