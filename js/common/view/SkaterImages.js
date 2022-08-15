@@ -121,14 +121,14 @@ const SkaterImages = {
 
   SKATER_SET_DESCRIPTORS: [
     {
-      characterIcon: new HeadshotIcon( CHARACTER_SET_1.imageSet1.headshotImage ),
+      icon: new HeadshotIcon( CHARACTER_SET_1.imageSet1.headshotImage ),
       label: unitedStatesOfAmericaString,
 
       // TODO: Do we still need a value? See https://github.com/phetsims/joist/issues/814
       value: CHARACTER_SET_1
     },
     {
-      characterIcon: new HeadshotIcon( CHARACTER_SET_2.imageSet1.headshotImage ),
+      icon: new HeadshotIcon( CHARACTER_SET_2.imageSet1.headshotImage ),
       label: africaConservativeString,
 
       // TODO: Do we still need a value? See https://github.com/phetsims/joist/issues/814

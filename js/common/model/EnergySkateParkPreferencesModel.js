@@ -39,7 +39,7 @@ class EnergySkateParkPreferencesModel {
 
     // Controls the selected SkaterImages.SkaterCharacterSet. A set of characters is selected from Preferences
     // and the actual skater character is chosen from in-screen UI.
-    this.skaterCharacterSetProperty = new DerivedProperty( [ localizationManager.characterProperty ], characterSet => {
+    this.skaterCharacterSetProperty = new DerivedProperty( [ localizationManager.regionAndCultureProperty ], characterSet => {
 
       // TODO: more character sets here from other characterSet values when read
       return characterSet === 0 ? SkaterImages.CHARACTER_SET_1 : SkaterImages.CHARACTER_SET_2;
