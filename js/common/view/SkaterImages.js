@@ -46,6 +46,11 @@ import skater6_set2_headshot_png from '../../../images/skater6_set2_headshot_png
 import skater6_set2_left_png from '../../../images/skater6_set2_left_png.js';
 import skater6_set2_right_png from '../../../images/skater6_set2_right_png.js';
 import energySkatePark from '../../energySkatePark.js';
+import HeadshotIcon from './HeadshotIcon.js';
+
+// strings are not translatable until design is complete, see https://github.com/phetsims/joist/issues/814
+const unitedStatesOfAmericaString = 'United States of America';
+const africaConservativeString = 'Africa - Conservative';
 
 /**
  * A collection of images for a single skater character with the images used for each direction of motion and
@@ -113,6 +118,23 @@ const SkaterImages = {
 
   CHARACTER_SET_1: CHARACTER_SET_1,
   CHARACTER_SET_2: CHARACTER_SET_2,
+
+  SKATER_SET_DESCRIPTORS: [
+    {
+      characterIcon: new HeadshotIcon( CHARACTER_SET_1.imageSet1.headshotImage ),
+      label: unitedStatesOfAmericaString,
+
+      // TODO: Do we still need a value? See https://github.com/phetsims/joist/issues/814
+      value: CHARACTER_SET_1
+    },
+    {
+      characterIcon: new HeadshotIcon( CHARACTER_SET_2.imageSet1.headshotImage ),
+      label: africaConservativeString,
+
+      // TODO: Do we still need a value? See https://github.com/phetsims/joist/issues/814
+      value: CHARACTER_SET_2
+    }
+  ],
 
   IMAGES_PER_SET: 8
 };

@@ -11,7 +11,6 @@ import PreferencesDialog from '../../../../joist/js/preferences/PreferencesDialo
 import PreferencesToggleSwitch from '../../../../joist/js/preferences/PreferencesToggleSwitch.js';
 import { Node, RichText, Text } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
 
 class EnergySkateParkPreferencesNode extends Node {
@@ -24,11 +23,11 @@ class EnergySkateParkPreferencesNode extends Node {
     super();
 
     const metersPerSecondSquaredLabel = new RichText( 'm/s<sup>2</sup>', {
-      font: EnergySkateParkConstants.CONTROL_LABEL_FONT
+      font: PreferencesDialog.CONTENT_FONT
     } );
 
     const newtonsPerKilogramLabel = new Text( 'N/kg', {
-      font: EnergySkateParkConstants.CONTROL_LABEL_FONT
+      font: PreferencesDialog.CONTENT_FONT
     } );
 
     const accelerationUnitsSwitch = new PreferencesToggleSwitch(

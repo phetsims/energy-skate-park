@@ -11,8 +11,8 @@ import Tandem from '../../tandem/js/Tandem.js';
 import PreferencesConfiguration from './../../joist/js/preferences/PreferencesConfiguration.js';
 import EnergySkateParkSim from './common/EnergySkateParkSim.js';
 import EnergySkateParkPreferencesModel from './common/model/EnergySkateParkPreferencesModel.js';
-import EnergySkateParkLocalizationNode from './common/view/EnergySkateParkLocalizationNode.js';
 import EnergySkateParkPreferencesNode from './common/view/EnergySkateParkPreferencesNode.js';
+import SkaterImages from './common/view/SkaterImages.js';
 import energySkateParkStrings from './energySkateParkStrings.js';
 import GraphsScreen from './graphs/GraphsScreen.js';
 import IntroScreen from './intro/IntroScreen.js';
@@ -37,8 +37,12 @@ simLauncher.launch( () => {
   new EnergySkateParkSim( energySkateParkTitleString, screens, rootTandem, {
     preferencesConfiguration: new PreferencesConfiguration( {
       generalOptions: {
-        createSimControls: tandem => new EnergySkateParkPreferencesNode( energySkateParkPreferencesModel, tandem.createTandem( 'simControls' ) ),
-        createLocalizationControls: tandem => new EnergySkateParkLocalizationNode( energySkateParkPreferencesModel, tandem.createTandem( 'localizationControls' ) )
+        createSimControls: tandem => new EnergySkateParkPreferencesNode( energySkateParkPreferencesModel, tandem.createTandem( 'simControls' ) )
+      },
+      localizationOptions: {
+        supportsLanguageSwitching: true,
+        supportsCharacterSwitching: true,
+        characterDescriptors: SkaterImages.SKATER_SET_DESCRIPTORS
       }
     } ),
     credits: {
