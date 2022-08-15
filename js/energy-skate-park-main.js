@@ -41,7 +41,6 @@ simLauncher.launch( () => {
       },
       localizationOptions: {
         supportsLanguageSwitching: true,
-        supportsRegionAndCultureSwitching: true,
         regionAndCultureDescriptors: SkaterImages.SKATER_SET_DESCRIPTORS
       }
     } ),
