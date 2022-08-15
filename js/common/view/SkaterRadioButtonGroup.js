@@ -33,8 +33,10 @@ class SkaterRadioButtonGroup extends Node {
       xMargin: 0,
       yMargin: 0,
       cornerRadius: EnergySkateParkConstants.RADIO_BUTTON_CORNER_RADIUS,
-      selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke,
-      baseColor: EnergySkateParkColorScheme.radioButtonBaseColor
+      baseColor: EnergySkateParkColorScheme.radioButtonBaseColor,
+      buttonAppearanceStrategyOptions: {
+        selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke
+      }
     };
 
     const imageScale = 0.5;

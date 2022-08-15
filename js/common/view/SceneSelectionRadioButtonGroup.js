@@ -42,8 +42,10 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
         xMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
         yMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
         cornerRadius: EnergySkateParkConstants.RADIO_BUTTON_CORNER_RADIUS,
-        selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke,
-        baseColor: EnergySkateParkColorScheme.radioButtonBaseColor
+        baseColor: EnergySkateParkColorScheme.radioButtonBaseColor,
+        buttonAppearanceStrategyOptions: {
+          selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke
+        }
       },
       tandem: tandem,
 
