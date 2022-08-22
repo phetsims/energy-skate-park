@@ -8,7 +8,7 @@
 
 import simLauncher from '../../joist/js/simLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
-import PreferencesConfiguration from './../../joist/js/preferences/PreferencesConfiguration.js';
+import PreferencesModel from './../../joist/js/preferences/PreferencesModel.js';
 import EnergySkateParkSim from './common/EnergySkateParkSim.js';
 import EnergySkateParkPreferencesModel from './common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkPreferencesNode from './common/view/EnergySkateParkPreferencesNode.js';
@@ -35,7 +35,7 @@ simLauncher.launch( () => {
   ];
 
   new EnergySkateParkSim( energySkateParkTitleString, screens, rootTandem, {
-    preferencesConfiguration: new PreferencesConfiguration( {
+    preferencesModel: new PreferencesModel( {
       generalOptions: {
         createSimControls: tandem => new EnergySkateParkPreferencesNode( energySkateParkPreferencesModel, tandem.createTandem( 'simControls' ) )
       },
