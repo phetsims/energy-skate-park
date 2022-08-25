@@ -12,6 +12,7 @@ import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import Enumeration from '../../../../phet-core/js/Enumeration.js';
 import localizationManager from '../../../../joist/js/preferences/localizationManager.js';
 import EnumerationValue from '../../../../phet-core/js/EnumerationValue.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import SkaterImages from '../view/SkaterImages.js';
@@ -25,16 +26,12 @@ class AccelerationUnits extends EnumerationValue {
 }
 
 class EnergySkateParkPreferencesModel {
-
-  /**
-   * @param {Tandem} tandem
-   */
-  constructor( tandem ) {
+  constructor() {
 
     // A Property that controls the acceleration units in the sim, "altAccelerationUnits" changes the default to N/kg
     const defaultUnits = EnergySkateParkQueryParameters.altAccelerationUnits ? AccelerationUnits.NEWTONS_PER_KILOGRAM : AccelerationUnits.METERS_PER_SECOND_SQUARED;
     this.accelerationUnitsProperty = new EnumerationProperty( defaultUnits, {
-      tandem: tandem.createTandem( 'accelerationUnitsProperty' )
+      tandem: Tandem.PREFERENCES.createTandem( 'accelerationUnitsProperty' )
     } );
 
     // Controls the selected SkaterImages.SkaterCharacterSet. A set of characters is selected from Preferences
