@@ -79,27 +79,27 @@ class EnergySkateParkVisibilityControls extends VBox {
 
     if ( options.showPieChartCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ) );
-      this.addCheckboxContent( pieChartString, iconNode, model.pieChartVisibleProperty, tandem.createTandem( 'pieChartCheckboxContent' ) );
+      this.addCheckboxContent( pieChartString, iconNode, model.pieChartVisibleProperty, tandem.createTandem( 'pieChartCheckbox' ) );
     }
 
     if ( options.showGridCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ) );
-      this.addCheckboxContent( controlsShowGridString, iconNode, model.gridVisibleProperty, tandem.createTandem( 'gridCheckboxContent' ) );
+      this.addCheckboxContent( controlsShowGridString, iconNode, model.gridVisibleProperty, tandem.createTandem( 'gridCheckbox' ) );
     }
 
     if ( options.showSpeedCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ) );
-      this.addCheckboxContent( propertiesSpeedString, iconNode, model.speedometerVisibleProperty, tandem.createTandem( 'speedCheckboxContent' ) );
+      this.addCheckboxContent( propertiesSpeedString, iconNode, model.speedometerVisibleProperty, tandem.createTandem( 'speedCheckbox' ) );
     }
 
     if ( options.showSkaterPathCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) );
-      this.addCheckboxContent( controlsPathString, iconNode, model.saveSamplesProperty, tandem.createTandem( 'pathCheckboxContent' ) );
+      this.addCheckboxContent( controlsPathString, iconNode, model.saveSamplesProperty, tandem.createTandem( 'pathCheckbox' ) );
     }
 
     if ( options.showReferenceHeightCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) );
-      this.addCheckboxContent( controlsReferenceHeightString, iconNode, model.referenceHeightVisibleProperty, tandem.createTandem( 'referenceHeightCheckboxContent' ) );
+      this.addCheckboxContent( controlsReferenceHeightString, iconNode, model.referenceHeightVisibleProperty, tandem.createTandem( 'referenceHeightCheckbox' ) );
     }
 
     if ( options.showStickToTrackCheckbox ) {
@@ -108,7 +108,7 @@ class EnergySkateParkVisibilityControls extends VBox {
       // this is the only checkbox that controls model physics, if it gets changed
       // by the user we may need to clear saved data or do other things
       const userControlledProperty = model.userControlledPropertySet.stickingToTrackControlledProperty;
-      this.addCheckboxContent( controlsStickToTrackString, iconNode, model.stickingToTrackProperty, tandem.createTandem( 'stickingCheckboxContent' ), {
+      this.addCheckboxContent( controlsStickToTrackString, iconNode, model.stickingToTrackProperty, tandem.createTandem( 'stickingCheckbox' ), {
         userControlledProperty: userControlledProperty
       } );
     }

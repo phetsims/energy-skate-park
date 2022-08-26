@@ -5,7 +5,7 @@
  * NumberControl to leverage the layout of the label and slider so that it conveniently matches the layout
  * with other NumberControls used in this sim.
  *
- * @author Same Reid (PhET Interactive Simulations)
+ * @author Sam Reid (PhET Interactive Simulations)
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 

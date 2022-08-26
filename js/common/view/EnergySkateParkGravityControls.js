@@ -65,8 +65,8 @@ class EnergySkateParkGravityControls extends VBox {
         assert && assert( !options.gravityNumberControlOptions.numberDisplayOptions.valuePattern,
           'valuePattern of the gravity number control is set by EnergySkateParkGravityControls' );
       }
-      const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityControlInMetersPerSecondSquared' ), options.gravityNumberControlOptions );
-      const gravityControlInNewtonsPerKilogram = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityControlInNewtonsPerKilogram' ), merge( {}, options.gravityNumberControlOptions, {
+      const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInMetersPerSecondSquaredControl' ), options.gravityNumberControlOptions );
+      const gravityControlInNewtonsPerKilogram = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInNewtonsPerKilogramControl' ), merge( {}, options.gravityNumberControlOptions, {
           numberDisplayOptions: {
             valuePattern: gravityNewtonsPerKilogramPatternString
           }
@@ -85,7 +85,7 @@ class EnergySkateParkGravityControls extends VBox {
     }
 
     if ( options.includeGravitySlider ) {
-      const gravitySlider = new GravitySlider( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravitySlider' ) );
+      const gravitySlider = new GravitySlider( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityControl' ) );
       children.push( gravitySlider );
     }
 

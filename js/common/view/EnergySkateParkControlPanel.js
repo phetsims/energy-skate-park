@@ -73,7 +73,9 @@ class EnergySkateParkControlPanel extends Panel {
 
     let frictionControls = null;
     if ( options.showFrictionControls ) {
-      frictionControls = new FrictionSlider( model.frictionProperty, userControlledPropertySet.frictionControlledProperty, tandem.createTandem( 'frictionSlider' ) );
+
+      // TODO: https://github.com/phetsims/tandem/issues/267 rename the class, perhaps up the hierarchy
+      frictionControls = new FrictionSlider( model.frictionProperty, userControlledPropertySet.frictionControlledProperty, tandem.createTandem( 'frictionControl' ) );
       children.push( frictionControls );
     }
 
