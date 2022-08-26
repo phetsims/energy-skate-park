@@ -64,7 +64,7 @@ class EnergySkateParkMassControls extends VBox {
     let massSlider = null;
     if ( options.includeMassSlider ) {
 
-      // TODO: https://github.com/phetsims/tandem/issues/267 rename the class
+      // TODO: https://github.com/phetsims/energy-skate-park/issues/344 rename the class, perhaps up the hierarchy
       massSlider = new MassSlider( massProperty, userControlledProperty, massRange, tandem.createTandem( 'massNumberControl' ) );
       children.push( massSlider );
     }
