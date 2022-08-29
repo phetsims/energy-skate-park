@@ -11,145 +11,145 @@ import energySkatePark from './energySkatePark.js';
 type StringsType = {
   'energy-skate-park': {
     'title': string;
-    'titleProperty': TReadOnlyProperty<string>;
+    'titleStringProperty': TReadOnlyProperty<string>;
   };
   'physicalControls': {
     'gravityControls': {
       'gravity': string;
-      'gravityProperty': TReadOnlyProperty<string>;
+      'gravityStringProperty': TReadOnlyProperty<string>;
       'earth': string;
-      'earthProperty': TReadOnlyProperty<string>;
+      'earthStringProperty': TReadOnlyProperty<string>;
       'jupiter': string;
-      'jupiterProperty': TReadOnlyProperty<string>;
+      'jupiterStringProperty': TReadOnlyProperty<string>;
       'moon': string;
-      'moonProperty': TReadOnlyProperty<string>;
+      'moonStringProperty': TReadOnlyProperty<string>;
       'gravityMetersPerSecondSquaredPattern': string;
-      'gravityMetersPerSecondSquaredPatternProperty': TReadOnlyProperty<string>;
+      'gravityMetersPerSecondSquaredPatternStringProperty': TReadOnlyProperty<string>;
       'gravityNewtonsPerKilogramPattern': string;
-      'gravityNewtonsPerKilogramPatternProperty': TReadOnlyProperty<string>;
+      'gravityNewtonsPerKilogramPatternStringProperty': TReadOnlyProperty<string>;
     };
     'massControls': {
       'mass': string;
-      'massProperty': TReadOnlyProperty<string>;
+      'massStringProperty': TReadOnlyProperty<string>;
       'massKilogramsPattern': string;
-      'massKilogramsPatternProperty': TReadOnlyProperty<string>;
+      'massKilogramsPatternStringProperty': TReadOnlyProperty<string>;
     };
     'friction': string;
-    'frictionProperty': TReadOnlyProperty<string>;
+    'frictionStringProperty': TReadOnlyProperty<string>;
     'custom': string;
-    'customProperty': TReadOnlyProperty<string>;
+    'customStringProperty': TReadOnlyProperty<string>;
     'small': string;
-    'smallProperty': TReadOnlyProperty<string>;
+    'smallStringProperty': TReadOnlyProperty<string>;
     'large': string;
-    'largeProperty': TReadOnlyProperty<string>;
+    'largeStringProperty': TReadOnlyProperty<string>;
     'lots': string;
-    'lotsProperty': TReadOnlyProperty<string>;
+    'lotsStringProperty': TReadOnlyProperty<string>;
     'none': string;
-    'noneProperty': TReadOnlyProperty<string>;
+    'noneStringProperty': TReadOnlyProperty<string>;
     'tiny': string;
-    'tinyProperty': TReadOnlyProperty<string>;
+    'tinyStringProperty': TReadOnlyProperty<string>;
   };
   'energies': {
     'thermal': string;
-    'thermalProperty': TReadOnlyProperty<string>;
+    'thermalStringProperty': TReadOnlyProperty<string>;
     'total': string;
-    'totalProperty': TReadOnlyProperty<string>;
+    'totalStringProperty': TReadOnlyProperty<string>;
     'kinetic': string;
-    'kineticProperty': TReadOnlyProperty<string>;
+    'kineticStringProperty': TReadOnlyProperty<string>;
     'potential': string;
-    'potentialProperty': TReadOnlyProperty<string>;
+    'potentialStringProperty': TReadOnlyProperty<string>;
     'energy': string;
-    'energyProperty': TReadOnlyProperty<string>;
+    'energyStringProperty': TReadOnlyProperty<string>;
   };
   'plots': {
     'barGraph': {
       'label': string;
-      'labelProperty': TReadOnlyProperty<string>;
+      'labelStringProperty': TReadOnlyProperty<string>;
     };
     'energyGraph': {
       'label': string;
-      'labelProperty': TReadOnlyProperty<string>;
+      'labelStringProperty': TReadOnlyProperty<string>;
     };
     'pieChart': {
       'label': string;
-      'labelProperty': TReadOnlyProperty<string>;
+      'labelStringProperty': TReadOnlyProperty<string>;
     };
     'timeSwitchLabel': string;
-    'timeSwitchLabelProperty': TReadOnlyProperty<string>;
+    'timeSwitchLabelStringProperty': TReadOnlyProperty<string>;
     'positionSwitchLabel': string;
-    'positionSwitchLabelProperty': TReadOnlyProperty<string>;
+    'positionSwitchLabelStringProperty': TReadOnlyProperty<string>;
     'timeLabel': string;
-    'timeLabelProperty': TReadOnlyProperty<string>;
+    'timeLabelStringProperty': TReadOnlyProperty<string>;
     'positionLabel': string;
-    'positionLabelProperty': TReadOnlyProperty<string>;
+    'positionLabelStringProperty': TReadOnlyProperty<string>;
     'energyLabel': string;
-    'energyLabelProperty': TReadOnlyProperty<string>;
+    'energyLabelStringProperty': TReadOnlyProperty<string>;
   };
   'visibilityControls': {
     'grid': string;
-    'gridProperty': TReadOnlyProperty<string>;
+    'gridStringProperty': TReadOnlyProperty<string>;
     'referenceHeight': string;
-    'referenceHeightProperty': TReadOnlyProperty<string>;
+    'referenceHeightStringProperty': TReadOnlyProperty<string>;
     'path': string;
-    'pathProperty': TReadOnlyProperty<string>;
+    'pathStringProperty': TReadOnlyProperty<string>;
     'speed': string;
-    'speedProperty': TReadOnlyProperty<string>;
+    'speedStringProperty': TReadOnlyProperty<string>;
   };
   'skaterControls': {
     'label': string;
-    'labelProperty': TReadOnlyProperty<string>;
+    'labelStringProperty': TReadOnlyProperty<string>;
     'skater1MassPattern': string;
-    'skater1MassPatternProperty': TReadOnlyProperty<string>;
+    'skater1MassPatternStringProperty': TReadOnlyProperty<string>;
     'skater2MassPattern': string;
-    'skater2MassPatternProperty': TReadOnlyProperty<string>;
+    'skater2MassPatternStringProperty': TReadOnlyProperty<string>;
     'skater3MassPattern': string;
-    'skater3MassPatternProperty': TReadOnlyProperty<string>;
+    'skater3MassPatternStringProperty': TReadOnlyProperty<string>;
     'skater4MassPattern': string;
-    'skater4MassPatternProperty': TReadOnlyProperty<string>;
+    'skater4MassPatternStringProperty': TReadOnlyProperty<string>;
     'skater5MassPattern': string;
-    'skater5MassPatternProperty': TReadOnlyProperty<string>;
+    'skater5MassPatternStringProperty': TReadOnlyProperty<string>;
     'dogMassPattern': string;
-    'dogMassPatternProperty': TReadOnlyProperty<string>;
+    'dogMassPatternStringProperty': TReadOnlyProperty<string>;
     'restartSkater': string;
-    'restartSkaterProperty': TReadOnlyProperty<string>;
+    'restartSkaterStringProperty': TReadOnlyProperty<string>;
   };
   'trackControls': {
     'stickToTrack': string;
-    'stickToTrackProperty': TReadOnlyProperty<string>;
+    'stickToTrackStringProperty': TReadOnlyProperty<string>;
   };
   'screens': {
     'intro': string;
-    'introProperty': TReadOnlyProperty<string>;
+    'introStringProperty': TReadOnlyProperty<string>;
     'graphs': string;
-    'graphsProperty': TReadOnlyProperty<string>;
+    'graphsStringProperty': TReadOnlyProperty<string>;
     'playground': string;
-    'playgroundProperty': TReadOnlyProperty<string>;
+    'playgroundStringProperty': TReadOnlyProperty<string>;
     'measure': string;
-    'measureProperty': TReadOnlyProperty<string>;
+    'measureStringProperty': TReadOnlyProperty<string>;
   };
   'heightLabels': {
     'zeroM': string;
-    'zeroMProperty': TReadOnlyProperty<string>;
+    'zeroMStringProperty': TReadOnlyProperty<string>;
     'heightEqualsZero': string;
-    'heightEqualsZeroProperty': TReadOnlyProperty<string>;
+    'heightEqualsZeroStringProperty': TReadOnlyProperty<string>;
   };
   'pathSensor': {
     'energyJoulesPattern': string;
-    'energyJoulesPatternProperty': TReadOnlyProperty<string>;
+    'energyJoulesPatternStringProperty': TReadOnlyProperty<string>;
     'heightMetersPattern': string;
-    'heightMetersPatternProperty': TReadOnlyProperty<string>;
+    'heightMetersPatternStringProperty': TReadOnlyProperty<string>;
     'speedMetersPerSecondPattern': string;
-    'speedMetersPerSecondPatternProperty': TReadOnlyProperty<string>;
+    'speedMetersPerSecondPatternStringProperty': TReadOnlyProperty<string>;
   };
   'speedometer': {
     'label': string;
-    'labelProperty': TReadOnlyProperty<string>;
+    'labelStringProperty': TReadOnlyProperty<string>;
     'metersPerSecondPattern': string;
-    'metersPerSecondPatternProperty': TReadOnlyProperty<string>;
+    'metersPerSecondPatternStringProperty': TReadOnlyProperty<string>;
   };
   'measuringTape': {
     'units': string;
-    'unitsProperty': TReadOnlyProperty<string>;
+    'unitsStringProperty': TReadOnlyProperty<string>;
   }
 };
 
