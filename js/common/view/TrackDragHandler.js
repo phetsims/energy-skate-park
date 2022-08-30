@@ -19,8 +19,7 @@ class TrackDragHandler extends SimpleDragHandler {
   constructor( trackNode, tandem ) {
 
     // Drag handler for dragging the track segment itself (not one of the control points)
-    // Uses a similar strategy as MovableDragHandler but requires a separate implementation because its bounds are
-    // determined by the shape of the track (so it cannot go below ground)
+    // Its bounds are determined by the shape of the track, so it cannot go below ground.
     // And so it can be dragged out of the toolbox but not back into it (so it won't be dragged below ground)
     super( {
       tandem: tandem.createTandem( 'inputListener' ),
