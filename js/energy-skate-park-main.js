@@ -36,7 +36,7 @@ simLauncher.launch( () => {
 
   new EnergySkateParkSim( energySkateParkTitleString, screens, rootTandem, {
     preferencesModel: new PreferencesModel( {
-      generalOptions: {
+      simulationOptions: {
         customPreferences: [ {
           createContent: tandem => new EnergySkateParkPreferencesNode( energySkateParkPreferencesModel, tandem.createTandem( 'simPreferences' ) )
         } ]
