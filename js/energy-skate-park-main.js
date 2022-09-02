@@ -19,7 +19,7 @@ import IntroScreen from './intro/IntroScreen.js';
 import MeasureScreen from './measure/MeasureScreen.js';
 import PlaygroundScreen from './playground/PlaygroundScreen.js';
 
-const energySkateParkTitleString = energySkateParkStrings[ 'energy-skate-park' ].title;
+const energySkateParkTitleStringProperty = energySkateParkStrings[ 'energy-skate-park' ].titleStringProperty;
 
 const energySkateParkPreferencesModel = new EnergySkateParkPreferencesModel();
 
@@ -34,7 +34,7 @@ simLauncher.launch( () => {
     new PlaygroundScreen( energySkateParkPreferencesModel, rootTandem.createTandem( 'playgroundScreen' ) )
   ];
 
-  new EnergySkateParkSim( energySkateParkTitleString, screens, rootTandem, {
+  new EnergySkateParkSim( energySkateParkTitleStringProperty, screens, rootTandem, {
     preferencesModel: new PreferencesModel( {
       simulationOptions: {
         customPreferences: [ {
