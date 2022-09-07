@@ -16,10 +16,10 @@ import GaugeNode from '../../../../scenery-phet/js/GaugeNode.js';
 import { Circle, Line, Node, Path, PressListener, Rectangle } from '../../../../scenery/js/imports.js';
 import Checkbox from '../../../../sun/js/Checkbox.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-const propertiesSpeedString = energySkateParkStrings.speedometer.label;
+const propertiesSpeedString = EnergySkateParkStrings.speedometer.label;
 
 class EnergySkateParkCheckboxItem extends Checkbox {
 

@@ -153,8 +153,8 @@ type StringsType = {
   }
 };
 
-const energySkateParkStrings = getStringModule( 'ENERGY_SKATE_PARK' ) as StringsType;
+const EnergySkateParkStrings = getStringModule( 'ENERGY_SKATE_PARK' ) as StringsType;
 
-energySkatePark.register( 'energySkateParkStrings', energySkateParkStrings );
+energySkatePark.register( 'EnergySkateParkStrings', EnergySkateParkStrings );
 
-export default energySkateParkStrings;
+export default EnergySkateParkStrings;

@@ -11,11 +11,11 @@ import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import { Image } from '../../../scenery/js/imports.js';
 import playgroundScreenIcon_png from '../../images/playgroundScreenIcon_png.js';
 import energySkatePark from '../energySkatePark.js';
-import energySkateParkStrings from '../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import EnergySkateParkPlaygroundModel from './model/EnergySkateParkPlaygroundModel.js';
 import EnergySkateParkPlaygroundScreenView from './view/EnergySkateParkPlaygroundScreenView.js';
 
-const screenPlaygroundString = energySkateParkStrings.screens.playground;
+const screenPlaygroundString = EnergySkateParkStrings.screens.playground;
 
 class PlaygroundScreen extends Screen {
 

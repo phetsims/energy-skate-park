@@ -14,7 +14,7 @@
 import GridNode from '../../../../griddle/js/GridNode.js';
 import { Node } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import TextPanel from './TextPanel.js';
 
 class EnergySkateParkGridNode extends Node {
@@ -57,7 +57,7 @@ class EnergySkateParkGridNode extends Node {
     this.labelXPosition = this.modelViewTransform.modelToViewX( -5 );
 
     // @private {TextPanel} - a unique label for the zero meter reference height position
-    this.zeroMeterLabel = new TextPanel( energySkateParkStrings.heightLabels.zeroM, {
+    this.zeroMeterLabel = new TextPanel( EnergySkateParkStrings.heightLabels.zeroM, {
       bottom: this.modelViewTransform.modelToViewY( 0 ) - 2,
       right: this.labelXPosition - 2
     } );

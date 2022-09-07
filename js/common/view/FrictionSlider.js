@@ -8,11 +8,11 @@
 
 import Range from '../../../../dot/js/Range.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
-const controlsFrictionTitleString = energySkateParkStrings.physicalControls.friction;
+const controlsFrictionTitleString = EnergySkateParkStrings.physicalControls.friction;
 
 class FrictionSlider extends PhysicalSlider {
 

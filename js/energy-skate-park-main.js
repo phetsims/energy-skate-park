@@ -13,13 +13,13 @@ import EnergySkateParkSim from './common/EnergySkateParkSim.js';
 import EnergySkateParkPreferencesModel from './common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkPreferencesNode from './common/view/EnergySkateParkPreferencesNode.js';
 import SkaterImages from './common/view/SkaterImages.js';
-import energySkateParkStrings from './energySkateParkStrings.js';
+import EnergySkateParkStrings from './EnergySkateParkStrings.js';
 import GraphsScreen from './graphs/GraphsScreen.js';
 import IntroScreen from './intro/IntroScreen.js';
 import MeasureScreen from './measure/MeasureScreen.js';
 import PlaygroundScreen from './playground/PlaygroundScreen.js';
 
-const energySkateParkTitleStringProperty = energySkateParkStrings[ 'energy-skate-park' ].titleStringProperty;
+const energySkateParkTitleStringProperty = EnergySkateParkStrings[ 'energy-skate-park' ].titleStringProperty;
 
 const energySkateParkPreferencesModel = new EnergySkateParkPreferencesModel();
 

@@ -11,11 +11,11 @@ import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import { Image } from '../../../scenery/js/imports.js';
 import measureScreenIcon_png from '../../images/measureScreenIcon_png.js';
 import energySkatePark from '../energySkatePark.js';
-import energySkateParkStrings from '../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import MeasureModel from './model/MeasureModel.js';
 import MeasureScreenView from './view/MeasureScreenView.js';
 
-const screenMeasureString = energySkateParkStrings.screens.measure;
+const screenMeasureString = EnergySkateParkStrings.screens.measure;
 
 class MeasureScreen extends Screen {
 

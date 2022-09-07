@@ -10,12 +10,12 @@ import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import merge from '../../../../phet-core/js/merge.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
-const controlsGravityLabelString = energySkateParkStrings.physicalControls.gravityControls.gravity;
-const gravityMetersPerSecondSquaredPatternString = energySkateParkStrings.physicalControls.gravityControls.gravityMetersPerSecondSquaredPattern;
+const controlsGravityLabelString = EnergySkateParkStrings.physicalControls.gravityControls.gravity;
+const gravityMetersPerSecondSquaredPatternString = EnergySkateParkStrings.physicalControls.gravityControls.gravityMetersPerSecondSquaredPattern;
 
 class GravityNumberControl extends PhysicalNumberControl {
 

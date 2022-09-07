@@ -8,12 +8,12 @@
 
 import Utils from '../../../../dot/js/Utils.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
-const controlsMassString = energySkateParkStrings.physicalControls.massControls.mass;
-const smallString = energySkateParkStrings.physicalControls.small;
-const largeString = energySkateParkStrings.physicalControls.large;
+const controlsMassString = EnergySkateParkStrings.physicalControls.massControls.mass;
+const smallString = EnergySkateParkStrings.physicalControls.small;
+const largeString = EnergySkateParkStrings.physicalControls.large;
 
 class MassSlider extends PhysicalSlider {
 

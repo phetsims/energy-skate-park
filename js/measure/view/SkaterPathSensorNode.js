@@ -24,16 +24,16 @@ import SunConstants from '../../../../sun/js/SunConstants.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 
-const energyEnergyString = energySkateParkStrings.energies.energy;
-const energyJoulesPatternString = energySkateParkStrings.pathSensor.energyJoulesPattern;
-const energyKineticString = energySkateParkStrings.energies.kinetic;
-const energyPotentialString = energySkateParkStrings.energies.potential;
-const energyThermalString = energySkateParkStrings.energies.thermal;
-const energyTotalString = energySkateParkStrings.energies.total;
-const heightMetersPatternString = energySkateParkStrings.pathSensor.heightMetersPattern;
-const speedMetersPerSecondPatternString = energySkateParkStrings.pathSensor.speedMetersPerSecondPattern;
+const energyEnergyString = EnergySkateParkStrings.energies.energy;
+const energyJoulesPatternString = EnergySkateParkStrings.pathSensor.energyJoulesPattern;
+const energyKineticString = EnergySkateParkStrings.energies.kinetic;
+const energyPotentialString = EnergySkateParkStrings.energies.potential;
+const energyThermalString = EnergySkateParkStrings.energies.thermal;
+const energyTotalString = EnergySkateParkStrings.energies.total;
+const heightMetersPatternString = EnergySkateParkStrings.pathSensor.heightMetersPattern;
+const speedMetersPerSecondPatternString = EnergySkateParkStrings.pathSensor.speedMetersPerSecondPattern;
 
 // constants
 const TITLE_CONTENT_SPACING = 5.5; // spacing between the "Energy" title and the rest of the content

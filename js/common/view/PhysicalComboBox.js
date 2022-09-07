@@ -15,11 +15,11 @@ import ComboBox from '../../../../sun/js/ComboBox.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 // constants
-const controlsGravityCustomString = energySkateParkStrings.physicalControls.custom;
+const controlsGravityCustomString = EnergySkateParkStrings.physicalControls.custom;
 
 class PhysicalComboBox extends ComboBox {
 

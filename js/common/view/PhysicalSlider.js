@@ -12,12 +12,12 @@
 import merge from '../../../../phet-core/js/merge.js';
 import { Text } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
-const controlsValueLotsString = energySkateParkStrings.physicalControls.lots;
-const controlsValueNoneString = energySkateParkStrings.physicalControls.none;
+const controlsValueLotsString = EnergySkateParkStrings.physicalControls.lots;
+const controlsValueNoneString = EnergySkateParkStrings.physicalControls.none;
 
 class PhysicalSlider extends PhysicalNumberControl {
 

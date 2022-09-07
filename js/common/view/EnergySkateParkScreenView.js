@@ -29,7 +29,7 @@ import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushBut
 import Tandem from '../../../../tandem/js/Tandem.js';
 import skater1_left_png from '../../../images/skater1_left_png.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import AttachDetachToggleButtons from './AttachDetachToggleButtons.js';
 import BackgroundNode from './BackgroundNode.js';
@@ -45,10 +45,10 @@ import ToolboxPanel from './ToolboxPanel.js';
 import TrackNode from './TrackNode.js';
 import VisibilityControlsPanel from './VisibilityControlsPanel.js';
 
-const controlsRestartSkaterString = energySkateParkStrings.skaterControls.restartSkater;
-const propertiesSpeedString = energySkateParkStrings.speedometer.label;
-const speedometerMetersPerSecondPatternString = energySkateParkStrings.speedometer.metersPerSecondPattern;
-const measuringTapeUnitsString = energySkateParkStrings.measuringTape.units;
+const controlsRestartSkaterString = EnergySkateParkStrings.skaterControls.restartSkater;
+const propertiesSpeedString = EnergySkateParkStrings.speedometer.label;
+const speedometerMetersPerSecondPatternString = EnergySkateParkStrings.speedometer.metersPerSecondPattern;
+const measuringTapeUnitsString = EnergySkateParkStrings.measuringTape.units;
 
 // constants
 // for wider screens, panels can float to the left and right by this much beyond dev bounds in view coordinates

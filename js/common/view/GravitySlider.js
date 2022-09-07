@@ -9,12 +9,12 @@
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
-const controlsGravityLabelString = energySkateParkStrings.physicalControls.gravityControls.gravity;
-const controlsValueTinyString = energySkateParkStrings.physicalControls.tiny;
+const controlsGravityLabelString = EnergySkateParkStrings.physicalControls.gravityControls.gravity;
+const controlsValueTinyString = EnergySkateParkStrings.physicalControls.tiny;
 
 class GravitySlider extends PhysicalSlider {
 

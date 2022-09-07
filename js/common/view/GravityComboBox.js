@@ -9,13 +9,13 @@
 import merge from '../../../../phet-core/js/merge.js';
 import ComboBox from '../../../../sun/js/ComboBox.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalComboBox from './PhysicalComboBox.js';
 
-const gravityMoonString = energySkateParkStrings.physicalControls.gravityControls.moon;
-const gravityEarthString = energySkateParkStrings.physicalControls.gravityControls.earth;
-const gravityJupiterString = energySkateParkStrings.physicalControls.gravityControls.jupiter;
+const gravityMoonString = EnergySkateParkStrings.physicalControls.gravityControls.moon;
+const gravityEarthString = EnergySkateParkStrings.physicalControls.gravityControls.earth;
+const gravityJupiterString = EnergySkateParkStrings.physicalControls.gravityControls.jupiter;
 
 class GravityComboBox extends PhysicalComboBox {
 

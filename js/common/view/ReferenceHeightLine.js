@@ -14,11 +14,11 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import ArrowNode from '../../../../scenery-phet/js/ArrowNode.js';
 import { DragListener, Line, Node } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TextPanel from './TextPanel.js';
 
-const heightEqualsZeroString = energySkateParkStrings.heightLabels.heightEqualsZero;
+const heightEqualsZeroString = EnergySkateParkStrings.heightLabels.heightEqualsZero;
 
 class ReferenceHeightLine extends Node {
 

@@ -15,16 +15,16 @@
 import merge from '../../../../phet-core/js/merge.js';
 import { AlignGroup, HBox, Text, VBox } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkCheckboxItem from './EnergySkateParkCheckboxItem.js';
 
-const controlsPathString = energySkateParkStrings.visibilityControls.path;
-const controlsReferenceHeightString = energySkateParkStrings.visibilityControls.referenceHeight;
-const controlsShowGridString = energySkateParkStrings.visibilityControls.grid;
-const controlsStickToTrackString = energySkateParkStrings.trackControls.stickToTrack;
-const pieChartString = energySkateParkStrings.plots.pieChart.label;
-const propertiesSpeedString = energySkateParkStrings.visibilityControls.speed;
+const controlsPathString = EnergySkateParkStrings.visibilityControls.path;
+const controlsReferenceHeightString = EnergySkateParkStrings.visibilityControls.referenceHeight;
+const controlsShowGridString = EnergySkateParkStrings.visibilityControls.grid;
+const controlsStickToTrackString = EnergySkateParkStrings.trackControls.stickToTrack;
+const pieChartString = EnergySkateParkStrings.plots.pieChart.label;
+const propertiesSpeedString = EnergySkateParkStrings.visibilityControls.speed;
 
 // constants
 const TEXT_OPTIONS = {

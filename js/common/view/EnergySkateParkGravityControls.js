@@ -9,14 +9,14 @@
 import merge from '../../../../phet-core/js/merge.js';
 import { VBox } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
 import GravityComboBox from './GravityComboBox.js';
 import GravityNumberControl from './GravityNumberControl.js';
 import GravitySlider from './GravitySlider.js';
 
 // constants
-const gravityNewtonsPerKilogramPatternString = energySkateParkStrings.physicalControls.gravityControls.gravityNewtonsPerKilogramPattern;
+const gravityNewtonsPerKilogramPatternString = EnergySkateParkStrings.physicalControls.gravityControls.gravityNewtonsPerKilogramPattern;
 
 class EnergySkateParkGravityControls extends VBox {
 

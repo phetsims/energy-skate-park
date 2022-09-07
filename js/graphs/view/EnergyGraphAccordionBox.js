@@ -20,21 +20,21 @@ import VerticalCheckboxGroup from '../../../../sun/js/VerticalCheckboxGroup.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 import EnergyChart from './EnergyChart.js';
 
-const kineticEnergyLabelString = energySkateParkStrings.energies.kinetic;
-const potentialEnergyLabelString = energySkateParkStrings.energies.potential;
-const thermalEnergyLabelString = energySkateParkStrings.energies.thermal;
-const totalEnergyLabelString = energySkateParkStrings.energies.total;
-const timeSwitchLabelString = energySkateParkStrings.plots.timeSwitchLabel;
-const positionSwitchLabelString = energySkateParkStrings.plots.positionSwitchLabel;
-const plotsEnergyGraphString = energySkateParkStrings.plots.energyGraph.label;
-const plotsPositionLabelString = energySkateParkStrings.plots.positionLabel;
-const plotsEnergyLabelString = energySkateParkStrings.plots.energyLabel;
-const plotsTimeLabelString = energySkateParkStrings.plots.timeLabel;
+const kineticEnergyLabelString = EnergySkateParkStrings.energies.kinetic;
+const potentialEnergyLabelString = EnergySkateParkStrings.energies.potential;
+const thermalEnergyLabelString = EnergySkateParkStrings.energies.thermal;
+const totalEnergyLabelString = EnergySkateParkStrings.energies.total;
+const timeSwitchLabelString = EnergySkateParkStrings.plots.timeSwitchLabel;
+const positionSwitchLabelString = EnergySkateParkStrings.plots.positionSwitchLabel;
+const plotsEnergyGraphString = EnergySkateParkStrings.plots.energyGraph.label;
+const plotsPositionLabelString = EnergySkateParkStrings.plots.positionLabel;
+const plotsEnergyLabelString = EnergySkateParkStrings.plots.energyLabel;
+const plotsTimeLabelString = EnergySkateParkStrings.plots.timeLabel;
 
 // constants
 const GRAPH_HEIGHT = 141;

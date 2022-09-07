@@ -12,15 +12,15 @@ import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { HBox, HStrut, Rectangle, Text, VBox, VStrut } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
 import energySkatePark from '../../energySkatePark.js';
-import energySkateParkStrings from '../../energySkateParkStrings.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-const energyEnergyString = energySkateParkStrings.energies.energy;
-const energyKineticString = energySkateParkStrings.energies.kinetic;
-const energyPotentialString = energySkateParkStrings.energies.potential;
-const energyThermalString = energySkateParkStrings.energies.thermal;
-const energyTotalString = energySkateParkStrings.energies.total;
+const energyEnergyString = EnergySkateParkStrings.energies.energy;
+const energyKineticString = EnergySkateParkStrings.energies.kinetic;
+const energyPotentialString = EnergySkateParkStrings.energies.potential;
+const energyThermalString = EnergySkateParkStrings.energies.thermal;
+const energyTotalString = EnergySkateParkStrings.energies.total;
 
 class PieChartLegend extends Panel {
 
