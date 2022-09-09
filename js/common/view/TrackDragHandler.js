@@ -6,11 +6,11 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import { SimpleDragHandler } from '../../../../scenery/js/imports.js';
+import { DragListener } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 
-class TrackDragHandler extends SimpleDragHandler {
+class TrackDragHandler extends DragListener {
 
   /**
    * @param {TrackNode} trackNode the track node that this listener will drag
@@ -87,7 +87,7 @@ class TrackDragHandler extends SimpleDragHandler {
 
     track.draggingProperty.value = true;
 
-    const parentPoint = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( this.startOffset );
+    const parentPoint = this.globalToParentPoint( event.pointer.point ).minus( this.startOffset );
     const position = this.modelViewTransform.viewToModelPosition( parentPoint );
 
     // If the user moved it out of the toolbox above y=0, then make it physically interactive
@@ -215,7 +215,7 @@ class TrackDragHandler extends SimpleDragHandler {
     if ( !model.containsTrack( track ) ) { return; }
 
     // track was released underground and was never added to the play area, so remove it
-    if ( !this.isDraggingProperty.get() && !track.physicalProperty.get() ) {
+    if ( !this.isPressed && !track.physicalProperty.get() ) {
       model.removeAndDisposeTrack( track );
     }
 

@@ -11,7 +11,7 @@
 import Property from '../../../../axon/js/Property.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
-import { Circle, Image, Node, SimpleDragHandler } from '../../../../scenery/js/imports.js';
+import { Circle, DragListener, Image, Node } from '../../../../scenery/js/imports.js';
 import skater1_left_png from '../../../images/skater1_left_png.js';
 import skater1_right_png from '../../../images/skater1_right_png.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -178,7 +178,7 @@ class SkaterNode extends Node {
     };
 
     // @private - for interruption, see interruptDrag
-    this.dragHandler = new SimpleDragHandler( {
+    this.dragHandler = new DragListener( {
       tandem: tandem.createTandem( 'inputListener' ),
       start: event => {
         userControlledProperty.set( true );
@@ -209,7 +209,7 @@ class SkaterNode extends Node {
    * @public
    */
   interruptDrag() {
-    if ( this.dragHandler.isDraggingProperty.get() ) {
+    if ( this.dragHandler.isPressed ) {
       this.dragHandler.interrupt();
     }
   }

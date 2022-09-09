@@ -134,7 +134,7 @@ class TrackNode extends Node {
 
     // track was pulled from the tool box, start drag event to the drag listener
     track.forwardingDragStartEmitter.addListener( event => {
-      this.trackDragHandler.startDrag( event );
+      this.trackDragHandler.press( event );
     } );
 
     // In the state wrapper, when the state changes, we must update the skater node

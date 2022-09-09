@@ -102,7 +102,7 @@ class Track extends PhetioObject {
     this.removeEmitter = new Emitter();
     this.forwardingDragStartEmitter = new Emitter( { parameters: [ { valueType: SceneryEvent } ] } );
 
-    // @public {SimpleDragHandler} Keep track of what component (control point or track body) is dragging the track, so
+    // @public {DragListener} Keep track of what component (control point or track body) is dragging the track, so
     // that it can't be dragged by
     // two sources, which causes a flicker, see #282
     this.dragSource = null;

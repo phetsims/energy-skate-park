@@ -70,7 +70,7 @@ class ToolboxPanel extends Panel {
 
     super( icons, options );
 
-    // create a forwarding listener for the MeasuringTapeNode SimpleDragHandler
+    // create a forwarding listener for the MeasuringTapeNode DragListener
     measuringTapeIcon.addInputListener( DragListener.createForwardingListener( event => {
       if ( !model.measuringTapeVisibleProperty.get() ) {
         model.measuringTapeVisibleProperty.set( true );

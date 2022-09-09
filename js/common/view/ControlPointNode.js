@@ -8,7 +8,7 @@
  */
 
 import Emitter from '../../../../axon/js/Emitter.js';
-import { Circle, Rectangle, SimpleDragHandler } from '../../../../scenery/js/imports.js';
+import { Circle, DragListener, Rectangle } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPointUI from './ControlPointUI.js';
@@ -82,7 +82,7 @@ class ControlPointNode extends Circle {
     if ( controlPoint.interactive ) {
       let dragEvents = 0;
       let lastControlPointUI = null;
-      inputListener = new SimpleDragHandler( {
+      inputListener = new DragListener( {
         tandem: tandem.createTandem( 'inputListener' ),
         allowTouchSnag: true,
         start: event => {
