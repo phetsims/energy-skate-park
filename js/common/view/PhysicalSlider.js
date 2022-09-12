@@ -46,8 +46,8 @@ class PhysicalSlider extends PhysicalNumberControl {
 
     assert && assert( options.sliderOptions.majorTicks === undefined, 'The PhysicalSlider sets its own major ticks' );
     options.sliderOptions.majorTicks = [
-      createTickEntry( valueRange.min, options.minLabel, tandem, 'minLabel' ),
-      createTickEntry( valueRange.max, options.maxLabel, tandem, 'maxLabel' )
+      createTickEntry( valueRange.min, options.minLabel, tandem, 'minLabelText' ),
+      createTickEntry( valueRange.max, options.maxLabel, tandem, 'maxLabelText' )
     ];
 
     super( titleString, property, valueRange, userControlledProperty, tandem, options );

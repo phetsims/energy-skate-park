@@ -220,7 +220,7 @@ class EnergySkateParkScreenView extends ScreenView {
     // The button to return the skater
     this.returnSkaterButton = new RectangularPushButton( {
       content: new Text( controlsRestartSkaterString, {
-        tandem: tandem.createTandem( 'restartSkaterTextNode' ),
+        tandem: tandem.createTandem( 'restartSkaterText' ),
         maxWidth: 90,
         font: EnergySkateParkConstants.CONTROL_LABEL_FONT
       } ),

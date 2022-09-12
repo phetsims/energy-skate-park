@@ -62,10 +62,10 @@ class PieChartLegend extends Panel {
     const thermalBar = createBar( 2, EnergySkateParkColorScheme.thermalEnergy );
     const totalBar = createBar( 3, EnergySkateParkColorScheme.totalEnergy );
 
-    const kineticLabel = createLabel( 0, energyKineticString, 'kineticEnergyLabel' );
-    const potentialLabel = createLabel( 1, energyPotentialString, 'potentialEnergyLabel' );
-    const thermalLabel = createLabel( 2, energyThermalString, 'thermalEnergyLabel' );
-    const totalLabel = createLabel( 3, energyTotalString, 'totalEnergyLabel' );
+    const kineticLabel = createLabel( 0, energyKineticString, 'kineticEnergyLabelText' );
+    const potentialLabel = createLabel( 1, energyPotentialString, 'potentialEnergyLabelText' );
+    const thermalLabel = createLabel( 2, energyThermalString, 'thermalEnergyLabelText' );
+    const totalLabel = createLabel( 3, energyTotalString, 'totalEnergyLabelText' );
 
     const clearThermalButton = new MoveToTrashLegendButton( {
       arrowColor: EnergySkateParkColorScheme.thermalEnergy,
@@ -101,8 +101,8 @@ class PieChartLegend extends Panel {
 
     const contentNode = new VBox( { spacing: 6, align: 'left', children: children } );
 
-    const titleNode = new Text( energyEnergyString, {
-      tandem: tandem.createTandem( 'titleNode' ),
+    const titleText = new Text( energyEnergyString, {
+      tandem: tandem.createTandem( 'titleText' ),
       fill: 'black',
       font: new PhetFont( 17 ),
       pickable: false,
@@ -110,7 +110,7 @@ class PieChartLegend extends Panel {
     } );
     const contentWithTitle = new VBox( {
       spacing: 6.14, align: 'center', children: [
-        titleNode,
+        titleText,
         contentNode
       ]
     } );

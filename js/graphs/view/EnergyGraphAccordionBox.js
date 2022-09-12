@@ -99,13 +99,13 @@ class EnergyGraphAccordionBox extends AccordionBox {
     };
     const variables = GraphsModel.IndependentVariable;
     const variableSwitchTandem = tandem.createTandem( 'variableSwitch' );
-    const positionLabel = new Text( positionSwitchLabelString, merge( {
-      tandem: variableSwitchTandem.createTandem( 'positionLabel' )
+    const positionLabelText = new Text( positionSwitchLabelString, merge( {
+      tandem: variableSwitchTandem.createTandem( 'positionLabelText' )
     }, switchLabelOptions ) );
-    const timeLabel = new Text( timeSwitchLabelString, merge( {
-      tandem: variableSwitchTandem.createTandem( 'timeLabel' )
+    const timeLabelText = new Text( timeSwitchLabelString, merge( {
+      tandem: variableSwitchTandem.createTandem( 'timeLabelText' )
     }, switchLabelOptions ) );
-    const variableSwitch = new ABSwitch( model.independentVariableProperty, variables.POSITION, positionLabel, variables.TIME, timeLabel, {
+    const variableSwitch = new ABSwitch( model.independentVariableProperty, variables.POSITION, positionLabelText, variables.TIME, timeLabelText, {
       toggleSwitchOptions: { size: SWITCH_SIZE },
       tandem: variableSwitchTandem
     } );
