@@ -9,7 +9,7 @@
 
 import merge from '../../../../phet-core/js/merge.js';
 import { VBox } from '../../../../scenery/js/imports.js';
-import HSeparator from '../../../../sun/js/HSeparator.js';
+import HSeparatorDeprecated from '../../../../sun/js/HSeparatorDeprecated.js';
 import Panel from '../../../../sun/js/Panel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -121,18 +121,18 @@ class EnergySkateParkControlPanel extends Panel {
     children.unshift( visibilityControls );
 
     // one separator after visibility controls
-    children.splice( children.indexOf( visibilityControls ) + 1, 0, new HSeparator( separatorWidth ) );
+    children.splice( children.indexOf( visibilityControls ) + 1, 0, new HSeparatorDeprecated( separatorWidth ) );
 
     // one separator after scene selection buttons
-    trackRadioButtons && children.splice( children.indexOf( trackRadioButtons ) + 1, 0, new HSeparator( separatorWidth ) );
+    trackRadioButtons && children.splice( children.indexOf( trackRadioButtons ) + 1, 0, new HSeparatorDeprecated( separatorWidth ) );
 
     // one separator after a section for friction and/or gravity controls
     if ( frictionControls || gravityControls ) {
       if ( gravityControls ) {
-        children.splice( children.indexOf( gravityControls ) + 1, 0, new HSeparator( separatorWidth ) );
+        children.splice( children.indexOf( gravityControls ) + 1, 0, new HSeparatorDeprecated( separatorWidth ) );
       }
       else {
-        children.splice( children.indexOf( frictionControls ) + 1, 0, new HSeparator( separatorWidth ) );
+        children.splice( children.indexOf( frictionControls ) + 1, 0, new HSeparatorDeprecated( separatorWidth ) );
       }
     }
 
