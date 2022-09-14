@@ -15,8 +15,6 @@ import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import IntroModel from './model/IntroModel.js';
 import IntroScreenView from './view/IntroScreenView.js';
 
-const screenIntroductionString = EnergySkateParkStrings.screens.intro;
-
 class IntroScreen extends Screen {
 
   /**
@@ -25,7 +23,7 @@ class IntroScreen extends Screen {
    */
   constructor( preferencesModel, tandem ) {
     const options = {
-      name: screenIntroductionString,
+      name: EnergySkateParkStrings.screens.introStringProperty,
       tandem: tandem,
       homeScreenIcon: new ScreenIcon( new Image( introScreenIcon_png ), {
         maxIconWidthProportion: 1,

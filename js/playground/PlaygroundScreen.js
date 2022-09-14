@@ -15,8 +15,6 @@ import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import EnergySkateParkPlaygroundModel from './model/EnergySkateParkPlaygroundModel.js';
 import EnergySkateParkPlaygroundScreenView from './view/EnergySkateParkPlaygroundScreenView.js';
 
-const screenPlaygroundString = EnergySkateParkStrings.screens.playground;
-
 class PlaygroundScreen extends Screen {
 
   /**
@@ -26,7 +24,7 @@ class PlaygroundScreen extends Screen {
   constructor( preferencesModel, tandem ) {
 
     const options = {
-      name: screenPlaygroundString,
+      name: EnergySkateParkStrings.screens.playgroundStringProperty,
       homeScreenIcon: new ScreenIcon( new Image( playgroundScreenIcon_png ), {
         maxIconWidthProportion: 1,
         maxIconHeightProportion: 1

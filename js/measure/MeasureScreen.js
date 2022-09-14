@@ -15,8 +15,6 @@ import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import MeasureModel from './model/MeasureModel.js';
 import MeasureScreenView from './view/MeasureScreenView.js';
 
-const screenMeasureString = EnergySkateParkStrings.screens.measure;
-
 class MeasureScreen extends Screen {
 
   /**
@@ -25,7 +23,7 @@ class MeasureScreen extends Screen {
    */
   constructor( preferencesModel, tandem ) {
     const options = {
-      name: screenMeasureString,
+      name: EnergySkateParkStrings.screens.measureStringProperty,
       homeScreenIcon: new ScreenIcon( new Image( measureScreenIcon_png ), {
         maxIconWidthProportion: 1,
         maxIconHeightProportion: 1

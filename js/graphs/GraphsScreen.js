@@ -15,8 +15,6 @@ import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import GraphsModel from './model/GraphsModel.js';
 import GraphsScreenView from './view/GraphsScreenView.js';
 
-const screenGraphsString = EnergySkateParkStrings.screens.graphs;
-
 class GraphsScreen extends Screen {
 
   /**
@@ -28,7 +26,7 @@ class GraphsScreen extends Screen {
       () => new GraphsModel( preferencesModel, tandem.createTandem( 'model' ) ),
       model => new GraphsScreenView( model, tandem.createTandem( 'view' ) ),
       {
-        name: screenGraphsString,
+        name: EnergySkateParkStrings.screens.graphsStringProperty,
         homeScreenIcon: new ScreenIcon( new Image( graphsScreenIcon_png ), {
           maxIconWidthProportion: 1,
           maxIconHeightProportion: 1
