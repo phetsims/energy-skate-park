@@ -5,151 +5,151 @@
  */
 /* eslint-disable */
 import getStringModule from '../../chipper/js/getStringModule.js';
-import TReadOnlyProperty from '../../axon/js/TReadOnlyProperty.js';
+import LinkableProperty from '../../axon/js/LinkableProperty.js';
 import energySkatePark from './energySkatePark.js';
 
 type StringsType = {
   'energy-skate-park': {
     'title': string;
-    'titleStringProperty': TReadOnlyProperty<string>;
+    'titleStringProperty': LinkableProperty<string>;
   };
   'physicalControls': {
     'gravityControls': {
       'gravity': string;
-      'gravityStringProperty': TReadOnlyProperty<string>;
+      'gravityStringProperty': LinkableProperty<string>;
       'earth': string;
-      'earthStringProperty': TReadOnlyProperty<string>;
+      'earthStringProperty': LinkableProperty<string>;
       'jupiter': string;
-      'jupiterStringProperty': TReadOnlyProperty<string>;
+      'jupiterStringProperty': LinkableProperty<string>;
       'moon': string;
-      'moonStringProperty': TReadOnlyProperty<string>;
+      'moonStringProperty': LinkableProperty<string>;
       'gravityMetersPerSecondSquaredPattern': string;
-      'gravityMetersPerSecondSquaredPatternStringProperty': TReadOnlyProperty<string>;
+      'gravityMetersPerSecondSquaredPatternStringProperty': LinkableProperty<string>;
       'gravityNewtonsPerKilogramPattern': string;
-      'gravityNewtonsPerKilogramPatternStringProperty': TReadOnlyProperty<string>;
+      'gravityNewtonsPerKilogramPatternStringProperty': LinkableProperty<string>;
     };
     'massControls': {
       'mass': string;
-      'massStringProperty': TReadOnlyProperty<string>;
+      'massStringProperty': LinkableProperty<string>;
       'massKilogramsPattern': string;
-      'massKilogramsPatternStringProperty': TReadOnlyProperty<string>;
+      'massKilogramsPatternStringProperty': LinkableProperty<string>;
     };
     'friction': string;
-    'frictionStringProperty': TReadOnlyProperty<string>;
+    'frictionStringProperty': LinkableProperty<string>;
     'custom': string;
-    'customStringProperty': TReadOnlyProperty<string>;
+    'customStringProperty': LinkableProperty<string>;
     'small': string;
-    'smallStringProperty': TReadOnlyProperty<string>;
+    'smallStringProperty': LinkableProperty<string>;
     'large': string;
-    'largeStringProperty': TReadOnlyProperty<string>;
+    'largeStringProperty': LinkableProperty<string>;
     'lots': string;
-    'lotsStringProperty': TReadOnlyProperty<string>;
+    'lotsStringProperty': LinkableProperty<string>;
     'none': string;
-    'noneStringProperty': TReadOnlyProperty<string>;
+    'noneStringProperty': LinkableProperty<string>;
     'tiny': string;
-    'tinyStringProperty': TReadOnlyProperty<string>;
+    'tinyStringProperty': LinkableProperty<string>;
   };
   'energies': {
     'thermal': string;
-    'thermalStringProperty': TReadOnlyProperty<string>;
+    'thermalStringProperty': LinkableProperty<string>;
     'total': string;
-    'totalStringProperty': TReadOnlyProperty<string>;
+    'totalStringProperty': LinkableProperty<string>;
     'kinetic': string;
-    'kineticStringProperty': TReadOnlyProperty<string>;
+    'kineticStringProperty': LinkableProperty<string>;
     'potential': string;
-    'potentialStringProperty': TReadOnlyProperty<string>;
+    'potentialStringProperty': LinkableProperty<string>;
     'energy': string;
-    'energyStringProperty': TReadOnlyProperty<string>;
+    'energyStringProperty': LinkableProperty<string>;
   };
   'plots': {
     'barGraph': {
       'label': string;
-      'labelStringProperty': TReadOnlyProperty<string>;
+      'labelStringProperty': LinkableProperty<string>;
     };
     'energyGraph': {
       'label': string;
-      'labelStringProperty': TReadOnlyProperty<string>;
+      'labelStringProperty': LinkableProperty<string>;
     };
     'pieChart': {
       'label': string;
-      'labelStringProperty': TReadOnlyProperty<string>;
+      'labelStringProperty': LinkableProperty<string>;
     };
     'timeSwitchLabel': string;
-    'timeSwitchLabelStringProperty': TReadOnlyProperty<string>;
+    'timeSwitchLabelStringProperty': LinkableProperty<string>;
     'positionSwitchLabel': string;
-    'positionSwitchLabelStringProperty': TReadOnlyProperty<string>;
+    'positionSwitchLabelStringProperty': LinkableProperty<string>;
     'timeLabel': string;
-    'timeLabelStringProperty': TReadOnlyProperty<string>;
+    'timeLabelStringProperty': LinkableProperty<string>;
     'positionLabel': string;
-    'positionLabelStringProperty': TReadOnlyProperty<string>;
+    'positionLabelStringProperty': LinkableProperty<string>;
     'energyLabel': string;
-    'energyLabelStringProperty': TReadOnlyProperty<string>;
+    'energyLabelStringProperty': LinkableProperty<string>;
   };
   'visibilityControls': {
     'grid': string;
-    'gridStringProperty': TReadOnlyProperty<string>;
+    'gridStringProperty': LinkableProperty<string>;
     'referenceHeight': string;
-    'referenceHeightStringProperty': TReadOnlyProperty<string>;
+    'referenceHeightStringProperty': LinkableProperty<string>;
     'path': string;
-    'pathStringProperty': TReadOnlyProperty<string>;
+    'pathStringProperty': LinkableProperty<string>;
     'speed': string;
-    'speedStringProperty': TReadOnlyProperty<string>;
+    'speedStringProperty': LinkableProperty<string>;
   };
   'skaterControls': {
     'label': string;
-    'labelStringProperty': TReadOnlyProperty<string>;
+    'labelStringProperty': LinkableProperty<string>;
     'skater1MassPattern': string;
-    'skater1MassPatternStringProperty': TReadOnlyProperty<string>;
+    'skater1MassPatternStringProperty': LinkableProperty<string>;
     'skater2MassPattern': string;
-    'skater2MassPatternStringProperty': TReadOnlyProperty<string>;
+    'skater2MassPatternStringProperty': LinkableProperty<string>;
     'skater3MassPattern': string;
-    'skater3MassPatternStringProperty': TReadOnlyProperty<string>;
+    'skater3MassPatternStringProperty': LinkableProperty<string>;
     'skater4MassPattern': string;
-    'skater4MassPatternStringProperty': TReadOnlyProperty<string>;
+    'skater4MassPatternStringProperty': LinkableProperty<string>;
     'skater5MassPattern': string;
-    'skater5MassPatternStringProperty': TReadOnlyProperty<string>;
+    'skater5MassPatternStringProperty': LinkableProperty<string>;
     'dogMassPattern': string;
-    'dogMassPatternStringProperty': TReadOnlyProperty<string>;
+    'dogMassPatternStringProperty': LinkableProperty<string>;
     'restartSkater': string;
-    'restartSkaterStringProperty': TReadOnlyProperty<string>;
+    'restartSkaterStringProperty': LinkableProperty<string>;
   };
   'trackControls': {
     'stickToTrack': string;
-    'stickToTrackStringProperty': TReadOnlyProperty<string>;
+    'stickToTrackStringProperty': LinkableProperty<string>;
   };
   'screens': {
     'intro': string;
-    'introStringProperty': TReadOnlyProperty<string>;
+    'introStringProperty': LinkableProperty<string>;
     'graphs': string;
-    'graphsStringProperty': TReadOnlyProperty<string>;
+    'graphsStringProperty': LinkableProperty<string>;
     'playground': string;
-    'playgroundStringProperty': TReadOnlyProperty<string>;
+    'playgroundStringProperty': LinkableProperty<string>;
     'measure': string;
-    'measureStringProperty': TReadOnlyProperty<string>;
+    'measureStringProperty': LinkableProperty<string>;
   };
   'heightLabels': {
     'zeroM': string;
-    'zeroMStringProperty': TReadOnlyProperty<string>;
+    'zeroMStringProperty': LinkableProperty<string>;
     'heightEqualsZero': string;
-    'heightEqualsZeroStringProperty': TReadOnlyProperty<string>;
+    'heightEqualsZeroStringProperty': LinkableProperty<string>;
   };
   'pathSensor': {
     'energyJoulesPattern': string;
-    'energyJoulesPatternStringProperty': TReadOnlyProperty<string>;
+    'energyJoulesPatternStringProperty': LinkableProperty<string>;
     'heightMetersPattern': string;
-    'heightMetersPatternStringProperty': TReadOnlyProperty<string>;
+    'heightMetersPatternStringProperty': LinkableProperty<string>;
     'speedMetersPerSecondPattern': string;
-    'speedMetersPerSecondPatternStringProperty': TReadOnlyProperty<string>;
+    'speedMetersPerSecondPatternStringProperty': LinkableProperty<string>;
   };
   'speedometer': {
     'label': string;
-    'labelStringProperty': TReadOnlyProperty<string>;
+    'labelStringProperty': LinkableProperty<string>;
     'metersPerSecondPattern': string;
-    'metersPerSecondPatternStringProperty': TReadOnlyProperty<string>;
+    'metersPerSecondPatternStringProperty': LinkableProperty<string>;
   };
   'measuringTape': {
     'units': string;
-    'unitsStringProperty': TReadOnlyProperty<string>;
+    'unitsStringProperty': LinkableProperty<string>;
   }
 };
 
