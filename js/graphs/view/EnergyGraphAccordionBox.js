@@ -253,7 +253,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
     } );
 
     return {
-      node: new HBox( { children: [ labelBox, iconNode ], spacing: 5 } ),
+      createNode: tandem => new HBox( { children: [ labelBox, iconNode ], spacing: 5 } ),
       property: property
     };
   }
