@@ -48,7 +48,7 @@ import skater6_set2_right_png from '../../../images/skater6_set2_right_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import HeadshotIcon from './HeadshotIcon.js';
 
-// strings are not translatable until design is complete, see https://github.com/phetsims/joist/issues/814
+// strings are not translatable until design is complete, see https://github.com/phetsims/energy-skate-park/issues/345
 const unitedStatesOfAmericaString = 'United States of America';
 const africaConservativeString = 'Africa - Conservative';
 
