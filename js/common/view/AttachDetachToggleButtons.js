@@ -51,20 +51,22 @@ class AttachDetachToggleButtons extends Panel {
       } );
     };
 
+    const buttonContent0 = createButtonContent( attach_png, 'attachIcon' );
+
     const radioButtonsContent = [
       {
         value: true,
-        node: createButtonContent( attach_png, 'attachIcon' ),
+        createNode: tandem => buttonContent0,
         tandemName: attachRadioButtonTandemName
       },
       {
         value: false,
-        node: createButtonContent( detach_png, 'detachIcon' ),
+        createNode: tandem => createButtonContent( detach_png, 'detachIcon' ),
         tandemName: detachRadioButtonTandemName
       }
     ];
 
-    const buttonSpacing = contentWidth - ( options.xMargin * 2 ) - ( radioButtonsContent[ 0 ].node.width * 2 ) - SELECTED_LINE_WIDTH * 2;
+    const buttonSpacing = contentWidth - ( options.xMargin * 2 ) - ( buttonContent0.width * 2 ) - SELECTED_LINE_WIDTH * 2;
     assert && assert( buttonSpacing > 0, 'buttons must have non zero spacing' );
 
     const radioButtonGroup = new RectangularRadioButtonGroup( stickingToTrackProperty, radioButtonsContent, {
