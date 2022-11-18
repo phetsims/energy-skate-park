@@ -94,8 +94,8 @@ class EnergySkateParkControlPanel extends Panel {
 
       // The set of characters for this control can change. Instead of instantiating a new control we create all
       // eagerly and swap visibility.
-      const characterSet1SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SkaterCharacterSets[ 0 ], tandem.createTandem( 'skaterSetOneControls' ) );
-      const characterSet2SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SkaterCharacterSets[ 1 ], tandem.createTandem( 'skaterSetTwoControls' ) );
+      const characterSet1SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 0 ], tandem.createTandem( 'skaterSetOneControls' ) );
+      const characterSet2SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 1 ], tandem.createTandem( 'skaterSetTwoControls' ) );
       children.push( characterSet1SkaterControls );
       children.push( characterSet2SkaterControls );
 

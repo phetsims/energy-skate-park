@@ -59,7 +59,7 @@ class SkaterNode extends Node {
 
     // @public - One of SkaterImages.SkaterImageSet, with images for left and right motion. Controls the skater
     // character.
-    this.skaterImageSetProperty = new Property( SkaterImages.SkaterCharacterSets[ 0 ].imageSet1 );
+    this.skaterImageSetProperty = new Property( SkaterImages.SKATER_CHARACTER_SETS[ 0 ].imageSet1 );
 
     this.skaterImageSetProperty.link( skaterImage => {
       leftSkaterImageNode.image = skaterImage.leftImage;
