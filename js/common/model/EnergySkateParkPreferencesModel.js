@@ -10,7 +10,7 @@
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import Enumeration from '../../../../phet-core/js/Enumeration.js';
-import localizationManager from '../../../../joist/js/preferences/localizationManager.js';
+import regionAndCultureManager from '../../../../joist/js/preferences/regionAndCultureManager.js';
 import EnumerationValue from '../../../../phet-core/js/EnumerationValue.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -36,7 +36,7 @@ class EnergySkateParkPreferencesModel {
 
     // Controls the selected SkaterImages.SkaterCharacterSet. A set of characters is selected from Preferences
     // and the actual skater character is chosen from in-screen UI.
-    this.skaterCharacterSetProperty = new DerivedProperty( [ localizationManager.regionAndCultureProperty ], characterSet => {
+    this.skaterCharacterSetProperty = new DerivedProperty( [ regionAndCultureManager.regionAndCultureProperty ], characterSet => {
 
       // TODO: more character sets here from other characterSet values when read
       return characterSet === 0 ? SkaterImages.CHARACTER_SET_1 : SkaterImages.CHARACTER_SET_2;
