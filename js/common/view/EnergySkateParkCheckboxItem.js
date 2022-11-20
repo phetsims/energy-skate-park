@@ -19,7 +19,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-const propertiesSpeedString = EnergySkateParkStrings.speedometer.label;
+const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelStringProperty;
 
 class EnergySkateParkCheckboxItem extends Checkbox {
 
@@ -123,7 +123,7 @@ class EnergySkateParkCheckboxItem extends Checkbox {
     options = merge( {
       scale: 1
     }, options );
-    const node = new GaugeNode( new Property( 0 ), propertiesSpeedString, new Range( 0, 10 ),
+    const node = new GaugeNode( new Property( 0 ), propertiesSpeedStringProperty, new Range( 0, 10 ),
       {
         pickable: false,
         tandem: tandem.createTandem( 'gaugeNode' )

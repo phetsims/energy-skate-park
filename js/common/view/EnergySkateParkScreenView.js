@@ -46,7 +46,7 @@ import TrackNode from './TrackNode.js';
 import VisibilityControlsPanel from './VisibilityControlsPanel.js';
 
 const controlsRestartSkaterString = EnergySkateParkStrings.skaterControls.restartSkater;
-const propertiesSpeedString = EnergySkateParkStrings.speedometer.label;
+const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelStringProperty;
 const speedometerMetersPerSecondPatternString = EnergySkateParkStrings.speedometer.metersPerSecondPattern;
 const measuringTapeUnitsString = EnergySkateParkStrings.measuringTape.units;
 
@@ -237,7 +237,7 @@ class EnergySkateParkScreenView extends ScreenView {
     const gaugeRadius = 76;
 
     // @protected (read-only) - for layout or repositioning in subtypes
-    this.speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedString, new Range( 0, 30 ), {
+    this.speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedStringProperty, new Range( 0, 30 ), {
       numberDisplayOptions: {
         valuePattern: speedometerMetersPerSecondPatternString,
         decimalPlaces: 1,
