@@ -111,7 +111,7 @@ const CHARACTER_SET_2 = new SkaterCharacterSet(
 );
 
 const SkaterImages = {
-  SkaterCharacterSets: [
+  SKATER_CHARACTER_SETS: [
     CHARACTER_SET_1,
     CHARACTER_SET_2
   ],
