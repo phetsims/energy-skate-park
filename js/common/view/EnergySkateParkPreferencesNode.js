@@ -8,7 +8,7 @@
  */
 
 import PreferencesDialogConstants from '../../../../joist/js/preferences/PreferencesDialogConstants.js';
-import PreferencesToggleSwitch from '../../../../joist/js/preferences/PreferencesToggleSwitch.js';
+import PreferencesControl from '../../../../joist/js/preferences/PreferencesControl.js';
 import { Node, RichText, Text } from '../../../../scenery/js/imports.js';
 import ABSwitch from '../../../../sun/js/ABSwitch.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -37,7 +37,7 @@ class EnergySkateParkPreferencesNode extends Node {
       { toggleSwitchOptions: PreferencesDialogConstants.TOGGLE_SWITCH_OPTIONS }
       );
 
-    const accelerationUnitsControl = new PreferencesToggleSwitch(
+    const accelerationUnitsControl = new PreferencesControl(
       {
         labelNode: new Text( 'Acceleration Units', PreferencesDialogConstants.CONTROL_LABEL_OPTIONS ),
         labelSpacing: 20,
