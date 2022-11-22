@@ -7,9 +7,10 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import PreferencesDialog from '../../../../joist/js/preferences/PreferencesDialog.js';
+import PreferencesDialogConstants from '../../../../joist/js/preferences/PreferencesDialogConstants.js';
 import PreferencesToggleSwitch from '../../../../joist/js/preferences/PreferencesToggleSwitch.js';
 import { Node, RichText, Text } from '../../../../scenery/js/imports.js';
+import ABSwitch from '../../../../sun/js/ABSwitch.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
 
@@ -22,27 +23,29 @@ class EnergySkateParkPreferencesNode extends Node {
   constructor( preferencesModel, tandem ) {
     super();
 
-    const metersPerSecondSquaredLabel = new RichText( 'm/s<sup>2</sup>', {
-      font: PreferencesDialog.CONTENT_FONT
-    } );
+    const metersPerSecondSquaredLabel = new RichText( 'm/s<sup>2</sup>',
+      PreferencesDialogConstants.CONTROL_DESCRIPTION_OPTIONS
+    );
 
-    const newtonsPerKilogramLabel = new Text( 'N/kg', {
-      font: PreferencesDialog.CONTENT_FONT
-    } );
+    const newtonsPerKilogramLabel = new Text( 'N/kg', PreferencesDialogConstants.CONTROL_DESCRIPTION_OPTIONS );
 
-    const accelerationUnitsSwitch = new PreferencesToggleSwitch(
-      preferencesModel.accelerationUnitsProperty,
+    const accelarationUnitsSwitch = new ABSwitch( preferencesModel.accelerationUnitsProperty,
       EnergySkateParkPreferencesModel.AccelerationUnits.METERS_PER_SECOND_SQUARED,
+      metersPerSecondSquaredLabel,
       EnergySkateParkPreferencesModel.AccelerationUnits.NEWTONS_PER_KILOGRAM,
+      newtonsPerKilogramLabel,
+      { toggleSwitchOptions: PreferencesDialogConstants.TOGGLE_SWITCH_OPTIONS }
+      );
+
+    const accelerationUnitsControl = new PreferencesToggleSwitch(
       {
-        labelNode: new Text( 'Acceleration Units', { font: PreferencesDialog.CONTENT_FONT } ),
+        labelNode: new Text( 'Acceleration Units', PreferencesDialogConstants.CONTROL_LABEL_OPTIONS ),
         labelSpacing: 20,
-        leftValueLabel: metersPerSecondSquaredLabel,
-        rightValueLabel: newtonsPerKilogramLabel
+        controlNode: accelarationUnitsSwitch
       }
     );
 
-    this.addChild( accelerationUnitsSwitch );
+    this.addChild( accelerationUnitsControl );
   }
 }
 
