@@ -38,8 +38,16 @@ class EnergySkateParkPreferencesModel {
     // and the actual skater character is chosen from in-screen UI.
     this.skaterCharacterSetProperty = new DerivedProperty( [ regionAndCultureManager.regionAndCultureProperty ], characterSet => {
 
-      // TODO: more character sets here from other characterSet values when read
-      return characterSet === 0 ? SkaterImages.CHARACTER_SET_1 : SkaterImages.CHARACTER_SET_2;
+      switch( characterSet ) {
+        case 0:
+          return SkaterImages.CHARACTER_SET_1;
+        case 1:
+          return SkaterImages.CHARACTER_SET_2;
+        case 2:
+          return SkaterImages.CHARACTER_SET_3;
+        default:
+          return SkaterImages.CHARACTER_SET_1;
+      }
     } );
   }
 }

@@ -96,12 +96,15 @@ class EnergySkateParkControlPanel extends Panel {
       // eagerly and swap visibility.
       const characterSet1SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 0 ], tandem.createTandem( 'skaterSetOneControls' ) );
       const characterSet2SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 1 ], tandem.createTandem( 'skaterSetTwoControls' ) );
+      const characterSet3SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 2 ], tandem.createTandem( 'skaterSetThreeControls' ) );
       children.push( characterSet1SkaterControls );
       children.push( characterSet2SkaterControls );
+      children.push( characterSet3SkaterControls );
 
       model.preferencesModel.skaterCharacterSetProperty.link( characterSet => {
         characterSet1SkaterControls.visible = characterSet === SkaterImages.CHARACTER_SET_1;
         characterSet2SkaterControls.visible = characterSet === SkaterImages.CHARACTER_SET_2;
+        characterSet3SkaterControls.visible = characterSet === SkaterImages.CHARACTER_SET_3;
 
         // change selected image to first in the character set
         screenView.skaterNode.skaterImageSetProperty.value = characterSet.imageSet1;
