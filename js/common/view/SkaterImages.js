@@ -47,6 +47,7 @@ import skater6_set2_left_png from '../../../images/skater6_set2_left_png.js';
 import skater6_set2_right_png from '../../../images/skater6_set2_right_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import HeadshotIcon from './HeadshotIcon.js';
+import CharacterSet from '../../../../joist/js/preferences/CharacterSet.js';
 
 // strings are not translatable until design is complete, see https://github.com/phetsims/energy-skate-park/issues/345
 const unitedStatesOfAmericaString = 'United States of America';
@@ -69,8 +70,9 @@ class SkaterImageSet {
  * SkaterImageSets of the SkaterCharacterSet in simulation controls. A different SkaterCharacterSet can be selected
  * from preferences.
  */
-class SkaterCharacterSet {
+class SkaterCharacterSet extends CharacterSet {
   constructor( imageSet1, imageSet2, imageSet3, imageSet4, imageSet5, imageSet6, imageSet7, imageSet8 ) {
+    super();
     this.imageSet1 = imageSet1;
     this.imageSet2 = imageSet2;
     this.imageSet3 = imageSet3;
@@ -122,11 +124,13 @@ const SkaterImages = {
   SKATER_SET_DESCRIPTORS: [
     {
       icon: new HeadshotIcon( CHARACTER_SET_1.imageSet1.headshotImage ),
-      label: unitedStatesOfAmericaString
+      label: unitedStatesOfAmericaString,
+      characterSet: CHARACTER_SET_1
     },
     {
       icon: new HeadshotIcon( CHARACTER_SET_2.imageSet1.headshotImage ),
-      label: africaConservativeString
+      label: africaConservativeString,
+      characterSet: CHARACTER_SET_2
     }
   ],
 
