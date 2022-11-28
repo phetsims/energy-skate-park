@@ -8,8 +8,8 @@
  */
 
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
-import regionAndCultureManager from '../../../../joist/js/preferences/regionAndCultureManager.js';
 import Enumeration from '../../../../phet-core/js/Enumeration.js';
+import regionAndCultureManager from '../../../../joist/js/preferences/regionAndCultureManager.js';
 import EnumerationValue from '../../../../phet-core/js/EnumerationValue.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
