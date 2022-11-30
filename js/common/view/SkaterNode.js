@@ -57,13 +57,26 @@ class SkaterNode extends Node {
     } );
     this.children = [ leftSkaterImageNode, rightSkaterImageNode ];
 
+    // Show a red dot in the bottom center as the important particle model coordinate
+    const circle = new Circle( 8, { fill: 'red' } );
+    this.addChild( circle );
+
     // @public - One of SkaterImages.SkaterImageSet, with images for left and right motion. Controls the skater
     // character.
     this.skaterImageSetProperty = new Property( SkaterImages.SKATER_CHARACTER_SETS[ 0 ].imageSet1 );
 
+    let imageWidth;
+    let imageHeight;
+
     this.skaterImageSetProperty.link( skaterImage => {
       leftSkaterImageNode.image = skaterImage.leftImage;
       rightSkaterImageNode.image = skaterImage.rightImage;
+
+      imageWidth = leftSkaterImageNode.width;
+      imageHeight = leftSkaterImageNode.height;
+
+      circle.x = imageWidth / 2;
+      circle.y = imageHeight;
     } );
 
     // @private {Skater}
@@ -74,8 +87,6 @@ class SkaterNode extends Node {
       rightSkaterImageNode.visible = direction === Skater.Direction.RIGHT;
     } );
 
-    const imageWidth = this.width;
-    const imageHeight = this.height;
 
     // @private - Map from mass(kg) to the amount to scale the image
     const centerMassValue = skater.massRange.getCenter();
@@ -120,11 +131,8 @@ class SkaterNode extends Node {
       translation.freeToPool();
 
       this.setMatrix( matrix );
-    } );
 
-    // Show a red dot in the bottom center as the important particle model coordinate
-    const circle = new Circle( 8, { fill: 'red', x: imageWidth / 2, y: imageHeight } );
-    this.addChild( circle );
+    } );
 
     let targetTrack = null;
 
