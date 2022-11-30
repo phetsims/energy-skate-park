@@ -16,7 +16,7 @@ import GravityNumberControl from './GravityNumberControl.js';
 import GravitySlider from './GravitySlider.js';
 
 // constants
-const gravityNewtonsPerKilogramPatternString = EnergySkateParkStrings.physicalControls.gravityControls.gravityNewtonsPerKilogramPattern;
+const gravityNewtonsPerKilogramPatternString = EnergySkateParkStrings.physicalControls.gravityControls.gravityNewtonsPerKilogramPatternStringProperty;
 
 class EnergySkateParkGravityControls extends VBox {
 

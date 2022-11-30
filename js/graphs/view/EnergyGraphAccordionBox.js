@@ -7,6 +7,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Dimension2 from '../../../../dot/js/Dimension2.js';
 import merge from '../../../../phet-core/js/merge.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
@@ -25,16 +26,16 @@ import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 import EnergyChart from './EnergyChart.js';
 
-const kineticEnergyLabelString = EnergySkateParkStrings.energies.kinetic;
-const potentialEnergyLabelString = EnergySkateParkStrings.energies.potential;
-const thermalEnergyLabelString = EnergySkateParkStrings.energies.thermal;
-const totalEnergyLabelString = EnergySkateParkStrings.energies.total;
-const timeSwitchLabelString = EnergySkateParkStrings.plots.timeSwitchLabel;
-const positionSwitchLabelString = EnergySkateParkStrings.plots.positionSwitchLabel;
-const plotsEnergyGraphString = EnergySkateParkStrings.plots.energyGraph.label;
-const plotsPositionLabelString = EnergySkateParkStrings.plots.positionLabel;
-const plotsEnergyLabelString = EnergySkateParkStrings.plots.energyLabel;
-const plotsTimeLabelString = EnergySkateParkStrings.plots.timeLabel;
+const kineticEnergyLabelString = EnergySkateParkStrings.energies.kineticStringProperty;
+const potentialEnergyLabelString = EnergySkateParkStrings.energies.potentialStringProperty;
+const thermalEnergyLabelString = EnergySkateParkStrings.energies.thermalStringProperty;
+const totalEnergyLabelString = EnergySkateParkStrings.energies.totalStringProperty;
+const timeSwitchLabelString = EnergySkateParkStrings.plots.timeSwitchLabelStringProperty;
+const positionSwitchLabelString = EnergySkateParkStrings.plots.positionSwitchLabelStringProperty;
+const plotsEnergyGraphString = EnergySkateParkStrings.plots.energyGraph.labelStringProperty;
+const plotsPositionLabelStringProperty = EnergySkateParkStrings.plots.positionLabelStringProperty;
+const plotsEnergyLabelString = EnergySkateParkStrings.plots.energyLabelStringProperty;
+const plotsTimeLabelStringProperty = EnergySkateParkStrings.plots.timeLabelStringProperty;
 
 // constants
 const GRAPH_HEIGHT = 141;
@@ -134,7 +135,13 @@ class EnergyGraphAccordionBox extends AccordionBox {
       font: LABEL_FONT,
       maxWidth: energyPlot.height / 2
     } );
-    const xLabelText = new Text( '', { font: LABEL_FONT, maxWidth: energyPlot.width } );
+
+    // Label the x-axis with the independent variable.
+    const xLabelStringProperty = new DerivedProperty( [ model.independentVariableProperty, plotsTimeLabelStringProperty, plotsPositionLabelStringProperty ],
+      ( independentVariable, timeLabelString, positionLabelString ) => ( independentVariable === GraphsModel.IndependentVariable.TIME ) ? timeLabelString : positionLabelString
+    );
+    const xLabelText = new Text( xLabelStringProperty, { font: LABEL_FONT, maxWidth: energyPlot.width } );
+
     const yLabel = new VBox( {
       children: [ yLabelText, zoomButtonGroup ],
       spacing: 10
@@ -195,10 +202,13 @@ class EnergyGraphAccordionBox extends AccordionBox {
     // @private {GraphsModel}
     this.model = model;
 
+    // Keep xLabelText horizontally centered.
+    xLabelText.boundsProperty.link( () => {
+      xLabelText.centerX = xLabelText.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.center ) ).x;
+    } );
+
     // listeners - when the independent variable changes, clear all data and update labels
     model.independentVariableProperty.link( independentVariable => {
-      xLabelText.text = independentVariable === GraphsModel.IndependentVariable.TIME ? plotsTimeLabelString : plotsPositionLabelString;
-      xLabelText.centerX = xLabelText.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.center ) ).x;
       this.clearEnergyData();
     } );
   }

@@ -18,7 +18,7 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TextPanel from './TextPanel.js';
 
-const heightEqualsZeroString = EnergySkateParkStrings.heightLabels.heightEqualsZero;
+const heightEqualsZeroString = EnergySkateParkStrings.heightLabels.heightEqualsZeroStringProperty;
 
 class ReferenceHeightLine extends Node {
 

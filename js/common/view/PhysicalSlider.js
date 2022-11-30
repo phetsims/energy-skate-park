@@ -16,8 +16,8 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
-const controlsValueLotsString = EnergySkateParkStrings.physicalControls.lots;
-const controlsValueNoneString = EnergySkateParkStrings.physicalControls.none;
+const controlsValueLotsString = EnergySkateParkStrings.physicalControls.lotsStringProperty;
+const controlsValueNoneString = EnergySkateParkStrings.physicalControls.noneStringProperty;
 
 class PhysicalSlider extends PhysicalNumberControl {
 

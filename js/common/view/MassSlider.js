@@ -11,9 +11,9 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
-const controlsMassString = EnergySkateParkStrings.physicalControls.massControls.mass;
-const smallString = EnergySkateParkStrings.physicalControls.small;
-const largeString = EnergySkateParkStrings.physicalControls.large;
+const controlsMassString = EnergySkateParkStrings.physicalControls.massControls.massStringProperty;
+const smallString = EnergySkateParkStrings.physicalControls.smallStringProperty;
+const largeString = EnergySkateParkStrings.physicalControls.largeStringProperty;
 
 class MassSlider extends PhysicalSlider {
 

@@ -45,10 +45,10 @@ import ToolboxPanel from './ToolboxPanel.js';
 import TrackNode from './TrackNode.js';
 import VisibilityControlsPanel from './VisibilityControlsPanel.js';
 
-const controlsRestartSkaterString = EnergySkateParkStrings.skaterControls.restartSkater;
+const controlsRestartSkaterString = EnergySkateParkStrings.skaterControls.restartSkaterStringProperty;
 const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelStringProperty;
-const speedometerMetersPerSecondPatternString = EnergySkateParkStrings.speedometer.metersPerSecondPattern;
-const measuringTapeUnitsString = EnergySkateParkStrings.measuringTape.units;
+const speedometerMetersPerSecondPatternString = EnergySkateParkStrings.speedometer.metersPerSecondPatternStringProperty;
+const measuringTapeUnitsString = EnergySkateParkStrings.measuringTape.unitsStringProperty;
 
 // constants
 // for wider screens, panels can float to the left and right by this much beyond dev bounds in view coordinates

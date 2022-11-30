@@ -26,14 +26,14 @@ import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorSc
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 
-const energyEnergyString = EnergySkateParkStrings.energies.energy;
-const energyJoulesPatternString = EnergySkateParkStrings.pathSensor.energyJoulesPattern;
-const energyKineticString = EnergySkateParkStrings.energies.kinetic;
-const energyPotentialString = EnergySkateParkStrings.energies.potential;
-const energyThermalString = EnergySkateParkStrings.energies.thermal;
-const energyTotalString = EnergySkateParkStrings.energies.total;
-const heightMetersPatternString = EnergySkateParkStrings.pathSensor.heightMetersPattern;
-const speedMetersPerSecondPatternString = EnergySkateParkStrings.pathSensor.speedMetersPerSecondPattern;
+const energyEnergyString = EnergySkateParkStrings.energies.energyStringProperty;
+const energyJoulesPatternString = EnergySkateParkStrings.pathSensor.energyJoulesPatternStringProperty;
+const energyKineticString = EnergySkateParkStrings.energies.kineticStringProperty;
+const energyPotentialString = EnergySkateParkStrings.energies.potentialStringProperty;
+const energyThermalString = EnergySkateParkStrings.energies.thermalStringProperty;
+const energyTotalString = EnergySkateParkStrings.energies.totalStringProperty;
+const heightMetersPatternString = EnergySkateParkStrings.pathSensor.heightMetersPatternStringProperty;
+const speedMetersPerSecondPatternString = EnergySkateParkStrings.pathSensor.speedMetersPerSecondPatternStringProperty;
 
 // constants
 const TITLE_CONTENT_SPACING = 5.5; // spacing between the "Energy" title and the rest of the content

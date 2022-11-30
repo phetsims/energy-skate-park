@@ -17,10 +17,10 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 class TextPanel extends Panel {
 
   /**
-   * @param {string} textContent - text to fill the panel
+   * @param {LinkableProperty<string>} stringProperty - text to fill the panel
    * @param {Object} [options]
    */
-  constructor( textContent, options ) {
+  constructor( stringProperty, options ) {
 
     options = merge( {
 
@@ -37,7 +37,7 @@ class TextPanel extends Panel {
       resize: false // assumes the text content is static
     }, options );
 
-    const text = new Text( textContent, {
+    const text = new Text( stringProperty, {
       font: options.font,
       maxWidth: options.textMaxWidth
     } );

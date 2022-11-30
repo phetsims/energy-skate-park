@@ -19,12 +19,12 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkCheckboxItem from './EnergySkateParkCheckboxItem.js';
 
-const controlsPathString = EnergySkateParkStrings.visibilityControls.path;
-const controlsReferenceHeightString = EnergySkateParkStrings.visibilityControls.referenceHeight;
-const controlsShowGridString = EnergySkateParkStrings.visibilityControls.grid;
-const controlsStickToTrackString = EnergySkateParkStrings.trackControls.stickToTrack;
-const pieChartString = EnergySkateParkStrings.plots.pieChart.label;
-const propertiesSpeedString = EnergySkateParkStrings.visibilityControls.speed;
+const controlsPathString = EnergySkateParkStrings.visibilityControls.pathStringProperty;
+const controlsReferenceHeightString = EnergySkateParkStrings.visibilityControls.referenceHeightStringProperty;
+const controlsShowGridString = EnergySkateParkStrings.visibilityControls.gridStringProperty;
+const controlsStickToTrackString = EnergySkateParkStrings.trackControls.stickToTrackStringProperty;
+const pieChartString = EnergySkateParkStrings.plots.pieChart.labelStringProperty;
+const propertiesSpeedString = EnergySkateParkStrings.visibilityControls.speedStringProperty;
 
 // constants
 const TEXT_OPTIONS = {

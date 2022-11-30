@@ -16,11 +16,11 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-const energyEnergyString = EnergySkateParkStrings.energies.energy;
-const energyKineticString = EnergySkateParkStrings.energies.kinetic;
-const energyPotentialString = EnergySkateParkStrings.energies.potential;
-const energyThermalString = EnergySkateParkStrings.energies.thermal;
-const energyTotalString = EnergySkateParkStrings.energies.total;
+const energyEnergyString = EnergySkateParkStrings.energies.energyStringProperty;
+const energyKineticString = EnergySkateParkStrings.energies.kineticStringProperty;
+const energyPotentialString = EnergySkateParkStrings.energies.potentialStringProperty;
+const energyThermalString = EnergySkateParkStrings.energies.thermalStringProperty;
+const energyTotalString = EnergySkateParkStrings.energies.totalStringProperty;
 
 class PieChartLegend extends Panel {
 

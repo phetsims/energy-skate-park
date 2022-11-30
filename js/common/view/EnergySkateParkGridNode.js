@@ -57,7 +57,7 @@ class EnergySkateParkGridNode extends Node {
     this.labelXPosition = this.modelViewTransform.modelToViewX( -5 );
 
     // @private {TextPanel} - a unique label for the zero meter reference height position
-    this.zeroMeterLabel = new TextPanel( EnergySkateParkStrings.heightLabels.zeroM, {
+    this.zeroMeterLabel = new TextPanel( EnergySkateParkStrings.heightLabels.zeroMStringProperty, {
       bottom: this.modelViewTransform.modelToViewY( 0 ) - 2,
       right: this.labelXPosition - 2
     } );

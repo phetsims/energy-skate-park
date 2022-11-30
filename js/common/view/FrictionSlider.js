@@ -12,7 +12,7 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
-const controlsFrictionTitleString = EnergySkateParkStrings.physicalControls.friction;
+const controlsFrictionTitleString = EnergySkateParkStrings.physicalControls.frictionStringProperty;
 
 class FrictionSlider extends PhysicalSlider {
 

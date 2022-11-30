@@ -14,8 +14,8 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
-const controlsGravityLabelString = EnergySkateParkStrings.physicalControls.gravityControls.gravity;
-const gravityMetersPerSecondSquaredPatternString = EnergySkateParkStrings.physicalControls.gravityControls.gravityMetersPerSecondSquaredPattern;
+const controlsGravityLabelString = EnergySkateParkStrings.physicalControls.gravityControls.gravityStringProperty;
+const gravityMetersPerSecondSquaredPatternString = EnergySkateParkStrings.physicalControls.gravityControls.gravityMetersPerSecondSquaredPatternStringProperty;
 
 class GravityNumberControl extends PhysicalNumberControl {
 

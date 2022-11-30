@@ -19,7 +19,7 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 // constants
-const controlsGravityCustomString = EnergySkateParkStrings.physicalControls.custom;
+const controlsGravityCustomString = EnergySkateParkStrings.physicalControls.customStringProperty;
 
 class PhysicalComboBox extends ComboBox {
 
