@@ -86,8 +86,10 @@ class SkaterImageSet {
  * from preferences.
  */
 class SkaterCharacterSet extends CharacterSet {
-  constructor( imageSet1, imageSet2, imageSet3, imageSet4, imageSet5, imageSet6, imageSet7, imageSet8 ) {
-    super();
+  constructor( labelString, imageSet1, imageSet2, imageSet3, imageSet4, imageSet5, imageSet6, imageSet7, imageSet8 ) {
+    const headshotIcon = new HeadshotIcon( imageSet1.headshotImage );
+
+    super( headshotIcon, labelString );
     this.imageSet1 = imageSet1;
     this.imageSet2 = imageSet2;
     this.imageSet3 = imageSet3;
@@ -96,12 +98,11 @@ class SkaterCharacterSet extends CharacterSet {
     this.imageSet6 = imageSet6;
     this.imageSet7 = imageSet7;
     this.imageSet8 = imageSet8;
-
-    this.imageSets = [ imageSet1, imageSet2, imageSet3, imageSet4, imageSet5, imageSet6, imageSet7, imageSet8 ];
   }
 }
 
 const CHARACTER_SET_1 = new SkaterCharacterSet(
+  unitedStatesOfAmericaString,
   new SkaterImageSet( skater1_set1_left_png, skater1_set1_right_png, skater1_set1_headshot_png ),
   new SkaterImageSet( skater2_set1_left_png, skater2_set1_right_png, skater2_set1_headshot_png ),
   new SkaterImageSet( skater3_set1_left_png, skater3_set1_right_png, skater3_set1_headshot_png ),
@@ -113,6 +114,7 @@ const CHARACTER_SET_1 = new SkaterCharacterSet(
 );
 
 const CHARACTER_SET_2 = new SkaterCharacterSet(
+  africaString,
   new SkaterImageSet( skater1_set2_left_png, skater1_set2_right_png, skater1_set2_headshot_png ),
   new SkaterImageSet( skater2_set2_left_png, skater2_set2_right_png, skater2_set2_headshot_png ),
   new SkaterImageSet( skater3_set2_left_png, skater3_set2_right_png, skater3_set2_headshot_png ),
@@ -124,6 +126,7 @@ const CHARACTER_SET_2 = new SkaterCharacterSet(
 );
 
 const CHARACTER_SET_3 = new SkaterCharacterSet(
+  africaConservativeString,
   new SkaterImageSet( skater1_set2_left_png, skater1_set2_right_png, skater1_set2_headshot_png ),
   new SkaterImageSet( skater2_set2_left_png, skater2_set2_right_png, skater2_set2_headshot_png ),
   new SkaterImageSet( skater3_set2_left_png, skater3_set2_right_png, skater3_set2_headshot_png ),
@@ -144,26 +147,6 @@ const SkaterImages = {
   CHARACTER_SET_1: CHARACTER_SET_1,
   CHARACTER_SET_2: CHARACTER_SET_2,
   CHARACTER_SET_3: CHARACTER_SET_3,
-
-  SKATER_SET_DESCRIPTORS: [
-    {
-      icon: new HeadshotIcon( CHARACTER_SET_1.imageSet1.headshotImage ),
-      label: unitedStatesOfAmericaString,
-      characterSet: CHARACTER_SET_1
-    },
-    {
-      icon: new HeadshotIcon( CHARACTER_SET_2.imageSet1.headshotImage ),
-      label: africaString,
-      characterSet: CHARACTER_SET_2
-    },
-    {
-      icon: new HeadshotIcon( CHARACTER_SET_3.imageSet1.headshotImage ),
-      label: africaConservativeString,
-      characterSet: CHARACTER_SET_3
-
-
-    }
-  ],
 
   IMAGES_PER_SET: 8
 };
