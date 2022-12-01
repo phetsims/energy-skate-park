@@ -18,7 +18,7 @@ class IntroScreenIcon extends ScreenIcon {
 
   /**
    * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Tandem} tandem
+   * @param {Object} providedOptions
    */
   constructor( preferencesModel, providedOptions = {} ) {
 

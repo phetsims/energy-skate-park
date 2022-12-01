@@ -18,7 +18,7 @@ class PlaygroundScreenIcon extends ScreenIcon {
 
   /**
    * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Tandem} tandem
+   * @param {Object} providedOptions
    */
   constructor( preferencesModel, providedOptions = {} ) {
 
@@ -27,7 +27,10 @@ class PlaygroundScreenIcon extends ScreenIcon {
     let skater;
 
     preferencesModel.skaterCharacterSetProperty.link( character => {
+
+      // image8 is one of the animals in the set, for fun in the playground
       skater = character ? new Image( character.imageSet8.rightImage ) : new Image( dog_right_png );
+
       // Translate, scale and rotate to the desired position
       const transformMatrix = Matrix3.translation( 375, 110 );
       transformMatrix.multiplyMatrix( Matrix3.rotation2( -2 * Math.PI / 3 ) );
