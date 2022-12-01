@@ -24,9 +24,6 @@
       "adapted-from-phet"
     ],
     "simulation": true,
-    "simFeatures": {
-      "supportsDynamicLocale": true
-    },
     "phet-io": {
       "validation": false
     },
