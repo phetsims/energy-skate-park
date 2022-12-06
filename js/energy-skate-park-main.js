@@ -42,7 +42,8 @@ simLauncher.launch( () => {
         } ]
       },
       localizationOptions: {
-        characterSets: SkaterImages.SKATER_CHARACTER_SETS
+        characterSets: SkaterImages.SKATER_CHARACTER_SETS,
+        supportsMultipleLocales: false
       }
     } ),
     credits: {
