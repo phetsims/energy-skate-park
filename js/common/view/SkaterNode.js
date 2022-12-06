@@ -81,7 +81,7 @@ class SkaterNode extends Node {
       circle.x = imageWidth / 2;
       circle.y = imageHeight;
 
-      // image dimensions might have changed, update matrix (which is horizontally centered around the image)
+      // image dimensions might have changed, update matrix (which horizontally centers the image around the position)
       this.skater.updatedEmitter.emit();
     } );
 
