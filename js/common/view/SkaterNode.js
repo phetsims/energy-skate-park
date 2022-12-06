@@ -68,6 +68,9 @@ class SkaterNode extends Node {
     let imageWidth;
     let imageHeight;
 
+    // @private {Skater}
+    this.skater = skater;
+
     this.skaterImageSetProperty.link( skaterImage => {
       leftSkaterImageNode.image = skaterImage.leftImage;
       rightSkaterImageNode.image = skaterImage.rightImage;
@@ -77,10 +80,10 @@ class SkaterNode extends Node {
 
       circle.x = imageWidth / 2;
       circle.y = imageHeight;
-    } );
 
-    // @private {Skater}
-    this.skater = skater;
+      // image dimensions might have changed, update matrix (which is horizontally centered around the image)
+      this.skater.updatedEmitter.emit();
+    } );
 
     skater.directionProperty.link( direction => {
       leftSkaterImageNode.visible = direction === Skater.Direction.LEFT;
