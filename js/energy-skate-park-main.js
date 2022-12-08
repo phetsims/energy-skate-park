@@ -43,7 +43,7 @@ simLauncher.launch( () => {
       },
       localizationOptions: {
         characterSets: SkaterImages.SKATER_CHARACTER_SETS,
-        supportsMultipleLocales: false
+        supportsDynamicLocales: false
       }
     } ),
     credits: {
