@@ -210,7 +210,7 @@ class EnergySkateParkScreenView extends ScreenView {
     this.resetAllButton = new ResetAllButton( {
       listener: () => {
         this.interruptSubtreeInput();
-        model.reset.bind( model );
+        model.reset();
       },
 
       // Align vertically with other controls, see #134
