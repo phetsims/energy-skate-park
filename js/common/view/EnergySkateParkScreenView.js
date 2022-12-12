@@ -436,9 +436,15 @@ class EnergySkateParkScreenView extends ScreenView {
         const viewPosition = modelViewTransform.modelToViewPosition( model.skater.startingPositionProperty.value ).plusXY( 0, 5 );
         returnSkaterToPreviousStartingPositionButton.centerBottom = viewPosition;
 
-        // If the return skater button went offscreen, move it back on the screen, see #222
+        // If the return skater button went offscreen, move it back on the screen, see #222 and #355
         if ( returnSkaterToPreviousStartingPositionButton.top < 5 ) {
           returnSkaterToPreviousStartingPositionButton.top = 5;
+        }
+        if ( returnSkaterToPreviousStartingPositionButton.left < 5 ) {
+          returnSkaterToPreviousStartingPositionButton.left = 5;
+        }
+        if ( returnSkaterToPreviousStartingPositionButton.right > this.layoutBounds.right - 5 ) {
+          returnSkaterToPreviousStartingPositionButton.right = this.layoutBounds.right - 5;
         }
       }
     } );
