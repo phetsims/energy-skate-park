@@ -66,7 +66,7 @@ import CharacterSet from '../../../../joist/js/preferences/CharacterSet.js';
 // strings are not translatable until design is complete, see https://github.com/phetsims/energy-skate-park/issues/345
 const unitedStatesOfAmericaString = 'United States of America';
 const africaString = 'Africa';
-const africaConservativeString = 'Africa - Conservative';
+const africaConservativeString = 'Africa (Modest)';
 
 /**
  * A collection of images for a single skater character with the images used for each direction of motion and
