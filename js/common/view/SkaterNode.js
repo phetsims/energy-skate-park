@@ -127,6 +127,9 @@ class SkaterNode extends Node {
       matrix.multiplyMatrix( scalingMatrix );
       scalingMatrix.freeToPool();
 
+      // Inverting the scale of the red circle so it always stays the same size
+      circle.setRadius( 3.5 / scale );
+
       // Think of it as a multiplying the Vector2 to the right, so this step happens first actually.  Use it to center
       // the registration point
       const translation = Matrix3.translation( -imageWidth / 2, -imageHeight );
