@@ -30,8 +30,7 @@ class SamplesCanvasNode extends CanvasNode {
     this.model.availableModelBoundsProperty.link( modelBounds => {
 
       // Dilate bounds by the radius of the sample circles so that they don't get clipped when the skater
-      // is resting on the ground. Circles will be half under ground in this case. See
-      // https://github.com/phetsims/energy-skate-park/issues/360
+      // is resting on the ground. Circles will be half under-ground in this case.
       this.canvasBounds = this.modelViewTransform.modelToViewBounds( modelBounds ).dilateY( SAMPLE_RADIUS );
 
       // repaint in case we are paused
