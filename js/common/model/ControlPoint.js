@@ -139,7 +139,7 @@ ControlPoint.ControlPointIO = new IOType( 'ControlPointIO', {
     x: NumberIO,
     y: NumberIO
   },
-  stateToArgsForConstructor: stateObject => {
+  stateObjectToCreateElementArguments: stateObject => {
     assert && assert( typeof stateObject.x === 'number' );
     return [ stateObject.x, stateObject.y ];
   }

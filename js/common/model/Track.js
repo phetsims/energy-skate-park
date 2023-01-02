@@ -1147,7 +1147,7 @@ Track.TrackIO = new IOType( 'TrackIO', {
   valueType: Track,
   documentation: 'A skate track',
   toStateObject: track => track.toStateObject(),
-  stateToArgsForConstructor: stateObject => {
+  stateObjectToCreateElementArguments: stateObject => {
     const controlPoints = stateObject.controlPoints.map( ControlPointReferenceIO.fromStateObject );
     const parents = stateObject.parents.map( Track.TrackIO.fromStateObject );
     return [ controlPoints, parents, {
