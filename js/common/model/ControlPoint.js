@@ -1,4 +1,4 @@
-// Copyright 2013-2022, University of Colorado Boulder
+// Copyright 2013-2023, University of Colorado Boulder
 
 /**
  * Data structure for a control point, which will define the shape of a Track. The ControlPoint may be draggable
