@@ -1545,7 +1545,7 @@ class EnergySkateParkModel extends PhetioObject {
   removeAndDisposeTrack( trackToRemove ) {
     assert && assert( this.tracks.includes( trackToRemove ), 'trying to remove track that is not in the list' );
     this.tracks.remove( trackToRemove );
-    trackToRemove.dispose();
+    this.trackGroup.disposeElement( trackToRemove );
   }
 
   /**
@@ -1583,7 +1583,7 @@ class EnergySkateParkModel extends PhetioObject {
     if ( track.controlPoints.length > 2 ) {
       const controlPointToDelete = track.controlPoints[ controlPointIndex ];
       const points = _.without( track.controlPoints, controlPointToDelete );
-      controlPointToDelete.dispose();
+      this.controlPointGroup.disposeElement( controlPointToDelete );
       const newTrack = this.trackGroup.createNextElement( points, track.getParentsOrSelf(), Track.FULLY_INTERACTIVE_OPTIONS );
       newTrack.physicalProperty.value = true;
       newTrack.droppedProperty.value = true;
@@ -1602,7 +1602,7 @@ class EnergySkateParkModel extends PhetioObject {
       // the entire track is deleted, so we must dispose the other control points
       for ( let i = 0; i < track.controlPoints.length; i++ ) {
         const controlPoint = track.controlPoints[ i ];
-        controlPoint.dispose();
+        this.controlPointGroup.disposeElement( controlPoint );
       }
     }
 
@@ -1682,7 +1682,7 @@ class EnergySkateParkModel extends PhetioObject {
     }
 
     // Dispose the control point itself
-    controlPointToSplit.dispose();
+    this.controlPointGroup.disposeElement( controlPointToSplit );
   }
 
   /**

@@ -72,10 +72,9 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
    */
   clearTracks() {
 
-    this.tracks.forEach( track => {
-      track.disposeControlPoints();
-    } );
     this.tracks.clear();
+    this.trackGroup.clear();
+    this.controlPointGroup.clear();
 
     // If the skater was on a track, then he should fall off, see #97
     if ( this.skater.trackProperty.value ) {
