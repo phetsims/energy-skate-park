@@ -207,7 +207,6 @@ class Track extends PhetioObject {
       this.controlPointDraggingProperty.dispose();
 
       this.model.availableModelBoundsProperty.unlink( boundsListener );
-      // this.disposeControlPoints();
     };
   }
 
@@ -1136,7 +1135,7 @@ class Track extends PhetioObject {
    * @public
    */
   disposeControlPoints() {
-    this.controlPoints.forEach( controlPoint => controlPoint.dispose() );
+    this.controlPoints.forEach( controlPoint => this.model.controlPointGroup.disposeElement( controlPoint ) );
   }
 }
 
