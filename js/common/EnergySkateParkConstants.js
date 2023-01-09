@@ -40,7 +40,8 @@ const EnergySkateParkConstants = {
     thumbSize: new Dimension2( 12, 23 ),
     trackSize: new Dimension2( 95, 3 ),
     tickLabelSpacing: 0,
-    majorTickLength: 11
+    majorTickLength: 11,
+    thumbTouchAreaYDilation: 8
   },
 
   // for radio buttons
