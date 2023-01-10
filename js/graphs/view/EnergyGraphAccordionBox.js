@@ -86,6 +86,8 @@ class EnergyGraphAccordionBox extends AccordionBox {
     // eraser button to clear all data from the graph
     const eraserButton = new EraserButton( {
       iconWidth: 22,
+      touchAreaXDilation: 8,
+      touchAreaYDilation: 8,
       listener: () => {
         this.clearEnergyData();
       },
