@@ -179,7 +179,10 @@ class EnergyGraphAccordionBox extends AccordionBox {
       titleBarExpandCollapse: false,
 
       expandCollapseButtonOptions: {
-        sideLength: 19
+        sideLength: 19,
+        touchAreaXDilation: 8,
+        touchAreaXShift: 2,
+        touchAreaYDilation: 6
       },
 
       expandedProperty: model.energyPlotVisibleProperty,
