@@ -160,5 +160,14 @@
   },
   "measuringTape.units": {
     "value": "m"
+  },
+  "characterSet.unitedStatesOfAmerica": {
+    "value": "United States of America"
+  },
+  "characterSet.africa": {
+    "value": "Africa"
+  },
+  "characterSet.africaModest": {
+    "value": "Africa (Modest)"
   }
 }

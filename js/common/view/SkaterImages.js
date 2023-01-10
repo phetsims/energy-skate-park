@@ -60,13 +60,13 @@ import skater6_set1_right_png from '../../../images/skater6_set1_right_png.js';
 import skater6_set2_right_png from '../../../images/skater6_set2_right_png.js';
 import skater6_set3_right_png from '../../../images/skater6_set3_right_png.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import HeadshotIcon from './HeadshotIcon.js';
 import CharacterSet from '../../../../joist/js/preferences/CharacterSet.js';
 
-// strings are not translatable until design is complete, see https://github.com/phetsims/energy-skate-park/issues/345
-const unitedStatesOfAmericaString = 'United States of America';
-const africaString = 'Africa';
-const africaConservativeString = 'Africa (Modest)';
+const unitedStatesOfAmericaString = EnergySkateParkStrings.characterSet.unitedStatesOfAmericaStringProperty;
+const africaString = EnergySkateParkStrings.characterSet.africaStringProperty;
+const africaConservativeString = EnergySkateParkStrings.characterSet.africaModestStringProperty;
 
 /**
  * A collection of images for a single skater character with the images used for each direction of motion and
