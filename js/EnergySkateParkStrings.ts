@@ -150,6 +150,14 @@ type StringsType = {
   'measuringTape': {
     'units': string;
     'unitsStringProperty': LinkableProperty<string>;
+  };
+  'characterSet': {
+    'unitedStatesOfAmerica': string;
+    'unitedStatesOfAmericaStringProperty': LinkableProperty<string>;
+    'africa': string;
+    'africaStringProperty': LinkableProperty<string>;
+    'africaModest': string;
+    'africaModestStringProperty': LinkableProperty<string>;
   }
 };
 
