@@ -16,6 +16,7 @@ import RectangularRadioButton from '../../../../sun/js/buttons/RectangularRadioB
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import { Shape } from '../../../../kite/js/imports.js';
 
 const BUTTON_SPACING = 5;
 
@@ -30,8 +31,8 @@ class SkaterRadioButtonGroup extends Node {
     super();
 
     const buttonOptions = {
-      xMargin: 0,
-      yMargin: 0,
+      xMargin: 1,
+      yMargin: 1,
       cornerRadius: EnergySkateParkConstants.RADIO_BUTTON_CORNER_RADIUS,
       baseColor: EnergySkateParkColorScheme.radioButtonBaseColor,
       buttonAppearanceStrategyOptions: {
@@ -87,6 +88,15 @@ class SkaterRadioButtonGroup extends Node {
 
     const buttons = [];
     contentArray.forEach( content => {
+      // Round clipping the corners to avoid pointy images in the radio buttons
+      content.node.clipArea = Shape.roundRect(
+        content.node.localBounds.left,
+        content.node.localBounds.top,
+        content.node.localBounds.width,
+        content.node.localBounds.height,
+        4,
+        4
+      );
       buttons.push( new RectangularRadioButton( skaterImageSetProperty, content.value, merge( {
         content: content.node,
         tandem: tandem.createTandem( content.tandemName )
