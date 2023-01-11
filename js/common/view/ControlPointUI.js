@@ -77,9 +77,9 @@ class ControlPointUI extends Node {
         listener: () => {
           model.splitControlPoint( track, controlPointIndex, modelAngle );
         },
-        center: modelViewTransform.modelToViewPosition( position ).plus( Vector2.createPolar( 40, angle + Math.PI / 2 ) ),
+        center: modelViewTransform.modelToViewPosition( position ).plus( Vector2.createPolar( 50, angle + Math.PI / 2 ) ),
         radius: 20,
-        touchAreaRadius: 20 * 1.3,
+        touchAreaDilation: 5,
 
         xMargin: 8,
         yMargin: 8,
@@ -102,9 +102,9 @@ class ControlPointUI extends Node {
         model.deleteControlPoint( track, controlPointIndex );
       },
       content: deleteNode,
-      center: modelViewTransform.modelToViewPosition( position ).plus( Vector2.createPolar( 40, angle - Math.PI / 2 ) ),
+      center: modelViewTransform.modelToViewPosition( position ).plus( Vector2.createPolar( 50, angle - Math.PI / 2 ) ),
       radius: 20,
-      touchAreaRadius: 20 * 1.3,
+      touchAreaDilation: 5,
 
       // Doesn't look exactly centered due to button shading, so adjust it slightly
       xContentOffset: -0.5,
