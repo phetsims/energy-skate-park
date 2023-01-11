@@ -214,6 +214,11 @@ class EnergyGraphAccordionBox extends AccordionBox {
     model.independentVariableProperty.link( independentVariable => {
       this.clearEnergyData();
     } );
+
+    // listeners - when the reference height is changed, clear all data (otherwise the graph will be incorrect, not inertial)
+    model.skater.referenceHeightProperty.link( referenceHeight => {
+      this.clearEnergyData();
+    } );
   }
 
   /**
