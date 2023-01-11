@@ -12,6 +12,7 @@ import { Circle, DragListener, Rectangle } from '../../../../scenery/js/imports.
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPointUI from './ControlPointUI.js';
+import { Shape } from '../../../../kite/js/imports.js';
 
 class ControlPointNode extends Circle {
 
@@ -263,6 +264,8 @@ class ControlPointNode extends Circle {
       };
       this.addInputListener( inputListener );
     }
+
+    this.touchArea = Shape.circle( 0, 0, 25 );
 
     // @private
     this.disposeControlPointNode = () => {
