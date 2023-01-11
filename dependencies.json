@@ -1,5 +1,5 @@
 {
-  "comment": "# energy-skate-park 1.2.0-rc.1 Wed Jan 11 2023 15:36:17 GMT-0500 (Colombia Standard Time)",
+  "comment": "# energy-skate-park 1.2.0-rc.1 Wed Jan 11 2023 15:52:59 GMT-0500 (Colombia Standard Time)",
   "assert": {
     "sha": "c13a8c7741d95fbd8e37619c66ebcca8686dffe7",
     "branch": "HEAD"
@@ -21,7 +21,7 @@
     "branch": "HEAD"
   },
   "energy-skate-park": {
-    "sha": "160fdbdba5f72234871c9dc51f32d2be165a448c",
+    "sha": "4ad0939fcaaf2e0612e23efb81ac8fd9f3883b24",
     "branch": "1.2"
   },
   "griddle": {
@@ -29,8 +29,8 @@
     "branch": "HEAD"
   },
   "joist": {
-    "sha": "97211b5c66c945873154d7c7a19e0579e2f16945",
-    "branch": "HEAD"
+    "sha": "9949fe09c5565a1878f45470d4c26ccd4a8c861c",
+    "branch": "energy-skate-park-1.2"
   },
   "kite": {
     "sha": "93747215c3e10c9f11af61d8b530f669687d973b",
@@ -49,8 +49,8 @@
     "branch": "HEAD"
   },
   "phet-io-sim-specific": {
-    "sha": "99952e2e837b17b5290204e87d3f8197105d5d57",
-    "branch": "HEAD"
+    "sha": "85a4ee81a798ef565756934fa792c0baf9363e13",
+    "branch": "energy-skate-park-1.2"
   },
   "phet-io-wrappers": {
     "sha": "e3456e9e082cbec823fe49ef1ca10497dbd3f3cd",
