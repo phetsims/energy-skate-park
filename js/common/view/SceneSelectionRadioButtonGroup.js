@@ -170,7 +170,7 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
 
       radioButtonContent.push( {
         value: i,
-        createNode: tandem => alignedNode,
+        createNode: () => alignedNode,
         tandemName: `scene${i + 1}RadioButton`
       } );
     } );

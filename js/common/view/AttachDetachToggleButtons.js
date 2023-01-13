@@ -56,12 +56,12 @@ class AttachDetachToggleButtons extends Panel {
     const radioButtonsContent = [
       {
         value: true,
-        createNode: tandem => buttonContent0,
+        createNode: () => buttonContent0,
         tandemName: attachRadioButtonTandemName
       },
       {
         value: false,
-        createNode: tandem => createButtonContent( detach_png, 'detachIcon' ),
+        createNode: () => createButtonContent( detach_png, 'detachIcon' ),
         tandemName: detachRadioButtonTandemName
       }
     ];
