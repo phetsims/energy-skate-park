@@ -1,4 +1,4 @@
-// Copyright 2022, University of Colorado Boulder
+// Copyright 2022-2023, University of Colorado Boulder
 
 /**
  * The node that is shown in the Preferences dialog of Energy Skate Park to control simulation
@@ -12,6 +12,7 @@ import PreferencesControl from '../../../../joist/js/preferences/PreferencesCont
 import { Node, RichText, Text } from '../../../../scenery/js/imports.js';
 import ABSwitch from '../../../../sun/js/ABSwitch.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
 
 class EnergySkateParkPreferencesNode extends Node {
@@ -39,7 +40,7 @@ class EnergySkateParkPreferencesNode extends Node {
 
     const accelerationUnitsControl = new PreferencesControl(
       {
-        labelNode: new Text( 'Acceleration Units', PreferencesDialogConstants.CONTROL_LABEL_OPTIONS ),
+        labelNode: new Text( EnergySkateParkStrings.preferences.accelerationUnitsStringProperty, PreferencesDialogConstants.CONTROL_LABEL_OPTIONS ),
         labelSpacing: 20,
         controlNode: accelarationUnitsSwitch
       }
