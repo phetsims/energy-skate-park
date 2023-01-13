@@ -40,7 +40,7 @@ class EnergySkateParkPreferencesNode extends Node {
 
     const accelerationUnitsControl = new PreferencesControl(
       {
-        labelNode: new Text( EnergySkateParkStrings.preferences.accelerationUnits, PreferencesDialogConstants.CONTROL_LABEL_OPTIONS ),
+        labelNode: new Text( EnergySkateParkStrings.preferences.accelerationUnitsStringProperty, PreferencesDialogConstants.CONTROL_LABEL_OPTIONS ),
         labelSpacing: 20,
         controlNode: accelarationUnitsSwitch
       }
