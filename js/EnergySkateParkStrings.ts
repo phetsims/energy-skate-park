@@ -158,6 +158,10 @@ type StringsType = {
     'africaStringProperty': LinkableProperty<string>;
     'africaModest': string;
     'africaModestStringProperty': LinkableProperty<string>;
+  };
+  'preferences': {
+    'accelerationUnits': string;
+    'accelerationUnitsStringProperty': LinkableProperty<string>;
   }
 };
 
