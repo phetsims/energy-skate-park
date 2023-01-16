@@ -139,7 +139,7 @@ class EnergySkateParkModel extends PhetioObject {
     } );
 
     // TODO: https://github.com/phetsims/energy-skate-park/issues/123 the control point group doesn't have enough archetypes to
-    // TODO: create an archetype track
+    // TODO: create an archetype track, https://github.com/phetsims/energy-skate-park/issues/123
     // @public {PhetioGroup.<Track>} group of tracks
     this.trackGroup = new PhetioGroup( ( tandem, controlPoints, parents, options ) => {
       assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
