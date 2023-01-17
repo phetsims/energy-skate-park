@@ -24,11 +24,12 @@ class EnergySkateParkPreferencesNode extends Node {
   constructor( preferencesModel, tandem ) {
     super();
 
-    const metersPerSecondSquaredLabel = new RichText( 'm/s<sup>2</sup>',
+    const metersPerSecondSquaredLabel = new RichText( EnergySkateParkStrings.preferences.metersPerSecondSquaredStringProperty,
       PreferencesDialogConstants.CONTROL_DESCRIPTION_OPTIONS
     );
 
-    const newtonsPerKilogramLabel = new Text( 'N/kg', PreferencesDialogConstants.CONTROL_DESCRIPTION_OPTIONS );
+    const newtonsPerKilogramLabel = new Text( EnergySkateParkStrings.preferences.newtonsPerKilogramStringProperty,
+      PreferencesDialogConstants.CONTROL_DESCRIPTION_OPTIONS );
 
     const accelarationUnitsSwitch = new ABSwitch( preferencesModel.accelerationUnitsProperty,
       EnergySkateParkPreferencesModel.AccelerationUnits.METERS_PER_SECOND_SQUARED,
