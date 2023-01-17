@@ -162,6 +162,10 @@ type StringsType = {
   'preferences': {
     'accelerationUnits': string;
     'accelerationUnitsStringProperty': LinkableProperty<string>;
+    'metersPerSecondSquared': string;
+    'metersPerSecondSquaredStringProperty': LinkableProperty<string>;
+    'newtonsPerKilogram': string;
+    'newtonsPerKilogramStringProperty': LinkableProperty<string>;
   }
 };
 
