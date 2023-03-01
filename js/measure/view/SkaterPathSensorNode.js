@@ -282,10 +282,10 @@ class SkaterPathSensorNode extends Node {
     this.totalValueProperty.value = dataSample.totalEnergy;
 
     // set values for height and speed readout
-    this.heightReadout.text = StringUtils.fillIn( heightMetersPatternString, {
+    this.heightReadout.string = StringUtils.fillIn( heightMetersPatternString, {
       value: this.formatValue( dataSample.position.y - dataSample.referenceHeight )
     } );
-    this.speedReadout.text = StringUtils.fillIn( speedMetersPerSecondPatternString, {
+    this.speedReadout.string = StringUtils.fillIn( speedMetersPerSecondPatternString, {
       value: this.formatValue( dataSample.speed )
     } );
 
