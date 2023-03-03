@@ -193,7 +193,7 @@ class SkaterNode extends Node {
 
     // @private - for interruption, see interruptDrag
     this.dragHandler = new DragListener( {
-      tandem: tandem.createTandem( 'inputListener' ),
+      tandem: tandem.createTandem( 'dragListener' ),
       start: event => {
         userControlledProperty.set( true );
         skater.draggingProperty.value = true;

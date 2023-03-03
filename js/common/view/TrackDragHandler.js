@@ -22,7 +22,7 @@ class TrackDragHandler extends DragListener {
     // Its bounds are determined by the shape of the track, so it cannot go below ground.
     // And so it can be dragged out of the toolbox but not back into it (so it won't be dragged below ground)
     super( {
-      tandem: tandem.createTandem( 'inputListener' ),
+      tandem: tandem.createTandem( 'dragListener' ),
       allowTouchSnag: true,
 
       start: event => this.handleDragStart( event ),

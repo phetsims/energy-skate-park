@@ -79,12 +79,12 @@ class ControlPointNode extends Circle {
     } );
 
     // if the ControlPoint is 'interactive' it supports dragging and potentially track splitting
-    let inputListener = null; // potential reference for disposal
+    let dragListener = null; // potential reference for disposal
     if ( controlPoint.interactive ) {
       let dragEvents = 0;
       let lastControlPointUI = null;
-      inputListener = new DragListener( {
-        tandem: tandem.createTandem( 'inputListener' ),
+      dragListener = new DragListener( {
+        tandem: tandem.createTandem( 'dragListener' ),
         allowTouchSnag: true,
         start: event => {
 
@@ -99,7 +99,7 @@ class ControlPointNode extends Circle {
 
             // save drag handler so we can end the drag if we need to after forwarding
             if ( track.dragSource === null ) {
-              track.dragSource = inputListener;
+              track.dragSource = dragListener;
             }
             return;
           }
@@ -119,7 +119,7 @@ class ControlPointNode extends Circle {
           if ( !track.physicalProperty.value || ( !track.droppedProperty.value && track.draggable ) ) {
 
             // Only drag a track if nothing else was dragging the track (which caused a flicker), see #282
-            if ( track.dragSource === inputListener ) {
+            if ( track.dragSource === dragListener ) {
               trackDragHandler && trackDragHandler.trackDragged( event );
             }
             return;
@@ -194,7 +194,7 @@ class ControlPointNode extends Circle {
           if ( !track.physicalProperty.value || ( !track.droppedProperty.value && track.draggable ) ) {
 
             // Only drop a track if nothing else was dragging the track (which caused a flicker), see #282
-            if ( track.dragSource === inputListener ) {
+            if ( track.dragSource === dragListener ) {
               trackDragHandler && trackDragHandler.trackDragEnded( event );
             }
             return;
@@ -252,24 +252,24 @@ class ControlPointNode extends Circle {
           }
         }
       } );
-      inputListener.over = () => {
+      dragListener.over = () => {
         if ( track.physicalProperty.value && !track.draggingProperty.value ) {
           this.opacity = highlightedOpacity;
           this.fill = highlightedFill;
         }
       };
-      inputListener.out = () => {
+      dragListener.out = () => {
         this.opacity = opacity;
         this.fill = fill;
       };
-      this.addInputListener( inputListener );
+      this.addInputListener( dragListener );
     }
 
     this.touchArea = Shape.circle( 0, 0, 25 );
 
     // @private
     this.disposeControlPointNode = () => {
-      inputListener && inputListener.dispose();
+      dragListener && dragListener.dispose();
     };
   }
 
