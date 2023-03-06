@@ -29,7 +29,7 @@ class PieChartNode extends Node {
 
     options = merge( {
 
-      // {boolean} - Whether or not to represent negative energy. When true, when one of the energies is negative
+      // {boolean} - Whether to represent negative energy. When true, when one of the energies is negative
       // the pie chart will only show total energy, a solid circle with the color for total energy
       showNegativeEnergy: true
     }, options );
