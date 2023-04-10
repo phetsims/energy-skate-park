@@ -46,22 +46,27 @@ class PhysicalComboBox extends ComboBox {
 
     // {[].ComboBoxItem}
     const itemList = [];
-    labelValueList.forEach( entry => {
+    labelValueList.forEach( ( entry, i ) => {
       itemList.push( {
         value: entry.value,
-        node: new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ),
+        createNode: () => new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ),
         tandemName: entry.tandemName
       } );
     } );
 
+    // Redundant "scrap" nodes to check on i18n dimensions, this was needed when converting to the "createNode" pattern
+    // of ComboBox items, see https://github.com/phetsims/sun/issues/797
+    const tempNodes = labelValueList.map( entry => new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ) );
+
     // i18n - if the text gets scaled way down, make sure that the button corner radii aren't larger than content height
-    const maxItemHeight = _.maxBy( itemList, item => item.node.height ).node.height;
+    const maxItemHeight = _.maxBy( tempNodes, node => node.height ).height;
     options.cornerRadius = Math.min( options.cornerRadius, maxItemHeight / 2 );
+    tempNodes.forEach( node => node.dispose() );
 
     if ( options.supportCustom ) {
       itemList.push( {
         value: null,
-        node: new Text( controlsGravityCustomString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ),
+        createNode: () => new Text( controlsGravityCustomString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ),
         tandemName: 'customItem'
       } );
     }
