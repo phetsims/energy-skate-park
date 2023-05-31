@@ -7,6 +7,7 @@
 
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
+import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkSaveSampleModel from './EnergySkateParkSaveSampleModel.js';
 import PremadeTracks from './PremadeTracks.js';
@@ -82,7 +83,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
             // During state set, nodes can temporarily go below ground, but it will be above ground after the state is
             // fully set.
-            if ( !phet.joist.sim.isSettingPhetioStateProperty.value ) {
+            if ( !isSettingPhetioStateProperty.value ) {
               this.tracks.get( i ).bumpAboveGround();
             }
             this.availableModelBoundsProperty.unlink( bumpListener );
