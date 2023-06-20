@@ -17,7 +17,7 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 class TextPanel extends Panel {
 
   /**
-   * @param {LinkableProperty<string>} stringProperty - text to fill the panel
+   * @param {Property<string>} stringProperty - text to fill the panel
    * @param {Object} [options]
    */
   constructor( stringProperty, options ) {
