@@ -133,7 +133,6 @@ class EnergySkateParkModel extends PhetioObject {
       assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
       return new ControlPoint( x, y, merge( {}, options, { tandem: tandem, phetioDynamicElement: true } ) );
     }, [ 0, 0, {} ], {
-      groupElementStartingIndex: 0,
       tandem: tandem.createTandem( 'controlPointGroup' ),
       phetioType: PhetioGroup.PhetioGroupIO( ControlPoint.ControlPointIO ),
       phetioDynamicElementName: 'controlPoint'
@@ -152,7 +151,6 @@ class EnergySkateParkModel extends PhetioObject {
       draggable: true,
       configurable: true
     } ], {
-      groupElementStartingIndex: 0,
       tandem: tandem.createTandem( 'trackGroup' ),
       phetioType: PhetioGroup.PhetioGroupIO( Track.TrackIO ),
       phetioDynamicElementName: 'track'
