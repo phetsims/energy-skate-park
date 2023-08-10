@@ -1,5 +1,5 @@
 {
-  "comment": "# energy-skate-park 1.2.5-rc.1 Fri Aug 04 2023 19:06:14 GMT-0600 (Mountain Daylight Time)",
+  "comment": "# energy-skate-park 1.2.5 Thu Aug 10 2023 09:59:59 GMT-0600 (Mountain Daylight Time)",
   "assert": {
     "sha": "c13a8c7741d95fbd8e37619c66ebcca8686dffe7",
     "branch": "HEAD"
@@ -21,7 +21,7 @@
     "branch": "HEAD"
   },
   "energy-skate-park": {
-    "sha": "a78cbd98640ccd2daabf9d69732fea20683a0daf",
+    "sha": "b85e8563c3fd93ce1d0c9eb8529b59a4f0bddfeb",
     "branch": "1.2"
   },
   "griddle": {
