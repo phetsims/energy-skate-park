@@ -13,7 +13,7 @@ After the `git --mirror` we had to rename files and directories with `git mv`, b
 However, it is possible to find git history a few ways:
  - Use `git log --follow ./path/to/file` to see file history prior to `git mv`
  - Check out an old SHA and browse locally.
- - Use the GitHub UI at https://github.com/phetsims/energy-skate-park/commits/master to "Browse the repository at this point in history".
+ - Use the GitHub UI at https://github.com/phetsims/energy-skate-park/commits/main to "Browse the repository at this point in history".
  - Use IntelliJ IDEA or WebStorm UI and press Git => Show History
 
 `git --mirror` was done on 5/2/18, which may be helpful if you need to find code prior to this set up.
@@ -22,7 +22,7 @@ See https://github.com/phetsims/energy-skate-park/issues/6 for additional detail
 
 ## Model
 
-Much of the model runs by the physical equations described in https://github.com/phetsims/energy-skate-park/blob/master/doc/model.md. Start
+Much of the model runs by the physical equations described in https://github.com/phetsims/energy-skate-park/blob/main/doc/model.md. Start
 by reviewing those.
 
 There are three fundamental types for the Energy Skate Park model. EnergySkateParkModel.js is the fundamental model and
