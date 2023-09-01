@@ -123,13 +123,13 @@ class EnergySkateParkCheckboxItem extends Checkbox {
     options = merge( {
       scale: 1
     }, options );
-    const node = new GaugeNode( new Property( 0 ), propertiesSpeedStringProperty, new Range( 0, 10 ),
+    const gaugeNode = new GaugeNode( new Property( 0 ), propertiesSpeedStringProperty, new Range( 0, 10 ),
       {
         pickable: false,
         tandem: tandem.createTandem( 'gaugeNode' )
       } );
-    node.scale( ( 20 / node.width ) * options.scale );
-    return node;
+    gaugeNode.scale( ( 20 / gaugeNode.width ) * options.scale );
+    return gaugeNode;
   }
 
   /**

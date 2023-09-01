@@ -41,12 +41,12 @@ class BackgroundNode extends Node {
     this.cementY = layoutBounds.height - earthHeight;
 
     // @private
-    this.mountain = new Image( mountains_png, {
+    this.mountainImage = new Image( mountains_png, {
       scale: 1.23,
       bottom: this.cementY,
       tandem: tandem.createTandem( 'mountainImage' )
     } );
-    this.addChild( this.mountain );
+    this.addChild( this.mountainImage );
 
     // @private
     this.cement = new Rectangle( 0, 0, 0, cementWidth, { fill: new Pattern( cementTextureDark_jpg ) } );

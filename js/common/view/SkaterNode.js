@@ -192,7 +192,7 @@ class SkaterNode extends Node {
     };
 
     // @private - for interruption, see interruptDrag
-    this.dragHandler = new DragListener( {
+    this.dragListener = new DragListener( {
       tandem: tandem.createTandem( 'dragListener' ),
       start: event => {
         userControlledProperty.set( true );
@@ -215,7 +215,7 @@ class SkaterNode extends Node {
         userControlledProperty.set( false );
       }
     } );
-    this.addInputListener( this.dragHandler );
+    this.addInputListener( this.dragListener );
   }
 
   /**
@@ -223,8 +223,8 @@ class SkaterNode extends Node {
    * @public
    */
   interruptDrag() {
-    if ( this.dragHandler.isPressed ) {
-      this.dragHandler.interrupt();
+    if ( this.dragListener.isPressed ) {
+      this.dragListener.interrupt();
     }
   }
 }

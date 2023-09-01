@@ -344,12 +344,12 @@ class EnergySkateParkScreenView extends ScreenView {
 
     // Buttons to return the skater when she is offscreen, see #219
     const iconScale = 0.19;
-    const returnSkaterToPreviousStartingPositionButtonImage = new Image( skater1_set1_left_png, {
+    const skaterIconImage1 = new Image( skater1_set1_left_png, {
       scale: iconScale,
       tandem: tandem.createTandem( 'skaterIconImage1' )
     } );
     const returnSkaterToPreviousStartingPositionButton = new RectangularPushButton( {
-      content: returnSkaterToPreviousStartingPositionButtonImage,
+      content: skaterIconImage1,
 
       // green means "go" since the skater will likely start moving at this point
       baseColor: EnergySkateParkColorScheme.kineticEnergy,
@@ -357,12 +357,12 @@ class EnergySkateParkScreenView extends ScreenView {
       tandem: tandem.createTandem( 'returnSkaterToPreviousStartingPositionButton' )
     } );
 
-    const returnSkaterToGroundButtonImage = new Image( skater1_set1_left_png, {
+    const skaterIconImage2 = new Image( skater1_set1_left_png, {
       scale: iconScale,
       tandem: tandem.createTandem( 'skaterIconImage2' )
     } );
     const returnSkaterToGroundButton = new RectangularPushButton( {
-      content: returnSkaterToGroundButtonImage,
+      content: skaterIconImage2,
       centerBottom: modelViewTransform.modelToViewPosition( model.skater.startingPositionProperty.value ),
       baseColor: '#f4514e', // red for stop, since the skater will be stopped on the ground.
       listener: () => {
@@ -376,8 +376,8 @@ class EnergySkateParkScreenView extends ScreenView {
     } );
 
     model.preferencesModel.skaterCharacterSetProperty.link( skaterCharacterSet => {
-      returnSkaterToPreviousStartingPositionButtonImage.setImage( skaterCharacterSet.imageSet1.leftImage );
-      returnSkaterToGroundButtonImage.setImage( skaterCharacterSet.imageSet1.leftImage );
+      skaterIconImage1.setImage( skaterCharacterSet.imageSet1.leftImage );
+      skaterIconImage2.setImage( skaterCharacterSet.imageSet1.leftImage );
     } );
 
     // the "return skater" buttons are in the top layer so that they can be on top of the track and easily visible
