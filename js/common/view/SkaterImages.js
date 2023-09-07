@@ -61,6 +61,7 @@ import skater6_set2_right_png from '../../../images/skater6_set2_right_png.js';
 import skater6_set3_right_png from '../../../images/skater6_set3_right_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import { portrayalsTandem } from '../model/EnergySkateParkPreferencesModel.js';
 import HeadshotIcon from './HeadshotIcon.js';
 import RegionAndCulturePortrayal from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 
@@ -86,10 +87,10 @@ class SkaterImageSet {
  * from preferences.
  */
 class SkaterCharacterSet extends RegionAndCulturePortrayal {
-  constructor( labelString, imageSet1, imageSet2, imageSet3, imageSet4, imageSet5, imageSet6, imageSet7, imageSet8 ) {
+  constructor( labelString, imageSet1, imageSet2, imageSet3, imageSet4, imageSet5, imageSet6, imageSet7, imageSet8, providedOptions ) {
     const headshotIcon = new HeadshotIcon( imageSet1.headshotImage );
 
-    super( headshotIcon, labelString );
+    super( headshotIcon, labelString, providedOptions );
     this.imageSet1 = imageSet1;
     this.imageSet2 = imageSet2;
     this.imageSet3 = imageSet3;
@@ -110,7 +111,11 @@ const CHARACTER_SET_1 = new SkaterCharacterSet(
   new SkaterImageSet( skater5_set1_left_png, skater5_set1_right_png, skater5_set1_headshot_png ),
   new SkaterImageSet( skater6_set1_left_png, skater6_set1_right_png, skater6_set1_headshot_png ),
   new SkaterImageSet( cat_left_png, cat_right_png, cat_headshot_png ),
-  new SkaterImageSet( dog_left_png, dog_right_png, dog_headshot_png )
+  new SkaterImageSet( dog_left_png, dog_right_png, dog_headshot_png ),
+  {
+    tandem: portrayalsTandem.createTandem( 'skaterPortrayalUSA' ),
+    phetioState: false
+  }
 );
 
 const CHARACTER_SET_2 = new SkaterCharacterSet(
@@ -122,7 +127,11 @@ const CHARACTER_SET_2 = new SkaterCharacterSet(
   new SkaterImageSet( skater5_set2_left_png, skater5_set2_right_png, skater5_set2_headshot_png ),
   new SkaterImageSet( skater6_set2_left_png, skater6_set2_right_png, skater6_set2_headshot_png ),
   new SkaterImageSet( goat_left_png, goat_right_png, goat_headshot_png ),
-  new SkaterImageSet( elephant_left_png, elephant_right_png, elephant_headshot_png )
+  new SkaterImageSet( elephant_left_png, elephant_right_png, elephant_headshot_png ),
+  {
+    tandem: portrayalsTandem.createTandem( 'skaterPortrayalAfrica' ),
+    phetioState: false
+  }
 );
 
 const CHARACTER_SET_3 = new SkaterCharacterSet(
@@ -134,7 +143,11 @@ const CHARACTER_SET_3 = new SkaterCharacterSet(
   new SkaterImageSet( skater5_set2_left_png, skater5_set2_right_png, skater5_set2_headshot_png ),
   new SkaterImageSet( skater6_set3_left_png, skater6_set3_right_png, skater6_set3_headshot_png ),
   new SkaterImageSet( goat_left_png, goat_right_png, goat_headshot_png ),
-  new SkaterImageSet( elephant_left_png, elephant_right_png, elephant_headshot_png )
+  new SkaterImageSet( elephant_left_png, elephant_right_png, elephant_headshot_png ),
+  {
+    tandem: portrayalsTandem.createTandem( 'skaterPortrayalAfricaModest' ),
+    phetioState: false
+  }
 );
 
 const SkaterImages = {

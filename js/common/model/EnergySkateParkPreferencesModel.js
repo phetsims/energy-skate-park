@@ -23,6 +23,9 @@ class AccelerationUnits extends EnumerationValue {
   static enumeration = new Enumeration( AccelerationUnits );
 }
 
+// TODO: double check this is okay, https://github.com/phetsims/center-and-variability/issues/531
+export const portrayalsTandem = Tandem.GENERAL_MODEL.createTandem( 'regionAndCulturePortrayals' );
+
 class EnergySkateParkPreferencesModel {
   constructor() {
 
@@ -34,7 +37,7 @@ class EnergySkateParkPreferencesModel {
 
     // Controls the selected SkaterImages.SkaterCharacterSet. A set of characters is selected from Preferences
     // and the actual skater character is chosen from in-screen UI.
-    this.skaterCharacterSetProperty = regionAndCultureManager.regionAndCultureProperty;
+    this.skaterCharacterSetProperty = regionAndCultureManager.regionAndCulturePortrayalProperty;
   }
 }
 
