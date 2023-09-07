@@ -23,8 +23,7 @@ class AccelerationUnits extends EnumerationValue {
   static enumeration = new Enumeration( AccelerationUnits );
 }
 
-// TODO: double check this is okay, https://github.com/phetsims/center-and-variability/issues/531
-export const portrayalsTandem = Tandem.GENERAL_MODEL.createTandem( 'regionAndCulturePortrayals' );
+export const portrayalsTandem = Tandem.PREFERENCES.createTandem( 'regionAndCulturePortrayals' );
 
 class EnergySkateParkPreferencesModel {
   constructor() {
