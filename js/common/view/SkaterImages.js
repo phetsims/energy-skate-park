@@ -62,7 +62,7 @@ import skater6_set3_right_png from '../../../images/skater6_set3_right_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import HeadshotIcon from './HeadshotIcon.js';
-import CharacterSet from '../../../../joist/js/preferences/CharacterSet.js';
+import RegionAndCulturePortrayal from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 
 const unitedStatesOfAmericaString = EnergySkateParkStrings.characterSet.unitedStatesOfAmericaStringProperty;
 const africaString = EnergySkateParkStrings.characterSet.africaStringProperty;
@@ -85,7 +85,7 @@ class SkaterImageSet {
  * SkaterImageSets of the SkaterCharacterSet in simulation controls. A different SkaterCharacterSet can be selected
  * from preferences.
  */
-class SkaterCharacterSet extends CharacterSet {
+class SkaterCharacterSet extends RegionAndCulturePortrayal {
   constructor( labelString, imageSet1, imageSet2, imageSet3, imageSet4, imageSet5, imageSet6, imageSet7, imageSet8 ) {
     const headshotIcon = new HeadshotIcon( imageSet1.headshotImage );
 
