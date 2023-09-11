@@ -26,24 +26,22 @@ See https://github.com/phetsims/energy-skate-park/issues/6 for additional detail
 ## Model
 
 Much of the model runs by the physical equations described
-in https://github.com/phetsims/energy-skate-park/blob/main/doc/model.md. Start
-by reviewing those.
+in https://github.com/phetsims/energy-skate-park/blob/main/doc/model.md. Start by reviewing those.
 
 There are three fundamental types for the Energy Skate Park model. EnergySkateParkModel.js is the fundamental model and
-assembles most of the simulation. Skater.js provides observable Properties and state related to the skater.
-Track.js is the model element for tracks.
+assembles most of the simulation. Skater.js provides observable Properties and state related to the skater. Track.js is
+the model element for tracks.
 
-The EnergySkateParkModel is the entry point for skater motion. It manages transitions for the skater between motion
-in free fall, motion along the track, and motion along the ground. It steps the skater through each of these states.
+The EnergySkateParkModel is the entry point for skater motion. It manages transitions for the skater between motion in
+free fall, motion along the track, and motion along the ground. It steps the skater through each of these states.
 
 ### EnergySkateParkModel Subtypes
 
 There are two primary subtypes of EnergySkateParkModel that are used across screens. EnergySkateParkPlaygroundModel.js
 is an EnergySkateParkModel where custom tracks can be built by the user. This model provides a number of track segments
-that are fully
-interactive (see Tracks section below). EnergySkateParkTrackSetModel is an EnergySkateParkModel with a set of premade
-tracks that cannot be as freely customized. Subtypes of this model
-generally add a set of premade Tracks. The frequently reused tracks can be found in PremadeTracks.
+that are fully interactive (see Tracks section below). EnergySkateParkTrackSetModel is an EnergySkateParkModel with a
+set of premade tracks that cannot be as freely customized. Subtypes of this model generally add a set of premade Tracks.
+The frequently reused tracks can be found in PremadeTracks.
 
 EnergySkateParkSaveSampleModel is a model which saves samples of SkaterState data in EnergySkateParkDataSamples to be
 presented in some way to the user.
@@ -51,9 +49,8 @@ presented in some way to the user.
 ### Tracks
 
 Tracks are composed of ControlPoint and cubic splines which create the shape between them. The algorithm for
-interpolation is borrowed from a library called [numericjs](http://www.numericjs.com/),
-though the portions used in this sim were optimized and re-written in SplineEvaluation.js to be fast enough for this
-sim.
+interpolation is borrowed from a library called [numericjs](http://www.numericjs.com/), though the portions used in this
+sim were optimized and re-written in SplineEvaluation.js to be fast enough for this sim.
 
 To support various levels of user customization, Tracks have fields that define their interactivity
 
@@ -66,29 +63,27 @@ Tracks in the EnergySkateParkPlayGroundModel have all of these fields set to tru
 
 ### Skater, SkaterStates, and EnergySkateParkDataSamples
 
-The Skater is the model component for the skater with observable Properties for its state.
-SkaterStates were added so that we can save collections of model data at a particular model state to support playing
-back and inspecting previous energy values. SkaterStates are not mutable.
+The Skater is the model component for the skater with observable Properties for its state. SkaterStates were added so
+that we can save collections of model data at a particular model state to support playing back and inspecting previous
+energy values. SkaterStates are not mutable.
 
 SkaterState is also used to improve performance. In a single model step, energy and state information can be
-re-calculated
-many times. SkaterStates are created or modified in these calculations so that observable Skater Properties can be set
-once after all calculations are complete. And so many SkaterStates can be created in a single model step.
+re-calculated many times. SkaterStates are created or modified in these calculations so that observable Skater
+Properties can be set once after all calculations are complete. And so many SkaterStates can be created in a single
+model step.
 
 A EnergySkateParkDataSample contains SkaterState information at a point in time (where the time is specified) as well as
-other
-Properties that support visualization of this data in data plots or other. EnergySkateParkDataSample data *can* be
-changed,
-for instance when changing the reference height the energy components of the EnergySkateParkDataSample can change.
+other Properties that support visualization of this data in data plots or other. EnergySkateParkDataSample data *can* be
+changed, for instance when changing the reference height the energy components of the EnergySkateParkDataSample can
+change.
 
 ## View
 
 EnergySkateParkScreenView is the entry point for the view. It uses a ModelViewTransform2 with a mapped point and
-inverted y.
-The model origin is at the ground and horizontal center of the view. EnergySkateParkScreenView employs a "floating"
-layout so that on wider screens there is more space for custom tracks. Panels near the edge of the screen are shifted
-to create more space when possible. EnergySkateParkScreenView has many shared UI components but not all are used in
-every screen. They can be added or
-removed from the screen with options. Subtypes of EnergySkateParkScreenView typically specify which UI components
-they require and override the `layout` function for any custom UI positioning.
+inverted y. The model origin is at the ground and horizontal center of the view. EnergySkateParkScreenView employs a "
+floating"
+layout so that on wider screens there is more space for custom tracks. Panels near the edge of the screen are shifted to
+create more space when possible. EnergySkateParkScreenView has many shared UI components but not all are used in every
+screen. They can be added or removed from the screen with options. Subtypes of EnergySkateParkScreenView typically
+specify which UI components they require and override the `layout` function for any custom UI positioning.
 
