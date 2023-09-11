@@ -1,7 +1,7 @@
 # Energy Skate Park model
 
-This document describes the equations for energy used extensively in Energy Skate Park. Skater motion and state
-is determined by these equations.<br>
+This document describes the equations for energy used extensively in Energy Skate Park. Skater motion and state is
+determined by these equations.<br>
 @author Jesse Greenberg (PhET Interactive Simulations)
 
 ## Skater
@@ -15,8 +15,7 @@ by [numericjs](http://www.numericjs.com/).
 
 ## Skater motion
 
-Skater motion is determined by the equation
-F = m * a
+Skater motion is determined by the equation F = m * a
 
 where:
 
@@ -25,18 +24,16 @@ where:
 - a is the acceleration due to gravity
 
 The model uses the Euler method to move the skater along the track each time step. For more information
-see https://en.wikipedia.org/wiki/Euler_method, and
-the implementation in EnergySkateParkModel.stepEuler.
+see https://en.wikipedia.org/wiki/Euler_method, and the implementation in EnergySkateParkModel.stepEuler.
 
-To determine whether the skater leaves the track by going off a "jump" or by falling upsidown from a loop, the
-circular motion approximation is used, where the radius of curvature is the local radius of the track at a particular
-skater point. For more information, please see http://farside.ph.utexas.edu/teaching/301/lectures/node91.html
+To determine whether the skater leaves the track by going off a "jump" or by falling upsidown from a loop, the circular
+motion approximation is used, where the radius of curvature is the local radius of the track at a particular skater
+point. For more information, please see http://farside.ph.utexas.edu/teaching/301/lectures/node91.html
 regarding the circular motion approximation for modeling an object of mass moving around a circle.
 
 ## Friction
 
-Force of friction is calculated by
-Ff = &#956; * N
+Force of friction is calculated by `Ff = &#956; * N`
 
 where:
 
