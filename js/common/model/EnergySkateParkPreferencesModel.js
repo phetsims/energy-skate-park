@@ -9,7 +9,6 @@
 
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import Enumeration from '../../../../phet-core/js/Enumeration.js';
-import regionAndCultureManager from '../../../../joist/js/preferences/regionAndCultureManager.js';
 import EnumerationValue from '../../../../phet-core/js/EnumerationValue.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -26,7 +25,11 @@ class AccelerationUnits extends EnumerationValue {
 export const portrayalsTandem = Tandem.PREFERENCES.createTandem( 'regionAndCulturePortrayals' );
 
 class EnergySkateParkPreferencesModel {
-  constructor() {
+
+  /**
+   * @param {Property<RegionAndCulturePortrayal>} regionAndCulturePortrayalProperty
+   */
+  constructor( regionAndCulturePortrayalProperty ) {
 
     // A Property that controls the acceleration units in the sim, "altAccelerationUnits" changes the default to N/kg
     const defaultUnits = EnergySkateParkQueryParameters.altAccelerationUnits ? AccelerationUnits.NEWTONS_PER_KILOGRAM : AccelerationUnits.METERS_PER_SECOND_SQUARED;
@@ -36,7 +39,7 @@ class EnergySkateParkPreferencesModel {
 
     // Controls the selected SkaterImages.SkaterCharacterSet. A set of characters is selected from Preferences
     // and the actual skater character is chosen from in-screen UI.
-    this.skaterCharacterSetProperty = regionAndCultureManager.regionAndCulturePortrayalProperty;
+    this.skaterCharacterSetProperty = regionAndCulturePortrayalProperty;
   }
 }
 

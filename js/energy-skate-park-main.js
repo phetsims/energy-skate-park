@@ -21,7 +21,17 @@ import PlaygroundScreen from './playground/PlaygroundScreen.js';
 
 const energySkateParkTitleStringProperty = EnergySkateParkStrings[ 'energy-skate-park' ].titleStringProperty;
 
-const energySkateParkPreferencesModel = new EnergySkateParkPreferencesModel();
+const preferencesModel = new PreferencesModel( {
+  simulationOptions: {
+    customPreferences: [ {
+      createContent: tandem => new EnergySkateParkPreferencesNode( energySkateParkPreferencesModel, tandem.createTandem( 'simPreferences' ) )
+    } ]
+  },
+  localizationOptions: {
+    characterSets: SkaterImages.SKATER_CHARACTER_SETS
+  }
+} );
+const energySkateParkPreferencesModel = new EnergySkateParkPreferencesModel( preferencesModel.localizationModel.regionAndCulturePortrayalProperty );
 
 // constants
 const rootTandem = Tandem.ROOT;
@@ -35,16 +45,7 @@ simLauncher.launch( () => {
   ];
 
   new EnergySkateParkSim( energySkateParkTitleStringProperty, screens, rootTandem, {
-    preferencesModel: new PreferencesModel( {
-      simulationOptions: {
-        customPreferences: [ {
-          createContent: tandem => new EnergySkateParkPreferencesNode( energySkateParkPreferencesModel, tandem.createTandem( 'simPreferences' ) )
-        } ]
-      },
-      localizationOptions: {
-        characterSets: SkaterImages.SKATER_CHARACTER_SETS
-      }
-    } ),
+    preferencesModel: preferencesModel,
     credits: {
       leadDesign: 'Noah Podolefsky, Sam Reid, Amy Rouinfar',
       softwareDevelopment: 'Sam Reid, Jesse Greenberg, Marla Schulz, Agustín Vallejo',
