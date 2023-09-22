@@ -584,7 +584,12 @@ class EnergySkateParkModel extends PhetioObject {
     correctedState = correctedState.updatePosition( proposedPosition.x, proposedPosition.y );
     correctedState = correctedState.updateUDVelocity( correctedState.parametricSpeed, newVelocity.x, newVelocity.y );
 
-    assert && assert( Utils.equalsEpsilon( correctedState.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'substantial total energy change after corrections' );
+    if ( assert ) {
+      const skaterTotalEnergy = skaterState.getTotalEnergy();
+      const correctedTotalEnergy = correctedState.getTotalEnergy();
+      assert && assert( Utils.equalsEpsilon( correctedTotalEnergy, skaterTotalEnergy, 1E-8 ),
+        `substantial total energy change after corrections. skaterTotalEnergy: ${skaterTotalEnergy}, correctedTotalEnergy: ${correctedTotalEnergy}, delta: ${Math.abs( skaterTotalEnergy - correctedTotalEnergy )}` );
+    }
 
     return correctedState;
   }
