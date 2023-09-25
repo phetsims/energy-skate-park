@@ -17,6 +17,9 @@ import EnergySkateParkMassControls from './EnergySkateParkMassControls.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
 import FrictionSlider from './FrictionSlider.js';
 import SceneSelectionRadioButtonGroup from './SceneSelectionRadioButtonGroup.js';
+import SkaterCharacterSetAfrica from './SkaterCharacterSetAfrica.js';
+import SkaterCharacterSetAfricaModest from './SkaterCharacterSetAfricaModest.js';
+import SkaterCharacterSetUSA from './SkaterCharacterSetUSA.js';
 import SkaterImages from './SkaterImages.js';
 import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
 
@@ -102,9 +105,9 @@ class EnergySkateParkControlPanel extends Panel {
       children.push( characterSet3SkaterControls );
 
       model.preferencesModel.skaterCharacterSetProperty.link( characterSet => {
-        characterSet1SkaterControls.visible = characterSet === SkaterImages.CHARACTER_SET_1;
-        characterSet2SkaterControls.visible = characterSet === SkaterImages.CHARACTER_SET_2;
-        characterSet3SkaterControls.visible = characterSet === SkaterImages.CHARACTER_SET_3;
+        characterSet1SkaterControls.visible = characterSet === SkaterCharacterSetUSA;
+        characterSet2SkaterControls.visible = characterSet === SkaterCharacterSetAfrica;
+        characterSet3SkaterControls.visible = characterSet === SkaterCharacterSetAfricaModest;
 
         // change selected image to first in the character set
         screenView.skaterNode.skaterImageSetProperty.value = characterSet.imageSet1;
