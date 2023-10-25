@@ -27,7 +27,7 @@ import ValueGaugeNode from '../../../../scenery-phet/js/ValueGaugeNode.js';
 import { Image, Node, Path, Text } from '../../../../scenery/js/imports.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import skater1_set1_left_png from '../../../images/skater1_set1_left_png.js';
+import skater1_set1_left_png from '../../../images/usa/skater1_set1_left_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';

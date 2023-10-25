@@ -11,7 +11,7 @@ import ScreenIcon from '../../../../joist/js/ScreenIcon.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
 import { Image } from '../../../../scenery/js/imports.js';
 import introScreenIcon_png from '../../../images/introScreenIcon_png.js';
-import skater1_set1_right_png from '../../../images/skater1_set1_right_png.js';
+import skater1_set1_right_png from '../../../images/usa/skater1_set1_right_png.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class IntroScreenIcon extends ScreenIcon {
