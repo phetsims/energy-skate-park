@@ -9,6 +9,7 @@
 import simLauncher from '../../joist/js/simLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import PreferencesModel from './../../joist/js/preferences/PreferencesModel.js';
+import EnergySkateParkQueryParameters from './common/EnergySkateParkQueryParameters.js';
 import EnergySkateParkSim from './common/EnergySkateParkSim.js';
 import EnergySkateParkPreferencesModel from './common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkPreferencesNode from './common/view/EnergySkateParkPreferencesNode.js';
@@ -28,7 +29,8 @@ const preferencesModel = new PreferencesModel( {
     } ]
   },
   localizationOptions: {
-    characterSets: SkaterImages.SKATER_CHARACTER_SETS
+    characterSets: SkaterImages.SKATER_CHARACTER_SETS,
+    queryParameterValue: EnergySkateParkQueryParameters.regionAndCulture
   }
 } );
 const energySkateParkPreferencesModel = new EnergySkateParkPreferencesModel( preferencesModel.localizationModel.regionAndCulturePortrayalProperty );
