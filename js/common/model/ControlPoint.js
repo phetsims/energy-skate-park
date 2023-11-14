@@ -80,7 +80,8 @@ class ControlPoint extends PhetioObject {
       ( sourcePosition, snapTarget ) => snapTarget ? snapTarget.positionProperty.value : sourcePosition, {
         tandem: tandem.createTandem( 'positionProperty' ),
         phetioValueType: Vector2.Vector2IO,
-        phetioState: options.phetioState
+        phetioState: options.phetioState,
+        accessNonDependencies: true
       } );
 
     // @public {BooleanProperty} - whether the control point is currently being dragged

@@ -186,6 +186,8 @@ class SkaterPathSensorNode extends Node {
       const viewPosition = modelViewTransform.modelToViewPosition( sensorPosition );
       const distanceToBody = viewPosition.minus( p1Property.get() );
       return new Vector2( distanceToBody.x / 3, Math.max( distanceToBody.y, body.height * 2 ) );
+    }, {
+      accessNonDependencies: true
     } );
     const p2Property = new DerivedProperty( [ sensorProbePositionProperty ], sensorPosition => {
 
@@ -342,7 +344,7 @@ class SkaterPathSensorNode extends Node {
       `listener not attached to dataSample emitter,
        dataSample: ${dataSample},
        this.inspectedSample: ${this.inspectedSample}`,
-       `update listenerL:  ${this.updateDisplayListener}`
+      `update listenerL:  ${this.updateDisplayListener}`
     );
     this.inspectedSample.updatedEmitter.removeListener( this.updateDisplayListener );
 
