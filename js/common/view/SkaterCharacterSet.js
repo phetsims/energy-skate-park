@@ -11,13 +11,11 @@
 
 import RegionAndCulturePortrayal from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 import energySkatePark from '../../energySkatePark.js';
-import HeadshotIcon from './HeadshotIcon.js';
 
 export default class SkaterCharacterSet extends RegionAndCulturePortrayal {
   constructor( labelString, imageSet1, imageSet2, imageSet3, imageSet4, imageSet5, imageSet6, imageSet7, imageSet8, queryParameterValue, providedOptions ) {
-    const headshotIcon = new HeadshotIcon( imageSet1.headshotImage );
 
-    super( headshotIcon, labelString, queryParameterValue, providedOptions );
+    super( labelString, queryParameterValue, providedOptions );
     this.imageSet1 = imageSet1;
     this.imageSet2 = imageSet2;
     this.imageSet3 = imageSet3;
