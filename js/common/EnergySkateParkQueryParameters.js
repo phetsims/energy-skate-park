@@ -8,10 +8,6 @@
 
 import energySkatePark from '../energySkatePark.js';
 
-export const USA_QUERY_VALUE = 'usa';
-export const AFRICA_QUERY_VALUE = 'africa';
-export const AFRICA_MODEST_QUERY_VALUE = 'africaModest';
-
 const EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
 
   // Print out console messages related to the physics
@@ -33,14 +29,6 @@ const EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
   testTrackIndex: {
     type: 'number',
     defaultValue: 0
-  },
-
-  // This query parameter sets the region and culture portrayal for the sim. This changes the artwork for the character
-  // sets that appear throughout the sim.
-  regionAndCulture: {
-    type: 'string',
-    validValues: [ USA_QUERY_VALUE, AFRICA_QUERY_VALUE, AFRICA_MODEST_QUERY_VALUE ],
-    defaultValue: USA_QUERY_VALUE
   }
 } );
 
