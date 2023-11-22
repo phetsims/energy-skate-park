@@ -7,6 +7,7 @@
  *
  */
 
+import JoistStrings from '../../../../joist/js/JoistStrings.js';
 import cat_headshot_png from '../../../images/usa/cat_headshot_png.js';
 import cat_left_png from '../../../images/usa/cat_left_png.js';
 import cat_right_png from '../../../images/usa/cat_right_png.js';
@@ -31,13 +32,12 @@ import skater5_set1_right_png from '../../../images/usa/skater5_set1_right_png.j
 import skater6_set1_headshot_png from '../../../images/usa/skater6_set1_headshot_png.js';
 import skater6_set1_left_png from '../../../images/usa/skater6_set1_left_png.js';
 import skater6_set1_right_png from '../../../images/usa/skater6_set1_right_png.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import { USA_QUERY_VALUE } from '../EnergySkateParkQueryParameters.js';
 import { portrayalsTandem } from '../model/EnergySkateParkPreferencesModel.js';
 import SkaterCharacterSet from './SkaterCharacterSet.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
-const unitedStatesOfAmericaString = EnergySkateParkStrings.characterSet.unitedStatesOfAmericaStringProperty;
+const unitedStatesOfAmericaString = JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.unitedStatesOfAmericaStringProperty;
 
 const SkaterCharacterSetUSA = new SkaterCharacterSet(
   unitedStatesOfAmericaString,

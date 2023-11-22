@@ -151,14 +151,6 @@ type StringsType = {
     'units': string;
     'unitsStringProperty': LocalizedStringProperty;
   };
-  'characterSet': {
-    'unitedStatesOfAmerica': string;
-    'unitedStatesOfAmericaStringProperty': LocalizedStringProperty;
-    'africa': string;
-    'africaStringProperty': LocalizedStringProperty;
-    'africaModest': string;
-    'africaModestStringProperty': LocalizedStringProperty;
-  };
   'preferences': {
     'accelerationUnits': string;
     'accelerationUnitsStringProperty': LocalizedStringProperty;

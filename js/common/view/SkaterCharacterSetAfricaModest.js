@@ -6,6 +6,10 @@
  *
  */
 
+import JoistStrings from '../../../../joist/js/JoistStrings.js';
+import skater6_set3_headshot_png from '../../../images/africa-modest/skater6_set3_headshot_png.js';
+import skater6_set3_left_png from '../../../images/africa-modest/skater6_set3_left_png.js';
+import skater6_set3_right_png from '../../../images/africa-modest/skater6_set3_right_png.js';
 import elephant_headshot_png from '../../../images/africa/elephant_headshot_png.js';
 import elephant_left_png from '../../../images/africa/elephant_left_png.js';
 import elephant_right_png from '../../../images/africa/elephant_right_png.js';
@@ -27,16 +31,12 @@ import skater4_set2_right_png from '../../../images/africa/skater4_set2_right_pn
 import skater5_set2_headshot_png from '../../../images/africa/skater5_set2_headshot_png.js';
 import skater5_set2_left_png from '../../../images/africa/skater5_set2_left_png.js';
 import skater5_set2_right_png from '../../../images/africa/skater5_set2_right_png.js';
-import skater6_set3_headshot_png from '../../../images/africa-modest/skater6_set3_headshot_png.js';
-import skater6_set3_left_png from '../../../images/africa-modest/skater6_set3_left_png.js';
-import skater6_set3_right_png from '../../../images/africa-modest/skater6_set3_right_png.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import { AFRICA_MODEST_QUERY_VALUE } from '../EnergySkateParkQueryParameters.js';
 import { portrayalsTandem } from '../model/EnergySkateParkPreferencesModel.js';
 import SkaterCharacterSet from './SkaterCharacterSet.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
-const africaConservativeString = EnergySkateParkStrings.characterSet.africaModestStringProperty;
+const africaConservativeString = JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.africaModestStringProperty;
 
 const SkaterCharacterSetAfricaModest = new SkaterCharacterSet(
   africaConservativeString,
