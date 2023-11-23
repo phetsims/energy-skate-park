@@ -11,6 +11,9 @@
 import energySkatePark from '../../energySkatePark.js';
 import SkaterCharacterSetAfrica from './SkaterCharacterSetAfrica.js';
 import SkaterCharacterSetAfricaModest from './SkaterCharacterSetAfricaModest.js';
+import SkaterCharacterSetAsia from './SkaterCharacterSetAsia.js';
+import SkaterCharacterSetLatinAmerica from './SkaterCharacterSetLatinAmerica.js';
+import SkaterCharacterSetOceania from './SkaterCharacterSetOceania.js';
 import SkaterCharacterSetUSA from './SkaterCharacterSetUSA.js';
 
 
@@ -18,7 +21,10 @@ const SkaterImages = {
   SKATER_CHARACTER_SETS: [
     SkaterCharacterSetUSA,
     SkaterCharacterSetAfrica,
-    SkaterCharacterSetAfricaModest
+    SkaterCharacterSetAfricaModest,
+    SkaterCharacterSetAsia,
+    SkaterCharacterSetLatinAmerica,
+    SkaterCharacterSetOceania
   ],
 
   IMAGES_PER_SET: 8

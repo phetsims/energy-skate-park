@@ -19,6 +19,9 @@ import FrictionSlider from './FrictionSlider.js';
 import SceneSelectionRadioButtonGroup from './SceneSelectionRadioButtonGroup.js';
 import SkaterCharacterSetAfrica from './SkaterCharacterSetAfrica.js';
 import SkaterCharacterSetAfricaModest from './SkaterCharacterSetAfricaModest.js';
+import SkaterCharacterSetAsia from './SkaterCharacterSetAsia.js';
+import SkaterCharacterSetLatinAmerica from './SkaterCharacterSetLatinAmerica.js';
+import SkaterCharacterSetOceania from './SkaterCharacterSetOceania.js';
 import SkaterCharacterSetUSA from './SkaterCharacterSetUSA.js';
 import SkaterImages from './SkaterImages.js';
 import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
@@ -100,14 +103,22 @@ class EnergySkateParkControlPanel extends Panel {
       const characterSet1SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 0 ], tandem.createTandem( 'skaterSetOneControls' ) );
       const characterSet2SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 1 ], tandem.createTandem( 'skaterSetTwoControls' ) );
       const characterSet3SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 2 ], tandem.createTandem( 'skaterSetThreeControls' ) );
+      const characterSet4SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 3 ], tandem.createTandem( 'skaterSetFourControls' ) );
+      const characterSet5SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 4 ], tandem.createTandem( 'skaterSetFiveControls' ) );
+      const characterSet6SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 5 ], tandem.createTandem( 'skaterSetSixControls' ) );
       children.push( characterSet1SkaterControls );
       children.push( characterSet2SkaterControls );
       children.push( characterSet3SkaterControls );
+      children.push( characterSet4SkaterControls );
+      children.push( characterSet6SkaterControls );
 
       model.preferencesModel.skaterCharacterSetProperty.link( characterSet => {
         characterSet1SkaterControls.visible = characterSet === SkaterCharacterSetUSA;
         characterSet2SkaterControls.visible = characterSet === SkaterCharacterSetAfrica;
         characterSet3SkaterControls.visible = characterSet === SkaterCharacterSetAfricaModest;
+        characterSet4SkaterControls.visible = characterSet === SkaterCharacterSetAsia;
+        characterSet5SkaterControls.visible = characterSet === SkaterCharacterSetLatinAmerica;
+        characterSet6SkaterControls.visible = characterSet === SkaterCharacterSetOceania;
 
         // change selected image to first in the character set
         screenView.skaterNode.skaterImageSetProperty.value = characterSet.imageSet1;
