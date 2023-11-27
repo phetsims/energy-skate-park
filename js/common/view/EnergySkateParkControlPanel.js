@@ -110,6 +110,7 @@ class EnergySkateParkControlPanel extends Panel {
       children.push( characterSet2SkaterControls );
       children.push( characterSet3SkaterControls );
       children.push( characterSet4SkaterControls );
+      children.push( characterSet5SkaterControls );
       children.push( characterSet6SkaterControls );
 
       model.preferencesModel.skaterCharacterSetProperty.link( characterSet => {
