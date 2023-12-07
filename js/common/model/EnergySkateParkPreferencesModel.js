@@ -37,9 +37,9 @@ class EnergySkateParkPreferencesModel {
       tandem: Tandem.PREFERENCES.createTandem( 'accelerationUnitsProperty' )
     } );
 
-    // Controls the selected SkaterImages.SkaterCharacterSet. A set of characters is selected from Preferences
+    // Controls the selected SkaterImages.SKATER_PORTRAYALS. A set of characters is selected from Preferences
     // and the actual skater character is chosen from in-screen UI.
-    this.skaterCharacterSetProperty = regionAndCulturePortrayalProperty;
+    this.skaterPortrayalProperty = regionAndCulturePortrayalProperty;
   }
 }
 

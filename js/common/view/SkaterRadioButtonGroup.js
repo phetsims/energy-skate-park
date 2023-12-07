@@ -24,10 +24,10 @@ class SkaterRadioButtonGroup extends Node {
 
   /**
    * @param {Property.<Image>} skaterImageSetProperty - Property for the skater image
-   * @param {SkaterCharacterSet} skaterCharacterSet - The set of characters that this button group selects from
+   * @param {SkaterPortrayal} skaterPortrayal - The set of characters that this button group selects from
    * @param {Tandem} tandem
    */
-  constructor( skaterImageSetProperty, skaterCharacterSet, tandem ) {
+  constructor( skaterImageSetProperty, skaterPortrayal, tandem ) {
     super();
 
     const buttonOptions = {
@@ -45,43 +45,43 @@ class SkaterRadioButtonGroup extends Node {
     // Description of the radio buttons
     const contentArray = [
       {
-        value: skaterCharacterSet.imageSet1,
-        node: new Image( skaterCharacterSet.imageSet1.headshotImage, { scale: imageScale } ),
+        value: skaterPortrayal.imageSet1,
+        node: new Image( skaterPortrayal.imageSet1.headshotImage, { scale: imageScale } ),
         tandemName: 'skater1RadioButton'
       },
       {
-        value: skaterCharacterSet.imageSet2,
-        node: new Image( skaterCharacterSet.imageSet2.headshotImage, { scale: imageScale } ),
+        value: skaterPortrayal.imageSet2,
+        node: new Image( skaterPortrayal.imageSet2.headshotImage, { scale: imageScale } ),
         tandemName: 'skater2RadioButton'
       },
       {
-        value: skaterCharacterSet.imageSet3,
-        node: new Image( skaterCharacterSet.imageSet3.headshotImage, { scale: imageScale } ),
+        value: skaterPortrayal.imageSet3,
+        node: new Image( skaterPortrayal.imageSet3.headshotImage, { scale: imageScale } ),
         tandemName: 'skater3RadioButton'
       },
       {
-        value: skaterCharacterSet.imageSet4,
-        node: new Image( skaterCharacterSet.imageSet4.headshotImage, { scale: imageScale } ),
+        value: skaterPortrayal.imageSet4,
+        node: new Image( skaterPortrayal.imageSet4.headshotImage, { scale: imageScale } ),
         tandemName: 'skater4RadioButton'
       },
       {
-        value: skaterCharacterSet.imageSet5,
-        node: new Image( skaterCharacterSet.imageSet5.headshotImage, { scale: imageScale } ),
+        value: skaterPortrayal.imageSet5,
+        node: new Image( skaterPortrayal.imageSet5.headshotImage, { scale: imageScale } ),
         tandemName: 'skater5RadioButton'
       },
       {
-        value: skaterCharacterSet.imageSet6,
-        node: new Image( skaterCharacterSet.imageSet6.headshotImage, { scale: imageScale } ),
+        value: skaterPortrayal.imageSet6,
+        node: new Image( skaterPortrayal.imageSet6.headshotImage, { scale: imageScale } ),
         tandemName: 'skater6RadioButton'
       },
       {
-        value: skaterCharacterSet.imageSet7,
-        node: new Image( skaterCharacterSet.imageSet7.headshotImage, { scale: imageScale } ),
+        value: skaterPortrayal.imageSet7,
+        node: new Image( skaterPortrayal.imageSet7.headshotImage, { scale: imageScale } ),
         tandemName: 'skater7RadioButton'
       },
       {
-        value: skaterCharacterSet.imageSet8,
-        node: new Image( skaterCharacterSet.imageSet8.headshotImage, { scale: imageScale } ),
+        value: skaterPortrayal.imageSet8,
+        node: new Image( skaterPortrayal.imageSet8.headshotImage, { scale: imageScale } ),
         tandemName: 'skater8RadioButton'
       }
     ];

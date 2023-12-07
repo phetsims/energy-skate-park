@@ -28,7 +28,7 @@ const preferencesModel = new PreferencesModel( {
     } ]
   },
   localizationOptions: {
-    characterSets: SkaterImages.SKATER_CHARACTER_SETS
+    characterSets: SkaterImages.SKATER_PORTAYALS
   }
 } );
 const energySkateParkPreferencesModel = new EnergySkateParkPreferencesModel( preferencesModel.localizationModel.regionAndCulturePortrayalProperty );

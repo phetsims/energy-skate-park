@@ -375,9 +375,9 @@ class EnergySkateParkScreenView extends ScreenView {
       tandem: tandem.createTandem( 'returnSkaterToGroundButton' )
     } );
 
-    model.preferencesModel.skaterCharacterSetProperty.link( skaterCharacterSet => {
-      skaterIconImage1.setImage( skaterCharacterSet.imageSet1.leftImage );
-      skaterIconImage2.setImage( skaterCharacterSet.imageSet1.leftImage );
+    model.preferencesModel.skaterPortrayalProperty.link( skaterPortrayal => {
+      skaterIconImage1.setImage( skaterPortrayal.imageSet1.leftImage );
+      skaterIconImage2.setImage( skaterPortrayal.imageSet1.leftImage );
     } );
 
     // the "return skater" buttons are in the top layer so that they can be on top of the track and easily visible
@@ -461,7 +461,7 @@ class EnergySkateParkScreenView extends ScreenView {
 
     // When the model resets, go back to the default skater for the selected set (character set itself does not reset)
     this.model.resetEmitter.addListener( () => {
-      this.skaterNode.skaterImageSetProperty.value = model.preferencesModel.skaterCharacterSetProperty.value.imageSet1;
+      this.skaterNode.skaterImageSetProperty.value = model.preferencesModel.skaterPortrayalProperty.value.imageSet1;
     } );
 
     // For debugging the visible bounds

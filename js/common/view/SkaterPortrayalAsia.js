@@ -34,12 +34,12 @@ import skater6_headshot_png from '../../../images/asia/skater6_headshot_png.js';
 import skater6_left_png from '../../../images/asia/skater6_left_png.js';
 import skater6_right_png from '../../../images/asia/skater6_right_png.js';
 import { portrayalsTandem } from '../model/EnergySkateParkPreferencesModel.js';
-import SkaterCharacterSet from './SkaterCharacterSet.js';
+import SkaterPortrayal from './SkaterPortrayal.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
 const asiaString = JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.asiaStringProperty;
 
-const SkaterCharacterSetAsia = new SkaterCharacterSet(
+const SkaterPortrayalAsia = new SkaterPortrayal(
   asiaString,
   new SkaterImageSet( skater1_left_png, skater1_right_png, skater1_headshot_png ),
   new SkaterImageSet( skater2_left_png, skater2_right_png, skater2_headshot_png ),
@@ -55,4 +55,4 @@ const SkaterCharacterSetAsia = new SkaterCharacterSet(
     phetioState: false
   } );
 
-export default SkaterCharacterSetAsia;
+export default SkaterPortrayalAsia;

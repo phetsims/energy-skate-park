@@ -34,12 +34,12 @@ import skater6_set1_headshot_png from '../../../images/usa/skater6_set1_headshot
 import skater6_set1_left_png from '../../../images/usa/skater6_set1_left_png.js';
 import skater6_set1_right_png from '../../../images/usa/skater6_set1_right_png.js';
 import { portrayalsTandem } from '../model/EnergySkateParkPreferencesModel.js';
-import SkaterCharacterSet from './SkaterCharacterSet.js';
+import SkaterPortrayal from './SkaterPortrayal.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
 const unitedStatesOfAmericaString = JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.unitedStatesOfAmericaStringProperty;
 
-const SkaterCharacterSetUSA = new SkaterCharacterSet(
+const SkaterPortrayalUSA = new SkaterPortrayal(
   unitedStatesOfAmericaString,
   new SkaterImageSet( skater1_set1_left_png, skater1_set1_right_png, skater1_set1_headshot_png ),
   new SkaterImageSet( skater2_set1_left_png, skater2_set1_right_png, skater2_set1_headshot_png ),
@@ -55,4 +55,4 @@ const SkaterCharacterSetUSA = new SkaterCharacterSet(
     phetioState: false
   } );
 
-export default SkaterCharacterSetUSA;
+export default SkaterPortrayalUSA;

@@ -17,12 +17,12 @@ import EnergySkateParkMassControls from './EnergySkateParkMassControls.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
 import FrictionSlider from './FrictionSlider.js';
 import SceneSelectionRadioButtonGroup from './SceneSelectionRadioButtonGroup.js';
-import SkaterCharacterSetAfrica from './SkaterCharacterSetAfrica.js';
-import SkaterCharacterSetAfricaModest from './SkaterCharacterSetAfricaModest.js';
-import SkaterCharacterSetAsia from './SkaterCharacterSetAsia.js';
-import SkaterCharacterSetLatinAmerica from './SkaterCharacterSetLatinAmerica.js';
-import SkaterCharacterSetOceania from './SkaterCharacterSetOceania.js';
-import SkaterCharacterSetUSA from './SkaterCharacterSetUSA.js';
+import SkaterPortrayalAfrica from './SkaterPortrayalAfrica.js';
+import SkaterPortrayalAfricaModest from './SkaterPortrayalAfricaModest.js';
+import SkaterPortrayalAsia from './SkaterPortrayalAsia.js';
+import SkaterPortrayalLatinAmerica from './SkaterPortrayalLatinAmerica.js';
+import SkaterPortrayalOceania from './SkaterPortrayalOceania.js';
+import SkaterPortrayalUSA from './SkaterPortrayalUSA.js';
 import SkaterImages from './SkaterImages.js';
 import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
 
@@ -97,31 +97,31 @@ class EnergySkateParkControlPanel extends Panel {
 
     if ( options.showSkaterControls ) {
 
-      // The set of characters for this control can change. Instead of instantiating a new control we create all
+      // The skater portrayals that this control can change. Instead of instantiating a new control we create all
       // eagerly and swap visibility.
-      const characterSet1SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 0 ], tandem.createTandem( 'skaterSetOneControls' ) );
-      const characterSet2SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 1 ], tandem.createTandem( 'skaterSetTwoControls' ) );
-      const characterSet3SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 2 ], tandem.createTandem( 'skaterSetThreeControls' ) );
-      const characterSet4SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 3 ], tandem.createTandem( 'skaterSetFourControls' ) );
-      const characterSet5SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 4 ], tandem.createTandem( 'skaterSetFiveControls' ) );
-      const characterSet6SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_CHARACTER_SETS[ 5 ], tandem.createTandem( 'skaterSetSixControls' ) );
-      children.push( characterSet1SkaterControls );
-      children.push( characterSet2SkaterControls );
-      children.push( characterSet3SkaterControls );
-      children.push( characterSet4SkaterControls );
-      children.push( characterSet5SkaterControls );
-      children.push( characterSet6SkaterControls );
+      const portrayal1SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 0 ], tandem.createTandem( 'skaterSetOneControls' ) );
+      const portrayal2SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 1 ], tandem.createTandem( 'skaterSetTwoControls' ) );
+      const portrayal3SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 2 ], tandem.createTandem( 'skaterSetThreeControls' ) );
+      const portrayal4SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 3 ], tandem.createTandem( 'skaterSetFourControls' ) );
+      const portrayal5SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 4 ], tandem.createTandem( 'skaterSetFiveControls' ) );
+      const portrayal6SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 5 ], tandem.createTandem( 'skaterSetSixControls' ) );
+      children.push( portrayal1SkaterControls );
+      children.push( portrayal2SkaterControls );
+      children.push( portrayal3SkaterControls );
+      children.push( portrayal4SkaterControls );
+      children.push( portrayal5SkaterControls );
+      children.push( portrayal6SkaterControls );
 
-      model.preferencesModel.skaterCharacterSetProperty.link( characterSet => {
-        characterSet1SkaterControls.visible = characterSet === SkaterCharacterSetUSA;
-        characterSet2SkaterControls.visible = characterSet === SkaterCharacterSetAfrica;
-        characterSet3SkaterControls.visible = characterSet === SkaterCharacterSetAfricaModest;
-        characterSet4SkaterControls.visible = characterSet === SkaterCharacterSetAsia;
-        characterSet5SkaterControls.visible = characterSet === SkaterCharacterSetLatinAmerica;
-        characterSet6SkaterControls.visible = characterSet === SkaterCharacterSetOceania;
+      model.preferencesModel.skaterPortrayalProperty.link( portrayal => {
+        portrayal1SkaterControls.visible = portrayal === SkaterPortrayalUSA;
+        portrayal2SkaterControls.visible = portrayal === SkaterPortrayalAfrica;
+        portrayal3SkaterControls.visible = portrayal === SkaterPortrayalAfricaModest;
+        portrayal4SkaterControls.visible = portrayal === SkaterPortrayalAsia;
+        portrayal5SkaterControls.visible = portrayal === SkaterPortrayalLatinAmerica;
+        portrayal6SkaterControls.visible = portrayal === SkaterPortrayalOceania;
 
         // change selected image to first in the character set
-        screenView.skaterNode.skaterImageSetProperty.value = characterSet.imageSet1;
+        screenView.skaterNode.skaterImageSetProperty.value = portrayal.imageSet1;
       } );
     }
 

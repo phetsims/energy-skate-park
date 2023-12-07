@@ -26,8 +26,8 @@ class IntroScreenIcon extends ScreenIcon {
 
     let skater;
 
-    preferencesModel.skaterCharacterSetProperty.link( character => {
-      skater = character ? new Image( character.imageSet1.rightImage ) : new Image( skater1_set1_right_png );
+    preferencesModel.skaterPortrayalProperty.link( portrayal => {
+      skater = portrayal ? new Image( portrayal.imageSet1.rightImage ) : new Image( skater1_set1_right_png );
 
       // Translate, scale and rotate to the desired position
       const transformMatrix = Matrix3.translation( 95, 150 );

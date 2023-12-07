@@ -34,12 +34,12 @@ import skater6_headshot_png from '../../../images/oceania/skater6_headshot_png.j
 import skater6_left_png from '../../../images/oceania/skater6_left_png.js';
 import skater6_right_png from '../../../images/oceania/skater6_right_png.js';
 import { portrayalsTandem } from '../model/EnergySkateParkPreferencesModel.js';
-import SkaterCharacterSet from './SkaterCharacterSet.js';
+import SkaterPortrayal from './SkaterPortrayal.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
 const oceaniaString = JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.oceaniaStringProperty;
 
-const SkaterCharacterSetOceania = new SkaterCharacterSet(
+const SkaterPortrayalOceania = new SkaterPortrayal(
   oceaniaString,
   new SkaterImageSet( skater1_left_png, skater1_right_png, skater1_headshot_png ),
   new SkaterImageSet( skater2_left_png, skater2_right_png, skater2_headshot_png ),
@@ -55,4 +55,4 @@ const SkaterCharacterSetOceania = new SkaterCharacterSet(
     phetioState: false
   } );
 
-export default SkaterCharacterSetOceania;
+export default SkaterPortrayalOceania;
