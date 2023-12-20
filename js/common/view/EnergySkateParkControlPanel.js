@@ -17,13 +17,13 @@ import EnergySkateParkMassControls from './EnergySkateParkMassControls.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
 import FrictionSlider from './FrictionSlider.js';
 import SceneSelectionRadioButtonGroup from './SceneSelectionRadioButtonGroup.js';
+import SkaterImages from './SkaterImages.js';
 import SkaterPortrayalAfrica from './SkaterPortrayalAfrica.js';
 import SkaterPortrayalAfricaModest from './SkaterPortrayalAfricaModest.js';
 import SkaterPortrayalAsia from './SkaterPortrayalAsia.js';
 import SkaterPortrayalLatinAmerica from './SkaterPortrayalLatinAmerica.js';
 import SkaterPortrayalOceania from './SkaterPortrayalOceania.js';
 import SkaterPortrayalUSA from './SkaterPortrayalUSA.js';
-import SkaterImages from './SkaterImages.js';
 import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
 
 class EnergySkateParkControlPanel extends Panel {
@@ -120,7 +120,7 @@ class EnergySkateParkControlPanel extends Panel {
         portrayal5SkaterControls.visible = portrayal === SkaterPortrayalLatinAmerica;
         portrayal6SkaterControls.visible = portrayal === SkaterPortrayalOceania;
 
-        // change selected image to first in the character set
+        // change selected image to first in the portrayal
         screenView.skaterNode.skaterImageSetProperty.value = portrayal.imageSet1;
       } );
     }
