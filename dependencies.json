@@ -21,7 +21,7 @@
     "branch": "HEAD"
   },
   "energy-skate-park": {
-    "sha": "221b46b921673a8df4f615a2a1c64de3d861abef",
+    "sha": "054a9bc98667a4f2b5537484c2394040411537d8",
     "branch": "1.3"
   },
   "griddle": {
@@ -29,7 +29,7 @@
     "branch": "HEAD"
   },
   "joist": {
-    "sha": "969d99685346c972b77e632e4a5746a1e0d1ddb3",
+    "sha": "7264f2ab5ed71ca56d5fab9525cdf6205ea6c191",
     "branch": "HEAD"
   },
   "kite": {
@@ -69,7 +69,7 @@
     "branch": "HEAD"
   },
   "scenery": {
-    "sha": "ac93cf998596e873002d96e6231eabadc99db9b4",
+    "sha": "309026122cc4ad65e076d171822a921bad82e6e3",
     "branch": "HEAD"
   },
   "scenery-phet": {
