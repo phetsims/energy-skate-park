@@ -81,7 +81,7 @@ class ControlPoint extends PhetioObject {
         tandem: tandem.createTandem( 'positionProperty' ),
         phetioValueType: Vector2.Vector2IO,
         phetioState: options.phetioState,
-        accessNonDependencies: true
+        strictAxonDependencies: false
       } );
 
     // @public {BooleanProperty} - whether the control point is currently being dragged

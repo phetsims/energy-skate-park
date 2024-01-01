@@ -187,7 +187,7 @@ class SkaterPathSensorNode extends Node {
       const distanceToBody = viewPosition.minus( p1Property.get() );
       return new Vector2( distanceToBody.x / 3, Math.max( distanceToBody.y, body.height * 2 ) );
     }, {
-      accessNonDependencies: true
+      strictAxonDependencies: false
     } );
     const p2Property = new DerivedProperty( [ sensorProbePositionProperty ], sensorPosition => {
 

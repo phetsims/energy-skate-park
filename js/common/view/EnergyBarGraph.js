@@ -86,7 +86,7 @@ class EnergyBarGraph extends Node {
         }
         return energy;
       }, {
-        accessNonDependencies: true
+        strictAxonDependencies: false
       } );
     };
 
@@ -106,7 +106,7 @@ class EnergyBarGraph extends Node {
         }
         return resultantEnergy;
       }, {
-        accessNonDependencies: true
+        strictAxonDependencies: false
       } );
     };
 
