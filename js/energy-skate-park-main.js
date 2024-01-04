@@ -48,7 +48,7 @@ simLauncher.launch( () => {
     preferencesModel: preferencesModel,
     credits: {
       leadDesign: 'Noah Podolefsky, Sam Reid, Amy Rouinfar',
-      softwareDevelopment: 'Sam Reid, Jesse Greenberg, Marla Schulz, Agustín Vallejo',
+      softwareDevelopment: 'Sam Reid, Jesse Greenberg, Marla Schulz, Agustín Vallejo, Luisa Vargas',
       team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Diana López Tavares, Emily B. Moore, Ariel Paul, Kathy Perkins',
       graphicArts: 'Mariah Hermsmeyer, Megan Lai, Amanda McGarry, Sharon Siman-Tov',
       qualityAssurance: 'Jaspe Arias, Catherine Carter, Steele Dalton, Jaron Droder, Megan Lai, Brooklyn Lash, Emily Miller, Oliver Orejola, Arnab Purkayastha, Devon Quispe, Sam Reid, Nancy Salpepi, Kathryn Woessner, Bryan Yoelin'
