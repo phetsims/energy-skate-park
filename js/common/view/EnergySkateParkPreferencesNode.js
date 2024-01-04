@@ -25,11 +25,11 @@ class EnergySkateParkPreferencesNode extends Node {
     super();
 
     const metersPerSecondSquaredLabel = new RichText( EnergySkateParkStrings.preferences.metersPerSecondSquaredStringProperty,
-      PreferencesDialogConstants.CONTROL_DESCRIPTION_OPTIONS
+      PreferencesDialogConstants.TOGGLE_SWITCH_LABEL_OPTIONS
     );
 
     const newtonsPerKilogramLabel = new Text( EnergySkateParkStrings.preferences.newtonsPerKilogramStringProperty,
-      PreferencesDialogConstants.CONTROL_DESCRIPTION_OPTIONS );
+      PreferencesDialogConstants.TOGGLE_SWITCH_LABEL_OPTIONS );
 
     const accelarationUnitsSwitch = new ABSwitch( preferencesModel.accelerationUnitsProperty,
       EnergySkateParkPreferencesModel.AccelerationUnits.METERS_PER_SECOND_SQUARED,
