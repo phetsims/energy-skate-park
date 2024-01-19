@@ -86,7 +86,7 @@ class EnergyBarGraph extends Node {
         }
         return energy;
       }, {
-        strictAxonDependencies: false
+        strictAxonDependencies: false //TODO https://github.com/phetsims/energy-skate-park/issues/380
       } );
     };
 
@@ -106,7 +106,7 @@ class EnergyBarGraph extends Node {
         }
         return resultantEnergy;
       }, {
-        strictAxonDependencies: false
+        strictAxonDependencies: false //TODO https://github.com/phetsims/energy-skate-park/issues/380
       } );
     };
 

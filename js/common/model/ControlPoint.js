@@ -81,7 +81,7 @@ class ControlPoint extends PhetioObject {
         tandem: tandem.createTandem( 'positionProperty' ),
         phetioValueType: Vector2.Vector2IO,
         phetioState: options.phetioState,
-        strictAxonDependencies: false
+        strictAxonDependencies: false //TODO https://github.com/phetsims/energy-skate-park/issues/380
       } );
 
     // @public {BooleanProperty} - whether the control point is currently being dragged

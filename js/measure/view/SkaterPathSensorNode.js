@@ -187,7 +187,7 @@ class SkaterPathSensorNode extends Node {
       const distanceToBody = viewPosition.minus( p1Property.get() );
       return new Vector2( distanceToBody.x / 3, Math.max( distanceToBody.y, body.height * 2 ) );
     }, {
-      strictAxonDependencies: false
+      strictAxonDependencies: false //TODO https://github.com/phetsims/energy-skate-park/issues/380
     } );
     const p2Property = new DerivedProperty( [ sensorProbePositionProperty ], sensorPosition => {
 
