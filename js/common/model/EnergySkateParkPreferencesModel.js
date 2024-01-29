@@ -22,8 +22,6 @@ class AccelerationUnits extends EnumerationValue {
   static enumeration = new Enumeration( AccelerationUnits );
 }
 
-export const portrayalsTandem = Tandem.PREFERENCES.createTandem( 'regionAndCulturePortrayals' );
-
 class EnergySkateParkPreferencesModel {
 
   /**

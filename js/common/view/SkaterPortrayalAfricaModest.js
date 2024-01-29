@@ -32,9 +32,8 @@ import skater4_set2_right_png from '../../../images/africa/skater4_set2_right_pn
 import skater5_set2_headshot_png from '../../../images/africa/skater5_set2_headshot_png.js';
 import skater5_set2_left_png from '../../../images/africa/skater5_set2_left_png.js';
 import skater5_set2_right_png from '../../../images/africa/skater5_set2_right_png.js';
-import { portrayalsTandem } from '../model/EnergySkateParkPreferencesModel.js';
-import SkaterPortrayal from './SkaterPortrayal.js';
 import SkaterImageSet from './SkaterImageSet.js';
+import SkaterPortrayal from './SkaterPortrayal.js';
 
 const africaConservativeString = JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.africaModestStringProperty;
 
@@ -48,11 +47,6 @@ const SkaterPortrayalAfricaModest = new SkaterPortrayal(
   new SkaterImageSet( skater6_set3_left_png, skater6_set3_right_png, skater6_set3_headshot_png ),
   new SkaterImageSet( goat_left_png, goat_right_png, goat_headshot_png ),
   new SkaterImageSet( elephant_left_png, elephant_right_png, elephant_headshot_png ),
-  AFRICA_MODEST_REGION_AND_CULTURE_ID,
-  {
-    tandem: portrayalsTandem.createTandem( 'skaterPortrayalAfricaModest' ),
-    phetioState: false
-  }
-);
+  AFRICA_MODEST_REGION_AND_CULTURE_ID );
 
 export default SkaterPortrayalAfricaModest;
