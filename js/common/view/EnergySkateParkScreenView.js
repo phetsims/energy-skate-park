@@ -273,7 +273,9 @@ class EnergySkateParkScreenView extends ScreenView {
     // add a measuring tape, on top of tracks, below the skater
     if ( options.showToolbox ) {
 
-      const unitsProperty = new Property( { name: measuringTapeUnitsStringProperty, multiplier: 1 } );
+      const unitsProperty = new DerivedProperty( [ measuringTapeUnitsStringProperty ], measuringTapeUnitsString => {
+        return { name: measuringTapeUnitsString, multiplier: 1 };
+      } );
 
       // @private {MeasuringTapeNode}
       this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, {
