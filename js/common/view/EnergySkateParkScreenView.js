@@ -45,10 +45,10 @@ import ToolboxPanel from './ToolboxPanel.js';
 import TrackNode from './TrackNode.js';
 import VisibilityControlsPanel from './VisibilityControlsPanel.js';
 
-const controlsRestartSkaterString = EnergySkateParkStrings.skaterControls.restartSkaterStringProperty;
+const controlsRestartSkaterStringProperty = EnergySkateParkStrings.skaterControls.restartSkaterStringProperty;
 const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelStringProperty;
-const speedometerMetersPerSecondPatternString = EnergySkateParkStrings.speedometer.metersPerSecondPatternStringProperty;
-const measuringTapeUnitsString = EnergySkateParkStrings.measuringTape.unitsStringProperty;
+const speedometerMetersPerSecondPatternStringProperty = EnergySkateParkStrings.speedometer.metersPerSecondPatternStringProperty;
+const measuringTapeUnitsStringProperty = EnergySkateParkStrings.measuringTape.unitsStringProperty;
 
 // constants
 // for wider screens, panels can float to the left and right by this much beyond dev bounds in view coordinates
@@ -222,7 +222,7 @@ class EnergySkateParkScreenView extends ScreenView {
 
     // The button to return the skater
     this.returnSkaterButton = new RectangularPushButton( {
-      content: new Text( controlsRestartSkaterString, {
+      content: new Text( controlsRestartSkaterStringProperty, {
         tandem: tandem.createTandem( 'restartSkaterText' ),
         maxWidth: 90,
         font: EnergySkateParkConstants.CONTROL_LABEL_FONT
@@ -242,7 +242,7 @@ class EnergySkateParkScreenView extends ScreenView {
     // @protected (read-only) - for layout or repositioning in subtypes
     this.speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedStringProperty, new Range( 0, 30 ), {
       numberDisplayOptions: {
-        valuePattern: speedometerMetersPerSecondPatternString,
+        valuePattern: speedometerMetersPerSecondPatternStringProperty,
         decimalPlaces: 1,
         textOptions: {
           maxWidth: gaugeRadius * 1.3,
@@ -273,7 +273,7 @@ class EnergySkateParkScreenView extends ScreenView {
     // add a measuring tape, on top of tracks, below the skater
     if ( options.showToolbox ) {
 
-      const unitsProperty = new Property( { name: measuringTapeUnitsString, multiplier: 1 } );
+      const unitsProperty = new Property( { name: measuringTapeUnitsStringProperty, multiplier: 1 } );
 
       // @private {MeasuringTapeNode}
       this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, {
