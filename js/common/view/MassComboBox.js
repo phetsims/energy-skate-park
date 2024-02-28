@@ -8,7 +8,6 @@
  */
 
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
-import ComboBox from '../../../../sun/js/ComboBox.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import SkaterMasses from '../SkaterMasses.js';
@@ -37,32 +36,32 @@ class MassComboBox extends LabelledComboBox {
       {
         label: getFormattedLabel( controlsSkater1MassPatternString, SkaterMasses.SKATER_1_MASS ),
         value: SkaterMasses.SKATER_1_MASS,
-        tandemName: `skater1Mass${ComboBox.ITEM_TANDEM_NAME_SUFFIX}`
+        tandemName: 'skater1MassItem'
       },
       {
         label: getFormattedLabel( controlsSkater2MassPatternString, SkaterMasses.SKATER_2_MASS ),
         value: SkaterMasses.SKATER_2_MASS,
-        tandemName: `skater2Mass${ComboBox.ITEM_TANDEM_NAME_SUFFIX}`
+        tandemName: 'skater2MassItem'
       },
       {
         label: getFormattedLabel( controlsSkater3MassPatternString, SkaterMasses.SKATER_3_MASS ),
         value: SkaterMasses.SKATER_3_MASS,
-        tandemName: `skater3Mass${ComboBox.ITEM_TANDEM_NAME_SUFFIX}`
+        tandemName: 'skater3MassItem'
       },
       {
         label: getFormattedLabel( controlsSkater4MassPatternString, SkaterMasses.SKATER_4_MASS ),
         value: SkaterMasses.SKATER_4_MASS,
-        tandemName: `skater4Mass${ComboBox.ITEM_TANDEM_NAME_SUFFIX}`
+        tandemName: 'skater4MassItem'
       },
       {
         label: getFormattedLabel( controlsSkater5MassPatternString, SkaterMasses.SKATER_5_MASS ),
         value: SkaterMasses.SKATER_5_MASS,
-        tandemName: `skater5Mass${ComboBox.ITEM_TANDEM_NAME_SUFFIX}`
+        tandemName: 'skater5MassItem'
       },
       {
         label: getFormattedLabel( controlsDogMassPatternString, SkaterMasses.DOG_MASS ),
         value: SkaterMasses.DOG_MASS,
-        tandemName: `dogMass${ComboBox.ITEM_TANDEM_NAME_SUFFIX}`
+        tandemName: 'dogMassItem'
       }
     ];
     const comboBox = new PhysicalComboBox( massProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, {
