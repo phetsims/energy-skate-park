@@ -27,7 +27,7 @@ import ValueGaugeNode from '../../../../scenery-phet/js/ValueGaugeNode.js';
 import { Image, Node, Path, Text } from '../../../../scenery/js/imports.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import skater1_set1_left_png from '../../../images/usa/skater1_set1_left_png.js';
+import usaSkater1_set1_left_png from '../../../images/usa/usaSkater1_set1_left_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -346,7 +346,7 @@ class EnergySkateParkScreenView extends ScreenView {
 
     // Buttons to return the skater when she is offscreen, see #219
     const iconScale = 0.19;
-    const skaterIconImage1 = new Image( skater1_set1_left_png, {
+    const skaterIconImage1 = new Image( usaSkater1_set1_left_png, {
       scale: iconScale,
       tandem: tandem.createTandem( 'skaterIconImage1' )
     } );
@@ -359,7 +359,7 @@ class EnergySkateParkScreenView extends ScreenView {
       tandem: tandem.createTandem( 'returnSkaterToPreviousStartingPositionButton' )
     } );
 
-    const skaterIconImage2 = new Image( skater1_set1_left_png, {
+    const skaterIconImage2 = new Image( usaSkater1_set1_left_png, {
       scale: iconScale,
       tandem: tandem.createTandem( 'skaterIconImage2' )
     } );

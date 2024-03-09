@@ -11,7 +11,7 @@ import Matrix3 from '../../../../dot/js/Matrix3.js';
 import ScreenIcon from '../../../../joist/js/ScreenIcon.js';
 import { Image } from '../../../../scenery/js/imports.js';
 import playgroundScreenIcon_png from '../../../images/playgroundScreenIcon_png.js';
-import dog_right_png from '../../../images/usa/dog_right_png.js';
+import usaDog_right_png from '../../../images/usa/usaDog_right_png.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class PlaygroundScreenIcon extends ScreenIcon {
@@ -29,7 +29,7 @@ class PlaygroundScreenIcon extends ScreenIcon {
     preferencesModel.skaterPortrayalProperty.link( portrayal => {
 
       // image8 is one of the animals in the set, for fun in the playground
-      skater = portrayal ? new Image( portrayal.imageSet8.rightImage ) : new Image( dog_right_png );
+      skater = portrayal ? new Image( portrayal.imageSet8.rightImage ) : new Image( usaDog_right_png );
 
       // Translate, scale and rotate to the desired position
       const transformMatrix = Matrix3.translation( 375, 110 );

@@ -8,30 +8,30 @@
 
 import JoistStrings from '../../../../joist/js/JoistStrings.js';
 import { AFRICA_MODEST_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
-import skater6_set3_headshot_png from '../../../images/africa-modest/skater6_set3_headshot_png.js';
-import skater6_set3_left_png from '../../../images/africa-modest/skater6_set3_left_png.js';
-import skater6_set3_right_png from '../../../images/africa-modest/skater6_set3_right_png.js';
-import elephant_headshot_png from '../../../images/africa/elephant_headshot_png.js';
-import elephant_left_png from '../../../images/africa/elephant_left_png.js';
-import elephant_right_png from '../../../images/africa/elephant_right_png.js';
-import goat_headshot_png from '../../../images/africa/goat_headshot_png.js';
-import goat_left_png from '../../../images/africa/goat_left_png.js';
-import goat_right_png from '../../../images/africa/goat_right_png.js';
-import skater1_set2_headshot_png from '../../../images/africa/skater1_set2_headshot_png.js';
-import skater1_set2_left_png from '../../../images/africa/skater1_set2_left_png.js';
-import skater1_set2_right_png from '../../../images/africa/skater1_set2_right_png.js';
-import skater2_set2_headshot_png from '../../../images/africa/skater2_set2_headshot_png.js';
-import skater2_set2_left_png from '../../../images/africa/skater2_set2_left_png.js';
-import skater2_set2_right_png from '../../../images/africa/skater2_set2_right_png.js';
-import skater3_set2_headshot_png from '../../../images/africa/skater3_set2_headshot_png.js';
-import skater3_set2_left_png from '../../../images/africa/skater3_set2_left_png.js';
-import skater3_set2_right_png from '../../../images/africa/skater3_set2_right_png.js';
-import skater4_set2_headshot_png from '../../../images/africa/skater4_set2_headshot_png.js';
-import skater4_set2_left_png from '../../../images/africa/skater4_set2_left_png.js';
-import skater4_set2_right_png from '../../../images/africa/skater4_set2_right_png.js';
-import skater5_set2_headshot_png from '../../../images/africa/skater5_set2_headshot_png.js';
-import skater5_set2_left_png from '../../../images/africa/skater5_set2_left_png.js';
-import skater5_set2_right_png from '../../../images/africa/skater5_set2_right_png.js';
+import africaModestSkater6_set3_headshot_png from '../../../images/africa-modest/africaModestSkater6_set3_headshot_png.js';
+import africaModestSkater6_set3_left_png from '../../../images/africa-modest/africaModestSkater6_set3_left_png.js';
+import africaModestSkater6_set3_right_png from '../../../images/africa-modest/africaModestSkater6_set3_right_png.js';
+import africaElephant_headshot_png from '../../../images/africa/africaElephant_headshot_png.js';
+import africaElephant_left_png from '../../../images/africa/africaElephant_left_png.js';
+import africaElephant_right_png from '../../../images/africa/africaElephant_right_png.js';
+import africaGoat_headshot_png from '../../../images/africa/africaGoat_headshot_png.js';
+import africaGoat_left_png from '../../../images/africa/africaGoat_left_png.js';
+import africaGoat_right_png from '../../../images/africa/africaGoat_right_png.js';
+import africaSkater1_set2_headshot_png from '../../../images/africa/africaSkater1_set2_headshot_png.js';
+import africaSkater1_set2_left_png from '../../../images/africa/africaSkater1_set2_left_png.js';
+import africaSkater1_set2_right_png from '../../../images/africa/africaSkater1_set2_right_png.js';
+import africaSkater2_set2_headshot_png from '../../../images/africa/africaSkater2_set2_headshot_png.js';
+import africaSkater2_set2_left_png from '../../../images/africa/africaSkater2_set2_left_png.js';
+import africaSkater2_set2_right_png from '../../../images/africa/africaSkater2_set2_right_png.js';
+import africaSkater3_set2_headshot_png from '../../../images/africa/africaSkater3_set2_headshot_png.js';
+import africaSkater3_set2_left_png from '../../../images/africa/africaSkater3_set2_left_png.js';
+import africaSkater3_set2_right_png from '../../../images/africa/africaSkater3_set2_right_png.js';
+import africaSkater4_set2_headshot_png from '../../../images/africa/africaSkater4_set2_headshot_png.js';
+import africaSkater4_set2_left_png from '../../../images/africa/africaSkater4_set2_left_png.js';
+import africaSkater4_set2_right_png from '../../../images/africa/africaSkater4_set2_right_png.js';
+import africaSkater5_set2_headshot_png from '../../../images/africa/africaSkater5_set2_headshot_png.js';
+import africaSkater5_set2_left_png from '../../../images/africa/africaSkater5_set2_left_png.js';
+import africaSkater5_set2_right_png from '../../../images/africa/africaSkater5_set2_right_png.js';
 import SkaterImageSet from './SkaterImageSet.js';
 import SkaterPortrayal from './SkaterPortrayal.js';
 
@@ -39,14 +39,14 @@ const africaConservativeString = JoistStrings.preferences.tabs.localization.regi
 
 const SkaterPortrayalAfricaModest = new SkaterPortrayal(
   africaConservativeString,
-  new SkaterImageSet( skater1_set2_left_png, skater1_set2_right_png, skater1_set2_headshot_png ),
-  new SkaterImageSet( skater2_set2_left_png, skater2_set2_right_png, skater2_set2_headshot_png ),
-  new SkaterImageSet( skater3_set2_left_png, skater3_set2_right_png, skater3_set2_headshot_png ),
-  new SkaterImageSet( skater4_set2_left_png, skater4_set2_right_png, skater4_set2_headshot_png ),
-  new SkaterImageSet( skater5_set2_left_png, skater5_set2_right_png, skater5_set2_headshot_png ),
-  new SkaterImageSet( skater6_set3_left_png, skater6_set3_right_png, skater6_set3_headshot_png ),
-  new SkaterImageSet( goat_left_png, goat_right_png, goat_headshot_png ),
-  new SkaterImageSet( elephant_left_png, elephant_right_png, elephant_headshot_png ),
+  new SkaterImageSet( africaSkater1_set2_left_png, africaSkater1_set2_right_png, africaSkater1_set2_headshot_png ),
+  new SkaterImageSet( africaSkater2_set2_left_png, africaSkater2_set2_right_png, africaSkater2_set2_headshot_png ),
+  new SkaterImageSet( africaSkater3_set2_left_png, africaSkater3_set2_right_png, africaSkater3_set2_headshot_png ),
+  new SkaterImageSet( africaSkater4_set2_left_png, africaSkater4_set2_right_png, africaSkater4_set2_headshot_png ),
+  new SkaterImageSet( africaSkater5_set2_left_png, africaSkater5_set2_right_png, africaSkater5_set2_headshot_png ),
+  new SkaterImageSet( africaModestSkater6_set3_left_png, africaModestSkater6_set3_right_png, africaModestSkater6_set3_headshot_png ),
+  new SkaterImageSet( africaGoat_left_png, africaGoat_right_png, africaGoat_headshot_png ),
+  new SkaterImageSet( africaElephant_left_png, africaElephant_right_png, africaElephant_headshot_png ),
   AFRICA_MODEST_REGION_AND_CULTURE_ID );
 
 export default SkaterPortrayalAfricaModest;

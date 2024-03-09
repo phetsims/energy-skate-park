@@ -9,30 +9,30 @@
 
 import JoistStrings from '../../../../joist/js/JoistStrings.js';
 import { LATIN_AMERICA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
-import skater1_headshot_png from '../../../images/latin-america/skater1_headshot_png.js';
-import skater1_left_png from '../../../images/latin-america/skater1_left_png.js';
-import skater1_right_png from '../../../images/latin-america/skater1_right_png.js';
-import skater2_headshot_png from '../../../images/latin-america/skater2_headshot_png.js';
-import skater2_left_png from '../../../images/latin-america/skater2_left_png.js';
-import skater2_right_png from '../../../images/latin-america/skater2_right_png.js';
-import skater3_headshot_png from '../../../images/latin-america/skater3_headshot_png.js';
-import skater3_left_png from '../../../images/latin-america/skater3_left_png.js';
-import skater3_right_png from '../../../images/latin-america/skater3_right_png.js';
-import skater4_headshot_png from '../../../images/latin-america/skater4_headshot_png.js';
-import skater4_left_png from '../../../images/latin-america/skater4_left_png.js';
-import skater4_right_png from '../../../images/latin-america/skater4_right_png.js';
-import skater5_headshot_png from '../../../images/latin-america/skater5_headshot_png.js';
-import skater5_left_png from '../../../images/latin-america/skater5_left_png.js';
-import skater5_right_png from '../../../images/latin-america/skater5_right_png.js';
-import skater6_headshot_png from '../../../images/latin-america/skater6_headshot_png.js';
-import skater6_left_png from '../../../images/latin-america/skater6_left_png.js';
-import skater6_right_png from '../../../images/latin-america/skater6_right_png.js';
-import cat_headshot_png from '../../../images/usa/cat_headshot_png.js';
-import cat_left_png from '../../../images/usa/cat_left_png.js';
-import cat_right_png from '../../../images/usa/cat_right_png.js';
-import dog_headshot_png from '../../../images/usa/dog_headshot_png.js';
-import dog_left_png from '../../../images/usa/dog_left_png.js';
-import dog_right_png from '../../../images/usa/dog_right_png.js';
+import latinAmericaSkater1_headshot_png from '../../../images/latin-america/latinAmericaSkater1_headshot_png.js';
+import latinAmericaSkater1_left_png from '../../../images/latin-america/latinAmericaSkater1_left_png.js';
+import latinAmericaSkater1_right_png from '../../../images/latin-america/latinAmericaSkater1_right_png.js';
+import latinAmericaSkater2_headshot_png from '../../../images/latin-america/latinAmericaSkater2_headshot_png.js';
+import latinAmericaSkater2_left_png from '../../../images/latin-america/latinAmericaSkater2_left_png.js';
+import latinAmericaSkater2_right_png from '../../../images/latin-america/latinAmericaSkater2_right_png.js';
+import latinAmericaSkater3_headshot_png from '../../../images/latin-america/latinAmericaSkater3_headshot_png.js';
+import latinAmericaSkater3_left_png from '../../../images/latin-america/latinAmericaSkater3_left_png.js';
+import latinAmericaSkater3_right_png from '../../../images/latin-america/latinAmericaSkater3_right_png.js';
+import latinAmericaSkater4_headshot_png from '../../../images/latin-america/latinAmericaSkater4_headshot_png.js';
+import latinAmericaSkater4_left_png from '../../../images/latin-america/latinAmericaSkater4_left_png.js';
+import latinAmericaSkater4_right_png from '../../../images/latin-america/latinAmericaSkater4_right_png.js';
+import latinAmericaSkater5_headshot_png from '../../../images/latin-america/latinAmericaSkater5_headshot_png.js';
+import latinAmericaSkater5_left_png from '../../../images/latin-america/latinAmericaSkater5_left_png.js';
+import latinAmericaSkater5_right_png from '../../../images/latin-america/latinAmericaSkater5_right_png.js';
+import latinAmericaSkater6_headshot_png from '../../../images/latin-america/latinAmericaSkater6_headshot_png.js';
+import latinAmericaSkater6_left_png from '../../../images/latin-america/latinAmericaSkater6_left_png.js';
+import latinAmericaSkater6_right_png from '../../../images/latin-america/latinAmericaSkater6_right_png.js';
+import usaCat_headshot_png from '../../../images/usa/usaCat_headshot_png.js';
+import usaCat_left_png from '../../../images/usa/usaCat_left_png.js';
+import usaCat_right_png from '../../../images/usa/usaCat_right_png.js';
+import usaDog_headshot_png from '../../../images/usa/usaDog_headshot_png.js';
+import usaDog_left_png from '../../../images/usa/usaDog_left_png.js';
+import usaDog_right_png from '../../../images/usa/usaDog_right_png.js';
 import SkaterImageSet from './SkaterImageSet.js';
 import SkaterPortrayal from './SkaterPortrayal.js';
 
@@ -40,14 +40,14 @@ const latinAmericaString = JoistStrings.preferences.tabs.localization.regionAndC
 
 const SkaterPortrayalLatinAmerica = new SkaterPortrayal(
   latinAmericaString,
-  new SkaterImageSet( skater1_left_png, skater1_right_png, skater1_headshot_png ),
-  new SkaterImageSet( skater2_left_png, skater2_right_png, skater2_headshot_png ),
-  new SkaterImageSet( skater3_left_png, skater3_right_png, skater3_headshot_png ),
-  new SkaterImageSet( skater4_left_png, skater4_right_png, skater4_headshot_png ),
-  new SkaterImageSet( skater5_left_png, skater5_right_png, skater5_headshot_png ),
-  new SkaterImageSet( skater6_left_png, skater6_right_png, skater6_headshot_png ),
-  new SkaterImageSet( cat_left_png, cat_right_png, cat_headshot_png ),
-  new SkaterImageSet( dog_left_png, dog_right_png, dog_headshot_png ),
+  new SkaterImageSet( latinAmericaSkater1_left_png, latinAmericaSkater1_right_png, latinAmericaSkater1_headshot_png ),
+  new SkaterImageSet( latinAmericaSkater2_left_png, latinAmericaSkater2_right_png, latinAmericaSkater2_headshot_png ),
+  new SkaterImageSet( latinAmericaSkater3_left_png, latinAmericaSkater3_right_png, latinAmericaSkater3_headshot_png ),
+  new SkaterImageSet( latinAmericaSkater4_left_png, latinAmericaSkater4_right_png, latinAmericaSkater4_headshot_png ),
+  new SkaterImageSet( latinAmericaSkater5_left_png, latinAmericaSkater5_right_png, latinAmericaSkater5_headshot_png ),
+  new SkaterImageSet( latinAmericaSkater6_left_png, latinAmericaSkater6_right_png, latinAmericaSkater6_headshot_png ),
+  new SkaterImageSet( usaCat_left_png, usaCat_right_png, usaCat_headshot_png ),
+  new SkaterImageSet( usaDog_left_png, usaDog_right_png, usaDog_headshot_png ),
   LATIN_AMERICA_REGION_AND_CULTURE_ID );
 
 export default SkaterPortrayalLatinAmerica;
