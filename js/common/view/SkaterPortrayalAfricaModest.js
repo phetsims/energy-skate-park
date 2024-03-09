@@ -8,9 +8,9 @@
 
 import JoistStrings from '../../../../joist/js/JoistStrings.js';
 import { AFRICA_MODEST_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
-import africaModestSkater6_set3_headshot_png from '../../../images/africa-modest/africaModestSkater6_set3_headshot_png.js';
-import africaModestSkater6_set3_left_png from '../../../images/africa-modest/africaModestSkater6_set3_left_png.js';
-import africaModestSkater6_set3_right_png from '../../../images/africa-modest/africaModestSkater6_set3_right_png.js';
+import africaModestSkater6_set3_headshot_png from '../../../images/africaModest/africaModestSkater6_set3_headshot_png.js';
+import africaModestSkater6_set3_left_png from '../../../images/africaModest/africaModestSkater6_set3_left_png.js';
+import africaModestSkater6_set3_right_png from '../../../images/africaModest/africaModestSkater6_set3_right_png.js';
 import africaElephant_headshot_png from '../../../images/africa/africaElephant_headshot_png.js';
 import africaElephant_left_png from '../../../images/africa/africaElephant_left_png.js';
 import africaElephant_right_png from '../../../images/africa/africaElephant_right_png.js';
