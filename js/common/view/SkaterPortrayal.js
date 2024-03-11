@@ -13,9 +13,22 @@ import RegionAndCulturePortrayal from '../../../../joist/js/preferences/RegionAn
 import energySkatePark from '../../energySkatePark.js';
 
 export default class SkaterPortrayal extends RegionAndCulturePortrayal {
-  constructor( labelString, imageSet1, imageSet2, imageSet3, imageSet4, imageSet5, imageSet6, imageSet7, imageSet8, queryParameterValue, providedOptions ) {
 
-    super( labelString, queryParameterValue, providedOptions );
+  /**
+   * @param {RegionAndCulture} regionAndCulture
+   * @param imageSet1
+   * @param imageSet2
+   * @param imageSet3
+   * @param imageSet4
+   * @param imageSet5
+   * @param imageSet6
+   * @param imageSet7
+   * @param imageSet8
+   * @param providedOptions
+   */
+  constructor( regionAndCulture, imageSet1, imageSet2, imageSet3, imageSet4, imageSet5, imageSet6, imageSet7, imageSet8, providedOptions ) {
+
+    super( regionAndCulture, providedOptions );
     this.imageSet1 = imageSet1;
     this.imageSet2 = imageSet2;
     this.imageSet3 = imageSet3;

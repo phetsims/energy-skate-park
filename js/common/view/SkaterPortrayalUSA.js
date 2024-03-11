@@ -7,8 +7,6 @@
  *
  */
 
-import JoistStrings from '../../../../joist/js/JoistStrings.js';
-import { USA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 import usaCat_headshot_png from '../../../images/usa/usaCat_headshot_png.js';
 import usaCat_left_png from '../../../images/usa/usaCat_left_png.js';
 import usaCat_right_png from '../../../images/usa/usaCat_right_png.js';
@@ -36,10 +34,8 @@ import usaSkater6_set1_right_png from '../../../images/usa/usaSkater6_set1_right
 import SkaterImageSet from './SkaterImageSet.js';
 import SkaterPortrayal from './SkaterPortrayal.js';
 
-const unitedStatesOfAmericaString = JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.unitedStatesOfAmericaStringProperty;
-
 const SkaterPortrayalUSA = new SkaterPortrayal(
-  unitedStatesOfAmericaString,
+  'usa',
   new SkaterImageSet( usaSkater1_set1_left_png, usaSkater1_set1_right_png, usaSkater1_set1_headshot_png ),
   new SkaterImageSet( usaSkater2_set1_left_png, usaSkater2_set1_right_png, usaSkater2_set1_headshot_png ),
   new SkaterImageSet( usaSkater3_set1_left_png, usaSkater3_set1_right_png, usaSkater3_set1_headshot_png ),
@@ -47,7 +43,7 @@ const SkaterPortrayalUSA = new SkaterPortrayal(
   new SkaterImageSet( usaSkater5_set1_left_png, usaSkater5_set1_right_png, usaSkater5_set1_headshot_png ),
   new SkaterImageSet( usaSkater6_set1_left_png, usaSkater6_set1_right_png, usaSkater6_set1_headshot_png ),
   new SkaterImageSet( usaCat_left_png, usaCat_right_png, usaCat_headshot_png ),
-  new SkaterImageSet( usaDog_left_png, usaDog_right_png, usaDog_headshot_png ),
-  USA_REGION_AND_CULTURE_ID );
+  new SkaterImageSet( usaDog_left_png, usaDog_right_png, usaDog_headshot_png )
+);
 
 export default SkaterPortrayalUSA;

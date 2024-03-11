@@ -7,8 +7,6 @@
  *
  */
 
-import JoistStrings from '../../../../joist/js/JoistStrings.js';
-import { ASIA_REGION_AND_CULTURE_ID } from '../../../../joist/js/preferences/RegionAndCulturePortrayal.js';
 import africaElephant_headshot_png from '../../../images/africa/africaElephant_headshot_png.js';
 import africaElephant_left_png from '../../../images/africa/africaElephant_left_png.js';
 import africaElephant_right_png from '../../../images/africa/africaElephant_right_png.js';
@@ -36,10 +34,8 @@ import asiaSkater6_right_png from '../../../images/asia/asiaSkater6_right_png.js
 import SkaterImageSet from './SkaterImageSet.js';
 import SkaterPortrayal from './SkaterPortrayal.js';
 
-const asiaString = JoistStrings.preferences.tabs.localization.regionAndCulture.portrayalSets.asiaStringProperty;
-
 const SkaterPortrayalAsia = new SkaterPortrayal(
-  asiaString,
+  'asia',
   new SkaterImageSet( asiaSkater1_left_png, asiaSkater1_right_png, asiaSkater1_headshot_png ),
   new SkaterImageSet( asiaSkater2_left_png, asiaSkater2_right_png, asiaSkater2_headshot_png ),
   new SkaterImageSet( asiaSkater3_left_png, asiaSkater3_right_png, asiaSkater3_headshot_png ),
@@ -47,7 +43,7 @@ const SkaterPortrayalAsia = new SkaterPortrayal(
   new SkaterImageSet( asiaSkater5_left_png, asiaSkater5_right_png, asiaSkater5_headshot_png ),
   new SkaterImageSet( asiaSkater6_left_png, asiaSkater6_right_png, asiaSkater6_headshot_png ),
   new SkaterImageSet( africaGoat_left_png, africaGoat_right_png, africaGoat_headshot_png ),
-  new SkaterImageSet( africaElephant_left_png, africaElephant_right_png, africaElephant_headshot_png ),
-  ASIA_REGION_AND_CULTURE_ID );
+  new SkaterImageSet( africaElephant_left_png, africaElephant_right_png, africaElephant_headshot_png )
+);
 
 export default SkaterPortrayalAsia;
