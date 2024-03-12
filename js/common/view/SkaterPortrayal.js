@@ -1,4 +1,4 @@
-// Copyright 2023, University of Colorado Boulder
+// Copyright 2023-2024, University of Colorado Boulder
 
 /**
  * A collection of SkaterImageSets. One SkaterPortrayal is active at a time. The user can select one of the
