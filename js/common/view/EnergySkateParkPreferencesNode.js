@@ -7,8 +7,8 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import PreferencesDialogConstants from '../../../../joist/js/preferences/PreferencesDialogConstants.js';
 import PreferencesControl from '../../../../joist/js/preferences/PreferencesControl.js';
+import PreferencesDialogConstants from '../../../../joist/js/preferences/PreferencesDialogConstants.js';
 import { Node, RichText, Text } from '../../../../scenery/js/imports.js';
 import ABSwitch from '../../../../sun/js/ABSwitch.js';
 import energySkatePark from '../../energySkatePark.js';

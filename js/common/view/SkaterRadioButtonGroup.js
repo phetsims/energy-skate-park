@@ -10,13 +10,13 @@
  * @author Jesse Greenberg
  */
 
+import { Shape } from '../../../../kite/js/imports.js';
 import merge from '../../../../phet-core/js/merge.js';
 import { HBox, Image, Node, VBox } from '../../../../scenery/js/imports.js';
 import RectangularRadioButton from '../../../../sun/js/buttons/RectangularRadioButton.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
-import { Shape } from '../../../../kite/js/imports.js';
 
 const BUTTON_SPACING = 5;
 
