@@ -30,19 +30,18 @@ import africaSkater5Right_png from '../../../images/africa/africaSkater5Right_pn
 import africaModestSkater6Headshot_png from '../../../images/africaModest/africaModestSkater6Headshot_png.js';
 import africaModestSkater6Left_png from '../../../images/africaModest/africaModestSkater6Left_png.js';
 import africaModestSkater6Right_png from '../../../images/africaModest/africaModestSkater6Right_png.js';
-import SkaterImageSet from './SkaterImageSet.js';
-import SkaterPortrayal from './SkaterPortrayal.js';
+import SkaterPortrayal, { SkaterImageSetDeprecated } from './SkaterPortrayal.js';
 
 const SkaterPortrayalAfricaModest = new SkaterPortrayal(
   'africaModest',
-  new SkaterImageSet( africaSkater1Left_png, africaSkater1Right_png, africaSkater1Headshot_png ),
-  new SkaterImageSet( africaSkater2Left_png, africaSkater2Right_png, africaSkater2Headshot_png ),
-  new SkaterImageSet( africaSkater3Left_png, africaSkater3Right_png, africaSkater3Headshot_png ),
-  new SkaterImageSet( africaSkater4Left_png, africaSkater4Right_png, africaSkater4Headshot_png ),
-  new SkaterImageSet( africaSkater5Left_png, africaSkater5Right_png, africaSkater5Headshot_png ),
-  new SkaterImageSet( africaModestSkater6Left_png, africaModestSkater6Right_png, africaModestSkater6Headshot_png ),
-  new SkaterImageSet( africaGoatLeft_png, africaGoatRight_png, africaGoatHeadshot_png ),
-  new SkaterImageSet( africaElephantLeft_png, africaElephantRight_png, africaElephantHeadshot_png )
+  new SkaterImageSetDeprecated( africaSkater1Left_png, africaSkater1Right_png, africaSkater1Headshot_png ),
+  new SkaterImageSetDeprecated( africaSkater2Left_png, africaSkater2Right_png, africaSkater2Headshot_png ),
+  new SkaterImageSetDeprecated( africaSkater3Left_png, africaSkater3Right_png, africaSkater3Headshot_png ),
+  new SkaterImageSetDeprecated( africaSkater4Left_png, africaSkater4Right_png, africaSkater4Headshot_png ),
+  new SkaterImageSetDeprecated( africaSkater5Left_png, africaSkater5Right_png, africaSkater5Headshot_png ),
+  new SkaterImageSetDeprecated( africaModestSkater6Left_png, africaModestSkater6Right_png, africaModestSkater6Headshot_png ),
+  new SkaterImageSetDeprecated( africaGoatLeft_png, africaGoatRight_png, africaGoatHeadshot_png ),
+  new SkaterImageSetDeprecated( africaElephantLeft_png, africaElephantRight_png, africaElephantHeadshot_png )
   );
 
 export default SkaterPortrayalAfricaModest;

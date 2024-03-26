@@ -31,19 +31,18 @@ import usaCatRight_png from '../../../images/usa/usaCatRight_png.js';
 import usaDogHeadshot_png from '../../../images/usa/usaDogHeadshot_png.js';
 import usaDogLeft_png from '../../../images/usa/usaDogLeft_png.js';
 import usaDogRight_png from '../../../images/usa/usaDogRight_png.js';
-import SkaterImageSet from './SkaterImageSet.js';
-import SkaterPortrayal from './SkaterPortrayal.js';
+import SkaterPortrayal, { SkaterImageSetDeprecated } from './SkaterPortrayal.js';
 
 const SkaterPortrayalOceania = new SkaterPortrayal(
   'oceania',
-  new SkaterImageSet( oceaniaSkater1Left_png, oceaniaSkater1Right_png, oceaniaSkater1Headshot_png ),
-  new SkaterImageSet( oceaniaSkater2Left_png, oceaniaSkater2Right_png, oceaniaSkater2Headshot_png ),
-  new SkaterImageSet( oceaniaSkater3Left_png, oceaniaSkater3Right_png, oceaniaSkater3Headshot_png ),
-  new SkaterImageSet( oceaniaSkater4Left_png, oceaniaSkater4Right_png, oceaniaSkater4Headshot_png ),
-  new SkaterImageSet( asiaSkater5Left_png, asiaSkater5Right_png, asiaSkater5Headshot_png ),
-  new SkaterImageSet( oceaniaSkater6Left_png, oceaniaSkater6Right_png, oceaniaSkater6Headshot_png ),
-  new SkaterImageSet( usaCatLeft_png, usaCatRight_png, usaCatHeadshot_png ),
-  new SkaterImageSet( usaDogLeft_png, usaDogRight_png, usaDogHeadshot_png )
+  new SkaterImageSetDeprecated( oceaniaSkater1Left_png, oceaniaSkater1Right_png, oceaniaSkater1Headshot_png ),
+  new SkaterImageSetDeprecated( oceaniaSkater2Left_png, oceaniaSkater2Right_png, oceaniaSkater2Headshot_png ),
+  new SkaterImageSetDeprecated( oceaniaSkater3Left_png, oceaniaSkater3Right_png, oceaniaSkater3Headshot_png ),
+  new SkaterImageSetDeprecated( oceaniaSkater4Left_png, oceaniaSkater4Right_png, oceaniaSkater4Headshot_png ),
+  new SkaterImageSetDeprecated( asiaSkater5Left_png, asiaSkater5Right_png, asiaSkater5Headshot_png ),
+  new SkaterImageSetDeprecated( oceaniaSkater6Left_png, oceaniaSkater6Right_png, oceaniaSkater6Headshot_png ),
+  new SkaterImageSetDeprecated( usaCatLeft_png, usaCatRight_png, usaCatHeadshot_png ),
+  new SkaterImageSetDeprecated( usaDogLeft_png, usaDogRight_png, usaDogHeadshot_png )
 );
 
 export default SkaterPortrayalOceania;

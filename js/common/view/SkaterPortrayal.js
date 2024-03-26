@@ -40,4 +40,12 @@ export default class SkaterPortrayal extends RegionAndCulturePortrayal {
   }
 }
 
+export class SkaterImageSetDeprecated {
+  constructor( leftImage, rightImage, headshotImage ) {
+    this.leftImage = leftImage;
+    this.rightImage = rightImage;
+    this.headshotImage = headshotImage;
+  }
+}
+
 energySkatePark.register( 'SkaterPortrayal', SkaterPortrayal );

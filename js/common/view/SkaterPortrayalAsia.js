@@ -31,19 +31,18 @@ import asiaSkater5Right_png from '../../../images/asia/asiaSkater5Right_png.js';
 import asiaSkater6Headshot_png from '../../../images/asia/asiaSkater6Headshot_png.js';
 import asiaSkater6Left_png from '../../../images/asia/asiaSkater6Left_png.js';
 import asiaSkater6Right_png from '../../../images/asia/asiaSkater6Right_png.js';
-import SkaterImageSet from './SkaterImageSet.js';
-import SkaterPortrayal from './SkaterPortrayal.js';
+import SkaterPortrayal, { SkaterImageSetDeprecated } from './SkaterPortrayal.js';
 
 const SkaterPortrayalAsia = new SkaterPortrayal(
   'asia',
-  new SkaterImageSet( asiaSkater1Left_png, asiaSkater1Right_png, asiaSkater1Headshot_png ),
-  new SkaterImageSet( asiaSkater2Left_png, asiaSkater2Right_png, asiaSkater2Headshot_png ),
-  new SkaterImageSet( asiaSkater3Left_png, asiaSkater3Right_png, asiaSkater3Headshot_png ),
-  new SkaterImageSet( asiaSkater4Left_png, asiaSkater4Right_png, asiaSkater4Headshot_png ),
-  new SkaterImageSet( asiaSkater5Left_png, asiaSkater5Right_png, asiaSkater5Headshot_png ),
-  new SkaterImageSet( asiaSkater6Left_png, asiaSkater6Right_png, asiaSkater6Headshot_png ),
-  new SkaterImageSet( africaGoatLeft_png, africaGoatRight_png, africaGoatHeadshot_png ),
-  new SkaterImageSet( africaElephantLeft_png, africaElephantRight_png, africaElephantHeadshot_png )
+  new SkaterImageSetDeprecated( asiaSkater1Left_png, asiaSkater1Right_png, asiaSkater1Headshot_png ),
+  new SkaterImageSetDeprecated( asiaSkater2Left_png, asiaSkater2Right_png, asiaSkater2Headshot_png ),
+  new SkaterImageSetDeprecated( asiaSkater3Left_png, asiaSkater3Right_png, asiaSkater3Headshot_png ),
+  new SkaterImageSetDeprecated( asiaSkater4Left_png, asiaSkater4Right_png, asiaSkater4Headshot_png ),
+  new SkaterImageSetDeprecated( asiaSkater5Left_png, asiaSkater5Right_png, asiaSkater5Headshot_png ),
+  new SkaterImageSetDeprecated( asiaSkater6Left_png, asiaSkater6Right_png, asiaSkater6Headshot_png ),
+  new SkaterImageSetDeprecated( africaGoatLeft_png, africaGoatRight_png, africaGoatHeadshot_png ),
+  new SkaterImageSetDeprecated( africaElephantLeft_png, africaElephantRight_png, africaElephantHeadshot_png )
 );
 
 export default SkaterPortrayalAsia;

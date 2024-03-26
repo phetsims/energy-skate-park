@@ -31,19 +31,18 @@ import usaSkater5Right_png from '../../../images/usa/usaSkater5Right_png.js';
 import usaSkater6Headshot_png from '../../../images/usa/usaSkater6Headshot_png.js';
 import usaSkater6Left_png from '../../../images/usa/usaSkater6Left_png.js';
 import usaSkater6Right_png from '../../../images/usa/usaSkater6Right_png.js';
-import SkaterImageSet from './SkaterImageSet.js';
-import SkaterPortrayal from './SkaterPortrayal.js';
+import SkaterPortrayal, { SkaterImageSetDeprecated } from './SkaterPortrayal.js';
 
 const SkaterPortrayalUSA = new SkaterPortrayal(
   'usa',
-  new SkaterImageSet( usaSkater1Left_png, usaSkater1Right_png, usaSkater1Headshot_png ),
-  new SkaterImageSet( usaSkater2Left_png, usaSkater2Right_png, usaSkater2Headshot_png ),
-  new SkaterImageSet( usaSkater3Left_png, usaSkater3Right_png, usaSkater3Headshot_png ),
-  new SkaterImageSet( usaSkater4Left_png, usaSkater4Right_png, usaSkater4Headshot_png ),
-  new SkaterImageSet( usaSkater5Left_png, usaSkater5Right_png, usaSkater5Headshot_png ),
-  new SkaterImageSet( usaSkater6Left_png, usaSkater6Right_png, usaSkater6Headshot_png ),
-  new SkaterImageSet( usaCatLeft_png, usaCatRight_png, usaCatHeadshot_png ),
-  new SkaterImageSet( usaDogLeft_png, usaDogRight_png, usaDogHeadshot_png )
+  new SkaterImageSetDeprecated( usaSkater1Left_png, usaSkater1Right_png, usaSkater1Headshot_png ),
+  new SkaterImageSetDeprecated( usaSkater2Left_png, usaSkater2Right_png, usaSkater2Headshot_png ),
+  new SkaterImageSetDeprecated( usaSkater3Left_png, usaSkater3Right_png, usaSkater3Headshot_png ),
+  new SkaterImageSetDeprecated( usaSkater4Left_png, usaSkater4Right_png, usaSkater4Headshot_png ),
+  new SkaterImageSetDeprecated( usaSkater5Left_png, usaSkater5Right_png, usaSkater5Headshot_png ),
+  new SkaterImageSetDeprecated( usaSkater6Left_png, usaSkater6Right_png, usaSkater6Headshot_png ),
+  new SkaterImageSetDeprecated( usaCatLeft_png, usaCatRight_png, usaCatHeadshot_png ),
+  new SkaterImageSetDeprecated( usaDogLeft_png, usaDogRight_png, usaDogHeadshot_png )
 );
 
 export default SkaterPortrayalUSA;
