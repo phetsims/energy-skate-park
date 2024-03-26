@@ -1,21 +1,5 @@
 {
-  "usaDog_left.png": {
-    "text": [
-      "Copyright 2002-2022 University of Colorado Boulder"
-    ],
-    "projectURL": "https://phet.colorado.edu",
-    "license": "contact phethelp@colorado.edu",
-    "notes": "Created by Mariah Hermsmeyer"
-  },
-  "usaDog_right.png": {
-    "text": [
-      "Copyright 2002-2022 University of Colorado Boulder"
-    ],
-    "projectURL": "https://phet.colorado.edu",
-    "license": "contact phethelp@colorado.edu",
-    "notes": "Created by Mariah Hermsmeyer"
-  },
-  "usaDog_headshot.png": {
+  "usaCatHeadshot.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -23,7 +7,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Amy Rouinfar"
   },
-  "usaCat_left.png": {
+  "usaCatLeft.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -31,7 +15,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaCat_right.png": {
+  "usaCatRight.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -39,7 +23,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaCat_headshot.png": {
+  "usaDogHeadshot.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -47,7 +31,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Amy Rouinfar"
   },
-  "usaSkater1_set1_headshot.png": {
+  "usaDogLeft.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -55,7 +39,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater2_set1_headshot.png": {
+  "usaDogRight.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -63,7 +47,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater3_set1_headshot.png": {
+  "usaSkater1Headshot.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -71,7 +55,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater4_set1_headshot.png": {
+  "usaSkater1Left.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -79,7 +63,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater5_set1_headshot.png": {
+  "usaSkater1Right.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -87,7 +71,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater6_set1_headshot.png": {
+  "usaSkater2Headshot.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -95,7 +79,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater1_set1_right.png": {
+  "usaSkater2Left.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -103,7 +87,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater2_set1_right.png": {
+  "usaSkater2Right.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -111,7 +95,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater3_set1_right.png": {
+  "usaSkater3Headshot.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -119,7 +103,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater4_set1_right.png": {
+  "usaSkater3Left.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -127,7 +111,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater5_set1_right.png": {
+  "usaSkater3Right.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -135,7 +119,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater6_set1_right.png": {
+  "usaSkater4Headshot.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -143,7 +127,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater1_set1_left.png": {
+  "usaSkater4Left.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -151,7 +135,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater2_set1_left.png": {
+  "usaSkater4Right.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -159,7 +143,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater3_set1_left.png": {
+  "usaSkater5Headshot.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -167,7 +151,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater4_set1_left.png": {
+  "usaSkater5Left.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -175,7 +159,7 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater5_set1_left.png": {
+  "usaSkater5Right.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],
@@ -183,7 +167,23 @@
     "license": "contact phethelp@colorado.edu",
     "notes": "Created by Mariah Hermsmeyer"
   },
-  "usaSkater6_set1_left.png": {
+  "usaSkater6Headshot.png": {
+    "text": [
+      "Copyright 2002-2022 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Mariah Hermsmeyer"
+  },
+  "usaSkater6Left.png": {
+    "text": [
+      "Copyright 2002-2022 University of Colorado Boulder"
+    ],
+    "projectURL": "https://phet.colorado.edu",
+    "license": "contact phethelp@colorado.edu",
+    "notes": "Created by Mariah Hermsmeyer"
+  },
+  "usaSkater6Right.png": {
     "text": [
       "Copyright 2002-2022 University of Colorado Boulder"
     ],

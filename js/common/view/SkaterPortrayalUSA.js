@@ -7,43 +7,43 @@
  *
  */
 
-import usaCat_headshot_png from '../../../images/usa/usaCat_headshot_png.js';
-import usaCat_left_png from '../../../images/usa/usaCat_left_png.js';
-import usaCat_right_png from '../../../images/usa/usaCat_right_png.js';
-import usaDog_headshot_png from '../../../images/usa/usaDog_headshot_png.js';
-import usaDog_left_png from '../../../images/usa/usaDog_left_png.js';
-import usaDog_right_png from '../../../images/usa/usaDog_right_png.js';
-import usaSkater1_set1_headshot_png from '../../../images/usa/usaSkater1_set1_headshot_png.js';
-import usaSkater1_set1_left_png from '../../../images/usa/usaSkater1_set1_left_png.js';
-import usaSkater1_set1_right_png from '../../../images/usa/usaSkater1_set1_right_png.js';
-import usaSkater2_set1_headshot_png from '../../../images/usa/usaSkater2_set1_headshot_png.js';
-import usaSkater2_set1_left_png from '../../../images/usa/usaSkater2_set1_left_png.js';
-import usaSkater2_set1_right_png from '../../../images/usa/usaSkater2_set1_right_png.js';
-import usaSkater3_set1_headshot_png from '../../../images/usa/usaSkater3_set1_headshot_png.js';
-import usaSkater3_set1_left_png from '../../../images/usa/usaSkater3_set1_left_png.js';
-import usaSkater3_set1_right_png from '../../../images/usa/usaSkater3_set1_right_png.js';
-import usaSkater4_set1_headshot_png from '../../../images/usa/usaSkater4_set1_headshot_png.js';
-import usaSkater4_set1_left_png from '../../../images/usa/usaSkater4_set1_left_png.js';
-import usaSkater4_set1_right_png from '../../../images/usa/usaSkater4_set1_right_png.js';
-import usaSkater5_set1_headshot_png from '../../../images/usa/usaSkater5_set1_headshot_png.js';
-import usaSkater5_set1_left_png from '../../../images/usa/usaSkater5_set1_left_png.js';
-import usaSkater5_set1_right_png from '../../../images/usa/usaSkater5_set1_right_png.js';
-import usaSkater6_set1_headshot_png from '../../../images/usa/usaSkater6_set1_headshot_png.js';
-import usaSkater6_set1_left_png from '../../../images/usa/usaSkater6_set1_left_png.js';
-import usaSkater6_set1_right_png from '../../../images/usa/usaSkater6_set1_right_png.js';
+import usaCatHeadshot_png from '../../../images/usa/usaCatHeadshot_png.js';
+import usaCatLeft_png from '../../../images/usa/usaCatLeft_png.js';
+import usaCatRight_png from '../../../images/usa/usaCatRight_png.js';
+import usaDogHeadshot_png from '../../../images/usa/usaDogHeadshot_png.js';
+import usaDogLeft_png from '../../../images/usa/usaDogLeft_png.js';
+import usaDogRight_png from '../../../images/usa/usaDogRight_png.js';
+import usaSkater1Headshot_png from '../../../images/usa/usaSkater1Headshot_png.js';
+import usaSkater1Left_png from '../../../images/usa/usaSkater1Left_png.js';
+import usaSkater1Right_png from '../../../images/usa/usaSkater1Right_png.js';
+import usaSkater2Headshot_png from '../../../images/usa/usaSkater2Headshot_png.js';
+import usaSkater2Left_png from '../../../images/usa/usaSkater2Left_png.js';
+import usaSkater2Right_png from '../../../images/usa/usaSkater2Right_png.js';
+import usaSkater3Headshot_png from '../../../images/usa/usaSkater3Headshot_png.js';
+import usaSkater3Left_png from '../../../images/usa/usaSkater3Left_png.js';
+import usaSkater3Right_png from '../../../images/usa/usaSkater3Right_png.js';
+import usaSkater4Headshot_png from '../../../images/usa/usaSkater4Headshot_png.js';
+import usaSkater4Left_png from '../../../images/usa/usaSkater4Left_png.js';
+import usaSkater4Right_png from '../../../images/usa/usaSkater4Right_png.js';
+import usaSkater5Headshot_png from '../../../images/usa/usaSkater5Headshot_png.js';
+import usaSkater5Left_png from '../../../images/usa/usaSkater5Left_png.js';
+import usaSkater5Right_png from '../../../images/usa/usaSkater5Right_png.js';
+import usaSkater6Headshot_png from '../../../images/usa/usaSkater6Headshot_png.js';
+import usaSkater6Left_png from '../../../images/usa/usaSkater6Left_png.js';
+import usaSkater6Right_png from '../../../images/usa/usaSkater6Right_png.js';
 import SkaterImageSet from './SkaterImageSet.js';
 import SkaterPortrayal from './SkaterPortrayal.js';
 
 const SkaterPortrayalUSA = new SkaterPortrayal(
   'usa',
-  new SkaterImageSet( usaSkater1_set1_left_png, usaSkater1_set1_right_png, usaSkater1_set1_headshot_png ),
-  new SkaterImageSet( usaSkater2_set1_left_png, usaSkater2_set1_right_png, usaSkater2_set1_headshot_png ),
-  new SkaterImageSet( usaSkater3_set1_left_png, usaSkater3_set1_right_png, usaSkater3_set1_headshot_png ),
-  new SkaterImageSet( usaSkater4_set1_left_png, usaSkater4_set1_right_png, usaSkater4_set1_headshot_png ),
-  new SkaterImageSet( usaSkater5_set1_left_png, usaSkater5_set1_right_png, usaSkater5_set1_headshot_png ),
-  new SkaterImageSet( usaSkater6_set1_left_png, usaSkater6_set1_right_png, usaSkater6_set1_headshot_png ),
-  new SkaterImageSet( usaCat_left_png, usaCat_right_png, usaCat_headshot_png ),
-  new SkaterImageSet( usaDog_left_png, usaDog_right_png, usaDog_headshot_png )
+  new SkaterImageSet( usaSkater1Left_png, usaSkater1Right_png, usaSkater1Headshot_png ),
+  new SkaterImageSet( usaSkater2Left_png, usaSkater2Right_png, usaSkater2Headshot_png ),
+  new SkaterImageSet( usaSkater3Left_png, usaSkater3Right_png, usaSkater3Headshot_png ),
+  new SkaterImageSet( usaSkater4Left_png, usaSkater4Right_png, usaSkater4Headshot_png ),
+  new SkaterImageSet( usaSkater5Left_png, usaSkater5Right_png, usaSkater5Headshot_png ),
+  new SkaterImageSet( usaSkater6Left_png, usaSkater6Right_png, usaSkater6Headshot_png ),
+  new SkaterImageSet( usaCatLeft_png, usaCatRight_png, usaCatHeadshot_png ),
+  new SkaterImageSet( usaDogLeft_png, usaDogRight_png, usaDogHeadshot_png )
 );
 
 export default SkaterPortrayalUSA;

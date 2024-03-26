@@ -12,8 +12,8 @@ import Property from '../../../../axon/js/Property.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
 import { Circle, DragListener, Image, Node } from '../../../../scenery/js/imports.js';
-import usaSkater1_set1_left_png from '../../../images/usa/usaSkater1_set1_left_png.js';
-import usaSkater1_set1_right_png from '../../../images/usa/usaSkater1_set1_right_png.js';
+import usaSkater1Left_png from '../../../images/usa/usaSkater1Left_png.js';
+import usaSkater1Right_png from '../../../images/usa/usaSkater1Right_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from '../model/Skater.js';
 import SkaterImages from './SkaterImages.js';
@@ -47,11 +47,11 @@ class SkaterNode extends Node {
     } );
 
     // @private {Image} - left and right Images for the skater
-    const leftSkaterImageNode = new Image( usaSkater1_set1_left_png, {
+    const leftSkaterImageNode = new Image( usaSkater1Left_png, {
       cursor: 'pointer',
       tandem: tandem.createTandem( 'leftSkaterImageNode' )
     } );
-    const rightSkaterImageNode = new Image( usaSkater1_set1_right_png, {
+    const rightSkaterImageNode = new Image( usaSkater1Right_png, {
       cursor: 'pointer',
       tandem: tandem.createTandem( 'rightSkaterImageNode' )
     } );

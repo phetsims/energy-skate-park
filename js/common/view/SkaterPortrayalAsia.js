@@ -7,43 +7,43 @@
  *
  */
 
-import africaElephant_headshot_png from '../../../images/africa/africaElephant_headshot_png.js';
-import africaElephant_left_png from '../../../images/africa/africaElephant_left_png.js';
-import africaElephant_right_png from '../../../images/africa/africaElephant_right_png.js';
-import africaGoat_headshot_png from '../../../images/africa/africaGoat_headshot_png.js';
-import africaGoat_left_png from '../../../images/africa/africaGoat_left_png.js';
-import africaGoat_right_png from '../../../images/africa/africaGoat_right_png.js';
-import asiaSkater1_headshot_png from '../../../images/asia/asiaSkater1_headshot_png.js';
-import asiaSkater1_left_png from '../../../images/asia/asiaSkater1_left_png.js';
-import asiaSkater1_right_png from '../../../images/asia/asiaSkater1_right_png.js';
-import asiaSkater2_headshot_png from '../../../images/asia/asiaSkater2_headshot_png.js';
-import asiaSkater2_left_png from '../../../images/asia/asiaSkater2_left_png.js';
-import asiaSkater2_right_png from '../../../images/asia/asiaSkater2_right_png.js';
-import asiaSkater3_headshot_png from '../../../images/asia/asiaSkater3_headshot_png.js';
-import asiaSkater3_left_png from '../../../images/asia/asiaSkater3_left_png.js';
-import asiaSkater3_right_png from '../../../images/asia/asiaSkater3_right_png.js';
-import asiaSkater4_headshot_png from '../../../images/asia/asiaSkater4_headshot_png.js';
-import asiaSkater4_left_png from '../../../images/asia/asiaSkater4_left_png.js';
-import asiaSkater4_right_png from '../../../images/asia/asiaSkater4_right_png.js';
-import asiaSkater5_headshot_png from '../../../images/asia/asiaSkater5_headshot_png.js';
-import asiaSkater5_left_png from '../../../images/asia/asiaSkater5_left_png.js';
-import asiaSkater5_right_png from '../../../images/asia/asiaSkater5_right_png.js';
-import asiaSkater6_headshot_png from '../../../images/asia/asiaSkater6_headshot_png.js';
-import asiaSkater6_left_png from '../../../images/asia/asiaSkater6_left_png.js';
-import asiaSkater6_right_png from '../../../images/asia/asiaSkater6_right_png.js';
+import africaElephantHeadshot_png from '../../../images/africa/africaElephantHeadshot_png.js';
+import africaElephantLeft_png from '../../../images/africa/africaElephantLeft_png.js';
+import africaElephantRight_png from '../../../images/africa/africaElephantRight_png.js';
+import africaGoatHeadshot_png from '../../../images/africa/africaGoatHeadshot_png.js';
+import africaGoatLeft_png from '../../../images/africa/africaGoatLeft_png.js';
+import africaGoatRight_png from '../../../images/africa/africaGoatRight_png.js';
+import asiaSkater1Headshot_png from '../../../images/asia/asiaSkater1Headshot_png.js';
+import asiaSkater1Left_png from '../../../images/asia/asiaSkater1Left_png.js';
+import asiaSkater1Right_png from '../../../images/asia/asiaSkater1Right_png.js';
+import asiaSkater2Headshot_png from '../../../images/asia/asiaSkater2Headshot_png.js';
+import asiaSkater2Left_png from '../../../images/asia/asiaSkater2Left_png.js';
+import asiaSkater2Right_png from '../../../images/asia/asiaSkater2Right_png.js';
+import asiaSkater3Headshot_png from '../../../images/asia/asiaSkater3Headshot_png.js';
+import asiaSkater3Left_png from '../../../images/asia/asiaSkater3Left_png.js';
+import asiaSkater3Right_png from '../../../images/asia/asiaSkater3Right_png.js';
+import asiaSkater4Headshot_png from '../../../images/asia/asiaSkater4Headshot_png.js';
+import asiaSkater4Left_png from '../../../images/asia/asiaSkater4Left_png.js';
+import asiaSkater4Right_png from '../../../images/asia/asiaSkater4Right_png.js';
+import asiaSkater5Headshot_png from '../../../images/asia/asiaSkater5Headshot_png.js';
+import asiaSkater5Left_png from '../../../images/asia/asiaSkater5Left_png.js';
+import asiaSkater5Right_png from '../../../images/asia/asiaSkater5Right_png.js';
+import asiaSkater6Headshot_png from '../../../images/asia/asiaSkater6Headshot_png.js';
+import asiaSkater6Left_png from '../../../images/asia/asiaSkater6Left_png.js';
+import asiaSkater6Right_png from '../../../images/asia/asiaSkater6Right_png.js';
 import SkaterImageSet from './SkaterImageSet.js';
 import SkaterPortrayal from './SkaterPortrayal.js';
 
 const SkaterPortrayalAsia = new SkaterPortrayal(
   'asia',
-  new SkaterImageSet( asiaSkater1_left_png, asiaSkater1_right_png, asiaSkater1_headshot_png ),
-  new SkaterImageSet( asiaSkater2_left_png, asiaSkater2_right_png, asiaSkater2_headshot_png ),
-  new SkaterImageSet( asiaSkater3_left_png, asiaSkater3_right_png, asiaSkater3_headshot_png ),
-  new SkaterImageSet( asiaSkater4_left_png, asiaSkater4_right_png, asiaSkater4_headshot_png ),
-  new SkaterImageSet( asiaSkater5_left_png, asiaSkater5_right_png, asiaSkater5_headshot_png ),
-  new SkaterImageSet( asiaSkater6_left_png, asiaSkater6_right_png, asiaSkater6_headshot_png ),
-  new SkaterImageSet( africaGoat_left_png, africaGoat_right_png, africaGoat_headshot_png ),
-  new SkaterImageSet( africaElephant_left_png, africaElephant_right_png, africaElephant_headshot_png )
+  new SkaterImageSet( asiaSkater1Left_png, asiaSkater1Right_png, asiaSkater1Headshot_png ),
+  new SkaterImageSet( asiaSkater2Left_png, asiaSkater2Right_png, asiaSkater2Headshot_png ),
+  new SkaterImageSet( asiaSkater3Left_png, asiaSkater3Right_png, asiaSkater3Headshot_png ),
+  new SkaterImageSet( asiaSkater4Left_png, asiaSkater4Right_png, asiaSkater4Headshot_png ),
+  new SkaterImageSet( asiaSkater5Left_png, asiaSkater5Right_png, asiaSkater5Headshot_png ),
+  new SkaterImageSet( asiaSkater6Left_png, asiaSkater6Right_png, asiaSkater6Headshot_png ),
+  new SkaterImageSet( africaGoatLeft_png, africaGoatRight_png, africaGoatHeadshot_png ),
+  new SkaterImageSet( africaElephantLeft_png, africaElephantRight_png, africaElephantHeadshot_png )
 );
 
 export default SkaterPortrayalAsia;

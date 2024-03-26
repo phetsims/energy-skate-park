@@ -7,43 +7,43 @@
  *
  */
 
-import asiaSkater5_headshot_png from '../../../images/asia/asiaSkater5_headshot_png.js';
-import asiaSkater5_left_png from '../../../images/asia/asiaSkater5_left_png.js';
-import asiaSkater5_right_png from '../../../images/asia/asiaSkater5_right_png.js';
-import oceaniaSkater1_headshot_png from '../../../images/oceania/oceaniaSkater1_headshot_png.js';
-import oceaniaSkater1_left_png from '../../../images/oceania/oceaniaSkater1_left_png.js';
-import oceaniaSkater1_right_png from '../../../images/oceania/oceaniaSkater1_right_png.js';
-import oceaniaSkater2_headshot_png from '../../../images/oceania/oceaniaSkater2_headshot_png.js';
-import oceaniaSkater2_left_png from '../../../images/oceania/oceaniaSkater2_left_png.js';
-import oceaniaSkater2_right_png from '../../../images/oceania/oceaniaSkater2_right_png.js';
-import oceaniaSkater3_headshot_png from '../../../images/oceania/oceaniaSkater3_headshot_png.js';
-import oceaniaSkater3_left_png from '../../../images/oceania/oceaniaSkater3_left_png.js';
-import oceaniaSkater3_right_png from '../../../images/oceania/oceaniaSkater3_right_png.js';
-import oceaniaSkater4_headshot_png from '../../../images/oceania/oceaniaSkater4_headshot_png.js';
-import oceaniaSkater4_left_png from '../../../images/oceania/oceaniaSkater4_left_png.js';
-import oceaniaSkater4_right_png from '../../../images/oceania/oceaniaSkater4_right_png.js';
-import oceaniaSkater6_headshot_png from '../../../images/oceania/oceaniaSkater6_headshot_png.js';
-import oceaniaSkater6_left_png from '../../../images/oceania/oceaniaSkater6_left_png.js';
-import oceaniaSkater6_right_png from '../../../images/oceania/oceaniaSkater6_right_png.js';
-import usaCat_headshot_png from '../../../images/usa/usaCat_headshot_png.js';
-import usaCat_left_png from '../../../images/usa/usaCat_left_png.js';
-import usaCat_right_png from '../../../images/usa/usaCat_right_png.js';
-import usaDog_headshot_png from '../../../images/usa/usaDog_headshot_png.js';
-import usaDog_left_png from '../../../images/usa/usaDog_left_png.js';
-import usaDog_right_png from '../../../images/usa/usaDog_right_png.js';
+import asiaSkater5Headshot_png from '../../../images/asia/asiaSkater5Headshot_png.js';
+import asiaSkater5Left_png from '../../../images/asia/asiaSkater5Left_png.js';
+import asiaSkater5Right_png from '../../../images/asia/asiaSkater5Right_png.js';
+import oceaniaSkater1Headshot_png from '../../../images/oceania/oceaniaSkater1Headshot_png.js';
+import oceaniaSkater1Left_png from '../../../images/oceania/oceaniaSkater1Left_png.js';
+import oceaniaSkater1Right_png from '../../../images/oceania/oceaniaSkater1Right_png.js';
+import oceaniaSkater2Headshot_png from '../../../images/oceania/oceaniaSkater2Headshot_png.js';
+import oceaniaSkater2Left_png from '../../../images/oceania/oceaniaSkater2Left_png.js';
+import oceaniaSkater2Right_png from '../../../images/oceania/oceaniaSkater2Right_png.js';
+import oceaniaSkater3Headshot_png from '../../../images/oceania/oceaniaSkater3Headshot_png.js';
+import oceaniaSkater3Left_png from '../../../images/oceania/oceaniaSkater3Left_png.js';
+import oceaniaSkater3Right_png from '../../../images/oceania/oceaniaSkater3Right_png.js';
+import oceaniaSkater4Headshot_png from '../../../images/oceania/oceaniaSkater4Headshot_png.js';
+import oceaniaSkater4Left_png from '../../../images/oceania/oceaniaSkater4Left_png.js';
+import oceaniaSkater4Right_png from '../../../images/oceania/oceaniaSkater4Right_png.js';
+import oceaniaSkater6Headshot_png from '../../../images/oceania/oceaniaSkater6Headshot_png.js';
+import oceaniaSkater6Left_png from '../../../images/oceania/oceaniaSkater6Left_png.js';
+import oceaniaSkater6Right_png from '../../../images/oceania/oceaniaSkater6Right_png.js';
+import usaCatHeadshot_png from '../../../images/usa/usaCatHeadshot_png.js';
+import usaCatLeft_png from '../../../images/usa/usaCatLeft_png.js';
+import usaCatRight_png from '../../../images/usa/usaCatRight_png.js';
+import usaDogHeadshot_png from '../../../images/usa/usaDogHeadshot_png.js';
+import usaDogLeft_png from '../../../images/usa/usaDogLeft_png.js';
+import usaDogRight_png from '../../../images/usa/usaDogRight_png.js';
 import SkaterImageSet from './SkaterImageSet.js';
 import SkaterPortrayal from './SkaterPortrayal.js';
 
 const SkaterPortrayalOceania = new SkaterPortrayal(
   'oceania',
-  new SkaterImageSet( oceaniaSkater1_left_png, oceaniaSkater1_right_png, oceaniaSkater1_headshot_png ),
-  new SkaterImageSet( oceaniaSkater2_left_png, oceaniaSkater2_right_png, oceaniaSkater2_headshot_png ),
-  new SkaterImageSet( oceaniaSkater3_left_png, oceaniaSkater3_right_png, oceaniaSkater3_headshot_png ),
-  new SkaterImageSet( oceaniaSkater4_left_png, oceaniaSkater4_right_png, oceaniaSkater4_headshot_png ),
-  new SkaterImageSet( asiaSkater5_left_png, asiaSkater5_right_png, asiaSkater5_headshot_png ),
-  new SkaterImageSet( oceaniaSkater6_left_png, oceaniaSkater6_right_png, oceaniaSkater6_headshot_png ),
-  new SkaterImageSet( usaCat_left_png, usaCat_right_png, usaCat_headshot_png ),
-  new SkaterImageSet( usaDog_left_png, usaDog_right_png, usaDog_headshot_png )
+  new SkaterImageSet( oceaniaSkater1Left_png, oceaniaSkater1Right_png, oceaniaSkater1Headshot_png ),
+  new SkaterImageSet( oceaniaSkater2Left_png, oceaniaSkater2Right_png, oceaniaSkater2Headshot_png ),
+  new SkaterImageSet( oceaniaSkater3Left_png, oceaniaSkater3Right_png, oceaniaSkater3Headshot_png ),
+  new SkaterImageSet( oceaniaSkater4Left_png, oceaniaSkater4Right_png, oceaniaSkater4Headshot_png ),
+  new SkaterImageSet( asiaSkater5Left_png, asiaSkater5Right_png, asiaSkater5Headshot_png ),
+  new SkaterImageSet( oceaniaSkater6Left_png, oceaniaSkater6Right_png, oceaniaSkater6Headshot_png ),
+  new SkaterImageSet( usaCatLeft_png, usaCatRight_png, usaCatHeadshot_png ),
+  new SkaterImageSet( usaDogLeft_png, usaDogRight_png, usaDogHeadshot_png )
 );
 
 export default SkaterPortrayalOceania;
