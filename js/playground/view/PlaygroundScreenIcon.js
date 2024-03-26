@@ -20,11 +20,15 @@ class PlaygroundScreenIcon extends ScreenIcon {
 
     const background = new Image( playgroundScreenIcon_png );
 
-    const skaterImage = new Image( SkaterImageSet.SKATER_IMAGE_SETS[ 7 ].rightImageProperty );
+    const skaterImage = new Image( SkaterImageSet.SKATER_IMAGE_SETS[ 7 ].rightImageProperty, {
+      centerX: 0,
+      bottom: 0
+    } );
 
     // Transform skaterImage to the desired position.
     skaterImage.localBoundsProperty.link( () => {
-      const transformMatrix = Matrix3.translation( 375, 110 );
+      skaterImage.setMatrix( Matrix3.identity() );
+      const transformMatrix = Matrix3.translation( 375, 110 ); // point in playgroundScreenIcon_png
       transformMatrix.multiplyMatrix( Matrix3.rotation2( -2 * Math.PI / 3 ) );
       transformMatrix.multiplyMatrix( Matrix3.scaling( 0.5 ) );
       transformMatrix.multiplyMatrix( Matrix3.translation( -skaterImage.width / 2, -skaterImage.height ) );
