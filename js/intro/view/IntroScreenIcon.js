@@ -23,7 +23,7 @@ class IntroScreenIcon extends ScreenIcon {
 
     // Transform skaterImage to the desired position.
     skaterImage.localBoundsProperty.link( () => {
-      const transformMatrix = Matrix3.translation( 95, 150 );
+      const transformMatrix = Matrix3.translation( 142, 120 );
       transformMatrix.multiplyMatrix( Matrix3.rotation2( 1.1 * Math.PI / 3 ) );
       transformMatrix.multiplyMatrix( Matrix3.scaling( 0.5 ) );
       transformMatrix.multiplyMatrix( Matrix3.translation( -skaterImage.width / 2, -skaterImage.height ) );
