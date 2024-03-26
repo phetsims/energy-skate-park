@@ -23,10 +23,7 @@ class IntroScreen extends Screen {
     const options = {
       name: EnergySkateParkStrings.screens.introStringProperty,
       tandem: tandem,
-      homeScreenIcon: new IntroScreenIcon( preferencesModel, {
-        maxIconWidthProportion: 1,
-        maxIconHeightProportion: 1
-      } )
+      homeScreenIcon: new IntroScreenIcon()
     };
 
     super(

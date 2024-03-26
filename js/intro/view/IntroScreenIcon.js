@@ -1,45 +1,43 @@
 // Copyright 2022-2024, University of Colorado Boulder
 
 /**
- *
- * Dynamic Icon for the Intro Screen, dependent on the character preferences.
+ * Dynamic icon for the Intro screen.
  *
  * @author Agustín Vallejo
  */
 
-import ScreenIcon from '../../../../joist/js/ScreenIcon.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
-import { Image } from '../../../../scenery/js/imports.js';
+import ScreenIcon from '../../../../joist/js/ScreenIcon.js';
+import { Image, Node } from '../../../../scenery/js/imports.js';
 import introScreenIcon_png from '../../../images/introScreenIcon_png.js';
-import usaSkater1Right_png from '../../../images/usa/usaSkater1Right_png.js';
+import SkaterImageSet from '../../common/view/SkaterImageSet.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class IntroScreenIcon extends ScreenIcon {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Object} providedOptions
-   */
-  constructor( preferencesModel, providedOptions = {} ) {
+  constructor() {
 
     const background = new Image( introScreenIcon_png );
 
-    let skater;
+    const skaterImage = new Image( SkaterImageSet.SKATER_IMAGE_SETS[ 0 ].rightImageProperty );
 
-    preferencesModel.skaterPortrayalProperty.link( portrayal => {
-      skater = portrayal ? new Image( portrayal.imageSet1.rightImage ) : new Image( usaSkater1Right_png );
-
-      // Translate, scale and rotate to the desired position
+    // Transform skaterImage to the desired position.
+    skaterImage.localBoundsProperty.link( () => {
       const transformMatrix = Matrix3.translation( 95, 150 );
       transformMatrix.multiplyMatrix( Matrix3.rotation2( 1.1 * Math.PI / 3 ) );
       transformMatrix.multiplyMatrix( Matrix3.scaling( 0.5 ) );
-      transformMatrix.multiplyMatrix( Matrix3.translation( -skater.width / 2, -skater.height ) );
-
-      skater.setMatrix( transformMatrix );
-      background.children = [ skater ];
+      transformMatrix.multiplyMatrix( Matrix3.translation( -skaterImage.width / 2, -skaterImage.height ) );
+      skaterImage.setMatrix( transformMatrix );
     } );
 
-    super( background, providedOptions );
+    const iconNode = new Node( {
+      children: [ background, skaterImage ]
+    } );
+
+    super( iconNode, {
+      maxIconWidthProportion: 1,
+      maxIconHeightProportion: 1
+    } );
   }
 }
 

@@ -24,20 +24,13 @@ class AccelerationUnits extends EnumerationValue {
 
 class EnergySkateParkPreferencesModel {
 
-  /**
-   * @param {Property<RegionAndCulturePortrayal>} regionAndCulturePortrayalProperty
-   */
-  constructor( regionAndCulturePortrayalProperty ) {
+  constructor() {
 
     // A Property that controls the acceleration units in the sim, "altAccelerationUnits" changes the default to N/kg
     const defaultUnits = EnergySkateParkQueryParameters.altAccelerationUnits ? AccelerationUnits.NEWTONS_PER_KILOGRAM : AccelerationUnits.METERS_PER_SECOND_SQUARED;
     this.accelerationUnitsProperty = new EnumerationProperty( defaultUnits, {
       tandem: Tandem.PREFERENCES.createTandem( 'accelerationUnitsProperty' )
     } );
-
-    // Controls the selected SkaterImages.SKATER_PORTRAYALS. A set of characters is selected from Preferences
-    // and the actual skater character is chosen from in-screen UI.
-    this.skaterPortrayalProperty = regionAndCulturePortrayalProperty;
   }
 }
 

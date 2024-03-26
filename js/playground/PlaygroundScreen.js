@@ -23,10 +23,7 @@ class PlaygroundScreen extends Screen {
 
     const options = {
       name: EnergySkateParkStrings.screens.playgroundStringProperty,
-      homeScreenIcon: new PlaygroundScreenIcon( preferencesModel, {
-        maxIconWidthProportion: 1,
-        maxIconHeightProportion: 1
-      } ),
+      homeScreenIcon: new PlaygroundScreenIcon(),
       tandem: tandem
     };
 

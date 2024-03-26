@@ -20,14 +20,13 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
 const BUTTON_SPACING = 5;
 
-class SkaterRadioButtonGroup extends Node {
+export default class SkaterRadioButtonGroup extends Node {
 
   /**
-   * @param {Property.<Image>} skaterImageSetProperty - Property for the skater image
-   * @param {SkaterPortrayal} skaterPortrayal - The set of characters that this button group selects from
+   * @param {Property.<SkaterImageSet>} skaterImageSetProperty - Property for the skater image
    * @param {Tandem} tandem
    */
-  constructor( skaterImageSetProperty, skaterPortrayal, tandem ) {
+  constructor( skaterImageSetProperty, tandem ) {
     super();
 
     const buttonOptions = {
@@ -40,51 +39,15 @@ class SkaterRadioButtonGroup extends Node {
       }
     };
 
-    const imageScale = 0.5;
-
     // Description of the radio buttons
-    const contentArray = [
-      {
-        value: skaterPortrayal.imageSet1,
-        node: new Image( skaterPortrayal.imageSet1.headshotImage, { scale: imageScale } ),
-        tandemName: 'skater1RadioButton'
-      },
-      {
-        value: skaterPortrayal.imageSet2,
-        node: new Image( skaterPortrayal.imageSet2.headshotImage, { scale: imageScale } ),
-        tandemName: 'skater2RadioButton'
-      },
-      {
-        value: skaterPortrayal.imageSet3,
-        node: new Image( skaterPortrayal.imageSet3.headshotImage, { scale: imageScale } ),
-        tandemName: 'skater3RadioButton'
-      },
-      {
-        value: skaterPortrayal.imageSet4,
-        node: new Image( skaterPortrayal.imageSet4.headshotImage, { scale: imageScale } ),
-        tandemName: 'skater4RadioButton'
-      },
-      {
-        value: skaterPortrayal.imageSet5,
-        node: new Image( skaterPortrayal.imageSet5.headshotImage, { scale: imageScale } ),
-        tandemName: 'skater5RadioButton'
-      },
-      {
-        value: skaterPortrayal.imageSet6,
-        node: new Image( skaterPortrayal.imageSet6.headshotImage, { scale: imageScale } ),
-        tandemName: 'skater6RadioButton'
-      },
-      {
-        value: skaterPortrayal.imageSet7,
-        node: new Image( skaterPortrayal.imageSet7.headshotImage, { scale: imageScale } ),
-        tandemName: 'skater7RadioButton'
-      },
-      {
-        value: skaterPortrayal.imageSet8,
-        node: new Image( skaterPortrayal.imageSet8.headshotImage, { scale: imageScale } ),
-        tandemName: 'skater8RadioButton'
-      }
-    ];
+    const contentArray = [];
+    skaterImageSetProperty.validValues.forEach( ( skaterImageSet, index ) =>
+      contentArray.push( {
+        value: skaterImageSet,
+        node: new Image( skaterImageSet.headshotImageProperty, { scale: 0.5 } ),
+        tandemName: `skater${index + 1}RadioButton`
+      } )
+    );
 
     const buttons = [];
     contentArray.forEach( content => {
@@ -137,5 +100,3 @@ class SkaterRadioButtonGroup extends Node {
 }
 
 energySkatePark.register( 'SkaterRadioButtonGroup', SkaterRadioButtonGroup );
-
-export default SkaterRadioButtonGroup;

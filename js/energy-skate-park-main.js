@@ -12,7 +12,6 @@ import PreferencesModel from './../../joist/js/preferences/PreferencesModel.js';
 import EnergySkateParkSim from './common/EnergySkateParkSim.js';
 import EnergySkateParkPreferencesModel from './common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkPreferencesNode from './common/view/EnergySkateParkPreferencesNode.js';
-import SkaterImages from './common/view/SkaterImages.js';
 import EnergySkateParkStrings from './EnergySkateParkStrings.js';
 import GraphsScreen from './graphs/GraphsScreen.js';
 import IntroScreen from './intro/IntroScreen.js';
@@ -26,12 +25,9 @@ const preferencesModel = new PreferencesModel( {
     customPreferences: [ {
       createContent: tandem => new EnergySkateParkPreferencesNode( energySkateParkPreferencesModel, tandem.createTandem( 'simPreferences' ) )
     } ]
-  },
-  localizationOptions: {
-    portrayals: SkaterImages.SKATER_PORTAYALS
   }
 } );
-const energySkateParkPreferencesModel = new EnergySkateParkPreferencesModel( preferencesModel.localizationModel.regionAndCulturePortrayalProperty );
+const energySkateParkPreferencesModel = new EnergySkateParkPreferencesModel();
 
 // constants
 const rootTandem = Tandem.ROOT;

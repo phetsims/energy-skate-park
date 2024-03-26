@@ -17,13 +17,6 @@ import EnergySkateParkMassControls from './EnergySkateParkMassControls.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
 import FrictionSlider from './FrictionSlider.js';
 import SceneSelectionRadioButtonGroup from './SceneSelectionRadioButtonGroup.js';
-import SkaterImages from './SkaterImages.js';
-import SkaterPortrayalAfrica from './SkaterPortrayalAfrica.js';
-import SkaterPortrayalAfricaModest from './SkaterPortrayalAfricaModest.js';
-import SkaterPortrayalAsia from './SkaterPortrayalAsia.js';
-import SkaterPortrayalLatinAmerica from './SkaterPortrayalLatinAmerica.js';
-import SkaterPortrayalOceania from './SkaterPortrayalOceania.js';
-import SkaterPortrayalUSA from './SkaterPortrayalUSA.js';
 import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
 
 class EnergySkateParkControlPanel extends Panel {
@@ -96,33 +89,9 @@ class EnergySkateParkControlPanel extends Panel {
     }
 
     if ( options.showSkaterControls ) {
-
-      // The skater portrayals that this control can change. Instead of instantiating a new control we create all
-      // eagerly and swap visibility.
-      const portrayal1SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 0 ], tandem.createTandem( 'skaterSetOneControls' ) );
-      const portrayal2SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 1 ], tandem.createTandem( 'skaterSetTwoControls' ) );
-      const portrayal3SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 2 ], tandem.createTandem( 'skaterSetThreeControls' ) );
-      const portrayal4SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 3 ], tandem.createTandem( 'skaterSetFourControls' ) );
-      const portrayal5SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 4 ], tandem.createTandem( 'skaterSetFiveControls' ) );
-      const portrayal6SkaterControls = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty, SkaterImages.SKATER_PORTAYALS[ 5 ], tandem.createTandem( 'skaterSetSixControls' ) );
-      children.push( portrayal1SkaterControls );
-      children.push( portrayal2SkaterControls );
-      children.push( portrayal3SkaterControls );
-      children.push( portrayal4SkaterControls );
-      children.push( portrayal5SkaterControls );
-      children.push( portrayal6SkaterControls );
-
-      model.preferencesModel.skaterPortrayalProperty.link( portrayal => {
-        portrayal1SkaterControls.visible = portrayal === SkaterPortrayalUSA;
-        portrayal2SkaterControls.visible = portrayal === SkaterPortrayalAfrica;
-        portrayal3SkaterControls.visible = portrayal === SkaterPortrayalAfricaModest;
-        portrayal4SkaterControls.visible = portrayal === SkaterPortrayalAsia;
-        portrayal5SkaterControls.visible = portrayal === SkaterPortrayalLatinAmerica;
-        portrayal6SkaterControls.visible = portrayal === SkaterPortrayalOceania;
-
-        // change selected image to first in the portrayal
-        screenView.skaterNode.skaterImageSetProperty.value = portrayal.imageSet1;
-      } );
+      const skaterRadioButtonGroup = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty,
+        tandem.createTandem( 'skaterSetOneControls' ) );
+      children.push( skaterRadioButtonGroup );
     }
 
     // horizontal separators added after construction of all controls so that it can match width of widest control

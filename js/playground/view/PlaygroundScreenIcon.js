@@ -9,39 +9,36 @@
 
 import Matrix3 from '../../../../dot/js/Matrix3.js';
 import ScreenIcon from '../../../../joist/js/ScreenIcon.js';
-import { Image } from '../../../../scenery/js/imports.js';
+import { Image, Node } from '../../../../scenery/js/imports.js';
 import playgroundScreenIcon_png from '../../../images/playgroundScreenIcon_png.js';
-import usaDogRight_png from '../../../images/usa/usaDogRight_png.js';
+import SkaterImageSet from '../../common/view/SkaterImageSet.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class PlaygroundScreenIcon extends ScreenIcon {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Object} providedOptions
-   */
-  constructor( preferencesModel, providedOptions = {} ) {
+  constructor() {
 
     const background = new Image( playgroundScreenIcon_png );
 
-    let skater;
+    const skaterImage = new Image( SkaterImageSet.SKATER_IMAGE_SETS[ 7 ].rightImageProperty );
 
-    preferencesModel.skaterPortrayalProperty.link( portrayal => {
-
-      // image8 is one of the animals in the set, for fun in the playground
-      skater = portrayal ? new Image( portrayal.imageSet8.rightImage ) : new Image( usaDogRight_png );
-
-      // Translate, scale and rotate to the desired position
+    // Transform skaterImage to the desired position.
+    skaterImage.localBoundsProperty.link( () => {
       const transformMatrix = Matrix3.translation( 375, 110 );
       transformMatrix.multiplyMatrix( Matrix3.rotation2( -2 * Math.PI / 3 ) );
       transformMatrix.multiplyMatrix( Matrix3.scaling( 0.5 ) );
-      transformMatrix.multiplyMatrix( Matrix3.translation( -skater.width / 2, -skater.height ) );
-
-      skater.setMatrix( transformMatrix );
-      background.children = [ skater ];
+      transformMatrix.multiplyMatrix( Matrix3.translation( -skaterImage.width / 2, -skaterImage.height ) );
+      skaterImage.setMatrix( transformMatrix );
     } );
 
-    super( background, providedOptions );
+    const iconNode = new Node( {
+      children: [ background, skaterImage ]
+    } );
+
+    super( iconNode, {
+      maxIconWidthProportion: 1,
+      maxIconHeightProportion: 1
+    } );
   }
 }
 

@@ -12,11 +12,9 @@ import Property from '../../../../axon/js/Property.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
 import { Circle, DragListener, Image, Node } from '../../../../scenery/js/imports.js';
-import usaSkater1Left_png from '../../../images/usa/usaSkater1Left_png.js';
-import usaSkater1Right_png from '../../../images/usa/usaSkater1Right_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from '../model/Skater.js';
-import SkaterImages from './SkaterImages.js';
+import SkaterImageSet from './SkaterImageSet.js';
 
 class SkaterNode extends Node {
 
@@ -46,12 +44,16 @@ class SkaterNode extends Node {
       tandem: tandem
     } );
 
+    this.skaterImageSetProperty = new Property( SkaterImageSet.SKATER_IMAGE_SETS[ 0 ], {
+      validValues: SkaterImageSet.SKATER_IMAGE_SETS
+    } );
+
     // @private {Image} - left and right Images for the skater
-    const leftSkaterImageNode = new Image( usaSkater1Left_png, {
+    const leftSkaterImageNode = new Image( this.skaterImageSetProperty.value.leftImageProperty, {
       cursor: 'pointer',
       tandem: tandem.createTandem( 'leftSkaterImageNode' )
     } );
-    const rightSkaterImageNode = new Image( usaSkater1Right_png, {
+    const rightSkaterImageNode = new Image( this.skaterImageSetProperty.value.rightImageProperty, {
       cursor: 'pointer',
       tandem: tandem.createTandem( 'rightSkaterImageNode' )
     } );
@@ -61,19 +63,15 @@ class SkaterNode extends Node {
     const circle = new Circle( 8, { fill: 'red' } );
     this.addChild( circle );
 
-    // @public - One of SkaterImages.SkaterImageSet, with images for left and right motion. Controls the skater
-    // character.
-    this.skaterImageSetProperty = new Property( SkaterImages.SKATER_PORTAYALS[ 0 ].imageSet1 );
-
     let imageWidth;
     let imageHeight;
 
     // @private {Skater}
     this.skater = skater;
 
-    this.skaterImageSetProperty.link( skaterImage => {
-      leftSkaterImageNode.image = skaterImage.leftImage;
-      rightSkaterImageNode.image = skaterImage.rightImage;
+    this.skaterImageSetProperty.link( skaterImageSet => {
+      leftSkaterImageNode.setImageProperty( skaterImageSet.leftImageProperty );
+      rightSkaterImageNode.setImageProperty( skaterImageSet.rightImageProperty );
 
       imageWidth = leftSkaterImageNode.width;
       imageHeight = leftSkaterImageNode.height;

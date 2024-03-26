@@ -27,7 +27,6 @@ import ValueGaugeNode from '../../../../scenery-phet/js/ValueGaugeNode.js';
 import { Image, Node, Path, Text } from '../../../../scenery/js/imports.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import usaSkater1Left_png from '../../../images/usa/usaSkater1Left_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -346,9 +345,8 @@ class EnergySkateParkScreenView extends ScreenView {
 
     // Buttons to return the skater when she is offscreen, see #219
     const iconScale = 0.19;
-    const skaterIconImage1 = new Image( usaSkater1Left_png, {
-      scale: iconScale,
-      tandem: tandem.createTandem( 'skaterIconImage1' )
+    const skaterIconImage1 = new Image( this.skaterNode.skaterImageSetProperty.value.leftImageProperty, {
+      scale: iconScale
     } );
     const returnSkaterToPreviousStartingPositionButton = new RectangularPushButton( {
       content: skaterIconImage1,
@@ -359,9 +357,8 @@ class EnergySkateParkScreenView extends ScreenView {
       tandem: tandem.createTandem( 'returnSkaterToPreviousStartingPositionButton' )
     } );
 
-    const skaterIconImage2 = new Image( usaSkater1Left_png, {
-      scale: iconScale,
-      tandem: tandem.createTandem( 'skaterIconImage2' )
+    const skaterIconImage2 = new Image( this.skaterNode.skaterImageSetProperty.value.leftImageProperty, {
+      scale: iconScale
     } );
     const returnSkaterToGroundButton = new RectangularPushButton( {
       content: skaterIconImage2,
@@ -377,9 +374,9 @@ class EnergySkateParkScreenView extends ScreenView {
       tandem: tandem.createTandem( 'returnSkaterToGroundButton' )
     } );
 
-    model.preferencesModel.skaterPortrayalProperty.link( skaterPortrayal => {
-      skaterIconImage1.setImage( skaterPortrayal.imageSet1.leftImage );
-      skaterIconImage2.setImage( skaterPortrayal.imageSet1.leftImage );
+    this.skaterNode.skaterImageSetProperty.link( skaterImageSet => {
+      skaterIconImage1.setImageProperty( skaterImageSet.leftImageProperty );
+      skaterIconImage2.setImageProperty( skaterImageSet.leftImageProperty );
     } );
 
     // the "return skater" buttons are in the top layer so that they can be on top of the track and easily visible
@@ -463,7 +460,7 @@ class EnergySkateParkScreenView extends ScreenView {
 
     // When the model resets, go back to the default skater for the selected set (portrayal itself does not reset)
     this.model.resetEmitter.addListener( () => {
-      this.skaterNode.skaterImageSetProperty.value = model.preferencesModel.skaterPortrayalProperty.value.imageSet1;
+      this.skaterNode.skaterImageSetProperty.reset();
     } );
 
     // For debugging the visible bounds
