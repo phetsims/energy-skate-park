@@ -21,7 +21,7 @@
     "branch": "HEAD"
   },
   "energy-skate-park": {
-    "sha": "971fcde047a37aad91efe229efa2fd2a335c809f",
+    "sha": "609416fe8cc27bbc66d96431398dbac4e7f6f3e3",
     "branch": "1.3"
   },
   "griddle": {
@@ -57,7 +57,7 @@
     "branch": "HEAD"
   },
   "phetcommon": {
-    "sha": "99e7a9027f5da3c2a7a740341bb8892d695887d3",
+    "sha": "c7eb54f59944b60b926343c68fc0232a4bd8387a",
     "branch": "HEAD"
   },
   "phetmarks": {
