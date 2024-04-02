@@ -458,7 +458,7 @@ class EnergySkateParkScreenView extends ScreenView {
       }
     } );
 
-    // When the model resets, go back to the default skater for the selected set (portrayal itself does not reset)
+    // When the model resets, go back to the default image set for the skater.
     this.model.resetEmitter.addListener( () => {
       this.skaterNode.skaterImageSetProperty.reset();
     } );
