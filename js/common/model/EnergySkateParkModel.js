@@ -52,6 +52,7 @@ import Skater from './Skater.js';
 import SkaterState from './SkaterState.js';
 import Track from './Track.js';
 import UserControlledPropertySet from './UserControlledPropertySet.js';
+import { ConstantEventModel } from '../../../../phet-core/js/EventTimer.js';
 
 // Use a separate pooled curvature variable to reduce memory allocations - object values
 // will be modified as the skater moves
@@ -311,7 +312,7 @@ class EnergySkateParkModel extends PhetioObject {
 
     // @private {EventTimer} - Updates the model with constant event intervals even if there is a drop in the framerate
     // so that simulation performance has no impact on physical behavior.
-    this.eventTimer = new EventTimer( new EventTimer.ConstantEventModel( FRAME_RATE ), this.constantStep.bind( this ) );
+    this.eventTimer = new EventTimer( new ConstantEventModel( FRAME_RATE ), this.constantStep.bind( this ) );
 
     if ( EnergySkateParkQueryParameters.testTrackIndex > 0 ) {
       DebugTracks.init( this );
