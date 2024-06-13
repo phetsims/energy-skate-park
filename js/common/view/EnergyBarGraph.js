@@ -85,8 +85,6 @@ class EnergyBarGraph extends Node {
           return 0;
         }
         return energy;
-      }, {
-        strictAxonDependencies: false //TODO https://github.com/phetsims/energy-skate-park/issues/380
       } );
     };
 
@@ -105,8 +103,6 @@ class EnergyBarGraph extends Node {
           resultantEnergy = valueSign / scale; // the energy required to produce a bar with height of 1 view coordinate
         }
         return resultantEnergy;
-      }, {
-        strictAxonDependencies: false //TODO https://github.com/phetsims/energy-skate-park/issues/380
       } );
     };
 

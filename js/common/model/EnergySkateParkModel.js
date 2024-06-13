@@ -268,8 +268,6 @@ class EnergySkateParkModel extends PhetioObject {
         return true;
       }
       return availableModelBounds && containsAbove( availableModelBounds, position.x, position.y );
-    }, {
-      strictAxonDependencies: false //TODO https://github.com/phetsims/energy-skate-park/issues/380
     } );
 
     // @public - signify that the model has successfully been reset to initial state
