@@ -51,7 +51,7 @@ class ToolboxPanel extends Panel {
       tandem: Tandem.OPT_OUT
     } ).rasterized( {
       resolution: 5,
-      imageOptions: {
+      nodeOptions: {
         cursor: 'pointer',
         tandem: tandem.createTandem( 'timerIcon' )
       }
