@@ -190,8 +190,10 @@ class EnergyGraphAccordionBox extends AccordionBox {
     }, EnergySkateParkConstants.PANEL_OPTIONS ) );
 
     // decorate this Node with additional controls that are positioned along the title
-    this.addChild( variableSwitch );
-    this.addChild( eraserButton );
+    // TODO: AccordionBox does not support the decorator pattern, and no other way to layout these items as
+    //     part of the title.  Removed until https://github.com/phetsims/energy-skate-park/issues/384 is resolved.
+    // this.addChild( variableSwitch );
+    // this.addChild( eraserButton );
 
     variableSwitch.centerBottom = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.chartPanel.centerTop ) ).minusXY( 0, buttonYMargin + contentYMargin );
     eraserButton.right = eraserButton.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.chartPanel.rightCenter ) ).x;
