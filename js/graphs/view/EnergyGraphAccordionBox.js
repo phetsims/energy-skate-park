@@ -1,4 +1,4 @@
-// Copyright 2019-2023, University of Colorado Boulder
+// Copyright 2019-2024, University of Colorado Boulder
 
 /**
  * The accordion box in the "Graphs" screen that contains the energy graphs, as well as controls for
