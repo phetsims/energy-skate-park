@@ -12,7 +12,7 @@ import dot from '../../../../dot/js/dot.js';
 import { LineStyles, Shape } from '../../../../kite/js/imports.js';
 import merge from '../../../../phet-core/js/merge.js';
 import { Node, Path } from '../../../../scenery/js/imports.js';
-import Tandem from '../../../../tandem/js/Tandem.js';
+import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import energySkatePark from '../../energySkatePark.js';
 import SplineEvaluation from '../SplineEvaluation.js';
 import ControlPointNode from './ControlPointNode.js';
@@ -141,12 +141,12 @@ class TrackNode extends Node {
     const stateListener = () => {
       this.updateTrackShape();
     };
-    Tandem.PHET_IO_ENABLED && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
+    phetioStateSetEmitter.addListener( stateListener );
 
     // @private - only called by dispose
     this.disposeTrackNode = () => {
       model.stickingToTrackProperty.unlink( stickingToTrackListener );
-      Tandem.PHET_IO_ENABLED && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
+      phetioStateSetEmitter.removeListener( stateListener );
       for ( let i = 0; i < this.children.length; i++ ) {
         const child = this.children[ i ];
         if ( child instanceof ControlPointNode ) {

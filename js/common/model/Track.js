@@ -15,6 +15,7 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import merge from '../../../../phet-core/js/merge.js';
 import { SceneryEvent } from '../../../../scenery/js/imports.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
+import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import ArrayIO from '../../../../tandem/js/types/ArrayIO.js';
 import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
@@ -186,7 +187,7 @@ class Track extends PhetioObject {
       model.trackChangedEmitter.emit();
       model.updateEmitter.emit();
     };
-    Tandem.PHET_IO_ENABLED && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.addListener( stateListener );
+    phetioStateSetEmitter.addListener( stateListener );
 
     // when available bounds change, make sure that control points are within - must be disposed
     const boundsListener = bounds => {
@@ -198,7 +199,7 @@ class Track extends PhetioObject {
 
     // @private - make the Track eligible for garbage collection
     this.disposeTrack = () => {
-      Tandem.PHET_IO_ENABLED && phet.phetio.phetioEngine.phetioStateEngine.stateSetEmitter.removeListener( stateListener );
+      phetioStateSetEmitter.removeListener( stateListener );
       this.parents.length = 0;
       this.physicalProperty.dispose();
       this.leftThePanelProperty.dispose();
