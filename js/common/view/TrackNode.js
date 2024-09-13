@@ -1,4 +1,4 @@
-// Copyright 2013-2022, University of Colorado Boulder
+// Copyright 2013-2024, University of Colorado Boulder
 
 /**
  * Scenery node for the track, which can be translated by dragging the track, or manipulated by dragging its control points.
