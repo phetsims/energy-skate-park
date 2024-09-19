@@ -1148,8 +1148,8 @@ Track.TrackIO = new IOType( 'TrackIO', {
   documentation: 'A skate track',
   toStateObject: track => track.toStateObject(),
   stateObjectToCreateElementArguments: stateObject => {
-    const controlPoints = stateObject.controlPoints.map( ControlPointReferenceIO.fromStateObject );
-    const parents = stateObject.parents.map( Track.TrackIO.fromStateObject );
+    const controlPoints = stateObject.controlPoints.map( x => ControlPointReferenceIO.fromStateObject( x ) );
+    const parents = stateObject.parents.map( x => Track.TrackIO.fromStateObject( x ) );
     return [ controlPoints, parents, {
       draggable: stateObject.draggable,
       configurable: stateObject.configurable
