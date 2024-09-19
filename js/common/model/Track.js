@@ -214,8 +214,8 @@ class Track extends PhetioObject {
   // @public (phet-io)
   toStateObject() {
     return {
-      controlPoints: this.controlPoints.map( ControlPointReferenceIO.toStateObject ),
-      parents: this.parents.map( Track.TrackIO.toStateObject ),
+      controlPoints: this.controlPoints.map( x => ControlPointReferenceIO.toStateObject( x ) ),
+      parents: this.parents.map( x => Track.TrackIO.toStateObject( x ) ),
       draggable: this.draggable,
       configurable: this.configurable
     };
