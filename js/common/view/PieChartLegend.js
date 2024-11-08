@@ -9,7 +9,7 @@
 import merge from '../../../../phet-core/js/merge.js';
 import MoveToTrashLegendButton from '../../../../scenery-phet/js/buttons/MoveToTrashLegendButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { HBox, HStrut, Rectangle, Text, VBox, VStrut, Node } from '../../../../scenery/js/imports.js';
+import { HBox, HStrut, Node, Rectangle, Text, VBox, VStrut } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';

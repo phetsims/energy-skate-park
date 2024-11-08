@@ -7,10 +7,10 @@
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import energySkatePark from '../../energySkatePark.js';
 import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
-import EnergySkateParkImages from '../../EnergySkateParkImages.js';
 import { ImageableImage } from '../../../../scenery/js/imports.js';
+import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkImages from '../../EnergySkateParkImages.js';
 
 export default class SkaterImageSet {
 

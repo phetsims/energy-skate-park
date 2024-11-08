@@ -8,11 +8,11 @@
  */
 
 import Emitter from '../../../../axon/js/Emitter.js';
+import { Shape } from '../../../../kite/js/imports.js';
 import { Circle, DragListener, Rectangle } from '../../../../scenery/js/imports.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPointUI from './ControlPointUI.js';
-import { Shape } from '../../../../kite/js/imports.js';
 
 class ControlPointNode extends Circle {
 

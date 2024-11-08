@@ -35,7 +35,7 @@ import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
-import EventTimer from '../../../../phet-core/js/EventTimer.js';
+import EventTimer, { ConstantEventModel } from '../../../../phet-core/js/EventTimer.js';
 import merge from '../../../../phet-core/js/merge.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import TimeSpeed from '../../../../scenery-phet/js/TimeSpeed.js';
@@ -52,7 +52,6 @@ import Skater from './Skater.js';
 import SkaterState from './SkaterState.js';
 import Track from './Track.js';
 import UserControlledPropertySet from './UserControlledPropertySet.js';
-import { ConstantEventModel } from '../../../../phet-core/js/EventTimer.js';
 
 // Use a separate pooled curvature variable to reduce memory allocations - object values
 // will be modified as the skater moves
