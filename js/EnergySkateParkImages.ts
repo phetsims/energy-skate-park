@@ -1,11 +1,12 @@
 // Copyright 2024, University of Colorado Boulder
-
+/* eslint-disable */
+/* @formatter:off */
 /**
  * Auto-generated from modulify, DO NOT manually modify.
  */
-/* eslint-disable */
-/* @formatter:off */
+ 
 import LocalizedImageProperty from '../../joist/js/i18n/LocalizedImageProperty.js';
+import energySkatePark from './energySkatePark.js';
 import africaElephantHeadshot_png from '../images/africa/africaElephantHeadshot_png.js';
 import africaElephantLeft_png from '../images/africa/africaElephantLeft_png.js';
 import africaElephantRight_png from '../images/africa/africaElephantRight_png.js';
@@ -107,7 +108,6 @@ import usaSkater5Right_png from '../images/usa/usaSkater5Right_png.js';
 import usaSkater6Headshot_png from '../images/usa/usaSkater6Headshot_png.js';
 import usaSkater6Left_png from '../images/usa/usaSkater6Left_png.js';
 import usaSkater6Right_png from '../images/usa/usaSkater6Right_png.js';
-import energySkatePark from './energySkatePark.js';
 
 const EnergySkateParkImages = {
   animal1HeadshotImageProperty: new LocalizedImageProperty( 'animal1Headshot', {
