@@ -208,7 +208,6 @@ class EnergySkateParkScreenView extends ScreenView {
 
     this.resetAllButton = new ResetAllButton( {
       listener: () => {
-        this.interruptSubtreeInput();
         model.reset();
       },
 
