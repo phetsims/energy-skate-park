@@ -165,6 +165,7 @@ class Skater {
     this.angleProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'angleProperty' ),
       units: 'radians',
+      valueType: 'number',
       phetioReadOnly: true
     } );
 
