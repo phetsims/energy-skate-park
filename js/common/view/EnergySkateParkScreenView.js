@@ -397,7 +397,7 @@ class EnergySkateParkScreenView extends ScreenView {
     this.timeControlNode = new TimeControlNode( playingProperty, {
       tandem: tandem.createTandem( 'timeControlNode' ),
       timeSpeedProperty: model.timeSpeedProperty,
-      buttonGroupXSpacing: 23.3, // extra spacing avoids pointer area overlap when play pause button size increases
+      flowBoxSpacing: 23.3, // extra spacing avoids pointer area overlap when play pause button size increases
       playPauseStepButtonOptions: {
         playPauseButtonOptions: {
           radius: 22.1
