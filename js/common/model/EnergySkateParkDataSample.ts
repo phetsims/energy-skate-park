@@ -38,7 +38,7 @@ export default class EnergySkateParkDataSample {
   // Positions of the control points for the saved track, if there is one
   private readonly trackControlPointPositions: Vector2[];
 
-  // Values copied from SkaterState, but these may change with the reference height
+  // values copied from SkaterState, but these may change with the reference height and become out of sync with SkaterState
   public kineticEnergy: number;
   public potentialEnergy: number;
   public thermalEnergy: number;
@@ -59,10 +59,11 @@ export default class EnergySkateParkDataSample {
   // The opacity of this skater sample, tied to visual representation
   public readonly opacityProperty: NumberProperty;
 
-  // Emits an event when this EnergySkateParkDataSample has updated
+  // Emits an event when this EnergySkateParkDataSample has updated in some way, like when energies change
+  // due to a change in reference height
   public readonly updatedEmitter: Emitter;
 
-  // Samples which have initiated removal retain this percentage of opacity every animation frame
+  // Samples which have initiated removal retain this percentage of opacity every animation frame, opacity = opacity * fadeDecay
   private readonly fadeDecay: number;
 
   // Indicates that this sample should begin removal and will fade out
