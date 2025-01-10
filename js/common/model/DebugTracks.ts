@@ -8,24 +8,23 @@
  */
 
 import Vector2 from '../../../../dot/js/Vector2.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
+import EnergySkateParkModel from './EnergySkateParkModel.js';
+import Track from './Track.js';
 
 class DebugTracks {
-  constructor() {}
 
   /**
    * Initialize the debugging tool. Only done when debug query parameter testTrackIndex is used. Modifies the model that
    * is passed in.
-   * @public
-   *
-   * @param {EnergySkateParkModel} model
    */
-  static init( model ) {
+  public static init( model: EnergySkateParkModel ): void {
     // Tracks to help demonstrate issues
 
     let controlPoints = null;
-    let track = null;
+    let track: Track | null | IntentionalAny = null;
     if ( EnergySkateParkQueryParameters.testTrackIndex === 1 ) {
 
       model.stickingToTrackProperty.value = false;
@@ -219,7 +218,8 @@ class DebugTracks {
         model.controlPointGroup.createNextElement( -5.23, -0.85 ),
         model.controlPointGroup.createNextElement( -4.23, -0.85 )
       ];
-      const track1 = model.trackGroup.createNextElement( controlPoints1, null );
+      // @ts-expect-error
+      const track1: IntentionalAny = model.trackGroup.createNextElement( controlPoints1, null );
       track1.physicalProperty.value = false;
       model.tracks.add( track1 );
 
@@ -228,7 +228,8 @@ class DebugTracks {
         model.controlPointGroup.createNextElement( -5.23, -0.85 ),
         model.controlPointGroup.createNextElement( -4.23, -0.85 )
       ];
-      const track2 = model.trackGroup.createNextElement( controlPoints2, null );
+      // @ts-expect-error
+      const track2: IntentionalAny = model.trackGroup.createNextElement( controlPoints2, null );
       track2.physicalProperty.value = false;
       model.tracks.add( track2 );
 
@@ -239,7 +240,9 @@ class DebugTracks {
         model.controlPointGroup.createNextElement( -1.1916066572392037, 2.911932992494288 ),
         model.controlPointGroup.createNextElement( -9.170190362232134, 6.469483302512781 )
       ];
-      const track3 = model.trackGroup.createNextElement( controlPoints3, null );
+
+      // @ts-expect-error
+      const track3: IntentionalAny = model.trackGroup.createNextElement( controlPoints3, null );
       track3.physicalProperty.value = true;
       model.tracks.add( track3 );
     }
@@ -250,12 +253,14 @@ class DebugTracks {
       model.skater.positionProperty.set( new Vector2( -6.698445595854922, 6.5278756476683935 ) );
       model.skater.released( null, 0 );
       model.frictionProperty.value = 0;
-      const track15 = model.trackGroup.createNextElement( [
+      const track15: IntentionalAny = model.trackGroup.createNextElement( [
         model.controlPointGroup.createNextElement( 0.9873551637279601, 7.856892317380353 ),
         model.controlPointGroup.createNextElement( -0.4621662468513845, 5.9031895465994975 ),
         model.controlPointGroup.createNextElement( -3.0250881612090676, 5.735129093198994 ),
         model.controlPointGroup.createNextElement( -4.705692695214106, 0.9454061712846356 ),
         model.controlPointGroup.createNextElement( -7.310629722921914, 7.457748740554157 )
+
+        // @ts-expect-error
       ], null );
       track15.physicalProperty.value = true;
       model.tracks.add( track15 );
@@ -277,7 +282,8 @@ class DebugTracks {
         model.controlPointGroup.createNextElement( -0.9831986809563062, 7.962016694146743 )
       ];
 
-      const track16 = model.trackGroup.createNextElement( controlPoints, [], {
+      // @ts-expect-error
+      const track16: IntentionalAny = model.trackGroup.createNextElement( controlPoints, [], {
         configurable: true
       } );
       track16.physicalProperty.value = true;

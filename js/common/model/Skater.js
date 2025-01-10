@@ -425,9 +425,9 @@ class Skater {
 
   /**
    * If the skater is released, store the initial conditions for when the skater is returned.
-   * @private
+   * @public
    *
-   * @param {Track} targetTrack - The track to start on (if any)
+   * @param {Track|null} targetTrack - The track to start on (if any)
    * @param {number} targetU - The parametric position along the track to start on (if any)
    */
   released( targetTrack, targetU ) {
