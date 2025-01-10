@@ -11,24 +11,43 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkModel from './EnergySkateParkModel.js';
 
 class ControlPoint extends PhetioObject {
 
-  /**
-   * @param {number} x
-   * @param {number} y
-   * @param {Object} [options]
-   */
-  constructor( x, y, options ) {
+  public readonly limitBounds: Bounds2 | null;
+  public readonly interactive: boolean;
+
+  // true if the ControlPoint is intended to be displayed visually
+  public readonly visible: boolean;
+  public readonly sourcePositionProperty: Vector2Property;
+
+  // Another ControlPoint that this ControlPoint is going to 'snap' to if released.
+  public readonly snapTargetProperty: Property<null | ControlPoint>;
+
+  // Where it is shown on the screen.  Same as sourcePosition (if not snapped) or snapTarget.position (if snapped).
+  // Snapping means temporarily connecting to an adjacent open point before the tracks are joined, to indicate that a
+  // connection is possible
+  public readonly positionProperty: TReadOnlyProperty<Vector2>;
+
+  // whether the control point is currently being dragged
+  public readonly draggingProperty: BooleanProperty;
+
+  public constructor( x: number, y: number, options: IntentionalAny ) {
+
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {boolean} - if true, this control point will be displayed on the track
@@ -50,32 +69,21 @@ class ControlPoint extends PhetioObject {
 
     super( options );
 
-    // @public (read-only) {Bounds2|null} - see option for information
     this.limitBounds = options.limitBounds;
-
-    // @public (read-only) {boolean} - see options for information
     this.interactive = options.interactive;
-
-    // @public (read-only) {boolean} - true if the ControlPoint is intended to be displayed visually
     this.visible = options.visible;
 
-    // @public - where it would be if it hadn't snapped to another point during dragging
     this.sourcePositionProperty = new Vector2Property( new Vector2( x, y ), {
       tandem: tandem.createTandem( 'sourcePositionProperty' ),
       phetioState: options.phetioState // in state only if containing Track is
     } );
 
-    // @public {ControlPoint} - Another ControlPoint that this ControlPoint is going to 'snap' to if released.
-    this.snapTargetProperty = new Property( null, {
+    this.snapTargetProperty = new Property<ControlPoint | null>( null, {
       tandem: tandem.createTandem( 'snapTargetProperty' ),
       phetioValueType: NullableIO( ControlPoint.ControlPointIO ),
       phetioState: options.phetioState // in state only if containing Track is
     } );
 
-    // Where it is shown on the screen.  Same as sourcePosition (if not snapped) or snapTarget.position (if snapped).
-    // Snapping means temporarily connecting to an adjacent open point before the tracks are joined, to indicate that a
-    // connection is possible
-    // @public {Vector2}
     this.positionProperty = new DerivedProperty( [ this.sourcePositionProperty, this.snapTargetProperty ],
       ( sourcePosition, snapTarget ) => snapTarget ? snapTarget.positionProperty.value : sourcePosition, {
         tandem: tandem.createTandem( 'positionProperty' ),
@@ -83,34 +91,18 @@ class ControlPoint extends PhetioObject {
         phetioState: options.phetioState
       } );
 
-    // @public {BooleanProperty} - whether the control point is currently being dragged
     this.draggingProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'draggingProperty' ),
       phetioState: options.phetioState
     } );
 
-    // @private
-    this.disposeControlPoint = () => {
-      this.positionProperty.dispose();
-      this.sourcePositionProperty.dispose();
-      this.snapTargetProperty.dispose();
-      this.draggingProperty.dispose();
-    };
-  }
-
-  /**
-   * @public
-   */
-  dispose() {
-    this.disposeControlPoint();
-    super.dispose();
+    this.addDisposable( this.positionProperty, this.sourcePositionProperty, this.snapTargetProperty, this.draggingProperty );
   }
 
   /**
    * Reset to initial state.
-   * @public
    */
-  reset() {
+  public reset(): void {
     this.sourcePositionProperty.reset();
     this.snapTargetProperty.reset();
     this.draggingProperty.reset();
@@ -119,31 +111,28 @@ class ControlPoint extends PhetioObject {
   /**
    * Create a new control point, identical to this one.
    * TODO: https://github.com/phetsims/energy-skate-park/issues/123 is this reversed?  Maybe call on the model
-   * @public
-   *
-   * @param {EnergySkateParkModel} model
-   * @returns {ControlPoint}
    */
-  copy( model ) {
+  public copy( model: EnergySkateParkModel ): ControlPoint {
+    // @ts-expect-error
     return model.controlPointGroup.createNextElement( this.positionProperty.value.x, this.positionProperty.value.y );
   }
-}
 
-ControlPoint.ControlPointIO = new IOType( 'ControlPointIO', {
-  valueType: ControlPoint,
-  documentation: 'A control point that can manipulate the track.',
-  toStateObject: controlPoint => {
-    return { x: controlPoint.positionProperty.value.x, y: controlPoint.positionProperty.value.y };
-  },
-  stateSchema: {
-    x: NumberIO,
-    y: NumberIO
-  },
-  stateObjectToCreateElementArguments: stateObject => {
-    assert && assert( typeof stateObject.x === 'number' );
-    return [ stateObject.x, stateObject.y ];
-  }
-} );
+  public static readonly ControlPointIO = new IOType( 'ControlPointIO', {
+    valueType: ControlPoint,
+    documentation: 'A control point that can manipulate the track.',
+    toStateObject: controlPoint => {
+      return { x: controlPoint.positionProperty.value.x, y: controlPoint.positionProperty.value.y };
+    },
+    stateSchema: {
+      x: NumberIO,
+      y: NumberIO
+    },
+    stateObjectToCreateElementArguments: stateObject => {
+      assert && assert( typeof stateObject.x === 'number' );
+      return [ stateObject.x, stateObject.y ];
+    }
+  } );
+}
 
 energySkatePark.register( 'ControlPoint', ControlPoint );
 export default ControlPoint;
