@@ -7,10 +7,13 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import Property from '../../../../axon/js/Property.js';
 import merge from '../../../../phet-core/js/merge.js';
-import { Image } from '../../../../scenery/js/imports.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import { Image, ImageableImage } from '../../../../scenery/js/imports.js';
 import RectangularRadioButtonGroup from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
 import Panel from '../../../../sun/js/Panel.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import attach_png from '../../../images/attach_png.js';
 import detach_png from '../../../images/detach_png.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -23,15 +26,16 @@ class AttachDetachToggleButtons extends Panel {
 
   /**
    * Constructor for the AttachDetachToggleButtons
-   * @param {Property.<Boolean>} stickingToTrackProperty Axon property that is false if the model state allows the skater to detach
-   * @param {Property.<Boolean>} enabledProperty Axon property that is true if the control is enabled
-   * @param {number} contentWidth Width for the control panel, to match the layout of the rest of the controls.
-   * @param {Tandem} tandem
-   * @param {Object} [options]
+   * @param stickingToTrackProperty Axon property that is false if the model state allows the skater to detach
+   * @param enabledProperty Axon property that is true if the control is enabled
+   * @param contentWidth Width for the control panel, to match the layout of the rest of the controls.
+   * @param tandem
+   * @param [options]
    */
-  constructor( stickingToTrackProperty, enabledProperty, contentWidth, tandem, options ) {
+  public constructor( stickingToTrackProperty: Property<boolean>, enabledProperty: Property<boolean>, contentWidth: number, tandem: Tandem, options: IntentionalAny ) {
 
     // Match the style of the EnergySkateParkControlPanel
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       xMargin: 15,
       yMargin: 5
@@ -42,9 +46,7 @@ class AttachDetachToggleButtons extends Panel {
     const detachRadioButtonTandemName = 'detachRadioButton';
     const radioButtonGroupTandem = tandem.createTandem( 'radioButtonGroup' );
 
-    // @param {image} image - data for an Image Node
-    // @param {string} tandemName
-    const createButtonContent = ( image, tandemName ) => {
+    const createButtonContent = ( image: ImageableImage, tandemName: string ) => {
       return new Image( image, {
         scale: 0.4,
         tandem: radioButtonGroupTandem.createTandem( attachRadioButtonTandemName ).createTandem( tandemName )

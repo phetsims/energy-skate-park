@@ -6,7 +6,11 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import Property from '../../../../axon/js/Property.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { Image, LinearGradient, Node, Pattern, Rectangle } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import cementTextureDark_jpg from '../../../images/cementTextureDark_jpg.js';
 import mountains_png from '../../../images/mountains_png.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -16,31 +20,33 @@ const earthHeight = 86;
 const cementWidth = 5;
 
 class BackgroundNode extends Node {
+  private readonly sky: Rectangle;
+  private readonly earth: Rectangle;
+  private readonly cementY: number;
+  private readonly mountainImage: Image;
+  private readonly cement: Rectangle;
 
   /**
-   * @param {Bounds2} layoutBounds
-   * @param {Property.<Bounds2>} visibleBoundsProperty - in the view coordinate frame
-   * @param {Tandem} tandem
-   * @param {Object} [options]
+   * @param layoutBounds
+   * @param visibleBoundsProperty - in the view coordinate frame
+   * @param tandem
+   * @param [options]
    */
-  constructor( layoutBounds, visibleBoundsProperty, tandem, options ) {
+  public constructor( layoutBounds: Bounds2, visibleBoundsProperty: Property<Bounds2>, tandem: Tandem, options: IntentionalAny ) {
     super( {
       pickable: false,
       tandem: tandem
     } );
 
-    // @private
     this.sky = new Rectangle( 0, 0, 0, 0 );
     this.addChild( this.sky );
 
-    // @private - wait for bounds to fill in the grass
+    // wait for bounds to fill in the grass
     this.earth = new Rectangle( 0, 0, 0, 0, { fill: '#93774c' } );
     this.addChild( this.earth );
 
-    // @private {number}
     this.cementY = layoutBounds.height - earthHeight;
 
-    // @private
     this.mountainImage = new Image( mountains_png, {
       scale: 1.23,
       bottom: this.cementY,
@@ -48,7 +54,6 @@ class BackgroundNode extends Node {
     } );
     this.addChild( this.mountainImage );
 
-    // @private
     this.cement = new Rectangle( 0, 0, 0, cementWidth, { fill: new Pattern( cementTextureDark_jpg ) } );
     this.addChild( this.cement );
 
@@ -62,11 +67,10 @@ class BackgroundNode extends Node {
 
   /**
    * Exactly fit the geometry to the screen so no matter what aspect ratio it will always show something.
-   * @public
    *
-   * @param {Bounds2} bounds - in the view coordinate frame
+   * @param bounds - in the view coordinate frame
    */
-  layout( bounds ) {
+  public layout( bounds: Bounds2 ): void {
     const cementY = this.cementY;
     this.earth.setRect( bounds.minX, cementY, bounds.width, earthHeight );
 
@@ -75,10 +79,9 @@ class BackgroundNode extends Node {
     this.sky.setRect( bounds.minX, bounds.minY, bounds.width, bounds.height );
     this.sky.fill = new LinearGradient( 0, 0, 0, bounds.height / 2 ).addColorStop( 0, '#02ace4' ).addColorStop( 1, '#cfecfc' );
   }
-}
 
-// @static
-BackgroundNode.earthHeight = earthHeight;
+  public static earthHeight = earthHeight;
+}
 
 energySkatePark.register( 'BackgroundNode', BackgroundNode );
 export default BackgroundNode;
