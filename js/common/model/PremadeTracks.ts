@@ -15,11 +15,14 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import energySkatePark from '../../energySkatePark.js';
+import ControlPoint from './ControlPoint.js';
+import EnergySkateParkModel from './EnergySkateParkModel.js';
 import Track from './Track.js';
 
 // constants
-const PARENT_TRACKS = [];
+const PARENT_TRACKS: Track[] = [];
 
 // limiting bounds for dragging control points
 const END_BOUNDS_WIDTH = 2.5;
@@ -32,12 +35,11 @@ const TrackType = EnumerationDeprecated.byKeys( [ 'PARABOLA', 'SLOPE', 'DOUBLE_W
  * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the
  * CENTER of the limiting bounds.
  *
- * @param  {Vector2} point - position of control point, CENTER of the bounds
- * @param  {number} width
- * @param  {number} height
- * @returns {Bounds2}
+ * @param point - position of control point, CENTER of the bounds
+ * @param width
+ * @param height
  */
-const createCenteredLimitBounds = ( point, width, height ) => {
+const createCenteredLimitBounds = ( point: Vector2, width: number, height: number ) => {
   return new Bounds2( point.x - width / 2, point.y - height / 2, point.x + width / 2, point.y + height / 2 );
 };
 
@@ -45,12 +47,11 @@ const createCenteredLimitBounds = ( point, width, height ) => {
  * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the BOTTOM
  * CENTER of the limiting bounds.
  *
- * @param  {Vector2} point - position of control point, BOTTOM CENTER of the bounds
- * @param  {number} width
- * @param  {number} height
- * @returns {Bounds2}
+ * @param point - position of control point, BOTTOM CENTER of the bounds
+ * @param width
+ * @param height
  */
-const createBottomLimitBounds = ( point, width, height ) => {
+const createBottomLimitBounds = ( point: Vector2, width: number, height: number ) => {
   return new Bounds2( point.x - width / 2, point.y, point.x + width / 2, point.y + height );
 };
 
@@ -58,14 +59,13 @@ const createBottomLimitBounds = ( point, width, height ) => {
  * Create a set of limiting drag bounds for a control point. The spacing args are relative to provided point,
  * which is presumably the position of the control point.
  *
- * @param {Vector2} point - spacing in each direction relative to this point
- * @param {number} leftSpace - space to the left of point for bounds
- * @param {number} rightSpace - space to the right of point for bounds
- * @param {number} upSpace - space to the up of point for bounds
- * @param {number} downSpace - space to the down of point for bounds
- * @returns {Bounds2}
+ * @param point - spacing in each direction relative to this point
+ * @param leftSpace - space to the left of point for bounds
+ * @param rightSpace - space to the right of point for bounds
+ * @param upSpace - space to the up of point for bounds
+ * @param downSpace - space to the down of point for bounds
  */
-const createRelativeSpaceBounds = ( point, leftSpace, rightSpace, upSpace, downSpace ) => {
+const createRelativeSpaceBounds = ( point: Vector2, leftSpace: number, rightSpace: number, upSpace: number, downSpace: number ) => {
   return new Bounds2( point.x - leftSpace, point.y - downSpace, point.x + rightSpace, point.y + upSpace );
 };
 
@@ -73,11 +73,9 @@ const PremadeTracks = {
 
   /**
    * Create a set of control points that create a parabola shaped track.
-   * @param {EnergySkateParkModel} model
-   * @param {Object} [options]
-   * @returns {ControlPoint[]}
    */
-  createParabolaControlPoints: ( model, options ) => {
+  createParabolaControlPoints: ( model: EnergySkateParkModel, options: IntentionalAny ): ControlPoint[] => {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       trackHeight: 6, // largest height for the parabola
       trackWidth: 8, // width from the left most control point to the right most control point
@@ -117,13 +115,10 @@ const PremadeTracks = {
 
   /**
    * Create a set of control points which create a slope shaped track, touching the ground on the right side.
-   *
-   * @param {EnergySkateParkModel} model
-   * @param {Object} [options]
-   * @returns {ControlPoint[]}
    */
-  createSlopeControlPoints: ( model, options ) => {
+  createSlopeControlPoints: ( model: EnergySkateParkModel, options: IntentionalAny ): ControlPoint[] => {
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       trackWidth: 6,
       trackHeight: 6
@@ -159,12 +154,9 @@ const PremadeTracks = {
    * Create a set of control points that will create a double well track. For the double well, move the left well up
    * a but since the interpolation moves it down by that much and we don't want the skater to go below ground
    * while on the track. Numbers determined by trial and error.
-   *
-   * @param {EnergySkateParkModel} model
-   * @param {Object} [options]
-   * @returns {ControlPoint[]}
    */
-  createDoubleWellControlPoints: ( model, options ) => {
+  createDoubleWellControlPoints: ( model: EnergySkateParkModel, options: IntentionalAny ): ControlPoint[] => {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       trackHeight: 5, // largest height for the well
       trackWidth: 8, // width from the left most control point to the right most control point
@@ -234,12 +226,9 @@ const PremadeTracks = {
 
   /**
    * Create a set of control points that will form a track that takes the shape of a loop.
-   *
-   * @param {EnergySkateParkModel} model
-   * @param {Object} [options]
-   * @returns {Array.<ControlPoint>}
    */
-  createLoopControlPoints: ( model, options ) => {
+  createLoopControlPoints: ( model: EnergySkateParkModel, options: IntentionalAny ): ControlPoint[] => {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       trackWidth: 9,
       trackHeight: 6,
@@ -307,13 +296,8 @@ const PremadeTracks = {
 
   /**
    * Create a track from the provided control points.
-   *
-   * @param {EnergySkateParkModel} model
-   * @param {Array.<ControlPoint>} controlPoints
-   * @param {Object} [options]
-   * @returns {Track}
    */
-  createTrack( model, controlPoints, options ) {
+  createTrack( model: EnergySkateParkModel, controlPoints: ControlPoint[], options: IntentionalAny ): Track {
     return new Track( model, controlPoints, PARENT_TRACKS, options );
   },
 
