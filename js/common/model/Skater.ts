@@ -15,13 +15,16 @@ import EnumerationDeprecatedProperty from '../../../../axon/js/EnumerationDeprec
 import Multilink from '../../../../axon/js/Multilink.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
@@ -33,11 +36,99 @@ import Track from './Track.js';
 
 class Skater {
 
-  /**
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( tandem, options ) {
+  private readonly massRange: Range;
+
+  // The track the skater is on, or null if free-falling
+  public readonly trackProperty: Property<Track | null>;
+
+  // Parameter along the parametric spline, unitless since it is in parametric space
+  public readonly parametricPositionProperty: Property<number>;
+
+  // Speed along the parametric spline dimension, formally 'u dot', indicating speed and direction
+  // (+/-) along the track spline in meters per second.  Not technically the derivative of 'u' since it is the
+  // euclidean speed.
+  public readonly parametricSpeedProperty: NumberProperty;
+
+  // True if the skater is pointing up on the track, false if attached to underside of track
+  public readonly onTopSideOfTrackProperty: BooleanProperty;
+
+  // Gravity magnitude, without direction, which is easier to set with controls (like sliders) because
+  // conceptual minimum value is less than maximum value.
+  public readonly gravityMagnitudeProperty: NumberProperty;
+
+  // Gravity magnitude and sign
+  public readonly gravityProperty: TReadOnlyProperty<number>;
+
+  //  - reference height for potential energy, 0 is at the ground
+  public readonly referenceHeightProperty: NumberProperty;
+
+  //  - the position of the skater
+  public readonly positionProperty: Vector2Property;
+
+  // Start in the middle of the mass PhysicalControl range
+  public readonly massProperty: NumberProperty;
+
+  //  - Which way the skater is facing, right or left.  Coded as strings instead of boolean in case
+  // we add other states later like 'forward'
+  public readonly directionProperty: EnumerationDeprecatedProperty;
+
+  //
+  public readonly velocityProperty: Vector2Property;
+
+  //  - True if the user is dragging the skater with a pointer
+  public draggingProperty: BooleanProperty;
+
+  //  - Energies are in Joules
+  public kineticEnergyProperty: NumberProperty;
+
+  //
+  public readonly potentialEnergyProperty: NumberProperty;
+
+  //
+  public readonly thermalEnergyProperty: NumberProperty;
+
+  //
+  public readonly totalEnergyProperty: NumberProperty;
+
+  //  - The skater's angle (about the pivot point at the bottom center), in radians
+  public readonly angleProperty: NumberProperty;
+
+  //  - Returns to this point when pressing "return skater"
+  public readonly startingPositionProperty: Vector2Property;
+
+  //  - Returns to this parametric position along the track when pressing "return skater"
+  public readonly startingUProperty: Property<number>;
+
+  // Tracks whether or not the skater is above or below the track when it is released
+  public readonly startingUpProperty: BooleanProperty;
+
+  // Returns to this track when pressing "return skater"
+  public readonly startingTrackProperty: Property<Track | null>;
+
+  // Position of the skater's head, for positioning the pie chart.
+  public readonly headPositionProperty: Vector2Property;
+
+  public readonly updatedEmitter: Emitter;
+  public readonly energyChangedEmitter: Emitter;
+
+  // emits an event when the skater is returned to a previous position
+  public readonly returnedEmitter: Emitter;
+
+  public readonly speedProperty: TReadOnlyProperty<number>;
+
+  // Enable the "Clear Thermal" buttons but only if the thermal energy exceeds a tiny threshold, so there
+  // aren't visual "false positives", see #306
+  public readonly allowClearingThermalEnergyProperty: TReadOnlyProperty<boolean>;
+
+  // Boolean flag that indicates whether the skater has moved from his initial position, and hence can be 'returned',
+  // For making the 'return skater' button enabled/disabled
+  // If this is a performance concern, perhaps it could just be dropped as a feature
+  public readonly movedProperty: TReadOnlyProperty<boolean>;
+  private startingAngle?: number;
+  private startingTrackControlPointSources?: Vector2[];
+
+  public constructor( tandem: Tandem, options: IntentionalAny ) {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {number} - initial mass for the Skater, in kg
@@ -52,157 +143,133 @@ class Skater {
 
     assert && assert( options.referenceHeightRange.min === 0, 'reference height range needs to start from ground' );
 
-    // @private {Range}
     this.massRange = options.massRange;
 
-    // @public - The track the skater is on, or null if free-falling
-    this.trackProperty = new Property( null, {
+    this.trackProperty = new Property<Track | null>( null, {
       tandem: tandem.createTandem( 'trackProperty' ),
       phetioValueType: NullableIO( ReferenceIO( Track.TrackIO ) )
     } );
 
-    // @public {number} - Parameter along the parametric spline, unitless since it is in parametric space
     this.parametricPositionProperty = new Property( 0, {
       tandem: tandem.createTandem( 'parametricPositionProperty' ),
       phetioValueType: NullableIO( NumberIO )
     } );
 
-    // @public {number} - Speed along the parametric spline dimension, formally 'u dot', indicating speed and direction
-    // (+/-) along the track spline in meters per second.  Not technically the derivative of 'u' since it is the
-    // euclidean speed.
     this.parametricSpeedProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'parametricSpeedProperty' ),
       phetioReadOnly: true
     } );
 
-    // @public - True if the skater is pointing up on the track, false if attached to underside of track
     this.onTopSideOfTrackProperty = new BooleanProperty( true, {
       tandem: tandem.createTandem( 'onTopSideOfTrackProperty' )
     } );
 
-    // @public {number} - Gravity magnitude, without direction, which is easier to set with controls (like sliders) because
-    // conceptual minimum value is less than maximum value.
     this.gravityMagnitudeProperty = new NumberProperty( 9.8, {
       tandem: tandem.createTandem( 'gravityMagnitudeProperty' ),
       units: 'm/s/s',
       range: new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) )
     } );
 
-    // @public {number} - Gravity magnitude and sign
     this.gravityProperty = new DerivedProperty( [ this.gravityMagnitudeProperty ], gravity => {
       const gravityWithSign = -gravity;
       assert && assert( gravityWithSign <= 0, 'this sim only supports negative or 0 gravity' );
       return gravityWithSign;
     }, {
       units: 'm/s/s',
+
+      // @ts-expect-error
       range: new Range( EnergySkateParkConstants.MAX_GRAVITY, EnergySkateParkConstants.MIN_GRAVITY ) // MAX_GRAVITY < MIN_GRAVITY due to sign
     } );
 
-    // @public {number} - reference height for potential energy, 0 is at the ground
     this.referenceHeightProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'referenceHeightProperty' ),
       units: 'm',
       range: options.referenceHeightRange
     } );
 
-    // @public {Vector2} - the position of the skater
     this.positionProperty = new Vector2Property( new Vector2( 3.5, 0 ), {
       tandem: tandem.createTandem( 'positionProperty' )
     } );
 
-    // @private {number} - Start in the middle of the mass PhysicalControl range
     this.massProperty = new NumberProperty( options.defaultMass, {
       range: options.massRange,
       tandem: tandem.createTandem( 'massProperty' ),
       units: 'kg'
     } );
 
-    // @public {string} - Which way the skater is facing, right or left.  Coded as strings instead of boolean in case
     // we add other states later like 'forward'
+    // @ts-expect-error
     this.directionProperty = new EnumerationDeprecatedProperty( Skater.Direction, Skater.Direction.LEFT, {
       tandem: tandem.createTandem( 'directionProperty' )
     } );
 
-    // @public {Vector2}
     this.velocityProperty = new Vector2Property( new Vector2( 0, 0 ), {
       tandem: tandem.createTandem( 'velocityProperty' )
     } );
 
-    // @public {boolean} - True if the user is dragging the skater with a pointer
     this.draggingProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'draggingProperty' )
     } );
 
-    // @public {number} - Energies are in Joules
     this.kineticEnergyProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'kineticEnergyProperty' ),
       units: 'J',
+
+      // @ts-expect-error
       J: true
     } );
 
-    // @public {number}
     this.potentialEnergyProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'potentialEnergyProperty' ),
       units: 'J',
       phetioReadOnly: true
     } );
 
-    // @public {number}
     this.thermalEnergyProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'thermalEnergyProperty' ),
       units: 'J',
       phetioReadOnly: true
     } );
 
-    // @public {number}
     this.totalEnergyProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'totalEnergyProperty' ),
       units: 'J',
       phetioReadOnly: true
     } );
 
-    // @public {number} - The skater's angle (about the pivot point at the bottom center), in radians
     this.angleProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'angleProperty' ),
       units: 'radians',
       phetioReadOnly: true
     } );
 
-    // @public {Vector2} - Returns to this point when pressing "return skater"
     this.startingPositionProperty = new Vector2Property( new Vector2( 3.5, 0 ), {
       tandem: tandem.createTandem( 'startingPositionProperty' )
     } );
 
-    // @public {number} - Returns to this parametric position along the track when pressing "return skater"
     this.startingUProperty = new Property( 0, {
       tandem: tandem.createTandem( 'startingUProperty' ),
       phetioValueType: NullableIO( NumberIO )
     } );
 
-    // @private {boolean} - Tracks whether or not the skater is above or below the track when it is released
     this.startingUpProperty = new BooleanProperty( true, {
       tandem: tandem.createTandem( 'startingUpProperty' )
     } );
 
-    // @public {Property.<Track|null>} - Returns to this track when pressing "return skater"
-    this.startingTrackProperty = new Property( null, {
+    this.startingTrackProperty = new Property<Track | null>( null, {
       valueType: [ null, Track ]
     } );
 
-    // @public {Vector2} - Position of the skater's head, for positioning the pie chart.
     this.headPositionProperty = new Vector2Property( this.getHeadPosition(), {
       tandem: tandem.createTandem( 'headPositionProperty' ),
       phetioReadOnly: true
     } );
 
-    // @public
     this.updatedEmitter = new Emitter();
     this.energyChangedEmitter = new Emitter();
 
-    // @public - emits an event when the skater is returned to a previous position
     this.returnedEmitter = new Emitter();
 
-    // @public {number}
     this.speedProperty = new DerivedProperty( [ this.velocityProperty ], velocity => velocity.magnitude, {
       tandem: tandem.createTandem( 'speedProperty' ),
       units: 'm/s',
@@ -223,9 +290,11 @@ class Skater {
       const speedThreshold = 0.01;
 
       if ( parametricSpeed > speedThreshold ) {
+        // @ts-expect-error
         this.directionProperty.value = this.onTopSideOfTrackProperty.value ? Skater.Direction.RIGHT : Skater.Direction.LEFT;
       }
       else if ( parametricSpeed < -speedThreshold ) {
+        // @ts-expect-error
         this.directionProperty.value = this.onTopSideOfTrackProperty.value ? Skater.Direction.LEFT : Skater.Direction.RIGHT;
       }
       else {
@@ -233,9 +302,6 @@ class Skater {
       }
     } );
 
-    // @public - Boolean flag that indicates whether the skater has moved from his initial position, and hence can be 'returned',
-    // For making the 'return skater' button enabled/disabled
-    // If this is a performance concern, perhaps it could just be dropped as a feature
     this.movedProperty = new DerivedProperty( [ this.positionProperty, this.startingPositionProperty, this.draggingProperty ],
       ( x, x0, dragging ) => {
         return !dragging && ( x.x !== x0.x || x.y !== x0.y );
@@ -255,8 +321,6 @@ class Skater {
       this.updateHeadPosition();
     } );
 
-    // @public - Enable the "Clear Thermal" buttons but only if the thermal energy exceeds a tiny threshold, so there
-    // aren't visual "false positives", see #306
     this.allowClearingThermalEnergyProperty = new DerivedProperty( [ this.thermalEnergyProperty ],
       thermalEnergy => {
         return thermalEnergy > 1E-2;
@@ -272,23 +336,20 @@ class Skater {
   }
 
   // Get the vector from feet to head, so that when tracks are joined we can make sure he is still pointing up
-  // @public
-  get upVector() { return this.headPositionProperty.value.minus( this.positionProperty.value ); }
+  public get upVector(): Vector2 { return this.headPositionProperty.value.minus( this.positionProperty.value ); }
 
   /**
    * Zero the thermal energy, and update energy distribution accordingly.
-   * @public
    */
-  clearThermal() {
+  public clearThermal(): void {
     this.thermalEnergyProperty.value = 0.0;
     this.updateEnergy();
   }
 
   /**
    * Fully reset this skater.
-   * @public
    */
-  reset() {
+  public reset(): void {
     this.resetEverythingExceptGravityMassAndReferenceHeight();
 
     this.referenceHeightProperty.reset();
@@ -304,9 +365,8 @@ class Skater {
   /**
    * Move the skater to her initial position, but leave the reference height, friction, and mass, and
    * gravity the same, see #237 and #188
-   * @public
    */
-  resetPosition() {
+  public resetPosition(): void {
     this.resetEverythingExceptGravityMassAndReferenceHeight();
 
     // Notify the graphics to re-render.  See #223
@@ -318,9 +378,8 @@ class Skater {
    * Reset all Properties of the Skater except for reference height and mass. Useful when resetting skater position
    * only, but reused in a few places when resetting Skater (to be surrounded by resetting mass or reference height).
    * After calling this, be sure to signify updates with this.updateEnergy() and this.updatedEmitter.emit().
-   * @private
    */
-  resetEverythingExceptGravityMassAndReferenceHeight() {
+  private resetEverythingExceptGravityMassAndReferenceHeight(): void {
     // set the angle to zero first so that the optimization for SkaterNode.updatePosition is maintained, without
     // showing the skater at the wrong angle
     this.angleProperty.value = 0;
@@ -348,21 +407,20 @@ class Skater {
   /**
    * Return the skater to the last position it was released by the user (or its starting position), including the
    * position on a track (if any).
-   * @public
    */
-  returnSkater() {
+  public returnSkater(): void {
 
     // If the user is on the same track as where he began (and the track hasn't changed), remain on the track,
     // see #143 and #144
     if ( this.startingTrackProperty.value && this.trackProperty.value === this.startingTrackProperty.value && _.isEqual( this.trackProperty.value.copyControlPointSources(), this.startingTrackControlPointSources ) ) {
       this.parametricPositionProperty.value = this.startingUProperty.value;
-      this.angleProperty.value = this.startingAngle;
+      this.angleProperty.value = this.startingAngle!;
       this.onTopSideOfTrackProperty.value = this.startingUpProperty.value;
       this.parametricSpeedProperty.value = 0;
     }
     else {
       this.trackProperty.value = null;
-      this.angleProperty.value = this.startingAngle;
+      this.angleProperty.value = this.startingAngle!;
     }
     this.positionProperty.set( this.startingPositionProperty.value.copy() );
     this.velocityProperty.value = new Vector2( 0, 0 );
@@ -376,9 +434,8 @@ class Skater {
   /**
    * Update the energies as a batch. This is an explicit method instead of linked to all dependencies so that it can
    * be called in a controlled fashion when multiple dependencies have changed, for performance.
-   * @public
    */
-  updateEnergy() {
+  public updateEnergy(): void {
     this.kineticEnergyProperty.value = 0.5 * this.massProperty.value * this.velocityProperty.value.magnitudeSquared;
     this.potentialEnergyProperty.value = -this.massProperty.value * ( this.positionProperty.value.y - this.referenceHeightProperty.value ) * this.gravityProperty.value;
     this.totalEnergyProperty.value = this.kineticEnergyProperty.value + this.potentialEnergyProperty.value + this.thermalEnergyProperty.value;
@@ -391,11 +448,8 @@ class Skater {
   /**
    * Get the position of the skater head from the "point" mass, taking into account the size of the skater
    * from its mass value.
-   * @public
-   *
-   * @returns {Vector2}
    */
-  getHeadPosition() {
+  public getHeadPosition(): Vector2 {
 
     // Center pie chart over skater's head not his feet so it doesn't look awkward when skating in a parabola
     // Note this has been tuned independently of SkaterNode.massToScale, which also accounts for the image dimensions
@@ -411,10 +465,8 @@ class Skater {
    * Update the head position for showing the pie chart. Doesn't depend on "up" because it already depends on the
    * angle of the skater. Would be better if headPosition were a derived property, but created too many allocations,
    * see #50
-   *
-   * @private
    */
-  updateHeadPosition() {
+  private updateHeadPosition(): void {
     const headPosition = this.getHeadPosition();
 
     // Manually trigger notifications to avoid allocations, see #50
@@ -425,12 +477,11 @@ class Skater {
 
   /**
    * If the skater is released, store the initial conditions for when the skater is returned.
-   * @public
    *
-   * @param {Track|null} targetTrack - The track to start on (if any)
-   * @param {number} targetU - The parametric position along the track to start on (if any)
+   * @param targetTrack - The track to start on (if any)
+   * @param targetU - The parametric position along the track to start on (if any)
    */
-  released( targetTrack, targetU ) {
+  public released( targetTrack: Track | null, targetU: number ): void {
     this.draggingProperty.value = false;
     this.velocityProperty.value = new Vector2( 0, 0 );
     this.parametricSpeedProperty.value = 0;
@@ -452,11 +503,9 @@ class Skater {
     this.updateEnergy();
     this.updatedEmitter.emit();
   }
-}
 
-// @public {EnumerationDeprecated}
-// @static
-Skater.Direction = EnumerationDeprecated.byKeys( [ 'LEFT', 'RIGHT' ] );
+  public static Direction = EnumerationDeprecated.byKeys( [ 'LEFT', 'RIGHT' ] );
+}
 
 energySkatePark.register( 'Skater', Skater );
 export default Skater;

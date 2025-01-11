@@ -1728,14 +1728,12 @@ export default class EnergySkateParkModel extends PhetioObject {
     // Note: Energy is not conserved when tracks joined since the user has added or removed energy from the system
     if ( this.skater.trackProperty.value === a || this.skater.trackProperty.value === b ) {
 
-      // @ts-expect-error
       const originalDirectionVector = this.skater.trackProperty.value.getUnitParallelVector( this.skater.parametricPositionProperty.value ).times( this.skater.parametricSpeedProperty.value );
 
       // Keep track of the skater direction so we can toggle the 'up' flag if the track orientation changed
       const originalNormal = this.skater.upVector;
       const p = newTrack.getClosestPositionAndParameter( this.skater.positionProperty.value.copy() );
 
-      // @ts-expect-error
       this.skater.trackProperty.value = newTrack;
       this.skater.parametricPositionProperty.value = p.parametricPosition;
       const x2 = newTrack.getX( p.parametricPosition );
@@ -1756,7 +1754,6 @@ export default class EnergySkateParkModel extends PhetioObject {
 
       // If the skater changed direction of motion because of the track polarity change, flip the parametric velocity
       // 'parametricSpeed' value, see #180
-      // @ts-expect-error
       const newDirectionVector = this.skater.trackProperty.value.getUnitParallelVector( this.skater.parametricPositionProperty.value ).times( this.skater.parametricSpeedProperty.value );
       debugAttachDetach && debugAttachDetach( newDirectionVector.dot( originalDirectionVector ) );
       if ( newDirectionVector.dot( originalDirectionVector ) < 0 ) {
