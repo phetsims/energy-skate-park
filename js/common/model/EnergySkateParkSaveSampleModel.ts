@@ -12,23 +12,53 @@
  */
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
-import createObservableArray from '../../../../axon/js/createObservableArray.js';
+import createObservableArray, { ObservableArray } from '../../../../axon/js/createObservableArray.js';
 import Emitter from '../../../../axon/js/Emitter.js';
 import Multilink from '../../../../axon/js/Multilink.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkDataSample from './EnergySkateParkDataSample.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
+import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
+import SkaterState from './SkaterState.js';
 
 class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( preferencesModel, tandem, options ) {
+  private readonly saveSampleInterval: number;
+  private readonly maxNumberOfSamples: number;
+  private readonly sampleFadeDecay: number;
+
+  // amount of time that has elapsed since a skater sample has been saved
+  private timeSinceSampleSave: number;
+
+  // whether or not to limit the number of samples to be saved - if false, which
+  // can be done if you are ok with saving limitless samples, options.maxNumberOfSamples has no impact
+  public readonly limitNumberOfSamples: boolean;
+
+  // controls whether or not samples are saved as the model steps through time
+  public readonly saveSamplesProperty: BooleanProperty;
+
+  // set to true to prevent the model from saving any more samples, even if
+  // saveSamplesProperty is true - this can be used instead of (or in combination with) maxNumberOfSamples\
+  // to prevent the model from saving too many samples for reasons other than array length
+  public readonly preventSampleSave: boolean;
+
+  // in seconds, how much time has passed since beginning to record skater states
+  public readonly sampleTimeProperty: NumberProperty;
+
+  // observable list of all saved EnergySkateParkDataSamples
+  public dataSamples: ObservableArray<EnergySkateParkDataSample>;
+
+  // an array of EnergySkateParkDataSamples that have just been removed from the model. Necessary
+  // for performance so that we can update once after removing many samples rather than every time
+  // a single sample is removed
+  public readonly batchRemoveSamplesEmitter: Emitter<[ EnergySkateParkDataSample[] ]>;
+
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options: IntentionalAny ) {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {boolean} - the default value for whether or not the model is saving
@@ -49,35 +79,16 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
     super( preferencesModel, tandem, options );
 
-    // @private {number}
     this.saveSampleInterval = options.saveSampleInterval;
     this.maxNumberOfSamples = options.maxNumberOfSamples;
     this.sampleFadeDecay = options.sampleFadeDecay;
 
-    // @private {number} - amount of time that has elapsed since a skater sample has been saved
     this.timeSinceSampleSave = 0;
-
-    // @public {boolean} - whether or not to limit the number of samples to be saved - if false, which
-    // can be done if you are ok with saving limitless samples, options.maxNumberOfSamples has no impact
     this.limitNumberOfSamples = true;
-
-    // @public {BooleanProperty} - controls whether or not samples are saved as the model steps through time
     this.saveSamplesProperty = new BooleanProperty( options.defaultSaveSamples, { tandem: tandem.createTandem( 'saveSamplesProperty' ) } );
-
-    // @public {boolean} - set to true to prevent the model from saving any more samples, even if
-    // saveSamplesProperty is true - this can be used instead of (or in combination with) maxNumberOfSamples\
-    // to prevent the model from saving too many samples for reasons other than array length
     this.preventSampleSave = false;
-
-    // @public - in seconds, how much time has passed since beginning to record skater states
     this.sampleTimeProperty = new NumberProperty( 0 );
-
-    // @protected {ObservableArrayDef.<EnergySkateParkDataSample>} - observable list of all saved EnergySkateParkDataSamples
     this.dataSamples = createObservableArray();
-
-    // @public (read-only) - an array of EnergySkateParkDataSamples that have just been removed from the model. Necessary
-    // for performance so that we can update once after removing many samples rather than every time
-    // a single sample is removed
     this.batchRemoveSamplesEmitter = new Emitter( {
       parameters: [ {
         isValidValue: value => Array.isArray( value ) && value.every( element => element instanceof EnergySkateParkDataSample )
@@ -87,12 +98,8 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
   /**
    * Set model state from a saved sample, potentially modifying Skater, Track, and other things.
-   * @public
-   *
-   * @param {EnergySkateParkDataSample} dataSample
    */
-  setFromSample( dataSample ) {
-    dataSample.skaterState.setToSkater( this.skater );
+  public setFromSample( dataSample: EnergySkateParkDataSample ): void {
 
     // restore friction and stickingToTrackProperty (all other Properties are set on Skater)
     this.frictionProperty.set( dataSample.friction );
@@ -102,19 +109,21 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
       assert && assert( dataSample.track === this.skater.trackProperty.get(), 'only the active track can be set from sample' );
 
       dataSample.trackControlPointPositions.forEach( ( position, i ) => {
+
+        // @ts-expect-error
         this.skater.trackProperty.get().controlPoints[ i ].sourcePositionProperty.set( position );
       } );
 
       // make sure control points are constrained, and update splines and shape
+      // @ts-expect-error
       this.skater.trackProperty.get().containControlPointsInLimitBounds( true );
     }
   }
 
   /**
    * Clear all saved data immediately and prepare to save data again.
-   * @public
    */
-  clearEnergyData() {
+  public clearEnergyData(): void {
     this.batchRemoveSamples( this.dataSamples.slice() );
     this.sampleTimeProperty.reset();
     this.timeSinceSampleSave = 0;
@@ -126,11 +135,8 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
    * is such that hundreds of EnergySkateParkDataSamples are frequently removed at a time.
    *
    * Assumes that samplesToRemove is a sub-array of this.dataSamples, in the right order.
-   * @public
-   *
-   * @param {EnergySkateParkDataSample[]} samplesToRemove
    */
-  batchRemoveSamples( samplesToRemove ) {
+  public batchRemoveSamples( samplesToRemove: EnergySkateParkDataSample[] ): void {
 
     const indexOfFirstSample = this.dataSamples.indexOf( samplesToRemove[ 0 ] );
     this.dataSamples.splice( indexOfFirstSample, samplesToRemove.length );
@@ -141,24 +147,17 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
   /**
    * Begin to remove all samples, indicating that all existing samples should fade away.
-   * @protected
    */
-  initiateSampleRemoval() {
+  protected initiateSampleRemoval(): void {
     for ( let i = 0; i < this.dataSamples.length; i++ ) {
       this.dataSamples.get( i ).initiateRemove();
     }
   }
 
   /**
-   * Custom stepModel for the SaveSampleModel. Saves and clears EnergySkateParkDataSamples.
-   * @override
-   * @public
-   *
-   * @param {number} dt - in seconds
-   * @param {SkaterState} skaterState
-   * @returns {SkaterState}
+   * Custom stepModel for the SaveSampleModel. Saves and clears EnergySkateParkDataSamples. dt in seconds
    */
-  stepModel( dt, skaterState ) {
+  public override stepModel( dt: number, skaterState: SkaterState ): SkaterState {
     const updatedState = super.stepModel( dt, skaterState );
 
     if ( this.saveSamplesProperty.get() ) {
@@ -181,7 +180,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
     }
 
     // update opacity of EnergySkateParkDataSamples and determine if it is time for them to be removed from model
-    const samplesToRemove = [];
+    const samplesToRemove: EnergySkateParkDataSample[] = [];
     this.dataSamples.forEach( sample => {
       sample.step( dt );
       if ( sample.opacityProperty.get() < EnergySkateParkDataSample.MIN_OPACITY ) {
@@ -207,9 +206,8 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
    * Attach listeners that will remove and clear samples in response to Skater and model Properties. These are attached
    * for some EnergySkateParkSaveSampleModels but not all of them. They are generally useful when EnergySkateParkDataSamples are
    * used to draw the skater path.
-   * @public
    */
-  attachPathRemovalListeners() {
+  public attachPathRemovalListeners(): void {
 
     // existing data fades away before removal when the skater direction changes
     this.skater.directionProperty.link( direction => {
@@ -218,16 +216,13 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
     // existing data is removed immediately when any of these Properties change
     const boundClearSamples = this.clearEnergyData.bind( this );
+    // @ts-expect-error
     Multilink.multilink( [ this.saveSamplesProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
     this.skater.returnedEmitter.addListener( boundClearSamples );
     this.trackChangedEmitter.addListener( boundClearSamples );
   }
 
-  /**
-   * @public
-   * @override
-   */
-  reset() {
+  public override reset(): void {
     super.reset();
     this.clearEnergyData();
 

@@ -6,20 +6,26 @@
  */
 
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import ControlPoint from './ControlPoint.js';
+import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
 import EnergySkateParkSaveSampleModel from './EnergySkateParkSaveSampleModel.js';
 import PremadeTracks from './PremadeTracks.js';
+import Track from './Track.js';
 
 class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( preferencesModel, tandem, options ) {
+  // Indicates the currently selected scene. There can be any number of scenes, do we need to pass this in as a param
+  public readonly sceneProperty: NumberProperty;
+  public readonly trackTypes: IntentionalAny[];
+
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options: IntentionalAny ) {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {PremadeTracks.TrackType[]} - list of the premade tracks used in this model. Currently,
@@ -27,9 +33,13 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
       // this list to remove premade tracks from the model. This order will also be the
       // order of track selection buttons in the view.
       trackTypes: [
+        // @ts-expect-error
         PremadeTracks.TrackType.PARABOLA,
+        // @ts-expect-error
         PremadeTracks.TrackType.SLOPE,
+        // @ts-expect-error
         PremadeTracks.TrackType.DOUBLE_WELL,
+        // @ts-expect-error
         PremadeTracks.TrackType.LOOP
       ],
 
@@ -40,8 +50,6 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
     super( preferencesModel, tandem.createTandem( 'trackSetModel' ), options );
 
-    // @public {number} - Indicates the currently selected scene. There can be any number of scenes, do we need
-    // to pass this in as a param
     this.sceneProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'sceneProperty' ),
       validValues: [ 0, 1, 2, 3 ]
@@ -50,7 +58,6 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
     // When the scene changes, also change the tracks.
     this.sceneProperty.link( this.updateActiveTrack.bind( this ) );
 
-    // @public - see options
     this.trackTypes = options.trackTypes;
 
     // initialize and add the desired tracks for this EnergySkateParkTrackSetModel
@@ -60,11 +67,10 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
   /**
    * When the scene changes or tracks are added to the track set, update which track is visible and physically
    * interactive.
-   * @private
    *
-   * @param {number} sceneIndex - index identifying the scene
+   * @param sceneIndex - index identifying the scene
    */
-  updateActiveTrack( sceneIndex ) {
+  private updateActiveTrack( sceneIndex: number ): void {
     for ( let i = 0; i < this.tracks.length; i++ ) {
       const track = this.tracks.get( i );
       track.physicalProperty.value = ( i === sceneIndex );
@@ -78,7 +84,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
         // wait to bump until the model bounds are defined, which doesn't happen until the first view layout since
         // available model bounds are determined by the size of the screen for this sim
-        const bumpListener = bounds => {
+        const bumpListener = ( bounds: Bounds2 ) => {
           if ( bounds.hasNonzeroArea() ) {
 
             // During state set, nodes can temporarily go below ground, but it will be above ground after the state is
@@ -99,14 +105,14 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
   /**
    * Create and add the premade tracks for this model, tracks are defined by options for this class.
-   * @private
    *
-   * @param {Tandem} tandem
-   * @param {Object} [options]
+   * @param tandem
+   * @param options
    */
-  initializePremadeTracks( tandem, options ) {
-    const tracks = [];
+  private initializePremadeTracks( tandem: Tandem, options?: IntentionalAny ): void {
+    const tracks: Track[] = [];
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       parabolaControlPointOptions: null,
       parabolaTrackOptions: null,
@@ -122,6 +128,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
     }, options );
 
     this.trackTypes.forEach( trackType => {
+      // @ts-expect-error
       if ( trackType === PremadeTracks.TrackType.PARABOLA ) {
         const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, options.parabolaControlPointOptions );
         const parabolaTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, parabolaControlPoints, merge( {
@@ -130,6 +137,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
         tracks.push( parabolaTrack );
       }
+      // @ts-expect-error
       else if ( trackType === PremadeTracks.TrackType.SLOPE ) {
         const slopeControlPoints = PremadeTracks.createSlopeControlPoints( this, options.slopeControlPointOptions );
         const slopeTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, slopeControlPoints, merge( {
@@ -141,6 +149,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
         }, options.slopeTrackOptions ) );
         tracks.push( slopeTrack );
       }
+      // @ts-expect-error
       else if ( trackType === PremadeTracks.TrackType.DOUBLE_WELL ) {
         const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( this, options.doubleWellControlPointOptions );
         const doubleWellTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, doubleWellControlPoints, merge( {
@@ -148,6 +157,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
         }, options.doubleWellTrackOptions ) );
         tracks.push( doubleWellTrack );
       }
+      // @ts-expect-error
       else if ( trackType === PremadeTracks.TrackType.LOOP ) {
         const loopControlPoints = PremadeTracks.createLoopControlPoints( this, options.loopControlPointOptions );
         const loopTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, loopControlPoints, merge( {
@@ -164,11 +174,10 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
   /**
    * Add all tracks in the set. In addition to adding all to the ObservableArrayDef, this will initialize which track
    * should be visible, physical, and interactive depending on the model sceneProperty.
-   * @public
    *
-   * @param {Track[]} tracks
+   * @param tracks - The tracks to add.
    */
-  addTrackSet( tracks ) {
+  public addTrackSet( tracks: Track[] ): void {
     this.tracks.addAll( tracks );
     this.updateActiveTrack( this.sceneProperty.get() );
   }
@@ -176,10 +185,8 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
   /**
    * Reset all of the tracks in this model's track set, if they are configurable. Otherwise, identical to
    * super function.
-   * @public
-   * @override
    */
-  reset() {
+  public override reset(): void {
     super.reset();
     this.tracks.forEach( track => {
       if ( track.configurable ) {
@@ -192,15 +199,8 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
     this.updateActiveTrack( this.sceneProperty.get() );
   }
 
-  /**
-   * @private
-   *
-   * @param {EnergySkateParkTrackSetModel} model
-   * @param {ControlPoint[]}controlPoints
-   * @param {Object} [options]
-   * @returns {Track}
-   */
-  static createPremadeTrack( model, controlPoints, options ) {
+  private static createPremadeTrack( model: IntentionalAny, controlPoints: ControlPoint[], options: IntentionalAny ): Track {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       configurable: model.tracksConfigurable,
       phetioState: false

@@ -36,7 +36,7 @@ export default class EnergySkateParkDataSample {
   public readonly track: Track;
 
   // Positions of the control points for the saved track, if there is one
-  private readonly trackControlPointPositions: Vector2[];
+  public readonly trackControlPointPositions: Vector2[];
 
   // values copied from SkaterState, but these may change with the reference height and become out of sync with SkaterState
   public kineticEnergy: number;

@@ -315,11 +315,10 @@ const PremadeTracks = {
    */
   createTrack( model, controlPoints, options ) {
     return new Track( model, controlPoints, PARENT_TRACKS, options );
-  }
-};
+  },
 
-// @public @static
-PremadeTracks.TrackType = TrackType;
+  TrackType: TrackType
+};
 
 energySkatePark.register( 'PremadeTracks', PremadeTracks );
 
