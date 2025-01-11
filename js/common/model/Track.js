@@ -521,7 +521,7 @@ class Track extends PhetioObject {
    * past the edge of the track.
    * @public
    *
-   * @param {Vector2} parametricPosition
+   * @param {number} parametricPosition
    * @returns {boolean}
    */
   isParameterInBounds( parametricPosition ) {

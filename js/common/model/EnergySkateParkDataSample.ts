@@ -33,7 +33,7 @@ export default class EnergySkateParkDataSample {
   public readonly stickingToTrack: boolean;
 
   // Skater's track at time of save
-  public readonly track: Track;
+  public readonly track: Track | null;
 
   // Positions of the control points for the saved track, if there is one
   public readonly trackControlPointPositions: Vector2[];

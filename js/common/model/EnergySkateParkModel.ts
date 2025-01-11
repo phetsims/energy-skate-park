@@ -852,7 +852,6 @@ export default class EnergySkateParkModel extends PhetioObject {
         parametricSpeed = parametricSpeed * -1;
       }
 
-      // @ts-expect-error
       const attachedSkater = skaterState.attachToTrack( newThermalEnergy, track, onTopSideOfTrack, parametricPosition, parametricSpeed, newVelocity.x, newVelocity.y, newPosition.x, newPosition.y );
       assert && assert( Utils.equalsEpsilon( attachedSkater.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'large energy change after attaching to track' );
       return attachedSkater;
@@ -983,7 +982,7 @@ export default class EnergySkateParkModel extends PhetioObject {
    * physics, and has been heavily optimized. Returns a new SkaterState for this.skater.
    */
   private stepEuler( dt: number, skaterState: SkaterState ): SkaterState {
-    const track = skaterState.track;
+    const track = skaterState.track!;
     const origEnergy = skaterState.getTotalEnergy();
     const origLocX = skaterState.positionX;
     const origLocY = skaterState.positionY;
@@ -999,14 +998,14 @@ export default class EnergySkateParkModel extends PhetioObject {
     const netForceAngle = Math.atan2( netForceY, netForceX );
 
     // Get the net force in the direction of the track.  Dot product is a * b * cos(theta)
-    const a = netForceMagnitude * Math.cos( skaterState.track.getModelAngleAt( parametricPosition ) - netForceAngle ) / skaterState.mass;
+    const a = netForceMagnitude * Math.cos( skaterState.track!.getModelAngleAt( parametricPosition ) - netForceAngle ) / skaterState.mass;
 
     parametricSpeed += a * dt;
     assert && assert( isFinite( parametricSpeed ), 'parametricSpeed should be finite' );
     parametricPosition += track.getParametricDistance( parametricPosition, parametricSpeed * dt + 1 / 2 * a * dt * dt );
-    const newPointX = skaterState.track.getX( parametricPosition );
-    const newPointY = skaterState.track.getY( parametricPosition );
-    const unitParallelVector = skaterState.track.getUnitParallelVector( parametricPosition );
+    const newPointX = skaterState.track!.getX( parametricPosition );
+    const newPointY = skaterState.track!.getY( parametricPosition );
+    const unitParallelVector = skaterState.track!.getUnitParallelVector( parametricPosition );
     const parallelUnitX = unitParallelVector.x;
     const parallelUnitY = unitParallelVector.y;
     let newVelocityX = parallelUnitX * parametricSpeed;
@@ -1075,7 +1074,7 @@ export default class EnergySkateParkModel extends PhetioObject {
     const curvatureDirectionX = this.getCurvatureDirectionX( curvatureTemp, skaterState.positionX, skaterState.positionY );
     const curvatureDirectionY = this.getCurvatureDirectionY( curvatureTemp, skaterState.positionX, skaterState.positionY );
 
-    const track = skaterState.track;
+    const track = skaterState.track!;
 
     const unitNormalVector = track.getUnitNormalVector( skaterState.parametricPosition );
     const sideVectorX = skaterState.onTopSideOfTrack ? unitNormalVector.x : unitNormalVector.x * -1;
@@ -1123,7 +1122,7 @@ export default class EnergySkateParkModel extends PhetioObject {
       const correctedState = this.correctEnergy( skaterState, newState );
 
       // Check whether the skater has left the track
-      if ( skaterState.track.isParameterInBounds( correctedState.parametricPosition ) ) {
+      if ( skaterState.track!.isParameterInBounds( correctedState.parametricPosition ) ) {
 
         // To prevent non-physical behavior when the skater "pops" above ground after leaving a track that has
         // forced it underground, we switch to ground before the skater can go below ground in the first place.
@@ -1142,7 +1141,7 @@ export default class EnergySkateParkModel extends PhetioObject {
         // Fly off the left or right side of the track
         // Off the edge of the track.  If the skater transitions from the right edge of the 2nd track directly to the
         // ground then do not lose thermal energy during the transition, see #164
-        if ( correctedState.parametricPosition > skaterState.track.maxPoint && skaterState.track.slopeToGround ) {
+        if ( correctedState.parametricPosition > skaterState.track!.maxPoint! && skaterState.track!.slopeToGround ) {
           let result = correctedState.switchToGround( correctedState.thermalEnergy, correctedState.getSpeed(), 0, correctedState.positionX, 0 );
 
           // All track points are at or above ground so it is possible that we took potential energy out of the. Add
@@ -1168,7 +1167,7 @@ export default class EnergySkateParkModel extends PhetioObject {
           return this.correctEnergy( skaterState, result );
         }
         else {
-          debugAttachDetach && debugAttachDetach( `left edge track: ${correctedState.parametricPosition}, ${skaterState.track.maxPoint}` );
+          debugAttachDetach && debugAttachDetach( `left edge track: ${correctedState.parametricPosition}, ${skaterState.track!.maxPoint}` );
 
           // There is a situation in which the `u` of the skater exceeds the track bounds before the
           // getClosestPositionAndParameter.parametricPosition does, which can cause the skater to immediately reattach
@@ -1265,11 +1264,11 @@ export default class EnergySkateParkModel extends PhetioObject {
   private searchSplineForEnergy( skaterState: SkaterState, u0: number, u1: number, e0: number, numSteps: number ): number {
     const da = ( u1 - u0 ) / numSteps;
     let bestAlpha = ( u1 + u0 ) / 2;
-    const p = skaterState.track.getPoint( bestAlpha );
+    const p = skaterState.track!.getPoint( bestAlpha );
     let bestDE = skaterState.updatePosition( p.x, p.y ).getTotalEnergy();
     for ( let i = 0; i < numSteps; i++ ) {
       const proposedAlpha = u0 + da * i;
-      const p2 = skaterState.track.getPoint( bestAlpha );
+      const p2 = skaterState.track!.getPoint( bestAlpha );
       const e = skaterState.updatePosition( p2.x, p2.y ).getTotalEnergy();
       if ( Math.abs( e - e0 ) <= Math.abs( bestDE ) ) {
         bestDE = e - e0;
@@ -1330,7 +1329,7 @@ export default class EnergySkateParkModel extends PhetioObject {
             da = Math.abs( ( ( bestAlpha - da ) - ( bestAlpha + da ) ) / numSteps );
           }
 
-          const point = newState.track.getPoint( bestAlpha );
+          const point = newState.track!.getPoint( bestAlpha );
           const correctedState = newState.updateUPosition( bestAlpha, point.x, point.y );
           debug && debug( `changed position u: dE=${correctedState.getTotalEnergy() - e0}` );
           if ( !Utils.equalsEpsilon( e0, correctedState.getTotalEnergy(), 1E-8 ) ) {
@@ -1388,7 +1387,7 @@ export default class EnergySkateParkModel extends PhetioObject {
         const v = Math.sqrt( vSq );
 
         const newVelocity = v * ( newState.parametricSpeed > 0 ? +1 : -1 );
-        const unitParallelVector = newState.track.getUnitParallelVector( newState.parametricPosition );
+        const unitParallelVector = newState.track!.getUnitParallelVector( newState.parametricPosition );
         const updatedVelocityX = unitParallelVector.x * newVelocity;
         const updatedVelocityY = unitParallelVector.y * newVelocity;
         const fixedState = newState.updateUDVelocity( newVelocity, updatedVelocityX, updatedVelocityY );
