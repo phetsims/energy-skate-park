@@ -9,11 +9,21 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import energySkatePark from '../../energySkatePark.js';
 
-class UserControlledPropertySet {
-  constructor() {
+export default class UserControlledPropertySet {
 
-    // @public {BooleanProperty} - public so that various controls set these to `true` upon
-    // user input
+  // public so that various controls set these to `true` upon user input
+  public readonly frictionControlledProperty: BooleanProperty;
+  public readonly gravityControlledProperty: BooleanProperty;
+  public readonly massControlledProperty: BooleanProperty;
+  public readonly referenceHeightControlledProperty: BooleanProperty;
+  public readonly trackControlledProperty: BooleanProperty;
+  public readonly skaterControlledProperty: BooleanProperty;
+  public readonly stickingToTrackControlledProperty: BooleanProperty;
+
+  // collection of the Properties above, so they can conveniently be used in a multilink
+  public readonly properties: BooleanProperty[];
+
+  public constructor() {
     this.frictionControlledProperty = new BooleanProperty( false );
     this.gravityControlledProperty = new BooleanProperty( false );
     this.massControlledProperty = new BooleanProperty( false );
@@ -22,8 +32,6 @@ class UserControlledPropertySet {
     this.skaterControlledProperty = new BooleanProperty( false );
     this.stickingToTrackControlledProperty = new BooleanProperty( false );
 
-    // @public {BooleanProperty[]} - collection of the Properties above, so they can conveniently be
-    // used in a multilink
     this.properties = [
       this.frictionControlledProperty,
       this.gravityControlledProperty,
@@ -37,5 +45,3 @@ class UserControlledPropertySet {
 }
 
 energySkatePark.register( 'UserControlledPropertySet', UserControlledPropertySet );
-
-export default UserControlledPropertySet;
