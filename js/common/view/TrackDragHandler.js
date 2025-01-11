@@ -74,7 +74,7 @@ class TrackDragHandler extends DragListener {
   }
 
   /**
-   * @private
+   * @public
    * @param {Event} event
    */
   trackDragged( event ) {

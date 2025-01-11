@@ -10,20 +10,24 @@
 import Emitter from '../../../../axon/js/Emitter.js';
 import { Shape } from '../../../../kite/js/imports.js';
 import { Circle, DragListener, Rectangle } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPointUI from './ControlPointUI.js';
+import TrackDragHandler from './TrackDragHandler.js';
+import TrackNode from './TrackNode.js';
 
 class ControlPointNode extends Circle {
+  public readonly boundsRectangle: Rectangle | null;
 
   /**
-   * @param {TrackNode} trackNode
-   * @param {TrackDragHandler|null} trackDragHandler - so dragging a ControlPointNode can initiate dragging a track
-   * @param {number} i
-   * @param {boolean} isEndPoint
-   * @param {Tandem} tandem
+   * @param trackNode
+   * @param trackDragHandler - so dragging a ControlPointNode can initiate dragging a track
+   * @param i
+   * @param isEndPoint
+   * @param tandem
    */
-  constructor( trackNode, trackDragHandler, i, isEndPoint, tandem ) {
+  public constructor( trackNode: TrackNode, trackDragHandler: TrackDragHandler | null, i: number, isEndPoint: boolean, tandem: Tandem ) {
     const track = trackNode.track;
     const model = trackNode.model;
     const modelViewTransform = trackNode.modelViewTransform;
@@ -68,21 +72,22 @@ class ControlPointNode extends Circle {
         lineDash: [ 4, 5 ]
       } );
 
-      const boundsVisibilityListener = dragging => {
-        this.boundsRectangle.visible = EnergySkateParkQueryParameters.showPointBounds || dragging;
+      const boundsVisibilityListener = ( dragging: boolean ) => {
+        this.boundsRectangle!.visible = EnergySkateParkQueryParameters.showPointBounds || dragging;
       };
       controlPoint.draggingProperty.link( boundsVisibilityListener );
     }
 
+    // @ts-expect-error
     controlPoint.positionProperty.link( position => {
       this.translation = modelViewTransform.modelToViewPosition( position );
     } );
 
     // if the ControlPoint is 'interactive' it supports dragging and potentially track splitting
-    let dragListener = null; // potential reference for disposal
+    let dragListener: DragListener | null = null; // potential reference for disposal
     if ( controlPoint.interactive ) {
       let dragEvents = 0;
-      let lastControlPointUI = null;
+      let lastControlPointUI: ControlPointUI | null = null;
       dragListener = new DragListener( {
         tandem: tandem.createTandem( 'dragListener' ),
         allowTouchSnag: true,
@@ -120,6 +125,8 @@ class ControlPointNode extends Circle {
 
             // Only drag a track if nothing else was dragging the track (which caused a flicker), see #282
             if ( track.dragSource === dragListener ) {
+
+              // @ts-expect-error
               trackDragHandler && trackDragHandler.trackDragged( event );
             }
             return;
@@ -195,6 +202,8 @@ class ControlPointNode extends Circle {
 
             // Only drop a track if nothing else was dragging the track (which caused a flicker), see #282
             if ( track.dragSource === dragListener ) {
+
+              // @ts-expect-error
               trackDragHandler && trackDragHandler.trackDragEnded( event );
             }
             return;
@@ -242,6 +251,7 @@ class ControlPointNode extends Circle {
               // If the track has translated, hide the buttons, see #272
               track.translatedEmitter.addListener( removalListener );
 
+              // @ts-expect-error
               trackNode.parents[ 0 ].addChild( lastControlPointUI );
             }
 
@@ -252,34 +262,26 @@ class ControlPointNode extends Circle {
           }
         }
       } );
+
+      // @ts-expect-error
       dragListener.over = () => {
         if ( track.physicalProperty.value && !track.draggingProperty.value ) {
           this.opacity = highlightedOpacity;
           this.fill = highlightedFill;
         }
       };
+
+      // @ts-expect-error
       dragListener.out = () => {
         this.opacity = opacity;
         this.fill = fill;
       };
       this.addInputListener( dragListener );
+
+      this.addDisposable( dragListener );
     }
 
     this.touchArea = Shape.circle( 0, 0, 25 );
-
-    // @private
-    this.disposeControlPointNode = () => {
-      dragListener && dragListener.dispose();
-    };
-  }
-
-  /**
-   * Make eligible for garbage collection.
-   * @public
-   */
-  dispose() {
-    this.disposeControlPointNode();
-    super.dispose();
   }
 }
 
