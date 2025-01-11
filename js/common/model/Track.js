@@ -470,7 +470,7 @@ class Track extends PhetioObject {
    * @public
    *
    * @param {number} parametricPosition
-   * @returns {number}
+   * @returns {Vector2}
    */
   getUnitNormalVector( parametricPosition ) {
 

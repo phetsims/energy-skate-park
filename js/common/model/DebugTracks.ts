@@ -218,7 +218,6 @@ class DebugTracks {
         model.controlPointGroup.createNextElement( -5.23, -0.85 ),
         model.controlPointGroup.createNextElement( -4.23, -0.85 )
       ];
-      // @ts-expect-error
       const track1: IntentionalAny = model.trackGroup.createNextElement( controlPoints1, null );
       track1.physicalProperty.value = false;
       model.tracks.add( track1 );
@@ -228,7 +227,6 @@ class DebugTracks {
         model.controlPointGroup.createNextElement( -5.23, -0.85 ),
         model.controlPointGroup.createNextElement( -4.23, -0.85 )
       ];
-      // @ts-expect-error
       const track2: IntentionalAny = model.trackGroup.createNextElement( controlPoints2, null );
       track2.physicalProperty.value = false;
       model.tracks.add( track2 );
@@ -241,7 +239,6 @@ class DebugTracks {
         model.controlPointGroup.createNextElement( -9.170190362232134, 6.469483302512781 )
       ];
 
-      // @ts-expect-error
       const track3: IntentionalAny = model.trackGroup.createNextElement( controlPoints3, null );
       track3.physicalProperty.value = true;
       model.tracks.add( track3 );
@@ -260,7 +257,6 @@ class DebugTracks {
         model.controlPointGroup.createNextElement( -4.705692695214106, 0.9454061712846356 ),
         model.controlPointGroup.createNextElement( -7.310629722921914, 7.457748740554157 )
 
-        // @ts-expect-error
       ], null );
       track15.physicalProperty.value = true;
       model.tracks.add( track15 );
@@ -282,7 +278,6 @@ class DebugTracks {
         model.controlPointGroup.createNextElement( -0.9831986809563062, 7.962016694146743 )
       ];
 
-      // @ts-expect-error
       const track16: IntentionalAny = model.trackGroup.createNextElement( controlPoints, [], {
         configurable: true
       } );

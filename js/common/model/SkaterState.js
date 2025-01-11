@@ -195,7 +195,7 @@ class SkaterState {
    * @param {number} positionX
    * @param {number} positionY
    * @param {number} angle
-   * @param {number} onTopSideOfTrack
+   * @param {boolean} onTopSideOfTrack
    * @param {number} velocityX
    * @param {number} velocityY
    * @returns {SkaterState}
@@ -231,7 +231,7 @@ class SkaterState {
    * Update the parametric position and position.
    * @public
    *
-   * @param {Vector2} parametricPosition
+   * @param {number} parametricPosition
    * @param {number} positionX
    * @param {number} positionY
    * @returns {SkaterState}

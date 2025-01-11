@@ -113,7 +113,6 @@ class ControlPoint extends PhetioObject {
    * TODO: https://github.com/phetsims/energy-skate-park/issues/123 is this reversed?  Maybe call on the model
    */
   public copy( model: EnergySkateParkModel ): ControlPoint {
-    // @ts-expect-error
     return model.controlPointGroup.createNextElement( this.positionProperty.value.x, this.positionProperty.value.y );
   }
 

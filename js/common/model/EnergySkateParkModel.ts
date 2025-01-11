@@ -24,12 +24,13 @@
  */
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
-import createObservableArray from '../../../../axon/js/createObservableArray.js';
+import createObservableArray, { ObservableArray } from '../../../../axon/js/createObservableArray.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Emitter from '../../../../axon/js/Emitter.js';
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
@@ -37,10 +38,12 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import EventTimer, { ConstantEventModel } from '../../../../phet-core/js/EventTimer.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import TimeSpeed from '../../../../scenery-phet/js/TimeSpeed.js';
 import PhetioGroup from '../../../../tandem/js/PhetioGroup.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
 import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -48,6 +51,7 @@ import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPoint from './ControlPoint.js';
 import DebugTracks from './DebugTracks.js';
+import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
 import Skater from './Skater.js';
 import SkaterState from './SkaterState.js';
 import Track from './Track.js';
@@ -65,34 +69,117 @@ const thrust = new Vector2( 0, 0 );
 const FRAME_RATE = 60;
 
 // Flag to enable debugging for physics issues
-const debug = EnergySkateParkQueryParameters.debugLog ? function( ...args ) {
+const debug = EnergySkateParkQueryParameters.debugLog ? function( ...args: IntentionalAny[] ) {
   console.log( ...args );
 } : null;
-const debugAttachDetach = EnergySkateParkQueryParameters.debugAttachDetach ? function( ...args ) {
+const debugAttachDetach = EnergySkateParkQueryParameters.debugAttachDetach ? function( ...args: IntentionalAny[] ) {
   console.log( ...args );
 } : null;
 
 // Track the model iterations to implement "slow motion" by stepping every Nth frame, see #210
 let modelIterations = 0;
 
-/**
- * @param {Tandem} tandem
- * @param {Object} [options]
- */
-class EnergySkateParkModel extends PhetioObject {
+export default class EnergySkateParkModel extends PhetioObject {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( preferencesModel, tandem, options ) {
+  // emits an event whenever a track changes in some way (control points dragged, track split apart,
+  // track dragged, track deleted or scene changed, etc...)
+  public readonly trackChangedEmitter: Emitter;
+
+  public readonly tracksDraggable: boolean;
+  public readonly tracksConfigurable: boolean;
+  public readonly defaultFriction: number;
+
+  // Will be filled in by the view, used to prevent control points from moving outside the visible model
+  // bounds when adjusted, see #195
+  public readonly availableModelBoundsProperty: Property<Bounds2>;
+
+  // group of control points
+  public readonly controlPointGroup: PhetioGroup<ControlPoint, IntentionalAny>;
+
+  // TODO: https://github.com/phetsims/energy-skate-park/issues/123 the control point group doesn't have enough archetypes to
+  // TODO: create an archetype track, https://github.com/phetsims/energy-skate-park/issues/123
+  // group of tracks
+  public readonly trackGroup: PhetioGroup<Track, IntentionalAny>;
+
+  // Temporary flag that keeps track of whether the track was changed in the step before the physics
+  // update. True if the skater's track is being dragged by the user, so that energy conservation no longer applies.
+  // Only applies to one frame at a time (for the immediate next update).  See #127 and #135
+  private trackChangePending = false;
+
+  // model for visibility of various view parameters
+  public readonly pieChartVisibleProperty: BooleanProperty;
+  public readonly barGraphVisibleProperty: BooleanProperty;
+  public readonly gridVisibleProperty: BooleanProperty;
+  public readonly speedometerVisibleProperty: BooleanProperty;
+
+  // A model component controlling simulation specific preferences for the sim.
+  public readonly preferencesModel: EnergySkateParkPreferencesModel;
+
+  // whether the speed value is visible on the speedometer
+  public readonly speedValueVisibleProperty: BooleanProperty;
+  public readonly referenceHeightVisibleProperty: BooleanProperty;
+  public readonly measuringTapeVisibleProperty: BooleanProperty;
+
+  // scale applied to graphs to determine relative height, making this larger will "zoom out"
+  public readonly barGraphScaleProperty: NumberProperty;
+
+  // enabled/disabled for the track editing buttons
+  public readonly editButtonEnabledProperty: BooleanProperty;
+  public readonly clearButtonEnabledProperty: BooleanProperty;
+
+  // Whether the sim is paused or running
+  public readonly pausedProperty: BooleanProperty;
+
+  // model element for the stop watch in this sim
+  public readonly stopwatch: Stopwatch;
+
+  public readonly timeSpeedProperty: EnumerationProperty<TimeSpeed>;
+
+  // Coefficient of friction (unitless) between skater and track
+  public frictionProperty: NumberProperty;
+
+  // model position for the base  of the measuring tape
+  public measuringTapeBasePositionProperty: Vector2Property;
+
+  // model position for the tip of the measuring tape
+  public measuringTapeTipPositionProperty: Vector2Property;
+
+  // Whether the skater should stick to the track like a roller coaster, or be able to fly off like a street
+  public stickingToTrackProperty: BooleanProperty;
+
+  // collection of Properties that indicate that a user is
+  // modifying some variable that will change physical system and modify all saved energy data
+  public userControlledPropertySet: UserControlledPropertySet;
+
+  // the skater model instance
+  public skater: Skater;
+
+  // Determine if the skater is onscreen or offscreen for purposes of highlighting the
+  // 'return skater' button. Don't check whether the skater is underground since that is a rare case (only if the
+  // user is actively dragging a control point near y=0 and the track curves below) and the skater will pop up
+  // again soon, see the related flickering problem in #206
+  public skaterInBoundsProperty: TReadOnlyProperty<boolean>;
+
+  // - signify that the model has successfully been reset to initial state
+  public resetEmitter: Emitter;
+
+  public readonly tracks: ObservableArray<Track>;
+
+  // Required for PhET-iO state wrapper
+  public readonly updateEmitter: Emitter;
+
+  // Updates the model with constant event intervals even if there is a drop in the framerate
+  // so that simulation performance has no impact on physical behavior.
+  public readonly eventTimer: EventTimer;
+
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options?: IntentionalAny ) {
     super( {
       phetioType: EnergySkateParkModel.EnergySkateParkModelIO,
       tandem: tandem,
       phetioState: false
     } );
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {number} - initial/default value of friction for the model
@@ -112,25 +199,20 @@ class EnergySkateParkModel extends PhetioObject {
       skaterOptions: null
     }, options );
 
-    // @public - emits an event whenever a track changes in some way (control points dragged, track split apart,
-    // track dragged, track deleted or scene changed, etc...)
     this.trackChangedEmitter = new Emitter();
 
-    // @public (read-only)
     this.tracksDraggable = options.tracksDraggable;
     this.tracksConfigurable = options.tracksConfigurable;
     this.defaultFriction = options.defaultFriction;
 
-    // @public - Will be filled in by the view, used to prevent control points from moving outside the visible model
-    // bounds when adjusted, see #195
     this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
       tandem: tandem.createTandem( 'availableModelBoundsProperty' ),
       phetioValueType: Bounds2.Bounds2IO
     } );
 
-    // @public {PhetioGroup.<ControlPoint>} group of control points
     this.controlPointGroup = new PhetioGroup( ( tandem, x, y, options ) => {
       assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
+      // @ts-expect-error
       return new ControlPoint( x, y, merge( {}, options, { tandem: tandem, phetioDynamicElement: true } ) );
     }, [ 0, 0, {} ], {
       tandem: tandem.createTandem( 'controlPointGroup' ),
@@ -138,11 +220,9 @@ class EnergySkateParkModel extends PhetioObject {
       phetioDynamicElementName: 'controlPoint'
     } );
 
-    // TODO: https://github.com/phetsims/energy-skate-park/issues/123 the control point group doesn't have enough archetypes to
-    // TODO: create an archetype track, https://github.com/phetsims/energy-skate-park/issues/123
-    // @public {PhetioGroup.<Track>} group of tracks
     this.trackGroup = new PhetioGroup( ( tandem, controlPoints, parents, options ) => {
       assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
+      // @ts-expect-error
       return new Track( this, controlPoints, parents, merge( {}, options, {
         tandem: tandem,
         phetioDynamicElement: true
@@ -156,13 +236,6 @@ class EnergySkateParkModel extends PhetioObject {
       phetioDynamicElementName: 'track'
     } );
 
-    // {boolean} - Temporary flag that keeps track of whether the track was changed in the step before the physics
-    // update. True if the skater's track is being dragged by the user, so that energy conservation no longer applies.
-    // Only applies to one frame at a time (for the immediate next update).  See #127 and #135
-    // @private
-    this.trackChangePending = false;
-
-    // @public - model for visibility of various view parameters
     this.pieChartVisibleProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'pieChartVisibleProperty' )
     } );
@@ -176,8 +249,6 @@ class EnergySkateParkModel extends PhetioObject {
       tandem: tandem.createTandem( 'speedometerVisibleProperty' )
     } );
 
-    // @public (read-only) {EnergySkateParkPreferencesModel} - A model component controlling simulation specific
-    // preferences for the sim.
     this.preferencesModel = preferencesModel;
 
     // whether the speed value is visible on the speedometer
@@ -191,12 +262,10 @@ class EnergySkateParkModel extends PhetioObject {
       tandem: tandem.createTandem( 'measuringTapeVisibleProperty' )
     } );
 
-    // @public {number} - scale applied to graphs to determine relative height, making this larger will "zoom out"
     this.barGraphScaleProperty = new NumberProperty( 1 / 30, {
       tandem: tandem.createTandem( 'barGraphScaleProperty' )
     } );
 
-    // @public - enabled/disabled for the track editing buttons
     this.editButtonEnabledProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'editButtonEnabledProperty' )
     } );
@@ -204,12 +273,10 @@ class EnergySkateParkModel extends PhetioObject {
       tandem: tandem.createTandem( 'clearButtonEnabledProperty' )
     } );
 
-    // Whether the sim is paused or running
     this.pausedProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'pausedProperty' )
     } );
 
-    // @public {StopWatch} - model element for the stop watch in this sim
     this.stopwatch = new Stopwatch( {
       timePropertyOptions: {
         range: Stopwatch.ZERO_TO_ALMOST_SIXTY
@@ -222,45 +289,33 @@ class EnergySkateParkModel extends PhetioObject {
       tandem: tandem.createTandem( 'timeSpeedProperty' )
     } );
 
-    // @public {number} - Coefficient of friction (unitless) between skater and track
     this.frictionProperty = new NumberProperty( this.defaultFriction, {
       range: new Range( EnergySkateParkConstants.MIN_FRICTION, EnergySkateParkConstants.MAX_FRICTION ),
       tandem: tandem.createTandem( 'frictionProperty' )
     } );
 
-    // @public {Vector2Property} - model position for the base  of the measuring tape
     this.measuringTapeBasePositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
       tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' ),
       units: 'm'
     } );
 
-    // @public {Vector2Property} - model position for the tip of the measuring tape
     this.measuringTapeTipPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
       tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' ),
       units: 'm'
     } );
 
-    // @public {boolean} - Whether the skater should stick to the track like a roller coaster, or be able to fly off
-    // like a street
     this.stickingToTrackProperty = new BooleanProperty( true, {
       tandem: tandem.createTandem( 'stickingToTrackProperty' )
     } );
 
-    // @public {UserControlledPropertySet} - collection of Properties that indicate that a user is
-    // modifying some variable that will change physical system and modify all saved energy data
     this.userControlledPropertySet = new UserControlledPropertySet();
 
     if ( EnergySkateParkQueryParameters.testTrackIndex > 0 ) {
       this.frictionProperty.debug( 'friction' );
     }
 
-    // @public {Skater} - the skater model instance
     this.skater = new Skater( tandem.createTandem( 'skater' ), options.skaterOptions );
 
-    // @public {DerivedProperty} - Determine if the skater is onscreen or offscreen for purposes of highlighting the
-    // 'return skater' button. Don't check whether the skater is underground since that is a rare case (only if the
-    // user is actively dragging a control point near y=0 and the track curves below) and the skater will pop up
-    // again soon, see the related flickering problem in #206
     this.skaterInBoundsProperty = new DerivedProperty( [ this.skater.positionProperty ], position => {
       const availableModelBounds = this.availableModelBoundsProperty.get();
       if ( !availableModelBounds.hasNonzeroArea() ) {
@@ -269,7 +324,6 @@ class EnergySkateParkModel extends PhetioObject {
       return availableModelBounds && containsAbove( availableModelBounds, position.x, position.y );
     } );
 
-    // @public - signify that the model has successfully been reset to initial state
     this.resetEmitter = new Emitter();
 
     // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
@@ -279,7 +333,6 @@ class EnergySkateParkModel extends PhetioObject {
       }
     } );
 
-    // @public
     this.tracks = createObservableArray( {
       phetioType: createObservableArray.ObservableArrayIO( ReferenceIO( Track.TrackIO ) ),
       tandem: tandem.createTandem( 'tracks' )
@@ -303,12 +356,9 @@ class EnergySkateParkModel extends PhetioObject {
     this.tracks.addItemAddedListener( updateTrackEditingButtonProperties );
     this.tracks.addItemRemovedListener( updateTrackEditingButtonProperties );
 
-    // @public {Emitter} - Required for PhET-iO state wrapper
     this.updateEmitter = new Emitter();
     this.trackChangedEmitter.addListener( updateTrackEditingButtonProperties );
 
-    // @private {EventTimer} - Updates the model with constant event intervals even if there is a drop in the framerate
-    // so that simulation performance has no impact on physical behavior.
     this.eventTimer = new EventTimer( new ConstantEventModel( FRAME_RATE ), this.constantStep.bind( this ) );
 
     if ( EnergySkateParkQueryParameters.testTrackIndex > 0 ) {
@@ -318,9 +368,8 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Reset the model, including skater, tracks, tools, and UI visibility, etc.
-   * @public
    */
-  reset() {
+  public reset(): void {
     const availableModelBounds = this.availableModelBoundsProperty.value;
     this.pieChartVisibleProperty.reset();
     this.barGraphVisibleProperty.reset();
@@ -347,9 +396,8 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Step one frame, assuming 60 fps.
-   * @public
    */
-  manualStep() {
+  public manualStep(): void {
     const skaterState = new SkaterState( this.skater );
     const dt = 1.0 / FRAME_RATE;
     const result = this.stepModel( dt, skaterState );
@@ -360,15 +408,13 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * Respond to an update from the EventTimer, assuming 60 frames per second. The time step is standardized so that
    * play speed has no impact on simulation behavior.
-   *
-   * @private
    */
-  constantStep() {
+  private constantStep(): void {
 
     // This simulation uses a fixed time step to make the skater's motion reproducible.
     const dt = 1.0 / FRAME_RATE;
 
-    let initialEnergy = null;
+    let initialEnergy: number | null = null;
 
     // If the delay makes dt too high, then truncate it.  This helps e.g. when clicking in the address bar on iPad,
     // which gives a huge dt and problems for integration
@@ -396,7 +442,7 @@ class EnergySkateParkModel extends PhetioObject {
         this.skater.updatedEmitter.emit();
 
         if ( debug ) {
-          if ( Math.abs( updatedState.getTotalEnergy() - initialEnergy ) > 1E-6 ) {
+          if ( Math.abs( updatedState.getTotalEnergy() - initialEnergy! ) > 1E-6 ) {
             const initialStateCopy = new SkaterState( this.skater );
             const redo = this.stepModel( this.timeSpeedProperty.get() === TimeSpeed.NORMAL ? dt : dt * 0.25, initialStateCopy );
             debug && debug( redo );
@@ -418,9 +464,11 @@ class EnergySkateParkModel extends PhetioObject {
     // If traveling on the ground, face in the direction of motion, see #181
     if ( this.skater.trackProperty.value === null && this.skater.positionProperty.value.y === 0 ) {
       if ( this.skater.velocityProperty.value.x > 0 ) {
+        // @ts-expect-error
         this.skater.directionProperty.value = Skater.Direction.RIGHT;
       }
       if ( this.skater.velocityProperty.value.x < 0 ) {
+        // @ts-expect-error
         this.skater.directionProperty.value = Skater.Direction.LEFT;
       }
       else {
@@ -431,26 +479,16 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Step the model (automatically called by joist)
-   * @public
-   * @override
-   *
-   * @param {number} dt - in seconds
    */
-  step( dt ) {
+  public step( dt: number ): void {
     this.eventTimer.step( dt );
   }
 
   /**
    * The skater moves along the ground with the same coefficient of fraction as the tracks, see #11. Returns a
    * SkaterState that is applied to this.skater.
-   * @private
-   *
-   * @param {number} dt
-   * @param {SkaterState} skaterState
-   *
-   * @returns {SkaterState}
    */
-  stepGround( dt, skaterState ) {
+  private stepGround( dt: number, skaterState: SkaterState ): SkaterState {
     const x0 = skaterState.positionX;
     const frictionMagnitude = ( this.frictionProperty.value === 0 || skaterState.getSpeed() < 1E-2 ) ? 0 :
                               this.frictionProperty.value * skaterState.mass * skaterState.gravity;
@@ -499,21 +537,21 @@ class EnergySkateParkModel extends PhetioObject {
   }
 
   /**
-   * Transition the skater to the ground. New speed for the skater will keep x component of proposed velocity, and
-   * energies are then updated accordingly. Returns a new SkaterState to modify this.skater.
+   * Transition the skater to the ground. New speed for the skater will keep the x component of proposed velocity,
+   * and energies are then updated accordingly. Returns a new SkaterState to modify this.skater.
    *
    * No bouncing on the ground, but the code is very similar to attachment part of interactWithTracksWileFalling.
-   * @private
    *
-   * @param {SkaterState} skaterState
-   * @param {number} initialEnergy - energy prior to transitioning to ground
-   * @param {Vector2} proposedPosition
-   * @param {Vector2} proposedVelocity
-   * @param {number} dt
-   *
-   * @returns {SkaterState}
+   * @remarks
+   * `initialEnergy` is the energy prior to transitioning to ground.
    */
-  switchToGround( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt ) {
+  private switchToGround(
+    skaterState: SkaterState,
+    initialEnergy: number,
+    proposedPosition: Vector2,
+    proposedVelocity: Vector2,
+    dt: number
+  ): SkaterState {
     const segment = new Vector2( 1, 0 );
 
     let newSpeed = segment.dot( proposedVelocity );
@@ -535,6 +573,7 @@ class EnergySkateParkModel extends PhetioObject {
     // see https://github.com/phetsims/energy-skate-park/issues/45
     assert && assert( newThermalEnergy >= 0,
       `${'Thermal energy should be non-negative: ' +
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
       'skaterState: '}${skaterState}, ` +
       `oldPotentialEnergy:${skaterState.getPotentialEnergy()}, ` +
       `skaterPositionY:${skaterState.positionY}, ` +
@@ -554,16 +593,15 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Only use this correction when something has gone wrong with the thermal energy calculation. For example, thermal
-   * energy has gone negative. Attempts to correct by using previous thermal energy and compensate modifying
+   * energy has gone negative. Attempts to correct by using previous thermal energy and compensate by modifying
    * kinetic energy. If this results in negative kinetic energy, we have to accept a change to total energy, but
    * we make sure that it is within an acceptable amount.
-   * @private
-   *
-   * @param {SkaterState} skaterState
-   * @param {Vector2} segment
-   * @returns {SkaterState}
    */
-  correctThermalEnergy( skaterState, segment, proposedPosition ) {
+  private correctThermalEnergy(
+    skaterState: SkaterState,
+    segment: Vector2,
+    proposedPosition: Vector2
+  ): SkaterState {
     const initialEnergy = skaterState.getTotalEnergy();
     const newPotentialEnergy = ( -1 ) * skaterState.mass * skaterState.gravity * ( proposedPosition.y - skaterState.referenceHeight );
     const newThermalEnergy = skaterState.thermalEnergy;
@@ -596,15 +634,18 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Update the skater in free fall.
-   * @private
    *
-   * @param {number} dt the time that passed, in seconds
-   * @param {SkaterState} skaterState the original state of the skater
-   * @param {boolean} justLeft true if the skater just fell off or launched off the track: in this case it should not
-   * interact with the track.
-   * @returns {SkaterState} the new state
+   * @param dt the time that passed, in seconds
+   * @param skaterState the original state of the skater
+   * @param justLeft true if the skater just fell off or launched off the track: in this case it should not
+   *                 interact with the track.
+   * @returns the new state
    */
-  stepFreeFall( dt, skaterState, justLeft ) {
+  private stepFreeFall(
+    dt: number,
+    skaterState: SkaterState,
+    justLeft: boolean
+  ): SkaterState {
     const initialEnergy = skaterState.getTotalEnergy();
 
     const acceleration = new Vector2( 0, skaterState.gravity );
@@ -645,13 +686,15 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * Find the closest track to the skater, to see what he can bounce off or attach to, and return the closest point
    * that the track took.
-   * @private
    *
-   * @param {Vector2} position
-   * @param {Track[]} physicalTracks
-   * @returns {Object|null} - collection of { track: {Track}, parametricPosition: {Vector2}, point: {Vector2} }, or null
+   * @param position
+   * @param physicalTracks
+   * @returns collection of { track, parametricPosition, point }, or null
    */
-  getClosestTrackAndPositionAndParameter( position, physicalTracks ) {
+  private getClosestTrackAndPositionAndParameter(
+    position: Vector2,
+    physicalTracks: Track[]
+  ): { track: Track; parametricPosition: number; point: Vector2 } | null {
     let closestTrack = null;
     let closestMatch = null;
     let closestDistance = Number.POSITIVE_INFINITY;
@@ -668,6 +711,7 @@ class EnergySkateParkModel extends PhetioObject {
       }
     }
     if ( closestTrack ) {
+      // @ts-expect-error
       return { track: closestTrack, parametricPosition: closestMatch.parametricPosition, point: closestMatch.point };
     }
     else {
@@ -677,17 +721,23 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Check to see if the points crossed the track.
-   * @private
    *
-   * @param {Object} closestTrackAndPositionAndParameter - the object returned by getClosestTrackAndPositionAndParameter()
-   * @param {Track[]} physicalTracks - all tracks that the skater can physically interact with
-   * @param {number} beforeX
-   * @param {number} beforeY
-   * @param {number} afterX
-   * @param {number} afterY
-   * @returns {boolean}
+   * @param closestTrackAndPositionAndParameter - the object returned by getClosestTrackAndPositionAndParameter()
+   * @param physicalTracks - all tracks that the skater can physically interact with
+   * @param beforeX
+   * @param beforeY
+   * @param afterX
+   * @param afterY
+   * @returns whether it crossed the track
    */
-  crossedTrack( closestTrackAndPositionAndParameter, physicalTracks, beforeX, beforeY, afterX, afterY ) {
+  private crossedTrack(
+    closestTrackAndPositionAndParameter: IntentionalAny,
+    physicalTracks: Track[],
+    beforeX: number,
+    beforeY: number,
+    afterX: number,
+    afterY: number
+  ): boolean {
     const track = closestTrackAndPositionAndParameter.track;
     const parametricPosition = closestTrackAndPositionAndParameter.parametricPosition;
     const trackPoint = closestTrackAndPositionAndParameter.point;
@@ -709,18 +759,17 @@ class EnergySkateParkModel extends PhetioObject {
   }
 
   /**
-   * Check to see if skater should hit or attach to  track during free fall. Returns a new SkaterState for this.skater
-   * @private
-   *
-   * @param {Track[]} physicalTracks
-   * @param {SkaterState} skaterState
-   * @param {Vector2} proposedPosition
-   * @param {number} initialEnergy
-   * @param {number} dt
-   * @param {Vector2} proposedVelocity
-   * @returns {SkaterState}
+   * Check to see if skater should hit or attach to track during free fall.
+   * Returns a new SkaterState for this.skater
    */
-  interactWithTracksWhileFalling( physicalTracks, skaterState, proposedPosition, initialEnergy, dt, proposedVelocity ) {
+  private interactWithTracksWhileFalling(
+    physicalTracks: Track[],
+    skaterState: SkaterState,
+    proposedPosition: Vector2,
+    initialEnergy: number,
+    dt: number,
+    proposedVelocity: Vector2
+  ): SkaterState {
 
     // Find the closest track, and see if the skater would cross it in this time step.
     // Assuming the skater's initial + final positions determine a line segment, we search for the best point for the
@@ -732,16 +781,16 @@ class EnergySkateParkModel extends PhetioObject {
     const c = this.getClosestTrackAndPositionAndParameter( new Vector2( proposedPosition.x, proposedPosition.y ), physicalTracks );
 
     const initialPosition = skaterState.getPosition();
-    const distanceA = Utils.distToSegment( a.point, initialPosition, proposedPosition );
-    const distanceB = Utils.distToSegment( b.point, initialPosition, proposedPosition );
-    const distanceC = Utils.distToSegment( c.point, initialPosition, proposedPosition );
+    const distanceA = Utils.distToSegment( a!.point, initialPosition, proposedPosition );
+    const distanceB = Utils.distToSegment( b!.point, initialPosition, proposedPosition );
+    const distanceC = Utils.distToSegment( c!.point, initialPosition, proposedPosition );
 
     const distances = [ distanceA, distanceB, distanceC ];
     const minDistance = _.min( distances );
 
-    const closestTrackAndPositionAndParameter = minDistance === distanceA ? a : minDistance === distanceC ? c : b;
+    const closestTrackAndPositionAndParameter = minDistance === distanceA ? a! : minDistance === distanceC ? c! : b!;
 
-    debugAttachDetach && debugAttachDetach( 'minDistance', distances.indexOf( minDistance ) );
+    debugAttachDetach && debugAttachDetach( 'minDistance', distances.indexOf( minDistance! ) );
 
     const crossed = this.crossedTrack( closestTrackAndPositionAndParameter, physicalTracks,
       skaterState.positionX, skaterState.positionY, proposedPosition.x, proposedPosition.y );
@@ -753,6 +802,7 @@ class EnergySkateParkModel extends PhetioObject {
     if ( crossed ) {
       debugAttachDetach && debugAttachDetach( 'attaching' );
       const normal = track.getUnitNormalVector( parametricPosition );
+
       const segment = normal.perpendicular;
 
       const beforeVector = skaterState.getPosition().minus( trackPoint );
@@ -802,6 +852,7 @@ class EnergySkateParkModel extends PhetioObject {
         parametricSpeed = parametricSpeed * -1;
       }
 
+      // @ts-expect-error
       const attachedSkater = skaterState.attachToTrack( newThermalEnergy, track, onTopSideOfTrack, parametricPosition, parametricSpeed, newVelocity.x, newVelocity.y, newPosition.x, newPosition.y );
       assert && assert( Utils.equalsEpsilon( attachedSkater.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'large energy change after attaching to track' );
       return attachedSkater;
@@ -815,17 +866,14 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Started in free fall and did not interact with a track. Returns a new SkaterState for this.skater.
-   * @private
-   *
-   * @param {SkaterState} skaterState
-   * @param {number} initialEnergy
-   * @param {Vector2} proposedPosition
-   * @param {Vector2} proposedVelocity
-   * @param {number} dt
-   *
-   * @returns {SkaterState}
    */
-  continueFreeFall( skaterState, initialEnergy, proposedPosition, proposedVelocity, dt ) {
+  private continueFreeFall(
+    skaterState: SkaterState,
+    initialEnergy: number,
+    proposedPosition: Vector2,
+    proposedVelocity: Vector2,
+    dt: number
+  ): SkaterState {
 
     // make up for the difference by changing the y value
     const y = ( initialEnergy - 0.5 * skaterState.mass * proposedVelocity.magnitudeSquared - skaterState.thermalEnergy ) / ( -1 * skaterState.mass * skaterState.gravity ) + skaterState.referenceHeight;
@@ -840,16 +888,16 @@ class EnergySkateParkModel extends PhetioObject {
   }
 
   /**
-   * Gets the net force discluding normal force.
+   * Gets the net force excluding the normal force.
    *
    * Split into component-wise to prevent allocations, see #50
    *
-   * @private
-   *
-   * @param {SkaterState} skaterState the state
-   * @returns {number} netForce in the X direction
+   * @param skaterState the state
+   * @returns netForce in the X direction
    */
-  getNetForceWithoutNormalX( skaterState ) {
+  private getNetForceWithoutNormalX(
+    skaterState: SkaterState
+  ): number {
     return this.getFrictionForceX( skaterState );
   }
 
@@ -857,25 +905,21 @@ class EnergySkateParkModel extends PhetioObject {
    * Gets the net force but without the normal force.
    *
    * Split into component-wise to prevent allocations, see #50
-   * @private
    *
-   * @param {SkaterState} skaterState the state
-   * @returns {number} netForce in the Y direction
+   * @param skaterState the state
+   * @returns netForce in the Y direction
    */
-  getNetForceWithoutNormalY( skaterState ) {
+  private getNetForceWithoutNormalY(
+    skaterState: SkaterState
+  ): number {
     return skaterState.mass * skaterState.gravity + this.getFrictionForceY( skaterState );
   }
 
   /**
    * The only other force on the object in the direction of motion is the gravity force
    * Component-wise to reduce allocations, see #50
-   * @private
-   *
-   * @param {SkaterState} skaterState
-   *
-   * @returns {number}
    */
-  getFrictionForceX( skaterState ) {
+  public getFrictionForceX( skaterState: SkaterState ): number {
 
     // Friction force should not exceed sum of other forces (in the direction of motion), otherwise the friction could
     // start a stopped object moving. Hence we check to see if the object is already stopped and don't add friction
@@ -895,12 +939,8 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * The only other force on the object in the direction of motion is the gravity force
    * Component-wise to reduce allocations, see #50
-   * @private
-   *
-   * @param {SkaterState} skaterState
-   * @returns {number}
    */
-  getFrictionForceY( skaterState ) {
+  private getFrictionForceY( skaterState: SkaterState ): number {
 
     // Friction force should not exceed sum of other forces (in the direction of motion), otherwise the friction could
     // start a stopped object moving.  Hence we check to see if the object is already stopped and don't add friction in
@@ -916,12 +956,8 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Get the normal force (Newtons) on the skater.
-   * @private
-   *
-   * @param {SkaterState} skaterState
-   * @returns {number}
    */
-  getNormalForce( skaterState ) {
+  private getNormalForce( skaterState: SkaterState ): Vector2 {
     skaterState.getCurvature( curvatureTemp2 );
     const radiusOfCurvature = Math.min( curvatureTemp2.r, 100000 );
     const netForceRadial = new Vector2( 0, 0 );
@@ -945,13 +981,8 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * Use an Euler integration step to move the skater along the track. This code is in an inner loop of the model
    * physics, and has been heavily optimized. Returns a new SkaterState for this.skater.
-   * @private
-   *
-   * @param {number} dt
-   * @param {SkaterState} skaterState
-   * @returns {SkaterState}
    */
-  stepEuler( dt, skaterState ) {
+  private stepEuler( dt: number, skaterState: SkaterState ): SkaterState {
     const track = skaterState.track;
     const origEnergy = skaterState.getTotalEnergy();
     const origLocX = skaterState.positionX;
@@ -1036,13 +1067,8 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Update the skater as it moves along the track, and fly off the track if it  goes over a jump off the track's end.
-   * @private
-   *
-   * @param {number} dt
-   * @param {SkaterState} skaterState
-   * @returns {SkaterState}
    */
-  stepTrack( dt, skaterState ) {
+  private stepTrack( dt: number, skaterState: SkaterState ): SkaterState {
 
     skaterState.getCurvature( curvatureTemp );
 
@@ -1172,15 +1198,8 @@ class EnergySkateParkModel extends PhetioObject {
    * 1. When leaving from the sides, adjust the skater under the track so it won't immediately re-collide.
    * 2. When leaving from the middle of the track (say going over a jump or falling upside-down from a loop),
    * adjust the skater so it won't fall through or re-collide.
-   * @private
-   *
-   * @param {SkaterState} freeSkater
-   * @param {number} sideVectorX
-   * @param {number} sideVectorY
-   * @param {number} sign
-   * @returns {SkaterState}
    */
-  nudge( freeSkater, sideVectorX, sideVectorY, sign ) {
+  private nudge( freeSkater: SkaterState, sideVectorX: number, sideVectorY: number, sign: number ): SkaterState {
 
     // angle the velocity down a bit and underset from track so that it won't immediately re-collide
     // Nudge the velocity in the 'up' direction so the skater won't pass through the track, see #207
@@ -1208,13 +1227,8 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Try to match the target energy by reducing the velocity of the skaterState.
-   * @private
-   *
-   * @param {SkaterState} skaterState
-   * @param {SkaterState} targetState
-   * @returns {SkaterState}
    */
-  correctEnergyReduceVelocity( skaterState, targetState ) {
+  private correctEnergyReduceVelocity( skaterState: SkaterState, targetState: SkaterState ): SkaterState {
 
     // Make a clone we can mutate and return, to protect the input argument
     const newSkaterState = targetState.copy();
@@ -1247,16 +1261,8 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Binary search to find the parametric coordinate along the track that matches the e0 energy.
-   * @private
-   *
-   * @param {SkaterState} skaterState
-   * @param {number} u0
-   * @param {number} u1
-   * @param {number} e0
-   * @param {number} numSteps
-   * @returns {number}
    */
-  searchSplineForEnergy( skaterState, u0, u1, e0, numSteps ) {
+  private searchSplineForEnergy( skaterState: SkaterState, u0: number, u1: number, e0: number, numSteps: number ): number {
     const da = ( u1 - u0 ) / numSteps;
     let bestAlpha = ( u1 + u0 ) / 2;
     const p = skaterState.track.getPoint( bestAlpha );
@@ -1277,13 +1283,8 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * A number of heuristic energy correction steps to ensure energy is conserved while keeping the motion smooth and
    * accurate. Copied from the Java version directly (with a few different magic numbers)
-   * @private
-   *
-   * @param {SkaterState} skaterState
-   * @param {SkaterState} newState
-   * @returns {SkaterState}
    */
-  correctEnergy( skaterState, newState ) {
+  private correctEnergy( skaterState: SkaterState, newState: SkaterState ): SkaterState {
     if ( this.trackChangePending ) {
       return newState;
     }
@@ -1394,6 +1395,8 @@ class EnergySkateParkModel extends PhetioObject {
         debug && debug( 'Set velocity to match energy, when energy was low: ' );
         debug && debug( `INC changed velocity: dE=${fixedState.getTotalEnergy() - e0}` );
         if ( !Utils.equalsEpsilon( e0, fixedState.getTotalEnergy(), 1E-8 ) ) {
+
+          // @ts-expect-error
           new Error( 'Energy error[2]' ).printStackTrace();
         }
         return fixedState;
@@ -1404,28 +1407,20 @@ class EnergySkateParkModel extends PhetioObject {
   // PERFORMANCE/ALLOCATION - uses a reusable Object for curvature
   /**
    * Get direction of curvature at the position of the Skater.
-   * @private
    *
-   * @param {Object} curvature - Reusable Object describing curvature (radius and position), see Track.getCurvature
-   * @param {number} x2
-   * @param {number} y2
-   * @returns {Vector2}
+   * @param curvature - Reusable Object describing curvature (radius and position), see Track.getCurvature
    */
-  getCurvatureDirection( curvature, x2, y2 ) {
+  private getCurvatureDirection( curvature: IntentionalAny, x2: number, y2: number ): Vector2 {
     const v = new Vector2( curvature.x - x2, curvature.y - y2 );
     return ( v.x !== 0 || v.y !== 0 ) ? v.normalized() : v;
   }
 
   /**
    * Get the x component of direction of curvature at the Skater's position.
-   * @private
    *
-   * @param {Object} curvature - Reusable Object describing curvature, see Track.getCurvature
-   * @param {number} x2
-   * @param {number} y2
-   * @returns {number}
+   * @param curvature - Reusable Object describing curvature, see Track.getCurvature
    */
-  getCurvatureDirectionX( curvature, x2, y2 ) {
+  private getCurvatureDirectionX( curvature: IntentionalAny, x2: number, y2: number ): number {
     const vx = curvature.x - x2;
     const vy = curvature.y - y2;
     return ( vx !== 0 || vy !== 0 ) ? vx / Math.sqrt( vx * vx + vy * vy ) : vx;
@@ -1433,14 +1428,10 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Get the y component of direction of curvature at the Skater's position.
-   * @private
    *
-   * @param {Object} curvature - Reusable Object describing curvature, see Track.getCurvature
-   * @param {number} x2
-   * @param {number} y2
-   * @returns {number}
+   * @param curvature - Reusable Object describing curvature, see Track.getCurvature
    */
-  getCurvatureDirectionY( curvature, x2, y2 ) {
+  private getCurvatureDirectionY( curvature: IntentionalAny, x2: number, y2: number ): number {
     const vx = curvature.x - x2;
     const vy = curvature.y - y2;
     return ( vx !== 0 || vy !== 0 ) ? vy / Math.sqrt( vx * vx + vy * vy ) : vy;
@@ -1448,13 +1439,8 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Update the skater based on which state.
-   * @protected
-   *
-   * @param {number} dt
-   * @param {SkaterState} skaterState
-   * @returns {SkaterState}
    */
-  stepModel( dt, skaterState ) {
+  protected stepModel( dt: number, skaterState: SkaterState ): SkaterState {
 
     // increment running time - done in stepModel because dt reflects timeSpeedProperty here
     this.stopwatch.step( dt );
@@ -1482,11 +1468,8 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * Return to the place he was last released by the user. Also restores the track the skater was on so the initial
    * conditions are the same as the previous release.
-   * @public
-   *
-   * @returns {SkaterState}
    */
-  returnSkater() {
+  public returnSkater(): void {
 
     // returning the skater moves it to a new position - signify that it is being controlled outside of the physical
     // model
@@ -1502,22 +1485,17 @@ class EnergySkateParkModel extends PhetioObject {
     this.userControlledPropertySet.skaterControlledProperty.set( false );
   }
 
-
   /**
    * Clear thermal energy from the model.
-   * @public
    */
-  clearThermal() {
+  public clearThermal(): void {
     this.skater.clearThermal();
   }
 
   /**
    * Get all tracks in the model that are marked as physical (they can interact with the Skater in some way).
-   * @public
-   *
-   * @returns {Track[]}
    */
-  getPhysicalTracks() {
+  public getPhysicalTracks(): Track[] {
 
     // Use vanilla instead of lodash for speed since this is in an inner loop
     const physicalTracks = [];
@@ -1533,21 +1511,15 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Get all tracks that the skater cannot interact with.
-   * @public
-   *
-   * @returns {Track[]}
    */
-  getNonPhysicalTracks() {
+  public getNonPhysicalTracks(): Track[] {
     return this.tracks.filter( track => !track.physicalProperty.get() );
   }
 
   /**
    * Remove a track from the observable array of tracks and dispose it.
-   * @public
-   *
-   * @param {Track} trackToRemove
    */
-  removeAndDisposeTrack( trackToRemove ) {
+  public removeAndDisposeTrack( trackToRemove: Track ): void {
     assert && assert( this.tracks.includes( trackToRemove ), 'trying to remove track that is not in the list' );
     this.tracks.remove( trackToRemove );
     this.trackGroup.disposeElement( trackToRemove );
@@ -1555,15 +1527,13 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Find whatever track is connected to the specified track and join them together to a new track.
-   * @public
-   *
-   * @param {Track} track
    */
-  joinTracks( track ) {
+  public joinTracks( track: Track ): void {
     assert && assert( track.attachable, 'trying to join tracks, but track is not attachable' );
 
-    const connectedPoint = track.getSnapTarget();
-    const otherTrack = _.find( this.getPhysicalTracks(), track => track.containsControlPoint( connectedPoint ) );
+    const connectedPoint = track.getSnapTarget()!;
+
+    const otherTrack = _.find( this.getPhysicalTracks(), track => track.containsControlPoint( connectedPoint ) )!;
     assert && assert( otherTrack, 'trying to attach tracks, but other track was not found' );
     assert && assert( otherTrack.attachable, 'trying to join tracks, but other track is not attachable' );
 
@@ -1574,13 +1544,8 @@ class EnergySkateParkModel extends PhetioObject {
    * The user has pressed the "delete" button for the specified track's specified control point, and it should be
    * deleted. It should be an inner point of a track (not an end point). If there were only 2 points on the track,
    * just delete the entire track.
-   * @public
-   *
-   *
-   * @param {Track} track
-   * @param {number} controlPointIndex [description]
    */
-  deleteControlPoint( track, controlPointIndex ) {
+  public deleteControlPoint( track: Track, controlPointIndex: number ): void {
 
     track.removeEmitter.emit();
     this.removeAndDisposeTrack( track );
@@ -1623,13 +1588,8 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * The user has pressed the "delete" button for the specified track's specified control point, and it should be
    * deleted. It should be an inner point of a track (not an endpoint).
-   * @public
-   *
-   * @param {Track} track
-   * @param {number} controlPointIndex - integer
-   * @param {number} modelAngle
    */
-  splitControlPoint( track, controlPointIndex, modelAngle ) {
+  public splitControlPoint( track: Track, controlPointIndex: number, modelAngle: number ): void {
     assert && assert( track.splittable, 'trying to split a track that is not splittable!' );
     const controlPointToSplit = track.controlPoints[ controlPointIndex ];
 
@@ -1692,13 +1652,9 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Join the specified tracks together into a single new track and delete the old tracks.
-   * @public
-   *
-   * @param a {Track}
-   * @param b {Track}
    */
-  joinTrackToTrack( a, b ) {
-    const points = [];
+  public joinTrackToTrack( a: Track, b: Track ): void {
+    const points: ControlPoint[] = [];
     let i;
 
     const firstTrackForward = () => {
@@ -1772,11 +1728,14 @@ class EnergySkateParkModel extends PhetioObject {
     // Note: Energy is not conserved when tracks joined since the user has added or removed energy from the system
     if ( this.skater.trackProperty.value === a || this.skater.trackProperty.value === b ) {
 
+      // @ts-expect-error
       const originalDirectionVector = this.skater.trackProperty.value.getUnitParallelVector( this.skater.parametricPositionProperty.value ).times( this.skater.parametricSpeedProperty.value );
 
       // Keep track of the skater direction so we can toggle the 'up' flag if the track orientation changed
       const originalNormal = this.skater.upVector;
       const p = newTrack.getClosestPositionAndParameter( this.skater.positionProperty.value.copy() );
+
+      // @ts-expect-error
       this.skater.trackProperty.value = newTrack;
       this.skater.parametricPositionProperty.value = p.parametricPosition;
       const x2 = newTrack.getX( p.parametricPosition );
@@ -1797,6 +1756,7 @@ class EnergySkateParkModel extends PhetioObject {
 
       // If the skater changed direction of motion because of the track polarity change, flip the parametric velocity
       // 'parametricSpeed' value, see #180
+      // @ts-expect-error
       const newDirectionVector = this.skater.trackProperty.value.getUnitParallelVector( this.skater.parametricPositionProperty.value ).times( this.skater.parametricSpeedProperty.value );
       debugAttachDetach && debugAttachDetach( newDirectionVector.dot( originalDirectionVector ) );
       if ( newDirectionVector.dot( originalDirectionVector ) < 0 ) {
@@ -1811,11 +1771,8 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * When a track is dragged or a control point is moved, update the skater's energy (if the sim was paused), since
    * it wouldn't be handled in the update loop.
-   * @public
-   *
-   * @param {Track} track
    */
-  trackModified( track ) {
+  public trackModified( track: Track ): void {
     if ( this.pausedProperty.value && this.skater.trackProperty.value === track ) {
       this.skater.updateEnergy();
     }
@@ -1829,11 +1786,8 @@ class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Get the number of physical control points (control points attached to a track that the Skater can interact with)
-   * @public
-   *
-   * @returns {number}
    */
-  getNumberOfPhysicalControlPoints() {
+  public getNumberOfPhysicalControlPoints(): number {
     const numberOfPointsInEachTrack = _.map( this.getPhysicalTracks(), track => {return track.controlPoints.length;} );
     return _.reduce( numberOfPointsInEachTrack, ( memo, num ) => memo + num, 0 );
   }
@@ -1841,67 +1795,50 @@ class EnergySkateParkModel extends PhetioObject {
   /**
    * Get the number of all control points for this model's tracks (including those that are not physical, like
    * ones in the toolbox)
-   * @public
-   *
-   * @returns {number}
    */
-  getNumberOfControlPoints() {
+  public getNumberOfControlPoints(): number {
     return this.tracks.reduce( ( total, track ) => total + track.controlPoints.length, 0 );
   }
 
   /**
    * Logic to determine whether a control point can be added by cutting a track's control point in two. This
    * is feasible if the number of control points in the play area above ground is less than maximum number.
-   * @public
-   *
-   * @returns {boolean}
    */
-  canCutTrackControlPoint() {
+  public canCutTrackControlPoint(): boolean {
     return this.getNumberOfPhysicalControlPoints() < EnergySkateParkConstants.MAX_NUMBER_CONTROL_POINTS;
   }
 
   /**
    * Check whether the model contains a track so that input listeners for detached elements can't create bugs.
    * See #230
-   * @public
-   *
-   * @param {Track} track
-   * @returns {boolean}
    */
-  containsTrack( track ) {
+  public containsTrack( track: Track ): boolean {
     return this.tracks.includes( track );
   }
 
   /**
    * Called by phet-io to clear out the model state before restoring child tracks.
-   * @public (phet-io)
    */
-  removeAllTracks() {
+  public removeAllTracks(): void {
     while ( this.tracks.length > 0 ) {
       const track = this.tracks.get( 0 );
       track.disposeControlPoints();
       this.removeAndDisposeTrack( track );
     }
   }
+
+  public static readonly EnergySkateParkModelIO = new IOType( 'EnergySkateParkModelIO', {
+    valueType: EnergySkateParkModel,
+    documentation: 'The model for the Skate Park.'
+  } );
 }
 
 /**
  * Helper function to determine if a point is horizontally contained within the bounds range, and anywhere
  * below the maximum Y value. Visually, this will be above since y is inverted.
- *
- * @param {Bounds2} bounds
- * @param {number} x
- * @param {number} y
- * @returns {boolean}
  */
-const containsAbove = ( bounds, x, y ) => {
+const containsAbove = ( bounds: Bounds2, x: number, y: number ): boolean => {
   return bounds.minX <= x && x <= bounds.maxX && y <= bounds.maxY;
 };
 
-EnergySkateParkModel.EnergySkateParkModelIO = new IOType( 'EnergySkateParkModelIO', {
-  valueType: EnergySkateParkModel,
-  documentation: 'The model for the Skate Park.'
-} );
-
 energySkatePark.register( 'EnergySkateParkModel', EnergySkateParkModel );
-export default EnergySkateParkModel;
