@@ -16,27 +16,26 @@ import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js
 
 // Possible representations of units for acceleration in this sim, can be set by query parameter or in preferences.
 class AccelerationUnits extends EnumerationValue {
-  static METERS_PER_SECOND_SQUARED = new AccelerationUnits();
-  static NEWTONS_PER_KILOGRAM = new AccelerationUnits();
+  public static readonly METERS_PER_SECOND_SQUARED = new AccelerationUnits();
+  public static readonly NEWTONS_PER_KILOGRAM = new AccelerationUnits();
 
-  static enumeration = new Enumeration( AccelerationUnits );
+  public static readonly enumeration = new Enumeration( AccelerationUnits );
 }
 
-class EnergySkateParkPreferencesModel {
+export default class EnergySkateParkPreferencesModel {
 
-  constructor() {
+  // A Property that controls the acceleration units in the sim, "altAccelerationUnits" changes the default to N/kg
+  public readonly accelerationUnitsProperty: EnumerationProperty<AccelerationUnits>;
 
-    // A Property that controls the acceleration units in the sim, "altAccelerationUnits" changes the default to N/kg
+  public constructor() {
+
     const defaultUnits = EnergySkateParkQueryParameters.altAccelerationUnits ? AccelerationUnits.NEWTONS_PER_KILOGRAM : AccelerationUnits.METERS_PER_SECOND_SQUARED;
     this.accelerationUnitsProperty = new EnumerationProperty( defaultUnits, {
       tandem: Tandem.PREFERENCES.createTandem( 'accelerationUnitsProperty' )
     } );
   }
+
+  public static readonly AccelerationUnits = AccelerationUnits;
 }
 
-// @public
-// @static
-EnergySkateParkPreferencesModel.AccelerationUnits = AccelerationUnits;
-
 energySkatePark.register( 'EnergySkateParkPreferencesModel', EnergySkateParkPreferencesModel );
-export default EnergySkateParkPreferencesModel;
