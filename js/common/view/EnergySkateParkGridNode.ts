@@ -11,22 +11,41 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
+import TProperty from '../../../../axon/js/TProperty.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
 import GridNode from '../../../../griddle/js/GridNode.js';
+import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import { Node } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import TextPanel from './TextPanel.js';
 
 class EnergySkateParkGridNode extends Node {
 
+  // keep references to all text created so that they can be disposed and removed from scene graph
+  // when layout changes
+  private readonly createdTextPanels: Node[];
+
+  // a unique label for the zero meter reference height position
+  private readonly zeroMeterLabel: TextPanel;
+
+  // persistent positions for labels that don't depend on reference height or layout
+  private readonly labelXPosition: number;
+  private readonly modelViewTransform: ModelViewTransform2;
+  private readonly referenceHeightProperty: NumberProperty;
+  private readonly gridNode: GridNode;
+
   /**
-   * @param {Property.<boolean>} gridVisibleProperty the axon property indicating whether the grid should be visible
-   * @param {NumberProperty} referenceHeightProperty - Property in meters for height of zero potential energy
-   * @param {Property.<Bounds2>} visibleBoundsProperty - visible bounds, in view coordinates
-   * @param {ModelViewTransform2} modelViewTransform the main model-view transform
-   * @param {Tandem} tandem
+   * @param gridVisibleProperty the axon property indicating whether the grid should be visible
+   * @param referenceHeightProperty - Property in meters for height of zero potential energy
+   * @param visibleBoundsProperty - visible bounds, in view coordinates
+   * @param modelViewTransform the main model-view transform
+   * @param tandem
    */
-  constructor( gridVisibleProperty, referenceHeightProperty, visibleBoundsProperty, modelViewTransform, tandem ) {
+  public constructor( gridVisibleProperty: PhetioProperty<boolean>, referenceHeightProperty: NumberProperty, visibleBoundsProperty: TProperty<Bounds2>, modelViewTransform: ModelViewTransform2, tandem: Tandem ) {
     super( {
       pickable: false,
       tandem: tandem
@@ -48,23 +67,18 @@ class EnergySkateParkGridNode extends Node {
     } );
     this.addChild( gridNode );
 
-    // @private
     this.referenceHeightProperty = referenceHeightProperty;
     this.modelViewTransform = modelViewTransform;
     this.gridNode = gridNode;
 
-    // @private {number} - persistent positions for labels that don't depend on reference height or layout
     this.labelXPosition = this.modelViewTransform.modelToViewX( -5 );
 
-    // @private {TextPanel} - a unique label for the zero meter reference height position
     this.zeroMeterLabel = new TextPanel( EnergySkateParkStrings.heightLabels.zeroMStringProperty, {
       bottom: this.modelViewTransform.modelToViewY( 0 ) - 2,
       right: this.labelXPosition - 2
     } );
     this.addChild( this.zeroMeterLabel );
 
-    // @private - keep references to all text created so that they can be disposed and removed from scene graph
-    // when layout changes
     this.createdTextPanels = [];
 
     // redraw grid and reposition labels with reference height
@@ -86,11 +100,10 @@ class EnergySkateParkGridNode extends Node {
    * Perhaps it will improve performance too? Could performance optimize by using visible instead of add/remove child
    * if necessary (would only change performance on screen size change). For more performance improvements on screen size change,
    * only update when the graph is visible, then again when it becomes visible.
-   * @private
    *
-   * @param {Bounds2} bounds - visible bounds, in view coordinates
+   * @param bounds - visible bounds, in view coordinates
    */
-  layout( bounds ) {
+  private layout( bounds: Bounds2 ): void {
     const referenceHeight = this.referenceHeightProperty.get();
     const viewReferenceHeight = this.modelViewTransform.modelToViewDeltaX( referenceHeight );
 
