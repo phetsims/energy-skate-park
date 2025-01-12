@@ -6,11 +6,16 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { Node } from '../../../../scenery/js/imports.js';
 import AccordionBox from '../../../../sun/js/AccordionBox.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import Skater from '../model/Skater.js';
 import EnergyBarGraph from './EnergyBarGraph.js';
 
 // constants
@@ -18,14 +23,7 @@ const PANEL_MARGIN = 5;
 
 class EnergyBarGraphAccordionBox extends AccordionBox {
 
-  /**
-   * @param {Skater} skater
-   * @param {NumberProperty} barGraphScaleProperty - controls scale of bar graphs
-   * @param {BooleanProperty} barGraphVisibleProperty - controls visibility of bar graphs
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem, options ) {
+  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, tandem: Tandem, options: IntentionalAny ) {
 
     const titleNode = new Node();
 
@@ -37,6 +35,7 @@ class EnergyBarGraphAccordionBox extends AccordionBox {
     // layout the label and icon
     graphIcon.leftCenter = graphLabel.rightCenter.plusXY( PANEL_MARGIN * 8, 0 );
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       titleNode: titleNode,

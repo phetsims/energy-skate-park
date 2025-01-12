@@ -231,7 +231,7 @@ class EnergyBarGraph extends Node {
   /**
    * Create an icon of the bar graph, to be used in visibility or other controls.
    */
-  public static createBarGraphIcon( tandem: Tandem, options: IntentionalAny ): Node {
+  public static createBarGraphIcon( tandem: Tandem, options?: IntentionalAny ): Node {
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       scale: 1
