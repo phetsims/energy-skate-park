@@ -1,4 +1,4 @@
-// Copyright 2020-2024, University of Colorado Boulder
+// Copyright 2020-2025, University of Colorado Boulder
 
 /**
  * A collection of Properties that indicate the User is modifying a physical Property that will change

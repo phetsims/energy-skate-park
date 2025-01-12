@@ -1,4 +1,4 @@
-// Copyright 2014-2023, University of Colorado Boulder
+// Copyright 2014-2025, University of Colorado Boulder
 
 /**
  * The drag handler for moving the body of a track (not a control point).
