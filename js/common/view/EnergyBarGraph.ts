@@ -6,47 +6,42 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import BarChartNode from '../../../../griddle/js/BarChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import MoveToTrashLegendButton from '../../../../scenery-phet/js/buttons/MoveToTrashLegendButton.js';
 import ZoomButton from '../../../../scenery-phet/js/buttons/ZoomButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { HBox, Node, Rectangle, Text, VBox } from '../../../../scenery/js/imports.js';
 import ColorConstants from '../../../../sun/js/ColorConstants.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import Skater from '../model/Skater.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
-
-const energyEnergyString = EnergySkateParkStrings.energies.energyStringProperty;
-const energyKineticString = EnergySkateParkStrings.energies.kineticStringProperty;
-const energyPotentialString = EnergySkateParkStrings.energies.potentialStringProperty;
-const energyThermalString = EnergySkateParkStrings.energies.thermalStringProperty;
-const energyTotalString = EnergySkateParkStrings.energies.totalStringProperty;
 
 // constants
 const ZOOM_BUTTON_TOUCH_DILATION = 5;
 
 class EnergyBarGraph extends Node {
+  private readonly barChartNode: BarChartNode;
 
-  /**
-   * @param {Skater} skater
-   * @param {NumberProperty} barGraphScaleProperty
-   * @param {BooleanProperty} barGraphsVisibleProperty
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem, options ) {
+  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, tandem: Tandem, options: IntentionalAny ) {
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // include buttons that increase/decrease the scale of the graph?
       showBarGraphZoomButtons: true,
 
-      // @param {Range} - The range for the visible portion of the graph, in joules - note this is somewhat arbitrary
+      // The range for the visible portion of the graph, in joules - note this is somewhat arbitrary
       // because the bars will have difference scales, but size should be about 1.5 times larger than the energy would
       // extend bars at default scale. A negative min value will allow some space to represent negative energies.
       graphRange: new Range( -122.8, 325 )
@@ -71,7 +66,7 @@ class EnergyBarGraph extends Node {
 
     // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
     //   "The kinetic energy is zero at the top of the trajectory (turning point)
-    const createHideSmallValuesProperty = energyProperty => {
+    const createHideSmallValuesProperty = ( energyProperty: TReadOnlyProperty<number> ) => {
       return new DerivedProperty( [ energyProperty ], energy => {
 
         // determine whether or not to hide the bar if below threshold in view coordinates so it works
@@ -89,7 +84,7 @@ class EnergyBarGraph extends Node {
     };
 
     // For thermal and total energy, make sure they are big enough to be visible, see #307
-    const createShowSmallValuesProperty = energyProperty => {
+    const createShowSmallValuesProperty = ( energyProperty: TReadOnlyProperty<number> ) => {
       return new DerivedProperty( [ energyProperty ], energy => {
         let resultantEnergy = energy;
         const scale = barGraphScaleProperty.get();
@@ -124,10 +119,10 @@ class EnergyBarGraph extends Node {
     };
 
     this.barChartNode = new BarChartNode( [
-      { entries: [ kineticEntry ], labelString: energyKineticString },
-      { entries: [ potentialEntry ], labelString: energyPotentialString },
-      { entries: [ thermalEntry ], labelString: energyThermalString, labelNode: clearThermalButton },
-      { entries: [ totalEntry ], labelString: energyTotalString }
+      { entries: [ kineticEntry ], labelString: EnergySkateParkStrings.energies.kineticStringProperty },
+      { entries: [ potentialEntry ], labelString: EnergySkateParkStrings.energies.potentialStringProperty },
+      { entries: [ thermalEntry ], labelString: EnergySkateParkStrings.energies.thermalStringProperty, labelNode: clearThermalButton },
+      { entries: [ totalEntry ], labelString: EnergySkateParkStrings.energies.totalStringProperty }
     ], graphRangeProperty, {
       barLabelOptions: {
         maxWidth: 61.4, // i18n, by inspection
@@ -216,11 +211,8 @@ class EnergyBarGraph extends Node {
 
   /**
    * If model indicates that graph is visible, redraw the graph.
-   *
-   * @private
-   * @param {boolean} visible
    */
-  updateWhenVisible( visible ) {
+  private updateWhenVisible( visible: boolean ): void {
     if ( visible ) {
       this.barChartNode.update();
     }
@@ -228,12 +220,9 @@ class EnergyBarGraph extends Node {
 
   /**
    * Create the label for the bar graph, which can be added in various places depending on layout of the graph.
-   * @public
-   *
-   * @returns {Text}
    */
-  static createLabel() {
-    return new Text( energyEnergyString, {
+  public static createLabel(): Text {
+    return new Text( EnergySkateParkStrings.energies.energyStringProperty, {
       font: new PhetFont( { size: 17, weight: 'bold' } ),
       maxWidth: 75 // i18n, by inspection
     } );
@@ -241,13 +230,9 @@ class EnergyBarGraph extends Node {
 
   /**
    * Create an icon of the bar graph, to be used in visibility or other controls.
-   * @public
-   *
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   * @returns {Node}
    */
-  static createBarGraphIcon( tandem, options ) {
+  public static createBarGraphIcon( tandem: Tandem, options: IntentionalAny ): Node {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       scale: 1
     }, options );
