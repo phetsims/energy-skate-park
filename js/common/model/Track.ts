@@ -10,10 +10,12 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Emitter from '../../../../axon/js/Emitter.js';
-import dot from '../../../../dot/js/dot.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import merge from '../../../../phet-core/js/merge.js';
-import { SceneryEvent } from '../../../../scenery/js/imports.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import { DragListener, SceneryEvent } from '../../../../scenery/js/imports.js';
 import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -24,9 +26,10 @@ import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import SplineEvaluation from '../SplineEvaluation.js';
 import ControlPoint from './ControlPoint.js';
+import EnergySkateParkModel from './EnergySkateParkModel.js';
 
 // constants
-const FastArray = dot.FastArray;
+const FastArray = window.Float64Array ? window.Float64Array : window.Array;
 
 const ControlPointReferenceIO = ReferenceIO( ControlPoint.ControlPointIO );
 
@@ -41,18 +44,70 @@ const FULLY_INTERACTIVE_OPTIONS = {
 
 class Track extends PhetioObject {
 
+  public readonly translatedEmitter = new Emitter();
+  public readonly resetEmitter = new Emitter();
+  public readonly smoothedEmitter = new Emitter();
+  public readonly updateEmitter = new Emitter();
+  public readonly removeEmitter = new Emitter();
+  public readonly forwardingDragStartEmitter = new Emitter( { parameters: [ { valueType: SceneryEvent } ] } );
+  private readonly parents: Track[];
+  private readonly trackTandem: Tandem;
+  public readonly model: EnergySkateParkModel;
+  public readonly draggable: boolean;
+  public readonly splittable: boolean;
+  public readonly attachable: boolean;
+  public readonly configurable: boolean;
+  public readonly dragSource: DragListener | null;
+  private _slopeToGround: boolean;
+  private _restoreSlopeToGroundOnReset: boolean;
+  private _position: Vector2;
+  public readonly physicalProperty: BooleanProperty;
+
+  // Flag that shows whether the track has been dragged fully out of the panel
+  public readonly leftThePanelProperty: BooleanProperty;
+
+  // Keep track of whether the track is dragging, so performance can be optimized while dragging -
+  // only true while track is in the Play Area (physical)
+  public readonly draggingProperty: BooleanProperty;
+
+  // Flag to indicate whether the user has dragged the track out of the toolbox.  If dragging from the toolbox,
+  // then dragging translates the entire track instead of just a point.
+  public readonly droppedProperty: BooleanProperty;
+  public readonly controlPoints: ControlPoint[];
+  public readonly controlPointDraggingProperty: TReadOnlyProperty<boolean>;
+  public readonly parametricPosition: IntentionalAny[] | Float64Array<ArrayBuffer>;
+  public readonly x: IntentionalAny[] | Float64Array<ArrayBuffer>;
+  public readonly y: IntentionalAny[] | Float64Array<ArrayBuffer>;
+
+  // Sampling points, which will be initialized and updated in updateLinSpace.  These points are evenly spaced
+  // in the track parametric coordinates from just before the track parameter space to just after. See updateLinSpace
+  public searchLinSpace: null;
+  public distanceBetweenSamplePoints: null | number;
+  private readonly disposeTrack: () => void;
+  public xSplineDiff: IntentionalAny;
+  public ySplineDiff: IntentionalAny;
+  public xSpline: IntentionalAny;
+  public ySpline: IntentionalAny;
+  public xSearchPoints: IntentionalAny;
+  public ySearchPoints: IntentionalAny;
+  public xSplineDiffDiff: IntentionalAny;
+  public ySplineDiffDiff: IntentionalAny;
+  public minPoint!: number;
+  public maxPoint!: number;
+
   /**
    * Model for a track, which has a fixed number of points.  If you added a point to a Track, you need a new track.
    *
-   * @param {EnergySkateParkModel} model
-   * @param {Array.<ControlPoint>} controlPoints
-   * @param {Array.<Track>} parents the original tracks that were used to make this track (if any) so they can be
-   *                            broken apart when dragged back to control panel adjusted control point from going
-   *                            offscreen, see #195
-   * @param {Object} [options] - required for tandem
+   * @param model
+   * @param controlPoints
+   * @param parents the original tracks that were used to make this track (if any) so they can be
+   *        broken apart when dragged back to control panel adjusted control point from going
+   *        offscreen, see #195
+   * @param [options] - required for tandem
    */
-  constructor( model, controlPoints, parents, options ) {
+  public constructor( model: EnergySkateParkModel, controlPoints: ControlPoint[], parents: Track[], options: IntentionalAny ) {
     assert && assert( Array.isArray( parents ), 'parents must be array' );
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {boolean} - can this track be dragged and moved in the play area?
@@ -84,45 +139,34 @@ class Track extends PhetioObject {
 
     const tandem = options.tandem;
 
-    // @private
     this.parents = parents;
     this.trackTandem = tandem;
-
-    // @public (read-only) - see options
     this.model = model;
     this.draggable = options.draggable;
     this.configurable = options.configurable;
     this.splittable = options.splittable;
     this.attachable = options.attachable;
 
-    // @public
-    this.translatedEmitter = new Emitter();
-    this.resetEmitter = new Emitter();
-    this.smoothedEmitter = new Emitter();
-    this.updateEmitter = new Emitter();
-    this.removeEmitter = new Emitter();
-    this.forwardingDragStartEmitter = new Emitter( { parameters: [ { valueType: SceneryEvent } ] } );
-
-    // @public {DragListener} Keep track of what component (control point or track body) is dragging the track, so
+    // Keep track of what component (control point or track body) is dragging the track, so
     // that it can't be dragged by
     // two sources, which causes a flicker, see #282
     this.dragSource = null;
 
-    // @private {boolean} - Flag to indicate whether the skater transitions from the right edge of this track directly to the
+    // Flag to indicate whether the skater transitions from the right edge of this track directly to the
     // ground, if set to true, additional corrections to skater energy will be applied so that energy is conserved in
     // this case - see phetsims/energy-skate-park-basics#164. Also see the getters/setters for this below.
     this._slopeToGround = false;
 
-    // @private {boolean} - if slopeToGround is set, and we will set slopeToGround to false if the Track is configurable
+    // if slopeToGround is set, and we will set slopeToGround to false if the Track is configurable
     // and a control point moves because the track presumably no longer slopes to the ground perfectly. But
     // the track should slope to ground again on reset.
     this._restoreSlopeToGroundOnReset = false;
 
-    // @private - Use an arbitrary position for translating the track during dragging.  Only used for deltas in relative
+    // Use an arbitrary position for translating the track during dragging.  Only used for deltas in relative
     // positioning and translation, so an exact "position" is irrelevant, see #260
     this._position = new Vector2( 0, 0 );
 
-    // @public {boolean} - True if the track can be interacted with.  For screens 1-2 only one track will be physical
+    // True if the track can be interacted with.  For screens 1-2 only one track will be physical
     // (and hence visible). For screen 3, tracks in the control panel are visible but non-physical until dragged to
     // the play area
     this.physicalProperty = new BooleanProperty( false, {
@@ -130,21 +174,16 @@ class Track extends PhetioObject {
       phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
-    // @private {boolean} - Flag that shows whether the track has been dragged fully out of the panel
     this.leftThePanelProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'leftThePanelProperty' ),
       phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
-    // @public - Keep track of whether the track is dragging, so performance can be optimized while dragging -
-    // only true while track is in the Play Area (physical)
     this.draggingProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'draggingProperty' ),
       phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
-    // @public {boolean} - Flag to indicate whether the user has dragged the track out of the toolbox.  If dragging from the toolbox,
-    // then dragging translates the entire track instead of just a point.
     this.droppedProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'droppedProperty' ),
       phetioState: options.phetioState // Participate in state only if parent track is too
@@ -156,21 +195,18 @@ class Track extends PhetioObject {
     this.controlPoints = controlPoints;
     assert && assert( this.controlPoints, 'control points should be defined' );
 
-    // @public - boolean value that is true if any control point on this track is being dragged
+    // boolean value that is true if any control point on this track is being dragged
+    // @ts-expect-error
     this.controlPointDraggingProperty = new DerivedProperty( _.map( controlPoints, point => point.draggingProperty ), ( ...args ) => {
       return _.reduce( args, ( collapsed, value ) => collapsed || value );
     }, {
       valueType: 'boolean'
     } );
 
-    // @public {FastArray.<number>}
     this.parametricPosition = new FastArray( this.controlPoints.length );
     this.x = new FastArray( this.controlPoints.length );
     this.y = new FastArray( this.controlPoints.length );
 
-    // Sampling points, which will be initialized and updated in updateLinSpace.  These points are evenly spaced
-    // in the track parametric coordinates from just before the track parameter space to just after. See updateLinSpace
-    // @private
     this.searchLinSpace = null;
     this.distanceBetweenSamplePoints = null;
 
@@ -190,14 +226,13 @@ class Track extends PhetioObject {
     phetioStateSetEmitter.addListener( stateListener );
 
     // when available bounds change, make sure that control points are within - must be disposed
-    const boundsListener = bounds => {
+    const boundsListener = ( bounds: Bounds2 ) => {
       if ( this.droppedProperty.get() ) {
         this.containControlPointsInAvailableBounds( bounds );
       }
     };
     this.model.availableModelBoundsProperty.link( boundsListener );
 
-    // @private - make the Track eligible for garbage collection
     this.disposeTrack = () => {
       phetioStateSetEmitter.removeListener( stateListener );
       this.parents.length = 0;
@@ -211,8 +246,7 @@ class Track extends PhetioObject {
     };
   }
 
-  // @public (phet-io)
-  toStateObject() {
+  public toStateObject(): IntentionalAny {
     return {
       controlPoints: this.controlPoints.map( x => ControlPointReferenceIO.toStateObject( x ) ),
       parents: this.parents.map( x => Track.TrackIO.toStateObject( x ) ),
@@ -223,9 +257,8 @@ class Track extends PhetioObject {
 
   /**
    * When points change, update the spline instance.
-   * @public
    */
-  updateSplines() {
+  public updateSplines(): void {
 
     // Arrays are fixed length, so just overwrite values, see #38
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
@@ -234,7 +267,9 @@ class Track extends PhetioObject {
       this.y[ i ] = this.controlPoints[ i ].positionProperty.value.y;
     }
 
+    // @ts-expect-error
     this.xSpline = numeric.spline( this.parametricPosition, this.x );
+    // @ts-expect-error
     this.ySpline = numeric.spline( this.parametricPosition, this.y );
 
     // Mark search points as dirty
@@ -251,9 +286,8 @@ class Track extends PhetioObject {
 
   /**
    * Reset the track.
-   * @public
    */
-  reset() {
+  public reset(): void {
     this.physicalProperty.reset();
     this.leftThePanelProperty.reset();
     this.draggingProperty.reset();
@@ -279,12 +313,8 @@ class Track extends PhetioObject {
    * This currently does a flat search, but if more precision is needed, a finer-grained binary search could be done
    * afterwards. This code is used when dragging the skater (to see if he is dragged near the track) and while the
    * skater is falling toward the track (to see if he should bounce/attach).
-   * @public
-   *
-   * @param {Vector2} point
-   * @returns {{parametricPosition: number, point: Vector2, distance: Number}}
    */
-  getClosestPositionAndParameter( point ) {
+  public getClosestPositionAndParameter( point: Vector2 ): { parametricPosition: number; point: Vector2; distance: number } {
 
     // Compute the spline points for purposes of getting closest points.
     // keep these points around and invalidate only when necessary
@@ -300,14 +330,14 @@ class Track extends PhetioObject {
       const distanceSquared = point.distanceSquaredXY( this.xSearchPoints[ i ], this.ySearchPoints[ i ] );
       if ( distanceSquared < bestDistanceSquared ) {
         bestDistanceSquared = distanceSquared;
-        bestU = this.searchLinSpace[ i ];
+        bestU = this.searchLinSpace![ i ];
         bestPoint.x = this.xSearchPoints[ i ];
         bestPoint.y = this.ySearchPoints[ i ];
       }
     }
 
     // Binary search in the neighborhood of the best point, to refine the search
-    const distanceBetweenSearchPoints = Math.abs( this.searchLinSpace[ 1 ] - this.searchLinSpace[ 0 ] );
+    const distanceBetweenSearchPoints = Math.abs( this.searchLinSpace![ 1 ] - this.searchLinSpace![ 0 ] );
     let topU = bestU + distanceBetweenSearchPoints / 2;
     let bottomU = bestU - distanceBetweenSearchPoints / 2;
 
@@ -346,30 +376,20 @@ class Track extends PhetioObject {
 
   /**
    * Get x position at the parametric position.
-   * @public
-   *
-   * @param {number} parametricPosition
-   * @returns {number}
    */
-  getX( parametricPosition ) { return SplineEvaluation.atNumber( this.xSpline, parametricPosition ); }
+  public getX( parametricPosition: number ): number { return SplineEvaluation.atNumber( this.xSpline, parametricPosition ); }
 
   /**
    * Get y position at the parametric position.
-   * @public
    *
-   * @param {number} parametricPosition
-   * @returns {number}
+   * @param parametricPosition
    */
-  getY( parametricPosition ) { return SplineEvaluation.atNumber( this.ySpline, parametricPosition ); }
+  public getY( parametricPosition: number ): number { return SplineEvaluation.atNumber( this.ySpline, parametricPosition ); }
 
   /**
    * Get the model position at the parametric position.
-   * @public
-   *
-   * @param {number} parametricPosition
-   * @returns {Vector2}
    */
-  getPoint( parametricPosition ) {
+  public getPoint( parametricPosition: number ): Vector2 {
     const x = SplineEvaluation.atNumber( this.xSpline, parametricPosition );
     const y = SplineEvaluation.atNumber( this.ySpline, parametricPosition );
     return new Vector2( x, y );
@@ -377,12 +397,8 @@ class Track extends PhetioObject {
 
   /**
    * Translate the track by moving all control points by dx and dy.
-   * @private
-   *
-   * @param {number} dx
-   * @param {number} dy
    */
-  translate( dx, dy ) {
+  private translate( dx: number, dy: number ): void {
     this._position = this._position.plusXY( dx, dy );
 
     // move all the control points
@@ -402,11 +418,8 @@ class Track extends PhetioObject {
    * Set whether or not this Track slopes to the ground, and corrects energy on the transition from track to ground.
    * If the track is configurable, we do NOT want to maintain this correction when the control points move. But when
    * this track is reset, we should reapply this correction.
-   * @public
-   *
-   * @param {boolean} slopeToGround
    */
-  setSlopeToGround( slopeToGround ) {
+  public setSlopeToGround( slopeToGround: boolean ): void {
     this._slopeToGround = slopeToGround;
 
     if ( slopeToGround ) {
@@ -414,33 +427,24 @@ class Track extends PhetioObject {
     }
   }
 
-  /**
-   * @public
-   * @param slopeToGround
-   */
-  set slopeToGround( slopeToGround ) { this.setSlopeToGround( slopeToGround ); }
+  public set slopeToGround( slopeToGround: boolean ) { this.setSlopeToGround( slopeToGround ); }
+
+  public get slopeToGround(): boolean { return this.getSlopeToGround(); }
 
   /**
    * Get whether or not the track "slopes to the ground", and skater energy state should apply additional corrections.
-   * @public
-   *
-   * @returns {boolean}
    */
-  getSlopeToGround() {
+  public getSlopeToGround(): boolean {
     return this._slopeToGround;
   }
-
-  get slopeToGround() { return this.getSlopeToGround(); }
 
   /**
    * For purposes of showing the skater angle, get the view angle of the track here. Note this means inverting the y
    * values, this is called every step while animating on the track, so it was optimized to avoid new allocations.
-   * @public
    *
-   * @param {number} parametricPosition
-   * @returns {number}
+   * @param parametricPosition
    */
-  getViewAngleAt( parametricPosition ) {
+  public getViewAngleAt( parametricPosition: number ): number {
     if ( this.xSplineDiff === null ) {
       this.xSplineDiff = this.xSpline.diff();
       this.ySplineDiff = this.ySpline.diff();
@@ -450,12 +454,8 @@ class Track extends PhetioObject {
 
   /**
    * Get the model angle at the specified position on the track.
-   * @public
-   *
-   * @param {number} parametricPosition
-   * @returns {number}
    */
-  getModelAngleAt( parametricPosition ) {
+  public getModelAngleAt( parametricPosition: number ): number {
 
     // load xSplineDiff, ySplineDiff here if not already loaded
     if ( this.xSplineDiff === null ) {
@@ -467,12 +467,8 @@ class Track extends PhetioObject {
 
   /**
    * Get the model unit vector at the specified position on the track.
-   * @public
-   *
-   * @param {number} parametricPosition
-   * @returns {Vector2}
    */
-  getUnitNormalVector( parametricPosition ) {
+  public getUnitNormalVector( parametricPosition: number ): Vector2 {
 
     // load xSplineDiff, ySplineDiff here if not already loaded
     if ( this.xSplineDiff === null ) {
@@ -484,12 +480,8 @@ class Track extends PhetioObject {
 
   /**
    * Get the model parallel vector at the specified position on the track.
-   * @public
-   *
-   * @param parametricPosition
-   * @returns {Vector2|Vector3|Vector4}
    */
-  getUnitParallelVector( parametricPosition ) {
+  public getUnitParallelVector( parametricPosition: number ): Vector2 {
 
     // load xSplineDiff, ySplineDiff here if not already loaded
     if ( this.xSplineDiff === null ) {
@@ -501,9 +493,8 @@ class Track extends PhetioObject {
 
   /**
    * Update the linspace, the evenly spaced vectors between the number of control points in the track.
-   * @private
    */
-  updateLinSpace() {
+  private updateLinSpace(): void {
     this.minPoint = 0;
     this.maxPoint = ( this.controlPoints.length - 1 ) / this.controlPoints.length;
     const prePoint = this.minPoint - 1E-6;
@@ -512,6 +503,8 @@ class Track extends PhetioObject {
     // Store for performance
     // made number of sample points depend on the length of the track, to make it smooth enough no matter how long it is
     const n = 20 * ( this.controlPoints.length - 1 );
+
+    // @ts-expect-error
     this.searchLinSpace = numeric.linspace( prePoint, postPoint, n );
     this.distanceBetweenSamplePoints = ( postPoint - prePoint ) / n;
   }
@@ -519,22 +512,15 @@ class Track extends PhetioObject {
   /**
    * Detect whether a parametric point is in bounds of this track, for purposes of telling whether the skater fell
    * past the edge of the track.
-   * @public
-   *
-   * @param {number} parametricPosition
-   * @returns {boolean}
    */
-  isParameterInBounds( parametricPosition ) {
+  public isParameterInBounds( parametricPosition: number ): boolean {
     return parametricPosition >= this.minPoint && parametricPosition <= this.maxPoint;
   }
 
   /**
    * Track information as a string for debugging purposes.
-   * @public
-   *
-   * @returns {string}
    */
-  toString() {
+  public override toString(): string {
     let string = '';
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       const point = this.controlPoints[ i ];
@@ -545,11 +531,8 @@ class Track extends PhetioObject {
 
   /**
    * Get the snap target for a control point, if one is specified.
-   * @public
-   *
-   * @returns {null|ControlPoint}
    */
-  getSnapTarget() {
+  public getSnapTarget(): null | ControlPoint {
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       const o = this.controlPoints[ i ];
       if ( o.snapTargetProperty.value ) {
@@ -561,11 +544,8 @@ class Track extends PhetioObject {
 
   /**
    * Get the y position in meters of the bottom most control point.
-   * @public
-   *
-   * @returns {number}
    */
-  getBottomControlPointY() {
+  public getBottomControlPointY(): number {
     let best = Number.POSITIVE_INFINITY;
     const length = this.controlPoints.length;
     for ( let i = 0; i < length; i++ ) {
@@ -578,11 +558,8 @@ class Track extends PhetioObject {
 
   /**
    * Get the y position in meters of the top most control point.
-   * @public
-   *
-   * @returns {number}
    */
-  getTopControlPointY() {
+  public getTopControlPointY(): number {
     let best = Number.NEGATIVE_INFINITY;
     const length = this.controlPoints.length;
     for ( let i = 0; i < length; i++ ) {
@@ -595,11 +572,8 @@ class Track extends PhetioObject {
 
   /**
    * Get the x position of the left most control point, in meters.
-   * @public
-   *
-   * @returns {number}
    */
-  getLeftControlPointX() {
+  public getLeftControlPointX(): number {
     let best = Number.POSITIVE_INFINITY;
     const length = this.controlPoints.length;
     for ( let i = 0; i < length; i++ ) {
@@ -612,11 +586,8 @@ class Track extends PhetioObject {
 
   /**
    * Get the x position of the right most control point, in meters.
-   * @public
-   *
-   * @returns {number}
    */
-  getRightControlPointX() {
+  public getRightControlPointX(): number {
     let best = Number.NEGATIVE_INFINITY;
     const length = this.controlPoints.length;
     for ( let i = 0; i < length; i++ ) {
@@ -629,12 +600,8 @@ class Track extends PhetioObject {
 
   /**
    * Returns true if this track contains the provided control point.
-   * @public
-   *
-   * @param {ControlPoint} controlPoint
-   * @returns {boolean}
    */
-  containsControlPoint( controlPoint ) {
+  public containsControlPoint( controlPoint: ControlPoint ): boolean {
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       if ( this.controlPoints[ i ] === controlPoint ) {
         return true;
@@ -645,19 +612,15 @@ class Track extends PhetioObject {
 
   /**
    * Returns an array which contains all of the Tracks that would need to be reset if this Track was reset.
-   * @public
-   *
-   * @returns {Track[]}
    */
-  getParentsOrSelf() {
+  public getParentsOrSelf(): Track[] {
     return this.parents.length > 0 ? this.parents : [ this ];
   }
 
   /**
    * Return this track to its control panel by resetting it to its initial state.
-   * @public
    */
-  returnToControlPanel() {
+  public returnToControlPanel(): void {
     if ( this.parents.length > 0 ) {
       this.model.removeAndDisposeTrack( this );
 
@@ -675,13 +638,8 @@ class Track extends PhetioObject {
   /**
    * Returns the arc length (in meters) between two points on a parametric curve.
    * This function is at the heart of many nested loops, so it must be heavily optimized
-   * @public
-   *
-   * @param {number} u0
-   * @param {number} u1
-   * @returns {number}
    */
-  getArcLength( u0, u1 ) {
+  public getArcLength( u0: number, u1: number ): number {
     if ( u1 === u0 ) {
       return 0;
     }
@@ -713,13 +671,11 @@ class Track extends PhetioObject {
 
   /**
    * Find the parametric distance along the track, starting at u0 and moving ds meters
-   * @public
    *
-   * @param {number} u0 the starting point along the track in parametric coordinates
-   * @param {number} ds meters to traverse along the track
-   * @returns {number}
+   * @param u0 the starting point along the track in parametric coordinates
+   * @param ds meters to traverse along the track
    */
-  getParametricDistance( u0, ds ) {
+  public getParametricDistance( u0: number, ds: number ): number {
     let lowerBound = -1;
     let upperBound = 2;
 
@@ -752,12 +708,11 @@ class Track extends PhetioObject {
    * Used for centripetal force and determining whether the skater flies off the track
    * Curvature parameter is for storing the result as pass-by-reference.
    * Please see #50 regarding GC
-   * @public
    *
-   * @param {number} parametricPosition
-   * @param {Object} curvature - object literal with { r: {number}, x: {number}, y: {number} }
+   * @param parametricPosition
+   * @param curvature - object literal with { r: {number}, x: {number}, y: {number} }
    */
-  getCurvature( parametricPosition, curvature ) {
+  public getCurvature( parametricPosition: number, curvature: IntentionalAny ): void {
 
     if ( this.xSplineDiff === null ) {
       this.xSplineDiff = this.xSpline.diff();
@@ -793,11 +748,8 @@ class Track extends PhetioObject {
   /**
    * Find the lowest y-point on the spline by sampling, used when dropping the track or a control point to ensure
    * it won't go below y=0.
-   * @public
-   *
-   * @returns {number}
    */
-  getLowestY() {
+  public getLowestY(): number {
     if ( !this.xSearchPoints ) {
       this.xSearchPoints = SplineEvaluation.atArray( this.xSpline, this.searchLinSpace );
       this.ySearchPoints = SplineEvaluation.atArray( this.ySpline, this.searchLinSpace );
@@ -815,11 +767,12 @@ class Track extends PhetioObject {
     }
 
     // Increase resolution in the neighborhood of y
-    const foundU = this.searchLinSpace[ minIndex ];
+    const foundU = this.searchLinSpace![ minIndex ];
 
-    const minBound = foundU - this.distanceBetweenSamplePoints;
+    const minBound = foundU - this.distanceBetweenSamplePoints!;
     const maxBound = foundU + this.distanceBetweenSamplePoints;
 
+    // @ts-expect-error
     const smallerSpace = numeric.linspace( minBound, maxBound, 200 );
     const refinedSearchPoints = SplineEvaluation.atArray( this.ySpline, smallerSpace );
 
@@ -837,10 +790,8 @@ class Track extends PhetioObject {
   /**
    * If any part of the track is below ground, move the whole track up so it rests at y=0 at its minimum, see #71
    * Called when user releases track or a control point after dragging.
-   *
-   * @public
    */
-  bumpAboveGround() {
+  public bumpAboveGround(): void {
     const lowestY = this.getLowestY();
     if ( lowestY < 0 ) {
       this.translate( 0, -lowestY );
@@ -856,10 +807,8 @@ class Track extends PhetioObject {
   /**
    * If any control points are out of the model available bounds (bounds of the entire simulation play area),
    * bump them back in. Useful when the model bounds change, or when bumping the track above ground.
-   *
-   * @private
    */
-  containControlPointsInAvailableBounds( bounds ) {
+  private containControlPointsInAvailableBounds( bounds: IntentionalAny ): void {
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       const currentPosition = this.controlPoints[ i ].positionProperty.get();
       if ( !bounds.containsPoint( currentPosition ) ) {
@@ -899,12 +848,11 @@ class Track extends PhetioObject {
    * Make sure that all control points are contained within their limiting draggable bounds. The algorithm for keeping
    * the track above ground might push all control points up, so this will make sure that limiting bounds are
    * respected. Not all control points have limiting bounds for dragging.
-   * @private
    *
-   * @param {boolean} [updateSplines] optional, whether or not to update splines and redraw after this operation
-   *                                  (for performance, you might chose to wait and do this later)
+   * @param updateSplines optional, whether or not to update splines and redraw after this operation
+   *                      (for performance, you might chose to wait and do this later)
    */
-  containControlPointsInLimitBounds( updateSplines ) {
+  private containControlPointsInLimitBounds( updateSplines?: boolean ): void {
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       const controlPoint = this.controlPoints[ i ];
       const limitBounds = controlPoint.limitBounds;
@@ -926,11 +874,10 @@ class Track extends PhetioObject {
 
   /**
    * Smooth out the track so it doesn't have any sharp turns, see #177
-   * @public
    *
-   * @param {number} i - the index of the control point to adjust
+   * @param i - the index of the control point to adjust
    */
-  smooth( i ) {
+  public smooth( i: number ): boolean {
     assert && assert( i >= 0 && i < this.controlPoints.length );
     assert && assert( this.model.availableModelBoundsProperty );
 
@@ -981,11 +928,10 @@ class Track extends PhetioObject {
   /**
    * The user just released a control point with index (indexToIgnore) and the spline needs to be smoothed.
    * Choose the point closest to the sharpest turn and adjust it.
-   * @public
    *
-   * @param {Array} indicesToIgnore indices which should not be adjusted (perhaps because the user just released them)
+   * @param indicesToIgnore indices which should not be adjusted (perhaps because the user just released them)
    */
-  smoothPointOfHighestCurvature( indicesToIgnore ) {
+  public smoothPointOfHighestCurvature( indicesToIgnore: IntentionalAny[] ): boolean {
 
     // Find the sharpest turn on the track
     const highestCurvatureU = this.getUWithHighestCurvature();
@@ -995,7 +941,7 @@ class Track extends PhetioObject {
     let bestDistance = Number.POSITIVE_INFINITY;
     let bestIndex = -1;
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
-      if ( indicesToIgnore.indexOf( i ) === -1 ) {
+      if ( !indicesToIgnore.includes( i ) ) {
         const controlPointU = i / this.controlPoints.length;
         const distanceFromHighestCurvature = Math.abs( highestCurvatureU - controlPointU );
         if ( distanceFromHighestCurvature < bestDistance ) {
@@ -1023,11 +969,8 @@ class Track extends PhetioObject {
 
   /**
    * Get the spline position at the point of highest curvature.
-   * @private
-   *
-   * @returns {number}
    */
-  getUWithHighestCurvature() {
+  private getUWithHighestCurvature(): number {
     // Below implementation copied from getMinimumRadiusOfCurvature.  It is a CPU demanding task, so kept separate to
     // keep the other one fast. Should be kept in sync manually
     const curvature = { r: 0, x: 0, y: 0 };
@@ -1051,11 +994,10 @@ class Track extends PhetioObject {
 
   /**
    * Find the minimum radius of curvature along the track, in meters
-   * @public
    *
-   * @returns {number} the minimum radius of curvature along the track, in meters.
+   * @returns the minimum radius of curvature along the track, in meters.
    */
-  getMinimumRadiusOfCurvature() {
+  public getMinimumRadiusOfCurvature(): number {
     const curvature = { r: 0, x: 0, y: 0 };
     let minRadius = Number.POSITIVE_INFINITY;
 
@@ -1076,21 +1018,15 @@ class Track extends PhetioObject {
   /**
    * Use an arbitrary position for translating the track during dragging. Only used for deltas in relative positioning
    * and translation, so an exact "position" is irrelevant.
-   * @public
-   *
-   * @returns {Vector2}
    */
-  get position() {
+  public get position(): Vector2 {
     return this._position.copy();
   }
 
   /**
    * Set the position of this Track.
-   * @public
-   *
-   * @param {Vector2} newPosition
    */
-  set position( newPosition ) {
+  public set position( newPosition: Vector2 ) {
     const delta = newPosition.minus( this.position );
     this.translate( delta.x, delta.y );
   }
@@ -1098,19 +1034,15 @@ class Track extends PhetioObject {
   /**
    * Get an array of all control point sourcePositions - this is the position of all ControlPoint's if none had
    * snapped to a position in attempt to combine with another track.
-   * @public
-   *
-   * @returns {Vector2[]}
    */
-  copyControlPointSources() {
+  public copyControlPointSources(): Vector2[] {
     return this.controlPoints.map( controlPoint => controlPoint.sourcePositionProperty.value.copy() );
   }
 
   /**
    * Debugging info.
-   * @public
    */
-  getDebugString() {
+  public getDebugString(): string {
     let string = 'var controlPoints = [';
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       const controlPoint = this.controlPoints[ i ];
@@ -1124,44 +1056,44 @@ class Track extends PhetioObject {
 
   /**
    * Disposal for garbage collection.
-   * @public
    */
-  dispose() {
+  public override dispose(): void {
     this.disposeTrack();
     super.dispose();
   }
 
   /**
    * Dispose all of the control points of the track when they will not be reused in another track
-   * @public
    */
-  disposeControlPoints() {
+  public disposeControlPoints(): void {
     this.controlPoints.forEach( controlPoint => this.model.controlPointGroup.disposeElement( controlPoint ) );
   }
+
+  public static readonly FULLY_INTERACTIVE_OPTIONS = FULLY_INTERACTIVE_OPTIONS;
+  public static readonly TrackIO = new IOType( 'TrackIO', {
+    valueType: Track,
+    documentation: 'A skate track',
+    toStateObject: track => track.toStateObject(),
+    stateObjectToCreateElementArguments: stateObject => {
+
+      // @ts-expect-error
+      const controlPoints = stateObject.controlPoints.map( x => ControlPointReferenceIO.fromStateObject( x ) );
+
+      // @ts-expect-error
+      const parents = stateObject.parents.map( x => Track.TrackIO.fromStateObject( x ) );
+      return [ controlPoints, parents, {
+        draggable: stateObject.draggable,
+        configurable: stateObject.configurable
+      } ];
+    },
+    stateSchema: TrackIO => ( {
+      controlPoints: ArrayIO( ControlPointReferenceIO ),
+      parents: ArrayIO( TrackIO ),
+      draggable: BooleanIO,
+      configurable: BooleanIO
+    } )
+  } );
 }
-
-// @public @public
-Track.FULLY_INTERACTIVE_OPTIONS = FULLY_INTERACTIVE_OPTIONS;
-
-Track.TrackIO = new IOType( 'TrackIO', {
-  valueType: Track,
-  documentation: 'A skate track',
-  toStateObject: track => track.toStateObject(),
-  stateObjectToCreateElementArguments: stateObject => {
-    const controlPoints = stateObject.controlPoints.map( x => ControlPointReferenceIO.fromStateObject( x ) );
-    const parents = stateObject.parents.map( x => Track.TrackIO.fromStateObject( x ) );
-    return [ controlPoints, parents, {
-      draggable: stateObject.draggable,
-      configurable: stateObject.configurable
-    } ];
-  },
-  stateSchema: TrackIO => ( {
-    controlPoints: ArrayIO( ControlPointReferenceIO ),
-    parents: ArrayIO( TrackIO ),
-    draggable: BooleanIO,
-    configurable: BooleanIO
-  } )
-} );
 
 energySkatePark.register( 'Track', Track );
 export default Track;
