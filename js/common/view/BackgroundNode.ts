@@ -32,7 +32,7 @@ class BackgroundNode extends Node {
    * @param tandem
    * @param [options]
    */
-  public constructor( layoutBounds: Bounds2, visibleBoundsProperty: Property<Bounds2>, tandem: Tandem, options: IntentionalAny ) {
+  public constructor( layoutBounds: Bounds2, visibleBoundsProperty: Property<Bounds2>, tandem: Tandem, options?: IntentionalAny ) {
     super( {
       pickable: false,
       tandem: tandem

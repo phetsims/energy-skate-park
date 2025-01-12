@@ -25,14 +25,13 @@ const SELECTED_LINE_WIDTH = 2.3;
 class AttachDetachToggleButtons extends Panel {
 
   /**
-   * Constructor for the AttachDetachToggleButtons
    * @param stickingToTrackProperty Axon property that is false if the model state allows the skater to detach
    * @param enabledProperty Axon property that is true if the control is enabled
    * @param contentWidth Width for the control panel, to match the layout of the rest of the controls.
    * @param tandem
    * @param [options]
    */
-  public constructor( stickingToTrackProperty: Property<boolean>, enabledProperty: Property<boolean>, contentWidth: number, tandem: Tandem, options: IntentionalAny ) {
+  public constructor( stickingToTrackProperty: Property<boolean>, enabledProperty: Property<boolean>, contentWidth: number, tandem: Tandem, options?: IntentionalAny ) {
 
     // Match the style of the EnergySkateParkControlPanel
     // eslint-disable-next-line phet/bad-typescript-text

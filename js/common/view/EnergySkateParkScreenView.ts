@@ -17,6 +17,7 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import ScreenView from '../../../../joist/js/ScreenView.js';
 import { Shape } from '../../../../kite/js/imports.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
@@ -30,6 +31,8 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
+import Track from '../model/Track.js';
 import AttachDetachToggleButtons from './AttachDetachToggleButtons.js';
 import BackgroundNode from './BackgroundNode.js';
 import EnergyBarGraphAccordionBox from './EnergyBarGraphAccordionBox.js';
@@ -57,13 +60,70 @@ const EXTRA_FLOAT = 51.5;
 const showAvailableBounds = false;
 
 class EnergySkateParkScreenView extends ScreenView {
+  public readonly modelViewTransform: ModelViewTransform2;
+  public readonly availableModelBoundsProperty: Property<Bounds2>;
+  public readonly trackNodeGroup: { createNextElement( track: Track, modelViewTransform: ModelViewTransform2, availableBoundsProperty: IntentionalAny, options?: IntentionalAny ): TrackNode };
+  protected readonly model: EnergySkateParkModel;
 
-  /**
-   * @param {EnergySkateParkModel} model
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( model, tandem, options ) {
+  // whether or not this screen view should include a measuring tape
+  public readonly showToolbox: boolean;
+
+  // visibility of various view components
+  private readonly showBarGraph: boolean;
+  private readonly showSkaterPath: boolean;
+  private readonly showReferenceHeight: boolean;
+  private readonly showTrackButtons: boolean;
+  private readonly showSeparateVisibilityControlsPanel: boolean;
+
+  // defines the min and max edges horizontally for floating layout, null until first
+  // layout() - includes padding so elements won't touch the edge
+  protected fixedRight: number | null;
+  protected fixedLeft: number | null;
+
+  // Layers for nodes in the sim. The bottom layer contains the background and UI components that should
+  // be behind the animating skater and other draggable things, which are in the topLayer.
+  private readonly bottomLayer: Node;
+  protected readonly topLayer: Node;
+  public readonly skaterNode: SkaterNode;
+  private readonly backgroundNode: BackgroundNode;
+  private readonly gridNode: EnergySkateParkGridNode;
+  private readonly controlPanel: EnergySkateParkControlPanel;
+
+  // node that shows the energy legend for the pie chart
+  private readonly pieChartLegend: PieChartLegend;
+  private readonly attachDetachToggleButtons?: AttachDetachToggleButtons;
+
+  // the bar chart showing energy distribution
+  private readonly energyBarGraphAccordionBox?: EnergyBarGraphAccordionBox;
+  private readonly resetAllButton: ResetAllButton;
+  private readonly returnSkaterButton: RectangularPushButton;
+
+  // for layout or repositioning in subtypes
+  protected readonly speedometerNode: ValueGaugeNode;
+
+  // (for layout) - Layer which will contain all of the tracks
+  protected readonly trackLayer: Node;
+  private readonly measuringTapeNode?: MeasuringTapeNode;
+  private readonly stopwatchNode?: StopwatchNode;
+
+  // so it can float to the layout bounds, see layout()
+  private readonly toolboxPanel?: ToolboxPanel;
+
+  // above the track because it is draggable, but below the skater because
+  // it is important for the skater center of mass representation to always be visible
+  private readonly referenceHeightLine: ReferenceHeightLine;
+
+  // // play/pause and step buttons are same size until playingProperty is false
+  private readonly timeControlNode: TimeControlNode;
+
+  // for layout
+  private readonly visibilityControlsPanel?: VisibilityControlsPanel;
+
+  private readonly viewBoundsPath?: Path;
+  private availableModelBounds?: Bounds2;
+
+  public constructor( model: EnergySkateParkModel, tandem: Tandem, options?: IntentionalAny ) {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // options for the bar graph, see composite type options below
@@ -133,36 +193,26 @@ class EnergySkateParkScreenView extends ScreenView {
       }
     };
 
-    // @protected
     this.model = model;
-
-    // @private - whether or not this screen view should include a measuring tape
     this.showToolbox = options.showToolbox;
-
-    // @private {boolean} - visibility of various view components
     this.showBarGraph = options.showBarGraph;
     this.showSkaterPath = options.showSkaterPath;
     this.showReferenceHeight = options.showReferenceHeight;
     this.showTrackButtons = options.showTrackButtons;
     this.showSeparateVisibilityControlsPanel = options.showSeparateVisibilityControlsPanel;
-
-    // @protected {null|number} - defines the min and max edges horizontally for floating layout, null until first
-    // layout() - includes padding so elements won't touch the edge
     this.fixedRight = null;
     this.fixedLeft = null;
-
-    // @private - Layers for nodes in the sim. The bottom layer contains the background and UI components that should
-    // be behind the animating skater and other draggable things, which are in the topLayer.
     this.bottomLayer = new Node();
     this.topLayer = new Node();
     this.children = [ this.bottomLayer, this.topLayer ];
 
-    // @protected (read-only)
     this.skaterNode = new SkaterNode(
       model.skater,
       this,
       model.userControlledPropertySet.skaterControlledProperty,
       modelViewTransform,
+
+      // @ts-expect-error
       model.getClosestTrackAndPositionAndParameter.bind( model ),
       model.getPhysicalTracks.bind( model ),
       tandem.createTandem( 'skaterNode' )
@@ -178,7 +228,6 @@ class EnergySkateParkScreenView extends ScreenView {
     this.controlPanel = new EnergySkateParkControlPanel( model, this, tandem.createTandem( 'controlPanel' ), options.controlPanelOptions );
     this.bottomLayer.addChild( this.controlPanel );
 
-    // @private - node that shows the energy legend for the pie chart
     this.pieChartLegend = new PieChartLegend(
       model.skater,
       model.clearThermal.bind( model ),
@@ -190,12 +239,15 @@ class EnergySkateParkScreenView extends ScreenView {
     // For the playground screen, show attach/detach toggle buttons
     if ( options.showAttachDetachRadioButtons ) {
       const property = model.tracksDraggable ? new Property( true ) :
+
+        // @ts-expect-error
                        new DerivedProperty( [ model.sceneProperty ], scene => { scene === 2; } );
+
+      // @ts-expect-error
       this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.stickingToTrackProperty, property, 184, tandem.createTandem( 'attachDetachToggleButtons' ) );
       this.bottomLayer.addChild( this.attachDetachToggleButtons );
     }
 
-    // @private - the bar chart showing energy distribution
     if ( this.showBarGraph ) {
       this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraphAccordionBox' ), {
         barGraphOptions: {
@@ -237,7 +289,6 @@ class EnergySkateParkScreenView extends ScreenView {
 
     const gaugeRadius = 76;
 
-    // @protected (read-only) - for layout or repositioning in subtypes
     this.speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedStringProperty, new Range( 0, 30 ), {
       numberDisplayOptions: {
         valuePattern: speedometerMetersPerSecondPatternStringProperty,
@@ -260,7 +311,6 @@ class EnergySkateParkScreenView extends ScreenView {
     this.speedometerNode.top = this.layoutBounds.minY + 5;
     this.bottomLayer.addChild( this.speedometerNode );
 
-    // @public (for layout) - Layer which will contain all of the tracks
     this.trackLayer = new Node( {
       tandem: tandem.createTandem( 'trackLayer' )
     } );
@@ -275,7 +325,6 @@ class EnergySkateParkScreenView extends ScreenView {
         return { name: measuringTapeUnitsString, multiplier: 1 };
       } );
 
-      // @private {MeasuringTapeNode}
       this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, {
         visibleProperty: model.measuringTapeVisibleProperty,
         basePositionProperty: model.measuringTapeBasePositionProperty,
@@ -286,14 +335,13 @@ class EnergySkateParkScreenView extends ScreenView {
         textColor: 'black',
         textFont: new PhetFont( { size: 14.7 } ),
         baseDragEnded: () => {
-          if ( this.measuringTapeNode.getLocalBaseBounds().intersectsBounds( this.toolboxPanel.bounds ) ) {
+          if ( this.measuringTapeNode!.getLocalBaseBounds().intersectsBounds( this.toolboxPanel!.bounds ) ) {
             model.measuringTapeVisibleProperty.set( false );
           }
         },
         tandem: tandem.createTandem( 'measuringTapeNode' )
       } );
 
-      // @private
       this.stopwatchNode = new StopwatchNode( model.stopwatch, {
         dragBoundsProperty: this.visibleBoundsProperty,
         tandem: tandem.createTandem( 'stopwatchNode' ),
@@ -305,7 +353,7 @@ class EnergySkateParkScreenView extends ScreenView {
         },
         dragListenerOptions: {
           end: () => {
-            if ( this.stopwatchNode.bounds.intersectsBounds( this.toolboxPanel.bounds ) ) {
+            if ( this.stopwatchNode!.bounds.intersectsBounds( this.toolboxPanel!.bounds ) ) {
               model.stopwatch.isVisibleProperty.value = false;
             }
           }
@@ -315,15 +363,12 @@ class EnergySkateParkScreenView extends ScreenView {
       this.topLayer.addChild( this.stopwatchNode );
       this.topLayer.addChild( this.measuringTapeNode );
 
-      // @private {ToolboxPanel} - so it can float to the layout bounds, see layout()
       this.toolboxPanel = new ToolboxPanel( model, this, tandem.createTandem( 'toolboxPanel' ), {
         minWidth: this.controlPanel.width
       } );
       this.bottomLayer.addChild( this.toolboxPanel );
     }
 
-    // @private {ReferenceHeightLine} - above the track because it is draggable, but below the skater because
-    // it is important for the skater center of mass representation to always be visible
     this.referenceHeightLine = new ReferenceHeightLine(
       modelViewTransform,
       model.skater.referenceHeightProperty,
@@ -393,7 +438,6 @@ class EnergySkateParkScreenView extends ScreenView {
       model.pausedProperty.set( !playing );
     } );
 
-    // play/pause and step buttons are same size until playingProperty is false
     this.timeControlNode = new TimeControlNode( playingProperty, {
       tandem: tandem.createTandem( 'timeControlNode' ),
       timeSpeedProperty: model.timeSpeedProperty,
@@ -424,7 +468,6 @@ class EnergySkateParkScreenView extends ScreenView {
     // grid and reference height visibility are controlled from a separate panel
     if ( this.showSeparateVisibilityControlsPanel ) {
 
-      // @protected (read-only) - for layout
       this.visibilityControlsPanel = new VisibilityControlsPanel( model, tandem.createTandem( 'visibilityControlsPanel' ), {
         centerY: this.timeControlNode.centerY
       } );
@@ -481,12 +524,12 @@ class EnergySkateParkScreenView extends ScreenView {
 
       // limit measuring tape to available area
       if ( options.showToolbox ) {
-        this.measuringTapeNode.setDragBounds( this.availableModelBounds );
+        this.measuringTapeNode!.setDragBounds( this.availableModelBounds );
       }
 
       // Show it for debugging
       if ( showAvailableBounds ) {
-        this.viewBoundsPath.shape = Shape.bounds( this.visibleBoundsProperty.get() );
+        this.viewBoundsPath!.shape = Shape.bounds( this.visibleBoundsProperty.get() );
       }
     } );
   }
@@ -495,12 +538,8 @@ class EnergySkateParkScreenView extends ScreenView {
    * Layout the EnergySkateParkScreenView, scaling it up and down with the size of the screen to ensure a
    * minimally visible area, but keeping it centered at the bottom of the screen, so there is more area in the +y
    * direction to build tracks and move the skater.
-   * @public
-   * @override
-   *
-   * @param {Bounds2} viewBounds
    */
-  layout( viewBounds ) {
+  public override layout( viewBounds: Bounds2 ): void {
     assert && assert( this.controlPanel, 'much of component layout based on control panel, one should be created.' );
 
     this.resetTransform();
@@ -547,22 +586,22 @@ class EnergySkateParkScreenView extends ScreenView {
     this.returnSkaterButton.right = this.resetAllButton.left - 10;
 
     if ( this.showToolbox ) {
-      this.toolboxPanel.top = this.controlPanel.bottom + 5;
-      this.toolboxPanel.right = this.controlPanel.right;
+      this.toolboxPanel!.top = this.controlPanel.bottom + 5;
+      this.toolboxPanel!.right = this.controlPanel.right;
     }
 
     // pie chart legend position is dependent on whether or not the screen includes an energy bar graph
     let pieChartLegendLeftTop = null;
     if ( this.showBarGraph ) {
-      this.energyBarGraphAccordionBox.x = this.fixedLeft;
-      pieChartLegendLeftTop = new Vector2( this.energyBarGraphAccordionBox.right + 45, this.energyBarGraphAccordionBox.top );
+      this.energyBarGraphAccordionBox!.x = this.fixedLeft;
+      pieChartLegendLeftTop = new Vector2( this.energyBarGraphAccordionBox!.right + 45, this.energyBarGraphAccordionBox!.top );
     }
     else {
       pieChartLegendLeftTop = new Vector2( this.fixedLeft, this.controlPanel.top );
     }
 
     if ( this.showSeparateVisibilityControlsPanel ) {
-      this.visibilityControlsPanel.left = this.fixedLeft;
+      this.visibilityControlsPanel!.left = this.fixedLeft;
     }
 
     // Put the pie chart legend to the right of the bar chart, see #60, #192
@@ -573,11 +612,8 @@ class EnergySkateParkScreenView extends ScreenView {
    * Add a node to the front of the bottom layer (the end of this.backLayer children array). This layer is behind
    * animating or movable things in the sim like the skater. This is useful for adding specific control-panel like
    * things in subtypes that should be behind the skater.
-   * @protected
-   *
-   * @param {Node} node
    */
-  addToBottomLayer( node ) {
+  protected addToBottomLayer( node: Node ): void {
     this.bottomLayer.addChild( node );
   }
 }
