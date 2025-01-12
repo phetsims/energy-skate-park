@@ -8,22 +8,21 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { DragListener } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkPlaygroundModel from '../../playground/model/EnergySkateParkPlaygroundModel.js';
+import EnergySkateParkPlaygroundScreenView from '../../playground/view/EnergySkateParkPlaygroundScreenView.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import TrackNode from './TrackNode.js';
 
 class TrackToolboxPanel extends Panel {
 
-  /**
-   * @param {EnergySkateParkPlaygroundModel} model
-   * @param {EnergySkateParkPlaygroundScreenView} view
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( model, view, tandem, options ) {
+  public constructor( model: EnergySkateParkPlaygroundModel, view: EnergySkateParkPlaygroundScreenView, tandem: Tandem, options?: IntentionalAny ) {
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {}, EnergySkateParkConstants.PANEL_OPTIONS, options );
 
     const iconTrack = model.createDraggableTrack( {
@@ -57,6 +56,7 @@ class TrackToolboxPanel extends Panel {
       track.position = view.modelViewTransform.viewToModelPosition( viewPointWithOffset );
 
       // signify that dragging has begun so that we can start the drag on the Node's drag listener
+      // @ts-expect-error
       track.forwardingDragStartEmitter.emit( event );
     } ) );
 

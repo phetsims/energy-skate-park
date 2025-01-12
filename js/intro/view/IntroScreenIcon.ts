@@ -15,7 +15,7 @@ import energySkatePark from '../../energySkatePark.js';
 
 class IntroScreenIcon extends ScreenIcon {
 
-  constructor() {
+  public constructor() {
 
     const background = new Image( introScreenIcon_png );
 

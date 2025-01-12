@@ -17,7 +17,7 @@ import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 class PhysicalNumberControl extends NumberControl {
 
   /**
-   * @param {string} titleString
+   * @param {TReadOnlyProperty<string>} titleString
    * @param {NumberProperty} property
    * @param {Range} valueRange
    * @param {BooleanProperty} userControlledProperty

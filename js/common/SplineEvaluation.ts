@@ -7,15 +7,15 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import dot from '../../../dot/js/dot.js';
+import IntentionalAny from '../../../phet-core/js/types/IntentionalAny.js';
 import energySkatePark from '../energySkatePark.js';
 
 // constants
-const FastArray = dot.FastArray;
+const FastArray = window.Float64Array ? window.Float64Array : window.Array;
 
 // The most important function for this sim in numeric.js is just too slow because it uses tensor versions of all functions.
 // This version inlines everything.
-const _at = ( spline, x1, p ) => {
+const _at = ( spline: IntentionalAny, x1: number, p: number ) => {
   const x = spline.x;
   const yl = spline.yl;
   const yr = spline.yr;
@@ -30,7 +30,7 @@ const _at = ( spline, x1, p ) => {
          b * s * t;
 };
 
-const atNumber = ( spline, x0 ) => {
+const atNumber = ( spline: IntentionalAny, x0: number ): number => {
   const x = spline.x;
   const n = x.length;
   let p;
@@ -51,7 +51,7 @@ const atNumber = ( spline, x0 ) => {
   return _at( spline, x0, p );
 };
 
-const atArray = ( spline, x0 ) => {
+const atArray = ( spline: IntentionalAny, x0: number[] ): IntentionalAny => {
   const n = x0.length;
   let i;
   const ret = new FastArray( n );

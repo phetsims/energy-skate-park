@@ -81,7 +81,7 @@ class Track extends PhetioObject {
 
   // Sampling points, which will be initialized and updated in updateLinSpace.  These points are evenly spaced
   // in the track parametric coordinates from just before the track parameter space to just after. See updateLinSpace
-  public searchLinSpace: null;
+  public searchLinSpace: number[] | null;
   public distanceBetweenSamplePoints: null | number;
   private readonly disposeTrack: () => void;
   public xSplineDiff: IntentionalAny;
@@ -319,8 +319,8 @@ class Track extends PhetioObject {
     // Compute the spline points for purposes of getting closest points.
     // keep these points around and invalidate only when necessary
     if ( !this.xSearchPoints ) {
-      this.xSearchPoints = SplineEvaluation.atArray( this.xSpline, this.searchLinSpace );
-      this.ySearchPoints = SplineEvaluation.atArray( this.ySpline, this.searchLinSpace );
+      this.xSearchPoints = SplineEvaluation.atArray( this.xSpline, this.searchLinSpace! );
+      this.ySearchPoints = SplineEvaluation.atArray( this.ySpline, this.searchLinSpace! );
     }
 
     let bestU = 0;
@@ -751,8 +751,8 @@ class Track extends PhetioObject {
    */
   public getLowestY(): number {
     if ( !this.xSearchPoints ) {
-      this.xSearchPoints = SplineEvaluation.atArray( this.xSpline, this.searchLinSpace );
-      this.ySearchPoints = SplineEvaluation.atArray( this.ySpline, this.searchLinSpace );
+      this.xSearchPoints = SplineEvaluation.atArray( this.xSpline, this.searchLinSpace! );
+      this.ySearchPoints = SplineEvaluation.atArray( this.ySpline, this.searchLinSpace! );
     }
 
     let min = Number.POSITIVE_INFINITY;
@@ -770,7 +770,7 @@ class Track extends PhetioObject {
     const foundU = this.searchLinSpace![ minIndex ];
 
     const minBound = foundU - this.distanceBetweenSamplePoints!;
-    const maxBound = foundU + this.distanceBetweenSamplePoints;
+    const maxBound = foundU + this.distanceBetweenSamplePoints!;
 
     // @ts-expect-error
     const smallerSpace = numeric.linspace( minBound, maxBound, 200 );

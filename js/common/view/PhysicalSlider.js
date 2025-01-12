@@ -22,7 +22,7 @@ const controlsValueNoneString = EnergySkateParkStrings.physicalControls.noneStri
 class PhysicalSlider extends PhysicalNumberControl {
 
   /**
-   * @param {string} titleString
+   * @param {TReadOnlyProperty<string>} titleString
    * @param {NumberProperty} property
    * @param {Range} valueRange
    * @param {BooleanProperty} userControlledProperty

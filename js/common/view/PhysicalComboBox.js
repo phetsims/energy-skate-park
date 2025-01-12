@@ -24,7 +24,7 @@ const controlsGravityCustomString = EnergySkateParkStrings.physicalControls.cust
 class PhysicalComboBox extends ComboBox {
 
   /**
-   * @param {Property} physicalProperty
+   * @param {PhetioProperty} physicalProperty
    * @param {BooleanProperty} userControlledProperty
    * @param {Array.<Object>} labelValueList - entries like {label:{string}, value:{number}}
    * @param {Emitter} resetEmitter

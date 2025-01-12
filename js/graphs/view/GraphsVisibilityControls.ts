@@ -7,18 +7,16 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Panel from '../../../../sun/js/Panel.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkVisibilityControls from '../../common/view/EnergySkateParkVisibilityControls.js';
 import energySkatePark from '../../energySkatePark.js';
+import GraphsModel from '../model/GraphsModel.js';
 
 class GraphsVisibilityControls extends Panel {
 
-  /**
-   * @param {GraphsModel} model
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( model, tandem, options ) {
+  public constructor( model: GraphsModel, tandem: Tandem, options?: IntentionalAny ) {
     const content = new EnergySkateParkVisibilityControls( model, tandem, {
       showPieChartCheckbox: false,
       showSpeedCheckbox: false,

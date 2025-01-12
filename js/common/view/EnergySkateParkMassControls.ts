@@ -74,7 +74,6 @@ class EnergySkateParkMassControls extends VBox {
     let massSlider = null;
     if ( options.includeMassSlider ) {
 
-      // @ts-expect-error
       massSlider = new MassSlider( massProperty, userControlledProperty, massRange, tandem.createTandem( 'massNumberControl' ) );
       children.push( massSlider );
     }

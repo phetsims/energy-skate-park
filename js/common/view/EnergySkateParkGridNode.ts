@@ -144,6 +144,7 @@ class EnergySkateParkGridNode extends Node {
 
       // only major grid lines are labeled, and 0 meters has a unique label
       if ( y % 2 === 0 && y !== 0 ) {
+        // @ts-expect-error
         const gridLineLabel = new TextPanel( `${y}`, {
           bottom: viewY - 2,
           right: this.labelXPosition - 2

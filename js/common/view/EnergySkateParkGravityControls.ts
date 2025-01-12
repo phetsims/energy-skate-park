@@ -95,6 +95,7 @@ class EnergySkateParkGravityControls extends VBox {
     }
 
     if ( options.includeGravityComboBox ) {
+      // @ts-expect-error
       const gravityComboBox = new GravityComboBox( gravityMagnitudeProperty, userControlledProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ), options );
       children.push( gravityComboBox );
     }

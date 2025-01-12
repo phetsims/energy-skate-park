@@ -7,19 +7,18 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import TReadOnlyProperty from '../../../axon/js/TReadOnlyProperty.js';
+import { AnyScreen } from '../../../joist/js/Screen.js';
 import Sim from '../../../joist/js/Sim.js';
 import merge from '../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../phet-core/js/types/IntentionalAny.js';
+import Tandem from '../../../tandem/js/Tandem.js';
 import energySkatePark from '../energySkatePark.js';
 
 class EnergySkateParkSim extends Sim {
 
-  /**
-   * @param {string} titleString - title for the simulation
-   * @param {Array.<Screen>} screens
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( titleString, screens, tandem, options ) {
+  public constructor( titleString: TReadOnlyProperty<string>, screens: AnyScreen[], tandem: Tandem, options?: IntentionalAny ) {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       tandem: tandem
     }, options );

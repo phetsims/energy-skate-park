@@ -7,19 +7,17 @@
  */
 
 import Screen from '../../../joist/js/Screen.js';
+import Tandem from '../../../tandem/js/Tandem.js';
+import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import IntroModel from './model/IntroModel.js';
 import IntroScreenIcon from './view/IntroScreenIcon.js';
 import IntroScreenView from './view/IntroScreenView.js';
 
-class IntroScreen extends Screen {
+class IntroScreen extends Screen<IntroModel, IntroScreenView> {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Tandem} tandem
-   */
-  constructor( preferencesModel, tandem ) {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
     const options = {
       name: EnergySkateParkStrings.screens.introStringProperty,
       tandem: tandem,

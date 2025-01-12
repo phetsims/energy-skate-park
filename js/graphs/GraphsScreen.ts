@@ -9,19 +9,17 @@
 import Screen from '../../../joist/js/Screen.js';
 import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import { Image } from '../../../scenery/js/imports.js';
+import Tandem from '../../../tandem/js/Tandem.js';
 import graphsScreenIcon_png from '../../images/graphsScreenIcon_png.js';
+import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import GraphsModel from './model/GraphsModel.js';
 import GraphsScreenView from './view/GraphsScreenView.js';
 
-class GraphsScreen extends Screen {
+class GraphsScreen extends Screen<GraphsModel, GraphsScreenView> {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Tandem} tandem
-   */
-  constructor( preferencesModel, tandem ) {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
     super(
       () => new GraphsModel( preferencesModel, tandem.createTandem( 'model' ) ),
       model => new GraphsScreenView( model, tandem.createTandem( 'view' ) ),

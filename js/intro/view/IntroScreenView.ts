@@ -6,16 +6,14 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import Tandem from '../../../../tandem/js/Tandem.js';
+import EnergySkateParkFullTrackSetModel from '../../common/model/EnergySkateParkFullTrackSetModel.js';
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class IntroScreenView extends EnergySkateParkTrackSetScreenView {
 
-  /**
-   * @param {EnergySkateParkFullTrackSetModel} model
-   * @param {Tandem} tandem
-   */
-  constructor( model, tandem ) {
+  public constructor( model: EnergySkateParkFullTrackSetModel, tandem: Tandem ) {
     super( model, tandem, {
       controlPanelOptions: {
         showMassControls: true,

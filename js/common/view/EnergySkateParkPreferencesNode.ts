@@ -11,13 +11,14 @@ import PreferencesControl from '../../../../joist/js/preferences/PreferencesCont
 import PreferencesDialogConstants from '../../../../joist/js/preferences/PreferencesDialogConstants.js';
 import { Node, RichText, Text } from '../../../../scenery/js/imports.js';
 import ABSwitch from '../../../../sun/js/ABSwitch.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
 
 class EnergySkateParkPreferencesNode extends Node {
 
-  public constructor( preferencesModel: EnergySkateParkPreferencesModel ) {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
     super();
 
     const metersPerSecondSquaredLabel = new RichText( EnergySkateParkStrings.preferences.metersPerSecondSquaredStringProperty,

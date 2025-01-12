@@ -4,16 +4,14 @@
  * @author Jesse Greenberg
  */
 
+import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkFullTrackSetModel from '../../common/model/EnergySkateParkFullTrackSetModel.js';
+import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class IntroModel extends EnergySkateParkFullTrackSetModel {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param tandem
-   */
-  constructor( preferencesModel, tandem ) {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
     super( preferencesModel, tandem, {
 
       // by default the Intro screen does not save samples

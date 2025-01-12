@@ -9,19 +9,17 @@
 import Screen from '../../../joist/js/Screen.js';
 import ScreenIcon from '../../../joist/js/ScreenIcon.js';
 import { Image } from '../../../scenery/js/imports.js';
+import Tandem from '../../../tandem/js/Tandem.js';
 import measureScreenIcon_png from '../../images/measureScreenIcon_png.js';
+import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import MeasureModel from './model/MeasureModel.js';
 import MeasureScreenView from './view/MeasureScreenView.js';
 
-class MeasureScreen extends Screen {
+class MeasureScreen extends Screen<MeasureModel, MeasureScreenView> {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Tandem} tandem
-   */
-  constructor( preferencesModel, tandem ) {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
     const options = {
       name: EnergySkateParkStrings.screens.measureStringProperty,
       homeScreenIcon: new ScreenIcon( new Image( measureScreenIcon_png ), {

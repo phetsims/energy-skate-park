@@ -16,7 +16,7 @@ import energySkatePark from '../../energySkatePark.js';
 
 class PlaygroundScreenIcon extends ScreenIcon {
 
-  constructor() {
+  public constructor() {
 
     const background = new Image( playgroundScreenIcon_png );
 

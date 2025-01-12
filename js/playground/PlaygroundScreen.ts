@@ -7,19 +7,17 @@
  */
 
 import Screen from '../../../joist/js/Screen.js';
+import Tandem from '../../../tandem/js/Tandem.js';
+import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import EnergySkateParkPlaygroundModel from './model/EnergySkateParkPlaygroundModel.js';
 import EnergySkateParkPlaygroundScreenView from './view/EnergySkateParkPlaygroundScreenView.js';
 import PlaygroundScreenIcon from './view/PlaygroundScreenIcon.js';
 
-class PlaygroundScreen extends Screen {
+class PlaygroundScreen extends Screen<EnergySkateParkPlaygroundModel, EnergySkateParkPlaygroundScreenView> {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Tandem} tandem
-   */
-  constructor( preferencesModel, tandem ) {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
 
     const options = {
       name: EnergySkateParkStrings.screens.playgroundStringProperty,

@@ -7,7 +7,9 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { Text } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
@@ -17,11 +19,12 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 class TextPanel extends Panel {
 
   /**
-   * @param {Property<string>} stringProperty - text to fill the panel
-   * @param {Object} [options]
+   * @param stringProperty - text to fill the panel
+   * @param [options]
    */
-  constructor( stringProperty, options ) {
+  public constructor( stringProperty: TReadOnlyProperty<string>, options?: IntentionalAny ) {
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // Text options

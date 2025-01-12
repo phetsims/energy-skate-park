@@ -6,28 +6,26 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
-const controlsMassString = EnergySkateParkStrings.physicalControls.massControls.massStringProperty;
-const smallString = EnergySkateParkStrings.physicalControls.smallStringProperty;
-const largeString = EnergySkateParkStrings.physicalControls.largeStringProperty;
-
 class MassSlider extends PhysicalSlider {
 
-  /**
-   * @param {NumberProperty} property
-   * @param {BooleanProperty} userControlledProperty
-   * @param {Range} massRange
-   * @param {Tandem} tandem
-   */
-  constructor( property, userControlledProperty, massRange, tandem ) {
-    super( controlsMassString, property, massRange, userControlledProperty, tandem, {
-      minLabel: smallString,
-      maxLabel: largeString,
+  public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, massRange: Range, tandem: Tandem ) {
+
+    // @ts-expect-error
+    super( EnergySkateParkStrings.physicalControls.massControls.massStringProperty, property, massRange, userControlledProperty, tandem, {
+      minLabel: EnergySkateParkStrings.physicalControls.smallStringProperty,
+      maxLabel: EnergySkateParkStrings.physicalControls.largeStringProperty,
       sliderOptions: {
+
+        // @ts-expect-error
         constrainValue: value => Utils.roundToInterval( value, 5 )
       }
     } );
