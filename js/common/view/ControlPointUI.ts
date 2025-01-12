@@ -8,24 +8,29 @@
 
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
+import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import { Color, Node, Path } from '../../../../scenery/js/imports.js';
 import scissorsShape from '../../../../sherpa/js/fontawesome-4/scissorsShape.js';
 import timesCircleSolidShape from '../../../../sherpa/js/fontawesome-5/timesCircleSolidShape.js';
 import RoundPushButton from '../../../../sun/js/buttons/RoundPushButton.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
+import Track from '../model/Track.js';
 
 class ControlPointUI extends Node {
+  public readonly clickToDismissListener: { down: () => void };
 
   /**
    * Constructor for the ControlPointUI for a single control point.
-   * @param {EnergySkateParkModel} model the main model
-   * @param {Track} track the track associated with the control point
-   * @param {number} controlPointIndex the 0-based index of the control point
-   * @param {ModelViewTransform2} modelViewTransform the main model-view transform
-   * @param {Node} parentNode
-   * @param {Tandem} tandem
+   * @param model the main model
+   * @param track the track associated with the control point
+   * @param controlPointIndex the 0-based index of the control point
+   * @param modelViewTransform the main model-view transform
+   * @param parentNode
+   * @param tandem
    */
-  constructor( model, track, controlPointIndex, modelViewTransform, parentNode, tandem ) {
+  public constructor( model: EnergySkateParkModel, track: Track, controlPointIndex: number, modelViewTransform: ModelViewTransform2, parentNode: Node, tandem: Tandem ) {
     super( {
       tandem: tandem,
       phetioState: false,
@@ -89,6 +94,8 @@ class ControlPointUI extends Node {
       } );
       cutButton.addInputListener( disableDismissAction );
       this.addChild( cutButton );
+
+      this.addDisposable( cutButton );
     }
 
     // Show the delete button.
@@ -115,31 +122,18 @@ class ControlPointUI extends Node {
     deleteButton.addInputListener( disableDismissAction );
     this.addChild( deleteButton );
 
-    this.disposeControlPointUI = () => {
-      cutButton && cutButton.dispose();
-      deleteButton.dispose();
-    };
-  }
-
-  /**
-   * Make eligible for garbage collection.
-   * @public
-   * @override
-   */
-  dispose() {
-    this.disposeControlPointUI();
-    super.dispose();
+    this.addDisposable( deleteButton );
   }
 
   /**
    * Override to additionally remove the attached input listener.
-   * @public
    */
-  detach() {
+  public override detach(): this {
     super.detach();
     if ( _.indexOf( phet.joist.display.getInputListeners(), this.clickToDismissListener ) !== -1 ) {
       phet.joist.display.removeInputListener( this.clickToDismissListener );
     }
+    return this;
   }
 }
 

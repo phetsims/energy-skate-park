@@ -251,7 +251,6 @@ class ControlPointNode extends Circle {
               // If the track has translated, hide the buttons, see #272
               track.translatedEmitter.addListener( removalListener );
 
-              // @ts-expect-error
               trackNode.parents[ 0 ].addChild( lastControlPointUI );
             }
 
