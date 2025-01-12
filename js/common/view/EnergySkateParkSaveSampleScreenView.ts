@@ -5,13 +5,19 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import SamplesCanvasNode from '../../measure/view/SamplesCanvasNode.js';
+import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 
 class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
-  constructor( model, tandem, options ) {
+  private readonly skaterSamplesNode: SamplesCanvasNode | null;
 
+  public constructor( model: EnergySkateParkModel, tandem: Tandem, options?: IntentionalAny ) {
+
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {boolean} - true if
@@ -19,7 +25,6 @@ class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
     }, options );
     super( model, tandem, options );
 
-    // @private {SamplesCanvasNode|null}
     this.skaterSamplesNode = null;
 
     if ( options.drawSkaterPath ) {
@@ -29,10 +34,10 @@ class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
   }
 
   /**
-   * @public
-   * @param {number} dt - in seconds
+   * @param dt - in seconds
    */
-  step( dt ) {
+  public override step( dt: number ): void {
+    super.step( dt );
     if ( this.skaterSamplesNode ) {
       this.skaterSamplesNode.step( dt );
     }
