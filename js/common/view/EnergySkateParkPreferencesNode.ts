@@ -17,11 +17,7 @@ import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferences
 
 class EnergySkateParkPreferencesNode extends Node {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Tandem} tandem
-   */
-  constructor( preferencesModel, tandem ) {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel ) {
     super();
 
     const metersPerSecondSquaredLabel = new RichText( EnergySkateParkStrings.preferences.metersPerSecondSquaredStringProperty,
