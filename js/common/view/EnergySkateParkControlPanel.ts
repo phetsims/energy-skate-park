@@ -8,12 +8,16 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { HSeparator, VBox } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkGravityControls from './EnergySkateParkGravityControls.js';
 import EnergySkateParkMassControls from './EnergySkateParkMassControls.js';
+import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
 import FrictionSlider from './FrictionSlider.js';
 import SceneSelectionRadioButtonGroup from './SceneSelectionRadioButtonGroup.js';
@@ -21,14 +25,9 @@ import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
 
 class EnergySkateParkControlPanel extends Panel {
 
-  /**
-   * @param {EnergySkateParkModel} model
-   * @param {EnergySkateParkScreenView} screenView
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( model, screenView, tandem, options ) {
+  public constructor( model: EnergySkateParkModel, screenView: EnergySkateParkScreenView, tandem: Tandem, options?: IntentionalAny ) {
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {boolean} whether or not controls will include radio buttons to change active track
@@ -78,12 +77,14 @@ class EnergySkateParkControlPanel extends Panel {
 
     let gravityControls = null;
     if ( options.showGravityControls ) {
+      // @ts-expect-error
       gravityControls = new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, userControlledPropertySet.gravityControlledProperty, model.preferencesModel.accelerationUnitsProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkGravityControls' ), options.gravityControlsOptions );
       children.push( gravityControls );
     }
 
     let massControls = null;
     if ( options.showMassControls ) {
+      // @ts-expect-error
       massControls = new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, screenView.skaterNode.skaterImageSetProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
       children.push( massControls );
     }
@@ -95,6 +96,7 @@ class EnergySkateParkControlPanel extends Panel {
     }
 
     // horizontal separators added after construction of all controls so that it can match width of widest control
+    // @ts-expect-error
     const separatorWidth = _.maxBy( children, child => child.width ).width;
 
     // controls that change visibility of items in the screen
@@ -117,6 +119,7 @@ class EnergySkateParkControlPanel extends Panel {
         children.splice( children.indexOf( gravityControls ) + 1, 0, new HSeparator() );
       }
       else {
+        // @ts-expect-error
         children.splice( children.indexOf( frictionControls ) + 1, 0, new HSeparator() );
       }
     }

@@ -36,7 +36,7 @@ import Track from './Track.js';
 
 class Skater {
 
-  private readonly massRange: Range;
+  public readonly massRange: Range;
 
   // The track the skater is on, or null if free-falling
   public readonly trackProperty: Property<Track | null>;

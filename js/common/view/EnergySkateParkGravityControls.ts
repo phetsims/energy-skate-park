@@ -6,8 +6,14 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import Emitter from '../../../../axon/js/Emitter.js';
+import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { VBox } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
@@ -15,22 +21,21 @@ import GravityComboBox from './GravityComboBox.js';
 import GravityNumberControl from './GravityNumberControl.js';
 import GravitySlider from './GravitySlider.js';
 
-// constants
-const gravityNewtonsPerKilogramPatternString = EnergySkateParkStrings.physicalControls.gravityControls.gravityNewtonsPerKilogramPatternStringProperty;
-
 class EnergySkateParkGravityControls extends VBox {
 
   /**
-   * @param {NumberProperty} gravityMagnitudeProperty
-   * @param {BooleanProperty} userControlledProperty
-   * @param {EnumerationProperty} accelerationUnitsProperty - controls the units to display acceleration
-   * @param {Emitter} resetEmitter - broadcasts a message when the EnergySkateParkModel is reset
-   * @param {Node} listParent - parent Node for the ComboBox, if one is included
-   * @param {Tandem} tandem
-   * @param {Object} [options]
+   * @param gravityMagnitudeProperty
+   * @param userControlledProperty
+   * @param accelerationUnitsProperty - controls the units to display acceleration
+   * @param resetEmitter - broadcasts a message when the EnergySkateParkModel is reset
+   * @param listParent - parent Node for the ComboBox, if one is included
+   * @param tandem
+   * @param [options]
    */
-  constructor( gravityMagnitudeProperty, userControlledProperty, accelerationUnitsProperty, resetEmitter, listParent, tandem, options ) {
+  public constructor( gravityMagnitudeProperty: NumberProperty, userControlledProperty: BooleanProperty, accelerationUnitsProperty: EnumerationProperty<IntentionalAny>, resetEmitter: Emitter,
+                      listParent: Node, tandem: Tandem, options?: IntentionalAny ) {
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {boolean} - whether or not a GravitySlider is included in this set of controls, only GravitySlider or
@@ -68,7 +73,7 @@ class EnergySkateParkGravityControls extends VBox {
       const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInMetersPerSecondSquaredControl' ), options.gravityNumberControlOptions );
       const gravityControlInNewtonsPerKilogram = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInNewtonsPerKilogramControl' ), merge( {}, options.gravityNumberControlOptions, {
           numberDisplayOptions: {
-            valuePattern: gravityNewtonsPerKilogramPatternString
+            valuePattern: EnergySkateParkStrings.physicalControls.gravityControls.gravityNewtonsPerKilogramPatternStringProperty
           }
         } )
       );
