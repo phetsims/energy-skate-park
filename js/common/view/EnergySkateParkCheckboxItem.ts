@@ -7,14 +7,17 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import Range from '../../../../dot/js/Range.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import { Shape } from '../../../../kite/js/imports.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import GaugeNode from '../../../../scenery-phet/js/GaugeNode.js';
 import { Circle, Line, Node, Path, PressListener, Rectangle } from '../../../../scenery/js/imports.js';
 import Checkbox from '../../../../sun/js/Checkbox.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
@@ -23,14 +26,9 @@ const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelSt
 
 class EnergySkateParkCheckboxItem extends Checkbox {
 
-  /**
-   * @param {Property} property - the checkbox will update this Property
-   * @param {Node} icon
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( property, icon, tandem, options ) {
+  public constructor( property: PhetioProperty<boolean>, icon: Node, tandem: Tandem, options?: IntentionalAny ) {
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {BooleanProperty|null} - whether or not the user has controlled this checkbox
@@ -56,15 +54,8 @@ class EnergySkateParkCheckboxItem extends Checkbox {
     }
   }
 
-  /**
-   * In icon for the pie chart.
-   * @public
-   *
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   * @returns {Node}
-   */
-  static createPieChartIcon( tandem, options ) {
+  public static createPieChartIcon( tandem: Tandem, options?: IntentionalAny ): Node {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       scale: 1
     }, options );
@@ -86,13 +77,9 @@ class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
    * An icon for the grid.
-   * @public
-   *
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   * @returns {Node}
    */
-  static createGridIcon( tandem, options ) {
+  public static createGridIcon( tandem: Tandem, options?: IntentionalAny ): Node {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       scale: 1
     }, options );
@@ -113,13 +100,9 @@ class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
    * An icon for the speedometer.
-   * @public
-   *
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   * @returns {Node}
    */
-  static createSpeedometerIcon( tandem, options ) {
+  public static createSpeedometerIcon( tandem: Tandem, options?: IntentionalAny ): Node {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       scale: 1
     }, options );
@@ -134,12 +117,8 @@ class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
    * An icon for the reference height control.
-   * @public
-   *
-   * @param {Tandem} tandem
-   * @returns {Node}
    */
-  static createReferenceHeightIcon( tandem ) {
+  public static createReferenceHeightIcon( tandem: Tandem ): Node {
 
     // a dashed, stroked line will be drawn with overlapping rectangles, the background rectangle is slightly taller
     // to mimic stroke
@@ -163,12 +142,8 @@ class EnergySkateParkCheckboxItem extends Checkbox {
 
   /**
    * An icon for the "Path" control.
-   * @public
-   *
-   * @param {Tandem} tandem
-   * @returns {Node}
    */
-  static createSamplesIcon( tandem ) {
+  public static createSamplesIcon( tandem: Tandem ): Node {
 
     const circleRadius = 3;
 
@@ -203,12 +178,8 @@ class EnergySkateParkCheckboxItem extends Checkbox {
   /**
    * Create an icon for the "Sticking to Track" checkbox, a small section of track with the skater's center of
    * mass dot on it.
-   * @public
-   *
-   * @param {Tandem} tandem
-   * @returns {Node}
    */
-  static createStickingToTrackIcon() {
+  public static createStickingToTrackIcon(): Node {
     const iconWidth = 19;
 
     const trackRectangle = new Rectangle( 0, 0, iconWidth, 6.8, {
