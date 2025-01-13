@@ -13,6 +13,7 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
+import Range from '../../../../dot/js/Range.js';
 
 class MassNumberControl extends PhysicalNumberControl {
 

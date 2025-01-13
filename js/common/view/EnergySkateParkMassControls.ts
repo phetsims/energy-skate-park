@@ -66,7 +66,6 @@ class EnergySkateParkMassControls extends VBox {
 
     let massNumberControl = null;
     if ( options.includeMassNumberControl ) {
-      // @ts-expect-error
       massNumberControl = new MassNumberControl( massProperty, userControlledProperty, massRange, tandem.createTandem( 'massNumberControl' ) );
       children.push( massNumberControl );
     }

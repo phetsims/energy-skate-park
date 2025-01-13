@@ -6,25 +6,26 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
+import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import NumberControl from '../../../../scenery-phet/js/NumberControl.js';
+import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { Text } from '../../../../scenery/js/imports.js';
+import { Node, Text } from '../../../../scenery/js/imports.js';
+import ArrowButton from '../../../../sun/js/buttons/ArrowButton.js';
+import Slider from '../../../../sun/js/Slider.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 class PhysicalNumberControl extends NumberControl {
 
-  /**
-   * @param {TReadOnlyProperty<string>} titleString
-   * @param {NumberProperty} property
-   * @param {Range} valueRange
-   * @param {BooleanProperty} userControlledProperty
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( titleString, property, valueRange, userControlledProperty, tandem, options ) {
+  public constructor( titleString: TReadOnlyProperty<string>, property: NumberProperty, valueRange: Range, userControlledProperty: BooleanProperty, tandem: Tandem, options?: IntentionalAny ) {
     options = options || {};
     assert && assert( options.layoutFunction === undefined, 'PhysicalNumberControl sets layoutFunction' );
     assert && assert( options.tandem === undefined, 'PhysicalNumberControl shouldn\'t set tandem in options' );
@@ -40,6 +41,7 @@ class PhysicalNumberControl extends NumberControl {
     }
 
     // slider options are passed directly to the Slider in NumberControl
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // decimal places for the ticks and (by default) the NumberControl's NumberDisplay
@@ -97,15 +99,8 @@ class PhysicalNumberControl extends NumberControl {
        * Custom layout for the NumberControl - if the slider is the only form of input for the control the tweaker
        * and number display are hidden. But we still have the same layout for the title so that this matches other
        * NumberControls used in energy-skate-park.
-       *
-       * @param {Node} titleNode
-       * @param {NumberDisplay} numberDisplay
-       * @param {Slider} slider
-       * @param {ArrowButton} leftArrowButton
-       * @param {ArrowButton} rightArrowButton
-       * @returns {Node}
        */
-      layoutFunction: ( titleNode, numberDisplay, slider, leftArrowButton, rightArrowButton ) => {
+      layoutFunction: ( titleNode: Node, numberDisplay: NumberDisplay, slider: Slider, leftArrowButton: ArrowButton, rightArrowButton: ArrowButton ): Node => {
 
         // default layout, once done we will hide extra components if this is only meant to display the slider
         const defaultLayoutFunction = NumberControl.createLayoutFunction4( {
