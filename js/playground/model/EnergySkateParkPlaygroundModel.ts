@@ -9,23 +9,22 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkModel from '../../common/model/EnergySkateParkModel.js';
+import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
 import Track from '../../common/model/Track.js';
 import energySkatePark from '../../energySkatePark.js';
 
 class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 
-  /**
-   * @param {EnergySkateParkPreferencesModel} preferencesModel
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( preferencesModel, tandem, options ) {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options?: IntentionalAny ) {
     if ( options ) {
       assert && assert( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
       assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
     }
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       tracksDraggable: true,
       tracksConfigurable: true
@@ -37,12 +36,11 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
   /**
    * Create a new fully interactive Track which can be used to create custom Tracks. Generally  used when
    * user drags a new Track from  the toolbox.
-   * @public
    *
-   * @param {Object} [options] - options passed along to the Track
-   * @returns {Track}
+   * @param options - options passed along to the Track
    */
-  createDraggableTrack( options ) {
+  public createDraggableTrack( options?: IntentionalAny ): Track {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // options passed along to ControlPoints of this Track
@@ -68,9 +66,8 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 
   /**
    * Clear all tracks from the model.
-   * @public
    */
-  clearTracks() {
+  public clearTracks(): void {
 
     this.tracks.clear();
     this.trackGroup.clear();
@@ -84,10 +81,8 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 
   /**
    * Reset the model.
-   * @public
-   * @override
    */
-  reset() {
+  public override reset(): void {
     super.reset();
     this.clearTracks();
   }
