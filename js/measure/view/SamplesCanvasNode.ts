@@ -7,25 +7,19 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import { CanvasNode } from '../../../../scenery/js/imports.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import energySkatePark from '../../energySkatePark.js';
+import MeasureModel from '../model/MeasureModel.js';
 
 // constants
 const SAMPLE_RADIUS = 3.5;
 
 class SamplesCanvasNode extends CanvasNode {
 
-  /**
-   * @param {MeasureModel} model
-   * @param {ModelViewTransform2} modelViewTransform
-   */
-  constructor( model, modelViewTransform ) {
+  public constructor( private readonly model: MeasureModel, private readonly modelViewTransform: ModelViewTransform2 ) {
     super();
-
-    // @private
-    this.model = model;
-    this.modelViewTransform = modelViewTransform;
 
     this.model.availableModelBoundsProperty.link( modelBounds => {
 
@@ -40,12 +34,8 @@ class SamplesCanvasNode extends CanvasNode {
 
   /**
    * Paints the canvas node.
-   * @public
-   * @override
-   *
-   * @param {CanvasRenderingContext2D} context
    */
-  paintCanvas( context ) {
+  public override paintCanvas( context: CanvasRenderingContext2D ): void {
     for ( let i = 0; i < this.model.dataSamples.length; i++ ) {
       const sample = this.model.dataSamples.get( i );
       const viewPosition = this.modelViewTransform.modelToViewPosition( sample.position );
@@ -65,11 +55,8 @@ class SamplesCanvasNode extends CanvasNode {
 
   /**
    * Repaint in the animation frame if playing.
-   * @public
-   *
-   * @param {number} dt - in seconds
    */
-  step( dt ) {
+  public step( dt: number ): void {
     this.invalidatePaint();
   }
 }
