@@ -21,8 +21,7 @@ import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
-import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
@@ -33,6 +32,20 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import SkaterMasses from '../SkaterMasses.js';
 import Track from './Track.js';
+
+type SelfOptions = {
+
+  // initial mass for the Skater, in kg
+  defaultMass?: number;
+
+  // range for the Skater mass, in kg
+  massRange?: Range;
+
+  // Range for the reference height, in meters
+  referenceHeightRange?: Range;
+};
+
+type SkaterOptions = SelfOptions;
 
 export default class Skater {
 
@@ -127,19 +140,12 @@ export default class Skater {
   private startingAngle?: number;
   private startingTrackControlPointSources?: Vector2[];
 
-  public constructor( tandem: Tandem, options: IntentionalAny ) {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {number} - initial mass for the Skater, in kg
+  public constructor( tandem: Tandem, providedOptions?: SkaterOptions ) {
+    const options = optionize<SkaterOptions, SelfOptions>()( {
       defaultMass: SkaterMasses.SKATER_1_MASS,
-
-      // {Range} - range for the Skater mass, in kg
       massRange: SkaterMasses.MASS_RANGE,
-
-      // {Range} - Range for the reference height, in meters
       referenceHeightRange: EnergySkateParkConstants.REFERENCE_HEIGHT_RANGE
-    }, options );
+    }, providedOptions );
 
     assert && assert( options.referenceHeightRange.min === 0, 'reference height range needs to start from ground' );
 
