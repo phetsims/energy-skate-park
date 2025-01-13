@@ -36,7 +36,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
   // whether or not to limit the number of samples to be saved - if false, which
   // can be done if you are ok with saving limitless samples, options.maxNumberOfSamples has no impact
-  public readonly limitNumberOfSamples: boolean;
+  public limitNumberOfSamples: boolean;
 
   // controls whether or not samples are saved as the model steps through time
   public readonly saveSamplesProperty: BooleanProperty;
