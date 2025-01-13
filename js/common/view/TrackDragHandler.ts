@@ -6,17 +6,30 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import { DragListener } from '../../../../scenery/js/imports.js';
+import Property from '../../../../axon/js/Property.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
+import Vector2 from '../../../../dot/js/Vector2.js';
+import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
+import { DragListener, SceneryEvent } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
+import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
+import Track from '../model/Track.js';
+import TrackNode from './TrackNode.js';
 
 class TrackDragHandler extends DragListener {
+  private readonly track: Track;
+  private readonly model: EnergySkateParkModel;
+  private readonly modelViewTransform: ModelViewTransform2;
+  private readonly availableBoundsProperty: Property<Bounds2>;
+  private readonly startOffset: Vector2 | null;
 
   /**
-   * @param {TrackNode} trackNode the track node that this listener will drag
-   * @param {Tandem} tandem
+   * @param trackNode the track node that this listener will drag
+   * @param tandem
    */
-  constructor( trackNode, tandem ) {
+  public constructor( private readonly trackNode: TrackNode, tandem: Tandem ) {
 
     // Drag handler for dragging the track segment itself (not one of the control points)
     // Its bounds are determined by the shape of the track, so it cannot go below ground.
@@ -27,6 +40,8 @@ class TrackDragHandler extends DragListener {
 
       start: event => this.handleDragStart( event ),
       drag: event => this.handleDrag( event ),
+
+      // @ts-expect-error
       end: event => this.handleDragEnd( event )
     } );
 
@@ -40,11 +55,8 @@ class TrackDragHandler extends DragListener {
 
   /**
    * Start of a drag interaction from an event.
-   * @public
-   *
-   * @param {SceneryEvent} event
    */
-  handleDragStart( event ) {
+  public handleDragStart( event: SceneryEvent ): void {
 
     // Move the track to the front when it starts dragging, see #296
     // The track is in a layer of tracks (without other nodes) so moving it to the front will work perfectly
@@ -55,29 +67,21 @@ class TrackDragHandler extends DragListener {
 
   /**
    * Continuation of drag.
-   * @private
-   *
-   * @param {SceneryEvent} event
    */
-  handleDrag( event ) {
+  private handleDrag( event: SceneryEvent ): void {
+
+    // @ts-expect-error
     this.trackDragged( event );
   }
 
   /**
    * End of a drag interaction.
-   * @private
-   *
-   * @param {SceneryEvent} event
    */
-  handleDragEnd( event ) {
+  private handleDragEnd( event: SceneryEvent ): void {
     this.trackDragEnded( event );
   }
 
-  /**
-   * @public
-   * @param {Event} event
-   */
-  trackDragged( event ) {
+  public trackDragged( event: Event ): void {
     let snapTargetChanged = false;
     const model = this.model;
     const track = this.track;
@@ -87,6 +91,7 @@ class TrackDragHandler extends DragListener {
 
     track.draggingProperty.value = true;
 
+    // @ts-expect-error
     const parentPoint = this.globalToParentPoint( event.pointer.point ).minus( this.startOffset );
     const position = this.modelViewTransform.viewToModelPosition( parentPoint );
 
@@ -152,6 +157,8 @@ class TrackDragHandler extends DragListener {
           for ( let k = 0; k < otherPoints.length; k++ ) {
             const otherPoint = otherPoints[ k ];
             const distance = point.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
+
+            // @ts-expect-error
             if ( ( bestDistance === null && distance > 1E-6 ) || ( distance < bestDistance ) ) {
               bestDistance = distance;
               myBestPoint = point;
@@ -163,9 +170,13 @@ class TrackDragHandler extends DragListener {
     }
 
     if ( bestDistance !== null && bestDistance < 1 ) {
+
+      // @ts-expect-error
       if ( myBestPoint.snapTargetProperty.value !== otherBestPoint ) {
         snapTargetChanged = true;
       }
+
+      // @ts-expect-error
       myBestPoint.snapTargetProperty.value = otherBestPoint;
 
       // Set the opposite point to be unsnapped, you can only snap one at a time
@@ -199,11 +210,7 @@ class TrackDragHandler extends DragListener {
     model.trackModified( track );
   }
 
-  /**
-   * @public
-   * @param {Event} event
-   */
-  trackDragEnded( event ) {
+  public trackDragEnded( event: SceneryEvent ): void {
     const track = this.track;
     const model = this.model;
 
@@ -240,12 +247,11 @@ class TrackDragHandler extends DragListener {
 
   /**
    * Determine the offset point at the start of a drag so that the track translates with the mouse without jumping.
-   * @private
-   *
-   * @param {SceneryEvent} event
    */
-  calculateStartOffset( event ) {
+  private calculateStartOffset( event: SceneryEvent ): void {
     const startingPosition = this.modelViewTransform.modelToViewPosition( this.track.position );
+
+    // @ts-expect-error
     this.startOffset = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( startingPosition );
   }
 }
