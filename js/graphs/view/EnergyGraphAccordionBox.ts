@@ -18,7 +18,7 @@ import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
 import MagnifyingGlassZoomButtonGroup from '../../../../scenery-phet/js/MagnifyingGlassZoomButtonGroup.js';
 import PhetColorScheme from '../../../../scenery-phet/js/PhetColorScheme.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { AlignGroup, Circle, HBox, Node, Text, VBox } from '../../../../scenery/js/imports.js';
+import { AlignGroup, Circle, HBox, ManualConstraint, Node, Text, VBox } from '../../../../scenery/js/imports.js';
 import ABSwitch from '../../../../sun/js/ABSwitch.js';
 import AccordionBox from '../../../../sun/js/AccordionBox.js';
 import VerticalCheckboxGroup from '../../../../sun/js/VerticalCheckboxGroup.js';
@@ -56,7 +56,7 @@ const LABEL_FONT = new PhetFont( { size: 15 } );
 class EnergyGraphAccordionBox extends AccordionBox {
   public readonly energyPlot: EnergyChart;
 
-  public constructor( public readonly model: GraphsModel, modelViewTransform: ModelViewTransform2, tandem: Tandem ) {
+  public constructor( public readonly model: GraphsModel, modelViewTransform: ModelViewTransform2, tandem: Tandem, parentLayer: Node ) {
 
     // the parent for all content of the accordion box
     const contentNode = new Node();
@@ -182,7 +182,7 @@ class EnergyGraphAccordionBox extends AccordionBox {
       // do not resize the AccordionBox as EnergyChart labels animate (new labels may adjust bounds)
       resize: false,
 
-      // clicking doesn't expand since the title contains other controls
+      // clicking doesn't expand since the title contains other controls in the parentLayer
       titleBarExpandCollapse: false,
 
       expandCollapseButtonOptions: {
@@ -196,15 +196,14 @@ class EnergyGraphAccordionBox extends AccordionBox {
       tandem: tandem.createTandem( 'accordionBox' )
     }, EnergySkateParkConstants.PANEL_OPTIONS ) );
 
-    // decorate this Node with additional controls that are positioned along the title
-    // TODO: AccordionBox does not support the decorator pattern, and no other way to layout these items as
-    //     part of the title.  Removed until https://github.com/phetsims/energy-skate-park/issues/384 is resolved.
-    // this.addChild( variableSwitch );
-    // this.addChild( eraserButton );
+    // decorate the parent layer with additional controls that are positioned along the title
+    parentLayer.addChild( variableSwitch );
+    parentLayer.addChild( eraserButton );
 
-    variableSwitch.centerBottom = variableSwitch.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.chartPanel.centerTop ) ).minusXY( 0, buttonYMargin + contentYMargin );
-    eraserButton.right = eraserButton.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.chartPanel.rightCenter ) ).x;
-    eraserButton.centerY = variableSwitch.centerY;
+    ManualConstraint.create( parentLayer, [ this, variableSwitch, eraserButton, energyPlot, energyPlot.chartPanel ], ( thisProxy, variableSwitchProxy, eraserButtonProxy, energyPlotProxy, chartPanelProxy ) => {
+      variableSwitchProxy.centerBottom = chartPanelProxy.centerTop.plusXY( 0, -buttonYMargin );
+      eraserButtonProxy.rightBottom = chartPanelProxy.rightTop.plusXY( 0, -buttonYMargin );
+    } );
 
     // The variable switch and eraser button are part of the title layout but should only be visible when
     // expanded

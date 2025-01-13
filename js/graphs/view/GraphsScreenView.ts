@@ -42,7 +42,7 @@ class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
 
     this.addChild( comboBoxParent );
 
-    this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ) );
+    this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ), this );
     this.addToBottomLayer( this.graphAccordionBox );
   }
 
