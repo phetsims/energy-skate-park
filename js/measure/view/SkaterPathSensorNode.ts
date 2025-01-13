@@ -7,33 +7,41 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import { ObservableArray } from '../../../../axon/js/createObservableArray.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import TProperty from '../../../../axon/js/TProperty.js';
+import LocalizedStringProperty from '../../../../chipper/js/browser/LocalizedStringProperty.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
+import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import ProbeNode from '../../../../scenery-phet/js/ProbeNode.js';
 import WireNode from '../../../../scenery-phet/js/WireNode.js';
-import { AlignGroup, DragListener, HBox, Node, Rectangle, Text, VBox } from '../../../../scenery/js/imports.js';
+import { AlignBox, AlignGroup, DragListener, HBox, Node, Rectangle, Text, VBox } from '../../../../scenery/js/imports.js';
 import SunConstants from '../../../../sun/js/SunConstants.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
+import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
+import EnergySkateParkControlPanel from '../../common/view/EnergySkateParkControlPanel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 
-const energyEnergyString = EnergySkateParkStrings.energies.energyStringProperty;
-const energyJoulesPatternString = EnergySkateParkStrings.pathSensor.energyJoulesPatternStringProperty;
-const energyKineticString = EnergySkateParkStrings.energies.kineticStringProperty;
-const energyPotentialString = EnergySkateParkStrings.energies.potentialStringProperty;
-const energyThermalString = EnergySkateParkStrings.energies.thermalStringProperty;
-const energyTotalString = EnergySkateParkStrings.energies.totalStringProperty;
-const heightMetersPatternString = EnergySkateParkStrings.pathSensor.heightMetersPatternStringProperty;
-const speedMetersPerSecondPatternString = EnergySkateParkStrings.pathSensor.speedMetersPerSecondPatternStringProperty;
+const energyEnergyStringProperty = EnergySkateParkStrings.energies.energyStringProperty;
+const energyJoulesPatternStringProperty = EnergySkateParkStrings.pathSensor.energyJoulesPatternStringProperty;
+const energyKineticStringProperty = EnergySkateParkStrings.energies.kineticStringProperty;
+const energyPotentialStringProperty = EnergySkateParkStrings.energies.potentialStringProperty;
+const energyThermalStringProperty = EnergySkateParkStrings.energies.thermalStringProperty;
+const energyTotalStringProperty = EnergySkateParkStrings.energies.totalStringProperty;
+const heightMetersPatternStringProperty = EnergySkateParkStrings.pathSensor.heightMetersPatternStringProperty;
+const speedMetersPerSecondPatternStringProperty = EnergySkateParkStrings.pathSensor.speedMetersPerSecondPatternStringProperty;
 
 // constants
 const TITLE_CONTENT_SPACING = 5.5; // spacing between the "Energy" title and the rest of the content
@@ -59,16 +67,47 @@ const PROBE_THRESHOLD_DISTANCE = 10;
 
 class SkaterPathSensorNode extends Node {
 
+  // so the height speed readout doesn't occlude this
+  private readonly screenViewControlPanel: EnergySkateParkControlPanel;
+  private readonly modelViewTransform: ModelViewTransform2;
+  private readonly samples: ObservableArray<EnergySkateParkDataSample>;
+
+  // for the NumberDisplays, null unless probe is over a skater sample
+  private readonly kineticValueProperty: Property<number | null>;
+  private readonly potentialValueProperty: Property<number | null>;
+  private readonly thermalValueProperty: Property<number | null>;
+  private readonly totalValueProperty: Property<number | null>;
+
+  // NumberDisplays for the body of the sensor, wrapped in an AlignBox
+  private readonly kineticRectangleBox: AlignBox;
+  private readonly thermalRectangleBox: AlignBox;
+  private readonly potentialRectangleBox: AlignBox;
+  private readonly totalRectangleBox: AlignBox;
+  private readonly heightReadout: Text;
+  private readonly speedReadout: Text;
+  private readonly heightSpeedVBox: VBox;
+  private readonly heightSpeedRectangle: Rectangle;
+  private readonly probeNode: ProbeNode;
+  private inspectedSample: EnergySkateParkDataSample | null;
+  private readonly boundUpdateSensorDisplay: () => void;
+  private updateDisplayListener: ( () => void ) | null = null;
+
   /**
-   * @param {ObservableArrayDef.<EnergySkateParkDataSample>} samples
-   * @param {Vector2Property} sensorProbePositionProperty
-   * @param {Vector2Property} sensorBodyPositionProperty
-   * @param {Property.<Bounds2>} modelBoundsProperty
-   * @param {ModelViewTransform2} modelViewTransform
-   * @param {EnergySkateParkControlPanel} controlPanel - so the readout doesn't occlude control panel bounds
-   * @param {Object} [options]
+   * @param samples
+   * @param sensorProbePositionProperty
+   * @param sensorBodyPositionProperty
+   * @param modelBoundsProperty
+   * @param  modelViewTransform
+   * @param controlPanel - so the readout doesn't occlude control panel bounds
+   * @param [options]
    */
-  constructor( samples, sensorProbePositionProperty, sensorBodyPositionProperty, modelBoundsProperty, modelViewTransform, controlPanel, options ) {
+  public constructor(
+    samples: ObservableArray<EnergySkateParkDataSample>,
+    sensorProbePositionProperty: Vector2Property,
+    sensorBodyPositionProperty: Vector2Property, modelBoundsProperty: TProperty<Bounds2>,
+    modelViewTransform: ModelViewTransform2, controlPanel: EnergySkateParkControlPanel, options?: IntentionalAny ) {
+
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // prevent block fitting so that things don't jiggle as the probe moves, see
@@ -76,7 +115,6 @@ class SkaterPathSensorNode extends Node {
     }, options );
     super( options );
 
-    // @private - so the height speed readout doesn't occlude this
     this.screenViewControlPanel = controlPanel;
     this.modelViewTransform = modelViewTransform;
 
@@ -86,32 +124,30 @@ class SkaterPathSensorNode extends Node {
     // layout
     const alignGroup = new AlignGroup( { matchHorizontal: false } );
 
-    const kineticLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyKineticString );
-    const potentialLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyPotentialString );
-    const thermalLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyThermalString );
-    const totalLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyTotalString );
+    const kineticLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyKineticStringProperty );
+    const potentialLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyPotentialStringProperty );
+    const thermalLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyThermalStringProperty );
+    const totalLabelBox = SkaterPathSensorNode.createLabelBox( alignGroup, energyTotalStringProperty );
 
     // label for the probe
-    const energyLabel = new Text( energyEnergyString, {
+    const energyLabel = new Text( energyEnergyStringProperty, {
       font: TITLE_FONT,
       fill: TEXT_COLOR,
       maxWidth: 90
     } );
 
-    // @private {Property.<number|null> for the NumberDisplays, null unless probe is over a skater sample
     const validationOptions = { valueType: [ null, 'number' ] };
-    this.kineticValueProperty = new Property( null, validationOptions );
-    this.potentialValueProperty = new Property( null, validationOptions );
-    this.thermalValueProperty = new Property( null, validationOptions );
-    this.totalValueProperty = new Property( null, validationOptions );
+    this.kineticValueProperty = new Property<number | null>( null, validationOptions );
+    this.potentialValueProperty = new Property<number | null>( null, validationOptions );
+    this.thermalValueProperty = new Property<number | null>( null, validationOptions );
+    this.totalValueProperty = new Property<number | null>( null, validationOptions );
 
-    // NumberDisplays for the body of the sensor, wrapped in an AlignBox
     this.kineticRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup, this.kineticValueProperty );
     this.potentialRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup, this.potentialValueProperty );
     this.thermalRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup, this.thermalValueProperty );
     this.totalRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup, this.totalValueProperty );
 
-    // @private - Height and speed are read to the right of the probe in a transparent panel for enhanced
+    // Height and speed are read to the right of the probe in a transparent panel for enhanced
     // visibility. We want the panel to resize as the text changes for different skater samples
     this.heightReadout = new Text( '', { font: LABEL_FONT } );
     this.speedReadout = new Text( '', { font: LABEL_FONT } );
@@ -206,7 +242,7 @@ class SkaterPathSensorNode extends Node {
     this.addChild( this.probeNode );
     this.addChild( this.heightSpeedRectangle );
 
-    // @private - {EnergySkateParkDataSample|null} - the skater sample currently being inspected, reference so we can un-inspect
+    // the skater sample currently being inspected, reference so we can un-inspect
     // without looping through all samples
     this.inspectedSample = null;
 
@@ -230,10 +266,8 @@ class SkaterPathSensorNode extends Node {
   /**
    * Update the sensor display, showing information about the inspected sample if one is underneath the sensor. If
    * no sample is under the sensor, the display is cleared.
-   *
-   * @private
    */
-  updateSensorDisplay() {
+  private updateSensorDisplay(): void {
     let sampleToDisplay = null;
 
     // finds sample under the sensor, or the closest one to the center point if there are multiple
@@ -264,10 +298,8 @@ class SkaterPathSensorNode extends Node {
 
   /**
    * Display values associated with a sample of skater state.
-   * @private
-   * @param  {EnergySkateParkDataSample} dataSample
    */
-  displayState( dataSample ) {
+  private displayState( dataSample: EnergySkateParkDataSample ): void {
     if ( this.inspectedSample ) {
       this.inspectedSample.inspectedProperty.set( false );
     }
@@ -282,10 +314,10 @@ class SkaterPathSensorNode extends Node {
     this.totalValueProperty.value = dataSample.totalEnergy;
 
     // set values for height and speed readout
-    this.heightReadout.string = StringUtils.fillIn( heightMetersPatternString, {
+    this.heightReadout.string = StringUtils.fillIn( heightMetersPatternStringProperty, {
       value: this.formatValue( dataSample.position.y - dataSample.referenceHeight )
     } );
-    this.speedReadout.string = StringUtils.fillIn( speedMetersPerSecondPatternString, {
+    this.speedReadout.string = StringUtils.fillIn( speedMetersPerSecondPatternStringProperty, {
       value: this.formatValue( dataSample.speed )
     } );
 
@@ -296,10 +328,8 @@ class SkaterPathSensorNode extends Node {
   /**
    * Position and sizes the height/speed readout which appears to the right of the probe, unless that would
    * occlude the screen view control panel
-   *
-   * @private
    */
-  positionReadouts( dataSample ) {
+  private positionReadouts( dataSample: EnergySkateParkDataSample ): void {
     this.heightSpeedRectangle.setRectBounds( this.heightSpeedVBox.bounds );
     this.heightSpeedRectangle.leftCenter = this.probeNode.rightCenter.plusXY( PROBE_READOUT_SPACING, 0 );
 
@@ -315,22 +345,15 @@ class SkaterPathSensorNode extends Node {
   /**
    * Formats values in the height/speed display adjacent to the sensor when a data
    * point is under the wand.
-   * @public
-   *
-   * @param  {number} value
-   * @returns {string}
    */
-  formatValue( value ) {
+  public formatValue( value: number ): string {
     return Utils.toFixed( value, 2 );
   }
 
   /**
    * Clear all values in the displays.
-   * @private
-   *
-   * @param {EnergySkateParkDataSample} dataSample
    */
-  clearDisplay( dataSample ) {
+  private clearDisplay( dataSample: EnergySkateParkDataSample ): void {
 
     // setting Properties to null will show MathSymbols.NO_VALUE in NumberDisplay
     this.kineticValueProperty.value = null;
@@ -340,11 +363,10 @@ class SkaterPathSensorNode extends Node {
 
     assert && assert( this.updateDisplayListener,
       `listener not attached to dataSample emitter,
-       dataSample: ${dataSample},
        this.inspectedSample: ${this.inspectedSample}`,
       `update listenerL:  ${this.updateDisplayListener}`
     );
-    this.inspectedSample.updatedEmitter.removeListener( this.updateDisplayListener );
+    this.inspectedSample!.updatedEmitter.removeListener( this.updateDisplayListener! );
 
     this.inspectedSample = null;
     this.updateDisplayListener = null;
@@ -355,13 +377,8 @@ class SkaterPathSensorNode extends Node {
 
   /**
    * Create label text and wrap with an AlignBox so that all labels and readouts have the same dimensions for layout.
-   * @private
-   *
-   * @param  {AlignGroup} alignGroup
-   * @param  {string} labelString
-   * @returns {AlignBox}
    */
-  static createLabelBox( alignGroup, labelString ) {
+  private static createLabelBox( alignGroup: AlignGroup, labelString: LocalizedStringProperty ): AlignBox {
     const labelText = new Text( labelString, { fill: TEXT_COLOR, font: LABEL_FONT, maxWidth: ENTRY_MAX_WIDTH } );
     return alignGroup.createBox( labelText, { xAlign: 'left' } );
   }
@@ -369,13 +386,8 @@ class SkaterPathSensorNode extends Node {
   /**
    * Create a rectangle to contain value readouts, wrapped in an align box so that labels and this rectangle all
    * have the same dimensions for layout purposes.
-   * @private
-   *
-   * @param {AlignGroup} alignGroup
-   * @param {NumberProperty} valueProperty
-   * @returns {AlignBox}
    */
-  static createReadoutBox( alignGroup, valueProperty ) {
+  private static createReadoutBox( alignGroup: AlignGroup, valueProperty: Property<number | null> ): AlignBox {
 
     const numberDisplay = new NumberDisplay( valueProperty, ENERGY_RANGE, {
       backgroundStroke: 'black',
@@ -387,7 +399,7 @@ class SkaterPathSensorNode extends Node {
       },
       decimalPlaces: 1,
       minBackgroundWidth: 68, // determined by inspection, in addition to ENERGY_RANGE because the range is arbitrary
-      valuePattern: energyJoulesPatternString,
+      valuePattern: energyJoulesPatternStringProperty,
 
       // these value displays get smaller than their cordner radius with very long
       // strings, so we will always use full height for consistent layout
