@@ -201,7 +201,8 @@ class EnergyGraphAccordionBox extends AccordionBox {
     parentLayer.addChild( eraserButton );
 
     ManualConstraint.create( parentLayer, [ this, variableSwitch, eraserButton, energyPlot, energyPlot.chartPanel ], ( thisProxy, variableSwitchProxy, eraserButtonProxy, energyPlotProxy, chartPanelProxy ) => {
-      variableSwitchProxy.centerBottom = chartPanelProxy.centerTop.plusXY( 0, -buttonYMargin );
+      variableSwitchProxy.centerY = ( chartPanelProxy.top + thisProxy.top ) / 2;
+      variableSwitchProxy.centerX = chartPanelProxy.centerX;
       eraserButtonProxy.rightBottom = chartPanelProxy.rightTop.plusXY( 0, -buttonYMargin );
     } );
 
