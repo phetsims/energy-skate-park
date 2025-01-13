@@ -77,7 +77,6 @@ export default class EnergySkateParkControlPanel extends Panel {
 
     let gravityControls = null;
     if ( options.showGravityControls ) {
-      // @ts-expect-error
       gravityControls = new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, userControlledPropertySet.gravityControlledProperty, model.preferencesModel.accelerationUnitsProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkGravityControls' ), options.gravityControlsOptions );
       children.push( gravityControls );
     }

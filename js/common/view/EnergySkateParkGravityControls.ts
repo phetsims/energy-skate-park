@@ -11,8 +11,9 @@ import Emitter from '../../../../axon/js/Emitter.js';
 import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
-import { VBox } from '../../../../scenery/js/imports.js';
+import { VBox, VBoxOptions, Node } from '../../../../scenery/js/imports.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
@@ -20,6 +21,29 @@ import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferences
 import GravityComboBox from './GravityComboBox.js';
 import GravityNumberControl from './GravityNumberControl.js';
 import GravitySlider from './GravitySlider.js';
+
+type SelfOptions = {
+
+  // whether or not a GravitySlider is included in this set of controls, only GravitySlider or GravityNumberControl can be used at one time
+  includeGravitySlider?: boolean;
+
+  // whether or not a GravityNumberControl is included in this set of controls, only GravitySlider or GravityNumberControl can be used at one time
+  includeGravityNumberControl?: boolean;
+
+  // whether or not a GravityComboBox is included in this set of controls
+  includeGravityComboBox?: boolean;
+
+  // options passed to the GravityNumberControl, if one is included
+  gravityNumberControlOptions?: IntentionalAny | null;
+
+  // options passed to the GravityComboBox, if one is included
+  gravityComboBoxOptions?: IntentionalAny | null;
+
+  // options passed to the GravitySlider, if one is included
+  gravitySliderOptions?: IntentionalAny | null;
+};
+
+type EnergySkateParkGravityControlsOptions = SelfOptions & VBoxOptions;
 
 export default class EnergySkateParkGravityControls extends VBox {
 
@@ -30,34 +54,20 @@ export default class EnergySkateParkGravityControls extends VBox {
    * @param resetEmitter - broadcasts a message when the EnergySkateParkModel is reset
    * @param listParent - parent Node for the ComboBox, if one is included
    * @param tandem
-   * @param [options]
+   * @param [providedOptions]
    */
   public constructor( gravityMagnitudeProperty: NumberProperty, userControlledProperty: BooleanProperty, accelerationUnitsProperty: EnumerationProperty<IntentionalAny>, resetEmitter: Emitter,
-                      listParent: Node, tandem: Tandem, options?: IntentionalAny ) {
+                      listParent: Node, tandem: Tandem, providedOptions?: EnergySkateParkGravityControlsOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {boolean} - whether or not a GravitySlider is included in this set of controls, only GravitySlider or
-      // GravityNumberControl can be used at one time
+    const options = optionize<EnergySkateParkGravityControlsOptions, SelfOptions, VBoxOptions>()( {
       includeGravitySlider: false,
-
-      // {boolean} - whether or not a GravityNumberControl is included in this set of controls, only GravitySlider
-      // or GravityNumberControl can be used at one time
       includeGravityNumberControl: true,
-
-      // {boolean} - whether or not a GravityComboBox is included in this set of controls
       includeGravityComboBox: false,
-
-      // {Object} - options passed to the GravityNumberControl, if one is included
       gravityNumberControlOptions: null,
-
-      // {Object} - options passed to the GravityComboBox, if one is included
       gravityComboBoxOptions: null,
-
-      // {Object} - options passed to the GravitySlider, if one is included
       gravitySliderOptions: null
-    }, options );
+    }, providedOptions );
+
     assert && assert( !( options.includeGravitySlider && options.includeGravityNumberControl ), 'only GravitySlider OR GravityNumberControl can be used at one time' );
 
     const children = [];
@@ -95,7 +105,6 @@ export default class EnergySkateParkGravityControls extends VBox {
     }
 
     if ( options.includeGravityComboBox ) {
-      // @ts-expect-error
       const gravityComboBox = new GravityComboBox( gravityMagnitudeProperty, userControlledProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ), options );
       children.push( gravityComboBox );
     }
