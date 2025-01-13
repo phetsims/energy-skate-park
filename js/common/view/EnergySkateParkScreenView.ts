@@ -87,10 +87,10 @@ class EnergySkateParkScreenView extends ScreenView {
   public readonly skaterNode: SkaterNode;
   private readonly backgroundNode: BackgroundNode;
   private readonly gridNode: EnergySkateParkGridNode;
-  private readonly controlPanel: EnergySkateParkControlPanel;
+  protected readonly controlPanel: EnergySkateParkControlPanel;
 
   // node that shows the energy legend for the pie chart
-  private readonly pieChartLegend: PieChartLegend;
+  protected readonly pieChartLegend: PieChartLegend;
   private readonly attachDetachToggleButtons?: AttachDetachToggleButtons;
 
   // the bar chart showing energy distribution
