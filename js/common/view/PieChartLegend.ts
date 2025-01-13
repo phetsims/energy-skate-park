@@ -8,11 +8,11 @@
 
 import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import MoveToTrashLegendButton from '../../../../scenery-phet/js/buttons/MoveToTrashLegendButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { Color, HBox, HStrut, Node, Rectangle, Text, VBox, VStrut } from '../../../../scenery/js/imports.js';
-import Panel from '../../../../sun/js/Panel.js';
+import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
@@ -26,6 +26,14 @@ const energyPotentialStringProperty = EnergySkateParkStrings.energies.potentialS
 const energyThermalStringProperty = EnergySkateParkStrings.energies.thermalStringProperty;
 const energyTotalStringProperty = EnergySkateParkStrings.energies.totalStringProperty;
 
+type SelfOptions = {
+
+  // whether or not to include total energy in the legend, will the pie chart show total energy?
+  includeTotal?: boolean;
+};
+
+export type PieChartLegendOptions = SelfOptions & PanelOptions;
+
 export default class PieChartLegend extends Panel {
 
   /**
@@ -33,16 +41,13 @@ export default class PieChartLegend extends Panel {
    * @param clearThermal function to be called when the user presses the clear thermal button
    * @param pieChartVisibleProperty axon Property indicating whether the pie chart is visible
    * @param tandem
-   * @param [options]
+   * @param [providedOptions]
    */
-  public constructor( skater: Skater, clearThermal: () => void, pieChartVisibleProperty: TReadOnlyProperty<boolean>, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( skater: Skater, clearThermal: () => void, pieChartVisibleProperty: TReadOnlyProperty<boolean>, tandem: Tandem, providedOptions?: PieChartLegendOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {boolean} - whether or not to include total energy in the legend, will the pie chart show total energy?
+    const options = optionize<PieChartLegendOptions, SelfOptions, PanelOptions>()( {
       includeTotal: true
-    }, options );
+    }, providedOptions );
 
     // The x-coordinate of a bar chart bar
     const createLabel = ( index: number, title: string | TReadOnlyProperty<string>, tandemName: string ) => {
