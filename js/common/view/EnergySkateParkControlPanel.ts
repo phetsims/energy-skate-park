@@ -8,9 +8,11 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
+
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { HSeparator, VBox } from '../../../../scenery/js/imports.js';
-import Panel from '../../../../sun/js/Panel.js';
+import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -23,39 +25,49 @@ import FrictionSlider from './FrictionSlider.js';
 import SceneSelectionRadioButtonGroup from './SceneSelectionRadioButtonGroup.js';
 import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
 
+type SelfOptions = {
+
+  // whether or not controls will include radio buttons to change active track
+  showTrackButtons?: boolean;
+
+  // whether or not controls to include a friction slider will be included in this sim
+  showFrictionControls?: boolean;
+
+  // whether or not gravity controls will be included in this control panel
+  showGravityControls?: boolean;
+
+  // whether or not mass controls will be included in this control panel
+  showMassControls?: boolean;
+
+  // whether or not to include radio buttons that control the skater in energy skate park.
+  showSkaterControls?: boolean;
+
+  // options passed along to the EnergySkateParkVisibilityControls
+  visibilityControlsOptions?: IntentionalAny | null;
+
+  // options passed on to EnergySkateParkGravityControls - only relevant if showGravityControls is true
+  gravityControlsOptions?: IntentionalAny | null;
+
+  // options passed to EnergySkateParkMassControls - only relevant if showMassControls is true
+  massControlsOptions?: IntentionalAny | null;
+};
+
+type EnergySkateParkControlPanelOptions = SelfOptions & PanelOptions;
+
 export default class EnergySkateParkControlPanel extends Panel {
 
-  public constructor( model: EnergySkateParkModel, screenView: EnergySkateParkScreenView, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( model: EnergySkateParkModel, screenView: EnergySkateParkScreenView, tandem: Tandem, providedOptions?: EnergySkateParkControlPanelOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {boolean} whether or not controls will include radio buttons to change active track
+    const options = optionize<EnergySkateParkControlPanelOptions, SelfOptions, PanelOptions>()( {
       showTrackButtons: true,
-
-      // {boolean} whether or not controls to include a friction slider will be included in this sim
       showFrictionControls: true,
-
-      // {boolean} whether or not gravity controls will be included in this control panel
       showGravityControls: true,
-
-      // {boolean} whether or not mass controls will be included in this control panel
       showMassControls: true,
-
-      // {boolean} whether or not to include radio buttons that control the skater in energy skate park.
       showSkaterControls: true,
-
-      // {Object|null} options passed along to the EnergySkateParkVisibilityControls
       visibilityControlsOptions: null,
-
-      // {Object|null} options passed on to EnergySkateParkGravityControls - only relevant if showGravityControls
-      // is true
       gravityControlsOptions: null,
-
-      // {Object|null} options passed to EnergySkateParkMassControls - only relevant if showMassControls is true
       massControlsOptions: null
-
-    }, options );
+    }, providedOptions );
 
     const userControlledPropertySet = model.userControlledPropertySet;
 
