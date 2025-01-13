@@ -16,14 +16,29 @@ import createObservableArray, { ObservableArray } from '../../../../axon/js/crea
 import Emitter from '../../../../axon/js/Emitter.js';
 import Multilink from '../../../../axon/js/Multilink.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
-import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkDataSample from './EnergySkateParkDataSample.js';
-import EnergySkateParkModel from './EnergySkateParkModel.js';
+import EnergySkateParkModel, { EnergySkateParkModelOptions } from './EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
 import SkaterState from './SkaterState.js';
+
+type SelfOptions = {
+  // the default value for whether or not the model is saving samples of data for display
+  defaultSaveSamples?: boolean;
+
+  // the interval at which we save EnergySkateParkDataSamples, in seconds
+  saveSampleInterval?: number;
+
+  // skater samples which are being removed will fade away at this rate every animation frame
+  sampleFadeDecay?: number;
+
+  // the maximum number of EnergySkateParkDataSamples saved by this model, to prevent from saving too many if we run without encountering a case that clears old samples
+  maxNumberOfSamples?: number;
+};
+
+type EnergySkateParkSaveSampleModelOptions = SelfOptions & EnergySkateParkModelOptions;
 
 export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
@@ -57,25 +72,13 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
   // a single sample is removed
   public readonly batchRemoveSamplesEmitter: Emitter<[ EnergySkateParkDataSample[] ]>;
 
-  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options: IntentionalAny ) {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {boolean} - the default value for whether or not the model is saving
-      // samples of data for display
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions: EnergySkateParkSaveSampleModelOptions ) {
+    const options = optionize<EnergySkateParkSaveSampleModelOptions, SelfOptions, EnergySkateParkModelOptions>()( {
       defaultSaveSamples: true,
-
-      // {number} - the interval at which we save EnergySkateParkDataSamples, in seconds
       saveSampleInterval: 0.1,
-
-      // {number} skater samples which are being removed will fade away at this rate every animation frame
-      // like opacity = opacity * sampleFadeDecay
       sampleFadeDecay: 0.95,
-
-      // {number} - the maximum number of EnergySkateParkDataSamples saved by this model, to prevent from saving too many if we
-      // run without encountering a case that clears old samples
       maxNumberOfSamples: 50
-    }, options );
+    }, providedOptions );
 
     super( preferencesModel, tandem, options );
 

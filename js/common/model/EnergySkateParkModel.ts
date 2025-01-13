@@ -99,7 +99,7 @@ type SelfOptions = {
   skaterOptions?: IntentionalAny | null;
 };
 
-type EnergySkateParkModelOptions = SelfOptions & PhetioObjectOptions;
+export type EnergySkateParkModelOptions = SelfOptions & PhetioObjectOptions;
 
 export default class EnergySkateParkModel extends PhetioObject {
 
