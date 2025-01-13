@@ -7,7 +7,10 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import { ObservableArray } from '../../../../axon/js/createObservableArray.js';
+import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import { Circle } from '../../../../scenery/js/imports.js';
+import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import energySkatePark from '../../energySkatePark.js';
 
@@ -16,11 +19,7 @@ const HALO_RADIUS = 9;
 
 class InspectedSampleHaloNode extends Circle {
 
-  /**
-   * @param {ObservableArrayDef.<EnergySkateParkDataSample>} dataSamples
-   * @param {ModelViewTransform2} modelViewTransform
-   */
-  constructor( dataSamples, modelViewTransform ) {
+  public constructor( dataSamples: ObservableArray<EnergySkateParkDataSample>, modelViewTransform: ModelViewTransform2 ) {
     super( HALO_RADIUS, {
       fill: EnergySkateParkColorScheme.haloFill,
 
@@ -31,10 +30,10 @@ class InspectedSampleHaloNode extends Circle {
     // Whenever a new sample is added, adds a listener to make the halo visible when a sample
     // is inspected and puts it in the correct position. Removes the listeners on item removal
     // for memory management
-    const sampleAddedListener = addedSample => {
+    const sampleAddedListener = ( addedSample: EnergySkateParkDataSample ) => {
 
       // handles visibility and positioning
-      const inspectedListener = inspected => {
+      const inspectedListener = ( inspected: boolean ) => {
         this.visible = inspected;
         if ( inspected ) {
           this.visible = true;
@@ -46,7 +45,7 @@ class InspectedSampleHaloNode extends Circle {
       addedSample.inspectedProperty.lazyLink( inspectedListener );
 
       // handles memory management
-      const sampleRemovedListener = removedSample => {
+      const sampleRemovedListener = ( removedSample: EnergySkateParkDataSample ) => {
         if ( addedSample === removedSample ) {
 
           // if inspected sample is being removed, halo should become invisible
