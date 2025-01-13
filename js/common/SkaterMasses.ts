@@ -1,4 +1,4 @@
-// Copyright 2018-2020, University of Colorado Boulder
+// Copyright 2018-2025, University of Colorado Boulder
 
 /**
  * EnergySkateParkConstants related to the skater in Energy Skate Park.

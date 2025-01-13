@@ -1,4 +1,4 @@
-// Copyright 2018-2024, University of Colorado Boulder
+// Copyright 2025, University of Colorado Boulder
 
 /**
  * A combo box that can be used to change the masses in Energy Skate Park. Includes a title and the

@@ -1,4 +1,4 @@
-// Copyright 2019-2022, University of Colorado Boulder
+// Copyright 2019-2025, University of Colorado Boulder
 
 /**
  * The visibility controls for "Graphs" screen - controls for grid and reference height visibility moved to a different

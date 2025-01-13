@@ -1,4 +1,4 @@
-// Copyright 2019-2023, University of Colorado Boulder
+// Copyright 2019-2025, University of Colorado Boulder
 
 /**
  * A combo box that controls one of the physical Properties of Energy Skate Park. In addition to the options provided
