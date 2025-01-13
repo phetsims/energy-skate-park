@@ -38,11 +38,12 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import EventTimer, { ConstantEventModel } from '../../../../phet-core/js/EventTimer.js';
 import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import TimeSpeed from '../../../../scenery-phet/js/TimeSpeed.js';
 import PhetioGroup from '../../../../tandem/js/PhetioGroup.js';
-import PhetioObject from '../../../../tandem/js/PhetioObject.js';
+import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
 import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
@@ -78,6 +79,27 @@ const debugAttachDetach = EnergySkateParkQueryParameters.debugAttachDetach ? fun
 
 // Track the model iterations to implement "slow motion" by stepping every Nth frame, see #210
 let modelIterations = 0;
+
+type SelfOptions = {
+
+  // initial/default value of friction for the model
+  defaultFriction?: number;
+
+  // if true, tracks can be dragged around the play area
+  tracksDraggable?: boolean;
+
+  // if true, track control points can be dragged and track shapes can change
+  tracksConfigurable?: boolean;
+
+  // default for the speedValueVisibleProperty, whether or not the value of speed is displayed
+  // on the speedometer
+  defaultSpeedValueVisible?: boolean;
+
+  // options passed to Skater
+  skaterOptions?: IntentionalAny | null;
+};
+
+type EnergySkateParkModelOptions = SelfOptions & PhetioObjectOptions;
 
 export default class EnergySkateParkModel extends PhetioObject {
 
@@ -172,32 +194,20 @@ export default class EnergySkateParkModel extends PhetioObject {
   // so that simulation performance has no impact on physical behavior.
   public readonly eventTimer: EventTimer;
 
-  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions?: EnergySkateParkModelOptions ) {
     super( {
       phetioType: EnergySkateParkModel.EnergySkateParkModelIO,
       tandem: tandem,
       phetioState: false
     } );
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {number} - initial/default value of friction for the model
+    const options = optionize<EnergySkateParkModelOptions, SelfOptions, PhetioObjectOptions>()( {
       defaultFriction: EnergySkateParkConstants.DEFAULT_FRICTION,
-
-      // {boolean} - if true, tracks can be dragged around the play area
       tracksDraggable: false,
-
-      // {boolean} - if true, track control points can be dragged and track shapes can change
       tracksConfigurable: false,
-
-      // @boolean - default for the speedValueVisibleProperty, whether or not the value of speed is displayed
-      // on the speedometer
       defaultSpeedValueVisible: true,
-
-      // passed to Skater
       skaterOptions: null
-    }, options );
+    }, providedOptions );
 
     this.trackChangedEmitter = new Emitter();
 
