@@ -9,32 +9,30 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
+import Range from '../../../../dot/js/Range.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { Text } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
-const controlsValueLotsString = EnergySkateParkStrings.physicalControls.lotsStringProperty;
-const controlsValueNoneString = EnergySkateParkStrings.physicalControls.noneStringProperty;
+const controlsValueLotsStringProperty = EnergySkateParkStrings.physicalControls.lotsStringProperty;
+const controlsValueNoneStringProperty = EnergySkateParkStrings.physicalControls.noneStringProperty;
 
 class PhysicalSlider extends PhysicalNumberControl {
 
-  /**
-   * @param {TReadOnlyProperty<string>} titleString
-   * @param {NumberProperty} property
-   * @param {Range} valueRange
-   * @param {BooleanProperty} userControlledProperty
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( titleString, property, valueRange, userControlledProperty, tandem, options ) {
+  public constructor( titleString: TReadOnlyProperty<string>, property: PhetioProperty<number>, valueRange: Range, userControlledProperty: PhetioProperty<boolean>, tandem: Tandem, options?: IntentionalAny ) {
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       // {string} - labels for the min and max values of this control
-      maxLabel: controlsValueLotsString,
-      minLabel: controlsValueNoneString,
+      maxLabel: controlsValueLotsStringProperty,
+      minLabel: controlsValueNoneStringProperty,
 
       // {*} - passed to the Slider of this NumberControl
       sliderOptions: {}
@@ -50,19 +48,20 @@ class PhysicalSlider extends PhysicalNumberControl {
       createTickEntry( valueRange.max, options.maxLabel, tandem, 'maxLabelText' )
     ];
 
+    // @ts-expect-error
     super( titleString, property, valueRange, userControlledProperty, tandem, options );
   }
 }
 
 /**
  * Create a tick entry for the slider to be added with addMajorTick.
- * @param {number} value - value on the slider to add the tick
- * @param {string} label - label for the tick
- * @param {Tandem} tandem
- * @param {string} tandemName
- * @returns {Object} - conforms to { value: {number}, label: Node }, required by NumberControl options
+ * @param value - value on the slider to add the tick
+ * @param label - label for the tick
+ * @param tandem
+ * @param tandemName
+ * @returns - conforms to { value: {number}, label: Node }, required by NumberControl options
  */
-const createTickEntry = ( value, label, tandem, tandemName ) => {
+const createTickEntry = ( value: number, label: TReadOnlyProperty<string>, tandem: Tandem, tandemName: string ): { value: number; label: Text } => {
   return {
     value: value,
     label: new Text( label, merge( {

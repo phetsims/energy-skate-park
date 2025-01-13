@@ -19,7 +19,6 @@ class MassSlider extends PhysicalSlider {
 
   public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, massRange: Range, tandem: Tandem ) {
 
-    // @ts-expect-error
     super( EnergySkateParkStrings.physicalControls.massControls.massStringProperty, property, massRange, userControlledProperty, tandem, {
       minLabel: EnergySkateParkStrings.physicalControls.smallStringProperty,
       maxLabel: EnergySkateParkStrings.physicalControls.largeStringProperty,

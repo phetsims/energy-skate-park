@@ -21,7 +21,6 @@ class GravitySlider extends PhysicalSlider {
     super(
       EnergySkateParkStrings.physicalControls.gravityControls.gravityStringProperty,
       property,
-      // @ts-expect-error
       new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) ),
       userControlledProperty,
       tandem, {

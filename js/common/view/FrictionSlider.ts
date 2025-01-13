@@ -22,7 +22,6 @@ class FrictionSlider extends PhysicalSlider {
    * @param tandem
    */
   public constructor( property: PhetioProperty<number>, userControlledProperty: PhetioProperty<boolean>, tandem: Tandem ) {
-    // @ts-expect-error
     super( EnergySkateParkStrings.physicalControls.frictionStringProperty, property, new Range( EnergySkateParkConstants.MIN_FRICTION, EnergySkateParkConstants.MAX_FRICTION ), userControlledProperty, tandem );
   }
 }
