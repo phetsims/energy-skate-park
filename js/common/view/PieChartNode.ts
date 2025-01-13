@@ -7,26 +7,26 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Utils from '../../../../dot/js/Utils.js';
 import { Shape } from '../../../../kite/js/imports.js';
 import merge from '../../../../phet-core/js/merge.js';
 import platform from '../../../../phet-core/js/platform.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import { Circle, Node, Path } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import Skater from '../model/Skater.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
 class PieChartNode extends Node {
+  private readonly showNegativeEnergy: boolean;
 
-  /**
-   * @param {Skater} skater the skater model
-   * @param {Property.<Boolean>} pieChartVisibleProperty axon Property indicating whether the pie chart is shown
-   * @param {ModelViewTransform2} modelViewTransform
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( skater, pieChartVisibleProperty, modelViewTransform, tandem, options ) {
+  public constructor( skater: Skater, pieChartVisibleProperty: TReadOnlyProperty<boolean>, modelViewTransform: ModelViewTransform2, tandem: Tandem, options?: IntentionalAny ) {
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {boolean} - Whether to represent negative energy. When true, when one of the energies is negative
@@ -42,9 +42,12 @@ class PieChartNode extends Node {
       lineJoin: 'round'
     };
 
+    // @ts-expect-error
     const kineticEnergySlice = new Path( null, merge( {
       fill: EnergySkateParkColorScheme.kineticEnergy
     }, sliceOptions ) );
+
+    // @ts-expect-error
     const potentialEnergySlice = new Path( null, merge( {
       fill: EnergySkateParkColorScheme.potentialEnergy
     }, sliceOptions ) );
@@ -79,7 +82,7 @@ class PieChartNode extends Node {
       renderer: platform.mobileSafari ? 'canvas' : null
     } );
 
-    // @private {boolean} - whether or not negative potential energy will be represented by the pie chart or it should
+    // whether or not negative potential energy will be represented by the pie chart or it should
     // be invisible in this case
     this.showNegativeEnergy = options.showNegativeEnergy;
 
