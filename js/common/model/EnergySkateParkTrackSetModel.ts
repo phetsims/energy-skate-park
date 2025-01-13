@@ -33,13 +33,9 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
       // this list to remove premade tracks from the model. This order will also be the
       // order of track selection buttons in the view.
       trackTypes: [
-        // @ts-expect-error
         PremadeTracks.TrackType.PARABOLA,
-        // @ts-expect-error
         PremadeTracks.TrackType.SLOPE,
-        // @ts-expect-error
         PremadeTracks.TrackType.DOUBLE_WELL,
-        // @ts-expect-error
         PremadeTracks.TrackType.LOOP
       ],
 
@@ -128,7 +124,6 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
     }, options );
 
     this.trackTypes.forEach( trackType => {
-      // @ts-expect-error
       if ( trackType === PremadeTracks.TrackType.PARABOLA ) {
         const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, options.parabolaControlPointOptions );
         const parabolaTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, parabolaControlPoints, merge( {
@@ -137,7 +132,6 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
         tracks.push( parabolaTrack );
       }
-      // @ts-expect-error
       else if ( trackType === PremadeTracks.TrackType.SLOPE ) {
         const slopeControlPoints = PremadeTracks.createSlopeControlPoints( this, options.slopeControlPointOptions );
         const slopeTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, slopeControlPoints, merge( {
@@ -149,7 +143,6 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
         }, options.slopeTrackOptions ) );
         tracks.push( slopeTrack );
       }
-      // @ts-expect-error
       else if ( trackType === PremadeTracks.TrackType.DOUBLE_WELL ) {
         const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( this, options.doubleWellControlPointOptions );
         const doubleWellTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, doubleWellControlPoints, merge( {
@@ -157,7 +150,6 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
         }, options.doubleWellTrackOptions ) );
         tracks.push( doubleWellTrack );
       }
-      // @ts-expect-error
       else if ( trackType === PremadeTracks.TrackType.LOOP ) {
         const loopControlPoints = PremadeTracks.createLoopControlPoints( this, options.loopControlPointOptions );
         const loopTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, loopControlPoints, merge( {
@@ -199,7 +191,7 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
     this.updateActiveTrack( this.sceneProperty.get() );
   }
 
-  private static createPremadeTrack( model: IntentionalAny, controlPoints: ControlPoint[], options: IntentionalAny ): Track {
+  public static createPremadeTrack( model: IntentionalAny, controlPoints: ControlPoint[], options: IntentionalAny ): Track {
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       configurable: model.tracksConfigurable,

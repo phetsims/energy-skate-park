@@ -11,29 +11,34 @@
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { AlignGroup, Node } from '../../../../scenery/js/imports.js';
 import RectangularRadioButtonGroup from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
 import PremadeTracks from '../model/PremadeTracks.js';
 import BackgroundNode from './BackgroundNode.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import TrackNode from './TrackNode.js';
 
-class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
+class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup<IntentionalAny> {
 
   /**
    * Construct a SceneSelectionRadioButtonGroup.  Pass the entire model since it is used to create TrackNode
    *
-   * @param {EnergySkateParkModel} model the main model for the entire screen
-   * @param {EnergySkateParkScreenView} view the main view for the entire screen
-   * @param {Tandem} tandem
-   * @param {Object} [options]
+   * @param model - the main model for the entire screen
+   * @param view - the main view for the entire screen
+   * @param tandem
+   * @param [options]
    */
-  constructor( model, view, tandem, options ) {
-    assert && assert( model.sceneProperty !== undefined, 'model does not support a scene' );
+  public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, options?: IntentionalAny ) {
+    assert && assert( model.hasOwnProperty( 'sceneProperty' ), 'model does not support a scene' );
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // specific and passed to RectangularRadioButtonGroup
@@ -61,7 +66,7 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
     // Create a track to be used specifically for an icon - must be one of the premade tracks defined in
     // PremadeTracks.TrackType. These Tracks are a bit different from the actual tracks used in the model
     // because their sizing and dimensions need to be different to look better as icons for radio buttons
-    const createIconTrack = trackType => {
+    const createIconTrack = ( trackType: IntentionalAny ) => {
 
       // all tracks have the same width and height so they take up the same dimensions in a radio button, so one
       // doesn't get scaled down more than another and look more thin
@@ -108,16 +113,20 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
     };
 
     // Create a button with a scene like the track in the index
-    const createNode = index => {
+    const createNode = ( index: number ) => {
       const children = [];
 
       if ( options.includeBackground ) {
+        // @ts-expect-error
         const background = new BackgroundNode( view.layoutBounds, tandem.createTandem( `backgroundNode${index}` ) );
-        background.layout( new Bounds2( 0, 0, view.layoutBounds.width, view.layoutBounds.height ), 1 );
+        background.layout( new Bounds2( 0, 0, view.layoutBounds.width, view.layoutBounds.height ) );
         children.push( background );
       }
 
+      // @ts-expect-error
       const track = createIconTrack( model.trackTypes[ index ] );
+
+      // @ts-expect-error
       const trackNode = new TrackNode( track, view.modelViewTransform, new Property(), tandem.createTandem( `trackNode${index}` ), {
         isIcon: true
       } );
@@ -136,17 +145,18 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
     };
 
     // create the contents for the radio buttons
-    const contents = [];
+    const contents: Node[] = [];
     _.forEach( model.tracks, ( track, i ) => {
       const contentNode = createNode( i );
       contents.push( contentNode );
     } );
 
+    // @ts-expect-error
     const minWidth = _.minBy( contents, node => node.width ).width;
 
     const buttonAlignGroup = new AlignGroup();
 
-    const radioButtonContent = [];
+    const radioButtonContent: { value: number; createNode: () => Node; tandemName: string }[] = [];
     _.forEach( contents, ( node, i ) => {
 
       // scalar chosen so that buttons are appropriately sized in the control panel
@@ -175,6 +185,7 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup {
       } );
     } );
 
+    // @ts-expect-error
     super( model.sceneProperty, radioButtonContent, options );
   }
 }

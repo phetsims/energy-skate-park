@@ -301,7 +301,7 @@ const PremadeTracks = {
     return new Track( model, controlPoints, PARENT_TRACKS, options );
   },
 
-  TrackType: TrackType
+  TrackType: TrackType as IntentionalAny
 };
 
 energySkatePark.register( 'PremadeTracks', PremadeTracks );
