@@ -13,10 +13,9 @@ import Emitter from '../../../../axon/js/Emitter.js';
 import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
-import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import optionize from '../../../../phet-core/js/optionize.js';
+import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import { DragListener, SceneryEvent } from '../../../../scenery/js/imports.js';
-import PhetioObject from '../../../../tandem/js/PhetioObject.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import ArrayIO from '../../../../tandem/js/types/ArrayIO.js';
@@ -27,6 +26,7 @@ import energySkatePark from '../../energySkatePark.js';
 import SplineEvaluation from '../SplineEvaluation.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 
 // constants
 const FastArray = window.Float64Array ? window.Float64Array : window.Array;
@@ -41,6 +41,31 @@ const FULLY_INTERACTIVE_OPTIONS = {
   splittable: true,
   attachable: true
 };
+
+type SelfOptions = {
+
+  // can this track be dragged and moved in the play area?
+  draggable?: boolean;
+
+  // can this track be changed by dragging control points? Some tracks can have their
+  // control points moved but cannot be dragged as a whole.
+  configurable?: boolean;
+
+  // can this track be changed or broken by removing control points? I so, clicking on a control
+  // point will create a UI to split the track or delete the control point.
+  splittable?: boolean;
+
+  // can this track be attached with another track by dragging track or control points? When a track
+  // is attachable control points at the end of the track have a different visualization to indicate that
+  // the track can be attached to another.
+  attachable?: boolean;
+
+  // whether the skater transitions from the right edge of this track directly to the ground, see
+  // this._slopeToGround for more information
+  slopeToGround?: boolean;
+};
+
+type TrackOptions = SelfOptions & PhetioObjectOptions;
 
 export default class Track extends PhetioObject {
 
@@ -105,35 +130,19 @@ export default class Track extends PhetioObject {
    *        offscreen, see #195
    * @param [options] - required for tandem
    */
-  public constructor( model: EnergySkateParkModel, controlPoints: ControlPoint[], parents: Track[], options: IntentionalAny ) {
+  public constructor( model: EnergySkateParkModel, controlPoints: ControlPoint[], parents: Track[], providedOptions?: TrackOptions ) {
     assert && assert( Array.isArray( parents ), 'parents must be array' );
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
 
-      // {boolean} - can this track be dragged and moved in the play area?
+    const options = optionize<TrackOptions, SelfOptions, PhetioObjectOptions>()( {
       draggable: false,
-
-      // {boolean} - can this track be changed by dragging control points? Some tracks can have their
-      // control points moved but cannot be dragged as a whole.
       configurable: false,
-
-      // {boolean} - can this track be changed or broken by removing control points? I so, clicking on a control
-      // point will create a UI to split the track or delete the control point.
       splittable: false,
-
-      // {boolean} - can this track be attached with another track by dragging track or control points? When a track
-      // is attachable control points at the end of the track have a different visualization to indicate that
-      // the track can be attached to another.
       attachable: false,
-
-      // {boolean} - whether the skater transitions from the right edge of this track directly to the ground, see
-      // this._slopeToGround for more information
       slopeToGround: false,
-
       tandem: Tandem.REQUIRED,
       phetioType: Track.TrackIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
-    }, options );
+    }, providedOptions );
 
     super( options );
 
