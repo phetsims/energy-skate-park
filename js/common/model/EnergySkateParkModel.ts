@@ -1141,7 +1141,7 @@ export default class EnergySkateParkModel extends PhetioObject {
         // Fly off the left or right side of the track
         // Off the edge of the track.  If the skater transitions from the right edge of the 2nd track directly to the
         // ground then do not lose thermal energy during the transition, see #164
-        if ( correctedState.parametricPosition > skaterState.track!.maxPoint! && skaterState.track!.slopeToGround ) {
+        if ( correctedState.parametricPosition > skaterState.track!.maxPoint && skaterState.track!.slopeToGround ) {
           let result = correctedState.switchToGround( correctedState.thermalEnergy, correctedState.getSpeed(), 0, correctedState.positionX, 0 );
 
           // All track points are at or above ground so it is possible that we took potential energy out of the. Add
