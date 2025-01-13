@@ -6,33 +6,38 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import MoveToTrashLegendButton from '../../../../scenery-phet/js/buttons/MoveToTrashLegendButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { HBox, HStrut, Node, Rectangle, Text, VBox, VStrut } from '../../../../scenery/js/imports.js';
+import { Color, HBox, HStrut, Node, Rectangle, Text, VBox, VStrut } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import Skater from '../model/Skater.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-const energyEnergyString = EnergySkateParkStrings.energies.energyStringProperty;
-const energyKineticString = EnergySkateParkStrings.energies.kineticStringProperty;
-const energyPotentialString = EnergySkateParkStrings.energies.potentialStringProperty;
-const energyThermalString = EnergySkateParkStrings.energies.thermalStringProperty;
-const energyTotalString = EnergySkateParkStrings.energies.totalStringProperty;
+const energyEnergyStringProperty = EnergySkateParkStrings.energies.energyStringProperty;
+const energyKineticStringProperty = EnergySkateParkStrings.energies.kineticStringProperty;
+const energyPotentialStringProperty = EnergySkateParkStrings.energies.potentialStringProperty;
+const energyThermalStringProperty = EnergySkateParkStrings.energies.thermalStringProperty;
+const energyTotalStringProperty = EnergySkateParkStrings.energies.totalStringProperty;
 
 class PieChartLegend extends Panel {
 
   /**
-   * @param {Skater} skater the model for the skater
-   * @param {Function} clearThermal function to be called when the user presses the clear thermal button
-   * @param {Property.<boolean>} pieChartVisibleProperty axon Property indicating whether the pie chart is visible
-   * @param {Tandem} tandem
-   * @param {Object} [options]
+   * @param skater the model for the skater
+   * @param clearThermal function to be called when the user presses the clear thermal button
+   * @param pieChartVisibleProperty axon Property indicating whether the pie chart is visible
+   * @param tandem
+   * @param [options]
    */
-  constructor( skater, clearThermal, pieChartVisibleProperty, tandem, options ) {
+  public constructor( skater: Skater, clearThermal: () => void, pieChartVisibleProperty: TReadOnlyProperty<boolean>, tandem: Tandem, options?: IntentionalAny ) {
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {boolean} - whether or not to include total energy in the legend, will the pie chart show total energy?
@@ -40,7 +45,7 @@ class PieChartLegend extends Panel {
     }, options );
 
     // The x-coordinate of a bar chart bar
-    const createLabel = ( index, title, tandemName ) => {
+    const createLabel = ( index: number, title: string | TReadOnlyProperty<string>, tandemName: string ) => {
       return new Text( title, {
         tandem: tandem.createTandem( tandemName ),
         font: EnergySkateParkConstants.CONTROL_LABEL_FONT,
@@ -49,7 +54,7 @@ class PieChartLegend extends Panel {
       } );
     };
 
-    const createBar = ( index, color ) => {
+    const createBar = ( index: number, color: Color ) => {
       return new Rectangle( 0, 0, 20.26, 20.26, {
         fill: color,
         stroke: 'black',
@@ -62,10 +67,10 @@ class PieChartLegend extends Panel {
     const thermalBar = createBar( 2, EnergySkateParkColorScheme.thermalEnergy );
     const totalBar = createBar( 3, EnergySkateParkColorScheme.totalEnergy );
 
-    const kineticLabel = createLabel( 0, energyKineticString, 'kineticEnergyLabelText' );
-    const potentialLabel = createLabel( 1, energyPotentialString, 'potentialEnergyLabelText' );
-    const thermalLabel = createLabel( 2, energyThermalString, 'thermalEnergyLabelText' );
-    const totalLabel = createLabel( 3, energyTotalString, 'totalEnergyLabelText' );
+    const kineticLabel = createLabel( 0, energyKineticStringProperty, 'kineticEnergyLabelText' );
+    const potentialLabel = createLabel( 1, energyPotentialStringProperty, 'potentialEnergyLabelText' );
+    const thermalLabel = createLabel( 2, energyThermalStringProperty, 'thermalEnergyLabelText' );
+    const totalLabel = createLabel( 3, energyTotalStringProperty, 'totalEnergyLabelText' );
 
     const clearThermalButton = new MoveToTrashLegendButton( {
       arrowColor: EnergySkateParkColorScheme.thermalEnergy,
@@ -84,7 +89,7 @@ class PieChartLegend extends Panel {
     const clearThermalButtonStrut = new Rectangle( 0, 0, clearThermalButton.width, 1, {} );
 
     const spacing = 5;
-    const children = [
+    const children: Node[] = [
       new HBox( { spacing: spacing, children: [ kineticBar, kineticLabel ] } ),
       new HBox( { spacing: spacing, children: [ potentialBar, potentialLabel ] } ),
       new HBox( {
@@ -101,7 +106,7 @@ class PieChartLegend extends Panel {
 
     const contentNode = new VBox( { spacing: 6, align: 'left', children: children } );
 
-    const titleText = new Text( energyEnergyString, {
+    const titleText = new Text( energyEnergyStringProperty, {
       tandem: tandem.createTandem( 'titleText' ),
       fill: 'black',
       font: new PhetFont( 17 ),
