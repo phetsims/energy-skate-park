@@ -15,15 +15,30 @@ import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
-import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
-import PhetioObject from '../../../../tandem/js/PhetioObject.js';
+import optionize from '../../../../phet-core/js/optionize.js';
+import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
+
+type SelfOptions = {
+
+  // {boolean} - if true, this control point will be displayed on the track
+  visible?: boolean;
+
+  // {boolean} - can this control point specifically be dragged? If true, the control point is draggable,
+  // changes opacity on over, and supports track splitting at the ControlPoint
+  interactive?: boolean;
+
+  // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging, or
+  // when the track is bumped above ground, in model coordinates
+  limitBounds?: Bounds2 | null;
+};
+
+type ControlPointOptions = SelfOptions & PhetioObjectOptions;
 
 export default class ControlPoint extends PhetioObject {
 
@@ -45,26 +60,17 @@ export default class ControlPoint extends PhetioObject {
   // whether the control point is currently being dragged
   public readonly draggingProperty: BooleanProperty;
 
-  public constructor( x: number, y: number, options: IntentionalAny ) {
+  public constructor( x: number, y: number, providedOptions: ControlPointOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {boolean} - if true, this control point will be displayed on the track
+    const options = optionize<ControlPointOptions, SelfOptions, PhetioObjectOptions>()( {
       visible: true,
-
-      // {boolean} - can this control point specifically be dragged? If true, the control point is draggable,
-      // changes opacity on over, and supports track splitting at the ControlPoint
       interactive: true,
-
-      // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging, or
-      // when the track is bumped above ground, in model coordinates
       limitBounds: null,
 
       tandem: Tandem.REQUIRED,
       phetioType: ControlPoint.ControlPointIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
-    }, options );
+    }, providedOptions );
     const tandem = options.tandem;
 
     super( options );
