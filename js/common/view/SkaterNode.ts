@@ -8,31 +8,43 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
+import Vector2 from '../../../../dot/js/Vector2.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import { Circle, DragListener, Image, Node } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from '../model/Skater.js';
+import Track from '../model/Track.js';
+import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
 class SkaterNode extends Node {
+  public readonly skaterImageSetProperty: Property<SkaterImageSet>;
+  private readonly dragListener: DragListener;
 
   /**
    * SkaterNode constructor.
    *
-   * @param {Skater} skater
-   * @param {EnergySkateParkScreenView} view
-   * @param {BooleanProperty} userControlledProperty
-   * @param {ModelViewTransform2} modelViewTransform
-   * @param {function(Vector2, Track[]):Object} getClosestTrackAndPositionAndParameter - gets the closest track
+   * @param skater
+   * @param view
+   * @param userControlledProperty
+   * @param modelViewTransform
+   * @param getClosestTrackAndPositionAndParameter - gets the closest track
    *                                            properties, used when the skater is being dragged close to the track.
    *                                            See EnergySkateParkModel.getClosestTrackAndPositionAndParameter
-   * @param {function} getPhysicalTracks - function that returns the physical tracks in the model, so the skater can try
+   * @param getPhysicalTracks - function that returns the physical tracks in the model, so the skater can try
    *                                       to attach to them while dragging
-   * @param {Tandem} tandem
+   * @param tandem
    */
-  constructor( skater, view, userControlledProperty, modelViewTransform, getClosestTrackAndPositionAndParameter, getPhysicalTracks, tandem ) {
+  public constructor(
+    private readonly skater: Skater,
+    view: EnergySkateParkScreenView, userControlledProperty: BooleanProperty, modelViewTransform: ModelViewTransform2,
+    getClosestTrackAndPositionAndParameter: ( v: Vector2, t: Track[] ) => IntentionalAny, getPhysicalTracks: () => Track[], tandem: Tandem ) {
     super( {
 
       // rendering the skater with canvas makes it move smoothly around the screen edges in iOS Safari, see
@@ -48,7 +60,7 @@ class SkaterNode extends Node {
       validValues: SkaterImageSet.SKATER_IMAGE_SETS
     } );
 
-    // @private {Image} - left and right Images for the skater
+    // left and right Images for the skater
     const leftSkaterImageNode = new Image( this.skaterImageSetProperty.value.leftImageProperty, {
       cursor: 'pointer',
       tandem: tandem.createTandem( 'leftSkaterImageNode' )
@@ -63,10 +75,9 @@ class SkaterNode extends Node {
     const circle = new Circle( 8, { fill: 'red' } );
     this.addChild( circle );
 
-    let imageWidth;
-    let imageHeight;
+    let imageWidth: number;
+    let imageHeight: number;
 
-    // @private {Skater}
     this.skater = skater;
 
     this.skaterImageSetProperty.link( skaterImageSet => {
@@ -84,12 +95,14 @@ class SkaterNode extends Node {
     } );
 
     skater.directionProperty.link( direction => {
+      // @ts-expect-error
       leftSkaterImageNode.visible = direction === Skater.Direction.LEFT;
+      // @ts-expect-error
       rightSkaterImageNode.visible = direction === Skater.Direction.RIGHT;
     } );
 
 
-    // @private - Map from mass(kg) to the amount to scale the image
+    // Map from mass(kg) to the amount to scale the image
     const centerMassValue = skater.massRange.getCenter();
     const massToScale = new LinearFunction( centerMassValue, skater.massRange.max, 0.46, 0.614 );
 
@@ -138,16 +151,17 @@ class SkaterNode extends Node {
 
     } );
 
-    let targetTrack = null;
+    let targetTrack: Track | null = null;
 
-    let targetU = null;
+    let targetU: number | null = null;
 
+    // @ts-expect-error
     const dragSkater = event => {
       const globalPoint = this.globalToParentPoint( event.pointer.point );
       let position = modelViewTransform.viewToModelPosition( globalPoint );
 
       // make sure it is within the visible bounds
-      position = view.availableModelBounds.getClosestPoint( position.x, position.y, position );
+      position = view.availableModelBounds!.getClosestPoint( position.x, position.y, position );
 
       // PERFORMANCE/ALLOCATION: lots of unnecessary allocations and computation here, biggest improvement could be
       // to use binary search for position on the track
@@ -162,10 +176,10 @@ class SkaterNode extends Node {
           targetU = closestTrackAndPositionAndParameter.parametricPosition;
 
           // Choose the right side of the track, i.e. the side of the track that would have the skater upside up
-          const normal = targetTrack.getUnitNormalVector( targetU );
+          const normal = targetTrack!.getUnitNormalVector( targetU! );
           skater.onTopSideOfTrackProperty.value = normal.y > 0;
 
-          skater.angleProperty.value = targetTrack.getViewAngleAt( targetU ) + ( skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+          skater.angleProperty.value = targetTrack!.getViewAngleAt( targetU! ) + ( skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
 
           closeEnough = true;
         }
@@ -182,14 +196,14 @@ class SkaterNode extends Node {
       }
 
       else {
-        skater.positionProperty.value = targetTrack.getPoint( targetU );
+        skater.positionProperty.value = targetTrack!.getPoint( targetU! );
       }
 
       skater.updateEnergy();
       skater.updatedEmitter.emit();
     };
 
-    // @private - for interruption, see interruptDrag
+    // for interruption, see interruptDrag
     this.dragListener = new DragListener( {
       tandem: tandem.createTandem( 'dragListener' ),
       start: event => {
@@ -208,7 +222,7 @@ class SkaterNode extends Node {
       end: () => {
 
         // Record the state of the skater for "return skater"
-        skater.released( targetTrack, targetU );
+        skater.released( targetTrack, targetU! );
 
         userControlledProperty.set( false );
       }
@@ -218,9 +232,8 @@ class SkaterNode extends Node {
 
   /**
    * If dragging, interrupt and release the Skater.
-   * @public
    */
-  interruptDrag() {
+  public interruptDrag(): void {
     if ( this.dragListener.isPressed ) {
       this.dragListener.interrupt();
     }

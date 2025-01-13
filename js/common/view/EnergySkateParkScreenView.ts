@@ -120,7 +120,7 @@ class EnergySkateParkScreenView extends ScreenView {
   private readonly visibilityControlsPanel?: VisibilityControlsPanel;
 
   private readonly viewBoundsPath?: Path;
-  private availableModelBounds?: Bounds2;
+  public availableModelBounds?: Bounds2;
 
   public constructor( model: EnergySkateParkModel, tandem: Tandem, options?: IntentionalAny ) {
     // eslint-disable-next-line phet/bad-typescript-text
