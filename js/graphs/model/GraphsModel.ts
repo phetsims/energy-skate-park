@@ -26,13 +26,13 @@ import GraphsConstants from '../GraphsConstants.js';
 class GraphsModel extends EnergySkateParkTrackSetModel {
 
   // properties for visibility and settings for the graph
-  private readonly kineticEnergyDataVisibleProperty: BooleanProperty;
-  private readonly potentialEnergyDataVisibleProperty: BooleanProperty;
-  private readonly thermalEnergyDataVisibleProperty: BooleanProperty;
-  private readonly totalEnergyDataVisibleProperty: BooleanProperty;
+  public readonly kineticEnergyDataVisibleProperty: BooleanProperty;
+  public readonly potentialEnergyDataVisibleProperty: BooleanProperty;
+  public readonly thermalEnergyDataVisibleProperty: BooleanProperty;
+  public readonly totalEnergyDataVisibleProperty: BooleanProperty;
 
   // index pointing to the range plotted on the energy plot, see GraphsConstants.PLOT_RANGES
-  private readonly energyPlotScaleIndexProperty: NumberProperty;
+  public readonly energyPlotScaleIndexProperty: NumberProperty;
 
   // sets the independent variable for the graph display
   public readonly independentVariableProperty: EnumerationDeprecatedProperty;

@@ -18,8 +18,11 @@ import PointStyle from '../../../../griddle/js/PointStyle.js';
 import PointStyledVector2 from '../../../../griddle/js/PointStyledVector2.js';
 import XYCursorChartNode from '../../../../griddle/js/XYCursorChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
+import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
@@ -37,14 +40,12 @@ const POSITION_STEP_X = 1; // in meters
 const POSITION_PLOT_OFFSET = 5;
 
 class EnergyChart extends XYCursorChartNode {
+  private readonly kineticEnergyDataSeries: DynamicSeries;
+  private readonly potentialEnergyDataSeries: DynamicSeries;
+  private readonly thermalEnergyDataSeries: DynamicSeries;
+  private readonly totalEnergyDataSeries: DynamicSeries;
 
-  /**
-   * @param {GraphsModel} model
-   * @param {number} graphWidth
-   * @param {number} graphHeight
-   * @param {Tandem} tandem
-   */
-  constructor( model, graphWidth, graphHeight, tandem ) {
+  public constructor( model: GraphsModel, graphWidth: number, graphHeight: number, tandem: Tandem ) {
 
     const dragEndedEmitter = new Emitter();
     const dragStartedEmitter = new Emitter();
@@ -96,6 +97,8 @@ class EnergyChart extends XYCursorChartNode {
       // for the cursor that shows current time
       cursorOptions: {
         includeDragCue: true,
+
+        //@ts-expect-error
         startDrag: ( event, listener ) => {
           pausedOnDragStart = model.pausedProperty.get();
 
@@ -105,6 +108,8 @@ class EnergyChart extends XYCursorChartNode {
 
           dragStartedEmitter.emit();
         },
+
+        // @ts-expect-error
         drag: ( event, listener ) => {
 
           // when we drag the cursor, get the skater sample at the closest cursor time and set skater to found SkaterState
@@ -112,6 +117,7 @@ class EnergyChart extends XYCursorChartNode {
           model.setFromSample( closestSample );
           model.skater.updatedEmitter.emit();
         },
+        // @ts-expect-error
         endDrag: ( event, listener ) => {
 
           if ( !pausedOnDragStart ) {
@@ -125,7 +131,6 @@ class EnergyChart extends XYCursorChartNode {
 
     const seriesOptions = { lineWidth: 2 };
 
-    // @private {DynamicSeries}
     this.kineticEnergyDataSeries = new DynamicSeries( merge( {
       color: EnergySkateParkColorScheme.kineticEnergy,
       visibleProperty: model.kineticEnergyDataVisibleProperty
@@ -170,6 +175,7 @@ class EnergyChart extends XYCursorChartNode {
       const independentVariable = model.independentVariableProperty.get();
       const horizontalXRange = calculateDomain( independentVariable ).max;
 
+      // @ts-expect-error
       if ( model.dataSamples.length > 0 && independentVariable === GraphsModel.IndependentVariable.TIME ) {
 
         const minRecordedX = model.dataSamples.get( 0 ).time;
@@ -221,6 +227,7 @@ class EnergyChart extends XYCursorChartNode {
       const newMinY = newRange.min;
       const horizontalLineSpacing = ( newMaxY - newMinY ) / 4;
 
+      // @ts-expect-error
       const verticalLineSpacing = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ?
                                   POSITION_STEP_X : TIME_STEP_X;
 
@@ -241,13 +248,19 @@ class EnergyChart extends XYCursorChartNode {
       const horizontalLineSpacing = ( newMaxY - newMinY ) / 4;
 
       let verticalLineSpacing;
+
+      // @ts-expect-error
       if ( independentVariable === GraphsModel.IndependentVariable.POSITION ) {
         this.setCursorVisibleOverride( false );
+
+        // @ts-expect-error
         this.setPlotStyle( DynamicSeriesNode.PlotStyle.SCATTER );
         verticalLineSpacing = POSITION_STEP_X;
       }
       else {
         this.setCursorVisibleOverride( null );
+
+        // @ts-expect-error
         this.setPlotStyle( DynamicSeriesNode.PlotStyle.LINE );
         verticalLineSpacing = TIME_STEP_X;
       }
@@ -262,6 +275,8 @@ class EnergyChart extends XYCursorChartNode {
 
     // add data points when a EnergySkateParkDataSample is added to the model
     model.dataSamples.addItemAddedListener( addedSample => {
+
+      // @ts-expect-error
       const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
       const independentVariable = plotTime ? addedSample.time : addedSample.position.x + POSITION_PLOT_OFFSET;
 
@@ -269,7 +284,7 @@ class EnergyChart extends XYCursorChartNode {
       const pointStyle = new PointStyle();
 
       // add a listener that updates opacity with the EnergySkateParkDataSample Property, dispose it on removal
-      const opacityListener = opacity => {
+      const opacityListener = ( opacity: number ) => {
         pointStyle.opacity = opacity;
       };
       addedSample.opacityProperty.link( opacityListener );
@@ -279,7 +294,7 @@ class EnergyChart extends XYCursorChartNode {
       this.thermalEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, addedSample.thermalEnergy, pointStyle ) );
       this.totalEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, addedSample.totalEnergy, pointStyle ) );
 
-      const removalListener = removedSample => {
+      const removalListener = ( removedSample: EnergySkateParkDataSample ) => {
         if ( removedSample === addedSample ) {
           removedSample.opacityProperty.unlink( opacityListener );
           model.dataSamples.removeItemRemovedListener( removalListener );
@@ -292,6 +307,8 @@ class EnergyChart extends XYCursorChartNode {
 
     // remove a batch of of EnergySkateParkDataSamples
     model.batchRemoveSamplesEmitter.addListener( samplesToRemove => {
+
+      // @ts-expect-error
       const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
 
       const xValuesToRemove = samplesToRemove.map( sampleToRemove => {
@@ -309,9 +326,8 @@ class EnergyChart extends XYCursorChartNode {
 
   /**
    * Clear all energy data for the data series associated with this plot.
-   * @public
    */
-  clearEnergyDataSeries() {
+  public clearEnergyDataSeries(): void {
     this.kineticEnergyDataSeries.clear();
     this.potentialEnergyDataSeries.clear();
     this.thermalEnergyDataSeries.clear();
@@ -326,10 +342,10 @@ class EnergyChart extends XYCursorChartNode {
 //-------------------------------------------------------------------------
 /**
  * Calculates the domain of the plot as a function of the independent variable.
- * @param {GraphsModel.IndependentVariable} independentVariable
- * @returns {Range}
  */
-const calculateDomain = independentVariable => {
+const calculateDomain = ( independentVariable: IntentionalAny ) => {
+
+  // @ts-expect-error
   const maxX = independentVariable === GraphsModel.IndependentVariable.POSITION ? POSITION_MAX_X : TIME_MAX_X;
   return new Range( 0, maxX );
 };
