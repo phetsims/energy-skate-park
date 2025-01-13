@@ -8,31 +8,63 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import dot from '../../../../dot/js/dot.js';
+import Property from '../../../../axon/js/Property.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
 import { LineStyles, Shape } from '../../../../kite/js/imports.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import { Node, Path } from '../../../../scenery/js/imports.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
+import Track from '../model/Track.js';
 import SplineEvaluation from '../SplineEvaluation.js';
 import ControlPointNode from './ControlPointNode.js';
 import TrackDragHandler from './TrackDragHandler.js';
 
 // constants
-const FastArray = dot.FastArray;
+const FastArray = window.Float64Array ? window.Float64Array : window.Array;
 
 class TrackNode extends Node {
+  private readonly isIcon: boolean;
+  public readonly model: EnergySkateParkModel;
+  private readonly road: Path;
+  private readonly centerLine: Path;
+
+  // Reuse arrays to save allocations and prevent garbage collections, see #38
+  private readonly xArray: IntentionalAny[] | Float64Array<ArrayBuffer>;
+  private readonly yArray: IntentionalAny[] | Float64Array<ArrayBuffer>;
+
+  // Store for performance
+  private lastPoint: number;
+  private lengthForLinSpace: number;
+
+  // public so that ControlPointNodes so that dragging a control point can initiate
+  // dragging a track and dragging from toolbox can forward input to this listener
+  private readonly trackDragHandler: TrackDragHandler | null;
+  private readonly disposeTrackNode: () => void;
+  private linSpace: number[];
 
   /**
-   * @param {Track} track the track for this track node
-   * @param {ModelViewTransform2} modelViewTransform the model view transform for the view
-   * @param {Property.<Bounds2>} availableBoundsProperty
-   * @param {Tandem} tandem
-   * @param {Object} [options]
+   * @param track the track for this track node
+   * @param modelViewTransform the model view transform for the view
+   * @param availableBoundsProperty
+   * @param tandem
+   * @param [options]
    */
-  constructor( track, modelViewTransform, availableBoundsProperty, tandem, options ) {
+  public constructor(
+    public readonly track: Track,
+    public readonly modelViewTransform: ModelViewTransform2,
+    public readonly availableBoundsProperty: Property<Bounds2>,
+    tandem: Tandem,
+    options?: IntentionalAny
+  ) {
     const model = track.model;
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {null|string} - cursor for the Track road - by default it is a 'pointer' if only draggable, but for some icons
@@ -51,11 +83,7 @@ class TrackNode extends Node {
 
     super( options );
 
-    // @private
-    this.track = track;
     this.model = model;
-    this.modelViewTransform = modelViewTransform;
-    this.availableBoundsProperty = availableBoundsProperty;
     this.isIcon = options.isIcon;
 
     this.road = new Path( null, {
@@ -71,24 +99,21 @@ class TrackNode extends Node {
     this.children = [ this.road, this.centerLine ];
 
     // must be unlinked in dispose
-    const stickingToTrackListener = sticking => {
+    const stickingToTrackListener = ( sticking: boolean ) => {
       this.centerLine.lineDash = sticking ? [ 11, 8 ] : [];
     };
     model.stickingToTrackProperty.link( stickingToTrackListener );
 
-    // Reuse arrays to save allocations and prevent garbage collections, see #38
     this.xArray = new FastArray( track.controlPoints.length );
     this.yArray = new FastArray( track.controlPoints.length );
 
-    // Store for performance
     this.lastPoint = ( track.controlPoints.length - 1 ) / track.controlPoints.length;
 
     // Sample space, which is recomputed if the track gets longer, to keep it looking smooth no matter how many control points
+    // @ts-expect-error
     this.linSpace = numeric.linspace( 0, this.lastPoint, 20 * ( track.controlPoints.length - 1 ) );
     this.lengthForLinSpace = track.controlPoints.length;
 
-    // @public {TrackDraghandler} - public so that ControlPointNodes so that dragging a control point can initiate
-    // dragging a track and dragging from toolbox can forward input to this listener
     this.trackDragHandler = null;
     if ( track.draggable ) {
       this.trackDragHandler = new TrackDragHandler( this, tandem.createTandem( 'trackDragHandler' ) );
@@ -107,7 +132,7 @@ class TrackNode extends Node {
           this.addChild( controlPointNode );
 
           if ( controlPoint.limitBounds ) {
-            assert && assert( controlPointNode.boundsRectangle, 'bounds are limited but there is no bounding Rectangle' );
+            affirm( controlPointNode.boundsRectangle, 'bounds are limited but there is no bounding Rectangle' );
             this.addChild( controlPointNode.boundsRectangle );
           }
         }
@@ -133,8 +158,9 @@ class TrackNode extends Node {
     track.updateEmitter.addListener( this.updateTrackShape.bind( this ) );
 
     // track was pulled from the tool box, start drag event to the drag listener
+    // @ts-expect-error
     track.forwardingDragStartEmitter.addListener( event => {
-      this.trackDragHandler.press( event );
+      this.trackDragHandler!.press( event );
     } );
 
     // In the state wrapper, when the state changes, we must update the skater node
@@ -143,7 +169,6 @@ class TrackNode extends Node {
     };
     phetioStateSetEmitter.addListener( stateListener );
 
-    // @private - only called by dispose
     this.disposeTrackNode = () => {
       model.stickingToTrackProperty.unlink( stickingToTrackListener );
       phetioStateSetEmitter.removeListener( stateListener );
@@ -156,16 +181,15 @@ class TrackNode extends Node {
       }
 
       if ( track.draggable ) {
-        this.trackDragHandler.dispose();
+        this.trackDragHandler!.dispose();
       }
     };
   }
 
   /**
    * Make eligible for garbage collection.
-   * @public
    */
-  dispose() {
+  public override dispose(): void {
     this.disposeTrackNode();
     super.dispose();
   }
@@ -173,9 +197,8 @@ class TrackNode extends Node {
   /**
    * When a control point has moved, or the track has moved, or the track has been reset, or on initialization
    * update the shape of the track.
-   * @public
    */
-  updateTrackShape() {
+  public updateTrackShape(): void {
 
     const track = this.track;
     const model = this.model;
@@ -184,6 +207,8 @@ class TrackNode extends Node {
     // Update the sample range when the number of control points has changed
     if ( this.lengthForLinSpace !== track.controlPoints.length ) {
       this.lastPoint = ( track.controlPoints.length - 1 ) / track.controlPoints.length;
+
+      // @ts-expect-error
       this.linSpace = numeric.linspace( 0, this.lastPoint, 20 * ( track.controlPoints.length - 1 ) );
       this.lengthForLinSpace = track.controlPoints.length;
     }

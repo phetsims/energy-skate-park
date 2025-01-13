@@ -78,7 +78,6 @@ class ControlPointNode extends Circle {
       controlPoint.draggingProperty.link( boundsVisibilityListener );
     }
 
-    // @ts-expect-error
     controlPoint.positionProperty.link( position => {
       this.translation = modelViewTransform.modelToViewPosition( position );
     } );

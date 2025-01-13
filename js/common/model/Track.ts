@@ -57,7 +57,7 @@ class Track extends PhetioObject {
   public readonly splittable: boolean;
   public readonly attachable: boolean;
   public readonly configurable: boolean;
-  public readonly dragSource: DragListener | null;
+  public dragSource: DragListener | null;
   private _slopeToGround: boolean;
   private _restoreSlopeToGroundOnReset: boolean;
   private _position: Vector2;
