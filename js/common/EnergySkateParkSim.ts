@@ -9,20 +9,12 @@
 
 import TReadOnlyProperty from '../../../axon/js/TReadOnlyProperty.js';
 import { AnyScreen } from '../../../joist/js/Screen.js';
-import Sim from '../../../joist/js/Sim.js';
-import merge from '../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../phet-core/js/types/IntentionalAny.js';
-import Tandem from '../../../tandem/js/Tandem.js';
+import Sim, { SimOptions } from '../../../joist/js/Sim.js';
 import energySkatePark from '../energySkatePark.js';
 
 export default class EnergySkateParkSim extends Sim {
 
-  public constructor( titleString: TReadOnlyProperty<string>, screens: AnyScreen[], tandem: Tandem, options?: IntentionalAny ) {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-      tandem: tandem
-    }, options );
-
+  public constructor( titleString: TReadOnlyProperty<string>, screens: AnyScreen[], options: SimOptions ) {
     super( titleString, screens, options );
   }
 }

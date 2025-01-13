@@ -40,7 +40,7 @@ simLauncher.launch( () => {
     new PlaygroundScreen( energySkateParkPreferencesModel, rootTandem.createTandem( 'playgroundScreen' ) )
   ];
 
-  new EnergySkateParkSim( energySkateParkTitleStringProperty, screens, rootTandem, {
+  new EnergySkateParkSim( energySkateParkTitleStringProperty, screens, {
     preferencesModel: preferencesModel,
     credits: {
       leadDesign: 'Noah Podolefsky, Sam Reid, Amy Rouinfar',
