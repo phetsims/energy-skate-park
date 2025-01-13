@@ -5,22 +5,21 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import Bounds2 from '../../../../dot/js/Bounds2.js';
 import { Node } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
 import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
+import GraphsModel from '../model/GraphsModel.js';
 import EnergyGraphAccordionBox from './EnergyGraphAccordionBox.js';
 
-/**
- * @param {GraphsModel} model
- */
 class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
 
-  /**
-   * @param {EnergySkateParkTrackSetModel} model
-   * @param {Tandem} tandem
-   */
-  constructor( model, tandem ) {
+  // For layout
+  private readonly graphAccordionBox: EnergyGraphAccordionBox;
+
+  public constructor( model: GraphsModel, tandem: Tandem ) {
 
     // parent layer for ComboBox, would use "this" but it is not available until after super
     const comboBoxParent = new Node();
@@ -43,19 +42,14 @@ class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
 
     this.addChild( comboBoxParent );
 
-    // @private - for layout
     this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ) );
     this.addToBottomLayer( this.graphAccordionBox );
   }
 
   /**
    * Special layout for the energy-skate-park, contents can float to the available bounds.
-   * @public
-   *
-   * @param {Bounds2} viewBounds
-   * @override
    */
-  layout( viewBounds ) {
+  public override layout( viewBounds: Bounds2 ):void {
     super.layout( viewBounds );
 
     // the graph within the accordion box needs to line up with the right edge of the track and grid lines so that
