@@ -10,23 +10,22 @@
  * @author Jesse Greenberg
  */
 
+import Property from '../../../../axon/js/Property.js';
 import { Shape } from '../../../../kite/js/imports.js';
 import merge from '../../../../phet-core/js/merge.js';
 import { HBox, Image, Node, VBox } from '../../../../scenery/js/imports.js';
 import RectangularRadioButton from '../../../../sun/js/buttons/RectangularRadioButton.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import SkaterImageSet from './SkaterImageSet.js';
 
 const BUTTON_SPACING = 5;
 
 export default class SkaterRadioButtonGroup extends Node {
 
-  /**
-   * @param {Property.<SkaterImageSet>} skaterImageSetProperty - Property for the skater image
-   * @param {Tandem} tandem
-   */
-  constructor( skaterImageSetProperty, tandem ) {
+  public constructor( skaterImageSetProperty: Property<SkaterImageSet>, tandem: Tandem ) {
     super();
 
     const buttonOptions = {
@@ -40,8 +39,8 @@ export default class SkaterRadioButtonGroup extends Node {
     };
 
     // Description of the radio buttons
-    const contentArray = [];
-    skaterImageSetProperty.validValues.forEach( ( skaterImageSet, index ) =>
+    const contentArray: { value: SkaterImageSet; node: Node; tandemName: string }[] = [];
+    skaterImageSetProperty.validValues!.forEach( ( skaterImageSet, index ) =>
       contentArray.push( {
         value: skaterImageSet,
         node: new Image( skaterImageSet.headshotImageProperty, { scale: 0.5 } ),
@@ -49,7 +48,7 @@ export default class SkaterRadioButtonGroup extends Node {
       } )
     );
 
-    const buttons = [];
+    const buttons: Node[] = [];
     contentArray.forEach( content => {
       // Round clipping the corners to avoid pointy images in the radio buttons
       content.node.clipArea = Shape.roundRect(
