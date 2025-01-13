@@ -8,10 +8,14 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import Emitter from '../../../../axon/js/Emitter.js';
+import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import merge from '../../../../phet-core/js/merge.js';
-import { Text } from '../../../../scenery/js/imports.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import { Node, Text } from '../../../../scenery/js/imports.js';
 import ComboBox from '../../../../sun/js/ComboBox.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -19,22 +23,23 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 // constants
-const controlsGravityCustomString = EnergySkateParkStrings.physicalControls.customStringProperty;
+const controlsGravityCustomStringProperty = EnergySkateParkStrings.physicalControls.customStringProperty;
 
-class PhysicalComboBox extends ComboBox {
+class PhysicalComboBox extends ComboBox<IntentionalAny> {
 
   /**
-   * @param {PhetioProperty} physicalProperty
-   * @param {BooleanProperty} userControlledProperty
-   * @param {Array.<Object>} labelValueList - entries like {label:{string}, value:{number}}
-   * @param {Emitter} resetEmitter
-   * @param {Node} listParent - parent for the ComboBoxListBox
-   * @param {Tandem} tandem
-   * @param {Object} [options]
+   * @param physicalProperty
+   * @param userControlledProperty
+   * @param labelValueList - entries like {label:{string}, value:{number}}
+   * @param resetEmitter
+   * @param listParent - parent for the ComboBoxListBox
+   * @param tandem
+   * @param [options]
    */
-  constructor( physicalProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, options ) {
+  public constructor( physicalProperty: PhetioProperty<IntentionalAny>, userControlledProperty: Property<boolean>, labelValueList: Array<IntentionalAny>, resetEmitter: Emitter, listParent: Node, tandem: Tandem, options?: IntentionalAny ) {
     assert && assert( _.find( labelValueList, entry => entry.value === null ) === undefined, 'PhysicalComboBox adds "Custom" item' );
 
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {boolean} whether or not the physicalProperty can be set to something other than the entries defined
@@ -59,6 +64,7 @@ class PhysicalComboBox extends ComboBox {
     const tempNodes = labelValueList.map( entry => new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ) );
 
     // i18n - if the text gets scaled way down, make sure that the button corner radii aren't larger than content height
+    // @ts-expect-error
     const maxItemHeight = _.maxBy( tempNodes, node => node.height ).height;
     options.cornerRadius = Math.min( options.cornerRadius, maxItemHeight / 2 );
     tempNodes.forEach( node => node.dispose() );
@@ -66,7 +72,7 @@ class PhysicalComboBox extends ComboBox {
     if ( options.supportCustom ) {
       itemList.push( {
         value: null,
-        createNode: () => new Text( controlsGravityCustomString, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ),
+        createNode: () => new Text( controlsGravityCustomStringProperty, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ),
         tandemName: 'customItem'
       } );
     }

@@ -84,7 +84,6 @@ class EnergySkateParkControlPanel extends Panel {
 
     let massControls = null;
     if ( options.showMassControls ) {
-      // @ts-expect-error
       massControls = new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, screenView.skaterNode.skaterImageSetProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
       children.push( massControls );
     }
