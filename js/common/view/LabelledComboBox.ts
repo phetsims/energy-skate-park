@@ -8,26 +8,22 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import LocalizedStringProperty from '../../../../chipper/js/browser/LocalizedStringProperty.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { Node, Spacer, Text, VBox } from '../../../../scenery/js/imports.js';
+import ComboBox from '../../../../sun/js/ComboBox.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 class LabelledComboBox extends VBox {
+  private readonly titleNode: Text;
 
-  /**
-   * @param {ComboBox} comboBox - the ComboBox to be labelled
-   * @param {string} titleString
-   * @param {Tandem} tandem
-   */
-  constructor( comboBox, titleString, tandem ) {
+  public constructor( private readonly comboBox: ComboBox<IntentionalAny>, titleString: LocalizedStringProperty, tandem: Tandem ) {
     super( {
       spacing: 5
     } );
 
-    // @private {ComboBox}
-    this.comboBox = comboBox;
-
-    // @private {Text}
     this.titleNode = new Text( titleString, {
       font: EnergySkateParkConstants.CONTROL_TITLE_FONT,
       maxWidth: this.comboBox.width / 2
@@ -41,11 +37,10 @@ class LabelledComboBox extends VBox {
    * Adjust the layout of the ComboBox and title to match the layout of other controls in the
    * EnergySkateParkControlPanel. The title will be left aligned with extra spacing to the right so
    * that the title aligns with other controls. The ComboBox remains center aligned.
-   * @public
    *
-   * @param {number} width - width of other controls to match, so that titleNode can align with other controls.
+   * @param width - width of other controls to match, so that titleNode can align with other controls.
    */
-  matchLayout( width ) {
+  public matchLayout( width: number ): void {
     const spacer = new Spacer( width - this.titleNode.width, 0 );
     spacer.leftCenter = this.titleNode.rightCenter;
     const titleWithSpacer = new Node( { children: [ this.titleNode, spacer ] } );
