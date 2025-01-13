@@ -9,10 +9,10 @@
 
 import Property from '../../../../axon/js/Property.js';
 import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import { optionize4 } from '../../../../phet-core/js/optionize.js';
 import { Image, ImageableImage } from '../../../../scenery/js/imports.js';
 import RectangularRadioButtonGroup from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
-import Panel from '../../../../sun/js/Panel.js';
+import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import attach_png from '../../../images/attach_png.js';
 import detach_png from '../../../images/detach_png.js';
@@ -29,16 +29,17 @@ export default class AttachDetachToggleButtons extends Panel {
    * @param enabledProperty Axon property that is true if the control is enabled
    * @param contentWidth Width for the control panel, to match the layout of the rest of the controls.
    * @param tandem
-   * @param [options]
+   * @param [providedOptions]
    */
-  public constructor( stickingToTrackProperty: Property<boolean>, enabledProperty: Property<boolean>, contentWidth: number, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( stickingToTrackProperty: Property<boolean>, enabledProperty: Property<boolean>, contentWidth: number, tandem: Tandem, providedOptions?: PanelOptions ) {
 
     // Match the style of the EnergySkateParkControlPanel
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+    const options = optionize4<PanelOptions>()( {}, {
       xMargin: 15,
       yMargin: 5
-    }, EnergySkateParkConstants.PANEL_OPTIONS, options );
+
+      // @ts-expect-error
+    }, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
 
     // This is sort of hack to pass through the tandem of the radioButtonGroupMember to its child.
     const attachRadioButtonTandemName = 'attachRadioButton';

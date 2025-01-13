@@ -11,6 +11,7 @@ import Dimension2 from '../../../dot/js/Dimension2.js';
 import Range from '../../../dot/js/Range.js';
 import merge from '../../../phet-core/js/merge.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
+import { PanelOptions } from '../../../sun/js/Panel.js';
 import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkColorScheme from './view/EnergySkateParkColorScheme.js';
 
@@ -29,7 +30,7 @@ const MAX_FRICTION = 0.1;
 
 const PANEL_CORNER_RADIUS = 5;
 
-const PANEL_OPTIONS = {
+const PANEL_OPTIONS: PanelOptions = {
   cornerRadius: PANEL_CORNER_RADIUS,
   fill: EnergySkateParkColorScheme.panelFill,
   stroke: EnergySkateParkColorScheme.panelStroke

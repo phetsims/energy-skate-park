@@ -14,11 +14,12 @@ import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import BarChartNode from '../../../../griddle/js/BarChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import MoveToTrashLegendButton from '../../../../scenery-phet/js/buttons/MoveToTrashLegendButton.js';
 import ZoomButton from '../../../../scenery-phet/js/buttons/ZoomButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import { HBox, Node, Rectangle, Text, VBox } from '../../../../scenery/js/imports.js';
+import { HBox, Node, NodeOptions, Rectangle, Text, VBox } from '../../../../scenery/js/imports.js';
 import ColorConstants from '../../../../sun/js/ColorConstants.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -30,22 +31,27 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 // constants
 const ZOOM_BUTTON_TOUCH_DILATION = 5;
 
+type SelfOptions = {
+  // include buttons that increase/decrease the scale of the graph?
+  showBarGraphZoomButtons?: boolean;
+
+  // The range for the visible portion of the graph, in joules - note this is somewhat arbitrary
+  // because the bars will have difference scales, but size should be about 1.5 times larger than the energy would
+  // extend bars at default scale. A negative min value will allow some space to represent negative energies.
+  graphRange?: Range;
+};
+
+type EnergyBarGraphOptions = SelfOptions & NodeOptions;
+
 export default class EnergyBarGraph extends Node {
   private readonly barChartNode: BarChartNode;
 
-  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, tandem: Tandem, options: IntentionalAny ) {
+  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, tandem: Tandem, providedOptions: EnergyBarGraphOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // include buttons that increase/decrease the scale of the graph?
+    const options = optionize<SelfOptions, SelfOptions, NodeOptions>()( {
       showBarGraphZoomButtons: true,
-
-      // The range for the visible portion of the graph, in joules - note this is somewhat arbitrary
-      // because the bars will have difference scales, but size should be about 1.5 times larger than the energy would
-      // extend bars at default scale. A negative min value will allow some space to represent negative energies.
       graphRange: new Range( -122.8, 325 )
-    }, options );
+    }, providedOptions );
 
     super( options );
 
