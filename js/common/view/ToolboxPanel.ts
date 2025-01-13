@@ -8,25 +8,24 @@
  */
 
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
-import { DragListener, HBox } from '../../../../scenery/js/imports.js';
+import { DragListener, HBox, Node } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
+import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 
 class ToolboxPanel extends Panel {
 
-  /**
-   * @param {EnergySkateParkModel} model
-   * @param {EnergySkateParkScreenView} view
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( model, view, tandem, options ) {
+  public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, options?: IntentionalAny ) {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       align: 'center',
 
@@ -79,7 +78,7 @@ class ToolboxPanel extends Panel {
         model.measuringTapeBasePositionProperty.set( modelPosition );
         model.measuringTapeTipPositionProperty.set( modelPosition.plusXY( 1, 0 ) );
 
-        view.measuringTapeNode.startBaseDrag( event );
+        view.measuringTapeNode!.startBaseDrag( event );
       }
     } ) );
 
@@ -89,11 +88,11 @@ class ToolboxPanel extends Panel {
         model.stopwatch.isVisibleProperty.value = true;
 
         const coordinate = this.globalToParentPoint( event.pointer.point ).minusXY(
-          view.stopwatchNode.width / 2,
-          view.stopwatchNode.height / 2
+          view.stopwatchNode!.width / 2,
+          view.stopwatchNode!.height / 2
         );
         model.stopwatch.positionProperty.set( coordinate );
-        view.stopwatchNode.dragListener.press( event, view.stopwatchNode );
+        view.stopwatchNode!.dragListener!.press( event, view.stopwatchNode );
       }
     } ) );
 
@@ -105,12 +104,8 @@ class ToolboxPanel extends Panel {
    * Create and attach a listener that makes the icon visible/invisible while the tool is invisible/visible.
    * Reference to the DerivedProperty is not returned because there is no need to dispose of it. This listener
    * can be attached for the life of the sim.
-   * @private
-   *
-   * @param {Node} icon
-   * @param {BooleanProperty} visibleProperty
    */
-  static attachIconVisibilityListener( icon, visibleProperty ) {
+  public static attachIconVisibilityListener( icon: Node, visibleProperty: TReadOnlyProperty<boolean> ): void {
     const iconVisibleProperty = new DerivedProperty( [ visibleProperty ], visible => {
       return !visible;
     } );

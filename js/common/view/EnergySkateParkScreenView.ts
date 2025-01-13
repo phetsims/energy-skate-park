@@ -103,8 +103,8 @@ class EnergySkateParkScreenView extends ScreenView {
 
   // (for layout) - Layer which will contain all of the tracks
   protected readonly trackLayer: Node;
-  private readonly measuringTapeNode?: MeasuringTapeNode;
-  private readonly stopwatchNode?: StopwatchNode;
+  public readonly measuringTapeNode?: MeasuringTapeNode;
+  public readonly stopwatchNode?: StopwatchNode;
 
   // so it can float to the layout bounds, see layout()
   private readonly toolboxPanel?: ToolboxPanel;
