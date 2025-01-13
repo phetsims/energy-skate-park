@@ -9,13 +9,13 @@ import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import SamplesCanvasNode from '../../measure/view/SamplesCanvasNode.js';
-import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
+import EnergySkateParkSaveSampleModel from '../model/EnergySkateParkSaveSampleModel.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 
 class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
   private readonly skaterSamplesNode: SamplesCanvasNode | null;
 
-  public constructor( model: EnergySkateParkModel, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( model: EnergySkateParkSaveSampleModel, tandem: Tandem, options?: IntentionalAny ) {
 
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {

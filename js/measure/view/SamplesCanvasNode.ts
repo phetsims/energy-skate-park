@@ -9,16 +9,16 @@
 
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import { CanvasNode } from '../../../../scenery/js/imports.js';
+import EnergySkateParkSaveSampleModel from '../../common/model/EnergySkateParkSaveSampleModel.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import energySkatePark from '../../energySkatePark.js';
-import MeasureModel from '../model/MeasureModel.js';
 
 // constants
 const SAMPLE_RADIUS = 3.5;
 
 class SamplesCanvasNode extends CanvasNode {
 
-  public constructor( private readonly model: MeasureModel, private readonly modelViewTransform: ModelViewTransform2 ) {
+  public constructor( private readonly model: EnergySkateParkSaveSampleModel, private readonly modelViewTransform: ModelViewTransform2 ) {
     super();
 
     this.model.availableModelBoundsProperty.link( modelBounds => {
