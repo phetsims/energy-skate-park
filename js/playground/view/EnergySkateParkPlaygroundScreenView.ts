@@ -9,21 +9,31 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
 import { Color } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
+import Track from '../../common/model/Track.js';
 import EnergySkateParkScreenView from '../../common/view/EnergySkateParkScreenView.js';
+import TrackNode from '../../common/view/TrackNode.js';
 import TrackToolboxPanel from '../../common/view/TrackToolboxPanel.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkPlaygroundModel from '../model/EnergySkateParkPlaygroundModel.js';
 
 class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 
-  /**
-   * @param {EnergySkateParkModel} model
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( model, tandem, options ) {
+  // collection of TrackNodes added to the View
+  private readonly trackNodes: TrackNode[];
 
+  // for layout in subtypes
+  protected readonly trackToolbox: TrackToolboxPanel;
+
+  // for layout in subtypes
+  protected readonly clearButton: EraserButton;
+
+  public constructor( model: EnergySkateParkPlaygroundModel, tandem: Tandem, options?: IntentionalAny ) {
+
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       controlPanelOptions: {
         showTrackButtons: false,
@@ -41,10 +51,8 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 
     super( model, tandem, options );
 
-    // @private {TrackNode[]}- collection of TrackNodes added to the View
     this.trackNodes = [];
 
-    // @protected - for layout in subtypes
     this.trackToolbox = new TrackToolboxPanel( model, this, tandem.createTandem( 'trackToolbox' ), {
       rightCenter: this.timeControlNode.leftCenter.minusXY( 15, 0 )
     } );
@@ -52,7 +60,6 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 
     model.tracks.addItemAddedListener( this.addTrackNode.bind( this ) );
 
-    // @protected - for layout in subtypes
     this.clearButton = new EraserButton( {
       iconWidth: 30,
       baseColor: new Color( 221, 210, 32 ),
@@ -74,18 +81,14 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
   /**
    * Add a TrackNode to this ScreenView and add listeners that will
    * handle disposal.
-   * @public
-   *
-   * @param {Track} track
-   * @returns {TrackNode}
    */
-  addTrackNode( track ) {
+  public addTrackNode( track: Track ): TrackNode {
     const trackNode = this.trackNodeGroup.createNextElement( track, this.modelViewTransform, this.availableModelBoundsProperty );
     this.trackNodes.push( trackNode );
     this.trackLayer.addChild( trackNode );
 
     // When track removed, remove its view
-    const itemRemovedListener = removed => {
+    const itemRemovedListener = ( removed: Track ) => {
       if ( removed === track ) {
         this.trackLayer.removeChild( trackNode );
 

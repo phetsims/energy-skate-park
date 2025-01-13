@@ -82,7 +82,7 @@ class EnergySkateParkScreenView extends ScreenView {
 
   // Layers for nodes in the sim. The bottom layer contains the background and UI components that should
   // be behind the animating skater and other draggable things, which are in the topLayer.
-  private readonly bottomLayer: Node;
+  protected readonly bottomLayer: Node;
   protected readonly topLayer: Node;
   public readonly skaterNode: SkaterNode;
   private readonly backgroundNode: BackgroundNode;
@@ -113,8 +113,8 @@ class EnergySkateParkScreenView extends ScreenView {
   // it is important for the skater center of mass representation to always be visible
   private readonly referenceHeightLine: ReferenceHeightLine;
 
-  // // play/pause and step buttons are same size until playingProperty is false
-  private readonly timeControlNode: TimeControlNode;
+  // play/pause and step buttons are same size until playingProperty is false
+  protected readonly timeControlNode: TimeControlNode;
 
   // for layout
   private readonly visibilityControlsPanel?: VisibilityControlsPanel;
