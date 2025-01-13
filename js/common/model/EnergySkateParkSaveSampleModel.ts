@@ -44,7 +44,7 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
   // set to true to prevent the model from saving any more samples, even if
   // saveSamplesProperty is true - this can be used instead of (or in combination with) maxNumberOfSamples\
   // to prevent the model from saving too many samples for reasons other than array length
-  public readonly preventSampleSave: boolean;
+  public preventSampleSave: boolean;
 
   // in seconds, how much time has passed since beginning to record skater states
   public readonly sampleTimeProperty: NumberProperty;
