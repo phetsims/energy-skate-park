@@ -23,7 +23,7 @@ import Track from '../model/Track.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
-class SkaterNode extends Node {
+export default class SkaterNode extends Node {
   public readonly skaterImageSetProperty: Property<SkaterImageSet>;
   private readonly dragListener: DragListener;
 
@@ -241,4 +241,3 @@ class SkaterNode extends Node {
 }
 
 energySkatePark.register( 'SkaterNode', SkaterNode );
-export default SkaterNode;

@@ -17,7 +17,7 @@ import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import GraphsModel from './model/GraphsModel.js';
 import GraphsScreenView from './view/GraphsScreenView.js';
 
-class GraphsScreen extends Screen<GraphsModel, GraphsScreenView> {
+export default class GraphsScreen extends Screen<GraphsModel, GraphsScreenView> {
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
     super(
@@ -36,4 +36,3 @@ class GraphsScreen extends Screen<GraphsModel, GraphsScreenView> {
 }
 
 energySkatePark.register( 'GraphsScreen', GraphsScreen );
-export default GraphsScreen;

@@ -17,7 +17,7 @@ import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import MeasureModel from './model/MeasureModel.js';
 import MeasureScreenView from './view/MeasureScreenView.js';
 
-class MeasureScreen extends Screen<MeasureModel, MeasureScreenView> {
+export default class MeasureScreen extends Screen<MeasureModel, MeasureScreenView> {
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
     const options = {
@@ -39,4 +39,3 @@ class MeasureScreen extends Screen<MeasureModel, MeasureScreenView> {
 }
 
 energySkatePark.register( 'MeasureScreen', MeasureScreen );
-export default MeasureScreen;

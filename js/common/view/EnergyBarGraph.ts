@@ -30,7 +30,7 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 // constants
 const ZOOM_BUTTON_TOUCH_DILATION = 5;
 
-class EnergyBarGraph extends Node {
+export default class EnergyBarGraph extends Node {
   private readonly barChartNode: BarChartNode;
 
   public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, tandem: Tandem, options: IntentionalAny ) {
@@ -259,4 +259,3 @@ class EnergyBarGraph extends Node {
 }
 
 energySkatePark.register( 'EnergyBarGraph', EnergyBarGraph );
-export default EnergyBarGraph;

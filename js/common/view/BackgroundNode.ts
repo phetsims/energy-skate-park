@@ -19,7 +19,7 @@ import energySkatePark from '../../energySkatePark.js';
 const earthHeight = 86;
 const cementWidth = 5;
 
-class BackgroundNode extends Node {
+export default class BackgroundNode extends Node {
   private readonly sky: Rectangle;
   private readonly earth: Rectangle;
   private readonly cementY: number;
@@ -84,4 +84,3 @@ class BackgroundNode extends Node {
 }
 
 energySkatePark.register( 'BackgroundNode', BackgroundNode );
-export default BackgroundNode;

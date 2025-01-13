@@ -20,7 +20,7 @@ import MassComboBox from './MassComboBox.js';
 import MassNumberControl from './MassNumberControl.js';
 import MassSlider from './MassSlider.js';
 
-class EnergySkateParkMassControls extends VBox {
+export default class EnergySkateParkMassControls extends VBox {
   private readonly massComboBox: MassComboBox | null;
 
   /**
@@ -93,4 +93,3 @@ class EnergySkateParkMassControls extends VBox {
 }
 
 energySkatePark.register( 'EnergySkateParkMassControls', EnergySkateParkMassControls );
-export default EnergySkateParkMassControls;

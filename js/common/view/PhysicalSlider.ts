@@ -24,7 +24,7 @@ import PhysicalNumberControl from './PhysicalNumberControl.js';
 const controlsValueLotsStringProperty = EnergySkateParkStrings.physicalControls.lotsStringProperty;
 const controlsValueNoneStringProperty = EnergySkateParkStrings.physicalControls.noneStringProperty;
 
-class PhysicalSlider extends PhysicalNumberControl {
+export default class PhysicalSlider extends PhysicalNumberControl {
 
   public constructor( titleString: TReadOnlyProperty<string>, property: PhetioProperty<number>, valueRange: Range, userControlledProperty: PhetioProperty<boolean>, tandem: Tandem, options?: IntentionalAny ) {
 
@@ -71,4 +71,3 @@ const createTickEntry = ( value: number, label: TReadOnlyProperty<string>, tande
 };
 
 energySkatePark.register( 'PhysicalSlider', PhysicalSlider );
-export default PhysicalSlider;

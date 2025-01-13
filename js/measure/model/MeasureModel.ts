@@ -14,7 +14,7 @@ import EnergySkateParkFullTrackSetModel from '../../common/model/EnergySkatePark
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
 import energySkatePark from '../../energySkatePark.js';
 
-class MeasureModel extends EnergySkateParkFullTrackSetModel {
+export default class MeasureModel extends EnergySkateParkFullTrackSetModel {
 
   // the position of the sensor, in model coordinates (meters)
   public readonly sensorProbePositionProperty: Vector2Property;
@@ -64,4 +64,3 @@ class MeasureModel extends EnergySkateParkFullTrackSetModel {
 }
 
 energySkatePark.register( 'MeasureModel', MeasureModel );
-export default MeasureModel;

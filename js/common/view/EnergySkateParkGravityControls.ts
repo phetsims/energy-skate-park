@@ -21,7 +21,7 @@ import GravityComboBox from './GravityComboBox.js';
 import GravityNumberControl from './GravityNumberControl.js';
 import GravitySlider from './GravitySlider.js';
 
-class EnergySkateParkGravityControls extends VBox {
+export default class EnergySkateParkGravityControls extends VBox {
 
   /**
    * @param gravityMagnitudeProperty
@@ -105,4 +105,3 @@ class EnergySkateParkGravityControls extends VBox {
 }
 
 energySkatePark.register( 'EnergySkateParkGravityControls', EnergySkateParkGravityControls );
-export default EnergySkateParkGravityControls;

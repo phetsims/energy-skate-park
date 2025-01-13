@@ -11,7 +11,7 @@ import EnergySkateParkFullTrackSetModel from '../../common/model/EnergySkatePark
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
 import energySkatePark from '../../energySkatePark.js';
 
-class IntroScreenView extends EnergySkateParkTrackSetScreenView {
+export default class IntroScreenView extends EnergySkateParkTrackSetScreenView {
 
   public constructor( model: EnergySkateParkFullTrackSetModel, tandem: Tandem ) {
     super( model, tandem, {
@@ -31,4 +31,3 @@ class IntroScreenView extends EnergySkateParkTrackSetScreenView {
 }
 
 energySkatePark.register( 'IntroScreenView', IntroScreenView );
-export default IntroScreenView;

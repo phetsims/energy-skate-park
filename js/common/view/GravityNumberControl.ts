@@ -17,7 +17,7 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
-class GravityNumberControl extends PhysicalNumberControl {
+export default class GravityNumberControl extends PhysicalNumberControl {
 
   public constructor( property: PhetioProperty<number>, userControlledProperty: PhetioProperty<boolean>, tandem: Tandem, options?: IntentionalAny ) {
     // eslint-disable-next-line phet/bad-typescript-text
@@ -40,4 +40,3 @@ class GravityNumberControl extends PhysicalNumberControl {
 }
 
 energySkatePark.register( 'GravityNumberControl', GravityNumberControl );
-export default GravityNumberControl;

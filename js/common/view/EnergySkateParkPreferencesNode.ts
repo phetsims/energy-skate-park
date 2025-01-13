@@ -16,7 +16,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
 
-class EnergySkateParkPreferencesNode extends Node {
+export default class EnergySkateParkPreferencesNode extends Node {
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
     super();
@@ -49,4 +49,3 @@ class EnergySkateParkPreferencesNode extends Node {
 }
 
 energySkatePark.register( 'EnergySkateParkPreferencesNode', EnergySkateParkPreferencesNode );
-export default EnergySkateParkPreferencesNode;

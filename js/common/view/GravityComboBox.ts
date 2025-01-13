@@ -17,7 +17,7 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalComboBox from './PhysicalComboBox.js';
 
-class GravityComboBox extends PhysicalComboBox {
+export default class GravityComboBox extends PhysicalComboBox {
 
   /**
    * @param gravityProperty
@@ -46,4 +46,3 @@ class GravityComboBox extends PhysicalComboBox {
 }
 
 energySkatePark.register( 'GravityComboBox', GravityComboBox );
-export default GravityComboBox;

@@ -53,7 +53,7 @@ const SWITCH_SIZE = new Dimension2( 37, 18 );
 
 const LABEL_FONT = new PhetFont( { size: 15 } );
 
-class EnergyGraphAccordionBox extends AccordionBox {
+export default class EnergyGraphAccordionBox extends AccordionBox {
   public readonly energyPlot: EnergyChart;
 
   public constructor( public readonly model: GraphsModel, modelViewTransform: ModelViewTransform2, tandem: Tandem, parentLayer: Node ) {
@@ -287,4 +287,3 @@ class EnergyGraphAccordionBox extends AccordionBox {
 }
 
 energySkatePark.register( 'EnergyGraphAccordionBox', EnergyGraphAccordionBox );
-export default EnergyGraphAccordionBox;

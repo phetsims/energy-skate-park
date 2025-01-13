@@ -39,7 +39,7 @@ const TEXT_OPTIONS = {
 
 const CHECKBOX_SPACING = 6; // spacing between checkbox and its icon content
 
-class EnergySkateParkVisibilityControls extends VBox {
+export default class EnergySkateParkVisibilityControls extends VBox {
   // Used to align labels and icons so that every box in the group has the same dimensions
   private readonly textAlignGroup: AlignGroup;
   private readonly iconAlignGroup: AlignGroup;
@@ -209,4 +209,3 @@ class CheckboxContent {
 }
 
 energySkatePark.register( 'EnergySkateParkVisibilityControls', EnergySkateParkVisibilityControls );
-export default EnergySkateParkVisibilityControls;

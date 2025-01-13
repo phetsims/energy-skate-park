@@ -15,7 +15,7 @@ import IntentionalAny from '../../../phet-core/js/types/IntentionalAny.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import energySkatePark from '../energySkatePark.js';
 
-class EnergySkateParkSim extends Sim {
+export default class EnergySkateParkSim extends Sim {
 
   public constructor( titleString: TReadOnlyProperty<string>, screens: AnyScreen[], tandem: Tandem, options?: IntentionalAny ) {
     // eslint-disable-next-line phet/bad-typescript-text
@@ -28,4 +28,3 @@ class EnergySkateParkSim extends Sim {
 }
 
 energySkatePark.register( 'EnergySkateParkSim', EnergySkateParkSim );
-export default EnergySkateParkSim;

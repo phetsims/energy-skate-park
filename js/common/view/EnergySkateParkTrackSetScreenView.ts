@@ -14,7 +14,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
 import EnergySkateParkSaveSampleScreenView from './EnergySkateParkSaveSampleScreenView.js';
 
-class EnergySkateParkTrackSetScreenView extends EnergySkateParkSaveSampleScreenView {
+export default class EnergySkateParkTrackSetScreenView extends EnergySkateParkSaveSampleScreenView {
 
   public constructor( model: EnergySkateParkTrackSetModel, tandem: Tandem, options?: IntentionalAny ) {
     super( model, tandem, options );
@@ -40,4 +40,3 @@ class EnergySkateParkTrackSetScreenView extends EnergySkateParkSaveSampleScreenV
 }
 
 energySkatePark.register( 'EnergySkateParkTrackSetScreenView', EnergySkateParkTrackSetScreenView );
-export default EnergySkateParkTrackSetScreenView;

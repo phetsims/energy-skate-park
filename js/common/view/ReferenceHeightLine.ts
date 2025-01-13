@@ -25,7 +25,7 @@ import TextPanel from './TextPanel.js';
 
 const heightEqualsZeroStringProperty = EnergySkateParkStrings.heightLabels.heightEqualsZeroStringProperty;
 
-class ReferenceHeightLine extends Node {
+export default class ReferenceHeightLine extends Node {
 
   public constructor( modelViewTransform: ModelViewTransform2, referenceHeightProperty: NumberProperty, referenceHeightVisibleProperty: TReadOnlyProperty<boolean>, userControlledProperty: TProperty<boolean>, tandem: Tandem ) {
 
@@ -124,4 +124,3 @@ class ReferenceHeightLine extends Node {
 }
 
 energySkatePark.register( 'ReferenceHeightLine', ReferenceHeightLine );
-export default ReferenceHeightLine;

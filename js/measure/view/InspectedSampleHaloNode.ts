@@ -17,7 +17,7 @@ import energySkatePark from '../../energySkatePark.js';
 // constants
 const HALO_RADIUS = 9;
 
-class InspectedSampleHaloNode extends Circle {
+export default class InspectedSampleHaloNode extends Circle {
 
   public constructor( dataSamples: ObservableArray<EnergySkateParkDataSample>, modelViewTransform: ModelViewTransform2 ) {
     super( HALO_RADIUS, {
@@ -65,4 +65,3 @@ class InspectedSampleHaloNode extends Circle {
 }
 
 energySkatePark.register( 'InspectedSampleHaloNode', InspectedSampleHaloNode );
-export default InspectedSampleHaloNode;

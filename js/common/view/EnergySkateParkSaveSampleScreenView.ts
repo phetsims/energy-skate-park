@@ -12,7 +12,7 @@ import SamplesCanvasNode from '../../measure/view/SamplesCanvasNode.js';
 import EnergySkateParkSaveSampleModel from '../model/EnergySkateParkSaveSampleModel.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 
-class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
+export default class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
   private readonly skaterSamplesNode: SamplesCanvasNode | null;
 
   public constructor( model: EnergySkateParkSaveSampleModel, tandem: Tandem, options?: IntentionalAny ) {
@@ -46,5 +46,3 @@ class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
 
 
 energySkatePark.register( 'EnergySkateParkSaveSampleScreenView', EnergySkateParkSaveSampleScreenView );
-
-export default EnergySkateParkSaveSampleScreenView;

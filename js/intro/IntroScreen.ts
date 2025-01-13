@@ -15,7 +15,7 @@ import IntroModel from './model/IntroModel.js';
 import IntroScreenIcon from './view/IntroScreenIcon.js';
 import IntroScreenView from './view/IntroScreenView.js';
 
-class IntroScreen extends Screen<IntroModel, IntroScreenView> {
+export default class IntroScreen extends Screen<IntroModel, IntroScreenView> {
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
     const options = {
@@ -34,4 +34,3 @@ class IntroScreen extends Screen<IntroModel, IntroScreenView> {
 }
 
 energySkatePark.register( 'IntroScreen', IntroScreen );
-export default IntroScreen;

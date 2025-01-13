@@ -15,7 +15,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
-class MassSlider extends PhysicalSlider {
+export default class MassSlider extends PhysicalSlider {
 
   public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, massRange: Range, tandem: Tandem ) {
 
@@ -32,4 +32,3 @@ class MassSlider extends PhysicalSlider {
 }
 
 energySkatePark.register( 'MassSlider', MassSlider );
-export default MassSlider;

@@ -28,7 +28,7 @@ import TrackDragHandler from './TrackDragHandler.js';
 // constants
 const FastArray = window.Float64Array ? window.Float64Array : window.Array;
 
-class TrackNode extends Node {
+export default class TrackNode extends Node {
   private readonly isIcon: boolean;
   public readonly model: EnergySkateParkModel;
   private readonly road: Path;
@@ -261,4 +261,3 @@ class TrackNode extends Node {
 }
 
 energySkatePark.register( 'TrackNode', TrackNode );
-export default TrackNode;

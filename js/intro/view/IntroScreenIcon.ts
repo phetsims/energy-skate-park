@@ -13,7 +13,7 @@ import introScreenIcon_png from '../../../images/introScreenIcon_png.js';
 import SkaterImageSet from '../../common/view/SkaterImageSet.js';
 import energySkatePark from '../../energySkatePark.js';
 
-class IntroScreenIcon extends ScreenIcon {
+export default class IntroScreenIcon extends ScreenIcon {
 
   public constructor() {
 
@@ -43,4 +43,3 @@ class IntroScreenIcon extends ScreenIcon {
 }
 
 energySkatePark.register( 'IntroScreenIcon', IntroScreenIcon );
-export default IntroScreenIcon;

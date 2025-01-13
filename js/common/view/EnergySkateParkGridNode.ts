@@ -23,7 +23,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import TextPanel from './TextPanel.js';
 
-class EnergySkateParkGridNode extends Node {
+export default class EnergySkateParkGridNode extends Node {
 
   // keep references to all text created so that they can be disposed and removed from scene graph
   // when layout changes
@@ -161,4 +161,3 @@ class EnergySkateParkGridNode extends Node {
 }
 
 energySkatePark.register( 'EnergySkateParkGridNode', EnergySkateParkGridNode );
-export default EnergySkateParkGridNode;

@@ -25,7 +25,7 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import TrackNode from './TrackNode.js';
 
-class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup<IntentionalAny> {
+export default class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup<IntentionalAny> {
 
   /**
    * Construct a SceneSelectionRadioButtonGroup.  Pass the entire model since it is used to create TrackNode
@@ -191,4 +191,3 @@ class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup<Intenti
 }
 
 energySkatePark.register( 'SceneSelectionRadioButtonGroup', SceneSelectionRadioButtonGroup );
-export default SceneSelectionRadioButtonGroup;

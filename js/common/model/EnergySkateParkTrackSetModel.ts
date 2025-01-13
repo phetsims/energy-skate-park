@@ -18,7 +18,7 @@ import EnergySkateParkSaveSampleModel from './EnergySkateParkSaveSampleModel.js'
 import PremadeTracks from './PremadeTracks.js';
 import Track from './Track.js';
 
-class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
+export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
   // Indicates the currently selected scene. There can be any number of scenes, do we need to pass this in as a param
   public readonly sceneProperty: NumberProperty;
@@ -203,4 +203,3 @@ class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 }
 
 energySkatePark.register( 'EnergySkateParkTrackSetModel', EnergySkateParkTrackSetModel );
-export default EnergySkateParkTrackSetModel;

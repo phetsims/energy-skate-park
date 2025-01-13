@@ -21,7 +21,7 @@ import energySkatePark from '../../energySkatePark.js';
 import Skater from '../model/Skater.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-class PieChartNode extends Node {
+export default class PieChartNode extends Node {
   private readonly showNegativeEnergy: boolean;
 
   public constructor( skater: Skater, pieChartVisibleProperty: TReadOnlyProperty<boolean>, modelViewTransform: ModelViewTransform2, tandem: Tandem, options?: IntentionalAny ) {
@@ -202,4 +202,3 @@ class PieChartNode extends Node {
 }
 
 energySkatePark.register( 'PieChartNode', PieChartNode );
-export default PieChartNode;

@@ -15,7 +15,7 @@ import EnergySkateParkPlaygroundModel from './model/EnergySkateParkPlaygroundMod
 import EnergySkateParkPlaygroundScreenView from './view/EnergySkateParkPlaygroundScreenView.js';
 import PlaygroundScreenIcon from './view/PlaygroundScreenIcon.js';
 
-class PlaygroundScreen extends Screen<EnergySkateParkPlaygroundModel, EnergySkateParkPlaygroundScreenView> {
+export default class PlaygroundScreen extends Screen<EnergySkateParkPlaygroundModel, EnergySkateParkPlaygroundScreenView> {
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
 
@@ -34,4 +34,3 @@ class PlaygroundScreen extends Screen<EnergySkateParkPlaygroundModel, EnergySkat
 }
 
 energySkatePark.register( 'PlaygroundScreen', PlaygroundScreen );
-export default PlaygroundScreen;

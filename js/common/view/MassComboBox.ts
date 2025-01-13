@@ -28,7 +28,7 @@ const controlsSkater4MassPatternStringProperty = EnergySkateParkStrings.skaterCo
 const controlsSkater5MassPatternStringProperty = EnergySkateParkStrings.skaterControls.skater5MassPatternStringProperty;
 const controlsDogMassPatternStringProperty = EnergySkateParkStrings.skaterControls.dogMassPatternStringProperty;
 
-class MassComboBox extends LabelledComboBox {
+export default class MassComboBox extends LabelledComboBox {
 
   /**
    * @param massProperty
@@ -89,4 +89,3 @@ const getFormattedLabel = ( patternString: TReadOnlyProperty<string>, value: num
 
 
 energySkatePark.register( 'MassComboBox', MassComboBox );
-export default MassComboBox;

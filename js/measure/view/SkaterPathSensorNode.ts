@@ -65,7 +65,7 @@ const SENSOR_COLOR = 'rgb( 103, 80, 113 )';
 // max distance between sample and probe center for the sample to be displayed, in view coordinates
 const PROBE_THRESHOLD_DISTANCE = 10;
 
-class SkaterPathSensorNode extends Node {
+export default class SkaterPathSensorNode extends Node {
 
   // so the height speed readout doesn't occlude this
   private readonly screenViewControlPanel: EnergySkateParkControlPanel;
@@ -415,4 +415,3 @@ class SkaterPathSensorNode extends Node {
 }
 
 energySkatePark.register( 'SkaterPathSensorNode', SkaterPathSensorNode );
-export default SkaterPathSensorNode;

@@ -23,7 +23,7 @@ import FrictionSlider from './FrictionSlider.js';
 import SceneSelectionRadioButtonGroup from './SceneSelectionRadioButtonGroup.js';
 import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
 
-class EnergySkateParkControlPanel extends Panel {
+export default class EnergySkateParkControlPanel extends Panel {
 
   public constructor( model: EnergySkateParkModel, screenView: EnergySkateParkScreenView, tandem: Tandem, options?: IntentionalAny ) {
 
@@ -142,4 +142,3 @@ class EnergySkateParkControlPanel extends Panel {
 }
 
 energySkatePark.register( 'EnergySkateParkControlPanel', EnergySkateParkControlPanel );
-export default EnergySkateParkControlPanel;

@@ -14,7 +14,7 @@ import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 import Track from './Track.js';
 
-class DebugTracks {
+export default class DebugTracks {
 
   /**
    * Initialize the debugging tool. Only done when debug query parameter testTrackIndex is used. Modifies the model that
@@ -288,4 +288,3 @@ class DebugTracks {
 }
 
 energySkatePark.register( 'DebugTracks', DebugTracks );
-export default DebugTracks;

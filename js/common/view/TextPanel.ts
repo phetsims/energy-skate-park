@@ -16,7 +16,7 @@ import Panel from '../../../../sun/js/Panel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-class TextPanel extends Panel {
+export default class TextPanel extends Panel {
 
   /**
    * @param stringProperty - text to fill the panel
@@ -50,4 +50,3 @@ class TextPanel extends Panel {
 }
 
 energySkatePark.register( 'TextPanel', TextPanel );
-export default TextPanel;

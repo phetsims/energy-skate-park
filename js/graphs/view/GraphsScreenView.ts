@@ -14,7 +14,7 @@ import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 import EnergyGraphAccordionBox from './EnergyGraphAccordionBox.js';
 
-class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
+export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
 
   // For layout
   private readonly graphAccordionBox: EnergyGraphAccordionBox;
@@ -64,4 +64,3 @@ class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
 }
 
 energySkatePark.register( 'GraphsScreenView', GraphsScreenView );
-export default GraphsScreenView;

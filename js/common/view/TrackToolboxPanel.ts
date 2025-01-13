@@ -18,7 +18,7 @@ import EnergySkateParkPlaygroundScreenView from '../../playground/view/EnergySka
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import TrackNode from './TrackNode.js';
 
-class TrackToolboxPanel extends Panel {
+export default class TrackToolboxPanel extends Panel {
 
   public constructor( model: EnergySkateParkPlaygroundModel, view: EnergySkateParkPlaygroundScreenView, tandem: Tandem, options?: IntentionalAny ) {
 
@@ -71,5 +71,3 @@ class TrackToolboxPanel extends Panel {
 }
 
 energySkatePark.register( 'TrackToolboxPanel', TrackToolboxPanel );
-
-export default TrackToolboxPanel;

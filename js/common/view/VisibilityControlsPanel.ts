@@ -16,7 +16,7 @@ import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
 
-class VisibilityControlsPanel extends Panel {
+export default class VisibilityControlsPanel extends Panel {
 
   public constructor( model: EnergySkateParkModel, tandem: Tandem, options?: IntentionalAny ) {
     // eslint-disable-next-line phet/bad-typescript-text
@@ -34,4 +34,3 @@ class VisibilityControlsPanel extends Panel {
 }
 
 energySkatePark.register( 'VisibilityControlsPanel', VisibilityControlsPanel );
-export default VisibilityControlsPanel;

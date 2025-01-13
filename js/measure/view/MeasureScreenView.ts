@@ -15,7 +15,7 @@ import MeasureModel from '../model/MeasureModel.js';
 import InspectedSampleHaloNode from './InspectedSampleHaloNode.js';
 import SkaterPathSensorNode from './SkaterPathSensorNode.js';
 
-class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
+export default class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
 
   // For layout
   private readonly pathSensor: SkaterPathSensorNode;
@@ -66,4 +66,3 @@ class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
 }
 
 energySkatePark.register( 'MeasureScreenView', MeasureScreenView );
-export default MeasureScreenView;

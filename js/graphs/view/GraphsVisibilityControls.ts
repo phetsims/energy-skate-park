@@ -14,7 +14,7 @@ import EnergySkateParkVisibilityControls from '../../common/view/EnergySkatePark
 import energySkatePark from '../../energySkatePark.js';
 import GraphsModel from '../model/GraphsModel.js';
 
-class GraphsVisibilityControls extends Panel {
+export default class GraphsVisibilityControls extends Panel {
 
   public constructor( model: GraphsModel, tandem: Tandem, options?: IntentionalAny ) {
     const content = new EnergySkateParkVisibilityControls( model, tandem, {
@@ -28,4 +28,3 @@ class GraphsVisibilityControls extends Panel {
 }
 
 energySkatePark.register( 'GraphsVisibilityControls', GraphsVisibilityControls );
-export default GraphsVisibilityControls;

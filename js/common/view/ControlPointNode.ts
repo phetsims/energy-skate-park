@@ -17,7 +17,7 @@ import ControlPointUI from './ControlPointUI.js';
 import TrackDragHandler from './TrackDragHandler.js';
 import TrackNode from './TrackNode.js';
 
-class ControlPointNode extends Circle {
+export default class ControlPointNode extends Circle {
   public readonly boundsRectangle: Rectangle | null;
 
   /**
@@ -284,4 +284,3 @@ class ControlPointNode extends Circle {
 }
 
 energySkatePark.register( 'ControlPointNode', ControlPointNode );
-export default ControlPointNode;

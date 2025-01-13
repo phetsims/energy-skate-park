@@ -15,7 +15,7 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 import Range from '../../../../dot/js/Range.js';
 
-class MassNumberControl extends PhysicalNumberControl {
+export default class MassNumberControl extends PhysicalNumberControl {
 
   public constructor( massProperty: NumberProperty, userControlledProperty: BooleanProperty, massRange: Range, tandem: Tandem ) {
 
@@ -34,4 +34,3 @@ class MassNumberControl extends PhysicalNumberControl {
 }
 
 energySkatePark.register( 'MassNumberControl', MassNumberControl );
-export default MassNumberControl;

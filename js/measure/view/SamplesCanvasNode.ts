@@ -16,7 +16,7 @@ import energySkatePark from '../../energySkatePark.js';
 // constants
 const SAMPLE_RADIUS = 3.5;
 
-class SamplesCanvasNode extends CanvasNode {
+export default class SamplesCanvasNode extends CanvasNode {
 
   public constructor( private readonly model: EnergySkateParkSaveSampleModel, private readonly modelViewTransform: ModelViewTransform2 ) {
     super();
@@ -62,4 +62,3 @@ class SamplesCanvasNode extends CanvasNode {
 }
 
 energySkatePark.register( 'SamplesCanvasNode', SamplesCanvasNode );
-export default SamplesCanvasNode;

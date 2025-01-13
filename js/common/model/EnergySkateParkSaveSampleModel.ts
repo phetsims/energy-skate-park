@@ -25,7 +25,7 @@ import EnergySkateParkModel from './EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
 import SkaterState from './SkaterState.js';
 
-class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
+export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 
   private readonly saveSampleInterval: number;
   private readonly maxNumberOfSamples: number;
@@ -232,4 +232,3 @@ class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 }
 
 energySkatePark.register( 'EnergySkateParkSaveSampleModel', EnergySkateParkSaveSampleModel );
-export default EnergySkateParkSaveSampleModel;

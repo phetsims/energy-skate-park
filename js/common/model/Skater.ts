@@ -34,7 +34,7 @@ import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import SkaterMasses from '../SkaterMasses.js';
 import Track from './Track.js';
 
-class Skater {
+export default class Skater {
 
   public readonly massRange: Range;
 
@@ -508,4 +508,3 @@ class Skater {
 }
 
 energySkatePark.register( 'Skater', Skater );
-export default Skater;

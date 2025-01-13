@@ -25,7 +25,7 @@ import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 // constants
 const controlsGravityCustomStringProperty = EnergySkateParkStrings.physicalControls.customStringProperty;
 
-class PhysicalComboBox extends ComboBox<IntentionalAny> {
+export default class PhysicalComboBox extends ComboBox<IntentionalAny> {
 
   /**
    * @param physicalProperty
@@ -128,4 +128,3 @@ class PhysicalComboBox extends ComboBox<IntentionalAny> {
 }
 
 energySkatePark.register( 'PhysicalComboBox', PhysicalComboBox );
-export default PhysicalComboBox;

@@ -16,7 +16,7 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
-class LabelledComboBox extends VBox {
+export default class LabelledComboBox extends VBox {
   private readonly titleNode: Text;
 
   public constructor( private readonly comboBox: ComboBox<IntentionalAny>, titleString: LocalizedStringProperty, tandem: Tandem ) {
@@ -50,4 +50,3 @@ class LabelledComboBox extends VBox {
 }
 
 energySkatePark.register( 'LabelledComboBox', LabelledComboBox );
-export default LabelledComboBox;

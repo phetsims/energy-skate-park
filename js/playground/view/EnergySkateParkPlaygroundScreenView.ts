@@ -20,7 +20,7 @@ import TrackToolboxPanel from '../../common/view/TrackToolboxPanel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkPlaygroundModel from '../model/EnergySkateParkPlaygroundModel.js';
 
-class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
+export default class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 
   // collection of TrackNodes added to the View
   private readonly trackNodes: TrackNode[];
@@ -107,4 +107,3 @@ class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 }
 
 energySkatePark.register( 'EnergySkateParkPlaygroundScreenView', EnergySkateParkPlaygroundScreenView );
-export default EnergySkateParkPlaygroundScreenView;

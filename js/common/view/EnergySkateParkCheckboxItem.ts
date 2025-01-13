@@ -24,7 +24,7 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
 const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelStringProperty;
 
-class EnergySkateParkCheckboxItem extends Checkbox {
+export default class EnergySkateParkCheckboxItem extends Checkbox {
 
   public constructor( property: PhetioProperty<boolean>, icon: Node, tandem: Tandem, options?: IntentionalAny ) {
 
@@ -205,4 +205,3 @@ class EnergySkateParkCheckboxItem extends Checkbox {
 }
 
 energySkatePark.register( 'EnergySkateParkCheckboxItem', EnergySkateParkCheckboxItem );
-export default EnergySkateParkCheckboxItem;

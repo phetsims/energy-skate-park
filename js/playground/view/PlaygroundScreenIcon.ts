@@ -14,7 +14,7 @@ import playgroundScreenIcon_png from '../../../images/playgroundScreenIcon_png.j
 import SkaterImageSet from '../../common/view/SkaterImageSet.js';
 import energySkatePark from '../../energySkatePark.js';
 
-class PlaygroundScreenIcon extends ScreenIcon {
+export default class PlaygroundScreenIcon extends ScreenIcon {
 
   public constructor() {
 
@@ -47,4 +47,3 @@ class PlaygroundScreenIcon extends ScreenIcon {
 }
 
 energySkatePark.register( 'PlaygroundScreenIcon', PlaygroundScreenIcon );
-export default PlaygroundScreenIcon;

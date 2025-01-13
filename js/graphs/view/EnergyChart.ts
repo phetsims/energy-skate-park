@@ -39,7 +39,7 @@ const POSITION_STEP_X = 1; // in meters
 // left of origin
 const POSITION_PLOT_OFFSET = 5;
 
-class EnergyChart extends XYCursorChartNode {
+export default class EnergyChart extends XYCursorChartNode {
   private readonly kineticEnergyDataSeries: DynamicSeries;
   private readonly potentialEnergyDataSeries: DynamicSeries;
   private readonly thermalEnergyDataSeries: DynamicSeries;
@@ -351,4 +351,3 @@ const calculateDomain = ( independentVariable: IntentionalAny ) => {
 };
 
 energySkatePark.register( 'EnergyChart', EnergyChart );
-export default EnergyChart;

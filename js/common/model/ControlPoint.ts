@@ -25,7 +25,7 @@ import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 
-class ControlPoint extends PhetioObject {
+export default class ControlPoint extends PhetioObject {
 
   public readonly limitBounds: Bounds2 | null;
   public readonly interactive: boolean;
@@ -134,4 +134,3 @@ class ControlPoint extends PhetioObject {
 }
 
 energySkatePark.register( 'ControlPoint', ControlPoint );
-export default ControlPoint;

@@ -26,7 +26,7 @@ const energyPotentialStringProperty = EnergySkateParkStrings.energies.potentialS
 const energyThermalStringProperty = EnergySkateParkStrings.energies.thermalStringProperty;
 const energyTotalStringProperty = EnergySkateParkStrings.energies.totalStringProperty;
 
-class PieChartLegend extends Panel {
+export default class PieChartLegend extends Panel {
 
   /**
    * @param skater the model for the skater
@@ -144,4 +144,3 @@ class PieChartLegend extends Panel {
 }
 
 energySkatePark.register( 'PieChartLegend', PieChartLegend );
-export default PieChartLegend;

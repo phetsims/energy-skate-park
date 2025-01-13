@@ -15,7 +15,7 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
-class GravitySlider extends PhysicalSlider {
+export default class GravitySlider extends PhysicalSlider {
 
   public constructor( property: PhetioProperty<number>, userControlledProperty: PhetioProperty<boolean>, tandem: Tandem ) {
     super(
@@ -35,4 +35,3 @@ class GravitySlider extends PhysicalSlider {
 }
 
 energySkatePark.register( 'GravitySlider', GravitySlider );
-export default GravitySlider;

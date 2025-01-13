@@ -23,7 +23,7 @@ import Track from '../../common/model/Track.js';
 import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
 
-class GraphsModel extends EnergySkateParkTrackSetModel {
+export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
   // properties for visibility and settings for the graph
   public readonly kineticEnergyDataVisibleProperty: BooleanProperty;
@@ -371,4 +371,3 @@ class GraphsModel extends EnergySkateParkTrackSetModel {
 }
 
 energySkatePark.register( 'GraphsModel', GraphsModel );
-export default GraphsModel;

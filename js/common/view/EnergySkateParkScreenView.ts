@@ -59,7 +59,7 @@ const EXTRA_FLOAT = 51.5;
 // Debug flag to show the view bounds, the region within which the skater can move
 const showAvailableBounds = false;
 
-class EnergySkateParkScreenView extends ScreenView {
+export default class EnergySkateParkScreenView extends ScreenView {
   public readonly modelViewTransform: ModelViewTransform2;
   public readonly availableModelBoundsProperty: Property<Bounds2>;
   public readonly trackNodeGroup: { createNextElement( track: Track, modelViewTransform: ModelViewTransform2, availableBoundsProperty: IntentionalAny, options?: IntentionalAny ): TrackNode };
@@ -619,4 +619,3 @@ class EnergySkateParkScreenView extends ScreenView {
 }
 
 energySkatePark.register( 'EnergySkateParkScreenView', EnergySkateParkScreenView );
-export default EnergySkateParkScreenView;

@@ -23,7 +23,7 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
-class PhysicalNumberControl extends NumberControl {
+export default class PhysicalNumberControl extends NumberControl {
 
   public constructor( titleString: TReadOnlyProperty<string>, property: NumberProperty, valueRange: Range, userControlledProperty: BooleanProperty, tandem: Tandem, options?: IntentionalAny ) {
     options = options || {};
@@ -146,4 +146,3 @@ class PhysicalNumberControl extends NumberControl {
 }
 
 energySkatePark.register( 'PhysicalNumberControl', PhysicalNumberControl );
-export default PhysicalNumberControl;

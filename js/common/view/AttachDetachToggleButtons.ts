@@ -22,7 +22,7 @@ import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 // constants
 const SELECTED_LINE_WIDTH = 2.3;
 
-class AttachDetachToggleButtons extends Panel {
+export default class AttachDetachToggleButtons extends Panel {
 
   /**
    * @param stickingToTrackProperty Axon property that is false if the model state allows the skater to detach
@@ -93,4 +93,3 @@ class AttachDetachToggleButtons extends Panel {
 }
 
 energySkatePark.register( 'AttachDetachToggleButtons', AttachDetachToggleButtons );
-export default AttachDetachToggleButtons;

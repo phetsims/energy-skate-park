@@ -42,7 +42,7 @@ const FULLY_INTERACTIVE_OPTIONS = {
   attachable: true
 };
 
-class Track extends PhetioObject {
+export default class Track extends PhetioObject {
 
   public readonly translatedEmitter = new Emitter();
   public readonly resetEmitter = new Emitter();
@@ -1096,4 +1096,3 @@ class Track extends PhetioObject {
 }
 
 energySkatePark.register( 'Track', Track );
-export default Track;

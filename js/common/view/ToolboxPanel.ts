@@ -22,7 +22,7 @@ import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 
-class ToolboxPanel extends Panel {
+export default class ToolboxPanel extends Panel {
 
   public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, options?: IntentionalAny ) {
     // eslint-disable-next-line phet/bad-typescript-text
@@ -114,4 +114,3 @@ class ToolboxPanel extends Panel {
 }
 
 energySkatePark.register( 'ToolboxPanel', ToolboxPanel );
-export default ToolboxPanel;

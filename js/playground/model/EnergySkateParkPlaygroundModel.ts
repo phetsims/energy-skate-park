@@ -16,7 +16,7 @@ import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkP
 import Track from '../../common/model/Track.js';
 import energySkatePark from '../../energySkatePark.js';
 
-class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
+export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options?: IntentionalAny ) {
     if ( options ) {
@@ -89,4 +89,3 @@ class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 }
 
 energySkatePark.register( 'EnergySkateParkPlaygroundModel', EnergySkateParkPlaygroundModel );
-export default EnergySkateParkPlaygroundModel;

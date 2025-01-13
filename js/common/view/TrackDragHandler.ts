@@ -18,7 +18,7 @@ import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
 import TrackNode from './TrackNode.js';
 
-class TrackDragHandler extends DragListener {
+export default class TrackDragHandler extends DragListener {
   private readonly track: Track;
   private readonly model: EnergySkateParkModel;
   private readonly modelViewTransform: ModelViewTransform2;
@@ -257,4 +257,3 @@ class TrackDragHandler extends DragListener {
 }
 
 energySkatePark.register( 'TrackDragHandler', TrackDragHandler );
-export default TrackDragHandler;

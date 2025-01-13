@@ -21,7 +21,7 @@ import EnergyBarGraph from './EnergyBarGraph.js';
 // constants
 const PANEL_MARGIN = 5;
 
-class EnergyBarGraphAccordionBox extends AccordionBox {
+export default class EnergyBarGraphAccordionBox extends AccordionBox {
 
   public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, tandem: Tandem, options: IntentionalAny ) {
 
@@ -70,4 +70,3 @@ class EnergyBarGraphAccordionBox extends AccordionBox {
 }
 
 energySkatePark.register( 'EnergyBarGraphAccordionBox', EnergyBarGraphAccordionBox );
-export default EnergyBarGraphAccordionBox;
