@@ -12,19 +12,24 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import LocalizedStringProperty from '../../../../chipper/js/browser/LocalizedStringProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
-import { AlignGroup, HBox, Text, VBox } from '../../../../scenery/js/imports.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import { AlignGroup, HBox, Node, Text, VBox } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkCheckboxItem from './EnergySkateParkCheckboxItem.js';
 
-const controlsPathString = EnergySkateParkStrings.visibilityControls.pathStringProperty;
-const controlsReferenceHeightString = EnergySkateParkStrings.visibilityControls.referenceHeightStringProperty;
-const controlsShowGridString = EnergySkateParkStrings.visibilityControls.gridStringProperty;
-const controlsStickToTrackString = EnergySkateParkStrings.trackControls.stickToTrackStringProperty;
-const pieChartString = EnergySkateParkStrings.plots.pieChart.labelStringProperty;
-const propertiesSpeedString = EnergySkateParkStrings.visibilityControls.speedStringProperty;
+const controlsPathStringProperty = EnergySkateParkStrings.visibilityControls.pathStringProperty;
+const controlsReferenceHeightStringProperty = EnergySkateParkStrings.visibilityControls.referenceHeightStringProperty;
+const controlsShowGridStringProperty = EnergySkateParkStrings.visibilityControls.gridStringProperty;
+const controlsStickToTrackStringProperty = EnergySkateParkStrings.trackControls.stickToTrackStringProperty;
+const pieChartStringProperty = EnergySkateParkStrings.plots.pieChart.labelStringProperty;
+const propertiesSpeedStringProperty = EnergySkateParkStrings.visibilityControls.speedStringProperty;
 
 // constants
 const TEXT_OPTIONS = {
@@ -35,13 +40,15 @@ const TEXT_OPTIONS = {
 const CHECKBOX_SPACING = 6; // spacing between checkbox and its icon content
 
 class EnergySkateParkVisibilityControls extends VBox {
+  // Used to align labels and icons so that every box in the group has the same dimensions
+  private readonly textAlignGroup: AlignGroup;
+  private readonly iconAlignGroup: AlignGroup;
 
-  /**
-   * @param {EnergySkateParkModel} model
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( model, tandem, options ) {
+  // List of contents containing icon nodes and Properties that will be used to create checkboxes
+  private readonly checkboxContents: CheckboxContent[];
+
+  public constructor( model: EnergySkateParkModel, tandem: Tandem, options?: IntentionalAny ) {
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {boolean} - whether or not Checkboxes for these Properties are included in the controls
@@ -66,40 +73,37 @@ class EnergySkateParkVisibilityControls extends VBox {
       spacing: 5
     } );
 
-    // @private {AlignGroup} - Used to align labels and icons so that every box in the group has the same dimensions
     this.textAlignGroup = new AlignGroup();
     this.iconAlignGroup = new AlignGroup();
-
-    // @private {CheckboxContent[]} - list of contents containing icon nodes and Properties that will be used to
-    // create checkboxes
     this.checkboxContents = [];
 
     // {EnergySkateParkCheckboxItem[]}
-    const checkboxItems = [];
+    const checkboxItems: EnergySkateParkCheckboxItem[] = [];
 
     if ( options.showPieChartCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createPieChartIcon( tandem.createTandem( 'pieChartIcon' ) );
-      this.addCheckboxContent( pieChartString, iconNode, model.pieChartVisibleProperty, tandem.createTandem( 'pieChartCheckbox' ) );
+      this.addCheckboxContent( pieChartStringProperty, iconNode, model.pieChartVisibleProperty, tandem.createTandem( 'pieChartCheckbox' ) );
     }
 
     if ( options.showGridCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createGridIcon( tandem.createTandem( 'gridIcon' ) );
-      this.addCheckboxContent( controlsShowGridString, iconNode, model.gridVisibleProperty, tandem.createTandem( 'gridCheckbox' ) );
+      this.addCheckboxContent( controlsShowGridStringProperty, iconNode, model.gridVisibleProperty, tandem.createTandem( 'gridCheckbox' ) );
     }
 
     if ( options.showSpeedCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createSpeedometerIcon( tandem.createTandem( 'speedIcon' ) );
-      this.addCheckboxContent( propertiesSpeedString, iconNode, model.speedometerVisibleProperty, tandem.createTandem( 'speedCheckbox' ) );
+      this.addCheckboxContent( propertiesSpeedStringProperty, iconNode, model.speedometerVisibleProperty, tandem.createTandem( 'speedCheckbox' ) );
     }
 
     if ( options.showSkaterPathCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) );
-      this.addCheckboxContent( controlsPathString, iconNode, model.saveSamplesProperty, tandem.createTandem( 'pathCheckbox' ) );
+      // @ts-expect-error
+      this.addCheckboxContent( controlsPathStringProperty, iconNode, model.saveSamplesProperty, tandem.createTandem( 'pathCheckbox' ) );
     }
 
     if ( options.showReferenceHeightCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) );
-      this.addCheckboxContent( controlsReferenceHeightString, iconNode, model.referenceHeightVisibleProperty, tandem.createTandem( 'referenceHeightCheckbox' ) );
+      this.addCheckboxContent( controlsReferenceHeightStringProperty, iconNode, model.referenceHeightVisibleProperty, tandem.createTandem( 'referenceHeightCheckbox' ) );
     }
 
     if ( options.showStickToTrackCheckbox ) {
@@ -108,7 +112,7 @@ class EnergySkateParkVisibilityControls extends VBox {
       // this is the only checkbox that controls model physics, if it gets changed
       // by the user we may need to clear saved data or do other things
       const userControlledProperty = model.userControlledPropertySet.stickingToTrackControlledProperty;
-      this.addCheckboxContent( controlsStickToTrackString, iconNode, model.stickingToTrackProperty, tandem.createTandem( 'stickingCheckbox' ), {
+      this.addCheckboxContent( controlsStickToTrackStringProperty, iconNode, model.stickingToTrackProperty, tandem.createTandem( 'stickingCheckbox' ), {
         userControlledProperty: userControlledProperty
       } );
     }
@@ -143,15 +147,8 @@ class EnergySkateParkVisibilityControls extends VBox {
   /**
    * Create and add to the list of checkbox contents. These are created eagerly so that layout can complete before
    * creating checkboxes, as checkboxes do not support icons with variable dimensions.
-   * @public
-   *
-   * @param {string} labelString
-   * @param {Node} iconNode
-   * @param {BooleanProperty} property
-   * @param {Tandem} tandem
-   * @param {Object} [options]
    */
-  addCheckboxContent( labelString, iconNode, property, tandem, options ) {
+  public addCheckboxContent( labelString: LocalizedStringProperty, iconNode: Node, property: BooleanProperty, tandem: Tandem, options?: IntentionalAny ): void {
     this.checkboxContents.push( new CheckboxContent( labelString, iconNode, this.textAlignGroup, this.iconAlignGroup, property, tandem, options ) );
   }
 }
@@ -161,17 +158,20 @@ class EnergySkateParkVisibilityControls extends VBox {
  * This is done BEFORE passing content to checkboxes as checkboxes do not support label nodes with varying dimensions.
  */
 class CheckboxContent {
+  // Contents for the checkbox
+  public readonly checkboxIcon: HBox;
 
-  /**
-   * @param {string} labelString
-   * @param {Node} iconNode
-   * @param {AlignGroup} textAlignGroup
-   * @param {AlignGroup} iconAlignGroup
-   * @param {BooleanProperty}property
-   * @param {Tandem} tandem
-   * @param {Object} [options]
-   */
-  constructor( labelString, iconNode, textAlignGroup, iconAlignGroup, property, tandem, options ) {
+  // Property for the checkbox
+  public readonly property: BooleanProperty;
+
+  // Property indicating that the checkbox Property has been changed by the user
+  public readonly userControlledProperty: BooleanProperty | null;
+
+  public readonly tandem: Tandem;
+
+  public constructor( labelString: LocalizedStringProperty, iconNode: Node, textAlignGroup: AlignGroup, iconAlignGroup: AlignGroup, property: BooleanProperty, tandem: Tandem, options?: IntentionalAny ) {
+
+    // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
 
       // {BooleanProperty} - Property indicating that the checkbox Property has been
@@ -186,18 +186,13 @@ class CheckboxContent {
 
     const iconBox = iconAlignGroup.createBox( iconNode, { xAlign: 'center' } );
 
-    // @public {HBox} - contents for the checkbox
     this.checkboxIcon = new HBox( {
       children: [ textBox, iconBox ],
       spacing: 10
     } );
 
     this.tandem = tandem;
-
-    // @public {BooleanProperty} - Property for the checkbox
     this.property = property;
-
-    // @public {BooleanProperty}
     this.userControlledProperty = options.userControlledProperty;
   }
 
@@ -205,11 +200,10 @@ class CheckboxContent {
    * Set width of the content by modifying spacing between items. Includes width of the checkbox and its spacing so
    * that width can be specified when it is used as Checkbox content. This must be done BEFORE content is passed to
    * a Checkbox because Checkbox does not support content with variable dimensions.
-   * @public
    *
    * @param width
    */
-  setContentWidthForCheckbox( width ) {
+  public setContentWidthForCheckbox( width: number ): void {
     this.checkboxIcon.spacing = this.checkboxIcon.spacing + ( width - this.checkboxIcon.width ) - EnergySkateParkConstants.CHECKBOX_WIDTH - CHECKBOX_SPACING;
   }
 }
