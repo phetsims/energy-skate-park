@@ -9,27 +9,25 @@
  */
 
 import DynamicProperty from '../../../../axon/js/DynamicProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import TProperty from '../../../../axon/js/TProperty.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
+import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ArrowNode from '../../../../scenery-phet/js/ArrowNode.js';
 import { DragListener, Line, Node } from '../../../../scenery/js/imports.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TextPanel from './TextPanel.js';
 
-const heightEqualsZeroString = EnergySkateParkStrings.heightLabels.heightEqualsZeroStringProperty;
+const heightEqualsZeroStringProperty = EnergySkateParkStrings.heightLabels.heightEqualsZeroStringProperty;
 
 class ReferenceHeightLine extends Node {
 
-  /**
-   * @param {ModelViewTransform2} modelViewTransform
-   * @param {NumberProperty} referenceHeightProperty
-   * @param {BooleanProperty} referenceHeightVisibleProperty
-   * @param {BooleanProperty} userControlledProperty
-   * @param {Tandem} tandem
-   */
-  constructor( modelViewTransform, referenceHeightProperty, referenceHeightVisibleProperty, userControlledProperty, tandem ) {
+  public constructor( modelViewTransform: ModelViewTransform2, referenceHeightProperty: NumberProperty, referenceHeightVisibleProperty: TReadOnlyProperty<boolean>, userControlledProperty: TProperty<boolean>, tandem: Tandem ) {
 
     // line will extend 9.5 meters through along the grid in model coordinates
     const lineLength = modelViewTransform.modelToViewDeltaX( 9.5 );
@@ -65,7 +63,7 @@ class ReferenceHeightLine extends Node {
     } );
 
     // label for the reference line, surround by a transparent panel for better visibility
-    const textPanel = new TextPanel( heightEqualsZeroString, { textMaxWidth: 125 } );
+    const textPanel = new TextPanel( heightEqualsZeroStringProperty, { textMaxWidth: 125 } );
 
     textPanel.setLeftCenter( doubleArrowNode.rightTop );
 
@@ -97,7 +95,7 @@ class ReferenceHeightLine extends Node {
 
       // so that this Property can be set by the DragListener
       bidirectional: true,
-      map: referenceHeight => {
+      map: ( referenceHeight: number ) => {
 
         // maps referenceHeightProperty value to a Vector2Property for the drag listener
         return new Vector2( 0, referenceHeight );
