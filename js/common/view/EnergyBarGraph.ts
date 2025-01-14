@@ -40,7 +40,7 @@ type SelfOptions = {
   graphRange?: Range;
 };
 
-type EnergyBarGraphOptions = SelfOptions & NodeOptions;
+export type EnergyBarGraphOptions = SelfOptions & NodeOptions;
 
 export default class EnergyBarGraph extends Node {
   private readonly barChartNode: BarChartNode;

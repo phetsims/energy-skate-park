@@ -8,22 +8,29 @@
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
-import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import { optionize4 } from '../../../../phet-core/js/optionize.js';
 import { Node } from '../../../../scenery/js/imports.js';
-import AccordionBox from '../../../../sun/js/AccordionBox.js';
+import AccordionBox, { AccordionBoxOptions } from '../../../../sun/js/AccordionBox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import Skater from '../model/Skater.js';
-import EnergyBarGraph from './EnergyBarGraph.js';
+import EnergyBarGraph, { EnergyBarGraphOptions } from './EnergyBarGraph.js';
+
+type SelfOptions = {
+
+  // options for the bar graph itself, passed on to EnergyBarGraph
+  barGraphOptions: EnergyBarGraphOptions;
+};
+
+type EnergyBarGraphAccordionBoxOptions = SelfOptions & AccordionBoxOptions;
 
 // constants
 const PANEL_MARGIN = 5;
 
 export default class EnergyBarGraphAccordionBox extends AccordionBox {
 
-  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, tandem: Tandem, options: IntentionalAny ) {
+  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, tandem: Tandem, providedOptions: EnergyBarGraphAccordionBoxOptions ) {
 
     const titleNode = new Node();
 
@@ -35,9 +42,7 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
     // layout the label and icon
     graphIcon.leftCenter = graphLabel.rightCenter.plusXY( PANEL_MARGIN * 8, 0 );
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
+    const options = optionize4<EnergyBarGraphAccordionBoxOptions, SelfOptions, AccordionBoxOptions>()( {}, {
       titleNode: titleNode,
       titleAlignX: 'left',
 
@@ -49,15 +54,12 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
       // use this model Property because the graph only updates when it is visible
       expandedProperty: barGraphVisibleProperty,
 
-      // {null|*} options for the bar graph itself, passed on to EnergyBarGraph
-      barGraphOptions: null,
-
       expandCollapseButtonOptions: {
         sideLength: 19
       },
 
       tandem: tandem
-    }, EnergySkateParkConstants.GRAPH_PANEL_OPTONS, options );
+    }, EnergySkateParkConstants.GRAPH_PANEL_OPTONS, providedOptions );
 
     const energyBarGraph = new EnergyBarGraph( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
 
