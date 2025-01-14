@@ -180,10 +180,7 @@ export default class Skater {
       assert && assert( gravityWithSign <= 0, 'this sim only supports negative or 0 gravity' );
       return gravityWithSign;
     }, {
-      units: 'm/s/s',
-
-      // @ts-expect-error
-      range: new Range( EnergySkateParkConstants.MAX_GRAVITY, EnergySkateParkConstants.MIN_GRAVITY ) // MAX_GRAVITY < MIN_GRAVITY due to sign
+      units: 'm/s/s'
     } );
 
     this.referenceHeightProperty = new NumberProperty( 0, {
@@ -218,10 +215,7 @@ export default class Skater {
 
     this.kineticEnergyProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'kineticEnergyProperty' ),
-      units: 'J',
-
-      // @ts-expect-error
-      J: true
+      units: 'J'
     } );
 
     this.potentialEnergyProperty = new NumberProperty( 0, {

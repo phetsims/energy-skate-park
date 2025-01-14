@@ -10,7 +10,7 @@ import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
-import { DragListener, SceneryEvent } from '../../../../scenery/js/imports.js';
+import { DragListener, PressListenerDOMEvent, SceneryEvent } from '../../../../scenery/js/imports.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
@@ -81,7 +81,7 @@ export default class TrackDragHandler extends DragListener {
     this.trackDragEnded( event );
   }
 
-  public trackDragged( event: Event ): void {
+  public trackDragged( event: SceneryEvent<PressListenerDOMEvent> ): void {
     let snapTargetChanged = false;
     const model = this.model;
     const track = this.track;

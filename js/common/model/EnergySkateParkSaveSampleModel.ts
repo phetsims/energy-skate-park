@@ -113,13 +113,11 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
 
       dataSample.trackControlPointPositions.forEach( ( position, i ) => {
 
-        // @ts-expect-error
-        this.skater.trackProperty.get().controlPoints[ i ].sourcePositionProperty.set( position );
+        this.skater.trackProperty.get()!.controlPoints[ i ].sourcePositionProperty.set( position );
       } );
 
       // make sure control points are constrained, and update splines and shape
-      // @ts-expect-error
-      this.skater.trackProperty.get().containControlPointsInLimitBounds( true );
+      this.skater.trackProperty.get()!.containControlPointsInLimitBounds( true );
     }
   }
 

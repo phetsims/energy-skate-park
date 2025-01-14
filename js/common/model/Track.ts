@@ -209,9 +209,8 @@ export default class Track extends PhetioObject {
     assert && assert( this.controlPoints, 'control points should be defined' );
 
     // boolean value that is true if any control point on this track is being dragged
-    // @ts-expect-error
-    this.controlPointDraggingProperty = new DerivedProperty( _.map( controlPoints, point => point.draggingProperty ), ( ...args ) => {
-      return _.reduce( args, ( collapsed, value ) => collapsed || value );
+    this.controlPointDraggingProperty = DerivedProperty.deriveAny( _.map( controlPoints, point => point.draggingProperty ), ( ...args ) => {
+      return _.reduce( args, ( collapsed, value ) => collapsed || value )!;
     }, {
       valueType: 'boolean'
     } );
@@ -865,7 +864,7 @@ export default class Track extends PhetioObject {
    * @param updateSplines optional, whether or not to update splines and redraw after this operation
    *                      (for performance, you might chose to wait and do this later)
    */
-  private containControlPointsInLimitBounds( updateSplines?: boolean ): void {
+  public containControlPointsInLimitBounds( updateSplines?: boolean ): void {
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       const controlPoint = this.controlPoints[ i ];
       const limitBounds = controlPoint.limitBounds;

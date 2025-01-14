@@ -8,9 +8,7 @@
 
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { Image, LinearGradient, Node, Pattern, Rectangle } from '../../../../scenery/js/imports.js';
-import Tandem from '../../../../tandem/js/Tandem.js';
 import cementTextureDark_jpg from '../../../images/cementTextureDark_jpg.js';
 import mountains_png from '../../../images/mountains_png.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -32,10 +30,9 @@ export default class BackgroundNode extends Node {
    * @param tandem
    * @param [options]
    */
-  public constructor( layoutBounds: Bounds2, visibleBoundsProperty: Property<Bounds2>, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( layoutBounds: Bounds2, visibleBoundsProperty: Property<Bounds2> ) {
     super( {
-      pickable: false,
-      tandem: tandem
+      pickable: false
     } );
 
     this.sky = new Rectangle( 0, 0, 0, 0 );
@@ -49,17 +46,12 @@ export default class BackgroundNode extends Node {
 
     this.mountainImage = new Image( mountains_png, {
       scale: 1.23,
-      bottom: this.cementY,
-      tandem: tandem.createTandem( 'mountainImage' )
+      bottom: this.cementY
     } );
     this.addChild( this.mountainImage );
 
     this.cement = new Rectangle( 0, 0, 0, cementWidth, { fill: new Pattern( cementTextureDark_jpg ) } );
     this.addChild( this.cement );
-
-    if ( options ) {
-      this.mutate( options );
-    }
 
     // update layout when visible bounds change
     visibleBoundsProperty.link( bounds => this.layout( bounds ) );

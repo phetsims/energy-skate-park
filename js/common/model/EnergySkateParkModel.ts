@@ -702,7 +702,7 @@ export default class EnergySkateParkModel extends PhetioObject {
     physicalTracks: Track[]
   ): { track: Track; parametricPosition: number; point: Vector2 } | null {
     let closestTrack = null;
-    let closestMatch = null;
+    let closestMatch: { parametricPosition: number; point: Vector2 } | null = null;
     let closestDistance = Number.POSITIVE_INFINITY;
     for ( let i = 0; i < physicalTracks.length; i++ ) {
       const track = physicalTracks[ i ];
@@ -717,8 +717,7 @@ export default class EnergySkateParkModel extends PhetioObject {
       }
     }
     if ( closestTrack ) {
-      // @ts-expect-error
-      return { track: closestTrack, parametricPosition: closestMatch.parametricPosition, point: closestMatch.point };
+      return { track: closestTrack, parametricPosition: closestMatch!.parametricPosition, point: closestMatch!.point };
     }
     else {
       return null;
@@ -1400,9 +1399,7 @@ export default class EnergySkateParkModel extends PhetioObject {
         debug && debug( 'Set velocity to match energy, when energy was low: ' );
         debug && debug( `INC changed velocity: dE=${fixedState.getTotalEnergy() - e0}` );
         if ( !Utils.equalsEpsilon( e0, fixedState.getTotalEnergy(), 1E-8 ) ) {
-
-          // @ts-expect-error
-          new Error( 'Energy error[2]' ).printStackTrace();
+          console.log( new Error( 'Energy error[2]' ).stack );
         }
         return fixedState;
       }

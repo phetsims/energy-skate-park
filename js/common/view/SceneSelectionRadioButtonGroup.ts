@@ -109,9 +109,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
       const children = [];
 
       if ( options.includeBackground ) {
-        // @ts-expect-error
-        const background = new BackgroundNode( view.layoutBounds, tandem.createTandem( `backgroundNode${index}` ) );
-        background.layout( new Bounds2( 0, 0, view.layoutBounds.width, view.layoutBounds.height ) );
+        const background = new BackgroundNode( view.layoutBounds, new Property( new Bounds2( 0, 0, view.layoutBounds.width, view.layoutBounds.height ) ) );
         children.push( background );
       }
 
