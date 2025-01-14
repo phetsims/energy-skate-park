@@ -63,7 +63,13 @@ type SelfOptions = {
   slopeToGround?: boolean;
 };
 
-type TrackOptions = SelfOptions & StrictOmit<PhetioObjectOptions, 'phetioState'>;
+export type TrackOptions = SelfOptions & StrictOmit<PhetioObjectOptions, 'phetioState'>;
+
+export type Curvature = {
+  r: number;
+  x: number;
+  y: number;
+};
 
 export default class Track extends PhetioObject {
 

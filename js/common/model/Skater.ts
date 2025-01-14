@@ -45,7 +45,7 @@ type SelfOptions = {
   referenceHeightRange?: Range;
 };
 
-type SkaterOptions = SelfOptions;
+export type SkaterOptions = SelfOptions;
 
 export default class Skater {
 

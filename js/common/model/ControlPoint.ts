@@ -37,7 +37,7 @@ type SelfOptions = {
   limitBounds?: Bounds2 | null;
 };
 
-type ControlPointOptions = SelfOptions & PhetioObjectOptions;
+export type ControlPointOptions = SelfOptions & PhetioObjectOptions;
 
 export default class ControlPoint extends PhetioObject {
 
@@ -110,7 +110,7 @@ export default class ControlPoint extends PhetioObject {
    * TODO: https://github.com/phetsims/energy-skate-park/issues/123 is this reversed?  Maybe call on the model
    */
   public copy( model: EnergySkateParkModel ): ControlPoint {
-    return model.controlPointGroup.createNextElement( this.positionProperty.value.x, this.positionProperty.value.y );
+    return model.controlPointGroup.createNextElement( this.positionProperty.value.x, this.positionProperty.value.y, {} );
   }
 
   public static readonly ControlPointIO = new IOType( 'ControlPointIO', {

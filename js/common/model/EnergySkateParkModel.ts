@@ -50,12 +50,12 @@ import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
-import ControlPoint from './ControlPoint.js';
+import ControlPoint, { ControlPointOptions } from './ControlPoint.js';
 import DebugTracks from './DebugTracks.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
-import Skater from './Skater.js';
+import Skater, { SkaterOptions } from './Skater.js';
 import SkaterState from './SkaterState.js';
-import Track from './Track.js';
+import Track, { Curvature, TrackOptions } from './Track.js';
 import UserControlledPropertySet from './UserControlledPropertySet.js';
 
 // Use a separate pooled curvature variable to reduce memory allocations - object values
@@ -96,7 +96,7 @@ type SelfOptions = {
   defaultSpeedValueVisible?: boolean;
 
   // options passed to Skater
-  skaterOptions?: IntentionalAny | null;
+  skaterOptions?: SkaterOptions | null;
 };
 
 export type EnergySkateParkModelOptions = SelfOptions & PhetioObjectOptions;
@@ -116,12 +116,12 @@ export default class EnergySkateParkModel extends PhetioObject {
   public readonly availableModelBoundsProperty: Property<Bounds2>;
 
   // group of control points
-  public readonly controlPointGroup: PhetioGroup<ControlPoint, IntentionalAny>;
+  public readonly controlPointGroup: PhetioGroup<ControlPoint, [ number, number, ControlPointOptions ]>;
 
   // TODO: https://github.com/phetsims/energy-skate-park/issues/123 the control point group doesn't have enough archetypes to
   // TODO: create an archetype track, https://github.com/phetsims/energy-skate-park/issues/123
   // group of tracks
-  public readonly trackGroup: PhetioGroup<Track, IntentionalAny>;
+  public readonly trackGroup: PhetioGroup<Track, [ ControlPoint[], Track[], TrackOptions ]>;
 
   // Temporary flag that keeps track of whether the track was changed in the step before the physics
   // update. True if the skater's track is being dragged by the user, so that energy conservation no longer applies.
@@ -220,9 +220,8 @@ export default class EnergySkateParkModel extends PhetioObject {
       phetioValueType: Bounds2.Bounds2IO
     } );
 
-    this.controlPointGroup = new PhetioGroup( ( tandem, x, y, options ) => {
+    this.controlPointGroup = new PhetioGroup<ControlPoint, [ number, number, ControlPointOptions ]>( ( tandem, x, y, options ) => {
       assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
-      // @ts-expect-error
       return new ControlPoint( x, y, merge( {}, options, { tandem: tandem, phetioDynamicElement: true } ) );
     }, [ 0, 0, {} ], {
       tandem: tandem.createTandem( 'controlPointGroup' ),
@@ -230,14 +229,13 @@ export default class EnergySkateParkModel extends PhetioObject {
       phetioDynamicElementName: 'controlPoint'
     } );
 
-    this.trackGroup = new PhetioGroup( ( tandem, controlPoints, parents, options ) => {
+    this.trackGroup = new PhetioGroup<Track, [ ControlPoint[], Track[], TrackOptions ]>( ( tandem, controlPoints, parents, options ) => {
       assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
-      // @ts-expect-error
       return new Track( this, controlPoints, parents, merge( {}, options, {
         tandem: tandem,
         phetioDynamicElement: true
       } ) );
-    }, [ _.range( 20 ).map( n => this.controlPointGroup.createNextElement( n * 100, 0 ) ), [], {
+    }, [ _.range( 20 ).map( n => this.controlPointGroup.createNextElement( n * 100, 0, {} ) ), [], {
       draggable: true,
       configurable: true
     } ], {
@@ -324,7 +322,7 @@ export default class EnergySkateParkModel extends PhetioObject {
       this.frictionProperty.debug( 'friction' );
     }
 
-    this.skater = new Skater( tandem.createTandem( 'skater' ), options.skaterOptions );
+    this.skater = new Skater( tandem.createTandem( 'skater' ), options.skaterOptions! );
 
     this.skaterInBoundsProperty = new DerivedProperty( [ this.skater.positionProperty ], position => {
       const availableModelBounds = this.availableModelBoundsProperty.get();
@@ -1416,20 +1414,16 @@ export default class EnergySkateParkModel extends PhetioObject {
   // PERFORMANCE/ALLOCATION - uses a reusable Object for curvature
   /**
    * Get direction of curvature at the position of the Skater.
-   *
-   * @param curvature - Reusable Object describing curvature (radius and position), see Track.getCurvature
    */
-  private getCurvatureDirection( curvature: IntentionalAny, x2: number, y2: number ): Vector2 {
+  private getCurvatureDirection( curvature: Curvature, x2: number, y2: number ): Vector2 {
     const v = new Vector2( curvature.x - x2, curvature.y - y2 );
     return ( v.x !== 0 || v.y !== 0 ) ? v.normalized() : v;
   }
 
   /**
    * Get the x component of direction of curvature at the Skater's position.
-   *
-   * @param curvature - Reusable Object describing curvature, see Track.getCurvature
    */
-  private getCurvatureDirectionX( curvature: IntentionalAny, x2: number, y2: number ): number {
+  private getCurvatureDirectionX( curvature: Curvature, x2: number, y2: number ): number {
     const vx = curvature.x - x2;
     const vy = curvature.y - y2;
     return ( vx !== 0 || vy !== 0 ) ? vx / Math.sqrt( vx * vx + vy * vy ) : vx;
@@ -1437,10 +1431,8 @@ export default class EnergySkateParkModel extends PhetioObject {
 
   /**
    * Get the y component of direction of curvature at the Skater's position.
-   *
-   * @param curvature - Reusable Object describing curvature, see Track.getCurvature
    */
-  private getCurvatureDirectionY( curvature: IntentionalAny, x2: number, y2: number ): number {
+  private getCurvatureDirectionY( curvature: Curvature, x2: number, y2: number ): number {
     const vx = curvature.x - x2;
     const vy = curvature.y - y2;
     return ( vx !== 0 || vy !== 0 ) ? vy / Math.sqrt( vx * vx + vy * vy ) : vy;
@@ -1605,11 +1597,11 @@ export default class EnergySkateParkModel extends PhetioObject {
     const vector = Vector2.createPolar( 0.5, modelAngle );
     const newPoint1 = this.controlPointGroup.createNextElement(
       track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.x - vector.x,
-      track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.y - vector.y
+      track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.y - vector.y, {}
     );
     const newPoint2 = this.controlPointGroup.createNextElement(
       track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.x + vector.x,
-      track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.y + vector.y
+      track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.y + vector.y, {}
     );
 
     const points1 = track.controlPoints.slice( 0, controlPointIndex );
