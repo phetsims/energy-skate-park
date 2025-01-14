@@ -12,27 +12,33 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Utils from '../../../../dot/js/Utils.js';
 import { Shape } from '../../../../kite/js/imports.js';
 import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import platform from '../../../../phet-core/js/platform.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
-import { Circle, Node, Path } from '../../../../scenery/js/imports.js';
+import { Circle, Node, NodeOptions, Path } from '../../../../scenery/js/imports.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from '../model/Skater.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
+type SelfOptions = {
+
+  // Whether to represent negative energy. When true, when one of the energies is negative
+  // the pie chart will only show total energy, a solid circle with the color for total energy
+  showNegativeEnergy?: boolean;
+};
+
+export type PieChartNodeOptions = SelfOptions & NodeOptions;
+
 export default class PieChartNode extends Node {
+
   private readonly showNegativeEnergy: boolean;
 
-  public constructor( skater: Skater, pieChartVisibleProperty: TReadOnlyProperty<boolean>, modelViewTransform: ModelViewTransform2, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( skater: Skater, pieChartVisibleProperty: TReadOnlyProperty<boolean>, modelViewTransform: ModelViewTransform2, tandem: Tandem, providedOptions?: PieChartNodeOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {boolean} - Whether to represent negative energy. When true, when one of the energies is negative
-      // the pie chart will only show total energy, a solid circle with the color for total energy
+    const options = optionize<PieChartNodeOptions, SelfOptions, NodeOptions>()( {
       showNegativeEnergy: true
-    }, options );
+    }, providedOptions );
 
     const sliceOptions = {
       stroke: 'black',
