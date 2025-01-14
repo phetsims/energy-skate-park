@@ -48,5 +48,4 @@ export default class EnergySkateParkSaveSampleScreenView extends EnergySkatePark
   }
 }
 
-
 energySkatePark.register( 'EnergySkateParkSaveSampleScreenView', EnergySkateParkSaveSampleScreenView );
