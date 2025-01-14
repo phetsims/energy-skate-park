@@ -7,12 +7,11 @@
  */
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
-import EnumerationDeprecatedProperty from '../../../../axon/js/EnumerationDeprecatedProperty.js';
 import Multilink from '../../../../axon/js/Multilink.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import StringUnionProperty from '../../../../axon/js/StringUnionProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
-import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
@@ -35,7 +34,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
   public readonly energyPlotScaleIndexProperty: NumberProperty;
 
   // sets the independent variable for the graph display
-  public readonly independentVariableProperty: EnumerationDeprecatedProperty;
+  public readonly independentVariableProperty: StringUnionProperty<'position' | 'time'>;
 
   // or not the energy plot is visible
   public energyPlotVisibleProperty: BooleanProperty;
@@ -129,8 +128,9 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
       range: new Range( 0, GraphsConstants.PLOT_RANGES.length - 1 )
     } );
 
-    // @ts-expect-error
-    this.independentVariableProperty = new EnumerationDeprecatedProperty( GraphsModel.IndependentVariable, GraphsModel.IndependentVariable.POSITION );
+    this.independentVariableProperty = new StringUnionProperty( 'position', {
+      validValues: [ 'position', 'time' ]
+    } );
 
     this.energyPlotVisibleProperty = new BooleanProperty( true, {
       tandem: tandem.createTandem( 'energyPlotVisibleProperty' )
@@ -139,8 +139,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // existing data fades away before removal when the skater direction changes
     this.skater.directionProperty.link( direction => {
 
-      // @ts-expect-error
-      if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ) {
+      if ( this.independentVariableProperty.get() === 'position' ) {
         this.initiateSampleRemoval();
       }
     } );
@@ -148,8 +147,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // there are far more points required for the Energy vs Time plot, so we don't limit the number of
     // saved samples in this case
     this.independentVariableProperty.link( independentVariable => {
-      // @ts-expect-error
-      this.limitNumberOfSamples = independentVariable === GraphsModel.IndependentVariable.POSITION;
+      this.limitNumberOfSamples = independentVariable === 'position';
     } );
 
     // clear all data when the track changes
@@ -159,8 +157,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
     this.skater.draggingProperty.link( isDragging => {
 
-      // @ts-expect-error
-      if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ) {
+      if ( this.independentVariableProperty.get() === 'position' ) {
 
         // if plotting against position don't save any skater samples while dragging, but if plotting against time
         // it is still useful to see data as potential energy changes
@@ -179,8 +176,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // clear old samples if we are plotting for longer than the range
     this.sampleTimeProperty.link( time => {
 
-      // @ts-expect-error
-      const plottingTime = this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
+      const plottingTime = this.independentVariableProperty.get() === 'time';
       const overTime = time > GraphsConstants.MAX_PLOTTED_TIME;
       if ( plottingTime && overTime ) {
 
@@ -206,8 +202,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // @ts-expect-error
     Multilink.lazyMultilink( this.userControlledPropertySet.properties, () => {
 
-      // @ts-expect-error
-      if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME ) {
+      if ( this.independentVariableProperty.get() === 'time' ) {
         if ( this.dataSamples.length > 0 ) {
 
           // only remove data if the cursor time is earlier than the last saved sample
@@ -226,8 +221,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // see previous data when plotting against time so don't clear in that case
     this.skater.returnedEmitter.addListener( () => {
 
-      // @ts-expect-error
-      if ( this.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ) {
+      if ( this.independentVariableProperty.get() === 'position' ) {
         this.clearEnergyData();
       }
     } );
@@ -280,8 +274,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // only if we have data, so that we don't try to get a data sample if length is 0
     const cursorOlderThanNewestSample = hasData && ( this.sampleTimeProperty.get() < this.dataSamples.get( this.dataSamples.length - 1 ).time );
 
-    // @ts-expect-error
-    const plottingTime = this.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
+    const plottingTime = this.independentVariableProperty.get() === 'time';
 
     // we are playing back through data if plotting against time and the cursor is older than the
     if ( cursorOlderThanNewestSample && plottingTime ) {
@@ -366,8 +359,6 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
     return [ parabolaTrack, doubleWellTrack ];
   }
-
-  public static readonly IndependentVariable = EnumerationDeprecated.byKeys( [ 'POSITION', 'TIME' ] );
 }
 
 energySkatePark.register( 'GraphsModel', GraphsModel );

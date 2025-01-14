@@ -175,8 +175,7 @@ export default class EnergyChart extends XYCursorChartNode {
       const independentVariable = model.independentVariableProperty.get();
       const horizontalXRange = calculateDomain( independentVariable ).max;
 
-      // @ts-expect-error
-      if ( model.dataSamples.length > 0 && independentVariable === GraphsModel.IndependentVariable.TIME ) {
+      if ( model.dataSamples.length > 0 && independentVariable === 'time' ) {
 
         const minRecordedX = model.dataSamples.get( 0 ).time;
         const maxRecordedX = model.dataSamples.get( model.dataSamples.length - 1 ).time;
@@ -227,10 +226,7 @@ export default class EnergyChart extends XYCursorChartNode {
       const newMinY = newRange.min;
       const horizontalLineSpacing = ( newMaxY - newMinY ) / 4;
 
-      // @ts-expect-error
-      const verticalLineSpacing = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.POSITION ?
-                                  POSITION_STEP_X : TIME_STEP_X;
-
+      const verticalLineSpacing = model.independentVariableProperty.get() === 'position' ? POSITION_STEP_X : TIME_STEP_X;
 
       updateModelViewTransformProperty();
       this.setLineSpacings( {
@@ -249,8 +245,7 @@ export default class EnergyChart extends XYCursorChartNode {
 
       let verticalLineSpacing;
 
-      // @ts-expect-error
-      if ( independentVariable === GraphsModel.IndependentVariable.POSITION ) {
+      if ( independentVariable === 'position' ) {
         this.setCursorVisibleOverride( false );
 
         // @ts-expect-error
@@ -276,8 +271,7 @@ export default class EnergyChart extends XYCursorChartNode {
     // add data points when a EnergySkateParkDataSample is added to the model
     model.dataSamples.addItemAddedListener( addedSample => {
 
-      // @ts-expect-error
-      const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
+      const plotTime = model.independentVariableProperty.get() === 'time';
       const independentVariable = plotTime ? addedSample.time : addedSample.position.x + POSITION_PLOT_OFFSET;
 
       // keep a reference to the pointStyle so that it can be modified later
@@ -308,8 +302,7 @@ export default class EnergyChart extends XYCursorChartNode {
     // remove a batch of of EnergySkateParkDataSamples
     model.batchRemoveSamplesEmitter.addListener( samplesToRemove => {
 
-      // @ts-expect-error
-      const plotTime = model.independentVariableProperty.get() === GraphsModel.IndependentVariable.TIME;
+      const plotTime = model.independentVariableProperty.get() === 'time';
 
       const xValuesToRemove = samplesToRemove.map( sampleToRemove => {
         return plotTime ? sampleToRemove.time : ( sampleToRemove.position.x + POSITION_PLOT_OFFSET );
@@ -345,8 +338,7 @@ export default class EnergyChart extends XYCursorChartNode {
  */
 const calculateDomain = ( independentVariable: IntentionalAny ) => {
 
-  // @ts-expect-error
-  const maxX = independentVariable === GraphsModel.IndependentVariable.POSITION ? POSITION_MAX_X : TIME_MAX_X;
+  const maxX = independentVariable === 'position' ? POSITION_MAX_X : TIME_MAX_X;
   return new Range( 0, maxX );
 };
 

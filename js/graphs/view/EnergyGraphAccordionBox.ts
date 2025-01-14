@@ -101,7 +101,6 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       font: LABEL_FONT,
       maxWidth: 100
     };
-    const variables = GraphsModel.IndependentVariable;
     const variableSwitchTandem = tandem.createTandem( 'variableSwitch' );
     const positionLabelText = new Text( positionSwitchLabelStringProperty, merge( {
       tandem: variableSwitchTandem.createTandem( 'positionLabelText' )
@@ -110,8 +109,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       tandem: variableSwitchTandem.createTandem( 'timeLabelText' )
     }, switchLabelOptions ) );
 
-    // @ts-expect-error
-    const variableSwitch = new ABSwitch( model.independentVariableProperty, variables.POSITION, positionLabelText, variables.TIME, timeLabelText, {
+    const variableSwitch = new ABSwitch( model.independentVariableProperty, 'position', positionLabelText, 'time', timeLabelText, {
       toggleSwitchOptions: { size: SWITCH_SIZE },
       tandem: variableSwitchTandem
     } );
@@ -144,8 +142,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
     // Label the x-axis with the independent variable.
     const xLabelStringProperty = new DerivedProperty( [ model.independentVariableProperty, plotsTimeLabelStringProperty, plotsPositionLabelStringProperty ],
 
-      // @ts-expect-error
-      ( independentVariable, timeLabelString, positionLabelString ) => ( independentVariable === GraphsModel.IndependentVariable.TIME ) ? timeLabelString : positionLabelString
+      ( independentVariable, timeLabelString, positionLabelString ) => ( independentVariable === 'time' ) ? timeLabelString : positionLabelString
     );
     const xLabelText = new Text( xLabelStringProperty, { font: LABEL_FONT, maxWidth: energyPlot.width } );
 
