@@ -4,25 +4,29 @@
  * @author Jesse Greenberg
  */
 
-import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import energySkatePark from '../../energySkatePark.js';
 import SamplesCanvasNode from '../../measure/view/SamplesCanvasNode.js';
 import EnergySkateParkSaveSampleModel from '../model/EnergySkateParkSaveSampleModel.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 
+type SelfOptions = {
+  // true if the skater path should be drawn
+  drawSkaterPath?: boolean;
+};
+
+type EnergySkateParkSaveSampleScreenViewOptions = SelfOptions & PhetioObjectOptions;
+
 export default class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
   private readonly skaterSamplesNode: SamplesCanvasNode | null;
 
-  public constructor( model: EnergySkateParkSaveSampleModel, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( model: EnergySkateParkSaveSampleModel, tandem: Tandem, providedOptions?: EnergySkateParkSaveSampleScreenViewOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {boolean} - true if
+    const options = optionize<EnergySkateParkSaveSampleScreenViewOptions, SelfOptions, PhetioObjectOptions>()( {
       drawSkaterPath: true
-    }, options );
+    }, providedOptions );
     super( model, tandem, options );
 
     this.skaterSamplesNode = null;
