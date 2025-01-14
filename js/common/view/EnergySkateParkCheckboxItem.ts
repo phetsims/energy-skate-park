@@ -7,16 +7,18 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import Range from '../../../../dot/js/Range.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import { Shape } from '../../../../kite/js/imports.js';
 import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import GaugeNode from '../../../../scenery-phet/js/GaugeNode.js';
 import { Circle, Line, Node, Path, PressListener, Rectangle } from '../../../../scenery/js/imports.js';
-import Checkbox from '../../../../sun/js/Checkbox.js';
+import Checkbox, { CheckboxOptions } from '../../../../sun/js/Checkbox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
@@ -24,22 +26,25 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
 const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelStringProperty;
 
+type SelfOptions = {
+
+  // whether or not the user has controlled this checkbox
+  // we set to true if we detect input on this control. The simulation has
+  // different behavior for when the user directly controls the Checkbox Property
+  // vs whether the Property gets set internally by the simulation
+  userControlledProperty?: BooleanProperty | null;
+};
+
+type EnergySkateParkCheckboxItemOptions = SelfOptions & CheckboxOptions;
+
 export default class EnergySkateParkCheckboxItem extends Checkbox {
 
-  public constructor( property: PhetioProperty<boolean>, icon: Node, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( property: PhetioProperty<boolean>, icon: Node, tandem: Tandem, providedOptions?: EnergySkateParkCheckboxItemOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {BooleanProperty|null} - whether or not the user has controlled this checkbox
-      // we set to true if we detect input on this control. The simulation has
-      // different behavior for when the user directly controls the Checkbox Property
-      // vs whether the Property gets set internally by the simulation
+    const options = optionize<EnergySkateParkCheckboxItemOptions, SelfOptions, CheckboxOptions>()( {
       userControlledProperty: null,
-
-      // {Tandem}
       tandem: tandem
-    }, options );
+    }, providedOptions );
 
     super( property, icon, options );
 
@@ -47,8 +52,8 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
 
       // add a listener to the Checkbox that resets the data upon user interaction
       const userControlledListener = new PressListener( {
-        press: () => options.userControlledProperty.set( true ),
-        release: () => options.userControlledProperty.set( false )
+        press: () => options.userControlledProperty!.set( true ),
+        release: () => options.userControlledProperty!.set( false )
       } );
       this.addInputListener( userControlledListener );
     }
