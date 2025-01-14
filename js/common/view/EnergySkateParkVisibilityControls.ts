@@ -102,7 +102,7 @@ export default class EnergySkateParkVisibilityControls extends VBox {
     }
 
     if ( options.showReferenceHeightCheckbox ) {
-      const iconNode = EnergySkateParkCheckboxItem.createReferenceHeightIcon( tandem.createTandem( 'referenceHeightIcon' ) );
+      const iconNode = EnergySkateParkCheckboxItem.createReferenceHeightIcon();
       this.addCheckboxContent( controlsReferenceHeightStringProperty, iconNode, model.referenceHeightVisibleProperty, tandem.createTandem( 'referenceHeightCheckbox' ) );
     }
 

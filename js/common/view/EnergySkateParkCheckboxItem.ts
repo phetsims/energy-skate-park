@@ -13,9 +13,7 @@ import Property from '../../../../axon/js/Property.js';
 import Range from '../../../../dot/js/Range.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import { Shape } from '../../../../kite/js/imports.js';
-import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import GaugeNode from '../../../../scenery-phet/js/GaugeNode.js';
 import { Circle, Line, Node, Path, PressListener, Rectangle } from '../../../../scenery/js/imports.js';
 import Checkbox, { CheckboxOptions } from '../../../../sun/js/Checkbox.js';
@@ -59,12 +57,7 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
     }
   }
 
-  public static createPieChartIcon( tandem: Tandem, options?: IntentionalAny ): Node {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-      scale: 1
-    }, options );
-
+  public static createPieChartIcon( tandem: Tandem ): Node {
     const radius = 10;
     const arc = new Shape().moveTo( 0, 0 ).ellipticalArc( 0, 0, radius, radius, 0, -Math.PI / 2, 0, false ).lineTo( 0, 0 );
     return new Node( {
@@ -75,19 +68,14 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
           tandem: tandem.createTandem( 'kineticEnergyArc' ),
           fill: EnergySkateParkColorScheme.kineticEnergy, lineWidth: 0.5, stroke: 'black'
         } )
-      ],
-      scale: options.scale
+      ]
     } );
   }
 
   /**
    * An icon for the grid.
    */
-  public static createGridIcon( tandem: Tandem, options?: IntentionalAny ): Node {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-      scale: 1
-    }, options );
+  public static createGridIcon( tandem: Tandem ): Node {
     return new Node( {
       tandem: tandem,
       children: [
@@ -98,32 +86,27 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
         new Line( 10, 0, 10, 20, { stroke: 'black', lineWidth: 1 } ),
         new Line( 5, 0, 5, 20, { stroke: 'black', lineWidth: 0.5 } ),
         new Line( 15, 0, 15, 20, { stroke: 'black', lineWidth: 0.5 } )
-      ],
-      scale: options.scale
+      ]
     } );
   }
 
   /**
    * An icon for the speedometer.
    */
-  public static createSpeedometerIcon( tandem: Tandem, options?: IntentionalAny ): Node {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-      scale: 1
-    }, options );
+  public static createSpeedometerIcon( tandem: Tandem ): Node {
     const gaugeNode = new GaugeNode( new Property( 0 ), propertiesSpeedStringProperty, new Range( 0, 10 ),
       {
         pickable: false,
         tandem: tandem.createTandem( 'gaugeNode' )
       } );
-    gaugeNode.scale( ( 20 / gaugeNode.width ) * options.scale );
+    gaugeNode.scale( ( 20 / gaugeNode.width ) );
     return gaugeNode;
   }
 
   /**
    * An icon for the reference height control.
    */
-  public static createReferenceHeightIcon( tandem: Tandem ): Node {
+  public static createReferenceHeightIcon( ): Node {
 
     // a dashed, stroked line will be drawn with overlapping rectangles, the background rectangle is slightly taller
     // to mimic stroke
