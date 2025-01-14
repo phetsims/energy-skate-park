@@ -11,13 +11,30 @@ import Emitter from '../../../../axon/js/Emitter.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import Range from '../../../../dot/js/Range.js';
-import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
-import { VBox, Node } from '../../../../scenery/js/imports.js';
+import { Node, VBox } from '../../../../scenery/js/imports.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import MassNumberControl from './MassNumberControl.js';
 import MassSlider from './MassSlider.js';
+
+type SelfOptions = {
+  // whether or not a MassNumberControl is included in this set of controls, only a MassNumberControl
+  // OR a MassSlider can be used at one time
+  includeMassNumberControl?: boolean;
+
+  // whether or not a MassNumberControl is included in this set of controls
+  includeMassSlider?: boolean;
+
+  // options passed along to the MassNumberControl, if one is included
+  massNumberControlOptions?: IntentionalAny | null;
+
+  // options passed along to the MassComboBox, if one is included
+  massComboBoxOptions?: IntentionalAny | null;
+};
+
+export type EnergySkateParkMassControlsOptions = SelfOptions;
 
 export default class EnergySkateParkMassControls extends VBox {
 
@@ -31,24 +48,14 @@ export default class EnergySkateParkMassControls extends VBox {
    * @param tandem
    * @param [options]
    */
-  public constructor( massProperty: NumberProperty, userControlledProperty: BooleanProperty, massRange: Range, skaterImageSetProperty: Property<IntentionalAny>, resetEmitter: Emitter, listParent: Node, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( massProperty: NumberProperty, userControlledProperty: BooleanProperty, massRange: Range, skaterImageSetProperty: Property<IntentionalAny>, resetEmitter: Emitter, listParent: Node, tandem: Tandem, providedOptions?: EnergySkateParkMassControlsOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {boolean} whether or not a MassNumberControl is included in this set of controls, only a MassNumberControl
-      // OR a MassSlider can be used at one time
+    const options = optionize<EnergySkateParkMassControlsOptions, SelfOptions>()( {
       includeMassNumberControl: true,
-
-      // {boolean} whether or not a MassNumberControl is included in this set of controls
       includeMassSlider: false,
-
-      // {Object|null} - options passed along to the MassNumberControl, if one is included
       massNumberControlOptions: null,
-
-      // {Object|null} - options passed along to the MassComboBox, if one is included
       massComboBoxOptions: null
-    }, options );
+    }, providedOptions );
     assert && assert( !( options.includeMassSlider && options.includeMassNumberControl ), 'only MassSlider OR MassNumberControl can be used at one time' );
 
     const children = [];
