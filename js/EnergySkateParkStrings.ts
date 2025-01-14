@@ -103,16 +103,6 @@ type StringsType = {
     'labelStringProperty': LocalizedStringProperty;
     'skater1MassPattern': string;
     'skater1MassPatternStringProperty': LocalizedStringProperty;
-    'skater2MassPattern': string;
-    'skater2MassPatternStringProperty': LocalizedStringProperty;
-    'skater3MassPattern': string;
-    'skater3MassPatternStringProperty': LocalizedStringProperty;
-    'skater4MassPattern': string;
-    'skater4MassPatternStringProperty': LocalizedStringProperty;
-    'skater5MassPattern': string;
-    'skater5MassPatternStringProperty': LocalizedStringProperty;
-    'dogMassPattern': string;
-    'dogMassPatternStringProperty': LocalizedStringProperty;
     'restartSkater': string;
     'restartSkaterStringProperty': LocalizedStringProperty;
   };

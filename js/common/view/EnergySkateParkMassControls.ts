@@ -16,12 +16,10 @@ import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { VBox, Node } from '../../../../scenery/js/imports.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import MassComboBox from './MassComboBox.js';
 import MassNumberControl from './MassNumberControl.js';
 import MassSlider from './MassSlider.js';
 
 export default class EnergySkateParkMassControls extends VBox {
-  private readonly massComboBox: MassComboBox | null;
 
   /**
    * @param massProperty
@@ -45,9 +43,6 @@ export default class EnergySkateParkMassControls extends VBox {
       // {boolean} whether or not a MassNumberControl is included in this set of controls
       includeMassSlider: false,
 
-      // {boolean} whether or not a MassComboBox is included in this set of controls
-      includeMassComboBox: false,
-
       // {Object|null} - options passed along to the MassNumberControl, if one is included
       massNumberControlOptions: null,
 
@@ -57,12 +52,6 @@ export default class EnergySkateParkMassControls extends VBox {
     assert && assert( !( options.includeMassSlider && options.includeMassNumberControl ), 'only MassSlider OR MassNumberControl can be used at one time' );
 
     const children = [];
-
-    let massComboBox = null;
-    if ( options.includeMassComboBox ) {
-      massComboBox = new MassComboBox( massProperty, userControlledProperty, resetEmitter, listParent, tandem.createTandem( 'massComboBox' ) );
-      children.push( massComboBox );
-    }
 
     let massNumberControl = null;
     if ( options.includeMassNumberControl ) {
@@ -78,17 +67,6 @@ export default class EnergySkateParkMassControls extends VBox {
     }
 
     super( { spacing: 8, children: children } );
-
-    this.massComboBox = massComboBox;
-  }
-
-  /**
-   * Set the width of the component to match the width of other controls in a containing control panel.
-   */
-  public matchLayout( width: number ): void {
-    if ( this.massComboBox ) {
-      this.massComboBox.matchLayout( width );
-    }
   }
 }
 

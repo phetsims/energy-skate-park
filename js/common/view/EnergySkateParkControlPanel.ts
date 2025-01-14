@@ -134,13 +134,6 @@ export default class EnergySkateParkControlPanel extends Panel {
       }
     }
 
-    if ( massControls ) {
-
-      // the layout for the mass controls needs to match the layout of the above controls so that the title matches
-      // position with the other NumberControls
-      massControls.matchLayout( separatorWidth );
-    }
-
     const content = new VBox( { spacing: 8, children: children } );
 
     super( content, merge( {
