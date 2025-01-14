@@ -38,7 +38,7 @@ type SelfOptions = {
   maxNumberOfSamples?: number;
 };
 
-type EnergySkateParkSaveSampleModelOptions = SelfOptions & EnergySkateParkModelOptions;
+export type EnergySkateParkSaveSampleModelOptions = SelfOptions & EnergySkateParkModelOptions;
 
 export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel {
 

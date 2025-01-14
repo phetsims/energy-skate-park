@@ -8,15 +8,23 @@
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
-import EnergySkateParkSaveSampleModel from './EnergySkateParkSaveSampleModel.js';
+import EnergySkateParkSaveSampleModel, { EnergySkateParkSaveSampleModelOptions } from './EnergySkateParkSaveSampleModel.js';
 import PremadeTracks from './PremadeTracks.js';
 import Track from './Track.js';
+
+type SelfOptions = {
+  trackTypes?: IntentionalAny[];
+  initializePremadeTracksOptions?: IntentionalAny;
+};
+
+export type EnergySkateParkTrackSetModelOptions = SelfOptions & EnergySkateParkSaveSampleModelOptions;
 
 export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
@@ -24,9 +32,8 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
   public readonly sceneProperty: NumberProperty;
   public readonly trackTypes: IntentionalAny[];
 
-  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options: IntentionalAny ) {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions: EnergySkateParkTrackSetModelOptions ) {
+    const options = optionize<EnergySkateParkSaveSampleModelOptions, SelfOptions, EnergySkateParkSaveSampleModelOptions>()( {
 
       // {PremadeTracks.TrackType[]} - list of the premade tracks used in this model. Currently,
       // the default list includes all of the possible premade tracks. Remove items from
@@ -42,7 +49,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
       // {Object} Options passed to initializePremadeTracks, with options for control points and tracks for each of
       // the provided TrackType listed above. See initializePremadeTracks() for more information.
       initializePremadeTracksOptions: null
-    }, options );
+    }, providedOptions );
 
     super( preferencesModel, tandem.createTandem( 'trackSetModel' ), options );
 

@@ -7,14 +7,13 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
-import EnergySkateParkTrackSetModel from './EnergySkateParkTrackSetModel.js';
+import EnergySkateParkTrackSetModel, { EnergySkateParkTrackSetModelOptions } from './EnergySkateParkTrackSetModel.js';
 
 export default class EnergySkateParkFullTrackSetModel extends EnergySkateParkTrackSetModel {
-  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options: EnergySkateParkTrackSetModelOptions ) {
     super( preferencesModel, tandem, options );
   }
 }
