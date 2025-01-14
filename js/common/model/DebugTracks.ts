@@ -8,7 +8,6 @@
  */
 
 import Vector2 from '../../../../dot/js/Vector2.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
@@ -24,7 +23,7 @@ export default class DebugTracks {
     // Tracks to help demonstrate issues
 
     let controlPoints = null;
-    let track: Track | null | IntentionalAny = null;
+    let track: Track | null = null;
     if ( EnergySkateParkQueryParameters.testTrackIndex === 1 ) {
 
       model.stickingToTrackProperty.value = false;
@@ -218,7 +217,7 @@ export default class DebugTracks {
         model.controlPointGroup.createNextElement( -5.23, -0.85 ),
         model.controlPointGroup.createNextElement( -4.23, -0.85 )
       ];
-      const track1: IntentionalAny = model.trackGroup.createNextElement( controlPoints1, null );
+      const track1 = model.trackGroup.createNextElement( controlPoints1, null );
       track1.physicalProperty.value = false;
       model.tracks.add( track1 );
 
@@ -227,7 +226,7 @@ export default class DebugTracks {
         model.controlPointGroup.createNextElement( -5.23, -0.85 ),
         model.controlPointGroup.createNextElement( -4.23, -0.85 )
       ];
-      const track2: IntentionalAny = model.trackGroup.createNextElement( controlPoints2, null );
+      const track2 = model.trackGroup.createNextElement( controlPoints2, null );
       track2.physicalProperty.value = false;
       model.tracks.add( track2 );
 
@@ -239,7 +238,7 @@ export default class DebugTracks {
         model.controlPointGroup.createNextElement( -9.170190362232134, 6.469483302512781 )
       ];
 
-      const track3: IntentionalAny = model.trackGroup.createNextElement( controlPoints3, null );
+      const track3 = model.trackGroup.createNextElement( controlPoints3, null );
       track3.physicalProperty.value = true;
       model.tracks.add( track3 );
     }
@@ -250,7 +249,7 @@ export default class DebugTracks {
       model.skater.positionProperty.set( new Vector2( -6.698445595854922, 6.5278756476683935 ) );
       model.skater.released( null, 0 );
       model.frictionProperty.value = 0;
-      const track15: IntentionalAny = model.trackGroup.createNextElement( [
+      const track15 = model.trackGroup.createNextElement( [
         model.controlPointGroup.createNextElement( 0.9873551637279601, 7.856892317380353 ),
         model.controlPointGroup.createNextElement( -0.4621662468513845, 5.9031895465994975 ),
         model.controlPointGroup.createNextElement( -3.0250881612090676, 5.735129093198994 ),
@@ -278,7 +277,7 @@ export default class DebugTracks {
         model.controlPointGroup.createNextElement( -0.9831986809563062, 7.962016694146743 )
       ];
 
-      const track16: IntentionalAny = model.trackGroup.createNextElement( controlPoints, [], {
+      const track16 = model.trackGroup.createNextElement( controlPoints, [], {
         configurable: true
       } );
       track16.physicalProperty.value = true;
