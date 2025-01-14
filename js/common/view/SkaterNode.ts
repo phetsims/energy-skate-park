@@ -9,7 +9,9 @@
  */
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
-import Property from '../../../../axon/js/Property.js';
+import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
@@ -24,7 +26,8 @@ import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
 export default class SkaterNode extends Node {
-  public readonly skaterImageSetProperty: Property<SkaterImageSet>;
+  public readonly skaterImageSetProperty: TReadOnlyProperty<SkaterImageSet>;
+  public readonly selectedSkaterProperty: NumberProperty;
   private readonly dragListener: DragListener;
 
   /**
@@ -56,8 +59,13 @@ export default class SkaterNode extends Node {
       tandem: tandem
     } );
 
-    this.skaterImageSetProperty = new Property( SkaterImageSet.SKATER_IMAGE_SETS[ 0 ], {
-      validValues: SkaterImageSet.SKATER_IMAGE_SETS
+    this.selectedSkaterProperty = new NumberProperty( 0, {
+      tandem: tandem.createTandem( 'selectedSkaterProperty' ),
+      validValues: SkaterImageSet.SKATER_IMAGE_SETS.map( ( value, index ) => index )
+    } );
+
+    this.skaterImageSetProperty = new DerivedProperty( [ this.selectedSkaterProperty ], selectedSkater => {
+      return SkaterImageSet.SKATER_IMAGE_SETS[ selectedSkater ];
     } );
 
     // left and right Images for the skater

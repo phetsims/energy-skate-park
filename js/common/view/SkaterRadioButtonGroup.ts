@@ -25,7 +25,7 @@ const BUTTON_SPACING = 5;
 
 export default class SkaterRadioButtonGroup extends Node {
 
-  public constructor( skaterImageSetProperty: Property<SkaterImageSet>, tandem: Tandem ) {
+  public constructor( skaterImageSetProperty: Property<number>, tandem: Tandem ) {
     super();
 
     const buttonOptions = {
@@ -39,11 +39,11 @@ export default class SkaterRadioButtonGroup extends Node {
     };
 
     // Description of the radio buttons
-    const contentArray: { value: SkaterImageSet; node: Node; tandemName: string }[] = [];
+    const contentArray: { value: number; node: Node; tandemName: string }[] = [];
     skaterImageSetProperty.validValues!.forEach( ( skaterImageSet, index ) =>
       contentArray.push( {
-        value: skaterImageSet,
-        node: new Image( skaterImageSet.headshotImageProperty, { scale: 0.5 } ),
+        value: index,
+        node: new Image( SkaterImageSet.SKATER_IMAGE_SETS[ index ].headshotImageProperty, { scale: 0.5 } ),
         tandemName: `skater${index + 1}RadioButton`
       } )
     );

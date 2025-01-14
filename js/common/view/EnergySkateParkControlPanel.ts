@@ -95,12 +95,12 @@ export default class EnergySkateParkControlPanel extends Panel {
 
     let massControls = null;
     if ( options.showMassControls ) {
-      massControls = new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, screenView.skaterNode.skaterImageSetProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
+      massControls = new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, screenView.skaterNode.selectedSkaterProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
       children.push( massControls );
     }
 
     if ( options.showSkaterControls ) {
-      const skaterRadioButtonGroup = new SkaterRadioButtonGroup( screenView.skaterNode.skaterImageSetProperty,
+      const skaterRadioButtonGroup = new SkaterRadioButtonGroup( screenView.skaterNode.selectedSkaterProperty,
         tandem.createTandem( 'skaterSetOneControls' ) );
       children.push( skaterRadioButtonGroup );
     }
