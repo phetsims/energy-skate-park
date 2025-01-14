@@ -65,7 +65,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
   public readonly sampleTimeProperty: NumberProperty;
 
   // observable list of all saved EnergySkateParkDataSamples
-  public dataSamples: ObservableArray<EnergySkateParkDataSample>;
+  public readonly dataSamples: ObservableArray<EnergySkateParkDataSample>;
 
   // an array of EnergySkateParkDataSamples that have just been removed from the model. Necessary
   // for performance so that we can update once after removing many samples rather than every time

@@ -29,9 +29,13 @@ export default class MeasureModel extends EnergySkateParkFullTrackSetModel {
       tracksConfigurable: true
     } );
 
-    this.sensorProbePositionProperty = new Vector2Property( new Vector2( -4, 1.5 ) );
+    this.sensorProbePositionProperty = new Vector2Property( new Vector2( -4, 1.5 ), {
+      tandem: tandem.createTandem( 'sensorProbePositionProperty' )
+    } );
 
-    this.sensorBodyPositionProperty = new Vector2Property( new Vector2( 0, 0 ) );
+    this.sensorBodyPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
+      tandem: tandem.createTandem( 'sensorBodyPositionProperty' )
+    } );
 
     // the speed value is visible on the speedometer for the MeasureModel
     this.speedValueVisibleProperty.set( true );
