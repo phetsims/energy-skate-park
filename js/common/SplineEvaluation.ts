@@ -7,15 +7,19 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import IntentionalAny from '../../../phet-core/js/types/IntentionalAny.js';
 import energySkatePark from '../energySkatePark.js';
 
-// constants
-const FastArray = window.Float64Array ? window.Float64Array : window.Array;
+type Spline = {
+  x: number[];
+  yl: number[];
+  yr: number[];
+  kl: number[];
+  kr: number[];
+};
 
 // The most important function for this sim in numeric.js is just too slow because it uses tensor versions of all functions.
 // This version inlines everything.
-const _at = ( spline: IntentionalAny, x1: number, p: number ) => {
+const _at = ( spline: Spline, x1: number, p: number ) => {
   const x = spline.x;
   const yl = spline.yl;
   const yr = spline.yr;
@@ -30,7 +34,7 @@ const _at = ( spline: IntentionalAny, x1: number, p: number ) => {
          b * s * t;
 };
 
-const atNumber = ( spline: IntentionalAny, x0: number ): number => {
+const atNumber = ( spline: Spline, x0: number ): number => {
   const x = spline.x;
   const n = x.length;
   let p;
@@ -51,10 +55,10 @@ const atNumber = ( spline: IntentionalAny, x0: number ): number => {
   return _at( spline, x0, p );
 };
 
-const atArray = ( spline: IntentionalAny, x0: number[] ): IntentionalAny => {
+const atArray = ( spline: Spline, x0: number[] ): Float64Array => {
   const n = x0.length;
   let i;
-  const ret = new FastArray( n );
+  const ret = new Float64Array( n );
   for ( i = n - 1; i !== -1; --i ) {
     ret[ i ] = atNumber( spline, x0[ i ] );
   }

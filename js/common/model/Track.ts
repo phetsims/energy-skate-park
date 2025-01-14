@@ -29,9 +29,6 @@ import SplineEvaluation from '../SplineEvaluation.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 
-// constants
-const FastArray = window.Float64Array ? window.Float64Array : window.Array;
-
 const ControlPointReferenceIO = ReferenceIO( ControlPoint.ControlPointIO );
 
 // options for a track that is fully interactive - it can be dragged, control points can be moved, broken into
@@ -101,9 +98,9 @@ export default class Track extends PhetioObject {
   public readonly droppedProperty: BooleanProperty;
   public readonly controlPoints: ControlPoint[];
   public readonly controlPointDraggingProperty: TReadOnlyProperty<boolean>;
-  public readonly parametricPosition: IntentionalAny[] | Float64Array<ArrayBuffer>;
-  public readonly x: IntentionalAny[] | Float64Array<ArrayBuffer>;
-  public readonly y: IntentionalAny[] | Float64Array<ArrayBuffer>;
+  public readonly parametricPosition: Float64Array<ArrayBuffer>;
+  public readonly x: Float64Array<ArrayBuffer>;
+  public readonly y: Float64Array<ArrayBuffer>;
 
   // Sampling points, which will be initialized and updated in updateLinSpace.  These points are evenly spaced
   // in the track parametric coordinates from just before the track parameter space to just after. See updateLinSpace
@@ -214,9 +211,9 @@ export default class Track extends PhetioObject {
       valueType: 'boolean'
     } );
 
-    this.parametricPosition = new FastArray( this.controlPoints.length );
-    this.x = new FastArray( this.controlPoints.length );
-    this.y = new FastArray( this.controlPoints.length );
+    this.parametricPosition = new Float64Array( this.controlPoints.length );
+    this.x = new Float64Array( this.controlPoints.length );
+    this.y = new Float64Array( this.controlPoints.length );
 
     this.searchLinSpace = null;
     this.distanceBetweenSamplePoints = null;

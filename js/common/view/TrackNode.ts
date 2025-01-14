@@ -26,8 +26,6 @@ import ControlPointNode from './ControlPointNode.js';
 import TrackDragHandler from './TrackDragHandler.js';
 
 // constants
-const FastArray = window.Float64Array ? window.Float64Array : window.Array;
-
 export default class TrackNode extends Node {
   private readonly isIcon: boolean;
   public readonly model: EnergySkateParkModel;
@@ -35,8 +33,8 @@ export default class TrackNode extends Node {
   private readonly centerLine: Path;
 
   // Reuse arrays to save allocations and prevent garbage collections, see #38
-  private readonly xArray: IntentionalAny[] | Float64Array<ArrayBuffer>;
-  private readonly yArray: IntentionalAny[] | Float64Array<ArrayBuffer>;
+  private readonly xArray: Float64Array<ArrayBuffer>;
+  private readonly yArray: Float64Array<ArrayBuffer>;
 
   // Store for performance
   private lastPoint: number;
@@ -104,8 +102,8 @@ export default class TrackNode extends Node {
     };
     model.stickingToTrackProperty.link( stickingToTrackListener );
 
-    this.xArray = new FastArray( track.controlPoints.length );
-    this.yArray = new FastArray( track.controlPoints.length );
+    this.xArray = new Float64Array( track.controlPoints.length );
+    this.yArray = new Float64Array( track.controlPoints.length );
 
     this.lastPoint = ( track.controlPoints.length - 1 ) / track.controlPoints.length;
 
