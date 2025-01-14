@@ -472,12 +472,10 @@ export default class EnergySkateParkModel extends PhetioObject {
     // If traveling on the ground, face in the direction of motion, see #181
     if ( this.skater.trackProperty.value === null && this.skater.positionProperty.value.y === 0 ) {
       if ( this.skater.velocityProperty.value.x > 0 ) {
-        // @ts-expect-error
-        this.skater.directionProperty.value = Skater.Direction.RIGHT;
+        this.skater.directionProperty.value = 'right';
       }
       if ( this.skater.velocityProperty.value.x < 0 ) {
-        // @ts-expect-error
-        this.skater.directionProperty.value = Skater.Direction.LEFT;
+        this.skater.directionProperty.value = 'left';
       }
       else {
         // skater wasn't moving, so don't change directions

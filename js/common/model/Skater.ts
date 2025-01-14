@@ -11,16 +11,15 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Emitter from '../../../../axon/js/Emitter.js';
-import EnumerationDeprecatedProperty from '../../../../axon/js/EnumerationDeprecatedProperty.js';
 import Multilink from '../../../../axon/js/Multilink.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import StringUnionProperty from '../../../../axon/js/StringUnionProperty.js';
 import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
-import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -83,7 +82,7 @@ export default class Skater {
 
   //  - Which way the skater is facing, right or left.  Coded as strings instead of boolean in case
   // we add other states later like 'forward'
-  public readonly directionProperty: EnumerationDeprecatedProperty;
+  public readonly directionProperty: StringUnionProperty<'left' | 'right'>;
 
   //
   public readonly velocityProperty: Vector2Property;
@@ -204,8 +203,8 @@ export default class Skater {
     } );
 
     // we add other states later like 'forward'
-    // @ts-expect-error
-    this.directionProperty = new EnumerationDeprecatedProperty( Skater.Direction, Skater.Direction.LEFT, {
+    this.directionProperty = new StringUnionProperty<'left' | 'right'>( 'left', {
+      validValues: [ 'left', 'right' ],
       tandem: tandem.createTandem( 'directionProperty' )
     } );
 
@@ -296,12 +295,10 @@ export default class Skater {
       const speedThreshold = 0.01;
 
       if ( parametricSpeed > speedThreshold ) {
-        // @ts-expect-error
-        this.directionProperty.value = this.onTopSideOfTrackProperty.value ? Skater.Direction.RIGHT : Skater.Direction.LEFT;
+        this.directionProperty.value = this.onTopSideOfTrackProperty.value ? 'right' : 'left';
       }
       else if ( parametricSpeed < -speedThreshold ) {
-        // @ts-expect-error
-        this.directionProperty.value = this.onTopSideOfTrackProperty.value ? Skater.Direction.LEFT : Skater.Direction.RIGHT;
+        this.directionProperty.value = this.onTopSideOfTrackProperty.value ? 'left' : 'right';
       }
       else {
         // Keep the same direction
@@ -509,8 +506,6 @@ export default class Skater {
     this.updateEnergy();
     this.updatedEmitter.emit();
   }
-
-  public static Direction = EnumerationDeprecated.byKeys( [ 'LEFT', 'RIGHT' ] );
 }
 
 energySkatePark.register( 'Skater', Skater );

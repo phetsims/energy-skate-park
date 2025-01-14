@@ -95,12 +95,9 @@ export default class SkaterNode extends Node {
     } );
 
     skater.directionProperty.link( direction => {
-      // @ts-expect-error
-      leftSkaterImageNode.visible = direction === Skater.Direction.LEFT;
-      // @ts-expect-error
-      rightSkaterImageNode.visible = direction === Skater.Direction.RIGHT;
+      leftSkaterImageNode.visible = direction === 'left';
+      rightSkaterImageNode.visible = direction === 'right';
     } );
-
 
     // Map from mass(kg) to the amount to scale the image
     const centerMassValue = skater.massRange.getCenter();
