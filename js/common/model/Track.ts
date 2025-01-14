@@ -22,13 +22,11 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import ArrayIO from '../../../../tandem/js/types/ArrayIO.js';
 import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
-import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
+import ReferenceIO, { ReferenceIOState } from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
-import SplineEvaluation from '../SplineEvaluation.js';
+import SplineEvaluation, { Spline } from '../SplineEvaluation.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
-
-const ControlPointReferenceIO = ReferenceIO( ControlPoint.ControlPointIO );
 
 // options for a track that is fully interactive - it can be dragged, control points can be moved, broken into
 // different tracks, and combined with another track
@@ -37,6 +35,14 @@ const FULLY_INTERACTIVE_OPTIONS = {
   configurable: true,
   splittable: true,
   attachable: true
+};
+
+type TrackState = {
+  controlPoints: Array<ReferenceIOState>;
+  draggable: boolean;
+  configurable: boolean;
+  splittable: boolean;
+  attachable: boolean;
 };
 
 type SelfOptions = {
@@ -78,7 +84,6 @@ export default class Track extends PhetioObject {
   public readonly updateEmitter = new Emitter();
   public readonly removeEmitter = new Emitter();
   public readonly forwardingDragStartEmitter = new Emitter( { parameters: [ { valueType: SceneryEvent } ] } );
-  private readonly parents: Track[];
   private readonly trackTandem: Tandem;
   public readonly model: EnergySkateParkModel;
   public readonly draggable: boolean;
@@ -112,14 +117,14 @@ export default class Track extends PhetioObject {
   public searchLinSpace: number[] | null;
   public distanceBetweenSamplePoints: null | number;
   private readonly disposeTrack: () => void;
-  public xSplineDiff: IntentionalAny;
-  public ySplineDiff: IntentionalAny;
-  public xSpline: IntentionalAny;
-  public ySpline: IntentionalAny;
-  public xSearchPoints: IntentionalAny;
-  public ySearchPoints: IntentionalAny;
-  public xSplineDiffDiff: IntentionalAny;
-  public ySplineDiffDiff: IntentionalAny;
+  public xSplineDiff: Spline | null = null;
+  public ySplineDiff: Spline | null = null;
+  public xSpline: Spline | null = null;
+  public ySpline: Spline | null = null;
+  public xSearchPoints: Float64Array | null = null;
+  public ySearchPoints: Float64Array | null = null;
+  public xSplineDiffDiff: Spline | null = null;
+  public ySplineDiffDiff: Spline | null = null;
   public minPoint!: number;
   public maxPoint!: number;
 
@@ -128,13 +133,9 @@ export default class Track extends PhetioObject {
    *
    * @param model
    * @param controlPoints
-   * @param parents the original tracks that were used to make this track (if any) so they can be
-   *        broken apart when dragged back to control panel adjusted control point from going
-   *        offscreen, see #195
    * @param [options] - required for tandem
    */
-  public constructor( model: EnergySkateParkModel, controlPoints: ControlPoint[], parents: Track[], providedOptions?: TrackOptions ) {
-    assert && assert( Array.isArray( parents ), 'parents must be array' );
+  public constructor( model: EnergySkateParkModel, controlPoints: ControlPoint[], providedOptions?: TrackOptions ) {
 
     const options = optionize<TrackOptions, SelfOptions, PhetioObjectOptions>()( {
       draggable: false,
@@ -152,7 +153,6 @@ export default class Track extends PhetioObject {
 
     const tandem = options.tandem;
 
-    this.parents = parents;
     this.trackTandem = tandem;
     this.model = model;
     this.draggable = options.draggable;
@@ -247,7 +247,6 @@ export default class Track extends PhetioObject {
 
     this.disposeTrack = () => {
       phetioStateSetEmitter.removeListener( stateListener );
-      this.parents.length = 0;
       this.physicalProperty.dispose();
       this.leftThePanelProperty.dispose();
       this.draggingProperty.dispose();
@@ -255,15 +254,6 @@ export default class Track extends PhetioObject {
       this.controlPointDraggingProperty.dispose();
 
       this.model.availableModelBoundsProperty.unlink( boundsListener );
-    };
-  }
-
-  public toStateObject(): IntentionalAny {
-    return {
-      controlPoints: this.controlPoints.map( x => ControlPointReferenceIO.toStateObject( x ) ),
-      parents: this.parents.map( x => ReferenceIO( IOType.ObjectIO ).toStateObject( x ) ),
-      draggable: this.draggable,
-      configurable: this.configurable
     };
   }
 
@@ -331,20 +321,20 @@ export default class Track extends PhetioObject {
     // Compute the spline points for purposes of getting closest points.
     // keep these points around and invalidate only when necessary
     if ( !this.xSearchPoints ) {
-      this.xSearchPoints = SplineEvaluation.atArray( this.xSpline, this.searchLinSpace! );
-      this.ySearchPoints = SplineEvaluation.atArray( this.ySpline, this.searchLinSpace! );
+      this.xSearchPoints = SplineEvaluation.atArray( this.xSpline!, this.searchLinSpace! );
+      this.ySearchPoints = SplineEvaluation.atArray( this.ySpline!, this.searchLinSpace! );
     }
 
     let bestU = 0;
     let bestDistanceSquared = Number.POSITIVE_INFINITY;
     const bestPoint = new Vector2( 0, 0 );
     for ( let i = 0; i < this.xSearchPoints.length; i++ ) {
-      const distanceSquared = point.distanceSquaredXY( this.xSearchPoints[ i ], this.ySearchPoints[ i ] );
+      const distanceSquared = point.distanceSquaredXY( this.xSearchPoints[ i ], this.ySearchPoints![ i ] );
       if ( distanceSquared < bestDistanceSquared ) {
         bestDistanceSquared = distanceSquared;
         bestU = this.searchLinSpace![ i ];
         bestPoint.x = this.xSearchPoints[ i ];
-        bestPoint.y = this.ySearchPoints[ i ];
+        bestPoint.y = this.ySearchPoints![ i ];
       }
     }
 
@@ -353,11 +343,11 @@ export default class Track extends PhetioObject {
     let topU = bestU + distanceBetweenSearchPoints / 2;
     let bottomU = bestU - distanceBetweenSearchPoints / 2;
 
-    let topX = SplineEvaluation.atNumber( this.xSpline, topU );
-    let topY = SplineEvaluation.atNumber( this.ySpline, topU );
+    let topX = SplineEvaluation.atNumber( this.xSpline!, topU );
+    let topY = SplineEvaluation.atNumber( this.ySpline!, topU );
 
-    let bottomX = SplineEvaluation.atNumber( this.xSpline, bottomU );
-    let bottomY = SplineEvaluation.atNumber( this.ySpline, bottomU );
+    let bottomX = SplineEvaluation.atNumber( this.xSpline!, bottomU );
+    let bottomY = SplineEvaluation.atNumber( this.ySpline!, bottomU );
 
     // Even at 400 binary search iterations, performance is smooth on iPad3, so this loop doesn't seem too invasive
     const maxBinarySearchIterations = 40;
@@ -368,20 +358,20 @@ export default class Track extends PhetioObject {
 
       if ( topDistanceSquared < bottomDistanceSquared ) {
         bottomU = bottomU + ( topU - bottomU ) / 4;  // move halfway up
-        bottomX = SplineEvaluation.atNumber( this.xSpline, bottomU );
-        bottomY = SplineEvaluation.atNumber( this.ySpline, bottomU );
+        bottomX = SplineEvaluation.atNumber( this.xSpline!, bottomU );
+        bottomY = SplineEvaluation.atNumber( this.ySpline!, bottomU );
         bestDistanceSquared = topDistanceSquared;
       }
       else {
         topU = topU - ( topU - bottomU ) / 4;  // move halfway down
-        topX = SplineEvaluation.atNumber( this.xSpline, topU );
-        topY = SplineEvaluation.atNumber( this.ySpline, topU );
+        topX = SplineEvaluation.atNumber( this.xSpline!, topU );
+        topY = SplineEvaluation.atNumber( this.ySpline!, topU );
         bestDistanceSquared = bottomDistanceSquared;
       }
     }
     bestU = ( topU + bottomU ) / 2;
-    bestPoint.x = SplineEvaluation.atNumber( this.xSpline, bestU );
-    bestPoint.y = SplineEvaluation.atNumber( this.ySpline, bestU );
+    bestPoint.x = SplineEvaluation.atNumber( this.xSpline!, bestU );
+    bestPoint.y = SplineEvaluation.atNumber( this.ySpline!, bestU );
 
     return { parametricPosition: bestU, point: bestPoint, distance: bestDistanceSquared };
   }
@@ -389,21 +379,21 @@ export default class Track extends PhetioObject {
   /**
    * Get x position at the parametric position.
    */
-  public getX( parametricPosition: number ): number { return SplineEvaluation.atNumber( this.xSpline, parametricPosition ); }
+  public getX( parametricPosition: number ): number { return SplineEvaluation.atNumber( this.xSpline!, parametricPosition ); }
 
   /**
    * Get y position at the parametric position.
    *
    * @param parametricPosition
    */
-  public getY( parametricPosition: number ): number { return SplineEvaluation.atNumber( this.ySpline, parametricPosition ); }
+  public getY( parametricPosition: number ): number { return SplineEvaluation.atNumber( this.ySpline!, parametricPosition ); }
 
   /**
    * Get the model position at the parametric position.
    */
   public getPoint( parametricPosition: number ): Vector2 {
-    const x = SplineEvaluation.atNumber( this.xSpline, parametricPosition );
-    const y = SplineEvaluation.atNumber( this.ySpline, parametricPosition );
+    const x = SplineEvaluation.atNumber( this.xSpline!, parametricPosition );
+    const y = SplineEvaluation.atNumber( this.ySpline!, parametricPosition );
     return new Vector2( x, y );
   }
 
@@ -458,10 +448,10 @@ export default class Track extends PhetioObject {
    */
   public getViewAngleAt( parametricPosition: number ): number {
     if ( this.xSplineDiff === null ) {
-      this.xSplineDiff = this.xSpline.diff();
-      this.ySplineDiff = this.ySpline.diff();
+      this.xSplineDiff = this.xSpline!.diff();
+      this.ySplineDiff = this.ySpline!.diff();
     }
-    return Math.atan2( -SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition ), SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ) );
+    return Math.atan2( -SplineEvaluation.atNumber( this.ySplineDiff!, parametricPosition ), SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ) );
   }
 
   /**
@@ -471,10 +461,10 @@ export default class Track extends PhetioObject {
 
     // load xSplineDiff, ySplineDiff here if not already loaded
     if ( this.xSplineDiff === null ) {
-      this.xSplineDiff = this.xSpline.diff();
-      this.ySplineDiff = this.ySpline.diff();
+      this.xSplineDiff = this.xSpline!.diff();
+      this.ySplineDiff = this.ySpline!.diff();
     }
-    return Math.atan2( SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition ), SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ) );
+    return Math.atan2( SplineEvaluation.atNumber( this.ySplineDiff!, parametricPosition ), SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ) );
   }
 
   /**
@@ -484,10 +474,10 @@ export default class Track extends PhetioObject {
 
     // load xSplineDiff, ySplineDiff here if not already loaded
     if ( this.xSplineDiff === null ) {
-      this.xSplineDiff = this.xSpline.diff();
-      this.ySplineDiff = this.ySpline.diff();
+      this.xSplineDiff = this.xSpline!.diff();
+      this.ySplineDiff = this.ySpline!.diff();
     }
-    return new Vector2( -SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition ), SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ) ).normalize();
+    return new Vector2( -SplineEvaluation.atNumber( this.ySplineDiff!, parametricPosition ), SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ) ).normalize();
   }
 
   /**
@@ -497,10 +487,10 @@ export default class Track extends PhetioObject {
 
     // load xSplineDiff, ySplineDiff here if not already loaded
     if ( this.xSplineDiff === null ) {
-      this.xSplineDiff = this.xSpline.diff();
-      this.ySplineDiff = this.ySpline.diff();
+      this.xSplineDiff = this.xSpline!.diff();
+      this.ySplineDiff = this.ySpline!.diff();
     }
-    return new Vector2( SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ), SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition ) ).normalize();
+    return new Vector2( SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition ), SplineEvaluation.atNumber( this.ySplineDiff!, parametricPosition ) ).normalize();
   }
 
   /**
@@ -623,31 +613,6 @@ export default class Track extends PhetioObject {
   }
 
   /**
-   * Returns an array which contains all of the Tracks that would need to be reset if this Track was reset.
-   */
-  public getParentsOrSelf(): Track[] {
-    return this.parents.length > 0 ? this.parents : [ this ];
-  }
-
-  /**
-   * Return this track to its control panel by resetting it to its initial state.
-   */
-  public returnToControlPanel(): void {
-    if ( this.parents.length > 0 ) {
-      this.model.removeAndDisposeTrack( this );
-
-      for ( let i = 0; i < this.parents.length; i++ ) {
-        const parent = this.parents[ i ];
-        parent.reset();
-        this.model.tracks.add( parent );
-      }
-    }
-    else {
-      this.reset();
-    }
-  }
-
-  /**
    * Returns the arc length (in meters) between two points on a parametric curve.
    * This function is at the heart of many nested loops, so it must be heavily optimized
    */
@@ -663,13 +628,13 @@ export default class Track extends PhetioObject {
     // performance at the cost of numerical precision
     const numSegments = 4;
     const da = ( u1 - u0 ) / ( numSegments - 1 );
-    let prevX = SplineEvaluation.atNumber( this.xSpline, u0 );
-    let prevY = SplineEvaluation.atNumber( this.ySpline, u0 );
+    let prevX = SplineEvaluation.atNumber( this.xSpline!, u0 );
+    let prevY = SplineEvaluation.atNumber( this.ySpline!, u0 );
     let sum = 0;
     for ( let i = 1; i < numSegments; i++ ) {
       const a = u0 + i * da;
-      const ptX = SplineEvaluation.atNumber( this.xSpline, a );
-      const ptY = SplineEvaluation.atNumber( this.ySpline, a );
+      const ptX = SplineEvaluation.atNumber( this.xSpline!, a );
+      const ptY = SplineEvaluation.atNumber( this.ySpline!, a );
 
       const dx = prevX - ptX;
       const dy = prevY - ptY;
@@ -727,19 +692,19 @@ export default class Track extends PhetioObject {
   public getCurvature( parametricPosition: number, curvature: IntentionalAny ): void {
 
     if ( this.xSplineDiff === null ) {
-      this.xSplineDiff = this.xSpline.diff();
-      this.ySplineDiff = this.ySpline.diff();
+      this.xSplineDiff = this.xSpline!.diff();
+      this.ySplineDiff = this.ySpline!.diff();
     }
 
     if ( this.xSplineDiffDiff === null ) {
       this.xSplineDiffDiff = this.xSplineDiff.diff();
-      this.ySplineDiffDiff = this.ySplineDiff.diff();
+      this.ySplineDiffDiff = this.ySplineDiff!.diff();
     }
 
     const xP = SplineEvaluation.atNumber( this.xSplineDiff, parametricPosition );
     const xPP = SplineEvaluation.atNumber( this.xSplineDiffDiff, parametricPosition );
-    const yP = SplineEvaluation.atNumber( this.ySplineDiff, parametricPosition );
-    const yPP = SplineEvaluation.atNumber( this.ySplineDiffDiff, parametricPosition );
+    const yP = SplineEvaluation.atNumber( this.ySplineDiff!, parametricPosition );
+    const yPP = SplineEvaluation.atNumber( this.ySplineDiffDiff!, parametricPosition );
 
     const k = ( xP * yPP - yP * xPP ) /
               Math.pow( ( xP * xP + yP * yP ), 3 / 2 );
@@ -763,15 +728,15 @@ export default class Track extends PhetioObject {
    */
   public getLowestY(): number {
     if ( !this.xSearchPoints ) {
-      this.xSearchPoints = SplineEvaluation.atArray( this.xSpline, this.searchLinSpace! );
-      this.ySearchPoints = SplineEvaluation.atArray( this.ySpline, this.searchLinSpace! );
+      this.xSearchPoints = SplineEvaluation.atArray( this.xSpline!, this.searchLinSpace! );
+      this.ySearchPoints = SplineEvaluation.atArray( this.ySpline!, this.searchLinSpace! );
     }
 
     let min = Number.POSITIVE_INFINITY;
     let minIndex = -1;
     let y;
-    for ( let i = 0; i < this.ySearchPoints.length; i++ ) {
-      y = this.ySearchPoints[ i ];
+    for ( let i = 0; i < this.ySearchPoints!.length; i++ ) {
+      y = this.ySearchPoints![ i ];
       if ( y < min ) {
         min = y;
         minIndex = i;
@@ -786,7 +751,7 @@ export default class Track extends PhetioObject {
 
     // @ts-expect-error
     const smallerSpace = numeric.linspace( minBound, maxBound, 200 );
-    const refinedSearchPoints = SplineEvaluation.atArray( this.ySpline, smallerSpace );
+    const refinedSearchPoints = SplineEvaluation.atArray( this.ySpline!, smallerSpace );
 
     min = Number.POSITIVE_INFINITY;
     for ( let i = 0; i < refinedSearchPoints.length; i++ ) {
@@ -1082,29 +1047,25 @@ export default class Track extends PhetioObject {
   }
 
   public static readonly FULLY_INTERACTIVE_OPTIONS = FULLY_INTERACTIVE_OPTIONS;
-  public static readonly TrackIO = new IOType( 'TrackIO', {
+  public static readonly TrackIO = new IOType<Track, TrackState>( 'TrackIO', {
     valueType: Track,
     documentation: 'A skate track',
-    toStateObject: track => track.toStateObject(),
     stateObjectToCreateElementArguments: stateObject => {
 
-      // @ts-expect-error
-      const controlPoints = stateObject.controlPoints.map( x => ControlPointReferenceIO.fromStateObject( x ) );
+      const controlPoints = stateObject.controlPoints.map( x => ReferenceIO( ControlPoint.ControlPointIO ).fromStateObject( x ) );
 
-      // debugger;
-      // @ts-expect-error
-      const parents = stateObject.parents.map( x => Track.TrackIO.fromStateObject( x ) );
-      return [ controlPoints, parents, {
+      return [ controlPoints, {
         draggable: stateObject.draggable,
         configurable: stateObject.configurable
       } ];
     },
-    stateSchema: TrackIO => ( {
-      controlPoints: ArrayIO( ControlPointReferenceIO ),
-      parents: ArrayIO( TrackIO ),
+    stateSchema: {
+      controlPoints: ArrayIO( ReferenceIO( ControlPoint.ControlPointIO ) ),
       draggable: BooleanIO,
-      configurable: BooleanIO
-    } )
+      configurable: BooleanIO,
+      splittable: BooleanIO,
+      attachable: BooleanIO
+    }
   } );
 }
 

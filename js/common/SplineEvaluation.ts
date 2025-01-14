@@ -9,12 +9,14 @@
 
 import energySkatePark from '../energySkatePark.js';
 
-type Spline = {
+// https://github.com/sloisel/numeric/blob/master/src/numeric.js#L2423
+export type Spline = {
   x: number[];
   yl: number[];
   yr: number[];
   kl: number[];
   kr: number[];
+  diff(): Spline;
 };
 
 // The most important function for this sim in numeric.js is just too slow because it uses tensor versions of all functions.

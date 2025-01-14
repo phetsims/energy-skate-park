@@ -23,7 +23,7 @@ export default class DebugTracks {
   public static init( model: EnergySkateParkModel ): void {
 
     const createPoint = ( x: number, y: number ) => model.controlPointGroup.createNextElement( x, y, {} );
-    const createTrack = ( controlPoints: ControlPoint[], options: TrackOptions = {} ) => model.trackGroup.createNextElement( controlPoints, [], options );
+    const createTrack = ( controlPoints: ControlPoint[], options: TrackOptions = {} ) => model.trackGroup.createNextElement( controlPoints, options );
     // Tracks to help demonstrate issues
 
     let controlPoints = null;

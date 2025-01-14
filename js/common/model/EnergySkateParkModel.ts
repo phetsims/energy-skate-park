@@ -121,7 +121,7 @@ export default class EnergySkateParkModel extends PhetioObject {
   // TODO: https://github.com/phetsims/energy-skate-park/issues/123 the control point group doesn't have enough archetypes to
   // TODO: create an archetype track, https://github.com/phetsims/energy-skate-park/issues/123
   // group of tracks
-  public readonly trackGroup: PhetioGroup<Track, [ ControlPoint[], Track[], TrackOptions ]>;
+  public readonly trackGroup: PhetioGroup<Track, [ ControlPoint[], TrackOptions ]>;
 
   // Temporary flag that keeps track of whether the track was changed in the step before the physics
   // update. True if the skater's track is being dragged by the user, so that energy conservation no longer applies.
@@ -229,13 +229,13 @@ export default class EnergySkateParkModel extends PhetioObject {
       phetioDynamicElementName: 'controlPoint'
     } );
 
-    this.trackGroup = new PhetioGroup<Track, [ ControlPoint[], Track[], TrackOptions ]>( ( tandem, controlPoints, parents, options ) => {
+    this.trackGroup = new PhetioGroup<Track, [ ControlPoint[], TrackOptions ]>( ( tandem, controlPoints, options ) => {
       assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
-      return new Track( this, controlPoints, parents, merge( {}, options, {
+      return new Track( this, controlPoints, merge( {}, options, {
         tandem: tandem,
         phetioDynamicElement: true
       } ) );
-    }, [ _.range( 20 ).map( n => this.controlPointGroup.createNextElement( n * 100, 0, {} ) ), [], {
+    }, [ _.range( 20 ).map( n => this.controlPointGroup.createNextElement( n * 100, 0, {} ) ), {
       draggable: true,
       configurable: true
     } ], {
@@ -1550,7 +1550,7 @@ export default class EnergySkateParkModel extends PhetioObject {
       const controlPointToDelete = track.controlPoints[ controlPointIndex ];
       const points = _.without( track.controlPoints, controlPointToDelete );
       this.controlPointGroup.disposeElement( controlPointToDelete );
-      const newTrack = this.trackGroup.createNextElement( points, track.getParentsOrSelf(), Track.FULLY_INTERACTIVE_OPTIONS );
+      const newTrack = this.trackGroup.createNextElement( points, Track.FULLY_INTERACTIVE_OPTIONS );
       newTrack.physicalProperty.value = true;
       newTrack.droppedProperty.value = true;
 
@@ -1605,10 +1605,10 @@ export default class EnergySkateParkModel extends PhetioObject {
     points1.push( newPoint1 );
     points2.unshift( newPoint2 );
 
-    const newTrack1 = this.trackGroup.createNextElement( points1, track.getParentsOrSelf(), Track.FULLY_INTERACTIVE_OPTIONS );
+    const newTrack1 = this.trackGroup.createNextElement( points1, Track.FULLY_INTERACTIVE_OPTIONS );
     newTrack1.physicalProperty.value = true;
     newTrack1.droppedProperty.value = true;
-    const newTrack2 = this.trackGroup.createNextElement( points2, track.getParentsOrSelf(), Track.FULLY_INTERACTIVE_OPTIONS );
+    const newTrack2 = this.trackGroup.createNextElement( points2, Track.FULLY_INTERACTIVE_OPTIONS );
     newTrack2.physicalProperty.value = true;
     newTrack2.droppedProperty.value = true;
 
@@ -1699,7 +1699,7 @@ export default class EnergySkateParkModel extends PhetioObject {
       secondTrackBackward();
     }
 
-    const newTrack = this.trackGroup.createNextElement( points, a.getParentsOrSelf().concat( b.getParentsOrSelf() ), Track.FULLY_INTERACTIVE_OPTIONS );
+    const newTrack = this.trackGroup.createNextElement( points, Track.FULLY_INTERACTIVE_OPTIONS );
     newTrack.physicalProperty.value = true;
     newTrack.droppedProperty.value = true;
 

@@ -218,8 +218,8 @@ export default class TrackNode extends Node {
     }
 
     // Compute points for lineTo
-    const xPoints = SplineEvaluation.atArray( track.xSpline, this.linSpace );
-    const yPoints = SplineEvaluation.atArray( track.ySpline, this.linSpace );
+    const xPoints = SplineEvaluation.atArray( track.xSpline!, this.linSpace );
+    const yPoints = SplineEvaluation.atArray( track.ySpline!, this.linSpace );
 
     const tx = this.getTranslation();
     const shape = new Shape().moveTo(

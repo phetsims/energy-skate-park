@@ -56,7 +56,7 @@ export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel
       this.controlPointGroup.createNextElement( 1, 0, options.controlPointOptions )
     ];
 
-    return this.trackGroup.createNextElement( controlPoints, [], merge(
+    return this.trackGroup.createNextElement( controlPoints, merge(
         {},
         Track.FULLY_INTERACTIVE_OPTIONS,
         options.trackOptions

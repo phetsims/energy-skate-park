@@ -21,9 +21,6 @@ import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 import Track from './Track.js';
 
-// constants
-const PARENT_TRACKS: Track[] = [];
-
 // limiting bounds for dragging control points
 const END_BOUNDS_WIDTH = 2.5;
 const END_BOUNDS_HEIGHT = 4;
@@ -298,7 +295,7 @@ const PremadeTracks = {
    * Create a track from the provided control points.
    */
   createTrack( model: EnergySkateParkModel, controlPoints: ControlPoint[], options: IntentionalAny ): Track {
-    return new Track( model, controlPoints, PARENT_TRACKS, options );
+    return new Track( model, controlPoints, options );
   },
 
   TrackType: TrackType as IntentionalAny
