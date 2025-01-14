@@ -11,16 +11,24 @@
 import Emitter from '../../../../axon/js/Emitter.js';
 import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
 import Property from '../../../../axon/js/Property.js';
-import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { Node, Text } from '../../../../scenery/js/imports.js';
-import ComboBox from '../../../../sun/js/ComboBox.js';
+import ComboBox, { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+
+type SelfOptions = {
+  // whether or not the physicalProperty can be set to something other than the entries defined
+  // in labelValueList
+  supportCustom?: boolean;
+};
+
+type PhysicalComboBoxOptions = SelfOptions & ComboBoxOptions;
 
 // constants
 const controlsGravityCustomStringProperty = EnergySkateParkStrings.physicalControls.customStringProperty;
@@ -36,18 +44,18 @@ export default class PhysicalComboBox extends ComboBox<IntentionalAny> {
    * @param tandem
    * @param [options]
    */
-  public constructor( physicalProperty: PhetioProperty<IntentionalAny>, userControlledProperty: Property<boolean>, labelValueList: Array<IntentionalAny>, resetEmitter: Emitter, listParent: Node, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( physicalProperty: PhetioProperty<IntentionalAny>, userControlledProperty: Property<boolean>, labelValueList: Array<IntentionalAny>, resetEmitter: Emitter, listParent: Node, tandem: Tandem, providedOptions?: PhysicalComboBoxOptions ) {
     assert && assert( _.find( labelValueList, entry => entry.value === null ) === undefined, 'PhysicalComboBox adds "Custom" item' );
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {boolean} whether or not the physicalProperty can be set to something other than the entries defined
-      // in labelValueList
+    const options = optionize<PhysicalComboBoxOptions, SelfOptions, ComboBoxOptions>()( {
       supportCustom: true,
+      tandem: tandem,
 
-      tandem: tandem
-    }, EnergySkateParkConstants.COMBO_BOX_OPTIONS, options );
+      // Duplicated with EnergySkateParkConstants.COMBO_BOX_OPTIONS
+      xMargin: 10,
+      yMargin: 6,
+      cornerRadius: EnergySkateParkConstants.PANEL_CORNER_RADIUS
+    }, providedOptions );
 
     // {[].ComboBoxItem}
     const itemList = [];
