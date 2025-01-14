@@ -15,7 +15,6 @@ import Range from '../../../../dot/js/Range.js';
 import BarChartNode from '../../../../griddle/js/BarChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import MoveToTrashLegendButton from '../../../../scenery-phet/js/buttons/MoveToTrashLegendButton.js';
 import ZoomButton from '../../../../scenery-phet/js/buttons/ZoomButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
@@ -237,12 +236,7 @@ export default class EnergyBarGraph extends Node {
   /**
    * Create an icon of the bar graph, to be used in visibility or other controls.
    */
-  public static createBarGraphIcon( tandem: Tandem, options?: IntentionalAny ): Node {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-      scale: 1
-    }, options );
-
+  public static createBarGraphIcon( tandem: Tandem ): Node {
     return new Node( {
       tandem: tandem,
       children: [
@@ -257,9 +251,7 @@ export default class EnergyBarGraph extends Node {
           stroke: 'black',
           lineWidth: 0.5
         } )
-      ],
-
-      scale: options.scale
+      ]
     } );
   }
 }
