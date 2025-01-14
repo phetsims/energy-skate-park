@@ -80,30 +80,22 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model, merge( {
           trackMidHeight: 1
         }, controlPointOptions ) );
-        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints, {
-          tandem: tandem.createTandem( 'parabolaTrackIcon' )
-        } );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints );
       }
       else if ( trackType === PremadeTracks.TrackType.SLOPE ) {
         const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model, controlPointOptions );
-        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints, {
-          tandem: tandem.createTandem( 'slopeTrackIcon' )
-        } );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints );
       }
       else if ( trackType === PremadeTracks.TrackType.DOUBLE_WELL ) {
         const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model, controlPointOptions );
-        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, doubleWellControlPoints, {
-          tandem: tandem.createTandem( 'doubleWellTrackIcon' )
-        } );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, doubleWellControlPoints );
       }
       else if ( trackType === PremadeTracks.TrackType.LOOP ) {
         const loopControlPoints = PremadeTracks.createLoopControlPoints( model, merge( {
           innerLoopWidth: 2.5,
           innerLoopTop: 3.5
         }, controlPointOptions ) );
-        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, loopControlPoints, {
-          tandem: tandem.createTandem( 'loopTrackIcon' )
-        } );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, loopControlPoints );
       }
       else {
         throw new Error( `unsupported TrackType: ${trackType}` );

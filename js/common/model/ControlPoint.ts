@@ -72,6 +72,9 @@ export default class ControlPoint extends PhetioObject {
     }, providedOptions );
     const tandem = options.tandem;
 
+    // ControlPoints are always stateful, see https://github.com/phetsims/energy-skate-park/issues/385
+    options.phetioState = true;
+
     super( options );
 
     this.limitBounds = options.limitBounds;

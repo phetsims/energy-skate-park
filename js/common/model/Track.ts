@@ -14,8 +14,10 @@ import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import StrictOmit from '../../../../phet-core/js/types/StrictOmit.js';
 import { DragListener, SceneryEvent } from '../../../../scenery/js/imports.js';
+import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import ArrayIO from '../../../../tandem/js/types/ArrayIO.js';
@@ -26,7 +28,6 @@ import energySkatePark from '../../energySkatePark.js';
 import SplineEvaluation from '../SplineEvaluation.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 
 // constants
 const FastArray = window.Float64Array ? window.Float64Array : window.Array;
@@ -65,7 +66,7 @@ type SelfOptions = {
   slopeToGround?: boolean;
 };
 
-type TrackOptions = SelfOptions & PhetioObjectOptions;
+type TrackOptions = SelfOptions & StrictOmit<PhetioObjectOptions, 'phetioState'>;
 
 export default class Track extends PhetioObject {
 
@@ -144,6 +145,7 @@ export default class Track extends PhetioObject {
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
     }, providedOptions );
 
+    options.phetioState = options.configurable || options.attachable || options.splittable;
     super( options );
 
     const tandem = options.tandem;
@@ -258,7 +260,7 @@ export default class Track extends PhetioObject {
   public toStateObject(): IntentionalAny {
     return {
       controlPoints: this.controlPoints.map( x => ControlPointReferenceIO.toStateObject( x ) ),
-      parents: this.parents.map( x => Track.TrackIO.toStateObject( x ) ),
+      parents: this.parents.map( x => ReferenceIO( IOType.ObjectIO ).toStateObject( x ) ),
       draggable: this.draggable,
       configurable: this.configurable
     };
@@ -1088,6 +1090,7 @@ export default class Track extends PhetioObject {
       // @ts-expect-error
       const controlPoints = stateObject.controlPoints.map( x => ControlPointReferenceIO.fromStateObject( x ) );
 
+      // debugger;
       // @ts-expect-error
       const parents = stateObject.parents.map( x => Track.TrackIO.fromStateObject( x ) );
       return [ controlPoints, parents, {

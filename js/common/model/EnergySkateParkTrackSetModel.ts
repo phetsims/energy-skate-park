@@ -191,7 +191,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
     this.updateActiveTrack( this.sceneProperty.get() );
   }
 
-  public static createPremadeTrack( model: IntentionalAny, controlPoints: ControlPoint[], options: IntentionalAny ): Track {
+  public static createPremadeTrack( model: IntentionalAny, controlPoints: ControlPoint[], options?: IntentionalAny ): Track {
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       configurable: model.tracksConfigurable,
