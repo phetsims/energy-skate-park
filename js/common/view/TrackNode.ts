@@ -221,23 +221,22 @@ export default class TrackNode extends Node {
     const xPoints = SplineEvaluation.atArray( track.xSpline!, this.linSpace );
     const yPoints = SplineEvaluation.atArray( track.ySpline!, this.linSpace );
 
-    const tx = this.getTranslation();
     const shape = new Shape().moveTo(
-      this.modelViewTransform.modelToViewX( xPoints[ 0 ] ) - tx.x,
-      this.modelViewTransform.modelToViewY( yPoints[ 0 ] ) - tx.y
+      this.modelViewTransform.modelToViewX( xPoints[ 0 ] ),
+      this.modelViewTransform.modelToViewY( yPoints[ 0 ] )
     );
 
     // Show the track at reduced resolution while dragging so it will be smooth and responsive while dragging
     // (whether updating the entire track, some of the control points or both)
     const delta = track.draggingProperty.value ? 3 : 1;
     for ( i = 1; i < xPoints.length; i = i + delta ) {
-      shape.lineTo( this.modelViewTransform.modelToViewX( xPoints[ i ] ) - tx.x, this.modelViewTransform.modelToViewY( yPoints[ i ] ) - tx.y );
+      shape.lineTo( this.modelViewTransform.modelToViewX( xPoints[ i ] ), this.modelViewTransform.modelToViewY( yPoints[ i ] ) );
     }
 
     // If at reduced resolution, still make sure we draw to the end point
     if ( i !== xPoints.length - 1 ) {
       i = xPoints.length - 1;
-      shape.lineTo( this.modelViewTransform.modelToViewX( xPoints[ i ] ) - tx.x, this.modelViewTransform.modelToViewY( yPoints[ i ] ) - tx.y );
+      shape.lineTo( this.modelViewTransform.modelToViewX( xPoints[ i ] ), this.modelViewTransform.modelToViewY( yPoints[ i ] ) );
     }
 
     const strokeStyles = new LineStyles( {
