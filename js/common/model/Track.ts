@@ -15,7 +15,6 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
-import StrictOmit from '../../../../phet-core/js/types/StrictOmit.js';
 import { DragListener, SceneryEvent } from '../../../../scenery/js/imports.js';
 import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
@@ -63,7 +62,7 @@ type SelfOptions = {
   slopeToGround?: boolean;
 };
 
-export type TrackOptions = SelfOptions & StrictOmit<PhetioObjectOptions, 'phetioState'>;
+export type TrackOptions = SelfOptions & PhetioObjectOptions;
 
 export type Curvature = {
   r: number;

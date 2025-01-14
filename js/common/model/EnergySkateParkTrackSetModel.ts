@@ -8,7 +8,7 @@
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import merge from '../../../../phet-core/js/merge.js';
-import optionize from '../../../../phet-core/js/optionize.js';
+import optionize, { combineOptions } from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -17,7 +17,7 @@ import ControlPoint from './ControlPoint.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
 import EnergySkateParkSaveSampleModel, { EnergySkateParkSaveSampleModelOptions } from './EnergySkateParkSaveSampleModel.js';
 import PremadeTracks from './PremadeTracks.js';
-import Track from './Track.js';
+import Track, { TrackOptions } from './Track.js';
 
 type SelfOptions = {
   trackTypes?: IntentionalAny[];
@@ -198,9 +198,8 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
     this.updateActiveTrack( this.sceneProperty.get() );
   }
 
-  public static createPremadeTrack( model: IntentionalAny, controlPoints: ControlPoint[], options?: IntentionalAny ): Track {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+  public static createPremadeTrack( model: IntentionalAny, controlPoints: ControlPoint[], options?: TrackOptions ): Track {
+    options = combineOptions<TrackOptions>( {
       configurable: model.tracksConfigurable,
       phetioState: false
     }, options );
