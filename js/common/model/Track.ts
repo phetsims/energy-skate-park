@@ -84,7 +84,6 @@ export default class Track extends PhetioObject {
   public readonly updateEmitter = new Emitter();
   public readonly removeEmitter = new Emitter();
   public readonly forwardingDragStartEmitter = new Emitter( { parameters: [ { valueType: SceneryEvent } ] } );
-  private readonly trackTandem: Tandem;
   public readonly model: EnergySkateParkModel;
   public readonly draggable: boolean;
   public readonly splittable: boolean;
@@ -153,7 +152,6 @@ export default class Track extends PhetioObject {
 
     const tandem = options.tandem;
 
-    this.trackTandem = tandem;
     this.model = model;
     this.draggable = options.draggable;
     this.configurable = options.configurable;
