@@ -24,10 +24,8 @@ export default class GravitySlider extends PhysicalSlider {
       new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) ),
       userControlledProperty,
       tandem, {
-        minLabel: EnergySkateParkStrings.physicalControls.tinyStringProperty,
+        minLabelProperty: EnergySkateParkStrings.physicalControls.tinyStringProperty,
         sliderOptions: {
-
-          // @ts-expect-error
           constrainValue: value => Utils.roundToInterval( value, 1 )
         }
       } );

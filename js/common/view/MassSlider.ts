@@ -20,11 +20,9 @@ export default class MassSlider extends PhysicalSlider {
   public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, massRange: Range, tandem: Tandem ) {
 
     super( EnergySkateParkStrings.physicalControls.massControls.massStringProperty, property, massRange, userControlledProperty, tandem, {
-      minLabel: EnergySkateParkStrings.physicalControls.smallStringProperty,
-      maxLabel: EnergySkateParkStrings.physicalControls.largeStringProperty,
+      minLabelProperty: EnergySkateParkStrings.physicalControls.smallStringProperty,
+      maxLabelProperty: EnergySkateParkStrings.physicalControls.largeStringProperty,
       sliderOptions: {
-
-        // @ts-expect-error
         constrainValue: value => Utils.roundToInterval( value, 5 )
       }
     } );

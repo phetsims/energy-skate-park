@@ -24,9 +24,7 @@ export default class MassNumberControl extends PhysicalNumberControl {
         valuePattern: EnergySkateParkStrings.physicalControls.massControls.massKilogramsPatternStringProperty
       },
       sliderOptions: {
-
         // round to nearest 5 kg, as requested by design team
-        // @ts-expect-error
         constrainValue: value => Utils.roundToInterval( value, 5 )
       }
     } );

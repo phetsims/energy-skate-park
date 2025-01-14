@@ -13,30 +13,38 @@ import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
 import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import { Text } from '../../../../scenery/js/imports.js';
+import { SliderOptions } from '../../../../sun/js/Slider.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
-import PhysicalNumberControl from './PhysicalNumberControl.js';
+import PhysicalNumberControl, { PhysicalNumberControlOptions } from './PhysicalNumberControl.js';
 
 const controlsValueLotsStringProperty = EnergySkateParkStrings.physicalControls.lotsStringProperty;
 const controlsValueNoneStringProperty = EnergySkateParkStrings.physicalControls.noneStringProperty;
 
+type SelfOptions = {
+  // labels for the min and max values of this control
+  maxLabelProperty?: TReadOnlyProperty<string>;
+  minLabelProperty?: TReadOnlyProperty<string>;
+
+  // passed to the Slider of this NumberControl
+  sliderOptions?: SliderOptions;
+};
+
+type PhysicalSliderOptions = SelfOptions & PhysicalNumberControlOptions;
+
 export default class PhysicalSlider extends PhysicalNumberControl {
 
-  public constructor( titleString: TReadOnlyProperty<string>, property: PhetioProperty<number>, valueRange: Range, userControlledProperty: PhetioProperty<boolean>, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( titleString: TReadOnlyProperty<string>, property: PhetioProperty<number>, valueRange: Range, userControlledProperty: PhetioProperty<boolean>, tandem: Tandem, providedOptions?: PhysicalSliderOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-      // {string} - labels for the min and max values of this control
-      maxLabel: controlsValueLotsStringProperty,
-      minLabel: controlsValueNoneStringProperty,
-
-      // {*} - passed to the Slider of this NumberControl
+    const options = optionize<PhysicalSliderOptions, SelfOptions>()( {
+      maxLabelProperty: controlsValueLotsStringProperty,
+      minLabelProperty: controlsValueNoneStringProperty,
       sliderOptions: {}
-    }, options );
+    }, providedOptions );
 
     // don't include any arrow buttons or the NumberDisplay for this control
     assert && assert( options.sliderOnly === undefined, 'The PhysicalSlider sets sliderOnly option' );
@@ -44,8 +52,8 @@ export default class PhysicalSlider extends PhysicalNumberControl {
 
     assert && assert( options.sliderOptions.majorTicks === undefined, 'The PhysicalSlider sets its own major ticks' );
     options.sliderOptions.majorTicks = [
-      createTickEntry( valueRange.min, options.minLabel, tandem, 'minLabelText' ),
-      createTickEntry( valueRange.max, options.maxLabel, tandem, 'maxLabelText' )
+      createTickEntry( valueRange.min, options.minLabelProperty, tandem, 'minLabelText' ),
+      createTickEntry( valueRange.max, options.maxLabelProperty, tandem, 'maxLabelText' )
     ];
 
     // @ts-expect-error

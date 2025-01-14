@@ -12,8 +12,9 @@ import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
-import NumberControl from '../../../../scenery-phet/js/NumberControl.js';
+import NumberControl, { NumberControlOptions } from '../../../../scenery-phet/js/NumberControl.js';
 import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import { Node, Text } from '../../../../scenery/js/imports.js';
@@ -23,47 +24,51 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
+type SelfOptions = {
+  // decimal places for the ticks and (by default) the NumberControl's NumberDisplay
+  decimalPlaces?: number;
+
+  // if true, the tweaker buttons and number display will be hidden (but rest of NumberControl title
+  // and layout will be preserved)
+  sliderOnly?: boolean;
+
+  // passed to the Slider of NumberControl
+  sliderOptions?: IntentionalAny | null;
+
+  // passed to the NumberDisplay of NumberControl
+  numberDisplayOptions?: IntentionalAny;
+};
+
+export type PhysicalNumberControlOptions = SelfOptions & NumberControlOptions;
+
 export default class PhysicalNumberControl extends NumberControl {
 
-  public constructor( titleString: TReadOnlyProperty<string>, property: NumberProperty, valueRange: Range, userControlledProperty: BooleanProperty, tandem: Tandem, options?: IntentionalAny ) {
-    options = options || {};
-    assert && assert( options.layoutFunction === undefined, 'PhysicalNumberControl sets layoutFunction' );
-    assert && assert( options.tandem === undefined, 'PhysicalNumberControl shouldn\'t set tandem in options' );
-    assert && assert( options.arrowButtonOptions === undefined, 'PhysicalNumberControl sets arrowButtonOptions' );
-    assert && assert( options.titleFont === undefined, 'PhysicalNumberControl sets title font' );
+  public constructor( titleString: TReadOnlyProperty<string>, property: NumberProperty, valueRange: Range, userControlledProperty: BooleanProperty, tandem: Tandem, providedOptions?: PhysicalNumberControlOptions ) {
+    providedOptions = providedOptions || {};
+    assert && assert( providedOptions.layoutFunction === undefined, 'PhysicalNumberControl sets layoutFunction' );
+    assert && assert( providedOptions.tandem === undefined, 'PhysicalNumberControl shouldn\'t set tandem in options' );
+    assert && assert( providedOptions.arrowButtonOptions === undefined, 'PhysicalNumberControl sets arrowButtonOptions' );
 
-    if ( options.numberDisplayOptions ) {
-      if ( options.numberDisplayOptions.textOptions ) {
-        assert && assert( options.numberDisplayOptions.textOptions.font === undefined, 'PhysicalNumberControl sets font' );
+    if ( providedOptions.numberDisplayOptions ) {
+      if ( providedOptions.numberDisplayOptions.textOptions ) {
+        assert && assert( providedOptions.numberDisplayOptions.textOptions.font === undefined, 'PhysicalNumberControl sets font' );
       }
-      assert && assert( options.numberDisplayOptions.xMargin === undefined, 'PhysicalNumberControl sets xMargin' );
-      assert && assert( options.numberDisplayOptions.yMargin === undefined, 'PhysicalNumberControl sets yMargin' );
+      assert && assert( providedOptions.numberDisplayOptions.xMargin === undefined, 'PhysicalNumberControl sets xMargin' );
+      assert && assert( providedOptions.numberDisplayOptions.yMargin === undefined, 'PhysicalNumberControl sets yMargin' );
     }
 
-    // slider options are passed directly to the Slider in NumberControl
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // decimal places for the ticks and (by default) the NumberControl's NumberDisplay
+    const options = optionize<PhysicalNumberControlOptions, SelfOptions, NumberControlOptions>()( {
       decimalPlaces: 0,
-
       startCallback: () => {
         userControlledProperty.set( true );
       },
       endCallback: () => {
         userControlledProperty.set( false );
       },
-
-      // {boolean} - if true, the tweaker buttons and number display will be hidden (but rest of NumberControl title
-      // and layout will be preserved)
       sliderOnly: false,
-
-      // {*|null} - passed to the Slider of NumberControl, extended below
-      sliderOptions: null,
-
-      // {*|null} - passed to the NumberDisplay of NumberControl, extended below
-      numberDisplayOptions: null
-    }, options );
+      sliderOptions: undefined,
+      numberDisplayOptions: undefined
+    }, providedOptions );
 
     options.sliderOptions = merge( {
       majorTicks: [
