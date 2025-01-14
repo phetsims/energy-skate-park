@@ -15,8 +15,9 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import LocalizedStringProperty from '../../../../chipper/js/browser/LocalizedStringProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
-import { AlignGroup, HBox, Node, Text, VBox } from '../../../../scenery/js/imports.js';
+import { AlignGroup, HBox, Node, Text, VBox, VBoxOptions } from '../../../../scenery/js/imports.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
@@ -39,6 +40,26 @@ const TEXT_OPTIONS = {
 
 const CHECKBOX_SPACING = 6; // spacing between checkbox and its icon content
 
+type SelfOptions = {
+  // whether or not Checkboxes for these Properties are included in the controls
+  showPieChartCheckbox?: boolean;
+  showGridCheckbox?: boolean;
+  showSpeedCheckbox?: boolean;
+  showReferenceHeightCheckbox?: boolean;
+  showSkaterPathCheckbox?: boolean;
+  showStickToTrackCheckbox?: boolean;
+
+  // if specified, the desired width for all checkboxes and icons so that the control can be aligned
+  // with other items in a control panel. This will be used to calculate the spacing between the label and icon
+  // portion of the Checkox content
+  checkboxWidth?: number | null;
+
+  // options that are passed to each EnergySkateParkCheckboxItem in this group of controls
+  itemOptions?: IntentionalAny | null;
+};
+
+type EnergySkateParkVisibilityControlsOptions = SelfOptions & VBoxOptions;
+
 export default class EnergySkateParkVisibilityControls extends VBox {
   // Used to align labels and icons so that every box in the group has the same dimensions
   private readonly textAlignGroup: AlignGroup;
@@ -47,26 +68,17 @@ export default class EnergySkateParkVisibilityControls extends VBox {
   // List of contents containing icon nodes and Properties that will be used to create checkboxes
   private readonly checkboxContents: CheckboxContent[];
 
-  public constructor( model: EnergySkateParkModel, tandem: Tandem, options?: IntentionalAny ) {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {boolean} - whether or not Checkboxes for these Properties are included in the controls
+  public constructor( model: EnergySkateParkModel, tandem: Tandem, providedOptions?: EnergySkateParkVisibilityControlsOptions ) {
+    const options = optionize<SelfOptions>()( {
       showPieChartCheckbox: true,
       showGridCheckbox: false,
       showSpeedCheckbox: true,
       showReferenceHeightCheckbox: false,
       showSkaterPathCheckbox: false,
       showStickToTrackCheckbox: false,
-
-      // {number|null} if specified, the desired width for all checkboxes and icons so that the control can be aligned
-      // with other items in a control panel. This will be used to calculate the spacing between the label and icon
-      // portion of the Checkox content
       checkboxWidth: null,
-
-      // {*|null} options that are passed to each EnergySkateParkCheckboxItem in this group of controls
       itemOptions: null
-    }, options );
+    }, providedOptions );
 
     super( {
       align: 'left',
@@ -120,7 +132,7 @@ export default class EnergySkateParkVisibilityControls extends VBox {
     // set spacing of contents for layout
     if ( options.checkboxWidth ) {
       this.checkboxContents.forEach( content => {
-        content.setContentWidthForCheckbox( options.checkboxWidth );
+        content.setContentWidthForCheckbox( options.checkboxWidth! );
       } );
     }
 

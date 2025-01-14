@@ -12,7 +12,7 @@ import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
-import DotRectangle from '../../../../dot/js/Rectangle.js'; // eslint-disable-line phet/default-import-match-filename
+import Rectangle from '../../../../dot/js/Rectangle.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ScreenView, { ScreenViewOptions } from '../../../../joist/js/ScreenView.js';
 import { Shape } from '../../../../kite/js/imports.js';
@@ -580,7 +580,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.translate( offsetX + viewBounds.left / scale, offsetY + viewBounds.top / scale );
 
     // availableViewBounds in this sim is the visible area above ground (y=0)
-    this.visibleBoundsProperty.set( new DotRectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) ) );
+    this.visibleBoundsProperty.set( new Rectangle( -offsetX, -offsetY, width / scale, this.modelViewTransform.modelToViewY( 0 ) + Math.abs( offsetY ) ) );
 
     const maxFloatAmount = this.layoutBounds.right + EXTRA_FLOAT;
     const minFloatAmount = this.layoutBounds.left - EXTRA_FLOAT;
