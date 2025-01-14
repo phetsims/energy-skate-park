@@ -1,4 +1,4 @@
-// Copyright 2019-2024, University of Colorado Boulder
+// Copyright 2019-2025, University of Colorado Boulder
 
 /**
  * A panel that will contain icons for draggable tools that can be pulled into the view. Forwards drag events from the
