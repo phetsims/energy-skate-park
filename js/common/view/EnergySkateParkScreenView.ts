@@ -14,9 +14,9 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import DotRectangle from '../../../../dot/js/Rectangle.js'; // eslint-disable-line phet/default-import-match-filename
 import Vector2 from '../../../../dot/js/Vector2.js';
-import ScreenView from '../../../../joist/js/ScreenView.js';
+import ScreenView, { ScreenViewOptions } from '../../../../joist/js/ScreenView.js';
 import { Shape } from '../../../../kite/js/imports.js';
-import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
@@ -58,6 +58,47 @@ const EXTRA_FLOAT = 51.5;
 
 // Debug flag to show the view bounds, the region within which the skater can move
 const showAvailableBounds = false;
+
+type SelfOptions = {
+
+  // options for the bar graph, see composite type options below
+  barGraphOptions?: IntentionalAny;
+
+  // whether or not this ScreenView should have a bar graph
+  showBarGraph?: boolean;
+
+  // whether or not to show buttons that select premade tracks
+  showTrackButtons?: boolean;
+
+  // whether or not this ScreenView will show the skater path along the track
+  showSkaterPath?: boolean;
+
+  // whether or not the bar graph should include zoom buttons
+  showBarGraphZoomButtons?: boolean;
+
+  // whether or not the screen will include radio buttons to control skater attaching/detaching
+  // from the tracks
+  showAttachDetachRadioButtons?: boolean;
+
+  // whether or not this ScreenView will show the reference height
+  showReferenceHeight?: boolean;
+
+  // whether or not to include a toolbox that contains a ruler and a measuring tape
+  showToolbox?: boolean;
+
+  // if true, the "grid" and "reference height" visibility controls will be displayed in a separate
+  // panel near the bottom of the screen
+  showSeparateVisibilityControlsPanel?: boolean;
+
+  // options passed along to EnergySkateParkControlPanel
+  controlPanelOptions?: IntentionalAny;
+
+  // passed to EnergySkateParkControlPanel, options for the EnergySkateParkVisibilityControls in that
+  // panel
+  visibilityControlsOptions?: IntentionalAny;
+};
+
+type EnergySkateParkScreenViewOptions = SelfOptions & ScreenViewOptions;
 
 export default class EnergySkateParkScreenView extends ScreenView {
   public readonly modelViewTransform: ModelViewTransform2;
@@ -122,46 +163,20 @@ export default class EnergySkateParkScreenView extends ScreenView {
   private readonly viewBoundsPath?: Path;
   public availableModelBounds?: Bounds2;
 
-  public constructor( model: EnergySkateParkModel, tandem: Tandem, options?: IntentionalAny ) {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // options for the bar graph, see composite type options below
+  public constructor( model: EnergySkateParkModel, tandem: Tandem, providedOptions?: EnergySkateParkScreenViewOptions ) {
+    const options = optionize<EnergySkateParkScreenViewOptions, SelfOptions, ScreenViewOptions>()( {
       barGraphOptions: null,
-
-      // {boolean} - whether or not this ScreenView should have a bar graph
       showBarGraph: true,
-
-      // {boolean} - whether or not to show buttons that select premade tracks
       showTrackButtons: true,
-
-      // {boolean} - whether or not this ScreenView will show the skater path along the track
       showSkaterPath: false,
-
-      // {boolean} - whether or not the bar graph should include zoom buttons
       showBarGraphZoomButtons: true,
-
-      // {boolean} - whether or not the screen will include radio buttons to control skater attaching/detaching
-      // from the tracks
       showAttachDetachRadioButtons: false,
-
-      // {boolean} - whether or not this ScreenView will show the reference height
       showReferenceHeight: true,
-
-      // {boolean} - whether or not to include a toolbox that contains a ruler and a measuring tape
       showToolbox: true,
-
-      // {boolean} - if true, the "grid" and "reference height" visibility controls will be displayed in a separate
-      // panel near the bottom of the screen
       showSeparateVisibilityControlsPanel: true,
-
-      // {Object} - options passed along to EnergySkateParkControlPanel
       controlPanelOptions: null,
-
-      // {Object} passed to EnergySkateParkControlPanel, options for the EnergySkateParkVisibilityControls in that
-      // panel
       visibilityControlsOptions: null
-    }, options );
+    }, providedOptions );
 
     super( {
       tandem: tandem
