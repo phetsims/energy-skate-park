@@ -19,7 +19,6 @@ import optionize from '../../../../phet-core/js/optionize.js';
 import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
-import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
@@ -84,23 +83,12 @@ export default class ControlPoint extends PhetioObject {
       phetioState: options.phetioState // in state only if containing Track is
     } );
 
-    this.snapTargetProperty = new Property<ControlPoint | null>( null, {
-      tandem: tandem.createTandem( 'snapTargetProperty' ),
-      phetioValueType: NullableIO( ControlPoint.ControlPointIO ),
-      phetioState: options.phetioState // in state only if containing Track is
-    } );
+    this.snapTargetProperty = new Property<ControlPoint | null>( null );
 
     this.positionProperty = new DerivedProperty( [ this.sourcePositionProperty, this.snapTargetProperty ],
-      ( sourcePosition, snapTarget ) => snapTarget ? snapTarget.positionProperty.value : sourcePosition, {
-        tandem: tandem.createTandem( 'positionProperty' ),
-        phetioValueType: Vector2.Vector2IO,
-        phetioState: options.phetioState
-      } );
+      ( sourcePosition, snapTarget ) => snapTarget ? snapTarget.positionProperty.value : sourcePosition );
 
-    this.draggingProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'draggingProperty' ),
-      phetioState: options.phetioState
-    } );
+    this.draggingProperty = new BooleanProperty( false );
 
     this.addDisposable( this.positionProperty, this.sourcePositionProperty, this.snapTargetProperty, this.draggingProperty );
   }
