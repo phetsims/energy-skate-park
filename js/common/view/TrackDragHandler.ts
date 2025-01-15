@@ -23,7 +23,7 @@ export default class TrackDragHandler extends DragListener {
   private readonly model: EnergySkateParkModel;
   private readonly modelViewTransform: ModelViewTransform2;
   private readonly availableBoundsProperty: Property<Bounds2>;
-  private readonly startOffset: Vector2 | null;
+  public readonly startOffset: Vector2 | null;
 
   /**
    * @param trackNode the track node that this listener will drag
@@ -54,15 +54,15 @@ export default class TrackDragHandler extends DragListener {
   }
 
   /**
-   * Start of a drag interaction from an event.
+   * Start of a drag interaction from an event. TODO: clean up overrideParentPoint usages? See https://github.com/phetsims/energy-skate-park/issues/385
    */
-  public handleDragStart( event: SceneryEvent ): void {
+  public handleDragStart( event: SceneryEvent, overrideParentPoint: Vector2 | null = null ): void {
 
     // Move the track to the front when it starts dragging, see #296
     // The track is in a layer of tracks (without other nodes) so moving it to the front will work perfectly
     this.trackNode.moveToFront();
 
-    this.calculateStartOffset( event );
+    this.calculateStartOffset( event, overrideParentPoint );
   }
 
   /**
@@ -81,7 +81,7 @@ export default class TrackDragHandler extends DragListener {
     this.trackDragEnded( event );
   }
 
-  public trackDragged( event: SceneryEvent<PressListenerDOMEvent> ): void {
+  public trackDragged( event: SceneryEvent<PressListenerDOMEvent>, overrideParentPoint: Vector2 | null = null ): void {
     let snapTargetChanged = false;
     const model = this.model;
     const track = this.track;
@@ -91,8 +91,9 @@ export default class TrackDragHandler extends DragListener {
 
     track.draggingProperty.value = true;
 
+    const myPt = overrideParentPoint || this.globalToParentPoint( event.pointer.point );
     // @ts-expect-error
-    const parentPoint = this.globalToParentPoint( event.pointer.point ).minus( this.startOffset );
+    const parentPoint = myPt.minus( this.startOffset );
     const position = this.modelViewTransform.viewToModelPosition( parentPoint );
 
     // If the user moved it out of the toolbox above y=0, then make it physically interactive
@@ -214,10 +215,6 @@ export default class TrackDragHandler extends DragListener {
     const track = this.track;
     const model = this.model;
 
-    // If dropped in the play area, signify that it has been dropped--this will make it so that dragging the control points
-    // reshapes the track instead of translating it
-    track.droppedProperty.value = true;
-
     // Check whether the model contains a track so that input listeners for detached elements can't create bugs, see #230
     if ( !model.containsTrack( track ) ) { return; }
 
@@ -248,11 +245,13 @@ export default class TrackDragHandler extends DragListener {
   /**
    * Determine the offset point at the start of a drag so that the track translates with the mouse without jumping.
    */
-  private calculateStartOffset( event: SceneryEvent ): void {
+  private calculateStartOffset( event: SceneryEvent, overrideParentPoint: Vector2 | null = null ): void {
     const startingPosition = this.modelViewTransform.modelToViewPosition( this.track.position );
 
+    const pt = overrideParentPoint || event.currentTarget!.globalToParentPoint( event.pointer.point );
+
     // @ts-expect-error
-    this.startOffset = event.currentTarget.globalToParentPoint( event.pointer.point ).minus( startingPosition );
+    this.startOffset = pt.minus( startingPosition );
   }
 }
 

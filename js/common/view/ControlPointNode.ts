@@ -99,7 +99,7 @@ export default class ControlPointNode extends Circle {
           trackNode.moveToFront();
 
           // If control point dragged out of the control panel, translate the entire track, see #130
-          if ( !track.physicalProperty.value || ( !track.droppedProperty.value && track.draggable ) ) {
+          if ( !track.physicalProperty.value ) {
 
             // save drag handler so we can end the drag if we need to after forwarding
             if ( track.dragSource === null ) {
@@ -120,12 +120,19 @@ export default class ControlPointNode extends Circle {
           if ( !model.containsTrack( track ) ) { return; }
 
           // If control point dragged out of the control panel, translate the entire track, see #130
-          if ( !track.physicalProperty.value || ( !track.droppedProperty.value && track.draggable ) ) {
+          if ( !track.physicalProperty.value ) {
 
             // Only drag a track if nothing else was dragging the track (which caused a flicker), see #282
             if ( track.dragSource === dragListener ) {
 
-              trackDragHandler && trackDragHandler.trackDragged( event );
+              if ( trackDragHandler ) {
+                if ( trackDragHandler.startOffset === null ) {
+                  trackDragHandler.handleDragStart( event, this.globalToParentPoint( event.pointer.point ) );
+                }
+
+                trackDragHandler.trackDragged( event, this.globalToParentPoint( event.pointer.point ) );
+              }
+
             }
             return;
           }
@@ -196,7 +203,7 @@ export default class ControlPointNode extends Circle {
           model.userControlledPropertySet.trackControlledProperty.set( false );
 
           // If control point dragged out of the control panel, translate the entire track, see #130
-          if ( !track.physicalProperty.value || ( !track.droppedProperty.value && track.draggable ) ) {
+          if ( !track.physicalProperty.value ) {
 
             // Only drop a track if nothing else was dragging the track (which caused a flicker), see #282
             if ( track.dragSource === dragListener ) {

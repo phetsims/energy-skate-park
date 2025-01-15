@@ -104,7 +104,6 @@ export default class Track extends PhetioObject {
 
   // Flag to indicate whether the user has dragged the track out of the toolbox.  If dragging from the toolbox,
   // then dragging translates the entire track instead of just a point.
-  public readonly droppedProperty: BooleanProperty;
   public readonly controlPoints: ControlPoint[];
   public readonly controlPointDraggingProperty: TReadOnlyProperty<boolean>;
   public readonly parametricPosition: Float64Array<ArrayBuffer>;
@@ -185,20 +184,9 @@ export default class Track extends PhetioObject {
       phetioState: options.phetioState // Participate in state only if parent track is too
     } );
 
-    this.leftThePanelProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'leftThePanelProperty' ),
-      phetioState: options.phetioState // Participate in state only if parent track is too
-    } );
+    this.leftThePanelProperty = new BooleanProperty( false );
 
-    this.draggingProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'draggingProperty' ),
-      phetioState: options.phetioState // Participate in state only if parent track is too
-    } );
-
-    this.droppedProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'droppedProperty' ),
-      phetioState: options.phetioState // Participate in state only if parent track is too
-    } );
+    this.draggingProperty = new BooleanProperty( false );
 
     const trackChangedListener = () => { model.trackChangedEmitter.emit(); };
     this.physicalProperty.link( trackChangedListener );
@@ -235,9 +223,9 @@ export default class Track extends PhetioObject {
     };
     phetioStateSetEmitter.addListener( stateListener );
 
-    // when available bounds change, make sure that control points are within - must be disposed
+    // when available bounds change, make sure that control points are within bounds - must be disposed
     const boundsListener = ( bounds: Bounds2 ) => {
-      if ( this.droppedProperty.get() ) {
+      if ( this.physicalProperty.value && this.splittable ) {
         this.containControlPointsInAvailableBounds( bounds );
       }
     };
@@ -248,7 +236,6 @@ export default class Track extends PhetioObject {
       this.physicalProperty.dispose();
       this.leftThePanelProperty.dispose();
       this.draggingProperty.dispose();
-      this.droppedProperty.dispose();
       this.controlPointDraggingProperty.dispose();
 
       this.model.availableModelBoundsProperty.unlink( boundsListener );
@@ -291,7 +278,6 @@ export default class Track extends PhetioObject {
     this.physicalProperty.reset();
     this.leftThePanelProperty.reset();
     this.draggingProperty.reset();
-    this.droppedProperty.reset();
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       this.controlPoints[ i ].reset();
     }
@@ -1054,7 +1040,9 @@ export default class Track extends PhetioObject {
 
       return [ controlPoints, {
         draggable: stateObject.draggable,
-        configurable: stateObject.configurable
+        configurable: stateObject.configurable,
+        splittable: stateObject.splittable,
+        attachable: stateObject.attachable
       } ];
     },
     stateSchema: {

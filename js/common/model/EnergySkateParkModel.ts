@@ -1552,7 +1552,6 @@ export default class EnergySkateParkModel extends PhetioObject {
       this.controlPointGroup.disposeElement( controlPointToDelete );
       const newTrack = this.trackGroup.createNextElement( points, Track.FULLY_INTERACTIVE_OPTIONS );
       newTrack.physicalProperty.value = true;
-      newTrack.droppedProperty.value = true;
 
       // smooth out the new track, see #177
       const smoothingPoint = controlPointIndex >= newTrack.controlPoints.length ? newTrack.controlPoints.length - 1 : controlPointIndex;
@@ -1607,10 +1606,8 @@ export default class EnergySkateParkModel extends PhetioObject {
 
     const newTrack1 = this.trackGroup.createNextElement( points1, Track.FULLY_INTERACTIVE_OPTIONS );
     newTrack1.physicalProperty.value = true;
-    newTrack1.droppedProperty.value = true;
     const newTrack2 = this.trackGroup.createNextElement( points2, Track.FULLY_INTERACTIVE_OPTIONS );
     newTrack2.physicalProperty.value = true;
-    newTrack2.droppedProperty.value = true;
 
     track.removeEmitter.emit();
     this.removeAndDisposeTrack( track );
@@ -1701,7 +1698,6 @@ export default class EnergySkateParkModel extends PhetioObject {
 
     const newTrack = this.trackGroup.createNextElement( points, Track.FULLY_INTERACTIVE_OPTIONS );
     newTrack.physicalProperty.value = true;
-    newTrack.droppedProperty.value = true;
 
     a.disposeControlPoints();
     a.removeEmitter.emit();

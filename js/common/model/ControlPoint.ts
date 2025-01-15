@@ -18,8 +18,9 @@ import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
-import NumberIO from '../../../../tandem/js/types/NumberIO.js';
+import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 
@@ -117,15 +118,23 @@ export default class ControlPoint extends PhetioObject {
     valueType: ControlPoint,
     documentation: 'A control point that can manipulate the track.',
     toStateObject: controlPoint => {
-      return { x: controlPoint.positionProperty.value.x, y: controlPoint.positionProperty.value.y };
+      return {
+        visible: controlPoint.visible,
+        interactive: controlPoint.interactive,
+        limitBounds: controlPoint.limitBounds
+      };
     },
     stateSchema: {
-      x: NumberIO,
-      y: NumberIO
+      visible: BooleanIO,
+      interactive: BooleanIO,
+      limitBounds: NullableIO( Bounds2.Bounds2IO )
     },
     stateObjectToCreateElementArguments: stateObject => {
-      assert && assert( typeof stateObject.x === 'number' );
-      return [ stateObject.x, stateObject.y ];
+      return [ 0, 0, {
+        visible: stateObject.visible,
+        interactive: stateObject.interactive,
+        limitBounds: stateObject.limitBounds
+      } ];
     }
   } );
 }
