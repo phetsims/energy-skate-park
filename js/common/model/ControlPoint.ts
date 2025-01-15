@@ -16,6 +16,7 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import optionize from '../../../../phet-core/js/optionize.js';
+import StrictOmit from '../../../../phet-core/js/types/StrictOmit.js';
 import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
@@ -38,7 +39,7 @@ type SelfOptions = {
   limitBounds?: Bounds2 | null;
 };
 
-export type ControlPointOptions = SelfOptions & PhetioObjectOptions;
+export type ControlPointOptions = SelfOptions & StrictOmit<PhetioObjectOptions, 'phetioState'>;
 
 export default class ControlPoint extends PhetioObject {
 
@@ -69,12 +70,8 @@ export default class ControlPoint extends PhetioObject {
 
       tandem: Tandem.REQUIRED,
       phetioType: ControlPoint.ControlPointIO,
-      phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
     }, providedOptions );
     const tandem = options.tandem;
-
-    // ControlPoints are always stateful, see https://github.com/phetsims/energy-skate-park/issues/385
-    options.phetioState = true;
 
     super( options );
 
@@ -83,8 +80,7 @@ export default class ControlPoint extends PhetioObject {
     this.visible = options.visible;
 
     this.sourcePositionProperty = new Vector2Property( new Vector2( x, y ), {
-      tandem: tandem.createTandem( 'sourcePositionProperty' ),
-      phetioState: options.phetioState // in state only if containing Track is
+      tandem: tandem.createTandem( 'sourcePositionProperty' )
     } );
 
     this.snapTargetProperty = new Property<ControlPoint | null>( null );

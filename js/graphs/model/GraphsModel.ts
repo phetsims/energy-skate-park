@@ -83,8 +83,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
         },
         doubleWellTrackOptions: {
           configurable: tracksConfigurable,
-          tandem: tandem.createTandem( 'doubleWellTrack' ),
-          phetioState: false
+          tandem: tandem.createTandem( 'doubleWellTrack' )
         },
 
         parabolaControlPointOptions: {
@@ -95,8 +94,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
         },
         parabolaTrackOptions: {
           configurable: tracksConfigurable,
-          tandem: tandem.createTandem( 'parabolaTrack' ),
-          phetioState: false
+          tandem: tandem.createTandem( 'parabolaTrack' )
         }
       },
 
@@ -319,7 +317,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     const trackHeight = GraphsConstants.TRACK_HEIGHT;
     const trackWidth = GraphsConstants.TRACK_WIDTH;
 
-    const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, {
+    const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, tandem.createTandem( 'parabolaTrack' ), {
       trackHeight: trackHeight,
       trackWidth: trackWidth,
       p1Visible: false,
@@ -328,11 +326,10 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
     const parabolaTrack = PremadeTracks.createTrack( this, parabolaControlPoints, {
       configurable: this.tracksConfigurable,
-      tandem: tandem.createTandem( 'parabolaTrack' ),
-      phetioState: false
+      tandem: tandem.createTandem( 'parabolaTrack' )
     } );
 
-    const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( this, {
+    const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( this, tandem.createTandem( 'doubleWellTrack' ), {
       trackHeight: 4,
       trackWidth: 10,
       trackMidHeight: 1.5,
@@ -353,8 +350,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     } );
     const doubleWellTrack = PremadeTracks.createTrack( this, doubleWellControlPoints, {
       configurable: this.tracksConfigurable,
-      tandem: tandem.createTandem( 'doubleWellTrack' ),
-      phetioState: false
+      tandem: tandem.createTandem( 'doubleWellTrack' )
     } );
 
     return [ parabolaTrack, doubleWellTrack ];

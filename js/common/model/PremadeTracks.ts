@@ -16,6 +16,7 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
 import merge from '../../../../phet-core/js/merge.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
@@ -71,7 +72,7 @@ const PremadeTracks = {
   /**
    * Create a set of control points that create a parabola shaped track.
    */
-  createParabolaControlPoints: ( model: EnergySkateParkModel, options: IntentionalAny ): ControlPoint[] => {
+  createParabolaControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: IntentionalAny ): ControlPoint[] => {
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       trackHeight: 6, // largest height for the parabola
@@ -92,20 +93,20 @@ const PremadeTracks = {
     const p3Bounds = createCenteredLimitBounds( p3, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
     return [
-      model.controlPointGroup.createNextElement( p1.x, p1.y, {
+      new ControlPoint( p1.x, p1.y, {
+        tandem: tandem.createTandem( 'controlPoint1' ),
         visible: options.p1Visible,
-        limitBounds: p1Bounds,
-        phetioState: false
+        limitBounds: p1Bounds
       } ),
-      model.controlPointGroup.createNextElement( p2.x, p2.y, {
+      new ControlPoint( p2.x, p2.y, {
+        tandem: tandem.createTandem( 'controlPoint2' ),
         visible: options.p2Visible,
-        limitBounds: p2Bounds,
-        phetioState: false
+        limitBounds: p2Bounds
       } ),
-      model.controlPointGroup.createNextElement( p3.x, p3.y, {
+      new ControlPoint( p3.x, p3.y, {
+        tandem: tandem.createTandem( 'controlPoint3' ),
         visible: options.p3Visible,
-        limitBounds: p3Bounds,
-        phetioState: false
+        limitBounds: p3Bounds
       } )
     ];
   },
@@ -113,7 +114,7 @@ const PremadeTracks = {
   /**
    * Create a set of control points which create a slope shaped track, touching the ground on the right side.
    */
-  createSlopeControlPoints: ( model: EnergySkateParkModel, options: IntentionalAny ): ControlPoint[] => {
+  createSlopeControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: IntentionalAny ): ControlPoint[] => {
 
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
@@ -132,17 +133,17 @@ const PremadeTracks = {
     const p3Bounds = createRelativeSpaceBounds( p3, 0.5, 2.5, 3, 0 );
 
     return [
-      model.controlPointGroup.createNextElement( p1.x, p1.y, {
-        limitBounds: p1Bounds,
-        phetioState: false
+      new ControlPoint( p1.x, p1.y, {
+        tandem: tandem.createTandem( 'controlPoint1' ),
+        limitBounds: p1Bounds
       } ),
-      model.controlPointGroup.createNextElement( p2.x, p2.y, {
-        limitBounds: p2Bounds,
-        phetioState: false
+      new ControlPoint( p2.x, p2.y, {
+        tandem: tandem.createTandem( 'controlPoint2' ),
+        limitBounds: p2Bounds
       } ),
-      model.controlPointGroup.createNextElement( p3.x, p3.y, {
-        limitBounds: p3Bounds,
-        phetioState: false
+      new ControlPoint( p3.x, p3.y, {
+        tandem: tandem.createTandem( 'controlPoint3' ),
+        limitBounds: p3Bounds
       } )
     ];
   },
@@ -152,7 +153,7 @@ const PremadeTracks = {
    * a but since the interpolation moves it down by that much and we don't want the skater to go below ground
    * while on the track. Numbers determined by trial and error.
    */
-  createDoubleWellControlPoints: ( model: EnergySkateParkModel, options: IntentionalAny ): ControlPoint[] => {
+  createDoubleWellControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: IntentionalAny ): ControlPoint[] => {
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       trackHeight: 5, // largest height for the well
@@ -193,30 +194,30 @@ const PremadeTracks = {
     const p5Bounds = createRelativeSpaceBounds( p5, 1.5, 1.0, options.p5UpSpacing, options.p5DownSpacing );
 
     return [
-      model.controlPointGroup.createNextElement( p1.x, p1.y, {
+      new ControlPoint( p1.x, p1.y, {
+        tandem: tandem.createTandem( 'controlPoint1' ),
         limitBounds: p1Bounds,
-        visible: options.p1Visible,
-        phetioState: false
+        visible: options.p1Visible
       } ),
-      model.controlPointGroup.createNextElement( p2.x, p2.y, {
+      new ControlPoint( p2.x, p2.y, {
+        tandem: tandem.createTandem( 'controlPoint2' ),
         limitBounds: p2Bounds,
-        visible: options.p2Visible,
-        phetioState: false
+        visible: options.p2Visible
       } ),
-      model.controlPointGroup.createNextElement( p3.x, p3.y, {
+      new ControlPoint( p3.x, p3.y, {
+        tandem: tandem.createTandem( 'controlPoint3' ),
         limitBounds: p3Bounds,
-        visible: options.p3Visible,
-        phetioState: false
+        visible: options.p3Visible
       } ),
-      model.controlPointGroup.createNextElement( p4.x, p4.y, {
+      new ControlPoint( p4.x, p4.y, {
+        tandem: tandem.createTandem( 'controlPoint4' ),
         limitBounds: p4Bounds,
-        visible: options.p4Visible,
-        phetioState: false
+        visible: options.p4Visible
       } ),
-      model.controlPointGroup.createNextElement( p5.x, p5.y, {
+      new ControlPoint( p5.x, p5.y, {
+        tandem: tandem.createTandem( 'controlPoint5' ),
         limitBounds: p5Bounds,
-        visible: options.p5Visible,
-        phetioState: false
+        visible: options.p5Visible
       } )
     ];
   },
@@ -224,7 +225,7 @@ const PremadeTracks = {
   /**
    * Create a set of control points that will form a track that takes the shape of a loop.
    */
-  createLoopControlPoints: ( model: EnergySkateParkModel, options: IntentionalAny ): ControlPoint[] => {
+  createLoopControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: IntentionalAny ): ControlPoint[] => {
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       trackWidth: 9,
@@ -260,33 +261,33 @@ const PremadeTracks = {
     const p7Bounds = createRelativeSpaceBounds( p7, 1.5, 0.5, 2, 3 );
 
     return [
-      model.controlPointGroup.createNextElement( p1.x, p1.y, {
-        limitBounds: p1Bounds,
-        phetioState: false
+      new ControlPoint( p1.x, p1.y, {
+        tandem: tandem.createTandem( 'controlPoint1' ),
+        limitBounds: p1Bounds
       } ),
-      model.controlPointGroup.createNextElement( p2.x, p2.y, {
-        limitBounds: p2Bounds,
-        phetioState: false
+      new ControlPoint( p2.x, p2.y, {
+        tandem: tandem.createTandem( 'controlPoint2' ),
+        limitBounds: p2Bounds
       } ),
-      model.controlPointGroup.createNextElement( p3.x, p3.y, {
-        limitBounds: p3Bounds,
-        phetioState: false
+      new ControlPoint( p3.x, p3.y, {
+        tandem: tandem.createTandem( 'controlPoint3' ),
+        limitBounds: p3Bounds
       } ),
-      model.controlPointGroup.createNextElement( p4.x, p4.y, {
-        limitBounds: p4Bounds,
-        phetioState: false
+      new ControlPoint( p4.x, p4.y, {
+        tandem: tandem.createTandem( 'controlPoint4' ),
+        limitBounds: p4Bounds
       } ),
-      model.controlPointGroup.createNextElement( p5.x, p5.y, {
-        limitBounds: p5Bounds,
-        phetioState: false
+      new ControlPoint( p5.x, p5.y, {
+        tandem: tandem.createTandem( 'controlPoint5' ),
+        limitBounds: p5Bounds
       } ),
-      model.controlPointGroup.createNextElement( p6.x, p6.y, {
-        limitBounds: p6Bounds,
-        phetioState: false
+      new ControlPoint( p6.x, p6.y, {
+        tandem: tandem.createTandem( 'controlPoint6' ),
+        limitBounds: p6Bounds
       } ),
-      model.controlPointGroup.createNextElement( p7.x, p7.y, {
-        limitBounds: p7Bounds,
-        phetioState: false
+      new ControlPoint( p7.x, p7.y, {
+        tandem: tandem.createTandem( 'controlPoint7' ),
+        limitBounds: p7Bounds
       } )
     ];
   },
