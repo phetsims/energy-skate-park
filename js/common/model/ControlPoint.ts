@@ -69,7 +69,7 @@ export default class ControlPoint extends PhetioObject {
       limitBounds: null,
 
       tandem: Tandem.REQUIRED,
-      phetioType: ControlPoint.ControlPointIO,
+      phetioType: ControlPoint.ControlPointIO
     }, providedOptions );
     const tandem = options.tandem;
 
