@@ -43,9 +43,8 @@ import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import TimeSpeed from '../../../../scenery-phet/js/TimeSpeed.js';
 import PhetioGroup from '../../../../tandem/js/PhetioGroup.js';
-import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
+import { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import IOType from '../../../../tandem/js/types/IOType.js';
 import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -101,7 +100,7 @@ type SelfOptions = {
 
 export type EnergySkateParkModelOptions = SelfOptions & PhetioObjectOptions;
 
-export default class EnergySkateParkModel extends PhetioObject {
+export default class EnergySkateParkModel {
 
   // emits an event whenever a track changes in some way (control points dragged, track split apart,
   // track dragged, track deleted or scene changed, etc...)
@@ -195,11 +194,6 @@ export default class EnergySkateParkModel extends PhetioObject {
   public readonly eventTimer: EventTimer;
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions?: EnergySkateParkModelOptions ) {
-    super( {
-      phetioType: EnergySkateParkModel.EnergySkateParkModelIO,
-      tandem: tandem,
-      phetioState: false
-    } );
 
     const options = optionize<EnergySkateParkModelOptions, SelfOptions, PhetioObjectOptions>()( {
       defaultFriction: EnergySkateParkConstants.DEFAULT_FRICTION,
@@ -245,29 +239,30 @@ export default class EnergySkateParkModel extends PhetioObject {
     } );
 
     this.pieChartVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'pieChartVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'pieChartVisibleProperty' )
     } );
     this.barGraphVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'barGraphVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'barGraphVisibleProperty' )
     } );
     this.gridVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'gridVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'gridVisibleProperty' )
     } );
     this.speedometerVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'speedometerVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'speedometerVisibleProperty' )
     } );
 
     this.preferencesModel = preferencesModel;
 
+
     // whether the speed value is visible on the speedometer
     this.speedValueVisibleProperty = new BooleanProperty( options.defaultSpeedValueVisible, {
-      tandem: tandem.createTandem( 'speedValueVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'speedValueVisibleProperty' )
     } );
     this.referenceHeightVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'referenceHeightVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'referenceHeightVisibleProperty' )
     } );
     this.measuringTapeVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'measuringTapeVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'measuringTapeVisibleProperty' )
     } );
 
     this.barGraphScaleProperty = new NumberProperty( 1 / 30, {
@@ -303,12 +298,12 @@ export default class EnergySkateParkModel extends PhetioObject {
     } );
 
     this.measuringTapeBasePositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'measuringTapeBasePositionProperty' ),
+      tandem: tandem.createTandem( 'measuringTape' ).createTandem( 'basePositionProperty' ),
       units: 'm'
     } );
 
     this.measuringTapeTipPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'measuringTapeTipPositionProperty' ),
+      tandem: tandem.createTandem( 'measuringTape' ).createTandem( 'tipPositionProperty' ),
       units: 'm'
     } );
 
@@ -1815,11 +1810,6 @@ export default class EnergySkateParkModel extends PhetioObject {
       this.removeAndDisposeTrack( track );
     }
   }
-
-  public static readonly EnergySkateParkModelIO = new IOType( 'EnergySkateParkModelIO', {
-    valueType: EnergySkateParkModel,
-    documentation: 'The model for the Skate Park.'
-  } );
 }
 
 /**
