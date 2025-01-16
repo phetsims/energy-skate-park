@@ -181,16 +181,13 @@ class CheckboxContent {
 
   public readonly tandem: Tandem;
 
-  public constructor( labelString: LocalizedStringProperty, iconNode: Node, textAlignGroup: AlignGroup, iconAlignGroup: AlignGroup, property: BooleanProperty, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( labelString: LocalizedStringProperty, iconNode: Node, textAlignGroup: AlignGroup, iconAlignGroup: AlignGroup, property: BooleanProperty, tandem: Tandem, options?: {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // {BooleanProperty} - Property indicating that the checkbox Property has been
-      // changed by the user (rather than internally by the sim), allowing us
-      // to do extra work if user changes directly
-      userControlledProperty: null
-    }, options );
+    // {BooleanProperty} - Property indicating that the checkbox Property has been
+    // changed by the user (rather than internally by the sim), allowing us
+    // to do extra work if user changes directly
+    userControlledProperty: BooleanProperty;
+  } ) {
 
     // create the text and assign to an AlignBox
     const text = new Text( labelString, merge( { tandem: tandem.createTandem( 'text' ) }, TEXT_OPTIONS ) );
@@ -205,7 +202,7 @@ class CheckboxContent {
 
     this.tandem = tandem;
     this.property = property;
-    this.userControlledProperty = options.userControlledProperty;
+    this.userControlledProperty = options ? options.userControlledProperty : null;
   }
 
   /**

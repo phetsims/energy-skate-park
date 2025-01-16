@@ -573,9 +573,7 @@ export default class EnergySkateParkModel {
     // Supply information about a very rare problem that occurs when thermal energy goes negative,
     // see https://github.com/phetsims/energy-skate-park/issues/45
     assert && assert( newThermalEnergy >= 0,
-      `${'Thermal energy should be non-negative: ' +
-      // eslint-disable-next-line @typescript-eslint/no-base-to-string
-      'skaterState: '}${skaterState}, ` +
+      'Thermal energy should be non-negative: ' +
       `oldPotentialEnergy:${skaterState.getPotentialEnergy()}, ` +
       `skaterPositionY:${skaterState.positionY}, ` +
       `initialEnergy: ${initialEnergy}, ` +
