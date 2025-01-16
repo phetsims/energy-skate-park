@@ -15,6 +15,7 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
 import merge from '../../../../phet-core/js/merge.js';
+import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -67,14 +68,20 @@ const createRelativeSpaceBounds = ( point: Vector2, leftSpace: number, rightSpac
   return new Bounds2( point.x - leftSpace, point.y - downSpace, point.x + rightSpace, point.y + upSpace );
 };
 
+type ParabolaOptions = {
+  trackHeight?: number;
+  trackWidth?: number;
+  p1Visible?: boolean;
+  p2Visible?: boolean;
+  p3Visible?: boolean;
+};
 const PremadeTracks = {
 
   /**
    * Create a set of control points that create a parabola shaped track.
    */
-  createParabolaControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: IntentionalAny ): ControlPoint[] => {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+  createParabolaControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: ParabolaOptions ): ControlPoint[] => {
+    options = combineOptions<ParabolaOptions>( {
       trackHeight: 6, // largest height for the parabola
       trackWidth: 8, // width from the left most control point to the right most control point
 
@@ -84,9 +91,9 @@ const PremadeTracks = {
       p3Visible: true
     }, options );
 
-    const p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
+    const p1 = new Vector2( -options.trackWidth! / 2, options.trackHeight! );
     const p2 = new Vector2( 0, 0 );
-    const p3 = new Vector2( options.trackWidth / 2, options.trackHeight );
+    const p3 = new Vector2( options.trackWidth! / 2, options.trackHeight! );
 
     const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
     const p2Bounds = createBottomLimitBounds( p2, 5, 3 );

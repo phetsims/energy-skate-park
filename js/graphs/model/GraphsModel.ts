@@ -319,7 +319,6 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
     const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, tandem.createTandem( 'parabolaTrack' ), {
       trackHeight: trackHeight,
-      
       trackWidth: trackWidth,
       p1Visible: false,
       p3Visible: false
