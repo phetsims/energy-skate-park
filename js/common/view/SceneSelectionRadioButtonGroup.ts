@@ -11,9 +11,10 @@
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { AlignGroup, Node } from '../../../../scenery/js/imports.js';
-import RectangularRadioButtonGroup from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
+import RectangularRadioButtonGroup, { RectangularRadioButtonGroupOptions } from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -25,6 +26,13 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import TrackNode from './TrackNode.js';
 
+type SelfOptions = {
+  // should mountains, background, and sky be included in the icon for track buttons?
+  includeBackground?: boolean;
+};
+
+type SceneSelectionRadioButtonGroupOptions = SelfOptions & RectangularRadioButtonGroupOptions;
+
 export default class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup<IntentionalAny> {
 
   /**
@@ -35,12 +43,10 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
    * @param tandem
    * @param [options]
    */
-  public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, providedOptions?: SceneSelectionRadioButtonGroupOptions ) {
     assert && assert( model.hasOwnProperty( 'sceneProperty' ), 'model does not support a scene' );
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
+    const options = optionize<SceneSelectionRadioButtonGroupOptions, SelfOptions, RectangularRadioButtonGroupOptions>()( {
       // specific and passed to RectangularRadioButtonGroup
       orientation: 'horizontal',
       radioButtonOptions: {
@@ -53,10 +59,8 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         }
       },
       tandem: tandem,
-
-      // {boolean} - should mountains, background, and sky be included in the icon for track buttons?
       includeBackground: false
-    }, options );
+    }, providedOptions );
 
     // produces spacing of ~5 when there are 4 premade tracks which is the usual case and looks nice, and provides
     // more spacing if there are fewer tracks
