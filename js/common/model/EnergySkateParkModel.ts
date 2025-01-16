@@ -117,8 +117,6 @@ export default class EnergySkateParkModel {
   // group of control points
   public readonly controlPointGroup: PhetioGroup<ControlPoint, [ number, number, ControlPointOptions ]>;
 
-  // TODO: https://github.com/phetsims/energy-skate-park/issues/123 the control point group doesn't have enough archetypes to
-  // TODO: create an archetype track, https://github.com/phetsims/energy-skate-park/issues/123
   // group of tracks
   public readonly trackGroup: PhetioGroup<Track, [ ControlPoint[], TrackOptions ]>;
 

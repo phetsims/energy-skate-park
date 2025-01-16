@@ -104,7 +104,6 @@ export default class ControlPoint extends PhetioObject {
 
   /**
    * Create a new control point, identical to this one.
-   * TODO: https://github.com/phetsims/energy-skate-park/issues/123 is this reversed?  Maybe call on the model
    */
   public copy( model: EnergySkateParkModel ): ControlPoint {
     return model.controlPointGroup.createNextElement( this.positionProperty.value.x, this.positionProperty.value.y, {} );
