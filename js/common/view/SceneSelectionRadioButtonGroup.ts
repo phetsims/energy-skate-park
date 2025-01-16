@@ -85,7 +85,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints );
       }
       else if ( trackType === PremadeTracks.TrackType.SLOPE ) {
-        const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model, Tandem.OPT_OUT, controlPointOptions );
+        const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model, Tandem.OPT_OUT, controlPointOptions.trackWidth, controlPointOptions.trackHeight );
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints );
       }
       else if ( trackType === PremadeTracks.TrackType.DOUBLE_WELL ) {
