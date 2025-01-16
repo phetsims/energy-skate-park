@@ -28,7 +28,7 @@ type SelfOptions = {
   supportCustom?: boolean;
 };
 
-type PhysicalComboBoxOptions = SelfOptions & ComboBoxOptions;
+export type PhysicalComboBoxOptions = SelfOptions & ComboBoxOptions;
 
 // constants
 const controlsGravityCustomStringProperty = EnergySkateParkStrings.physicalControls.customStringProperty;

@@ -8,8 +8,6 @@
 
 import Emitter from '../../../../axon/js/Emitter.js';
 import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
-import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import { Node } from '../../../../scenery/js/imports.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -27,12 +25,7 @@ export default class GravityComboBox extends PhysicalComboBox {
    * @param tandem
    * @param [options]
    */
-  public constructor( gravityProperty: PhetioProperty<number>, userControlledProperty: PhetioProperty<boolean>, resetEmitter: Emitter, listParent: Node, tandem: Tandem, options?: IntentionalAny ) {
-
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-      yMargin: 4
-    }, options );
+  public constructor( gravityProperty: PhetioProperty<number>, userControlledProperty: PhetioProperty<boolean>, resetEmitter: Emitter, listParent: Node, tandem: Tandem ) {
 
     const labelValueList = [
       { label: EnergySkateParkStrings.physicalControls.gravityControls.moonStringProperty, value: EnergySkateParkConstants.MOON_GRAVITY, tandemName: 'moonItem' },
@@ -41,7 +34,7 @@ export default class GravityComboBox extends PhysicalComboBox {
     ];
 
     // @ts-expect-error
-    super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, options );
+    super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, { yMargin: 4 } );
   }
 }
 
