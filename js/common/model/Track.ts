@@ -114,7 +114,6 @@ export default class Track extends PhetioObject {
   // in the track parametric coordinates from just before the track parameter space to just after. See updateLinSpace
   public searchLinSpace: number[] | null;
   public distanceBetweenSamplePoints: null | number;
-  private readonly disposeTrack: () => void;
   public xSplineDiff: Spline | null = null;
   public ySplineDiff: Spline | null = null;
   public xSpline: Spline | null = null;
@@ -222,6 +221,7 @@ export default class Track extends PhetioObject {
       model.updateEmitter.emit();
     };
     phetioStateSetEmitter.addListener( stateListener );
+    this.disposeEmitter.addListener( () => phetioStateSetEmitter.removeListener( stateListener ) );
 
     // when available bounds change, make sure that control points are within bounds - must be disposed
     const boundsListener = ( bounds: Bounds2 ) => {
@@ -229,17 +229,14 @@ export default class Track extends PhetioObject {
         this.containControlPointsInAvailableBounds( bounds );
       }
     };
-    this.model.availableModelBoundsProperty.link( boundsListener );
+    this.model.availableModelBoundsProperty.link( boundsListener, { disposer: this } );
 
-    this.disposeTrack = () => {
-      phetioStateSetEmitter.removeListener( stateListener );
-      this.physicalProperty.dispose();
-      this.leftThePanelProperty.dispose();
-      this.draggingProperty.dispose();
-      this.controlPointDraggingProperty.dispose();
-
-      this.model.availableModelBoundsProperty.unlink( boundsListener );
-    };
+    this.addDisposable(
+      this.physicalProperty,
+      this.leftThePanelProperty,
+      this.draggingProperty,
+      this.controlPointDraggingProperty
+    );
   }
 
   /**
@@ -1013,14 +1010,6 @@ export default class Track extends PhetioObject {
       }
     }
     return `${string}];`;
-  }
-
-  /**
-   * Disposal for garbage collection.
-   */
-  public override dispose(): void {
-    this.disposeTrack();
-    super.dispose();
   }
 
   /**
