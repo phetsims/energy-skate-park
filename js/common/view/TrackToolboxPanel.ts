@@ -7,10 +7,9 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import { DragListener } from '../../../../scenery/js/imports.js';
-import Panel from '../../../../sun/js/Panel.js';
+import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkPlaygroundModel from '../../playground/model/EnergySkateParkPlaygroundModel.js';
@@ -20,10 +19,9 @@ import TrackNode from './TrackNode.js';
 
 export default class TrackToolboxPanel extends Panel {
 
-  public constructor( model: EnergySkateParkPlaygroundModel, view: EnergySkateParkPlaygroundScreenView, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( model: EnergySkateParkPlaygroundModel, view: EnergySkateParkPlaygroundScreenView, tandem: Tandem, providedOptions?: PanelOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {}, EnergySkateParkConstants.PANEL_OPTIONS, options );
+    const options = combineOptions<PanelOptions>( {}, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
 
     const iconTrack = model.createDraggableTrack( {
       trackOptions: {

@@ -6,35 +6,32 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
-import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
-import PhysicalNumberControl from './PhysicalNumberControl.js';
+import PhysicalNumberControl, { PhysicalNumberControlOptions } from './PhysicalNumberControl.js';
 
 export default class GravityNumberControl extends PhysicalNumberControl {
 
-  public constructor( property: PhetioProperty<number>, userControlledProperty: PhetioProperty<boolean>, tandem: Tandem, options?: IntentionalAny ) {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+  public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, tandem: Tandem, providedOptions?: PhysicalNumberControlOptions ) {
+    const options = combineOptions<PhysicalNumberControlOptions>( {
       decimalPlaces: 1,
       numberDisplayOptions: {
         valuePattern: EnergySkateParkStrings.physicalControls.gravityControls.gravityMetersPerSecondSquaredPatternStringProperty,
-        useRichText: true // for the superscript on units
+        useRichText: true
       },
       delta: 0.1,
       sliderOptions: {
-
-        // @ts-expect-error
-        constrainValue: value => Utils.roundToInterval( value, 1 )
+        constrainValue: ( value: number ) => Utils.roundToInterval( value, 1 )
       }
-    }, options );
-    // @ts-expect-error
+    }, providedOptions );
+
     super( EnergySkateParkStrings.physicalControls.gravityControls.gravityStringProperty, property, new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) ), userControlledProperty, tandem, options );
   }
 }
