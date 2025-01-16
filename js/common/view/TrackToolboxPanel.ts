@@ -24,13 +24,10 @@ export default class TrackToolboxPanel extends Panel {
     const options = combineOptions<PanelOptions>( {}, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
 
     const iconTrack = model.createDraggableTrack( {
-      trackOptions: {
+      interactive: false
+    }, {
         draggable: false,
         splittable: false
-      },
-      controlPointOptions: {
-        interactive: false
-      }
     } );
     const iconNode = new TrackNode( iconTrack, view.modelViewTransform, model.availableModelBoundsProperty, tandem.createTandem( 'iconNode' ), {
 

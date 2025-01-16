@@ -9,11 +9,13 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
+import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import { ControlPointOptions } from '../../common/model/ControlPoint.js';
 import EnergySkateParkModel from '../../common/model/EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
-import Track from '../../common/model/Track.js';
+import Track, { TrackOptions } from '../../common/model/Track.js';
 import energySkatePark from '../../energySkatePark.js';
 
 export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
@@ -39,28 +41,15 @@ export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel
    *
    * @param options - options passed along to the Track
    */
-  public createDraggableTrack( options?: IntentionalAny ): Track {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-
-      // options passed along to ControlPoints of this Track
-      controlPointOptions: null,
-
-      // options passed along to the Track
-      trackOptions: null
-    }, options );
+  public createDraggableTrack( controlPointOptions: ControlPointOptions = {}, trackOptions: TrackOptions = {} ): Track {
 
     const controlPoints = [
-      this.controlPointGroup.createNextElement( -1, 0, options.controlPointOptions ),
-      this.controlPointGroup.createNextElement( 0, 0, options.controlPointOptions ),
-      this.controlPointGroup.createNextElement( 1, 0, options.controlPointOptions )
+      this.controlPointGroup.createNextElement( -1, 0, controlPointOptions ),
+      this.controlPointGroup.createNextElement( 0, 0, controlPointOptions ),
+      this.controlPointGroup.createNextElement( 1, 0, controlPointOptions )
     ];
 
-    return this.trackGroup.createNextElement( controlPoints, merge(
-        {},
-        Track.FULLY_INTERACTIVE_OPTIONS,
-        options.trackOptions
-      )
+    return this.trackGroup.createNextElement( controlPoints, combineOptions<TrackOptions>( {}, Track.FULLY_INTERACTIVE_OPTIONS, trackOptions )
     );
   }
 
