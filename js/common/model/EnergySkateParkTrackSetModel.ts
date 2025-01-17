@@ -5,6 +5,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import Multilink from '../../../../axon/js/Multilink.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import merge from '../../../../phet-core/js/merge.js';
@@ -183,6 +184,25 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
   public addTrackSet( tracks: Track[] ): void {
     this.tracks.addAll( tracks );
     this.updateActiveTrack( this.sceneProperty.get() );
+  }
+
+  /**
+   * Attach listeners that will remove and clear samples in response to Skater and model Properties. These are attached
+   * for some EnergySkateParkSaveSampleModels but not all of them. They are generally useful when EnergySkateParkDataSamples are
+   * used to draw the skater path.
+   */
+  public attachPathRemovalListeners(): void {
+
+    // existing data fades away before removal when the skater direction changes
+    this.skater.directionProperty.link( direction => {
+      this.initiateSampleRemoval();
+    } );
+
+    // existing data is removed immediately when any of these Properties change
+    const boundClearSamples = this.clearEnergyData.bind( this );
+    Multilink.multilink( [ this.saveSamplesProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
+    this.skater.returnedEmitter.addListener( boundClearSamples );
+    this.trackChangedEmitter.addListener( boundClearSamples );
   }
 
   /**
