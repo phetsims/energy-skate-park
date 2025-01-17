@@ -18,7 +18,6 @@ import RectangularRadioButtonGroup, { RectangularRadioButtonGroupOptions } from 
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
-import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
 import PremadeTracks from '../model/PremadeTracks.js';
 import BackgroundNode from './BackgroundNode.js';
@@ -43,7 +42,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
    * @param tandem
    * @param [options]
    */
-  public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, providedOptions?: SceneSelectionRadioButtonGroupOptions ) {
+  public constructor( model: EnergySkateParkTrackSetModel, view: EnergySkateParkScreenView, tandem: Tandem, providedOptions?: SceneSelectionRadioButtonGroupOptions ) {
     assert && assert( model.hasOwnProperty( 'sceneProperty' ), 'model does not support a scene' );
 
     const options = optionize<SceneSelectionRadioButtonGroupOptions, SelfOptions, RectangularRadioButtonGroupOptions>()( {
@@ -115,11 +114,9 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         children.push( background );
       }
 
-      // @ts-expect-error
       const track = createIconTrack( model.trackTypes[ index ] );
 
-      // @ts-expect-error
-      const trackNode = new TrackNode( track, view.modelViewTransform, new Property(), tandem.createTandem( `trackNode${index}` ), {
+      const trackNode = new TrackNode( track, view.modelViewTransform, new Property( Bounds2.EVERYTHING ), tandem.createTandem( `trackNode${index}` ), {
         isIcon: true
       } );
 
@@ -143,8 +140,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
       contents.push( contentNode );
     } );
 
-    // @ts-expect-error
-    const minWidth = _.minBy( contents, node => node.width ).width;
+    const minWidth = _.minBy( contents, node => node.width )!.width;
 
     const buttonAlignGroup = new AlignGroup();
 
@@ -177,7 +173,6 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
       } );
     } );
 
-    // @ts-expect-error
     super( model.sceneProperty, radioButtonContent, options );
   }
 }

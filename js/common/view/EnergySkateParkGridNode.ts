@@ -13,6 +13,7 @@
 
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
+import StringProperty from '../../../../axon/js/StringProperty.js';
 import TProperty from '../../../../axon/js/TProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import GridNode from '../../../../griddle/js/GridNode.js';
@@ -144,8 +145,7 @@ export default class EnergySkateParkGridNode extends Node {
 
       // only major grid lines are labeled, and 0 meters has a unique label
       if ( y % 2 === 0 && y !== 0 ) {
-        // @ts-expect-error
-        const gridLineLabel = new TextPanel( `${y}`, {
+        const gridLineLabel = new TextPanel( new StringProperty( `${y}` ), {
           bottom: viewY - 2,
           right: this.labelXPosition - 2
         } );

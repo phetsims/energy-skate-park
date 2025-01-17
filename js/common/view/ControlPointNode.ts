@@ -208,8 +208,7 @@ export default class ControlPointNode extends Circle {
             // Only drop a track if nothing else was dragging the track (which caused a flicker), see #282
             if ( track.dragSource === dragListener ) {
 
-              // @ts-expect-error
-              trackDragHandler && trackDragHandler.trackDragEnded( event );
+              trackDragHandler && trackDragHandler.trackDragEnded();
             }
             return;
           }

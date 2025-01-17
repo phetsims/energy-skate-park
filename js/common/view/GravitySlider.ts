@@ -6,7 +6,8 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -17,7 +18,7 @@ import PhysicalSlider from './PhysicalSlider.js';
 
 export default class GravitySlider extends PhysicalSlider {
 
-  public constructor( property: PhetioProperty<number>, userControlledProperty: PhetioProperty<boolean>, tandem: Tandem ) {
+  public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, tandem: Tandem ) {
     super(
       EnergySkateParkStrings.physicalControls.gravityControls.gravityStringProperty,
       property,

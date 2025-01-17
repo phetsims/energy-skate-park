@@ -19,6 +19,7 @@ export default class MeasureScreenView extends EnergySkateParkTrackSetScreenView
 
   // For layout
   private readonly pathSensor: SkaterPathSensorNode;
+  private readonly measureModel: MeasureModel;
 
   public constructor( model: MeasureModel, tandem: Tandem ) {
 
@@ -37,6 +38,7 @@ export default class MeasureScreenView extends EnergySkateParkTrackSetScreenView
         }
       }
     } );
+    this.measureModel = model;
 
     this.addChild( comboBoxParent );
 
@@ -60,8 +62,7 @@ export default class MeasureScreenView extends EnergySkateParkTrackSetScreenView
     this.pieChartLegend.mutate( { top: this.controlPanel.top, left: this.fixedLeft! } );
 
     // position the body relative to the pie chart legend, this sets the origin of the body (top left)
-    // @ts-expect-error
-    this.model.sensorBodyPositionProperty.set( this.modelViewTransform.viewToModelXY( this.fixedLeft!, this.pieChartLegend.bottom + 10 ) );
+    this.measureModel.sensorBodyPositionProperty.set( this.modelViewTransform.viewToModelXY( this.fixedLeft!, this.pieChartLegend.bottom + 10 ) );
   }
 }
 

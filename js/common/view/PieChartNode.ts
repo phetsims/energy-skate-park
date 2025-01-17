@@ -11,11 +11,10 @@ import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Utils from '../../../../dot/js/Utils.js';
 import { Shape } from '../../../../kite/js/imports.js';
-import merge from '../../../../phet-core/js/merge.js';
-import optionize from '../../../../phet-core/js/optionize.js';
+import optionize, { combineOptions } from '../../../../phet-core/js/optionize.js';
 import platform from '../../../../phet-core/js/platform.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
-import { Circle, Node, NodeOptions, Path } from '../../../../scenery/js/imports.js';
+import { Circle, Node, NodeOptions, Path, PathOptions } from '../../../../scenery/js/imports.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from '../model/Skater.js';
@@ -40,7 +39,7 @@ export default class PieChartNode extends Node {
       showNegativeEnergy: true
     }, providedOptions );
 
-    const sliceOptions = {
+    const sliceOptions: PathOptions = {
       stroke: 'black',
       lineWidth: 1,
 
@@ -48,13 +47,11 @@ export default class PieChartNode extends Node {
       lineJoin: 'round'
     };
 
-    // @ts-expect-error
-    const kineticEnergySlice = new Path( null, merge( {
+    const kineticEnergySlice = new Path( null, combineOptions<PathOptions>( {
       fill: EnergySkateParkColorScheme.kineticEnergy
     }, sliceOptions ) );
 
-    // @ts-expect-error
-    const potentialEnergySlice = new Path( null, merge( {
+    const potentialEnergySlice = new Path( null, combineOptions<PathOptions>( {
       fill: EnergySkateParkColorScheme.potentialEnergy
     }, sliceOptions ) );
 

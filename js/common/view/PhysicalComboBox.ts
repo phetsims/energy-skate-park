@@ -72,8 +72,7 @@ export default class PhysicalComboBox extends ComboBox<IntentionalAny> {
     const tempNodes = labelValueList.map( entry => new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ) );
 
     // i18n - if the text gets scaled way down, make sure that the button corner radii aren't larger than content height
-    // @ts-expect-error
-    const maxItemHeight = _.maxBy( tempNodes, node => node.height ).height;
+    const maxItemHeight = _.maxBy( tempNodes, node => node.height )!.height;
     options.cornerRadius = Math.min( options.cornerRadius, maxItemHeight / 2 );
     tempNodes.forEach( node => node.dispose() );
 

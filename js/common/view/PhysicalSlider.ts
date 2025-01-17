@@ -9,7 +9,8 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import merge from '../../../../phet-core/js/merge.js';
@@ -38,7 +39,7 @@ type PhysicalSliderOptions = SelfOptions & PhysicalNumberControlOptions;
 
 export default class PhysicalSlider extends PhysicalNumberControl {
 
-  public constructor( titleString: TReadOnlyProperty<string>, property: PhetioProperty<number>, valueRange: Range, userControlledProperty: PhetioProperty<boolean>, tandem: Tandem, providedOptions?: PhysicalSliderOptions ) {
+  public constructor( titleString: TReadOnlyProperty<string>, property: NumberProperty, valueRange: Range, userControlledProperty: BooleanProperty, tandem: Tandem, providedOptions?: PhysicalSliderOptions ) {
 
     const options = optionize<PhysicalSliderOptions, SelfOptions>()( {
       maxLabelProperty: controlsValueLotsStringProperty,
@@ -56,7 +57,6 @@ export default class PhysicalSlider extends PhysicalNumberControl {
       createTickEntry( valueRange.max, options.maxLabelProperty, tandem, 'maxLabelText' )
     ];
 
-    // @ts-expect-error
     super( titleString, property, valueRange, userControlledProperty, tandem, options );
   }
 }

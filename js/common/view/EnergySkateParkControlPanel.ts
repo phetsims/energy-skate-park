@@ -11,12 +11,13 @@ import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
-import { HSeparator, VBox } from '../../../../scenery/js/imports.js';
+import { HSeparator, Node, VBox } from '../../../../scenery/js/imports.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
+import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
 import EnergySkateParkGravityControls from './EnergySkateParkGravityControls.js';
 import EnergySkateParkMassControls from './EnergySkateParkMassControls.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
@@ -72,15 +73,15 @@ export default class EnergySkateParkControlPanel extends Panel {
     const userControlledPropertySet = model.userControlledPropertySet;
 
     // all contents of the control panel will be added to this array
-    const children = [];
+    const children: Node[] = [];
 
     let trackRadioButtons = null;
-    if ( options.showTrackButtons ) {
+    if ( options.showTrackButtons && model instanceof EnergySkateParkTrackSetModel ) {
       trackRadioButtons = new SceneSelectionRadioButtonGroup( model, screenView, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) );
       children.push( trackRadioButtons );
     }
 
-    let frictionControls = null;
+    let frictionControls: Node | null = null;
     if ( options.showFrictionControls ) {
 
       frictionControls = new FrictionSlider( model.frictionProperty, userControlledPropertySet.frictionControlledProperty, tandem.createTandem( 'frictionControl' ) );
@@ -106,8 +107,7 @@ export default class EnergySkateParkControlPanel extends Panel {
     }
 
     // horizontal separators added after construction of all controls so that it can match width of widest control
-    // @ts-expect-error
-    const separatorWidth = _.maxBy( children, child => child.width ).width;
+    const separatorWidth = _.maxBy( children, child => child.width )!.width;
 
     // controls that change visibility of items in the screen
     options.visibilityControlsOptions = merge( {}, options.visibilityControlsOptions, {
@@ -129,8 +129,7 @@ export default class EnergySkateParkControlPanel extends Panel {
         children.splice( children.indexOf( gravityControls ) + 1, 0, new HSeparator() );
       }
       else {
-        // @ts-expect-error
-        children.splice( children.indexOf( frictionControls ) + 1, 0, new HSeparator() );
+        children.splice( children.indexOf( frictionControls! ) + 1, 0, new HSeparator() );
       }
     }
 

@@ -10,7 +10,7 @@ import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
-import { DragListener, PressListenerDOMEvent, SceneryEvent } from '../../../../scenery/js/imports.js';
+import { DragListener, SceneryEvent } from '../../../../scenery/js/imports.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
@@ -23,7 +23,7 @@ export default class TrackDragHandler extends DragListener {
   private readonly model: EnergySkateParkModel;
   private readonly modelViewTransform: ModelViewTransform2;
   private readonly availableBoundsProperty: Property<Bounds2>;
-  public readonly startOffset: Vector2 | null;
+  public startOffset: Vector2 | null;
 
   /**
    * @param trackNode the track node that this listener will drag
@@ -41,8 +41,7 @@ export default class TrackDragHandler extends DragListener {
       start: event => this.handleDragStart( event ),
       drag: event => this.handleDrag( event ),
 
-      // @ts-expect-error
-      end: event => this.handleDragEnd( event )
+      end: event => this.handleDragEnd()
     } );
 
     this.trackNode = trackNode;
@@ -70,18 +69,17 @@ export default class TrackDragHandler extends DragListener {
    */
   private handleDrag( event: SceneryEvent ): void {
 
-    // @ts-expect-error
     this.trackDragged( event );
   }
 
   /**
    * End of a drag interaction.
    */
-  private handleDragEnd( event: SceneryEvent ): void {
-    this.trackDragEnded( event );
+  private handleDragEnd(): void {
+    this.trackDragEnded();
   }
 
-  public trackDragged( event: SceneryEvent<PressListenerDOMEvent>, overrideParentPoint: Vector2 | null = null ): void {
+  public trackDragged( event: SceneryEvent, overrideParentPoint: Vector2 | null = null ): void {
     let snapTargetChanged = false;
     const model = this.model;
     const track = this.track;
@@ -92,8 +90,7 @@ export default class TrackDragHandler extends DragListener {
     track.draggingProperty.value = true;
 
     const myPt = overrideParentPoint || this.globalToParentPoint( event.pointer.point );
-    // @ts-expect-error
-    const parentPoint = myPt.minus( this.startOffset );
+    const parentPoint = myPt.minus( this.startOffset! );
     const position = this.modelViewTransform.viewToModelPosition( parentPoint );
 
     // If the user moved it out of the toolbox above y=0, then make it physically interactive
@@ -170,14 +167,12 @@ export default class TrackDragHandler extends DragListener {
       }
     }
 
-    if ( bestDistance !== null && bestDistance < 1 ) {
+    if ( bestDistance !== null && bestDistance < 1 && myBestPoint ) {
 
-      // @ts-expect-error
       if ( myBestPoint.snapTargetProperty.value !== otherBestPoint ) {
         snapTargetChanged = true;
       }
 
-      // @ts-expect-error
       myBestPoint.snapTargetProperty.value = otherBestPoint;
 
       // Set the opposite point to be unsnapped, you can only snap one at a time
@@ -211,7 +206,7 @@ export default class TrackDragHandler extends DragListener {
     model.trackModified( track );
   }
 
-  public trackDragEnded( event: SceneryEvent ): void {
+  public trackDragEnded(): void {
     const track = this.track;
     const model = this.model;
 
@@ -250,7 +245,6 @@ export default class TrackDragHandler extends DragListener {
 
     const pt = overrideParentPoint || event.currentTarget!.globalToParentPoint( event.pointer.point );
 
-    // @ts-expect-error
     this.startOffset = pt.minus( startingPosition );
   }
 }

@@ -17,7 +17,7 @@ import Matrix3 from '../../../../dot/js/Matrix3.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
-import { Circle, DragListener, Image, Node } from '../../../../scenery/js/imports.js';
+import { Circle, DragListener, Image, Node, SceneryEvent } from '../../../../scenery/js/imports.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from '../model/Skater.js';
@@ -160,8 +160,7 @@ export default class SkaterNode extends Node {
 
     let targetU: number | null = null;
 
-    // @ts-expect-error
-    const dragSkater = event => {
+    const dragSkater = ( event: SceneryEvent ) => {
       const globalPoint = this.globalToParentPoint( event.pointer.point );
       let position = modelViewTransform.viewToModelPosition( globalPoint );
 

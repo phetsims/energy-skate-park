@@ -98,8 +98,7 @@ export default class EnergyChart extends XYCursorChartNode {
       cursorOptions: {
         includeDragCue: true,
 
-        //@ts-expect-error
-        startDrag: ( event, listener ) => {
+        startDrag: () => {
           pausedOnDragStart = model.pausedProperty.get();
 
           if ( !pausedOnDragStart ) {
@@ -109,16 +108,14 @@ export default class EnergyChart extends XYCursorChartNode {
           dragStartedEmitter.emit();
         },
 
-        // @ts-expect-error
-        drag: ( event, listener ) => {
+        drag: () => {
 
           // when we drag the cursor, get the skater sample at the closest cursor time and set skater to found SkaterState
           const closestSample = model.getClosestSkaterSample( this.getCursorValue() );
           model.setFromSample( closestSample );
           model.skater.updatedEmitter.emit();
         },
-        // @ts-expect-error
-        endDrag: ( event, listener ) => {
+        endDrag: () => {
 
           if ( !pausedOnDragStart ) {
             model.pausedProperty.set( false );

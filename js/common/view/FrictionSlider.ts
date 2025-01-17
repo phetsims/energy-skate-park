@@ -6,7 +6,8 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -21,7 +22,7 @@ export default class FrictionSlider extends PhysicalSlider {
    * @param userControlledProperty - is the user actively controlling friction?
    * @param tandem
    */
-  public constructor( property: PhetioProperty<number>, userControlledProperty: PhetioProperty<boolean>, tandem: Tandem ) {
+  public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, tandem: Tandem ) {
     super( EnergySkateParkStrings.physicalControls.frictionStringProperty, property, new Range( EnergySkateParkConstants.MIN_FRICTION, EnergySkateParkConstants.MAX_FRICTION ), userControlledProperty, tandem );
   }
 }

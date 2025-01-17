@@ -227,7 +227,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
       model.userControlledPropertySet.skaterControlledProperty,
       modelViewTransform,
 
-      // @ts-expect-error
       model.getClosestTrackAndPositionAndParameter.bind( model ),
       model.getPhysicalTracks.bind( model ),
       tandem.createTandem( 'skaterNode' )

@@ -688,7 +688,7 @@ export default class EnergySkateParkModel {
    * @param physicalTracks
    * @returns collection of { track, parametricPosition, point }, or null
    */
-  private getClosestTrackAndPositionAndParameter(
+  public getClosestTrackAndPositionAndParameter(
     position: Vector2,
     physicalTracks: Track[]
   ): { track: Track; parametricPosition: number; point: Vector2 } | null {

@@ -6,6 +6,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import Emitter from '../../../../axon/js/Emitter.js';
 import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
 import { Node } from '../../../../scenery/js/imports.js';
@@ -25,7 +26,7 @@ export default class GravityComboBox extends PhysicalComboBox {
    * @param tandem
    * @param [options]
    */
-  public constructor( gravityProperty: PhetioProperty<number>, userControlledProperty: PhetioProperty<boolean>, resetEmitter: Emitter, listParent: Node, tandem: Tandem ) {
+  public constructor( gravityProperty: PhetioProperty<number>, userControlledProperty: BooleanProperty, resetEmitter: Emitter, listParent: Node, tandem: Tandem ) {
 
     const labelValueList = [
       { label: EnergySkateParkStrings.physicalControls.gravityControls.moonStringProperty, value: EnergySkateParkConstants.MOON_GRAVITY, tandemName: 'moonItem' },
@@ -33,7 +34,6 @@ export default class GravityComboBox extends PhysicalComboBox {
       { label: EnergySkateParkStrings.physicalControls.gravityControls.jupiterStringProperty, value: EnergySkateParkConstants.JUPITER_GRAVITY, tandemName: 'jupiterItem' }
     ];
 
-    // @ts-expect-error
     super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, { yMargin: 4 } );
   }
 }
