@@ -121,11 +121,17 @@ const PremadeTracks = {
   /**
    * Create a set of control points which create a slope shaped track, touching the ground on the right side.
    */
-  createSlopeControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, trackWidth = 6, trackHeight = 6 ): ControlPoint[] => {
+  createSlopeControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: IntentionalAny ): ControlPoint[] => {
 
-    const p1 = new Vector2( -4, trackHeight );
+    // eslint-disable-next-line phet/bad-typescript-text
+    options = merge( {
+      trackWidth: 6,
+      trackHeight: 6
+    }, options );
+
+    const p1 = new Vector2( -4, options.trackHeight );
     const p2 = new Vector2( -2, 1.2 );
-    const p3 = new Vector2( -4 + trackWidth, 0 );
+    const p3 = new Vector2( -4 + options.trackWidth, 0 );
 
     const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 

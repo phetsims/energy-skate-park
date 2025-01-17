@@ -8,20 +8,26 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import merge from '../../../../phet-core/js/merge.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
-import StrictOmit from '../../../../phet-core/js/types/StrictOmit.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import { ControlPointOptions } from '../../common/model/ControlPoint.js';
-import EnergySkateParkModel, { EnergySkateParkModelOptions } from '../../common/model/EnergySkateParkModel.js';
+import EnergySkateParkModel from '../../common/model/EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
 import Track, { TrackOptions } from '../../common/model/Track.js';
 import energySkatePark from '../../energySkatePark.js';
 
 export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 
-  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options?: StrictOmit<EnergySkateParkModelOptions, 'tracksDraggable' | 'tracksConfigurable'> ) {
+  public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options?: IntentionalAny ) {
+    if ( options ) {
+      assert && assert( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
+      assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
+    }
 
-    options = combineOptions<EnergySkateParkModelOptions>( {
+    // eslint-disable-next-line phet/bad-typescript-text
+    options = merge( {
       tracksDraggable: true,
       tracksConfigurable: true
     }, options );
