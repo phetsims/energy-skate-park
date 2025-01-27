@@ -28,7 +28,7 @@
       "validation": false
     },
     "simFeatures": {
-      "supportsDynamicLocale": false,
+      "supportsDynamicLocale": true,
       "supportedRegionsAndCultures": [
         "africa",
         "africaModest",
