@@ -14,7 +14,7 @@ import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
-import { DragListener, HBox, Node } from '../../../../scenery/js/imports.js';
+import { DragListener, HBox, Node, rasterized } from '../../../../scenery/js/imports.js';
 import Panel from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -38,7 +38,7 @@ export default class ToolboxPanel extends Panel {
       cursor: 'pointer'
     } );
 
-    const stopwatchIcon = new StopwatchNode( new Stopwatch( {
+    const stopwatchIcon = rasterized( new StopwatchNode( new Stopwatch( {
       isVisible: true,
       tandem: Tandem.OPT_OUT
     } ), {
@@ -48,7 +48,7 @@ export default class ToolboxPanel extends Panel {
         }
       },
       tandem: Tandem.OPT_OUT
-    } ).rasterized( {
+    } ), {
       resolution: 5,
       nodeOptions: {
         cursor: 'pointer',
