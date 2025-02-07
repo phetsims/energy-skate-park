@@ -8,8 +8,10 @@
  */
 
 import Emitter from '../../../../axon/js/Emitter.js';
-import { Shape } from '../../../../kite/js/imports.js';
-import { Circle, DragListener, Rectangle } from '../../../../scenery/js/imports.js';
+import Shape from '../../../../kite/js/Shape.js';
+import DragListener from '../../../../scenery/js/listeners/DragListener.js';
+import Circle from '../../../../scenery/js/nodes/Circle.js';
+import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';

@@ -11,7 +11,7 @@
 import merge from '../../../../phet-core/js/merge.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
-import { Color } from '../../../../scenery/js/imports.js';
+import Color from '../../../../scenery/js/util/Color.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import Track from '../../common/model/Track.js';
 import EnergySkateParkScreenView from '../../common/view/EnergySkateParkScreenView.js';

@@ -8,7 +8,8 @@
 
 import Matrix3 from '../../../../dot/js/Matrix3.js';
 import ScreenIcon from '../../../../joist/js/ScreenIcon.js';
-import { Image, Node } from '../../../../scenery/js/imports.js';
+import Image from '../../../../scenery/js/nodes/Image.js';
+import Node from '../../../../scenery/js/nodes/Node.js';
 import introScreenIcon_png from '../../../images/introScreenIcon_png.js';
 import SkaterImageSet from '../../common/view/SkaterImageSet.js';
 import energySkatePark from '../../energySkatePark.js';

@@ -8,7 +8,11 @@
 
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
-import { Image, LinearGradient, Node, Pattern, Rectangle } from '../../../../scenery/js/imports.js';
+import Image from '../../../../scenery/js/nodes/Image.js';
+import Node from '../../../../scenery/js/nodes/Node.js';
+import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
+import LinearGradient from '../../../../scenery/js/util/LinearGradient.js';
+import Pattern from '../../../../scenery/js/util/Pattern.js';
 import cementTextureDark_jpg from '../../../images/cementTextureDark_jpg.js';
 import mountains_png from '../../../images/mountains_png.js';
 import energySkatePark from '../../energySkatePark.js';

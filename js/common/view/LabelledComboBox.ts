@@ -10,7 +10,10 @@
 
 import LocalizedStringProperty from '../../../../chipper/js/browser/LocalizedStringProperty.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
-import { Node, Spacer, Text, VBox } from '../../../../scenery/js/imports.js';
+import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
+import Node from '../../../../scenery/js/nodes/Node.js';
+import Spacer from '../../../../scenery/js/nodes/Spacer.js';
+import Text from '../../../../scenery/js/nodes/Text.js';
 import ComboBox from '../../../../sun/js/ComboBox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
