@@ -17,7 +17,7 @@ import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
-import { rasterized } from '../../../../scenery/js/util/rasterized.js';
+import { rasterizeNode } from '../../../../scenery/js/util/rasterizeNode.js';
 import Panel from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -41,7 +41,7 @@ export default class ToolboxPanel extends Panel {
       cursor: 'pointer'
     } );
 
-    const stopwatchIcon = rasterized( new StopwatchNode( new Stopwatch( {
+    const stopwatchIcon = rasterizeNode( new StopwatchNode( new Stopwatch( {
       isVisible: true,
       tandem: Tandem.OPT_OUT
     } ), {

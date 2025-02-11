@@ -15,7 +15,7 @@ import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import AlignGroup from '../../../../scenery/js/layout/constraints/AlignGroup.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
-import { rasterized } from '../../../../scenery/js/util/rasterized.js';
+import { rasterizeNode } from '../../../../scenery/js/util/rasterizeNode.js';
 import RectangularRadioButtonGroup, { RectangularRadioButtonGroupOptions } from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -123,7 +123,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
       } );
 
       // use a rasterized version of the node so that the icon doesn't change with the model for configurable tracks
-      const iconNode = rasterized( trackNode );
+      const iconNode = rasterizeNode( trackNode );
       children.push( iconNode );
 
       // Fixes: Cursor turns into a hand over the track in the track selection panel, see #204
