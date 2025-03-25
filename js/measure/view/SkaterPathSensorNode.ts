@@ -370,7 +370,7 @@ export default class SkaterPathSensorNode extends Node {
 
     assert && assert( this.updateDisplayListener,
       `listener not attached to dataSample emitter,
-       this.inspectedSample: ${this.inspectedSample}`,
+       this.inspectedSample:`, this.inspectedSample,
       `update listenerL:  ${this.updateDisplayListener}`
     );
     this.inspectedSample!.updatedEmitter.removeListener( this.updateDisplayListener! );
