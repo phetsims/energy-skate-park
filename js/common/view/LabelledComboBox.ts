@@ -8,7 +8,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import LocalizedStringProperty from '../../../../chipper/js/browser/LocalizedStringProperty.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
@@ -22,7 +22,7 @@ import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 export default class LabelledComboBox extends VBox {
   private readonly titleNode: Text;
 
-  public constructor( private readonly comboBox: ComboBox<IntentionalAny>, titleString: LocalizedStringProperty, tandem: Tandem ) {
+  public constructor( private readonly comboBox: ComboBox<IntentionalAny>, titleString: TReadOnlyProperty<string>, tandem: Tandem ) {
     super( {
       spacing: 5
     } );

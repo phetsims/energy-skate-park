@@ -11,7 +11,7 @@ import { ObservableArray } from '../../../../axon/js/createObservableArray.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import TProperty from '../../../../axon/js/TProperty.js';
-import LocalizedStringProperty from '../../../../chipper/js/browser/LocalizedStringProperty.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
@@ -385,7 +385,7 @@ export default class SkaterPathSensorNode extends Node {
   /**
    * Create label text and wrap with an AlignBox so that all labels and readouts have the same dimensions for layout.
    */
-  private static createLabelBox( alignGroup: AlignGroup, labelString: LocalizedStringProperty ): AlignBox {
+  private static createLabelBox( alignGroup: AlignGroup, labelString: TReadOnlyProperty<string> ): AlignBox {
     const labelText = new Text( labelString, { fill: TEXT_COLOR, font: LABEL_FONT, maxWidth: ENTRY_MAX_WIDTH } );
     return alignGroup.createBox( labelText, { xAlign: 'left' } );
   }

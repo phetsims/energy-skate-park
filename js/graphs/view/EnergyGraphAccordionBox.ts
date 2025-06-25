@@ -9,7 +9,7 @@
 
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
-import LocalizedStringProperty from '../../../../chipper/js/browser/LocalizedStringProperty.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import Dimension2 from '../../../../dot/js/Dimension2.js';
 import merge from '../../../../phet-core/js/merge.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
@@ -263,7 +263,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
    *
    * @returns - Conforms to the item object of VerticalCheckboxGroup
    */
-  private static createCheckboxItem( property: Property<IntentionalAny>, labelString: LocalizedStringProperty, energyColor: IntentionalAny, labelAlignGroup: AlignGroup ): IntentionalAny {
+  private static createCheckboxItem( property: Property<IntentionalAny>, labelString: TReadOnlyProperty<string>, energyColor: IntentionalAny, labelAlignGroup: AlignGroup ): IntentionalAny {
     const labelText = new Text( labelString, {
       font: EnergySkateParkConstants.CHECKBOX_LABEL_FONT,
       maxWidth: 50

@@ -13,7 +13,7 @@
  */
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
-import LocalizedStringProperty from '../../../../chipper/js/browser/LocalizedStringProperty.js';
+import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
@@ -164,7 +164,7 @@ export default class EnergySkateParkVisibilityControls extends VBox {
    * Create and add to the list of checkbox contents. These are created eagerly so that layout can complete before
    * creating checkboxes, as checkboxes do not support icons with variable dimensions.
    */
-  public addCheckboxContent( labelString: LocalizedStringProperty, iconNode: Node, property: BooleanProperty, tandem: Tandem, options?: IntentionalAny ): void {
+  public addCheckboxContent( labelString: TReadOnlyProperty<string>, iconNode: Node, property: BooleanProperty, tandem: Tandem, options?: IntentionalAny ): void {
     this.checkboxContents.push( new CheckboxContent( labelString, iconNode, this.textAlignGroup, this.iconAlignGroup, property, tandem, options ) );
   }
 }
@@ -185,7 +185,7 @@ class CheckboxContent {
 
   public readonly tandem: Tandem;
 
-  public constructor( labelString: LocalizedStringProperty, iconNode: Node, textAlignGroup: AlignGroup, iconAlignGroup: AlignGroup, property: BooleanProperty, tandem: Tandem, options?: {
+  public constructor( labelString: TReadOnlyProperty<string>, iconNode: Node, textAlignGroup: AlignGroup, iconAlignGroup: AlignGroup, property: BooleanProperty, tandem: Tandem, options?: {
 
     // {BooleanProperty} - Property indicating that the checkbox Property has been
     // changed by the user (rather than internally by the sim), allowing us
