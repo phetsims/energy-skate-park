@@ -7,7 +7,7 @@
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import TReadOnlyProperty from '../../../../axon/js/TReadOnlyProperty.js';
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import { ImageableImage } from '../../../../scenery/js/nodes/Imageable.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkImages from '../../EnergySkateParkImages.js';

@@ -7,7 +7,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import TReadOnlyProperty from '../../../axon/js/TReadOnlyProperty.js';
+import { TReadOnlyProperty } from '../../../axon/js/TReadOnlyProperty.js';
 import { AnyScreen } from '../../../joist/js/Screen.js';
 import Sim, { SimOptions } from '../../../joist/js/Sim.js';
 import energySkatePark from '../energySkatePark.js';
