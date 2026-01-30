@@ -14,14 +14,13 @@
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
-import merge from '../../../../phet-core/js/merge.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
-import Track from './Track.js';
+import Track, { TrackOptions } from './Track.js';
 
 // limiting bounds for dragging control points
 const END_BOUNDS_WIDTH = 2.5;
@@ -68,12 +67,41 @@ const createRelativeSpaceBounds = ( point: Vector2, leftSpace: number, rightSpac
   return new Bounds2( point.x - leftSpace, point.y - downSpace, point.x + rightSpace, point.y + upSpace );
 };
 
-type ParabolaOptions = {
+export type ParabolaOptions = {
   trackHeight?: number;
   trackWidth?: number;
   p1Visible?: boolean;
   p2Visible?: boolean;
   p3Visible?: boolean;
+};
+
+export type SlopeOptions = {
+  trackWidth?: number;
+  trackHeight?: number;
+};
+
+export type DoubleWellOptions = {
+  trackHeight?: number;
+  trackWidth?: number;
+  trackMidHeight?: number;
+  p1Visible?: boolean;
+  p2Visible?: boolean;
+  p3Visible?: boolean;
+  p4Visible?: boolean;
+  p5Visible?: boolean;
+  p1UpSpacing?: number;
+  p1DownSpacing?: number;
+  p3UpSpacing?: number;
+  p3DownSpacing?: number;
+  p5UpSpacing?: number;
+  p5DownSpacing?: number;
+};
+
+export type LoopOptions = {
+  trackWidth?: number;
+  trackHeight?: number;
+  innerLoopWidth?: number;
+  innerLoopTop?: number;
 };
 const PremadeTracks = {
 
@@ -121,17 +149,16 @@ const PremadeTracks = {
   /**
    * Create a set of control points which create a slope shaped track, touching the ground on the right side.
    */
-  createSlopeControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: IntentionalAny ): ControlPoint[] => {
+  createSlopeControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: SlopeOptions ): ControlPoint[] => {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+    options = combineOptions<SlopeOptions>( {
       trackWidth: 6,
       trackHeight: 6
     }, options );
 
-    const p1 = new Vector2( -4, options.trackHeight );
+    const p1 = new Vector2( -4, options.trackHeight! );
     const p2 = new Vector2( -2, 1.2 );
-    const p3 = new Vector2( -4 + options.trackWidth, 0 );
+    const p3 = new Vector2( -4 + options.trackWidth!, 0 );
 
     const p1Bounds = createCenteredLimitBounds( p1, END_BOUNDS_WIDTH, END_BOUNDS_HEIGHT );
 
@@ -160,9 +187,9 @@ const PremadeTracks = {
    * a but since the interpolation moves it down by that much and we don't want the skater to go below ground
    * while on the track. Numbers determined by trial and error.
    */
-  createDoubleWellControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: IntentionalAny ): ControlPoint[] => {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+  createDoubleWellControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: DoubleWellOptions ): ControlPoint[] => {
+
+    options = combineOptions<DoubleWellOptions>( {
       trackHeight: 5, // largest height for the well
       trackWidth: 8, // width from the left most control point to the right most control point
       trackMidHeight: 2, // height of the mid control point that creates the double well
@@ -188,17 +215,17 @@ const PremadeTracks = {
 
     }, options );
 
-    const p1 = new Vector2( -options.trackWidth / 2, options.trackHeight );
+    const p1 = new Vector2( -options.trackWidth! / 2, options.trackHeight! );
     const p2 = new Vector2( -2, 0.0166015 );
-    const p3 = new Vector2( 0, options.trackMidHeight );
+    const p3 = new Vector2( 0, options.trackMidHeight! );
     const p4 = new Vector2( 2, 1 );
-    const p5 = new Vector2( options.trackWidth / 2, options.trackHeight );
+    const p5 = new Vector2( options.trackWidth! / 2, options.trackHeight! );
 
-    const p1Bounds = createRelativeSpaceBounds( p1, 1.0, 1.5, options.p1UpSpacing, options.p1DownSpacing );
+    const p1Bounds = createRelativeSpaceBounds( p1, 1.0, 1.5, options.p1UpSpacing!, options.p1DownSpacing! );
     const p2Bounds = createRelativeSpaceBounds( p2, 1.5, 0.5, 3, 0 );
-    const p3Bounds = createRelativeSpaceBounds( p3, 1, 1, options.p3UpSpacing, options.p3DownSpacing );
+    const p3Bounds = createRelativeSpaceBounds( p3, 1, 1, options.p3UpSpacing!, options.p3DownSpacing! );
     const p4Bounds = createRelativeSpaceBounds( p4, 0.5, 1.5, 2, 1 );
-    const p5Bounds = createRelativeSpaceBounds( p5, 1.5, 1.0, options.p5UpSpacing, options.p5DownSpacing );
+    const p5Bounds = createRelativeSpaceBounds( p5, 1.5, 1.0, options.p5UpSpacing!, options.p5DownSpacing! );
 
     return [
       new ControlPoint( p1.x, p1.y, {
@@ -232,9 +259,9 @@ const PremadeTracks = {
   /**
    * Create a set of control points that will form a track that takes the shape of a loop.
    */
-  createLoopControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: IntentionalAny ): ControlPoint[] => {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+  createLoopControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: LoopOptions ): ControlPoint[] => {
+
+    options = combineOptions<LoopOptions>( {
       trackWidth: 9,
       trackHeight: 6,
       innerLoopWidth: 3,
@@ -243,12 +270,12 @@ const PremadeTracks = {
 
     // top of the left and right endpoints of the loop, higher than loopTop so that it is easy for the skater to go
     // all the way around the loop
-    const trackTop = options.trackHeight;
+    const trackTop = options.trackHeight!;
 
     const trackBottom = 0.3; // bottom points, so that the skater doesn't go below y = 0
-    const loopTop = options.innerLoopTop; // adjust to make the loop top point higher or lower
-    const loopWidth = options.trackWidth; // adjust to make the loop more or less wide
-    const innerLoopWidth = options.innerLoopWidth; // roughly adjusts the width of the innerloop
+    const loopTop = options.innerLoopTop!; // adjust to make the loop top point higher or lower
+    const loopWidth = options.trackWidth!; // adjust to make the loop more or less wide
+    const innerLoopWidth = options.innerLoopWidth!; // roughly adjusts the width of the innerloop
     const innerLoopHeight = 2; // roughly adjust inner loop height (for control points, actual loop will be higher)
 
     const p1 = new Vector2( -loopWidth / 2, trackTop );
@@ -302,7 +329,7 @@ const PremadeTracks = {
   /**
    * Create a track from the provided control points.
    */
-  createTrack( model: EnergySkateParkModel, controlPoints: ControlPoint[], options: IntentionalAny ): Track {
+  createTrack( model: EnergySkateParkModel, controlPoints: ControlPoint[], options?: TrackOptions ): Track {
     return new Track( model, controlPoints, options );
   },
 

@@ -8,21 +8,31 @@
 import Multilink from '../../../../axon/js/Multilink.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
-import merge from '../../../../phet-core/js/merge.js';
 import optionize, { combineOptions } from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import ControlPoint from './ControlPoint.js';
+import EnergySkateParkModel from './EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
 import EnergySkateParkSaveSampleModel, { EnergySkateParkSaveSampleModelOptions } from './EnergySkateParkSaveSampleModel.js';
-import PremadeTracks from './PremadeTracks.js';
+import PremadeTracks, { DoubleWellOptions, LoopOptions, ParabolaOptions, SlopeOptions } from './PremadeTracks.js';
 import Track, { TrackOptions } from './Track.js';
 
+type InitializePremadeTracksOptions = {
+  parabolaControlPointOptions?: ParabolaOptions;
+  parabolaTrackOptions?: TrackOptions;
+  slopeControlPointOptions?: SlopeOptions;
+  slopeTrackOptions?: TrackOptions;
+  doubleWellControlPointOptions?: DoubleWellOptions;
+  doubleWellTrackOptions?: TrackOptions;
+  loopControlPointOptions?: LoopOptions;
+  loopTrackOptions?: TrackOptions;
+};
+
 type SelfOptions = {
-  trackTypes?: IntentionalAny[];
-  initializePremadeTracksOptions?: IntentionalAny;
+  trackTypes?: object[];
+  initializePremadeTracksOptions?: InitializePremadeTracksOptions | null;
 };
 
 export type EnergySkateParkTrackSetModelOptions = SelfOptions & EnergySkateParkSaveSampleModelOptions;
@@ -31,7 +41,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
   // Indicates the currently selected scene. There can be any number of scenes, do we need to pass this in as a param
   public readonly sceneProperty: NumberProperty;
-  public readonly trackTypes: IntentionalAny[];
+  public readonly trackTypes: object[];
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions: EnergySkateParkTrackSetModelOptions ) {
     const options = optionize<EnergySkateParkSaveSampleModelOptions, SelfOptions, EnergySkateParkSaveSampleModelOptions>()( {
@@ -113,29 +123,16 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
    * @param tandem
    * @param options
    */
-  private initializePremadeTracks( tandem: Tandem, options?: IntentionalAny ): void {
+  private initializePremadeTracks( tandem: Tandem, providedOptions?: InitializePremadeTracksOptions | null ): void {
     const tracks: Track[] = [];
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
-      parabolaControlPointOptions: null,
-      parabolaTrackOptions: null,
-
-      slopeControlPointOptions: null,
-      slopeTrackOptions: null,
-
-      doubleWellControlPointOptions: null,
-      doubleWellTrackOptions: null,
-
-      loopControlPointOptions: null,
-      loopTrackOptions: null
-    }, options );
+    const options = combineOptions<InitializePremadeTracksOptions>( {}, providedOptions ?? undefined );
 
     this.trackTypes.forEach( trackType => {
       if ( trackType === PremadeTracks.TrackType.PARABOLA ) {
         const parabolaTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'parabolaTrack' );
-        const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, parabolaTrackTandem, options.parabolaControlPointOptions );
-        const parabolaTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, parabolaControlPoints, merge( {
+        const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, parabolaTrackTandem, options.parabolaControlPointOptions ?? {} );
+        const parabolaTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, parabolaControlPoints, combineOptions<TrackOptions>( {
           tandem: parabolaTrackTandem
         }, options.parabolaTrackOptions ) );
 
@@ -143,8 +140,8 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
       }
       else if ( trackType === PremadeTracks.TrackType.SLOPE ) {
         const slopeTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'slopeTrack' );
-        const slopeControlPoints = PremadeTracks.createSlopeControlPoints( this, slopeTrackTandem, options.slopeControlPointOptions );
-        const slopeTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, slopeControlPoints, merge( {
+        const slopeControlPoints = PremadeTracks.createSlopeControlPoints( this, slopeTrackTandem, options.slopeControlPointOptions ?? {} );
+        const slopeTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, slopeControlPoints, combineOptions<TrackOptions>( {
 
           // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
           // see #164
@@ -155,16 +152,16 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
       }
       else if ( trackType === PremadeTracks.TrackType.DOUBLE_WELL ) {
         const doubleWellTandem = tandem.createTandem( 'tracks' ).createTandem( 'doubleWellTrack' );
-        const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( this, doubleWellTandem, options.doubleWellControlPointOptions );
-        const doubleWellTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, doubleWellControlPoints, merge( {
+        const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( this, doubleWellTandem, options.doubleWellControlPointOptions ?? {} );
+        const doubleWellTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, doubleWellControlPoints, combineOptions<TrackOptions>( {
           tandem: doubleWellTandem
         }, options.doubleWellTrackOptions ) );
         tracks.push( doubleWellTrack );
       }
       else if ( trackType === PremadeTracks.TrackType.LOOP ) {
         const loopTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'loopTrack' );
-        const loopControlPoints = PremadeTracks.createLoopControlPoints( this, loopTrackTandem, options.loopControlPointOptions );
-        const loopTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, loopControlPoints, merge( {
+        const loopControlPoints = PremadeTracks.createLoopControlPoints( this, loopTrackTandem, options.loopControlPointOptions ?? {} );
+        const loopTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, loopControlPoints, combineOptions<TrackOptions>( {
           draggable: this.tracksDraggable,
           tandem: loopTrackTandem
         }, options.loopTrackOptions ) );
@@ -222,7 +219,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
     this.updateActiveTrack( this.sceneProperty.get() );
   }
 
-  public static createPremadeTrack( model: IntentionalAny, controlPoints: ControlPoint[], options?: TrackOptions ): Track {
+  public static createPremadeTrack( model: EnergySkateParkModel, controlPoints: ControlPoint[], options?: TrackOptions ): Track {
     options = combineOptions<TrackOptions>( {
       configurable: model.tracksConfigurable
     }, options );

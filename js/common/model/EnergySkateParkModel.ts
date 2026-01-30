@@ -727,7 +727,7 @@ export default class EnergySkateParkModel {
    * @returns whether it crossed the track
    */
   private crossedTrack(
-    closestTrackAndPositionAndParameter: IntentionalAny,
+    closestTrackAndPositionAndParameter: { track: Track; parametricPosition: number; point: Vector2 },
     physicalTracks: Track[],
     beforeX: number,
     beforeY: number,
