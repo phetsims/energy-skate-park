@@ -8,15 +8,14 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
-import EnergySkateParkSaveSampleScreenView from './EnergySkateParkSaveSampleScreenView.js';
+import EnergySkateParkSaveSampleScreenView, { EnergySkateParkSaveSampleScreenViewOptions } from './EnergySkateParkSaveSampleScreenView.js';
 
 export default class EnergySkateParkTrackSetScreenView extends EnergySkateParkSaveSampleScreenView {
 
-  public constructor( model: EnergySkateParkTrackSetModel, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( model: EnergySkateParkTrackSetModel, tandem: Tandem, options?: EnergySkateParkSaveSampleScreenViewOptions ) {
     super( model, tandem, options );
 
     const trackNodes = model.tracks.map( track => {

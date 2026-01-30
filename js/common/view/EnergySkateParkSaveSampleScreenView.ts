@@ -10,14 +10,14 @@ import { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import energySkatePark from '../../energySkatePark.js';
 import SamplesCanvasNode from '../../measure/view/SamplesCanvasNode.js';
 import EnergySkateParkSaveSampleModel from '../model/EnergySkateParkSaveSampleModel.js';
-import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
+import EnergySkateParkScreenView, { EnergySkateParkScreenViewOptions } from './EnergySkateParkScreenView.js';
 
 type SelfOptions = {
   // true if the skater path should be drawn
   drawSkaterPath?: boolean;
 };
 
-type EnergySkateParkSaveSampleScreenViewOptions = SelfOptions & PhetioObjectOptions;
+export type EnergySkateParkSaveSampleScreenViewOptions = SelfOptions & EnergySkateParkScreenViewOptions;
 
 export default class EnergySkateParkSaveSampleScreenView extends EnergySkateParkScreenView {
   private readonly skaterSamplesNode: SamplesCanvasNode | null;

@@ -101,7 +101,7 @@ type SelfOptions = {
   visibilityControlsOptions?: IntentionalAny;
 };
 
-type EnergySkateParkScreenViewOptions = SelfOptions & ScreenViewOptions;
+export type EnergySkateParkScreenViewOptions = SelfOptions & ScreenViewOptions;
 
 export default class EnergySkateParkScreenView extends ScreenView {
   public readonly modelViewTransform: ModelViewTransform2;
