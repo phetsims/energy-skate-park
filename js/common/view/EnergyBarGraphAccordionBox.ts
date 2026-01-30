@@ -40,11 +40,11 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
     titleNode.children = [ graphLabel, graphIcon ];
 
     // layout the label and icon
-    graphIcon.leftCenter = graphLabel.rightCenter.plusXY( PANEL_MARGIN * 8, 0 );
+    graphIcon.leftCenter = graphLabel.rightCenter.plusXY( PANEL_MARGIN * 4, 0 );
 
     const options = optionize4<EnergyBarGraphAccordionBoxOptions, SelfOptions, AccordionBoxOptions>()( {}, {
       titleNode: titleNode,
-      titleAlignX: 'left',
+      titleAlignX: 'right',
 
       contentXMargin: PANEL_MARGIN,
       contentYMargin: PANEL_MARGIN,
