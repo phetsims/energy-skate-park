@@ -67,26 +67,26 @@ type SelfOptions = {
   // options for the bar graph, see composite type options below
   barGraphOptions?: IntentionalAny;
 
-  // whether or not this ScreenView should have a bar graph
+  // whether this ScreenView should have a bar graph
   showBarGraph?: boolean;
 
-  // whether or not to show buttons that select premade tracks
+  // whether to show buttons that select premade tracks
   showTrackButtons?: boolean;
 
-  // whether or not this ScreenView will show the skater path along the track
+  // whether this ScreenView will show the skater path along the track
   showSkaterPath?: boolean;
 
-  // whether or not the bar graph should include zoom buttons
+  // whether the bar graph should include zoom buttons
   showBarGraphZoomButtons?: boolean;
 
-  // whether or not the screen will include radio buttons to control skater attaching/detaching
+  // whether the screen will include radio buttons to control skater attaching/detaching
   // from the tracks
   showAttachDetachRadioButtons?: boolean;
 
-  // whether or not this ScreenView will show the reference height
+  // whether this ScreenView will show the reference height
   showReferenceHeight?: boolean;
 
-  // whether or not to include a toolbox that contains a ruler and a measuring tape
+  // whether to include a toolbox that contains a ruler and a measuring tape
   showToolbox?: boolean;
 
   // if true, the "grid" and "reference height" visibility controls will be displayed in a separate
@@ -109,7 +109,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
   public readonly trackNodeGroup: { createNextElement( track: Track, modelViewTransform: ModelViewTransform2, availableBoundsProperty: IntentionalAny, options?: IntentionalAny ): TrackNode };
   protected readonly model: EnergySkateParkModel;
 
-  // whether or not this screen view should include a measuring tape
+  // whether this screen view should include a measuring tape
   public readonly showToolbox: boolean;
 
   // visibility of various view components
@@ -607,7 +607,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       this.toolboxPanel!.right = this.controlPanel.right;
     }
 
-    // pie chart legend position is dependent on whether or not the screen includes an energy bar graph
+    // pie chart legend position is dependent on whether the screen includes an energy bar graph
     let pieChartLegendLeftTop = null;
     if ( this.showBarGraph ) {
       this.energyBarGraphAccordionBox!.x = this.fixedLeft;

@@ -87,7 +87,7 @@ export default class PieChartNode extends Node {
       renderer: platform.mobileSafari ? 'canvas' : null
     } );
 
-    // whether or not negative potential energy will be represented by the pie chart or it should
+    // whether negative potential energy will be represented by the pie chart or it should
     // be invisible in this case
     this.showNegativeEnergy = options.showNegativeEnergy;
 

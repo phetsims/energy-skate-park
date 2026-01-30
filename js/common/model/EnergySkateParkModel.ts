@@ -69,10 +69,10 @@ const thrust = new Vector2( 0, 0 );
 const FRAME_RATE = 60;
 
 // Flag to enable debugging for physics issues
-const debug = EnergySkateParkQueryParameters.debugLog ? function( ...args: IntentionalAny[] ) {
+const debug = EnergySkateParkQueryParameters.debugLog ? function( ...args: IntentionalAny[] ) { // TODO: IntentionalAny is fine here, see https://github.com/phetsims/energy-skate-park/issues/387
   console.log( ...args );
 } : null;
-const debugAttachDetach = EnergySkateParkQueryParameters.debugAttachDetach ? function( ...args: IntentionalAny[] ) {
+const debugAttachDetach = EnergySkateParkQueryParameters.debugAttachDetach ? function( ...args: IntentionalAny[] ) { // TODO: IntentionalAny is fine here, see https://github.com/phetsims/energy-skate-park/issues/387
   console.log( ...args );
 } : null;
 
@@ -90,7 +90,7 @@ type SelfOptions = {
   // if true, track control points can be dragged and track shapes can change
   tracksConfigurable?: boolean;
 
-  // default for the speedValueVisibleProperty, whether or not the value of speed is displayed
+  // default for the speedValueVisibleProperty, whether the value of speed is displayed
   // on the speedometer
   defaultSpeedValueVisible?: boolean;
 

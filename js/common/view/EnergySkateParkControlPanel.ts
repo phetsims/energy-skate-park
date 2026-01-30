@@ -30,19 +30,19 @@ import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
 
 type SelfOptions = {
 
-  // whether or not controls will include radio buttons to change active track
+  // whether controls will include radio buttons to change active track
   showTrackButtons?: boolean;
 
-  // whether or not controls to include a friction slider will be included in this sim
+  // whether controls to include a friction slider will be included in this sim
   showFrictionControls?: boolean;
 
-  // whether or not gravity controls will be included in this control panel
+  // whether gravity controls will be included in this control panel
   showGravityControls?: boolean;
 
-  // whether or not mass controls will be included in this control panel
+  // whether mass controls will be included in this control panel
   showMassControls?: boolean;
 
-  // whether or not to include radio buttons that control the skater in energy skate park.
+  // whether to include radio buttons that control the skater in energy skate park.
   showSkaterControls?: boolean;
 
   // options passed along to the EnergySkateParkVisibilityControls

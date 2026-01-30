@@ -35,7 +35,7 @@ const energyTotalStringProperty = EnergySkateParkStrings.energies.totalStringPro
 
 type SelfOptions = {
 
-  // whether or not to include total energy in the legend, will the pie chart show total energy?
+  // whether to include total energy in the legend, will the pie chart show total energy?
   includeTotal?: boolean;
 };
 

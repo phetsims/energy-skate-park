@@ -78,7 +78,7 @@ export default class EnergyBarGraph extends Node {
     const createHideSmallValuesProperty = ( energyProperty: TReadOnlyProperty<number> ) => {
       return new DerivedProperty( [ energyProperty ], energy => {
 
-        // determine whether or not to hide the bar if below threshold in view coordinates so it works
+        // determine whether to hide the bar if below threshold in view coordinates so it works
         // with the scaleProperty
         const height = energy * barGraphScaleProperty.get();
         const absHeight = Math.abs( height );
@@ -98,7 +98,7 @@ export default class EnergyBarGraph extends Node {
         let resultantEnergy = energy;
         const scale = barGraphScaleProperty.get();
 
-        // determine whether or not to increase bar size if within threshold in view coordinates so it works
+        // determine whether to increase bar size if within threshold in view coordinates so it works
         // with the scaleProperty
         const height = energy * scale;
         const absHeight = Math.abs( height );

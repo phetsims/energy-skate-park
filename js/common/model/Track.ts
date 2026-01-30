@@ -399,7 +399,7 @@ export default class Track extends PhetioObject {
   }
 
   /**
-   * Set whether or not this Track slopes to the ground, and corrects energy on the transition from track to ground.
+   * Set whether this Track slopes to the ground, and corrects energy on the transition from track to ground.
    * If the track is configurable, we do NOT want to maintain this correction when the control points move. But when
    * this track is reset, we should reapply this correction.
    */
@@ -416,7 +416,7 @@ export default class Track extends PhetioObject {
   public get slopeToGround(): boolean { return this.getSlopeToGround(); }
 
   /**
-   * Get whether or not the track "slopes to the ground", and skater energy state should apply additional corrections.
+   * Get whether the track "slopes to the ground", and skater energy state should apply additional corrections.
    */
   public getSlopeToGround(): boolean {
     return this._slopeToGround;
@@ -808,7 +808,7 @@ export default class Track extends PhetioObject {
    * the track above ground might push all control points up, so this will make sure that limiting bounds are
    * respected. Not all control points have limiting bounds for dragging.
    *
-   * @param updateSplines optional, whether or not to update splines and redraw after this operation
+   * @param updateSplines optional, whether to update splines and redraw after this operation
    *                      (for performance, you might chose to wait and do this later)
    */
   public containControlPointsInLimitBounds( updateSplines?: boolean ): void {

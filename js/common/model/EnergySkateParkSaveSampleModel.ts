@@ -24,7 +24,7 @@ import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.j
 import SkaterState from './SkaterState.js';
 
 type SelfOptions = {
-  // the default value for whether or not the model is saving samples of data for display
+  // the default value for whether the model is saving samples of data for display
   defaultSaveSamples?: boolean;
 
   // the interval at which we save EnergySkateParkDataSamples, in seconds
@@ -48,11 +48,11 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
   // amount of time that has elapsed since a skater sample has been saved
   private timeSinceSampleSave: number;
 
-  // whether or not to limit the number of samples to be saved - if false, which
+  // whether to limit the number of samples to be saved - if false, which
   // can be done if you are ok with saving limitless samples, options.maxNumberOfSamples has no impact
   public limitNumberOfSamples: boolean;
 
-  // controls whether or not samples are saved as the model steps through time
+  // controls whether samples are saved as the model steps through time
   public readonly saveSamplesProperty: BooleanProperty;
 
   // set to true to prevent the model from saving any more samples, even if

@@ -25,13 +25,13 @@ import GravitySlider from './GravitySlider.js';
 
 type SelfOptions = {
 
-  // whether or not a GravitySlider is included in this set of controls, only GravitySlider or GravityNumberControl can be used at one time
+  // whether a GravitySlider is included in this set of controls, only GravitySlider or GravityNumberControl can be used at one time
   includeGravitySlider?: boolean;
 
-  // whether or not a GravityNumberControl is included in this set of controls, only GravitySlider or GravityNumberControl can be used at one time
+  // whether a GravityNumberControl is included in this set of controls, only GravitySlider or GravityNumberControl can be used at one time
   includeGravityNumberControl?: boolean;
 
-  // whether or not a GravityComboBox is included in this set of controls
+  // whether a GravityComboBox is included in this set of controls
   includeGravityComboBox?: boolean;
 
   // options passed to the GravityNumberControl, if one is included

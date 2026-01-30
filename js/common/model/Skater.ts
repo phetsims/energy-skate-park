@@ -111,7 +111,7 @@ export default class Skater {
   //  - Returns to this parametric position along the track when pressing "return skater"
   public readonly startingUProperty: Property<number>;
 
-  // Tracks whether or not the skater is above or below the track when it is released
+  // Tracks whether the skater is above or below the track when it is released
   public readonly startingUpProperty: BooleanProperty;
 
   // Returns to this track when pressing "return skater"

@@ -285,7 +285,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
   }
 
   // for layout of the accordion box within a screen view, the spacing of the graph from the right edge of the
-// accordion box is the x content margin
+  // accordion box is the x content margin
   public static readonly GRAPH_OFFSET = CONTENT_X_MARGIN;
 }
 

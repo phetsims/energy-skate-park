@@ -24,7 +24,7 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 type SelfOptions = {
-  // whether or not the physicalProperty can be set to something other than the entries defined
+  // whether the physicalProperty can be set to something other than the entries defined
   // in labelValueList
   supportCustom?: boolean;
 };

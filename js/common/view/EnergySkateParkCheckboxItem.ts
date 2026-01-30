@@ -31,7 +31,7 @@ const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelSt
 
 type SelfOptions = {
 
-  // whether or not the user has controlled this checkbox
+  // whether the user has controlled this checkbox
   // we set to true if we detect input on this control. The simulation has
   // different behavior for when the user directly controls the Checkbox Property
   // vs whether the Property gets set internally by the simulation

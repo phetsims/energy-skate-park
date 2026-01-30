@@ -50,7 +50,7 @@ export default class EnergyChart extends XYCursorChartNode {
     const dragEndedEmitter = new Emitter();
     const dragStartedEmitter = new Emitter();
 
-    // whether or not the sim was paused when dragging started, if not paused on drag start we will resume
+    // whether the sim was paused when dragging started, if not paused on drag start we will resume
     // sim play when dragging ends
     let pausedOnDragStart = false;
 

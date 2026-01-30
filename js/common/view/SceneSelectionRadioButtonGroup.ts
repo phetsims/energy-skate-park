@@ -74,7 +74,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
     const createIconTrack = ( trackType: IntentionalAny ) => {
 
       // all tracks have the same width and height so they take up the same dimensions in a radio button, so one
-      // doesn't get scaled down more than another and look more thin
+      // doesn't get scaled down more than another and look thinner
       const controlPointOptions = {
         trackWidth: 6,
         trackHeight: 6

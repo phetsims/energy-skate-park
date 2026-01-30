@@ -21,11 +21,11 @@ import MassNumberControl from './MassNumberControl.js';
 import MassSlider from './MassSlider.js';
 
 type SelfOptions = {
-  // whether or not a MassNumberControl is included in this set of controls, only a MassNumberControl
+  // whether a MassNumberControl is included in this set of controls, only a MassNumberControl
   // OR a MassSlider can be used at one time
   includeMassNumberControl?: boolean;
 
-  // whether or not a MassNumberControl is included in this set of controls
+  // whether a MassNumberControl is included in this set of controls
   includeMassSlider?: boolean;
 
   // options passed along to the MassNumberControl, if one is included

@@ -71,7 +71,7 @@ export default class TrackNode extends Node {
       //  we want a pointer even when not draggable (like in the toolbox).
       roadCursorOverride: null,
 
-      // {boolean} - whether or not this TrackNode is being used as an icon - if so, its
+      // {boolean} - whether this TrackNode is being used as an icon - if so, its
       // representation is a little different, mostly it has no visible control points
       // and its road path is a bit thicker to be more visible since the track will likley
       // be smaller

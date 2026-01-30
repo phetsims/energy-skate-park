@@ -45,7 +45,7 @@ const TEXT_OPTIONS = {
 const CHECKBOX_SPACING = 6; // spacing between checkbox and its icon content
 
 type SelfOptions = {
-  // whether or not Checkboxes for these Properties are included in the controls
+  // whether Checkboxes for these Properties are included in the controls
   showPieChartCheckbox?: boolean;
   showGridCheckbox?: boolean;
   showSpeedCheckbox?: boolean;
@@ -55,7 +55,7 @@ type SelfOptions = {
 
   // if specified, the desired width for all checkboxes and icons so that the control can be aligned
   // with other items in a control panel. This will be used to calculate the spacing between the label and icon
-  // portion of the Checkox content
+  // portion of the Checkbox content
   checkboxWidth?: number | null;
 
   // options that are passed to each EnergySkateParkCheckboxItem in this group of controls
