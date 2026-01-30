@@ -15,7 +15,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 
 // Possible representations of units for acceleration in this sim, can be set by query parameter or in preferences.
-class AccelerationUnits extends EnumerationValue {
+export class AccelerationUnits extends EnumerationValue {
   public static readonly METERS_PER_SECOND_SQUARED = new AccelerationUnits();
   public static readonly NEWTONS_PER_KILOGRAM = new AccelerationUnits();
 

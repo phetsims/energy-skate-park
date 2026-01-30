@@ -16,7 +16,7 @@ import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import { EnergySkateParkCheckboxItemOptions } from './EnergySkateParkCheckboxItem.js';
 import AlignGroup from '../../../../scenery/js/layout/constraints/AlignGroup.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import VBox, { VBoxOptions } from '../../../../scenery/js/layout/nodes/VBox.js';
@@ -59,10 +59,10 @@ type SelfOptions = {
   checkboxWidth?: number | null;
 
   // options that are passed to each EnergySkateParkCheckboxItem in this group of controls
-  itemOptions?: IntentionalAny | null;
+  itemOptions?: EnergySkateParkCheckboxItemOptions | null;
 };
 
-type EnergySkateParkVisibilityControlsOptions = SelfOptions & VBoxOptions;
+export type EnergySkateParkVisibilityControlsOptions = SelfOptions & VBoxOptions;
 
 export default class EnergySkateParkVisibilityControls extends VBox {
   // Used to align labels and icons so that every box in the group has the same dimensions
@@ -164,7 +164,7 @@ export default class EnergySkateParkVisibilityControls extends VBox {
    * Create and add to the list of checkbox contents. These are created eagerly so that layout can complete before
    * creating checkboxes, as checkboxes do not support icons with variable dimensions.
    */
-  public addCheckboxContent( labelString: TReadOnlyProperty<string>, iconNode: Node, property: BooleanProperty, tandem: Tandem, options?: IntentionalAny ): void {
+  public addCheckboxContent( labelString: TReadOnlyProperty<string>, iconNode: Node, property: BooleanProperty, tandem: Tandem, options?: { userControlledProperty: BooleanProperty } ): void {
     this.checkboxContents.push( new CheckboxContent( labelString, iconNode, this.textAlignGroup, this.iconAlignGroup, property, tandem, options ) );
   }
 }

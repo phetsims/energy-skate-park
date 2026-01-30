@@ -10,7 +10,6 @@
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import HSeparator from '../../../../scenery/js/layout/nodes/HSeparator.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
@@ -20,10 +19,10 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
-import EnergySkateParkGravityControls from './EnergySkateParkGravityControls.js';
-import EnergySkateParkMassControls from './EnergySkateParkMassControls.js';
+import EnergySkateParkGravityControls, { EnergySkateParkGravityControlsOptions } from './EnergySkateParkGravityControls.js';
+import EnergySkateParkMassControls, { EnergySkateParkMassControlsOptions } from './EnergySkateParkMassControls.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
-import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
+import EnergySkateParkVisibilityControls, { EnergySkateParkVisibilityControlsOptions } from './EnergySkateParkVisibilityControls.js';
 import FrictionSlider from './FrictionSlider.js';
 import SceneSelectionRadioButtonGroup from './SceneSelectionRadioButtonGroup.js';
 import SkaterRadioButtonGroup from './SkaterRadioButtonGroup.js';
@@ -46,16 +45,16 @@ type SelfOptions = {
   showSkaterControls?: boolean;
 
   // options passed along to the EnergySkateParkVisibilityControls
-  visibilityControlsOptions?: IntentionalAny | null;
+  visibilityControlsOptions?: EnergySkateParkVisibilityControlsOptions | null;
 
   // options passed on to EnergySkateParkGravityControls - only relevant if showGravityControls is true
-  gravityControlsOptions?: IntentionalAny | null;
+  gravityControlsOptions?: EnergySkateParkGravityControlsOptions | null;
 
   // options passed to EnergySkateParkMassControls - only relevant if showMassControls is true
-  massControlsOptions?: IntentionalAny | null;
+  massControlsOptions?: EnergySkateParkMassControlsOptions | null;
 };
 
-type EnergySkateParkControlPanelOptions = SelfOptions & PanelOptions;
+export type EnergySkateParkControlPanelOptions = SelfOptions & PanelOptions;
 
 export default class EnergySkateParkControlPanel extends Panel {
 
@@ -92,13 +91,13 @@ export default class EnergySkateParkControlPanel extends Panel {
 
     let gravityControls = null;
     if ( options.showGravityControls ) {
-      gravityControls = new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, userControlledPropertySet.gravityControlledProperty, model.preferencesModel.accelerationUnitsProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkGravityControls' ), options.gravityControlsOptions );
+      gravityControls = new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, userControlledPropertySet.gravityControlledProperty, model.preferencesModel.accelerationUnitsProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkGravityControls' ), options.gravityControlsOptions || undefined );
       children.push( gravityControls );
     }
 
     let massControls = null;
     if ( options.showMassControls ) {
-      massControls = new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, screenView.skaterNode.selectedSkaterProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions );
+      massControls = new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions || undefined );
       children.push( massControls );
     }
 

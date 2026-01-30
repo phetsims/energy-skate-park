@@ -18,7 +18,6 @@ import PointStyle from '../../../../griddle/js/PointStyle.js';
 import PointStyledVector2 from '../../../../griddle/js/PointStyledVector2.js';
 import XYCursorChartNode from '../../../../griddle/js/XYCursorChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -333,7 +332,7 @@ export default class EnergyChart extends XYCursorChartNode {
 /**
  * Calculates the domain of the plot as a function of the independent variable.
  */
-const calculateDomain = ( independentVariable: IntentionalAny ) => {
+const calculateDomain = ( independentVariable: 'position' | 'time' ) => {
 
   const maxX = independentVariable === 'position' ? POSITION_MAX_X : TIME_MAX_X;
   return new Range( 0, maxX );

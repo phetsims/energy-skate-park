@@ -38,7 +38,7 @@ type SelfOptions = {
   userControlledProperty?: BooleanProperty | null;
 };
 
-type EnergySkateParkCheckboxItemOptions = SelfOptions & CheckboxOptions;
+export type EnergySkateParkCheckboxItemOptions = SelfOptions & CheckboxOptions;
 
 export default class EnergySkateParkCheckboxItem extends Checkbox {
 

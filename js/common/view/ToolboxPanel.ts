@@ -10,7 +10,6 @@
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
@@ -18,7 +17,7 @@ import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import { rasterizeNode } from '../../../../scenery/js/util/rasterizeNode.js';
-import Panel from '../../../../sun/js/Panel.js';
+import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -27,7 +26,7 @@ import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 
 export default class ToolboxPanel extends Panel {
 
-  public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, options?: PanelOptions ) {
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
       align: 'center',

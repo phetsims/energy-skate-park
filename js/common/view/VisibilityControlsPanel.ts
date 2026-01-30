@@ -8,8 +8,7 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
-import Panel from '../../../../sun/js/Panel.js';
+import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -18,7 +17,7 @@ import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityContro
 
 export default class VisibilityControlsPanel extends Panel {
 
-  public constructor( model: EnergySkateParkModel, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( model: EnergySkateParkModel, tandem: Tandem, options?: PanelOptions ) {
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {}, EnergySkateParkConstants.PANEL_OPTIONS, options );
 

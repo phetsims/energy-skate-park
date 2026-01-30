@@ -12,13 +12,15 @@ import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import { NumberControlOptions } from '../../../../scenery-phet/js/NumberControl.js';
 import VBox, { VBoxOptions } from '../../../../scenery/js/layout/nodes/VBox.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
+import { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
+import { SliderOptions } from '../../../../sun/js/Slider.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
-import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
+import EnergySkateParkPreferencesModel, { AccelerationUnits } from '../model/EnergySkateParkPreferencesModel.js';
 import GravityComboBox from './GravityComboBox.js';
 import GravityNumberControl from './GravityNumberControl.js';
 import GravitySlider from './GravitySlider.js';
@@ -35,16 +37,16 @@ type SelfOptions = {
   includeGravityComboBox?: boolean;
 
   // options passed to the GravityNumberControl, if one is included
-  gravityNumberControlOptions?: IntentionalAny | null;
+  gravityNumberControlOptions?: NumberControlOptions | null;
 
   // options passed to the GravityComboBox, if one is included
-  gravityComboBoxOptions?: IntentionalAny | null;
+  gravityComboBoxOptions?: ComboBoxOptions | null;
 
   // options passed to the GravitySlider, if one is included
-  gravitySliderOptions?: IntentionalAny | null;
+  gravitySliderOptions?: SliderOptions | null;
 };
 
-type EnergySkateParkGravityControlsOptions = SelfOptions & VBoxOptions;
+export type EnergySkateParkGravityControlsOptions = SelfOptions & VBoxOptions;
 
 export default class EnergySkateParkGravityControls extends VBox {
 
@@ -57,7 +59,7 @@ export default class EnergySkateParkGravityControls extends VBox {
    * @param tandem
    * @param [providedOptions]
    */
-  public constructor( gravityMagnitudeProperty: NumberProperty, userControlledProperty: BooleanProperty, accelerationUnitsProperty: EnumerationProperty<IntentionalAny>, resetEmitter: Emitter,
+  public constructor( gravityMagnitudeProperty: NumberProperty, userControlledProperty: BooleanProperty, accelerationUnitsProperty: EnumerationProperty<AccelerationUnits>, resetEmitter: Emitter,
                       listParent: Node, tandem: Tandem, providedOptions?: EnergySkateParkGravityControlsOptions ) {
 
     const options = optionize<EnergySkateParkGravityControlsOptions, SelfOptions, VBoxOptions>()( {
@@ -81,7 +83,7 @@ export default class EnergySkateParkGravityControls extends VBox {
         assert && assert( !options.gravityNumberControlOptions.numberDisplayOptions.valuePattern,
           'valuePattern of the gravity number control is set by EnergySkateParkGravityControls' );
       }
-      const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInMetersPerSecondSquaredControl' ), options.gravityNumberControlOptions );
+      const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInMetersPerSecondSquaredControl' ), options.gravityNumberControlOptions || undefined );
       const gravityControlInNewtonsPerKilogram = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInNewtonsPerKilogramControl' ), merge( {}, options.gravityNumberControlOptions, {
           numberDisplayOptions: {
             valuePattern: EnergySkateParkStrings.physicalControls.gravityControls.gravityNewtonsPerKilogramPatternStringProperty

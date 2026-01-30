@@ -9,12 +9,14 @@
 
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
+import Font from '../../../../scenery/js/util/Font.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
-import Panel from '../../../../sun/js/Panel.js';
+import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+
+type TextPanelOptions = { font?: Font; textMaxWidth?: number } & PanelOptions;
 
 export default class TextPanel extends Panel {
 
@@ -22,7 +24,7 @@ export default class TextPanel extends Panel {
    * @param stringProperty - text to fill the panel
    * @param [options]
    */
-  public constructor( stringProperty: TReadOnlyProperty<string>, options?: IntentionalAny ) {
+  public constructor( stringProperty: TReadOnlyProperty<string>, options?: TextPanelOptions ) {
 
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {

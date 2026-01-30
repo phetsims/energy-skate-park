@@ -14,9 +14,8 @@ import Shape from '../../../../kite/js/Shape.js';
 import LineStyles from '../../../../kite/js/util/LineStyles.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
-import Node from '../../../../scenery/js/nodes/Node.js';
+import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -26,6 +25,8 @@ import Track from '../model/Track.js';
 import SplineEvaluation from '../SplineEvaluation.js';
 import ControlPointNode from './ControlPointNode.js';
 import TrackDragHandler from './TrackDragHandler.js';
+
+export type TrackNodeOptions = { roadCursorOverride?: string | null; isIcon?: boolean } & NodeOptions;
 
 // constants
 export default class TrackNode extends Node {
@@ -60,7 +61,7 @@ export default class TrackNode extends Node {
     public readonly modelViewTransform: ModelViewTransform2,
     public readonly availableBoundsProperty: Property<Bounds2>,
     tandem: Tandem,
-    options?: IntentionalAny
+    options?: TrackNodeOptions
   ) {
     const model = track.model;
 
@@ -84,7 +85,7 @@ export default class TrackNode extends Node {
     super( options );
 
     this.model = model;
-    this.isIcon = options.isIcon;
+    this.isIcon = !!options.isIcon;
 
     this.road = new Path( null, {
       fill: 'gray',

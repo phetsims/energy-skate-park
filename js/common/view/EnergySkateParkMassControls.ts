@@ -7,14 +7,12 @@
  */
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
-import Emitter from '../../../../axon/js/Emitter.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
-import Property from '../../../../axon/js/Property.js';
 import Range from '../../../../dot/js/Range.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
+import { NumberControlOptions } from '../../../../scenery-phet/js/NumberControl.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
-import Node from '../../../../scenery/js/nodes/Node.js';
+import { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import MassNumberControl from './MassNumberControl.js';
@@ -29,27 +27,17 @@ type SelfOptions = {
   includeMassSlider?: boolean;
 
   // options passed along to the MassNumberControl, if one is included
-  massNumberControlOptions?: IntentionalAny | null;
+  massNumberControlOptions?: NumberControlOptions | null;
 
   // options passed along to the MassComboBox, if one is included
-  massComboBoxOptions?: IntentionalAny | null;
+  massComboBoxOptions?: ComboBoxOptions | null;
 };
 
 export type EnergySkateParkMassControlsOptions = SelfOptions;
 
 export default class EnergySkateParkMassControls extends VBox {
 
-  /**
-   * @param massProperty
-   * @param userControlledProperty
-   * @param massRange - allowable range for the Skater mass
-   * @param skaterImageSetProperty - controls the current image for the SkaterNode
-   * @param resetEmitter - broadcasts when EnergySkateParkModel has been reset
-   * @param listParent - parent Node for the ComboBox, if one is included
-   * @param tandem
-   * @param [options]
-   */
-  public constructor( massProperty: NumberProperty, userControlledProperty: BooleanProperty, massRange: Range, skaterImageSetProperty: Property<IntentionalAny>, resetEmitter: Emitter, listParent: Node, tandem: Tandem, providedOptions?: EnergySkateParkMassControlsOptions ) {
+  public constructor( massProperty: NumberProperty, userControlledProperty: BooleanProperty, massRange: Range, tandem: Tandem, providedOptions?: EnergySkateParkMassControlsOptions ) {
 
     const options = optionize<EnergySkateParkMassControlsOptions, SelfOptions>()( {
       includeMassNumberControl: true,

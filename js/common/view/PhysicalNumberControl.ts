@@ -13,9 +13,8 @@ import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
-import NumberControl, { NumberControlOptions } from '../../../../scenery-phet/js/NumberControl.js';
-import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
+import NumberControl, { NumberControlOptions, NumberControlSliderOptions } from '../../../../scenery-phet/js/NumberControl.js';
+import NumberDisplay, { NumberDisplayOptions } from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
@@ -34,10 +33,10 @@ type SelfOptions = {
   sliderOnly?: boolean;
 
   // passed to the Slider of NumberControl
-  sliderOptions?: IntentionalAny | null;
+  sliderOptions?: NumberControlSliderOptions;
 
   // passed to the NumberDisplay of NumberControl
-  numberDisplayOptions?: IntentionalAny;
+  numberDisplayOptions?: NumberDisplayOptions;
 };
 
 export type PhysicalNumberControlOptions = SelfOptions & NumberControlOptions;
@@ -67,7 +66,10 @@ export default class PhysicalNumberControl extends NumberControl {
         userControlledProperty.set( false );
       },
       sliderOnly: false,
+
+      // @ts-expect-error
       sliderOptions: undefined,
+      // @ts-expect-error
       numberDisplayOptions: undefined
     }, providedOptions );
 

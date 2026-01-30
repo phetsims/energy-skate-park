@@ -16,7 +16,6 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import StrictOmit from '../../../../phet-core/js/types/StrictOmit.js';
 import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -41,6 +40,8 @@ type SelfOptions = {
 };
 
 export type ControlPointOptions = SelfOptions & StrictOmit<PhetioObjectOptions, 'phetioState'>;
+
+type ControlPointStateObject = { visible: boolean; interactive: boolean; limitBounds: Bounds2 | null };
 
 export default class ControlPoint extends PhetioObject {
 
@@ -110,7 +111,7 @@ export default class ControlPoint extends PhetioObject {
     return model.controlPointGroup.createNextElement( this.positionProperty.value.x, this.positionProperty.value.y, {} );
   }
 
-  public static readonly ControlPointIO = new IOType<IntentionalAny, IntentionalAny>( 'ControlPointIO', {
+  public static readonly ControlPointIO = new IOType<ControlPoint, ControlPointStateObject>( 'ControlPointIO', {
     valueType: ControlPoint,
     documentation: 'A control point that can manipulate the track.',
     toStateObject: controlPoint => {

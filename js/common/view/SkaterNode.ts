@@ -15,7 +15,6 @@ import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
@@ -51,7 +50,7 @@ export default class SkaterNode extends Node {
   public constructor(
     private readonly skater: Skater,
     view: EnergySkateParkScreenView, userControlledProperty: BooleanProperty, modelViewTransform: ModelViewTransform2,
-    getClosestTrackAndPositionAndParameter: ( v: Vector2, t: Track[] ) => IntentionalAny, getPhysicalTracks: () => Track[], tandem: Tandem ) {
+    getClosestTrackAndPositionAndParameter: ( v: Vector2, t: Track[] ) => { track: Track; parametricPosition: number; point: Vector2 } | null, getPhysicalTracks: () => Track[], tandem: Tandem ) {
     super( {
 
       // rendering the skater with canvas makes it move smoothly around the screen edges in iOS Safari, see
@@ -184,10 +183,10 @@ export default class SkaterNode extends Node {
           targetU = closestTrackAndPositionAndParameter.parametricPosition;
 
           // Choose the right side of the track, i.e. the side of the track that would have the skater upside up
-          const normal = targetTrack!.getUnitNormalVector( targetU! );
+          const normal = targetTrack.getUnitNormalVector( targetU );
           skater.onTopSideOfTrackProperty.value = normal.y > 0;
 
-          skater.angleProperty.value = targetTrack!.getViewAngleAt( targetU! ) + ( skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+          skater.angleProperty.value = targetTrack.getViewAngleAt( targetU ) + ( skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
 
           closeEnough = true;
         }

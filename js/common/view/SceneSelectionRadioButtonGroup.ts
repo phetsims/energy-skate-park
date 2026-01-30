@@ -12,7 +12,6 @@ import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import AlignGroup from '../../../../scenery/js/layout/constraints/AlignGroup.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import { rasterizeNode } from '../../../../scenery/js/util/rasterizeNode.js';
@@ -34,7 +33,7 @@ type SelfOptions = {
 
 type SceneSelectionRadioButtonGroupOptions = SelfOptions & RectangularRadioButtonGroupOptions;
 
-export default class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup<IntentionalAny> {
+export default class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup<number> {
 
   /**
    * Construct a SceneSelectionRadioButtonGroup.  Pass the entire model since it is used to create TrackNode
@@ -71,7 +70,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
     // Create a track to be used specifically for an icon - must be one of the premade tracks defined in
     // PremadeTracks.TrackType. These Tracks are a bit different from the actual tracks used in the model
     // because their sizing and dimensions need to be different to look better as icons for radio buttons
-    const createIconTrack = ( trackType: IntentionalAny ) => {
+    const createIconTrack = ( trackType: unknown ) => {
 
       // all tracks have the same width and height so they take up the same dimensions in a radio button, so one
       // doesn't get scaled down more than another and look thinner
@@ -101,7 +100,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, loopControlPoints );
       }
       else {
-        throw new Error( `unsupported TrackType: ${trackType}` );
+        throw new Error( 'unsupported TrackType' );
       }
 
       return track;

@@ -14,7 +14,6 @@ import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
 import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
@@ -671,7 +670,7 @@ export default class Track extends PhetioObject {
    * @param parametricPosition
    * @param curvature - object literal with { r: {number}, x: {number}, y: {number} }
    */
-  public getCurvature( parametricPosition: number, curvature: IntentionalAny ): void {
+  public getCurvature( parametricPosition: number, curvature: Curvature ): void {
 
     if ( this.xSplineDiff === null ) {
       this.xSplineDiff = this.xSpline!.diff();
@@ -767,7 +766,7 @@ export default class Track extends PhetioObject {
    * If any control points are out of the model available bounds (bounds of the entire simulation play area),
    * bump them back in. Useful when the model bounds change, or when bumping the track above ground.
    */
-  private containControlPointsInAvailableBounds( bounds: IntentionalAny ): void {
+  private containControlPointsInAvailableBounds( bounds: Bounds2 ): void {
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       const currentPosition = this.controlPoints[ i ].positionProperty.get();
       if ( !bounds.containsPoint( currentPosition ) ) {
@@ -890,7 +889,7 @@ export default class Track extends PhetioObject {
    *
    * @param indicesToIgnore indices which should not be adjusted (perhaps because the user just released them)
    */
-  public smoothPointOfHighestCurvature( indicesToIgnore: IntentionalAny[] ): boolean {
+  public smoothPointOfHighestCurvature( indicesToIgnore: number[] ): boolean {
 
     // Find the sharpest turn on the track
     const highestCurvatureU = this.getUWithHighestCurvature();

@@ -18,7 +18,6 @@ import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
@@ -30,7 +29,7 @@ import AlignBox from '../../../../scenery/js/layout/nodes/AlignBox.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
-import Node from '../../../../scenery/js/nodes/Node.js';
+import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import SunConstants from '../../../../sun/js/SunConstants.js';
@@ -112,7 +111,7 @@ export default class SkaterPathSensorNode extends Node {
     samples: ObservableArray<EnergySkateParkDataSample>,
     sensorProbePositionProperty: Vector2Property,
     sensorBodyPositionProperty: Vector2Property, modelBoundsProperty: TProperty<Bounds2>,
-    modelViewTransform: ModelViewTransform2, controlPanel: EnergySkateParkControlPanel, options?: IntentionalAny ) {
+    modelViewTransform: ModelViewTransform2, controlPanel: EnergySkateParkControlPanel, options?: NodeOptions ) {
 
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {
@@ -266,7 +265,7 @@ export default class SkaterPathSensorNode extends Node {
       transform: modelViewTransform,
       positionProperty: sensorProbePositionProperty,
       dragBoundsProperty: modelBoundsProperty,
-      tandem: options.tandem.createTandem( 'dragListener' )
+      tandem: options.tandem!.createTandem( 'dragListener' )
     } ) );
   }
 

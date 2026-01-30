@@ -17,7 +17,6 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import ScreenView, { ScreenViewOptions } from '../../../../joist/js/ScreenView.js';
 import Shape from '../../../../kite/js/Shape.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
@@ -38,16 +37,18 @@ import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
 import AttachDetachToggleButtons from './AttachDetachToggleButtons.js';
 import BackgroundNode from './BackgroundNode.js';
+import { EnergyBarGraphOptions } from './EnergyBarGraph.js';
 import EnergyBarGraphAccordionBox from './EnergyBarGraphAccordionBox.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
-import EnergySkateParkControlPanel from './EnergySkateParkControlPanel.js';
+import EnergySkateParkControlPanel, { EnergySkateParkControlPanelOptions } from './EnergySkateParkControlPanel.js';
 import EnergySkateParkGridNode from './EnergySkateParkGridNode.js';
+import { EnergySkateParkVisibilityControlsOptions } from './EnergySkateParkVisibilityControls.js';
 import PieChartLegend from './PieChartLegend.js';
 import PieChartNode from './PieChartNode.js';
 import ReferenceHeightLine from './ReferenceHeightLine.js';
 import SkaterNode from './SkaterNode.js';
 import ToolboxPanel from './ToolboxPanel.js';
-import TrackNode from './TrackNode.js';
+import TrackNode, { TrackNodeOptions } from './TrackNode.js';
 import VisibilityControlsPanel from './VisibilityControlsPanel.js';
 
 const controlsRestartSkaterStringProperty = EnergySkateParkStrings.skaterControls.restartSkaterStringProperty;
@@ -65,7 +66,7 @@ const showAvailableBounds = false;
 type SelfOptions = {
 
   // options for the bar graph, see composite type options below
-  barGraphOptions?: IntentionalAny;
+  barGraphOptions?: EnergyBarGraphOptions | null;
 
   // whether this ScreenView should have a bar graph
   showBarGraph?: boolean;
@@ -94,11 +95,11 @@ type SelfOptions = {
   showSeparateVisibilityControlsPanel?: boolean;
 
   // options passed along to EnergySkateParkControlPanel
-  controlPanelOptions?: IntentionalAny;
+  controlPanelOptions?: EnergySkateParkControlPanelOptions | null;
 
   // passed to EnergySkateParkControlPanel, options for the EnergySkateParkVisibilityControls in that
   // panel
-  visibilityControlsOptions?: IntentionalAny;
+  visibilityControlsOptions?: EnergySkateParkVisibilityControlsOptions | null;
 };
 
 export type EnergySkateParkScreenViewOptions = SelfOptions & ScreenViewOptions;
@@ -106,7 +107,7 @@ export type EnergySkateParkScreenViewOptions = SelfOptions & ScreenViewOptions;
 export default class EnergySkateParkScreenView extends ScreenView {
   public readonly modelViewTransform: ModelViewTransform2;
   public readonly availableModelBoundsProperty: Property<Bounds2>;
-  public readonly trackNodeGroup: { createNextElement( track: Track, modelViewTransform: ModelViewTransform2, availableBoundsProperty: IntentionalAny, options?: IntentionalAny ): TrackNode };
+  public readonly trackNodeGroup: { createNextElement( track: Track, modelViewTransform: ModelViewTransform2, availableBoundsProperty: Property<Bounds2>, options?: TrackNodeOptions ): TrackNode };
   protected readonly model: EnergySkateParkModel;
 
   // whether this screen view should include a measuring tape
@@ -242,7 +243,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.gridNode = new EnergySkateParkGridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, this.visibleBoundsProperty, modelViewTransform, tandem.createTandem( 'energySkateParkGridNode' ) );
     this.bottomLayer.addChild( this.gridNode );
 
-    this.controlPanel = new EnergySkateParkControlPanel( model, this, tandem.createTandem( 'controlPanel' ), options.controlPanelOptions );
+    this.controlPanel = new EnergySkateParkControlPanel( model, this, tandem.createTandem( 'controlPanel' ), options.controlPanelOptions || undefined );
     this.bottomLayer.addChild( this.controlPanel );
 
     this.pieChartLegend = new PieChartLegend(

@@ -9,12 +9,11 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
 import Color from '../../../../scenery/js/util/Color.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import Track from '../../common/model/Track.js';
-import EnergySkateParkScreenView from '../../common/view/EnergySkateParkScreenView.js';
+import EnergySkateParkScreenView, { EnergySkateParkScreenViewOptions } from '../../common/view/EnergySkateParkScreenView.js';
 import TrackNode from '../../common/view/TrackNode.js';
 import TrackToolboxPanel from '../../common/view/TrackToolboxPanel.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -31,7 +30,7 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
   // for layout in subtypes
   protected readonly clearButton: EraserButton;
 
-  public constructor( model: EnergySkateParkPlaygroundModel, tandem: Tandem, options?: IntentionalAny ) {
+  public constructor( model: EnergySkateParkPlaygroundModel, tandem: Tandem, options?: EnergySkateParkScreenViewOptions ) {
 
     // eslint-disable-next-line phet/bad-typescript-text
     options = merge( {

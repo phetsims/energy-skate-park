@@ -12,10 +12,9 @@
  */
 
 import Vector2 from '../../../../dot/js/Vector2.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from './Skater.js';
-import Track from './Track.js';
+import Track, { Curvature } from './Track.js';
 
 export default class SkaterState {
 
@@ -48,10 +47,10 @@ export default class SkaterState {
    * @param source the initial values to use
    * @returns the new SkaterState
    */
-  private setState( source: IntentionalAny /*Skater | SkaterState*/ ): SkaterState {
+  private setState( source: Skater | SkaterState ): SkaterState {
 
     // Handle the case of a skater passed in (which has a position vector) or a SkaterState passed in, which has a number
-    if ( source.positionProperty ) {
+    if ( source instanceof Skater ) {
       this.positionX = source.positionProperty.value.x;
       this.positionY = source.positionProperty.value.y;
 
@@ -68,16 +67,18 @@ export default class SkaterState {
 
     // This code is called many times from the physics loop, so must be optimized for speed and memory
     // Special handling for values that can be null, false or zero
-    this.gravity = getValue( 'gravity', source );
-    this.referenceHeight = getValue( 'referenceHeight', source );
-    this.mass = getValue( 'mass', source );
-    this.track = getValue( 'track', source );
-    this.angle = getValue( 'angle', source );
-    this.onTopSideOfTrack = getValue( 'onTopSideOfTrack', source );
-    this.parametricPosition = getValue( 'parametricPosition', source );
-    this.parametricSpeed = getValue( 'parametricSpeed', source );
-    this.dragging = getValue( 'dragging', source );
-    this.thermalEnergy = getValue( 'thermalEnergy', source );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const anySource = source as Record<string, any>;
+    this.gravity = getValue( 'gravity', anySource );
+    this.referenceHeight = getValue( 'referenceHeight', anySource );
+    this.mass = getValue( 'mass', anySource );
+    this.track = getValue( 'track', anySource );
+    this.angle = getValue( 'angle', anySource );
+    this.onTopSideOfTrack = getValue( 'onTopSideOfTrack', anySource );
+    this.parametricPosition = getValue( 'parametricPosition', anySource );
+    this.parametricSpeed = getValue( 'parametricSpeed', anySource );
+    this.dragging = getValue( 'dragging', anySource );
+    this.thermalEnergy = getValue( 'thermalEnergy', anySource );
 
     // Some sanity tests
     assert && assert( isFinite( this.thermalEnergy ) );
@@ -118,7 +119,7 @@ export default class SkaterState {
    * @param curvature - description of curvature at a point, looks like
    *                   {r: {number}, x: {number}, y: {number} }
    */
-  public getCurvature( curvature: IntentionalAny ): void {
+  public getCurvature( curvature: Curvature ): void {
     this.track!.getCurvature( this.parametricPosition, curvature );
   }
 
@@ -364,7 +365,8 @@ export default class SkaterState {
   }
 }
 
-const getValue = ( key: string, source: IntentionalAny ): IntentionalAny => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getValue = ( key: string, source: Record<string, any> ): any => {
   return typeof source[ `${key}Property` ] === 'object' ? source[ `${key}Property` ].value :
          source[ key ];
 };

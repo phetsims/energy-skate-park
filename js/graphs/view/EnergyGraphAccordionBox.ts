@@ -12,7 +12,6 @@ import Property from '../../../../axon/js/Property.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Dimension2 from '../../../../dot/js/Dimension2.js';
 import merge from '../../../../phet-core/js/merge.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
 import MagnifyingGlassZoomButtonGroup from '../../../../scenery-phet/js/MagnifyingGlassZoomButtonGroup.js';
@@ -26,8 +25,9 @@ import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import ABSwitch from '../../../../sun/js/ABSwitch.js';
+import TColor from '../../../../scenery/js/util/TColor.js';
 import AccordionBox from '../../../../sun/js/AccordionBox.js';
-import VerticalCheckboxGroup from '../../../../sun/js/VerticalCheckboxGroup.js';
+import VerticalCheckboxGroup, { VerticalCheckboxGroupItem } from '../../../../sun/js/VerticalCheckboxGroup.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
@@ -263,7 +263,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
    *
    * @returns - Conforms to the item object of VerticalCheckboxGroup
    */
-  private static createCheckboxItem( property: Property<IntentionalAny>, labelString: TReadOnlyProperty<string>, energyColor: IntentionalAny, labelAlignGroup: AlignGroup ): IntentionalAny {
+  private static createCheckboxItem( property: Property<boolean>, labelString: TReadOnlyProperty<string>, energyColor: TColor, labelAlignGroup: AlignGroup ): VerticalCheckboxGroupItem {
     const labelText = new Text( labelString, {
       font: EnergySkateParkConstants.CHECKBOX_LABEL_FONT,
       maxWidth: 50

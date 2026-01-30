@@ -11,8 +11,8 @@
 import Emitter from '../../../../axon/js/Emitter.js';
 import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import ComboBox, { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
@@ -34,7 +34,7 @@ export type PhysicalComboBoxOptions = SelfOptions & ComboBoxOptions;
 // constants
 const controlsGravityCustomStringProperty = EnergySkateParkStrings.physicalControls.customStringProperty;
 
-export default class PhysicalComboBox extends ComboBox<IntentionalAny> {
+export default class PhysicalComboBox extends ComboBox<number | null> {
 
   /**
    * @param physicalProperty
@@ -45,7 +45,7 @@ export default class PhysicalComboBox extends ComboBox<IntentionalAny> {
    * @param tandem
    * @param [options]
    */
-  public constructor( physicalProperty: PhetioProperty<IntentionalAny>, userControlledProperty: Property<boolean>, labelValueList: Array<IntentionalAny>, resetEmitter: Emitter, listParent: Node, tandem: Tandem, providedOptions?: PhysicalComboBoxOptions ) {
+  public constructor( physicalProperty: PhetioProperty<number>, userControlledProperty: Property<boolean>, labelValueList: Array<{ label: TReadOnlyProperty<string>; value: number; tandemName: string }>, resetEmitter: Emitter, listParent: Node, tandem: Tandem, providedOptions?: PhysicalComboBoxOptions ) {
     assert && assert( _.find( labelValueList, entry => entry.value === null ) === undefined, 'PhysicalComboBox adds "Custom" item' );
 
     const options = optionize<PhysicalComboBoxOptions, SelfOptions, ComboBoxOptions>()( {
@@ -87,7 +87,7 @@ export default class PhysicalComboBox extends ComboBox<IntentionalAny> {
 
     // adapter Property for the ComboBox because the physicalProperty can be set to values other than those defined
     // in labelValueList - value is null which means 'Custom'
-    const adapterProperty = new Property( physicalProperty.value, {
+    const adapterProperty = new Property<number | null>( physicalProperty.value, {
       reentrant: true,
       phetioValueType: NullableIO( NumberIO ),
       tandem: tandem.createTandem( 'adapterProperty' )
