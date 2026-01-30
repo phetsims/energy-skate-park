@@ -32,7 +32,9 @@ export default class ToolboxPanel extends Panel {
       align: 'center',
 
       // smaller y margin to save space when used with very tall ControlPanels (like in the intro screen)
-      yMargin: 2
+      yMargin: 2,
+
+      xMargin: 25
     }, EnergySkateParkConstants.PANEL_OPTIONS, options );
 
     // create the icons
@@ -64,9 +66,7 @@ export default class ToolboxPanel extends Panel {
     // align icons for panel
     const icons = new HBox( {
       children: [ stopwatchIcon, measuringTapeIcon ],
-      align: 'center',
-      spacing: 20,
-      excludeInvisibleChildrenFromBounds: false
+      align: 'center'
     } );
 
     super( icons, options );
