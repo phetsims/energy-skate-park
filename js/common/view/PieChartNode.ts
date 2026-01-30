@@ -12,7 +12,6 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Shape from '../../../../kite/js/Shape.js';
 import optionize, { combineOptions } from '../../../../phet-core/js/optionize.js';
-import platform from '../../../../phet-core/js/platform.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
@@ -80,11 +79,7 @@ export default class PieChartNode extends Node {
     super( {
       tandem: tandem,
       children: [ thermalEnergySlice, potentialEnergySlice, kineticEnergySlice, totalEnergyCircle ],
-      pickable: false,
-
-      // render with canvas on iOS Safari to improve performance when rendering this Node, see
-      // https://github.com/phetsims/energy-skate-park/issues/125
-      renderer: platform.mobileSafari ? 'canvas' : null
+      pickable: false
     } );
 
     // whether negative potential energy will be represented by the pie chart or it should

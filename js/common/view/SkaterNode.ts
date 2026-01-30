@@ -53,10 +53,6 @@ export default class SkaterNode extends Node {
     getClosestTrackAndPositionAndParameter: ( v: Vector2, t: Track[] ) => { track: Track; parametricPosition: number; point: Vector2 } | null, getPhysicalTracks: () => Track[], tandem: Tandem ) {
     super( {
 
-      // rendering the skater with canvas makes it move smoothly around the screen edges in iOS Safari, see
-      // https://github.com/phetsims/energy-skate-park/issues/42
-      renderer: 'canvas',
-
       // prevent fitted blocks for the Skater to improve performance, see #213
       preventFit: true,
       tandem: tandem
