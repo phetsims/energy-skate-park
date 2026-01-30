@@ -44,6 +44,8 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
 
     const options = optionize4<EnergyBarGraphAccordionBoxOptions, SelfOptions, AccordionBoxOptions>()( {}, {
       titleNode: titleNode,
+
+      // Putting the icon at the right, with the right spacing between the icon and label, makes the text appear centered, see https://github.com/phetsims/energy-skate-park/issues/398
       titleAlignX: 'right',
 
       contentXMargin: PANEL_MARGIN,
