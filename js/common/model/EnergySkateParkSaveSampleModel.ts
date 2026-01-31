@@ -108,15 +108,13 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
     this.stickingToTrackProperty.set( dataSample.stickingToTrack );
 
     if ( dataSample.track ) {
-      assert && assert( dataSample.track === this.skater.trackProperty.get(), 'only the active track can be set from sample' );
 
       dataSample.trackControlPointPositions.forEach( ( position, i ) => {
-
-        this.skater.trackProperty.get()!.controlPoints[ i ].sourcePositionProperty.set( position );
+        dataSample.track!.controlPoints[ i ].sourcePositionProperty.set( position );
       } );
 
       // make sure control points are constrained, and update splines and shape
-      this.skater.trackProperty.get()!.containControlPointsInLimitBounds( true );
+      dataSample.track.containControlPointsInLimitBounds( true );
     }
   }
 
