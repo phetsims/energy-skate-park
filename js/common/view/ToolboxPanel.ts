@@ -66,7 +66,10 @@ export default class ToolboxPanel extends Panel {
     // align icons for panel
     const icons = new HBox( {
       children: [ stopwatchIcon, measuringTapeIcon ],
-      align: 'center'
+      align: 'center',
+
+      // Keep icons at their position even when they are invisible
+      excludeInvisibleChildrenFromBounds: false
     } );
 
     super( icons, options );
