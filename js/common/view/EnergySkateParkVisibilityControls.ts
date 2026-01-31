@@ -1,4 +1,4 @@
-// Copyright 2018-2025, University of Colorado Boulder
+// Copyright 2018-2026, University of Colorado Boulder
 
 /**
  * Checkboxes that control visibility of items in energy-skate-park, including the pie chart, bar graph, grid,

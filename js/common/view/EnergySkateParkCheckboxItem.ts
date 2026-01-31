@@ -1,4 +1,4 @@
-// Copyright 2018-2025, University of Colorado Boulder
+// Copyright 2018-2026, University of Colorado Boulder
 
 /**
  * A Checkbox in EnergySkatePark, which includes a label and an icon. Icons are generally aligned with other checkboxes

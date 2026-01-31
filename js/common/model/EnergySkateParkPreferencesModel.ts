@@ -1,4 +1,4 @@
-// Copyright 2022-2025, University of Colorado Boulder
+// Copyright 2022-2026, University of Colorado Boulder
 
 /**
  * A model that holds preferences that are specific to Energy Skate Park. These Properties are shared and reflected
