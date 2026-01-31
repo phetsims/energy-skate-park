@@ -13,9 +13,7 @@
 
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
-import EnumerationDeprecated from '../../../../phet-core/js/EnumerationDeprecated.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
-import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import ControlPoint from './ControlPoint.js';
@@ -27,7 +25,8 @@ const END_BOUNDS_WIDTH = 2.5;
 const END_BOUNDS_HEIGHT = 4;
 
 // the supported premade tracks, used in EnegySkateParkTrackSetModels
-const TrackType = EnumerationDeprecated.byKeys( [ 'PARABOLA', 'SLOPE', 'DOUBLE_WELL', 'LOOP' ] );
+export const TrackTypes = [ 'PARABOLA', 'SLOPE', 'DOUBLE_WELL', 'LOOP' ];
+export type TrackType = typeof TrackTypes[number];
 
 /**
  * Create a set of limiting drag bounds for a control point of a premade track. The control point is at the
@@ -331,9 +330,7 @@ const PremadeTracks = {
    */
   createTrack( model: EnergySkateParkModel, controlPoints: ControlPoint[], options?: TrackOptions ): Track {
     return new Track( model, controlPoints, options );
-  },
-
-  TrackType: TrackType as IntentionalAny
+  }
 };
 
 energySkatePark.register( 'PremadeTracks', PremadeTracks );

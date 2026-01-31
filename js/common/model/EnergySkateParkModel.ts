@@ -69,10 +69,10 @@ const thrust = new Vector2( 0, 0 );
 const FRAME_RATE = 60;
 
 // Flag to enable debugging for physics issues
-const debug = EnergySkateParkQueryParameters.debugLog ? function( ...args: IntentionalAny[] ) { // TODO: IntentionalAny is fine here, see https://github.com/phetsims/energy-skate-park/issues/387
+const debug = EnergySkateParkQueryParameters.debugLog ? function( ...args: IntentionalAny[] ) {
   console.log( ...args );
 } : null;
-const debugAttachDetach = EnergySkateParkQueryParameters.debugAttachDetach ? function( ...args: IntentionalAny[] ) { // TODO: IntentionalAny is fine here, see https://github.com/phetsims/energy-skate-park/issues/387
+const debugAttachDetach = EnergySkateParkQueryParameters.debugAttachDetach ? function( ...args: IntentionalAny[] ) {
   console.log( ...args );
 } : null;
 

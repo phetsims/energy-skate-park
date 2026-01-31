@@ -20,7 +20,7 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
-import PremadeTracks from '../model/PremadeTracks.js';
+import PremadeTracks, { TrackType } from '../model/PremadeTracks.js';
 import BackgroundNode from './BackgroundNode.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
@@ -70,7 +70,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
     // Create a track to be used specifically for an icon - must be one of the premade tracks defined in
     // PremadeTracks.TrackType. These Tracks are a bit different from the actual tracks used in the model
     // because their sizing and dimensions need to be different to look better as icons for radio buttons
-    const createIconTrack = ( trackType: unknown ) => {
+    const createIconTrack = ( trackType: TrackType ) => {
 
       // all tracks have the same width and height so they take up the same dimensions in a radio button, so one
       // doesn't get scaled down more than another and look thinner
@@ -80,19 +80,19 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
       };
 
       let track = null;
-      if ( trackType === PremadeTracks.TrackType.PARABOLA ) {
+      if ( trackType === 'PARABOLA' ) {
         const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model, Tandem.OPT_OUT, controlPointOptions );
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints );
       }
-      else if ( trackType === PremadeTracks.TrackType.SLOPE ) {
+      else if ( trackType === 'SLOPE' ) {
         const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model, Tandem.OPT_OUT, controlPointOptions );
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints );
       }
-      else if ( trackType === PremadeTracks.TrackType.DOUBLE_WELL ) {
+      else if ( trackType === 'DOUBLE_WELL' ) {
         const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model, Tandem.OPT_OUT, controlPointOptions );
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, doubleWellControlPoints );
       }
-      else if ( trackType === PremadeTracks.TrackType.LOOP ) {
+      else if ( trackType === 'LOOP' ) {
         const loopControlPoints = PremadeTracks.createLoopControlPoints( model, Tandem.OPT_OUT, merge( {
           innerLoopWidth: 2.5,
           innerLoopTop: 3.5

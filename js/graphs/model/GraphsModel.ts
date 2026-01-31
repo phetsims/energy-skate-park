@@ -54,9 +54,8 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
       // the Graphs screen contains a parabola and double well premade track
       trackTypes: [
-        PremadeTracks.TrackType.PARABOLA,
-
-        PremadeTracks.TrackType.DOUBLE_WELL
+        'PARABOLA',
+        'DOUBLE_WELL'
       ],
 
       // the Graphs screen has a double well and parabola track, but they look and act a bit different from the other

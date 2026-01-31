@@ -16,7 +16,7 @@ import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
 import EnergySkateParkSaveSampleModel, { EnergySkateParkSaveSampleModelOptions } from './EnergySkateParkSaveSampleModel.js';
-import PremadeTracks, { DoubleWellOptions, LoopOptions, ParabolaOptions, SlopeOptions } from './PremadeTracks.js';
+import PremadeTracks, { DoubleWellOptions, LoopOptions, ParabolaOptions, SlopeOptions, TrackType } from './PremadeTracks.js';
 import Track, { TrackOptions } from './Track.js';
 
 type InitializePremadeTracksOptions = {
@@ -31,7 +31,7 @@ type InitializePremadeTracksOptions = {
 };
 
 type SelfOptions = {
-  trackTypes?: object[];
+  trackTypes?: TrackType[];
   initializePremadeTracksOptions?: InitializePremadeTracksOptions | null;
 };
 
@@ -41,7 +41,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
   // Indicates the currently selected scene. There can be any number of scenes, do we need to pass this in as a param
   public readonly sceneProperty: NumberProperty;
-  public readonly trackTypes: object[];
+  public readonly trackTypes: TrackType[];
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions: EnergySkateParkTrackSetModelOptions ) {
     const options = optionize<EnergySkateParkSaveSampleModelOptions, SelfOptions, EnergySkateParkSaveSampleModelOptions>()( {
@@ -51,10 +51,10 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
       // this list to remove premade tracks from the model. This order will also be the
       // order of track selection buttons in the view.
       trackTypes: [
-        PremadeTracks.TrackType.PARABOLA,
-        PremadeTracks.TrackType.SLOPE,
-        PremadeTracks.TrackType.DOUBLE_WELL,
-        PremadeTracks.TrackType.LOOP
+        'PARABOLA',
+        'SLOPE',
+        'DOUBLE_WELL',
+        'LOOP'
       ],
 
       // {Object} Options passed to initializePremadeTracks, with options for control points and tracks for each of
@@ -119,9 +119,6 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
   /**
    * Create and add the premade tracks for this model, tracks are defined by options for this class.
-   *
-   * @param tandem
-   * @param options
    */
   private initializePremadeTracks( tandem: Tandem, providedOptions?: InitializePremadeTracksOptions | null ): void {
     const tracks: Track[] = [];
@@ -129,7 +126,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
     const options = combineOptions<InitializePremadeTracksOptions>( {}, providedOptions ?? undefined );
 
     this.trackTypes.forEach( trackType => {
-      if ( trackType === PremadeTracks.TrackType.PARABOLA ) {
+      if ( trackType === 'PARABOLA' ) {
         const parabolaTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'parabolaTrack' );
         const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, parabolaTrackTandem, options.parabolaControlPointOptions ?? {} );
         const parabolaTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, parabolaControlPoints, combineOptions<TrackOptions>( {
@@ -138,7 +135,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
         tracks.push( parabolaTrack );
       }
-      else if ( trackType === PremadeTracks.TrackType.SLOPE ) {
+      else if ( trackType === 'SLOPE' ) {
         const slopeTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'slopeTrack' );
         const slopeControlPoints = PremadeTracks.createSlopeControlPoints( this, slopeTrackTandem, options.slopeControlPointOptions ?? {} );
         const slopeTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, slopeControlPoints, combineOptions<TrackOptions>( {
@@ -150,7 +147,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
         }, options.slopeTrackOptions ) );
         tracks.push( slopeTrack );
       }
-      else if ( trackType === PremadeTracks.TrackType.DOUBLE_WELL ) {
+      else if ( trackType === 'DOUBLE_WELL' ) {
         const doubleWellTandem = tandem.createTandem( 'tracks' ).createTandem( 'doubleWellTrack' );
         const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( this, doubleWellTandem, options.doubleWellControlPointOptions ?? {} );
         const doubleWellTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, doubleWellControlPoints, combineOptions<TrackOptions>( {
@@ -158,7 +155,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
         }, options.doubleWellTrackOptions ) );
         tracks.push( doubleWellTrack );
       }
-      else if ( trackType === PremadeTracks.TrackType.LOOP ) {
+      else if ( trackType === 'LOOP' ) {
         const loopTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'loopTrack' );
         const loopControlPoints = PremadeTracks.createLoopControlPoints( this, loopTrackTandem, options.loopControlPointOptions ?? {} );
         const loopTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, loopControlPoints, combineOptions<TrackOptions>( {
