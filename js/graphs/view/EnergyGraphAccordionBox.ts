@@ -182,9 +182,6 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       contentXMargin: 7,
       contentYSpacing: 0,
 
-      // do not resize the AccordionBox as EnergyChart labels animate (new labels may adjust bounds)
-      resize: false,
-
       // clicking doesn't expand since the title contains other controls in the parentLayer
       titleBarExpandCollapse: false,
 

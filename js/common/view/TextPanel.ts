@@ -41,8 +41,7 @@ export default class TextPanel extends Panel {
       cornerRadius: 0,
       lineWidth: 0,
       xMargin: 2,
-      yMargin: 0,
-      resize: false // assumes the text content is static
+      yMargin: 0
     }, providedOptions );
 
     const text = new Text( stringProperty, {

@@ -140,7 +140,6 @@ export default class PieChartLegend extends Panel {
       y: 4,
       xMargin: 7,
       yMargin: 6,
-      resize: false,
       tandem: tandem
     }, EnergySkateParkConstants.GRAPH_PANEL_OPTONS ) );
 

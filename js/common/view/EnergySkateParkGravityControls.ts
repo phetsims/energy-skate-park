@@ -112,7 +112,7 @@ export default class EnergySkateParkGravityControls extends VBox {
       children.push( gravityComboBox );
     }
 
-    super( { resize: true, spacing: 8, children: children } );
+    super( { spacing: 8, children: children } );
   }
 }
 

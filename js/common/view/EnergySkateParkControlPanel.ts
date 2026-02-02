@@ -139,7 +139,6 @@ export default class EnergySkateParkControlPanel extends Panel {
     super( content, merge( {
       xMargin: 5,
       yMargin: 5,
-      resize: false,
       tandem: tandem
     }, EnergySkateParkConstants.PANEL_OPTIONS ) );
   }
