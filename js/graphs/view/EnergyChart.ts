@@ -244,14 +244,14 @@ export default class EnergyChart extends XYCursorChartNode {
       if ( independentVariable === 'position' ) {
         this.setCursorVisibleOverride( false );
 
-        // @ts-expect-error
+        // @ts-expect-error - EnumerationProperty not well typed, see https://github.com/phetsims/energy-skate-park/issues/417
         this.setPlotStyle( DynamicSeriesNode.PlotStyle.SCATTER );
         verticalLineSpacing = POSITION_STEP_X;
       }
       else {
         this.setCursorVisibleOverride( null );
 
-        // @ts-expect-error
+        // @ts-expect-error - EnumerationProperty not well typed, see https://github.com/phetsims/energy-skate-park/issues/417
         this.setPlotStyle( DynamicSeriesNode.PlotStyle.LINE );
         verticalLineSpacing = TIME_STEP_X;
       }

@@ -12,9 +12,9 @@ import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import merge from '../../../../phet-core/js/merge.js';
-import optionize from '../../../../phet-core/js/optionize.js';
+import optionize, { combineOptions } from '../../../../phet-core/js/optionize.js';
 import NumberControl, { NumberControlOptions, NumberControlSliderOptions } from '../../../../scenery-phet/js/NumberControl.js';
-import NumberDisplay, { NumberDisplayOptions } from '../../../../scenery-phet/js/NumberDisplay.js';
+import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
@@ -25,18 +25,13 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 
 type SelfOptions = {
+
   // decimal places for the ticks and (by default) the NumberControl's NumberDisplay
   decimalPlaces?: number;
 
   // if true, the tweaker buttons and number display will be hidden (but rest of NumberControl title
   // and layout will be preserved)
   sliderOnly?: boolean;
-
-  // passed to the Slider of NumberControl
-  sliderOptions?: NumberControlSliderOptions;
-
-  // passed to the NumberDisplay of NumberControl
-  numberDisplayOptions?: NumberDisplayOptions;
 };
 
 export type PhysicalNumberControlOptions = SelfOptions & NumberControlOptions;
@@ -65,15 +60,10 @@ export default class PhysicalNumberControl extends NumberControl {
       endCallback: () => {
         userControlledProperty.set( false );
       },
-      sliderOnly: false,
-
-      // @ts-expect-error
-      sliderOptions: undefined,
-      // @ts-expect-error
-      numberDisplayOptions: undefined
+      sliderOnly: false
     }, providedOptions );
 
-    options.sliderOptions = merge( {
+    options.sliderOptions = combineOptions<NumberControlSliderOptions>( {
       majorTicks: [
         {
           value: valueRange.min,
