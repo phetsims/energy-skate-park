@@ -37,7 +37,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
   public readonly independentVariableProperty: StringUnionProperty<'position' | 'time'>;
 
   // or not the energy plot is visible
-  public energyPlotVisibleProperty: BooleanProperty;
+  public readonly energyPlotVisibleProperty: BooleanProperty;
   private timeSinceSkaterSaved?: number;
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {

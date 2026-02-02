@@ -39,9 +39,9 @@ export default class EnergySkateParkDataSample {
   public readonly trackControlPointPositions: Vector2[];
 
   // values copied from SkaterState, but these may change with the reference height and become out of sync with SkaterState
-  public kineticEnergy: number;
+  public readonly kineticEnergy: number;
   public potentialEnergy: number;
-  public thermalEnergy: number;
+  public readonly thermalEnergy: number;
   public totalEnergy: number;
 
   // The skater's state at the time of sampling

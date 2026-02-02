@@ -76,7 +76,7 @@ export default class BackgroundNode extends Node {
     this.sky.fill = new LinearGradient( 0, 0, 0, bounds.height / 2 ).addColorStop( 0, '#02ace4' ).addColorStop( 1, '#cfecfc' );
   }
 
-  public static earthHeight = earthHeight;
+  public static readonly earthHeight = earthHeight;
 }
 
 energySkatePark.register( 'BackgroundNode', BackgroundNode );

@@ -88,10 +88,10 @@ export default class Skater {
   public readonly velocityProperty: Vector2Property;
 
   //  - True if the user is dragging the skater with a pointer
-  public draggingProperty: BooleanProperty;
+  public readonly draggingProperty: BooleanProperty;
 
   //  - Energies are in Joules
-  public kineticEnergyProperty: NumberProperty;
+  public readonly kineticEnergyProperty: NumberProperty;
 
   //
   public readonly potentialEnergyProperty: NumberProperty;

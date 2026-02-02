@@ -155,32 +155,32 @@ export default class EnergySkateParkModel {
   public readonly timeSpeedProperty: EnumerationProperty<TimeSpeed>;
 
   // Coefficient of friction (unitless) between skater and track
-  public frictionProperty: NumberProperty;
+  public readonly frictionProperty: NumberProperty;
 
   // model position for the base  of the measuring tape
-  public measuringTapeBasePositionProperty: Vector2Property;
+  public readonly measuringTapeBasePositionProperty: Vector2Property;
 
   // model position for the tip of the measuring tape
-  public measuringTapeTipPositionProperty: Vector2Property;
+  public readonly measuringTapeTipPositionProperty: Vector2Property;
 
   // Whether the skater should stick to the track like a roller coaster, or be able to fly off like a street
-  public stickingToTrackProperty: BooleanProperty;
+  public readonly stickingToTrackProperty: BooleanProperty;
 
   // collection of Properties that indicate that a user is
   // modifying some variable that will change physical system and modify all saved energy data
-  public userControlledPropertySet: UserControlledPropertySet;
+  public readonly userControlledPropertySet: UserControlledPropertySet;
 
   // the skater model instance
-  public skater: Skater;
+  public readonly skater: Skater;
 
   // Determine if the skater is onscreen or offscreen for purposes of highlighting the
   // 'return skater' button. Don't check whether the skater is underground since that is a rare case (only if the
   // user is actively dragging a control point near y=0 and the track curves below) and the skater will pop up
   // again soon, see the related flickering problem in #206
-  public skaterInBoundsProperty: TReadOnlyProperty<boolean>;
+  public readonly skaterInBoundsProperty: TReadOnlyProperty<boolean>;
 
   // - signify that the model has successfully been reset to initial state
-  public resetEmitter: Emitter;
+  public readonly resetEmitter: Emitter;
 
   public readonly tracks: ObservableArray<Track>;
 
