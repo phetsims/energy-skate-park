@@ -71,7 +71,7 @@ export default class EnergySkateParkConstants {
   } );
 
   // options for the ComboBoxes in this sim
-  public static readonly COMBO_BOX_OPTIONS = {
+  private static readonly COMBO_BOX_OPTIONS = {
     xMargin: 10,
     yMargin: 6,
     cornerRadius: PANEL_CORNER_RADIUS

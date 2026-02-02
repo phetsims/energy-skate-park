@@ -50,7 +50,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
 
   // whether to limit the number of samples to be saved - if false, which
   // can be done if you are ok with saving limitless samples, options.maxNumberOfSamples has no impact
-  public limitNumberOfSamples: boolean;
+  protected limitNumberOfSamples: boolean;
 
   // controls whether samples are saved as the model steps through time
   public readonly saveSamplesProperty: BooleanProperty;
@@ -58,7 +58,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
   // set to true to prevent the model from saving any more samples, even if
   // saveSamplesProperty is true - this can be used instead of (or in combination with) maxNumberOfSamples\
   // to prevent the model from saving too many samples for reasons other than array length
-  public preventSampleSave: boolean;
+  protected preventSampleSave: boolean;
 
   // in seconds, how much time has passed since beginning to record skater states
   public readonly sampleTimeProperty: NumberProperty;
@@ -134,7 +134,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
    *
    * Assumes that samplesToRemove is a sub-array of this.dataSamples, in the right order.
    */
-  public batchRemoveSamples( samplesToRemove: EnergySkateParkDataSample[] ): void {
+  protected batchRemoveSamples( samplesToRemove: EnergySkateParkDataSample[] ): void {
 
     const indexOfFirstSample = this.dataSamples.indexOf( samplesToRemove[ 0 ] );
     this.dataSamples.splice( indexOfFirstSample, samplesToRemove.length );
@@ -155,7 +155,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
   /**
    * Custom stepModel for the SaveSampleModel. Saves and clears EnergySkateParkDataSamples. dt in seconds
    */
-  public override stepModel( dt: number, skaterState: SkaterState ): SkaterState {
+  protected override stepModel( dt: number, skaterState: SkaterState ): SkaterState {
     const updatedState = super.stepModel( dt, skaterState );
 
     if ( this.saveSamplesProperty.get() ) {

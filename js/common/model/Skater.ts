@@ -69,7 +69,7 @@ export default class Skater {
   public readonly gravityMagnitudeProperty: NumberProperty;
 
   // Gravity magnitude and sign
-  public readonly gravityProperty: TReadOnlyProperty<number>;
+  private readonly gravityProperty: TReadOnlyProperty<number>;
 
   //  - reference height for potential energy, 0 is at the ground
   public readonly referenceHeightProperty: NumberProperty;
@@ -109,10 +109,10 @@ export default class Skater {
   public readonly startingPositionProperty: Vector2Property;
 
   //  - Returns to this parametric position along the track when pressing "return skater"
-  public readonly startingUProperty: Property<number>;
+  private readonly startingUProperty: Property<number>;
 
   // Tracks whether the skater is above or below the track when it is released
-  public readonly startingUpProperty: BooleanProperty;
+  private readonly startingUpProperty: BooleanProperty;
 
   // Returns to this track when pressing "return skater"
   public readonly startingTrackProperty: Property<Track | null>;
@@ -446,7 +446,7 @@ export default class Skater {
    * Get the position of the skater head from the "point" mass, taking into account the size of the skater
    * from its mass value.
    */
-  public getHeadPosition(): Vector2 {
+  private getHeadPosition(): Vector2 {
 
     // Center pie chart over skater's head not his feet so it doesn't look awkward when skating in a parabola
     // Note this has been tuned independently of SkaterNode.massToScale, which also accounts for the image dimensions

@@ -351,7 +351,7 @@ export default class SkaterPathSensorNode extends Node {
    * Formats values in the height/speed display adjacent to the sensor when a data
    * point is under the wand.
    */
-  public formatValue( value: number ): string {
+  private formatValue( value: number ): string {
     return Utils.toFixed( value, 2 );
   }
 

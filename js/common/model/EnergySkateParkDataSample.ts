@@ -51,7 +51,7 @@ export default class EnergySkateParkDataSample {
   public readonly friction: number;
 
   // Time since this sample was added to the model, in seconds
-  public timeSinceAdded: number;
+  private timeSinceAdded: number;
 
   // Whether this sample is being inspected by the probe
   public readonly inspectedProperty: BooleanProperty;
@@ -142,7 +142,7 @@ export default class EnergySkateParkDataSample {
    * Get the potential energy a particular reference height, using the other physical properties of the SkaterState
    * unchanged.
    */
-  public getPotentialEnergyAtReferenceHeight( referenceHeight: number ): number {
+  private getPotentialEnergyAtReferenceHeight( referenceHeight: number ): number {
     return -this.skaterState.mass * this.skaterState.gravity * ( this.skaterState.positionY - referenceHeight );
   }
 

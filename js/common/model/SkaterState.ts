@@ -25,7 +25,7 @@ export default class SkaterState {
   public referenceHeight!: number;
   public mass!: number;
   public track!: Track | null;
-  public angle!: number;
+  private angle!: number;
   public onTopSideOfTrack!: boolean;
   public parametricPosition!: number;
   public parametricSpeed!: number;

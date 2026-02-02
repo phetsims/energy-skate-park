@@ -66,7 +66,7 @@ export default class BackgroundNode extends Node {
    *
    * @param bounds - in the view coordinate frame
    */
-  public layout( bounds: Bounds2 ): void {
+  private layout( bounds: Bounds2 ): void {
     const cementY = this.cementY;
     this.earth.setRect( bounds.minX, cementY, bounds.width, earthHeight );
 

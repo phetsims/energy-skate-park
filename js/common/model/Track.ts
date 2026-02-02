@@ -97,7 +97,7 @@ export default class Track extends PhetioObject {
   public readonly physicalProperty: BooleanProperty;
 
   // Flag that shows whether the track has been dragged fully out of the panel
-  public readonly leftThePanelProperty: BooleanProperty;
+  private readonly leftThePanelProperty: BooleanProperty;
 
   // Keep track of whether the track is dragging, so performance can be optimized while dragging -
   // only true while track is in the Play Area (physical)
@@ -107,22 +107,22 @@ export default class Track extends PhetioObject {
   // then dragging translates the entire track instead of just a point.
   public readonly controlPoints: ControlPoint[];
   public readonly controlPointDraggingProperty: TReadOnlyProperty<boolean>;
-  public readonly parametricPosition: Float64Array<ArrayBuffer>;
-  public readonly x: Float64Array<ArrayBuffer>;
-  public readonly y: Float64Array<ArrayBuffer>;
+  private readonly parametricPosition: Float64Array<ArrayBuffer>;
+  private readonly x: Float64Array<ArrayBuffer>;
+  private readonly y: Float64Array<ArrayBuffer>;
 
   // Sampling points, which will be initialized and updated in updateLinSpace.  These points are evenly spaced
   // in the track parametric coordinates from just before the track parameter space to just after. See updateLinSpace
-  public searchLinSpace: number[] | null;
-  public distanceBetweenSamplePoints: null | number;
-  public xSplineDiff: Spline | null = null;
-  public ySplineDiff: Spline | null = null;
+  private searchLinSpace: number[] | null;
+  private distanceBetweenSamplePoints: null | number;
+  private xSplineDiff: Spline | null = null;
+  private ySplineDiff: Spline | null = null;
   public xSpline: Spline | null = null;
   public ySpline: Spline | null = null;
-  public xSearchPoints: Float64Array | null = null;
-  public ySearchPoints: Float64Array | null = null;
-  public xSplineDiffDiff: Spline | null = null;
-  public ySplineDiffDiff: Spline | null = null;
+  private xSearchPoints: Float64Array | null = null;
+  private ySearchPoints: Float64Array | null = null;
+  private xSplineDiffDiff: Spline | null = null;
+  private ySplineDiffDiff: Spline | null = null;
   public minPoint!: number;
   public maxPoint!: number;
 
@@ -401,7 +401,7 @@ export default class Track extends PhetioObject {
    * If the track is configurable, we do NOT want to maintain this correction when the control points move. But when
    * this track is reset, we should reapply this correction.
    */
-  public setSlopeToGround( slopeToGround: boolean ): void {
+  private setSlopeToGround( slopeToGround: boolean ): void {
     this._slopeToGround = slopeToGround;
 
     if ( slopeToGround ) {
@@ -416,7 +416,7 @@ export default class Track extends PhetioObject {
   /**
    * Get whether the track "slopes to the ground", and skater energy state should apply additional corrections.
    */
-  public getSlopeToGround(): boolean {
+  private getSlopeToGround(): boolean {
     return this._slopeToGround;
   }
 
@@ -501,7 +501,7 @@ export default class Track extends PhetioObject {
   /**
    * Track information as a string for debugging purposes.
    */
-  public override toString(): string {
+  private override toString(): string {
     let string = '';
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
       const point = this.controlPoints[ i ];
@@ -595,7 +595,7 @@ export default class Track extends PhetioObject {
    * Returns the arc length (in meters) between two points on a parametric curve.
    * This function is at the heart of many nested loops, so it must be heavily optimized
    */
-  public getArcLength( u0: number, u1: number ): number {
+  private getArcLength( u0: number, u1: number ): number {
     if ( u1 === u0 ) {
       return 0;
     }
@@ -705,7 +705,7 @@ export default class Track extends PhetioObject {
    * Find the lowest y-point on the spline by sampling, used when dropping the track or a control point to ensure
    * it won't go below y=0.
    */
-  public getLowestY(): number {
+  private getLowestY(): number {
     if ( !this.xSearchPoints ) {
       this.xSearchPoints = SplineEvaluation.atArray( this.xSpline!, this.searchLinSpace! );
       this.ySearchPoints = SplineEvaluation.atArray( this.ySpline!, this.searchLinSpace! );
@@ -952,7 +952,7 @@ export default class Track extends PhetioObject {
    *
    * @returns the minimum radius of curvature along the track, in meters.
    */
-  public getMinimumRadiusOfCurvature(): number {
+  private getMinimumRadiusOfCurvature(): number {
     const curvature = { r: 0, x: 0, y: 0 };
     let minRadius = Number.POSITIVE_INFINITY;
 

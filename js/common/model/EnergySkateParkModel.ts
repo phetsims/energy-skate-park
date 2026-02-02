@@ -106,9 +106,9 @@ export default class EnergySkateParkModel {
   // track dragged, track deleted or scene changed, etc...)
   public readonly trackChangedEmitter: Emitter;
 
-  public readonly tracksDraggable: boolean;
+  protected readonly tracksDraggable: boolean;
   public readonly tracksConfigurable: boolean;
-  public readonly defaultFriction: number;
+  private readonly defaultFriction: number;
 
   // Will be filled in by the view, used to prevent control points from moving outside the visible model
   // bounds when adjusted, see #195
@@ -143,7 +143,7 @@ export default class EnergySkateParkModel {
   public readonly barGraphScaleProperty: NumberProperty;
 
   // enabled/disabled for the track editing buttons
-  public readonly editButtonEnabledProperty: BooleanProperty;
+  private readonly editButtonEnabledProperty: BooleanProperty;
   public readonly clearButtonEnabledProperty: BooleanProperty;
 
   // Whether the sim is paused or running
@@ -189,7 +189,7 @@ export default class EnergySkateParkModel {
 
   // Updates the model with constant event intervals even if there is a drop in the framerate
   // so that simulation performance has no impact on physical behavior.
-  public readonly eventTimer: EventTimer;
+  private readonly eventTimer: EventTimer;
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions?: EnergySkateParkModelOptions ) {
 
@@ -914,7 +914,7 @@ export default class EnergySkateParkModel {
    * The only other force on the object in the direction of motion is the gravity force
    * Component-wise to reduce allocations, see #50
    */
-  public getFrictionForceX( skaterState: SkaterState ): number {
+  private getFrictionForceX( skaterState: SkaterState ): number {
 
     // Friction force should not exceed sum of other forces (in the direction of motion), otherwise the friction could
     // start a stopped object moving. Hence we check to see if the object is already stopped and don't add friction
@@ -1499,7 +1499,7 @@ export default class EnergySkateParkModel {
   /**
    * Get all tracks that the skater cannot interact with.
    */
-  public getNonPhysicalTracks(): Track[] {
+  private getNonPhysicalTracks(): Track[] {
     return this.tracks.filter( track => !track.physicalProperty.get() );
   }
 
@@ -1637,7 +1637,7 @@ export default class EnergySkateParkModel {
   /**
    * Join the specified tracks together into a single new track and delete the old tracks.
    */
-  public joinTrackToTrack( a: Track, b: Track ): void {
+  private joinTrackToTrack( a: Track, b: Track ): void {
     const points: ControlPoint[] = [];
     let i;
 
@@ -1767,7 +1767,7 @@ export default class EnergySkateParkModel {
   /**
    * Get the number of physical control points (control points attached to a track that the Skater can interact with)
    */
-  public getNumberOfPhysicalControlPoints(): number {
+  private getNumberOfPhysicalControlPoints(): number {
     const numberOfPointsInEachTrack = _.map( this.getPhysicalTracks(), track => {return track.controlPoints.length;} );
     return _.reduce( numberOfPointsInEachTrack, ( memo, num ) => memo + num, 0 );
   }
@@ -1799,7 +1799,7 @@ export default class EnergySkateParkModel {
   /**
    * Called by phet-io to clear out the model state before restoring child tracks.
    */
-  public removeAllTracks(): void {
+  private removeAllTracks(): void {
     while ( this.tracks.length > 0 ) {
       const track = this.tracks.get( 0 );
       track.disposeControlPoints();

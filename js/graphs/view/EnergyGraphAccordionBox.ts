@@ -61,9 +61,9 @@ const SWITCH_SIZE = new Dimension2( 37, 18 );
 const LABEL_FONT = new PhetFont( { size: 15 } );
 
 export default class EnergyGraphAccordionBox extends AccordionBox {
-  public readonly energyPlot: EnergyChart;
+  private readonly energyPlot: EnergyChart;
 
-  public constructor( public readonly model: GraphsModel, modelViewTransform: ModelViewTransform2, tandem: Tandem, parentLayer: Node ) {
+  public constructor( private readonly model: GraphsModel, modelViewTransform: ModelViewTransform2, tandem: Tandem, parentLayer: Node ) {
 
     // the parent for all content of the accordion box
     const contentNode = new Node();
@@ -286,7 +286,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
 
   // for layout of the accordion box within a screen view, the spacing of the graph from the right edge of the
   // accordion box is the x content margin
-  public static readonly GRAPH_OFFSET = CONTENT_X_MARGIN;
+  private static readonly GRAPH_OFFSET = CONTENT_X_MARGIN;
 }
 
 energySkatePark.register( 'EnergyGraphAccordionBox', EnergyGraphAccordionBox );

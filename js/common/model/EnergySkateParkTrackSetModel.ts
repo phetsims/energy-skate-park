@@ -175,7 +175,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
    *
    * @param tracks - The tracks to add.
    */
-  public addTrackSet( tracks: Track[] ): void {
+  private addTrackSet( tracks: Track[] ): void {
     this.tracks.addAll( tracks );
     this.updateActiveTrack( this.sceneProperty.get() );
   }
@@ -185,7 +185,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
    * for some EnergySkateParkSaveSampleModels but not all of them. They are generally useful when EnergySkateParkDataSamples are
    * used to draw the skater path.
    */
-  public attachPathRemovalListeners(): void {
+  protected attachPathRemovalListeners(): void {
 
     // existing data fades away before removal when the skater direction changes
     this.skater.directionProperty.link( direction => {

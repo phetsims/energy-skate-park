@@ -109,7 +109,7 @@ export default class ToolboxPanel extends Panel {
    * Reference to the DerivedProperty is not returned because there is no need to dispose of it. This listener
    * can be attached for the life of the sim.
    */
-  public static attachIconVisibilityListener( icon: Node, visibleProperty: TReadOnlyProperty<boolean> ): void {
+  private static attachIconVisibilityListener( icon: Node, visibleProperty: TReadOnlyProperty<boolean> ): void {
     const iconVisibleProperty = new DerivedProperty( [ visibleProperty ], visible => {
       return !visible;
     } );

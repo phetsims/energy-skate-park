@@ -106,12 +106,12 @@ export type EnergySkateParkScreenViewOptions = SelfOptions & ScreenViewOptions;
 
 export default class EnergySkateParkScreenView extends ScreenView {
   public readonly modelViewTransform: ModelViewTransform2;
-  public readonly availableModelBoundsProperty: Property<Bounds2>;
-  public readonly trackNodeGroup: { createNextElement( track: Track, modelViewTransform: ModelViewTransform2, availableBoundsProperty: Property<Bounds2>, options?: TrackNodeOptions ): TrackNode };
+  protected readonly availableModelBoundsProperty: Property<Bounds2>;
+  protected readonly trackNodeGroup: { createNextElement( track: Track, modelViewTransform: ModelViewTransform2, availableBoundsProperty: Property<Bounds2>, options?: TrackNodeOptions ): TrackNode };
   protected readonly model: EnergySkateParkModel;
 
   // whether this screen view should include a measuring tape
-  public readonly showToolbox: boolean;
+  private readonly showToolbox: boolean;
 
   // visibility of various view components
   private readonly showBarGraph: boolean;
@@ -122,7 +122,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
   // defines the min and max edges horizontally for floating layout, null until first
   // layout() - includes padding so elements won't touch the edge
-  protected fixedRight: number | null;
+  private fixedRight: number | null;
   protected fixedLeft: number | null;
 
   // Layers for nodes in the sim. The bottom layer contains the background and UI components that should

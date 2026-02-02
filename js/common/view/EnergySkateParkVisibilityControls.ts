@@ -165,7 +165,7 @@ export default class EnergySkateParkVisibilityControls extends VBox {
    * Create and add to the list of checkbox contents. These are created eagerly so that layout can complete before
    * creating checkboxes, as checkboxes do not support icons with variable dimensions.
    */
-  public addCheckboxContent( labelString: TReadOnlyProperty<string>, iconNode: Node, property: BooleanProperty, tandem: Tandem, options?: { userControlledProperty: BooleanProperty } ): void {
+  private addCheckboxContent( labelString: TReadOnlyProperty<string>, iconNode: Node, property: BooleanProperty, tandem: Tandem, options?: { userControlledProperty: BooleanProperty } ): void {
     this.checkboxContents.push( new CheckboxContent( labelString, iconNode, this.textAlignGroup, this.iconAlignGroup, property, tandem, options ) );
   }
 }

@@ -25,10 +25,10 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
   private readonly trackNodes: TrackNode[];
 
   // for layout in subtypes
-  protected readonly trackToolbox: TrackToolboxPanel;
+  private readonly trackToolbox: TrackToolboxPanel;
 
   // for layout in subtypes
-  protected readonly clearButton: EraserButton;
+  private readonly clearButton: EraserButton;
 
   public constructor( model: EnergySkateParkPlaygroundModel, tandem: Tandem, options?: EnergySkateParkScreenViewOptions ) {
 
@@ -80,7 +80,7 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
    * Add a TrackNode to this ScreenView and add listeners that will
    * handle disposal.
    */
-  public addTrackNode( track: Track ): TrackNode {
+  private addTrackNode( track: Track ): TrackNode {
     const trackNode = this.trackNodeGroup.createNextElement( track, this.modelViewTransform, this.availableModelBoundsProperty );
     this.trackNodes.push( trackNode );
     this.trackLayer.addChild( trackNode );

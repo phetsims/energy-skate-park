@@ -19,7 +19,7 @@ export class AccelerationUnits extends EnumerationValue {
   public static readonly METERS_PER_SECOND_SQUARED = new AccelerationUnits();
   public static readonly NEWTONS_PER_KILOGRAM = new AccelerationUnits();
 
-  public static readonly enumeration = new Enumeration( AccelerationUnits );
+  private static readonly enumeration = new Enumeration( AccelerationUnits );
 }
 
 export default class EnergySkateParkPreferencesModel {

@@ -21,7 +21,7 @@ import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
 
 export default class ControlPointUI extends Node {
-  public readonly clickToDismissListener: { down: () => void };
+  private readonly clickToDismissListener: { down: () => void };
 
   /**
    * Constructor for the ControlPointUI for a single control point.

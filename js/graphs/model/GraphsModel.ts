@@ -38,7 +38,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
   // or not the energy plot is visible
   public energyPlotVisibleProperty: BooleanProperty;
-  public timeSinceSkaterSaved?: number;
+  private timeSinceSkaterSaved?: number;
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
 
@@ -264,7 +264,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
    * the model. If we are actually stepping the model physics, we are also recording new EnergySkateParkDataSamples
    * in the supertype function.
    */
-  public override stepModel( dt: number, skaterState: SkaterState ): SkaterState {
+  protected override stepModel( dt: number, skaterState: SkaterState ): SkaterState {
     const hasData = this.dataSamples.length > 0;
 
     // only if we have data, so that we don't try to get a data sample if length is 0
@@ -308,7 +308,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
    * Create the custom set of tracks for the "graphs" screen. The "graphs" screen includes a parabola and a
    * double well with unique shapes where only certain control points are draggable.
    */
-  public createGraphsTrackSet( tandem: Tandem ): Track[] {
+  private createGraphsTrackSet( tandem: Tandem ): Track[] {
 
     // all tracks in graphs screen are bound by these dimensions (in meters)
     const trackHeight = GraphsConstants.TRACK_HEIGHT;
