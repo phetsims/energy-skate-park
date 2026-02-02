@@ -12,6 +12,7 @@
  */
 
 import Vector2 from '../../../../dot/js/Vector2.js';
+import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from './Skater.js';
 import Track, { Curvature } from './Track.js';
@@ -67,8 +68,7 @@ export default class SkaterState {
 
     // This code is called many times from the physics loop, so must be optimized for speed and memory
     // Special handling for values that can be null, false or zero
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const anySource = source as Record<string, any>;
+    const anySource = source as Record<string, IntentionalAny>;
     this.gravity = getValue( 'gravity', anySource );
     this.referenceHeight = getValue( 'referenceHeight', anySource );
     this.mass = getValue( 'mass', anySource );
@@ -365,8 +365,7 @@ export default class SkaterState {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const getValue = ( key: string, source: Record<string, any> ): any => {
+const getValue = ( key: string, source: Record<string, IntentionalAny> ): IntentionalAny => {
   return typeof source[ `${key}Property` ] === 'object' ? source[ `${key}Property` ].value :
          source[ key ];
 };

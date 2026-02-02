@@ -7,7 +7,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import merge from '../../../../phet-core/js/merge.js';
+import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -17,9 +17,8 @@ import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityContro
 
 export default class VisibilityControlsPanel extends Panel {
 
-  public constructor( model: EnergySkateParkModel, tandem: Tandem, options?: PanelOptions ) {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {}, EnergySkateParkConstants.PANEL_OPTIONS, options );
+  public constructor( model: EnergySkateParkModel, tandem: Tandem, providedOptions?: PanelOptions ) {
+    const options = combineOptions<PanelOptions>( {}, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
 
     const content = new EnergySkateParkVisibilityControls( model, tandem, {
       showPieChartCheckbox: false,

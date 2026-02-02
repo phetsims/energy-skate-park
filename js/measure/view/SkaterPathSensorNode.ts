@@ -17,7 +17,7 @@ import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
-import merge from '../../../../phet-core/js/merge.js';
+import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
@@ -105,20 +105,19 @@ export default class SkaterPathSensorNode extends Node {
    * @param modelBoundsProperty
    * @param  modelViewTransform
    * @param controlPanel - so the readout doesn't occlude control panel bounds
-   * @param [options]
+   * @param [providedOptions]
    */
   public constructor(
     samples: ObservableArray<EnergySkateParkDataSample>,
     sensorProbePositionProperty: Vector2Property,
     sensorBodyPositionProperty: Vector2Property, modelBoundsProperty: TProperty<Bounds2>,
-    modelViewTransform: ModelViewTransform2, controlPanel: EnergySkateParkControlPanel, options?: NodeOptions ) {
+    modelViewTransform: ModelViewTransform2, controlPanel: EnergySkateParkControlPanel, providedOptions?: NodeOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+    const options = combineOptions<NodeOptions>( {
 
       // prevent block fitting so that things don't jiggle as the probe moves, see
       preventFit: true
-    }, options );
+    }, providedOptions );
     super( options );
 
     this.screenViewControlPanel = controlPanel;

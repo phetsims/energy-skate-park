@@ -8,7 +8,6 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import merge from '../../../../phet-core/js/merge.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import { ControlPointOptions } from '../../common/model/ControlPoint.js';
@@ -25,8 +24,7 @@ export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel
       assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
     }
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+    options = combineOptions<EnergySkateParkModelOptions>( {
       tracksDraggable: true,
       tracksConfigurable: true
     }, options );

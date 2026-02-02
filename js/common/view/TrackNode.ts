@@ -13,7 +13,7 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Shape from '../../../../kite/js/Shape.js';
 import LineStyles from '../../../../kite/js/util/LineStyles.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
-import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
@@ -26,7 +26,8 @@ import SplineEvaluation from '../SplineEvaluation.js';
 import ControlPointNode from './ControlPointNode.js';
 import TrackDragHandler from './TrackDragHandler.js';
 
-export type TrackNodeOptions = { roadCursorOverride?: string | null; isIcon?: boolean } & NodeOptions;
+type SelfOptions = { roadCursorOverride?: string | null; isIcon?: boolean };
+export type TrackNodeOptions = SelfOptions & NodeOptions;
 
 // constants
 export default class TrackNode extends Node {
@@ -54,19 +55,18 @@ export default class TrackNode extends Node {
    * @param modelViewTransform the model view transform for the view
    * @param availableBoundsProperty
    * @param tandem
-   * @param [options]
+   * @param [providedOptions]
    */
   public constructor(
     public readonly track: Track,
     public readonly modelViewTransform: ModelViewTransform2,
     public readonly availableBoundsProperty: Property<Bounds2>,
     tandem: Tandem,
-    options?: TrackNodeOptions
+    providedOptions?: TrackNodeOptions
   ) {
     const model = track.model;
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+    const options = optionize<TrackNodeOptions, SelfOptions, NodeOptions>()( {
 
       // {null|string} - cursor for the Track road - by default it is a 'pointer' if only draggable, but for some icons
       //  we want a pointer even when not draggable (like in the toolbox).
@@ -80,7 +80,7 @@ export default class TrackNode extends Node {
 
       tandem: tandem,
       visiblePropertyOptions: { phetioState: false }
-    }, options );
+    }, providedOptions );
 
     super( options );
 

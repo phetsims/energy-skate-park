@@ -9,7 +9,7 @@
 
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
-import merge from '../../../../phet-core/js/merge.js';
+import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
@@ -26,16 +26,15 @@ import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 
 export default class ToolboxPanel extends Panel {
 
-  public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, options?: PanelOptions ) {
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+  public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, providedOptions?: PanelOptions ) {
+    const options = combineOptions<PanelOptions>( {
       align: 'center',
 
       // smaller y margin to save space when used with very tall ControlPanels (like in the intro screen)
       yMargin: 2,
 
       xMargin: 25
-    }, EnergySkateParkConstants.PANEL_OPTIONS, options );
+    }, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
 
     // create the icons
     const measuringTapeIcon = MeasuringTapeNode.createIcon( {

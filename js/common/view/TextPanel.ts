@@ -8,26 +8,29 @@
  */
 
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
-import merge from '../../../../phet-core/js/merge.js';
+import optionize from '../../../../phet-core/js/optionize.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import Font from '../../../../scenery/js/util/Font.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
+import Font from '../../../../scenery/js/util/Font.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-type TextPanelOptions = { font?: Font; textMaxWidth?: number } & PanelOptions;
+type SelfOptions = {
+  font?: Font;
+  textMaxWidth?: number;
+};
+type TextPanelOptions = SelfOptions & PanelOptions;
 
 export default class TextPanel extends Panel {
 
   /**
    * @param stringProperty - text to fill the panel
-   * @param [options]
+   * @param [providedOptions]
    */
-  public constructor( stringProperty: TReadOnlyProperty<string>, options?: TextPanelOptions ) {
+  public constructor( stringProperty: TReadOnlyProperty<string>, providedOptions?: TextPanelOptions ) {
 
-    // eslint-disable-next-line phet/bad-typescript-text
-    options = merge( {
+    const options = optionize<TextPanelOptions, SelfOptions, PanelOptions>()( {
 
       // Text options
       font: new PhetFont( 15 ),
@@ -40,7 +43,7 @@ export default class TextPanel extends Panel {
       xMargin: 2,
       yMargin: 0,
       resize: false // assumes the text content is static
-    }, options );
+    }, providedOptions );
 
     const text = new Text( stringProperty, {
       font: options.font,
