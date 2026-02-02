@@ -10,12 +10,14 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import Rectangle from '../../../../dot/js/Rectangle.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ScreenView, { ScreenViewOptions } from '../../../../joist/js/ScreenView.js';
 import Shape from '../../../../kite/js/Shape.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
@@ -34,6 +36,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
+import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
 import Track from '../model/Track.js';
 import AttachDetachToggleButtons from './AttachDetachToggleButtons.js';
 import BackgroundNode from './BackgroundNode.js';
@@ -256,10 +259,15 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
     // For the playground screen, show attach/detach toggle buttons
     if ( options.showAttachDetachRadioButtons ) {
-      const property = model.tracksDraggable ? new Property( true ) :
 
-        // @ts-expect-error
-                       new DerivedProperty( [ model.sceneProperty ], scene => { scene === 2; } );
+      let property: TReadOnlyProperty<boolean>;
+      if ( model.tracksDraggable ) {
+        property = new Property( true );
+      }
+      else {
+        affirm( model instanceof EnergySkateParkTrackSetModel, 'model should be EnergySkateParkTrackSetModel to access sceneProperty' );
+        property = new DerivedProperty( [ model.sceneProperty ], scene => scene === 2 );
+      }
 
       // @ts-expect-error
       this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.stickingToTrackProperty, property, 184, tandem.createTandem( 'attachDetachToggleButtons' ) );
