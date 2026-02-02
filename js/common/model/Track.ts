@@ -251,9 +251,7 @@ export default class Track extends PhetioObject {
       this.y[ i ] = this.controlPoints[ i ].positionProperty.value.y;
     }
 
-    // @ts-expect-error
     this.xSpline = numeric.spline( this.parametricPosition, this.x );
-    // @ts-expect-error
     this.ySpline = numeric.spline( this.parametricPosition, this.y );
 
     // Mark search points as dirty
@@ -487,7 +485,6 @@ export default class Track extends PhetioObject {
     // made number of sample points depend on the length of the track, to make it smooth enough no matter how long it is
     const n = 20 * ( this.controlPoints.length - 1 );
 
-    // @ts-expect-error
     this.searchLinSpace = numeric.linspace( prePoint, postPoint, n );
     this.distanceBetweenSamplePoints = ( postPoint - prePoint ) / n;
   }
@@ -730,7 +727,6 @@ export default class Track extends PhetioObject {
     const minBound = foundU - this.distanceBetweenSamplePoints!;
     const maxBound = foundU + this.distanceBetweenSamplePoints!;
 
-    // @ts-expect-error
     const smallerSpace = numeric.linspace( minBound, maxBound, 200 );
     const refinedSearchPoints = SplineEvaluation.atArray( this.ySpline!, smallerSpace );
 

@@ -111,7 +111,6 @@ export default class TrackNode extends Node {
     this.lastPoint = ( track.controlPoints.length - 1 ) / track.controlPoints.length;
 
     // Sample space, which is recomputed if the track gets longer, to keep it looking smooth no matter how many control points
-    // @ts-expect-error
     this.linSpace = numeric.linspace( 0, this.lastPoint, 20 * ( track.controlPoints.length - 1 ) );
     this.lengthForLinSpace = track.controlPoints.length;
 
@@ -209,7 +208,6 @@ export default class TrackNode extends Node {
     if ( this.lengthForLinSpace !== track.controlPoints.length ) {
       this.lastPoint = ( track.controlPoints.length - 1 ) / track.controlPoints.length;
 
-      // @ts-expect-error
       this.linSpace = numeric.linspace( 0, this.lastPoint, 20 * ( track.controlPoints.length - 1 ) );
       this.lengthForLinSpace = track.controlPoints.length;
     }
