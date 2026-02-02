@@ -18,6 +18,7 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import energySkatePark from '../../energySkatePark.js';
 import SkaterState from './SkaterState.js';
 import Track from './Track.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 // constants
 // samples will fade out to this opacity before being fully removed from the model
@@ -84,7 +85,7 @@ export default class EnergySkateParkDataSample {
     fadeDecay: number
   ) {
 
-    assert && assert( fadeDecay < 1, 'samples which have initiated removal need to fade away' );
+    affirm( fadeDecay < 1, 'samples which have initiated removal need to fade away' );
 
     this.speed = skaterState.getSpeed();
     this.referenceHeight = skaterState.referenceHeight;

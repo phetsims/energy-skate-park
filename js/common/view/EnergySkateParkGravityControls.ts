@@ -24,6 +24,7 @@ import EnergySkateParkPreferencesModel, { AccelerationUnits } from '../model/Ene
 import GravityComboBox from './GravityComboBox.js';
 import GravityNumberControl from './GravityNumberControl.js';
 import GravitySlider from './GravitySlider.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 type SelfOptions = {
 
@@ -71,7 +72,7 @@ export default class EnergySkateParkGravityControls extends VBox {
       gravitySliderOptions: null
     }, providedOptions );
 
-    assert && assert( !( options.includeGravitySlider && options.includeGravityNumberControl ), 'only GravitySlider OR GravityNumberControl can be used at one time' );
+    affirm( !( options.includeGravitySlider && options.includeGravityNumberControl ), 'only GravitySlider OR GravityNumberControl can be used at one time' );
 
     const children = [];
 
@@ -80,7 +81,7 @@ export default class EnergySkateParkGravityControls extends VBox {
       // The user is able to control the units of gravity with query parameter and checkbox. NumberControl/NumberDisplay
       // does not support changing the valuePattern so we need to create two NumberControls and swap visibility.
       if ( options.gravityNumberControlOptions && options.gravityNumberControlOptions.numberDisplayOptions ) {
-        assert && assert( !options.gravityNumberControlOptions.numberDisplayOptions.valuePattern,
+        affirm( !options.gravityNumberControlOptions.numberDisplayOptions.valuePattern,
           'valuePattern of the gravity number control is set by EnergySkateParkGravityControls' );
       }
       const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInMetersPerSecondSquaredControl' ), options.gravityNumberControlOptions || undefined );

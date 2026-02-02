@@ -21,6 +21,7 @@ import SkaterState from '../../common/model/SkaterState.js';
 import Track from '../../common/model/Track.js';
 import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
@@ -190,7 +191,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
         }
 
         this.batchRemoveSamples( samplesToRemove );
-        assert && assert( this.dataSamples.get( 0 ).time >= minSavedTime, 'data still exists that is less than plot min' );
+        affirm( this.dataSamples.get( 0 ).time >= minSavedTime, 'data still exists that is less than plot min' );
       }
     } );
 
@@ -206,7 +207,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
             const closestSample = this.getClosestSkaterSample( this.sampleTimeProperty.get() );
             const indexOfSample = this.dataSamples.indexOf( closestSample );
 
-            assert && assert( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
+            affirm( indexOfSample >= 0, 'time of cursor needs to align with a skater sample' );
             this.batchRemoveSamples( this.dataSamples.slice( indexOfSample ) );
           }
         }
@@ -296,7 +297,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
    * @param time (in seconds)
    */
   public getClosestSkaterSample( time: number ): EnergySkateParkDataSample {
-    assert && assert( this.dataSamples.length > 0, 'model has no saved EnergySkateParkDataSamples to retrieve' );
+    affirm( this.dataSamples.length > 0, 'model has no saved EnergySkateParkDataSamples to retrieve' );
 
     let nearestIndex = _.sortedIndexBy( this.dataSamples as Array<{ time: number }>, { time: time }, entry => entry.time );
     nearestIndex = Utils.clamp( nearestIndex, 0, this.dataSamples.length - 1 );

@@ -22,6 +22,7 @@ import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 type SelfOptions = {
   // whether the physicalProperty can be set to something other than the entries defined
@@ -46,7 +47,7 @@ export default class PhysicalComboBox extends ComboBox<number | null> {
    * @param [options]
    */
   public constructor( physicalProperty: PhetioProperty<number>, userControlledProperty: Property<boolean>, labelValueList: Array<{ label: TReadOnlyProperty<string>; value: number; tandemName: string }>, resetEmitter: Emitter, listParent: Node, tandem: Tandem, providedOptions?: PhysicalComboBoxOptions ) {
-    assert && assert( _.find( labelValueList, entry => entry.value === null ) === undefined, 'PhysicalComboBox adds "Custom" item' );
+    affirm( _.find( labelValueList, entry => entry.value === null ) === undefined, 'PhysicalComboBox adds "Custom" item' );
 
     const options = optionize<PhysicalComboBoxOptions, SelfOptions, ComboBoxOptions>()( {
       supportCustom: true,

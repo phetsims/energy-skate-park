@@ -31,6 +31,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import SkaterMasses from '../SkaterMasses.js';
 import Track from './Track.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 type SelfOptions = {
 
@@ -146,7 +147,7 @@ export default class Skater {
       referenceHeightRange: EnergySkateParkConstants.REFERENCE_HEIGHT_RANGE
     }, providedOptions );
 
-    assert && assert( options.referenceHeightRange.min === 0, 'reference height range needs to start from ground' );
+    affirm( options.referenceHeightRange.min === 0, 'reference height range needs to start from ground' );
 
     this.massRange = options.massRange;
 
@@ -177,7 +178,7 @@ export default class Skater {
 
     this.gravityProperty = new DerivedProperty( [ this.gravityMagnitudeProperty ], gravity => {
       const gravityWithSign = -gravity;
-      assert && assert( gravityWithSign <= 0, 'this sim only supports negative or 0 gravity' );
+      affirm( gravityWithSign <= 0, 'this sim only supports negative or 0 gravity' );
       return gravityWithSign;
     }, {
       units: 'm/s/s'

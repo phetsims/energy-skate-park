@@ -15,13 +15,14 @@ import EnergySkateParkModel, { EnergySkateParkModelOptions } from '../../common/
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
 import Track, { TrackOptions } from '../../common/model/Track.js';
 import energySkatePark from '../../energySkatePark.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, options?: EnergySkateParkModelOptions ) {
     if ( options ) {
-      assert && assert( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
-      assert && assert( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
+      affirm( options.tracksDraggable === undefined, 'for playground models, tracks are draggable' );
+      affirm( options.tracksConfigurable === undefined, 'for playground models, track control points can be dragged' );
     }
 
     options = combineOptions<EnergySkateParkModelOptions>( {

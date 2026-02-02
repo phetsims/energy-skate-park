@@ -17,6 +17,7 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import MassNumberControl from './MassNumberControl.js';
 import MassSlider from './MassSlider.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 type SelfOptions = {
   // whether a MassNumberControl is included in this set of controls, only a MassNumberControl
@@ -45,7 +46,7 @@ export default class EnergySkateParkMassControls extends VBox {
       massNumberControlOptions: null,
       massComboBoxOptions: null
     }, providedOptions );
-    assert && assert( !( options.includeMassSlider && options.includeMassNumberControl ), 'only MassSlider OR MassNumberControl can be used at one time' );
+    affirm( !( options.includeMassSlider && options.includeMassNumberControl ), 'only MassSlider OR MassNumberControl can be used at one time' );
 
     const children = [];
 

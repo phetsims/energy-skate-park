@@ -50,6 +50,7 @@ import SkaterNode from './SkaterNode.js';
 import ToolboxPanel from './ToolboxPanel.js';
 import TrackNode, { TrackNodeOptions } from './TrackNode.js';
 import VisibilityControlsPanel from './VisibilityControlsPanel.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 const controlsRestartSkaterStringProperty = EnergySkateParkStrings.skaterControls.restartSkaterStringProperty;
 const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelStringProperty;
@@ -553,7 +554,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
    * direction to build tracks and move the skater.
    */
   public override layout( viewBounds: Bounds2 ): void {
-    assert && assert( this.controlPanel, 'much of component layout based on control panel, one should be created.' );
+    affirm( this.controlPanel, 'much of component layout based on control panel, one should be created.' );
 
     this.resetTransform();
 
@@ -618,7 +619,9 @@ export default class EnergySkateParkScreenView extends ScreenView {
     }
 
     // Put the pie chart legend to the right of the bar chart, see #60, #192
-    this.pieChartLegend.mutate( { leftTop: pieChartLegendLeftTop } );
+    this.pieChartLegend.mutate( {
+      leftTop: pieChartLegendLeftTop
+    } );
   }
 
   /**

@@ -142,8 +142,8 @@ export default class EnergySkateParkVisibilityControls extends VBox {
     }
 
     if ( options.itemOptions ) {
-      assert && assert( options.itemOptions.boxWidth === undefined, 'EnergySkateParkVisibilityControls sets boxWidth' );
-      assert && assert( options.itemOptions.spacing === undefined, 'EnergySkateParkVisibilityControls sets spacing' );
+      affirm( options.itemOptions.boxWidth === undefined, 'EnergySkateParkVisibilityControls sets boxWidth' );
+      affirm( options.itemOptions.spacing === undefined, 'EnergySkateParkVisibilityControls sets spacing' );
     }
     options.itemOptions = merge( {}, options.itemOptions, {
       boxWidth: EnergySkateParkConstants.CHECKBOX_WIDTH,

@@ -28,6 +28,7 @@ import energySkatePark from '../../energySkatePark.js';
 import SplineEvaluation, { Spline } from '../SplineEvaluation.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 // options for a track that is fully interactive - it can be dragged, control points can be moved, broken into
 // different tracks, and combined with another track
@@ -192,7 +193,7 @@ export default class Track extends PhetioObject {
     this.physicalProperty.link( trackChangedListener );
 
     this.controlPoints = controlPoints;
-    assert && assert( this.controlPoints, 'control points should be defined' );
+    affirm( this.controlPoints, 'control points should be defined' );
 
     // boolean value that is true if any control point on this track is being dragged
     this.controlPointDraggingProperty = DerivedProperty.deriveAny( _.map( controlPoints, point => point.draggingProperty ), ( ...args ) => {
@@ -652,7 +653,7 @@ export default class Track extends PhetioObject {
       metricDelta = this.getArcLength( u0, guess );
       count++;
       if ( count > 100 ) {
-        assert && assert( count <= 100, 'binary search failed' );
+        affirm( count <= 100, 'binary search failed' );
         break;
       }
     }
@@ -791,11 +792,11 @@ export default class Track extends PhetioObject {
 
         // translate updates splines for us
         this.translate( 0, -correction );
-        assert && assert( this.getLowestY() >= 0, 'track should be above ground' );
+        affirm( this.getLowestY() >= 0, 'track should be above ground' );
       }
     }
 
-    // assert && assert( this.getLowestY() >= 0, 'track should be above ground' );
+    // affirm( this.getLowestY() >= 0, 'track should be above ground' );
     this.updateEmitter.emit();
   }
 
@@ -833,11 +834,11 @@ export default class Track extends PhetioObject {
    * @param i - the index of the control point to adjust
    */
   public smooth( i: number ): boolean {
-    assert && assert( i >= 0 && i < this.controlPoints.length );
-    assert && assert( this.model.availableModelBoundsProperty );
+    affirm( i >= 0 && i < this.controlPoints.length );
+    affirm( this.model.availableModelBoundsProperty );
 
     const availableModelBounds = this.model.availableModelBoundsProperty.value;
-    assert && assert( availableModelBounds );
+    affirm( availableModelBounds );
 
     let success = false;
     let numTries = 0;

@@ -56,6 +56,7 @@ import Skater, { SkaterOptions } from './Skater.js';
 import SkaterState from './SkaterState.js';
 import Track, { Curvature, TrackOptions } from './Track.js';
 import UserControlledPropertySet from './UserControlledPropertySet.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 // Use a separate pooled curvature variable to reduce memory allocations - object values
 // will be modified as the skater moves
@@ -522,7 +523,7 @@ export default class EnergySkateParkModel {
       // since KE = 1/2 * m * v^2
       const speedInExcessEnergy = Math.sqrt( 2 * Math.abs( absEnergyDifference ) / updated.mass );
       const newSpeed = currentSpeed - speedInExcessEnergy;
-      assert && assert( newSpeed >= 0, 'tried to remove too much energy from kineticEnergy, correct another way' );
+      affirm( newSpeed >= 0, 'tried to remove too much energy from kineticEnergy, correct another way' );
 
       // restore direction to velocity
       const correctedV = v1 >= 0 ? newSpeed : -newSpeed;
@@ -530,7 +531,7 @@ export default class EnergySkateParkModel {
     }
     else {
       const newThermalEnergy = updated.thermalEnergy + energyDifference;
-      assert && assert( newThermalEnergy >= 0, 'thermal energy should not be negative, correct energy another way' );
+      affirm( newThermalEnergy >= 0, 'thermal energy should not be negative, correct energy another way' );
       return updated.updateThermalEnergy( newThermalEnergy );
     }
   }
@@ -570,7 +571,7 @@ export default class EnergySkateParkModel {
 
     // Supply information about a very rare problem that occurs when thermal energy goes negative,
     // see https://github.com/phetsims/energy-skate-park/issues/45
-    assert && assert( newThermalEnergy >= 0,
+    affirm( newThermalEnergy >= 0,
       'Thermal energy should be non-negative: ' +
       `oldPotentialEnergy:${skaterState.getPotentialEnergy()}, ` +
       `skaterPositionY:${skaterState.positionY}, ` +
@@ -622,7 +623,7 @@ export default class EnergySkateParkModel {
     if ( assert ) {
       const skaterTotalEnergy = skaterState.getTotalEnergy();
       const correctedTotalEnergy = correctedState.getTotalEnergy();
-      assert && assert( Utils.equalsEpsilon( correctedTotalEnergy, skaterTotalEnergy, 1E-8 ),
+      affirm( Utils.equalsEpsilon( correctedTotalEnergy, skaterTotalEnergy, 1E-8 ),
         `substantial total energy change after corrections. skaterTotalEnergy: ${skaterTotalEnergy}, correctedTotalEnergy: ${correctedTotalEnergy}, delta: ${Math.abs( skaterTotalEnergy - correctedTotalEnergy )}` );
     }
 
@@ -824,11 +825,11 @@ export default class EnergySkateParkModel {
       const dot = proposedVelocity.normalized().dot( segment );
 
       // Sanity test
-      assert && assert( isFinite( dot ) );
-      assert && assert( isFinite( newVelocity.x ) );
-      assert && assert( isFinite( newVelocity.y ) );
-      assert && assert( isFinite( newThermalEnergy ) );
-      assert && assert( newThermalEnergy >= 0 );
+      affirm( isFinite( dot ) );
+      affirm( isFinite( newVelocity.x ) );
+      affirm( isFinite( newVelocity.y ) );
+      affirm( isFinite( newThermalEnergy ) );
+      affirm( newThermalEnergy >= 0 );
 
       let parametricSpeed = ( dot > 0 ? +1 : -1 ) * newSpeed;
       const onTopSideOfTrack = beforeVector.dot( normal ) > 0;
@@ -849,7 +850,7 @@ export default class EnergySkateParkModel {
       }
 
       const attachedSkater = skaterState.attachToTrack( newThermalEnergy, track, onTopSideOfTrack, parametricPosition, parametricSpeed, newVelocity.x, newVelocity.y, newPosition.x, newPosition.y );
-      assert && assert( Utils.equalsEpsilon( attachedSkater.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'large energy change after attaching to track' );
+      affirm( Utils.equalsEpsilon( attachedSkater.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'large energy change after attaching to track' );
       return attachedSkater;
     }
 
@@ -925,8 +926,8 @@ export default class EnergySkateParkModel {
     else {
       const magnitude = this.frictionProperty.value * this.getNormalForce( skaterState ).magnitude;
       const angleComponent = Math.cos( skaterState.getVelocity().angle + Math.PI );
-      assert && assert( isFinite( magnitude ), 'magnitude should be finite' );
-      assert && assert( isFinite( angleComponent ), 'angleComponent should be finite' );
+      affirm( isFinite( magnitude ), 'magnitude should be finite' );
+      affirm( isFinite( angleComponent ), 'angleComponent should be finite' );
       return magnitude * angleComponent;
     }
   }
@@ -968,8 +969,8 @@ export default class EnergySkateParkModel {
     debug && debug( normalForce );
 
     const n = Vector2.createPolar( normalForce, curvatureDirection.angle );
-    assert && assert( isFinite( n.x ), 'n.x should be finite' );
-    assert && assert( isFinite( n.y ), 'n.y should be finite' );
+    affirm( isFinite( n.x ), 'n.x should be finite' );
+    affirm( isFinite( n.y ), 'n.y should be finite' );
     return n;
   }
 
@@ -984,7 +985,7 @@ export default class EnergySkateParkModel {
     const origLocY = skaterState.positionY;
     let thermalEnergy = skaterState.thermalEnergy;
     let parametricSpeed = skaterState.parametricSpeed;
-    assert && assert( isFinite( parametricSpeed ) );
+    affirm( isFinite( parametricSpeed ) );
     let parametricPosition = skaterState.parametricPosition;
 
     // Component-wise math to prevent allocations, see #50
@@ -997,7 +998,7 @@ export default class EnergySkateParkModel {
     const a = netForceMagnitude * Math.cos( skaterState.track!.getModelAngleAt( parametricPosition ) - netForceAngle ) / skaterState.mass;
 
     parametricSpeed += a * dt;
-    assert && assert( isFinite( parametricSpeed ), 'parametricSpeed should be finite' );
+    affirm( isFinite( parametricSpeed ), 'parametricSpeed should be finite' );
     parametricPosition += track.getParametricDistance( parametricPosition, parametricSpeed * dt + 1 / 2 * a * dt * dt );
     const newPointX = skaterState.track!.getX( parametricPosition );
     const newPointY = skaterState.track!.getY( parametricPosition );
@@ -1156,7 +1157,7 @@ export default class EnergySkateParkModel {
             result = result.updatePositionAngleUpVelocity( result.positionX, result.positionY, 0, true, correctedV, 0 );
 
             // this correction should put result energy very close to correctedState energy
-            assert && assert( Utils.equalsEpsilon( result.getTotalEnergy(), correctedState.getTotalEnergy(), 1E-6 ), 'correction after slope to ground changed total energy too much' );
+            affirm( Utils.equalsEpsilon( result.getTotalEnergy(), correctedState.getTotalEnergy(), 1E-6 ), 'correction after slope to ground changed total energy too much' );
           }
 
           // Correct any other energy discrepancy when switching to the ground, see #301
@@ -1350,7 +1351,7 @@ export default class EnergySkateParkModel {
                 const increasedThermalEnergy = newState.thermalEnergy - skaterState.thermalEnergy;
                 if ( increasedThermalEnergy > dE ) {
                   const reducedThermalEnergyState = newState.updateThermalEnergy( newState.thermalEnergy - dE );
-                  assert && assert( Math.abs( reducedThermalEnergyState.getTotalEnergy() - e0 ) < 1E-6, 'energy should be corrected' );
+                  affirm( Math.abs( reducedThermalEnergyState.getTotalEnergy() - e0 ) < 1E-6, 'energy should be corrected' );
                   debug && debug( `Corrected energy by reducing thermal overestimate${dE}` );
                   return reducedThermalEnergyState;
                 }
@@ -1374,8 +1375,8 @@ export default class EnergySkateParkModel {
       else {
         if ( !isFinite( newState.getTotalEnergy() ) ) { throw new Error( 'not finite' );}
         debug && debug( 'Energy too low' );
-        assert && assert( newState.track, 'newState must be still have a track for this energy correction' );
-        assert && assert( newState.parametricSpeed !== 0, 'correction assumes that there is some kinetic energy to add to' );
+        affirm( newState.track, 'newState must be still have a track for this energy correction' );
+        affirm( newState.parametricSpeed !== 0, 'correction assumes that there is some kinetic energy to add to' );
 
         // increasing the kinetic energy
         // Choose the exact velocity in the same direction as current velocity to ensure total energy conserved.
@@ -1383,7 +1384,7 @@ export default class EnergySkateParkModel {
         const v = Math.sqrt( vSq );
 
         const newVelocity = v * ( newState.parametricSpeed > 0 ? +1 : -1 );
-        const unitParallelVector = newState.track!.getUnitParallelVector( newState.parametricPosition );
+        const unitParallelVector = newState.track.getUnitParallelVector( newState.parametricPosition );
         const updatedVelocityX = unitParallelVector.x * newVelocity;
         const updatedVelocityY = unitParallelVector.y * newVelocity;
         const fixedState = newState.updateUDVelocity( newVelocity, updatedVelocityX, updatedVelocityY );
@@ -1447,7 +1448,7 @@ export default class EnergySkateParkModel {
       return this.stepFreeFall( dt, skaterState, false );
     }
     else {
-      assert && assert( false, 'Impossible condition for skater, can\'t step' );
+      affirm( false, 'Impossible condition for skater, can\'t step' );
       return skaterState;
     }
   }
@@ -1507,7 +1508,7 @@ export default class EnergySkateParkModel {
    * Remove a track from the observable array of tracks and dispose it.
    */
   public removeAndDisposeTrack( trackToRemove: Track ): void {
-    assert && assert( this.tracks.includes( trackToRemove ), 'trying to remove track that is not in the list' );
+    affirm( this.tracks.includes( trackToRemove ), 'trying to remove track that is not in the list' );
     this.tracks.remove( trackToRemove );
     this.trackGroup.disposeElement( trackToRemove );
   }
@@ -1516,13 +1517,13 @@ export default class EnergySkateParkModel {
    * Find whatever track is connected to the specified track and join them together to a new track.
    */
   public joinTracks( track: Track ): void {
-    assert && assert( track.attachable, 'trying to join tracks, but track is not attachable' );
+    affirm( track.attachable, 'trying to join tracks, but track is not attachable' );
 
     const connectedPoint = track.getSnapTarget()!;
 
     const otherTrack = _.find( this.getPhysicalTracks(), track => track.containsControlPoint( connectedPoint ) )!;
-    assert && assert( otherTrack, 'trying to attach tracks, but other track was not found' );
-    assert && assert( otherTrack.attachable, 'trying to join tracks, but other track is not attachable' );
+    affirm( otherTrack, 'trying to attach tracks, but other track was not found' );
+    affirm( otherTrack.attachable, 'trying to join tracks, but other track is not attachable' );
 
     this.joinTrackToTrack( track, otherTrack );
   }
@@ -1576,7 +1577,7 @@ export default class EnergySkateParkModel {
    * deleted. It should be an inner point of a track (not an endpoint).
    */
   public splitControlPoint( track: Track, controlPointIndex: number, modelAngle: number ): void {
-    assert && assert( track.splittable, 'trying to split a track that is not splittable!' );
+    affirm( track.splittable, 'trying to split a track that is not splittable!' );
     const controlPointToSplit = track.controlPoints[ controlPointIndex ];
 
     const vector = Vector2.createPolar( 0.5, modelAngle );

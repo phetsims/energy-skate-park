@@ -25,6 +25,7 @@ import BackgroundNode from './BackgroundNode.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import TrackNode from './TrackNode.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 type SelfOptions = {
   // should mountains, background, and sky be included in the icon for track buttons?
@@ -44,7 +45,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
    * @param [options]
    */
   public constructor( model: EnergySkateParkTrackSetModel, view: EnergySkateParkScreenView, tandem: Tandem, providedOptions?: SceneSelectionRadioButtonGroupOptions ) {
-    assert && assert( model.hasOwnProperty( 'sceneProperty' ), 'model does not support a scene' );
+    affirm( model.hasOwnProperty( 'sceneProperty' ), 'model does not support a scene' );
 
     const options = optionize<SceneSelectionRadioButtonGroupOptions, SelfOptions, RectangularRadioButtonGroupOptions>()( {
       // specific and passed to RectangularRadioButtonGroup
@@ -64,7 +65,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
 
     // produces spacing of ~5 when there are 4 premade tracks which is the usual case and looks nice, and provides
     // more spacing if there are fewer tracks
-    assert && assert( options.spacing === undefined, 'SceneSelectionRadioButtonGroup sets spacing from number of premade tracks' );
+    affirm( options.spacing === undefined, 'SceneSelectionRadioButtonGroup sets spacing from number of premade tracks' );
     options.spacing = 20 / model.tracks.length;
 
     // Create a track to be used specifically for an icon - must be one of the premade tracks defined in

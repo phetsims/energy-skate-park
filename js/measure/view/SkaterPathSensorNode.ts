@@ -39,6 +39,7 @@ import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorSc
 import EnergySkateParkControlPanel from '../../common/view/EnergySkateParkControlPanel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 const energyEnergyStringProperty = EnergySkateParkStrings.energies.energyStringProperty;
 const energyJoulesPatternStringProperty = EnergySkateParkStrings.pathSensor.energyJoulesPatternStringProperty;
@@ -366,12 +367,12 @@ export default class SkaterPathSensorNode extends Node {
     this.thermalValueProperty.value = null;
     this.totalValueProperty.value = null;
 
-    assert && assert( this.updateDisplayListener,
+    affirm( this.updateDisplayListener,
       `listener not attached to dataSample emitter,
        this.inspectedSample:`, this.inspectedSample,
       `update listenerL:  ${this.updateDisplayListener}`
     );
-    this.inspectedSample!.updatedEmitter.removeListener( this.updateDisplayListener! );
+    this.inspectedSample!.updatedEmitter.removeListener( this.updateDisplayListener );
 
     this.inspectedSample = null;
     this.updateDisplayListener = null;

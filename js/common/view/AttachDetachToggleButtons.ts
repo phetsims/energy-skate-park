@@ -19,6 +19,7 @@ import attach_png from '../../../images/attach_png.js';
 import detach_png from '../../../images/detach_png.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 // constants
 const SELECTED_LINE_WIDTH = 2.3;
@@ -68,7 +69,7 @@ export default class AttachDetachToggleButtons extends Panel {
     ];
 
     const buttonSpacing = contentWidth - ( options.xMargin! * 2 ) - ( buttonContent0.width * 2 ) - SELECTED_LINE_WIDTH * 2;
-    assert && assert( buttonSpacing > 0, 'buttons must have non zero spacing' );
+    affirm( buttonSpacing > 0, 'buttons must have non zero spacing' );
 
     const radioButtonGroup = new RectangularRadioButtonGroup( stickingToTrackProperty, radioButtonsContent, {
       orientation: 'horizontal',

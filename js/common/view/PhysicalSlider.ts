@@ -22,6 +22,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl, { PhysicalNumberControlOptions } from './PhysicalNumberControl.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 const controlsValueLotsStringProperty = EnergySkateParkStrings.physicalControls.lotsStringProperty;
 const controlsValueNoneStringProperty = EnergySkateParkStrings.physicalControls.noneStringProperty;
@@ -48,10 +49,10 @@ export default class PhysicalSlider extends PhysicalNumberControl {
     }, providedOptions );
 
     // don't include any arrow buttons or the NumberDisplay for this control
-    assert && assert( options.sliderOnly === undefined, 'The PhysicalSlider sets sliderOnly option' );
+    affirm( options.sliderOnly === undefined, 'The PhysicalSlider sets sliderOnly option' );
     options.sliderOnly = true;
 
-    assert && assert( options.sliderOptions.majorTicks === undefined, 'The PhysicalSlider sets its own major ticks' );
+    affirm( options.sliderOptions.majorTicks === undefined, 'The PhysicalSlider sets its own major ticks' );
     options.sliderOptions.majorTicks = [
       createTickEntry( valueRange.min, options.minLabelProperty, tandem, 'minLabelText' ),
       createTickEntry( valueRange.max, options.maxLabelProperty, tandem, 'maxLabelText' )

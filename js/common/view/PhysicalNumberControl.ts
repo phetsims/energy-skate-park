@@ -23,6 +23,7 @@ import Slider from '../../../../sun/js/Slider.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 type SelfOptions = {
 
@@ -40,16 +41,16 @@ export default class PhysicalNumberControl extends NumberControl {
 
   public constructor( titleString: TReadOnlyProperty<string>, property: NumberProperty, valueRange: Range, userControlledProperty: BooleanProperty, tandem: Tandem, providedOptions?: PhysicalNumberControlOptions ) {
     providedOptions = providedOptions || {};
-    assert && assert( providedOptions.layoutFunction === undefined, 'PhysicalNumberControl sets layoutFunction' );
-    assert && assert( providedOptions.tandem === undefined, 'PhysicalNumberControl shouldn\'t set tandem in options' );
-    assert && assert( providedOptions.arrowButtonOptions === undefined, 'PhysicalNumberControl sets arrowButtonOptions' );
+    affirm( providedOptions.layoutFunction === undefined, 'PhysicalNumberControl sets layoutFunction' );
+    affirm( providedOptions.tandem === undefined, 'PhysicalNumberControl shouldn\'t set tandem in options' );
+    affirm( providedOptions.arrowButtonOptions === undefined, 'PhysicalNumberControl sets arrowButtonOptions' );
 
     if ( providedOptions.numberDisplayOptions ) {
       if ( providedOptions.numberDisplayOptions.textOptions ) {
-        assert && assert( providedOptions.numberDisplayOptions.textOptions.font === undefined, 'PhysicalNumberControl sets font' );
+        affirm( providedOptions.numberDisplayOptions.textOptions.font === undefined, 'PhysicalNumberControl sets font' );
       }
-      assert && assert( providedOptions.numberDisplayOptions.xMargin === undefined, 'PhysicalNumberControl sets xMargin' );
-      assert && assert( providedOptions.numberDisplayOptions.yMargin === undefined, 'PhysicalNumberControl sets yMargin' );
+      affirm( providedOptions.numberDisplayOptions.xMargin === undefined, 'PhysicalNumberControl sets xMargin' );
+      affirm( providedOptions.numberDisplayOptions.yMargin === undefined, 'PhysicalNumberControl sets yMargin' );
     }
 
     const options = optionize<PhysicalNumberControlOptions, SelfOptions, NumberControlOptions>()( {

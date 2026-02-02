@@ -16,6 +16,7 @@ import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from './Skater.js';
 import Track, { Curvature } from './Track.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 export default class SkaterState {
 
@@ -81,12 +82,12 @@ export default class SkaterState {
     this.thermalEnergy = getValue( 'thermalEnergy', anySource );
 
     // Some sanity tests
-    assert && assert( isFinite( this.thermalEnergy ) );
-    assert && assert( isFinite( this.velocityX ) );
-    assert && assert( isFinite( this.velocityY ) );
-    assert && assert( isFinite( this.parametricSpeed ) );
+    affirm( isFinite( this.thermalEnergy ) );
+    affirm( isFinite( this.velocityX ) );
+    affirm( isFinite( this.velocityY ) );
+    affirm( isFinite( this.parametricSpeed ) );
 
-    assert && assert( this.thermalEnergy >= 0 );
+    affirm( this.thermalEnergy >= 0 );
 
     return this;
   }
@@ -211,7 +212,7 @@ export default class SkaterState {
    * Update the thermal energy.
    */
   public updateThermalEnergy( thermalEnergy: number ): SkaterState {
-    assert && assert( thermalEnergy >= 0 );
+    affirm( thermalEnergy >= 0 );
 
     const state = new SkaterState( this );
 
@@ -235,7 +236,7 @@ export default class SkaterState {
    * accordingly.
    */
   public switchToGround( thermalEnergy: number, velocityX: number, velocityY: number, positionX: number, positionY: number ): SkaterState {
-    assert && assert( thermalEnergy >= 0 );
+    affirm( thermalEnergy >= 0 );
 
     const state = new SkaterState( this );
     state.thermalEnergy = thermalEnergy;
@@ -253,7 +254,7 @@ export default class SkaterState {
    * Strike the ground (usually through falling). Velocity is zeroed as the skater hits the ground.
    */
   public strikeGround( thermalEnergy: number, positionX: number ): SkaterState {
-    assert && assert( thermalEnergy >= 0 );
+    affirm( thermalEnergy >= 0 );
 
     const state = new SkaterState( this );
     state.thermalEnergy = thermalEnergy;
@@ -321,7 +322,7 @@ export default class SkaterState {
    * Return SkaterState to track, creating and returning a new SkaterState.
    */
   public attachToTrack( thermalEnergy: number, track: Track, onTopSideOfTrack: boolean, parametricPosition: number, parametricSpeed: number, velocityX: number, velocityY: number, positionX: number, positionY: number ): SkaterState {
-    assert && assert( thermalEnergy >= 0 );
+    affirm( thermalEnergy >= 0 );
 
     const state = new SkaterState( this );
     state.thermalEnergy = thermalEnergy;
