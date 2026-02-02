@@ -378,12 +378,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       this.topLayer.addChild( this.stopwatchNode );
       this.topLayer.addChild( this.measuringTapeNode );
 
-      this.toolboxPanel = new ToolboxPanel( model, this, tandem.createTandem( 'toolboxPanel' ), {
-        minWidth: this.controlPanel.width
-      } );
-      this.controlPanel.localBoundsProperty.link( () => {
-        this.toolboxPanel!.localPreferredWidth = this.controlPanel.width;
-      } );
+      this.toolboxPanel = new ToolboxPanel( model, this, tandem.createTandem( 'toolboxPanel' ) );
     }
 
     const controlPanelVBoxChildren: Node[] = [ this.controlPanel ];
@@ -391,7 +386,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       controlPanelVBoxChildren.push( this.toolboxPanel );
     }
     this.controlPanelVBox = new VBox( {
-      align: 'right',
+      stretch: true,
       spacing: 5,
       children: controlPanelVBoxChildren
     } );
