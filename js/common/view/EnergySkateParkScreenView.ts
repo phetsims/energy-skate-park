@@ -24,6 +24,7 @@ import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
 import TimeControlNode from '../../../../scenery-phet/js/TimeControlNode.js';
 import ValueGaugeNode from '../../../../scenery-phet/js/ValueGaugeNode.js';
+import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
@@ -134,6 +135,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
   private readonly backgroundNode: BackgroundNode;
   private readonly gridNode: EnergySkateParkGridNode;
   protected readonly controlPanel: EnergySkateParkControlPanel;
+  private readonly controlPanelVBox: VBox;
 
   // node that shows the energy legend for the pie chart
   protected readonly pieChartLegend: PieChartLegend;
@@ -245,7 +247,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.bottomLayer.addChild( this.gridNode );
 
     this.controlPanel = new EnergySkateParkControlPanel( model, this, tandem.createTandem( 'controlPanel' ), options.controlPanelOptions || undefined );
-    this.bottomLayer.addChild( this.controlPanel );
 
     this.pieChartLegend = new PieChartLegend(
       model.skater,
@@ -380,8 +381,21 @@ export default class EnergySkateParkScreenView extends ScreenView {
       this.toolboxPanel = new ToolboxPanel( model, this, tandem.createTandem( 'toolboxPanel' ), {
         minWidth: this.controlPanel.width
       } );
-      this.bottomLayer.addChild( this.toolboxPanel );
+      this.controlPanel.localBoundsProperty.link( () => {
+        this.toolboxPanel!.localPreferredWidth = this.controlPanel.width;
+      } );
     }
+
+    const controlPanelVBoxChildren: Node[] = [ this.controlPanel ];
+    if ( this.toolboxPanel ) {
+      controlPanelVBoxChildren.push( this.toolboxPanel );
+    }
+    this.controlPanelVBox = new VBox( {
+      align: 'right',
+      spacing: 5,
+      children: controlPanelVBoxChildren
+    } );
+    this.bottomLayer.addChild( this.controlPanelVBox );
 
     this.referenceHeightLine = new ReferenceHeightLine(
       modelViewTransform,
@@ -588,21 +602,16 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.fixedRight = Math.min( maxFloatAmount, this.visibleBoundsProperty.get().maxX ) - 6;
     this.fixedLeft = Math.max( minFloatAmount, this.visibleBoundsProperty.get().minX ) + 6;
 
-    this.controlPanel.top = 6;
-    this.controlPanel.right = this.fixedRight;
+    this.controlPanelVBox.top = 6;
+    this.controlPanelVBox.right = this.fixedRight;
 
     if ( this.attachDetachToggleButtons ) {
-      this.attachDetachToggleButtons.top = this.controlPanel.bottom + 5;
+      this.attachDetachToggleButtons.top = this.controlPanelVBox.bottom + 5;
       this.attachDetachToggleButtons.centerX = this.controlPanel.centerX;
     }
 
     this.resetAllButton.right = this.controlPanel.right;
     this.returnSkaterButton.right = this.resetAllButton.left - 10;
-
-    if ( this.showToolbox ) {
-      this.toolboxPanel!.top = this.controlPanel.bottom + 5;
-      this.toolboxPanel!.right = this.controlPanel.right;
-    }
 
     // pie chart legend position is dependent on whether the screen includes an energy bar graph
     let pieChartLegendLeftTop = null;
