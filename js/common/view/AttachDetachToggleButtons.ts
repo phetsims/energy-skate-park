@@ -27,12 +27,11 @@ export default class AttachDetachToggleButtons extends Panel {
 
   /**
    * @param stickingToTrackProperty Axon property that is false if the model state allows the skater to detach
-   * @param enabledProperty Axon property that is true if the control is enabled
    * @param contentWidth Width for the control panel, to match the layout of the rest of the controls.
    * @param tandem
    * @param [providedOptions]
    */
-  public constructor( stickingToTrackProperty: Property<boolean>, enabledProperty: Property<boolean>, contentWidth: number, tandem: Tandem, providedOptions?: PanelOptions ) {
+  public constructor( stickingToTrackProperty: Property<boolean>, contentWidth: number, tandem: Tandem, providedOptions?: PanelOptions ) {
 
     // Match the style of the EnergySkateParkControlPanel
     const options = combineOptions<PanelOptions>( {
