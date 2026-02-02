@@ -157,8 +157,7 @@ export default class TrackDragHandler extends DragListener {
             const otherPoint = otherPoints[ k ];
             const distance = point.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
 
-            // @ts-expect-error
-            if ( ( bestDistance === null && distance > 1E-6 ) || ( distance < bestDistance ) ) {
+            if ( ( bestDistance === null && distance > 1E-6 ) || ( bestDistance !== null && distance < bestDistance ) ) {
               bestDistance = distance;
               myBestPoint = point;
               otherBestPoint = otherPoint;

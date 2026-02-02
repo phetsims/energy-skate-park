@@ -196,8 +196,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
     // if any of the UserControlledPropertySet changes, the user is changing something that would modify the
     // physical system and changes everything in saved EnergySkateParkDataSamples
-    // @ts-expect-error
-    Multilink.lazyMultilink( this.userControlledPropertySet.properties, () => {
+    Multilink.lazyMultilinkAny( this.userControlledPropertySet.properties, () => {
 
       if ( this.independentVariableProperty.get() === 'time' ) {
         if ( this.dataSamples.length > 0 ) {
@@ -299,8 +298,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
   public getClosestSkaterSample( time: number ): EnergySkateParkDataSample {
     assert && assert( this.dataSamples.length > 0, 'model has no saved EnergySkateParkDataSamples to retrieve' );
 
-    // @ts-expect-error
-    let nearestIndex = _.sortedIndexBy( this.dataSamples, { time: time }, entry => entry.time );
+    let nearestIndex = _.sortedIndexBy( this.dataSamples as Array<{ time: number }>, { time: time }, entry => entry.time );
     nearestIndex = Utils.clamp( nearestIndex, 0, this.dataSamples.length - 1 );
 
     return this.dataSamples.get( nearestIndex );

@@ -158,7 +158,6 @@ export default class TrackNode extends Node {
     track.updateEmitter.addListener( this.updateTrackShape.bind( this ) );
 
     // track was pulled from the tool box, start drag event to the drag listener
-    // @ts-expect-error
     track.forwardingDragStartEmitter.addListener( event => {
       this.trackDragHandler!.press( event );
     } );

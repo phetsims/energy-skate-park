@@ -16,6 +16,7 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
+import { PressListenerEvent } from '../../../../scenery/js/listeners/PressListener.js';
 import PhetioObject, { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -83,7 +84,7 @@ export default class Track extends PhetioObject {
   public readonly smoothedEmitter = new Emitter();
   public readonly updateEmitter = new Emitter();
   public readonly removeEmitter = new Emitter();
-  public readonly forwardingDragStartEmitter = new Emitter( { parameters: [ { valueType: SceneryEvent } ] } );
+  public readonly forwardingDragStartEmitter = new Emitter<[PressListenerEvent]>( { parameters: [ { valueType: SceneryEvent } ] } );
   public readonly model: EnergySkateParkModel;
   public readonly draggable: boolean;
   public readonly splittable: boolean;

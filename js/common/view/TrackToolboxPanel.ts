@@ -51,7 +51,6 @@ export default class TrackToolboxPanel extends Panel {
       track.position = view.modelViewTransform.viewToModelPosition( viewPointWithOffset );
 
       // signify that dragging has begun so that we can start the drag on the Node's drag listener
-      // @ts-expect-error
       track.forwardingDragStartEmitter.emit( event );
     } ) );
 

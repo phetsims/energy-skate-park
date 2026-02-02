@@ -14,9 +14,9 @@
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import { EnergySkateParkCheckboxItemOptions } from './EnergySkateParkCheckboxItem.js';
 import AlignGroup from '../../../../scenery/js/layout/constraints/AlignGroup.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import VBox, { VBoxOptions } from '../../../../scenery/js/layout/nodes/VBox.js';
@@ -27,7 +27,8 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
-import EnergySkateParkCheckboxItem from './EnergySkateParkCheckboxItem.js';
+import EnergySkateParkSaveSampleModel from '../model/EnergySkateParkSaveSampleModel.js';
+import EnergySkateParkCheckboxItem, { EnergySkateParkCheckboxItemOptions } from './EnergySkateParkCheckboxItem.js';
 
 const controlsPathStringProperty = EnergySkateParkStrings.visibilityControls.pathStringProperty;
 const controlsReferenceHeightStringProperty = EnergySkateParkStrings.visibilityControls.referenceHeightStringProperty;
@@ -113,7 +114,7 @@ export default class EnergySkateParkVisibilityControls extends VBox {
 
     if ( options.showSkaterPathCheckbox ) {
       const iconNode = EnergySkateParkCheckboxItem.createSamplesIcon( tandem.createTandem( 'pathIcon' ) );
-      // @ts-expect-error
+      affirm( model instanceof EnergySkateParkSaveSampleModel, 'Skater path checkbox requires EnergySkateParkSaveSampleModel' );
       this.addCheckboxContent( controlsPathStringProperty, iconNode, model.saveSamplesProperty, tandem.createTandem( 'pathCheckbox' ) );
     }
 
