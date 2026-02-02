@@ -268,22 +268,27 @@ export default class ControlPointNode extends Circle {
         }
       } );
 
-      // @ts-expect-error
-      dragListener.over = () => {
-        if ( track.physicalProperty.value && !track.draggingProperty.value ) {
-          this.opacity = highlightedOpacity;
-          this.fill = highlightedFill;
+      this.addInputListener( dragListener );
+      this.addDisposable( dragListener );
+
+      const overOutListener = {
+        over: () => {
+          if ( track.physicalProperty.value && !track.draggingProperty.value ) {
+            this.opacity = highlightedOpacity;
+            this.fill = highlightedFill;
+          }
+        },
+
+        out: () => {
+          this.opacity = opacity;
+          this.fill = fill;
         }
       };
 
-      // @ts-expect-error
-      dragListener.out = () => {
-        this.opacity = opacity;
-        this.fill = fill;
-      };
-      this.addInputListener( dragListener );
+      this.addInputListener( overOutListener, {
+        disposer: this
+      } );
 
-      this.addDisposable( dragListener );
     }
 
     this.touchArea = Shape.circle( 0, 0, 25 );
