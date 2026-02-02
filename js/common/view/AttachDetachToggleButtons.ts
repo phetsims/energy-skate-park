@@ -9,7 +9,7 @@
 
 import Property from '../../../../axon/js/Property.js';
 import merge from '../../../../phet-core/js/merge.js';
-import { optionize4 } from '../../../../phet-core/js/optionize.js';
+import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import { ImageableImage } from '../../../../scenery/js/nodes/Imageable.js';
 import RectangularRadioButtonGroup from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
@@ -35,11 +35,10 @@ export default class AttachDetachToggleButtons extends Panel {
   public constructor( stickingToTrackProperty: Property<boolean>, enabledProperty: Property<boolean>, contentWidth: number, tandem: Tandem, providedOptions?: PanelOptions ) {
 
     // Match the style of the EnergySkateParkControlPanel
-    const options = optionize4<PanelOptions>()( {}, {
+    const options = combineOptions<PanelOptions>( {
       xMargin: 15,
       yMargin: 5
 
-      // @ts-expect-error
     }, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
 
     // This is sort of hack to pass through the tandem of the radioButtonGroupMember to its child.
@@ -69,7 +68,7 @@ export default class AttachDetachToggleButtons extends Panel {
       }
     ];
 
-    const buttonSpacing = contentWidth - ( options.xMargin * 2 ) - ( buttonContent0.width * 2 ) - SELECTED_LINE_WIDTH * 2;
+    const buttonSpacing = contentWidth - ( options.xMargin! * 2 ) - ( buttonContent0.width * 2 ) - SELECTED_LINE_WIDTH * 2;
     assert && assert( buttonSpacing > 0, 'buttons must have non zero spacing' );
 
     const radioButtonGroup = new RectangularRadioButtonGroup( stickingToTrackProperty, radioButtonsContent, {

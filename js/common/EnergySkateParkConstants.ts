@@ -36,76 +36,74 @@ const PANEL_OPTIONS: PanelOptions = {
   stroke: EnergySkateParkColorScheme.panelStroke
 };
 
-const EnergySkateParkConstants = {
-  SLIDER_OPTIONS: {
+export default class EnergySkateParkConstants {
+  public static readonly SLIDER_OPTIONS = {
     thumbSize: new Dimension2( 12, 23 ),
     trackSize: new Dimension2( 95, 3 ),
     tickLabelSpacing: 0,
     majorTickLength: 11,
     thumbTouchAreaYDilation: 8
-  },
+  };
 
   // for radio buttons
-  RADIO_BUTTON_CONTENT_MARGIN: 3,
-  RADIO_BUTTON_CORNER_RADIUS: 2,
+  public static readonly RADIO_BUTTON_CONTENT_MARGIN = 3;
+  public static readonly RADIO_BUTTON_CORNER_RADIUS = 2;
 
-  // consistent width for all checkboxesz
-  CHECKBOX_WIDTH: 14.7,
-  CHECKBOX_LABEL_FONT: new PhetFont( { size: 14.7 } ),
+  // consistent width for all checkboxes
+  public static readonly CHECKBOX_WIDTH = 14.7;
+  public static readonly CHECKBOX_LABEL_FONT = new PhetFont( { size: 14.7 } );
 
-  CONTROL_LABEL_FONT: new PhetFont( { size: 14.7 } ),
+  public static readonly CONTROL_LABEL_FONT = new PhetFont( { size: 14.7 } );
 
   // font for labels of physical controls
-  CONTROL_TITLE_FONT: new PhetFont( { weight: 'bold', size: 14.7 } ),
-  CONTROL_TICK_LABEL_OPTIONS: {
+  public static readonly CONTROL_TITLE_FONT = new PhetFont( { weight: 'bold', size: 14.7 } );
+  public static readonly CONTROL_TICK_LABEL_OPTIONS = {
     font: new PhetFont( 12.3 ),
     maxWidth: 31 // selected by choosing the length of widest English string in ?stringTest=double
-  },
+  };
 
   // options for boxes and panels
-  PANEL_CORNER_RADIUS: PANEL_CORNER_RADIUS,
-  PANEL_OPTIONS: PANEL_OPTIONS,
+  public static readonly PANEL_CORNER_RADIUS = PANEL_CORNER_RADIUS;
+  public static readonly PANEL_OPTIONS = PANEL_OPTIONS;
 
-  GRAPH_PANEL_OPTONS: merge( {}, PANEL_OPTIONS, {
+  public static readonly GRAPH_PANEL_OPTONS = merge( {}, PANEL_OPTIONS, {
     fill: EnergySkateParkColorScheme.chartPanelFill
-  } ),
+  } );
 
   // options for the ComboBoxes in this sim
-  COMBO_BOX_OPTIONS: {
+  public static readonly COMBO_BOX_OPTIONS = {
     xMargin: 10,
     yMargin: 6,
     cornerRadius: PANEL_CORNER_RADIUS
-  },
-  COMBO_BOX_ITEM_OPTIONS: { font: new PhetFont( 13.5 ), maxWidth: 98 },
+  };
+  public static readonly COMBO_BOX_ITEM_OPTIONS = { font: new PhetFont( 13.5 ), maxWidth: 98 };
 
   // Control points are replenished in the toolbox as they are destroyed (by connecting) in the play area
   // This is the maximum number of control points available to the user.
-  MAX_NUMBER_CONTROL_POINTS: 15,
+  public static readonly MAX_NUMBER_CONTROL_POINTS: 15;
 
   // for the bar graphs, factors multiplied by physical values to produce heights in view coordinates
-  ZOOM_FACTOR_DELTA: ZOOM_FACTOR_DELTA,
-  MAX_ZOOM_FACTOR: 9 * ZOOM_FACTOR_DELTA,
-  MIN_ZOOM_FACTOR: ZOOM_FACTOR_DELTA / 3,
+  public static readonly ZOOM_FACTOR_DELTA = ZOOM_FACTOR_DELTA;
+  public static readonly MAX_ZOOM_FACTOR = 9 * ZOOM_FACTOR_DELTA;
+  public static readonly MIN_ZOOM_FACTOR = ZOOM_FACTOR_DELTA / 3;
 
   // coefficients of friction, default values are not common
-  MIN_FRICTION: MIN_FRICTION,
-  MAX_FRICTION: MAX_FRICTION,
+  public static readonly MIN_FRICTION = MIN_FRICTION;
+  public static readonly MAX_FRICTION = MAX_FRICTION;
 
   // it was decided that default friction for this sim should be zero on all screens
-  DEFAULT_FRICTION: MIN_FRICTION,
+  public static readonly DEFAULT_FRICTION = MIN_FRICTION;
 
   // in m/s^2, including direction (naming aligned with magnitude for readability at usages)
-  MAX_GRAVITY: -26, // maximum value of gravity, as requested by design
-  MIN_GRAVITY: -1, // minimum value for gravity, as requested by design team
+  public static readonly MAX_GRAVITY = -26; // maximum value of gravity, as requested by design
+  public static readonly MIN_GRAVITY = -1; // minimum value for gravity, as requested by design team
 
   // pre-determined gravities
-  EARTH_GRAVITY: EARTH_GRAVITY,
-  MOON_GRAVITY: MOON_GRAVITY,
-  JUPITER_GRAVITY: JUPITER_GRAVITY,
+  public static readonly EARTH_GRAVITY = EARTH_GRAVITY;
+  public static readonly MOON_GRAVITY = MOON_GRAVITY;
+  public static readonly JUPITER_GRAVITY = JUPITER_GRAVITY;
 
-  REFERENCE_HEIGHT_RANGE: new Range( 0, 8 ) // in meters
-};
+  public static readonly REFERENCE_HEIGHT_RANGE = new Range( 0, 8 ); // in meters
+}
 
 energySkatePark.register( 'EnergySkateParkConstants', EnergySkateParkConstants );
-
-export default EnergySkateParkConstants;
