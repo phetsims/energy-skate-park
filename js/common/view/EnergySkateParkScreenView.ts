@@ -16,6 +16,7 @@ import Rectangle from '../../../../dot/js/Rectangle.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ScreenView, { ScreenViewOptions } from '../../../../joist/js/ScreenView.js';
 import Shape from '../../../../kite/js/Shape.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
@@ -52,7 +53,6 @@ import SkaterNode from './SkaterNode.js';
 import ToolboxPanel from './ToolboxPanel.js';
 import TrackNode, { TrackNodeOptions } from './TrackNode.js';
 import VisibilityControlsPanel from './VisibilityControlsPanel.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 const controlsRestartSkaterStringProperty = EnergySkateParkStrings.skaterControls.restartSkaterStringProperty;
 const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelStringProperty;
@@ -402,6 +402,11 @@ export default class EnergySkateParkScreenView extends ScreenView {
       }
     } );
 
+    ManualConstraint.create( this, [ this.resetAllButton, this.returnSkaterButton ], ( resetAllButtonProxy, returnSkaterButtonProxy ) => {
+      returnSkaterButtonProxy.right = resetAllButtonProxy.left - 10;
+      returnSkaterButtonProxy.centerY = resetAllButtonProxy.centerY;
+    } );
+
     this.referenceHeightLine = new ReferenceHeightLine(
       modelViewTransform,
       model.skater.referenceHeightProperty,
@@ -615,8 +620,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       this.attachDetachToggleButtons.centerX = this.controlPanel.centerX;
     }
 
-    this.resetAllButton.right = this.controlPanel.right;
-    this.returnSkaterButton.right = this.resetAllButton.left - 10;
+    this.resetAllButton.right = this.fixedRight;
 
     // pie chart legend position is dependent on whether the screen includes an energy bar graph
     let pieChartLegendLeftTop = null;
