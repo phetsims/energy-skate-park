@@ -108,14 +108,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
   protected readonly trackNodeGroup: { createNextElement( track: Track, modelViewTransform: ModelViewTransform2, availableBoundsProperty: Property<Bounds2>, options?: TrackNodeOptions ): TrackNode };
   protected readonly model: EnergySkateParkModel;
 
-  // whether this screen view should include a measuring tape
-  private readonly showToolbox: boolean;
-
   // visibility of various view components
   private readonly showBarGraph: boolean;
-  private readonly showSkaterPath: boolean;
-  private readonly showReferenceHeight: boolean;
-  private readonly showTrackButtons: boolean;
   private readonly showSeparateVisibilityControlsPanel: boolean;
 
   // defines the min and max edges horizontally for floating layout, null until first
@@ -210,11 +204,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     };
 
     this.model = model;
-    this.showToolbox = options.showToolbox;
     this.showBarGraph = options.showBarGraph;
-    this.showSkaterPath = options.showSkaterPath;
-    this.showReferenceHeight = options.showReferenceHeight;
-    this.showTrackButtons = options.showTrackButtons;
     this.showSeparateVisibilityControlsPanel = options.showSeparateVisibilityControlsPanel;
     this.fixedRight = null;
     this.fixedLeft = null;
@@ -604,7 +594,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.resetAllButton.right = this.fixedRight;
 
     // pie chart legend position is dependent on whether the screen includes an energy bar graph
-    let pieChartLegendLeftTop = null;
+    let pieChartLegendLeftTop;
     if ( this.showBarGraph ) {
       this.energyBarGraphAccordionBox!.x = this.fixedLeft;
       pieChartLegendLeftTop = new Vector2( this.energyBarGraphAccordionBox!.right + 45, this.energyBarGraphAccordionBox!.top );
