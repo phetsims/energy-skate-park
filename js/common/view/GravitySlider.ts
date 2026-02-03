@@ -9,7 +9,7 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Range from '../../../../dot/js/Range.js';
-import Utils from '../../../../dot/js/Utils.js';
+import { roundToInterval } from '../../../../dot/js/util/roundToInterval.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
@@ -27,7 +27,7 @@ export default class GravitySlider extends PhysicalSlider {
       tandem, {
         minLabelProperty: EnergySkateParkStrings.physicalControls.tinyStringProperty,
         sliderOptions: {
-          constrainValue: value => Utils.roundToInterval( value, 1 )
+          constrainValue: value => roundToInterval( value, 1 )
         }
       } );
   }

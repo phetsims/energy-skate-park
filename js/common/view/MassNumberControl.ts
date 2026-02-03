@@ -8,12 +8,12 @@
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
-import Utils from '../../../../dot/js/Utils.js';
+import Range from '../../../../dot/js/Range.js';
+import { roundToInterval } from '../../../../dot/js/util/roundToInterval.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
-import Range from '../../../../dot/js/Range.js';
 
 export default class MassNumberControl extends PhysicalNumberControl {
 
@@ -25,7 +25,7 @@ export default class MassNumberControl extends PhysicalNumberControl {
       },
       sliderOptions: {
         // round to nearest 5 kg, as requested by design team
-        constrainValue: value => Utils.roundToInterval( value, 5 )
+        constrainValue: value => roundToInterval( value, 5 )
       }
     } );
   }

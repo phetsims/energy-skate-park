@@ -9,7 +9,7 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Range from '../../../../dot/js/Range.js';
-import Utils from '../../../../dot/js/Utils.js';
+import { roundToInterval } from '../../../../dot/js/util/roundToInterval.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -28,7 +28,7 @@ export default class GravityNumberControl extends PhysicalNumberControl {
       },
       delta: 0.1,
       sliderOptions: {
-        constrainValue: ( value: number ) => Utils.roundToInterval( value, 1 )
+        constrainValue: ( value: number ) => roundToInterval( value, 1 )
       }
     }, providedOptions );
 
