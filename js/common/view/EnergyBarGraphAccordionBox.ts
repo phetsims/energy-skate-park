@@ -61,7 +61,7 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
       },
 
       tandem: tandem
-    }, EnergySkateParkConstants.GRAPH_PANEL_OPTONS, providedOptions );
+    }, EnergySkateParkConstants.GRAPH_PANEL_OPTIONS, providedOptions );
 
     const energyBarGraph = new EnergyBarGraph( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
 

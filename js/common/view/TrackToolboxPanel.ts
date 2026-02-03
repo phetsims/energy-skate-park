@@ -21,13 +21,15 @@ export default class TrackToolboxPanel extends Panel {
 
   public constructor( model: EnergySkateParkPlaygroundModel, view: EnergySkateParkPlaygroundScreenView, tandem: Tandem, providedOptions?: PanelOptions ) {
 
-    const options = combineOptions<PanelOptions>( {}, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
+    const options = combineOptions<PanelOptions>( {
+      resize: false // do not disappear when all tracks are out
+    }, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
 
     const iconTrack = model.createDraggableTrack( {
       interactive: false
     }, {
-        draggable: false,
-        splittable: false
+      draggable: false,
+      splittable: false
     } );
     const iconNode = new TrackNode( iconTrack, view.modelViewTransform, model.availableModelBoundsProperty, tandem.createTandem( 'iconNode' ), {
 

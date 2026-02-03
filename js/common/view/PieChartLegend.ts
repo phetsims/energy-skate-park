@@ -141,7 +141,7 @@ export default class PieChartLegend extends Panel {
       xMargin: 7,
       yMargin: 6,
       tandem: tandem
-    }, EnergySkateParkConstants.GRAPH_PANEL_OPTONS ) );
+    }, EnergySkateParkConstants.GRAPH_PANEL_OPTIONS ) );
 
     const strutGlobal = clearThermalButtonStrut.parentToGlobalPoint( clearThermalButtonStrut.center );
     const buttonLocal = clearThermalButton.globalToParentPoint( strutGlobal );

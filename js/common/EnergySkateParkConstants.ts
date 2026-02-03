@@ -66,21 +66,15 @@ export default class EnergySkateParkConstants {
   public static readonly PANEL_CORNER_RADIUS = PANEL_CORNER_RADIUS;
   public static readonly PANEL_OPTIONS = PANEL_OPTIONS;
 
-  public static readonly GRAPH_PANEL_OPTONS = merge( {}, PANEL_OPTIONS, {
+  public static readonly GRAPH_PANEL_OPTIONS = merge( {}, PANEL_OPTIONS, {
     fill: EnergySkateParkColorScheme.chartPanelFill
   } );
 
-  // options for the ComboBoxes in this sim
-  private static readonly COMBO_BOX_OPTIONS = {
-    xMargin: 10,
-    yMargin: 6,
-    cornerRadius: PANEL_CORNER_RADIUS
-  };
   public static readonly COMBO_BOX_ITEM_OPTIONS = { font: new PhetFont( 13.5 ), maxWidth: 98 };
 
   // Control points are replenished in the toolbox as they are destroyed (by connecting) in the play area
   // This is the maximum number of control points available to the user.
-  public static readonly MAX_NUMBER_CONTROL_POINTS: 15;
+  public static readonly MAX_NUMBER_CONTROL_POINTS = 15;
 
   // for the bar graphs, factors multiplied by physical values to produce heights in view coordinates
   public static readonly ZOOM_FACTOR_DELTA = ZOOM_FACTOR_DELTA;
