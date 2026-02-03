@@ -78,7 +78,7 @@ export default class ToolboxPanel extends Panel {
       if ( !model.measuringTapeVisibleProperty.get() ) {
         model.measuringTapeVisibleProperty.set( true );
 
-        const modelPosition = view.modelViewTransform.viewToModelPosition( this.globalToParentPoint( event.pointer.point ) );
+        const modelPosition = view.modelViewTransform.viewToModelPosition( view.globalToLocalPoint( event.pointer.point ) );
         model.measuringTapeBasePositionProperty.set( modelPosition );
         model.measuringTapeTipPositionProperty.set( modelPosition.plusXY( 1, 0 ) );
 
@@ -91,7 +91,7 @@ export default class ToolboxPanel extends Panel {
       if ( !model.stopwatch.isVisibleProperty.get() ) {
         model.stopwatch.isVisibleProperty.value = true;
 
-        const coordinate = this.globalToParentPoint( event.pointer.point ).minusXY(
+        const coordinate = view.globalToLocalPoint( event.pointer.point ).minusXY(
           view.stopwatchNode!.width / 2,
           view.stopwatchNode!.height / 2
         );
