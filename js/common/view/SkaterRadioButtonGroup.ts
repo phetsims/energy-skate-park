@@ -13,8 +13,7 @@
 import Property from '../../../../axon/js/Property.js';
 import Shape from '../../../../kite/js/Shape.js';
 import merge from '../../../../phet-core/js/merge.js';
-import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
-import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
+import FlowBox from '../../../../scenery/js/layout/nodes/FlowBox.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import RectangularRadioButton from '../../../../sun/js/buttons/RectangularRadioButton.js';
@@ -68,20 +67,18 @@ export default class SkaterRadioButtonGroup extends Node {
       }, buttonOptions ) ) );
     } );
 
-    const rows = [];
-    for ( let i = 0; i < buttons.length; i += 4 ) {
-      rows.push( new HBox( {
-        children: buttons.slice( i, i + 4 ),
-        spacing: BUTTON_SPACING,
-        resize: false
-      } ) );
-    }
-
-    // arrange buttons in a 2D grid
-    this.addChild( new VBox( {
-      children: rows,
+    // Arrange buttons in a wrapping grid. FlowBox with wrap reflows automatically when buttons
+    // become invisible via phet-io, collapsing gaps while preserving left-to-right row-first ordering.
+    const buttonsPerRow = 4;
+    const buttonWidth = buttons[ 0 ].width;
+    this.addChild( new FlowBox( {
+      orientation: 'horizontal',
+      wrap: true,
+      preferredWidth: buttonWidth * buttonsPerRow + BUTTON_SPACING * ( buttonsPerRow - 1 ),
       spacing: BUTTON_SPACING,
-      resize: false
+      lineSpacing: BUTTON_SPACING,
+      justify: 'left',
+      children: buttons
     } ) );
 
     // so that the selected button cannot continue to be clicked, a feature of RectangularRadioButtonGroup - this component is
