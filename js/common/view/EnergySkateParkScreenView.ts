@@ -24,6 +24,7 @@ import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
 import TimeControlNode from '../../../../scenery-phet/js/TimeControlNode.js';
 import ValueGaugeNode from '../../../../scenery-phet/js/ValueGaugeNode.js';
+import ManualConstraint from '../../../../scenery/js/layout/constraints/ManualConstraint.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
@@ -391,6 +392,15 @@ export default class EnergySkateParkScreenView extends ScreenView {
       children: controlPanelVBoxChildren
     } );
     this.bottomLayer.addChild( this.controlPanelVBox );
+
+    // Keep the VBox right-pinned when its width changes due to dynamic strings.
+    // fixedRight is computed in layout() on window resize; this constraint handles
+    // the in-between case when panel content resizes from i18n changes.
+    ManualConstraint.create( this, [ this.controlPanelVBox ], proxy => {
+      if ( this.fixedRight !== null ) {
+        proxy.right = this.fixedRight;
+      }
+    } );
 
     this.referenceHeightLine = new ReferenceHeightLine(
       modelViewTransform,
