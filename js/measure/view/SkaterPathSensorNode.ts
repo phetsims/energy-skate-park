@@ -17,6 +17,7 @@ import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
@@ -39,7 +40,6 @@ import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorSc
 import EnergySkateParkControlPanel from '../../common/view/EnergySkateParkControlPanel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 const energyEnergyStringProperty = EnergySkateParkStrings.energies.energyStringProperty;
 const energyJoulesPatternStringProperty = EnergySkateParkStrings.pathSensor.energyJoulesPatternStringProperty;
@@ -58,7 +58,7 @@ const LAYOUT_SPACING = 2;
 const TEXT_COLOR = 'white';
 const TITLE_FONT = new PhetFont( 16 );
 const LABEL_FONT = new PhetFont( 15.5 );
-const ENTRY_MAX_WIDTH = 75;
+const ENTRY_MAX_WIDTH = 60;
 
 // arbitrary range for energies, but required so that this can use NumberDisplay. With this value, the width of the
 // NumberDisplay looks good and if released from within dev bounds, the energy will never get this large.
