@@ -1,4 +1,4 @@
-// Copyright 2020-2025, University of Colorado Boulder
+// Copyright 2020-2026, University of Colorado Boulder
 
 /**
  * Toolbox for tracks in the Playground screen of Energy Skate Park. User can drag short tracks with three control
