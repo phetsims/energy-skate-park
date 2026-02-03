@@ -10,6 +10,7 @@
 
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import AlignGroup from '../../../../scenery/js/layout/constraints/AlignGroup.js';
@@ -25,7 +26,6 @@ import BackgroundNode from './BackgroundNode.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import TrackNode from './TrackNode.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 type SelfOptions = {
   // should mountains, background, and sky be included in the icon for track buttons?
@@ -60,13 +60,10 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         }
       },
       tandem: tandem,
-      includeBackground: false
+      includeBackground: false,
+      layoutOptions: { stretch: false },
+      spacing: 7
     }, providedOptions );
-
-    // produces spacing of ~5 when there are 4 premade tracks which is the usual case and looks nice, and provides
-    // more spacing if there are fewer tracks
-    affirm( options.spacing === undefined, 'SceneSelectionRadioButtonGroup sets spacing from number of premade tracks' );
-    options.spacing = 20 / model.tracks.length;
 
     // Create a track to be used specifically for an icon - must be one of the premade tracks defined in
     // PremadeTracks.TrackType. These Tracks are a bit different from the actual tracks used in the model
