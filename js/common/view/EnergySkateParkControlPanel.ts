@@ -107,15 +107,7 @@ export default class EnergySkateParkControlPanel extends Panel {
       children.push( skaterRadioButtonGroup );
     }
 
-    // horizontal separators added after construction of all controls so that it can match width of widest control
-    const separatorWidth = _.maxBy( children, child => child.width )!.width;
-
-    // controls that change visibility of items in the screen
-    options.visibilityControlsOptions = merge( {}, options.visibilityControlsOptions, {
-      checkboxWidth: separatorWidth
-    } );
-    options.visibilityControlsOptions.checkboxWidth = separatorWidth;
-    const visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), options.visibilityControlsOptions );
+    const visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), options.visibilityControlsOptions || undefined );
     children.unshift( visibilityControls );
 
     // one separator after visibility controls
@@ -134,7 +126,7 @@ export default class EnergySkateParkControlPanel extends Panel {
       }
     }
 
-    const content = new VBox( { spacing: 8, children: children } );
+    const content = new VBox( { spacing: 8, stretch: true, children: children } );
 
     super( content, merge( {
       xMargin: 5,
