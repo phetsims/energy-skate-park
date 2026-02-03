@@ -256,7 +256,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
    * @param property
    * @param labelString
    * @param energyColor
-   * @param labelAlignGroup - for icon layout, so all lable Text has the same dimensions
+   * @param labelAlignGroup - for icon layout, so all label Text has the same dimensions
    *
    * @returns - Conforms to the item object of VerticalCheckboxGroup
    */
