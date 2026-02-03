@@ -38,7 +38,6 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
-import AttachDetachToggleButtons from './AttachDetachToggleButtons.js';
 import BackgroundNode from './BackgroundNode.js';
 import { EnergyBarGraphOptions } from './EnergyBarGraph.js';
 import EnergyBarGraphAccordionBox from './EnergyBarGraphAccordionBox.js';
@@ -82,10 +81,6 @@ type SelfOptions = {
 
   // whether the bar graph should include zoom buttons
   showBarGraphZoomButtons?: boolean;
-
-  // whether the screen will include radio buttons to control skater attaching/detaching
-  // from the tracks
-  showAttachDetachRadioButtons?: boolean;
 
   // whether this ScreenView will show the reference height
   showReferenceHeight?: boolean;
@@ -140,7 +135,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
   // node that shows the energy legend for the pie chart
   protected readonly pieChartLegend: PieChartLegend;
-  private readonly attachDetachToggleButtons?: AttachDetachToggleButtons;
 
   // the bar chart showing energy distribution
   private readonly energyBarGraphAccordionBox?: EnergyBarGraphAccordionBox;
@@ -178,7 +172,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
       showTrackButtons: true,
       showSkaterPath: false,
       showBarGraphZoomButtons: true,
-      showAttachDetachRadioButtons: false,
       showReferenceHeight: true,
       showToolbox: true,
       showSeparateVisibilityControlsPanel: true,
@@ -256,13 +249,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
       tandem.createTandem( 'pieChartLegend' )
     );
     this.bottomLayer.addChild( this.pieChartLegend );
-
-    // For the playground screen, show attach/detach toggle buttons
-    if ( options.showAttachDetachRadioButtons ) {
-
-      this.attachDetachToggleButtons = new AttachDetachToggleButtons( model.stickingToTrackProperty, 184, tandem.createTandem( 'attachDetachToggleButtons' ) );
-      this.bottomLayer.addChild( this.attachDetachToggleButtons );
-    }
 
     if ( this.showBarGraph ) {
       this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraphAccordionBox' ), {
@@ -614,11 +600,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
     this.controlPanelVBox.top = 6;
     this.controlPanelVBox.right = this.fixedRight;
-
-    if ( this.attachDetachToggleButtons ) {
-      this.attachDetachToggleButtons.top = this.controlPanelVBox.bottom + 5;
-      this.attachDetachToggleButtons.centerX = this.controlPanel.centerX;
-    }
 
     this.resetAllButton.right = this.fixedRight;
 

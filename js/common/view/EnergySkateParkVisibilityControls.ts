@@ -14,11 +14,12 @@ import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import AlignGroup from '../../../../scenery/js/layout/constraints/AlignGroup.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
+import PressListener from '../../../../scenery/js/listeners/PressListener.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
-import PressListener from '../../../../scenery/js/listeners/PressListener.js';
-import Tandem from '../../../../tandem/js/Tandem.js';
+import Checkbox from '../../../../sun/js/Checkbox.js';
 import VerticalCheckboxGroup, { VerticalCheckboxGroupItem, VerticalCheckboxGroupOptions } from '../../../../sun/js/VerticalCheckboxGroup.js';
+import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -129,21 +130,26 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
     }
 
     if ( options.showStickToTrackCheckbox ) {
-      const userControlledProperty = model.userControlledPropertySet.stickingToTrackControlledProperty;
+
       items.push( {
         property: model.stickingToTrackProperty,
         createNode: () => createCheckboxContent( controlsStickToTrackStringProperty, EnergySkateParkCheckboxItem.createStickingToTrackIcon(), iconAlignGroup ),
-        tandemName: 'stickingCheckbox',
-        options: {
-          inputListeners: [ new PressListener( {
-            press: () => userControlledProperty.set( true ),
-            release: () => userControlledProperty.set( false )
-          } ) ]
-        }
+        tandemName: 'stickingCheckbox'
       } );
     }
 
     super( items, options );
+
+    this.children.forEach( child => {
+      if ( child instanceof Checkbox && child.property === model.stickingToTrackProperty ) {
+
+        const userControlledProperty = model.userControlledPropertySet.stickingToTrackControlledProperty;
+        child.addInputListener( new PressListener( {
+          press: () => userControlledProperty.set( true ),
+          release: () => userControlledProperty.set( false )
+        } ) );
+      }
+    } );
   }
 }
 
