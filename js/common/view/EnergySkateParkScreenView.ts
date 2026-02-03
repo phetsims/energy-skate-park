@@ -327,7 +327,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
         textColor: 'black',
         textFont: new PhetFont( { size: 14.7 } ),
         baseDragEnded: () => {
-          if ( this.measuringTapeNode!.getLocalBaseBounds().intersectsBounds( this.toolboxPanel!.bounds ) ) {
+          if ( this.measuringTapeNode!.globalBounds.intersectsBounds( this.toolboxPanel!.globalBounds ) ) {
             model.measuringTapeVisibleProperty.set( false );
           }
         },
@@ -345,7 +345,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
         },
         dragListenerOptions: {
           end: () => {
-            if ( this.stopwatchNode!.bounds.intersectsBounds( this.toolboxPanel!.bounds ) ) {
+            if ( this.stopwatchNode!.globalBounds.intersectsBounds( this.toolboxPanel!.globalBounds ) ) {
               model.stopwatch.isVisibleProperty.value = false;
             }
           }
