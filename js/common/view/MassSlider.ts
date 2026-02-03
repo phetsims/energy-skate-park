@@ -26,6 +26,12 @@ export default class MassSlider extends PhysicalSlider {
         constrainValue: value => Utils.roundToInterval( value, 5 )
       }
     } );
+
+    this.slider.addMinorTick( massRange.getLength() / 5 + massRange.min );
+    this.slider.addMinorTick( 2 * massRange.getLength() / 5 + massRange.min );
+    this.slider.addMinorTick( 3 * massRange.getLength() / 5 + massRange.min );
+    this.slider.addMinorTick( 4 * massRange.getLength() / 5 + massRange.min );
+
   }
 }
 

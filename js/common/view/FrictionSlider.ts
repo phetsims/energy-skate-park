@@ -24,11 +24,17 @@ export default class FrictionSlider extends PhysicalSlider {
    * @param tandem
    */
   public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, tandem: Tandem ) {
-    super( EnergySkateParkStrings.physicalControls.frictionStringProperty, property, new Range( EnergySkateParkConstants.MIN_FRICTION, EnergySkateParkConstants.MAX_FRICTION ), userControlledProperty, tandem, {
+    const range = new Range( EnergySkateParkConstants.MIN_FRICTION, EnergySkateParkConstants.MAX_FRICTION );
+    super( EnergySkateParkStrings.physicalControls.frictionStringProperty, property, range, userControlledProperty, tandem, {
       sliderOptions: {
         constrainValue: value => roundToInterval( value, 0.005 )
       }
     } );
+
+    this.slider.addMinorTick( range.getLength() / 5 + range.min );
+    this.slider.addMinorTick( 2 * range.getLength() / 5 + range.min );
+    this.slider.addMinorTick( 3 * range.getLength() / 5 + range.min );
+    this.slider.addMinorTick( 4 * range.getLength() / 5 + range.min );
   }
 }
 
