@@ -9,7 +9,7 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import { optionize4 } from '../../../../phet-core/js/optionize.js';
-import Node from '../../../../scenery/js/nodes/Node.js';
+import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import AccordionBox, { AccordionBoxOptions } from '../../../../sun/js/AccordionBox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -32,21 +32,20 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
 
   public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, tandem: Tandem, providedOptions: EnergyBarGraphAccordionBoxOptions ) {
 
-    const titleNode = new Node();
-
     // create an icon that represents the content, it is invisible when expanded
     const graphLabel = EnergyBarGraph.createLabel();
     const graphIcon = EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ) );
-    titleNode.children = [ graphLabel, graphIcon ];
 
-    // layout the label and icon
-    graphIcon.leftCenter = graphLabel.rightCenter.plusXY( PANEL_MARGIN * 4, 0 );
+    const titleContainer = new HBox( {
+      children: [ graphLabel, graphIcon ],
+      excludeInvisible: false
+    } );
 
     const options = optionize4<EnergyBarGraphAccordionBoxOptions, SelfOptions, AccordionBoxOptions>()( {}, {
-      titleNode: titleNode,
+      titleNode: titleContainer,
 
       // Putting the icon at the right, with the right spacing between the icon and label, makes the text appear centered, see https://github.com/phetsims/energy-skate-park/issues/398
-      titleAlignX: 'right',
+      titleAlignX: 'left',
 
       contentXMargin: PANEL_MARGIN,
       contentYMargin: PANEL_MARGIN,

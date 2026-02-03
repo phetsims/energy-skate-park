@@ -233,7 +233,7 @@ export default class EnergyBarGraph extends Node {
   public static createLabel(): Text {
     return new Text( EnergySkateParkStrings.energies.energyStringProperty, {
       font: new PhetFont( { size: 17, weight: 'bold' } ),
-      maxWidth: 75 // i18n, by inspection
+      maxWidth: 90 // i18n, by inspection
     } );
   }
 
