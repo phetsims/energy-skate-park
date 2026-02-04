@@ -20,6 +20,7 @@ import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -31,7 +32,6 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import SkaterMasses from '../SkaterMasses.js';
 import Track from './Track.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 type SelfOptions = {
 
@@ -358,6 +358,8 @@ export default class Skater {
 
     // Notify the graphics to re-render.  See #223
     this.updatedEmitter.emit();
+
+    this.startingAngle = undefined;
   }
 
   /**
@@ -410,15 +412,25 @@ export default class Skater {
 
     // If the user is on the same track as where he began (and the track hasn't changed), remain on the track,
     // see #143 and #144
-    if ( this.startingTrackProperty.value && this.trackProperty.value === this.startingTrackProperty.value && _.isEqual( this.trackProperty.value.copyControlPointSources(), this.startingTrackControlPointSources ) ) {
+    if ( this.startingTrackProperty.value &&
+         this.trackProperty.value === this.startingTrackProperty.value &&
+         _.isEqual( this.trackProperty.value.copyControlPointSources(), this.startingTrackControlPointSources )
+    ) {
       this.parametricPositionProperty.value = this.startingUProperty.value;
-      this.angleProperty.value = this.startingAngle!;
+
+      if ( typeof this.startingAngle === 'number' ) {
+        this.angleProperty.value = this.startingAngle!;
+      }
+
       this.onTopSideOfTrackProperty.value = this.startingUpProperty.value;
       this.parametricSpeedProperty.value = 0;
     }
     else {
       this.trackProperty.value = null;
-      this.angleProperty.value = this.startingAngle!;
+
+      if ( typeof this.startingAngle === 'number' ) {
+        this.angleProperty.value = this.startingAngle!;
+      }
     }
     this.positionProperty.set( this.startingPositionProperty.value.copy() );
     this.velocityProperty.value = new Vector2( 0, 0 );
