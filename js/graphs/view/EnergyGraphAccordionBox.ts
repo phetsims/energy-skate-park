@@ -29,6 +29,7 @@ import ABSwitch from '../../../../sun/js/ABSwitch.js';
 import TColor from '../../../../scenery/js/util/TColor.js';
 import AccordionBox, { AccordionBoxOptions } from '../../../../sun/js/AccordionBox.js';
 import VerticalCheckboxGroup, { VerticalCheckboxGroupItem } from '../../../../sun/js/VerticalCheckboxGroup.js';
+import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
@@ -222,11 +223,13 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
 
     // listeners - when the independent variable changes, clear all data and update labels
     model.independentVariableProperty.link( independentVariable => {
+      if ( isSettingPhetioStateProperty.value ) { return; }
       this.clearEnergyData();
     } );
 
     // listeners - when the reference height is changed, clear all data (otherwise the graph will be incorrect, not inertial)
     model.skater.referenceHeightProperty.link( referenceHeight => {
+      if ( isSettingPhetioStateProperty.value ) { return; }
       this.clearEnergyData();
     } );
   }

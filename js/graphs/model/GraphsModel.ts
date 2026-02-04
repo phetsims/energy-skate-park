@@ -13,6 +13,7 @@ import StringUnionProperty from '../../../../axon/js/StringUnionProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
+import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
@@ -128,7 +129,8 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     } );
 
     this.energyPlotScaleIndexProperty = new NumberProperty( 11, {
-      range: new Range( 0, GraphsConstants.PLOT_RANGES.length - 1 )
+      range: new Range( 0, GraphsConstants.PLOT_RANGES.length - 1 ),
+      tandem: tandem.createTandem( 'energyPlotScaleIndexProperty' )
     } );
 
     this.independentVariableProperty = new StringUnionProperty( 'position', {
@@ -142,6 +144,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
     // existing data fades away before removal when the skater direction changes
     this.skater.directionProperty.link( direction => {
+      if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'position' ) {
         this.initiateSampleRemoval();
@@ -156,10 +159,12 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
     // clear all data when the track changes
     this.sceneProperty.link( scene => {
+      if ( isSettingPhetioStateProperty.value ) { return; }
       this.clearEnergyData();
     } );
 
     this.skater.draggingProperty.link( isDragging => {
+      if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'position' ) {
 
@@ -179,6 +184,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
     // clear old samples if we are plotting for longer than the range
     this.sampleTimeProperty.link( time => {
+      if ( isSettingPhetioStateProperty.value ) { return; }
 
       const plottingTime = this.independentVariableProperty.get() === 'time';
       const overTime = time > GraphsConstants.MAX_PLOTTED_TIME;
@@ -204,6 +210,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // if any of the UserControlledPropertySet changes, the user is changing something that would modify the
     // physical system and changes everything in saved EnergySkateParkDataSamples
     Multilink.lazyMultilinkAny( this.userControlledPropertySet.properties, () => {
+      if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'time' ) {
         if ( this.dataSamples.length > 0 ) {
@@ -223,6 +230,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // if plotting against position we want to clear data when skater returns, but it is useful to
     // see previous data when plotting against time so don't clear in that case
     this.skater.returnedEmitter.addListener( () => {
+      if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'position' ) {
         this.clearEnergyData();

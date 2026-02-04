@@ -20,6 +20,8 @@ import XYCursorChartNode from '../../../../griddle/js/XYCursorChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
+import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
+import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
@@ -266,6 +268,7 @@ export default class EnergyChart extends XYCursorChartNode {
 
     // add data points when a EnergySkateParkDataSample is added to the model
     model.dataSamples.addItemAddedListener( addedSample => {
+      if ( isSettingPhetioStateProperty.value ) { return; }
 
       const plotTime = model.independentVariableProperty.get() === 'time';
       const independentVariable = plotTime ? addedSample.time : addedSample.position.x + POSITION_PLOT_OFFSET;
@@ -308,6 +311,38 @@ export default class EnergyChart extends XYCursorChartNode {
         dynamicSeries.removeDataPointsAtX( xValuesToRemove );
       } );
     } );
+
+    // After PhET-iO state is set, rebuild the data series from the current dataSamples
+    if ( Tandem.PHET_IO_ENABLED ) {
+      phetioStateSetEmitter.addListener( () => {
+
+        // Clear stale data series
+        this.clearEnergyDataSeries();
+
+        // Rebuild from current dataSamples
+        const plotTime = model.independentVariableProperty.get() === 'time';
+        model.dataSamples.forEach( sample => {
+          const independentVariable = plotTime ? sample.time : sample.position.x + POSITION_PLOT_OFFSET;
+          const pointStyle = new PointStyle();
+
+          const opacityListener = ( opacity: number ) => { pointStyle.opacity = opacity; };
+          sample.opacityProperty.link( opacityListener );
+
+          this.kineticEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, sample.kineticEnergy, pointStyle ) );
+          this.potentialEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, sample.potentialEnergy, pointStyle ) );
+          this.thermalEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, sample.thermalEnergy, pointStyle ) );
+          this.totalEnergyDataSeries.addDataPoint( new PointStyledVector2( independentVariable, sample.totalEnergy, pointStyle ) );
+
+          const removalListener = ( removedSample: EnergySkateParkDataSample ) => {
+            if ( removedSample === sample ) {
+              removedSample.opacityProperty.unlink( opacityListener );
+              model.dataSamples.removeItemRemovedListener( removalListener );
+            }
+          };
+          model.dataSamples.addItemRemovedListener( removalListener );
+        } );
+      } );
+    }
 
     // reset the ChartCursor, making the drag cue visible again upon "Reset All"
     model.resetEmitter.addListener( this.resetCursor.bind( this ) );

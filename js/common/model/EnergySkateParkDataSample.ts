@@ -15,14 +15,47 @@ import Emitter from '../../../../axon/js/Emitter.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
+import ArrayIO from '../../../../tandem/js/types/ArrayIO.js';
+import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
+import IOType from '../../../../tandem/js/types/IOType.js';
+import NullableIO from '../../../../tandem/js/types/NullableIO.js';
+import NumberIO from '../../../../tandem/js/types/NumberIO.js';
+import ObjectLiteralIO from '../../../../tandem/js/types/ObjectLiteralIO.js';
+import ReferenceIO, { ReferenceIOState } from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
 import SkaterState from './SkaterState.js';
 import Track from './Track.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 // constants
 // samples will fade out to this opacity before being fully removed from the model
 const MIN_OPACITY = 0.05;
+
+type EnergySkateParkDataSampleStateObject = {
+  speed: number;
+  referenceHeight: number;
+  positionX: number;
+  positionY: number;
+  time: number;
+  stickingToTrack: boolean;
+  track: ReferenceIOState | null;
+  trackControlPointPositions: { x: number; y: number }[];
+  kineticEnergy: number;
+  potentialEnergy: number;
+  thermalEnergy: number;
+  totalEnergy: number;
+  friction: number;
+  _fadeDecay: number;
+  _opacity: number;
+  _skaterState: {
+    positionX: number; positionY: number;
+    velocityX: number; velocityY: number;
+    gravity: number; referenceHeight: number; mass: number;
+    track: ReferenceIOState | null; angle: number;
+    onTopSideOfTrack: boolean; parametricPosition: number;
+    parametricSpeed: number; dragging: boolean; thermalEnergy: number;
+  };
+};
 
 export default class EnergySkateParkDataSample {
 
@@ -168,6 +201,97 @@ export default class EnergySkateParkDataSample {
   }
 
   public static readonly MIN_OPACITY = MIN_OPACITY;
+
+  public static readonly EnergySkateParkDataSampleIO = new IOType<EnergySkateParkDataSample, EnergySkateParkDataSampleStateObject>(
+    'EnergySkateParkDataSampleIO', {
+      valueType: EnergySkateParkDataSample,
+      documentation: 'A snapshot of skater data at a point in time, used for energy graphs',
+      toStateObject: ( sample: EnergySkateParkDataSample ): EnergySkateParkDataSampleStateObject => {
+        const skaterStateObject = sample.skaterState;
+        return {
+          speed: sample.speed,
+          referenceHeight: sample.referenceHeight,
+          positionX: sample.position.x,
+          positionY: sample.position.y,
+          time: sample.time,
+          stickingToTrack: sample.stickingToTrack,
+          track: sample.track ? ReferenceIO( Track.TrackIO ).toStateObject( sample.track ) : null,
+          trackControlPointPositions: sample.trackControlPointPositions.map( v => Vector2.Vector2IO.toStateObject( v ) ),
+          kineticEnergy: sample.kineticEnergy,
+          potentialEnergy: sample.potentialEnergy,
+          thermalEnergy: sample.thermalEnergy,
+          totalEnergy: sample.totalEnergy,
+          friction: sample.friction,
+          _fadeDecay: sample.fadeDecay,
+          _opacity: sample.opacityProperty.value,
+          _skaterState: {
+            positionX: skaterStateObject.positionX, positionY: skaterStateObject.positionY,
+            velocityX: skaterStateObject.velocityX, velocityY: skaterStateObject.velocityY,
+            gravity: skaterStateObject.gravity, referenceHeight: skaterStateObject.referenceHeight,
+            mass: skaterStateObject.mass,
+            track: skaterStateObject.track ? ReferenceIO( Track.TrackIO ).toStateObject( skaterStateObject.track ) : null,
+            angle: skaterStateObject.getAngle(), onTopSideOfTrack: skaterStateObject.onTopSideOfTrack,
+            parametricPosition: skaterStateObject.parametricPosition, parametricSpeed: skaterStateObject.parametricSpeed,
+            dragging: skaterStateObject.dragging, thermalEnergy: skaterStateObject.thermalEnergy
+          }
+        };
+      },
+      fromStateObject: ( stateObject: EnergySkateParkDataSampleStateObject ): EnergySkateParkDataSample => {
+
+        // Resolve track references for the skater state
+        const skateStateObject = stateObject._skaterState;
+        const skaterTrack = skateStateObject.track === null ? null :
+          ReferenceIO( Track.TrackIO ).fromStateObject( skateStateObject.track ) as Track;
+        const skaterState = SkaterState.fromPlainObject( {
+          positionX: skateStateObject.positionX,
+          positionY: skateStateObject.positionY,
+          velocityX: skateStateObject.velocityX,
+          velocityY: skateStateObject.velocityY,
+          gravity: skateStateObject.gravity,
+          referenceHeight: skateStateObject.referenceHeight,
+          mass: skateStateObject.mass,
+          track: skaterTrack,
+          angle: skateStateObject.angle,
+          onTopSideOfTrack: skateStateObject.onTopSideOfTrack,
+          parametricPosition: skateStateObject.parametricPosition,
+          parametricSpeed: skateStateObject.parametricSpeed,
+          dragging: skateStateObject.dragging,
+          thermalEnergy: skateStateObject.thermalEnergy
+        } );
+
+        const sample = new EnergySkateParkDataSample(
+          skaterState, stateObject.friction, stateObject.time,
+          stateObject.stickingToTrack, stateObject._fadeDecay
+        );
+
+        // Override mutable fields that may differ from constructor-derived values
+        sample.potentialEnergy = stateObject.potentialEnergy;
+        sample.totalEnergy = stateObject.totalEnergy;
+        sample.referenceHeight = stateObject.referenceHeight;
+        sample.opacityProperty.set( stateObject._opacity );
+
+        return sample;
+      },
+      stateSchema: {
+        speed: NumberIO,
+        referenceHeight: NumberIO,
+        positionX: NumberIO,
+        positionY: NumberIO,
+        time: NumberIO,
+        stickingToTrack: BooleanIO,
+        track: NullableIO( ReferenceIO( Track.TrackIO ) ),
+        trackControlPointPositions: ArrayIO( Vector2.Vector2IO ),
+        kineticEnergy: NumberIO,
+        potentialEnergy: NumberIO,
+        thermalEnergy: NumberIO,
+        totalEnergy: NumberIO,
+        friction: NumberIO,
+        _fadeDecay: NumberIO,
+        _opacity: NumberIO,
+        _skaterState: ObjectLiteralIO
+      }
+    }
+  );
 }
 
 energySkatePark.register( 'EnergySkateParkDataSample', EnergySkateParkDataSample );

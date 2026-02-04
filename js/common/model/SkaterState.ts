@@ -338,6 +338,26 @@ export default class SkaterState {
   }
 
   /**
+   * Get the angle of the skater, needed for serialization since angle is private.
+   */
+  public getAngle(): number { return this.angle; }
+
+  /**
+   * Create a SkaterState from a plain object (for deserialization). This bypasses the normal constructor
+   * which requires a Skater or SkaterState instance by creating a prototype-based source object.
+   */
+  public static fromPlainObject( data: {
+    positionX: number; positionY: number; velocityX: number; velocityY: number;
+    gravity: number; referenceHeight: number; mass: number; track: Track | null;
+    angle: number; onTopSideOfTrack: boolean; parametricPosition: number;
+    parametricSpeed: number; dragging: boolean; thermalEnergy: number;
+  } ): SkaterState {
+    const source = Object.create( SkaterState.prototype ) as SkaterState;
+    Object.assign( source, data );
+    return new SkaterState( source );
+  }
+
+  /**
    * Get the speed of this SkaterState, the magnitude of velocity.
    */
   public getSpeed(): number {

@@ -89,8 +89,13 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
     this.limitNumberOfSamples = true;
     this.saveSamplesProperty = new BooleanProperty( options.defaultSaveSamples, { tandem: tandem.createTandem( 'saveSamplesProperty' ) } );
     this.preventSampleSave = false;
-    this.sampleTimeProperty = new NumberProperty( 0 );
-    this.dataSamples = createObservableArray();
+    this.sampleTimeProperty = new NumberProperty( 0, {
+      tandem: tandem.createTandem( 'sampleTimeProperty' )
+    } );
+    this.dataSamples = createObservableArray( {
+      tandem: tandem.createTandem( 'dataSamples' ),
+      phetioType: createObservableArray.ObservableArrayIO( EnergySkateParkDataSample.EnergySkateParkDataSampleIO )
+    } );
     this.batchRemoveSamplesEmitter = new Emitter( {
       parameters: [ {
         isValidValue: value => Array.isArray( value ) && value.every( element => element instanceof EnergySkateParkDataSample )
