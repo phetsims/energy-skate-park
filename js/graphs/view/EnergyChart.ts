@@ -296,6 +296,13 @@ export default class EnergyChart extends Node {
     );
     this.chartPanel.addChild( this.chartCursor );
 
+    // Lock chartPanel's localBounds to its selfBounds so that the cursor's children (e.g. dragCueArrowNode)
+    // don't expand chartPanel's bounds and shift the layout of the variable switch and eraser button.
+    // The chartTransform's viewWidth/viewHeight are set once in the constructor and never change, so
+    // ChartRectangle's selfBounds are constant at (0, 0, graphWidth, graphHeight).
+    // See https://github.com/phetsims/energy-skate-park/issues/417
+    this.chartPanel.localBounds = this.chartPanel.selfBounds;
+
     // Initialize cursor
     this.updateCursor();
 
@@ -472,6 +479,12 @@ export default class EnergyChart extends Node {
       this.updateCursor();
       this.repaintPlots();
     } );
+
+    // Override this Node's localBounds to match the chartPanel area so that tick labels extending
+    // above the chart don't affect layout (e.g. the yLabel in EnergyGraphAccordionBox centers on
+    // energyPlot.leftCenter, which would be shifted upward by tick labels expanding bounds).
+    // See https://github.com/phetsims/energy-skate-park/issues/417
+    this.localBounds = this.chartPanel.bounds;
 
     // reset the ChartCursor, making the drag cue visible again upon "Reset All"
     model.resetEmitter.addListener( () => this.resetCursor() );

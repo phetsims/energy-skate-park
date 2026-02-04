@@ -155,8 +155,6 @@ export default class EnergyChartCursor extends Rectangle {
         // limit cursor to the domain of recorded values
         newValue = Utils.clamp( newValue, this.getMinRecordedXValue(), this.getMaxRecordedXValue() );
 
-        // TODO: Dragging the cursor changes the layout of the position/time toggle, see https://github.com/phetsims/energy-skate-park/issues/417
-        // TODO: Dragging the cursor does not set the time for a playback value, see https://github.com/phetsims/energy-skate-park/issues/417
         this.setCursorValueCallback( newValue );
 
         options.drag();
