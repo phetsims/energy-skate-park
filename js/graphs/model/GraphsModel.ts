@@ -17,9 +17,7 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkTrackSetModel from '../../common/model/EnergySkateParkTrackSetModel.js';
-import PremadeTracks from '../../common/model/PremadeTracks.js';
 import SkaterState from '../../common/model/SkaterState.js';
-import Track from '../../common/model/Track.js';
 import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
 
@@ -250,9 +248,6 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     this.independentVariableProperty.reset();
 
     this.clearEnergyData();
-
-    // after reset, restart timer for next saved state
-    this.timeSinceSkaterSaved = 0;
   }
 
   /**
@@ -312,55 +307,6 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     nearestIndex = Utils.clamp( nearestIndex, 0, this.dataSamples.length - 1 );
 
     return this.dataSamples.get( nearestIndex );
-  }
-
-  /**
-   * Create the custom set of tracks for the "graphs" screen. The "graphs" screen includes a parabola and a
-   * double well with unique shapes where only certain control points are draggable.
-   */
-  private createGraphsTrackSet( tandem: Tandem ): Track[] {
-
-    // all tracks in graphs screen are bound by these dimensions (in meters)
-    const trackHeight = GraphsConstants.TRACK_HEIGHT;
-    const trackWidth = GraphsConstants.TRACK_WIDTH;
-
-    const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, tandem.createTandem( 'parabolaTrack' ), {
-      trackHeight: trackHeight,
-      trackWidth: trackWidth,
-      p1Visible: false,
-      p3Visible: false
-    } );
-
-    const parabolaTrack = PremadeTracks.createTrack( this, parabolaControlPoints, {
-      configurable: this.tracksConfigurable,
-      tandem: tandem.createTandem( 'parabolaTrack' )
-    } );
-
-    const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( this, tandem.createTandem( 'doubleWellTrack' ), {
-      trackHeight: 4,
-      trackWidth: 10,
-      trackMidHeight: 1.5,
-
-      p1Visible: false,
-      p5Visible: false,
-
-      // limit vertical bounds for points 1 and 5 so that the track can never overlap with other UI components, including
-      // when it is bumped above ground
-      p1UpSpacing: 0,
-      p1DownSpacing: 0,
-      p5UpSpacing: 0,
-      p5DownSpacing: 0,
-
-      // spacing for the limiting drag bounds of the third control point
-      p3UpSpacing: 2.5,
-      p3DownSpacing: 1.5
-    } );
-    const doubleWellTrack = PremadeTracks.createTrack( this, doubleWellControlPoints, {
-      configurable: this.tracksConfigurable,
-      tandem: tandem.createTandem( 'doubleWellTrack' )
-    } );
-
-    return [ parabolaTrack, doubleWellTrack ];
   }
 }
 
