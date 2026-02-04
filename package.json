@@ -25,8 +25,7 @@
     ],
     "simulation": true,
     "phet-io": {
-      "validation": false,
-      "fuzzValuesOverride": false
+      "validation": false
     },
     "simFeatures": {
       "supportsDynamicLocale": true,
