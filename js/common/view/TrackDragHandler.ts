@@ -39,7 +39,7 @@ export default class TrackDragHandler extends DragListener {
       tandem: tandem.createTandem( 'dragListener' ),
       allowTouchSnag: true,
 
-      start: event => this.handleDragStart( event ),
+      start: event => this.handleDragStart( event, this.globalToParentPoint( event.pointer.point ) ),
       drag: event => this.handleDrag( event ),
 
       end: event => this.handleDragEnd()
@@ -54,9 +54,9 @@ export default class TrackDragHandler extends DragListener {
   }
 
   /**
-   * Start of a drag interaction from an event. TODO: clean up overrideParentPoint usages? See https://github.com/phetsims/energy-skate-park/issues/385
+   * Start of a drag interaction from an event.
    */
-  public handleDragStart( event: SceneryEvent, overrideParentPoint: Vector2 | null = null ): void {
+  public handleDragStart( event: SceneryEvent, overrideParentPoint: Vector2 ): void {
 
     // Move the track to the front when it starts dragging, see #296
     // The track is in a layer of tracks (without other nodes) so moving it to the front will work perfectly
