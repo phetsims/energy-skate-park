@@ -117,10 +117,18 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
       maxNumberOfSamples: 1000
     } );
 
-    this.kineticEnergyDataVisibleProperty = new BooleanProperty( true );
-    this.potentialEnergyDataVisibleProperty = new BooleanProperty( true );
-    this.thermalEnergyDataVisibleProperty = new BooleanProperty( true );
-    this.totalEnergyDataVisibleProperty = new BooleanProperty( true );
+    this.kineticEnergyDataVisibleProperty = new BooleanProperty( true, {
+      tandem: tandem.createTandem( 'kineticEnergyDataVisibleProperty' )
+    } );
+    this.potentialEnergyDataVisibleProperty = new BooleanProperty( true, {
+      tandem: tandem.createTandem( 'potentialEnergyDataVisibleProperty' )
+    } );
+    this.thermalEnergyDataVisibleProperty = new BooleanProperty( true, {
+      tandem: tandem.createTandem( 'thermalEnergyDataVisibleProperty' )
+    } );
+    this.totalEnergyDataVisibleProperty = new BooleanProperty( true, {
+      tandem: tandem.createTandem( 'totalEnergyDataVisibleProperty' )
+    } );
 
     this.energyPlotScaleIndexProperty = new NumberProperty( 11, {
       range: new Range( 0, GraphsConstants.PLOT_RANGES.length - 1 )
