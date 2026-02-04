@@ -74,6 +74,10 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     this.timeControlNode.left = this.modelViewTransform.modelToViewX( 0.5 );
     this.trackToolbox.right = this.modelViewTransform.modelToViewX( -0.5 );
     this.clearButton.right = this.trackToolbox.left - 10;
+
+    // Some model elements are spuriously created when creating the track panel -- clear those out now so that the PhET-iO
+    // changed state starts clear, see https://github.com/phetsims/energy-skate-park/issues/49
+    model.reset();
   }
 
   /**
