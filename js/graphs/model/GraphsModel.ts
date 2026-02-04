@@ -12,6 +12,7 @@ import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import StringUnionProperty from '../../../../axon/js/StringUnionProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
@@ -21,7 +22,6 @@ import SkaterState from '../../common/model/SkaterState.js';
 import Track from '../../common/model/Track.js';
 import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
@@ -127,7 +127,8 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     } );
 
     this.independentVariableProperty = new StringUnionProperty( 'position', {
-      validValues: [ 'position', 'time' ]
+      validValues: [ 'position', 'time' ],
+      tandem: tandem.createTandem( 'independentVariableProperty' )
     } );
 
     this.energyPlotVisibleProperty = new BooleanProperty( true, {
