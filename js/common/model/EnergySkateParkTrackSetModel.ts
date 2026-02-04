@@ -189,11 +189,16 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
     // existing data fades away before removal when the skater direction changes
     this.skater.directionProperty.link( direction => {
+      if ( isSettingPhetioStateProperty.value ) { return; }
       this.initiateSampleRemoval();
     } );
 
     // existing data is removed immediately when any of these Properties change
-    const boundClearSamples = this.clearEnergyData.bind( this );
+    const boundClearSamples = () => {
+      if ( !isSettingPhetioStateProperty.value ) {
+        this.clearEnergyData();
+      }
+    };
     Multilink.multilink( [ this.saveSamplesProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
     this.skater.returnedEmitter.addListener( boundClearSamples );
     this.trackChangedEmitter.addListener( boundClearSamples );
