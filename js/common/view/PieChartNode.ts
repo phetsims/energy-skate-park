@@ -16,6 +16,7 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path, { PathOptions } from '../../../../scenery/js/nodes/Path.js';
+import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from '../model/Skater.js';
@@ -189,6 +190,9 @@ export default class PieChartNode extends Node {
 
     // instead of changing the entire pie chart whenever one energy changes, use trigger to update the whole pie
     skater.energyChangedEmitter.addListener( updatePaths );
+
+    // Update the pie chart after state is set, in case energies were changed
+    phetioStateSetEmitter.addListener( updatePaths );
 
     // Synchronize visibility with the model, and also update when visibility changes because it is guarded against in updatePaths
     pieChartVisibleProperty.link( visible => {
