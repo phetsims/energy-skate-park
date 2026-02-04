@@ -45,6 +45,8 @@ const BAR_BORDER_WIDTH = 1;
 const BAR_BORDER_COLOR = 'black';
 const BAR_SPACING = 15;
 
+// TODO: Can we use existing bamboo bars here? See https://github.com/phetsims/energy-skate-park/issues/417
+
 /**
  * Sets a rectangle's y and height such that it goes between the two y values given.
  * Note: bars are in the "mathematical" coordinate frame (rotated by Math.PI), where +y is up.
