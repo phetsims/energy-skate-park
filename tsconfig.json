@@ -8,7 +8,7 @@
   ],
   "references": [
     {
-      "path": "../bamboo/tsconfig.json"
+      "path": "../griddle/tsconfig.json"
     },
     {
       "path": "../perennial-alias/tsconfig/buildjson/tsconfig.json"

@@ -12,7 +12,7 @@
   "phet": {
     "requirejsNamespace": "ENERGY_SKATE_PARK",
     "phetLibs": [
-      "bamboo"
+      "griddle"
     ],
     "preload": [
       "../sherpa/lib/numeric-1.2.6.js"
