@@ -136,8 +136,8 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
     const keyboardDragListener = new SoundKeyboardDragListener( {
       transform: modelViewTransform,
       positionProperty: dragPositionProperty,
-      dragDelta: 0.5, // meters
-      shiftDragDelta: 0.1, // meters, slower movement with shift
+      dragSpeed: 200, // View coordinates per second - provides continuous smooth motion
+      shiftDragSpeed: 50, // Slower speed when shift is held for fine control
       start: () => {
         userControlledProperty.set( true );
       },
