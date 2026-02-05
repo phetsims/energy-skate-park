@@ -14,6 +14,7 @@ import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
+import type Node from '../../../../scenery/js/nodes/Node.js';
 import { rasterizeNode } from '../../../../scenery/js/util/rasterizeNode.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -24,6 +25,10 @@ import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 
 export default class ToolboxPanel extends Panel {
+
+  // Tool icon nodes that can be focused when tools are returned to the toolbox via delete/backspace key
+  public readonly stopwatchToolNode: Node;
+  public readonly measuringTapeToolNode: Node;
 
   public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, providedOptions?: PanelOptions ) {
     const options = combineOptions<PanelOptions>( {
@@ -149,6 +154,9 @@ export default class ToolboxPanel extends Panel {
       stopwatchIcon.focusable = !visible;
       stopwatchIcon.setPDOMAttribute( 'aria-disabled', visible );
     } );
+
+    this.stopwatchToolNode = stopwatchIcon;
+    this.measuringTapeToolNode = measuringTapeIcon;
   }
 }
 

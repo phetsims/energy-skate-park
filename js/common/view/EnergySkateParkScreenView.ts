@@ -25,8 +25,10 @@ import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
 import TimeControlNode from '../../../../scenery-phet/js/TimeControlNode.js';
 import ValueGaugeNode from '../../../../scenery-phet/js/ValueGaugeNode.js';
+import { getPDOMFocusedNode } from '../../../../scenery/js/accessibility/pdomFocusProperty.js';
 import ManualConstraint from '../../../../scenery/js/layout/constraints/ManualConstraint.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
+import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
@@ -360,6 +362,26 @@ export default class EnergySkateParkScreenView extends ScreenView {
       this.topLayer.addChild( this.measuringTapeNode );
 
       this.toolboxPanel = new ToolboxPanel( model, this, tandem.createTandem( 'toolboxPanel' ) );
+
+      // Return tools to the toolbox when delete/backspace is pressed, restoring focus to the toolbox icon
+      KeyboardListener.createGlobal( this, {
+        keys: [ 'delete', 'backspace' ],
+        fire: () => {
+          const focusedNode = getPDOMFocusedNode();
+
+          // Return stopwatch to toolbox when delete/backspace is pressed while it or a descendant is focused
+          if ( focusedNode && this.stopwatchNode!.getSubtreeNodes().includes( focusedNode ) ) {
+            model.stopwatch.isVisibleProperty.value = false;
+            this.toolboxPanel!.stopwatchToolNode.focus();
+          }
+
+          // Return measuring tape to toolbox when delete/backspace is pressed while it or a descendant is focused
+          else if ( focusedNode && this.measuringTapeNode!.getSubtreeNodes().includes( focusedNode ) ) {
+            model.measuringTapeVisibleProperty.set( false );
+            this.toolboxPanel!.measuringTapeToolNode.focus();
+          }
+        }
+      } );
     }
 
     const controlPanelVBoxChildren: Node[] = [ this.controlPanel ];
