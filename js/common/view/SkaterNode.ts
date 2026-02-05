@@ -18,10 +18,11 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
-import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
+import GrabDragInteraction from '../../../../scenery-phet/js/accessibility/grab-drag/GrabDragInteraction.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
+import KeyboardDragListener from '../../../../scenery/js/listeners/KeyboardDragListener.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
@@ -29,12 +30,22 @@ import Skater from '../model/Skater.js';
 import Track from '../model/Track.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import SkaterImageSet from './SkaterImageSet.js';
-import SkaterKeyboardListener from './SkaterKeyboardListener.js';
 
-export default class SkaterNode extends InteractiveHighlighting( Node ) {
+// Movement step sizes in model coordinates
+const POSITION_DELTA = 0.1; // meters for off-track movement
+const POSITION_DELTA_SHIFT = 0.025; // meters, slower movement with shift
+const PARAMETRIC_DELTA = 0.02; // parametric units for on-track movement
+const PARAMETRIC_DELTA_SHIFT = 0.005; // slower parametric movement with shift
+
+export default class SkaterNode extends Node {
   public readonly skaterImageSetProperty: TReadOnlyProperty<SkaterImageSet>;
   public readonly selectedSkaterProperty: NumberProperty;
   private readonly dragListener: SoundDragListener;
+  private readonly grabDragInteraction: GrabDragInteraction;
+
+  // Track the track and position where skater will be released (for keyboard drag)
+  private keyboardTargetTrack: Track | null = null;
+  private keyboardTargetU: number | null = null;
 
   /**
    * SkaterNode constructor.
@@ -58,13 +69,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
       // prevent fitted blocks for the Skater to improve performance, see #213
       preventFit: true,
-      tandem: tandem,
-
-      // pdom - make the skater focusable for keyboard interaction
-      tagName: 'div',
-      focusable: true,
-      ariaRole: 'application',
-      accessibleName: EnergySkateParkStrings.a11y.skaterNode.accessibleNameStringProperty
+      tandem: tandem
     } );
 
     this.selectedSkaterProperty = new NumberProperty( 0, {
@@ -136,10 +141,10 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       const position = skater.positionProperty.value;
       const angle = skater.angleProperty.value;
 
-      const view = modelViewTransform.modelToViewPosition( position );
+      const viewPosition = modelViewTransform.modelToViewPosition( position );
 
       // Translate to the desired position
-      const matrix = Matrix3.translation( view.x, view.y );
+      const matrix = Matrix3.translation( viewPosition.x, viewPosition.y );
 
       // Rotate about the pivot (bottom center of the skater)
       const rotationMatrix = Matrix3.rotation2( angle );
@@ -241,9 +246,247 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
     } );
     this.addInputListener( this.dragListener );
 
-    // Add keyboard listener for alternative input
-    const skaterKeyboardListener = new SkaterKeyboardListener( skater, this );
-    this.addInputListener( skaterKeyboardListener );
+    // Create a KeyboardDragListener for keyboard-based movement while grabbed
+    const keyboardDragListener = new KeyboardDragListener( {
+      tandem: Tandem.OPT_OUT, // GrabDragInteraction will handle instrumentation
+      dragDelta: 10, // View coordinates - will be handled by custom drag callback
+      shiftDragDelta: 2.5,
+      drag: () => {
+        // Handle keyboard movement based on whether skater is on-track or off-track
+        this.handleKeyboardDrag( skater, view, getClosestTrackAndPositionAndParameter, getPhysicalTracks );
+      }
+    } );
+
+    // Create GrabDragInteraction for the grab/release paradigm
+    this.grabDragInteraction = new GrabDragInteraction( this, keyboardDragListener, view, {
+      objectToGrabString: EnergySkateParkStrings.a11y.skaterNode.accessibleNameStringProperty,
+      tandem: tandem.createTandem( 'grabDragInteraction' ),
+
+      onGrab: () => {
+        userControlledProperty.set( true );
+        skater.draggingProperty.value = true;
+
+        // Clear thermal energy whenever skater is grabbed
+        skater.thermalEnergyProperty.value = 0;
+
+        // Initialize keyboard target tracking
+        this.keyboardTargetTrack = skater.trackProperty.value;
+        this.keyboardTargetU = skater.parametricPositionProperty.value;
+      },
+
+      onRelease: () => {
+        // Record the state of the skater for "return skater"
+        skater.released( this.keyboardTargetTrack, this.keyboardTargetU ?? 0 );
+
+        userControlledProperty.set( false );
+
+        // Note: draggingProperty is set to false in skater.released()
+      }
+    } );
+  }
+
+  /**
+   * Handle keyboard drag movement. This is called continuously while arrow keys are held.
+   */
+  private handleKeyboardDrag(
+    skater: Skater,
+    view: EnergySkateParkScreenView,
+    getClosestTrackAndPositionAndParameter: ( v: Vector2, t: Track[] ) => { track: Track; parametricPosition: number; point: Vector2 } | null,
+    getPhysicalTracks: () => Track[]
+  ): void {
+    const track = skater.trackProperty.value;
+
+    // Determine which keys are pressed
+    const leftPressed = phet.scenery.globalKeyStateTracker.isKeyDown( 'arrowLeft' ) ||
+                        phet.scenery.globalKeyStateTracker.isKeyDown( 'a' );
+    const rightPressed = phet.scenery.globalKeyStateTracker.isKeyDown( 'arrowRight' ) ||
+                         phet.scenery.globalKeyStateTracker.isKeyDown( 'd' );
+    const upPressed = phet.scenery.globalKeyStateTracker.isKeyDown( 'arrowUp' ) ||
+                      phet.scenery.globalKeyStateTracker.isKeyDown( 'w' );
+    const downPressed = phet.scenery.globalKeyStateTracker.isKeyDown( 'arrowDown' ) ||
+                        phet.scenery.globalKeyStateTracker.isKeyDown( 's' );
+    const shiftPressed = phet.scenery.globalKeyStateTracker.shiftKeyDown;
+
+    if ( track ) {
+      // On-track movement: use parametric position
+      this.handleOnTrackKeyboardDrag( skater, track, leftPressed, rightPressed, upPressed, shiftPressed );
+    }
+    else {
+      // Off-track movement: use 2D position
+      this.handleOffTrackKeyboardDrag( skater, view, leftPressed, rightPressed, upPressed, downPressed, shiftPressed,
+        getClosestTrackAndPositionAndParameter, getPhysicalTracks );
+    }
+  }
+
+  /**
+   * Handle keyboard movement when skater is on the track (parametric movement).
+   */
+  private handleOnTrackKeyboardDrag(
+    skater: Skater,
+    track: Track,
+    leftPressed: boolean,
+    rightPressed: boolean,
+    upPressed: boolean,
+    shiftPressed: boolean
+  ): void {
+    const currentU = skater.parametricPositionProperty.value;
+    const delta = shiftPressed ? PARAMETRIC_DELTA_SHIFT : PARAMETRIC_DELTA;
+
+    // Determine direction based on which side of track we're on
+    const onTop = skater.onTopSideOfTrackProperty.value;
+
+    if ( leftPressed && !rightPressed ) {
+      const direction = onTop ? -1 : 1;
+      this.moveAlongTrack( skater, track, currentU, delta * direction );
+    }
+    else if ( rightPressed && !leftPressed ) {
+      const direction = onTop ? 1 : -1;
+      this.moveAlongTrack( skater, track, currentU, delta * direction );
+    }
+    else if ( upPressed ) {
+      // Detach from track
+      this.detachFromTrack( skater, track );
+    }
+    // Down does nothing when on track
+  }
+
+  /**
+   * Move the skater along the track by a delta in parametric space.
+   */
+  private moveAlongTrack( skater: Skater, track: Track, currentU: number, deltaU: number ): void {
+    const newU = currentU + deltaU;
+
+    if ( track.isParameterInBounds( newU ) ) {
+      skater.parametricPositionProperty.value = newU;
+      skater.positionProperty.value = track.getPoint( newU );
+      skater.angleProperty.value = track.getViewAngleAt( newU ) +
+                                   ( skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+
+      // Clear velocity when moving with keyboard
+      skater.velocityProperty.value = new Vector2( 0, 0 );
+      skater.parametricSpeedProperty.value = 0;
+
+      skater.updateEnergy();
+      skater.updatedEmitter.emit();
+
+      // Update keyboard target for release
+      this.keyboardTargetTrack = track;
+      this.keyboardTargetU = newU;
+    }
+    else {
+      // At end of track, detach
+      this.detachFromTrack( skater, track );
+    }
+  }
+
+  /**
+   * Detach the skater from the track.
+   */
+  private detachFromTrack( skater: Skater, track: Track ): void {
+    const u = skater.parametricPositionProperty.value;
+    const normal = track.getUnitNormalVector( u );
+    const launchDirection = skater.onTopSideOfTrackProperty.value ? normal : normal.negated();
+
+    // Detach from track
+    skater.trackProperty.value = null;
+    skater.angleProperty.value = 0;
+
+    // Move slightly in the normal direction
+    const currentPosition = skater.positionProperty.value;
+    skater.positionProperty.value = currentPosition.plus( launchDirection.timesScalar( 0.1 ) );
+
+    skater.updateEnergy();
+    skater.updatedEmitter.emit();
+
+    // Update keyboard target for release
+    this.keyboardTargetTrack = null;
+    this.keyboardTargetU = null;
+  }
+
+  /**
+   * Handle keyboard movement when skater is off the track (2D movement).
+   */
+  private handleOffTrackKeyboardDrag(
+    skater: Skater,
+    view: EnergySkateParkScreenView,
+    leftPressed: boolean,
+    rightPressed: boolean,
+    upPressed: boolean,
+    downPressed: boolean,
+    shiftPressed: boolean,
+    getClosestTrackAndPositionAndParameter: ( v: Vector2, t: Track[] ) => { track: Track; parametricPosition: number; point: Vector2 } | null,
+    getPhysicalTracks: () => Track[]
+  ): void {
+    const delta = shiftPressed ? POSITION_DELTA_SHIFT : POSITION_DELTA;
+    let dx = 0;
+    let dy = 0;
+
+    if ( leftPressed && !rightPressed ) {
+      dx = -delta;
+    }
+    else if ( rightPressed && !leftPressed ) {
+      dx = delta;
+    }
+
+    if ( upPressed && !downPressed ) {
+      dy = delta;
+    }
+    else if ( downPressed && !upPressed ) {
+      dy = -delta;
+    }
+
+    if ( dx !== 0 || dy !== 0 ) {
+      let newPosition = skater.positionProperty.value.plusXY( dx, dy );
+
+      // Keep within available bounds
+      if ( view.availableModelBounds ) {
+        newPosition = view.availableModelBounds.closestPointTo( newPosition );
+      }
+
+      // Check if we're close to a track and should snap to it
+      const closestTrackAndPositionAndParameter = getClosestTrackAndPositionAndParameter( newPosition, getPhysicalTracks() );
+      if ( closestTrackAndPositionAndParameter &&
+           closestTrackAndPositionAndParameter.track &&
+           closestTrackAndPositionAndParameter.track.isParameterInBounds( closestTrackAndPositionAndParameter.parametricPosition ) ) {
+        const distance = closestTrackAndPositionAndParameter.point.distance( newPosition );
+        if ( distance < 0.5 ) {
+          // Snap to track
+          const track = closestTrackAndPositionAndParameter.track;
+          const u = closestTrackAndPositionAndParameter.parametricPosition;
+
+          skater.trackProperty.value = track;
+          skater.parametricPositionProperty.value = u;
+          skater.positionProperty.value = track.getPoint( u );
+
+          const normal = track.getUnitNormalVector( u );
+          skater.onTopSideOfTrackProperty.value = normal.y > 0;
+          skater.angleProperty.value = track.getViewAngleAt( u ) +
+                                       ( skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+
+          this.keyboardTargetTrack = track;
+          this.keyboardTargetU = u;
+
+          skater.updateEnergy();
+          skater.updatedEmitter.emit();
+          return;
+        }
+      }
+
+      // Not close to track, just update position
+      skater.positionProperty.value = newPosition;
+      skater.angleProperty.value = 0;
+      skater.onTopSideOfTrackProperty.value = true;
+
+      // Clear velocity
+      skater.velocityProperty.value = new Vector2( 0, 0 );
+
+      skater.updateEnergy();
+      skater.updatedEmitter.emit();
+
+      // Update keyboard target for release
+      this.keyboardTargetTrack = null;
+      this.keyboardTargetU = null;
+    }
   }
 
   /**
