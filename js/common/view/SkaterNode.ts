@@ -36,8 +36,8 @@ import SkaterImageSet from './SkaterImageSet.js';
 // Movement step sizes in model coordinates
 const POSITION_DELTA = 0.1; // meters for off-track movement
 const POSITION_DELTA_SHIFT = 0.025; // meters, slower movement with shift
-const PARAMETRIC_DELTA = 0.02; // parametric units for on-track movement
-const PARAMETRIC_DELTA_SHIFT = 0.005; // slower parametric movement with shift
+const PARAMETRIC_DELTA = 0.005; // parametric units for on-track movement
+const PARAMETRIC_DELTA_SHIFT = 0.001; // slower parametric movement with shift
 
 // Maximum distance (in meters) for attaching to a track with the hotkey
 const TRACK_ATTACH_THRESHOLD = 2;
