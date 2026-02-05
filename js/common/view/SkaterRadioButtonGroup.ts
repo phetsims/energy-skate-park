@@ -14,6 +14,7 @@ import Property from '../../../../axon/js/Property.js';
 import Shape from '../../../../kite/js/Shape.js';
 import merge from '../../../../phet-core/js/merge.js';
 import FlowBox from '../../../../scenery/js/layout/nodes/FlowBox.js';
+import multiSelectionSoundPlayerFactory from '../../../../tambo/js/multiSelectionSoundPlayerFactory.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import RectangularRadioButton from '../../../../sun/js/buttons/RectangularRadioButton.js';
@@ -51,7 +52,7 @@ export default class SkaterRadioButtonGroup extends Node {
     );
 
     const buttons: Node[] = [];
-    contentArray.forEach( content => {
+    contentArray.forEach( ( content, index ) => {
       // Round clipping the corners to avoid pointy images in the radio buttons
       content.node.clipArea = Shape.roundRect(
         content.node.localBounds.left,
@@ -63,7 +64,8 @@ export default class SkaterRadioButtonGroup extends Node {
       );
       buttons.push( new RectangularRadioButton( skaterImageSetProperty, content.value, merge( {
         content: content.node,
-        tandem: tandem.createTandem( content.tandemName )
+        tandem: tandem.createTandem( content.tandemName ),
+        soundPlayer: multiSelectionSoundPlayerFactory.getSelectionSoundPlayer( index )
       }, buttonOptions ) ) );
     } );
 
