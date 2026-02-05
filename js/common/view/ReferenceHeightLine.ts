@@ -17,6 +17,8 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ArrowNode from '../../../../scenery-phet/js/ArrowNode.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
+import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
+import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import Line from '../../../../scenery/js/nodes/Line.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -27,7 +29,7 @@ import TextPanel from './TextPanel.js';
 
 const heightEqualsZeroStringProperty = EnergySkateParkStrings.heightLabels.heightEqualsZeroStringProperty;
 
-export default class ReferenceHeightLine extends Node {
+export default class ReferenceHeightLine extends InteractiveHighlighting( Node ) {
 
   public constructor( modelViewTransform: ModelViewTransform2, referenceHeightProperty: NumberProperty, referenceHeightVisibleProperty: TReadOnlyProperty<boolean>, userControlledProperty: TProperty<boolean>, tandem: Tandem ) {
 
@@ -73,7 +75,14 @@ export default class ReferenceHeightLine extends Node {
       children: [ backLine, frontLine, doubleArrowNode, textPanel ],
 
       // so it is clear that it can be picked up
-      cursor: 'pointer'
+      cursor: 'pointer',
+
+      // pdom - make the reference height line focusable for keyboard interaction
+      tagName: 'div',
+      focusable: true,
+      ariaRole: 'slider',
+      accessibleName: EnergySkateParkStrings.a11y.referenceHeightLine.accessibleNameStringProperty,
+      descriptionContent: EnergySkateParkStrings.a11y.referenceHeightLine.helpTextStringProperty
     } );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
@@ -122,6 +131,22 @@ export default class ReferenceHeightLine extends Node {
       },
       tandem: tandem.createTandem( 'dragListener' )
     } ) );
+
+    // Keyboard drag listener for alternative input
+    const keyboardDragListener = new SoundKeyboardDragListener( {
+      transform: modelViewTransform,
+      positionProperty: dragPositionProperty,
+      dragDelta: 0.5, // meters
+      shiftDragDelta: 0.1, // meters, slower movement with shift
+      start: () => {
+        userControlledProperty.set( true );
+      },
+      end: () => {
+        userControlledProperty.set( false );
+      },
+      tandem: tandem.createTandem( 'keyboardDragListener' )
+    } );
+    this.addInputListener( keyboardDragListener );
   }
 }
 

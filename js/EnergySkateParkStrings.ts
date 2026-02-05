@@ -99,6 +99,31 @@ type StringsType = {
     'accelerationUnitsStringProperty': LocalizedStringProperty;
     'metersPerSecondSquaredStringProperty': LocalizedStringProperty;
     'newtonsPerKilogramStringProperty': LocalizedStringProperty;
+  };
+  'keyboardHelpDialog': {
+    'skaterControlsStringProperty': LocalizedStringProperty;
+    'moveSkaterStringProperty': LocalizedStringProperty;
+    'moveSkaterSlowerStringProperty': LocalizedStringProperty;
+    'moveAlongTrackStringProperty': LocalizedStringProperty;
+    'detachFromTrackStringProperty': LocalizedStringProperty;
+    'moveReferenceHeightStringProperty': LocalizedStringProperty;
+  };
+  'a11y': {
+    'skaterNode': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+      'onTrackHelpTextStringProperty': LocalizedStringProperty;
+      'offTrackHelpTextStringProperty': LocalizedStringProperty;
+    };
+    'referenceHeightLine': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+      'helpTextStringProperty': LocalizedStringProperty;
+    };
+    'keyboardHelpDialog': {
+      'moveSkaterDescriptionStringProperty': LocalizedStringProperty;
+      'moveAlongTrackDescriptionStringProperty': LocalizedStringProperty;
+      'detachFromTrackDescriptionStringProperty': LocalizedStringProperty;
+      'moveReferenceHeightDescriptionStringProperty': LocalizedStringProperty;
+    }
   }
 };
 

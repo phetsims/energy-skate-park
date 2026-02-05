@@ -154,5 +154,50 @@
   },
   "preferences.newtonsPerKilogram": {
     "value": "N/kg"
+  },
+  "keyboardHelpDialog.skaterControls": {
+    "value": "Skater Controls"
+  },
+  "keyboardHelpDialog.moveSkater": {
+    "value": "Move skater"
+  },
+  "keyboardHelpDialog.moveSkaterSlower": {
+    "value": "Move skater slower"
+  },
+  "keyboardHelpDialog.moveAlongTrack": {
+    "value": "Move along track"
+  },
+  "keyboardHelpDialog.detachFromTrack": {
+    "value": "Detach from track"
+  },
+  "keyboardHelpDialog.moveReferenceHeight": {
+    "value": "Move reference height line"
+  },
+  "a11y.skaterNode.accessibleName": {
+    "value": "Skater"
+  },
+  "a11y.skaterNode.onTrackHelpText": {
+    "value": "Use left and right arrow keys or A and D to move along track. Press up arrow or W to detach."
+  },
+  "a11y.skaterNode.offTrackHelpText": {
+    "value": "Use arrow keys or W, A, S, D to move the skater."
+  },
+  "a11y.referenceHeightLine.accessibleName": {
+    "value": "Reference height line"
+  },
+  "a11y.referenceHeightLine.helpText": {
+    "value": "Use up and down arrow keys or W and S to adjust the reference height."
+  },
+  "a11y.keyboardHelpDialog.moveSkaterDescription": {
+    "value": "Move skater in any direction when off track"
+  },
+  "a11y.keyboardHelpDialog.moveAlongTrackDescription": {
+    "value": "Move skater along track when attached"
+  },
+  "a11y.keyboardHelpDialog.detachFromTrackDescription": {
+    "value": "Detach skater from track"
+  },
+  "a11y.keyboardHelpDialog.moveReferenceHeightDescription": {
+    "value": "Adjust the reference height line up or down"
   }
 }

@@ -1,4 +1,4 @@
-// Copyright 2018-2025, University of Colorado Boulder
+// Copyright 2018-2026, University of Colorado Boulder
 
 /**
  * The "Lab" screen. No premade tracks. More open space for the user to play with custom tracks.
@@ -9,6 +9,7 @@
 import Screen from '../../../joist/js/Screen.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
+import EnergySkateParkKeyboardHelpContent from '../common/view/EnergySkateParkKeyboardHelpContent.js';
 import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import EnergySkateParkPlaygroundModel from './model/EnergySkateParkPlaygroundModel.js';
@@ -22,7 +23,8 @@ export default class PlaygroundScreen extends Screen<EnergySkateParkPlaygroundMo
     const options = {
       name: EnergySkateParkStrings.screens.playgroundStringProperty,
       homeScreenIcon: new PlaygroundScreenIcon(),
-      tandem: tandem
+      tandem: tandem,
+      createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent()
     };
 
     super(

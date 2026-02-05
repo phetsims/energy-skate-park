@@ -1,4 +1,4 @@
-// Copyright 2018-2025, University of Colorado Boulder
+// Copyright 2018-2026, University of Colorado Boulder
 
 /**
  * The "Graphs" screen.
@@ -12,6 +12,7 @@ import Image from '../../../scenery/js/nodes/Image.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import graphsScreenIcon_png from '../../images/graphsScreenIcon_png.js';
 import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
+import EnergySkateParkKeyboardHelpContent from '../common/view/EnergySkateParkKeyboardHelpContent.js';
 import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
 import GraphsModel from './model/GraphsModel.js';
@@ -29,7 +30,8 @@ export default class GraphsScreen extends Screen<GraphsModel, GraphsScreenView> 
           maxIconWidthProportion: 1,
           maxIconHeightProportion: 1
         } ),
-        tandem: tandem
+        tandem: tandem,
+        createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent()
       }
     );
   }

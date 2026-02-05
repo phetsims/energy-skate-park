@@ -1,4 +1,4 @@
-// Copyright 2018-2025, University of Colorado Boulder
+// Copyright 2018-2026, University of Colorado Boulder
 
 /**
  * The "Intro" screen.
@@ -8,6 +8,7 @@
 
 import Screen from '../../../joist/js/Screen.js';
 import Tandem from '../../../tandem/js/Tandem.js';
+import EnergySkateParkKeyboardHelpContent from '../common/view/EnergySkateParkKeyboardHelpContent.js';
 import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
@@ -21,7 +22,8 @@ export default class IntroScreen extends Screen<IntroModel, IntroScreenView> {
     const options = {
       name: EnergySkateParkStrings.screens.introStringProperty,
       tandem: tandem,
-      homeScreenIcon: new IntroScreenIcon()
+      homeScreenIcon: new IntroScreenIcon(),
+      createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent()
     };
 
     super(

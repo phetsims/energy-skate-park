@@ -18,17 +18,20 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
+import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import Skater from '../model/Skater.js';
 import Track from '../model/Track.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import SkaterImageSet from './SkaterImageSet.js';
+import SkaterKeyboardListener from './SkaterKeyboardListener.js';
 
-export default class SkaterNode extends Node {
+export default class SkaterNode extends InteractiveHighlighting( Node ) {
   public readonly skaterImageSetProperty: TReadOnlyProperty<SkaterImageSet>;
   public readonly selectedSkaterProperty: NumberProperty;
   private readonly dragListener: SoundDragListener;
@@ -55,7 +58,13 @@ export default class SkaterNode extends Node {
 
       // prevent fitted blocks for the Skater to improve performance, see #213
       preventFit: true,
-      tandem: tandem
+      tandem: tandem,
+
+      // pdom - make the skater focusable for keyboard interaction
+      tagName: 'div',
+      focusable: true,
+      ariaRole: 'application',
+      accessibleName: EnergySkateParkStrings.a11y.skaterNode.accessibleNameStringProperty
     } );
 
     this.selectedSkaterProperty = new NumberProperty( 0, {
@@ -231,6 +240,10 @@ export default class SkaterNode extends Node {
       }
     } );
     this.addInputListener( this.dragListener );
+
+    // Add keyboard listener for alternative input
+    const skaterKeyboardListener = new SkaterKeyboardListener( skater, this );
+    this.addInputListener( skaterKeyboardListener );
   }
 
   /**

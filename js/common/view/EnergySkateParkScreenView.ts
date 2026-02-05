@@ -546,6 +546,21 @@ export default class EnergySkateParkScreenView extends ScreenView {
         this.viewBoundsPath!.shape = Shape.bounds( this.visibleBoundsProperty.get() );
       }
     } );
+
+    // Set the pdomOrder for keyboard traversal using ScreenView's built-in PDOM structure
+    // Play Area elements
+    this.pdomPlayAreaNode.pdomOrder = [
+      this.skaterNode,
+      this.referenceHeightLine
+    ];
+
+    // Control Area elements
+    this.pdomControlAreaNode.pdomOrder = [
+      this.controlPanelVBox,
+      this.timeControlNode,
+      this.returnSkaterButton,
+      this.resetAllButton
+    ];
   }
 
   /**
