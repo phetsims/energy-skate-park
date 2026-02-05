@@ -107,8 +107,9 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
    * Set model state from a saved sample, potentially modifying Skater, Track, and other things.
    */
   public setFromSample( dataSample: EnergySkateParkDataSample ): void {
+    dataSample.skaterState.setToSkater( this.skater );
 
-    // restore friction and stickingToTrackProperty (all other Properties are set on Skater)
+    // restore friction and stickingToTrackProperty (not set on Skater by setToSkater)
     this.frictionProperty.set( dataSample.friction );
     this.stickingToTrackProperty.set( dataSample.stickingToTrack );
 
