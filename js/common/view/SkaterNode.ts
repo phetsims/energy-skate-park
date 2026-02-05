@@ -253,7 +253,7 @@ export default class SkaterNode extends Node {
       shiftDragSpeed: 75, // Slower speed when shift is held for fine control
       drag: () => {
         // Handle keyboard movement based on whether skater is on-track or off-track
-        this.handleKeyboardDrag( skater, view, getClosestTrackAndPositionAndParameter, getPhysicalTracks );
+        this.handleKeyboardDrag( skater, view );
       }
     } );
 
@@ -290,9 +290,7 @@ export default class SkaterNode extends Node {
    */
   private handleKeyboardDrag(
     skater: Skater,
-    view: EnergySkateParkScreenView,
-    getClosestTrackAndPositionAndParameter: ( v: Vector2, t: Track[] ) => { track: Track; parametricPosition: number; point: Vector2 } | null,
-    getPhysicalTracks: () => Track[]
+    view: EnergySkateParkScreenView
   ): void {
     const track = skater.trackProperty.value;
 
@@ -313,8 +311,7 @@ export default class SkaterNode extends Node {
     }
     else {
       // Off-track movement: use 2D position
-      this.handleOffTrackKeyboardDrag( skater, view, leftPressed, rightPressed, upPressed, downPressed, shiftPressed,
-        getClosestTrackAndPositionAndParameter, getPhysicalTracks );
+      this.handleOffTrackKeyboardDrag( skater, view, leftPressed, rightPressed, upPressed, downPressed, shiftPressed );
     }
   }
 
@@ -413,9 +410,7 @@ export default class SkaterNode extends Node {
     rightPressed: boolean,
     upPressed: boolean,
     downPressed: boolean,
-    shiftPressed: boolean,
-    getClosestTrackAndPositionAndParameter: ( v: Vector2, t: Track[] ) => { track: Track; parametricPosition: number; point: Vector2 } | null,
-    getPhysicalTracks: () => Track[]
+    shiftPressed: boolean
   ): void {
     const delta = shiftPressed ? POSITION_DELTA_SHIFT : POSITION_DELTA;
     let dx = 0;
@@ -443,36 +438,7 @@ export default class SkaterNode extends Node {
         newPosition = view.availableModelBounds.closestPointTo( newPosition );
       }
 
-      // Check if we're close to a track and should snap to it
-      const closestTrackAndPositionAndParameter = getClosestTrackAndPositionAndParameter( newPosition, getPhysicalTracks() );
-      if ( closestTrackAndPositionAndParameter &&
-           closestTrackAndPositionAndParameter.track &&
-           closestTrackAndPositionAndParameter.track.isParameterInBounds( closestTrackAndPositionAndParameter.parametricPosition ) ) {
-        const distance = closestTrackAndPositionAndParameter.point.distance( newPosition );
-        if ( distance < 0.5 ) {
-          // Snap to track
-          const track = closestTrackAndPositionAndParameter.track;
-          const u = closestTrackAndPositionAndParameter.parametricPosition;
-
-          skater.trackProperty.value = track;
-          skater.parametricPositionProperty.value = u;
-          skater.positionProperty.value = track.getPoint( u );
-
-          const normal = track.getUnitNormalVector( u );
-          skater.onTopSideOfTrackProperty.value = normal.y > 0;
-          skater.angleProperty.value = track.getViewAngleAt( u ) +
-                                       ( skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
-
-          this.keyboardTargetTrack = track;
-          this.keyboardTargetU = u;
-
-          skater.updateEnergy();
-          skater.updatedEmitter.emit();
-          return;
-        }
-      }
-
-      // Not close to track, just update position
+      // Update position (no track snapping during keyboard drag)
       skater.positionProperty.value = newPosition;
       skater.angleProperty.value = 0;
       skater.onTopSideOfTrackProperty.value = true;
