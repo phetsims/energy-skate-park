@@ -7,19 +7,18 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
-import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
-import Node from '../../../../scenery/js/nodes/Node.js';
+import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import { rasterizeNode } from '../../../../scenery/js/util/rasterizeNode.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
@@ -38,7 +37,9 @@ export default class ToolboxPanel extends Panel {
 
     // create the icons
     const measuringTapeIcon = MeasuringTapeNode.createIcon( {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      tagName: 'button',
+      accessibleName: EnergySkateParkFluent.a11y.toolboxPanel.measuringTape.accessibleNameStringProperty
     } );
 
     const stopwatchIcon = rasterizeNode( new StopwatchNode( new Stopwatch( {
@@ -55,7 +56,9 @@ export default class ToolboxPanel extends Panel {
       resolution: 5,
       nodeOptions: {
         cursor: 'pointer',
-        tandem: tandem.createTandem( 'timerIcon' )
+        tandem: tandem.createTandem( 'timerIcon' ),
+        tagName: 'button',
+        accessibleName: EnergySkateParkFluent.a11y.toolboxPanel.stopwatch.accessibleNameStringProperty
       }
     } );
 
@@ -86,6 +89,23 @@ export default class ToolboxPanel extends Panel {
       }
     } ) );
 
+    // Keyboard activation for measuring tape - position it in a visible area and focus its base
+    measuringTapeIcon.addInputListener( new KeyboardListener( {
+      fireOnClick: true,
+      fire: () => {
+        if ( !model.measuringTapeVisibleProperty.get() ) {
+          const modelPosition = view.modelViewTransform.viewToModelPosition( view.layoutBounds.center );
+          model.measuringTapeBasePositionProperty.set( modelPosition );
+          model.measuringTapeTipPositionProperty.set( modelPosition.plusXY( 1, 0 ) );
+          model.measuringTapeVisibleProperty.set( true );
+
+          // Focus the first focusable descendant (the base image) of the measuring tape
+          const focusable = view.measuringTapeNode!.getSubtreeNodes().reverse().find( node => node.focusable );
+          focusable && focusable.focus();
+        }
+      }
+    } ) );
+
     // create a forwarding listener for the StopwatchNode DragListener
     stopwatchIcon.addInputListener( DragListener.createForwardingListener( event => {
       if ( !model.stopwatch.isVisibleProperty.get() ) {
@@ -100,20 +120,35 @@ export default class ToolboxPanel extends Panel {
       }
     } ) );
 
-    ToolboxPanel.attachIconVisibilityListener( measuringTapeIcon, model.measuringTapeVisibleProperty );
-    ToolboxPanel.attachIconVisibilityListener( stopwatchIcon, model.stopwatch.isVisibleProperty );
-  }
+    // Keyboard activation for stopwatch - position it in a visible area and focus it
+    stopwatchIcon.addInputListener( new KeyboardListener( {
+      fireOnClick: true,
+      fire: () => {
+        if ( !model.stopwatch.isVisibleProperty.get() ) {
+          const coordinate = view.layoutBounds.center;
+          model.stopwatch.positionProperty.set( coordinate );
+          model.stopwatch.isVisibleProperty.value = true;
 
-  /**
-   * Create and attach a listener that makes the icon visible/invisible while the tool is invisible/visible.
-   * Reference to the DerivedProperty is not returned because there is no need to dispose of it. This listener
-   * can be attached for the life of the sim.
-   */
-  private static attachIconVisibilityListener( icon: Node, visibleProperty: TReadOnlyProperty<boolean> ): void {
-    const iconVisibleProperty = new DerivedProperty( [ visibleProperty ], visible => {
-      return !visible;
+          view.stopwatchNode!.focus();
+        }
+      }
+    } ) );
+
+    // When the tool is in the play area, hide the icon visually (opacity) but keep it in the PDOM as disabled.
+    // Using opacity instead of visibility maintains the panel layout bounds.
+    model.measuringTapeVisibleProperty.link( visible => {
+      measuringTapeIcon.setOpacity( visible ? 0 : 1 );
+      measuringTapeIcon.setInputEnabled( !visible );
+      measuringTapeIcon.focusable = !visible;
+      measuringTapeIcon.setPDOMAttribute( 'aria-disabled', visible );
     } );
-    iconVisibleProperty.linkAttribute( icon, 'visible' );
+
+    model.stopwatch.isVisibleProperty.link( visible => {
+      stopwatchIcon.setOpacity( visible ? 0 : 1 );
+      stopwatchIcon.setInputEnabled( !visible );
+      stopwatchIcon.focusable = !visible;
+      stopwatchIcon.setPDOMAttribute( 'aria-disabled', visible );
+    } );
   }
 }
 

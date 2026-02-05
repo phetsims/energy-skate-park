@@ -76,6 +76,11 @@ a11y:
   referenceHeightLine:
     accessibleName: Reference height line
     helpText:       Use up and down arrow keys or W and S to adjust the reference height.
+  toolboxPanel:
+    stopwatch:
+      accessibleName: Stopwatch
+    measuringTape:
+      accessibleName: Measuring Tape
   keyboardHelpDialog:
     moveSkaterDescription:          Move skater in any direction when off track
     moveAlongTrackDescription:      Move skater along track when attached

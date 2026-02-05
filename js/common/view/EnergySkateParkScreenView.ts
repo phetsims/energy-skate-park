@@ -349,6 +349,10 @@ export default class EnergySkateParkScreenView extends ScreenView {
               model.stopwatch.isVisibleProperty.value = false;
             }
           }
+        },
+        keyboardDragListenerOptions: {
+          dragSpeed: 300,
+          shiftDragSpeed: 75
         }
       } );
 

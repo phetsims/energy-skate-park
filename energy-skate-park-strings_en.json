@@ -218,6 +218,18 @@
         "value": "Use up and down arrow keys or W and S to adjust the reference height."
       }
     },
+    "toolboxPanel": {
+      "stopwatch": {
+        "accessibleName": {
+          "value": "Stopwatch"
+        }
+      },
+      "measuringTape": {
+        "accessibleName": {
+          "value": "Measuring Tape"
+        }
+      }
+    },
     "keyboardHelpDialog": {
       "moveSkaterDescription": {
         "value": "Move skater in any direction when off track"

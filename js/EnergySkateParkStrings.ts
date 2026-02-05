@@ -119,6 +119,14 @@ type StringsType = {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'helpTextStringProperty': LocalizedStringProperty;
     };
+    'toolboxPanel': {
+      'stopwatch': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      };
+      'measuringTape': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      }
+    };
     'keyboardHelpDialog': {
       'moveSkaterDescriptionStringProperty': LocalizedStringProperty;
       'moveAlongTrackDescriptionStringProperty': LocalizedStringProperty;

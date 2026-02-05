@@ -80,6 +80,8 @@ addToMapIfDefined( 'a11y_skaterNode_onTrackHelpText', 'a11y.skaterNode.onTrackHe
 addToMapIfDefined( 'a11y_skaterNode_offTrackHelpText', 'a11y.skaterNode.offTrackHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_referenceHeightLine_accessibleName', 'a11y.referenceHeightLine.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_referenceHeightLine_helpText', 'a11y.referenceHeightLine.helpTextStringProperty' );
+addToMapIfDefined( 'a11y_toolboxPanel_stopwatch_accessibleName', 'a11y.toolboxPanel.stopwatch.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_toolboxPanel_measuringTape_accessibleName', 'a11y.toolboxPanel.measuringTape.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_moveSkaterDescription', 'a11y.keyboardHelpDialog.moveSkaterDescriptionStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_moveAlongTrackDescription', 'a11y.keyboardHelpDialog.moveAlongTrackDescriptionStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_detachFromTrackDescription', 'a11y.keyboardHelpDialog.detachFromTrackDescriptionStringProperty' );
@@ -204,6 +206,14 @@ const EnergySkateParkFluent = {
     referenceHeightLine: {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_accessibleName', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.accessibleNameStringProperty' ) ),
       helpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_helpText', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.helpTextStringProperty' ) )
+    },
+    toolboxPanel: {
+      stopwatch: {
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_toolboxPanel_stopwatch_accessibleName', _.get( EnergySkateParkStrings, 'a11y.toolboxPanel.stopwatch.accessibleNameStringProperty' ) )
+      },
+      measuringTape: {
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_toolboxPanel_measuringTape_accessibleName', _.get( EnergySkateParkStrings, 'a11y.toolboxPanel.measuringTape.accessibleNameStringProperty' ) )
+      }
     },
     keyboardHelpDialog: {
       moveSkaterDescriptionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_moveSkaterDescription', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.moveSkaterDescriptionStringProperty' ) ),
