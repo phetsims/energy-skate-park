@@ -297,14 +297,14 @@ export default class SkaterNode extends Node {
     const track = skater.trackProperty.value;
 
     // Determine which keys are pressed
-    const leftPressed = phet.scenery.globalKeyStateTracker.isKeyDown( 'arrowLeft' ) ||
-                        phet.scenery.globalKeyStateTracker.isKeyDown( 'a' );
-    const rightPressed = phet.scenery.globalKeyStateTracker.isKeyDown( 'arrowRight' ) ||
-                         phet.scenery.globalKeyStateTracker.isKeyDown( 'd' );
-    const upPressed = phet.scenery.globalKeyStateTracker.isKeyDown( 'arrowUp' ) ||
-                      phet.scenery.globalKeyStateTracker.isKeyDown( 'w' );
-    const downPressed = phet.scenery.globalKeyStateTracker.isKeyDown( 'arrowDown' ) ||
-                        phet.scenery.globalKeyStateTracker.isKeyDown( 's' );
+    const leftPressed = phet.scenery.globalKeyStateTracker.isEnglishKeyDown( 'arrowLeft' ) ||
+                        phet.scenery.globalKeyStateTracker.isEnglishKeyDown( 'a' );
+    const rightPressed = phet.scenery.globalKeyStateTracker.isEnglishKeyDown( 'arrowRight' ) ||
+                         phet.scenery.globalKeyStateTracker.isEnglishKeyDown( 'd' );
+    const upPressed = phet.scenery.globalKeyStateTracker.isEnglishKeyDown( 'arrowUp' ) ||
+                      phet.scenery.globalKeyStateTracker.isEnglishKeyDown( 'w' );
+    const downPressed = phet.scenery.globalKeyStateTracker.isEnglishKeyDown( 'arrowDown' ) ||
+                        phet.scenery.globalKeyStateTracker.isEnglishKeyDown( 's' );
     const shiftPressed = phet.scenery.globalKeyStateTracker.shiftKeyDown;
 
     if ( track ) {
