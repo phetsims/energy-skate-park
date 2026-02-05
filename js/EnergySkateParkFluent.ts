@@ -25,6 +25,10 @@ const addToMapIfDefined = ( key: string, path: string ) => {
 };
 
 addToMapIfDefined( 'energy_skate_park_title', 'energy-skate-park.titleStringProperty' );
+addToMapIfDefined( 'screens_intro', 'screens.introStringProperty' );
+addToMapIfDefined( 'screens_graphs', 'screens.graphsStringProperty' );
+addToMapIfDefined( 'screens_playground', 'screens.playgroundStringProperty' );
+addToMapIfDefined( 'screens_measure', 'screens.measureStringProperty' );
 addToMapIfDefined( 'physicalControls_gravityControls_gravity', 'physicalControls.gravityControls.gravityStringProperty' );
 addToMapIfDefined( 'physicalControls_gravityControls_earth', 'physicalControls.gravityControls.earthStringProperty' );
 addToMapIfDefined( 'physicalControls_gravityControls_jupiter', 'physicalControls.gravityControls.jupiterStringProperty' );
@@ -57,10 +61,6 @@ addToMapIfDefined( 'visibilityControls_speed', 'visibilityControls.speedStringPr
 addToMapIfDefined( 'skaterControls_label', 'skaterControls.labelStringProperty' );
 addToMapIfDefined( 'skaterControls_restartSkater', 'skaterControls.restartSkaterStringProperty' );
 addToMapIfDefined( 'trackControls_stickToTrack', 'trackControls.stickToTrackStringProperty' );
-addToMapIfDefined( 'screens_intro', 'screens.introStringProperty' );
-addToMapIfDefined( 'screens_graphs', 'screens.graphsStringProperty' );
-addToMapIfDefined( 'screens_playground', 'screens.playgroundStringProperty' );
-addToMapIfDefined( 'screens_measure', 'screens.measureStringProperty' );
 addToMapIfDefined( 'heightLabels_zeroM', 'heightLabels.zeroMStringProperty' );
 addToMapIfDefined( 'heightLabels_heightEqualsZero', 'heightLabels.heightEqualsZeroStringProperty' );
 addToMapIfDefined( 'speedometer_label', 'speedometer.labelStringProperty' );
@@ -100,6 +100,12 @@ const fluentSupport = new FluentContainer( createFluentFile, Array.from(fluentKe
 const EnergySkateParkFluent = {
   "energy-skate-park": {
     titleStringProperty: _.get( EnergySkateParkStrings, 'energy-skate-park.titleStringProperty' )
+  },
+  screens: {
+    introStringProperty: _.get( EnergySkateParkStrings, 'screens.introStringProperty' ),
+    graphsStringProperty: _.get( EnergySkateParkStrings, 'screens.graphsStringProperty' ),
+    playgroundStringProperty: _.get( EnergySkateParkStrings, 'screens.playgroundStringProperty' ),
+    measureStringProperty: _.get( EnergySkateParkStrings, 'screens.measureStringProperty' )
   },
   physicalControls: {
     gravityControls: {
@@ -158,12 +164,6 @@ const EnergySkateParkFluent = {
   },
   trackControls: {
     stickToTrackStringProperty: _.get( EnergySkateParkStrings, 'trackControls.stickToTrackStringProperty' )
-  },
-  screens: {
-    introStringProperty: _.get( EnergySkateParkStrings, 'screens.introStringProperty' ),
-    graphsStringProperty: _.get( EnergySkateParkStrings, 'screens.graphsStringProperty' ),
-    playgroundStringProperty: _.get( EnergySkateParkStrings, 'screens.playgroundStringProperty' ),
-    measureStringProperty: _.get( EnergySkateParkStrings, 'screens.measureStringProperty' )
   },
   heightLabels: {
     zeroMStringProperty: _.get( EnergySkateParkStrings, 'heightLabels.zeroMStringProperty' ),

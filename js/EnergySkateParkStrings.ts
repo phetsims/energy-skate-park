@@ -15,6 +15,12 @@ type StringsType = {
   'energy-skate-park': {
     'titleStringProperty': LocalizedStringProperty;
   };
+  'screens': {
+    'introStringProperty': LocalizedStringProperty;
+    'graphsStringProperty': LocalizedStringProperty;
+    'playgroundStringProperty': LocalizedStringProperty;
+    'measureStringProperty': LocalizedStringProperty;
+  };
   'physicalControls': {
     'gravityControls': {
       'gravityStringProperty': LocalizedStringProperty;
@@ -72,12 +78,6 @@ type StringsType = {
   };
   'trackControls': {
     'stickToTrackStringProperty': LocalizedStringProperty;
-  };
-  'screens': {
-    'introStringProperty': LocalizedStringProperty;
-    'graphsStringProperty': LocalizedStringProperty;
-    'playgroundStringProperty': LocalizedStringProperty;
-    'measureStringProperty': LocalizedStringProperty;
   };
   'heightLabels': {
     'zeroMStringProperty': LocalizedStringProperty;
