@@ -16,6 +16,9 @@ import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
+// Friction is constrained to this interval.
+const FRICTION_INTERVAL = 0.005;
+
 export default class FrictionSlider extends PhysicalSlider {
 
   /**
@@ -27,7 +30,10 @@ export default class FrictionSlider extends PhysicalSlider {
     const range = new Range( EnergySkateParkConstants.MIN_FRICTION, EnergySkateParkConstants.MAX_FRICTION );
     super( EnergySkateParkStrings.physicalControls.frictionStringProperty, property, range, userControlledProperty, tandem, {
       sliderOptions: {
-        constrainValue: value => roundToInterval( value, 0.005 )
+        constrainValue: value => roundToInterval( value, FRICTION_INTERVAL )
+      },
+      valueChangeSoundGeneratorOptions: {
+        numberOfMiddleThresholds: ( range.getLength() / FRICTION_INTERVAL ) - 1
       }
     } );
 
