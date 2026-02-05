@@ -283,7 +283,8 @@ export default class SkaterNode extends Node {
       objectToGrabString: EnergySkateParkFluent.a11y.skaterNode.accessibleNameStringProperty,
       tandem: tandem.createTandem( 'grabDragInteraction' ),
 
-      onGrab: () => {
+      onGrab: inputType => {
+        if ( inputType === 'pointer' ) { return; } // SoundDragListener handles pointer grabs
         userControlledProperty.set( true );
         skater.draggingProperty.value = true;
 
@@ -295,7 +296,8 @@ export default class SkaterNode extends Node {
         this.keyboardTargetU = skater.parametricPositionProperty.value;
       },
 
-      onRelease: () => {
+      onRelease: inputType => {
+        if ( inputType === 'pointer' ) { return; } // SoundDragListener handles pointer releases
         // Record the state of the skater for "return skater"
         skater.released( this.keyboardTargetTrack, this.keyboardTargetU ?? 0 );
 
