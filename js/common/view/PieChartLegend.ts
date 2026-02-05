@@ -20,6 +20,7 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import VStrut from '../../../../scenery/js/nodes/VStrut.js';
 import Color from '../../../../scenery/js/util/Color.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
+import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
@@ -90,7 +91,8 @@ export default class PieChartLegend extends Panel {
       listener: clearThermal,
       centerX: thermalLabel.centerX,
       y: thermalLabel.bottom + 15,
-      scale: 0.8
+      scale: 0.8,
+      soundPlayer: sharedSoundPlayers.get( 'erase' )
     } );
     skater.allowClearingThermalEnergyProperty.link( allowClearingThermalEnergy => {
       clearThermalButton.enabled = allowClearingThermalEnergy;

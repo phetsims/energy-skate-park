@@ -24,6 +24,7 @@ import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import ColorConstants from '../../../../sun/js/ColorConstants.js';
+import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
@@ -70,7 +71,8 @@ export default class EnergyBarGraph extends Node {
       arrowColor: EnergySkateParkColorScheme.thermalEnergy,
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: skater.clearThermal.bind( skater ),
-      scale: 0.86
+      scale: 0.86,
+      soundPlayer: sharedSoundPlayers.get( 'erase' )
     } );
 
     // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
