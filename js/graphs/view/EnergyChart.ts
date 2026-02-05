@@ -114,6 +114,13 @@ export default class EnergyChart extends XYCursorChartNode {
           // when we drag the cursor, get the skater sample at the closest cursor time and set skater to found SkaterState
           const closestSample = model.getClosestSkaterSample( this.getCursorValue() );
           model.setFromSample( closestSample );
+
+          // Apply setToSkater a second time to match the pattern in constantStep, where setToSkater
+          // is called both inside setFromSample and again after stepModel returns. The second call
+          // overrides any listener side effects (e.g. track detachment logic) triggered by the first.
+          // This allows the skater's position to be set while scrubbing the cursor in the graph (not just from pressing play)
+          closestSample.skaterState.setToSkater( model.skater );
+
           model.skater.updatedEmitter.emit();
         },
         endDrag: () => {
