@@ -249,8 +249,8 @@ export default class SkaterNode extends Node {
     // Create a KeyboardDragListener for keyboard-based movement while grabbed
     const keyboardDragListener = new KeyboardDragListener( {
       tandem: Tandem.OPT_OUT, // GrabDragInteraction will handle instrumentation
-      dragDelta: 10, // View coordinates - will be handled by custom drag callback
-      shiftDragDelta: 2.5,
+      dragSpeed: 300, // View coordinates per second - provides continuous smooth motion
+      shiftDragSpeed: 75, // Slower speed when shift is held for fine control
       drag: () => {
         // Handle keyboard movement based on whether skater is on-track or off-track
         this.handleKeyboardDrag( skater, view, getClosestTrackAndPositionAndParameter, getPhysicalTracks );
