@@ -1,0 +1,71 @@
+energy-skate-park.title:                                               Energy Skate Park
+physicalControls.gravityControls.gravity:                              Gravity
+physicalControls.gravityControls.earth:                                Earth
+physicalControls.gravityControls.jupiter:                              Jupiter
+physicalControls.gravityControls.moon:                                 Moon
+physicalControls.gravityControls.gravityMetersPerSecondSquaredPattern: '{{value}} m/s<sup>2</sup>'
+physicalControls.gravityControls.gravityNewtonsPerKilogramPattern:     '{{value}} N/kg'
+physicalControls.massControls.mass:                                    Mass
+physicalControls.massControls.massKilogramsPattern:                    '{{value}} kg'
+physicalControls.friction:                                             Friction
+physicalControls.custom:                                               Custom
+physicalControls.small:                                                Small
+physicalControls.large:                                                Large
+physicalControls.lots:                                                 Lots
+physicalControls.none:                                                 None
+physicalControls.tiny:                                                 Tiny
+energies.thermal:                                                      Thermal
+energies.total:                                                        Total
+energies.kinetic:                                                      Kinetic
+energies.potential:                                                    Potential
+energies.energy:                                                       Energy
+plots.barGraph.label:                                                  Bar Graph
+plots.energyGraph.label:                                               Energy Graph
+plots.pieChart.label:                                                  Pie Chart
+plots.timeSwitchLabel:                                                 Time
+plots.positionSwitchLabel:                                             Position
+plots.timeLabel:                                                       Time (s)
+plots.positionLabel:                                                   Position (m)
+plots.energyLabel:                                                     Energy (J)
+visibilityControls.grid:                                               Grid
+visibilityControls.referenceHeight:                                    Reference Height
+visibilityControls.path:                                               Path
+visibilityControls.speed:                                              Speed
+skaterControls.label:                                                  Skater
+skaterControls.skater1MassPattern:                                     Skater 1 ({{value}} kg)
+skaterControls.restartSkater:                                          Restart Skater
+trackControls.stickToTrack:                                            Stick to Track
+screens.intro:                                                         Intro
+screens.graphs:                                                        Graphs
+screens.playground:                                                    Playground
+screens.measure:                                                       Measure
+heightLabels.zeroM:                                                    0 m
+heightLabels.heightEqualsZero:                                         Height = 0
+pathSensor.energyJoulesPattern:                                        '{{value}} J'
+pathSensor.heightMetersPattern:                                        Height = {{value}} m
+pathSensor.speedMetersPerSecondPattern:                                Speed = {{value}} m/s
+speedometer.label:                                                     Speed
+speedometer.metersPerSecondPattern:                                    '{{value}} m/s'
+measuringTape.units:                                                   m
+preferences.accelerationUnits:                                         Acceleration Units
+preferences.metersPerSecondSquared:                                    m/s<sup>2</sup>
+preferences.newtonsPerKilogram:                                        N/kg
+keyboardHelpDialog.skaterControls:                                     Skater Controls
+keyboardHelpDialog.moveSkater:                                         Move skater
+keyboardHelpDialog.moveSkaterSlower:                                   Move skater slower
+keyboardHelpDialog.moveAlongTrack:                                     Move along track
+keyboardHelpDialog.detachFromTrack:                                    Detach from track
+keyboardHelpDialog.attachToTrack:                                      Attach to nearest track
+keyboardHelpDialog.moveReferenceHeight:                                Move reference height line
+a11y.skaterNode.accessibleName:                                        Skater
+a11y.skaterNode.onTrackHelpText:                                       >-
+                                                                       Use left and right arrow keys or A and D to move along track. Press up arrow
+                                                                       or W to detach.
+a11y.skaterNode.offTrackHelpText:                                      Use arrow keys or W, A, S, D to move the skater.
+a11y.referenceHeightLine.accessibleName:                               Reference height line
+a11y.referenceHeightLine.helpText:                                     Use up and down arrow keys or W and S to adjust the reference height.
+a11y.keyboardHelpDialog.moveSkaterDescription:                         Move skater in any direction when off track
+a11y.keyboardHelpDialog.moveAlongTrackDescription:                     Move skater along track when attached
+a11y.keyboardHelpDialog.detachFromTrackDescription:                    Detach skater from track
+a11y.keyboardHelpDialog.attachToTrackDescription:                      Attach skater to the nearest track if within 2 meters
+a11y.keyboardHelpDialog.moveReferenceHeightDescription:                Adjust the reference height line up or down
