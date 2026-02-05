@@ -21,18 +21,18 @@ import Checkbox from '../../../../sun/js/Checkbox.js';
 import VerticalCheckboxGroup, { VerticalCheckboxGroupItem, VerticalCheckboxGroupOptions } from '../../../../sun/js/VerticalCheckboxGroup.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkSaveSampleModel from '../model/EnergySkateParkSaveSampleModel.js';
 import EnergySkateParkCheckboxItem from './EnergySkateParkCheckboxItem.js';
 
-const controlsPathStringProperty = EnergySkateParkStrings.visibilityControls.pathStringProperty;
-const controlsReferenceHeightStringProperty = EnergySkateParkStrings.visibilityControls.referenceHeightStringProperty;
-const controlsShowGridStringProperty = EnergySkateParkStrings.visibilityControls.gridStringProperty;
-const controlsStickToTrackStringProperty = EnergySkateParkStrings.trackControls.stickToTrackStringProperty;
-const pieChartStringProperty = EnergySkateParkStrings.plots.pieChart.labelStringProperty;
-const propertiesSpeedStringProperty = EnergySkateParkStrings.visibilityControls.speedStringProperty;
+const controlsPathStringProperty = EnergySkateParkFluent.visibilityControls.pathStringProperty;
+const controlsReferenceHeightStringProperty = EnergySkateParkFluent.visibilityControls.referenceHeightStringProperty;
+const controlsShowGridStringProperty = EnergySkateParkFluent.visibilityControls.gridStringProperty;
+const controlsStickToTrackStringProperty = EnergySkateParkFluent.trackControls.stickToTrackStringProperty;
+const pieChartStringProperty = EnergySkateParkFluent.plots.pieChart.labelStringProperty;
+const propertiesSpeedStringProperty = EnergySkateParkFluent.visibilityControls.speedStringProperty;
 
 const CHECKBOX_SPACING = 6; // spacing between checkbox box and its icon content
 

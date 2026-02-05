@@ -12,7 +12,7 @@ import Range from '../../../../dot/js/Range.js';
 import { roundToInterval } from '../../../../dot/js/util/roundToInterval.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
@@ -28,7 +28,7 @@ export default class FrictionSlider extends PhysicalSlider {
    */
   public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, tandem: Tandem ) {
     const range = new Range( EnergySkateParkConstants.MIN_FRICTION, EnergySkateParkConstants.MAX_FRICTION );
-    super( EnergySkateParkStrings.physicalControls.frictionStringProperty, property, range, userControlledProperty, tandem, {
+    super( EnergySkateParkFluent.physicalControls.frictionStringProperty, property, range, userControlledProperty, tandem, {
       sliderOptions: {
         constrainValue: value => roundToInterval( value, FRICTION_INTERVAL )
       },

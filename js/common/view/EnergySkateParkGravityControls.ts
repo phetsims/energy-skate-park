@@ -19,7 +19,7 @@ import { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
 import { SliderOptions } from '../../../../sun/js/Slider.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkPreferencesModel, { AccelerationUnits } from '../model/EnergySkateParkPreferencesModel.js';
 import GravityComboBox from './GravityComboBox.js';
 import GravityNumberControl from './GravityNumberControl.js';
@@ -87,7 +87,7 @@ export default class EnergySkateParkGravityControls extends VBox {
       const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInMetersPerSecondSquaredControl' ), options.gravityNumberControlOptions || undefined );
       const gravityControlInNewtonsPerKilogram = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInNewtonsPerKilogramControl' ), merge( {}, options.gravityNumberControlOptions, {
           numberDisplayOptions: {
-            valuePattern: EnergySkateParkStrings.physicalControls.gravityControls.gravityNewtonsPerKilogramPatternStringProperty
+            valuePattern: EnergySkateParkFluent.physicalControls.gravityControls.gravityNewtonsPerKilogramPatternStringProperty
           }
         } )
       );

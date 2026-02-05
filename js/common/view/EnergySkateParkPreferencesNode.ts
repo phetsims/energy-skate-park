@@ -15,7 +15,7 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import ABSwitch from '../../../../sun/js/ABSwitch.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
 
 export default class EnergySkateParkPreferencesNode extends Node {
@@ -23,11 +23,11 @@ export default class EnergySkateParkPreferencesNode extends Node {
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
     super();
 
-    const metersPerSecondSquaredLabel = new RichText( EnergySkateParkStrings.preferences.metersPerSecondSquaredStringProperty,
+    const metersPerSecondSquaredLabel = new RichText( EnergySkateParkFluent.preferences.metersPerSecondSquaredStringProperty,
       PreferencesDialogConstants.TOGGLE_SWITCH_LABEL_OPTIONS
     );
 
-    const newtonsPerKilogramLabel = new Text( EnergySkateParkStrings.preferences.newtonsPerKilogramStringProperty,
+    const newtonsPerKilogramLabel = new Text( EnergySkateParkFluent.preferences.newtonsPerKilogramStringProperty,
       PreferencesDialogConstants.TOGGLE_SWITCH_LABEL_OPTIONS );
 
     const accelarationUnitsSwitch = new ABSwitch( preferencesModel.accelerationUnitsProperty,
@@ -40,7 +40,7 @@ export default class EnergySkateParkPreferencesNode extends Node {
 
     const accelerationUnitsControl = new PreferencesControl(
       {
-        labelNode: new Text( EnergySkateParkStrings.preferences.accelerationUnitsStringProperty, PreferencesDialogConstants.CONTROL_LABEL_OPTIONS ),
+        labelNode: new Text( EnergySkateParkFluent.preferences.accelerationUnitsStringProperty, PreferencesDialogConstants.CONTROL_LABEL_OPTIONS ),
         labelSpacing: 20,
         controlNode: accelarationUnitsSwitch
       }

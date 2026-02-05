@@ -21,7 +21,7 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import TextPanel from './TextPanel.js';
 
 export default class EnergySkateParkGridNode extends Node {
@@ -74,7 +74,7 @@ export default class EnergySkateParkGridNode extends Node {
 
     this.labelXPosition = this.modelViewTransform.modelToViewX( -5 );
 
-    this.zeroMeterLabel = new TextPanel( EnergySkateParkStrings.heightLabels.zeroMStringProperty, {
+    this.zeroMeterLabel = new TextPanel( EnergySkateParkFluent.heightLabels.zeroMStringProperty, {
       bottom: this.modelViewTransform.modelToViewY( 0 ) - 2,
       right: this.labelXPosition - 2
     } );

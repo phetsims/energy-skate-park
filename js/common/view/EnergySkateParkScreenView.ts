@@ -34,7 +34,7 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
@@ -53,10 +53,10 @@ import ToolboxPanel from './ToolboxPanel.js';
 import TrackNode, { TrackNodeOptions } from './TrackNode.js';
 import VisibilityControlsPanel from './VisibilityControlsPanel.js';
 
-const controlsRestartSkaterStringProperty = EnergySkateParkStrings.skaterControls.restartSkaterStringProperty;
-const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelStringProperty;
-const speedometerMetersPerSecondPatternStringProperty = EnergySkateParkStrings.speedometer.metersPerSecondPatternStringProperty;
-const measuringTapeUnitsStringProperty = EnergySkateParkStrings.measuringTape.unitsStringProperty;
+const controlsRestartSkaterStringProperty = EnergySkateParkFluent.skaterControls.restartSkaterStringProperty;
+const propertiesSpeedStringProperty = EnergySkateParkFluent.speedometer.labelStringProperty;
+const speedometerMetersPerSecondPatternStringProperty = EnergySkateParkFluent.speedometer.metersPerSecondPatternStringProperty;
+const measuringTapeUnitsStringProperty = EnergySkateParkFluent.measuringTape.unitsStringProperty;
 
 // constants
 // for wider screens, panels can float to the left and right by this much beyond dev bounds in view coordinates

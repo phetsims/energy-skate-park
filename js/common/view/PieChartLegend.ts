@@ -23,16 +23,16 @@ import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import Skater from '../model/Skater.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-const energyEnergyStringProperty = EnergySkateParkStrings.energies.energyStringProperty;
-const energyKineticStringProperty = EnergySkateParkStrings.energies.kineticStringProperty;
-const energyPotentialStringProperty = EnergySkateParkStrings.energies.potentialStringProperty;
-const energyThermalStringProperty = EnergySkateParkStrings.energies.thermalStringProperty;
-const energyTotalStringProperty = EnergySkateParkStrings.energies.totalStringProperty;
+const energyEnergyStringProperty = EnergySkateParkFluent.energies.energyStringProperty;
+const energyKineticStringProperty = EnergySkateParkFluent.energies.kineticStringProperty;
+const energyPotentialStringProperty = EnergySkateParkFluent.energies.potentialStringProperty;
+const energyThermalStringProperty = EnergySkateParkFluent.energies.thermalStringProperty;
+const energyTotalStringProperty = EnergySkateParkFluent.energies.totalStringProperty;
 
 type SelfOptions = {
 

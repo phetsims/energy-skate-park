@@ -11,7 +11,7 @@ import Tandem from '../../../tandem/js/Tandem.js';
 import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkKeyboardHelpContent from '../common/view/EnergySkateParkKeyboardHelpContent.js';
 import energySkatePark from '../energySkatePark.js';
-import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../EnergySkateParkFluent.js';
 import EnergySkateParkPlaygroundModel from './model/EnergySkateParkPlaygroundModel.js';
 import EnergySkateParkPlaygroundScreenView from './view/EnergySkateParkPlaygroundScreenView.js';
 import PlaygroundScreenIcon from './view/PlaygroundScreenIcon.js';
@@ -21,7 +21,7 @@ export default class PlaygroundScreen extends Screen<EnergySkateParkPlaygroundMo
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
 
     const options = {
-      name: EnergySkateParkStrings.screens.playgroundStringProperty,
+      name: EnergySkateParkFluent.screens.playgroundStringProperty,
       homeScreenIcon: new PlaygroundScreenIcon(),
       tandem: tandem,
       createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent()

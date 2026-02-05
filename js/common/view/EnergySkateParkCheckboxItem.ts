@@ -24,10 +24,10 @@ import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Checkbox, { CheckboxOptions } from '../../../../sun/js/Checkbox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 
-const propertiesSpeedStringProperty = EnergySkateParkStrings.speedometer.labelStringProperty;
+const propertiesSpeedStringProperty = EnergySkateParkFluent.speedometer.labelStringProperty;
 
 type SelfOptions = {
 

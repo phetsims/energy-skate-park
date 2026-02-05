@@ -27,7 +27,7 @@ import ColorConstants from '../../../../sun/js/ColorConstants.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import Skater from '../model/Skater.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
@@ -130,10 +130,10 @@ export default class EnergyBarGraph extends Node {
     };
 
     this.barChartNode = new BarChartNode( [
-      { entries: [ kineticEntry ], labelString: EnergySkateParkStrings.energies.kineticStringProperty },
-      { entries: [ potentialEntry ], labelString: EnergySkateParkStrings.energies.potentialStringProperty },
-      { entries: [ thermalEntry ], labelString: EnergySkateParkStrings.energies.thermalStringProperty, labelNode: clearThermalButton },
-      { entries: [ totalEntry ], labelString: EnergySkateParkStrings.energies.totalStringProperty }
+      { entries: [ kineticEntry ], labelString: EnergySkateParkFluent.energies.kineticStringProperty },
+      { entries: [ potentialEntry ], labelString: EnergySkateParkFluent.energies.potentialStringProperty },
+      { entries: [ thermalEntry ], labelString: EnergySkateParkFluent.energies.thermalStringProperty, labelNode: clearThermalButton },
+      { entries: [ totalEntry ], labelString: EnergySkateParkFluent.energies.totalStringProperty }
     ], graphRangeProperty, {
       barLabelOptions: {
         maxWidth: 61.4, // i18n, by inspection
@@ -233,7 +233,7 @@ export default class EnergyBarGraph extends Node {
    * Create the label for the bar graph, which can be added in various places depending on layout of the graph.
    */
   public static createLabel(): Text {
-    return new Text( EnergySkateParkStrings.energies.energyStringProperty, {
+    return new Text( EnergySkateParkFluent.energies.energyStringProperty, {
       font: new PhetFont( { size: 17, weight: 'bold' } ),
       maxWidth: 90 // i18n, by inspection
     } );

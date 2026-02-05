@@ -34,21 +34,21 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 import EnergyChart from './EnergyChart.js';
 
-const kineticEnergyLabelStringProperty = EnergySkateParkStrings.energies.kineticStringProperty;
-const potentialEnergyLabelStringProperty = EnergySkateParkStrings.energies.potentialStringProperty;
-const thermalEnergyLabelStringProperty = EnergySkateParkStrings.energies.thermalStringProperty;
-const totalEnergyLabelStringProperty = EnergySkateParkStrings.energies.totalStringProperty;
-const timeSwitchLabelStringProperty = EnergySkateParkStrings.plots.timeSwitchLabelStringProperty;
-const positionSwitchLabelStringProperty = EnergySkateParkStrings.plots.positionSwitchLabelStringProperty;
-const plotsEnergyGraphStringProperty = EnergySkateParkStrings.plots.energyGraph.labelStringProperty;
-const plotsPositionLabelStringProperty = EnergySkateParkStrings.plots.positionLabelStringProperty;
-const plotsEnergyLabelStringProperty = EnergySkateParkStrings.plots.energyLabelStringProperty;
-const plotsTimeLabelStringProperty = EnergySkateParkStrings.plots.timeLabelStringProperty;
+const kineticEnergyLabelStringProperty = EnergySkateParkFluent.energies.kineticStringProperty;
+const potentialEnergyLabelStringProperty = EnergySkateParkFluent.energies.potentialStringProperty;
+const thermalEnergyLabelStringProperty = EnergySkateParkFluent.energies.thermalStringProperty;
+const totalEnergyLabelStringProperty = EnergySkateParkFluent.energies.totalStringProperty;
+const timeSwitchLabelStringProperty = EnergySkateParkFluent.plots.timeSwitchLabelStringProperty;
+const positionSwitchLabelStringProperty = EnergySkateParkFluent.plots.positionSwitchLabelStringProperty;
+const plotsEnergyGraphStringProperty = EnergySkateParkFluent.plots.energyGraph.labelStringProperty;
+const plotsPositionLabelStringProperty = EnergySkateParkFluent.plots.positionLabelStringProperty;
+const plotsEnergyLabelStringProperty = EnergySkateParkFluent.plots.energyLabelStringProperty;
+const plotsTimeLabelStringProperty = EnergySkateParkFluent.plots.timeLabelStringProperty;
 
 // constants
 const GRAPH_HEIGHT = 141;

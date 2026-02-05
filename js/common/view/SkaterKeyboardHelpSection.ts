@@ -11,7 +11,7 @@ import KeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/Keybo
 import KeyboardHelpSectionRow from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSectionRow.js';
 import LetterKeyNode from '../../../../scenery-phet/js/keyboard/LetterKeyNode.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import SkaterKeyboardListener from './SkaterKeyboardListener.js';
 import SkaterNode from './SkaterNode.js';
 
@@ -52,7 +52,7 @@ export default class SkaterKeyboardHelpSection extends KeyboardHelpSection {
     ];
 
     // 'Skater Controls' title
-    super( EnergySkateParkStrings.keyboardHelpDialog.skaterControlsStringProperty, rows, {
+    super( EnergySkateParkFluent.keyboardHelpDialog.skaterControlsStringProperty, rows, {
       isDisposable: false
     } );
   }

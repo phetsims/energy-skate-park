@@ -13,7 +13,7 @@ import type { OneKeyStroke } from '../../../../scenery/js/input/KeyDescriptor.js
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import Skater from '../model/Skater.js';
 import SkaterNode from './SkaterNode.js';
 
@@ -28,22 +28,22 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
   public static readonly MOVE_SKATER_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'arrowLeft', 'arrowRight', 'arrowUp', 'arrowDown', 'w', 'a', 's', 'd' ],
     repoName: energySkatePark.name,
-    keyboardHelpDialogLabelStringProperty: EnergySkateParkStrings.keyboardHelpDialog.moveSkaterStringProperty,
-    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkStrings.a11y.keyboardHelpDialog.moveSkaterDescriptionStringProperty
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveSkaterStringProperty,
+    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkFluent.a11y.keyboardHelpDialog.moveSkaterDescriptionStringProperty
   } );
 
   public static readonly MOVE_ALONG_TRACK_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'arrowLeft', 'arrowRight', 'a', 'd' ],
     repoName: energySkatePark.name,
-    keyboardHelpDialogLabelStringProperty: EnergySkateParkStrings.keyboardHelpDialog.moveAlongTrackStringProperty,
-    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkStrings.a11y.keyboardHelpDialog.moveAlongTrackDescriptionStringProperty
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveAlongTrackStringProperty,
+    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkFluent.a11y.keyboardHelpDialog.moveAlongTrackDescriptionStringProperty
   } );
 
   public static readonly DETACH_FROM_TRACK_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'arrowUp', 'w' ],
     repoName: energySkatePark.name,
-    keyboardHelpDialogLabelStringProperty: EnergySkateParkStrings.keyboardHelpDialog.detachFromTrackStringProperty,
-    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkStrings.a11y.keyboardHelpDialog.detachFromTrackDescriptionStringProperty
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.detachFromTrackStringProperty,
+    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkFluent.a11y.keyboardHelpDialog.detachFromTrackDescriptionStringProperty
   } );
 
   private readonly skater: Skater;

@@ -12,16 +12,16 @@ import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
 export default class MassSlider extends PhysicalSlider {
 
   public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, massRange: Range, tandem: Tandem ) {
 
-    super( EnergySkateParkStrings.physicalControls.massControls.massStringProperty, property, massRange, userControlledProperty, tandem, {
-      minLabelProperty: EnergySkateParkStrings.physicalControls.smallStringProperty,
-      maxLabelProperty: EnergySkateParkStrings.physicalControls.largeStringProperty,
+    super( EnergySkateParkFluent.physicalControls.massControls.massStringProperty, property, massRange, userControlledProperty, tandem, {
+      minLabelProperty: EnergySkateParkFluent.physicalControls.smallStringProperty,
+      maxLabelProperty: EnergySkateParkFluent.physicalControls.largeStringProperty,
       sliderOptions: {
         constrainValue: value => Utils.roundToInterval( value, 5 )
       }

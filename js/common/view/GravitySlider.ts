@@ -12,7 +12,7 @@ import Range from '../../../../dot/js/Range.js';
 import { roundToInterval } from '../../../../dot/js/util/roundToInterval.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
@@ -21,12 +21,12 @@ export default class GravitySlider extends PhysicalSlider {
   public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, tandem: Tandem ) {
     const range = new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) );
     super(
-      EnergySkateParkStrings.physicalControls.gravityControls.gravityStringProperty,
+      EnergySkateParkFluent.physicalControls.gravityControls.gravityStringProperty,
       property,
       range,
       userControlledProperty,
       tandem, {
-        minLabelProperty: EnergySkateParkStrings.physicalControls.tinyStringProperty,
+        minLabelProperty: EnergySkateParkFluent.physicalControls.tinyStringProperty,
         sliderOptions: {
           constrainValue: value => roundToInterval( value, 1 )
         }

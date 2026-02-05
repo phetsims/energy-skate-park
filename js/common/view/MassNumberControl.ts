@@ -12,16 +12,16 @@ import Range from '../../../../dot/js/Range.js';
 import { roundToInterval } from '../../../../dot/js/util/roundToInterval.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
 export default class MassNumberControl extends PhysicalNumberControl {
 
   public constructor( massProperty: NumberProperty, userControlledProperty: BooleanProperty, massRange: Range, tandem: Tandem ) {
 
-    super( EnergySkateParkStrings.physicalControls.massControls.massStringProperty, massProperty, massRange, userControlledProperty, tandem, {
+    super( EnergySkateParkFluent.physicalControls.massControls.massStringProperty, massProperty, massRange, userControlledProperty, tandem, {
       numberDisplayOptions: {
-        valuePattern: EnergySkateParkStrings.physicalControls.massControls.massKilogramsPatternStringProperty
+        valuePattern: EnergySkateParkFluent.physicalControls.massControls.massKilogramsPatternStringProperty
       },
       sliderOptions: {
         // round to nearest 5 kg, as requested by design team

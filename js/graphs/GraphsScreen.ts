@@ -14,7 +14,7 @@ import graphsScreenIcon_png from '../../images/graphsScreenIcon_png.js';
 import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkKeyboardHelpContent from '../common/view/EnergySkateParkKeyboardHelpContent.js';
 import energySkatePark from '../energySkatePark.js';
-import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../EnergySkateParkFluent.js';
 import GraphsModel from './model/GraphsModel.js';
 import GraphsScreenView from './view/GraphsScreenView.js';
 
@@ -25,7 +25,7 @@ export default class GraphsScreen extends Screen<GraphsModel, GraphsScreenView> 
       () => new GraphsModel( preferencesModel, tandem.createTandem( 'model' ) ),
       model => new GraphsScreenView( model, tandem.createTandem( 'view' ) ),
       {
-        name: EnergySkateParkStrings.screens.graphsStringProperty,
+        name: EnergySkateParkFluent.screens.graphsStringProperty,
         homeScreenIcon: new ScreenIcon( new Image( graphsScreenIcon_png ), {
           maxIconWidthProportion: 1,
           maxIconHeightProportion: 1

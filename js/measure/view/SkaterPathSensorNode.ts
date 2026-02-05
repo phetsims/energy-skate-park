@@ -39,16 +39,16 @@ import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSam
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import EnergySkateParkControlPanel from '../../common/view/EnergySkateParkControlPanel.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 
-const energyEnergyStringProperty = EnergySkateParkStrings.energies.energyStringProperty;
-const energyJoulesPatternStringProperty = EnergySkateParkStrings.pathSensor.energyJoulesPatternStringProperty;
-const energyKineticStringProperty = EnergySkateParkStrings.energies.kineticStringProperty;
-const energyPotentialStringProperty = EnergySkateParkStrings.energies.potentialStringProperty;
-const energyThermalStringProperty = EnergySkateParkStrings.energies.thermalStringProperty;
-const energyTotalStringProperty = EnergySkateParkStrings.energies.totalStringProperty;
-const heightMetersPatternStringProperty = EnergySkateParkStrings.pathSensor.heightMetersPatternStringProperty;
-const speedMetersPerSecondPatternStringProperty = EnergySkateParkStrings.pathSensor.speedMetersPerSecondPatternStringProperty;
+const energyEnergyStringProperty = EnergySkateParkFluent.energies.energyStringProperty;
+const energyJoulesPatternStringProperty = EnergySkateParkFluent.pathSensor.energyJoulesPatternStringProperty;
+const energyKineticStringProperty = EnergySkateParkFluent.energies.kineticStringProperty;
+const energyPotentialStringProperty = EnergySkateParkFluent.energies.potentialStringProperty;
+const energyThermalStringProperty = EnergySkateParkFluent.energies.thermalStringProperty;
+const energyTotalStringProperty = EnergySkateParkFluent.energies.totalStringProperty;
+const heightMetersPatternStringProperty = EnergySkateParkFluent.pathSensor.heightMetersPatternStringProperty;
+const speedMetersPerSecondPatternStringProperty = EnergySkateParkFluent.pathSensor.speedMetersPerSecondPatternStringProperty;
 
 // constants
 const TITLE_CONTENT_SPACING = 5.5; // spacing between the "Energy" title and the rest of the content

@@ -23,11 +23,11 @@ import Line from '../../../../scenery/js/nodes/Line.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TextPanel from './TextPanel.js';
 
-const heightEqualsZeroStringProperty = EnergySkateParkStrings.heightLabels.heightEqualsZeroStringProperty;
+const heightEqualsZeroStringProperty = EnergySkateParkFluent.heightLabels.heightEqualsZeroStringProperty;
 
 export default class ReferenceHeightLine extends InteractiveHighlighting( Node ) {
 
@@ -81,8 +81,8 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       tagName: 'div',
       focusable: true,
       ariaRole: 'slider',
-      accessibleName: EnergySkateParkStrings.a11y.referenceHeightLine.accessibleNameStringProperty,
-      descriptionContent: EnergySkateParkStrings.a11y.referenceHeightLine.helpTextStringProperty
+      accessibleName: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleNameStringProperty,
+      descriptionContent: EnergySkateParkFluent.a11y.referenceHeightLine.helpTextStringProperty
     } );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed

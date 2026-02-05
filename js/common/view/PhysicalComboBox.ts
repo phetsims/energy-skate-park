@@ -20,7 +20,7 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
@@ -33,7 +33,7 @@ type SelfOptions = {
 export type PhysicalComboBoxOptions = SelfOptions & ComboBoxOptions;
 
 // constants
-const controlsGravityCustomStringProperty = EnergySkateParkStrings.physicalControls.customStringProperty;
+const controlsGravityCustomStringProperty = EnergySkateParkFluent.physicalControls.customStringProperty;
 
 export default class PhysicalComboBox extends ComboBox<number | null> {
 

@@ -27,7 +27,7 @@ import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.
 import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import Skater from '../model/Skater.js';
 import Track from '../model/Track.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
@@ -48,8 +48,8 @@ export default class SkaterNode extends Node {
   public static readonly ATTACH_TO_TRACK_HOTKEY_DATA = new HotkeyData( {
     keys: [ 't' ],
     repoName: energySkatePark.name,
-    keyboardHelpDialogLabelStringProperty: EnergySkateParkStrings.keyboardHelpDialog.attachToTrackStringProperty,
-    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkStrings.a11y.keyboardHelpDialog.attachToTrackDescriptionStringProperty
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.attachToTrackStringProperty,
+    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkFluent.a11y.keyboardHelpDialog.attachToTrackDescriptionStringProperty
   } );
   public readonly skaterImageSetProperty: TReadOnlyProperty<SkaterImageSet>;
   public readonly selectedSkaterProperty: NumberProperty;
@@ -280,7 +280,7 @@ export default class SkaterNode extends Node {
 
     // Create GrabDragInteraction for the grab/release paradigm
     this.grabDragInteraction = new GrabDragInteraction( this, keyboardDragListener, view, {
-      objectToGrabString: EnergySkateParkStrings.a11y.skaterNode.accessibleNameStringProperty,
+      objectToGrabString: EnergySkateParkFluent.a11y.skaterNode.accessibleNameStringProperty,
       tandem: tandem.createTandem( 'grabDragInteraction' ),
 
       onGrab: () => {

@@ -14,7 +14,7 @@ import measureScreenIcon_png from '../../images/measureScreenIcon_png.js';
 import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkKeyboardHelpContent from '../common/view/EnergySkateParkKeyboardHelpContent.js';
 import energySkatePark from '../energySkatePark.js';
-import EnergySkateParkStrings from '../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../EnergySkateParkFluent.js';
 import MeasureModel from './model/MeasureModel.js';
 import MeasureScreenView from './view/MeasureScreenView.js';
 
@@ -22,7 +22,7 @@ export default class MeasureScreen extends Screen<MeasureModel, MeasureScreenVie
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
     const options = {
-      name: EnergySkateParkStrings.screens.measureStringProperty,
+      name: EnergySkateParkFluent.screens.measureStringProperty,
       homeScreenIcon: new ScreenIcon( new Image( measureScreenIcon_png ), {
         maxIconWidthProportion: 1,
         maxIconHeightProportion: 1

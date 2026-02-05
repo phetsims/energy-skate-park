@@ -19,13 +19,13 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import { SliderOptions } from '../../../../sun/js/Slider.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl, { PhysicalNumberControlOptions } from './PhysicalNumberControl.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
-const controlsValueLotsStringProperty = EnergySkateParkStrings.physicalControls.lotsStringProperty;
-const controlsValueNoneStringProperty = EnergySkateParkStrings.physicalControls.noneStringProperty;
+const controlsValueLotsStringProperty = EnergySkateParkFluent.physicalControls.lotsStringProperty;
+const controlsValueNoneStringProperty = EnergySkateParkFluent.physicalControls.noneStringProperty;
 
 type SelfOptions = {
   // labels for the min and max values of this control
