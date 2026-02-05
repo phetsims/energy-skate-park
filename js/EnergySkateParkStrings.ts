@@ -106,6 +106,7 @@ type StringsType = {
     'moveSkaterSlowerStringProperty': LocalizedStringProperty;
     'moveAlongTrackStringProperty': LocalizedStringProperty;
     'detachFromTrackStringProperty': LocalizedStringProperty;
+    'attachToTrackStringProperty': LocalizedStringProperty;
     'moveReferenceHeightStringProperty': LocalizedStringProperty;
   };
   'a11y': {
@@ -122,6 +123,7 @@ type StringsType = {
       'moveSkaterDescriptionStringProperty': LocalizedStringProperty;
       'moveAlongTrackDescriptionStringProperty': LocalizedStringProperty;
       'detachFromTrackDescriptionStringProperty': LocalizedStringProperty;
+      'attachToTrackDescriptionStringProperty': LocalizedStringProperty;
       'moveReferenceHeightDescriptionStringProperty': LocalizedStringProperty;
     }
   }

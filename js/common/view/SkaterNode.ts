@@ -23,6 +23,8 @@ import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import KeyboardDragListener from '../../../../scenery/js/listeners/KeyboardDragListener.js';
+import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
+import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkStrings from '../../EnergySkateParkStrings.js';
@@ -37,7 +39,18 @@ const POSITION_DELTA_SHIFT = 0.025; // meters, slower movement with shift
 const PARAMETRIC_DELTA = 0.02; // parametric units for on-track movement
 const PARAMETRIC_DELTA_SHIFT = 0.005; // slower parametric movement with shift
 
+// Maximum distance (in meters) for attaching to a track with the hotkey
+const TRACK_ATTACH_THRESHOLD = 2;
+
 export default class SkaterNode extends Node {
+
+  // Static HotkeyData for keyboard help integration
+  public static readonly ATTACH_TO_TRACK_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 't' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkStrings.keyboardHelpDialog.attachToTrackStringProperty,
+    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkStrings.a11y.keyboardHelpDialog.attachToTrackDescriptionStringProperty
+  } );
   public readonly skaterImageSetProperty: TReadOnlyProperty<SkaterImageSet>;
   public readonly selectedSkaterProperty: NumberProperty;
   private readonly dragListener: SoundDragListener;
@@ -46,6 +59,10 @@ export default class SkaterNode extends Node {
   // Track the track and position where skater will be released (for keyboard drag)
   private keyboardTargetTrack: Track | null = null;
   private keyboardTargetU: number | null = null;
+
+  // Store references for track attachment hotkey
+  private readonly getClosestTrackAndPositionAndParameter: ( v: Vector2, t: Track[] ) => { track: Track; parametricPosition: number; point: Vector2 } | null;
+  private readonly getPhysicalTracks: () => Track[];
 
   /**
    * SkaterNode constructor.
@@ -71,6 +88,10 @@ export default class SkaterNode extends Node {
       preventFit: true,
       tandem: tandem
     } );
+
+    // Store references for track attachment hotkey
+    this.getClosestTrackAndPositionAndParameter = getClosestTrackAndPositionAndParameter;
+    this.getPhysicalTracks = getPhysicalTracks;
 
     this.selectedSkaterProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'selectedSkaterProperty' ),
@@ -283,6 +304,61 @@ export default class SkaterNode extends Node {
         // Note: draggingProperty is set to false in skater.released()
       }
     } );
+
+    // Add keyboard listener for attaching to nearest track (T key)
+    this.addInputListener( new KeyboardListener( {
+      keys: [ 't' ] as const,
+      fire: () => {
+        this.attachToNearestTrack();
+      }
+    } ) );
+  }
+
+  /**
+   * Attach the skater to the nearest track if within the threshold distance.
+   */
+  private attachToNearestTrack(): void {
+    // Only attach if skater is not already on a track
+    if ( this.skater.trackProperty.value !== null ) {
+      return;
+    }
+
+    const position = this.skater.positionProperty.value;
+    const closestTrackInfo = this.getClosestTrackAndPositionAndParameter( position, this.getPhysicalTracks() );
+
+    if ( closestTrackInfo &&
+         closestTrackInfo.track &&
+         closestTrackInfo.track.isParameterInBounds( closestTrackInfo.parametricPosition ) ) {
+      const distance = closestTrackInfo.point.distance( position );
+
+      if ( distance < TRACK_ATTACH_THRESHOLD ) {
+        const track = closestTrackInfo.track;
+        const u = closestTrackInfo.parametricPosition;
+
+        // Attach to track
+        this.skater.trackProperty.value = track;
+        this.skater.parametricPositionProperty.value = u;
+        this.skater.positionProperty.value = track.getPoint( u );
+
+        // Set the angle and side based on track normal
+        const normal = track.getUnitNormalVector( u );
+        this.skater.onTopSideOfTrackProperty.value = normal.y > 0;
+        this.skater.angleProperty.value = track.getViewAngleAt( u ) +
+                                          ( this.skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+
+        // Clear velocity and thermal energy
+        this.skater.velocityProperty.value = new Vector2( 0, 0 );
+        this.skater.parametricSpeedProperty.value = 0;
+        this.skater.thermalEnergyProperty.value = 0;
+
+        this.skater.updateEnergy();
+        this.skater.updatedEmitter.emit();
+
+        // Update keyboard target for when user releases (via Space/Enter)
+        this.keyboardTargetTrack = track;
+        this.keyboardTargetU = u;
+      }
+    }
   }
 
   /**
