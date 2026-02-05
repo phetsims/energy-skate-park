@@ -9,7 +9,7 @@
 
 import Emitter from '../../../../axon/js/Emitter.js';
 import Shape from '../../../../kite/js/Shape.js';
-import DragListener from '../../../../scenery/js/listeners/DragListener.js';
+import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -85,11 +85,11 @@ export default class ControlPointNode extends Circle {
     } );
 
     // if the ControlPoint is 'interactive' it supports dragging and potentially track splitting
-    let dragListener: DragListener | null = null; // potential reference for disposal
+    let dragListener: SoundDragListener | null = null; // potential reference for disposal
     if ( controlPoint.interactive ) {
       let dragEvents = 0;
       let lastControlPointUI: ControlPointUI | null = null;
-      dragListener = new DragListener( {
+      dragListener = new SoundDragListener( {
         tandem: tandem.createTandem( 'dragListener' ),
         allowTouchSnag: true,
         start: event => {

@@ -16,7 +16,7 @@ import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ArrowNode from '../../../../scenery-phet/js/ArrowNode.js';
-import DragListener from '../../../../scenery/js/listeners/DragListener.js';
+import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import Line from '../../../../scenery/js/nodes/Line.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -109,7 +109,7 @@ export default class ReferenceHeightLine extends Node {
       }
     } );
 
-    this.addInputListener( new DragListener( {
+    this.addInputListener( new SoundDragListener( {
       transform: modelViewTransform,
       positionProperty: dragPositionProperty,
 

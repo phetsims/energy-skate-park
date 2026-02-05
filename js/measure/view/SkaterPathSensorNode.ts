@@ -29,7 +29,7 @@ import AlignGroup from '../../../../scenery/js/layout/constraints/AlignGroup.js'
 import AlignBox from '../../../../scenery/js/layout/nodes/AlignBox.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
-import DragListener from '../../../../scenery/js/listeners/DragListener.js';
+import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
@@ -261,7 +261,7 @@ export default class SkaterPathSensorNode extends Node {
     samples.addItemAddedListener( this.boundUpdateSensorDisplay );
 
     // add a drag listener to the probe body
-    this.probeNode.addInputListener( new DragListener( {
+    this.probeNode.addInputListener( new SoundDragListener( {
       transform: modelViewTransform,
       positionProperty: sensorProbePositionProperty,
       dragBoundsProperty: modelBoundsProperty,

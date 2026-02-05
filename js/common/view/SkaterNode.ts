@@ -17,7 +17,7 @@ import Matrix3 from '../../../../dot/js/Matrix3.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
-import DragListener from '../../../../scenery/js/listeners/DragListener.js';
+import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
@@ -31,7 +31,7 @@ import SkaterImageSet from './SkaterImageSet.js';
 export default class SkaterNode extends Node {
   public readonly skaterImageSetProperty: TReadOnlyProperty<SkaterImageSet>;
   public readonly selectedSkaterProperty: NumberProperty;
-  private readonly dragListener: DragListener;
+  private readonly dragListener: SoundDragListener;
 
   /**
    * SkaterNode constructor.
@@ -207,7 +207,7 @@ export default class SkaterNode extends Node {
     };
 
     // for interruption, see interruptDrag
-    this.dragListener = new DragListener( {
+    this.dragListener = new SoundDragListener( {
       tandem: tandem.createTandem( 'dragListener' ),
       start: event => {
         userControlledProperty.set( true );

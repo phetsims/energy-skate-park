@@ -11,7 +11,7 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
-import DragListener from '../../../../scenery/js/listeners/DragListener.js';
+import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
@@ -19,7 +19,7 @@ import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
 import TrackNode from './TrackNode.js';
 
-export default class TrackDragHandler extends DragListener {
+export default class TrackDragHandler extends SoundDragListener {
   private readonly track: Track;
   private readonly model: EnergySkateParkModel;
   private readonly modelViewTransform: ModelViewTransform2;

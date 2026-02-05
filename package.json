@@ -36,7 +36,8 @@
         "latinAmerica",
         "oceania",
         "usa"
-      ]
+      ],
+      "supportsSound": true
     },
     "supportsOutputJS": true,
     "published": true,
