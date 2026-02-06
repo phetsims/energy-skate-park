@@ -133,6 +133,9 @@ type StringsType = {
     'controlPointNode': {
       'accessibleNameStringProperty': LocalizedStringProperty;
     };
+    'pathSensorNode': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+    };
     'controlPointAttachment': {
       'leftStringProperty': LocalizedStringProperty;
       'rightStringProperty': LocalizedStringProperty;

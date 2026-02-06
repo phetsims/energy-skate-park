@@ -85,6 +85,8 @@ a11y:
     accessibleName: Track
   controlPointNode:
     accessibleName: Control Point
+  pathSensorNode:
+    accessibleName: Energy Sensor
   controlPointAttachment:
     left: Left
     right: Right

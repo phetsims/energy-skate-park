@@ -240,6 +240,11 @@
         "value": "Control Point"
       }
     },
+    "pathSensorNode": {
+      "accessibleName": {
+        "value": "Energy Sensor"
+      }
+    },
     "controlPointAttachment": {
       "left": {
         "value": "Left"

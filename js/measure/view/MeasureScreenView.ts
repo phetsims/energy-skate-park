@@ -50,6 +50,12 @@ export default class MeasureScreenView extends EnergySkateParkTrackSetScreenView
     } );
 
     this.topLayer.addChild( this.pathSensor );
+
+    // Insert the path sensor probe into pdomOrder between control points (trackLayer) and referenceHeightLine
+    const playAreaOrder = this.pdomPlayAreaNode.pdomOrder!;
+    const referenceHeightIndex = playAreaOrder.indexOf( this.referenceHeightLine );
+    playAreaOrder.splice( referenceHeightIndex, 0, this.pathSensor );
+    this.pdomPlayAreaNode.pdomOrder = playAreaOrder;
   }
 
   /**

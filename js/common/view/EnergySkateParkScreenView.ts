@@ -151,7 +151,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
   // above the track because it is draggable, but below the skater because
   // it is important for the skater center of mass representation to always be visible
-  private readonly referenceHeightLine: ReferenceHeightLine;
+  protected readonly referenceHeightLine: ReferenceHeightLine;
 
   // play/pause and step buttons are same size until playingProperty is false
   protected readonly timeControlNode: TimeControlNode;
