@@ -75,6 +75,17 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     this.trackToolbox.right = this.modelViewTransform.modelToViewX( -0.5 );
     this.clearButton.right = this.trackToolbox.left - 10;
 
+    // Add track toolbox and clear button to the control area PDOM order (before timeControlNode)
+    const controlOrder = this.pdomControlAreaNode.pdomOrder!;
+    const timeControlIndex = controlOrder.indexOf( this.timeControlNode );
+    controlOrder.splice( timeControlIndex, 0, this.trackToolbox, this.clearButton );
+    this.pdomControlAreaNode.pdomOrder = controlOrder;
+
+    // Add track layer to play area PDOM order so dynamically created TrackNodes are keyboard-reachable
+    const playOrder = this.pdomPlayAreaNode.pdomOrder!;
+    playOrder.push( this.trackLayer );
+    this.pdomPlayAreaNode.pdomOrder = playOrder;
+
     // Some model elements are spuriously created when creating the track panel -- clear those out now so that the PhET-iO
     // changed state starts clear, see https://github.com/phetsims/energy-skate-park/issues/49
     model.reset();

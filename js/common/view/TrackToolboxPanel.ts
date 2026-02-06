@@ -5,13 +5,18 @@
  * points into the play area to create custom tracks.
  *
  * @author Jesse Greenberg (PhET Interactive Simulations)
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import Vector2 from '../../../../dot/js/Vector2.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
+import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
+import Node from '../../../../scenery/js/nodes/Node.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkPlaygroundModel from '../../playground/model/EnergySkateParkPlaygroundModel.js';
 import EnergySkateParkPlaygroundScreenView from '../../playground/view/EnergySkateParkPlaygroundScreenView.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -31,11 +36,20 @@ export default class TrackToolboxPanel extends Panel {
       draggable: false,
       splittable: false
     } );
-    const iconNode = new TrackNode( iconTrack, view.modelViewTransform, model.availableModelBoundsProperty, tandem.createTandem( 'iconNode' ), {
+
+    // Wrap the TrackNode in a Node so we can add button-like PDOM attributes without affecting TrackNode itself
+    const trackIconNode = new TrackNode( iconTrack, view.modelViewTransform, model.availableModelBoundsProperty, tandem.createTandem( 'iconNode' ), {
 
       // want the icon to look pickable, even though it isn't really draggable (forwarding listener makes the new
       // TrackNode draggable)
       roadCursorOverride: 'cursor'
+    } );
+
+    const iconNode = new Node( {
+      children: [ trackIconNode ],
+      cursor: 'pointer',
+      tagName: 'button',
+      accessibleName: EnergySkateParkFluent.a11y.trackToolboxPanel.accessibleNameStringProperty
     } );
 
     iconNode.addInputListener( DragListener.createForwardingListener( event => {
@@ -56,11 +70,59 @@ export default class TrackToolboxPanel extends Panel {
       track.forwardingDragStartEmitter.emit( event );
     } ) );
 
-    const updateIconVisibility = () => {
-      iconNode.visible = model.getNumberOfControlPoints() <= EnergySkateParkConstants.MAX_NUMBER_CONTROL_POINTS - 3;
+    // Keyboard activation: create a track and focus it
+    iconNode.addInputListener( new KeyboardListener( {
+      fireOnClick: true,
+      fire: () => {
+        const hasRoom = model.getNumberOfControlPoints() <= EnergySkateParkConstants.MAX_NUMBER_CONTROL_POINTS - 3;
+        if ( !hasRoom ) {
+          return;
+        }
+
+        const track = model.createDraggableTrack();
+        model.tracks.add( track );
+
+        // Find a position that doesn't overlap existing tracks. Start centered above ground,
+        // then shift right if too close to an existing track.
+        const OVERLAP_THRESHOLD = 1.5; // model units - tracks are ~2m wide
+        let candidatePosition = new Vector2( 0, 1.5 ); // start above ground, over skater's head
+
+        for ( let attempt = 0; attempt < 10; attempt++ ) {
+          let hasCollision = false;
+          for ( const existingTrack of model.tracks ) {
+            if ( existingTrack !== track && existingTrack.position.distance( candidatePosition ) < OVERLAP_THRESHOLD ) {
+              hasCollision = true;
+              candidatePosition = candidatePosition.plusXY( 0, 0.75 );
+              break;
+            }
+          }
+          if ( !hasCollision ) {
+            break;
+          }
+        }
+
+        track.position = candidatePosition;
+        track.physicalProperty.value = true;
+        track.bumpAboveGround();
+
+        // Find the newly created TrackNode and focus it
+        for ( const child of view.trackLayer.children ) {
+          if ( child instanceof TrackNode && child.track === track ) {
+            child.focus();
+            break;
+          }
+        }
+      }
+    } ) );
+
+    const updateIconAvailability = () => {
+      const hasRoom = model.getNumberOfControlPoints() <= EnergySkateParkConstants.MAX_NUMBER_CONTROL_POINTS - 3;
+      iconNode.setOpacity( hasRoom ? 1 : 0.4 );
+      iconNode.inputEnabled = hasRoom;
+      iconNode.focusable = hasRoom;
     };
-    model.tracks.addItemAddedListener( updateIconVisibility );
-    model.tracks.addItemRemovedListener( updateIconVisibility );
+    model.tracks.addItemAddedListener( updateIconAvailability );
+    model.tracks.addItemRemovedListener( updateIconAvailability );
 
     super( iconNode, options );
   }

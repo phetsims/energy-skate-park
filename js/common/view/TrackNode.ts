@@ -20,6 +20,7 @@ import Path from '../../../../scenery/js/nodes/Path.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
 import SplineEvaluation from '../SplineEvaluation.js';
@@ -83,6 +84,13 @@ export default class TrackNode extends Node {
     }, providedOptions );
 
     super( options );
+
+    // Make draggable tracks focusable so they can receive keyboard focus after creation
+    if ( track.draggable ) {
+      this.tagName = 'div';
+      this.focusable = true;
+      this.accessibleName = EnergySkateParkFluent.a11y.trackToolboxPanel.accessibleNameStringProperty;
+    }
 
     this.model = model;
     this.isIcon = !!options.isIcon;

@@ -230,6 +230,11 @@
         }
       }
     },
+    "trackToolboxPanel": {
+      "accessibleName": {
+        "value": "Track"
+      }
+    },
     "keyboardHelpDialog": {
       "moveSkaterDescription": {
         "value": "Move skater in any direction when off track"

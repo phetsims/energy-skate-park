@@ -140,8 +140,9 @@ export default class EnergySkateParkScreenView extends ScreenView {
   // for layout or repositioning in subtypes
   protected readonly speedometerNode: ValueGaugeNode;
 
-  // (for layout) - Layer which will contain all of the tracks
-  protected readonly trackLayer: Node;
+  // Layer which will contain all tracks
+  public readonly trackLayer: Node;
+
   public readonly measuringTapeNode?: MeasuringTapeNode;
   public readonly stopwatchNode?: StopwatchNode;
 

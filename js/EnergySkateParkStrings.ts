@@ -127,6 +127,9 @@ type StringsType = {
         'accessibleNameStringProperty': LocalizedStringProperty;
       }
     };
+    'trackToolboxPanel': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+    };
     'keyboardHelpDialog': {
       'moveSkaterDescriptionStringProperty': LocalizedStringProperty;
       'moveAlongTrackDescriptionStringProperty': LocalizedStringProperty;
