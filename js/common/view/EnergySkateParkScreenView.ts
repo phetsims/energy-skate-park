@@ -587,8 +587,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
     // Control Area elements
     this.pdomControlAreaNode.pdomOrder = [
-      this.controlPanelVBox,
       ...this.energyBarGraphAccordionBox ? [ this.energyBarGraphAccordionBox ] : [],
+      this.controlPanelVBox,
       ...this.visibilityControlsPanel ? [ this.visibilityControlsPanel ] : [],
       this.timeControlNode,
       this.returnSkaterButton,
