@@ -16,15 +16,16 @@ import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Matrix3 from '../../../../dot/js/Matrix3.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
-import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
-import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import GrabDragInteraction from '../../../../scenery-phet/js/accessibility/grab-drag/GrabDragInteraction.js';
+import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
+import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
+import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
+import KeyboardDragListener from '../../../../scenery/js/listeners/KeyboardDragListener.js';
+import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
-import KeyboardDragListener from '../../../../scenery/js/listeners/KeyboardDragListener.js';
-import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
-import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
+import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -294,6 +295,8 @@ export default class SkaterNode extends Node {
         // Initialize keyboard target tracking
         this.keyboardTargetTrack = skater.trackProperty.value;
         this.keyboardTargetU = skater.parametricPositionProperty.value;
+
+        sharedSoundPlayers.get( 'grab' ).play();
       },
 
       onRelease: inputType => {
@@ -304,6 +307,8 @@ export default class SkaterNode extends Node {
         userControlledProperty.set( false );
 
         // Note: draggingProperty is set to false in skater.released()
+
+        sharedSoundPlayers.get( 'release' ).play();
       }
     } );
 
