@@ -85,6 +85,9 @@ a11y:
     accessibleName: Track
   controlPointNode:
     accessibleName: Control Point
+  controlPointAttachment:
+    left: Left
+    right: Right
   keyboardHelpDialog:
     moveSkaterDescription:          Move skater in any direction when off track
     moveAlongTrackDescription:      Move skater along track when attached

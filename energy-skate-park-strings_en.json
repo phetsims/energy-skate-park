@@ -240,6 +240,14 @@
         "value": "Control Point"
       }
     },
+    "controlPointAttachment": {
+      "left": {
+        "value": "Left"
+      },
+      "right": {
+        "value": "Right"
+      }
+    },
     "keyboardHelpDialog": {
       "moveSkaterDescription": {
         "value": "Move skater in any direction when off track"

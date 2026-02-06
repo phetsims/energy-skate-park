@@ -133,6 +133,10 @@ type StringsType = {
     'controlPointNode': {
       'accessibleNameStringProperty': LocalizedStringProperty;
     };
+    'controlPointAttachment': {
+      'leftStringProperty': LocalizedStringProperty;
+      'rightStringProperty': LocalizedStringProperty;
+    };
     'keyboardHelpDialog': {
       'moveSkaterDescriptionStringProperty': LocalizedStringProperty;
       'moveAlongTrackDescriptionStringProperty': LocalizedStringProperty;

@@ -18,6 +18,7 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
+import ControlPointAttachmentKeyboardListener from './ControlPointAttachmentKeyboardListener.js';
 import ControlPointKeyboardDragListener from './ControlPointKeyboardDragListener.js';
 import ControlPointUI from './ControlPointUI.js';
 import TrackDragHandler from './TrackDragHandler.js';
@@ -296,6 +297,12 @@ export default class ControlPointNode extends Circle {
 
       const controlPointKeyboardDragListener = new ControlPointKeyboardDragListener( trackNode, i, isEndPoint );
       this.addInputListener( controlPointKeyboardDragListener, { disposer: this } );
+
+      // Add discrete attachment listener for endpoint control points on attachable tracks
+      if ( isEndPoint && track.attachable ) {
+        const attachmentListener = new ControlPointAttachmentKeyboardListener( this, trackNode, i );
+        this.addInputListener( attachmentListener, { disposer: this } );
+      }
     }
 
     this.touchArea = Shape.circle( 0, 0, 25 );
