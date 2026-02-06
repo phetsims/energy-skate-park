@@ -130,6 +130,9 @@ type StringsType = {
     'trackToolboxPanel': {
       'accessibleNameStringProperty': LocalizedStringProperty;
     };
+    'controlPointNode': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+    };
     'keyboardHelpDialog': {
       'moveSkaterDescriptionStringProperty': LocalizedStringProperty;
       'moveAlongTrackDescriptionStringProperty': LocalizedStringProperty;

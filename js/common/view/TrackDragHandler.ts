@@ -81,18 +81,28 @@ export default class TrackDragHandler extends SoundDragListener {
   }
 
   public trackDragged( event: SceneryEvent, overrideParentPoint: Vector2 | null = null ): void {
-    let snapTargetChanged = false;
-    const model = this.model;
-    const track = this.track;
 
     // Check whether the model contains a track so that input listeners for detached elements can't create bugs, see #230
-    if ( !model.containsTrack( track ) ) { return; }
+    if ( !this.model.containsTrack( this.track ) ) { return; }
 
-    track.draggingProperty.value = true;
+    this.track.draggingProperty.value = true;
 
     const myPt = overrideParentPoint || this.globalToParentPoint( event.pointer.point );
     const parentPoint = myPt.minus( this.startOffset! );
     const position = this.modelViewTransform.viewToModelPosition( parentPoint );
+
+    this.dragToModelPosition( position );
+  }
+
+  /**
+   * Core position-update logic for track dragging. Constrains the position, handles snap detection,
+   * bumps the track above ground, and notifies the model. This is called by both the pointer-based
+   * trackDragged() and the TrackKeyboardDragListener.
+   */
+  public dragToModelPosition( position: Vector2 ): void {
+    let snapTargetChanged = false;
+    const model = this.model;
+    const track = this.track;
 
     // If the user moved it out of the toolbox above y=0, then make it physically interactive
     const bottomControlPointY = track.getBottomControlPointY();

@@ -9,12 +9,16 @@
 
 import Emitter from '../../../../axon/js/Emitter.js';
 import Shape from '../../../../kite/js/Shape.js';
+import { combineOptions } from '../../../../phet-core/js/optionize.js';
+import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
-import Circle from '../../../../scenery/js/nodes/Circle.js';
+import Circle, { CircleOptions } from '../../../../scenery/js/nodes/Circle.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
+import ControlPointKeyboardDragListener from './ControlPointKeyboardDragListener.js';
 import ControlPointUI from './ControlPointUI.js';
 import TrackDragHandler from './TrackDragHandler.js';
 import TrackNode from './TrackNode.js';
@@ -47,7 +51,7 @@ export default class ControlPointNode extends Circle {
     const opacity = 0.7;
     const highlightedOpacity = 0.85;
 
-    super( 17, {
+    super( 17, combineOptions<CircleOptions>( {}, {
       pickable: true,
       opacity: opacity,
       stroke: 'black',
@@ -56,8 +60,9 @@ export default class ControlPointNode extends Circle {
       cursor: 'pointer',
       translation: modelViewTransform.modelToViewPosition( controlPoint.positionProperty.value ),
       tandem: tandem,
-      visiblePropertyOptions: { phetioState: false }
-    } );
+      visiblePropertyOptions: { phetioState: false },
+      accessibleName: EnergySkateParkFluent.a11y.controlPointNode.accessibleNameStringProperty
+    }, AccessibleDraggableOptions ) );
 
     // Show a dotted line for the exterior track points, which can be connected to other track
     if ( track.attachable ) {
@@ -289,6 +294,8 @@ export default class ControlPointNode extends Circle {
         disposer: this
       } );
 
+      const controlPointKeyboardDragListener = new ControlPointKeyboardDragListener( trackNode, i, isEndPoint );
+      this.addInputListener( controlPointKeyboardDragListener, { disposer: this } );
     }
 
     this.touchArea = Shape.circle( 0, 0, 25 );

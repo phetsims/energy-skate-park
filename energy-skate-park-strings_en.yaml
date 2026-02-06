@@ -83,6 +83,8 @@ a11y:
       accessibleName: Measuring Tape
   trackToolboxPanel:
     accessibleName: Track
+  controlPointNode:
+    accessibleName: Control Point
   keyboardHelpDialog:
     moveSkaterDescription:          Move skater in any direction when off track
     moveAlongTrackDescription:      Move skater along track when attached

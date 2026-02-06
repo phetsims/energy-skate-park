@@ -15,6 +15,7 @@ import LineStyles from '../../../../kite/js/util/LineStyles.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
+import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
@@ -26,6 +27,7 @@ import Track from '../model/Track.js';
 import SplineEvaluation from '../SplineEvaluation.js';
 import ControlPointNode from './ControlPointNode.js';
 import TrackDragHandler from './TrackDragHandler.js';
+import TrackKeyboardDragListener from './TrackKeyboardDragListener.js';
 
 type SelfOptions = { roadCursorOverride?: string | null; isIcon?: boolean };
 export type TrackNodeOptions = SelfOptions & NodeOptions;
@@ -85,10 +87,9 @@ export default class TrackNode extends Node {
 
     super( options );
 
-    // Make draggable tracks focusable so they can receive keyboard focus after creation
+    // Make draggable tracks keyboard-accessible with proper ARIA attributes
     if ( track.draggable ) {
-      this.tagName = 'div';
-      this.focusable = true;
+      this.mutate( AccessibleDraggableOptions );
       this.accessibleName = EnergySkateParkFluent.a11y.trackToolboxPanel.accessibleNameStringProperty;
     }
 
@@ -126,6 +127,9 @@ export default class TrackNode extends Node {
     if ( track.draggable ) {
       this.trackDragHandler = new TrackDragHandler( this, tandem.createTandem( 'trackDragHandler' ) );
       this.road.addInputListener( this.trackDragHandler );
+
+      const trackKeyboardDragListener = new TrackKeyboardDragListener( this, this.trackDragHandler, tandem.createTandem( 'trackKeyboardDragListener' ) );
+      this.addInputListener( trackKeyboardDragListener, { disposer: this } );
     }
 
     // only "configurable" tracks have draggable control points, and individual control points may have dragging

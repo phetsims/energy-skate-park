@@ -235,6 +235,11 @@
         "value": "Track"
       }
     },
+    "controlPointNode": {
+      "accessibleName": {
+        "value": "Control Point"
+      }
+    },
     "keyboardHelpDialog": {
       "moveSkaterDescription": {
         "value": "Move skater in any direction when off track"
