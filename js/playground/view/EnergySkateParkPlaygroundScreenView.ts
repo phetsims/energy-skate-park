@@ -78,7 +78,7 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     // Add track toolbox and clear button to the control area PDOM order (before timeControlNode)
     const controlOrder = this.pdomControlAreaNode.pdomOrder!;
     const timeControlIndex = controlOrder.indexOf( this.timeControlNode );
-    controlOrder.splice( timeControlIndex, 0, this.trackToolbox, this.clearButton );
+    controlOrder.splice( timeControlIndex, 0, this.clearButton, this.trackToolbox );
     this.pdomControlAreaNode.pdomOrder = controlOrder;
 
     // Add track layer to play area PDOM order so dynamically created TrackNodes are keyboard-reachable
