@@ -65,6 +65,14 @@ export default class ControlPointNode extends Circle {
       accessibleName: EnergySkateParkFluent.a11y.controlPointNode.accessibleNameStringProperty
     }, AccessibleDraggableOptions ) );
 
+    // Control points should only be focusable when the track is physical (in the play area).
+    // When the track is in the toolbox, only the entire TrackNode should be focusable.
+    const physicalListener = ( isPhysical: boolean ) => {
+      this.focusable = isPhysical;
+    };
+    track.physicalProperty.link( physicalListener );
+    this.addDisposable( { dispose: () => track.physicalProperty.unlink( physicalListener ) } );
+
     // Show a dotted line for the exterior track points, which can be connected to other track
     if ( track.attachable ) {
       if ( i === 0 || i === track.controlPoints.length - 1 ) {
