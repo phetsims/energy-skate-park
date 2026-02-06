@@ -578,6 +578,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     // Play Area elements
     this.pdomPlayAreaNode.pdomOrder = [
       this.skaterNode,
+      this.trackLayer,
       returnSkaterToPreviousStartingPositionButton,
       returnSkaterToGroundButton,
       this.referenceHeightLine,

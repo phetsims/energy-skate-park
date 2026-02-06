@@ -81,11 +81,6 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     controlOrder.splice( timeControlIndex, 0, this.clearButton, this.trackToolbox );
     this.pdomControlAreaNode.pdomOrder = controlOrder;
 
-    // Add track layer to play area PDOM order so dynamically created TrackNodes are keyboard-reachable
-    const playOrder = this.pdomPlayAreaNode.pdomOrder!;
-    playOrder.push( this.trackLayer );
-    this.pdomPlayAreaNode.pdomOrder = playOrder;
-
     // Some model elements are spuriously created when creating the track panel -- clear those out now so that the PhET-iO
     // changed state starts clear, see https://github.com/phetsims/energy-skate-park/issues/49
     model.reset();
