@@ -44,12 +44,19 @@ export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView 
 
     this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ), this );
     this.addToBottomLayer( this.graphAccordionBox );
+
+    this.pdomControlAreaNode.pdomOrder = [
+      this.graphAccordionBox,
+      this.graphAccordionBox.variableSwitch,
+      this.graphAccordionBox.eraserButton,
+      ...this.pdomControlAreaNode.pdomOrder!
+    ];
   }
 
   /**
    * Special layout for the energy-skate-park, contents can float to the available bounds.
    */
-  public override layout( viewBounds: Bounds2 ):void {
+  public override layout( viewBounds: Bounds2 ): void {
     super.layout( viewBounds );
 
     // the graph within the accordion box needs to line up with the right edge of the track and grid lines so that

@@ -25,8 +25,8 @@ import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
-import ABSwitch from '../../../../sun/js/ABSwitch.js';
 import TColor from '../../../../scenery/js/util/TColor.js';
+import ABSwitch from '../../../../sun/js/ABSwitch.js';
 import AccordionBox, { AccordionBoxOptions } from '../../../../sun/js/AccordionBox.js';
 import VerticalCheckboxGroup, { VerticalCheckboxGroupItem } from '../../../../sun/js/VerticalCheckboxGroup.js';
 import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
@@ -63,6 +63,8 @@ const LABEL_FONT = new PhetFont( { size: 15 } );
 
 export default class EnergyGraphAccordionBox extends AccordionBox {
   private readonly energyPlot: EnergyChart;
+  public readonly variableSwitch: ABSwitch<'position' | 'time'>;
+  public readonly eraserButton: EraserButton;
 
   public constructor( private readonly model: GraphsModel, modelViewTransform: ModelViewTransform2, tandem: Tandem, parentLayer: Node ) {
 
@@ -140,7 +142,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       tandem: tandem.createTandem( 'zoomButtonGroup' )
     } );
 
-    // graph labels - y axis includes zoom buttons as part of the label
+    // graph labels - y-axis includes zoom buttons as part of the label
     const yLabelText = new Text( plotsEnergyLabelStringProperty, {
       rotation: -Math.PI / 2,
       font: LABEL_FONT,
@@ -196,6 +198,9 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       expandedProperty: model.energyPlotVisibleProperty,
       tandem: tandem.createTandem( 'accordionBox' )
     }, EnergySkateParkConstants.PANEL_OPTIONS ) );
+
+    this.variableSwitch = variableSwitch;
+    this.eraserButton = eraserButton;
 
     // decorate the parent layer with additional controls that are positioned along the title
     parentLayer.addChild( variableSwitch );
