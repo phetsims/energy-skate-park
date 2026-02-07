@@ -154,8 +154,8 @@ export default class EnergyChart extends XYCursorChartNode {
 
     // Arrow keys scrub through recorded data
     const keyboardDragListener = new SoundKeyboardDragListener( {
-      dragSpeed: 150,
-      shiftDragSpeed: 50,
+      dragSpeed: 100,
+      shiftDragSpeed: 25,
       keyboardDragDirection: 'leftRight',
       transform: modelViewTransformProperty,
       start: () => {
@@ -187,6 +187,11 @@ export default class EnergyChart extends XYCursorChartNode {
         }
 
         dragEndedEmitter.emit();
+
+        // Hide the drag cue after a successful keyboard drag
+        if ( this.chartCursor.dragCueArrowNode ) {
+          this.chartCursor.dragCueArrowNode.visible = false;
+        }
       }
     } );
     this.chartCursor.addInputListener( keyboardDragListener );
