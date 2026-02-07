@@ -10,8 +10,8 @@ import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
-import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
+import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
@@ -91,7 +91,7 @@ export default class TrackDragHandler extends SoundDragListener {
     const parentPoint = myPt.minus( this.startOffset! );
     const position = this.modelViewTransform.viewToModelPosition( parentPoint );
 
-    this.dragToModelPosition( position );
+    this.dragToModelPosition( position, true );
   }
 
   /**
@@ -99,7 +99,7 @@ export default class TrackDragHandler extends SoundDragListener {
    * bumps the track above ground, and notifies the model. This is called by both the pointer-based
    * trackDragged() and the TrackKeyboardDragListener.
    */
-  public dragToModelPosition( position: Vector2 ): void {
+  public dragToModelPosition( position: Vector2, allowSnap: boolean ): void {
     let snapTargetChanged = false;
     const model = this.model;
     const track = this.track;
@@ -145,66 +145,68 @@ export default class TrackDragHandler extends SoundDragListener {
     track.position = position;
 
     // If one of the control points is close enough to link to another track, do so
-    const tracks = model.getPhysicalTracks();
+    if ( allowSnap ) {
+      const tracks = model.getPhysicalTracks();
 
-    let bestDistance = null;
-    let myBestPoint = null;
-    let otherBestPoint = null;
+      let bestDistance = null;
+      let myBestPoint = null;
+      let otherBestPoint = null;
 
-    const points = [ track.controlPoints[ 0 ], track.controlPoints[ track.controlPoints.length - 1 ] ];
+      const points = [ track.controlPoints[ 0 ], track.controlPoints[ track.controlPoints.length - 1 ] ];
 
-    for ( let i = 0; i < tracks.length; i++ ) {
-      const t = tracks[ i ];
-      if ( t !== track ) {
+      for ( let i = 0; i < tracks.length; i++ ) {
+        const t = tracks[ i ];
+        if ( t !== track ) {
 
-        // 4 cases 00, 01, 10, 11
-        const otherPoints = [ t.controlPoints[ 0 ], t.controlPoints[ t.controlPoints.length - 1 ] ];
+          // 4 cases 00, 01, 10, 11
+          const otherPoints = [ t.controlPoints[ 0 ], t.controlPoints[ t.controlPoints.length - 1 ] ];
 
-        // don't match inner points
-        for ( let j = 0; j < points.length; j++ ) {
-          const point = points[ j ];
-          for ( let k = 0; k < otherPoints.length; k++ ) {
-            const otherPoint = otherPoints[ k ];
-            const distance = point.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
+          // don't match inner points
+          for ( let j = 0; j < points.length; j++ ) {
+            const point = points[ j ];
+            for ( let k = 0; k < otherPoints.length; k++ ) {
+              const otherPoint = otherPoints[ k ];
+              const distance = point.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
 
-            if ( ( bestDistance === null && distance > 1E-6 ) || ( bestDistance !== null && distance < bestDistance ) ) {
-              bestDistance = distance;
-              myBestPoint = point;
-              otherBestPoint = otherPoint;
+              if ( ( bestDistance === null && distance > 1E-6 ) || ( bestDistance !== null && distance < bestDistance ) ) {
+                bestDistance = distance;
+                myBestPoint = point;
+                otherBestPoint = otherPoint;
+              }
             }
           }
         }
       }
-    }
 
-    if ( bestDistance !== null && bestDistance < 1 && myBestPoint ) {
+      if ( bestDistance !== null && bestDistance < 1 && myBestPoint ) {
 
-      if ( myBestPoint.snapTargetProperty.value !== otherBestPoint ) {
-        snapTargetChanged = true;
+        if ( myBestPoint.snapTargetProperty.value !== otherBestPoint ) {
+          snapTargetChanged = true;
+        }
+
+        myBestPoint.snapTargetProperty.value = otherBestPoint;
+
+        // Set the opposite point to be unsnapped, you can only snap one at a time
+        const source = ( myBestPoint === points[ 0 ] ? points[ 1 ] : points[ 0 ] );
+        if ( source.snapTargetProperty.value !== null ) {
+          snapTargetChanged = true;
+        }
+        source.snapTargetProperty.value = null;
+      }
+      else {
+
+        if ( points[ 0 ].snapTargetProperty.value !== null || points[ 1 ].snapTargetProperty.value !== null ) {
+          snapTargetChanged = true;
+        }
+        points[ 0 ].snapTargetProperty.value = null;
+        points[ 1 ].snapTargetProperty.value = null;
       }
 
-      myBestPoint.snapTargetProperty.value = otherBestPoint;
-
-      // Set the opposite point to be unsnapped, you can only snap one at a time
-      const source = ( myBestPoint === points[ 0 ] ? points[ 1 ] : points[ 0 ] );
-      if ( source.snapTargetProperty.value !== null ) {
-        snapTargetChanged = true;
+      // It costs about 5fps to do this every frame (on iPad3), so only check if the snapTargets have changed.  See #235
+      if ( snapTargetChanged ) {
+        track.updateSplines();
+        this.trackNode.updateTrackShape();
       }
-      source.snapTargetProperty.value = null;
-    }
-    else {
-
-      if ( points[ 0 ].snapTargetProperty.value !== null || points[ 1 ].snapTargetProperty.value !== null ) {
-        snapTargetChanged = true;
-      }
-      points[ 0 ].snapTargetProperty.value = null;
-      points[ 1 ].snapTargetProperty.value = null;
-    }
-
-    // It costs about 5fps to do this every frame (on iPad3), so only check if the snapTargets have changed.  See #235
-    if ( snapTargetChanged ) {
-      track.updateSplines();
-      this.trackNode.updateTrackShape();
     }
 
     // Make it so the track can't be dragged underground when dragged by the track itself (not control point), see #166

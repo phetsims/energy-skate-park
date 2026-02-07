@@ -42,7 +42,7 @@ export default class TrackKeyboardDragListener extends SoundKeyboardDragListener
         const newPosition = track.position.plus( modelDelta );
 
         // Delegate to TrackDragHandler which handles all constraint, snap-detection, and bump-above-ground logic
-        trackDragHandler.dragToModelPosition( newPosition );
+        trackDragHandler.dragToModelPosition( newPosition, false );
       },
       end: () => {
         trackDragHandler.trackDragEnded();
