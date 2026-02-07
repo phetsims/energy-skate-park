@@ -16,6 +16,7 @@ import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
+import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
@@ -130,6 +131,55 @@ export default class TrackNode extends Node {
 
       const trackKeyboardDragListener = new TrackKeyboardDragListener( this, this.trackDragHandler, tandem.createTandem( 'trackKeyboardDragListener' ) );
       this.addInputListener( trackKeyboardDragListener, { disposer: this } );
+
+      // Delete/backspace removes the entire track when focused
+      if ( track.splittable ) {
+        this.addInputListener( new KeyboardListener( {
+          keys: [ 'delete', 'backspace' ] as const,
+          fire: () => {
+            if ( track.physicalProperty.value && !track.isDisposed ) {
+
+              // Capture the trackLayer before disposal removes this TrackNode
+              const trackLayer = this.parents[ 0 ];
+
+              // Remove track and its control points from the model
+              track.removeEmitter.emit();
+              model.removeAndDisposeTrack( track );
+              track.disposeControlPoints();
+              model.trackChangedEmitter.emit();
+
+              // Detach skater if on this track
+              if ( model.skater.trackProperty.value === track ) {
+                model.skater.trackProperty.value = null;
+              }
+
+              // Move focus to another track in the play area
+              for ( const child of trackLayer.children ) {
+                if ( child instanceof TrackNode && !child.isDisposed && child.focusable ) {
+                  child.focus();
+                  return;
+                }
+              }
+
+              // No tracks remain, focus the track toolbox icon
+              let root = trackLayer;
+              while ( root.parents.length > 0 ) {
+                root = root.parents[ 0 ];
+              }
+              const toolboxName = EnergySkateParkFluent.a11y.trackToolboxPanel.accessibleNameStringProperty.value;
+              const queue = [ ...root.children ];
+              while ( queue.length > 0 ) {
+                const node = queue.shift()!;
+                if ( node.focusable && node.accessibleName === toolboxName ) {
+                  node.focus();
+                  return;
+                }
+                queue.push( ...node.children );
+              }
+            }
+          }
+        } ), { disposer: this } );
+      }
     }
 
     // only "configurable" tracks have draggable control points, and individual control points may have dragging
