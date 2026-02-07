@@ -30,19 +30,19 @@ export default class EnergySkateParkPreferencesNode extends Node {
     const newtonsPerKilogramLabel = new Text( EnergySkateParkFluent.preferences.newtonsPerKilogramStringProperty,
       PreferencesDialogConstants.TOGGLE_SWITCH_LABEL_OPTIONS );
 
-    const accelarationUnitsSwitch = new ABSwitch( preferencesModel.accelerationUnitsProperty,
+    const accelerationUnitsSwitch = new ABSwitch( preferencesModel.accelerationUnitsProperty,
       EnergySkateParkPreferencesModel.AccelerationUnits.METERS_PER_SECOND_SQUARED,
       metersPerSecondSquaredLabel,
       EnergySkateParkPreferencesModel.AccelerationUnits.NEWTONS_PER_KILOGRAM,
       newtonsPerKilogramLabel,
       { toggleSwitchOptions: PreferencesDialogConstants.TOGGLE_SWITCH_OPTIONS }
-      );
+    );
 
     const accelerationUnitsControl = new PreferencesControl(
       {
         labelNode: new Text( EnergySkateParkFluent.preferences.accelerationUnitsStringProperty, PreferencesDialogConstants.CONTROL_LABEL_OPTIONS ),
         labelSpacing: 20,
-        controlNode: accelarationUnitsSwitch
+        controlNode: accelerationUnitsSwitch
       }
     );
 
