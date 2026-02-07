@@ -23,6 +23,8 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
+import Node from '../../../../scenery/js/nodes/Node.js';
+import Text from '../../../../scenery/js/nodes/Text.js';
 import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -137,6 +139,16 @@ export default class EnergyChart extends XYCursorChartNode {
         }
       }
     } );
+
+    // Prevent layout flicker when x-axis labels change width during time-mode scrolling.
+    // A fixed-bounds spacer ensures the chart always reserves space for labels up to "999".
+    const maxLabelReference = new Text( '999', { font: new PhetFont( 12 ) } );
+    const maxLabelHalfWidth = maxLabelReference.width / 2;
+    const labelTop = graphHeight + 3; // Labels are positioned 3px below the chart bottom
+    this.addChild( new Node( {
+      localBounds: new Bounds2( -maxLabelHalfWidth, labelTop, graphWidth + maxLabelHalfWidth, labelTop + maxLabelReference.height ),
+      pickable: false
+    } ) );
 
     // Make the chart cursor keyboard accessible
     this.chartCursor.tagName = 'div';
