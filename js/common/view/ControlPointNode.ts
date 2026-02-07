@@ -12,6 +12,7 @@ import Shape from '../../../../kite/js/Shape.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
+import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Circle, { CircleOptions } from '../../../../scenery/js/nodes/Circle.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -310,6 +311,50 @@ export default class ControlPointNode extends Circle {
       if ( isEndPoint && track.attachable ) {
         const attachmentListener = new ControlPointAttachmentKeyboardListener( this, trackNode, i );
         this.addInputListener( attachmentListener, { disposer: this } );
+      }
+
+      // Delete/backspace removes the control point, same as the "x" button in ControlPointUI
+      if ( track.splittable ) {
+        this.addInputListener( new KeyboardListener( {
+          keys: [ 'delete', 'backspace' ] as const,
+          fire: () => {
+            if ( track.physicalProperty.value && !track.isDisposed ) {
+
+              // Capture the trackLayer before deletion disposes this trackNode
+              const trackLayer = trackNode.parents[ 0 ];
+
+              model.deleteControlPoint( track, i );
+
+              // Move focus to another control point in the play area
+              for ( const child of trackLayer.children ) {
+                if ( !child.isDisposed ) {
+                  for ( const grandchild of child.children ) {
+                    if ( grandchild instanceof ControlPointNode && grandchild.focusable ) {
+                      grandchild.focus();
+                      return;
+                    }
+                  }
+                }
+              }
+
+              // No control points remain, focus the track toolbox icon by searching the scene graph
+              let root = trackLayer;
+              while ( root.parents.length > 0 ) {
+                root = root.parents[ 0 ];
+              }
+              const toolboxName = EnergySkateParkFluent.a11y.trackToolboxPanel.accessibleNameStringProperty.value;
+              const queue = [ ...root.children ];
+              while ( queue.length > 0 ) {
+                const node = queue.shift()!;
+                if ( node.focusable && node.accessibleName === toolboxName ) {
+                  node.focus();
+                  return;
+                }
+                queue.push( ...node.children );
+              }
+            }
+          }
+        } ), { disposer: this } );
       }
     }
 
