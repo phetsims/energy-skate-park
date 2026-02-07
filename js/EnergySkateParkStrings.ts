@@ -136,6 +136,9 @@ type StringsType = {
     'pathSensorNode': {
       'accessibleNameStringProperty': LocalizedStringProperty;
     };
+    'energyChart': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+    };
     'controlPointAttachment': {
       'leftStringProperty': LocalizedStringProperty;
       'rightStringProperty': LocalizedStringProperty;

@@ -245,6 +245,11 @@
         "value": "Energy Sensor"
       }
     },
+    "energyChart": {
+      "accessibleName": {
+        "value": "Graph Cursor"
+      }
+    },
     "controlPointAttachment": {
       "left": {
         "value": "Left"

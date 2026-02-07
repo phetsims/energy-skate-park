@@ -87,6 +87,8 @@ a11y:
     accessibleName: Control Point
   pathSensorNode:
     accessibleName: Energy Sensor
+  energyChart:
+    accessibleName: Graph Cursor
   controlPointAttachment:
     left: Left
     right: Right

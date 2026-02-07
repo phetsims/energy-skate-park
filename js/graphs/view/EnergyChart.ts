@@ -12,6 +12,7 @@ import Emitter from '../../../../axon/js/Emitter.js';
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
+import Utils from '../../../../dot/js/Utils.js';
 import DynamicSeries from '../../../../griddle/js/DynamicSeries.js';
 import DynamicSeriesNode from '../../../../griddle/js/DynamicSeriesNode.js';
 import PointStyle from '../../../../griddle/js/PointStyle.js';
@@ -20,12 +21,15 @@ import XYCursorChartNode from '../../../../griddle/js/XYCursorChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
+import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
+import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 
@@ -133,6 +137,59 @@ export default class EnergyChart extends XYCursorChartNode {
         }
       }
     } );
+
+    // Make the chart cursor keyboard accessible
+    this.chartCursor.tagName = 'div';
+    this.chartCursor.focusable = true;
+    this.chartCursor.ariaRole = 'application';
+    this.chartCursor.accessibleName = EnergySkateParkFluent.a11y.energyChart.accessibleNameStringProperty;
+
+    // Space/Enter toggles pause
+    this.chartCursor.addInputListener( new KeyboardListener( {
+      keys: [ 'space', 'enter' ] as const,
+      fire: () => {
+        model.pausedProperty.toggle();
+      }
+    } ) );
+
+    // Arrow keys scrub through recorded data
+    const keyboardDragListener = new SoundKeyboardDragListener( {
+      dragSpeed: 150,
+      shiftDragSpeed: 50,
+      keyboardDragDirection: 'leftRight',
+      transform: modelViewTransformProperty,
+      start: () => {
+        pausedOnDragStart = model.pausedProperty.get();
+
+        if ( !pausedOnDragStart ) {
+          model.pausedProperty.set( true );
+        }
+
+        dragStartedEmitter.emit();
+      },
+      drag: ( event, listener ) => {
+        const newValue = Utils.clamp(
+          this.getCursorValue() + listener.modelDelta.x,
+          this.minRecordedXValue,
+          this.maxRecordedXValue
+        );
+        this.setCursorValue( newValue );
+
+        // Update skater to match the cursor position
+        const closestSample = model.getClosestSkaterSample( this.getCursorValue() );
+        model.setFromSample( closestSample );
+        closestSample.skaterState.setToSkater( model.skater );
+        model.skater.updatedEmitter.emit();
+      },
+      end: () => {
+        if ( !pausedOnDragStart ) {
+          model.pausedProperty.set( false );
+        }
+
+        dragEndedEmitter.emit();
+      }
+    } );
+    this.chartCursor.addInputListener( keyboardDragListener );
 
     const seriesOptions = { lineWidth: 2 };
 
