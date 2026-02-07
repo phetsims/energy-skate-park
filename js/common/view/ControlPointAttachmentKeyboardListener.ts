@@ -152,6 +152,9 @@ export default class ControlPointAttachmentKeyboardListener extends KeyboardList
               selectedTarget.positionProperty.value
             ).copy();
 
+            // Save snap target position before joinTracks disposes the original control points
+            const targetPosition = selectedTarget.positionProperty.value.copy();
+
             // Apply the connection: set snap target, dragging flags, update splines, join tracks
             controlPoint.snapTargetProperty.value = selectedTarget;
             controlPoint.draggingProperty.value = true;
@@ -162,31 +165,29 @@ export default class ControlPointAttachmentKeyboardListener extends KeyboardList
 
             cleanUp();
 
-            // Focus restoration: after join, original track is disposed. Focus the new merged track.
+            // Focus restoration: after join, original tracks are disposed and a new merged track is
+            // created with copied control points. Focus the ControlPointNode closest to the join position.
             animationFrameTimer.runOnNextTick( () => {
               cleanComboBoxDispose();
 
-              // Find the new track containing our selected target and try to focus it
-              const newTracks = model.getPhysicalTracks();
-              for ( const newTrack of newTracks ) {
-                if ( newTrack.containsControlPoint( selectedTarget ) ) {
-                  // Find the TrackNode for this track to focus it. The TrackNode should be in the same parent (trackLayer).
-                  for ( let c = 0; c < listParent.children.length; c++ ) {
-                    const child = listParent.children[ c ];
-                    if ( child instanceof TrackNode && child.track === newTrack ) {
-                      // Focus the endpoint ControlPointNode closest to the join point
-                      for ( let n = 0; n < child.children.length; n++ ) {
-                        const cpNode = child.children[ n ];
-                        if ( cpNode instanceof ControlPointNode && cpNode.focusable ) {
-                          cpNode.focus();
-                          break;
-                        }
+              const targetViewPosition = modelViewTransform.modelToViewPosition( targetPosition );
+              let bestNode: ControlPointNode | null = null;
+              let bestDist = Number.POSITIVE_INFINITY;
+              for ( const child of listParent.children ) {
+                if ( child instanceof TrackNode && !child.isDisposed ) {
+                  for ( const grandchild of child.children ) {
+                    if ( grandchild instanceof ControlPointNode && grandchild.focusable ) {
+                      const dist = grandchild.translation.distance( targetViewPosition );
+                      if ( dist < bestDist ) {
+                        bestDist = dist;
+                        bestNode = grandchild;
                       }
-                      break;
                     }
                   }
-                  break;
                 }
+              }
+              if ( bestNode ) {
+                bestNode.focus();
               }
             } );
           }
