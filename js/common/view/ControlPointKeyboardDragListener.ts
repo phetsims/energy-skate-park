@@ -9,6 +9,7 @@
  */
 
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
+import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import TrackNode from './TrackNode.js';
@@ -101,7 +102,36 @@ export default class ControlPointKeyboardDragListener extends SoundKeyboardDragL
         model.userControlledPropertySet.trackControlledProperty.set( false );
 
         if ( isEndPoint && controlPoint.snapTargetProperty.value ) {
+
+          // Save the snap target position before joinTracks disposes the original control points
+          const snapTargetPosition = controlPoint.snapTargetProperty.value.positionProperty.value.copy();
+          const trackLayer = trackNode.parents[ 0 ];
+
           model.joinTracks( track );
+
+          // After join, original tracks are disposed and a new merged track is created with copied
+          // control points. Focus the closest focusable node at the join position.
+          if ( trackLayer ) {
+            const targetViewPosition = modelViewTransform.modelToViewPosition( snapTargetPosition );
+            let bestNode: Node | null = null;
+            let bestDist = Number.POSITIVE_INFINITY;
+            for ( const child of trackLayer.children ) {
+              if ( child instanceof TrackNode && !child.isDisposed ) {
+                for ( const grandchild of child.children ) {
+                  if ( grandchild.focusable ) {
+                    const dist = grandchild.translation.distance( targetViewPosition );
+                    if ( dist < bestDist ) {
+                      bestDist = dist;
+                      bestNode = grandchild;
+                    }
+                  }
+                }
+              }
+            }
+            if ( bestNode ) {
+              bestNode.focus();
+            }
+          }
         }
         else {
           track.smoothPointOfHighestCurvature( [ controlPointIndex ] );
