@@ -577,8 +577,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
     // Set the pdomOrder for keyboard traversal using ScreenView's built-in PDOM structure
     // Play Area elements
     this.pdomPlayAreaNode.pdomOrder = [
-      this.skaterNode,
       this.trackLayer,
+      this.skaterNode,
       returnSkaterToPreviousStartingPositionButton,
       returnSkaterToGroundButton,
       this.referenceHeightLine,
