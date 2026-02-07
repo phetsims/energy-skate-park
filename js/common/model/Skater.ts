@@ -137,7 +137,7 @@ export default class Skater {
   // For making the 'return skater' button enabled/disabled
   // If this is a performance concern, perhaps it could just be dropped as a feature
   public readonly movedProperty: TReadOnlyProperty<boolean>;
-  private startingAngle?: number;
+  private readonly startingAngleProperty: NumberProperty;
   private startingTrackControlPointSources?: Vector2[];
 
   public constructor( tandem: Tandem, providedOptions?: SkaterOptions ) {
@@ -256,6 +256,11 @@ export default class Skater {
       tandem: tandem.createTandem( 'startingUpProperty' )
     } );
 
+    this.startingAngleProperty = new NumberProperty( 0, {
+      tandem: tandem.createTandem( 'startingAngleProperty' ),
+      units: 'radians'
+    } );
+
     this.startingTrackProperty = new Property<Track | null>( null, {
       valueType: [ null, Track ]
     } );
@@ -358,8 +363,6 @@ export default class Skater {
 
     // Notify the graphics to re-render.  See #223
     this.updatedEmitter.emit();
-
-    this.startingAngle = undefined;
   }
 
   /**
@@ -400,6 +403,7 @@ export default class Skater {
     this.startingPositionProperty.reset();
     this.startingUProperty.reset();
     this.startingUpProperty.reset();
+    this.startingAngleProperty.reset();
     this.startingTrackProperty.reset();
     this.headPositionProperty.reset();
   }
@@ -417,20 +421,13 @@ export default class Skater {
          _.isEqual( this.trackProperty.value.copyControlPointSources(), this.startingTrackControlPointSources )
     ) {
       this.parametricPositionProperty.value = this.startingUProperty.value;
-
-      if ( typeof this.startingAngle === 'number' ) {
-        this.angleProperty.value = this.startingAngle!;
-      }
-
+      this.angleProperty.value = this.startingAngleProperty.value;
       this.onTopSideOfTrackProperty.value = this.startingUpProperty.value;
       this.parametricSpeedProperty.value = 0;
     }
     else {
       this.trackProperty.value = null;
-
-      if ( typeof this.startingAngle === 'number' ) {
-        this.angleProperty.value = this.startingAngle!;
-      }
+      this.angleProperty.value = this.startingAngleProperty.value;
     }
     this.positionProperty.set( this.startingPositionProperty.value.copy() );
     this.velocityProperty.value = new Vector2( 0, 0 );
@@ -507,7 +504,7 @@ export default class Skater {
 
     // Record the starting track control points to make sure the track hasn't changed during return this.
     this.startingTrackControlPointSources = targetTrack ? targetTrack.copyControlPointSources() : [];
-    this.startingAngle = this.angleProperty.value;
+    this.startingAngleProperty.value = this.angleProperty.value;
 
     // Update the energy on skater release so it won't try to move to a different height to make up for the delta
     this.updateEnergy();
