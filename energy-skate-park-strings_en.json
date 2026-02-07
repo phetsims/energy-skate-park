@@ -168,6 +168,9 @@
     "accelerationUnits": {
       "value": "Acceleration Units"
     },
+    "accelerationUnitsDescription": {
+      "value": "Choose the units displayed in the Gravity Control."
+    },
     "metersPerSecondSquared": {
       "value": "m/s<sup>2</sup>"
     },
@@ -256,6 +259,14 @@
       },
       "right": {
         "value": "Right"
+      }
+    },
+    "preferences": {
+      "metersPerSecondSquaredRadioButton": {
+        "value": "meters per second squared"
+      },
+      "newtonsPerKilogramRadioButton": {
+        "value": "newtons per kilogram"
       }
     },
     "keyboardHelpDialog": {

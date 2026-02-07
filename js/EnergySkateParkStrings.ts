@@ -97,6 +97,7 @@ type StringsType = {
   };
   'preferences': {
     'accelerationUnitsStringProperty': LocalizedStringProperty;
+    'accelerationUnitsDescriptionStringProperty': LocalizedStringProperty;
     'metersPerSecondSquaredStringProperty': LocalizedStringProperty;
     'newtonsPerKilogramStringProperty': LocalizedStringProperty;
   };
@@ -142,6 +143,10 @@ type StringsType = {
     'controlPointAttachment': {
       'leftStringProperty': LocalizedStringProperty;
       'rightStringProperty': LocalizedStringProperty;
+    };
+    'preferences': {
+      'metersPerSecondSquaredRadioButtonStringProperty': LocalizedStringProperty;
+      'newtonsPerKilogramRadioButtonStringProperty': LocalizedStringProperty;
     };
     'keyboardHelpDialog': {
       'moveSkaterDescriptionStringProperty': LocalizedStringProperty;

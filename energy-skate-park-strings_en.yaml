@@ -57,9 +57,10 @@ speedometer:
   metersPerSecondPattern: '{{value}} m/s'
 measuringTape.units:        m
 preferences:
-  accelerationUnits:      Acceleration Units
-  metersPerSecondSquared: m/s<sup>2</sup>
-  newtonsPerKilogram:     N/kg
+  accelerationUnits:            Acceleration Units
+  accelerationUnitsDescription: Choose the units displayed in the Gravity Control.
+  metersPerSecondSquared:       m/s<sup>2</sup>
+  newtonsPerKilogram:           N/kg
 keyboardHelpDialog:
   skaterControls:      Skater Controls
   moveSkater:          Move skater
@@ -92,6 +93,9 @@ a11y:
   controlPointAttachment:
     left: Left
     right: Right
+  preferences:
+    metersPerSecondSquaredRadioButton: meters per second squared
+    newtonsPerKilogramRadioButton:     newtons per kilogram
   keyboardHelpDialog:
     moveSkaterDescription:          Move skater in any direction when off track
     moveAlongTrackDescription:      Move skater along track when attached

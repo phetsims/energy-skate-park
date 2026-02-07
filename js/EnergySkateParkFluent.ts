@@ -66,6 +66,7 @@ addToMapIfDefined( 'heightLabels_heightEqualsZero', 'heightLabels.heightEqualsZe
 addToMapIfDefined( 'speedometer_label', 'speedometer.labelStringProperty' );
 addToMapIfDefined( 'measuringTape_units', 'measuringTape.unitsStringProperty' );
 addToMapIfDefined( 'preferences_accelerationUnits', 'preferences.accelerationUnitsStringProperty' );
+addToMapIfDefined( 'preferences_accelerationUnitsDescription', 'preferences.accelerationUnitsDescriptionStringProperty' );
 addToMapIfDefined( 'preferences_metersPerSecondSquared', 'preferences.metersPerSecondSquaredStringProperty' );
 addToMapIfDefined( 'preferences_newtonsPerKilogram', 'preferences.newtonsPerKilogramStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_skaterControls', 'keyboardHelpDialog.skaterControlsStringProperty' );
@@ -88,6 +89,8 @@ addToMapIfDefined( 'a11y_pathSensorNode_accessibleName', 'a11y.pathSensorNode.ac
 addToMapIfDefined( 'a11y_energyChart_accessibleName', 'a11y.energyChart.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_controlPointAttachment_left', 'a11y.controlPointAttachment.leftStringProperty' );
 addToMapIfDefined( 'a11y_controlPointAttachment_right', 'a11y.controlPointAttachment.rightStringProperty' );
+addToMapIfDefined( 'a11y_preferences_metersPerSecondSquaredRadioButton', 'a11y.preferences.metersPerSecondSquaredRadioButtonStringProperty' );
+addToMapIfDefined( 'a11y_preferences_newtonsPerKilogramRadioButton', 'a11y.preferences.newtonsPerKilogramRadioButtonStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_moveSkaterDescription', 'a11y.keyboardHelpDialog.moveSkaterDescriptionStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_moveAlongTrackDescription', 'a11y.keyboardHelpDialog.moveAlongTrackDescriptionStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_detachFromTrackDescription', 'a11y.keyboardHelpDialog.detachFromTrackDescriptionStringProperty' );
@@ -191,6 +194,7 @@ const EnergySkateParkFluent = {
   },
   preferences: {
     accelerationUnitsStringProperty: _.get( EnergySkateParkStrings, 'preferences.accelerationUnitsStringProperty' ),
+    accelerationUnitsDescriptionStringProperty: _.get( EnergySkateParkStrings, 'preferences.accelerationUnitsDescriptionStringProperty' ),
     metersPerSecondSquaredStringProperty: _.get( EnergySkateParkStrings, 'preferences.metersPerSecondSquaredStringProperty' ),
     newtonsPerKilogramStringProperty: _.get( EnergySkateParkStrings, 'preferences.newtonsPerKilogramStringProperty' )
   },
@@ -236,6 +240,10 @@ const EnergySkateParkFluent = {
     controlPointAttachment: {
       leftStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_controlPointAttachment_left', _.get( EnergySkateParkStrings, 'a11y.controlPointAttachment.leftStringProperty' ) ),
       rightStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_controlPointAttachment_right', _.get( EnergySkateParkStrings, 'a11y.controlPointAttachment.rightStringProperty' ) )
+    },
+    preferences: {
+      metersPerSecondSquaredRadioButtonStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_preferences_metersPerSecondSquaredRadioButton', _.get( EnergySkateParkStrings, 'a11y.preferences.metersPerSecondSquaredRadioButtonStringProperty' ) ),
+      newtonsPerKilogramRadioButtonStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_preferences_newtonsPerKilogramRadioButton', _.get( EnergySkateParkStrings, 'a11y.preferences.newtonsPerKilogramRadioButtonStringProperty' ) )
     },
     keyboardHelpDialog: {
       moveSkaterDescriptionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_moveSkaterDescription', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.moveSkaterDescriptionStringProperty' ) ),
