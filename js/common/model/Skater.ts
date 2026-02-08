@@ -262,7 +262,9 @@ export default class Skater {
     } );
 
     this.startingTrackProperty = new Property<Track | null>( null, {
-      valueType: [ null, Track ]
+      valueType: [ null, Track ],
+      tandem: tandem.createTandem( 'startingTrackProperty' ),
+      phetioValueType: NullableIO( ReferenceIO( Track.TrackIO ) )
     } );
 
     this.headPositionProperty = new Vector2Property( this.getHeadPosition(), {
@@ -334,6 +336,9 @@ export default class Skater {
 
     // In the state wrapper, when the state changes, we must update the skater node
     phetioStateSetEmitter.addListener( () => {
+      if ( this.startingTrackProperty.value ) {
+        this.startingTrackControlPointSources = this.startingTrackProperty.value.copyControlPointSources();
+      }
       this.updatedEmitter.emit();
     } );
   }
