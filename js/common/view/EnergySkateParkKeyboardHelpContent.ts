@@ -10,6 +10,7 @@ import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import BasicActionsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/BasicActionsKeyboardHelpSection.js';
 import KeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSection.js';
 import KeyboardHelpSectionRow from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSectionRow.js';
+import TimeControlsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/TimeControlsKeyboardHelpSection.js';
 import TwoColumnKeyboardHelpContent from '../../../../scenery-phet/js/keyboard/help/TwoColumnKeyboardHelpContent.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -55,6 +56,7 @@ export default class EnergySkateParkKeyboardHelpContent extends TwoColumnKeyboar
 
     // Sections in the right column
     const rightSections = [
+      new TimeControlsKeyboardHelpSection(),
       new SimShortcutsKeyboardHelpSection( {
         includeReturnToolToToolbox: options.includeReturnToolToToolbox
       } ),
