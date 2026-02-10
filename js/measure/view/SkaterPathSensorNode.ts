@@ -25,7 +25,7 @@ import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import ProbeNode from '../../../../scenery-phet/js/ProbeNode.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
-import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
+import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import WireNode from '../../../../scenery-phet/js/WireNode.js';
 import AlignGroup from '../../../../scenery/js/layout/constraints/AlignGroup.js';
 import AlignBox from '../../../../scenery/js/layout/nodes/AlignBox.js';
@@ -72,6 +72,9 @@ const SENSOR_COLOR = 'rgb( 103, 80, 113 )';
 
 // max distance between sample and probe center for the sample to be displayed, in view coordinates
 const PROBE_THRESHOLD_DISTANCE = 10;
+
+// Home position for the probe, matching the default value in MeasureModel
+const PROBE_HOME_POSITION = new Vector2( -4, 1.5 );
 
 export default class SkaterPathSensorNode extends Node {
 
@@ -275,15 +278,63 @@ export default class SkaterPathSensorNode extends Node {
       tandem: options.tandem!.createTandem( 'dragListener' )
     } ) );
 
-    // keyboard drag listener for continuous motion (no discrete steps)
-    this.probeNode.addInputListener( new SoundKeyboardDragListener( {
-      transform: modelViewTransform,
-      positionProperty: sensorProbePositionProperty,
-      dragBoundsProperty: modelBoundsProperty,
-      dragSpeed: 300,
-      shiftDragSpeed: 75,
-      tandem: options.tandem!.createTandem( 'keyboardDragListener' )
-    } ) );
+    // Keyboard listener that cycles the probe through data samples in temporal order, with a home waypoint.
+    const keyboardListener = new KeyboardListener( {
+      keys: [ 'arrowRight', 'arrowUp', 'd', 'w', 'arrowLeft', 'arrowDown', 'a', 's' ] as const,
+      fireOnHold: true,
+      fire: ( event, keysPressed ) => {
+        if ( samples.length === 0 ) {
+          return;
+        }
+
+        const increment = keysPressed === 'arrowRight' || keysPressed === 'arrowUp' || keysPressed === 'd' || keysPressed === 'w';
+        const direction = increment ? 1 : -1;
+
+        // Build waypoints: home position followed by sample positions in temporal order
+        const waypoints = [ PROBE_HOME_POSITION, ...samples.map( sample => sample.position ) ];
+
+        // Find which waypoint the probe is currently on (within threshold distance in view coords)
+        const currentProbePosition = sensorProbePositionProperty.value;
+        const currentViewPosition = modelViewTransform.modelToViewPosition( currentProbePosition );
+        let currentIndex = -1;
+        let minDistance = Number.POSITIVE_INFINITY;
+
+        for ( let i = 0; i < waypoints.length; i++ ) {
+          const waypointView = modelViewTransform.modelToViewPosition( waypoints[ i ] );
+          const distance = currentViewPosition.distance( waypointView );
+          if ( distance < PROBE_THRESHOLD_DISTANCE && distance < minDistance ) {
+            currentIndex = i;
+            minDistance = distance;
+          }
+        }
+
+        let targetPosition: Vector2;
+        if ( currentIndex >= 0 ) {
+
+          // On a waypoint: cycle to next/previous
+          const nextIndex = ( currentIndex + direction + waypoints.length ) % waypoints.length;
+          targetPosition = waypoints[ nextIndex ];
+        }
+        else {
+
+          // Not on any waypoint (mouse-dragged or sample disappeared): snap to nearest sample spatially
+          let nearestDistance = Number.POSITIVE_INFINITY;
+          targetPosition = waypoints[ 0 ]; // fallback to home
+          for ( let i = 0; i < waypoints.length; i++ ) {
+            const waypointView = modelViewTransform.modelToViewPosition( waypoints[ i ] );
+            const distance = currentViewPosition.distance( waypointView );
+            if ( distance < nearestDistance ) {
+              nearestDistance = distance;
+              targetPosition = waypoints[ i ];
+            }
+          }
+        }
+
+        sensorProbePositionProperty.value = targetPosition;
+      }
+    } );
+    this.probeNode.addInputListener( keyboardListener );
+    this.addDisposable( keyboardListener );
   }
 
   /**
