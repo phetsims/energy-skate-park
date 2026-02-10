@@ -398,6 +398,8 @@ export default class SkaterPathSensorNode extends Node {
    * Display values associated with a sample of skater state.
    */
   private displayState( dataSample: EnergySkateParkDataSample ): void {
+    const sampleChanged = this.inspectedSample !== dataSample;
+
     if ( this.inspectedSample ) {
       this.inspectedSample.inspectedProperty.set( false );
     }
@@ -434,8 +436,8 @@ export default class SkaterPathSensorNode extends Node {
     // Update PDOM paragraph so user can re-read the last reading
     this.currentReadingProperty.value = readingText;
 
-    // Announce for user-initiated actions only (keyboard or mouse drag)
-    if ( this.isKeyboardAction || this.isDragging ) {
+    // Announce only when landing on a new sample via user-initiated action
+    if ( sampleChanged && ( this.isKeyboardAction || this.isDragging ) ) {
       this.probeNode.addAccessibleContextResponse( readingText, { interruptible: true } );
     }
   }
