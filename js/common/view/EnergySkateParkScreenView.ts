@@ -35,6 +35,7 @@ import Path from '../../../../scenery/js/nodes/Path.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -105,6 +106,15 @@ type SelfOptions = {
 export type EnergySkateParkScreenViewOptions = SelfOptions & ScreenViewOptions;
 
 export default class EnergySkateParkScreenView extends ScreenView {
+
+  public static readonly RESTART_SKATER_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'alt+s' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.restartSkaterStringProperty,
+    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkFluent.a11y.keyboardHelpDialog.restartSkaterDescriptionStringProperty,
+    global: true
+  } );
+
   public readonly modelViewTransform: ModelViewTransform2;
   protected readonly availableModelBoundsProperty: Property<Bounds2>;
   protected readonly trackNodeGroup: { createNextElement( track: Track, modelViewTransform: ModelViewTransform2, availableBoundsProperty: Property<Bounds2>, options?: TrackNodeOptions ): TrackNode };
@@ -281,6 +291,16 @@ export default class EnergySkateParkScreenView extends ScreenView {
     // Disable the return skater button when the skater is already at his initial coordinates
     model.skater.movedProperty.linkAttribute( this.returnSkaterButton, 'enabled' );
     this.bottomLayer.addChild( this.returnSkaterButton );
+
+    // Global hotkey to restart the skater, same behavior as the returnSkaterButton
+    KeyboardListener.createGlobal( this, {
+      keyStringProperties: EnergySkateParkScreenView.RESTART_SKATER_HOTKEY_DATA.keyStringProperties,
+      fire: () => {
+        if ( model.skater.movedProperty.value ) {
+          model.returnSkater();
+        }
+      }
+    } );
 
     const gaugeRadius = 76;
 
