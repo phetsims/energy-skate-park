@@ -199,6 +199,12 @@
     },
     "moveReferenceHeight": {
       "value": "Move reference height line"
+    },
+    "simShortcuts": {
+      "value": "Sim Shortcuts"
+    },
+    "restartSkater": {
+      "value": "Restart Skater"
     }
   },
   "a11y": {
@@ -284,6 +290,9 @@
       },
       "moveReferenceHeightDescription": {
         "value": "Adjust the reference height line up or down"
+      },
+      "restartSkaterDescription": {
+        "value": "Return skater to starting position"
       }
     }
   }

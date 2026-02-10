@@ -109,6 +109,8 @@ type StringsType = {
     'detachFromTrackStringProperty': LocalizedStringProperty;
     'attachToTrackStringProperty': LocalizedStringProperty;
     'moveReferenceHeightStringProperty': LocalizedStringProperty;
+    'simShortcutsStringProperty': LocalizedStringProperty;
+    'restartSkaterStringProperty': LocalizedStringProperty;
   };
   'a11y': {
     'skaterNode': {
@@ -154,6 +156,7 @@ type StringsType = {
       'detachFromTrackDescriptionStringProperty': LocalizedStringProperty;
       'attachToTrackDescriptionStringProperty': LocalizedStringProperty;
       'moveReferenceHeightDescriptionStringProperty': LocalizedStringProperty;
+      'restartSkaterDescriptionStringProperty': LocalizedStringProperty;
     }
   }
 };
