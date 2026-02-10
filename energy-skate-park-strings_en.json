@@ -252,14 +252,17 @@
       }
     },
     "toolboxPanel": {
+      "accessibleHeading": {
+        "value": "Toolbox"
+      },
       "stopwatch": {
         "accessibleName": {
-          "value": "Stopwatch"
+          "value": "Add Stopwatch"
         }
       },
       "measuringTape": {
         "accessibleName": {
-          "value": "Measuring Tape"
+          "value": "Add Measuring Tape"
         }
       }
     },
@@ -289,6 +292,263 @@
       },
       "right": {
         "value": "Right"
+      }
+    },
+    "energyBarGraphAccordionBox": {
+      "accessibleName": {
+        "value": "Energy Bar Graph"
+      },
+      "accessibleHelpTextExpanded": {
+        "value": "Bar Graph displays skater's energy in real time. Pause to analyze values."
+      },
+      "clearThermalButton": {
+        "accessibleName": {
+          "value": "Clear Thermal Energy"
+        },
+        "accessibleHelpText": {
+          "value": "Removes thermal energy accumulated in the system."
+        },
+        "accessibleContextResponse": {
+          "value": "Thermal energy set to zero."
+        }
+      },
+      "zoomButtonGroup": {
+        "zoomIn": {
+          "accessibleName": {
+            "value": "Zoom In"
+          },
+          "accessibleHelpText": {
+            "value": "Adjust visual scale of the bar graph."
+          }
+        },
+        "zoomOut": {
+          "accessibleName": {
+            "value": "Zoom Out"
+          },
+          "accessibleHelpText": {
+            "value": "Adjust visual scale of the bar graph."
+          }
+        },
+        "zoomLevelResponse": {
+          "value": "Zoom level { $level } of { $max }."
+        }
+      }
+    },
+    "pieChartCheckbox": {
+      "accessibleHelpText": {
+        "value": "Show or hide pie chart representation of skater's energy."
+      },
+      "accessibleContextResponseChecked": {
+        "value": "Pie chart added to Play Area."
+      },
+      "accessibleContextResponseUnchecked": {
+        "value": "Pie chart hidden."
+      }
+    },
+    "speedCheckbox": {
+      "accessibleHelpText": {
+        "value": "Explore with or without speed measurements."
+      },
+      "accessibleContextResponseChecked": {
+        "value": "Speedometer displayed."
+      },
+      "accessibleContextResponseUnchecked": {
+        "value": "Speedometer hidden."
+      }
+    },
+    "pathCheckbox": {
+      "accessibleHelpText": {
+        "value": "Explore with or without dots drawn along the skaters path in equal time intervals."
+      },
+      "accessibleContextResponseChecked": {
+        "value": "Path dots drawn in equal time intervals."
+      },
+      "accessibleContextResponseUnchecked": {
+        "value": "Path dots hidden."
+      }
+    },
+    "stickToTrackCheckbox": {
+      "accessibleContextResponseChecked": {
+        "value": "Stick to Track mode enabled."
+      },
+      "accessibleContextResponseUnchecked": {
+        "value": "Stick to Track mode off."
+      }
+    },
+    "sceneSelectionRadioButtonGroup": {
+      "accessibleName": {
+        "value": "Track Selection"
+      },
+      "scene1RadioButton": {
+        "accessibleName": {
+          "value": "Parabola"
+        }
+      },
+      "scene2RadioButton": {
+        "accessibleName": {
+          "value": "Ramp"
+        }
+      },
+      "scene3RadioButton": {
+        "accessibleName": {
+          "value": "Double Well"
+        }
+      },
+      "scene4RadioButton": {
+        "accessibleName": {
+          "value": "Loop"
+        }
+      }
+    },
+    "frictionSlider": {
+      "accessibleHelpText": {
+        "value": "Set coefficient of friction, ranging from none to lots."
+      }
+    },
+    "gravitySlider": {
+      "accessibleHelpText": {
+        "value": "Set acceleration due to gravity, ranging from tiny to lots."
+      }
+    },
+    "gravityControl": {
+      "accessibleHelpText": {
+        "value": "Set acceleration due to gravity."
+      }
+    },
+    "gravityComboBox": {
+      "accessibleName": {
+        "value": "Gravity Benchmark"
+      },
+      "accessibleHelpText": {
+        "value": "Set acceleration due to gravity to match the chosen benchmark."
+      },
+      "accessibleContextResponse": {
+        "value": "Gravity now {$gValue}."
+      }
+    },
+    "massSlider": {
+      "accessibleHelpText": {
+        "value": "Set skater mass, ranging from small to large."
+      }
+    },
+    "massControl": {
+      "accessibleHelpText": {
+        "value": "Set skater mass."
+      }
+    },
+    "skaterSetOneControls": {
+      "accessibleName": {
+        "value": "Skater Selection"
+      },
+      "accessibleHelpText": {
+        "value": "Select skater portrayal."
+      },
+      "skater1RadioButton": {
+        "accessibleName": {
+          "value": "Skater 1"
+        }
+      },
+      "skater2RadioButton": {
+        "accessibleName": {
+          "value": "Skater 2"
+        }
+      },
+      "skater3RadioButton": {
+        "accessibleName": {
+          "value": "Skater 3"
+        }
+      },
+      "skater4RadioButton": {
+        "accessibleName": {
+          "value": "Skater 4"
+        }
+      },
+      "skater5RadioButton": {
+        "accessibleName": {
+          "value": "Skater 5"
+        }
+      },
+      "skater6RadioButton": {
+        "accessibleName": {
+          "value": "Skater 6"
+        }
+      },
+      "skater7RadioButton": {
+        "accessibleName": {
+          "value": "Skater 7, {$animalType}"
+        }
+      },
+      "skater0RadioButton": {
+        "accessibleName": {
+          "value": "Skater 8, {$animalType}"
+        }
+      }
+    },
+    "gridCheckbox": {
+      "accessibleHelpText": {
+        "value": "Show or hide grid lines behind the skate track to measure height."
+      },
+      "accessibleContextResponseChecked": {
+        "value": "Grid lines shown."
+      },
+      "accessibleContextResponseUnchecked": {
+        "value": "Grid lines hidden."
+      }
+    },
+    "referenceHeightCheckbox": {
+      "accessibleHelpText": {
+        "value": "Experiment with or without an adjustable reference height."
+      },
+      "accessibleContextResponseChecked": {
+        "value": "Adjustable reference height added to Play Area."
+      },
+      "accessibleContextResponseUnchecked": {
+        "value": "Adjustable reference height hidden."
+      }
+    },
+    "restartSkaterButton": {
+      "accessibleHelpText": {
+        "value": "Return skater to most recent starting position and repeat experiment."
+      }
+    },
+    "returnSkaterToPreviousStartingPositionButton": {
+      "accessibleName": {
+        "value": "Return Skater to Starting Position"
+      },
+      "accessibleHelpText": {
+        "value": "Return skater to most recent starting position and repeat experiment."
+      }
+    },
+    "returnSkaterToGroundButton": {
+      "accessibleName": {
+        "value": "Return Skater to Ground"
+      }
+    },
+    "screenButtons": {
+      "intro": {
+        "accessibleHelpText": {
+          "value": "Explore different tracks and skaters and observe how the energy changes."
+        }
+      },
+      "measure": {
+        "accessibleHelpText": {
+          "value": "Measure and compare the skater's energy at different points along the track."
+        }
+      },
+      "graphs": {
+        "accessibleHelpText": {
+          "value": "Analyze the skater's energy as a function of position or time."
+        }
+      },
+      "playground": {
+        "accessibleHelpText": {
+          "value": "Build your own custom tracks, ramps, and jumps for the skater.."
+        }
+      },
+      "friction": {
+        "accessibleHelpText": {
+          "value": "Experiment with adding friction to the tracks."
+        }
       }
     },
     "preferences": {

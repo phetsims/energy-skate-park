@@ -131,6 +131,7 @@ type StringsType = {
       'helpTextStringProperty': LocalizedStringProperty;
     };
     'toolboxPanel': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
       'stopwatch': {
         'accessibleNameStringProperty': LocalizedStringProperty;
       };
@@ -153,6 +154,145 @@ type StringsType = {
     'controlPointAttachment': {
       'leftStringProperty': LocalizedStringProperty;
       'rightStringProperty': LocalizedStringProperty;
+    };
+    'energyBarGraphAccordionBox': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextExpandedStringProperty': LocalizedStringProperty;
+      'clearThermalButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+        'accessibleHelpTextStringProperty': LocalizedStringProperty;
+        'accessibleContextResponseStringProperty': LocalizedStringProperty;
+      };
+      'zoomButtonGroup': {
+        'zoomIn': {
+          'accessibleNameStringProperty': LocalizedStringProperty;
+          'accessibleHelpTextStringProperty': LocalizedStringProperty;
+        };
+        'zoomOut': {
+          'accessibleNameStringProperty': LocalizedStringProperty;
+          'accessibleHelpTextStringProperty': LocalizedStringProperty;
+        };
+        'zoomLevelResponseStringProperty': LocalizedStringProperty;
+      }
+    };
+    'pieChartCheckbox': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseUncheckedStringProperty': LocalizedStringProperty;
+    };
+    'speedCheckbox': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseUncheckedStringProperty': LocalizedStringProperty;
+    };
+    'pathCheckbox': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseUncheckedStringProperty': LocalizedStringProperty;
+    };
+    'stickToTrackCheckbox': {
+      'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseUncheckedStringProperty': LocalizedStringProperty;
+    };
+    'sceneSelectionRadioButtonGroup': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+      'scene1RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      };
+      'scene2RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      };
+      'scene3RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      };
+      'scene4RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      }
+    };
+    'frictionSlider': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+    };
+    'gravitySlider': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+    };
+    'gravityControl': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+    };
+    'gravityComboBox': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseStringProperty': LocalizedStringProperty;
+    };
+    'massSlider': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+    };
+    'massControl': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+    };
+    'skaterSetOneControls': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'skater1RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      };
+      'skater2RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      };
+      'skater3RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      };
+      'skater4RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      };
+      'skater5RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      };
+      'skater6RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      };
+      'skater7RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      };
+      'skater0RadioButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      }
+    };
+    'gridCheckbox': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseUncheckedStringProperty': LocalizedStringProperty;
+    };
+    'referenceHeightCheckbox': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseUncheckedStringProperty': LocalizedStringProperty;
+    };
+    'restartSkaterButton': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+    };
+    'returnSkaterToPreviousStartingPositionButton': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+    };
+    'returnSkaterToGroundButton': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+    };
+    'screenButtons': {
+      'intro': {
+        'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      };
+      'measure': {
+        'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      };
+      'graphs': {
+        'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      };
+      'playground': {
+        'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      };
+      'friction': {
+        'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      }
     };
     'preferences': {
       'metersPerSecondSquaredRadioButtonStringProperty': LocalizedStringProperty;
