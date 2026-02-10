@@ -99,6 +99,15 @@ a11y:
     accessibleName: Control Point
   pathSensorNode:
     accessibleName: Energy Sensor
+    nothingToMeasure: Nothing to measure yet.
+    movedOffSamples: Sensor moved off of sample points.
+    sensorReadingPattern: >-
+      Height {$height} meters.
+      Speed {$speed} meters per second.
+      Kinetic {$kinetic} Joules.
+      Potential {$potential} Joules.
+      Thermal {$thermal} Joules.
+      Total {$total} Joules.
   energyChart:
     accessibleName: Graph Cursor
   controlPointAttachment:

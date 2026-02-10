@@ -10,11 +10,12 @@
 import { ObservableArray } from '../../../../axon/js/createObservableArray.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import StringProperty from '../../../../axon/js/StringProperty.js';
 import TProperty from '../../../../axon/js/TProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
-import Utils from '../../../../dot/js/Utils.js';
+import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
@@ -102,6 +103,9 @@ export default class SkaterPathSensorNode extends Node {
   private inspectedSample: EnergySkateParkDataSample | null;
   private readonly boundUpdateSensorDisplay: () => void;
   private updateDisplayListener: ( () => void ) | null = null;
+  private isKeyboardAction = false;
+  private isDragging = false;
+  private readonly currentReadingProperty: StringProperty;
 
   /**
    * @param samples
@@ -224,6 +228,9 @@ export default class SkaterPathSensorNode extends Node {
       accessibleName: EnergySkateParkFluent.a11y.pathSensorNode.accessibleNameStringProperty
     } );
 
+    this.currentReadingProperty = new StringProperty( '' );
+    this.probeNode.accessibleParagraph = this.currentReadingProperty;
+
     sensorProbePositionProperty.link( position => {
       this.probeNode.translation = modelViewTransform.modelToViewPosition( position );
     } );
@@ -275,6 +282,8 @@ export default class SkaterPathSensorNode extends Node {
       transform: modelViewTransform,
       positionProperty: sensorProbePositionProperty,
       dragBoundsProperty: modelBoundsProperty,
+      start: () => { this.isDragging = true; },
+      end: () => { this.isDragging = false; },
       tandem: options.tandem!.createTandem( 'dragListener' )
     } ) );
 
@@ -284,6 +293,10 @@ export default class SkaterPathSensorNode extends Node {
       fireOnHold: true,
       fire: ( event, keysPressed ) => {
         if ( samples.length === 0 ) {
+          this.probeNode.addAccessibleContextResponse(
+            EnergySkateParkFluent.a11y.pathSensorNode.nothingToMeasureStringProperty,
+            { interruptible: true }
+          );
           return;
         }
 
@@ -330,7 +343,18 @@ export default class SkaterPathSensorNode extends Node {
           }
         }
 
+        const previousSample = this.inspectedSample;
+        this.isKeyboardAction = true;
         sensorProbePositionProperty.value = targetPosition;
+
+        // Keyboard moved off all sample points
+        if ( previousSample !== null && this.inspectedSample === null ) {
+          this.probeNode.addAccessibleContextResponse(
+            EnergySkateParkFluent.a11y.pathSensorNode.movedOffSamplesStringProperty,
+            { interruptible: true }
+          );
+        }
+        this.isKeyboardAction = false;
       }
     } );
     this.probeNode.addInputListener( keyboardListener );
@@ -397,6 +421,23 @@ export default class SkaterPathSensorNode extends Node {
 
     this.heightSpeedRectangle.visible = true;
     this.positionReadouts( dataSample );
+
+    const readingText = EnergySkateParkFluent.a11y.pathSensorNode.sensorReadingPattern.format( {
+      height: toFixed( dataSample.position.y - dataSample.referenceHeight, 2 ),
+      speed: toFixed( dataSample.speed, 2 ),
+      kinetic: toFixed( dataSample.kineticEnergy, 1 ),
+      potential: toFixed( dataSample.potentialEnergy, 1 ),
+      thermal: toFixed( dataSample.thermalEnergy, 1 ),
+      total: toFixed( dataSample.totalEnergy, 1 )
+    } );
+
+    // Update PDOM paragraph so user can re-read the last reading
+    this.currentReadingProperty.value = readingText;
+
+    // Announce for user-initiated actions only (keyboard or mouse drag)
+    if ( this.isKeyboardAction || this.isDragging ) {
+      this.probeNode.addAccessibleContextResponse( readingText, { interruptible: true } );
+    }
   }
 
   /**
@@ -421,7 +462,7 @@ export default class SkaterPathSensorNode extends Node {
    * point is under the wand.
    */
   private formatValue( value: number ): string {
-    return Utils.toFixed( value, 2 );
+    return toFixed( value, 2 );
   }
 
   /**
@@ -447,6 +488,8 @@ export default class SkaterPathSensorNode extends Node {
 
     dataSample.inspectedProperty.set( false );
     this.heightSpeedRectangle.visible = false;
+
+    this.currentReadingProperty.value = '';
   }
 
   /**

@@ -100,6 +100,9 @@ addToMapIfDefined( 'a11y_toolboxPanel_measuringTape_accessibleName', 'a11y.toolb
 addToMapIfDefined( 'a11y_trackToolboxPanel_accessibleName', 'a11y.trackToolboxPanel.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_controlPointNode_accessibleName', 'a11y.controlPointNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_pathSensorNode_accessibleName', 'a11y.pathSensorNode.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_pathSensorNode_nothingToMeasure', 'a11y.pathSensorNode.nothingToMeasureStringProperty' );
+addToMapIfDefined( 'a11y_pathSensorNode_movedOffSamples', 'a11y.pathSensorNode.movedOffSamplesStringProperty' );
+addToMapIfDefined( 'a11y_pathSensorNode_sensorReadingPattern', 'a11y.pathSensorNode.sensorReadingPatternStringProperty' );
 addToMapIfDefined( 'a11y_energyChart_accessibleName', 'a11y.energyChart.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_controlPointAttachment_left', 'a11y.controlPointAttachment.leftStringProperty' );
 addToMapIfDefined( 'a11y_controlPointAttachment_right', 'a11y.controlPointAttachment.rightStringProperty' );
@@ -317,7 +320,10 @@ const EnergySkateParkFluent = {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_controlPointNode_accessibleName', _.get( EnergySkateParkStrings, 'a11y.controlPointNode.accessibleNameStringProperty' ) )
     },
     pathSensorNode: {
-      accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pathSensorNode_accessibleName', _.get( EnergySkateParkStrings, 'a11y.pathSensorNode.accessibleNameStringProperty' ) )
+      accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pathSensorNode_accessibleName', _.get( EnergySkateParkStrings, 'a11y.pathSensorNode.accessibleNameStringProperty' ) ),
+      nothingToMeasureStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pathSensorNode_nothingToMeasure', _.get( EnergySkateParkStrings, 'a11y.pathSensorNode.nothingToMeasureStringProperty' ) ),
+      movedOffSamplesStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pathSensorNode_movedOffSamples', _.get( EnergySkateParkStrings, 'a11y.pathSensorNode.movedOffSamplesStringProperty' ) ),
+      sensorReadingPattern: new FluentPattern<{ height: FluentVariable, kinetic: FluentVariable, potential: FluentVariable, speed: FluentVariable, thermal: FluentVariable, total: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_pathSensorNode_sensorReadingPattern', _.get( EnergySkateParkStrings, 'a11y.pathSensorNode.sensorReadingPatternStringProperty' ), [{"name":"height"},{"name":"kinetic"},{"name":"potential"},{"name":"speed"},{"name":"thermal"},{"name":"total"}] )
     },
     energyChart: {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyChart_accessibleName', _.get( EnergySkateParkStrings, 'a11y.energyChart.accessibleNameStringProperty' ) )

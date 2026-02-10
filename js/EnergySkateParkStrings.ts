@@ -147,6 +147,9 @@ type StringsType = {
     };
     'pathSensorNode': {
       'accessibleNameStringProperty': LocalizedStringProperty;
+      'nothingToMeasureStringProperty': LocalizedStringProperty;
+      'movedOffSamplesStringProperty': LocalizedStringProperty;
+      'sensorReadingPatternStringProperty': LocalizedStringProperty;
     };
     'energyChart': {
       'accessibleNameStringProperty': LocalizedStringProperty;
