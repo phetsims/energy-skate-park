@@ -205,6 +205,30 @@
     },
     "restartSkater": {
       "value": "Restart Skater"
+    },
+    "returnToolToToolbox": {
+      "value": "Return tool to toolbox"
+    },
+    "graphControls": {
+      "value": "Graph Controls"
+    },
+    "togglePause": {
+      "value": "Toggle pause"
+    },
+    "scrubThroughData": {
+      "value": "Scrub through data"
+    },
+    "trackEditing": {
+      "value": "Track Editing"
+    },
+    "moveControlPoint": {
+      "value": "Move control point"
+    },
+    "removeFromPlayArea": {
+      "value": "Remove from play area"
+    },
+    "connectTrackEndpoints": {
+      "value": "Connect track endpoints"
     }
   },
   "a11y": {

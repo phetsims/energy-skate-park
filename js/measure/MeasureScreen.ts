@@ -28,7 +28,9 @@ export default class MeasureScreen extends Screen<MeasureModel, MeasureScreenVie
         maxIconHeightProportion: 1
       } ),
       tandem: tandem,
-      createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent()
+      createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent( {
+        includeReturnToolToToolbox: true
+      } )
     };
 
     super(

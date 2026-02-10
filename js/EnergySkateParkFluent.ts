@@ -78,6 +78,14 @@ addToMapIfDefined( 'keyboardHelpDialog_attachToTrack', 'keyboardHelpDialog.attac
 addToMapIfDefined( 'keyboardHelpDialog_moveReferenceHeight', 'keyboardHelpDialog.moveReferenceHeightStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_simShortcuts', 'keyboardHelpDialog.simShortcutsStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_restartSkater', 'keyboardHelpDialog.restartSkaterStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_returnToolToToolbox', 'keyboardHelpDialog.returnToolToToolboxStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_graphControls', 'keyboardHelpDialog.graphControlsStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_togglePause', 'keyboardHelpDialog.togglePauseStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_scrubThroughData', 'keyboardHelpDialog.scrubThroughDataStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_trackEditing', 'keyboardHelpDialog.trackEditingStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_moveControlPoint', 'keyboardHelpDialog.moveControlPointStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_removeFromPlayArea', 'keyboardHelpDialog.removeFromPlayAreaStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints', 'keyboardHelpDialog.connectTrackEndpointsStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_accessibleName', 'a11y.skaterNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_onTrackHelpText', 'a11y.skaterNode.onTrackHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_offTrackHelpText', 'a11y.skaterNode.offTrackHelpTextStringProperty' );
@@ -210,7 +218,15 @@ const EnergySkateParkFluent = {
     attachToTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.attachToTrackStringProperty' ),
     moveReferenceHeightStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.moveReferenceHeightStringProperty' ),
     simShortcutsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.simShortcutsStringProperty' ),
-    restartSkaterStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.restartSkaterStringProperty' )
+    restartSkaterStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.restartSkaterStringProperty' ),
+    returnToolToToolboxStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.returnToolToToolboxStringProperty' ),
+    graphControlsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.graphControlsStringProperty' ),
+    togglePauseStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.togglePauseStringProperty' ),
+    scrubThroughDataStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.scrubThroughDataStringProperty' ),
+    trackEditingStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.trackEditingStringProperty' ),
+    moveControlPointStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.moveControlPointStringProperty' ),
+    removeFromPlayAreaStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.removeFromPlayAreaStringProperty' ),
+    connectTrackEndpointsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.connectTrackEndpointsStringProperty' )
   },
   a11y: {
     skaterNode: {

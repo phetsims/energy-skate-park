@@ -62,15 +62,23 @@ preferences:
   metersPerSecondSquared:       m/s<sup>2</sup>
   newtonsPerKilogram:           N/kg
 keyboardHelpDialog:
-  skaterControls:      Skater Controls
-  moveSkater:          Move skater
-  moveSkaterSlower:    Move skater slower
-  moveAlongTrack:      Move along track
-  detachFromTrack:     Detach from track
-  attachToTrack:       Attach to nearest track
-  moveReferenceHeight: Move reference height line
-  simShortcuts:        Sim Shortcuts
-  restartSkater:       Restart Skater
+  skaterControls:        Skater Controls
+  moveSkater:            Move skater
+  moveSkaterSlower:      Move skater slower
+  moveAlongTrack:        Move along track
+  detachFromTrack:       Detach from track
+  attachToTrack:         Attach to nearest track
+  moveReferenceHeight:   Move reference height line
+  simShortcuts:          Sim Shortcuts
+  restartSkater:         Restart Skater
+  returnToolToToolbox:   Return tool to toolbox
+  graphControls:         Graph Controls
+  togglePause:           Toggle pause
+  scrubThroughData:      Scrub through data
+  trackEditing:          Track Editing
+  moveControlPoint:      Move control point
+  removeFromPlayArea:    Remove from play area
+  connectTrackEndpoints: Connect track endpoints
 a11y:
   skaterNode:
     accessibleName:   Skater
@@ -93,7 +101,7 @@ a11y:
   energyChart:
     accessibleName: Graph Cursor
   controlPointAttachment:
-    left: Left
+    left:  Left
     right: Right
   preferences:
     metersPerSecondSquaredRadioButton: meters per second squared

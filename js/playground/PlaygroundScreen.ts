@@ -10,6 +10,7 @@ import Screen from '../../../joist/js/Screen.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkKeyboardHelpContent from '../common/view/EnergySkateParkKeyboardHelpContent.js';
+import TrackEditingKeyboardHelpSection from '../common/view/TrackEditingKeyboardHelpSection.js';
 import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkFluent from '../EnergySkateParkFluent.js';
 import EnergySkateParkPlaygroundModel from './model/EnergySkateParkPlaygroundModel.js';
@@ -24,7 +25,10 @@ export default class PlaygroundScreen extends Screen<EnergySkateParkPlaygroundMo
       name: EnergySkateParkFluent.screens.playgroundStringProperty,
       homeScreenIcon: new PlaygroundScreenIcon(),
       tandem: tandem,
-      createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent()
+      createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent( {
+        additionalLeftSections: [ new TrackEditingKeyboardHelpSection() ],
+        includeReturnToolToToolbox: true
+      } )
     };
 
     super(

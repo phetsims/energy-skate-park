@@ -111,6 +111,14 @@ type StringsType = {
     'moveReferenceHeightStringProperty': LocalizedStringProperty;
     'simShortcutsStringProperty': LocalizedStringProperty;
     'restartSkaterStringProperty': LocalizedStringProperty;
+    'returnToolToToolboxStringProperty': LocalizedStringProperty;
+    'graphControlsStringProperty': LocalizedStringProperty;
+    'togglePauseStringProperty': LocalizedStringProperty;
+    'scrubThroughDataStringProperty': LocalizedStringProperty;
+    'trackEditingStringProperty': LocalizedStringProperty;
+    'moveControlPointStringProperty': LocalizedStringProperty;
+    'removeFromPlayAreaStringProperty': LocalizedStringProperty;
+    'connectTrackEndpointsStringProperty': LocalizedStringProperty;
   };
   'a11y': {
     'skaterNode': {
