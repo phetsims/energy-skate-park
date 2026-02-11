@@ -12,7 +12,7 @@ import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
-import Utils from '../../../../dot/js/Utils.js';
+import { roundSymmetric } from '../../../../dot/js/util/roundSymmetric.js';
 import BarChartNode from '../../../../griddle/js/BarChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
@@ -171,7 +171,7 @@ export default class EnergyBarGraph extends Node {
         touchAreaYDilation: ZOOM_BUTTON_TOUCH_DILATION
       };
 
-      const maxLevel = Utils.roundSymmetric( ( EnergySkateParkConstants.MAX_ZOOM_FACTOR - EnergySkateParkConstants.MIN_ZOOM_FACTOR ) / EnergySkateParkConstants.ZOOM_FACTOR_DELTA ) + 1;
+      const maxLevel = roundSymmetric( ( EnergySkateParkConstants.MAX_ZOOM_FACTOR - EnergySkateParkConstants.MIN_ZOOM_FACTOR ) / EnergySkateParkConstants.ZOOM_FACTOR_DELTA ) + 1;
 
       const zoomOutButton = new ZoomButton( merge( {
         in: false,
@@ -179,7 +179,7 @@ export default class EnergyBarGraph extends Node {
           barGraphScaleProperty.set( Math.max( barGraphScaleProperty.get() - EnergySkateParkConstants.ZOOM_FACTOR_DELTA, EnergySkateParkConstants.MIN_ZOOM_FACTOR ) );
           zoomOutButton.addAccessibleContextResponse(
             EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomLevelResponse.format( {
-              level: Utils.roundSymmetric( ( barGraphScaleProperty.value - EnergySkateParkConstants.MIN_ZOOM_FACTOR ) / EnergySkateParkConstants.ZOOM_FACTOR_DELTA ) + 1,
+              level: roundSymmetric( ( barGraphScaleProperty.value - EnergySkateParkConstants.MIN_ZOOM_FACTOR ) / EnergySkateParkConstants.ZOOM_FACTOR_DELTA ) + 1,
               max: maxLevel
             } )
           );
@@ -195,7 +195,7 @@ export default class EnergyBarGraph extends Node {
           barGraphScaleProperty.set( Math.min( barGraphScaleProperty.get() + EnergySkateParkConstants.ZOOM_FACTOR_DELTA, EnergySkateParkConstants.MAX_ZOOM_FACTOR ) );
           zoomInButton.addAccessibleContextResponse(
             EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomLevelResponse.format( {
-              level: Utils.roundSymmetric( ( barGraphScaleProperty.value - EnergySkateParkConstants.MIN_ZOOM_FACTOR ) / EnergySkateParkConstants.ZOOM_FACTOR_DELTA ) + 1,
+              level: roundSymmetric( ( barGraphScaleProperty.value - EnergySkateParkConstants.MIN_ZOOM_FACTOR ) / EnergySkateParkConstants.ZOOM_FACTOR_DELTA ) + 1,
               max: maxLevel
             } )
           );
