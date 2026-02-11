@@ -575,26 +575,6 @@
       "newtonsPerKilogramRadioButton": {
         "value": "newtons per kilogram"
       }
-    },
-    "keyboardHelpDialog": {
-      "moveSkaterDescription": {
-        "value": "Move skater in any direction when off track"
-      },
-      "moveAlongTrackDescription": {
-        "value": "Move skater along track when attached"
-      },
-      "detachFromTrackDescription": {
-        "value": "Detach skater from track"
-      },
-      "attachToTrackDescription": {
-        "value": "Attach skater to the nearest track if within 2 meters"
-      },
-      "moveReferenceHeightDescription": {
-        "value": "Adjust the reference height line up or down"
-      },
-      "restartSkaterDescription": {
-        "value": "Return skater to starting position"
-      }
     }
   }
 }

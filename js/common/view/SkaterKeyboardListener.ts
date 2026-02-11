@@ -28,22 +28,19 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
   public static readonly MOVE_SKATER_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'arrowLeft', 'arrowRight', 'arrowUp', 'arrowDown', 'w', 'a', 's', 'd' ],
     repoName: energySkatePark.name,
-    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveSkaterStringProperty,
-    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkFluent.a11y.keyboardHelpDialog.moveSkaterDescriptionStringProperty
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveSkaterStringProperty
   } );
 
   public static readonly MOVE_ALONG_TRACK_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'arrowLeft', 'arrowRight', 'a', 'd' ],
     repoName: energySkatePark.name,
-    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveAlongTrackStringProperty,
-    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkFluent.a11y.keyboardHelpDialog.moveAlongTrackDescriptionStringProperty
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveAlongTrackStringProperty
   } );
 
   public static readonly DETACH_FROM_TRACK_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'arrowUp', 'w' ],
     repoName: energySkatePark.name,
-    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.detachFromTrackStringProperty,
-    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkFluent.a11y.keyboardHelpDialog.detachFromTrackDescriptionStringProperty
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.detachFromTrackStringProperty
   } );
 
   private readonly skater: Skater;

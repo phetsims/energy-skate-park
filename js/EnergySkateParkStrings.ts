@@ -300,14 +300,6 @@ type StringsType = {
     'preferences': {
       'metersPerSecondSquaredRadioButtonStringProperty': LocalizedStringProperty;
       'newtonsPerKilogramRadioButtonStringProperty': LocalizedStringProperty;
-    };
-    'keyboardHelpDialog': {
-      'moveSkaterDescriptionStringProperty': LocalizedStringProperty;
-      'moveAlongTrackDescriptionStringProperty': LocalizedStringProperty;
-      'detachFromTrackDescriptionStringProperty': LocalizedStringProperty;
-      'attachToTrackDescriptionStringProperty': LocalizedStringProperty;
-      'moveReferenceHeightDescriptionStringProperty': LocalizedStringProperty;
-      'restartSkaterDescriptionStringProperty': LocalizedStringProperty;
     }
   }
 };

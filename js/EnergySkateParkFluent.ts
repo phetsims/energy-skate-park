@@ -167,12 +167,6 @@ addToMapIfDefined( 'a11y_screenButtons_playground_accessibleHelpText', 'a11y.scr
 addToMapIfDefined( 'a11y_screenButtons_friction_accessibleHelpText', 'a11y.screenButtons.friction.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_preferences_metersPerSecondSquaredRadioButton', 'a11y.preferences.metersPerSecondSquaredRadioButtonStringProperty' );
 addToMapIfDefined( 'a11y_preferences_newtonsPerKilogramRadioButton', 'a11y.preferences.newtonsPerKilogramRadioButtonStringProperty' );
-addToMapIfDefined( 'a11y_keyboardHelpDialog_moveSkaterDescription', 'a11y.keyboardHelpDialog.moveSkaterDescriptionStringProperty' );
-addToMapIfDefined( 'a11y_keyboardHelpDialog_moveAlongTrackDescription', 'a11y.keyboardHelpDialog.moveAlongTrackDescriptionStringProperty' );
-addToMapIfDefined( 'a11y_keyboardHelpDialog_detachFromTrackDescription', 'a11y.keyboardHelpDialog.detachFromTrackDescriptionStringProperty' );
-addToMapIfDefined( 'a11y_keyboardHelpDialog_attachToTrackDescription', 'a11y.keyboardHelpDialog.attachToTrackDescriptionStringProperty' );
-addToMapIfDefined( 'a11y_keyboardHelpDialog_moveReferenceHeightDescription', 'a11y.keyboardHelpDialog.moveReferenceHeightDescriptionStringProperty' );
-addToMapIfDefined( 'a11y_keyboardHelpDialog_restartSkaterDescription', 'a11y.keyboardHelpDialog.restartSkaterDescriptionStringProperty' );
 
 // A function that creates contents for a new Fluent file, which will be needed if any string changes.
 const createFluentFile = (): string => {
@@ -483,14 +477,6 @@ const EnergySkateParkFluent = {
     preferences: {
       metersPerSecondSquaredRadioButtonStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_preferences_metersPerSecondSquaredRadioButton', _.get( EnergySkateParkStrings, 'a11y.preferences.metersPerSecondSquaredRadioButtonStringProperty' ) ),
       newtonsPerKilogramRadioButtonStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_preferences_newtonsPerKilogramRadioButton', _.get( EnergySkateParkStrings, 'a11y.preferences.newtonsPerKilogramRadioButtonStringProperty' ) )
-    },
-    keyboardHelpDialog: {
-      moveSkaterDescriptionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_moveSkaterDescription', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.moveSkaterDescriptionStringProperty' ) ),
-      moveAlongTrackDescriptionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_moveAlongTrackDescription', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.moveAlongTrackDescriptionStringProperty' ) ),
-      detachFromTrackDescriptionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_detachFromTrackDescription', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.detachFromTrackDescriptionStringProperty' ) ),
-      attachToTrackDescriptionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_attachToTrackDescription', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.attachToTrackDescriptionStringProperty' ) ),
-      moveReferenceHeightDescriptionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_moveReferenceHeightDescription', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.moveReferenceHeightDescriptionStringProperty' ) ),
-      restartSkaterDescriptionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_restartSkaterDescription', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.restartSkaterDescriptionStringProperty' ) )
     }
   }
 };

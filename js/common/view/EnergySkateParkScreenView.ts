@@ -111,7 +111,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
     keys: [ 'alt+s' ],
     repoName: energySkatePark.name,
     keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.restartSkaterStringProperty,
-    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkFluent.a11y.keyboardHelpDialog.restartSkaterDescriptionStringProperty,
     global: true
   } );
 

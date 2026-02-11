@@ -49,8 +49,7 @@ export default class SkaterNode extends Node {
   public static readonly ATTACH_TO_TRACK_HOTKEY_DATA = new HotkeyData( {
     keys: [ 't' ],
     repoName: energySkatePark.name,
-    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.attachToTrackStringProperty,
-    keyboardHelpDialogPDOMLabelStringProperty: EnergySkateParkFluent.a11y.keyboardHelpDialog.attachToTrackDescriptionStringProperty
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.attachToTrackStringProperty
   } );
   public readonly skaterImageSetProperty: TReadOnlyProperty<SkaterImageSet>;
   public readonly selectedSkaterProperty: NumberProperty;

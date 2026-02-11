@@ -237,10 +237,3 @@ a11y:
   preferences:
     metersPerSecondSquaredRadioButton: meters per second squared
     newtonsPerKilogramRadioButton:     newtons per kilogram
-  keyboardHelpDialog:
-    moveSkaterDescription:          Move skater in any direction when off track
-    moveAlongTrackDescription:      Move skater along track when attached
-    detachFromTrackDescription:     Detach skater from track
-    attachToTrackDescription:       Attach skater to the nearest track if within 2 meters
-    moveReferenceHeightDescription: Adjust the reference height line up or down
-    restartSkaterDescription:       Return skater to starting position
