@@ -13,7 +13,7 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import Emitter from '../../../../axon/js/Emitter.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
-import Utils from '../../../../dot/js/Utils.js';
+import { equalsEpsilon } from '../../../../dot/js/util/equalsEpsilon.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import ArrayIO from '../../../../tandem/js/types/ArrayIO.js';
@@ -168,7 +168,7 @@ export default class EnergySkateParkDataSample {
 
     if ( assert ) {
       const totalEnergy = this.potentialEnergy + this.kineticEnergy + this.thermalEnergy;
-      assert( Utils.equalsEpsilon( totalEnergy, this.totalEnergy, 1E-10 ), 'energy should be conserved' );
+      assert( equalsEpsilon( totalEnergy, this.totalEnergy, 1E-10 ), 'energy should be conserved' );
     }
   }
 

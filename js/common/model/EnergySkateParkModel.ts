@@ -33,9 +33,11 @@ import Property from '../../../../axon/js/Property.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
+import { equalsEpsilon } from '../../../../dot/js/util/equalsEpsilon.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import EventTimer, { ConstantEventModel } from '../../../../phet-core/js/EventTimer.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
@@ -56,7 +58,6 @@ import Skater, { SkaterOptions } from './Skater.js';
 import SkaterState from './SkaterState.js';
 import Track, { Curvature, TrackOptions } from './Track.js';
 import UserControlledPropertySet from './UserControlledPropertySet.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 // Use a separate pooled curvature variable to reduce memory allocations - object values
 // will be modified as the skater moves
@@ -623,7 +624,7 @@ export default class EnergySkateParkModel {
     if ( assert ) {
       const skaterTotalEnergy = skaterState.getTotalEnergy();
       const correctedTotalEnergy = correctedState.getTotalEnergy();
-      affirm( Utils.equalsEpsilon( correctedTotalEnergy, skaterTotalEnergy, 1E-8 ),
+      affirm( equalsEpsilon( correctedTotalEnergy, skaterTotalEnergy, 1E-8 ),
         `substantial total energy change after corrections. skaterTotalEnergy: ${skaterTotalEnergy}, correctedTotalEnergy: ${correctedTotalEnergy}, delta: ${Math.abs( skaterTotalEnergy - correctedTotalEnergy )}` );
     }
 
@@ -850,7 +851,7 @@ export default class EnergySkateParkModel {
       }
 
       const attachedSkater = skaterState.attachToTrack( newThermalEnergy, track, onTopSideOfTrack, parametricPosition, parametricSpeed, newVelocity.x, newVelocity.y, newPosition.x, newPosition.y );
-      affirm( Utils.equalsEpsilon( attachedSkater.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'large energy change after attaching to track' );
+      affirm( equalsEpsilon( attachedSkater.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'large energy change after attaching to track' );
       return attachedSkater;
     }
 
@@ -1157,7 +1158,7 @@ export default class EnergySkateParkModel {
             result = result.updatePositionAngleUpVelocity( result.positionX, result.positionY, 0, true, correctedV, 0 );
 
             // this correction should put result energy very close to correctedState energy
-            affirm( Utils.equalsEpsilon( result.getTotalEnergy(), correctedState.getTotalEnergy(), 1E-6 ), 'correction after slope to ground changed total energy too much' );
+            affirm( equalsEpsilon( result.getTotalEnergy(), correctedState.getTotalEnergy(), 1E-6 ), 'correction after slope to ground changed total energy too much' );
           }
 
           // Correct any other energy discrepancy when switching to the ground, see #301
@@ -1248,7 +1249,7 @@ export default class EnergySkateParkModel {
       newSkaterState.velocityX = result.x;
       newSkaterState.velocityY = result.y;
 
-      if ( Utils.equalsEpsilon( e0, newSkaterState.getTotalEnergy(), 1E-8 ) ) {
+      if ( equalsEpsilon( e0, newSkaterState.getTotalEnergy(), 1E-8 ) ) {
         break;
       }
     }
@@ -1306,7 +1307,7 @@ export default class EnergySkateParkModel {
           debug && debug( 'Could fix all energy by changing velocity.' );
           const correctedStateA = this.correctEnergyReduceVelocity( skaterState, newState );
           debug && debug( `changed velocity: dE=${correctedStateA.getTotalEnergy() - e0}` );
-          if ( !Utils.equalsEpsilon( e0, correctedStateA.getTotalEnergy(), 1E-8 ) ) {
+          if ( !equalsEpsilon( e0, correctedStateA.getTotalEnergy(), 1E-8 ) ) {
             debug && debug( 'Energy error[0]' );
           }
           return correctedStateA;
@@ -1329,7 +1330,7 @@ export default class EnergySkateParkModel {
           const point = newState.track!.getPoint( bestAlpha );
           const correctedState = newState.updateUPosition( bestAlpha, point.x, point.y );
           debug && debug( `changed position u: dE=${correctedState.getTotalEnergy() - e0}` );
-          if ( !Utils.equalsEpsilon( e0, correctedState.getTotalEnergy(), 1E-8 ) ) {
+          if ( !equalsEpsilon( e0, correctedState.getTotalEnergy(), 1E-8 ) ) {
 
             // amount we could reduce the energy if we deleted all the kinetic energy:
             if ( Math.abs( correctedState.getKineticEnergy() ) > Math.abs( dE ) ) {
@@ -1337,7 +1338,7 @@ export default class EnergySkateParkModel {
               // NOTE: maybe should only do this if all velocity is not converted
               debug && debug( 'Fixed position some, still need to fix velocity as well.' );
               const correctedState2 = this.correctEnergyReduceVelocity( skaterState, correctedState );
-              if ( !Utils.equalsEpsilon( e0, correctedState2.getTotalEnergy(), 1E-8 ) ) {
+              if ( !equalsEpsilon( e0, correctedState2.getTotalEnergy(), 1E-8 ) ) {
                 debug && debug( 'Changed position & Velocity and still had energy error' );
                 debug && debug( 'Energy error[123]' );
               }
@@ -1360,7 +1361,7 @@ export default class EnergySkateParkModel {
                   // Take as much thermal energy out as possible
                   const originalThermalEnergyState = newState.updateThermalEnergy( skaterState.thermalEnergy );
                   const correctedState3 = this.correctEnergyReduceVelocity( skaterState, originalThermalEnergyState );
-                  if ( !Utils.equalsEpsilon( e0, correctedState3.getTotalEnergy(), 1E-8 ) ) {
+                  if ( !equalsEpsilon( e0, correctedState3.getTotalEnergy(), 1E-8 ) ) {
                     debug && debug( 'Changed position & Velocity and still had energy error, error[124]' );
                   }
                   return correctedState3;
@@ -1390,7 +1391,7 @@ export default class EnergySkateParkModel {
         const fixedState = newState.updateUDVelocity( newVelocity, updatedVelocityX, updatedVelocityY );
         debug && debug( 'Set velocity to match energy, when energy was low: ' );
         debug && debug( `INC changed velocity: dE=${fixedState.getTotalEnergy() - e0}` );
-        if ( !Utils.equalsEpsilon( e0, fixedState.getTotalEnergy(), 1E-8 ) ) {
+        if ( !equalsEpsilon( e0, fixedState.getTotalEnergy(), 1E-8 ) ) {
           console.log( new Error( 'Energy error[2]' ).stack );
         }
         return fixedState;
