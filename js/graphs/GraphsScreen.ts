@@ -32,6 +32,7 @@ export default class GraphsScreen extends Screen<GraphsModel, GraphsScreenView> 
           maxIconHeightProportion: 1
         } ),
         tandem: tandem,
+        screenButtonsHelpText: EnergySkateParkFluent.a11y.screenButtons.graphs.accessibleHelpTextStringProperty,
         createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent( {
           additionalLeftSections: [ new GraphControlsKeyboardHelpSection() ],
           includeReturnToolToToolbox: true

@@ -19,6 +19,7 @@ import { rasterizeNode } from '../../../../scenery/js/util/rasterizeNode.js';
 import RectangularRadioButtonGroup, { RectangularRadioButtonGroupOptions } from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
 import PremadeTracks, { TrackType } from '../model/PremadeTracks.js';
@@ -59,6 +60,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
           selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke
         }
       },
+      accessibleName: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.accessibleNameStringProperty,
       tandem: tandem,
       includeBackground: false,
       layoutOptions: { stretch: false },
@@ -143,7 +145,14 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
 
     const buttonAlignGroup = new AlignGroup();
 
-    const radioButtonContent: { value: number; createNode: () => Node; tandemName: string }[] = [];
+    const sceneAccessibleNames = [
+      EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene1RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene2RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene3RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene4RadioButton.accessibleNameStringProperty
+    ];
+
+    const radioButtonContent: { value: number; createNode: () => Node; tandemName: string; options?: object }[] = [];
     _.forEach( contents, ( node, i ) => {
 
       // scalar chosen so that buttons are appropriately sized in the control panel
@@ -168,7 +177,8 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
       radioButtonContent.push( {
         value: i,
         createNode: () => alignedNode,
-        tandemName: `scene${i + 1}RadioButton`
+        tandemName: `scene${i + 1}RadioButton`,
+        options: i < sceneAccessibleNames.length ? { accessibleName: sceneAccessibleNames[ i ] } : undefined
       } );
     } );
 

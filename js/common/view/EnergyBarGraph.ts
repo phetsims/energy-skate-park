@@ -12,6 +12,7 @@ import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
+import Utils from '../../../../dot/js/Utils.js';
 import BarChartNode from '../../../../griddle/js/BarChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
@@ -72,7 +73,10 @@ export default class EnergyBarGraph extends Node {
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: skater.clearThermal.bind( skater ),
       scale: 0.86,
-      soundPlayer: sharedSoundPlayers.get( 'erase' )
+      soundPlayer: sharedSoundPlayers.get( 'erase' ),
+      accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleNameStringProperty,
+      accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleHelpTextStringProperty,
+      accessibleContextResponse: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleContextResponseStringProperty
     } );
 
     // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
@@ -167,21 +171,39 @@ export default class EnergyBarGraph extends Node {
         touchAreaYDilation: ZOOM_BUTTON_TOUCH_DILATION
       };
 
+      const maxLevel = Utils.roundSymmetric( ( EnergySkateParkConstants.MAX_ZOOM_FACTOR - EnergySkateParkConstants.MIN_ZOOM_FACTOR ) / EnergySkateParkConstants.ZOOM_FACTOR_DELTA ) + 1;
+
       const zoomOutButton = new ZoomButton( merge( {
         in: false,
         listener: () => {
           barGraphScaleProperty.set( Math.max( barGraphScaleProperty.get() - EnergySkateParkConstants.ZOOM_FACTOR_DELTA, EnergySkateParkConstants.MIN_ZOOM_FACTOR ) );
+          zoomOutButton.addAccessibleContextResponse(
+            EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomLevelResponse.format( {
+              level: Utils.roundSymmetric( ( barGraphScaleProperty.value - EnergySkateParkConstants.MIN_ZOOM_FACTOR ) / EnergySkateParkConstants.ZOOM_FACTOR_DELTA ) + 1,
+              max: maxLevel
+            } )
+          );
         },
         touchAreaXShift: -ZOOM_BUTTON_TOUCH_DILATION,
-        tandem: tandem.createTandem( 'zoomOutButton' )
+        tandem: tandem.createTandem( 'zoomOutButton' ),
+        accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomOut.accessibleNameStringProperty,
+        accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomOut.accessibleHelpTextStringProperty
       }, zoomButtonOptions ) );
       const zoomInButton = new ZoomButton( merge( {
         in: true,
         listener: () => {
           barGraphScaleProperty.set( Math.min( barGraphScaleProperty.get() + EnergySkateParkConstants.ZOOM_FACTOR_DELTA, EnergySkateParkConstants.MAX_ZOOM_FACTOR ) );
+          zoomInButton.addAccessibleContextResponse(
+            EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomLevelResponse.format( {
+              level: Utils.roundSymmetric( ( barGraphScaleProperty.value - EnergySkateParkConstants.MIN_ZOOM_FACTOR ) / EnergySkateParkConstants.ZOOM_FACTOR_DELTA ) + 1,
+              max: maxLevel
+            } )
+          );
         },
         touchAreaXShift: ZOOM_BUTTON_TOUCH_DILATION,
-        tandem: tandem.createTandem( 'zoomInButton' )
+        tandem: tandem.createTandem( 'zoomInButton' ),
+        accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomIn.accessibleNameStringProperty,
+        accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomIn.accessibleHelpTextStringProperty
       }, zoomButtonOptions ) );
 
       const zoomButtons = new HBox( {

@@ -14,7 +14,9 @@ import Image from '../../../../scenery/js/nodes/Image.js';
 import RectangularRadioButtonGroup, { type RectangularRadioButtonGroupItem } from '../../../../sun/js/buttons/RectangularRadioButtonGroup.js';
 import multiSelectionSoundPlayerFactory from '../../../../tambo/js/multiSelectionSoundPlayerFactory.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import SkaterImageSet from './SkaterImageSet.js';
@@ -25,6 +27,17 @@ const BUTTONS_PER_ROW = 4;
 export default class SkaterRadioButtonGroup extends RectangularRadioButtonGroup<number> {
 
   public constructor( skaterImageSetProperty: Property<number>, tandem: Tandem ) {
+
+    const skaterAccessibleNames: TReadOnlyProperty<string>[] = [
+      EnergySkateParkFluent.a11y.skaterSetOneControls.skater1RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSetOneControls.skater2RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSetOneControls.skater3RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSetOneControls.skater4RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSetOneControls.skater5RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSetOneControls.skater6RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSetOneControls.skater7RadioButton.accessibleName.createProperty( { animalType: 'Cat' } ),
+      EnergySkateParkFluent.a11y.skaterSetOneControls.skater0RadioButton.accessibleName.createProperty( { animalType: 'Dog' } )
+    ];
 
     // Build the items array for RectangularRadioButtonGroup
     const items: RectangularRadioButtonGroupItem<number>[] = [];
@@ -44,7 +57,8 @@ export default class SkaterRadioButtonGroup extends RectangularRadioButtonGroup<
       items.push( {
         value: index,
         createNode: () => imageNode,
-        tandemName: `skater${index + 1}RadioButton`
+        tandemName: `skater${index + 1}RadioButton`,
+        options: index < skaterAccessibleNames.length ? { accessibleName: skaterAccessibleNames[ index ] } : undefined
       } );
     } );
 
@@ -59,6 +73,8 @@ export default class SkaterRadioButtonGroup extends RectangularRadioButtonGroup<
       lineSpacing: BUTTON_SPACING,
       justify: 'left',
       stretch: false,
+      accessibleName: EnergySkateParkFluent.a11y.skaterSetOneControls.accessibleNameStringProperty,
+      accessibleHelpText: EnergySkateParkFluent.a11y.skaterSetOneControls.accessibleHelpTextStringProperty,
       radioButtonOptions: {
         xMargin: 1,
         yMargin: 1,

@@ -9,12 +9,13 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import Emitter from '../../../../axon/js/Emitter.js';
 import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
+import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
-import PhysicalComboBox from './PhysicalComboBox.js';
+import PhysicalComboBox, { PhysicalComboBoxOptions } from './PhysicalComboBox.js';
 
 export default class GravityComboBox extends PhysicalComboBox {
 
@@ -24,9 +25,9 @@ export default class GravityComboBox extends PhysicalComboBox {
    * @param resetEmitter
    * @param listParent - node which the ComboBoxListBox will be added
    * @param tandem
-   * @param [options]
+   * @param [providedOptions]
    */
-  public constructor( gravityProperty: PhetioProperty<number>, userControlledProperty: BooleanProperty, resetEmitter: Emitter, listParent: Node, tandem: Tandem ) {
+  public constructor( gravityProperty: PhetioProperty<number>, userControlledProperty: BooleanProperty, resetEmitter: Emitter, listParent: Node, tandem: Tandem, providedOptions?: PhysicalComboBoxOptions ) {
 
     const labelValueList = [
       { label: EnergySkateParkFluent.physicalControls.gravityControls.moonStringProperty, value: EnergySkateParkConstants.MOON_GRAVITY, tandemName: 'moonItem' },
@@ -34,7 +35,7 @@ export default class GravityComboBox extends PhysicalComboBox {
       { label: EnergySkateParkFluent.physicalControls.gravityControls.jupiterStringProperty, value: EnergySkateParkConstants.JUPITER_GRAVITY, tandemName: 'jupiterItem' }
     ];
 
-    super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, { yMargin: 4 } );
+    super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, combineOptions<PhysicalComboBoxOptions>( { yMargin: 4 }, providedOptions ) );
   }
 }
 

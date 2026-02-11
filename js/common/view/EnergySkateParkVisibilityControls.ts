@@ -92,7 +92,12 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
       items.push( {
         property: model.pieChartVisibleProperty,
         createNode: () => createCheckboxContent( pieChartStringProperty, EnergySkateParkCheckboxItem.createPieChartIcon( Tandem.OPT_OUT ), iconAlignGroup ),
-        tandemName: 'pieChartCheckbox'
+        tandemName: 'pieChartCheckbox',
+        options: {
+          accessibleHelpText: EnergySkateParkFluent.a11y.pieChartCheckbox.accessibleHelpTextStringProperty,
+          accessibleContextResponseChecked: EnergySkateParkFluent.a11y.pieChartCheckbox.accessibleContextResponseCheckedStringProperty,
+          accessibleContextResponseUnchecked: EnergySkateParkFluent.a11y.pieChartCheckbox.accessibleContextResponseUncheckedStringProperty
+        }
       } );
     }
 
@@ -100,7 +105,12 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
       items.push( {
         property: model.gridVisibleProperty,
         createNode: () => createCheckboxContent( controlsShowGridStringProperty, EnergySkateParkCheckboxItem.createGridIcon( Tandem.OPT_OUT ), iconAlignGroup ),
-        tandemName: 'gridCheckbox'
+        tandemName: 'gridCheckbox',
+        options: {
+          accessibleHelpText: EnergySkateParkFluent.a11y.gridCheckbox.accessibleHelpTextStringProperty,
+          accessibleContextResponseChecked: EnergySkateParkFluent.a11y.gridCheckbox.accessibleContextResponseCheckedStringProperty,
+          accessibleContextResponseUnchecked: EnergySkateParkFluent.a11y.gridCheckbox.accessibleContextResponseUncheckedStringProperty
+        }
       } );
     }
 
@@ -108,7 +118,12 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
       items.push( {
         property: model.speedometerVisibleProperty,
         createNode: () => createCheckboxContent( propertiesSpeedStringProperty, EnergySkateParkCheckboxItem.createSpeedometerIcon( Tandem.OPT_OUT ), iconAlignGroup ),
-        tandemName: 'speedCheckbox'
+        tandemName: 'speedCheckbox',
+        options: {
+          accessibleHelpText: EnergySkateParkFluent.a11y.speedCheckbox.accessibleHelpTextStringProperty,
+          accessibleContextResponseChecked: EnergySkateParkFluent.a11y.speedCheckbox.accessibleContextResponseCheckedStringProperty,
+          accessibleContextResponseUnchecked: EnergySkateParkFluent.a11y.speedCheckbox.accessibleContextResponseUncheckedStringProperty
+        }
       } );
     }
 
@@ -117,7 +132,12 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
       items.push( {
         property: ( model ).saveSamplesProperty,
         createNode: () => createCheckboxContent( controlsPathStringProperty, EnergySkateParkCheckboxItem.createSamplesIcon( Tandem.OPT_OUT ), iconAlignGroup ),
-        tandemName: 'pathCheckbox'
+        tandemName: 'pathCheckbox',
+        options: {
+          accessibleHelpText: EnergySkateParkFluent.a11y.pathCheckbox.accessibleHelpTextStringProperty,
+          accessibleContextResponseChecked: EnergySkateParkFluent.a11y.pathCheckbox.accessibleContextResponseCheckedStringProperty,
+          accessibleContextResponseUnchecked: EnergySkateParkFluent.a11y.pathCheckbox.accessibleContextResponseUncheckedStringProperty
+        }
       } );
     }
 
@@ -125,7 +145,12 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
       items.push( {
         property: model.referenceHeightVisibleProperty,
         createNode: () => createCheckboxContent( controlsReferenceHeightStringProperty, EnergySkateParkCheckboxItem.createReferenceHeightIcon(), iconAlignGroup ),
-        tandemName: 'referenceHeightCheckbox'
+        tandemName: 'referenceHeightCheckbox',
+        options: {
+          accessibleHelpText: EnergySkateParkFluent.a11y.referenceHeightCheckbox.accessibleHelpTextStringProperty,
+          accessibleContextResponseChecked: EnergySkateParkFluent.a11y.referenceHeightCheckbox.accessibleContextResponseCheckedStringProperty,
+          accessibleContextResponseUnchecked: EnergySkateParkFluent.a11y.referenceHeightCheckbox.accessibleContextResponseUncheckedStringProperty
+        }
       } );
     }
 
@@ -134,7 +159,11 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
       items.push( {
         property: model.stickingToTrackProperty,
         createNode: () => createCheckboxContent( controlsStickToTrackStringProperty, EnergySkateParkCheckboxItem.createStickingToTrackIcon(), iconAlignGroup ),
-        tandemName: 'stickingCheckbox'
+        tandemName: 'stickingCheckbox',
+        options: {
+          accessibleContextResponseChecked: EnergySkateParkFluent.a11y.stickToTrackCheckbox.accessibleContextResponseCheckedStringProperty,
+          accessibleContextResponseUnchecked: EnergySkateParkFluent.a11y.stickToTrackCheckbox.accessibleContextResponseUncheckedStringProperty
+        }
       } );
     }
 

@@ -18,6 +18,8 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
 import { SliderOptions } from '../../../../sun/js/Slider.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import Utils from '../../../../dot/js/Utils.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkPreferencesModel, { AccelerationUnits } from '../model/EnergySkateParkPreferencesModel.js';
@@ -92,6 +94,9 @@ export default class EnergySkateParkGravityControls extends VBox {
         } )
       );
 
+      gravityControlInMetersPerSecondSquared.accessibleHelpText = EnergySkateParkFluent.a11y.gravityControl.accessibleHelpTextStringProperty;
+      gravityControlInNewtonsPerKilogram.accessibleHelpText = EnergySkateParkFluent.a11y.gravityControl.accessibleHelpTextStringProperty;
+
       children.push( gravityControlInMetersPerSecondSquared );
       children.push( gravityControlInNewtonsPerKilogram );
 
@@ -105,11 +110,24 @@ export default class EnergySkateParkGravityControls extends VBox {
 
     if ( options.includeGravitySlider ) {
       const gravitySlider = new GravitySlider( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityControl' ) );
+      gravitySlider.accessibleHelpText = EnergySkateParkFluent.a11y.gravitySlider.accessibleHelpTextStringProperty;
       children.push( gravitySlider );
     }
 
     if ( options.includeGravityComboBox ) {
-      const gravityComboBox = new GravityComboBox( gravityMagnitudeProperty, userControlledProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ) );
+      const gValueStringProperty = new DerivedProperty( [ gravityMagnitudeProperty ],
+        g => `${Utils.toFixed( g, 1 )} meters per second squared`
+      );
+      const gravityContextResponseProperty = EnergySkateParkFluent.a11y.gravityComboBox.accessibleContextResponse.createProperty( {
+        gValue: gValueStringProperty
+      } );
+
+      const gravityComboBox = new GravityComboBox( gravityMagnitudeProperty, userControlledProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ), {
+        accessibleName: EnergySkateParkFluent.a11y.gravityComboBox.accessibleNameStringProperty,
+        accessibleHelpText: EnergySkateParkFluent.a11y.gravityComboBox.accessibleHelpTextStringProperty,
+        accessibleContextResponse: gravityContextResponseProperty
+      } );
+
       children.push( gravityComboBox );
     }
 

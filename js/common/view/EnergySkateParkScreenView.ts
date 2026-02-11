@@ -285,7 +285,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
       listener: model.returnSkater.bind( model ),
       centerY: this.resetAllButton.centerY,
       // X updated in layoutBounds since the reset all button can move horizontally
-      tandem: tandem.createTandem( 'returnSkaterButton' )
+      tandem: tandem.createTandem( 'returnSkaterButton' ),
+      accessibleHelpText: EnergySkateParkFluent.a11y.restartSkaterButton.accessibleHelpTextStringProperty
     } );
 
     // Disable the return skater button when the skater is already at his initial coordinates
@@ -459,7 +460,9 @@ export default class EnergySkateParkScreenView extends ScreenView {
       // green means "go" since the skater will likely start moving at this point
       baseColor: EnergySkateParkColorScheme.kineticEnergy,
       listener: model.returnSkater.bind( model ),
-      tandem: tandem.createTandem( 'returnSkaterToPreviousStartingPositionButton' )
+      tandem: tandem.createTandem( 'returnSkaterToPreviousStartingPositionButton' ),
+      accessibleName: EnergySkateParkFluent.a11y.returnSkaterToPreviousStartingPositionButton.accessibleNameStringProperty,
+      accessibleHelpText: EnergySkateParkFluent.a11y.returnSkaterToPreviousStartingPositionButton.accessibleHelpTextStringProperty
     } );
 
     const skaterIconImage2 = new Image( this.skaterNode.skaterImageSetProperty.value.leftImageProperty, {
@@ -469,6 +472,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       content: skaterIconImage2,
       centerBottom: modelViewTransform.modelToViewPosition( model.skater.startingPositionProperty.value ),
       baseColor: '#f4514e', // red for stop, since the skater will be stopped on the ground.
+      accessibleName: EnergySkateParkFluent.a11y.returnSkaterToGroundButton.accessibleNameStringProperty,
       listener: () => {
 
         // resetting the skater position will change state of simulation

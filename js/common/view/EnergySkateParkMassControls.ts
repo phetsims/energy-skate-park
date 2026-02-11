@@ -15,6 +15,7 @@ import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import MassNumberControl from './MassNumberControl.js';
 import MassSlider from './MassSlider.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
@@ -53,6 +54,7 @@ export default class EnergySkateParkMassControls extends VBox {
     let massNumberControl = null;
     if ( options.includeMassNumberControl ) {
       massNumberControl = new MassNumberControl( massProperty, userControlledProperty, massRange, tandem.createTandem( 'massNumberControl' ) );
+      massNumberControl.accessibleHelpText = EnergySkateParkFluent.a11y.massControl.accessibleHelpTextStringProperty;
       children.push( massNumberControl );
     }
 
@@ -60,6 +62,7 @@ export default class EnergySkateParkMassControls extends VBox {
     if ( options.includeMassSlider ) {
 
       massSlider = new MassSlider( massProperty, userControlledProperty, massRange, tandem.createTandem( 'massNumberControl' ) );
+      massSlider.accessibleHelpText = EnergySkateParkFluent.a11y.massSlider.accessibleHelpTextStringProperty;
       children.push( massSlider );
     }
 

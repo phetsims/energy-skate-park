@@ -92,7 +92,10 @@ export default class PieChartLegend extends Panel {
       centerX: thermalLabel.centerX,
       y: thermalLabel.bottom + 15,
       scale: 0.8,
-      soundPlayer: sharedSoundPlayers.get( 'erase' )
+      soundPlayer: sharedSoundPlayers.get( 'erase' ),
+      accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleNameStringProperty,
+      accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleHelpTextStringProperty,
+      accessibleContextResponse: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleContextResponseStringProperty
     } );
     skater.allowClearingThermalEnergyProperty.link( allowClearingThermalEnergy => {
       clearThermalButton.enabled = allowClearingThermalEnergy;

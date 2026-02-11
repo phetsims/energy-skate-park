@@ -35,11 +35,13 @@
         "value": "{{value}} N/kg"
       }
     },
-    "massControls.mass": {
-      "value": "Mass"
-    },
-    "massControls.massKilogramsPattern": {
-      "value": "{{value}} kg"
+    "massControls": {
+      "mass": {
+        "value": "Mass"
+      },
+      "massKilogramsPattern": {
+        "value": "{{value}} kg"
+      }
     },
     "friction": {
       "value": "Friction"
@@ -81,14 +83,20 @@
     }
   },
   "plots": {
-    "barGraph.label": {
-      "value": "Bar Graph"
+    "barGraph": {
+      "label": {
+        "value": "Bar Graph"
+      }
     },
-    "energyGraph.label": {
-      "value": "Energy Graph"
+    "energyGraph": {
+      "label": {
+        "value": "Energy Graph"
+      }
     },
-    "pieChart.label": {
-      "value": "Pie Chart"
+    "pieChart": {
+      "label": {
+        "value": "Pie Chart"
+      }
     },
     "timeSwitchLabel": {
       "value": "Time"

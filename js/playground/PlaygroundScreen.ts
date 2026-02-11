@@ -25,6 +25,7 @@ export default class PlaygroundScreen extends Screen<EnergySkateParkPlaygroundMo
       name: EnergySkateParkFluent.screens.playgroundStringProperty,
       homeScreenIcon: new PlaygroundScreenIcon(),
       tandem: tandem,
+      screenButtonsHelpText: EnergySkateParkFluent.a11y.screenButtons.playground.accessibleHelpTextStringProperty,
       createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent( {
         additionalLeftSections: [ new TrackEditingKeyboardHelpSection() ],
         includeReturnToolToToolbox: true

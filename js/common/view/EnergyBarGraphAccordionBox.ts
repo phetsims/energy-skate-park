@@ -13,6 +13,7 @@ import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import AccordionBox, { AccordionBoxOptions } from '../../../../sun/js/AccordionBox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import Skater from '../model/Skater.js';
 import EnergyBarGraph, { EnergyBarGraphOptions } from './EnergyBarGraph.js';
@@ -59,6 +60,8 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
         sideLength: 19
       },
 
+      accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.accessibleNameStringProperty,
+
       tandem: tandem
     }, EnergySkateParkConstants.GRAPH_PANEL_OPTIONS, providedOptions );
 
@@ -68,6 +71,9 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
 
     barGraphVisibleProperty.link( visible => {
       graphIcon.visible = !visible;
+
+      // Show help text only when the accordion box is expanded (AccordionBox only supports collapsed help text natively)
+      this.accessibleHelpText = visible ? EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.accessibleHelpTextExpandedStringProperty : null;
     } );
   }
 }

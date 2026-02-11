@@ -37,7 +37,9 @@ export default class ToolboxPanel extends Panel {
       // smaller y margin to save space when used with very tall ControlPanels (like in the intro screen)
       yMargin: 2,
 
-      xMargin: 25
+      xMargin: 25,
+
+      accessibleHeading: EnergySkateParkFluent.a11y.toolboxPanel.accessibleHeadingStringProperty
     }, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
 
     // create the icons

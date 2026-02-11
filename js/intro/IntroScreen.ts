@@ -23,6 +23,7 @@ export default class IntroScreen extends Screen<IntroModel, IntroScreenView> {
       name: EnergySkateParkFluent.screens.introStringProperty,
       tandem: tandem,
       homeScreenIcon: new IntroScreenIcon(),
+      screenButtonsHelpText: EnergySkateParkFluent.a11y.screenButtons.intro.accessibleHelpTextStringProperty,
       createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent( {
         includeReturnToolToToolbox: true
       } )

@@ -34,7 +34,8 @@ export default class FrictionSlider extends PhysicalSlider {
       },
       valueChangeSoundGeneratorOptions: {
         numberOfMiddleThresholds: ( range.getLength() / FRICTION_INTERVAL ) - 1
-      }
+      },
+      accessibleHelpText: EnergySkateParkFluent.a11y.frictionSlider.accessibleHelpTextStringProperty
     } );
 
     this.slider.addMinorTick( range.getLength() / 5 + range.min );
