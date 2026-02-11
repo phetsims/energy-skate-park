@@ -7,12 +7,13 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import KeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSection.js';
 import KeyboardHelpSectionRow from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSectionRow.js';
 import KeyboardHelpIconFactory from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpIconFactory.js';
+import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
+import ControlPointNode from './ControlPointNode.js';
 
 // HotkeyData for keyboard help dialog rows
 const MOVE_CONTROL_POINT_HOTKEY_DATA = new HotkeyData( {
@@ -42,7 +43,8 @@ export default class TrackEditingKeyboardHelpSection extends KeyboardHelpSection
         icon: KeyboardHelpIconFactory.arrowKeysRowIcon()
       } ),
       KeyboardHelpSectionRow.fromHotkeyData( REMOVE_FROM_PLAY_AREA_HOTKEY_DATA ),
-      KeyboardHelpSectionRow.fromHotkeyData( CONNECT_TRACK_ENDPOINTS_HOTKEY_DATA )
+      KeyboardHelpSectionRow.fromHotkeyData( CONNECT_TRACK_ENDPOINTS_HOTKEY_DATA ),
+      KeyboardHelpSectionRow.fromHotkeyData( ControlPointNode.SPLIT_VERTEX_HOTKEY_DATA )
     ];
 
     super( EnergySkateParkFluent.keyboardHelpDialog.trackEditingStringProperty, rows, {

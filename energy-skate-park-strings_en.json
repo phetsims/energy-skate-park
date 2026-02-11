@@ -237,6 +237,9 @@
     },
     "connectTrackEndpoints": {
       "value": "Connect track endpoints"
+    },
+    "splitVertex": {
+      "value": "Split vertex"
     }
   },
   "a11y": {

@@ -8,10 +8,12 @@
  */
 
 import Emitter from '../../../../axon/js/Emitter.js';
+import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Shape from '../../../../kite/js/Shape.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
+import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Circle, { CircleOptions } from '../../../../scenery/js/nodes/Circle.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
@@ -26,6 +28,13 @@ import TrackDragHandler from './TrackDragHandler.js';
 import TrackNode from './TrackNode.js';
 
 export default class ControlPointNode extends Circle {
+
+  public static readonly SPLIT_VERTEX_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'alt+x' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.splitVertexStringProperty
+  } );
+
   public readonly boundsRectangle: Rectangle | null;
 
   /**
@@ -355,6 +364,21 @@ export default class ControlPointNode extends Circle {
             }
           }
         } ), { disposer: this } );
+
+        // Alt+X splits the vertex, same as the scissors button in ControlPointUI.
+        // Only available for interior control points when there is room for more tracks.
+        if ( !isEndPoint ) {
+          this.addInputListener( new KeyboardListener( {
+            keyStringProperties: ControlPointNode.SPLIT_VERTEX_HOTKEY_DATA.keyStringProperties,
+            fire: () => {
+              if ( track.physicalProperty.value && !track.isDisposed && model.canCutTrackControlPoint() ) {
+                const alpha = new LinearFunction( 0, track.controlPoints.length - 1, track.minPoint, track.maxPoint ).evaluate( i );
+                const modelAngle = track.getModelAngleAt( alpha );
+                model.splitControlPoint( track, i, modelAngle );
+              }
+            }
+          } ), { disposer: this } );
+        }
       }
     }
 

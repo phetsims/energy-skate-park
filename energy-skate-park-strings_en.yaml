@@ -83,6 +83,7 @@ keyboardHelpDialog:
   moveControlPoint:      Move control point
   removeFromPlayArea:    Remove from play area
   connectTrackEndpoints: Connect track endpoints
+  splitVertex:           Split vertex
 a11y:
   skaterNode:
     accessibleName:   Skater

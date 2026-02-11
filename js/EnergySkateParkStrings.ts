@@ -119,6 +119,7 @@ type StringsType = {
     'moveControlPointStringProperty': LocalizedStringProperty;
     'removeFromPlayAreaStringProperty': LocalizedStringProperty;
     'connectTrackEndpointsStringProperty': LocalizedStringProperty;
+    'splitVertexStringProperty': LocalizedStringProperty;
   };
   'a11y': {
     'skaterNode': {

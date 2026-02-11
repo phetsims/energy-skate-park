@@ -89,6 +89,7 @@ addToMapIfDefined( 'keyboardHelpDialog_trackEditing', 'keyboardHelpDialog.trackE
 addToMapIfDefined( 'keyboardHelpDialog_moveControlPoint', 'keyboardHelpDialog.moveControlPointStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_removeFromPlayArea', 'keyboardHelpDialog.removeFromPlayAreaStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints', 'keyboardHelpDialog.connectTrackEndpointsStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_splitVertex', 'keyboardHelpDialog.splitVertexStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_accessibleName', 'a11y.skaterNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_onTrackHelpText', 'a11y.skaterNode.onTrackHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_offTrackHelpText', 'a11y.skaterNode.offTrackHelpTextStringProperty' );
@@ -286,7 +287,8 @@ const EnergySkateParkFluent = {
     trackEditingStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.trackEditingStringProperty' ),
     moveControlPointStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.moveControlPointStringProperty' ),
     removeFromPlayAreaStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.removeFromPlayAreaStringProperty' ),
-    connectTrackEndpointsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.connectTrackEndpointsStringProperty' )
+    connectTrackEndpointsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.connectTrackEndpointsStringProperty' ),
+    splitVertexStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.splitVertexStringProperty' )
   },
   a11y: {
     skaterNode: {
