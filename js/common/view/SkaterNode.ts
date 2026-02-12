@@ -327,8 +327,6 @@ export default class SkaterNode extends Node {
 
   /**
    * Attach the skater to the nearest track.
-   *
-   * TODO: Near duplicate, see https://github.com/phetsims/energy-skate-park/issues/431
    */
   private attachToNearestTrack(): void {
     // Only attach if skater is not already on a track
@@ -345,26 +343,9 @@ export default class SkaterNode extends Node {
       const track = closestTrackInfo.track;
       const u = closestTrackInfo.parametricPosition;
 
-      // Attach to track
       this.skater.trackProperty.value = track;
-      this.skater.parametricPositionProperty.value = u;
-      this.skater.positionProperty.value = track.getPoint( u );
+      this.skater.placeOnTrackAt( track, u );
 
-      // Set the angle and side based on track normal
-      const normal = track.getUnitNormalVector( u );
-      this.skater.onTopSideOfTrackProperty.value = normal.y > 0;
-      this.skater.angleProperty.value = track.getViewAngleAt( u ) +
-                                        ( this.skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
-
-      // Clear velocity and thermal energy
-      this.skater.velocityProperty.value = new Vector2( 0, 0 );
-      this.skater.parametricSpeedProperty.value = 0;
-      this.skater.thermalEnergyProperty.value = 0;
-
-      this.skater.updateEnergy();
-      this.skater.updatedEmitter.emit();
-
-      // Update keyboard target for when user releases (via Space/Enter)
       this.keyboardTargetTrack = track;
       this.keyboardTargetU = u;
     }
@@ -374,8 +355,6 @@ export default class SkaterNode extends Node {
    * Jump the skater to the start or end of the current track.
    * Resets orientation to upside-up at the target position.
    * @param toStart - true for start (minPoint), false for end (maxPoint)
-   *
-   * TODO: Duplicated, see https://github.com/phetsims/energy-skate-park/issues/431
    */
   private jumpToTrackEndpoint( toStart: boolean ): void {
     const track = this.skater.trackProperty.value;
@@ -384,25 +363,8 @@ export default class SkaterNode extends Node {
     }
 
     const targetU = toStart ? track.minPoint + 1E-6 : track.maxPoint - 1E-6;
+    this.skater.placeOnTrackAt( track, targetU );
 
-    this.skater.parametricPositionProperty.value = targetU;
-    this.skater.positionProperty.value = track.getPoint( targetU );
-
-    // Determine upside-up orientation at the target position
-    const normal = track.getUnitNormalVector( targetU );
-    this.skater.onTopSideOfTrackProperty.value = normal.y > 0;
-    this.skater.angleProperty.value = track.getViewAngleAt( targetU ) +
-                                      ( this.skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
-
-    // Clear velocity and thermal energy
-    this.skater.velocityProperty.value = new Vector2( 0, 0 );
-    this.skater.parametricSpeedProperty.value = 0;
-    this.skater.thermalEnergyProperty.value = 0;
-
-    this.skater.updateEnergy();
-    this.skater.updatedEmitter.emit();
-
-    // Update keyboard target for release
     this.keyboardTargetTrack = track;
     this.keyboardTargetU = targetU;
   }
