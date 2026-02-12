@@ -40,9 +40,6 @@ const POSITION_DELTA_SHIFT = 0.025; // meters, slower movement with shift
 const PARAMETRIC_DELTA = 0.005; // parametric units for on-track movement
 const PARAMETRIC_DELTA_SHIFT = 0.001; // slower parametric movement with shift
 
-// Maximum distance (in meters) for attaching to a track with the hotkey
-const TRACK_ATTACH_THRESHOLD = 2;
-
 export default class SkaterNode extends Node {
 
   // Static HotkeyData for keyboard help integration
@@ -311,17 +308,27 @@ export default class SkaterNode extends Node {
       }
     } );
 
-    // Add keyboard listener for attaching to nearest track (T key)
+    // Add keyboard listener for track attachment (T) and endpoint jumping (Home/End)
     this.addInputListener( new KeyboardListener( {
-      keys: [ 't' ] as const,
-      fire: () => {
-        this.attachToNearestTrack();
+      keys: [ 't', 'home', 'end' ] as const,
+      fire: ( event, keysPressed ) => {
+        if ( keysPressed === 't' ) {
+          this.attachToNearestTrack();
+        }
+        else if ( keysPressed === 'home' ) {
+          this.jumpToTrackEndpoint( true );
+        }
+        else if ( keysPressed === 'end' ) {
+          this.jumpToTrackEndpoint( false );
+        }
       }
     } ) );
   }
 
   /**
-   * Attach the skater to the nearest track if within the threshold distance.
+   * Attach the skater to the nearest track.
+   *
+   * TODO: Near duplicate, see https://github.com/phetsims/energy-skate-park/issues/431
    */
   private attachToNearestTrack(): void {
     // Only attach if skater is not already on a track
@@ -335,36 +342,69 @@ export default class SkaterNode extends Node {
     if ( closestTrackInfo &&
          closestTrackInfo.track &&
          closestTrackInfo.track.isParameterInBounds( closestTrackInfo.parametricPosition ) ) {
-      const distance = closestTrackInfo.point.distance( position );
+      const track = closestTrackInfo.track;
+      const u = closestTrackInfo.parametricPosition;
 
-      if ( distance < TRACK_ATTACH_THRESHOLD ) {
-        const track = closestTrackInfo.track;
-        const u = closestTrackInfo.parametricPosition;
+      // Attach to track
+      this.skater.trackProperty.value = track;
+      this.skater.parametricPositionProperty.value = u;
+      this.skater.positionProperty.value = track.getPoint( u );
 
-        // Attach to track
-        this.skater.trackProperty.value = track;
-        this.skater.parametricPositionProperty.value = u;
-        this.skater.positionProperty.value = track.getPoint( u );
+      // Set the angle and side based on track normal
+      const normal = track.getUnitNormalVector( u );
+      this.skater.onTopSideOfTrackProperty.value = normal.y > 0;
+      this.skater.angleProperty.value = track.getViewAngleAt( u ) +
+                                        ( this.skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
 
-        // Set the angle and side based on track normal
-        const normal = track.getUnitNormalVector( u );
-        this.skater.onTopSideOfTrackProperty.value = normal.y > 0;
-        this.skater.angleProperty.value = track.getViewAngleAt( u ) +
-                                          ( this.skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+      // Clear velocity and thermal energy
+      this.skater.velocityProperty.value = new Vector2( 0, 0 );
+      this.skater.parametricSpeedProperty.value = 0;
+      this.skater.thermalEnergyProperty.value = 0;
 
-        // Clear velocity and thermal energy
-        this.skater.velocityProperty.value = new Vector2( 0, 0 );
-        this.skater.parametricSpeedProperty.value = 0;
-        this.skater.thermalEnergyProperty.value = 0;
+      this.skater.updateEnergy();
+      this.skater.updatedEmitter.emit();
 
-        this.skater.updateEnergy();
-        this.skater.updatedEmitter.emit();
-
-        // Update keyboard target for when user releases (via Space/Enter)
-        this.keyboardTargetTrack = track;
-        this.keyboardTargetU = u;
-      }
+      // Update keyboard target for when user releases (via Space/Enter)
+      this.keyboardTargetTrack = track;
+      this.keyboardTargetU = u;
     }
+  }
+
+  /**
+   * Jump the skater to the start or end of the current track.
+   * Resets orientation to upside-up at the target position.
+   * @param toStart - true for start (minPoint), false for end (maxPoint)
+   *
+   * TODO: Duplicated, see https://github.com/phetsims/energy-skate-park/issues/431
+   */
+  private jumpToTrackEndpoint( toStart: boolean ): void {
+    const track = this.skater.trackProperty.value;
+    if ( !track ) {
+      return;
+    }
+
+    const targetU = toStart ? track.minPoint + 1E-6 : track.maxPoint - 1E-6;
+
+    this.skater.parametricPositionProperty.value = targetU;
+    this.skater.positionProperty.value = track.getPoint( targetU );
+
+    // Determine upside-up orientation at the target position
+    const normal = track.getUnitNormalVector( targetU );
+    this.skater.onTopSideOfTrackProperty.value = normal.y > 0;
+    this.skater.angleProperty.value = track.getViewAngleAt( targetU ) +
+                                      ( this.skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+
+    // Clear velocity and thermal energy
+    this.skater.velocityProperty.value = new Vector2( 0, 0 );
+    this.skater.parametricSpeedProperty.value = 0;
+    this.skater.thermalEnergyProperty.value = 0;
+
+    this.skater.updateEnergy();
+    this.skater.updatedEmitter.emit();
+
+    // Update keyboard target for release
+    this.keyboardTargetTrack = track;
+    this.keyboardTargetU = targetU;
   }
 
   /**

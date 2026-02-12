@@ -78,6 +78,8 @@ addToMapIfDefined( 'keyboardHelpDialog_moveSkaterSlower', 'keyboardHelpDialog.mo
 addToMapIfDefined( 'keyboardHelpDialog_moveAlongTrack', 'keyboardHelpDialog.moveAlongTrackStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_detachFromTrack', 'keyboardHelpDialog.detachFromTrackStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_attachToTrack', 'keyboardHelpDialog.attachToTrackStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_moveToStartOfTrack', 'keyboardHelpDialog.moveToStartOfTrackStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_moveToEndOfTrack', 'keyboardHelpDialog.moveToEndOfTrackStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_moveReferenceHeight', 'keyboardHelpDialog.moveReferenceHeightStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_simShortcuts', 'keyboardHelpDialog.simShortcutsStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_restartSkater', 'keyboardHelpDialog.restartSkaterStringProperty' );
@@ -277,6 +279,8 @@ const EnergySkateParkFluent = {
     moveAlongTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.moveAlongTrackStringProperty' ),
     detachFromTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.detachFromTrackStringProperty' ),
     attachToTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.attachToTrackStringProperty' ),
+    moveToStartOfTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.moveToStartOfTrackStringProperty' ),
+    moveToEndOfTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.moveToEndOfTrackStringProperty' ),
     moveReferenceHeightStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.moveReferenceHeightStringProperty' ),
     simShortcutsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.simShortcutsStringProperty' ),
     restartSkaterStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.restartSkaterStringProperty' ),

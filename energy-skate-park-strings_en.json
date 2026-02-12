@@ -205,6 +205,12 @@
     "attachToTrack": {
       "value": "Attach to nearest track"
     },
+    "moveToStartOfTrack": {
+      "value": "Move to start of track"
+    },
+    "moveToEndOfTrack": {
+      "value": "Move to end of track"
+    },
     "moveReferenceHeight": {
       "value": "Move reference height line"
     },

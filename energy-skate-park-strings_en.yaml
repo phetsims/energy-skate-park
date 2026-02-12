@@ -72,6 +72,8 @@ keyboardHelpDialog:
   moveAlongTrack:        Move along track
   detachFromTrack:       Detach from track
   attachToTrack:         Attach to nearest track
+  moveToStartOfTrack:    Move to start of track
+  moveToEndOfTrack:      Move to end of track
   moveReferenceHeight:   Move reference height line
   simShortcuts:          Sim Shortcuts
   restartSkater:         Restart Skater

@@ -6,10 +6,8 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import KeyboardHelpIconFactory from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpIconFactory.js';
 import KeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSection.js';
 import KeyboardHelpSectionRow from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSectionRow.js';
-import LetterKeyNode from '../../../../scenery-phet/js/keyboard/LetterKeyNode.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import SkaterKeyboardListener from './SkaterKeyboardListener.js';
@@ -22,33 +20,22 @@ export default class SkaterKeyboardHelpSection extends KeyboardHelpSection {
     const rows = [
 
       // Move skater (off track - 2D movement)
-      KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.MOVE_SKATER_HOTKEY_DATA, {
-        icon: KeyboardHelpIconFactory.arrowOrWasdKeysRowIcon()
-      } ),
+      KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.MOVE_SKATER_HOTKEY_DATA ),
 
       // Move along track (when on track)
-      KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.MOVE_ALONG_TRACK_HOTKEY_DATA, {
-        icon: KeyboardHelpIconFactory.iconOrIcon(
-          KeyboardHelpIconFactory.leftRightArrowKeysRowIcon(),
-          KeyboardHelpIconFactory.iconRow( [
-            LetterKeyNode.a(),
-            LetterKeyNode.d()
-          ] )
-        )
-      } ),
+      KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.MOVE_ALONG_TRACK_HOTKEY_DATA ),
 
       // Detach from track
-      KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.DETACH_FROM_TRACK_HOTKEY_DATA, {
-        icon: KeyboardHelpIconFactory.iconOrIcon(
-          KeyboardHelpIconFactory.upDownArrowKeysRowIcon(),
-          LetterKeyNode.w()
-        )
-      } ),
+      KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.DETACH_FROM_TRACK_HOTKEY_DATA ),
+
+      // Move to start of track
+      KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.MOVE_TO_START_OF_TRACK_HOTKEY_DATA ),
+
+      // Move to end of track
+      KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.MOVE_TO_END_OF_TRACK_HOTKEY_DATA ),
 
       // Attach to nearest track
-      KeyboardHelpSectionRow.fromHotkeyData( SkaterNode.ATTACH_TO_TRACK_HOTKEY_DATA, {
-        icon: LetterKeyNode.t()
-      } )
+      KeyboardHelpSectionRow.fromHotkeyData( SkaterNode.ATTACH_TO_TRACK_HOTKEY_DATA )
     ];
 
     // 'Skater Controls' title

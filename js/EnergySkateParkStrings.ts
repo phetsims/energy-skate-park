@@ -108,6 +108,8 @@ type StringsType = {
     'moveAlongTrackStringProperty': LocalizedStringProperty;
     'detachFromTrackStringProperty': LocalizedStringProperty;
     'attachToTrackStringProperty': LocalizedStringProperty;
+    'moveToStartOfTrackStringProperty': LocalizedStringProperty;
+    'moveToEndOfTrackStringProperty': LocalizedStringProperty;
     'moveReferenceHeightStringProperty': LocalizedStringProperty;
     'simShortcutsStringProperty': LocalizedStringProperty;
     'restartSkaterStringProperty': LocalizedStringProperty;

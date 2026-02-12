@@ -43,12 +43,28 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
     keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.detachFromTrackStringProperty
   } );
 
+  public static readonly MOVE_TO_START_OF_TRACK_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'home' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveToStartOfTrackStringProperty
+  } );
+
+  public static readonly MOVE_TO_END_OF_TRACK_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'end' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveToEndOfTrackStringProperty
+  } );
+
   private readonly skater: Skater;
   private readonly skaterNode: SkaterNode;
 
   public constructor( skater: Skater, skaterNode: SkaterNode ) {
     super( {
-      keyStringProperties: HotkeyData.combineKeyStringProperties( [ SkaterKeyboardListener.MOVE_SKATER_HOTKEY_DATA ] ),
+      keyStringProperties: HotkeyData.combineKeyStringProperties( [
+        SkaterKeyboardListener.MOVE_SKATER_HOTKEY_DATA,
+        SkaterKeyboardListener.MOVE_TO_START_OF_TRACK_HOTKEY_DATA,
+        SkaterKeyboardListener.MOVE_TO_END_OF_TRACK_HOTKEY_DATA
+      ] ),
       fireOnHold: true,
       press: () => sharedSoundPlayers.get( 'grab' ).play(),
       release: () => sharedSoundPlayers.get( 'release' ).play(),
@@ -101,6 +117,12 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
       // Detach from track
       this.detachFromTrack();
     }
+    else if ( keysPressed === 'home' ) {
+      this.jumpToTrackEndpoint( track, track.minPoint + 1E-6 );
+    }
+    else if ( keysPressed === 'end' ) {
+      this.jumpToTrackEndpoint( track, track.maxPoint - 1E-6 );
+    }
     // Down arrow (arrowDown, s) does nothing when on track
   }
 
@@ -140,6 +162,40 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
       // At end of track, detach
       this.detachFromTrack();
     }
+  }
+
+  /**
+   * Jump the skater to a specific endpoint on the track (for Home/End keys).
+   * Resets orientation to upside-up at the target position.
+   * TODO: Duplicated with other jumpToTrackEndpoint, see https://github.com/phetsims/energy-skate-park/issues/431
+   */
+  private jumpToTrackEndpoint( track: Skater[ 'trackProperty' ][ 'value' ] & object, targetU: number ): void {
+
+    // Set the skater to be dragging to pause physics simulation
+    this.skater.draggingProperty.value = true;
+
+    this.skater.parametricPositionProperty.value = targetU;
+    this.skater.positionProperty.value = track.getPoint( targetU );
+
+    // Determine upside-up orientation at the target position
+    const normal = track.getUnitNormalVector( targetU );
+    this.skater.onTopSideOfTrackProperty.value = normal.y > 0;
+    this.skater.angleProperty.value = track.getViewAngleAt( targetU ) +
+                                      ( this.skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+
+    // Clear velocity and thermal energy
+    this.skater.velocityProperty.value = this.skater.velocityProperty.value.timesScalar( 0 );
+    this.skater.parametricSpeedProperty.value = 0;
+    this.skater.thermalEnergyProperty.value = 0;
+
+    this.skater.updateEnergy();
+    this.skater.updatedEmitter.emit();
+
+    // Re-enable physics
+    this.skater.draggingProperty.value = false;
+
+    // Save the starting position for "return skater"
+    this.skater.released( track, targetU );
   }
 
   /**
