@@ -44,7 +44,7 @@ export default class SkaterNode extends Node {
 
   // Static HotkeyData for keyboard help integration
   public static readonly ATTACH_TO_TRACK_HOTKEY_DATA = new HotkeyData( {
-    keys: [ 't' ],
+    keys: [ 'alt+t' ],
     repoName: energySkatePark.name,
     keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.attachToTrackStringProperty
   } );
@@ -310,9 +310,9 @@ export default class SkaterNode extends Node {
 
     // Add keyboard listener for track attachment (T) and endpoint jumping (Home/End)
     this.addInputListener( new KeyboardListener( {
-      keys: [ 't', 'home', 'end' ] as const,
+      keys: [ 'alt+t', 'home', 'end' ] as const,
       fire: ( event, keysPressed ) => {
-        if ( keysPressed === 't' ) {
+        if ( keysPressed === 'alt+t' ) {
           this.attachToNearestTrack();
         }
         else if ( keysPressed === 'home' ) {
@@ -329,6 +329,7 @@ export default class SkaterNode extends Node {
    * Attach the skater to the nearest track.
    */
   private attachToNearestTrack(): void {
+
     // Only attach if skater is not already on a track
     if ( this.skater.trackProperty.value !== null ) {
       return;
@@ -337,11 +338,11 @@ export default class SkaterNode extends Node {
     const position = this.skater.positionProperty.value;
     const closestTrackInfo = this.getClosestTrackAndPositionAndParameter( position, this.getPhysicalTracks() );
 
-    if ( closestTrackInfo &&
-         closestTrackInfo.track &&
-         closestTrackInfo.track.isParameterInBounds( closestTrackInfo.parametricPosition ) ) {
+    if ( closestTrackInfo && closestTrackInfo.track ) {
       const track = closestTrackInfo.track;
-      const u = closestTrackInfo.parametricPosition;
+
+      // Clamp to valid track range since getClosestPositionAndParameter searches slightly beyond track edges (±1E-6)
+      const u = Math.max( track.minPoint, Math.min( track.maxPoint, closestTrackInfo.parametricPosition ) );
 
       this.skater.trackProperty.value = track;
       this.skater.placeOnTrackAt( track, u );
