@@ -44,7 +44,7 @@ export default class ControlPointNode extends Circle {
    * @param isEndPoint
    * @param tandem
    */
-  public constructor( trackNode: TrackNode, trackDragHandler: TrackDragHandler | null, i: number, isEndPoint: boolean, tandem: Tandem ) {
+  public constructor( trackNode: TrackNode, trackDragHandler: TrackDragHandler | null, i: number, isEndPoint: boolean, tandem: Tandem, omitA11y: boolean ) {
     const track = trackNode.track;
     const model = trackNode.model;
     const modelViewTransform = trackNode.modelViewTransform;
@@ -72,8 +72,8 @@ export default class ControlPointNode extends Circle {
       translation: modelViewTransform.modelToViewPosition( controlPoint.positionProperty.value ),
       tandem: tandem,
       visiblePropertyOptions: { phetioState: false },
-      accessibleName: EnergySkateParkFluent.a11y.controlPointNode.accessibleNameStringProperty
-    }, AccessibleDraggableOptions ) );
+      accessibleName: omitA11y ? undefined : EnergySkateParkFluent.a11y.controlPointNode.accessibleNameStringProperty
+    }, omitA11y ? undefined : AccessibleDraggableOptions ) );
 
     // Control points should only be focusable when the track is physical (in the play area).
     // When the track is in the toolbox, only the entire TrackNode should be focusable.

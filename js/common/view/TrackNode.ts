@@ -183,14 +183,17 @@ export default class TrackNode extends Node {
     }
 
     // only "configurable" tracks have draggable control points, and individual control points may have dragging
-    // disabled - also, "icon" TrackNodes do not display ControlPoints
+    // disabled - also, "icon" TrackNodes do not display ControlPoints (except for the icon in the toolbox)
     if ( track.configurable && !options.isIcon ) {
       for ( let i = 0; i < track.controlPoints.length; i++ ) {
         const controlPoint = track.controlPoints[ i ];
 
         if ( controlPoint.visible ) {
           const isEndPoint = i === 0 || i === track.controlPoints.length - 1;
-          const controlPointNode = new ControlPointNode( this, this.trackDragHandler, i, isEndPoint, tandem.createTandem( `controlPointNode${i}` ) );
+          const controlPointNode = new ControlPointNode( this, this.trackDragHandler, i, isEndPoint, tandem.createTandem( `controlPointNode${i}` ),
+
+            // omit a11y features for the control points in the track toolbox, to prevent an awkward button with substructure, see https://github.com/phetsims/energy-skate-park/issues/438
+            options.roadCursorOverride === 'cursor' );
           this.addChild( controlPointNode );
 
           if ( controlPoint.limitBounds ) {
