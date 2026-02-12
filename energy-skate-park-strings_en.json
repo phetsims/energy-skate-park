@@ -304,7 +304,7 @@
         "value": "Sensor moved off of sample points."
       },
       "sensorReadingPattern": {
-        "value": "Height {$height} meters. Speed {$speed} meters per second. Kinetic {$kinetic} Joules. Potential {$potential} Joules. Thermal {$thermal} Joules. Total {$total} Joules."
+        "value": "Height {$height} meters. Speed {$speed} meters per second. Energy in Joules:  Kinetic {$kinetic}, Potential {$potential}, Thermal {$thermal}, Total {$total}."
       }
     },
     "energyChart": {

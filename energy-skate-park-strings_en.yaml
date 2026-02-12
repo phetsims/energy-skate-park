@@ -111,10 +111,11 @@ a11y:
     sensorReadingPattern: >-
                           Height {$height} meters.
                           Speed {$speed} meters per second.
-                          Kinetic {$kinetic} Joules.
-                          Potential {$potential} Joules.
-                          Thermal {$thermal} Joules.
-                          Total {$total} Joules.
+                          Energy in Joules: 
+                          Kinetic {$kinetic},
+                          Potential {$potential},
+                          Thermal {$thermal},
+                          Total {$total}.
   energyChart:
     accessibleName: Graph Cursor
   controlPointAttachment:
