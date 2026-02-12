@@ -515,6 +515,26 @@ export default class Skater {
     this.updateEnergy();
     this.updatedEmitter.emit();
   }
+
+  /**
+   * Place the skater at a specific parametric position on a track, setting position, orientation, and clearing
+   * velocity/thermalEnergy. Used by keyboard interactions that jump or snap the skater to a track location.
+   */
+  public placeOnTrackAt( track: Track, u: number ): void {
+    this.parametricPositionProperty.value = u;
+    this.positionProperty.value = track.getPoint( u );
+
+    const normal = track.getUnitNormalVector( u );
+    this.onTopSideOfTrackProperty.value = normal.y > 0;
+    this.angleProperty.value = track.getViewAngleAt( u ) + ( this.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+
+    this.velocityProperty.value = new Vector2( 0, 0 );
+    this.parametricSpeedProperty.value = 0;
+    this.thermalEnergyProperty.value = 0;
+
+    this.updateEnergy();
+    this.updatedEmitter.emit();
+  }
 }
 
 energySkatePark.register( 'Skater', Skater );
