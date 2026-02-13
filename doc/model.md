@@ -1,7 +1,8 @@
 # Energy Skate Park model
 
 This document describes the equations for energy used extensively in Energy Skate Park. Skater motion and state is
-determined by these equations.<br>
+determined by these equations.
+
 @author Jesse Greenberg (PhET Interactive Simulations)
 
 ## Skater
