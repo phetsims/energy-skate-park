@@ -108,7 +108,7 @@ export type EnergySkateParkScreenViewOptions = SelfOptions & ScreenViewOptions;
 export default class EnergySkateParkScreenView extends ScreenView {
 
   public static readonly RESTART_SKATER_HOTKEY_DATA = new HotkeyData( {
-    keys: [ 'alt+s' ],
+    keys: [ 'alt+shift+r' ],
     repoName: energySkatePark.name,
     keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.restartSkaterStringProperty,
     global: true
