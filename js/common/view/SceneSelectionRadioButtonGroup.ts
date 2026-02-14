@@ -9,6 +9,7 @@
  */
 
 import Property from '../../../../axon/js/Property.js';
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import merge from '../../../../phet-core/js/merge.js';
@@ -145,12 +146,13 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
 
     const buttonAlignGroup = new AlignGroup();
 
-    const sceneAccessibleNames = [
-      EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene1RadioButton.accessibleNameStringProperty,
-      EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene2RadioButton.accessibleNameStringProperty,
-      EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene3RadioButton.accessibleNameStringProperty,
-      EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene4RadioButton.accessibleNameStringProperty
-    ];
+    // Keep accessible names tied to track identity, not index order, so subsets of track types remain correct.
+    const sceneAccessibleNameMap: Record<TrackType, TReadOnlyProperty<string>> = {
+      PARABOLA: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene1RadioButton.accessibleNameStringProperty,
+      SLOPE: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene2RadioButton.accessibleNameStringProperty,
+      DOUBLE_WELL: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene3RadioButton.accessibleNameStringProperty,
+      LOOP: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene4RadioButton.accessibleNameStringProperty
+    };
 
     const radioButtonContent: { value: number; createNode: () => Node; tandemName: string; options?: object }[] = [];
     _.forEach( contents, ( node, i ) => {
@@ -178,7 +180,9 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         value: i,
         createNode: () => alignedNode,
         tandemName: `scene${i + 1}RadioButton`,
-        options: i < sceneAccessibleNames.length ? { accessibleName: sceneAccessibleNames[ i ] } : undefined
+        options: {
+          accessibleName: sceneAccessibleNameMap[ model.trackTypes[ i ] ]
+        }
       } );
     } );
 
