@@ -317,7 +317,7 @@ const EnergySkateParkFluent = {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_trackToolboxPanel_accessibleName', _.get( EnergySkateParkStrings, 'a11y.trackToolboxPanel.accessibleNameStringProperty' ) )
     },
     controlPointNode: {
-      accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_controlPointNode_accessibleName', _.get( EnergySkateParkStrings, 'a11y.controlPointNode.accessibleNameStringProperty' ) )
+      accessibleName: new FluentPattern<{ position: FluentVariable, total: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_controlPointNode_accessibleName', _.get( EnergySkateParkStrings, 'a11y.controlPointNode.accessibleNameStringProperty' ), [{"name":"position"},{"name":"total"}] )
     },
     pathSensorNode: {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pathSensorNode_accessibleName', _.get( EnergySkateParkStrings, 'a11y.pathSensorNode.accessibleNameStringProperty' ) ),

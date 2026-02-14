@@ -103,7 +103,7 @@ a11y:
   trackToolboxPanel:
     accessibleName: Track
   controlPointNode:
-    accessibleName: Control Point
+    accessibleName: 'Control Point { $position } of { $total }'
   pathSensorNode:
     accessibleName:       Energy Sensor
     nothingToMeasure:     Nothing to measure yet.

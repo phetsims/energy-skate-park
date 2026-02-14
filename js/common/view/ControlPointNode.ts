@@ -52,6 +52,8 @@ export default class ControlPointNode extends Circle {
     const controlPointUIShownEmitter = new Emitter();
 
     const controlPoint = track.controlPoints[ i ];
+    const visibleControlPoints = track.controlPoints.filter( point => point.visible );
+    const visiblePosition = track.controlPoints.slice( 0, i + 1 ).filter( point => point.visible ).length;
 
     // Default colors for the control point fill and highlight
     const fill = 'red';
@@ -72,7 +74,10 @@ export default class ControlPointNode extends Circle {
       translation: modelViewTransform.modelToViewPosition( controlPoint.positionProperty.value ),
       tandem: tandem,
       visiblePropertyOptions: { phetioState: false },
-      accessibleName: omitA11y ? undefined : EnergySkateParkFluent.a11y.controlPointNode.accessibleNameStringProperty
+      accessibleName: omitA11y ? undefined : EnergySkateParkFluent.a11y.controlPointNode.accessibleName.createProperty( {
+        position: visiblePosition,
+        total: visibleControlPoints.length
+      } )
     }, omitA11y ? undefined : AccessibleDraggableOptions ) );
 
     // Control points should only be focusable when the track is physical (in the play area).

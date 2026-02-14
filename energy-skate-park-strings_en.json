@@ -290,7 +290,7 @@
     },
     "controlPointNode": {
       "accessibleName": {
-        "value": "Control Point"
+        "value": "Control Point { $position } of { $total }"
       }
     },
     "pathSensorNode": {
