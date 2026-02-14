@@ -85,9 +85,9 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model, Tandem.OPT_OUT, controlPointOptions );
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints );
       }
-      else if ( trackType === 'SLOPE' ) {
-        const slopeControlPoints = PremadeTracks.createSlopeControlPoints( model, Tandem.OPT_OUT, controlPointOptions );
-        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, slopeControlPoints );
+      else if ( trackType === 'RAMP' ) {
+        const rampControlPoints = PremadeTracks.createSlopeControlPoints( model, Tandem.OPT_OUT, controlPointOptions );
+        track = EnergySkateParkTrackSetModel.createPremadeTrack( model, rampControlPoints );
       }
       else if ( trackType === 'DOUBLE_WELL' ) {
         const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( model, Tandem.OPT_OUT, controlPointOptions );
@@ -148,10 +148,10 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
 
     // Keep accessible names tied to track identity, not index order, so subsets of track types remain correct.
     const sceneAccessibleNameMap: Record<TrackType, TReadOnlyProperty<string>> = {
-      PARABOLA: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene1RadioButton.accessibleNameStringProperty,
-      SLOPE: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene2RadioButton.accessibleNameStringProperty,
-      DOUBLE_WELL: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene3RadioButton.accessibleNameStringProperty,
-      LOOP: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.scene4RadioButton.accessibleNameStringProperty
+      PARABOLA: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.parabolaRadioButton.accessibleNameStringProperty,
+      RAMP: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.rampRadioButton.accessibleNameStringProperty,
+      DOUBLE_WELL: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.doubleWellRadioButton.accessibleNameStringProperty,
+      LOOP: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.loopRadioButton.accessibleNameStringProperty
     };
 
     const radioButtonContent: { value: number; createNode: () => Node; tandemName: string; options?: object }[] = [];

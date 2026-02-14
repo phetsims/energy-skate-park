@@ -16,7 +16,7 @@ import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
 import EnergySkateParkSaveSampleModel, { EnergySkateParkSaveSampleModelOptions } from './EnergySkateParkSaveSampleModel.js';
-import PremadeTracks, { DoubleWellOptions, LoopOptions, ParabolaOptions, SlopeOptions, TrackType } from './PremadeTracks.js';
+import PremadeTracks, { DoubleWellOptions, LoopOptions, ParabolaOptions, SlopeOptions, TrackType, TrackTypes } from './PremadeTracks.js';
 import Track, { TrackOptions } from './Track.js';
 
 type InitializePremadeTracksOptions = {
@@ -47,15 +47,10 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
     const options = optionize<EnergySkateParkSaveSampleModelOptions, SelfOptions, EnergySkateParkSaveSampleModelOptions>()( {
 
       // {PremadeTracks.TrackType[]} - list of the premade tracks used in this model. Currently,
-      // the default list includes all of the possible premade tracks. Remove items from
+      // the default list includes all possible premade tracks. Remove items from
       // this list to remove premade tracks from the model. This order will also be the
       // order of track selection buttons in the view.
-      trackTypes: [
-        'PARABOLA',
-        'SLOPE',
-        'DOUBLE_WELL',
-        'LOOP'
-      ],
+      trackTypes: TrackTypes,
 
       // {Object} Options passed to initializePremadeTracks, with options for control points and tracks for each of
       // the provided TrackType listed above. See initializePremadeTracks() for more information.
@@ -135,7 +130,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
         tracks.push( parabolaTrack );
       }
-      else if ( trackType === 'SLOPE' ) {
+      else if ( trackType === 'RAMP' ) {
         const slopeTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'slopeTrack' );
         const slopeControlPoints = PremadeTracks.createSlopeControlPoints( this, slopeTrackTandem, options.slopeControlPointOptions ?? {} );
         const slopeTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, slopeControlPoints, combineOptions<TrackOptions>( {

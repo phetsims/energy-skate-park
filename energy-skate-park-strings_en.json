@@ -405,22 +405,22 @@
       "accessibleName": {
         "value": "Track Selection"
       },
-      "scene1RadioButton": {
+      "parabolaRadioButton": {
         "accessibleName": {
           "value": "Parabola"
         }
       },
-      "scene2RadioButton": {
+      "rampRadioButton": {
         "accessibleName": {
           "value": "Ramp"
         }
       },
-      "scene3RadioButton": {
+      "doubleWellRadioButton": {
         "accessibleName": {
           "value": "Double Well"
         }
       },
-      "scene4RadioButton": {
+      "loopRadioButton": {
         "accessibleName": {
           "value": "Loop"
         }

@@ -161,13 +161,13 @@ a11y:
   # Key names likely need fixing. I copied the phetioIDs from the Intro screen, but index is not consistent across screens.
   sceneSelectionRadioButtonGroup:
     accessibleName: Track Selection
-    scene1RadioButton:
+    parabolaRadioButton:
       accessibleName: Parabola
-    scene2RadioButton:
+    rampRadioButton:
       accessibleName: Ramp
-    scene3RadioButton:
+    doubleWellRadioButton:
       accessibleName: Double Well
-    scene4RadioButton:
+    loopRadioButton:
       accessibleName: Loop
 
   frictionSlider:

@@ -24,8 +24,8 @@ import Track, { TrackOptions } from './Track.js';
 const END_BOUNDS_WIDTH = 2.5;
 const END_BOUNDS_HEIGHT = 4;
 
-// the supported premade tracks, used in EnegySkateParkTrackSetModels
-export const TrackTypes = [ 'PARABOLA', 'SLOPE', 'DOUBLE_WELL', 'LOOP' ];
+// the supported premade tracks, used in EnergySkateParkTrackSetModels
+export const TrackTypes = [ 'PARABOLA', 'RAMP', 'DOUBLE_WELL', 'LOOP' ];
 export type TrackType = typeof TrackTypes[number];
 
 /**

@@ -202,16 +202,16 @@ type StringsType = {
     };
     'sceneSelectionRadioButtonGroup': {
       'accessibleNameStringProperty': LocalizedStringProperty;
-      'scene1RadioButton': {
+      'parabolaRadioButton': {
         'accessibleNameStringProperty': LocalizedStringProperty;
       };
-      'scene2RadioButton': {
+      'rampRadioButton': {
         'accessibleNameStringProperty': LocalizedStringProperty;
       };
-      'scene3RadioButton': {
+      'doubleWellRadioButton': {
         'accessibleNameStringProperty': LocalizedStringProperty;
       };
-      'scene4RadioButton': {
+      'loopRadioButton': {
         'accessibleNameStringProperty': LocalizedStringProperty;
       }
     };
