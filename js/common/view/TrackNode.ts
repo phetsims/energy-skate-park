@@ -30,7 +30,13 @@ import ControlPointNode from './ControlPointNode.js';
 import TrackDragHandler from './TrackDragHandler.js';
 import TrackKeyboardDragListener from './TrackKeyboardDragListener.js';
 
-type SelfOptions = { roadCursorOverride?: string | null; isIcon?: boolean };
+type SelfOptions = {
+  isIcon?: boolean;
+
+  // Whether this TrackNode is used for the toolbox button icon. This disables nested control-point a11y
+  // options so the button does not expose unwanted substructure in the PDOM.
+  trackToolboxIcon?: boolean;
+};
 export type TrackNodeOptions = SelfOptions & NodeOptions;
 
 // constants
@@ -71,16 +77,15 @@ export default class TrackNode extends Node {
     const model = track.model;
 
     const options = optionize<TrackNodeOptions, SelfOptions, NodeOptions>()( {
-
-      // {null|string} - cursor for the Track road - by default it is a 'pointer' if only draggable, but for some icons
-      //  we want a pointer even when not draggable (like in the toolbox).
-      roadCursorOverride: null,
-
       // {boolean} - whether this TrackNode is being used as an icon - if so, its
       // representation is a little different, mostly it has no visible control points
       // and its road path is a bit thicker to be more visible since the track will likley
       // be smaller
       isIcon: false,
+
+      // {boolean} - whether this TrackNode is specifically for the track toolbox icon button. When true,
+      // control points omit a11y metadata/listeners so the parent button has clean PDOM output.
+      trackToolboxIcon: false,
 
       tandem: tandem,
       visiblePropertyOptions: { phetioState: false }
@@ -99,7 +104,7 @@ export default class TrackNode extends Node {
 
     this.road = new Path( null, {
       fill: 'gray',
-      cursor: options.roadCursorOverride || track.draggable ? 'pointer' : 'default'
+      cursor: track.draggable || options.trackToolboxIcon ? 'pointer' : 'default'
     } );
     this.centerLine = new Path( null, {
       stroke: 'black',
@@ -193,7 +198,7 @@ export default class TrackNode extends Node {
           const controlPointNode = new ControlPointNode( this, this.trackDragHandler, i, isEndPoint, tandem.createTandem( `controlPointNode${i}` ),
 
             // omit a11y features for the control points in the track toolbox, to prevent an awkward button with substructure, see https://github.com/phetsims/energy-skate-park/issues/438
-            options.roadCursorOverride === 'cursor' );
+            options.trackToolboxIcon );
           this.addChild( controlPointNode );
 
           if ( controlPoint.limitBounds ) {

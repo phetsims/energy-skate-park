@@ -39,10 +39,7 @@ export default class TrackToolboxPanel extends Panel {
 
     // Wrap the TrackNode in a Node so we can add button-like PDOM attributes without affecting TrackNode itself
     const trackIconNode = new TrackNode( iconTrack, view.modelViewTransform, model.availableModelBoundsProperty, tandem.createTandem( 'iconNode' ), {
-
-      // want the icon to look pickable, even though it isn't really draggable (forwarding listener makes the new
-      // TrackNode draggable)
-      roadCursorOverride: 'cursor'
+      trackToolboxIcon: true
     } );
 
     const iconNode = new Node( {
