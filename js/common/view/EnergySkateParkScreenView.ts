@@ -21,6 +21,7 @@ import optionize from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
+import { metersUnit } from '../../../../scenery-phet/js/units/metersUnit.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
 import TimeControlNode from '../../../../scenery-phet/js/TimeControlNode.js';
@@ -337,7 +338,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     if ( options.showToolbox ) {
 
       const unitsProperty = new DerivedProperty( [ measuringTapeUnitsStringProperty ], measuringTapeUnitsString => {
-        return { name: measuringTapeUnitsString, multiplier: 1 };
+        return { name: measuringTapeUnitsString, multiplier: 1, unit: metersUnit };
       } );
 
       this.measuringTapeNode = new MeasuringTapeNode( unitsProperty, {
