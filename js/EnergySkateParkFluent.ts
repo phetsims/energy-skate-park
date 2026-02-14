@@ -436,10 +436,10 @@ const EnergySkateParkFluent = {
         accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_skater6RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.skater6RadioButton.accessibleNameStringProperty' ) )
       },
       skater7RadioButton: {
-        accessibleName: new FluentPattern<{ animalType: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_skater7RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.skater7RadioButton.accessibleNameStringProperty' ), [{"name":"animalType"}] )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_skater7RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.skater7RadioButton.accessibleNameStringProperty' ) )
       },
       skater0RadioButton: {
-        accessibleName: new FluentPattern<{ animalType: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_skater0RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.skater0RadioButton.accessibleNameStringProperty' ), [{"name":"animalType"}] )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_skater0RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.skater0RadioButton.accessibleNameStringProperty' ) )
       }
     },
     gridCheckbox: {

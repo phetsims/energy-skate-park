@@ -501,12 +501,12 @@
       },
       "skater7RadioButton": {
         "accessibleName": {
-          "value": "Skater 7, {$animalType}"
+          "value": "Animal 1"
         }
       },
       "skater0RadioButton": {
         "accessibleName": {
-          "value": "Skater 8, {$animalType}"
+          "value": "Animal 2"
         }
       }
     },

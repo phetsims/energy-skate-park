@@ -35,8 +35,8 @@ export default class SkaterRadioButtonGroup extends RectangularRadioButtonGroup<
       EnergySkateParkFluent.a11y.skaterSetOneControls.skater4RadioButton.accessibleNameStringProperty,
       EnergySkateParkFluent.a11y.skaterSetOneControls.skater5RadioButton.accessibleNameStringProperty,
       EnergySkateParkFluent.a11y.skaterSetOneControls.skater6RadioButton.accessibleNameStringProperty,
-      EnergySkateParkFluent.a11y.skaterSetOneControls.skater7RadioButton.accessibleName.createProperty( { animalType: 'Cat' } ),
-      EnergySkateParkFluent.a11y.skaterSetOneControls.skater0RadioButton.accessibleName.createProperty( { animalType: 'Dog' } )
+      EnergySkateParkFluent.a11y.skaterSetOneControls.skater7RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSetOneControls.skater0RadioButton.accessibleNameStringProperty
     ];
 
     // Build the items array for RectangularRadioButtonGroup

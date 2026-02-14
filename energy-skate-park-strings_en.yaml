@@ -207,9 +207,9 @@ a11y:
     skater6RadioButton:
       accessibleName: Skater 6
     skater7RadioButton:
-      accessibleName: Skater 7, {$animalType}
+      accessibleName: Animal 1
     skater0RadioButton:
-      accessibleName: Skater 8, {$animalType}
+      accessibleName: Animal 2
   gridCheckbox:
     accessibleHelpText:                 Show or hide grid lines behind the skate track to measure height.
     accessibleContextResponseChecked:   Grid lines shown.
