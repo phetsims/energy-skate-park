@@ -148,7 +148,7 @@ type StringsType = {
     'controlPointNode': {
       'accessibleNameStringProperty': LocalizedStringProperty;
     };
-    'pathSensorNode': {
+    'energySensorNode': {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'nothingToMeasureStringProperty': LocalizedStringProperty;
       'movedOffSamplesStringProperty': LocalizedStringProperty;
@@ -258,10 +258,10 @@ type StringsType = {
       'skater6RadioButton': {
         'accessibleNameStringProperty': LocalizedStringProperty;
       };
-      'skater7RadioButton': {
+      'animal1RadioButton': {
         'accessibleNameStringProperty': LocalizedStringProperty;
       };
-      'skater0RadioButton': {
+      'animal2RadioButton': {
         'accessibleNameStringProperty': LocalizedStringProperty;
       }
     };

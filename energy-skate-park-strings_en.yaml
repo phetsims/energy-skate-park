@@ -105,8 +105,7 @@ a11y:
   controlPointNode:
     accessibleName: 'Control Point { $position } of { $total }'
 
-  # TODO: rename key to energySensorNode
-  pathSensorNode:
+  energySensorNode:
     accessibleName:       Energy Sensor
     nothingToMeasure:     Nothing to measure yet.
     movedOffSamples:      Sensor moved off of sample points.
@@ -210,12 +209,10 @@ a11y:
     skater6RadioButton:
       accessibleName: Skater 6
 
-    # TODO: Rename to animal1RadioButton
-    skater7RadioButton:
+    animal1RadioButton:
       accessibleName: Animal 1
 
-    # TODO: Rename to animal2RadioButton
-    skater0RadioButton:
+    animal2RadioButton:
       accessibleName: Animal 2
   gridCheckbox:
     accessibleHelpText:                 Show or hide grid lines behind the skate track to measure height.

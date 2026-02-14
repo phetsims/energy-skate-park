@@ -225,7 +225,7 @@ export default class SkaterPathSensorNode extends Node {
       tagName: 'div',
       focusable: true,
       ariaRole: 'application',
-      accessibleName: EnergySkateParkFluent.a11y.pathSensorNode.accessibleNameStringProperty
+      accessibleName: EnergySkateParkFluent.a11y.energySensorNode.accessibleNameStringProperty
     } );
 
     this.currentReadingProperty = new StringProperty( '' );
@@ -294,7 +294,7 @@ export default class SkaterPathSensorNode extends Node {
       fire: ( event, keysPressed ) => {
         if ( samples.length === 0 ) {
           this.probeNode.addAccessibleContextResponse(
-            EnergySkateParkFluent.a11y.pathSensorNode.nothingToMeasureStringProperty,
+            EnergySkateParkFluent.a11y.energySensorNode.nothingToMeasureStringProperty,
             { interruptible: true }
           );
           return;
@@ -350,7 +350,7 @@ export default class SkaterPathSensorNode extends Node {
         // Keyboard moved off all sample points
         if ( previousSample !== null && this.inspectedSample === null ) {
           this.probeNode.addAccessibleContextResponse(
-            EnergySkateParkFluent.a11y.pathSensorNode.movedOffSamplesStringProperty,
+            EnergySkateParkFluent.a11y.energySensorNode.movedOffSamplesStringProperty,
             { interruptible: true }
           );
         }
@@ -424,7 +424,7 @@ export default class SkaterPathSensorNode extends Node {
     this.heightSpeedRectangle.visible = true;
     this.positionReadouts( dataSample );
 
-    const readingText = EnergySkateParkFluent.a11y.pathSensorNode.sensorReadingPattern.format( {
+    const readingText = EnergySkateParkFluent.a11y.energySensorNode.sensorReadingPattern.format( {
       height: toFixed( dataSample.position.y - dataSample.referenceHeight, 2 ),
       speed: toFixed( dataSample.speed, 2 ),
       kinetic: toFixed( dataSample.kineticEnergy, 1 ),

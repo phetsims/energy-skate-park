@@ -293,7 +293,7 @@
         "value": "Control Point { $position } of { $total }"
       }
     },
-    "pathSensorNode": {
+    "energySensorNode": {
       "accessibleName": {
         "value": "Energy Sensor"
       },
@@ -501,12 +501,12 @@
           "value": "Skater 6"
         }
       },
-      "skater7RadioButton": {
+      "animal1RadioButton": {
         "accessibleName": {
           "value": "Animal 1"
         }
       },
-      "skater0RadioButton": {
+      "animal2RadioButton": {
         "accessibleName": {
           "value": "Animal 2"
         }
