@@ -293,6 +293,9 @@
         "value": "Control Point { $position } of { $total }"
       }
     },
+    "energyReadoutPattern": {
+      "value": "Energy in Joules: Kinetic {$kinetic}, Potential {$potential}, Thermal {$thermal}, Total {$total}."
+    },
     "energySensorNode": {
       "accessibleName": {
         "value": "Energy Sensor"
@@ -303,8 +306,8 @@
       "movedOffSamples": {
         "value": "Sensor moved off of sample points."
       },
-      "sensorReadingPattern": {
-        "value": "Height {$height} meters. Speed {$speed} meters per second. Energy in Joules:  Kinetic {$kinetic}, Potential {$potential}, Thermal {$thermal}, Total {$total}."
+      "sampleReadoutPattern": {
+        "value": "Height {$height} meters. Speed {$speed} meters per second. { a11y_energyReadoutPattern }"
       }
     },
     "energyChart": {

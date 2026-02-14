@@ -105,18 +105,21 @@ a11y:
   controlPointNode:
     accessibleName: 'Control Point { $position } of { $total }'
 
+  energyReadoutPattern: >-
+                      Energy in Joules:
+                      Kinetic {$kinetic},
+                      Potential {$potential},
+                      Thermal {$thermal},
+                      Total {$total}.
+
   energySensorNode:
     accessibleName:       Energy Sensor
     nothingToMeasure:     Nothing to measure yet.
     movedOffSamples:      Sensor moved off of sample points.
-    sensorReadingPattern: >-
+    sampleReadoutPattern: >-
                           Height {$height} meters.
                           Speed {$speed} meters per second.
-                          Energy in Joules: 
-                          Kinetic {$kinetic},
-                          Potential {$potential},
-                          Thermal {$thermal},
-                          Total {$total}.
+                          { a11y.energyReadoutPattern }
 
   energyChart:
     graphCursor:

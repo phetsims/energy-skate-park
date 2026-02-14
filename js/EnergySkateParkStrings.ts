@@ -148,11 +148,12 @@ type StringsType = {
     'controlPointNode': {
       'accessibleNameStringProperty': LocalizedStringProperty;
     };
+    'energyReadoutPatternStringProperty': LocalizedStringProperty;
     'energySensorNode': {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'nothingToMeasureStringProperty': LocalizedStringProperty;
       'movedOffSamplesStringProperty': LocalizedStringProperty;
-      'sensorReadingPatternStringProperty': LocalizedStringProperty;
+      'sampleReadoutPatternStringProperty': LocalizedStringProperty;
     };
     'energyChart': {
       'graphCursor': {

@@ -424,7 +424,7 @@ export default class SkaterPathSensorNode extends Node {
     this.heightSpeedRectangle.visible = true;
     this.positionReadouts( dataSample );
 
-    const readingText = EnergySkateParkFluent.a11y.energySensorNode.sensorReadingPattern.format( {
+    const readingText = EnergySkateParkFluent.a11y.energySensorNode.sampleReadoutPattern.format( {
       height: toFixed( dataSample.position.y - dataSample.referenceHeight, 2 ),
       speed: toFixed( dataSample.speed, 2 ),
       kinetic: toFixed( dataSample.kineticEnergy, 1 ),

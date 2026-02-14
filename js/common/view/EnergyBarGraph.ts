@@ -13,6 +13,7 @@ import Property from '../../../../axon/js/Property.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import { roundSymmetric } from '../../../../dot/js/util/roundSymmetric.js';
+import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import BarChartNode from '../../../../griddle/js/BarChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
@@ -60,6 +61,20 @@ export default class EnergyBarGraph extends Node {
 
     super( options );
 
+    // PDOM-only node for the energy readout, placed first in pdomOrder so it appears
+    // right after the AccordionBox's help text and before the interactive controls.
+    const energyReadoutProperty = EnergySkateParkFluent.a11y.energyReadoutPattern.createProperty( {
+      kinetic: new DerivedProperty( [ skater.kineticEnergyProperty ], kineticEnergy => toFixed( kineticEnergy, 1 ) ),
+      potential: new DerivedProperty( [ skater.potentialEnergyProperty ], potentialEnergy => toFixed( potentialEnergy, 1 ) ),
+      thermal: new DerivedProperty( [ skater.thermalEnergyProperty ], thermalEnergy => toFixed( thermalEnergy, 1 ) ),
+      total: new DerivedProperty( [ skater.totalEnergyProperty ], totalEnergy => toFixed( totalEnergy, 1 ) )
+    } );
+
+    const energyReadoutNode = new Node( {
+      tagName: 'p',
+      accessibleParagraph: energyReadoutProperty
+    } );
+
     // the range for the visible portion of the graph, in joules - note this is somewhat arbitrary because
     // the bars will have difference scales, but size should be about 1.5 times larger than the energy would
     // extend bars at default scale
@@ -80,7 +95,7 @@ export default class EnergyBarGraph extends Node {
     } );
 
     // For kinetic and potential, they must go to zero at the endpoints to reach learning goals like
-    //   "The kinetic energy is zero at the top of the trajectory (turning point)
+    // The kinetic energy is zero at the top of the trajectory (turning point)
     const createHideSmallValuesProperty = ( energyProperty: TReadOnlyProperty<number> ) => {
       return new DerivedProperty( [ energyProperty ], energy => {
 
@@ -212,7 +227,7 @@ export default class EnergyBarGraph extends Node {
       } );
 
       content = new VBox( {
-        children: [ this.barChartNode, zoomButtons ],
+        children: [ energyReadoutNode, this.barChartNode, zoomButtons ],
         spacing: 5,
         align: 'left'
       } );
@@ -225,7 +240,9 @@ export default class EnergyBarGraph extends Node {
       barGraphScaleProperty.link( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
     }
     else {
-      content = this.barChartNode;
+      content = new Node( {
+        children: [ energyReadoutNode, this.barChartNode ]
+      } );
     }
 
     this.addChild( content );
