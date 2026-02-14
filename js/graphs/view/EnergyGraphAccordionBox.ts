@@ -124,6 +124,13 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       tandem: variableSwitchTandem
     } );
 
+    const maxZoomLevel = GraphsConstants.PLOT_RANGES.length;
+    const oneIndexedZoomLevelProperty = new DerivedProperty( [ model.energyPlotScaleIndexProperty ], level => level + 1 );
+    const zoomLevelResponseProperty = EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomLevelResponse.createProperty( {
+      level: oneIndexedZoomLevelProperty,
+      max: maxZoomLevel
+    } );
+
     const zoomButtonGroup = new MagnifyingGlassZoomButtonGroup( model.energyPlotScaleIndexProperty, {
       magnifyingGlassNodeOptions: {
         glassRadius: 6
@@ -135,6 +142,16 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
         touchAreaYDilation: 3,
 
         baseColor: PhetColorScheme.PHET_LOGO_BLUE
+      },
+      zoomInButtonOptions: {
+        accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomIn.accessibleNameStringProperty,
+        accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomIn.accessibleHelpTextStringProperty,
+        accessibleContextResponse: zoomLevelResponseProperty
+      },
+      zoomOutButtonOptions: {
+        accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomOut.accessibleNameStringProperty,
+        accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomOut.accessibleHelpTextStringProperty,
+        accessibleContextResponse: zoomLevelResponseProperty
       },
 
       spacing: 7,
