@@ -104,6 +104,8 @@ a11y:
     accessibleName: Track
   controlPointNode:
     accessibleName: 'Control Point { $position } of { $total }'
+
+  # TODO: rename key to energySensorNode
   pathSensorNode:
     accessibleName:       Energy Sensor
     nothingToMeasure:     Nothing to measure yet.
@@ -116,8 +118,10 @@ a11y:
                           Potential {$potential},
                           Thermal {$thermal},
                           Total {$total}.
+
   energyChart:
-    accessibleName: Graph Cursor
+    graphCursor:
+      accessibleName: Graph Cursor
   controlPointAttachment:
     left:  Left
     right: Right
@@ -138,7 +142,6 @@ a11y:
         accessibleName:     Zoom Out
         accessibleHelpText: Adjust visual scale of the bar graph.
 
-      # Copied from CCK. 
       zoomLevelResponse: 'Zoom level { $level } of { $max }.'
 
   # Control Panel controls, in visual order, not sure if extra nesting is needed. 
@@ -183,7 +186,7 @@ a11y:
     accessibleHelpText:        Set acceleration due to gravity to match the chosen benchmark.
     
     # Context response stating g value when user interacts with ComboBox. Example for Earth: Gravity now 9.8 meters per second squared.
-    accessibleContextResponse: Gravity now {$gValue}.
+    accessibleContextResponse: Gravity now {$gravityValue}.
   
   massSlider:
     accessibleHelpText: Set skater mass, ranging from small to large.
@@ -206,8 +209,12 @@ a11y:
       accessibleName: Skater 5
     skater6RadioButton:
       accessibleName: Skater 6
+
+    # TODO: Rename to animal1RadioButton
     skater7RadioButton:
       accessibleName: Animal 1
+
+    # TODO: Rename to animal2RadioButton
     skater0RadioButton:
       accessibleName: Animal 2
   gridCheckbox:
@@ -226,7 +233,7 @@ a11y:
   returnSkaterToGroundButton:
     accessibleName: Return Skater to Ground
   
-  # Not sure where to put screen buttons. ESP and ESPB both have Intro & Playground screens. Help text applies to both flavors.
+  # ESP and ESPB both have Intro & Playground screens. Help text applies to both sims
   screenButtons:
     intro:
       accessibleHelpText: Explore different tracks and skaters and observe how the energy changes.

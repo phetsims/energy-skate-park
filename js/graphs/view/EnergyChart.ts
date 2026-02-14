@@ -154,7 +154,7 @@ export default class EnergyChart extends XYCursorChartNode {
     this.chartCursor.tagName = 'div';
     this.chartCursor.focusable = true;
     this.chartCursor.ariaRole = 'application';
-    this.chartCursor.accessibleName = EnergySkateParkFluent.a11y.energyChart.accessibleNameStringProperty;
+    this.chartCursor.accessibleName = EnergySkateParkFluent.a11y.energyChart.graphCursor.accessibleNameStringProperty;
 
     // Space/Enter toggles pause
     this.chartCursor.addInputListener( new KeyboardListener( {

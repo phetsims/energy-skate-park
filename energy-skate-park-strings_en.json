@@ -308,8 +308,10 @@
       }
     },
     "energyChart": {
-      "accessibleName": {
-        "value": "Graph Cursor"
+      "graphCursor": {
+        "accessibleName": {
+          "value": "Graph Cursor"
+        }
       }
     },
     "controlPointAttachment": {
@@ -449,7 +451,7 @@
         "value": "Set acceleration due to gravity to match the chosen benchmark."
       },
       "accessibleContextResponse": {
-        "value": "Gravity now {$gValue}."
+        "value": "Gravity now {$gravityValue}."
       }
     },
     "massSlider": {

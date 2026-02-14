@@ -119,7 +119,7 @@ export default class EnergySkateParkGravityControls extends VBox {
         g => `${Utils.toFixed( g, 1 )} meters per second squared`
       );
       const gravityContextResponseProperty = EnergySkateParkFluent.a11y.gravityComboBox.accessibleContextResponse.createProperty( {
-        gValue: gValueStringProperty
+        gravityValue: gValueStringProperty
       } );
 
       const gravityComboBox = new GravityComboBox( gravityMagnitudeProperty, userControlledProperty, resetEmitter, listParent, tandem.createTandem( 'gravityComboBox' ), {

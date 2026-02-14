@@ -155,7 +155,9 @@ type StringsType = {
       'sensorReadingPatternStringProperty': LocalizedStringProperty;
     };
     'energyChart': {
-      'accessibleNameStringProperty': LocalizedStringProperty;
+      'graphCursor': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+      }
     };
     'controlPointAttachment': {
       'leftStringProperty': LocalizedStringProperty;
