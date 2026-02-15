@@ -101,6 +101,7 @@ addToMapIfDefined( 'a11y_toolboxPanel_accessibleHeading', 'a11y.toolboxPanel.acc
 addToMapIfDefined( 'a11y_toolboxPanel_stopwatch_accessibleName', 'a11y.toolboxPanel.stopwatch.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_toolboxPanel_measuringTape_accessibleName', 'a11y.toolboxPanel.measuringTape.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_trackToolboxPanel_accessibleName', 'a11y.trackToolboxPanel.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_trackNode_accessibleName', 'a11y.trackNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_controlPointNode_accessibleName', 'a11y.controlPointNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_energyReadoutPattern', 'a11y.energyReadoutPatternStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_accessibleName', 'a11y.energySensorNode.accessibleNameStringProperty' );
@@ -316,6 +317,9 @@ const EnergySkateParkFluent = {
     },
     trackToolboxPanel: {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_trackToolboxPanel_accessibleName', _.get( EnergySkateParkStrings, 'a11y.trackToolboxPanel.accessibleNameStringProperty' ) )
+    },
+    trackNode: {
+      accessibleName: new FluentPattern<{ position: FluentVariable, total: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_trackNode_accessibleName', _.get( EnergySkateParkStrings, 'a11y.trackNode.accessibleNameStringProperty' ), [{"name":"position"},{"name":"total"}] )
     },
     controlPointNode: {
       accessibleName: new FluentPattern<{ position: FluentVariable, total: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_controlPointNode_accessibleName', _.get( EnergySkateParkStrings, 'a11y.controlPointNode.accessibleNameStringProperty' ), [{"name":"position"},{"name":"total"}] )

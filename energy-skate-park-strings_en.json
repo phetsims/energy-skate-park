@@ -288,6 +288,11 @@
         "value": "Track"
       }
     },
+    "trackNode": {
+      "accessibleName": {
+        "value": "Track { $position } of { $total }"
+      }
+    },
     "controlPointNode": {
       "accessibleName": {
         "value": "Control Point { $position } of { $total }"

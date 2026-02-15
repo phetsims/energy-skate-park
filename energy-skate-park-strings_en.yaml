@@ -102,6 +102,8 @@ a11y:
       accessibleName: Add Measuring Tape
   trackToolboxPanel:
     accessibleName: Track
+  trackNode:
+    accessibleName: 'Track { $position } of { $total }'
   controlPointNode:
     accessibleName: 'Control Point { $position } of { $total }'
 

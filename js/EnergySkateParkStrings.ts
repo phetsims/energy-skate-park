@@ -145,6 +145,9 @@ type StringsType = {
     'trackToolboxPanel': {
       'accessibleNameStringProperty': LocalizedStringProperty;
     };
+    'trackNode': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+    };
     'controlPointNode': {
       'accessibleNameStringProperty': LocalizedStringProperty;
     };

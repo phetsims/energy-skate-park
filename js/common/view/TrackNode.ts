@@ -9,6 +9,7 @@
  */
 
 import Property from '../../../../axon/js/Property.js';
+import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Shape from '../../../../kite/js/Shape.js';
 import LineStyles from '../../../../kite/js/util/LineStyles.js';
@@ -93,10 +94,23 @@ export default class TrackNode extends Node {
 
     super( options );
 
+    let disposeTrackAccessibleName: ( () => void ) | null = null;
+
     // Make draggable tracks keyboard-accessible with proper ARIA attributes
     if ( track.draggable ) {
+      const trackPositionProperty = new DerivedProperty( [ model.tracks.lengthProperty ], () => model.tracks.indexOf( track ) + 1 );
+      const trackAccessibleNameProperty = EnergySkateParkFluent.a11y.trackNode.accessibleName.createProperty( {
+        position: trackPositionProperty,
+        total: model.tracks.lengthProperty
+      } );
+
       this.mutate( AccessibleDraggableOptions );
-      this.accessibleName = EnergySkateParkFluent.a11y.trackToolboxPanel.accessibleNameStringProperty;
+      this.accessibleName = trackAccessibleNameProperty;
+
+      disposeTrackAccessibleName = () => {
+        trackAccessibleNameProperty.dispose();
+        trackPositionProperty.dispose();
+      };
     }
 
     this.model = model;
@@ -250,6 +264,7 @@ export default class TrackNode extends Node {
       }
 
       if ( track.draggable ) {
+        disposeTrackAccessibleName && disposeTrackAccessibleName();
         this.trackDragHandler!.dispose();
       }
     };
