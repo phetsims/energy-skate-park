@@ -10,6 +10,7 @@
 
 import Property from '../../../../axon/js/Property.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Shape from '../../../../kite/js/Shape.js';
 import LineStyles from '../../../../kite/js/util/LineStyles.js';
@@ -110,6 +111,22 @@ export default class TrackNode extends Node {
       disposeTrackAccessibleName = () => {
         trackAccessibleNameProperty.dispose();
         trackPositionProperty.dispose();
+      };
+    }
+    else if ( track.configurable && !options.isIcon && !options.trackToolboxIcon ) {
+      const trackAccessibleHeadingProperty: TReadOnlyProperty<string> = EnergySkateParkFluent.a11y.trackNode.accessibleName.createProperty( {
+        position: 1,
+        total: 1
+      } );
+
+      this.mutate( {
+        containerTagName: 'section',
+        tagName: 'div',
+        accessibleHeading: trackAccessibleHeadingProperty
+      } );
+
+      disposeTrackAccessibleName = () => {
+        trackAccessibleHeadingProperty.dispose();
       };
     }
 
@@ -263,8 +280,11 @@ export default class TrackNode extends Node {
         }
       }
 
+      if ( disposeTrackAccessibleName ) {
+        disposeTrackAccessibleName();
+      }
+
       if ( track.draggable ) {
-        disposeTrackAccessibleName && disposeTrackAccessibleName();
         this.trackDragHandler!.dispose();
       }
     };
