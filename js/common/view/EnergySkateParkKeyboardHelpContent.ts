@@ -6,31 +6,24 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import BasicActionsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/BasicActionsKeyboardHelpSection.js';
 import KeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSection.js';
-import KeyboardHelpSectionRow from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSectionRow.js';
+import MoveDraggableItemsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/MoveDraggableItemsKeyboardHelpSection.js';
+import SliderControlsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/SliderControlsKeyboardHelpSection.js';
 import TimeControlsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/TimeControlsKeyboardHelpSection.js';
 import TwoColumnKeyboardHelpContent from '../../../../scenery-phet/js/keyboard/help/TwoColumnKeyboardHelpContent.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
-import SimShortcutsKeyboardHelpSection from './SimShortcutsKeyboardHelpSection.js';
+import GraphCursorControlsKeyboardHelpSection from '../../graphs/view/GraphCursorControlsKeyboardHelpSection.js';
+import ConnectTrackEndpointsKeyboardHelpSection from './ConnectTrackEndpointsKeyboardHelpSection.js';
 import SkaterKeyboardHelpSection from './SkaterKeyboardHelpSection.js';
-
-// HotkeyData for the reference height line row
-const MOVE_REFERENCE_HEIGHT_HOTKEY_DATA = new HotkeyData( {
-  keys: [ 'arrowUp', 'arrowDown' ],
-  repoName: energySkatePark.name,
-  keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveReferenceHeightStringProperty
-} );
+import ToolboxControlsKeyboardHelpSection from './ToolboxControlsKeyboardHelpSection.js';
+import TrackControlsKeyboardHelpSection from './TrackControlsKeyboardHelpSection.js';
 
 type EnergySkateParkKeyboardHelpContentOptions = {
-
-  // Additional sections to include in the left column (e.g. graph or track editing sections)
-  additionalLeftSections?: KeyboardHelpSection[];
-
-  // Whether this screen has tools that can be returned to a toolbox
-  includeReturnToolToToolbox?: boolean;
+  includeStopwatchAndMeasuringTapeControls?: boolean;
+  includeGraphCursorControls?: boolean;
+  includeTrackControls?: boolean;
+  includeConnectTrackEndpoints?: boolean;
 };
 
 export default class EnergySkateParkKeyboardHelpContent extends TwoColumnKeyboardHelpContent {
@@ -39,27 +32,29 @@ export default class EnergySkateParkKeyboardHelpContent extends TwoColumnKeyboar
 
     const options = providedOptions || {};
 
-    // Reference height line section: a single-row section
-    const referenceHeightSection = new KeyboardHelpSection(
-      EnergySkateParkFluent.keyboardHelpDialog.moveReferenceHeightStringProperty, [
-        KeyboardHelpSectionRow.fromHotkeyData( MOVE_REFERENCE_HEIGHT_HOTKEY_DATA )
-      ], {
-        isDisposable: false
-      } );
-
-    // Sections in the left column
+    // Left column sections
     const leftSections: KeyboardHelpSection[] = [
       new SkaterKeyboardHelpSection(),
-      referenceHeightSection,
-      ...( options.additionalLeftSections || [] )
+      new MoveDraggableItemsKeyboardHelpSection()
     ];
 
-    // Sections in the right column
+    if ( options.includeStopwatchAndMeasuringTapeControls ) {
+      leftSections.push( new ToolboxControlsKeyboardHelpSection() );
+    }
+    if ( options.includeGraphCursorControls ) {
+      leftSections.push( new GraphCursorControlsKeyboardHelpSection() );
+    }
+    if ( options.includeTrackControls ) {
+      leftSections.push( new TrackControlsKeyboardHelpSection() );
+    }
+    if ( options.includeConnectTrackEndpoints ) {
+      leftSections.push( new ConnectTrackEndpointsKeyboardHelpSection() );
+    }
+
+    // Right column sections (always the same)
     const rightSections = [
       new TimeControlsKeyboardHelpSection(),
-      new SimShortcutsKeyboardHelpSection( {
-        includeReturnToolToToolbox: options.includeReturnToolToToolbox
-      } ),
+      new SliderControlsKeyboardHelpSection(),
       new BasicActionsKeyboardHelpSection( {
         withCheckboxContent: true
       } )

@@ -28,7 +28,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
   public static readonly MOVE_SKATER_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'arrowLeft', 'arrowRight', 'arrowUp', 'arrowDown', 'w', 'a', 's', 'd' ],
     repoName: energySkatePark.name,
-    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveSkaterStringProperty
+    binderName: 'Move skater'
   } );
 
   public static readonly MOVE_ALONG_TRACK_HOTKEY_DATA = new HotkeyData( {
@@ -40,7 +40,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
   public static readonly DETACH_FROM_TRACK_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'arrowUp', 'w' ],
     repoName: energySkatePark.name,
-    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.detachFromTrackStringProperty
+    binderName: 'Detach from track'
   } );
 
   public static readonly MOVE_TO_START_OF_TRACK_HOTKEY_DATA = new HotkeyData( {

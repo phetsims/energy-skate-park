@@ -32,7 +32,7 @@ export default class ControlPointNode extends Circle {
   public static readonly SPLIT_VERTEX_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'alt+x' ],
     repoName: energySkatePark.name,
-    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.splitVertexStringProperty
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.cutTrackAtControlPointStringProperty
   } );
 
   public readonly boundsRectangle: Rectangle | null;

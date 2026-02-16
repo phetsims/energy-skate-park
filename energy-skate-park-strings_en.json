@@ -190,65 +190,86 @@
     "skaterControls": {
       "value": "Skater Controls"
     },
-    "moveSkater": {
-      "value": "Move skater"
-    },
-    "moveSkaterSlower": {
-      "value": "Move skater slower"
+    "grabOrRelease": {
+      "value": "Grab or release"
     },
     "moveAlongTrack": {
       "value": "Move along track"
-    },
-    "detachFromTrack": {
-      "value": "Detach from track"
     },
     "attachToTrack": {
       "value": "Attach to nearest track"
     },
     "moveToStartOfTrack": {
-      "value": "Move to start of track"
+      "value": "Jump to track start"
     },
     "moveToEndOfTrack": {
-      "value": "Move to end of track"
-    },
-    "moveReferenceHeight": {
-      "value": "Move reference height line"
-    },
-    "simShortcuts": {
-      "value": "Sim Shortcuts"
+      "value": "Jump to track end"
     },
     "restartSkater": {
-      "value": "Restart Skater"
-    },
-    "returnToolToToolbox": {
-      "value": "Return tool to toolbox"
-    },
-    "graphControls": {
-      "value": "Graph Controls"
+      "value": "Restart skater"
     },
     "togglePause": {
-      "value": "Toggle pause"
+      "value": "Pause or play"
     },
     "scrubThroughData": {
       "value": "Scrub through data"
     },
-    "trackEditing": {
-      "value": "Track Editing"
+    "stopwatchAndMeasuringTapeControls": {
+      "value": "Stopwatch and Measuring Tape Controls"
     },
-    "moveControlPoint": {
-      "value": "Move control point"
+    "removeFromToolbox": {
+      "value": "Remove from toolbox"
     },
-    "removeFromPlayArea": {
-      "value": "Remove from play area"
+    "returnToToolbox": {
+      "value": "Return to toolbox"
+    },
+    "graphCursorControls": {
+      "value": "Graph Cursor Controls"
+    },
+    "trackControls": {
+      "value": "Track Controls"
+    },
+    "cutTrackAtControlPoint": {
+      "value": "Cut track at control point"
+    },
+    "deleteControlPoint": {
+      "value": "Delete control point"
     },
     "connectTrackEndpoints": {
-      "value": "Connect track endpoints"
-    },
-    "splitVertex": {
-      "value": "Split vertex"
+      "label": {
+        "value": "Connect Track Endpoints"
+      },
+      "showOptions": {
+        "value": "1. Show options"
+      },
+      "moveThroughOptions": {
+        "value": "2. Move through options"
+      },
+      "selectOption": {
+        "value": "3. Select option"
+      },
+      "cancel": {
+        "value": "4. Cancel"
+      }
     }
   },
   "a11y": {
+    "keyboardHelpDialog": {
+      "connectTrackEndpoints": {
+        "showOptions": {
+          "value": "Show options"
+        },
+        "moveThroughOptions": {
+          "value": "Move through options"
+        },
+        "selectOption": {
+          "value": "Select option"
+        },
+        "cancel": {
+          "value": "Cancel"
+        }
+      }
+    },
     "skaterNode": {
       "accessibleName": {
         "value": "Skater"

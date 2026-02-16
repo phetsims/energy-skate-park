@@ -66,27 +66,35 @@ preferences:
   metersPerSecondSquared:       m/s<sup>2</sup>
   newtonsPerKilogram:           N/kg
 keyboardHelpDialog:
-  skaterControls:        Skater Controls
-  moveSkater:            Move skater
-  moveSkaterSlower:      Move skater slower
-  moveAlongTrack:        Move along track
-  detachFromTrack:       Detach from track
-  attachToTrack:         Attach to nearest track
-  moveToStartOfTrack:    Move to start of track
-  moveToEndOfTrack:      Move to end of track
-  moveReferenceHeight:   Move reference height line
-  simShortcuts:          Sim Shortcuts
-  restartSkater:         Restart Skater
-  returnToolToToolbox:   Return tool to toolbox
-  graphControls:         Graph Controls
-  togglePause:           Toggle pause
-  scrubThroughData:      Scrub through data
-  trackEditing:          Track Editing
-  moveControlPoint:      Move control point
-  removeFromPlayArea:    Remove from play area
-  connectTrackEndpoints: Connect track endpoints
-  splitVertex:           Split vertex
+  skaterControls:                      Skater Controls
+  grabOrRelease:                       Grab or release
+  moveAlongTrack:                      Move along track
+  attachToTrack:                       Attach to nearest track
+  moveToStartOfTrack:                  Jump to track start
+  moveToEndOfTrack:                    Jump to track end
+  restartSkater:                       Restart skater
+  togglePause:                         Pause or play
+  scrubThroughData:                    Scrub through data
+  stopwatchAndMeasuringTapeControls:   Stopwatch and Measuring Tape Controls
+  removeFromToolbox:                   Remove from toolbox
+  returnToToolbox:                     Return to toolbox
+  graphCursorControls:                 Graph Cursor Controls
+  trackControls:                       Track Controls
+  cutTrackAtControlPoint:              Cut track at control point
+  deleteControlPoint:                  Delete control point
+  connectTrackEndpoints:
+    label:              Connect Track Endpoints
+    showOptions:        '1. Show options'
+    moveThroughOptions: '2. Move through options'
+    selectOption:       '3. Select option'
+    cancel:             '4. Cancel'
 a11y:
+  keyboardHelpDialog:
+    connectTrackEndpoints:
+      showOptions:        Show options
+      moveThroughOptions: Move through options
+      selectOption:       Select option
+      cancel:             Cancel
   skaterNode:
     accessibleName:   Skater
     onTrackHelpText:  Use left and right arrow keys or A and D to move along track. Press up arrow or W to detach.

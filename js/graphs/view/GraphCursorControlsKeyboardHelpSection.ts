@@ -1,7 +1,7 @@
 // Copyright 2026, University of Colorado Boulder
 
 /**
- * GraphControlsKeyboardHelpSection is the keyboard-help section that describes graph cursor interactions
+ * GraphCursorControlsKeyboardHelpSection is the keyboard-help section that describes graph cursor interactions
  * in the Graphs screen of Energy Skate Park.
  *
  * @author Sam Reid (PhET Interactive Simulations)
@@ -26,7 +26,7 @@ const SCRUB_DATA_HOTKEY_DATA = new HotkeyData( {
   keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.scrubThroughDataStringProperty
 } );
 
-export default class GraphControlsKeyboardHelpSection extends KeyboardHelpSection {
+export default class GraphCursorControlsKeyboardHelpSection extends KeyboardHelpSection {
 
   public constructor() {
 
@@ -35,10 +35,10 @@ export default class GraphControlsKeyboardHelpSection extends KeyboardHelpSectio
       KeyboardHelpSectionRow.fromHotkeyData( SCRUB_DATA_HOTKEY_DATA )
     ];
 
-    super( EnergySkateParkFluent.keyboardHelpDialog.graphControlsStringProperty, rows, {
+    super( EnergySkateParkFluent.keyboardHelpDialog.graphCursorControlsStringProperty, rows, {
       isDisposable: false
     } );
   }
 }
 
-energySkatePark.register( 'GraphControlsKeyboardHelpSection', GraphControlsKeyboardHelpSection );
+energySkatePark.register( 'GraphCursorControlsKeyboardHelpSection', GraphCursorControlsKeyboardHelpSection );

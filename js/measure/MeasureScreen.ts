@@ -30,7 +30,7 @@ export default class MeasureScreen extends Screen<MeasureModel, MeasureScreenVie
       tandem: tandem,
       screenButtonsHelpText: EnergySkateParkFluent.a11y.screenButtons.measure.accessibleHelpTextStringProperty,
       createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent( {
-        includeReturnToolToToolbox: true
+        includeStopwatchAndMeasuringTapeControls: true
       } )
     };
 

@@ -103,27 +103,38 @@ type StringsType = {
   };
   'keyboardHelpDialog': {
     'skaterControlsStringProperty': LocalizedStringProperty;
-    'moveSkaterStringProperty': LocalizedStringProperty;
-    'moveSkaterSlowerStringProperty': LocalizedStringProperty;
+    'grabOrReleaseStringProperty': LocalizedStringProperty;
     'moveAlongTrackStringProperty': LocalizedStringProperty;
-    'detachFromTrackStringProperty': LocalizedStringProperty;
     'attachToTrackStringProperty': LocalizedStringProperty;
     'moveToStartOfTrackStringProperty': LocalizedStringProperty;
     'moveToEndOfTrackStringProperty': LocalizedStringProperty;
-    'moveReferenceHeightStringProperty': LocalizedStringProperty;
-    'simShortcutsStringProperty': LocalizedStringProperty;
     'restartSkaterStringProperty': LocalizedStringProperty;
-    'returnToolToToolboxStringProperty': LocalizedStringProperty;
-    'graphControlsStringProperty': LocalizedStringProperty;
     'togglePauseStringProperty': LocalizedStringProperty;
     'scrubThroughDataStringProperty': LocalizedStringProperty;
-    'trackEditingStringProperty': LocalizedStringProperty;
-    'moveControlPointStringProperty': LocalizedStringProperty;
-    'removeFromPlayAreaStringProperty': LocalizedStringProperty;
-    'connectTrackEndpointsStringProperty': LocalizedStringProperty;
-    'splitVertexStringProperty': LocalizedStringProperty;
+    'stopwatchAndMeasuringTapeControlsStringProperty': LocalizedStringProperty;
+    'removeFromToolboxStringProperty': LocalizedStringProperty;
+    'returnToToolboxStringProperty': LocalizedStringProperty;
+    'graphCursorControlsStringProperty': LocalizedStringProperty;
+    'trackControlsStringProperty': LocalizedStringProperty;
+    'cutTrackAtControlPointStringProperty': LocalizedStringProperty;
+    'deleteControlPointStringProperty': LocalizedStringProperty;
+    'connectTrackEndpoints': {
+      'labelStringProperty': LocalizedStringProperty;
+      'showOptionsStringProperty': LocalizedStringProperty;
+      'moveThroughOptionsStringProperty': LocalizedStringProperty;
+      'selectOptionStringProperty': LocalizedStringProperty;
+      'cancelStringProperty': LocalizedStringProperty;
+    }
   };
   'a11y': {
+    'keyboardHelpDialog': {
+      'connectTrackEndpoints': {
+        'showOptionsStringProperty': LocalizedStringProperty;
+        'moveThroughOptionsStringProperty': LocalizedStringProperty;
+        'selectOptionStringProperty': LocalizedStringProperty;
+        'cancelStringProperty': LocalizedStringProperty;
+      }
+    };
     'skaterNode': {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'onTrackHelpTextStringProperty': LocalizedStringProperty;

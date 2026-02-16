@@ -14,7 +14,6 @@ import graphsScreenIcon_png from '../../images/graphsScreenIcon_png.js';
 import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkKeyboardHelpContent from '../common/view/EnergySkateParkKeyboardHelpContent.js';
 import energySkatePark from '../energySkatePark.js';
-import GraphControlsKeyboardHelpSection from './view/GraphControlsKeyboardHelpSection.js';
 import EnergySkateParkFluent from '../EnergySkateParkFluent.js';
 import GraphsModel from './model/GraphsModel.js';
 import GraphsScreenView from './view/GraphsScreenView.js';
@@ -34,8 +33,8 @@ export default class GraphsScreen extends Screen<GraphsModel, GraphsScreenView> 
         tandem: tandem,
         screenButtonsHelpText: EnergySkateParkFluent.a11y.screenButtons.graphs.accessibleHelpTextStringProperty,
         createKeyboardHelpNode: () => new EnergySkateParkKeyboardHelpContent( {
-          additionalLeftSections: [ new GraphControlsKeyboardHelpSection() ],
-          includeReturnToolToToolbox: true
+          includeStopwatchAndMeasuringTapeControls: true,
+          includeGraphCursorControls: true
         } )
       }
     );

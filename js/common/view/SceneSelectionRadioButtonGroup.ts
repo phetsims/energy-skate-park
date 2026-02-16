@@ -85,7 +85,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( model, Tandem.OPT_OUT, controlPointOptions );
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints );
       }
-      else if ( trackType === 'RAMP' ) {
+      else if ( trackType === 'SLOPE' ) {
         const rampControlPoints = PremadeTracks.createSlopeControlPoints( model, Tandem.OPT_OUT, controlPointOptions );
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, rampControlPoints );
       }
@@ -101,7 +101,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, loopControlPoints );
       }
       else {
-        throw new Error( 'unsupported TrackType' );
+        throw new Error( 'unsupported TrackType: ' + trackType );
       }
 
       return track;
