@@ -36,7 +36,7 @@ export default class ConnectTrackEndpointsKeyboardHelpSection extends KeyboardHe
       } );
 
       return KeyboardHelpSectionRow.fromHotkeyData( hotkeyData, {
-        pdomLabelStringProperty: HotkeyDescriptionBuilder.createDescriptionProperty(
+        accessibleRowDescriptionProperty: HotkeyDescriptionBuilder.createDescriptionProperty(
           accessibleLabelStringProperty,
           hotkeyData.keyDescriptorsProperty
         )
