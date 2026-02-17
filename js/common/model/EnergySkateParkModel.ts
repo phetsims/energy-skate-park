@@ -1692,6 +1692,9 @@ export default class EnergySkateParkModel {
     const newTrack = this.trackGroup.createNextElement( points, Track.FULLY_INTERACTIVE_OPTIONS );
     newTrack.physicalProperty.value = true;
 
+    // Capture the minimum index before removal so the merged track inherits the lower position.
+    const insertIndex = Math.min( this.tracks.indexOf( a ), this.tracks.indexOf( b ) );
+
     a.disposeControlPoints();
     a.removeEmitter.emit();
     if ( this.tracks.includes( a ) ) {
@@ -1707,7 +1710,9 @@ export default class EnergySkateParkModel {
     // When tracks are joined, bump the new track above ground so the y value (and potential energy) cannot go negative,
     // and so it won't make the "return skater" button get bigger, see #158
     newTrack.bumpAboveGround();
-    this.tracks.add( newTrack );
+
+    // Insert at the position of the lower-indexed original track so the merged track keeps the lowest index.
+    this.tracks.splice( insertIndex, 0, newTrack );
 
     // Move skater to new track if he was on the old track, by searching for the best fit point on the new track
     // Note: Energy is not conserved when tracks joined since the user has added or removed energy from the system
