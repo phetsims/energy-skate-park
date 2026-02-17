@@ -131,9 +131,43 @@ a11y:
                           Speed {$speed} meters per second.
                           { a11y.energyReadoutPattern }
 
-  energyChart:
+  energyGraph:
+    accessibleHelpTextCollapsed: Explore skater's energy plotted as a function of position or time.
+    graphDescriptionParagraph: >-
+      Energy Graph plots energy as a function of {$variable}.
+      Energy measured in Joules and {$variable} measured in {$units}.
+      Currently, {$checkedEnergiesList} energy in plot.
+    checkboxGroupParagraph: Choose which energy types to display in Energy Graph.
+    kineticCheckbox:
+      accessibleContextResponseChecked: Kinetic energy data displayed in Energy Graph.
+      accessibleContextResponseUnchecked: Kinetic energy data removed from Energy Graph.
+    potentialCheckbox:
+      accessibleContextResponseChecked: Potential energy displayed in Energy Graph.
+      accessibleContextResponseUnchecked: Potential energy data removed from Energy Graph.
+    thermalCheckbox:
+      accessibleContextResponseChecked: Thermal energy displayed in Energy Graph.
+      accessibleContextResponseUnchecked: Thermal energy data removed from Energy Graph.
+    totalCheckbox:
+      accessibleContextResponseChecked: Total energy displayed in Energy Graph.
+      accessibleContextResponseUnchecked: Total energy data removed from Energy Graph.
     graphCursor:
       accessibleName: Graph Cursor
+      accessibleHelpText: Scrub through time and review skater data. Pause or play with space.
+      movementResponse: 'Time now {$sampleTime} seconds.'
+    zoomButtonGroup:
+      zoomIn:
+        accessibleName: Zoom In Energy Axis
+        accessibleHelpText: Adjust visual scale of the Energy axis only.
+      zoomOut:
+        accessibleName: Zoom Out Energy Axis
+        accessibleHelpText: Adjust visual scale of the Energy axis only.
+      zoomLevelResponse: 'Energy range now {$min} to {$max} Joules.'
+    variableSwitch:
+      accessibleHelpText: Plot skater's energy as a function of position or time.
+    eraserButton:
+      accessibleName: Erase Energy Graph Data
+      positionResponse: Data cleared from the Energy Graph.
+      timeResponse: Data cleared from the Energy Graph. Time reset to 0 seconds.
   controlPointAttachment:
     left:  Left
     right: Right

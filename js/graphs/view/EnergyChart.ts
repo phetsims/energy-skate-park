@@ -154,7 +154,8 @@ export default class EnergyChart extends XYCursorChartNode {
     this.chartCursor.tagName = 'div';
     this.chartCursor.focusable = true;
     this.chartCursor.ariaRole = 'application';
-    this.chartCursor.accessibleName = EnergySkateParkFluent.a11y.energyChart.graphCursor.accessibleNameStringProperty;
+    this.chartCursor.accessibleName = EnergySkateParkFluent.a11y.energyGraph.graphCursor.accessibleNameStringProperty;
+    this.chartCursor.accessibleHelpText = EnergySkateParkFluent.a11y.energyGraph.graphCursor.accessibleHelpTextStringProperty;
 
     // Space/Enter toggles pause
     this.chartCursor.addInputListener( new KeyboardListener( {
@@ -204,6 +205,13 @@ export default class EnergyChart extends XYCursorChartNode {
         if ( this.chartCursor.dragCueArrowNode ) {
           this.chartCursor.dragCueArrowNode.visible = false;
         }
+
+        // Announce the current time for screen readers during keyboard drag
+        this.chartCursor.addAccessibleContextResponse(
+          EnergySkateParkFluent.a11y.energyGraph.graphCursor.movementResponse.format( {
+            sampleTime: Utils.toFixed( this.getCursorValue(), 1 )
+          } )
+        );
       }
     } );
     this.chartCursor.addInputListener( keyboardDragListener );

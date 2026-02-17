@@ -113,7 +113,29 @@ addToMapIfDefined( 'a11y_energySensorNode_accessibleName', 'a11y.energySensorNod
 addToMapIfDefined( 'a11y_energySensorNode_nothingToMeasure', 'a11y.energySensorNode.nothingToMeasureStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_movedOffSamples', 'a11y.energySensorNode.movedOffSamplesStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_sampleReadoutPattern', 'a11y.energySensorNode.sampleReadoutPatternStringProperty' );
-addToMapIfDefined( 'a11y_energyChart_graphCursor_accessibleName', 'a11y.energyChart.graphCursor.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_accessibleHelpTextCollapsed', 'a11y.energyGraph.accessibleHelpTextCollapsedStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_graphDescriptionParagraph', 'a11y.energyGraph.graphDescriptionParagraphStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_checkboxGroupParagraph', 'a11y.energyGraph.checkboxGroupParagraphStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_kineticCheckbox_accessibleContextResponseChecked', 'a11y.energyGraph.kineticCheckbox.accessibleContextResponseCheckedStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_kineticCheckbox_accessibleContextResponseUnchecked', 'a11y.energyGraph.kineticCheckbox.accessibleContextResponseUncheckedStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_potentialCheckbox_accessibleContextResponseChecked', 'a11y.energyGraph.potentialCheckbox.accessibleContextResponseCheckedStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_potentialCheckbox_accessibleContextResponseUnchecked', 'a11y.energyGraph.potentialCheckbox.accessibleContextResponseUncheckedStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_thermalCheckbox_accessibleContextResponseChecked', 'a11y.energyGraph.thermalCheckbox.accessibleContextResponseCheckedStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_thermalCheckbox_accessibleContextResponseUnchecked', 'a11y.energyGraph.thermalCheckbox.accessibleContextResponseUncheckedStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_totalCheckbox_accessibleContextResponseChecked', 'a11y.energyGraph.totalCheckbox.accessibleContextResponseCheckedStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_totalCheckbox_accessibleContextResponseUnchecked', 'a11y.energyGraph.totalCheckbox.accessibleContextResponseUncheckedStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_graphCursor_accessibleName', 'a11y.energyGraph.graphCursor.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_graphCursor_accessibleHelpText', 'a11y.energyGraph.graphCursor.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_graphCursor_movementResponse', 'a11y.energyGraph.graphCursor.movementResponseStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_zoomButtonGroup_zoomIn_accessibleName', 'a11y.energyGraph.zoomButtonGroup.zoomIn.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_zoomButtonGroup_zoomIn_accessibleHelpText', 'a11y.energyGraph.zoomButtonGroup.zoomIn.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_zoomButtonGroup_zoomOut_accessibleName', 'a11y.energyGraph.zoomButtonGroup.zoomOut.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_zoomButtonGroup_zoomOut_accessibleHelpText', 'a11y.energyGraph.zoomButtonGroup.zoomOut.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_zoomButtonGroup_zoomLevelResponse', 'a11y.energyGraph.zoomButtonGroup.zoomLevelResponseStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_variableSwitch_accessibleHelpText', 'a11y.energyGraph.variableSwitch.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_eraserButton_accessibleName', 'a11y.energyGraph.eraserButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_eraserButton_positionResponse', 'a11y.energyGraph.eraserButton.positionResponseStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_eraserButton_timeResponse', 'a11y.energyGraph.eraserButton.timeResponseStringProperty' );
 addToMapIfDefined( 'a11y_controlPointAttachment_left', 'a11y.controlPointAttachment.leftStringProperty' );
 addToMapIfDefined( 'a11y_controlPointAttachment_right', 'a11y.controlPointAttachment.rightStringProperty' );
 addToMapIfDefined( 'a11y_energyBarGraphAccordionBox_accessibleName', 'a11y.energyBarGraphAccordionBox.accessibleNameStringProperty' );
@@ -347,9 +369,49 @@ const EnergySkateParkFluent = {
       movedOffSamplesStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_movedOffSamples', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.movedOffSamplesStringProperty' ) ),
       sampleReadoutPattern: new FluentPattern<{ height: FluentVariable, kinetic: FluentVariable, potential: FluentVariable, speed: FluentVariable, thermal: FluentVariable, total: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energySensorNode_sampleReadoutPattern', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.sampleReadoutPatternStringProperty' ), [{"name":"height"},{"name":"kinetic"},{"name":"potential"},{"name":"speed"},{"name":"thermal"},{"name":"total"}] )
     },
-    energyChart: {
+    energyGraph: {
+      accessibleHelpTextCollapsedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_accessibleHelpTextCollapsed', _.get( EnergySkateParkStrings, 'a11y.energyGraph.accessibleHelpTextCollapsedStringProperty' ) ),
+      graphDescriptionParagraph: new FluentPattern<{ checkedEnergiesList: FluentVariable, units: FluentVariable, variable: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energyGraph_graphDescriptionParagraph', _.get( EnergySkateParkStrings, 'a11y.energyGraph.graphDescriptionParagraphStringProperty' ), [{"name":"checkedEnergiesList"},{"name":"units"},{"name":"variable"}] ),
+      checkboxGroupParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_checkboxGroupParagraph', _.get( EnergySkateParkStrings, 'a11y.energyGraph.checkboxGroupParagraphStringProperty' ) ),
+      kineticCheckbox: {
+        accessibleContextResponseCheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_kineticCheckbox_accessibleContextResponseChecked', _.get( EnergySkateParkStrings, 'a11y.energyGraph.kineticCheckbox.accessibleContextResponseCheckedStringProperty' ) ),
+        accessibleContextResponseUncheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_kineticCheckbox_accessibleContextResponseUnchecked', _.get( EnergySkateParkStrings, 'a11y.energyGraph.kineticCheckbox.accessibleContextResponseUncheckedStringProperty' ) )
+      },
+      potentialCheckbox: {
+        accessibleContextResponseCheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_potentialCheckbox_accessibleContextResponseChecked', _.get( EnergySkateParkStrings, 'a11y.energyGraph.potentialCheckbox.accessibleContextResponseCheckedStringProperty' ) ),
+        accessibleContextResponseUncheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_potentialCheckbox_accessibleContextResponseUnchecked', _.get( EnergySkateParkStrings, 'a11y.energyGraph.potentialCheckbox.accessibleContextResponseUncheckedStringProperty' ) )
+      },
+      thermalCheckbox: {
+        accessibleContextResponseCheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_thermalCheckbox_accessibleContextResponseChecked', _.get( EnergySkateParkStrings, 'a11y.energyGraph.thermalCheckbox.accessibleContextResponseCheckedStringProperty' ) ),
+        accessibleContextResponseUncheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_thermalCheckbox_accessibleContextResponseUnchecked', _.get( EnergySkateParkStrings, 'a11y.energyGraph.thermalCheckbox.accessibleContextResponseUncheckedStringProperty' ) )
+      },
+      totalCheckbox: {
+        accessibleContextResponseCheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_totalCheckbox_accessibleContextResponseChecked', _.get( EnergySkateParkStrings, 'a11y.energyGraph.totalCheckbox.accessibleContextResponseCheckedStringProperty' ) ),
+        accessibleContextResponseUncheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_totalCheckbox_accessibleContextResponseUnchecked', _.get( EnergySkateParkStrings, 'a11y.energyGraph.totalCheckbox.accessibleContextResponseUncheckedStringProperty' ) )
+      },
       graphCursor: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyChart_graphCursor_accessibleName', _.get( EnergySkateParkStrings, 'a11y.energyChart.graphCursor.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_graphCursor_accessibleName', _.get( EnergySkateParkStrings, 'a11y.energyGraph.graphCursor.accessibleNameStringProperty' ) ),
+        accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_graphCursor_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.energyGraph.graphCursor.accessibleHelpTextStringProperty' ) ),
+        movementResponse: new FluentPattern<{ sampleTime: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energyGraph_graphCursor_movementResponse', _.get( EnergySkateParkStrings, 'a11y.energyGraph.graphCursor.movementResponseStringProperty' ), [{"name":"sampleTime"}] )
+      },
+      zoomButtonGroup: {
+        zoomIn: {
+          accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_zoomButtonGroup_zoomIn_accessibleName', _.get( EnergySkateParkStrings, 'a11y.energyGraph.zoomButtonGroup.zoomIn.accessibleNameStringProperty' ) ),
+          accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_zoomButtonGroup_zoomIn_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.energyGraph.zoomButtonGroup.zoomIn.accessibleHelpTextStringProperty' ) )
+        },
+        zoomOut: {
+          accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_zoomButtonGroup_zoomOut_accessibleName', _.get( EnergySkateParkStrings, 'a11y.energyGraph.zoomButtonGroup.zoomOut.accessibleNameStringProperty' ) ),
+          accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_zoomButtonGroup_zoomOut_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.energyGraph.zoomButtonGroup.zoomOut.accessibleHelpTextStringProperty' ) )
+        },
+        zoomLevelResponse: new FluentPattern<{ max: FluentVariable, min: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energyGraph_zoomButtonGroup_zoomLevelResponse', _.get( EnergySkateParkStrings, 'a11y.energyGraph.zoomButtonGroup.zoomLevelResponseStringProperty' ), [{"name":"max"},{"name":"min"}] )
+      },
+      variableSwitch: {
+        accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_variableSwitch_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.energyGraph.variableSwitch.accessibleHelpTextStringProperty' ) )
+      },
+      eraserButton: {
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_eraserButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.energyGraph.eraserButton.accessibleNameStringProperty' ) ),
+        positionResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_eraserButton_positionResponse', _.get( EnergySkateParkStrings, 'a11y.energyGraph.eraserButton.positionResponseStringProperty' ) ),
+        timeResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_eraserButton_timeResponse', _.get( EnergySkateParkStrings, 'a11y.energyGraph.eraserButton.timeResponseStringProperty' ) )
       }
     },
     controlPointAttachment: {

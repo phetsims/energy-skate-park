@@ -336,10 +336,94 @@
         "value": "Height {$height} meters. Speed {$speed} meters per second. { a11y_energyReadoutPattern }"
       }
     },
-    "energyChart": {
+    "energyGraph": {
+      "accessibleHelpTextCollapsed": {
+        "value": "Explore skater's energy plotted as a function of position or time."
+      },
+      "graphDescriptionParagraph": {
+        "value": "Energy Graph plots energy as a function of {$variable}. Energy measured in Joules and {$variable} measured in {$units}. Currently, {$checkedEnergiesList} energy in plot."
+      },
+      "checkboxGroupParagraph": {
+        "value": "Choose which energy types to display in Energy Graph."
+      },
+      "kineticCheckbox": {
+        "accessibleContextResponseChecked": {
+          "value": "Kinetic energy data displayed in Energy Graph."
+        },
+        "accessibleContextResponseUnchecked": {
+          "value": "Kinetic energy data removed from Energy Graph."
+        }
+      },
+      "potentialCheckbox": {
+        "accessibleContextResponseChecked": {
+          "value": "Potential energy displayed in Energy Graph."
+        },
+        "accessibleContextResponseUnchecked": {
+          "value": "Potential energy data removed from Energy Graph."
+        }
+      },
+      "thermalCheckbox": {
+        "accessibleContextResponseChecked": {
+          "value": "Thermal energy displayed in Energy Graph."
+        },
+        "accessibleContextResponseUnchecked": {
+          "value": "Thermal energy data removed from Energy Graph."
+        }
+      },
+      "totalCheckbox": {
+        "accessibleContextResponseChecked": {
+          "value": "Total energy displayed in Energy Graph."
+        },
+        "accessibleContextResponseUnchecked": {
+          "value": "Total energy data removed from Energy Graph."
+        }
+      },
       "graphCursor": {
         "accessibleName": {
           "value": "Graph Cursor"
+        },
+        "accessibleHelpText": {
+          "value": "Scrub through time and review skater data. Pause or play with space."
+        },
+        "movementResponse": {
+          "value": "Time now {$sampleTime} seconds."
+        }
+      },
+      "zoomButtonGroup": {
+        "zoomIn": {
+          "accessibleName": {
+            "value": "Zoom In Energy Axis"
+          },
+          "accessibleHelpText": {
+            "value": "Adjust visual scale of the Energy axis only."
+          }
+        },
+        "zoomOut": {
+          "accessibleName": {
+            "value": "Zoom Out Energy Axis"
+          },
+          "accessibleHelpText": {
+            "value": "Adjust visual scale of the Energy axis only."
+          }
+        },
+        "zoomLevelResponse": {
+          "value": "Energy range now {$min} to {$max} Joules."
+        }
+      },
+      "variableSwitch": {
+        "accessibleHelpText": {
+          "value": "Plot skater's energy as a function of position or time."
+        }
+      },
+      "eraserButton": {
+        "accessibleName": {
+          "value": "Erase Energy Graph Data"
+        },
+        "positionResponse": {
+          "value": "Data cleared from the Energy Graph."
+        },
+        "timeResponse": {
+          "value": "Data cleared from the Energy Graph. Time reset to 0 seconds."
         }
       }
     },

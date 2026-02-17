@@ -169,9 +169,49 @@ type StringsType = {
       'movedOffSamplesStringProperty': LocalizedStringProperty;
       'sampleReadoutPatternStringProperty': LocalizedStringProperty;
     };
-    'energyChart': {
+    'energyGraph': {
+      'accessibleHelpTextCollapsedStringProperty': LocalizedStringProperty;
+      'graphDescriptionParagraphStringProperty': LocalizedStringProperty;
+      'checkboxGroupParagraphStringProperty': LocalizedStringProperty;
+      'kineticCheckbox': {
+        'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;
+        'accessibleContextResponseUncheckedStringProperty': LocalizedStringProperty;
+      };
+      'potentialCheckbox': {
+        'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;
+        'accessibleContextResponseUncheckedStringProperty': LocalizedStringProperty;
+      };
+      'thermalCheckbox': {
+        'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;
+        'accessibleContextResponseUncheckedStringProperty': LocalizedStringProperty;
+      };
+      'totalCheckbox': {
+        'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;
+        'accessibleContextResponseUncheckedStringProperty': LocalizedStringProperty;
+      };
       'graphCursor': {
         'accessibleNameStringProperty': LocalizedStringProperty;
+        'accessibleHelpTextStringProperty': LocalizedStringProperty;
+        'movementResponseStringProperty': LocalizedStringProperty;
+      };
+      'zoomButtonGroup': {
+        'zoomIn': {
+          'accessibleNameStringProperty': LocalizedStringProperty;
+          'accessibleHelpTextStringProperty': LocalizedStringProperty;
+        };
+        'zoomOut': {
+          'accessibleNameStringProperty': LocalizedStringProperty;
+          'accessibleHelpTextStringProperty': LocalizedStringProperty;
+        };
+        'zoomLevelResponseStringProperty': LocalizedStringProperty;
+      };
+      'variableSwitch': {
+        'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      };
+      'eraserButton': {
+        'accessibleNameStringProperty': LocalizedStringProperty;
+        'positionResponseStringProperty': LocalizedStringProperty;
+        'timeResponseStringProperty': LocalizedStringProperty;
       }
     };
     'controlPointAttachment': {
