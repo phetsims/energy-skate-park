@@ -349,6 +349,15 @@
       "negativeEnergyParagraph": {
         "value": "In Pie Chart: Total Energy 100%."
       },
+      "kineticPercentPattern": {
+        "value": "Kinetic Energy {$percent}%"
+      },
+      "potentialPercentPattern": {
+        "value": "Potential Energy {$percent}%"
+      },
+      "thermalPercentPattern": {
+        "value": "Thermal Energy {$percent}%"
+      },
       "legendHeading": {
         "value": "Energy Legend"
       },

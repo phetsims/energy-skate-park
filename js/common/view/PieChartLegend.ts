@@ -166,13 +166,13 @@ export default class PieChartLegend extends Panel {
 
       const parts: string[] = [];
       if ( kinetic > ENERGY_THRESHOLD ) {
-        parts.push( `Kinetic Energy ${Utils.roundSymmetric( kinetic / total * 100 )}%` );
+        parts.push( EnergySkateParkFluent.a11y.pieChart.kineticPercentPattern.format( { percent: Utils.roundSymmetric( kinetic / total * 100 ) } ) );
       }
       if ( potential > ENERGY_THRESHOLD ) {
-        parts.push( `Potential Energy ${Utils.roundSymmetric( potential / total * 100 )}%` );
+        parts.push( EnergySkateParkFluent.a11y.pieChart.potentialPercentPattern.format( { percent: Utils.roundSymmetric( potential / total * 100 ) } ) );
       }
       if ( thermal > ENERGY_THRESHOLD ) {
-        parts.push( `Thermal Energy ${Utils.roundSymmetric( thermal / total * 100 )}%` );
+        parts.push( EnergySkateParkFluent.a11y.pieChart.thermalPercentPattern.format( { percent: Utils.roundSymmetric( thermal / total * 100 ) } ) );
       }
 
       if ( parts.length === 0 ) { return ''; }

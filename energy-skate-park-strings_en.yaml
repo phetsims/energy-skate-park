@@ -136,6 +136,9 @@ a11y:
     helpTextParagraph: Pie Chart displays skater's energy in real time. Pause to analyze values.
     positiveEnergyParagraph: 'In Pie Chart: {$energiesList}.'
     negativeEnergyParagraph: 'In Pie Chart: Total Energy 100%.'
+    kineticPercentPattern: 'Kinetic Energy {$percent}%'
+    potentialPercentPattern: 'Potential Energy {$percent}%'
+    thermalPercentPattern: 'Thermal Energy {$percent}%'
     legendHeading: Energy Legend
     legendKinetic: 'Kinetic: Green'
     legendPotential: 'Potential: Blue'

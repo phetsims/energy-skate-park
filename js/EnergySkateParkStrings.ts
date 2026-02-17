@@ -174,6 +174,9 @@ type StringsType = {
       'helpTextParagraphStringProperty': LocalizedStringProperty;
       'positiveEnergyParagraphStringProperty': LocalizedStringProperty;
       'negativeEnergyParagraphStringProperty': LocalizedStringProperty;
+      'kineticPercentPatternStringProperty': LocalizedStringProperty;
+      'potentialPercentPatternStringProperty': LocalizedStringProperty;
+      'thermalPercentPatternStringProperty': LocalizedStringProperty;
       'legendHeadingStringProperty': LocalizedStringProperty;
       'legendKineticStringProperty': LocalizedStringProperty;
       'legendPotentialStringProperty': LocalizedStringProperty;

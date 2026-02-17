@@ -117,6 +117,9 @@ addToMapIfDefined( 'a11y_pieChart_accessibleHeading', 'a11y.pieChart.accessibleH
 addToMapIfDefined( 'a11y_pieChart_helpTextParagraph', 'a11y.pieChart.helpTextParagraphStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_positiveEnergyParagraph', 'a11y.pieChart.positiveEnergyParagraphStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_negativeEnergyParagraph', 'a11y.pieChart.negativeEnergyParagraphStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_kineticPercentPattern', 'a11y.pieChart.kineticPercentPatternStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_potentialPercentPattern', 'a11y.pieChart.potentialPercentPatternStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_thermalPercentPattern', 'a11y.pieChart.thermalPercentPatternStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_legendHeading', 'a11y.pieChart.legendHeadingStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_legendKinetic', 'a11y.pieChart.legendKineticStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_legendPotential', 'a11y.pieChart.legendPotentialStringProperty' );
@@ -383,6 +386,9 @@ const EnergySkateParkFluent = {
       helpTextParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_helpTextParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.helpTextParagraphStringProperty' ) ),
       positiveEnergyParagraph: new FluentPattern<{ energiesList: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_pieChart_positiveEnergyParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.positiveEnergyParagraphStringProperty' ), [{"name":"energiesList"}] ),
       negativeEnergyParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_negativeEnergyParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.negativeEnergyParagraphStringProperty' ) ),
+      kineticPercentPattern: new FluentPattern<{ percent: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_pieChart_kineticPercentPattern', _.get( EnergySkateParkStrings, 'a11y.pieChart.kineticPercentPatternStringProperty' ), [{"name":"percent"}] ),
+      potentialPercentPattern: new FluentPattern<{ percent: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_pieChart_potentialPercentPattern', _.get( EnergySkateParkStrings, 'a11y.pieChart.potentialPercentPatternStringProperty' ), [{"name":"percent"}] ),
+      thermalPercentPattern: new FluentPattern<{ percent: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_pieChart_thermalPercentPattern', _.get( EnergySkateParkStrings, 'a11y.pieChart.thermalPercentPatternStringProperty' ), [{"name":"percent"}] ),
       legendHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendHeading', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendHeadingStringProperty' ) ),
       legendKineticStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendKinetic', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendKineticStringProperty' ) ),
       legendPotentialStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendPotential', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendPotentialStringProperty' ) ),
