@@ -102,24 +102,31 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
     contentNode.addChild( checkboxGroup );
 
     // Dynamic graph description paragraph
-    const variableStringProperty = new DerivedProperty( [ model.independentVariableProperty ],
-      independentVariable => independentVariable === 'position' ? 'Position' : 'Time'
+    const variableStringProperty = new DerivedProperty(
+      [ model.independentVariableProperty, EnergySkateParkFluent.a11y.energyGraph.variablePositionStringProperty, EnergySkateParkFluent.a11y.energyGraph.variableTimeStringProperty ],
+      ( independentVariable, positionString, timeString ) => independentVariable === 'position' ? positionString : timeString
     );
-    const unitsStringProperty = new DerivedProperty( [ model.independentVariableProperty ],
-      independentVariable => independentVariable === 'position' ? 'meters' : 'seconds'
+    const unitsStringProperty = new DerivedProperty(
+      [ model.independentVariableProperty, EnergySkateParkFluent.a11y.energyGraph.unitsMetersStringProperty, EnergySkateParkFluent.a11y.energyGraph.unitsSecondsStringProperty ],
+      ( independentVariable, metersString, secondsString ) => independentVariable === 'position' ? metersString : secondsString
     );
     const checkedEnergiesListProperty = new DerivedProperty( [
       model.kineticEnergyDataVisibleProperty,
       model.potentialEnergyDataVisibleProperty,
       model.thermalEnergyDataVisibleProperty,
-      model.totalEnergyDataVisibleProperty
-    ], ( kinetic, potential, thermal, total ) => {
+      model.totalEnergyDataVisibleProperty,
+      EnergySkateParkFluent.a11y.energyGraph.energyKineticStringProperty,
+      EnergySkateParkFluent.a11y.energyGraph.energyPotentialStringProperty,
+      EnergySkateParkFluent.a11y.energyGraph.energyThermalStringProperty,
+      EnergySkateParkFluent.a11y.energyGraph.energyTotalStringProperty,
+      EnergySkateParkFluent.a11y.energyGraph.energyNoneStringProperty
+    ], ( kinetic, potential, thermal, total, kineticName, potentialName, thermalName, totalName, noneName ) => {
       const names: string[] = [];
-      if ( kinetic ) { names.push( 'Kinetic' ); }
-      if ( potential ) { names.push( 'Potential' ); }
-      if ( thermal ) { names.push( 'Thermal' ); }
-      if ( total ) { names.push( 'Total' ); }
-      if ( names.length === 0 ) { return 'no'; }
+      if ( kinetic ) { names.push( kineticName ); }
+      if ( potential ) { names.push( potentialName ); }
+      if ( thermal ) { names.push( thermalName ); }
+      if ( total ) { names.push( totalName ); }
+      if ( names.length === 0 ) { return noneName; }
       if ( names.length === 1 ) { return names[ 0 ]; }
       if ( names.length === 2 ) { return `${names[ 0 ]} and ${names[ 1 ]}`; }
       return `${names.slice( 0, -1 ).join( ', ' )}, and ${names[ names.length - 1 ]}`;

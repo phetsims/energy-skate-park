@@ -150,6 +150,15 @@ a11y:
       Energy Graph plots energy as a function of {$variable}.
       Energy measured in Joules and {$variable} measured in {$units}.
       Currently, {$checkedEnergiesList} energy in plot.
+    variablePosition: Position
+    variableTime: Time
+    unitsMeters: meters
+    unitsSeconds: seconds
+    energyKinetic: Kinetic
+    energyPotential: Potential
+    energyThermal: Thermal
+    energyTotal: Total
+    energyNone: 'no'
     checkboxGroupParagraph: Choose which energy types to display in Energy Graph.
     kineticCheckbox:
       accessibleContextResponseChecked: Kinetic energy data displayed in Energy Graph.

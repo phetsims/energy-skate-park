@@ -186,6 +186,15 @@ type StringsType = {
     'energyGraph': {
       'accessibleHelpTextCollapsedStringProperty': LocalizedStringProperty;
       'graphDescriptionParagraphStringProperty': LocalizedStringProperty;
+      'variablePositionStringProperty': LocalizedStringProperty;
+      'variableTimeStringProperty': LocalizedStringProperty;
+      'unitsMetersStringProperty': LocalizedStringProperty;
+      'unitsSecondsStringProperty': LocalizedStringProperty;
+      'energyKineticStringProperty': LocalizedStringProperty;
+      'energyPotentialStringProperty': LocalizedStringProperty;
+      'energyThermalStringProperty': LocalizedStringProperty;
+      'energyTotalStringProperty': LocalizedStringProperty;
+      'energyNoneStringProperty': LocalizedStringProperty;
       'checkboxGroupParagraphStringProperty': LocalizedStringProperty;
       'kineticCheckbox': {
         'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;

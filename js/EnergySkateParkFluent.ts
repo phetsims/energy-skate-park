@@ -127,6 +127,15 @@ addToMapIfDefined( 'a11y_pieChart_legendThermal', 'a11y.pieChart.legendThermalSt
 addToMapIfDefined( 'a11y_pieChart_legendTotal', 'a11y.pieChart.legendTotalStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_accessibleHelpTextCollapsed', 'a11y.energyGraph.accessibleHelpTextCollapsedStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_graphDescriptionParagraph', 'a11y.energyGraph.graphDescriptionParagraphStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_variablePosition', 'a11y.energyGraph.variablePositionStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_variableTime', 'a11y.energyGraph.variableTimeStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_unitsMeters', 'a11y.energyGraph.unitsMetersStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_unitsSeconds', 'a11y.energyGraph.unitsSecondsStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_energyKinetic', 'a11y.energyGraph.energyKineticStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_energyPotential', 'a11y.energyGraph.energyPotentialStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_energyThermal', 'a11y.energyGraph.energyThermalStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_energyTotal', 'a11y.energyGraph.energyTotalStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_energyNone', 'a11y.energyGraph.energyNoneStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_checkboxGroupParagraph', 'a11y.energyGraph.checkboxGroupParagraphStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_kineticCheckbox_accessibleContextResponseChecked', 'a11y.energyGraph.kineticCheckbox.accessibleContextResponseCheckedStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_kineticCheckbox_accessibleContextResponseUnchecked', 'a11y.energyGraph.kineticCheckbox.accessibleContextResponseUncheckedStringProperty' );
@@ -398,6 +407,15 @@ const EnergySkateParkFluent = {
     energyGraph: {
       accessibleHelpTextCollapsedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_accessibleHelpTextCollapsed', _.get( EnergySkateParkStrings, 'a11y.energyGraph.accessibleHelpTextCollapsedStringProperty' ) ),
       graphDescriptionParagraph: new FluentPattern<{ checkedEnergiesList: FluentVariable, units: FluentVariable, variable: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energyGraph_graphDescriptionParagraph', _.get( EnergySkateParkStrings, 'a11y.energyGraph.graphDescriptionParagraphStringProperty' ), [{"name":"checkedEnergiesList"},{"name":"units"},{"name":"variable"}] ),
+      variablePositionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_variablePosition', _.get( EnergySkateParkStrings, 'a11y.energyGraph.variablePositionStringProperty' ) ),
+      variableTimeStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_variableTime', _.get( EnergySkateParkStrings, 'a11y.energyGraph.variableTimeStringProperty' ) ),
+      unitsMetersStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_unitsMeters', _.get( EnergySkateParkStrings, 'a11y.energyGraph.unitsMetersStringProperty' ) ),
+      unitsSecondsStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_unitsSeconds', _.get( EnergySkateParkStrings, 'a11y.energyGraph.unitsSecondsStringProperty' ) ),
+      energyKineticStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_energyKinetic', _.get( EnergySkateParkStrings, 'a11y.energyGraph.energyKineticStringProperty' ) ),
+      energyPotentialStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_energyPotential', _.get( EnergySkateParkStrings, 'a11y.energyGraph.energyPotentialStringProperty' ) ),
+      energyThermalStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_energyThermal', _.get( EnergySkateParkStrings, 'a11y.energyGraph.energyThermalStringProperty' ) ),
+      energyTotalStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_energyTotal', _.get( EnergySkateParkStrings, 'a11y.energyGraph.energyTotalStringProperty' ) ),
+      energyNoneStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_energyNone', _.get( EnergySkateParkStrings, 'a11y.energyGraph.energyNoneStringProperty' ) ),
       checkboxGroupParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_checkboxGroupParagraph', _.get( EnergySkateParkStrings, 'a11y.energyGraph.checkboxGroupParagraphStringProperty' ) ),
       kineticCheckbox: {
         accessibleContextResponseCheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_kineticCheckbox_accessibleContextResponseChecked', _.get( EnergySkateParkStrings, 'a11y.energyGraph.kineticCheckbox.accessibleContextResponseCheckedStringProperty' ) ),
