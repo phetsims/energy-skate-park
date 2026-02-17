@@ -113,6 +113,15 @@ addToMapIfDefined( 'a11y_energySensorNode_accessibleName', 'a11y.energySensorNod
 addToMapIfDefined( 'a11y_energySensorNode_nothingToMeasure', 'a11y.energySensorNode.nothingToMeasureStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_movedOffSamples', 'a11y.energySensorNode.movedOffSamplesStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_sampleReadoutPattern', 'a11y.energySensorNode.sampleReadoutPatternStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_accessibleHeading', 'a11y.pieChart.accessibleHeadingStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_helpTextParagraph', 'a11y.pieChart.helpTextParagraphStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_positiveEnergyParagraph', 'a11y.pieChart.positiveEnergyParagraphStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_negativeEnergyParagraph', 'a11y.pieChart.negativeEnergyParagraphStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_legendHeading', 'a11y.pieChart.legendHeadingStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_legendKinetic', 'a11y.pieChart.legendKineticStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_legendPotential', 'a11y.pieChart.legendPotentialStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_legendThermal', 'a11y.pieChart.legendThermalStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_legendTotal', 'a11y.pieChart.legendTotalStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_accessibleHelpTextCollapsed', 'a11y.energyGraph.accessibleHelpTextCollapsedStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_graphDescriptionParagraph', 'a11y.energyGraph.graphDescriptionParagraphStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_checkboxGroupParagraph', 'a11y.energyGraph.checkboxGroupParagraphStringProperty' );
@@ -368,6 +377,17 @@ const EnergySkateParkFluent = {
       nothingToMeasureStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_nothingToMeasure', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.nothingToMeasureStringProperty' ) ),
       movedOffSamplesStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_movedOffSamples', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.movedOffSamplesStringProperty' ) ),
       sampleReadoutPattern: new FluentPattern<{ height: FluentVariable, kinetic: FluentVariable, potential: FluentVariable, speed: FluentVariable, thermal: FluentVariable, total: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energySensorNode_sampleReadoutPattern', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.sampleReadoutPatternStringProperty' ), [{"name":"height"},{"name":"kinetic"},{"name":"potential"},{"name":"speed"},{"name":"thermal"},{"name":"total"}] )
+    },
+    pieChart: {
+      accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.pieChart.accessibleHeadingStringProperty' ) ),
+      helpTextParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_helpTextParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.helpTextParagraphStringProperty' ) ),
+      positiveEnergyParagraph: new FluentPattern<{ energiesList: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_pieChart_positiveEnergyParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.positiveEnergyParagraphStringProperty' ), [{"name":"energiesList"}] ),
+      negativeEnergyParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_negativeEnergyParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.negativeEnergyParagraphStringProperty' ) ),
+      legendHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendHeading', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendHeadingStringProperty' ) ),
+      legendKineticStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendKinetic', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendKineticStringProperty' ) ),
+      legendPotentialStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendPotential', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendPotentialStringProperty' ) ),
+      legendThermalStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendThermal', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendThermalStringProperty' ) ),
+      legendTotalStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendTotal', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendTotalStringProperty' ) )
     },
     energyGraph: {
       accessibleHelpTextCollapsedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_accessibleHelpTextCollapsed', _.get( EnergySkateParkStrings, 'a11y.energyGraph.accessibleHelpTextCollapsedStringProperty' ) ),

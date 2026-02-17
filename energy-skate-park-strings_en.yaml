@@ -131,6 +131,16 @@ a11y:
                           Speed {$speed} meters per second.
                           { a11y.energyReadoutPattern }
 
+  pieChart:
+    accessibleHeading: Pie Chart
+    helpTextParagraph: Pie Chart displays skater's energy in real time. Pause to analyze values.
+    positiveEnergyParagraph: 'In Pie Chart: {$energiesList}.'
+    negativeEnergyParagraph: 'In Pie Chart: Total Energy 100%.'
+    legendHeading: Energy Legend
+    legendKinetic: 'Kinetic: Green'
+    legendPotential: 'Potential: Blue'
+    legendThermal: 'Thermal: Red'
+    legendTotal: 'Total: Gold'
   energyGraph:
     accessibleHelpTextCollapsed: Explore skater's energy plotted as a function of position or time.
     graphDescriptionParagraph: >-

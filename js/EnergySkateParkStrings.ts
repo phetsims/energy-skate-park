@@ -169,6 +169,17 @@ type StringsType = {
       'movedOffSamplesStringProperty': LocalizedStringProperty;
       'sampleReadoutPatternStringProperty': LocalizedStringProperty;
     };
+    'pieChart': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
+      'helpTextParagraphStringProperty': LocalizedStringProperty;
+      'positiveEnergyParagraphStringProperty': LocalizedStringProperty;
+      'negativeEnergyParagraphStringProperty': LocalizedStringProperty;
+      'legendHeadingStringProperty': LocalizedStringProperty;
+      'legendKineticStringProperty': LocalizedStringProperty;
+      'legendPotentialStringProperty': LocalizedStringProperty;
+      'legendThermalStringProperty': LocalizedStringProperty;
+      'legendTotalStringProperty': LocalizedStringProperty;
+    };
     'energyGraph': {
       'accessibleHelpTextCollapsedStringProperty': LocalizedStringProperty;
       'graphDescriptionParagraphStringProperty': LocalizedStringProperty;

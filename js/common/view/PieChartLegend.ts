@@ -6,9 +6,12 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
+import Utils from '../../../../dot/js/Utils.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
+import AccessibleListNode from '../../../../scenery-phet/js/accessibility/AccessibleListNode.js';
 import MoveToTrashLegendButton from '../../../../scenery-phet/js/buttons/MoveToTrashLegendButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
@@ -140,12 +143,73 @@ export default class PieChartLegend extends Panel {
     const panelContent = new Node();
     panelContent.children = [ contentWithTitle, clearThermalButton ];
 
+    // Accessibility: help text paragraph
+    const helpTextNode = new Node( {
+      accessibleParagraph: EnergySkateParkFluent.a11y.pieChart.helpTextParagraphStringProperty
+    } );
+    panelContent.addChild( helpTextNode );
+
+    // Accessibility: dynamic energy description paragraph
+    const ENERGY_THRESHOLD = 1E-4;
+    const energyDescriptionProperty = new DerivedProperty( [
+      skater.kineticEnergyProperty,
+      skater.potentialEnergyProperty,
+      skater.thermalEnergyProperty,
+      skater.totalEnergyProperty
+    ], ( kinetic, potential, thermal, total ) => {
+      if ( potential < 0 ) {
+        return EnergySkateParkFluent.a11y.pieChart.negativeEnergyParagraphStringProperty.value;
+      }
+      if ( Math.abs( total ) <= ENERGY_THRESHOLD ) {
+        return '';
+      }
+
+      const parts: string[] = [];
+      if ( kinetic > ENERGY_THRESHOLD ) {
+        parts.push( `Kinetic Energy ${Utils.roundSymmetric( kinetic / total * 100 )}%` );
+      }
+      if ( potential > ENERGY_THRESHOLD ) {
+        parts.push( `Potential Energy ${Utils.roundSymmetric( potential / total * 100 )}%` );
+      }
+      if ( thermal > ENERGY_THRESHOLD ) {
+        parts.push( `Thermal Energy ${Utils.roundSymmetric( thermal / total * 100 )}%` );
+      }
+
+      if ( parts.length === 0 ) { return ''; }
+
+      return EnergySkateParkFluent.a11y.pieChart.positiveEnergyParagraph.format( {
+        energiesList: parts.join( ', ' )
+      } );
+    } );
+    const energyDescriptionNode = new Node( {
+      accessibleParagraph: energyDescriptionProperty
+    } );
+    panelContent.addChild( energyDescriptionNode );
+
+    // Accessibility: legend list
+    const legendItems: TReadOnlyProperty<string>[] = [
+      EnergySkateParkFluent.a11y.pieChart.legendKineticStringProperty,
+      EnergySkateParkFluent.a11y.pieChart.legendPotentialStringProperty,
+      EnergySkateParkFluent.a11y.pieChart.legendThermalStringProperty
+    ];
+    if ( options.includeTotal ) {
+      legendItems.push( EnergySkateParkFluent.a11y.pieChart.legendTotalStringProperty );
+    }
+    const legendListNode = new AccessibleListNode( legendItems, {
+      leadingParagraphStringProperty: EnergySkateParkFluent.a11y.pieChart.legendHeadingStringProperty
+    } );
+    panelContent.addChild( legendListNode );
+
+    // PDOM ordering within the panel
+    panelContent.pdomOrder = [ helpTextNode, energyDescriptionNode, clearThermalButton, legendListNode ];
+
     super( panelContent, merge( {
       x: 4,
       y: 4,
       xMargin: 7,
       yMargin: 6,
-      tandem: tandem
+      tandem: tandem,
+      accessibleHeading: EnergySkateParkFluent.a11y.pieChart.accessibleHeadingStringProperty
     }, EnergySkateParkConstants.GRAPH_PANEL_OPTIONS ) );
 
     const strutGlobal = clearThermalButtonStrut.parentToGlobalPoint( clearThermalButtonStrut.center );

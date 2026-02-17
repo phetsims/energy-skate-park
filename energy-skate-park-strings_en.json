@@ -336,6 +336,35 @@
         "value": "Height {$height} meters. Speed {$speed} meters per second. { a11y_energyReadoutPattern }"
       }
     },
+    "pieChart": {
+      "accessibleHeading": {
+        "value": "Pie Chart"
+      },
+      "helpTextParagraph": {
+        "value": "Pie Chart displays skater's energy in real time. Pause to analyze values."
+      },
+      "positiveEnergyParagraph": {
+        "value": "In Pie Chart: {$energiesList}."
+      },
+      "negativeEnergyParagraph": {
+        "value": "In Pie Chart: Total Energy 100%."
+      },
+      "legendHeading": {
+        "value": "Energy Legend"
+      },
+      "legendKinetic": {
+        "value": "Kinetic: Green"
+      },
+      "legendPotential": {
+        "value": "Potential: Blue"
+      },
+      "legendThermal": {
+        "value": "Thermal: Red"
+      },
+      "legendTotal": {
+        "value": "Total: Gold"
+      }
+    },
     "energyGraph": {
       "accessibleHelpTextCollapsed": {
         "value": "Explore skater's energy plotted as a function of position or time."
