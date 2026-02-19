@@ -14,12 +14,6 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 
 // HotkeyData for keyboard help dialog rows
-const TOGGLE_PAUSE_HOTKEY_DATA = new HotkeyData( {
-  keys: [ 'space', 'enter' ],
-  repoName: energySkatePark.name,
-  keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.togglePauseStringProperty
-} );
-
 const SCRUB_DATA_HOTKEY_DATA = new HotkeyData( {
   keys: [ 'arrowLeft', 'arrowRight' ],
   repoName: energySkatePark.name,
@@ -28,10 +22,16 @@ const SCRUB_DATA_HOTKEY_DATA = new HotkeyData( {
 
 export default class GraphCursorControlsKeyboardHelpSection extends KeyboardHelpSection {
 
+  public static readonly TOGGLE_PAUSE_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'space', 'enter' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.togglePauseStringProperty
+  } );
+
   public constructor() {
 
     const rows = [
-      KeyboardHelpSectionRow.fromHotkeyData( TOGGLE_PAUSE_HOTKEY_DATA ),
+      KeyboardHelpSectionRow.fromHotkeyData( GraphCursorControlsKeyboardHelpSection.TOGGLE_PAUSE_HOTKEY_DATA ),
       KeyboardHelpSectionRow.fromHotkeyData( SCRUB_DATA_HOTKEY_DATA )
     ];
 

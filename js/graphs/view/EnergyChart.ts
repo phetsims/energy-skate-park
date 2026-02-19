@@ -21,6 +21,7 @@ import XYCursorChartNode from '../../../../griddle/js/XYCursorChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
+import SceneryPhetFluent from '../../../../scenery-phet/js/SceneryPhetFluent.js';
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
@@ -34,6 +35,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
+import GraphCursorControlsKeyboardHelpSection from './GraphCursorControlsKeyboardHelpSection.js';
 
 // constants
 // determines properties of the chart that may depend on the independent variable
@@ -159,9 +161,14 @@ export default class EnergyChart extends XYCursorChartNode {
 
     // Space/Enter toggles pause
     this.chartCursor.addInputListener( new KeyboardListener( {
-      keys: [ 'space', 'enter' ] as const,
+      keyStringProperties: GraphCursorControlsKeyboardHelpSection.TOGGLE_PAUSE_HOTKEY_DATA.keyStringProperties,
       fire: () => {
         model.pausedProperty.toggle();
+        this.chartCursor.addAccessibleContextResponse(
+          model.pausedProperty.value
+            ? SceneryPhetFluent.a11y.playPauseButton.pausedAccessibleContextResponseStringProperty
+            : SceneryPhetFluent.a11y.playPauseButton.playingAccessibleContextResponseStringProperty
+        );
       }
     } ) );
 
