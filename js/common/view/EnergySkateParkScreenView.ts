@@ -21,12 +21,13 @@ import optionize from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
-import { metersUnit } from '../../../../scenery-phet/js/units/metersUnit.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
 import TimeControlNode from '../../../../scenery-phet/js/TimeControlNode.js';
+import { metersUnit } from '../../../../scenery-phet/js/units/metersUnit.js';
 import ValueGaugeNode from '../../../../scenery-phet/js/ValueGaugeNode.js';
 import { getPDOMFocusedNode } from '../../../../scenery/js/accessibility/pdomFocusProperty.js';
+import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import ManualConstraint from '../../../../scenery/js/layout/constraints/ManualConstraint.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
@@ -34,9 +35,9 @@ import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
+import { html } from '../../../../sherpa/lib/lit-core.min.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -598,9 +599,42 @@ export default class EnergySkateParkScreenView extends ScreenView {
       }
     } );
 
+    // Demo: accessibleTemplate showcasing rich PDOM structures that are difficult with existing API
+    const accessibleTemplateDemo = new Node( {
+      // accessibleName: 'hello',
+      accessibleTemplate: new DerivedProperty( [
+        EnergySkateParkFluent.energies.kineticStringProperty,
+        EnergySkateParkFluent.energies.potentialStringProperty,
+        EnergySkateParkFluent.energies.thermalStringProperty,
+        EnergySkateParkFluent.energies.totalStringProperty
+      ], ( kinetic, potential, thermal, total ) => {
+        return html`
+          <h3>Energy Skate Park Overview</h3>
+          <p>This simulation explores <em>conservation of energy</em> as a <strong>skater</strong> moves along a track.</p>
+
+          <details>
+            <summary>Energy Types</summary>
+            <dl>
+              <dt>${kinetic}</dt>
+              <dd>Energy of motion — increases with speed</dd>
+              <dt>${potential}</dt>
+              <dd>Energy of position — increases with height</dd>
+              <dt>${thermal}</dt>
+              <dd>Energy lost to friction — always increases</dd>
+              <dt>${total}</dt>
+              <dd>Sum of all energy in the system</dd>
+            </dl>
+          </details>
+          
+        `;
+      } )
+    } );
+    this.bottomLayer.addChild( accessibleTemplateDemo );
+
     // Set the pdomOrder for keyboard traversal using ScreenView's built-in PDOM structure
     // Play Area elements
     this.pdomPlayAreaNode.pdomOrder = [
+      accessibleTemplateDemo,
       this.trackLayer,
       this.skaterNode,
       returnSkaterToPreviousStartingPositionButton,
