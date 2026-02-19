@@ -254,6 +254,9 @@
     }
   },
   "a11y": {
+    "noDataParagraph": {
+      "value": "No data to display. Grab skater to get started."
+    },
     "keyboardHelpDialog": {
       "connectTrackEndpoints": {
         "showOptions": {

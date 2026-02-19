@@ -98,6 +98,9 @@ export default class EnergySkateParkConstants {
   public static readonly JUPITER_GRAVITY = JUPITER_GRAVITY;
 
   public static readonly REFERENCE_HEIGHT_RANGE = new Range( 0, 8 ); // in meters
+
+  // Threshold below which energy values are considered zero for accessibility descriptions
+  public static readonly ENERGY_THRESHOLD = 1E-4;
 }
 
 energySkatePark.register( 'EnergySkateParkConstants', EnergySkateParkConstants );

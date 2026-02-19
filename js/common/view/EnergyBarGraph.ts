@@ -70,9 +70,14 @@ export default class EnergyBarGraph extends Node {
       total: new DerivedProperty( [ skater.totalEnergyProperty ], totalEnergy => toFixed( totalEnergy, 1 ) )
     } );
 
+    const conditionalReadoutProperty = new DerivedProperty(
+      [ energyReadoutProperty, skater.totalEnergyProperty, EnergySkateParkFluent.a11y.noDataParagraphStringProperty ],
+      ( readout, total, noDataText ) => Math.abs( total ) <= EnergySkateParkConstants.ENERGY_THRESHOLD ? noDataText : readout
+    );
+
     const energyReadoutNode = new Node( {
       tagName: 'p',
-      accessibleParagraph: energyReadoutProperty
+      accessibleParagraph: conditionalReadoutProperty
     } );
 
     // the range for the visible portion of the graph, in joules - note this is somewhat arbitrary because

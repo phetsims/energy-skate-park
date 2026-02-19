@@ -150,18 +150,19 @@ export default class PieChartLegend extends Panel {
     panelContent.addChild( helpTextNode );
 
     // Accessibility: dynamic energy description paragraph
-    const ENERGY_THRESHOLD = 1E-4;
+    const ENERGY_THRESHOLD = EnergySkateParkConstants.ENERGY_THRESHOLD;
     const energyDescriptionProperty = new DerivedProperty( [
       skater.kineticEnergyProperty,
       skater.potentialEnergyProperty,
       skater.thermalEnergyProperty,
-      skater.totalEnergyProperty
-    ], ( kinetic, potential, thermal, total ) => {
+      skater.totalEnergyProperty,
+      EnergySkateParkFluent.a11y.noDataParagraphStringProperty
+    ], ( kinetic, potential, thermal, total, noDataText ) => {
       if ( potential < 0 ) {
         return EnergySkateParkFluent.a11y.pieChart.negativeEnergyParagraphStringProperty.value;
       }
       if ( Math.abs( total ) <= ENERGY_THRESHOLD ) {
-        return '';
+        return noDataText;
       }
 
       const parts: string[] = [];

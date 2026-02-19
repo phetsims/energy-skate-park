@@ -89,6 +89,7 @@ keyboardHelpDialog:
     selectOption:       '3. Select option'
     cancel:             '4. Cancel'
 a11y:
+  noDataParagraph: No data to display. Grab skater to get started.
   keyboardHelpDialog:
     connectTrackEndpoints:
       showOptions:        Show options
