@@ -14,6 +14,7 @@ import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import TProperty from '../../../../axon/js/TProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
 import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
@@ -133,9 +134,13 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       }
     } );
 
+    const range = referenceHeightProperty.range;
+    const dragBoundsProperty = new Property( new Bounds2( Number.NEGATIVE_INFINITY, range.min, Number.POSITIVE_INFINITY, range.max ) );
+
     this.addInputListener( new SoundDragListener( {
       transform: modelViewTransform,
       positionProperty: dragPositionProperty,
+      dragBoundsProperty: dragBoundsProperty,
 
       // signify when user is using this control so that
       start: () => {
@@ -151,6 +156,7 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
     const keyboardDragListener = new SoundKeyboardDragListener( {
       transform: modelViewTransform,
       positionProperty: dragPositionProperty,
+      dragBoundsProperty: dragBoundsProperty,
       dragSpeed: 200, // View coordinates per second - provides continuous smooth motion
       shiftDragSpeed: 50, // Slower speed when shift is held for fine control
       start: () => {
