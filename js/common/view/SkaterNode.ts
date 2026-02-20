@@ -40,11 +40,13 @@ const POSITION_DELTA_SHIFT = 0.025; // meters, slower movement with shift
 const PARAMETRIC_DELTA = 0.005; // parametric units for on-track movement
 const PARAMETRIC_DELTA_SHIFT = 0.001; // slower parametric movement with shift
 
+const attachToTrackKeys = 'j+t';
+
 export default class SkaterNode extends Node {
 
   // Static HotkeyData for keyboard help integration
   public static readonly ATTACH_TO_TRACK_HOTKEY_DATA = new HotkeyData( {
-    keys: [ 'alt+t' ],
+    keys: [ attachToTrackKeys ] as const,
     repoName: energySkatePark.name,
     keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.attachToTrackStringProperty
   } );
@@ -310,9 +312,9 @@ export default class SkaterNode extends Node {
 
     // Add keyboard listener for track attachment (T) and endpoint jumping (Home/End)
     this.addInputListener( new KeyboardListener( {
-      keys: [ 'alt+t', 'home', 'end' ] as const,
+      keys: [ attachToTrackKeys, 'home', 'end' ] as const,
       fire: ( event, keysPressed ) => {
-        if ( keysPressed === 'alt+t' ) {
+        if ( keysPressed === attachToTrackKeys ) {
           this.attachToNearestTrack();
         }
         else if ( keysPressed === 'home' ) {
