@@ -125,7 +125,10 @@ export default class SkaterPathSensorNode extends Node {
     const options = combineOptions<NodeOptions>( {
 
       // prevent block fitting so that things don't jiggle as the probe moves, see
-      preventFit: true
+      preventFit: true,
+
+      // pdom - heading so screen reader users can navigate to the energy sensor section
+      accessibleHeading: EnergySkateParkFluent.a11y.energySensorNode.accessibleHeadingStringProperty
     }, providedOptions );
     super( options );
 

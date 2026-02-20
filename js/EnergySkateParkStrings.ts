@@ -168,6 +168,7 @@ type StringsType = {
     };
     'energyReadoutPatternStringProperty': LocalizedStringProperty;
     'energySensorNode': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
       'accessibleNameStringProperty': LocalizedStringProperty;
       'nothingToMeasureStringProperty': LocalizedStringProperty;
       'movedOffSamplesStringProperty': LocalizedStringProperty;

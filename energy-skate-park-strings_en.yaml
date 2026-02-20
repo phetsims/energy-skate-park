@@ -126,6 +126,7 @@ a11y:
                       Total {$total}.
 
   energySensorNode:
+    accessibleHeading:    Energy Sensor
     accessibleName:       Energy Sensor
     nothingToMeasure:     Nothing to measure yet.
     movedOffSamples:      Sensor moved off of sample points.

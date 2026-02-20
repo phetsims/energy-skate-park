@@ -111,6 +111,7 @@ addToMapIfDefined( 'a11y_trackToolboxPanel_accessibleName', 'a11y.trackToolboxPa
 addToMapIfDefined( 'a11y_trackNode_accessibleName', 'a11y.trackNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_controlPointNode_accessibleName', 'a11y.controlPointNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_energyReadoutPattern', 'a11y.energyReadoutPatternStringProperty' );
+addToMapIfDefined( 'a11y_energySensorNode_accessibleHeading', 'a11y.energySensorNode.accessibleHeadingStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_accessibleName', 'a11y.energySensorNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_nothingToMeasure', 'a11y.energySensorNode.nothingToMeasureStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_movedOffSamples', 'a11y.energySensorNode.movedOffSamplesStringProperty' );
@@ -391,6 +392,7 @@ const EnergySkateParkFluent = {
     },
     energyReadoutPattern: new FluentPattern<{ kinetic: FluentVariable, potential: FluentVariable, thermal: FluentVariable, total: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energyReadoutPattern', _.get( EnergySkateParkStrings, 'a11y.energyReadoutPatternStringProperty' ), [{"name":"kinetic"},{"name":"potential"},{"name":"thermal"},{"name":"total"}] ),
     energySensorNode: {
+      accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.accessibleHeadingStringProperty' ) ),
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_accessibleName', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.accessibleNameStringProperty' ) ),
       nothingToMeasureStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_nothingToMeasure', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.nothingToMeasureStringProperty' ) ),
       movedOffSamplesStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_movedOffSamples', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.movedOffSamplesStringProperty' ) ),

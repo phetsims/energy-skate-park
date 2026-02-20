@@ -331,6 +331,9 @@
       "value": "Energy in Joules: Kinetic {$kinetic}, Potential {$potential}, Thermal {$thermal}, Total {$total}."
     },
     "energySensorNode": {
+      "accessibleHeading": {
+        "value": "Energy Sensor"
+      },
       "accessibleName": {
         "value": "Energy Sensor"
       },
