@@ -146,7 +146,7 @@ type StringsType = {
     };
     'referenceHeightLine': {
       'accessibleNameStringProperty': LocalizedStringProperty;
-      'helpTextStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
     };
     'toolboxPanel': {
       'accessibleHeadingStringProperty': LocalizedStringProperty;
@@ -170,13 +170,14 @@ type StringsType = {
     'energySensorNode': {
       'accessibleHeadingStringProperty': LocalizedStringProperty;
       'accessibleNameStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
       'nothingToMeasureStringProperty': LocalizedStringProperty;
       'movedOffSamplesStringProperty': LocalizedStringProperty;
       'sampleReadoutPatternStringProperty': LocalizedStringProperty;
     };
     'pieChart': {
       'accessibleHeadingStringProperty': LocalizedStringProperty;
-      'helpTextParagraphStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
       'positiveEnergyParagraphStringProperty': LocalizedStringProperty;
       'negativeEnergyParagraphStringProperty': LocalizedStringProperty;
       'kineticPercentPatternStringProperty': LocalizedStringProperty;

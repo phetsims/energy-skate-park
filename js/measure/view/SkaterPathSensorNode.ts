@@ -26,12 +26,13 @@ import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import ProbeNode from '../../../../scenery-phet/js/ProbeNode.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
-import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
+import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
 import WireNode from '../../../../scenery-phet/js/WireNode.js';
 import AlignGroup from '../../../../scenery/js/layout/constraints/AlignGroup.js';
 import AlignBox from '../../../../scenery/js/layout/nodes/AlignBox.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
+import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
@@ -128,7 +129,10 @@ export default class SkaterPathSensorNode extends Node {
       preventFit: true,
 
       // pdom - heading so screen reader users can navigate to the energy sensor section
-      accessibleHeading: EnergySkateParkFluent.a11y.energySensorNode.accessibleHeadingStringProperty
+      accessibleHeading: EnergySkateParkFluent.a11y.energySensorNode.accessibleHeadingStringProperty,
+
+      accessibleHelpText: EnergySkateParkFluent.a11y.energySensorNode.accessibleHelpTextStringProperty,
+      accessibleHelpTextBehavior: ParallelDOM.HELP_TEXT_BEFORE_CONTENT
     }, providedOptions );
     super( options );
 

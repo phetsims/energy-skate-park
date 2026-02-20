@@ -293,7 +293,7 @@
       "accessibleName": {
         "value": "Reference height line"
       },
-      "helpText": {
+      "accessibleHelpText": {
         "value": "Use up and down arrow keys or W and S to adjust the reference height."
       }
     },
@@ -337,6 +337,9 @@
       "accessibleName": {
         "value": "Energy Sensor"
       },
+      "accessibleHelpText": {
+        "value": "Move probe along skater's path to measure speed, height, and energy."
+      },
       "nothingToMeasure": {
         "value": "Nothing to measure yet."
       },
@@ -351,7 +354,7 @@
       "accessibleHeading": {
         "value": "Pie Chart"
       },
-      "helpTextParagraph": {
+      "accessibleHelpText": {
         "value": "Pie Chart displays skater's energy in real time. Pause to analyze values."
       },
       "positiveEnergyParagraph": {
