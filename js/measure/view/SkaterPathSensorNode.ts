@@ -25,6 +25,7 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import ProbeNode from '../../../../scenery-phet/js/ProbeNode.js';
+import SceneryPhetFluent from '../../../../scenery-phet/js/SceneryPhetFluent.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
 import WireNode from '../../../../scenery-phet/js/WireNode.js';
@@ -232,7 +233,8 @@ export default class SkaterPathSensorNode extends Node {
       tagName: 'div',
       focusable: true,
       ariaRole: 'application',
-      accessibleName: EnergySkateParkFluent.a11y.energySensorNode.accessibleNameStringProperty
+      accessibleName: EnergySkateParkFluent.a11y.energySensorNode.accessibleNameStringProperty,
+      accessibleRoleDescription: SceneryPhetFluent.a11y.grabDrag.movableStringProperty
     } );
 
     this.currentReadingProperty = new StringProperty( '' );
