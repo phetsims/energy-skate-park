@@ -45,11 +45,11 @@ export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView 
     this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ), this );
     this.addToBottomLayer( this.graphAccordionBox );
 
-    this.pdomControlAreaNode.pdomOrder = [
+    this.pdomPlayAreaNode.pdomOrder = [
+      ...this.pdomPlayAreaNode.pdomOrder!,
       this.graphAccordionBox,
       this.graphAccordionBox.variableSwitch,
-      this.graphAccordionBox.eraserButton,
-      ...this.pdomControlAreaNode.pdomOrder!
+      this.graphAccordionBox.eraserButton
     ];
   }
 
