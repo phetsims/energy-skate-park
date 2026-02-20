@@ -106,6 +106,8 @@ a11y:
     accessibleHeading:  Reference Height
     accessibleName:     Reference Height Line
     accessibleHelpText: Set the vertical position where height is zero.
+    aboveGroundPattern: '{ $distance } meters above ground'
+    atGroundLevel:      at ground level
   toolboxPanel:
     accessibleHeading: Toolbox
     stopwatch:

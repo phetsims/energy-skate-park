@@ -148,6 +148,8 @@ type StringsType = {
       'accessibleHeadingStringProperty': LocalizedStringProperty;
       'accessibleNameStringProperty': LocalizedStringProperty;
       'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'aboveGroundPatternStringProperty': LocalizedStringProperty;
+      'atGroundLevelStringProperty': LocalizedStringProperty;
     };
     'toolboxPanel': {
       'accessibleHeadingStringProperty': LocalizedStringProperty;

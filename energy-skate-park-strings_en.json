@@ -298,6 +298,12 @@
       },
       "accessibleHelpText": {
         "value": "Set the vertical position where height is zero."
+      },
+      "aboveGroundPattern": {
+        "value": "{ $distance } meters above ground"
+      },
+      "atGroundLevel": {
+        "value": "at ground level"
       }
     },
     "toolboxPanel": {

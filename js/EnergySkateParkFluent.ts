@@ -105,6 +105,8 @@ addToMapIfDefined( 'a11y_skaterNode_offTrackHelpText', 'a11y.skaterNode.offTrack
 addToMapIfDefined( 'a11y_referenceHeightLine_accessibleHeading', 'a11y.referenceHeightLine.accessibleHeadingStringProperty' );
 addToMapIfDefined( 'a11y_referenceHeightLine_accessibleName', 'a11y.referenceHeightLine.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_referenceHeightLine_accessibleHelpText', 'a11y.referenceHeightLine.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_referenceHeightLine_aboveGroundPattern', 'a11y.referenceHeightLine.aboveGroundPatternStringProperty' );
+addToMapIfDefined( 'a11y_referenceHeightLine_atGroundLevel', 'a11y.referenceHeightLine.atGroundLevelStringProperty' );
 addToMapIfDefined( 'a11y_toolboxPanel_accessibleHeading', 'a11y.toolboxPanel.accessibleHeadingStringProperty' );
 addToMapIfDefined( 'a11y_toolboxPanel_stopwatch_accessibleName', 'a11y.toolboxPanel.stopwatch.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_toolboxPanel_measuringTape_accessibleName', 'a11y.toolboxPanel.measuringTape.accessibleNameStringProperty' );
@@ -373,7 +375,9 @@ const EnergySkateParkFluent = {
     referenceHeightLine: {
       accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.accessibleHeadingStringProperty' ) ),
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_accessibleName', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.accessibleNameStringProperty' ) ),
-      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.accessibleHelpTextStringProperty' ) )
+      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.accessibleHelpTextStringProperty' ) ),
+      aboveGroundPattern: new FluentPattern<{ distance: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_aboveGroundPattern', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.aboveGroundPatternStringProperty' ), [{"name":"distance"}] ),
+      atGroundLevelStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_atGroundLevel', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.atGroundLevelStringProperty' ) )
     },
     toolboxPanel: {
       accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_toolboxPanel_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.toolboxPanel.accessibleHeadingStringProperty' ) ),

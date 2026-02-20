@@ -8,11 +8,14 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import DynamicProperty from '../../../../axon/js/DynamicProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import TProperty from '../../../../axon/js/TProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
+import { toFixed } from '../../../../dot/js/util/toFixed.js';
+import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ArrowNode from '../../../../scenery-phet/js/ArrowNode.js';
@@ -85,6 +88,17 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       accessibleHeading: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleHeadingStringProperty,
       accessibleHelpText: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleHelpTextStringProperty
     } );
+
+    // Dynamic aria-valuetext for screen readers
+    const formattedHeightProperty = new DerivedProperty( [ referenceHeightProperty ], height => toFixed( height, 1 ) );
+    const aboveGroundProperty = EnergySkateParkFluent.a11y.referenceHeightLine.aboveGroundPattern.createProperty( {
+      distance: formattedHeightProperty
+    } );
+    const ariaValueTextProperty = new DerivedProperty(
+      [ referenceHeightProperty, aboveGroundProperty, EnergySkateParkFluent.a11y.referenceHeightLine.atGroundLevelStringProperty ],
+      ( height, aboveGround, atGround ) => toFixedNumber( height, 1 ) === 0 ? atGround : aboveGround
+    );
+    ariaValueTextProperty.link( ariaValueText => this.setPDOMAttribute( 'aria-valuetext', ariaValueText ) );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
     referenceHeightProperty.link( height => {
