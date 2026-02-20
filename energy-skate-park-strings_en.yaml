@@ -127,7 +127,7 @@ a11y:
 
   energySensorNode:
     accessibleHeading:    Energy Sensor
-    accessibleName:       Energy Sensor
+    accessibleName:       Energy Sensor Probe
     accessibleHelpText:   Move probe along skater's path to measure speed, height, and energy.
     nothingToMeasure:     Nothing to measure yet.
     movedOffSamples:      Sensor moved off of sample points.

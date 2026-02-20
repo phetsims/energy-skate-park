@@ -335,7 +335,7 @@
         "value": "Energy Sensor"
       },
       "accessibleName": {
-        "value": "Energy Sensor"
+        "value": "Energy Sensor Probe"
       },
       "accessibleHelpText": {
         "value": "Move probe along skater's path to measure speed, height, and energy."
