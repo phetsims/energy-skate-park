@@ -90,6 +90,8 @@ keyboardHelpDialog:
     cancel:             '4. Cancel'
 a11y:
   noDataParagraph: No data to display. Grab skater to get started.
+  controlPanel:
+    experimentSettingsHeading: Experiment Settings
   keyboardHelpDialog:
     connectTrackEndpoints:
       showOptions:        Show options

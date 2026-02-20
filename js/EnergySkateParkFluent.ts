@@ -94,6 +94,7 @@ addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_moveThroughOptions'
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_selectOption', 'keyboardHelpDialog.connectTrackEndpoints.selectOptionStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_cancel', 'keyboardHelpDialog.connectTrackEndpoints.cancelStringProperty' );
 addToMapIfDefined( 'a11y_noDataParagraph', 'a11y.noDataParagraphStringProperty' );
+addToMapIfDefined( 'a11y_controlPanel_experimentSettingsHeading', 'a11y.controlPanel.experimentSettingsHeadingStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_showOptions', 'a11y.keyboardHelpDialog.connectTrackEndpoints.showOptionsStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_moveThroughOptions', 'a11y.keyboardHelpDialog.connectTrackEndpoints.moveThroughOptionsStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_selectOption', 'a11y.keyboardHelpDialog.connectTrackEndpoints.selectOptionStringProperty' );
@@ -350,6 +351,9 @@ const EnergySkateParkFluent = {
   },
   a11y: {
     noDataParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_noDataParagraph', _.get( EnergySkateParkStrings, 'a11y.noDataParagraphStringProperty' ) ),
+    controlPanel: {
+      experimentSettingsHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_controlPanel_experimentSettingsHeading', _.get( EnergySkateParkStrings, 'a11y.controlPanel.experimentSettingsHeadingStringProperty' ) )
+    },
     keyboardHelpDialog: {
       connectTrackEndpoints: {
         showOptionsStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_connectTrackEndpoints_showOptions', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.connectTrackEndpoints.showOptionsStringProperty' ) ),

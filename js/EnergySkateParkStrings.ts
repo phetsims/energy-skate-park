@@ -128,6 +128,9 @@ type StringsType = {
   };
   'a11y': {
     'noDataParagraphStringProperty': LocalizedStringProperty;
+    'controlPanel': {
+      'experimentSettingsHeadingStringProperty': LocalizedStringProperty;
+    };
     'keyboardHelpDialog': {
       'connectTrackEndpoints': {
         'showOptionsStringProperty': LocalizedStringProperty;

@@ -257,6 +257,11 @@
     "noDataParagraph": {
       "value": "No data to display. Grab skater to get started."
     },
+    "controlPanel": {
+      "experimentSettingsHeading": {
+        "value": "Experiment Settings"
+      }
+    },
     "keyboardHelpDialog": {
       "connectTrackEndpoints": {
         "showOptions": {
