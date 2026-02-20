@@ -94,20 +94,11 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     const trackNode = this.trackNodeGroup.createNextElement( track, this.modelViewTransform, this.availableModelBoundsProperty );
     this.trackNodes.push( trackNode );
 
-    // Insert the TrackNode at the correct child position so the PDOM order matches the model tracks order.
-    // Find the first existing TrackNode whose model index is higher and insert before it.
-    const modelIndex = this.model.tracks.indexOf( track );
-    let inserted = false;
-    for ( const child of this.trackLayer.children ) {
-      if ( child instanceof TrackNode && this.model.tracks.indexOf( child.track ) > modelIndex ) {
-        this.trackLayer.insertChild( this.trackLayer.children.indexOf( child ), trackNode );
-        inserted = true;
-        break;
-      }
-    }
-    if ( !inserted ) {
-      this.trackLayer.addChild( trackNode );
-    }
+    this.trackLayer.addChild( trackNode );
+
+    // Set a stable pdomOrder based on model tracks order so that moveToFront() during drag
+    // doesn't disrupt the PDOM reading order (e.g., "Track 2" announced before "Track 1").
+    this.updateTrackLayerPdomOrder();
 
     // When track removed, remove its view
     const itemRemovedListener = ( removed: Track ) => {
@@ -117,6 +108,8 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
         const index = this.trackNodes.indexOf( trackNode );
         this.trackNodes.splice( index, 1 );
 
+        this.updateTrackLayerPdomOrder();
+
         // Clean up memory leak
         this.model.tracks.removeItemRemovedListener( itemRemovedListener );
         trackNode.dispose();
@@ -125,6 +118,16 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     this.model.tracks.addItemRemovedListener( itemRemovedListener );
 
     return trackNode;
+  }
+
+  /**
+   * Update trackLayer.pdomOrder to match model.tracks order, so that moveToFront() for visual
+   * z-ordering does not affect the screen reader navigation order.
+   */
+  private updateTrackLayerPdomOrder(): void {
+    this.trackLayer.pdomOrder = this.model.tracks.map( track =>
+      this.trackNodes.find( trackNode => trackNode.track === track )!
+    );
   }
 }
 
