@@ -132,6 +132,8 @@ addToMapIfDefined( 'a11y_pieChart_legendKinetic', 'a11y.pieChart.legendKineticSt
 addToMapIfDefined( 'a11y_pieChart_legendPotential', 'a11y.pieChart.legendPotentialStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_legendThermal', 'a11y.pieChart.legendThermalStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_legendTotal', 'a11y.pieChart.legendTotalStringProperty' );
+addToMapIfDefined( 'a11y_speedometer_accessibleHeading', 'a11y.speedometer.accessibleHeadingStringProperty' );
+addToMapIfDefined( 'a11y_speedometer_accessibleParagraph', 'a11y.speedometer.accessibleParagraphStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_accessibleHelpTextCollapsed', 'a11y.energyGraph.accessibleHelpTextCollapsedStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_graphDescriptionParagraph', 'a11y.energyGraph.graphDescriptionParagraphStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_variablePosition', 'a11y.energyGraph.variablePositionStringProperty' );
@@ -419,6 +421,10 @@ const EnergySkateParkFluent = {
       legendPotentialStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendPotential', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendPotentialStringProperty' ) ),
       legendThermalStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendThermal', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendThermalStringProperty' ) ),
       legendTotalStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendTotal', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendTotalStringProperty' ) )
+    },
+    speedometer: {
+      accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_speedometer_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.speedometer.accessibleHeadingStringProperty' ) ),
+      accessibleParagraph: new FluentPattern<{ speed: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_speedometer_accessibleParagraph', _.get( EnergySkateParkStrings, 'a11y.speedometer.accessibleParagraphStringProperty' ), [{"name":"speed"}] )
     },
     energyGraph: {
       accessibleHelpTextCollapsedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_accessibleHelpTextCollapsed', _.get( EnergySkateParkStrings, 'a11y.energyGraph.accessibleHelpTextCollapsedStringProperty' ) ),

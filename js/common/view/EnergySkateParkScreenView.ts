@@ -13,6 +13,7 @@ import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import Rectangle from '../../../../dot/js/Rectangle.js';
+import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ScreenView, { ScreenViewOptions } from '../../../../joist/js/ScreenView.js';
 import Shape from '../../../../kite/js/Shape.js';
@@ -21,12 +22,13 @@ import optionize from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
-import { metersUnit } from '../../../../scenery-phet/js/units/metersUnit.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
 import TimeControlNode from '../../../../scenery-phet/js/TimeControlNode.js';
+import { metersUnit } from '../../../../scenery-phet/js/units/metersUnit.js';
 import ValueGaugeNode from '../../../../scenery-phet/js/ValueGaugeNode.js';
 import { getPDOMFocusedNode } from '../../../../scenery/js/accessibility/pdomFocusProperty.js';
+import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import ManualConstraint from '../../../../scenery/js/layout/constraints/ManualConstraint.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
@@ -36,7 +38,6 @@ import Path from '../../../../scenery/js/nodes/Path.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -305,6 +306,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
     const gaugeRadius = 76;
 
+    const formattedSpeedProperty = new DerivedProperty( [ model.skater.speedProperty ], speed => toFixed( speed, 1 ) );
+
     this.speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedStringProperty, new Range( 0, 30 ), {
       numberDisplayOptions: {
         valuePattern: speedometerMetersPerSecondPatternStringProperty,
@@ -317,8 +320,13 @@ export default class EnergySkateParkScreenView extends ScreenView {
       updateWhenInvisible: false,
       pickable: false,
       radius: gaugeRadius,
-      tandem: tandem.createTandem( 'speedometerNode' )
+      tandem: tandem.createTandem( 'speedometerNode' ),
+      accessibleHeading: EnergySkateParkFluent.a11y.speedometer.accessibleHeadingStringProperty,
+      accessibleParagraph: EnergySkateParkFluent.a11y.speedometer.accessibleParagraph.createProperty( {
+        speed: formattedSpeedProperty
+      } )
     } );
+
     model.speedometerVisibleProperty.linkAttribute( this.speedometerNode, 'visible' );
     model.speedValueVisibleProperty.link( visible => { this.speedometerNode.setNumberDisplayVisible( visible ); } );
 
@@ -609,7 +617,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
       ...this.stopwatchNode ? [ this.stopwatchNode ] : [],
       ...this.measuringTapeNode ? [ this.measuringTapeNode ] : [],
       ...this.energyBarGraphAccordionBox ? [ this.energyBarGraphAccordionBox ] : [],
-      this.pieChartLegend
+      this.pieChartLegend,
+      this.speedometerNode
     ];
 
     // Control Area elements

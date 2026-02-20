@@ -397,6 +397,14 @@
         "value": "Total: Gold"
       }
     },
+    "speedometer": {
+      "accessibleHeading": {
+        "value": "Speedometer"
+      },
+      "accessibleParagraph": {
+        "value": "Skater's speed is { $speed } meters per second."
+      }
+    },
     "energyGraph": {
       "accessibleHelpTextCollapsed": {
         "value": "Explore skater's energy plotted as a function of position or time."
@@ -579,7 +587,7 @@
         "value": "Explore with or without speed measurements."
       },
       "accessibleContextResponseChecked": {
-        "value": "Speedometer displayed."
+        "value": "Speedometer added to Play Area."
       },
       "accessibleContextResponseUnchecked": {
         "value": "Speedometer hidden."

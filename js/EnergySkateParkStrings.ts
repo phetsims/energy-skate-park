@@ -192,6 +192,10 @@ type StringsType = {
       'legendThermalStringProperty': LocalizedStringProperty;
       'legendTotalStringProperty': LocalizedStringProperty;
     };
+    'speedometer': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
+      'accessibleParagraphStringProperty': LocalizedStringProperty;
+    };
     'energyGraph': {
       'accessibleHelpTextCollapsedStringProperty': LocalizedStringProperty;
       'graphDescriptionParagraphStringProperty': LocalizedStringProperty;

@@ -152,6 +152,9 @@ a11y:
     legendPotential:         'Potential: Blue'
     legendThermal:           'Thermal: Red'
     legendTotal:             'Total: Gold'
+  speedometer:
+    accessibleHeading:  Speedometer
+    accessibleParagraph: "Skater's speed is { $speed } meters per second."
   energyGraph:
     accessibleHelpTextCollapsed: Explore skater's energy plotted as a function of position or time.
     graphDescriptionParagraph:   >-
@@ -227,7 +230,7 @@ a11y:
     accessibleContextResponseUnchecked: Pie chart hidden.
   speedCheckbox:
     accessibleHelpText:                 Explore with or without speed measurements.
-    accessibleContextResponseChecked:   Speedometer displayed.
+    accessibleContextResponseChecked:   Speedometer added to Play Area.
     accessibleContextResponseUnchecked: Speedometer hidden.
   pathCheckbox:
     accessibleHelpText:                 Explore with or without dots drawn along the skaters path in equal time intervals.
