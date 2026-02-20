@@ -290,6 +290,9 @@
       }
     },
     "referenceHeightLine": {
+      "accessibleHeading": {
+        "value": "Reference Height"
+      },
       "accessibleName": {
         "value": "Reference height line"
       },

@@ -145,6 +145,7 @@ type StringsType = {
       'offTrackHelpTextStringProperty': LocalizedStringProperty;
     };
     'referenceHeightLine': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
       'accessibleNameStringProperty': LocalizedStringProperty;
       'accessibleHelpTextStringProperty': LocalizedStringProperty;
     };

@@ -103,6 +103,7 @@ a11y:
     onTrackHelpText:  Use left and right arrow keys or A and D to move along track. Press up arrow or W to detach.
     offTrackHelpText: Use arrow keys or W, A, S, D to move the skater.
   referenceHeightLine:
+    accessibleHeading:  Reference Height
     accessibleName:     Reference height line
     accessibleHelpText: Use up and down arrow keys or W and S to adjust the reference height.
   toolboxPanel:
