@@ -104,7 +104,7 @@ a11y:
     offTrackHelpText: Use arrow keys or W, A, S, D to move the skater.
   referenceHeightLine:
     accessibleHeading:  Reference Height
-    accessibleName:     Reference height line
+    accessibleName:     Reference Height Line
     accessibleHelpText: Set the vertical position where height is zero.
   toolboxPanel:
     accessibleHeading: Toolbox

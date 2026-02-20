@@ -294,7 +294,7 @@
         "value": "Reference Height"
       },
       "accessibleName": {
-        "value": "Reference height line"
+        "value": "Reference Height Line"
       },
       "accessibleHelpText": {
         "value": "Set the vertical position where height is zero."
