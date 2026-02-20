@@ -83,7 +83,7 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       ariaRole: 'slider',
       accessibleName: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleNameStringProperty,
       accessibleHeading: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleHeadingStringProperty,
-      descriptionContent: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleHelpTextStringProperty
+      accessibleHelpText: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleHelpTextStringProperty
     } );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed

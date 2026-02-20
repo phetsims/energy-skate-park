@@ -105,7 +105,7 @@ a11y:
   referenceHeightLine:
     accessibleHeading:  Reference Height
     accessibleName:     Reference height line
-    accessibleHelpText: Use up and down arrow keys or W and S to adjust the reference height.
+    accessibleHelpText: Set the vertical position where height is zero.
   toolboxPanel:
     accessibleHeading: Toolbox
     stopwatch:

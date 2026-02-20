@@ -297,7 +297,7 @@
         "value": "Reference height line"
       },
       "accessibleHelpText": {
-        "value": "Use up and down arrow keys or W and S to adjust the reference height."
+        "value": "Set the vertical position where height is zero."
       }
     },
     "toolboxPanel": {
