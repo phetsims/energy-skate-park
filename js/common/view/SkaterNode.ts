@@ -310,10 +310,14 @@ export default class SkaterNode extends Node {
       }
     } );
 
-    // Add keyboard listener for track attachment (T) and endpoint jumping (Home/End)
+    // Add keyboard listener for track attachment (j+t) and endpoint jumping (Home/End).
+    // Only active when the skater is keyboard-grabbed (not in the idle/button state).
     this.addInputListener( new KeyboardListener( {
       keys: [ attachToTrackKeys, 'home', 'end' ] as const,
       fire: ( event, keysPressed ) => {
+        if ( this.grabDragInteraction.interactionStateProperty.value !== 'grabbed' ) {
+          return;
+        }
         if ( keysPressed === attachToTrackKeys ) {
           this.attachToNearestTrack();
         }
