@@ -66,13 +66,13 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
       baseColor: new Color( 221, 210, 32 ),
       rightCenter: this.trackToolbox.leftCenter.minusXY( 10, 0 ),
       tandem: tandem.createTandem( 'clearButton' ),
-      accessibleName: EnergySkateParkFluent.a11y.clearButton.accessibleNameStringProperty
+      accessibleName: EnergySkateParkFluent.a11y.eraseTracksButton.accessibleNameStringProperty
     } );
     model.clearButtonEnabledProperty.linkAttribute( this.clearButton, 'enabled' );
     this.clearButton.addListener( () => {
       model.clearTracks();
       this.clearButton.addAccessibleContextResponse(
-        EnergySkateParkFluent.a11y.clearButton.accessibleContextResponseStringProperty
+        EnergySkateParkFluent.a11y.eraseTracksButton.accessibleContextResponseStringProperty
       );
     } );
     this.addChild( this.clearButton );

@@ -122,31 +122,31 @@ a11y:
   trackToolboxPanel:
     accessibleName: Add Track
   yourSkatePark:
-    accessibleHeading: Your Skate Park
-    accessibleHelpText: >-
-      Add track pieces as needed. Then, use connection options to connect tracks.
-      Everything is movable with the Arrow keys. Check out Keyboard Shortcuts for more handy shortcuts.
-    trackPhraseFixed: 'Track shape is { $trackShape }.'
-    trackPhraseAdjustable: 'Track shape is { $trackShape } with { $numberControlPoints } adjustable control points.'
+    accessibleHeading:             Your Skate Park
+    accessibleHelpText:            >-
+                                   Add track pieces as needed. Then, use connection options to connect tracks.
+                                   Everything is movable with the Arrow keys. Check out Keyboard Shortcuts for more handy shortcuts.
+    trackPhraseFixed:              'Track shape is { $trackShape }.'
+    trackPhraseAdjustable:         'Track shape is { $trackShape } with { $numberControlPoints } adjustable control points.'
     playgroundTrackPhraseMultiple: '{ $numberTracks } tracks and { $numberControlPoints } adjustable control points.'
-    playgroundTrackPhraseSingle: '1 track and { $numberControlPoints } adjustable control points.'
-    playgroundTrackPhraseNone: No track yet.
-    trackAndSkaterParagraph: '{ $trackPhrase } { $skaterPhrase }'
-    skaterOnTrack: Skater is on track.
-    skaterOffTrack: Skater is off track.
+    playgroundTrackPhraseSingle:   '1 track and { $numberControlPoints } adjustable control points.'
+    playgroundTrackPhraseNone:     No track yet.
+    trackAndSkaterParagraph:       '{ $trackPhrase } { $skaterPhrase }'
+    skaterOnTrack:                 Skater is on track.
+    skaterOffTrack:                Skater is off track.
   trackNode:
     accessibleHeadingWithIndex: 'Track { $index }'
-    accessibleHeading: Track
-    accessibleHelpText: Move the control points to alter track shape.
+    accessibleHeading:          Track
+    accessibleHelpText:         Move the control points to alter track shape.
   controlPointNode:
-    accessibleName: 'Control Point { $index }'
+    accessibleName:           'Control Point { $index }'
     accessibleObjectResponse: 'at { $xCoordinate } { $yCoordinate } meters'
-  clearButton:
-    accessibleName: Erase Tracks
+  eraseTracksButton:
+    accessibleName:            Erase Tracks
     accessibleContextResponse: All tracks removed from your skate park.
   grabSkaterButton:
     accessibleHelpText: >-
-      Look for skater to grab. Once grabbed, use Keyboard Shortcuts to attach to track or move along track.
+                        Look for skater to grab. Once grabbed, use Keyboard Shortcuts to attach to track or move along track.
 
   energyReadoutPattern: >-
                         Energy in Joules:
@@ -180,7 +180,7 @@ a11y:
     legendThermal:           'Thermal: Red'
     legendTotal:             'Total: Gold'
   speedometer:
-    accessibleHeading:  Speedometer
+    accessibleHeading:   Speedometer
     accessibleParagraph: "Skater's speed is { $speed } meters per second."
   energyGraph:
     accessibleHelpTextCollapsed: Explore skater's energy plotted as a function of position or time.

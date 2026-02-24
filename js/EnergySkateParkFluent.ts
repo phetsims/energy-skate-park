@@ -129,8 +129,8 @@ addToMapIfDefined( 'a11y_trackNode_accessibleHeading', 'a11y.trackNode.accessibl
 addToMapIfDefined( 'a11y_trackNode_accessibleHelpText', 'a11y.trackNode.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_controlPointNode_accessibleName', 'a11y.controlPointNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_controlPointNode_accessibleObjectResponse', 'a11y.controlPointNode.accessibleObjectResponseStringProperty' );
-addToMapIfDefined( 'a11y_clearButton_accessibleName', 'a11y.clearButton.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_clearButton_accessibleContextResponse', 'a11y.clearButton.accessibleContextResponseStringProperty' );
+addToMapIfDefined( 'a11y_eraseTracksButton_accessibleName', 'a11y.eraseTracksButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_eraseTracksButton_accessibleContextResponse', 'a11y.eraseTracksButton.accessibleContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_grabSkaterButton_accessibleHelpText', 'a11y.grabSkaterButton.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_energyReadoutPattern', 'a11y.energyReadoutPatternStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_accessibleHeading', 'a11y.energySensorNode.accessibleHeadingStringProperty' );
@@ -440,10 +440,10 @@ const EnergySkateParkFluent = {
       accessibleName: new FluentPattern<{ index: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_controlPointNode_accessibleName', _.get( EnergySkateParkStrings, 'a11y.controlPointNode.accessibleNameStringProperty' ), [{"name":"index"}] ),
       accessibleObjectResponse: new FluentPattern<{ xCoordinate: FluentVariable, yCoordinate: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_controlPointNode_accessibleObjectResponse', _.get( EnergySkateParkStrings, 'a11y.controlPointNode.accessibleObjectResponseStringProperty' ), [{"name":"xCoordinate"},{"name":"yCoordinate"}] )
     },
-    clearButton: {
-      accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_clearButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.clearButton.accessibleNameStringProperty' ) ),
+    eraseTracksButton: {
+      accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_eraseTracksButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.eraseTracksButton.accessibleNameStringProperty' ) ),
       _comment_0: new FluentComment( {"comment":"Context response stating g value when user interacts with ComboBox. Example for Earth: Gravity now 9.8 meters per second squared.","associatedKey":"accessibleContextResponse"} ),
-      accessibleContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_clearButton_accessibleContextResponse', _.get( EnergySkateParkStrings, 'a11y.clearButton.accessibleContextResponseStringProperty' ) )
+      accessibleContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_eraseTracksButton_accessibleContextResponse', _.get( EnergySkateParkStrings, 'a11y.eraseTracksButton.accessibleContextResponseStringProperty' ) )
     },
     grabSkaterButton: {
       accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_grabSkaterButton_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.grabSkaterButton.accessibleHelpTextStringProperty' ) )

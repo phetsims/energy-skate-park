@@ -191,7 +191,7 @@ type StringsType = {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'accessibleObjectResponseStringProperty': LocalizedStringProperty;
     };
-    'clearButton': {
+    'eraseTracksButton': {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'accessibleContextResponseStringProperty': LocalizedStringProperty;
     };

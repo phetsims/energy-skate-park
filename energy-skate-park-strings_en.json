@@ -390,7 +390,7 @@
         "value": "at { $xCoordinate } { $yCoordinate } meters"
       }
     },
-    "clearButton": {
+    "eraseTracksButton": {
       "accessibleName": {
         "value": "Erase Tracks"
       },
