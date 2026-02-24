@@ -32,6 +32,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import Skater from '../model/Skater.js';
 import Track from '../model/Track.js';
+import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
@@ -55,6 +56,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
   public readonly selectedSkaterProperty: NumberProperty;
   private readonly dragListener: SoundDragListener;
   private readonly grabDragInteraction: GrabDragInteraction;
+  private readonly boundaryReachedSoundPlayer: BoundaryReachedSoundPlayer;
 
   // Track the track and position where skater will be released (for keyboard drag)
   private keyboardTargetTrack: Track | null = null;
@@ -190,6 +192,8 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
     } );
 
+    this.boundaryReachedSoundPlayer = new BoundaryReachedSoundPlayer();
+
     let targetTrack: Track | null = null;
 
     let targetU: number | null = null;
@@ -198,8 +202,10 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       const globalPoint = this.globalToParentPoint( event.pointer.point );
       let position = modelViewTransform.viewToModelPosition( globalPoint );
 
-      // make sure it is within the visible bounds
-      position = view.availableModelBounds!.getClosestPoint( position.x, position.y, position );
+      // Detect boundary contact before clamping, so we can play a sound on the rising edge
+      const clampedPosition = view.availableModelBounds!.getClosestPoint( position.x, position.y );
+      this.boundaryReachedSoundPlayer.setOnBoundary( !clampedPosition.equals( position ) );
+      position = clampedPosition;
 
       // PERFORMANCE/ALLOCATION: lots of unnecessary allocations and computation here, biggest improvement could be
       // to use binary search for position on the track
@@ -446,6 +452,8 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
     const newU = currentU + deltaU;
 
     if ( track.isParameterInBounds( newU ) ) {
+      this.boundaryReachedSoundPlayer.setOnBoundary( false );
+
       skater.parametricPositionProperty.value = newU;
       skater.positionProperty.value = track.getPoint( newU );
       skater.angleProperty.value = track.getViewAngleAt( newU ) +
@@ -463,6 +471,8 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       this.keyboardTargetU = newU;
     }
     else {
+      this.boundaryReachedSoundPlayer.setOnBoundary( true );
+
       // At end of track, detach
       this.detachFromTrack( skater, track );
     }
@@ -527,7 +537,9 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
       // Keep within available bounds
       if ( view.availableModelBounds ) {
-        newPosition = view.availableModelBounds.closestPointTo( newPosition );
+        const clampedPosition = view.availableModelBounds.closestPointTo( newPosition );
+        this.boundaryReachedSoundPlayer.setOnBoundary( !clampedPosition.equals( newPosition ) );
+        newPosition = clampedPosition;
       }
 
       // Update position (no track snapping during keyboard drag)
