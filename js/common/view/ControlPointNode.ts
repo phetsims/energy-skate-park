@@ -13,6 +13,7 @@ import Shape from '../../../../kite/js/Shape.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
+import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Circle, { CircleOptions } from '../../../../scenery/js/nodes/Circle.js';
@@ -27,7 +28,7 @@ import ControlPointUI from './ControlPointUI.js';
 import TrackDragHandler from './TrackDragHandler.js';
 import TrackNode from './TrackNode.js';
 
-export default class ControlPointNode extends Circle {
+export default class ControlPointNode extends InteractiveHighlighting( Circle ) {
 
   public static readonly SPLIT_VERTEX_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'alt+x' ],
@@ -80,10 +81,16 @@ export default class ControlPointNode extends Circle {
       } )
     }, omitA11y ? undefined : AccessibleDraggableOptions ) );
 
+    // Disable interactive highlighting for non-interactive control points or toolbox icons
+    if ( omitA11y || !controlPoint.interactive ) {
+      this.interactiveHighlightEnabled = false;
+    }
+
     // Control points should only be focusable when the track is physical (in the play area).
     // When the track is in the toolbox, only the entire TrackNode should be focusable.
     const physicalListener = ( isPhysical: boolean ) => {
       this.focusable = isPhysical;
+      this.interactiveHighlightEnabled = isPhysical && !omitA11y && controlPoint.interactive;
     };
     track.physicalProperty.link( physicalListener );
     this.addDisposable( { dispose: () => track.physicalProperty.unlink( physicalListener ) } );

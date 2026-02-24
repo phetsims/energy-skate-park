@@ -24,6 +24,7 @@ import KeyboardDragListener from '../../../../scenery/js/listeners/KeyboardDragL
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
+import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -42,7 +43,7 @@ const PARAMETRIC_DELTA_SHIFT = 0.001; // slower parametric movement with shift
 
 const attachToTrackKeys = 'j+t';
 
-export default class SkaterNode extends Node {
+export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
   // Static HotkeyData for keyboard help integration
   public static readonly ATTACH_TO_TRACK_HOTKEY_DATA = new HotkeyData( {

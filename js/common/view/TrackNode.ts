@@ -18,6 +18,7 @@ import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
+import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
@@ -42,7 +43,7 @@ type SelfOptions = {
 export type TrackNodeOptions = SelfOptions & NodeOptions;
 
 // constants
-export default class TrackNode extends Node {
+export default class TrackNode extends InteractiveHighlighting( Node ) {
   private readonly isIcon: boolean;
   public readonly model: EnergySkateParkModel;
   private readonly road: Path;
@@ -94,6 +95,9 @@ export default class TrackNode extends Node {
     }, providedOptions );
 
     super( options );
+
+    // Only enable interactive highlighting for draggable tracks in the play area
+    this.interactiveHighlightEnabled = track.draggable && !options.isIcon && !options.trackToolboxIcon;
 
     let disposeTrackAccessibleName: ( () => void ) | null = null;
 

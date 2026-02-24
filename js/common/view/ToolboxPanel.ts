@@ -14,6 +14,7 @@ import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
+import InteractiveHighlightingNode from '../../../../scenery/js/accessibility/voicing/nodes/InteractiveHighlightingNode.js';
 import type Node from '../../../../scenery/js/nodes/Node.js';
 import { rasterizeNode } from '../../../../scenery/js/util/rasterizeNode.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
@@ -43,11 +44,8 @@ export default class ToolboxPanel extends Panel {
     }, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
 
     // create the icons
-    const measuringTapeIcon = MeasuringTapeNode.createIcon( {
-      cursor: 'pointer',
-      tagName: 'button',
-      accessibleName: EnergySkateParkFluent.a11y.toolboxPanel.measuringTape.accessibleNameStringProperty
-    } );
+    const measuringTapeIcon = MeasuringTapeNode.createIcon();
+    measuringTapeIcon.setScaleMagnitude( 0.7 );
 
     const stopwatchIcon = rasterizeNode( new StopwatchNode( new Stopwatch( {
       isVisible: true,
@@ -62,19 +60,29 @@ export default class ToolboxPanel extends Panel {
     } ), {
       resolution: 5,
       nodeOptions: {
-        cursor: 'pointer',
-        tandem: tandem.createTandem( 'timerIcon' ),
-        tagName: 'button',
-        accessibleName: EnergySkateParkFluent.a11y.toolboxPanel.stopwatch.accessibleNameStringProperty
+        tandem: tandem.createTandem( 'timerIcon' )
       }
     } );
-
-    measuringTapeIcon.setScaleMagnitude( 0.7 );
     stopwatchIcon.setScaleMagnitude( 0.4 );
+
+    // Wrap each icon in an InteractiveHighlightingNode for hover highlights
+    const measuringTapeIconWrapper = new InteractiveHighlightingNode( {
+      children: [ measuringTapeIcon ],
+      cursor: 'pointer',
+      tagName: 'button',
+      accessibleName: EnergySkateParkFluent.a11y.toolboxPanel.measuringTape.accessibleNameStringProperty
+    } );
+
+    const stopwatchIconWrapper = new InteractiveHighlightingNode( {
+      children: [ stopwatchIcon ],
+      cursor: 'pointer',
+      tagName: 'button',
+      accessibleName: EnergySkateParkFluent.a11y.toolboxPanel.stopwatch.accessibleNameStringProperty
+    } );
 
     // align icons for panel
     const icons = new HBox( {
-      children: [ stopwatchIcon, measuringTapeIcon ],
+      children: [ stopwatchIconWrapper, measuringTapeIconWrapper ],
       align: 'center',
 
       // Keep icons at their position even when they are invisible
@@ -84,7 +92,7 @@ export default class ToolboxPanel extends Panel {
     super( icons, options );
 
     // create a forwarding listener for the MeasuringTapeNode DragListener
-    measuringTapeIcon.addInputListener( DragListener.createForwardingListener( event => {
+    measuringTapeIconWrapper.addInputListener( DragListener.createForwardingListener( event => {
       if ( !model.measuringTapeVisibleProperty.get() ) {
         model.measuringTapeVisibleProperty.set( true );
 
@@ -97,7 +105,7 @@ export default class ToolboxPanel extends Panel {
     } ) );
 
     // Keyboard activation for measuring tape - position it in a visible area and focus its base
-    measuringTapeIcon.addInputListener( new KeyboardListener( {
+    measuringTapeIconWrapper.addInputListener( new KeyboardListener( {
       fireOnClick: true,
       fire: () => {
         if ( !model.measuringTapeVisibleProperty.get() ) {
@@ -114,7 +122,7 @@ export default class ToolboxPanel extends Panel {
     } ) );
 
     // create a forwarding listener for the StopwatchNode DragListener
-    stopwatchIcon.addInputListener( DragListener.createForwardingListener( event => {
+    stopwatchIconWrapper.addInputListener( DragListener.createForwardingListener( event => {
       if ( !model.stopwatch.isVisibleProperty.get() ) {
         model.stopwatch.isVisibleProperty.value = true;
 
@@ -128,7 +136,7 @@ export default class ToolboxPanel extends Panel {
     } ) );
 
     // Keyboard activation for stopwatch - position it in a visible area and focus it
-    stopwatchIcon.addInputListener( new KeyboardListener( {
+    stopwatchIconWrapper.addInputListener( new KeyboardListener( {
       fireOnClick: true,
       fire: () => {
         if ( !model.stopwatch.isVisibleProperty.get() ) {
@@ -144,21 +152,21 @@ export default class ToolboxPanel extends Panel {
     // When the tool is in the play area, hide the icon visually (opacity) but keep it in the PDOM as disabled.
     // Using opacity instead of visibility maintains the panel layout bounds.
     model.measuringTapeVisibleProperty.link( visible => {
-      measuringTapeIcon.setOpacity( visible ? 0 : 1 );
-      measuringTapeIcon.setInputEnabled( !visible );
-      measuringTapeIcon.focusable = !visible;
-      measuringTapeIcon.setPDOMAttribute( 'aria-disabled', visible );
+      measuringTapeIconWrapper.setOpacity( visible ? 0 : 1 );
+      measuringTapeIconWrapper.setInputEnabled( !visible );
+      measuringTapeIconWrapper.focusable = !visible;
+      measuringTapeIconWrapper.setPDOMAttribute( 'aria-disabled', visible );
     } );
 
     model.stopwatch.isVisibleProperty.link( visible => {
-      stopwatchIcon.setOpacity( visible ? 0 : 1 );
-      stopwatchIcon.setInputEnabled( !visible );
-      stopwatchIcon.focusable = !visible;
-      stopwatchIcon.setPDOMAttribute( 'aria-disabled', visible );
+      stopwatchIconWrapper.setOpacity( visible ? 0 : 1 );
+      stopwatchIconWrapper.setInputEnabled( !visible );
+      stopwatchIconWrapper.focusable = !visible;
+      stopwatchIconWrapper.setPDOMAttribute( 'aria-disabled', visible );
     } );
 
-    this.stopwatchToolNode = stopwatchIcon;
-    this.measuringTapeToolNode = measuringTapeIcon;
+    this.stopwatchToolNode = stopwatchIconWrapper;
+    this.measuringTapeToolNode = measuringTapeIconWrapper;
   }
 }
 

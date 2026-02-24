@@ -25,6 +25,7 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import ProbeNode from '../../../../scenery-phet/js/ProbeNode.js';
+import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import SceneryPhetFluent from '../../../../scenery-phet/js/SceneryPhetFluent.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
@@ -71,6 +72,8 @@ const ENERGY_RANGE = new Range( -20000, 20000 );
 // offset so that the center of the probe aligns with sample positions
 const PROBE_CENTER_OFFSET = new Vector2( 5.5, 0 );
 
+class InteractiveProbeNode extends InteractiveHighlighting( ProbeNode ) {}
+
 const SENSOR_COLOR = 'rgb( 103, 80, 113 )';
 
 // max distance between sample and probe center for the sample to be displayed, in view coordinates
@@ -101,7 +104,7 @@ export default class SkaterPathSensorNode extends Node {
   private readonly speedReadout: Text;
   private readonly heightSpeedVBox: VBox;
   private readonly heightSpeedRectangle: Rectangle;
-  private readonly probeNode: ProbeNode;
+  private readonly probeNode: InteractiveProbeNode;
   private inspectedSample: EnergySkateParkDataSample | null;
   private readonly boundUpdateSensorDisplay: () => void;
   private updateDisplayListener: ( () => void ) | null = null;
@@ -221,7 +224,7 @@ export default class SkaterPathSensorNode extends Node {
     } );
 
     // the probe
-    this.probeNode = new ProbeNode( {
+    this.probeNode = new InteractiveProbeNode( {
       scale: 0.5,
       rotation: Math.PI / 2,
       color: SENSOR_COLOR,
