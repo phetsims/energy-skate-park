@@ -73,6 +73,7 @@ addToMapIfDefined( 'preferences_accelerationUnitsDescription', 'preferences.acce
 addToMapIfDefined( 'preferences_metersPerSecondSquared', 'preferences.metersPerSecondSquaredStringProperty' );
 addToMapIfDefined( 'preferences_newtonsPerKilogram', 'preferences.newtonsPerKilogramStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_skaterControls', 'keyboardHelpDialog.skaterControlsStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_fromAnywhereInScreen', 'keyboardHelpDialog.fromAnywhereInScreenStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_grabOrRelease', 'keyboardHelpDialog.grabOrReleaseStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_moveAlongTrack', 'keyboardHelpDialog.moveAlongTrackStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_attachToTrack', 'keyboardHelpDialog.attachToTrackStringProperty' );
@@ -94,6 +95,7 @@ addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_moveThroughOptions'
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_selectOption', 'keyboardHelpDialog.connectTrackEndpoints.selectOptionStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_cancel', 'keyboardHelpDialog.connectTrackEndpoints.cancelStringProperty' );
 addToMapIfDefined( 'a11y_noDataParagraph', 'a11y.noDataParagraphStringProperty' );
+addToMapIfDefined( 'a11y_controlPanel_experimentSettingsHeading', 'a11y.controlPanel.experimentSettingsHeadingStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_showOptions', 'a11y.keyboardHelpDialog.connectTrackEndpoints.showOptionsStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_moveThroughOptions', 'a11y.keyboardHelpDialog.connectTrackEndpoints.moveThroughOptionsStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_selectOption', 'a11y.keyboardHelpDialog.connectTrackEndpoints.selectOptionStringProperty' );
@@ -101,21 +103,28 @@ addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_cancel', 'a11y
 addToMapIfDefined( 'a11y_skaterNode_accessibleName', 'a11y.skaterNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_onTrackHelpText', 'a11y.skaterNode.onTrackHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_offTrackHelpText', 'a11y.skaterNode.offTrackHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_referenceHeightLine_accessibleHeading', 'a11y.referenceHeightLine.accessibleHeadingStringProperty' );
 addToMapIfDefined( 'a11y_referenceHeightLine_accessibleName', 'a11y.referenceHeightLine.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_referenceHeightLine_helpText', 'a11y.referenceHeightLine.helpTextStringProperty' );
+addToMapIfDefined( 'a11y_referenceHeightLine_accessibleHelpText', 'a11y.referenceHeightLine.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_referenceHeightLine_aboveGroundPattern', 'a11y.referenceHeightLine.aboveGroundPatternStringProperty' );
+addToMapIfDefined( 'a11y_referenceHeightLine_atGroundLevel', 'a11y.referenceHeightLine.atGroundLevelStringProperty' );
 addToMapIfDefined( 'a11y_toolboxPanel_accessibleHeading', 'a11y.toolboxPanel.accessibleHeadingStringProperty' );
 addToMapIfDefined( 'a11y_toolboxPanel_stopwatch_accessibleName', 'a11y.toolboxPanel.stopwatch.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_toolboxPanel_measuringTape_accessibleName', 'a11y.toolboxPanel.measuringTape.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_stopwatchNode_accessibleHeading', 'a11y.stopwatchNode.accessibleHeadingStringProperty' );
+addToMapIfDefined( 'a11y_measuringTapeNode_accessibleHeading', 'a11y.measuringTapeNode.accessibleHeadingStringProperty' );
 addToMapIfDefined( 'a11y_trackToolboxPanel_accessibleName', 'a11y.trackToolboxPanel.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_trackNode_accessibleName', 'a11y.trackNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_controlPointNode_accessibleName', 'a11y.controlPointNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_energyReadoutPattern', 'a11y.energyReadoutPatternStringProperty' );
+addToMapIfDefined( 'a11y_energySensorNode_accessibleHeading', 'a11y.energySensorNode.accessibleHeadingStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_accessibleName', 'a11y.energySensorNode.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_energySensorNode_accessibleHelpText', 'a11y.energySensorNode.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_nothingToMeasure', 'a11y.energySensorNode.nothingToMeasureStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_movedOffSamples', 'a11y.energySensorNode.movedOffSamplesStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_sampleReadoutPattern', 'a11y.energySensorNode.sampleReadoutPatternStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_accessibleHeading', 'a11y.pieChart.accessibleHeadingStringProperty' );
-addToMapIfDefined( 'a11y_pieChart_helpTextParagraph', 'a11y.pieChart.helpTextParagraphStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_accessibleHelpText', 'a11y.pieChart.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_positiveEnergyParagraph', 'a11y.pieChart.positiveEnergyParagraphStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_negativeEnergyParagraph', 'a11y.pieChart.negativeEnergyParagraphStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_kineticPercentPattern', 'a11y.pieChart.kineticPercentPatternStringProperty' );
@@ -126,6 +135,8 @@ addToMapIfDefined( 'a11y_pieChart_legendKinetic', 'a11y.pieChart.legendKineticSt
 addToMapIfDefined( 'a11y_pieChart_legendPotential', 'a11y.pieChart.legendPotentialStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_legendThermal', 'a11y.pieChart.legendThermalStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_legendTotal', 'a11y.pieChart.legendTotalStringProperty' );
+addToMapIfDefined( 'a11y_speedometer_accessibleHeading', 'a11y.speedometer.accessibleHeadingStringProperty' );
+addToMapIfDefined( 'a11y_speedometer_accessibleParagraph', 'a11y.speedometer.accessibleParagraphStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_accessibleHelpTextCollapsed', 'a11y.energyGraph.accessibleHelpTextCollapsedStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_graphDescriptionParagraph', 'a11y.energyGraph.graphDescriptionParagraphStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_variablePosition', 'a11y.energyGraph.variablePositionStringProperty' );
@@ -325,6 +336,7 @@ const EnergySkateParkFluent = {
   },
   keyboardHelpDialog: {
     skaterControlsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.skaterControlsStringProperty' ),
+    fromAnywhereInScreenStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.fromAnywhereInScreenStringProperty' ),
     grabOrReleaseStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.grabOrReleaseStringProperty' ),
     moveAlongTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.moveAlongTrackStringProperty' ),
     attachToTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.attachToTrackStringProperty' ),
@@ -350,6 +362,9 @@ const EnergySkateParkFluent = {
   },
   a11y: {
     noDataParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_noDataParagraph', _.get( EnergySkateParkStrings, 'a11y.noDataParagraphStringProperty' ) ),
+    controlPanel: {
+      experimentSettingsHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_controlPanel_experimentSettingsHeading', _.get( EnergySkateParkStrings, 'a11y.controlPanel.experimentSettingsHeadingStringProperty' ) )
+    },
     keyboardHelpDialog: {
       connectTrackEndpoints: {
         showOptionsStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_connectTrackEndpoints_showOptions', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.connectTrackEndpoints.showOptionsStringProperty' ) ),
@@ -364,8 +379,11 @@ const EnergySkateParkFluent = {
       offTrackHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_offTrackHelpText', _.get( EnergySkateParkStrings, 'a11y.skaterNode.offTrackHelpTextStringProperty' ) )
     },
     referenceHeightLine: {
+      accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.accessibleHeadingStringProperty' ) ),
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_accessibleName', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.accessibleNameStringProperty' ) ),
-      helpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_helpText', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.helpTextStringProperty' ) )
+      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.accessibleHelpTextStringProperty' ) ),
+      aboveGroundPattern: new FluentPattern<{ distance: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_aboveGroundPattern', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.aboveGroundPatternStringProperty' ), [{"name":"distance"}] ),
+      atGroundLevelStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_atGroundLevel', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.atGroundLevelStringProperty' ) )
     },
     toolboxPanel: {
       accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_toolboxPanel_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.toolboxPanel.accessibleHeadingStringProperty' ) ),
@@ -375,6 +393,12 @@ const EnergySkateParkFluent = {
       measuringTape: {
         accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_toolboxPanel_measuringTape_accessibleName', _.get( EnergySkateParkStrings, 'a11y.toolboxPanel.measuringTape.accessibleNameStringProperty' ) )
       }
+    },
+    stopwatchNode: {
+      accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_stopwatchNode_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.stopwatchNode.accessibleHeadingStringProperty' ) )
+    },
+    measuringTapeNode: {
+      accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_measuringTapeNode_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.measuringTapeNode.accessibleHeadingStringProperty' ) )
     },
     trackToolboxPanel: {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_trackToolboxPanel_accessibleName', _.get( EnergySkateParkStrings, 'a11y.trackToolboxPanel.accessibleNameStringProperty' ) )
@@ -387,14 +411,16 @@ const EnergySkateParkFluent = {
     },
     energyReadoutPattern: new FluentPattern<{ kinetic: FluentVariable, potential: FluentVariable, thermal: FluentVariable, total: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energyReadoutPattern', _.get( EnergySkateParkStrings, 'a11y.energyReadoutPatternStringProperty' ), [{"name":"kinetic"},{"name":"potential"},{"name":"thermal"},{"name":"total"}] ),
     energySensorNode: {
+      accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.accessibleHeadingStringProperty' ) ),
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_accessibleName', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.accessibleNameStringProperty' ) ),
+      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.accessibleHelpTextStringProperty' ) ),
       nothingToMeasureStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_nothingToMeasure', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.nothingToMeasureStringProperty' ) ),
       movedOffSamplesStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energySensorNode_movedOffSamples', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.movedOffSamplesStringProperty' ) ),
       sampleReadoutPattern: new FluentPattern<{ height: FluentVariable, kinetic: FluentVariable, potential: FluentVariable, speed: FluentVariable, thermal: FluentVariable, total: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energySensorNode_sampleReadoutPattern', _.get( EnergySkateParkStrings, 'a11y.energySensorNode.sampleReadoutPatternStringProperty' ), [{"name":"height"},{"name":"kinetic"},{"name":"potential"},{"name":"speed"},{"name":"thermal"},{"name":"total"}] )
     },
     pieChart: {
       accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.pieChart.accessibleHeadingStringProperty' ) ),
-      helpTextParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_helpTextParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.helpTextParagraphStringProperty' ) ),
+      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.pieChart.accessibleHelpTextStringProperty' ) ),
       positiveEnergyParagraph: new FluentPattern<{ energiesList: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_pieChart_positiveEnergyParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.positiveEnergyParagraphStringProperty' ), [{"name":"energiesList"}] ),
       negativeEnergyParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_negativeEnergyParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.negativeEnergyParagraphStringProperty' ) ),
       kineticPercentPattern: new FluentPattern<{ percent: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_pieChart_kineticPercentPattern', _.get( EnergySkateParkStrings, 'a11y.pieChart.kineticPercentPatternStringProperty' ), [{"name":"percent"}] ),
@@ -405,6 +431,10 @@ const EnergySkateParkFluent = {
       legendPotentialStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendPotential', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendPotentialStringProperty' ) ),
       legendThermalStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendThermal', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendThermalStringProperty' ) ),
       legendTotalStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_legendTotal', _.get( EnergySkateParkStrings, 'a11y.pieChart.legendTotalStringProperty' ) )
+    },
+    speedometer: {
+      accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_speedometer_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.speedometer.accessibleHeadingStringProperty' ) ),
+      accessibleParagraph: new FluentPattern<{ speed: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_speedometer_accessibleParagraph', _.get( EnergySkateParkStrings, 'a11y.speedometer.accessibleParagraphStringProperty' ), [{"name":"speed"}] )
     },
     energyGraph: {
       accessibleHelpTextCollapsedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_accessibleHelpTextCollapsed', _.get( EnergySkateParkStrings, 'a11y.energyGraph.accessibleHelpTextCollapsedStringProperty' ) ),

@@ -13,6 +13,7 @@ import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import Rectangle from '../../../../dot/js/Rectangle.js';
+import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ScreenView, { ScreenViewOptions } from '../../../../joist/js/ScreenView.js';
 import Shape from '../../../../kite/js/Shape.js';
@@ -306,6 +307,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
     const gaugeRadius = 76;
 
+    const formattedSpeedProperty = new DerivedProperty( [ model.skater.speedProperty ], speed => toFixed( speed, 1 ) );
+
     this.speedometerNode = new ValueGaugeNode( model.skater.speedProperty, propertiesSpeedStringProperty, new Range( 0, 30 ), {
       numberDisplayOptions: {
         valuePattern: speedometerMetersPerSecondPatternStringProperty,
@@ -318,8 +321,13 @@ export default class EnergySkateParkScreenView extends ScreenView {
       updateWhenInvisible: false,
       pickable: false,
       radius: gaugeRadius,
-      tandem: tandem.createTandem( 'speedometerNode' )
+      tandem: tandem.createTandem( 'speedometerNode' ),
+      accessibleHeading: EnergySkateParkFluent.a11y.speedometer.accessibleHeadingStringProperty,
+      accessibleParagraph: EnergySkateParkFluent.a11y.speedometer.accessibleParagraph.createProperty( {
+        speed: formattedSpeedProperty
+      } )
     } );
+
     model.speedometerVisibleProperty.linkAttribute( this.speedometerNode, 'visible' );
     model.speedValueVisibleProperty.link( visible => { this.speedometerNode.setNumberDisplayVisible( visible ); } );
 
@@ -334,6 +342,10 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
     // tracks on top of panels and non-interactive visualizations
     this.topLayer.addChild( this.trackLayer );
+
+    // Heading Nodes to group tool PDOM elements under navigable headings in the Play Area
+    let stopwatchHeadingNode: Node | undefined;
+    let measuringTapeHeadingNode: Node | undefined;
 
     // add a measuring tape, on top of tracks, below the skater
     if ( options.showToolbox ) {
@@ -383,6 +395,21 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
       this.topLayer.addChild( this.stopwatchNode );
       this.topLayer.addChild( this.measuringTapeNode );
+
+      // Create heading Nodes so the stopwatch and measuring tape each have a navigable heading in the PDOM
+      stopwatchHeadingNode = new Node( {
+        visibleProperty: model.stopwatch.isVisibleProperty,
+        accessibleHeading: EnergySkateParkFluent.a11y.stopwatchNode.accessibleHeadingStringProperty,
+        pdomOrder: [ this.stopwatchNode ]
+      } );
+      this.addChild( stopwatchHeadingNode );
+
+      measuringTapeHeadingNode = new Node( {
+        visibleProperty: model.measuringTapeVisibleProperty,
+        accessibleHeading: EnergySkateParkFluent.a11y.measuringTapeNode.accessibleHeadingStringProperty,
+        pdomOrder: [ this.measuringTapeNode ]
+      } );
+      this.addChild( measuringTapeHeadingNode );
 
       this.toolboxPanel = new ToolboxPanel( model, this, tandem.createTandem( 'toolboxPanel' ) );
 
@@ -640,14 +667,15 @@ export default class EnergySkateParkScreenView extends ScreenView {
       returnSkaterToPreviousStartingPositionButton,
       returnSkaterToGroundButton,
       this.referenceHeightLine,
-      ...this.stopwatchNode ? [ this.stopwatchNode ] : [],
-      ...this.measuringTapeNode ? [ this.measuringTapeNode ] : []
+      ...stopwatchHeadingNode ? [ stopwatchHeadingNode ] : [],
+      ...measuringTapeHeadingNode ? [ measuringTapeHeadingNode ] : [],
+      ...this.energyBarGraphAccordionBox ? [ this.energyBarGraphAccordionBox ] : [],
+      this.pieChartLegend,
+      this.speedometerNode
     ];
 
     // Control Area elements
     this.pdomControlAreaNode.pdomOrder = [
-      ...this.energyBarGraphAccordionBox ? [ this.energyBarGraphAccordionBox ] : [],
-      this.pieChartLegend,
       this.controlPanelVBox,
       ...this.visibilityControlsPanel ? [ this.visibilityControlsPanel ] : [],
       this.timeControlNode,

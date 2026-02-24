@@ -66,22 +66,23 @@ preferences:
   metersPerSecondSquared:       m/s<sup>2</sup>
   newtonsPerKilogram:           N/kg
 keyboardHelpDialog:
-  skaterControls:                      Skater Controls
-  grabOrRelease:                       Grab or release
-  moveAlongTrack:                      Move along track
-  attachToTrack:                       Attach to nearest track
-  moveToStartOfTrack:                  Jump to track start
-  moveToEndOfTrack:                    Jump to track end
-  restartSkater:                       Restart skater
-  togglePause:                         Pause or play
-  scrubThroughData:                    Scrub through data
-  stopwatchAndMeasuringTapeControls:   Stopwatch and Measuring Tape Controls
-  removeFromToolbox:                   Remove from toolbox
-  returnToToolbox:                     Return to toolbox
-  graphCursorControls:                 Graph Cursor Controls
-  trackControls:                       Track Controls
-  cutTrackAtControlPoint:              Cut track at control point
-  deleteControlPoint:                  Delete control point
+  skaterControls:                    Move or Jump Grabbed Skater
+  fromAnywhereInScreen:              From Anywhere in Screen
+  grabOrRelease:                     Grab or release
+  moveAlongTrack:                    Move along track
+  attachToTrack:                     Attach to nearest track
+  moveToStartOfTrack:                Jump to track start
+  moveToEndOfTrack:                  Jump to track end
+  restartSkater:                     Restart skater
+  togglePause:                       Pause or play
+  scrubThroughData:                  Scrub through data
+  stopwatchAndMeasuringTapeControls: Stopwatch and Measuring Tape Controls
+  removeFromToolbox:                 Remove from toolbox
+  returnToToolbox:                   Return to toolbox
+  graphCursorControls:               Graph Cursor Controls
+  trackControls:                     Track Controls
+  cutTrackAtControlPoint:            Cut track at control point
+  deleteControlPoint:                Delete control point
   connectTrackEndpoints:
     label:              Connect Track Endpoints
     showOptions:        '1. Show options'
@@ -89,7 +90,9 @@ keyboardHelpDialog:
     selectOption:       '3. Select option'
     cancel:             '4. Cancel'
 a11y:
-  noDataParagraph: No data to display. Grab skater to get started.
+  noDataParagraph:      No data to display. Grab skater to get started.
+  controlPanel:
+    experimentSettingsHeading: Experiment Settings
   keyboardHelpDialog:
     connectTrackEndpoints:
       showOptions:        Show options
@@ -101,14 +104,21 @@ a11y:
     onTrackHelpText:  Use left and right arrow keys or A and D to move along track. Press up arrow or W to detach.
     offTrackHelpText: Use arrow keys or W, A, S, D to move the skater.
   referenceHeightLine:
-    accessibleName: Reference height line
-    helpText:       Use up and down arrow keys or W and S to adjust the reference height.
+    accessibleHeading:  Reference Height
+    accessibleName:     Reference Height Line
+    accessibleHelpText: Set the vertical position where height is zero.
+    aboveGroundPattern: '{ $distance } meters above ground'
+    atGroundLevel:      at ground level
   toolboxPanel:
     accessibleHeading: Toolbox
     stopwatch:
       accessibleName: Add Stopwatch
     measuringTape:
       accessibleName: Add Measuring Tape
+  stopwatchNode:
+    accessibleHeading: Stopwatch
+  measuringTapeNode:
+    accessibleHeading: Measuring Tape
   trackToolboxPanel:
     accessibleName: Track
   trackNode:
@@ -117,14 +127,16 @@ a11y:
     accessibleName: 'Control Point { $position } of { $total }'
 
   energyReadoutPattern: >-
-                      Energy in Joules:
-                      Kinetic {$kinetic},
-                      Potential {$potential},
-                      Thermal {$thermal},
-                      Total {$total}.
+                        Energy in Joules:
+                        Kinetic {$kinetic},
+                        Potential {$potential},
+                        Thermal {$thermal},
+                        Total {$total}.
 
   energySensorNode:
-    accessibleName:       Energy Sensor
+    accessibleHeading:    Energy Sensor
+    accessibleName:       Energy Sensor Probe
+    accessibleHelpText:   Move probe along skater's path to measure speed, height, and energy.
     nothingToMeasure:     Nothing to measure yet.
     movedOffSamples:      Sensor moved off of sample points.
     sampleReadoutPattern: >-
@@ -133,64 +145,67 @@ a11y:
                           { a11y.energyReadoutPattern }
 
   pieChart:
-    accessibleHeading: Pie Chart
-    helpTextParagraph: Pie Chart displays skater's energy in real time. Pause to analyze values.
+    accessibleHeading:       Pie Chart
+    accessibleHelpText:      Pie Chart displays skater's energy in real time. Pause to analyze values.
     positiveEnergyParagraph: 'In Pie Chart: {$energiesList}.'
     negativeEnergyParagraph: 'In Pie Chart: Total Energy 100%.'
-    kineticPercentPattern: 'Kinetic Energy {$percent}%'
+    kineticPercentPattern:   'Kinetic Energy {$percent}%'
     potentialPercentPattern: 'Potential Energy {$percent}%'
-    thermalPercentPattern: 'Thermal Energy {$percent}%'
-    legendHeading: Energy Legend
-    legendKinetic: 'Kinetic: Green'
-    legendPotential: 'Potential: Blue'
-    legendThermal: 'Thermal: Red'
-    legendTotal: 'Total: Gold'
+    thermalPercentPattern:   'Thermal Energy {$percent}%'
+    legendHeading:           Energy Legend
+    legendKinetic:           'Kinetic: Green'
+    legendPotential:         'Potential: Blue'
+    legendThermal:           'Thermal: Red'
+    legendTotal:             'Total: Gold'
+  speedometer:
+    accessibleHeading:  Speedometer
+    accessibleParagraph: "Skater's speed is { $speed } meters per second."
   energyGraph:
     accessibleHelpTextCollapsed: Explore skater's energy plotted as a function of position or time.
-    graphDescriptionParagraph: >-
-      Energy Graph plots energy as a function of {$variable}.
-      Energy measured in Joules and {$variable} measured in {$units}.
-      Currently, {$checkedEnergiesList} energy in plot.
-    variablePosition: Position
-    variableTime: Time
-    unitsMeters: meters
-    unitsSeconds: seconds
-    energyKinetic: Kinetic
-    energyPotential: Potential
-    energyThermal: Thermal
-    energyTotal: Total
-    energyNone: 'no'
-    checkboxGroupParagraph: Choose which energy types to display in Energy Graph.
+    graphDescriptionParagraph:   >-
+                                 Energy Graph plots energy as a function of {$variable}.
+                                 Energy measured in Joules and {$variable} measured in {$units}.
+                                 Currently, {$checkedEnergiesList} energy in plot.
+    variablePosition:            Position
+    variableTime:                Time
+    unitsMeters:                 meters
+    unitsSeconds:                seconds
+    energyKinetic:               Kinetic
+    energyPotential:             Potential
+    energyThermal:               Thermal
+    energyTotal:                 Total
+    energyNone:                  'no'
+    checkboxGroupParagraph:      Choose which energy types to display in Energy Graph.
     kineticCheckbox:
-      accessibleContextResponseChecked: Kinetic energy data displayed in Energy Graph.
+      accessibleContextResponseChecked:   Kinetic energy data displayed in Energy Graph.
       accessibleContextResponseUnchecked: Kinetic energy data removed from Energy Graph.
     potentialCheckbox:
-      accessibleContextResponseChecked: Potential energy displayed in Energy Graph.
+      accessibleContextResponseChecked:   Potential energy displayed in Energy Graph.
       accessibleContextResponseUnchecked: Potential energy data removed from Energy Graph.
     thermalCheckbox:
-      accessibleContextResponseChecked: Thermal energy displayed in Energy Graph.
+      accessibleContextResponseChecked:   Thermal energy displayed in Energy Graph.
       accessibleContextResponseUnchecked: Thermal energy data removed from Energy Graph.
     totalCheckbox:
-      accessibleContextResponseChecked: Total energy displayed in Energy Graph.
+      accessibleContextResponseChecked:   Total energy displayed in Energy Graph.
       accessibleContextResponseUnchecked: Total energy data removed from Energy Graph.
     graphCursor:
-      accessibleName: Graph Cursor
+      accessibleName:     Graph Cursor
       accessibleHelpText: Scrub through time and review skater data. Pause or play with space.
-      movementResponse: 'Time now {$sampleTime} seconds.'
+      movementResponse:   'Time now {$sampleTime} seconds.'
     zoomButtonGroup:
       zoomIn:
-        accessibleName: Zoom In Energy Axis
+        accessibleName:     Zoom In Energy Axis
         accessibleHelpText: Adjust visual scale of the Energy axis only.
       zoomOut:
-        accessibleName: Zoom Out Energy Axis
+        accessibleName:     Zoom Out Energy Axis
         accessibleHelpText: Adjust visual scale of the Energy axis only.
       zoomLevelResponse: 'Energy range now {$min} to {$max} Joules.'
     variableSwitch:
       accessibleHelpText: Plot skater's energy as a function of position or time.
     eraserButton:
-      accessibleName: Erase Energy Graph Data
+      accessibleName:   Erase Energy Graph Data
       positionResponse: Data cleared from the Energy Graph.
-      timeResponse: Data cleared from the Energy Graph. Time reset to 0 seconds.
+      timeResponse:     Data cleared from the Energy Graph. Time reset to 0 seconds.
   controlPointAttachment:
     left:  Left
     right: Right
@@ -220,7 +235,7 @@ a11y:
     accessibleContextResponseUnchecked: Pie chart hidden.
   speedCheckbox:
     accessibleHelpText:                 Explore with or without speed measurements.
-    accessibleContextResponseChecked:   Speedometer displayed.
+    accessibleContextResponseChecked:   Speedometer added to Play Area.
     accessibleContextResponseUnchecked: Speedometer hidden.
   pathCheckbox:
     accessibleHelpText:                 Explore with or without dots drawn along the skaters path in equal time intervals.

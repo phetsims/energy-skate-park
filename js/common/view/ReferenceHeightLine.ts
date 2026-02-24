@@ -8,11 +8,15 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import DynamicProperty from '../../../../axon/js/DynamicProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import TProperty from '../../../../axon/js/TProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
+import { toFixed } from '../../../../dot/js/util/toFixed.js';
+import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import ArrowNode from '../../../../scenery-phet/js/ArrowNode.js';
@@ -24,6 +28,7 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
+import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TextPanel from './TextPanel.js';
 
@@ -82,8 +87,20 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       focusable: true,
       ariaRole: 'slider',
       accessibleName: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleNameStringProperty,
-      descriptionContent: EnergySkateParkFluent.a11y.referenceHeightLine.helpTextStringProperty
+      accessibleHeading: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleHeadingStringProperty,
+      accessibleHelpText: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleHelpTextStringProperty
     } );
+
+    // Dynamic aria-valuetext for screen readers
+    const formattedHeightProperty = new DerivedProperty( [ referenceHeightProperty ], height => toFixed( height, 1 ) );
+    const aboveGroundProperty = EnergySkateParkFluent.a11y.referenceHeightLine.aboveGroundPattern.createProperty( {
+      distance: formattedHeightProperty
+    } );
+    const ariaValueTextProperty = new DerivedProperty(
+      [ referenceHeightProperty, aboveGroundProperty, EnergySkateParkFluent.a11y.referenceHeightLine.atGroundLevelStringProperty ],
+      ( height, aboveGround, atGround ) => toFixedNumber( height, 1 ) === 0 ? atGround : aboveGround
+    );
+    ariaValueTextProperty.link( ariaValueText => this.setPDOMAttribute( 'aria-valuetext', ariaValueText ) );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
     referenceHeightProperty.link( height => {
@@ -118,14 +135,25 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       }
     } );
 
+    const range = referenceHeightProperty.range;
+    const dragBoundsProperty = new Property( new Bounds2( Number.NEGATIVE_INFINITY, range.min, Number.POSITIVE_INFINITY, range.max ) );
+
+    const boundaryReachedSoundPlayer = new BoundaryReachedSoundPlayer();
+    const checkBoundary = () => {
+      const height = referenceHeightProperty.value;
+      boundaryReachedSoundPlayer.setOnBoundary( height === range.min || height === range.max );
+    };
+
     this.addInputListener( new SoundDragListener( {
       transform: modelViewTransform,
       positionProperty: dragPositionProperty,
+      dragBoundsProperty: dragBoundsProperty,
 
       // signify when user is using this control so that
       start: () => {
         userControlledProperty.set( true );
       },
+      drag: checkBoundary,
       end: () => {
         userControlledProperty.set( false );
       },
@@ -136,11 +164,13 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
     const keyboardDragListener = new SoundKeyboardDragListener( {
       transform: modelViewTransform,
       positionProperty: dragPositionProperty,
+      dragBoundsProperty: dragBoundsProperty,
       dragSpeed: 200, // View coordinates per second - provides continuous smooth motion
       shiftDragSpeed: 50, // Slower speed when shift is held for fine control
       start: () => {
         userControlledProperty.set( true );
       },
+      drag: checkBoundary,
       end: () => {
         userControlledProperty.set( false );
       },

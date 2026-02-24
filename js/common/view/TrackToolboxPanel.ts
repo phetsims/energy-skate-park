@@ -12,7 +12,7 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
-import Node from '../../../../scenery/js/nodes/Node.js';
+import InteractiveHighlightingNode from '../../../../scenery/js/accessibility/voicing/nodes/InteractiveHighlightingNode.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -42,7 +42,7 @@ export default class TrackToolboxPanel extends Panel {
       trackToolboxIcon: true
     } );
 
-    const iconNode = new Node( {
+    const iconNode = new InteractiveHighlightingNode( {
       children: [ trackIconNode ],
       cursor: 'pointer',
       tagName: 'button',

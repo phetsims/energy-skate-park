@@ -188,7 +188,10 @@
   },
   "keyboardHelpDialog": {
     "skaterControls": {
-      "value": "Skater Controls"
+      "value": "Move or Jump Grabbed Skater"
+    },
+    "fromAnywhereInScreen": {
+      "value": "From Anywhere in Screen"
     },
     "grabOrRelease": {
       "value": "Grab or release"
@@ -257,6 +260,11 @@
     "noDataParagraph": {
       "value": "No data to display. Grab skater to get started."
     },
+    "controlPanel": {
+      "experimentSettingsHeading": {
+        "value": "Experiment Settings"
+      }
+    },
     "keyboardHelpDialog": {
       "connectTrackEndpoints": {
         "showOptions": {
@@ -285,11 +293,20 @@
       }
     },
     "referenceHeightLine": {
-      "accessibleName": {
-        "value": "Reference height line"
+      "accessibleHeading": {
+        "value": "Reference Height"
       },
-      "helpText": {
-        "value": "Use up and down arrow keys or W and S to adjust the reference height."
+      "accessibleName": {
+        "value": "Reference Height Line"
+      },
+      "accessibleHelpText": {
+        "value": "Set the vertical position where height is zero."
+      },
+      "aboveGroundPattern": {
+        "value": "{ $distance } meters above ground"
+      },
+      "atGroundLevel": {
+        "value": "at ground level"
       }
     },
     "toolboxPanel": {
@@ -305,6 +322,16 @@
         "accessibleName": {
           "value": "Add Measuring Tape"
         }
+      }
+    },
+    "stopwatchNode": {
+      "accessibleHeading": {
+        "value": "Stopwatch"
+      }
+    },
+    "measuringTapeNode": {
+      "accessibleHeading": {
+        "value": "Measuring Tape"
       }
     },
     "trackToolboxPanel": {
@@ -326,8 +353,14 @@
       "value": "Energy in Joules: Kinetic {$kinetic}, Potential {$potential}, Thermal {$thermal}, Total {$total}."
     },
     "energySensorNode": {
-      "accessibleName": {
+      "accessibleHeading": {
         "value": "Energy Sensor"
+      },
+      "accessibleName": {
+        "value": "Energy Sensor Probe"
+      },
+      "accessibleHelpText": {
+        "value": "Move probe along skater's path to measure speed, height, and energy."
       },
       "nothingToMeasure": {
         "value": "Nothing to measure yet."
@@ -343,7 +376,7 @@
       "accessibleHeading": {
         "value": "Pie Chart"
       },
-      "helpTextParagraph": {
+      "accessibleHelpText": {
         "value": "Pie Chart displays skater's energy in real time. Pause to analyze values."
       },
       "positiveEnergyParagraph": {
@@ -375,6 +408,14 @@
       },
       "legendTotal": {
         "value": "Total: Gold"
+      }
+    },
+    "speedometer": {
+      "accessibleHeading": {
+        "value": "Speedometer"
+      },
+      "accessibleParagraph": {
+        "value": "Skater's speed is { $speed } meters per second."
       }
     },
     "energyGraph": {
@@ -559,7 +600,7 @@
         "value": "Explore with or without speed measurements."
       },
       "accessibleContextResponseChecked": {
-        "value": "Speedometer displayed."
+        "value": "Speedometer added to Play Area."
       },
       "accessibleContextResponseUnchecked": {
         "value": "Speedometer hidden."

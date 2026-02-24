@@ -25,19 +25,23 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import ProbeNode from '../../../../scenery-phet/js/ProbeNode.js';
+import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
+import SceneryPhetFluent from '../../../../scenery-phet/js/SceneryPhetFluent.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
-import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
+import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
 import WireNode from '../../../../scenery-phet/js/WireNode.js';
 import AlignGroup from '../../../../scenery/js/layout/constraints/AlignGroup.js';
 import AlignBox from '../../../../scenery/js/layout/nodes/AlignBox.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
+import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import SunConstants from '../../../../sun/js/SunConstants.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
+import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import EnergySkateParkControlPanel from '../../common/view/EnergySkateParkControlPanel.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -69,6 +73,8 @@ const ENERGY_RANGE = new Range( -20000, 20000 );
 // offset so that the center of the probe aligns with sample positions
 const PROBE_CENTER_OFFSET = new Vector2( 5.5, 0 );
 
+class InteractiveProbeNode extends InteractiveHighlighting( ProbeNode ) {}
+
 const SENSOR_COLOR = 'rgb( 103, 80, 113 )';
 
 // max distance between sample and probe center for the sample to be displayed, in view coordinates
@@ -99,7 +105,7 @@ export default class SkaterPathSensorNode extends Node {
   private readonly speedReadout: Text;
   private readonly heightSpeedVBox: VBox;
   private readonly heightSpeedRectangle: Rectangle;
-  private readonly probeNode: ProbeNode;
+  private readonly probeNode: InteractiveProbeNode;
   private inspectedSample: EnergySkateParkDataSample | null;
   private readonly boundUpdateSensorDisplay: () => void;
   private updateDisplayListener: ( () => void ) | null = null;
@@ -125,7 +131,13 @@ export default class SkaterPathSensorNode extends Node {
     const options = combineOptions<NodeOptions>( {
 
       // prevent block fitting so that things don't jiggle as the probe moves, see
-      preventFit: true
+      preventFit: true,
+
+      // pdom - heading so screen reader users can navigate to the energy sensor section
+      accessibleHeading: EnergySkateParkFluent.a11y.energySensorNode.accessibleHeadingStringProperty,
+
+      accessibleHelpText: EnergySkateParkFluent.a11y.energySensorNode.accessibleHelpTextStringProperty,
+      accessibleHelpTextBehavior: ParallelDOM.HELP_TEXT_BEFORE_CONTENT
     }, providedOptions );
     super( options );
 
@@ -213,7 +225,7 @@ export default class SkaterPathSensorNode extends Node {
     } );
 
     // the probe
-    this.probeNode = new ProbeNode( {
+    this.probeNode = new InteractiveProbeNode( {
       scale: 0.5,
       rotation: Math.PI / 2,
       color: SENSOR_COLOR,
@@ -225,7 +237,8 @@ export default class SkaterPathSensorNode extends Node {
       tagName: 'div',
       focusable: true,
       ariaRole: 'application',
-      accessibleName: EnergySkateParkFluent.a11y.energySensorNode.accessibleNameStringProperty
+      accessibleName: EnergySkateParkFluent.a11y.energySensorNode.accessibleNameStringProperty,
+      accessibleRoleDescription: SceneryPhetFluent.a11y.grabDrag.movableStringProperty
     } );
 
     this.currentReadingProperty = new StringProperty( '' );
@@ -278,11 +291,21 @@ export default class SkaterPathSensorNode extends Node {
     samples.addItemAddedListener( this.boundUpdateSensorDisplay );
 
     // add a drag listener to the probe body
+    const probeBoundarySoundPlayer = new BoundaryReachedSoundPlayer();
     this.probeNode.addInputListener( new SoundDragListener( {
       transform: modelViewTransform,
       positionProperty: sensorProbePositionProperty,
       dragBoundsProperty: modelBoundsProperty,
       start: () => { this.isDragging = true; },
+      drag: () => {
+        const pos = sensorProbePositionProperty.value;
+        const bounds = modelBoundsProperty.value;
+        if ( bounds ) {
+          const onBoundary = pos.x === bounds.minX || pos.x === bounds.maxX ||
+                             pos.y === bounds.minY || pos.y === bounds.maxY;
+          probeBoundarySoundPlayer.setOnBoundary( onBoundary );
+        }
+      },
       end: () => { this.isDragging = false; },
       tandem: options.tandem!.createTandem( 'dragListener' )
     } ) );

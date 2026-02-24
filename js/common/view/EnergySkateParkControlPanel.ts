@@ -16,6 +16,7 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
@@ -82,23 +83,35 @@ export default class EnergySkateParkControlPanel extends Panel {
       children.push( trackRadioButtons );
     }
 
-    let frictionControls: Node | null = null;
+    // Collect friction, gravity, and mass controls to group under an "Experiment Settings" heading for a11y
+    const experimentSettingsChildren: Node[] = [];
+
     if ( options.showFrictionControls ) {
-
-      frictionControls = new FrictionSlider( model.frictionProperty, userControlledPropertySet.frictionControlledProperty, tandem.createTandem( 'frictionControl' ) );
-      children.push( frictionControls );
+      experimentSettingsChildren.push( new FrictionSlider( model.frictionProperty, userControlledPropertySet.frictionControlledProperty, tandem.createTandem( 'frictionControl' ) ) );
     }
 
-    let gravityControls = null;
     if ( options.showGravityControls ) {
-      gravityControls = new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, userControlledPropertySet.gravityControlledProperty, model.preferencesModel.accelerationUnitsProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkGravityControls' ), options.gravityControlsOptions || undefined );
-      children.push( gravityControls );
+      experimentSettingsChildren.push( new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, userControlledPropertySet.gravityControlledProperty, model.preferencesModel.accelerationUnitsProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkGravityControls' ), options.gravityControlsOptions || undefined ) );
     }
 
-    let massControls = null;
+    // one separator after friction and/or gravity controls (preserving original visual layout)
+    if ( options.showFrictionControls || options.showGravityControls ) {
+      experimentSettingsChildren.push( new HSeparator() );
+    }
+
     if ( options.showMassControls ) {
-      massControls = new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions || undefined );
-      children.push( massControls );
+      experimentSettingsChildren.push( new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions || undefined ) );
+    }
+
+    let experimentSettingsNode: Node | null = null;
+    if ( experimentSettingsChildren.length > 0 ) {
+      experimentSettingsNode = new VBox( {
+        spacing: 8,
+        stretch: true,
+        children: experimentSettingsChildren,
+        accessibleHeading: EnergySkateParkFluent.a11y.controlPanel.experimentSettingsHeadingStringProperty
+      } );
+      children.push( experimentSettingsNode );
     }
 
     if ( options.showSkaterControls ) {
@@ -115,16 +128,6 @@ export default class EnergySkateParkControlPanel extends Panel {
 
     // one separator after scene selection buttons
     trackRadioButtons && children.splice( children.indexOf( trackRadioButtons ) + 1, 0, new HSeparator() );
-
-    // one separator after a section for friction and/or gravity controls
-    if ( frictionControls || gravityControls ) {
-      if ( gravityControls ) {
-        children.splice( children.indexOf( gravityControls ) + 1, 0, new HSeparator() );
-      }
-      else {
-        children.splice( children.indexOf( frictionControls! ) + 1, 0, new HSeparator() );
-      }
-    }
 
     const content = new VBox( { spacing: 8, stretch: true, children: children } );
 

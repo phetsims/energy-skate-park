@@ -10,11 +10,11 @@ import BasicActionsKeyboardHelpSection from '../../../../scenery-phet/js/keyboar
 import KeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSection.js';
 import MoveDraggableItemsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/MoveDraggableItemsKeyboardHelpSection.js';
 import SliderControlsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/SliderControlsKeyboardHelpSection.js';
-import TimeControlsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/TimeControlsKeyboardHelpSection.js';
 import TwoColumnKeyboardHelpContent from '../../../../scenery-phet/js/keyboard/help/TwoColumnKeyboardHelpContent.js';
 import energySkatePark from '../../energySkatePark.js';
 import GraphCursorControlsKeyboardHelpSection from '../../graphs/view/GraphCursorControlsKeyboardHelpSection.js';
 import ConnectTrackEndpointsKeyboardHelpSection from './ConnectTrackEndpointsKeyboardHelpSection.js';
+import FromAnywhereInScreenKeyboardHelpSection from './FromAnywhereInScreenKeyboardHelpSection.js';
 import SkaterKeyboardHelpSection from './SkaterKeyboardHelpSection.js';
 import ToolboxControlsKeyboardHelpSection from './ToolboxControlsKeyboardHelpSection.js';
 import TrackControlsKeyboardHelpSection from './TrackControlsKeyboardHelpSection.js';
@@ -53,7 +53,7 @@ export default class EnergySkateParkKeyboardHelpContent extends TwoColumnKeyboar
 
     // Right column sections (always the same)
     const rightSections = [
-      new TimeControlsKeyboardHelpSection(),
+      new FromAnywhereInScreenKeyboardHelpSection(),
       new SliderControlsKeyboardHelpSection(),
       new BasicActionsKeyboardHelpSection( {
         withCheckboxContent: true

@@ -145,7 +145,7 @@ export default class PieChartLegend extends Panel {
 
     // Accessibility: help text paragraph
     const helpTextNode = new Node( {
-      accessibleParagraph: EnergySkateParkFluent.a11y.pieChart.helpTextParagraphStringProperty
+      accessibleParagraph: EnergySkateParkFluent.a11y.pieChart.accessibleHelpTextStringProperty
     } );
     panelContent.addChild( helpTextNode );
 

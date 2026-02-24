@@ -26,6 +26,9 @@ export default class EnergySkateParkTrackSetScreenView extends EnergySkateParkSa
       this.trackLayer.addChild( trackNode );
     } );
 
+    // Set a stable pdomOrder so that moveToFront() during drag doesn't disrupt PDOM reading order.
+    this.trackLayer.pdomOrder = trackNodes;
+
     model.sceneProperty.link( scene => {
       _.forEach( model.tracks, ( track, i ) => {
         trackNodes[ i ].visible = scene === i;

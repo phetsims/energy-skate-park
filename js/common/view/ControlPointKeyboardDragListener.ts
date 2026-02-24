@@ -12,11 +12,12 @@ import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboard
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import TrackNode from './TrackNode.js';
 
 export default class ControlPointKeyboardDragListener extends SoundKeyboardDragListener {
 
-  public constructor( trackNode: TrackNode, controlPointIndex: number, isEndPoint: boolean ) {
+  public constructor( trackNode: TrackNode, controlPointIndex: number, isEndPoint: boolean, boundaryReachedSoundPlayer: BoundaryReachedSoundPlayer ) {
 
     const track = trackNode.track;
     const model = trackNode.model;
@@ -47,6 +48,8 @@ export default class ControlPointKeyboardDragListener extends SoundKeyboardDragL
         const modelDelta = modelViewTransform.viewToModelDelta( listener.modelDelta );
 
         let pt = controlPoint.sourcePositionProperty.value.plus( modelDelta );
+        const proposedX = pt.x;
+        const proposedY = pt.y;
 
         // Constrain the control points to remain in y>0, see #71
         pt.y = Math.max( pt.y, 0 );
@@ -57,6 +60,8 @@ export default class ControlPointKeyboardDragListener extends SoundKeyboardDragL
         if ( dragBounds ) {
           pt = dragBounds.closestPointTo( pt );
         }
+
+        boundaryReachedSoundPlayer.setOnBoundary( pt.x !== proposedX || pt.y !== proposedY );
 
         controlPoint.sourcePositionProperty.value = pt;
 

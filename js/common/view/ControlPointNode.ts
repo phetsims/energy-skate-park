@@ -13,6 +13,7 @@ import Shape from '../../../../kite/js/Shape.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
+import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Circle, { CircleOptions } from '../../../../scenery/js/nodes/Circle.js';
@@ -21,13 +22,14 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
+import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import ControlPointAttachmentKeyboardListener from './ControlPointAttachmentKeyboardListener.js';
 import ControlPointKeyboardDragListener from './ControlPointKeyboardDragListener.js';
 import ControlPointUI from './ControlPointUI.js';
 import TrackDragHandler from './TrackDragHandler.js';
 import TrackNode from './TrackNode.js';
 
-export default class ControlPointNode extends Circle {
+export default class ControlPointNode extends InteractiveHighlighting( Circle ) {
 
   public static readonly SPLIT_VERTEX_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'alt+x' ],
@@ -80,10 +82,16 @@ export default class ControlPointNode extends Circle {
       } )
     }, omitA11y ? undefined : AccessibleDraggableOptions ) );
 
+    // Disable interactive highlighting for non-interactive control points or toolbox icons
+    if ( omitA11y || !controlPoint.interactive ) {
+      this.interactiveHighlightEnabled = false;
+    }
+
     // Control points should only be focusable when the track is physical (in the play area).
     // When the track is in the toolbox, only the entire TrackNode should be focusable.
     const physicalListener = ( isPhysical: boolean ) => {
       this.focusable = isPhysical;
+      this.interactiveHighlightEnabled = isPhysical && !omitA11y && controlPoint.interactive;
     };
     track.physicalProperty.link( physicalListener );
     this.addDisposable( { dispose: () => track.physicalProperty.unlink( physicalListener ) } );
@@ -115,7 +123,9 @@ export default class ControlPointNode extends Circle {
 
     // if the ControlPoint is 'interactive' it supports dragging and potentially track splitting
     let dragListener: SoundDragListener | null = null; // potential reference for disposal
+    let boundaryReachedSoundPlayer: BoundaryReachedSoundPlayer | null = null;
     if ( controlPoint.interactive ) {
+      boundaryReachedSoundPlayer = new BoundaryReachedSoundPlayer();
       let dragEvents = 0;
       let lastControlPointUI: ControlPointUI | null = null;
       dragListener = new SoundDragListener( {
@@ -174,6 +184,8 @@ export default class ControlPointNode extends Circle {
 
           // trigger reconstruction of the track shape based on the control points
           let pt = modelViewTransform.viewToModelPosition( globalPoint );
+          const proposedX = pt.x;
+          const proposedY = pt.y;
 
           // Constrain the control points to remain in y>0, see #71
           pt.y = Math.max( pt.y, 0 );
@@ -184,6 +196,8 @@ export default class ControlPointNode extends Circle {
           if ( dragBounds ) {
             pt = dragBounds.closestPointTo( pt );
           }
+
+          boundaryReachedSoundPlayer!.setOnBoundary( pt.x !== proposedX || pt.y !== proposedY );
 
           if ( assert && availableBoundsProperty.value ) {
             assert( availableBoundsProperty.value.containsPoint( pt ),
@@ -318,7 +332,7 @@ export default class ControlPointNode extends Circle {
         disposer: this
       } );
 
-      const controlPointKeyboardDragListener = new ControlPointKeyboardDragListener( trackNode, i, isEndPoint );
+      const controlPointKeyboardDragListener = new ControlPointKeyboardDragListener( trackNode, i, isEndPoint, boundaryReachedSoundPlayer );
       this.addInputListener( controlPointKeyboardDragListener, { disposer: this } );
 
       // Add discrete attachment listener for endpoint control points on attachable tracks

@@ -45,11 +45,13 @@ export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView 
     this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ), this );
     this.addToBottomLayer( this.graphAccordionBox );
 
-    this.pdomControlAreaNode.pdomOrder = [
+    // Put graph accordion box before speedometer, see https://github.com/phetsims/energy-skate-park/issues/447
+    this.pdomPlayAreaNode.pdomOrder = [
+      ...( this.pdomPlayAreaNode.pdomOrder! ).filter( node => node !== this.speedometerNode ),
       this.graphAccordionBox,
       this.graphAccordionBox.variableSwitch,
       this.graphAccordionBox.eraserButton,
-      ...this.pdomControlAreaNode.pdomOrder!
+      this.speedometerNode
     ];
   }
 

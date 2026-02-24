@@ -17,6 +17,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
+import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import TrackNode from './TrackNode.js';
 
 export default class TrackDragHandler extends SoundDragListener {
@@ -24,6 +25,7 @@ export default class TrackDragHandler extends SoundDragListener {
   private readonly model: EnergySkateParkModel;
   private readonly modelViewTransform: ModelViewTransform2;
   private readonly availableBoundsProperty: Property<Bounds2>;
+  private readonly boundaryReachedSoundPlayer: BoundaryReachedSoundPlayer;
   public startOffset: Vector2 | null;
 
   /**
@@ -50,6 +52,7 @@ export default class TrackDragHandler extends SoundDragListener {
     this.model = trackNode.model;
     this.modelViewTransform = trackNode.modelViewTransform;
     this.availableBoundsProperty = trackNode.availableBoundsProperty;
+    this.boundaryReachedSoundPlayer = new BoundaryReachedSoundPlayer();
     this.startOffset = null;
   }
 
@@ -114,6 +117,10 @@ export default class TrackDragHandler extends SoundDragListener {
     const modelDelta = position.minus( track.position );
     const translatedBottomControlPointY = bottomControlPointY + modelDelta.y;
 
+    // Save proposed position before constraints for boundary-reached sound detection
+    const proposedX = position.x;
+    const proposedY = position.y;
+
     if ( track.physicalProperty.value && translatedBottomControlPointY < 0 ) {
       position.y += Math.abs( translatedBottomControlPointY );
     }
@@ -141,6 +148,8 @@ export default class TrackDragHandler extends SoundDragListener {
         position.x = availableBounds.maxX - ( rightControlPointX - track.position.x );
       }
     }
+
+    this.boundaryReachedSoundPlayer.setOnBoundary( position.x !== proposedX || position.y !== proposedY );
 
     track.position = position;
 

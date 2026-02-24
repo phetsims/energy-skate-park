@@ -103,6 +103,7 @@ type StringsType = {
   };
   'keyboardHelpDialog': {
     'skaterControlsStringProperty': LocalizedStringProperty;
+    'fromAnywhereInScreenStringProperty': LocalizedStringProperty;
     'grabOrReleaseStringProperty': LocalizedStringProperty;
     'moveAlongTrackStringProperty': LocalizedStringProperty;
     'attachToTrackStringProperty': LocalizedStringProperty;
@@ -128,6 +129,9 @@ type StringsType = {
   };
   'a11y': {
     'noDataParagraphStringProperty': LocalizedStringProperty;
+    'controlPanel': {
+      'experimentSettingsHeadingStringProperty': LocalizedStringProperty;
+    };
     'keyboardHelpDialog': {
       'connectTrackEndpoints': {
         'showOptionsStringProperty': LocalizedStringProperty;
@@ -142,8 +146,11 @@ type StringsType = {
       'offTrackHelpTextStringProperty': LocalizedStringProperty;
     };
     'referenceHeightLine': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
       'accessibleNameStringProperty': LocalizedStringProperty;
-      'helpTextStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'aboveGroundPatternStringProperty': LocalizedStringProperty;
+      'atGroundLevelStringProperty': LocalizedStringProperty;
     };
     'toolboxPanel': {
       'accessibleHeadingStringProperty': LocalizedStringProperty;
@@ -153,6 +160,12 @@ type StringsType = {
       'measuringTape': {
         'accessibleNameStringProperty': LocalizedStringProperty;
       }
+    };
+    'stopwatchNode': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
+    };
+    'measuringTapeNode': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
     };
     'trackToolboxPanel': {
       'accessibleNameStringProperty': LocalizedStringProperty;
@@ -165,14 +178,16 @@ type StringsType = {
     };
     'energyReadoutPatternStringProperty': LocalizedStringProperty;
     'energySensorNode': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
       'accessibleNameStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
       'nothingToMeasureStringProperty': LocalizedStringProperty;
       'movedOffSamplesStringProperty': LocalizedStringProperty;
       'sampleReadoutPatternStringProperty': LocalizedStringProperty;
     };
     'pieChart': {
       'accessibleHeadingStringProperty': LocalizedStringProperty;
-      'helpTextParagraphStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
       'positiveEnergyParagraphStringProperty': LocalizedStringProperty;
       'negativeEnergyParagraphStringProperty': LocalizedStringProperty;
       'kineticPercentPatternStringProperty': LocalizedStringProperty;
@@ -183,6 +198,10 @@ type StringsType = {
       'legendPotentialStringProperty': LocalizedStringProperty;
       'legendThermalStringProperty': LocalizedStringProperty;
       'legendTotalStringProperty': LocalizedStringProperty;
+    };
+    'speedometer': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
+      'accessibleParagraphStringProperty': LocalizedStringProperty;
     };
     'energyGraph': {
       'accessibleHelpTextCollapsedStringProperty': LocalizedStringProperty;

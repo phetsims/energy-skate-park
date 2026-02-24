@@ -24,6 +24,7 @@ import KeyboardDragListener from '../../../../scenery/js/listeners/KeyboardDragL
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
+import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -31,6 +32,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import Skater from '../model/Skater.js';
 import Track from '../model/Track.js';
+import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
@@ -40,11 +42,13 @@ const POSITION_DELTA_SHIFT = 0.025; // meters, slower movement with shift
 const PARAMETRIC_DELTA = 0.005; // parametric units for on-track movement
 const PARAMETRIC_DELTA_SHIFT = 0.001; // slower parametric movement with shift
 
-export default class SkaterNode extends Node {
+const attachToTrackKeys = 'j+t';
+
+export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
   // Static HotkeyData for keyboard help integration
   public static readonly ATTACH_TO_TRACK_HOTKEY_DATA = new HotkeyData( {
-    keys: [ 'alt+t' ],
+    keys: [ attachToTrackKeys ] as const,
     repoName: energySkatePark.name,
     keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.attachToTrackStringProperty
   } );
@@ -52,6 +56,7 @@ export default class SkaterNode extends Node {
   public readonly selectedSkaterProperty: NumberProperty;
   private readonly dragListener: SoundDragListener;
   private readonly grabDragInteraction: GrabDragInteraction;
+  private readonly boundaryReachedSoundPlayer: BoundaryReachedSoundPlayer;
 
   // Track the track and position where skater will be released (for keyboard drag)
   private keyboardTargetTrack: Track | null = null;
@@ -187,6 +192,8 @@ export default class SkaterNode extends Node {
 
     } );
 
+    this.boundaryReachedSoundPlayer = new BoundaryReachedSoundPlayer();
+
     let targetTrack: Track | null = null;
 
     let targetU: number | null = null;
@@ -195,8 +202,10 @@ export default class SkaterNode extends Node {
       const globalPoint = this.globalToParentPoint( event.pointer.point );
       let position = modelViewTransform.viewToModelPosition( globalPoint );
 
-      // make sure it is within the visible bounds
-      position = view.availableModelBounds!.getClosestPoint( position.x, position.y, position );
+      // Detect boundary contact before clamping, so we can play a sound on the rising edge
+      const clampedPosition = view.availableModelBounds!.getClosestPoint( position.x, position.y );
+      this.boundaryReachedSoundPlayer.setOnBoundary( !clampedPosition.equals( position ) );
+      position = clampedPosition;
 
       // PERFORMANCE/ALLOCATION: lots of unnecessary allocations and computation here, biggest improvement could be
       // to use binary search for position on the track
@@ -308,11 +317,15 @@ export default class SkaterNode extends Node {
       }
     } );
 
-    // Add keyboard listener for track attachment (T) and endpoint jumping (Home/End)
+    // Add keyboard listener for track attachment (j+t) and endpoint jumping (Home/End).
+    // Only active when the skater is keyboard-grabbed (not in the idle/button state).
     this.addInputListener( new KeyboardListener( {
-      keys: [ 'alt+t', 'home', 'end' ] as const,
+      keys: [ attachToTrackKeys, 'home', 'end' ] as const,
       fire: ( event, keysPressed ) => {
-        if ( keysPressed === 'alt+t' ) {
+        if ( this.grabDragInteraction.interactionStateProperty.value !== 'grabbed' ) {
+          return;
+        }
+        if ( keysPressed === attachToTrackKeys ) {
           this.attachToNearestTrack();
         }
         else if ( keysPressed === 'home' ) {
@@ -439,6 +452,8 @@ export default class SkaterNode extends Node {
     const newU = currentU + deltaU;
 
     if ( track.isParameterInBounds( newU ) ) {
+      this.boundaryReachedSoundPlayer.setOnBoundary( false );
+
       skater.parametricPositionProperty.value = newU;
       skater.positionProperty.value = track.getPoint( newU );
       skater.angleProperty.value = track.getViewAngleAt( newU ) +
@@ -456,6 +471,8 @@ export default class SkaterNode extends Node {
       this.keyboardTargetU = newU;
     }
     else {
+      this.boundaryReachedSoundPlayer.setOnBoundary( true );
+
       // At end of track, detach
       this.detachFromTrack( skater, track );
     }
@@ -520,7 +537,9 @@ export default class SkaterNode extends Node {
 
       // Keep within available bounds
       if ( view.availableModelBounds ) {
-        newPosition = view.availableModelBounds.closestPointTo( newPosition );
+        const clampedPosition = view.availableModelBounds.closestPointTo( newPosition );
+        this.boundaryReachedSoundPlayer.setOnBoundary( !clampedPosition.equals( newPosition ) );
+        newPosition = clampedPosition;
       }
 
       // Update position (no track snapping during keyboard drag)
