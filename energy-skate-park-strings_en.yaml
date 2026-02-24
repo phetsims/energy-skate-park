@@ -131,6 +131,7 @@ a11y:
     playgroundTrackPhraseMultiple: '{ $numberTracks } tracks and { $numberControlPoints } adjustable control points.'
     playgroundTrackPhraseSingle: '1 track and { $numberControlPoints } adjustable control points.'
     playgroundTrackPhraseNone: No track yet.
+    trackAndSkaterParagraph: '{ $trackPhrase } { $skaterPhrase }'
     skaterOnTrack: Skater is on track.
     skaterOffTrack: Skater is off track.
   trackNode:

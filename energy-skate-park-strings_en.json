@@ -361,6 +361,9 @@
       "playgroundTrackPhraseNone": {
         "value": "No track yet."
       },
+      "trackAndSkaterParagraph": {
+        "value": "{ $trackPhrase } { $skaterPhrase }"
+      },
       "skaterOnTrack": {
         "value": "Skater is on track."
       },

@@ -87,7 +87,10 @@ export default class EnergySkateParkTrackSetScreenView extends EnergySkateParkSa
         // Skater on/off track
         const skaterPhrase = skaterTrack !== null ? onTrackString : offTrackString;
 
-        return `${trackPhrase} ${skaterPhrase}`;
+        return EnergySkateParkFluent.a11y.yourSkatePark.trackAndSkaterParagraph.format( {
+          trackPhrase: trackPhrase,
+          skaterPhrase: skaterPhrase
+        } );
       }
     );
 

@@ -121,6 +121,7 @@ addToMapIfDefined( 'a11y_yourSkatePark_trackPhraseAdjustable', 'a11y.yourSkatePa
 addToMapIfDefined( 'a11y_yourSkatePark_playgroundTrackPhraseMultiple', 'a11y.yourSkatePark.playgroundTrackPhraseMultipleStringProperty' );
 addToMapIfDefined( 'a11y_yourSkatePark_playgroundTrackPhraseSingle', 'a11y.yourSkatePark.playgroundTrackPhraseSingleStringProperty' );
 addToMapIfDefined( 'a11y_yourSkatePark_playgroundTrackPhraseNone', 'a11y.yourSkatePark.playgroundTrackPhraseNoneStringProperty' );
+addToMapIfDefined( 'a11y_yourSkatePark_trackAndSkaterParagraph', 'a11y.yourSkatePark.trackAndSkaterParagraphStringProperty' );
 addToMapIfDefined( 'a11y_yourSkatePark_skaterOnTrack', 'a11y.yourSkatePark.skaterOnTrackStringProperty' );
 addToMapIfDefined( 'a11y_yourSkatePark_skaterOffTrack', 'a11y.yourSkatePark.skaterOffTrackStringProperty' );
 addToMapIfDefined( 'a11y_trackNode_accessibleHeadingWithIndex', 'a11y.trackNode.accessibleHeadingWithIndexStringProperty' );
@@ -426,6 +427,7 @@ const EnergySkateParkFluent = {
       playgroundTrackPhraseMultiple: new FluentPattern<{ numberControlPoints: FluentVariable, numberTracks: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_yourSkatePark_playgroundTrackPhraseMultiple', _.get( EnergySkateParkStrings, 'a11y.yourSkatePark.playgroundTrackPhraseMultipleStringProperty' ), [{"name":"numberControlPoints"},{"name":"numberTracks"}] ),
       playgroundTrackPhraseSingle: new FluentPattern<{ numberControlPoints: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_yourSkatePark_playgroundTrackPhraseSingle', _.get( EnergySkateParkStrings, 'a11y.yourSkatePark.playgroundTrackPhraseSingleStringProperty' ), [{"name":"numberControlPoints"}] ),
       playgroundTrackPhraseNoneStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_yourSkatePark_playgroundTrackPhraseNone', _.get( EnergySkateParkStrings, 'a11y.yourSkatePark.playgroundTrackPhraseNoneStringProperty' ) ),
+      trackAndSkaterParagraph: new FluentPattern<{ skaterPhrase: FluentVariable, trackPhrase: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_yourSkatePark_trackAndSkaterParagraph', _.get( EnergySkateParkStrings, 'a11y.yourSkatePark.trackAndSkaterParagraphStringProperty' ), [{"name":"skaterPhrase"},{"name":"trackPhrase"}] ),
       skaterOnTrackStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_yourSkatePark_skaterOnTrack', _.get( EnergySkateParkStrings, 'a11y.yourSkatePark.skaterOnTrackStringProperty' ) ),
       skaterOffTrackStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_yourSkatePark_skaterOffTrack', _.get( EnergySkateParkStrings, 'a11y.yourSkatePark.skaterOffTrackStringProperty' ) )
     },

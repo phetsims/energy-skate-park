@@ -137,8 +137,10 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
         // Skater on/off track
         const skaterPhrase = skaterTrack !== null ? onTrackString : offTrackString;
 
-        // TODO: Move `${trackPhrase} ${skaterPhrase}` to the yaml file, see https://github.com/phetsims/energy-skate-park/issues/452
-        return trackCount === 0 ? trackPhrase : `${trackPhrase} ${skaterPhrase}`;
+        return trackCount === 0 ? trackPhrase : EnergySkateParkFluent.a11y.yourSkatePark.trackAndSkaterParagraph.format( {
+          trackPhrase: trackPhrase,
+          skaterPhrase: skaterPhrase
+        } );
       }
     );
 
