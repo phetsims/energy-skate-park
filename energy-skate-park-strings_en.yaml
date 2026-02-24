@@ -115,6 +115,10 @@ a11y:
       accessibleName: Add Stopwatch
     measuringTape:
       accessibleName: Add Measuring Tape
+  stopwatchNode:
+    accessibleHeading: Stopwatch
+  measuringTapeNode:
+    accessibleHeading: Measuring Tape
   trackToolboxPanel:
     accessibleName: Track
   trackNode:

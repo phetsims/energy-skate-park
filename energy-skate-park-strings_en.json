@@ -324,6 +324,16 @@
         }
       }
     },
+    "stopwatchNode": {
+      "accessibleHeading": {
+        "value": "Stopwatch"
+      }
+    },
+    "measuringTapeNode": {
+      "accessibleHeading": {
+        "value": "Measuring Tape"
+      }
+    },
     "trackToolboxPanel": {
       "accessibleName": {
         "value": "Track"

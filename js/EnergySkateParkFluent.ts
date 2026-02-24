@@ -111,6 +111,8 @@ addToMapIfDefined( 'a11y_referenceHeightLine_atGroundLevel', 'a11y.referenceHeig
 addToMapIfDefined( 'a11y_toolboxPanel_accessibleHeading', 'a11y.toolboxPanel.accessibleHeadingStringProperty' );
 addToMapIfDefined( 'a11y_toolboxPanel_stopwatch_accessibleName', 'a11y.toolboxPanel.stopwatch.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_toolboxPanel_measuringTape_accessibleName', 'a11y.toolboxPanel.measuringTape.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_stopwatchNode_accessibleHeading', 'a11y.stopwatchNode.accessibleHeadingStringProperty' );
+addToMapIfDefined( 'a11y_measuringTapeNode_accessibleHeading', 'a11y.measuringTapeNode.accessibleHeadingStringProperty' );
 addToMapIfDefined( 'a11y_trackToolboxPanel_accessibleName', 'a11y.trackToolboxPanel.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_trackNode_accessibleName', 'a11y.trackNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_controlPointNode_accessibleName', 'a11y.controlPointNode.accessibleNameStringProperty' );
@@ -391,6 +393,12 @@ const EnergySkateParkFluent = {
       measuringTape: {
         accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_toolboxPanel_measuringTape_accessibleName', _.get( EnergySkateParkStrings, 'a11y.toolboxPanel.measuringTape.accessibleNameStringProperty' ) )
       }
+    },
+    stopwatchNode: {
+      accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_stopwatchNode_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.stopwatchNode.accessibleHeadingStringProperty' ) )
+    },
+    measuringTapeNode: {
+      accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_measuringTapeNode_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.measuringTapeNode.accessibleHeadingStringProperty' ) )
     },
     trackToolboxPanel: {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_trackToolboxPanel_accessibleName', _.get( EnergySkateParkStrings, 'a11y.trackToolboxPanel.accessibleNameStringProperty' ) )

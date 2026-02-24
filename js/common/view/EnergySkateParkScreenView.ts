@@ -342,6 +342,10 @@ export default class EnergySkateParkScreenView extends ScreenView {
     // tracks on top of panels and non-interactive visualizations
     this.topLayer.addChild( this.trackLayer );
 
+    // Heading Nodes to group tool PDOM elements under navigable headings in the Play Area
+    let stopwatchHeadingNode: Node | undefined;
+    let measuringTapeHeadingNode: Node | undefined;
+
     // add a measuring tape, on top of tracks, below the skater
     if ( options.showToolbox ) {
 
@@ -390,6 +394,21 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
       this.topLayer.addChild( this.stopwatchNode );
       this.topLayer.addChild( this.measuringTapeNode );
+
+      // Create heading Nodes so the stopwatch and measuring tape each have a navigable heading in the PDOM
+      stopwatchHeadingNode = new Node( {
+        visibleProperty: model.stopwatch.isVisibleProperty,
+        accessibleHeading: EnergySkateParkFluent.a11y.stopwatchNode.accessibleHeadingStringProperty,
+        pdomOrder: [ this.stopwatchNode ]
+      } );
+      this.addChild( stopwatchHeadingNode );
+
+      measuringTapeHeadingNode = new Node( {
+        visibleProperty: model.measuringTapeVisibleProperty,
+        accessibleHeading: EnergySkateParkFluent.a11y.measuringTapeNode.accessibleHeadingStringProperty,
+        pdomOrder: [ this.measuringTapeNode ]
+      } );
+      this.addChild( measuringTapeHeadingNode );
 
       this.toolboxPanel = new ToolboxPanel( model, this, tandem.createTandem( 'toolboxPanel' ) );
 
@@ -614,8 +633,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
       returnSkaterToPreviousStartingPositionButton,
       returnSkaterToGroundButton,
       this.referenceHeightLine,
-      ...this.stopwatchNode ? [ this.stopwatchNode ] : [],
-      ...this.measuringTapeNode ? [ this.measuringTapeNode ] : [],
+      ...stopwatchHeadingNode ? [ stopwatchHeadingNode ] : [],
+      ...measuringTapeHeadingNode ? [ measuringTapeHeadingNode ] : [],
       ...this.energyBarGraphAccordionBox ? [ this.energyBarGraphAccordionBox ] : [],
       this.pieChartLegend,
       this.speedometerNode

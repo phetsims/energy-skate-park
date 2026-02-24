@@ -161,6 +161,12 @@ type StringsType = {
         'accessibleNameStringProperty': LocalizedStringProperty;
       }
     };
+    'stopwatchNode': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
+    };
+    'measuringTapeNode': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
+    };
     'trackToolboxPanel': {
       'accessibleNameStringProperty': LocalizedStringProperty;
     };
