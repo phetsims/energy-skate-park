@@ -8,16 +8,19 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
+import ControlPointNode from './ControlPointNode.js';
 import TrackNode from './TrackNode.js';
 
 export default class ControlPointKeyboardDragListener extends SoundKeyboardDragListener {
 
-  public constructor( trackNode: TrackNode, controlPointIndex: number, isEndPoint: boolean, boundaryReachedSoundPlayer: BoundaryReachedSoundPlayer ) {
+  public constructor( trackNode: TrackNode, controlPointIndex: number, isEndPoint: boolean, boundaryReachedSoundPlayer: BoundaryReachedSoundPlayer, controlPointNode: ControlPointNode ) {
 
     const track = trackNode.track;
     const model = trackNode.model;
@@ -149,6 +152,14 @@ export default class ControlPointKeyboardDragListener extends SoundKeyboardDragL
         track.bumpAboveGround();
         controlPoint.draggingProperty.value = false;
         track.draggingProperty.value = false;
+
+        // Announce the control point's new position as an object response
+        controlPointNode.addAccessibleObjectResponse(
+          EnergySkateParkFluent.a11y.controlPointNode.accessibleObjectResponse.format( {
+            xCoordinate: toFixedNumber( controlPoint.positionProperty.value.x, 1 ),
+            yCoordinate: toFixedNumber( controlPoint.positionProperty.value.y, 1 )
+          } )
+        );
       },
       dragSpeed: 300,
       shiftDragSpeed: 75,

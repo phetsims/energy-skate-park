@@ -287,6 +287,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
     // Create GrabDragInteraction for the grab/release paradigm
     this.grabDragInteraction = new GrabDragInteraction( this, keyboardDragListener, view, {
       objectToGrabString: EnergySkateParkFluent.a11y.skaterNode.accessibleNameStringProperty,
+      accessibleHelpText: EnergySkateParkFluent.a11y.grabSkaterButton.accessibleHelpTextStringProperty,
       tandem: tandem.createTandem( 'grabDragInteraction' ),
 
       onGrab: inputType => {

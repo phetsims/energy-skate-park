@@ -170,11 +170,32 @@ type StringsType = {
     'trackToolboxPanel': {
       'accessibleNameStringProperty': LocalizedStringProperty;
     };
+    'yourSkatePark': {
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'trackPhraseFixedStringProperty': LocalizedStringProperty;
+      'trackPhraseAdjustableStringProperty': LocalizedStringProperty;
+      'playgroundTrackPhraseMultipleStringProperty': LocalizedStringProperty;
+      'playgroundTrackPhraseSingleStringProperty': LocalizedStringProperty;
+      'playgroundTrackPhraseNoneStringProperty': LocalizedStringProperty;
+      'skaterOnTrackStringProperty': LocalizedStringProperty;
+      'skaterOffTrackStringProperty': LocalizedStringProperty;
+    };
     'trackNode': {
-      'accessibleNameStringProperty': LocalizedStringProperty;
+      'accessibleHeadingWithIndexStringProperty': LocalizedStringProperty;
+      'accessibleHeadingStringProperty': LocalizedStringProperty;
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
     };
     'controlPointNode': {
       'accessibleNameStringProperty': LocalizedStringProperty;
+      'accessibleObjectResponseStringProperty': LocalizedStringProperty;
+    };
+    'clearButton': {
+      'accessibleNameStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseStringProperty': LocalizedStringProperty;
+    };
+    'grabSkaterButton': {
+      'accessibleHelpTextStringProperty': LocalizedStringProperty;
     };
     'energyReadoutPatternStringProperty': LocalizedStringProperty;
     'energySensorNode': {

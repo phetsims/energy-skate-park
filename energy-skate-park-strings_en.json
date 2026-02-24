@@ -336,17 +336,68 @@
     },
     "trackToolboxPanel": {
       "accessibleName": {
-        "value": "Track"
+        "value": "Add Track"
+      }
+    },
+    "yourSkatePark": {
+      "accessibleHeading": {
+        "value": "Your Skate Park"
+      },
+      "accessibleHelpText": {
+        "value": "Add track pieces as needed. Then, use connection options to connect tracks. Everything is movable with the Arrow keys. Check out Keyboard Shortcuts for more handy shortcuts."
+      },
+      "trackPhraseFixed": {
+        "value": "Track shape is { $trackShape }."
+      },
+      "trackPhraseAdjustable": {
+        "value": "Track shape is { $trackShape } with { $numberControlPoints } adjustable control points."
+      },
+      "playgroundTrackPhraseMultiple": {
+        "value": "{ $numberTracks } tracks and { $numberControlPoints } adjustable control points."
+      },
+      "playgroundTrackPhraseSingle": {
+        "value": "1 track and { $numberControlPoints } adjustable control points."
+      },
+      "playgroundTrackPhraseNone": {
+        "value": "No track yet."
+      },
+      "skaterOnTrack": {
+        "value": "Skater is on track."
+      },
+      "skaterOffTrack": {
+        "value": "Skater is off track."
       }
     },
     "trackNode": {
-      "accessibleName": {
-        "value": "Track { $position } of { $total }"
+      "accessibleHeadingWithIndex": {
+        "value": "Track { $index }"
+      },
+      "accessibleHeading": {
+        "value": "Track"
+      },
+      "accessibleHelpText": {
+        "value": "Move the control points to alter track shape."
       }
     },
     "controlPointNode": {
       "accessibleName": {
-        "value": "Control Point { $position } of { $total }"
+        "value": "Control Point { $index }"
+      },
+      "accessibleObjectResponse": {
+        "value": "at { $xCoordinate } { $yCoordinate } meters"
+      }
+    },
+    "clearButton": {
+      "accessibleName": {
+        "value": "Erase Tracks"
+      },
+      "accessibleContextResponse": {
+        "value": "All tracks removed from your skate park."
+      }
+    },
+    "grabSkaterButton": {
+      "accessibleHelpText": {
+        "value": "Look for skater to grab. Once grabbed, use Keyboard Shortcuts to attach to track or move along track."
       }
     },
     "energyReadoutPattern": {

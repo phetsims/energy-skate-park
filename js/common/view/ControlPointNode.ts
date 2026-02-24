@@ -54,8 +54,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
     const controlPointUIShownEmitter = new Emitter();
 
     const controlPoint = track.controlPoints[ i ];
-    const visibleControlPoints = track.controlPoints.filter( point => point.visible );
-    const visiblePosition = track.controlPoints.slice( 0, i + 1 ).filter( point => point.visible ).length;
+    const visibleIndex = track.controlPoints.slice( 0, i + 1 ).filter( point => point.visible ).length;
 
     // Default colors for the control point fill and highlight
     const fill = 'red';
@@ -77,8 +76,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
       tandem: tandem,
       visiblePropertyOptions: { phetioState: false },
       accessibleName: omitA11y ? undefined : EnergySkateParkFluent.a11y.controlPointNode.accessibleName.createProperty( {
-        position: visiblePosition,
-        total: visibleControlPoints.length
+        index: visibleIndex
       } )
     }, omitA11y ? undefined : AccessibleDraggableOptions ) );
 
@@ -332,7 +330,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
         disposer: this
       } );
 
-      const controlPointKeyboardDragListener = new ControlPointKeyboardDragListener( trackNode, i, isEndPoint, boundaryReachedSoundPlayer );
+      const controlPointKeyboardDragListener = new ControlPointKeyboardDragListener( trackNode, i, isEndPoint, boundaryReachedSoundPlayer, this );
       this.addInputListener( controlPointKeyboardDragListener, { disposer: this } );
 
       // Add discrete attachment listener for endpoint control points on attachable tracks

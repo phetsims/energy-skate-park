@@ -170,6 +170,9 @@ export default class EnergySkateParkScreenView extends ScreenView {
   // for layout
   private readonly visibilityControlsPanel?: VisibilityControlsPanel;
 
+  // Heading node that groups tracks, skater, and related buttons in the PDOM
+  protected readonly yourSkateParkHeadingNode: Node;
+
   private readonly viewBoundsPath?: Path;
   public availableModelBounds?: Bounds2;
 
@@ -520,6 +523,12 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.topLayer.addChild( returnSkaterToPreviousStartingPositionButton );
     this.topLayer.addChild( returnSkaterToGroundButton );
 
+    // Create the "Your Skate Park" heading node that groups tracks, skater, and related buttons in the PDOM
+    this.yourSkateParkHeadingNode = new Node( {
+      accessibleHeading: EnergySkateParkFluent.a11y.yourSkatePark.accessibleHeadingStringProperty
+    } );
+    this.addChild( this.yourSkateParkHeadingNode );
+
     const playingProperty = new BooleanProperty( !model.pausedProperty.value, {
       tandem: tandem.createTandem( 'playingProperty' )
     } );
@@ -626,12 +635,17 @@ export default class EnergySkateParkScreenView extends ScreenView {
     } );
 
     // Set the pdomOrder for keyboard traversal using ScreenView's built-in PDOM structure
-    // Play Area elements
-    this.pdomPlayAreaNode.pdomOrder = [
+    // Group tracks, skater, and return buttons under the "Your Skate Park" heading
+    this.yourSkateParkHeadingNode.pdomOrder = [
       this.trackLayer,
       this.skaterNode,
       returnSkaterToPreviousStartingPositionButton,
-      returnSkaterToGroundButton,
+      returnSkaterToGroundButton
+    ];
+
+    // Play Area elements
+    this.pdomPlayAreaNode.pdomOrder = [
+      this.yourSkateParkHeadingNode,
       this.referenceHeightLine,
       ...stopwatchHeadingNode ? [ stopwatchHeadingNode ] : [],
       ...measuringTapeHeadingNode ? [ measuringTapeHeadingNode ] : [],

@@ -10,7 +10,6 @@
 
 import Property from '../../../../axon/js/Property.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
-import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Shape from '../../../../kite/js/Shape.js';
 import LineStyles from '../../../../kite/js/util/LineStyles.js';
@@ -103,35 +102,53 @@ export default class TrackNode extends InteractiveHighlighting( Node ) {
 
     // Make draggable tracks keyboard-accessible with proper ARIA attributes
     if ( track.draggable ) {
-      const trackPositionProperty = new DerivedProperty( [ model.tracks.lengthProperty ], () => model.tracks.indexOf( track ) + 1 );
-      const trackAccessibleNameProperty = EnergySkateParkFluent.a11y.trackNode.accessibleName.createProperty( {
-        position: trackPositionProperty,
-        total: model.tracks.lengthProperty
-      } );
+
+      // Heading: "Track" when 1 track, "Track {index}" when multiple
+      const trackHeadingProperty = new DerivedProperty(
+        [
+          model.tracks.lengthProperty,
+          EnergySkateParkFluent.a11y.trackNode.accessibleHeadingStringProperty
+        ],
+        ( totalTracks, singleHeading ) => {
+          if ( totalTracks <= 1 ) {
+            return singleHeading;
+          }
+          return EnergySkateParkFluent.a11y.trackNode.accessibleHeadingWithIndex.format( {
+            index: model.tracks.indexOf( track ) + 1
+          } );
+        }
+      );
 
       this.mutate( AccessibleDraggableOptions );
-      this.accessibleName = trackAccessibleNameProperty;
+      this.mutate( {
+        containerTagName: 'section',
+        accessibleHeading: trackHeadingProperty,
+        accessibleHelpText: EnergySkateParkFluent.a11y.trackNode.accessibleHelpTextStringProperty
+      } );
+      this.accessibleName = trackHeadingProperty;
 
       disposeTrackAccessibleName = () => {
-        trackAccessibleNameProperty.dispose();
-        trackPositionProperty.dispose();
+        trackHeadingProperty.dispose();
       };
     }
     else if ( track.configurable && !options.isIcon && !options.trackToolboxIcon ) {
-      const trackAccessibleHeadingProperty: TReadOnlyProperty<string> = EnergySkateParkFluent.a11y.trackNode.accessibleName.createProperty( {
-        position: 1,
-        total: 1
-      } );
 
+      // Configurable non-draggable tracks (premade): only 1 visible at a time, heading is "Track"
       this.mutate( {
         containerTagName: 'section',
         tagName: 'div',
-        accessibleHeading: trackAccessibleHeadingProperty
+        accessibleHeading: EnergySkateParkFluent.a11y.trackNode.accessibleHeadingStringProperty,
+        accessibleHelpText: EnergySkateParkFluent.a11y.trackNode.accessibleHelpTextStringProperty
       } );
+    }
+    else if ( !options.isIcon && !options.trackToolboxIcon ) {
 
-      disposeTrackAccessibleName = () => {
-        trackAccessibleHeadingProperty.dispose();
-      };
+      // Non-configurable, non-draggable tracks: heading only, no help text about control points
+      this.mutate( {
+        containerTagName: 'section',
+        tagName: 'div',
+        accessibleHeading: EnergySkateParkFluent.a11y.trackNode.accessibleHeadingStringProperty
+      } );
     }
 
     this.model = model;
