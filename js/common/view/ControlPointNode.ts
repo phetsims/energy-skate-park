@@ -22,6 +22,7 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
+import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import ControlPointAttachmentKeyboardListener from './ControlPointAttachmentKeyboardListener.js';
 import ControlPointKeyboardDragListener from './ControlPointKeyboardDragListener.js';
 import ControlPointUI from './ControlPointUI.js';
@@ -122,7 +123,9 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
 
     // if the ControlPoint is 'interactive' it supports dragging and potentially track splitting
     let dragListener: SoundDragListener | null = null; // potential reference for disposal
+    let boundaryReachedSoundPlayer: BoundaryReachedSoundPlayer | null = null;
     if ( controlPoint.interactive ) {
+      boundaryReachedSoundPlayer = new BoundaryReachedSoundPlayer();
       let dragEvents = 0;
       let lastControlPointUI: ControlPointUI | null = null;
       dragListener = new SoundDragListener( {
@@ -181,6 +184,8 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
 
           // trigger reconstruction of the track shape based on the control points
           let pt = modelViewTransform.viewToModelPosition( globalPoint );
+          const proposedX = pt.x;
+          const proposedY = pt.y;
 
           // Constrain the control points to remain in y>0, see #71
           pt.y = Math.max( pt.y, 0 );
@@ -191,6 +196,8 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
           if ( dragBounds ) {
             pt = dragBounds.closestPointTo( pt );
           }
+
+          boundaryReachedSoundPlayer!.setOnBoundary( pt.x !== proposedX || pt.y !== proposedY );
 
           if ( assert && availableBoundsProperty.value ) {
             assert( availableBoundsProperty.value.containsPoint( pt ),
@@ -325,7 +332,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
         disposer: this
       } );
 
-      const controlPointKeyboardDragListener = new ControlPointKeyboardDragListener( trackNode, i, isEndPoint );
+      const controlPointKeyboardDragListener = new ControlPointKeyboardDragListener( trackNode, i, isEndPoint, boundaryReachedSoundPlayer );
       this.addInputListener( controlPointKeyboardDragListener, { disposer: this } );
 
       // Add discrete attachment listener for endpoint control points on attachable tracks

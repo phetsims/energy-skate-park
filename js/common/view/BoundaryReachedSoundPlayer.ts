@@ -14,17 +14,18 @@ import soundManager from '../../../../tambo/js/soundManager.js';
 import boundaryReached_mp3 from '../../../../tambo/sounds/boundaryReached_mp3.js';
 import energySkatePark from '../../energySkatePark.js';
 
+const boundaryReachedSoundClip = new SoundClip( boundaryReached_mp3 );
+soundManager.addSoundGenerator( boundaryReachedSoundClip );
+
 export default class BoundaryReachedSoundPlayer {
   private readonly isOnBoundaryProperty: BooleanProperty;
 
   public constructor() {
-    const soundClip = new SoundClip( boundaryReached_mp3 );
-    soundManager.addSoundGenerator( soundClip );
 
     this.isOnBoundaryProperty = new BooleanProperty( false );
     this.isOnBoundaryProperty.lazyLink( isOnBoundary => {
       if ( isOnBoundary ) {
-        soundClip.play();
+        boundaryReachedSoundClip.play();
       }
     } );
   }

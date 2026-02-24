@@ -41,6 +41,7 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import SunConstants from '../../../../sun/js/SunConstants.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
+import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
 import EnergySkateParkControlPanel from '../../common/view/EnergySkateParkControlPanel.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -290,11 +291,21 @@ export default class SkaterPathSensorNode extends Node {
     samples.addItemAddedListener( this.boundUpdateSensorDisplay );
 
     // add a drag listener to the probe body
+    const probeBoundarySoundPlayer = new BoundaryReachedSoundPlayer();
     this.probeNode.addInputListener( new SoundDragListener( {
       transform: modelViewTransform,
       positionProperty: sensorProbePositionProperty,
       dragBoundsProperty: modelBoundsProperty,
       start: () => { this.isDragging = true; },
+      drag: () => {
+        const pos = sensorProbePositionProperty.value;
+        const bounds = modelBoundsProperty.value;
+        if ( bounds ) {
+          const onBoundary = pos.x === bounds.minX || pos.x === bounds.maxX ||
+                             pos.y === bounds.minY || pos.y === bounds.maxY;
+          probeBoundarySoundPlayer.setOnBoundary( onBoundary );
+        }
+      },
       end: () => { this.isDragging = false; },
       tandem: options.tandem!.createTandem( 'dragListener' )
     } ) );
