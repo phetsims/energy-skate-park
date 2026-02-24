@@ -28,6 +28,7 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
+import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import TextPanel from './TextPanel.js';
 
@@ -137,6 +138,12 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
     const range = referenceHeightProperty.range;
     const dragBoundsProperty = new Property( new Bounds2( Number.NEGATIVE_INFINITY, range.min, Number.POSITIVE_INFINITY, range.max ) );
 
+    const boundaryReachedSoundPlayer = new BoundaryReachedSoundPlayer();
+    const checkBoundary = () => {
+      const height = referenceHeightProperty.value;
+      boundaryReachedSoundPlayer.setOnBoundary( height === range.min || height === range.max );
+    };
+
     this.addInputListener( new SoundDragListener( {
       transform: modelViewTransform,
       positionProperty: dragPositionProperty,
@@ -146,6 +153,7 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       start: () => {
         userControlledProperty.set( true );
       },
+      drag: checkBoundary,
       end: () => {
         userControlledProperty.set( false );
       },
@@ -162,6 +170,7 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       start: () => {
         userControlledProperty.set( true );
       },
+      drag: checkBoundary,
       end: () => {
         userControlledProperty.set( false );
       },

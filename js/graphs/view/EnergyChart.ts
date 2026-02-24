@@ -31,6 +31,7 @@ import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.j
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
+import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import GraphsConstants from '../GraphsConstants.js';
@@ -58,6 +59,7 @@ export default class EnergyChart extends XYCursorChartNode {
 
     const dragEndedEmitter = new Emitter();
     const dragStartedEmitter = new Emitter();
+    const cursorBoundarySoundPlayer = new BoundaryReachedSoundPlayer();
 
     // whether the sim was paused when dragging started, if not paused on drag start we will resume
     // sim play when dragging ends
@@ -130,6 +132,12 @@ export default class EnergyChart extends XYCursorChartNode {
           closestSample.skaterState.setToSkater( model.skater );
 
           model.skater.updatedEmitter.emit();
+
+          // Play boundary sound when the cursor is clamped to the recorded data range
+          const cursorValue = this.getCursorValue();
+          cursorBoundarySoundPlayer.setOnBoundary(
+            cursorValue === this.minRecordedXValue || cursorValue === this.maxRecordedXValue
+          );
         },
         endDrag: () => {
 
@@ -188,12 +196,15 @@ export default class EnergyChart extends XYCursorChartNode {
         dragStartedEmitter.emit();
       },
       drag: ( event, listener ) => {
+        const proposedValue = this.getCursorValue() + listener.modelDelta.x;
         const newValue = Utils.clamp(
-          this.getCursorValue() + listener.modelDelta.x,
+          proposedValue,
           this.minRecordedXValue,
           this.maxRecordedXValue
         );
         this.setCursorValue( newValue );
+
+        cursorBoundarySoundPlayer.setOnBoundary( newValue !== proposedValue );
 
         // Update skater to match the cursor position
         const closestSample = model.getClosestSkaterSample( this.getCursorValue() );
