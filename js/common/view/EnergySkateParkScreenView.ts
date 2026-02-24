@@ -9,7 +9,9 @@
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import PatternStringProperty from '../../../../axon/js/PatternStringProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import stepTimer from '../../../../axon/js/stepTimer.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import Rectangle from '../../../../dot/js/Rectangle.js';
@@ -626,33 +628,43 @@ export default class EnergySkateParkScreenView extends ScreenView {
       }
     } );
 
+    const valueProperty = new Property( 0 );
+    const valueStringProperty = new PatternStringProperty( new Property( 'The value is: {{value}}' ), {
+      value: valueProperty
+    } );
+
+
+    // test a changing value
+    stepTimer.setInterval( () => {
+      valueProperty.value = valueProperty.value + 1;
+    }, 500 );
+
     // Demo: accessibleTemplate showcasing rich PDOM structures that are difficult with existing API
     const accessibleTemplateDemo = new Node( {
       // accessibleName: 'hello',
+      // tagName: 'button',
       accessibleTemplate: new DerivedProperty( [
         EnergySkateParkFluent.energies.kineticStringProperty,
         EnergySkateParkFluent.energies.potentialStringProperty,
         EnergySkateParkFluent.energies.thermalStringProperty,
-        EnergySkateParkFluent.energies.totalStringProperty
-      ], ( kinetic, potential, thermal, total ) => {
+        EnergySkateParkFluent.energies.totalStringProperty,
+        valueStringProperty
+      ], ( kinetic, potential, thermal, total, valueString ) => {
         return html`
           <h3>Energy Skate Park Overview</h3>
           <p>This simulation explores <em>conservation of energy</em> as a <strong>skater</strong> moves along a track.</p>
 
-          <details>
-            <summary>Energy Types</summary>
-            <dl>
-              <dt>${kinetic}</dt>
-              <dd>Energy of motion — increases with speed</dd>
-              <dt>${potential}</dt>
-              <dd>Energy of position — increases with height</dd>
-              <dt>${thermal}</dt>
-              <dd>Energy lost to friction — always increases</dd>
-              <dt>${total}</dt>
-              <dd>Sum of all energy in the system</dd>
-            </dl>
-          </details>
-          
+          <dl>
+            <dt>${kinetic}</dt>
+            <dd>Energy of motion — increases with speed</dd>
+            <dt>${potential}</dt>
+            <dd>Energy of position — increases with height</dd>
+            <dt>${thermal}</dt>
+            <dd>Energy lost to friction — always increases</dd>
+            <dt>${total}</dt>
+            <dd>Sum of all energy in the system</dd>
+            <dt>${valueString}</dt>
+          </dl>
         `;
       } )
     } );
