@@ -188,7 +188,10 @@
   },
   "keyboardHelpDialog": {
     "skaterControls": {
-      "value": "Skater Controls"
+      "value": "Move or Jump Grabbed Skater"
+    },
+    "fromAnywhereInScreen": {
+      "value": "From Anywhere in Screen"
     },
     "grabOrRelease": {
       "value": "Grab or release"

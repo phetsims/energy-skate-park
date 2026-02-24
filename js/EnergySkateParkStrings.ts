@@ -103,6 +103,7 @@ type StringsType = {
   };
   'keyboardHelpDialog': {
     'skaterControlsStringProperty': LocalizedStringProperty;
+    'fromAnywhereInScreenStringProperty': LocalizedStringProperty;
     'grabOrReleaseStringProperty': LocalizedStringProperty;
     'moveAlongTrackStringProperty': LocalizedStringProperty;
     'attachToTrackStringProperty': LocalizedStringProperty;

@@ -11,7 +11,6 @@ import KeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/Keybo
 import KeyboardHelpSectionRow from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSectionRow.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
-import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import SkaterKeyboardListener from './SkaterKeyboardListener.js';
 import SkaterNode from './SkaterNode.js';
 
@@ -41,10 +40,7 @@ export default class SkaterKeyboardHelpSection extends KeyboardHelpSection {
       KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.MOVE_TO_START_OF_TRACK_HOTKEY_DATA ),
 
       // Jump to track end
-      KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.MOVE_TO_END_OF_TRACK_HOTKEY_DATA ),
-
-      // Restart skater
-      KeyboardHelpSectionRow.fromHotkeyData( EnergySkateParkScreenView.RESTART_SKATER_HOTKEY_DATA )
+      KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.MOVE_TO_END_OF_TRACK_HOTKEY_DATA )
     ];
 
     // 'Skater Controls' title

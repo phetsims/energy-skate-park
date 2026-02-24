@@ -73,6 +73,7 @@ addToMapIfDefined( 'preferences_accelerationUnitsDescription', 'preferences.acce
 addToMapIfDefined( 'preferences_metersPerSecondSquared', 'preferences.metersPerSecondSquaredStringProperty' );
 addToMapIfDefined( 'preferences_newtonsPerKilogram', 'preferences.newtonsPerKilogramStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_skaterControls', 'keyboardHelpDialog.skaterControlsStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_fromAnywhereInScreen', 'keyboardHelpDialog.fromAnywhereInScreenStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_grabOrRelease', 'keyboardHelpDialog.grabOrReleaseStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_moveAlongTrack', 'keyboardHelpDialog.moveAlongTrackStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_attachToTrack', 'keyboardHelpDialog.attachToTrackStringProperty' );
@@ -333,6 +334,7 @@ const EnergySkateParkFluent = {
   },
   keyboardHelpDialog: {
     skaterControlsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.skaterControlsStringProperty' ),
+    fromAnywhereInScreenStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.fromAnywhereInScreenStringProperty' ),
     grabOrReleaseStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.grabOrReleaseStringProperty' ),
     moveAlongTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.moveAlongTrackStringProperty' ),
     attachToTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.attachToTrackStringProperty' ),
