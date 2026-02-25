@@ -128,8 +128,8 @@ a11y:
                                    Everything is movable with the Arrow keys. Check out Keyboard Shortcuts for more handy shortcuts.
     trackPhraseFixed:              'Track shape is { $trackShape }.'
     trackPhraseAdjustable:         'Track shape is { $trackShape } with { $numberControlPoints } adjustable control points.'
-    playgroundTrackPhraseMultiple: '{ $numberTracks } tracks and { $numberControlPoints } adjustable control points.'
-    playgroundTrackPhraseSingle:   '1 track and { $numberControlPoints } adjustable control points.'
+    playgroundTrackPhraseMultiple: 'Your custom-built track has { $numberTracks } tracks and { $numberControlPoints } adjustable control points.'
+    playgroundTrackPhraseSingle:   'Your custom-built track has 1 track and { $numberControlPoints } adjustable control points.'
     playgroundTrackPhraseNone:     No track yet.
     trackAndSkaterParagraph:       '{ $trackPhrase } { $skaterPhrase }'
     skaterOnTrack:                 Skater is on track.
