@@ -353,10 +353,10 @@
         "value": "Track shape is { $trackShape } with { $numberControlPoints } adjustable control points."
       },
       "playgroundTrackPhraseMultiple": {
-        "value": "{ $numberTracks } tracks and { $numberControlPoints } adjustable control points."
+        "value": "Your custom-built track has { $numberTracks } tracks and { $numberControlPoints } adjustable control points."
       },
       "playgroundTrackPhraseSingle": {
-        "value": "1 track and { $numberControlPoints } adjustable control points."
+        "value": "Your custom-built track has 1 track and { $numberControlPoints } adjustable control points."
       },
       "playgroundTrackPhraseNone": {
         "value": "No track yet."
