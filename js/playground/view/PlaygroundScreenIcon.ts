@@ -4,7 +4,7 @@
  *
  * Dynamic Icon for the Intro Screen, dependent on the character preferences.
  *
- * @author Agustín Vallejo
+ * @author Agustín Vallejo (PhET Interactive Simulations)
  */
 
 import Matrix3 from '../../../../dot/js/Matrix3.js';

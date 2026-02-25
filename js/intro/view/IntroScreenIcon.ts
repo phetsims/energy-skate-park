@@ -3,7 +3,7 @@
 /**
  * Dynamic icon for the Intro screen.
  *
- * @author Agustín Vallejo
+ * @author Agustín Vallejo (PhET Interactive Simulations)
  */
 
 import Matrix3 from '../../../../dot/js/Matrix3.js';
