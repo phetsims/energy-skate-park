@@ -41,11 +41,13 @@ type SelfOptions = {
 };
 export type TrackNodeOptions = SelfOptions & NodeOptions;
 
+const InteractiveHighlightingPath = InteractiveHighlighting( Path );
+
 // constants
-export default class TrackNode extends InteractiveHighlighting( Node ) {
+export default class TrackNode extends Node {
   private readonly isIcon: boolean;
   public readonly model: EnergySkateParkModel;
-  private readonly road: Path;
+  private readonly road: InstanceType<typeof InteractiveHighlightingPath>;
   private readonly centerLine: Path;
 
   // Reuse arrays to save allocations and prevent garbage collections, see #38
@@ -94,9 +96,6 @@ export default class TrackNode extends InteractiveHighlighting( Node ) {
     }, providedOptions );
 
     super( options );
-
-    // Only enable interactive highlighting for draggable tracks in the play area
-    this.interactiveHighlightEnabled = track.draggable && !options.isIcon && !options.trackToolboxIcon;
 
     let disposeTrackAccessibleName: ( () => void ) | null = null;
 
@@ -154,14 +153,23 @@ export default class TrackNode extends InteractiveHighlighting( Node ) {
     this.model = model;
     this.isIcon = !!options.isIcon;
 
-    this.road = new Path( null, {
+    this.road = new InteractiveHighlightingPath( null, {
       fill: 'gray',
       cursor: track.draggable || options.trackToolboxIcon ? 'pointer' : 'default'
     } );
+
+    // Only enable interactive highlighting for draggable tracks in the play area.
+    // The highlight is on the road (not TrackNode) so it only activates when the pointer
+    // is over the actual track shape, not anywhere in the large bounding rectangle.
+    this.road.interactiveHighlightEnabled = track.draggable && !options.isIcon && !options.trackToolboxIcon;
+
     this.centerLine = new Path( null, {
       stroke: 'black',
       lineWidth: 1.2,
-      lineDash: [ 11, 8 ]
+      lineDash: [ 11, 8 ],
+
+      // don't interfere with the interactive highlights on the road
+      pickable: false
     } );
 
     this.children = [ this.road, this.centerLine ];
