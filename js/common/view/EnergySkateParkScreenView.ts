@@ -38,7 +38,7 @@ import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
-import { html } from '../../../../sherpa/lib/lit-core.min.js';
+import { html } from '../../../../sherpa/lib/lit-core-3.3.1.min.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -633,7 +633,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
       value: valueProperty
     } );
 
-
     // test a changing value
     stepTimer.setInterval( () => {
       valueProperty.value = valueProperty.value + 1;
@@ -641,8 +640,19 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
     // Demo: accessibleTemplate showcasing rich PDOM structures that are difficult with existing API
     const accessibleTemplateDemo = new Node( {
-      // accessibleName: 'hello',
-      // tagName: 'button',
+      tagName: 'button',
+
+      accessibleName: 'hello',
+      accessibleHeading: 'Skater',
+      accessibleParagraph: 'The skater is....(accessibleParagraph)',
+      appendAccessibleTemplate: true,
+
+      // testing a static
+      // accessibleTemplate: html`
+      //   <h3>Hello there</h3>
+      //   <p>Uh oh...</p>
+      // `
+
       accessibleTemplate: new DerivedProperty( [
         EnergySkateParkFluent.energies.kineticStringProperty,
         EnergySkateParkFluent.energies.potentialStringProperty,
@@ -651,9 +661,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
         valueStringProperty
       ], ( kinetic, potential, thermal, total, valueString ) => {
         return html`
-          <h3>Energy Skate Park Overview</h3>
+          <h3>Skater Details</h3>
           <p>This simulation explores <em>conservation of energy</em> as a <strong>skater</strong> moves along a track.</p>
-
           <dl>
             <dt>${kinetic}</dt>
             <dd>Energy of motion — increases with speed</dd>
