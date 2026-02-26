@@ -11,7 +11,7 @@ import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Utils from '../../../../dot/js/Utils.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
-import AccessibleListNode from '../../../../scenery-phet/js/accessibility/AccessibleListNode.js';
+import AccessibleList from '../../../../scenery-phet/js/accessibility/AccessibleList.js';
 import MoveToTrashLegendButton from '../../../../scenery-phet/js/buttons/MoveToTrashLegendButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
@@ -143,12 +143,6 @@ export default class PieChartLegend extends Panel {
     const panelContent = new Node();
     panelContent.children = [ contentWithTitle, clearThermalButton ];
 
-    // Accessibility: help text paragraph
-    const helpTextNode = new Node( {
-      accessibleParagraph: EnergySkateParkFluent.a11y.pieChart.accessibleHelpTextStringProperty
-    } );
-    panelContent.addChild( helpTextNode );
-
     // Accessibility: dynamic energy description paragraph
     const ENERGY_THRESHOLD = EnergySkateParkConstants.ENERGY_THRESHOLD;
     const energyDescriptionProperty = new DerivedProperty( [
@@ -182,10 +176,6 @@ export default class PieChartLegend extends Panel {
         energiesList: parts.join( ', ' )
       } );
     } );
-    const energyDescriptionNode = new Node( {
-      accessibleParagraph: energyDescriptionProperty
-    } );
-    panelContent.addChild( energyDescriptionNode );
 
     // Accessibility: legend list
     const legendItems: TReadOnlyProperty<string>[] = [
@@ -196,13 +186,6 @@ export default class PieChartLegend extends Panel {
     if ( options.includeTotal ) {
       legendItems.push( EnergySkateParkFluent.a11y.pieChart.legendTotalStringProperty );
     }
-    const legendListNode = new AccessibleListNode( legendItems, {
-      leadingParagraphStringProperty: EnergySkateParkFluent.a11y.pieChart.legendHeadingStringProperty
-    } );
-    panelContent.addChild( legendListNode );
-
-    // PDOM ordering within the panel
-    panelContent.pdomOrder = [ helpTextNode, energyDescriptionNode, clearThermalButton, legendListNode ];
 
     super( panelContent, merge( {
       x: 4,
@@ -210,7 +193,18 @@ export default class PieChartLegend extends Panel {
       xMargin: 7,
       yMargin: 6,
       tandem: tandem,
-      accessibleHeading: EnergySkateParkFluent.a11y.pieChart.accessibleHeadingStringProperty
+
+      // pdom
+      accessibleHeading: EnergySkateParkFluent.a11y.pieChart.accessibleHeadingStringProperty,
+      accessibleParagraph: EnergySkateParkFluent.a11y.pieChart.accessibleHelpTextStringProperty,
+      accessibleHelpText: energyDescriptionProperty,
+      accessibleTemplate: AccessibleList.createTemplate( {
+        leadingParagraphStringProperty: EnergySkateParkFluent.a11y.pieChart.legendHeadingStringProperty,
+        listItems: legendItems
+      } ),
+
+      // The list describing energies is placed after the focusable panel children.
+      appendAccessibleTemplate: true
     }, EnergySkateParkConstants.GRAPH_PANEL_OPTIONS ) );
 
     const strutGlobal = clearThermalButtonStrut.parentToGlobalPoint( clearThermalButtonStrut.center );
