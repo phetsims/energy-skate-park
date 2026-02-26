@@ -22,6 +22,7 @@ import Shape from '../../../../kite/js/Shape.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
+import AccessibleList from '../../../../scenery-phet/js/accessibility/AccessibleList.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
@@ -38,7 +39,6 @@ import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
-import { html } from '../../../../sherpa/lib/lit-core-3.3.1.min.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -634,8 +634,10 @@ export default class EnergySkateParkScreenView extends ScreenView {
     } );
 
     // test a changing value
+    const visibleProperty = new Property( true );
     stepTimer.setInterval( () => {
       valueProperty.value = valueProperty.value + 1;
+      visibleProperty.value = !visibleProperty.value;
     }, 500 );
 
     // Demo: accessibleTemplate showcasing rich PDOM structures that are difficult with existing API
@@ -647,35 +649,50 @@ export default class EnergySkateParkScreenView extends ScreenView {
       accessibleParagraph: 'The skater is....(accessibleParagraph)',
       appendAccessibleTemplate: true,
 
+      accessibleTemplate: AccessibleList.createTemplate(
+        {
+          leadingParagraphStringProperty: new Property( 'This is a leading paragraph that describes the list below.' ),
+          punctuationStyle: 'semicolon',
+          listItems: [ {
+            stringProperty: new Property( 'First item' ),
+            visibleProperty: visibleProperty
+          },
+            new Property( 'Second item' ),
+            new Property( 'Third item' ),
+            valueStringProperty
+          ]
+        }
+      )
+
       // testing a static
       // accessibleTemplate: html`
       //   <h3>Hello there</h3>
       //   <p>Uh oh...</p>
       // `
 
-      accessibleTemplate: new DerivedProperty( [
-        EnergySkateParkFluent.energies.kineticStringProperty,
-        EnergySkateParkFluent.energies.potentialStringProperty,
-        EnergySkateParkFluent.energies.thermalStringProperty,
-        EnergySkateParkFluent.energies.totalStringProperty,
-        valueStringProperty
-      ], ( kinetic, potential, thermal, total, valueString ) => {
-        return html`
-          <h3>Skater Details</h3>
-          <p>This simulation explores <em>conservation of energy</em> as a <strong>skater</strong> moves along a track.</p>
-          <dl>
-            <dt>${kinetic}</dt>
-            <dd>Energy of motion — increases with speed</dd>
-            <dt>${potential}</dt>
-            <dd>Energy of position — increases with height</dd>
-            <dt>${thermal}</dt>
-            <dd>Energy lost to friction — always increases</dd>
-            <dt>${total}</dt>
-            <dd>Sum of all energy in the system</dd>
-            <dt>${valueString}</dt>
-          </dl>
-        `;
-      } )
+      // accessibleTemplate: new DerivedProperty( [
+      //   EnergySkateParkFluent.energies.kineticStringProperty,
+      //   EnergySkateParkFluent.energies.potentialStringProperty,
+      //   EnergySkateParkFluent.energies.thermalStringProperty,
+      //   EnergySkateParkFluent.energies.totalStringProperty,
+      //   valueStringProperty
+      // ], ( kinetic, potential, thermal, total, valueString ) => {
+      //   return html`
+      //     <h3>Skater Details</h3>
+      //     <p>This simulation explores <em>conservation of energy</em> as a <strong>skater</strong> moves along a track.</p>
+      //     <dl>
+      //       <dt>${kinetic}</dt>
+      //       <dd>Energy of motion — increases with speed</dd>
+      //       <dt>${potential}</dt>
+      //       <dd>Energy of position — increases with height</dd>
+      //       <dt>${thermal}</dt>
+      //       <dd>Energy lost to friction — always increases</dd>
+      //       <dt>${total}</dt>
+      //       <dd>Sum of all energy in the system</dd>
+      //       <dt>${valueString}</dt>
+      //     </dl>
+      //   `;
+      // } )
     } );
     this.bottomLayer.addChild( accessibleTemplateDemo );
 
