@@ -18,13 +18,13 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import GrabDragInteraction from '../../../../scenery-phet/js/accessibility/grab-drag/GrabDragInteraction.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
+import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import KeyboardDragListener from '../../../../scenery/js/listeners/KeyboardDragListener.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
-import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -116,7 +116,13 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
     this.children = [ leftSkaterImageNode, rightSkaterImageNode ];
 
     // Show a red dot in the bottom center as the important particle model coordinate
-    const circle = new Circle( 8, { fill: 'red' } );
+    const circle = new Circle( 8, {
+      fill: 'red',
+
+      // Same as the purple energy dots
+      stroke: 'black',
+      lineWidth: 2
+    } );
     this.addChild( circle );
 
     let imageWidth: number;
