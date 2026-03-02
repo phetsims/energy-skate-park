@@ -134,6 +134,7 @@ type StringsType = {
         'introStringProperty': LocalizedStringProperty;
         'measureStringProperty': LocalizedStringProperty;
         'graphsStringProperty': LocalizedStringProperty;
+        'frictionStringProperty': LocalizedStringProperty;
         'playgroundStringProperty': LocalizedStringProperty;
       };
       'controlArea': {

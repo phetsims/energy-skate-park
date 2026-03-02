@@ -28,7 +28,7 @@ const trackTypeToNameProperty: Record<TrackType, TReadOnlyProperty<string>> = {
   LOOP: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.loopRadioButton.accessibleNameStringProperty
 };
 
-export type EnergySkateParkScreenType = 'intro' | 'measure' | 'graphs' | 'playground';
+export type EnergySkateParkScreenType = 'intro' | 'friction' | 'measure' | 'graphs' | 'playground';
 
 export default class EnergySkateParkScreenSummaryContent extends ScreenSummaryContent {
 
@@ -37,6 +37,7 @@ export default class EnergySkateParkScreenSummaryContent extends ScreenSummaryCo
     // Select playArea content based on screen type
     const playAreaContentMap: Record<EnergySkateParkScreenType, TReadOnlyProperty<string>> = {
       intro: EnergySkateParkFluent.a11y.screenSummary.playArea.introStringProperty,
+      friction: EnergySkateParkFluent.a11y.screenSummary.playArea.frictionStringProperty,
       measure: EnergySkateParkFluent.a11y.screenSummary.playArea.measureStringProperty,
       graphs: EnergySkateParkFluent.a11y.screenSummary.playArea.graphsStringProperty,
       playground: EnergySkateParkFluent.a11y.screenSummary.playArea.playgroundStringProperty
@@ -135,10 +136,10 @@ export default class EnergySkateParkScreenSummaryContent extends ScreenSummaryCo
     }
 
     // Combine into currentDetails - playground has a special no-track case
-    let currentDetailsContent: TReadOnlyProperty<string>;
+    let currentDetailsContentProperty: TReadOnlyProperty<string>;
 
     if ( screenType === 'playground' ) {
-      currentDetailsContent = new DerivedProperty(
+      currentDetailsContentProperty = new DerivedProperty(
         [
           model.tracks.lengthProperty,
           skaterPhraseProperty,
@@ -155,17 +156,17 @@ export default class EnergySkateParkScreenSummaryContent extends ScreenSummaryCo
       );
     }
     else {
-      currentDetailsContent = new DerivedProperty(
+      currentDetailsContentProperty = new DerivedProperty(
         [ skaterPhraseProperty, trackPhraseProperty, frictionPhraseProperty ],
         ( skaterPhrase, trackPhrase, frictionPhrase ) => `${skaterPhrase} ${trackPhrase} ${frictionPhrase}`
       );
     }
 
     // Interaction hint - playground has a dynamic hint based on whether tracks exist
-    let interactionHintContent: TReadOnlyProperty<string>;
+    let interactionHintContentProperty: TReadOnlyProperty<string>;
 
     if ( screenType === 'playground' ) {
-      interactionHintContent = new DerivedProperty(
+      interactionHintContentProperty = new DerivedProperty(
         [
           model.tracks.lengthProperty,
           EnergySkateParkFluent.a11y.screenSummary.interactionHint.hasTrackStringProperty,
@@ -175,14 +176,14 @@ export default class EnergySkateParkScreenSummaryContent extends ScreenSummaryCo
       );
     }
     else {
-      interactionHintContent = EnergySkateParkFluent.a11y.screenSummary.interactionHint.hasTrackStringProperty;
+      interactionHintContentProperty = EnergySkateParkFluent.a11y.screenSummary.interactionHint.hasTrackStringProperty;
     }
 
     super( {
       playAreaContent: playAreaContentMap[ screenType ],
       controlAreaContent: controlAreaContent,
-      currentDetailsContent: currentDetailsContent,
-      interactionHintContent: interactionHintContent
+      currentDetailsContent: currentDetailsContentProperty,
+      interactionHintContent: interactionHintContentProperty
     } );
   }
 }

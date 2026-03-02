@@ -99,6 +99,7 @@ addToMapIfDefined( 'a11y_noDataParagraph', 'a11y.noDataParagraphStringProperty' 
 addToMapIfDefined( 'a11y_screenSummary_playArea_intro', 'a11y.screenSummary.playArea.introStringProperty' );
 addToMapIfDefined( 'a11y_screenSummary_playArea_measure', 'a11y.screenSummary.playArea.measureStringProperty' );
 addToMapIfDefined( 'a11y_screenSummary_playArea_graphs', 'a11y.screenSummary.playArea.graphsStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_playArea_friction', 'a11y.screenSummary.playArea.frictionStringProperty' );
 addToMapIfDefined( 'a11y_screenSummary_playArea_playground', 'a11y.screenSummary.playArea.playgroundStringProperty' );
 addToMapIfDefined( 'a11y_screenSummary_controlArea_withTrackSelection', 'a11y.screenSummary.controlArea.withTrackSelectionStringProperty' );
 addToMapIfDefined( 'a11y_screenSummary_controlArea_withoutTrackSelection', 'a11y.screenSummary.controlArea.withoutTrackSelectionStringProperty' );
@@ -395,6 +396,7 @@ const EnergySkateParkFluent = {
         introStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_playArea_intro', _.get( EnergySkateParkStrings, 'a11y.screenSummary.playArea.introStringProperty' ) ),
         measureStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_playArea_measure', _.get( EnergySkateParkStrings, 'a11y.screenSummary.playArea.measureStringProperty' ) ),
         graphsStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_playArea_graphs', _.get( EnergySkateParkStrings, 'a11y.screenSummary.playArea.graphsStringProperty' ) ),
+        frictionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_playArea_friction', _.get( EnergySkateParkStrings, 'a11y.screenSummary.playArea.frictionStringProperty' ) ),
         playgroundStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_playArea_playground', _.get( EnergySkateParkStrings, 'a11y.screenSummary.playArea.playgroundStringProperty' ) )
       },
       controlArea: {

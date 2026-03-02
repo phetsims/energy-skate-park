@@ -104,6 +104,9 @@ a11y:
         At your skate park, a skater can move along an adjustable track.
         You can explore graphical representations of energy and measure speed.
         Additionally, the Energy Graph plots energy as a function of position or time.
+      friction: >-
+        At your skate park, a skater can move along a track with an adjustable amount of friction.
+        You can explore graphical representations of energy and measure speed.
       playground: >-
         At your skate park, a skater can move along a custom-built track.
         You can explore graphical representations of energy and measure speed.
