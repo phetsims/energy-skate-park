@@ -50,7 +50,7 @@ import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
 import EnergySkateParkControlPanel, { EnergySkateParkControlPanelOptions } from './EnergySkateParkControlPanel.js';
 import EnergySkateParkGridNode from './EnergySkateParkGridNode.js';
 import { EnergySkateParkVisibilityControlsOptions } from './EnergySkateParkVisibilityControls.js';
-import PieChartLegend from './PieChartLegend.js';
+import PieChartLegend, { PieChartLegendOptions } from './PieChartLegend.js';
 import PieChartNode from './PieChartNode.js';
 import ReferenceHeightLine from './ReferenceHeightLine.js';
 import SkaterNode from './SkaterNode.js';
@@ -96,6 +96,9 @@ type SelfOptions = {
   // if true, the "grid" and "reference height" visibility controls will be displayed in a separate
   // panel near the bottom of the screen
   showSeparateVisibilityControlsPanel?: boolean;
+
+  // options passed along to PieChartLegend
+  pieChartLegendOptions?: PieChartLegendOptions | null;
 
   // options passed along to EnergySkateParkControlPanel
   controlPanelOptions?: EnergySkateParkControlPanelOptions | null;
@@ -186,6 +189,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       showReferenceHeight: true,
       showToolbox: true,
       showSeparateVisibilityControlsPanel: true,
+      pieChartLegendOptions: null,
       controlPanelOptions: null,
       visibilityControlsOptions: null
     }, providedOptions );
@@ -253,7 +257,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
       model.skater,
       model.clearThermal.bind( model ),
       model.pieChartVisibleProperty,
-      tandem.createTandem( 'pieChartLegend' )
+      tandem.createTandem( 'pieChartLegend' ),
+      options.pieChartLegendOptions || undefined
     );
     this.bottomLayer.addChild( this.pieChartLegend );
 
