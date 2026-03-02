@@ -11,10 +11,10 @@ import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
 import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
+import InteractiveHighlightingNode from '../../../../scenery/js/accessibility/voicing/nodes/InteractiveHighlightingNode.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
-import InteractiveHighlightingNode from '../../../../scenery/js/accessibility/voicing/nodes/InteractiveHighlightingNode.js';
 import type Node from '../../../../scenery/js/nodes/Node.js';
 import { rasterizeNode } from '../../../../scenery/js/util/rasterizeNode.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
@@ -44,7 +44,9 @@ export default class ToolboxPanel extends Panel {
     }, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
 
     // create the icons
-    const measuringTapeIcon = MeasuringTapeNode.createIcon();
+    const measuringTapeIcon = MeasuringTapeNode.createIcon( {
+      crosshairColor: 'black'
+    } );
     measuringTapeIcon.setScaleMagnitude( 0.7 );
 
     const stopwatchIcon = rasterizeNode( new StopwatchNode( new Stopwatch( {

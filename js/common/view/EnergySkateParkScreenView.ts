@@ -40,13 +40,13 @@ import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushBut
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
 import BackgroundNode from './BackgroundNode.js';
 import { EnergyBarGraphOptions } from './EnergyBarGraph.js';
 import EnergyBarGraphAccordionBox from './EnergyBarGraphAccordionBox.js';
-import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import EnergySkateParkControlPanel, { EnergySkateParkControlPanelOptions } from './EnergySkateParkControlPanel.js';
 import EnergySkateParkGridNode from './EnergySkateParkGridNode.js';
 import { EnergySkateParkVisibilityControlsOptions } from './EnergySkateParkVisibilityControls.js';
@@ -375,7 +375,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
             model.measuringTapeVisibleProperty.set( false );
           }
         },
-        tandem: tandem.createTandem( 'measuringTapeNode' )
+        tandem: tandem.createTandem( 'measuringTapeNode' ),
+        crosshairColor: 'black'
       } );
 
       this.stopwatchNode = new StopwatchNode( model.stopwatch, {
