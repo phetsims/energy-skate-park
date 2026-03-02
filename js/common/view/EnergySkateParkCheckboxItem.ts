@@ -25,7 +25,7 @@ import Checkbox, { CheckboxOptions } from '../../../../sun/js/Checkbox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 
 const propertiesSpeedStringProperty = EnergySkateParkFluent.speedometer.labelStringProperty;
 
@@ -68,10 +68,10 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
     return new Node( {
       tandem: tandem,
       children: [
-        new Circle( radius, { fill: EnergySkateParkColorScheme.potentialEnergy, lineWidth: 0.5, stroke: 'black' } ),
+        new Circle( radius, { fill: EnergySkateParkColors.potentialEnergyColorProperty, lineWidth: 0.5, stroke: 'black' } ),
         new Path( arc, {
           tandem: tandem.createTandem( 'kineticEnergyArc' ),
-          fill: EnergySkateParkColorScheme.kineticEnergy, lineWidth: 0.5, stroke: 'black'
+          fill: EnergySkateParkColors.kineticEnergyColorProperty, lineWidth: 0.5, stroke: 'black'
         } )
       ]
     } );
@@ -122,12 +122,12 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
     const backgroundLine = new Path( lineShape, {
       lineDash: lineDash,
       lineWidth: height,
-      stroke: EnergySkateParkColorScheme.referenceLineStroke
+      stroke: EnergySkateParkColors.referenceLineStrokeProperty
     } );
     const foregroundLine = new Path( lineShape, {
       lineDash: lineDash,
       lineWidth: height * 0.8,
-      stroke: EnergySkateParkColorScheme.referenceLineFill
+      stroke: EnergySkateParkColors.referenceLineFillProperty
     } );
 
     return new Node( { children: [ backgroundLine, foregroundLine ] } );
@@ -152,8 +152,8 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
       .circle( secondCenter, circleRadius ).newSubpath()
       .circle( thirdCenter, circleRadius );
     const circlesPath = new Path( circleShape, {
-      fill: EnergySkateParkColorScheme.pathFill,
-      stroke: EnergySkateParkColorScheme.pathStroke
+      fill: EnergySkateParkColors.pathFillProperty,
+      stroke: EnergySkateParkColors.pathStrokeProperty
     } );
 
     // line connecting each circle
@@ -161,7 +161,7 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
       .quadraticCurveToPoint( firstCenter.plusXY( 0, pointDistance ), secondCenter )
       .quadraticCurveToPoint( thirdCenter.plusXY( 0, pointDistance ), thirdCenter );
     const linePath = new Path( lineShape, {
-      stroke: EnergySkateParkColorScheme.pathStroke,
+      stroke: EnergySkateParkColors.pathStrokeProperty,
       lineWidth: 1
     } );
 
@@ -176,19 +176,19 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
     const iconWidth = 19;
 
     const trackRectangle = new Rectangle( 0, 0, iconWidth, 6.8, {
-      fill: EnergySkateParkColorScheme.roadFill
+      fill: EnergySkateParkColors.roadFillProperty
     } );
 
     const trackDashes = new Line( 0, 0, iconWidth, 0, {
-      fill: EnergySkateParkColorScheme.roadLine,
-      stroke: EnergySkateParkColorScheme.roadLine,
+      fill: EnergySkateParkColors.roadLineColorProperty,
+      stroke: EnergySkateParkColors.roadLineColorProperty,
       center: trackRectangle.center,
       lineWidth: 1,
       lineDash: [ 2.5, 1.8 ]
     } );
 
     const centerOfMassCircle = new Circle( 2, {
-      fill: EnergySkateParkColorScheme.particleCircle,
+      fill: EnergySkateParkColors.particleCircleFillProperty,
       opacity: 0.7,
       center: trackRectangle.center
     } );

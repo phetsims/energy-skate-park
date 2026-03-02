@@ -30,7 +30,7 @@ import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioS
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
-import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -237,19 +237,19 @@ export default class EnergyChart extends XYCursorChartNode {
     const seriesOptions = { lineWidth: 2 };
 
     this.kineticEnergyDataSeries = new DynamicSeries( merge( {
-      color: EnergySkateParkColorScheme.kineticEnergy,
+      color: EnergySkateParkColors.kineticEnergyColorProperty.value,
       visibleProperty: model.kineticEnergyDataVisibleProperty
     }, seriesOptions ) );
     this.potentialEnergyDataSeries = new DynamicSeries( merge( {
-      color: EnergySkateParkColorScheme.potentialEnergy,
+      color: EnergySkateParkColors.potentialEnergyColorProperty.value,
       visibleProperty: model.potentialEnergyDataVisibleProperty
     }, seriesOptions ) );
     this.thermalEnergyDataSeries = new DynamicSeries( merge( {
-      color: EnergySkateParkColorScheme.thermalEnergy,
+      color: EnergySkateParkColors.thermalEnergyColorProperty.value,
       visibleProperty: model.thermalEnergyDataVisibleProperty
     }, seriesOptions ) );
     this.totalEnergyDataSeries = new DynamicSeries( merge( {
-      color: EnergySkateParkColorScheme.totalEnergy,
+      color: EnergySkateParkColors.totalEnergyColorProperty.value,
       visibleProperty: model.totalEnergyDataVisibleProperty
     }, seriesOptions ) );
 

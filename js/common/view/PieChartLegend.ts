@@ -21,7 +21,7 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import VStrut from '../../../../scenery/js/nodes/VStrut.js';
-import Color from '../../../../scenery/js/util/Color.js';
+import TPaint from '../../../../scenery/js/util/TPaint.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -29,7 +29,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import Skater from '../model/Skater.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 
 const energyEnergyStringProperty = EnergySkateParkFluent.energies.energyStringProperty;
 const energyKineticStringProperty = EnergySkateParkFluent.energies.kineticStringProperty;
@@ -70,7 +70,7 @@ export default class PieChartLegend extends Panel {
       } );
     };
 
-    const createBar = ( index: number, color: Color ) => {
+    const createBar = ( index: number, color: TPaint ) => {
       return new Rectangle( 0, 0, 20.26, 20.26, {
         fill: color,
         stroke: 'black',
@@ -78,10 +78,10 @@ export default class PieChartLegend extends Panel {
       } );
     };
 
-    const kineticBar = createBar( 0, EnergySkateParkColorScheme.kineticEnergy );
-    const potentialBar = createBar( 1, EnergySkateParkColorScheme.potentialEnergy );
-    const thermalBar = createBar( 2, EnergySkateParkColorScheme.thermalEnergy );
-    const totalBar = createBar( 3, EnergySkateParkColorScheme.totalEnergy );
+    const kineticBar = createBar( 0, EnergySkateParkColors.kineticEnergyColorProperty );
+    const potentialBar = createBar( 1, EnergySkateParkColors.potentialEnergyColorProperty );
+    const thermalBar = createBar( 2, EnergySkateParkColors.thermalEnergyColorProperty );
+    const totalBar = createBar( 3, EnergySkateParkColors.totalEnergyColorProperty );
 
     const kineticLabel = createLabel( 0, energyKineticStringProperty, 'kineticEnergyLabelText' );
     const potentialLabel = createLabel( 1, energyPotentialStringProperty, 'potentialEnergyLabelText' );
@@ -89,7 +89,7 @@ export default class PieChartLegend extends Panel {
     const totalLabel = createLabel( 3, energyTotalStringProperty, 'totalEnergyLabelText' );
 
     const clearThermalButton = new MoveToTrashLegendButton( {
-      arrowColor: EnergySkateParkColorScheme.thermalEnergy,
+      arrowColor: EnergySkateParkColors.thermalEnergyColorProperty,
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: clearThermal,
       centerX: thermalLabel.centerX,

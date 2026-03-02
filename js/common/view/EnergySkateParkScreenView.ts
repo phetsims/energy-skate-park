@@ -46,7 +46,7 @@ import Track from '../model/Track.js';
 import BackgroundNode from './BackgroundNode.js';
 import { EnergyBarGraphOptions } from './EnergyBarGraph.js';
 import EnergyBarGraphAccordionBox from './EnergyBarGraphAccordionBox.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import EnergySkateParkControlPanel, { EnergySkateParkControlPanelOptions } from './EnergySkateParkControlPanel.js';
 import EnergySkateParkGridNode from './EnergySkateParkGridNode.js';
 import { EnergySkateParkVisibilityControlsOptions } from './EnergySkateParkVisibilityControls.js';
@@ -367,7 +367,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
         tipPositionProperty: model.measuringTapeTipPositionProperty,
         modelViewTransform: modelViewTransform,
         dragBounds: this.availableModelBoundsProperty.get(),
-        textBackgroundColor: EnergySkateParkColorScheme.transparentPanelFill,
+        textBackgroundColor: EnergySkateParkColors.transparentPanelFillProperty,
         textColor: 'black',
         textFont: new PhetFont( { size: 14.7 } ),
         baseDragEnded: () => {
@@ -493,7 +493,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       content: skaterIconImage1,
 
       // green means "go" since the skater will likely start moving at this point
-      baseColor: EnergySkateParkColorScheme.kineticEnergy,
+      baseColor: EnergySkateParkColors.kineticEnergyColorProperty,
       listener: model.returnSkater.bind( model ),
       tandem: tandem.createTandem( 'returnSkaterToPreviousStartingPositionButton' ),
       accessibleName: EnergySkateParkFluent.a11y.returnSkaterToPreviousStartingPositionButton.accessibleNameStringProperty,

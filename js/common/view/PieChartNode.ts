@@ -20,7 +20,7 @@ import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.j
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import Skater from '../model/Skater.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 
 type SelfOptions = {
 
@@ -50,11 +50,11 @@ export default class PieChartNode extends Node {
     };
 
     const kineticEnergySlice = new Path( null, combineOptions<PathOptions>( {
-      fill: EnergySkateParkColorScheme.kineticEnergy
+      fill: EnergySkateParkColors.kineticEnergyColorProperty
     }, sliceOptions ) );
 
     const potentialEnergySlice = new Path( null, combineOptions<PathOptions>( {
-      fill: EnergySkateParkColorScheme.potentialEnergy
+      fill: EnergySkateParkColors.potentialEnergyColorProperty
     }, sliceOptions ) );
 
     // Skip bounds computation to improve performance, see #245
@@ -63,7 +63,7 @@ export default class PieChartNode extends Node {
 
     // total energy representation is a full circle, so it can use the optimized version.
     const totalEnergyCircle = new Circle( 1, {
-      fill: EnergySkateParkColorScheme.totalEnergy,
+      fill: EnergySkateParkColors.totalEnergyColorProperty,
       stroke: 'black',
       lineWidth: 1,
       lineDash: [ 2, 2 ],
@@ -72,7 +72,7 @@ export default class PieChartNode extends Node {
 
     // Back layer is always a circle, so use the optimized version.
     const thermalEnergySlice = new Circle( 1, {
-      fill: EnergySkateParkColorScheme.thermalEnergy,
+      fill: EnergySkateParkColors.thermalEnergyColorProperty,
       stroke: 'black',
       lineWidth: 1
     } );

@@ -25,7 +25,7 @@ import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
 import PremadeTracks, { TrackType } from '../model/PremadeTracks.js';
 import BackgroundNode from './BackgroundNode.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import TrackNode from './TrackNode.js';
 
@@ -56,9 +56,9 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         xMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
         yMargin: EnergySkateParkConstants.RADIO_BUTTON_CONTENT_MARGIN,
         cornerRadius: EnergySkateParkConstants.RADIO_BUTTON_CORNER_RADIUS,
-        baseColor: EnergySkateParkColorScheme.radioButtonBaseColor,
+        baseColor: EnergySkateParkColors.radioButtonBaseColorProperty,
         buttonAppearanceStrategyOptions: {
-          selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke
+          selectedStroke: EnergySkateParkColors.radioButtonSelectedStrokeProperty
         }
       },
       accessibleName: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.accessibleNameStringProperty,

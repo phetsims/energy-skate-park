@@ -34,7 +34,7 @@ import VerticalCheckboxGroup, { VerticalCheckboxGroupItem } from '../../../../su
 import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
-import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import GraphsConstants from '../GraphsConstants.js';
@@ -77,19 +77,19 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
 
     // check boxes for visibility of energy data
     const checkboxGroup = new VerticalCheckboxGroup( [
-      EnergyGraphAccordionBox.createCheckboxItem( model.kineticEnergyDataVisibleProperty, kineticEnergyLabelStringProperty, EnergySkateParkColorScheme.kineticEnergy, labelAlignGroup, {
+      EnergyGraphAccordionBox.createCheckboxItem( model.kineticEnergyDataVisibleProperty, kineticEnergyLabelStringProperty, EnergySkateParkColors.kineticEnergyColorProperty, labelAlignGroup, {
         accessibleContextResponseChecked: EnergySkateParkFluent.a11y.energyGraph.kineticCheckbox.accessibleContextResponseCheckedStringProperty,
         accessibleContextResponseUnchecked: EnergySkateParkFluent.a11y.energyGraph.kineticCheckbox.accessibleContextResponseUncheckedStringProperty
       } ),
-      EnergyGraphAccordionBox.createCheckboxItem( model.potentialEnergyDataVisibleProperty, potentialEnergyLabelStringProperty, EnergySkateParkColorScheme.potentialEnergy, labelAlignGroup, {
+      EnergyGraphAccordionBox.createCheckboxItem( model.potentialEnergyDataVisibleProperty, potentialEnergyLabelStringProperty, EnergySkateParkColors.potentialEnergyColorProperty, labelAlignGroup, {
         accessibleContextResponseChecked: EnergySkateParkFluent.a11y.energyGraph.potentialCheckbox.accessibleContextResponseCheckedStringProperty,
         accessibleContextResponseUnchecked: EnergySkateParkFluent.a11y.energyGraph.potentialCheckbox.accessibleContextResponseUncheckedStringProperty
       } ),
-      EnergyGraphAccordionBox.createCheckboxItem( model.thermalEnergyDataVisibleProperty, thermalEnergyLabelStringProperty, EnergySkateParkColorScheme.thermalEnergy, labelAlignGroup, {
+      EnergyGraphAccordionBox.createCheckboxItem( model.thermalEnergyDataVisibleProperty, thermalEnergyLabelStringProperty, EnergySkateParkColors.thermalEnergyColorProperty, labelAlignGroup, {
         accessibleContextResponseChecked: EnergySkateParkFluent.a11y.energyGraph.thermalCheckbox.accessibleContextResponseCheckedStringProperty,
         accessibleContextResponseUnchecked: EnergySkateParkFluent.a11y.energyGraph.thermalCheckbox.accessibleContextResponseUncheckedStringProperty
       } ),
-      EnergyGraphAccordionBox.createCheckboxItem( model.totalEnergyDataVisibleProperty, totalEnergyLabelStringProperty, EnergySkateParkColorScheme.totalEnergy, labelAlignGroup, {
+      EnergyGraphAccordionBox.createCheckboxItem( model.totalEnergyDataVisibleProperty, totalEnergyLabelStringProperty, EnergySkateParkColors.totalEnergyColorProperty, labelAlignGroup, {
         accessibleContextResponseChecked: EnergySkateParkFluent.a11y.energyGraph.totalCheckbox.accessibleContextResponseCheckedStringProperty,
         accessibleContextResponseUnchecked: EnergySkateParkFluent.a11y.energyGraph.totalCheckbox.accessibleContextResponseUncheckedStringProperty
       } )

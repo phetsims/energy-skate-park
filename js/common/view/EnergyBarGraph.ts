@@ -32,7 +32,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import Skater from '../model/Skater.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 
 // constants
 const ZOOM_BUTTON_TOUCH_DILATION = 5;
@@ -89,7 +89,7 @@ export default class EnergyBarGraph extends Node {
 
     // button to remove thermal energy will be below the "thermal" energy label
     const clearThermalButton = new MoveToTrashLegendButton( {
-      arrowColor: EnergySkateParkColorScheme.thermalEnergy,
+      arrowColor: EnergySkateParkColors.thermalEnergyColorProperty,
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: skater.clearThermal.bind( skater ),
       scale: 0.86,
@@ -138,19 +138,19 @@ export default class EnergyBarGraph extends Node {
 
     const kineticEntry = {
       property: createHideSmallValuesProperty( skater.kineticEnergyProperty ),
-      color: EnergySkateParkColorScheme.kineticEnergy
+      color: EnergySkateParkColors.kineticEnergyColorProperty
     };
     const potentialEntry = {
       property: createHideSmallValuesProperty( skater.potentialEnergyProperty ),
-      color: EnergySkateParkColorScheme.potentialEnergy
+      color: EnergySkateParkColors.potentialEnergyColorProperty
     };
     const thermalEntry = {
       property: createShowSmallValuesProperty( skater.thermalEnergyProperty ),
-      color: EnergySkateParkColorScheme.thermalEnergy
+      color: EnergySkateParkColors.thermalEnergyColorProperty
     };
     const totalEntry = {
       property: createShowSmallValuesProperty( skater.totalEnergyProperty ),
-      color: EnergySkateParkColorScheme.totalEnergy
+      color: EnergySkateParkColors.totalEnergyColorProperty
     };
 
     this.barChartNode = new BarChartNode( [
@@ -170,7 +170,7 @@ export default class EnergyBarGraph extends Node {
 
       barSpacing: 15,
 
-      labelBackgroundColor: EnergySkateParkColorScheme.transparentPanelFill
+      labelBackgroundColor: EnergySkateParkColors.transparentPanelFillProperty
     } );
 
     // main content for the containing panel, assembly depends on whether zoom buttons are required
@@ -292,12 +292,12 @@ export default class EnergyBarGraph extends Node {
       children: [
         new Rectangle( 0, 0, 20, 20, { fill: 'white', stroke: 'black', lineWidth: 0.5 } ),
         new Rectangle( 3, 14, 5, 6, {
-          fill: EnergySkateParkColorScheme.kineticEnergy,
+          fill: EnergySkateParkColors.kineticEnergyColorProperty,
           stroke: 'black',
           lineWidth: 0.5
         } ),
         new Rectangle( 11, 8, 5, 12, {
-          fill: EnergySkateParkColorScheme.potentialEnergy,
+          fill: EnergySkateParkColors.potentialEnergyColorProperty,
           stroke: 'black',
           lineWidth: 0.5
         } )

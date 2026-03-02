@@ -42,7 +42,7 @@ import SunConstants from '../../../../sun/js/SunConstants.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
-import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import EnergySkateParkControlPanel from '../../common/view/EnergySkateParkControlPanel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -183,7 +183,7 @@ export default class SkaterPathSensorNode extends Node {
     } );
 
     this.heightSpeedRectangle = new Rectangle( this.heightSpeedVBox.bounds, {
-      fill: EnergySkateParkColorScheme.transparentPanelFill
+      fill: EnergySkateParkColors.transparentPanelFillProperty
     } );
     this.heightSpeedRectangle.addChild( this.heightSpeedVBox );
 
@@ -533,7 +533,7 @@ export default class SkaterPathSensorNode extends Node {
 
     const numberDisplay = new NumberDisplay( valueProperty, ENERGY_RANGE, {
       backgroundStroke: 'black',
-      backgroundFill: EnergySkateParkColorScheme.panelFill,
+      backgroundFill: EnergySkateParkColors.panelFillProperty,
       cornerRadius: 3,
       textOptions: {
         font: LABEL_FONT,

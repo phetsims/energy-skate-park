@@ -13,7 +13,7 @@ import merge from '../../../phet-core/js/merge.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import { PanelOptions } from '../../../sun/js/Panel.js';
 import energySkatePark from '../energySkatePark.js';
-import EnergySkateParkColorScheme from './view/EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from './EnergySkateParkColors.js';
 
 // for zoom buttons for bar graphs, pressing button will increase/decrease scale by this much
 const ZOOM_FACTOR_DELTA = 1 / 60;
@@ -32,8 +32,8 @@ const PANEL_CORNER_RADIUS = 5;
 
 const PANEL_OPTIONS: PanelOptions = {
   cornerRadius: PANEL_CORNER_RADIUS,
-  fill: EnergySkateParkColorScheme.panelFill,
-  stroke: EnergySkateParkColorScheme.panelStroke
+  fill: EnergySkateParkColors.panelFillProperty,
+  stroke: EnergySkateParkColors.panelStrokeProperty
 };
 
 export default class EnergySkateParkConstants {
@@ -67,7 +67,7 @@ export default class EnergySkateParkConstants {
   public static readonly PANEL_OPTIONS = PANEL_OPTIONS;
 
   public static readonly GRAPH_PANEL_OPTIONS = merge( {}, PANEL_OPTIONS, {
-    fill: EnergySkateParkColorScheme.chartPanelFill
+    fill: EnergySkateParkColors.chartPanelFillProperty
   } );
 
   public static readonly COMBO_BOX_ITEM_OPTIONS = { font: new PhetFont( 13.5 ), maxWidth: 98 };

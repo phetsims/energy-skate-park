@@ -18,7 +18,7 @@ import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
 const BUTTON_SPACING = 5;
@@ -79,9 +79,9 @@ export default class SkaterRadioButtonGroup extends RectangularRadioButtonGroup<
         xMargin: 1,
         yMargin: 1,
         cornerRadius: EnergySkateParkConstants.RADIO_BUTTON_CORNER_RADIUS,
-        baseColor: EnergySkateParkColorScheme.radioButtonBaseColor,
+        baseColor: EnergySkateParkColors.radioButtonBaseColorProperty,
         buttonAppearanceStrategyOptions: {
-          selectedStroke: EnergySkateParkColorScheme.radioButtonSelectedStroke
+          selectedStroke: EnergySkateParkColors.radioButtonSelectedStrokeProperty
         }
       },
       tandem: tandem

@@ -10,7 +10,7 @@
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import CanvasNode from '../../../../scenery/js/nodes/CanvasNode.js';
 import EnergySkateParkSaveSampleModel from '../../common/model/EnergySkateParkSaveSampleModel.js';
-import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import energySkatePark from '../../energySkatePark.js';
 
 // constants
@@ -45,8 +45,8 @@ export default class SamplesCanvasNode extends CanvasNode {
 
       const alpha = sample.opacityProperty.get();
 
-      context.fillStyle = EnergySkateParkColorScheme.pathFill.withAlpha( alpha ).toCSS();
-      context.strokeStyle = EnergySkateParkColorScheme.pathStroke.withAlpha( alpha ).toCSS();
+      context.fillStyle = EnergySkateParkColors.pathFillProperty.value.withAlpha( alpha ).toCSS();
+      context.strokeStyle = EnergySkateParkColors.pathStrokeProperty.value.withAlpha( alpha ).toCSS();
 
       context.fill();
       context.stroke();

@@ -29,7 +29,7 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import TextPanel from './TextPanel.js';
 
 const heightEqualsZeroStringProperty = EnergySkateParkFluent.heightLabels.heightEqualsZeroStringProperty;
@@ -68,7 +68,7 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       tailWidth: 7,
 
       left: 30,
-      fill: EnergySkateParkColorScheme.referenceArrowFill
+      fill: EnergySkateParkColors.referenceArrowFillProperty
     } );
 
     // label for the reference line, surround by a transparent panel for better visibility

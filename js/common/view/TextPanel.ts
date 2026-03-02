@@ -14,7 +14,7 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import Font from '../../../../scenery/js/util/Font.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import energySkatePark from '../../energySkatePark.js';
-import EnergySkateParkColorScheme from './EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 
 type SelfOptions = {
   font?: Font;
@@ -37,7 +37,7 @@ export default class TextPanel extends Panel {
       textMaxWidth: 180,
 
       // panel options
-      fill: EnergySkateParkColorScheme.transparentPanelFill,
+      fill: EnergySkateParkColors.transparentPanelFillProperty,
       cornerRadius: 0,
       lineWidth: 0,
       xMargin: 2,

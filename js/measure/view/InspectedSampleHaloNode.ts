@@ -11,7 +11,7 @@ import { ObservableArray } from '../../../../axon/js/createObservableArray.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
-import EnergySkateParkColorScheme from '../../common/view/EnergySkateParkColorScheme.js';
+import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import energySkatePark from '../../energySkatePark.js';
 
 // constants
@@ -21,7 +21,7 @@ export default class InspectedSampleHaloNode extends Circle {
 
   public constructor( dataSamples: ObservableArray<EnergySkateParkDataSample>, modelViewTransform: ModelViewTransform2 ) {
     super( HALO_RADIUS, {
-      fill: EnergySkateParkColorScheme.haloFill,
+      fill: EnergySkateParkColors.haloFillProperty,
 
       // not visible until a EnergySkateParkDataSample becomes inspected
       visible: false
