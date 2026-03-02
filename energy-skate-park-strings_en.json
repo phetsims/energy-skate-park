@@ -260,6 +260,49 @@
     "noDataParagraph": {
       "value": "No data to display. Grab skater to get started."
     },
+    "screenSummary": {
+      "playArea": {
+        "intro": {
+          "value": "At your skate park, a skater can move along a track. You can explore graphical representations of energy and measure speed."
+        },
+        "measure": {
+          "value": "At your skate park, a skater can move along an adjustable track. You can explore graphical representations of energy and measure speed. Additionally, the Energy Sensor measures energy, speed, and height along the skater's path."
+        },
+        "graphs": {
+          "value": "At your skate park, a skater can move along an adjustable track. You can explore graphical representations of energy and measure speed. Additionally, the Energy Graph plots energy as a function of position or time."
+        },
+        "playground": {
+          "value": "At your skate park, a skater can move along a custom-built track. You can explore graphical representations of energy and measure speed."
+        }
+      },
+      "controlArea": {
+        "withTrackSelection": {
+          "value": "You can choose your track shape, adjust experiment settings, and enable measurement tools. There is a button to pause the sim for closer analysis of energy and speed. Reset sim to start over."
+        },
+        "withoutTrackSelection": {
+          "value": "You can adjust experiment settings and enable measurement tools. There is a button to pause the sim for closer analysis of energy and speed. Reset sim to start over."
+        }
+      },
+      "currentDetails": {
+        "skaterPhrase": {
+          "value": "Currently, skater is { $onTrack ->\n  [on] on\n  *[off] off\n} the track and { $motion ->\n  [inMotion] in motion\n  *[atRest] at rest\n}."
+        },
+        "frictionPhrase": {
+          "value": "Track surface { $hasFriction ->\n  [true] has friction\n  *[false] is frictionless\n}."
+        },
+        "noTrackBuilt": {
+          "value": "Currently, no track built."
+        }
+      },
+      "interactionHint": {
+        "hasTrack": {
+          "value": "Place skater on the track to begin exploring."
+        },
+        "noTrack": {
+          "value": "Add tracks to start building your own skate park."
+        }
+      }
+    },
     "controlPanel": {
       "experimentSettingsHeading": {
         "value": "Experiment Settings"

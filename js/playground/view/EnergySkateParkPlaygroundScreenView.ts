@@ -15,6 +15,7 @@ import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
 import Color from '../../../../scenery/js/util/Color.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import Track from '../../common/model/Track.js';
+import EnergySkateParkScreenSummaryContent from '../../common/view/EnergySkateParkScreenSummaryContent.js';
 import EnergySkateParkScreenView, { EnergySkateParkScreenViewOptions } from '../../common/view/EnergySkateParkScreenView.js';
 import TrackNode from '../../common/view/TrackNode.js';
 import TrackToolboxPanel from '../../common/view/TrackToolboxPanel.js';
@@ -36,6 +37,7 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
   public constructor( model: EnergySkateParkPlaygroundModel, tandem: Tandem, options?: EnergySkateParkScreenViewOptions ) {
 
     options = combineOptions<EnergySkateParkScreenViewOptions>( {
+      screenSummaryContent: new EnergySkateParkScreenSummaryContent( model, 'playground' ),
       controlPanelOptions: {
         showTrackButtons: false,
         visibilityControlsOptions: {

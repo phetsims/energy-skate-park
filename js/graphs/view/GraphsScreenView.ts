@@ -8,6 +8,7 @@
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import EnergySkateParkScreenSummaryContent from '../../common/view/EnergySkateParkScreenSummaryContent.js';
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
 import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
@@ -25,6 +26,7 @@ export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView 
     const comboBoxParent = new Node();
 
     super( model, tandem, {
+      screenSummaryContent: new EnergySkateParkScreenSummaryContent( model, 'graphs' ),
       drawSkaterPath: false,
       showBarGraph: false,
       controlPanelOptions: {

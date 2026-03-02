@@ -129,6 +129,27 @@ type StringsType = {
   };
   'a11y': {
     'noDataParagraphStringProperty': LocalizedStringProperty;
+    'screenSummary': {
+      'playArea': {
+        'introStringProperty': LocalizedStringProperty;
+        'measureStringProperty': LocalizedStringProperty;
+        'graphsStringProperty': LocalizedStringProperty;
+        'playgroundStringProperty': LocalizedStringProperty;
+      };
+      'controlArea': {
+        'withTrackSelectionStringProperty': LocalizedStringProperty;
+        'withoutTrackSelectionStringProperty': LocalizedStringProperty;
+      };
+      'currentDetails': {
+        'skaterPhraseStringProperty': LocalizedStringProperty;
+        'frictionPhraseStringProperty': LocalizedStringProperty;
+        'noTrackBuiltStringProperty': LocalizedStringProperty;
+      };
+      'interactionHint': {
+        'hasTrackStringProperty': LocalizedStringProperty;
+        'noTrackStringProperty': LocalizedStringProperty;
+      }
+    };
     'controlPanel': {
       'experimentSettingsHeadingStringProperty': LocalizedStringProperty;
     };

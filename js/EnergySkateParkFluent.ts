@@ -5,6 +5,7 @@
 /* eslint-disable */
 /* @formatter:off */
 
+import { TReadOnlyProperty } from '../../axon/js/TReadOnlyProperty.js';
 import FluentLibrary from '../../chipper/js/browser-and-node/FluentLibrary.js';
 import FluentComment from '../../chipper/js/browser/FluentComment.js';
 import FluentConstant from '../../chipper/js/browser/FluentConstant.js';
@@ -95,6 +96,17 @@ addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_moveThroughOptions'
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_selectOption', 'keyboardHelpDialog.connectTrackEndpoints.selectOptionStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_cancel', 'keyboardHelpDialog.connectTrackEndpoints.cancelStringProperty' );
 addToMapIfDefined( 'a11y_noDataParagraph', 'a11y.noDataParagraphStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_playArea_intro', 'a11y.screenSummary.playArea.introStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_playArea_measure', 'a11y.screenSummary.playArea.measureStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_playArea_graphs', 'a11y.screenSummary.playArea.graphsStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_playArea_playground', 'a11y.screenSummary.playArea.playgroundStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_controlArea_withTrackSelection', 'a11y.screenSummary.controlArea.withTrackSelectionStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_controlArea_withoutTrackSelection', 'a11y.screenSummary.controlArea.withoutTrackSelectionStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_currentDetails_skaterPhrase', 'a11y.screenSummary.currentDetails.skaterPhraseStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_currentDetails_frictionPhrase', 'a11y.screenSummary.currentDetails.frictionPhraseStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_currentDetails_noTrackBuilt', 'a11y.screenSummary.currentDetails.noTrackBuiltStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_interactionHint_hasTrack', 'a11y.screenSummary.interactionHint.hasTrackStringProperty' );
+addToMapIfDefined( 'a11y_screenSummary_interactionHint_noTrack', 'a11y.screenSummary.interactionHint.noTrackStringProperty' );
 addToMapIfDefined( 'a11y_controlPanel_experimentSettingsHeading', 'a11y.controlPanel.experimentSettingsHeadingStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_showOptions', 'a11y.keyboardHelpDialog.connectTrackEndpoints.showOptionsStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_moveThroughOptions', 'a11y.keyboardHelpDialog.connectTrackEndpoints.moveThroughOptionsStringProperty' );
@@ -378,6 +390,27 @@ const EnergySkateParkFluent = {
   },
   a11y: {
     noDataParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_noDataParagraph', _.get( EnergySkateParkStrings, 'a11y.noDataParagraphStringProperty' ) ),
+    screenSummary: {
+      playArea: {
+        introStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_playArea_intro', _.get( EnergySkateParkStrings, 'a11y.screenSummary.playArea.introStringProperty' ) ),
+        measureStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_playArea_measure', _.get( EnergySkateParkStrings, 'a11y.screenSummary.playArea.measureStringProperty' ) ),
+        graphsStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_playArea_graphs', _.get( EnergySkateParkStrings, 'a11y.screenSummary.playArea.graphsStringProperty' ) ),
+        playgroundStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_playArea_playground', _.get( EnergySkateParkStrings, 'a11y.screenSummary.playArea.playgroundStringProperty' ) )
+      },
+      controlArea: {
+        withTrackSelectionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_controlArea_withTrackSelection', _.get( EnergySkateParkStrings, 'a11y.screenSummary.controlArea.withTrackSelectionStringProperty' ) ),
+        withoutTrackSelectionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_controlArea_withoutTrackSelection', _.get( EnergySkateParkStrings, 'a11y.screenSummary.controlArea.withoutTrackSelectionStringProperty' ) )
+      },
+      currentDetails: {
+        skaterPhrase: new FluentPattern<{ motion: 'inMotion' | 'atRest' | TReadOnlyProperty<'inMotion' | 'atRest'>, onTrack: 'on' | 'off' | TReadOnlyProperty<'on' | 'off'> }>( fluentSupport.bundleProperty, 'a11y_screenSummary_currentDetails_skaterPhrase', _.get( EnergySkateParkStrings, 'a11y.screenSummary.currentDetails.skaterPhraseStringProperty' ), [{"name":"motion","variants":["inMotion","atRest"]},{"name":"onTrack","variants":["on","off"]}] ),
+        frictionPhrase: new FluentPattern<{ hasFriction: 'true' | 'false' | TReadOnlyProperty<'true' | 'false'> }>( fluentSupport.bundleProperty, 'a11y_screenSummary_currentDetails_frictionPhrase', _.get( EnergySkateParkStrings, 'a11y.screenSummary.currentDetails.frictionPhraseStringProperty' ), [{"name":"hasFriction","variants":["true","false"]}] ),
+        noTrackBuiltStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_currentDetails_noTrackBuilt', _.get( EnergySkateParkStrings, 'a11y.screenSummary.currentDetails.noTrackBuiltStringProperty' ) )
+      },
+      interactionHint: {
+        hasTrackStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_interactionHint_hasTrack', _.get( EnergySkateParkStrings, 'a11y.screenSummary.interactionHint.hasTrackStringProperty' ) ),
+        noTrackStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_screenSummary_interactionHint_noTrack', _.get( EnergySkateParkStrings, 'a11y.screenSummary.interactionHint.noTrackStringProperty' ) )
+      }
+    },
     controlPanel: {
       experimentSettingsHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_controlPanel_experimentSettingsHeading', _.get( EnergySkateParkStrings, 'a11y.controlPanel.experimentSettingsHeadingStringProperty' ) )
     },

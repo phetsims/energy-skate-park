@@ -195,7 +195,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
     }, providedOptions );
 
     super( {
-      tandem: tandem
+      tandem: tandem,
+      screenSummaryContent: options.screenSummaryContent
     } );
 
     const modelPoint = new Vector2( 0, 0 );

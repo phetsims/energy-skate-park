@@ -91,6 +91,49 @@ keyboardHelpDialog:
     cancel:             '4. Cancel'
 a11y:
   noDataParagraph:      No data to display. Grab skater to get started.
+  screenSummary:
+    playArea:
+      intro: >-
+        At your skate park, a skater can move along a track.
+        You can explore graphical representations of energy and measure speed.
+      measure: >-
+        At your skate park, a skater can move along an adjustable track.
+        You can explore graphical representations of energy and measure speed.
+        Additionally, the Energy Sensor measures energy, speed, and height along the skater's path.
+      graphs: >-
+        At your skate park, a skater can move along an adjustable track.
+        You can explore graphical representations of energy and measure speed.
+        Additionally, the Energy Graph plots energy as a function of position or time.
+      playground: >-
+        At your skate park, a skater can move along a custom-built track.
+        You can explore graphical representations of energy and measure speed.
+    controlArea:
+      withTrackSelection: >-
+        You can choose your track shape, adjust experiment settings, and enable measurement tools.
+        There is a button to pause the sim for closer analysis of energy and speed.
+        Reset sim to start over.
+      withoutTrackSelection: >-
+        You can adjust experiment settings and enable measurement tools.
+        There is a button to pause the sim for closer analysis of energy and speed.
+        Reset sim to start over.
+    currentDetails:
+      skaterPhrase: >-
+        Currently, skater is { $onTrack ->
+          [on] on
+          *[off] off
+        } the track and { $motion ->
+          [inMotion] in motion
+          *[atRest] at rest
+        }.
+      frictionPhrase: >-
+        Track surface { $hasFriction ->
+          [true] has friction
+          *[false] is frictionless
+        }.
+      noTrackBuilt: Currently, no track built.
+    interactionHint:
+      hasTrack: Place skater on the track to begin exploring.
+      noTrack: Add tracks to start building your own skate park.
   controlPanel:
     experimentSettingsHeading: Experiment Settings
   keyboardHelpDialog:
