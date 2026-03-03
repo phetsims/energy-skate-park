@@ -116,7 +116,8 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         children.push( background );
       }
 
-      const track = createIconTrack( model.trackTypes[ index ] );
+      const trackType = model.trackTypes[ index ];
+      const track = createIconTrack( trackType );
 
       const trackNode = new TrackNode( track, view.modelViewTransform, new Property( Bounds2.EVERYTHING ), Tandem.OPT_OUT, {
         isIcon: true
@@ -175,10 +176,16 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         setterFunction.call( alignedNode, margin );
       }
 
+      const trackType = model.trackTypes[ i ];
+
       radioButtonContent.push( {
         value: i,
         createNode: () => alignedNode,
-        tandemName: `scene${i + 1}RadioButton`,
+        tandemName: trackType === 'PARABOLA' ? 'parabolaRadioButton' :
+                    trackType === 'RAMP' ? 'rampRadioButton' :
+                    trackType === 'DOUBLE_WELL' ? 'doubleWellRadioButton' :
+                    trackType === 'LOOP' ? 'loopRadioButton' :
+                    ( () => {throw new Error( 'Unsupported track type: ' + trackType );} )(),
         options: {
           accessibleName: sceneAccessibleNameMap[ model.trackTypes[ i ] ]
         }

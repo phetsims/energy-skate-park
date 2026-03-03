@@ -25,7 +25,7 @@ const END_BOUNDS_WIDTH = 2.5;
 const END_BOUNDS_HEIGHT = 4;
 
 // the supported premade tracks, used in EnergySkateParkTrackSetModels
-export const TrackTypes = [ 'PARABOLA', 'RAMP', 'DOUBLE_WELL', 'LOOP' ];
+export const TrackTypes = [ 'PARABOLA', 'RAMP', 'DOUBLE_WELL', 'LOOP' ] as const;
 export type TrackType = typeof TrackTypes[number];
 
 /**

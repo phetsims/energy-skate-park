@@ -31,7 +31,7 @@ type InitializePremadeTracksOptions = {
 };
 
 type SelfOptions = {
-  trackTypes?: TrackType[];
+  trackTypes?: ReadonlyArray<TrackType>;
   initializePremadeTracksOptions?: InitializePremadeTracksOptions | null;
 };
 
@@ -41,7 +41,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
   // Indicates the currently selected scene. There can be any number of scenes, do we need to pass this in as a param
   public readonly sceneProperty: NumberProperty;
-  public readonly trackTypes: TrackType[];
+  public readonly trackTypes: ReadonlyArray<TrackType>;
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions: EnergySkateParkTrackSetModelOptions ) {
     const options = optionize<EnergySkateParkSaveSampleModelOptions, SelfOptions, EnergySkateParkSaveSampleModelOptions>()( {
