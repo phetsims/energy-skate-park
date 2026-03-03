@@ -13,7 +13,7 @@ import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
-import merge from '../../../../phet-core/js/merge.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import { SliderOptions } from '../../../../sun/js/Slider.js';
@@ -22,7 +22,6 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl, { PhysicalNumberControlOptions } from './PhysicalNumberControl.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 const controlsValueLotsStringProperty = EnergySkateParkFluent.physicalControls.lotsStringProperty;
 const controlsValueNoneStringProperty = EnergySkateParkFluent.physicalControls.noneStringProperty;
@@ -54,8 +53,8 @@ export default class PhysicalSlider extends PhysicalNumberControl {
 
     affirm( options.sliderOptions.majorTicks === undefined, 'The PhysicalSlider sets its own major ticks' );
     options.sliderOptions.majorTicks = [
-      createTickEntry( valueRange.min, options.minLabelProperty, tandem, 'minLabelText' ),
-      createTickEntry( valueRange.max, options.maxLabelProperty, tandem, 'maxLabelText' )
+      createTickEntry( valueRange.min, options.minLabelProperty ),
+      createTickEntry( valueRange.max, options.maxLabelProperty )
     ];
 
     super( titleString, property, valueRange, userControlledProperty, tandem, options );
@@ -66,16 +65,12 @@ export default class PhysicalSlider extends PhysicalNumberControl {
  * Create a tick entry for the slider to be added with addMajorTick.
  * @param value - value on the slider to add the tick
  * @param label - label for the tick
- * @param tandem
- * @param tandemName
  * @returns - conforms to { value: {number}, label: Node }, required by NumberControl options
  */
-const createTickEntry = ( value: number, label: TReadOnlyProperty<string>, tandem: Tandem, tandemName: string ): { value: number; label: Text } => {
+const createTickEntry = ( value: number, label: TReadOnlyProperty<string> ): { value: number; label: Text } => {
   return {
     value: value,
-    label: new Text( label, merge( {
-      tandem: tandem.createTandem( tandemName )
-    }, EnergySkateParkConstants.CONTROL_TICK_LABEL_OPTIONS ) )
+    label: new Text( label, EnergySkateParkConstants.CONTROL_TICK_LABEL_OPTIONS )
   };
 };
 
