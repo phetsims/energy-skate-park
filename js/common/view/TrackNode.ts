@@ -140,15 +140,8 @@ export default class TrackNode extends Node {
         accessibleHelpText: EnergySkateParkFluent.a11y.trackNode.accessibleHelpTextStringProperty
       } );
     }
-    else if ( !options.isIcon && !options.trackToolboxIcon ) {
-
-      // Non-configurable, non-draggable tracks: heading only, no help text about control points
-      this.mutate( {
-        containerTagName: 'section',
-        tagName: 'div',
-        accessibleHeading: EnergySkateParkFluent.a11y.trackNode.accessibleHeadingStringProperty
-      } );
-    }
+    // Non-configurable, non-draggable tracks (e.g. fixed tracks on the Friction screen):
+    // Omit the Track heading entirely since there are no interactive children under it.
 
     this.model = model;
     this.isIcon = !!options.isIcon;
