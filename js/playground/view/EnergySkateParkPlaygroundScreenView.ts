@@ -12,6 +12,7 @@ import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
+import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
 import Color from '../../../../scenery/js/util/Color.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import Track from '../../common/model/Track.js';
@@ -92,7 +93,9 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     headingOrder.splice( skaterIndex, 0, this.trackToolbox, this.clearButton );
     this.yourSkateParkHeadingNode.pdomOrder = headingOrder;
 
-    // Set the playground-specific helpText on the "Your Skate Park" heading
+    // Set the playground-specific helpText on the "Your Skate Park" heading, before content so it reads
+    // right after the heading rather than after all children.
+    this.yourSkateParkHeadingNode.accessibleHelpTextBehavior = ParallelDOM.HELP_TEXT_BEFORE_CONTENT;
     this.yourSkateParkHeadingNode.accessibleHelpText =
       EnergySkateParkFluent.a11y.yourSkatePark.accessibleHelpTextStringProperty;
 

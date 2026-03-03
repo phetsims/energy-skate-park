@@ -17,6 +17,7 @@ import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
+import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
 import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
@@ -122,7 +123,8 @@ export default class TrackNode extends Node {
       this.mutate( {
         containerTagName: 'section',
         accessibleHeading: trackHeadingProperty,
-        accessibleHelpText: EnergySkateParkFluent.a11y.trackNode.accessibleHelpTextStringProperty
+        accessibleHelpText: EnergySkateParkFluent.a11y.trackNode.accessibleHelpTextStringProperty,
+        accessibleHelpTextBehavior: ParallelDOM.HELP_TEXT_BEFORE_CONTENT
       } );
       this.accessibleName = trackHeadingProperty;
 
@@ -137,7 +139,8 @@ export default class TrackNode extends Node {
         containerTagName: 'section',
         tagName: 'div',
         accessibleHeading: EnergySkateParkFluent.a11y.trackNode.accessibleHeadingStringProperty,
-        accessibleHelpText: EnergySkateParkFluent.a11y.trackNode.accessibleHelpTextStringProperty
+        accessibleHelpText: EnergySkateParkFluent.a11y.trackNode.accessibleHelpTextStringProperty,
+        accessibleHelpTextBehavior: ParallelDOM.HELP_TEXT_BEFORE_CONTENT
       } );
     }
     // Non-configurable, non-draggable tracks (e.g. fixed tracks on the Friction screen):
