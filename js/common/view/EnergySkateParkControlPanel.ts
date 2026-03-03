@@ -115,9 +115,11 @@ export default class EnergySkateParkControlPanel extends Panel {
     }
 
     if ( options.showSkaterControls ) {
-      const skaterRadioButtonGroup = new SkaterRadioButtonGroup( screenView.skaterNode.selectedSkaterProperty,
-        tandem.createTandem( 'skaterSetOneControls' ) );
-      children.push( skaterRadioButtonGroup );
+      const skaterSelectionRadioButtonGroup = new SkaterRadioButtonGroup(
+        screenView.skaterNode.selectedSkaterProperty,
+        tandem.createTandem( 'skaterSelectionRadioButtonGroup' )
+      );
+      children.push( skaterSelectionRadioButtonGroup );
     }
 
     const visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), options.visibilityControlsOptions || undefined );
