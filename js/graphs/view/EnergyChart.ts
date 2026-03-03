@@ -31,6 +31,7 @@ import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.j
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
+import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -45,9 +46,7 @@ const TIME_STEP_X = 2; // in seconds
 const POSITION_MAX_X = 10; // in meters
 const POSITION_STEP_X = 1; // in meters
 
-// Origin in the model is at center of screen, but plots align 0 meters at the left edge of the track, 5 meters
-// left of origin
-const POSITION_PLOT_OFFSET = 5;
+const POSITION_PLOT_OFFSET = EnergySkateParkConstants.POSITION_PLOT_OFFSET;
 
 export default class EnergyChart extends XYCursorChartNode {
   private readonly kineticEnergyDataSeries: DynamicSeries;

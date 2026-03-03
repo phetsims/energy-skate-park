@@ -19,7 +19,7 @@ import EnergySkateParkColors from './EnergySkateParkColors.js';
 const ZOOM_FACTOR_DELTA = 1 / 60;
 
 // precision of constants here must match precision of the physical control so that user
-// can find this exact value so that it is correctly labelled
+// can find this exact value so that it is correctly labeled
 const EARTH_GRAVITY = 9.8;
 const MOON_GRAVITY = 1.6;
 const JUPITER_GRAVITY = 24.8;
@@ -101,6 +101,10 @@ export default class EnergySkateParkConstants {
 
   // Threshold below which energy values are considered zero for accessibility descriptions
   public static readonly ENERGY_THRESHOLD = 1E-4;
+
+  // The model origin is at center-screen, but the E(x) graph and accessibility descriptions use a
+  // coordinate frame where x=0 is at the left edge of the track, 5 meters left of the model origin.
+  public static readonly POSITION_PLOT_OFFSET = 5;
 }
 
 energySkatePark.register( 'EnergySkateParkConstants', EnergySkateParkConstants );
