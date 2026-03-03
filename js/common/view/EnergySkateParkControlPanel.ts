@@ -86,21 +86,40 @@ export default class EnergySkateParkControlPanel extends Panel {
     // Collect friction, gravity, and mass controls to group under an "Experiment Settings" heading for a11y
     const experimentSettingsChildren: Node[] = [];
 
+    // Group friction and gravity controls into one VBox
+    const frictionGravityChildren: Node[] = [];
     if ( options.showFrictionControls ) {
-      experimentSettingsChildren.push( new FrictionSlider( model.frictionProperty, userControlledPropertySet.frictionControlledProperty, tandem.createTandem( 'frictionControl' ) ) );
+      frictionGravityChildren.push( new FrictionSlider( model.frictionProperty, userControlledPropertySet.frictionControlledProperty, tandem.createTandem( 'frictionControl' ) ) );
     }
 
     if ( options.showGravityControls ) {
-      experimentSettingsChildren.push( new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, userControlledPropertySet.gravityControlledProperty, model.preferencesModel.accelerationUnitsProperty, model.resetEmitter, screenView, tandem.createTandem( 'gravityControls' ), options.gravityControlsOptions || undefined ) );
+      frictionGravityChildren.push( new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, userControlledPropertySet.gravityControlledProperty, model.preferencesModel.accelerationUnitsProperty, model.resetEmitter, screenView, tandem.createTandem( 'gravityControls' ), options.gravityControlsOptions || undefined ) );
     }
 
-    // one separator after friction and/or gravity controls (preserving original visual layout)
-    if ( options.showFrictionControls || options.showGravityControls ) {
+    if ( frictionGravityChildren.length > 0 ) {
+      experimentSettingsChildren.push( new VBox( { spacing: 8, stretch: true, children: frictionGravityChildren } ) );
+    }
+
+    // Group mass controls and skater radio buttons into another VBox
+    const massSkaterChildren: Node[] = [];
+    if ( options.showMassControls ) {
+      massSkaterChildren.push( new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions || undefined ) );
+    }
+
+    if ( options.showSkaterControls ) {
+      massSkaterChildren.push( new SkaterRadioButtonGroup(
+        screenView.skaterNode.selectedSkaterProperty,
+        tandem.createTandem( 'skaterSelectionRadioButtonGroup' )
+      ) );
+    }
+
+    // HSeparator between the two groups
+    if ( frictionGravityChildren.length > 0 && massSkaterChildren.length > 0 ) {
       experimentSettingsChildren.push( new HSeparator() );
     }
 
-    if ( options.showMassControls ) {
-      experimentSettingsChildren.push( new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions || undefined ) );
+    if ( massSkaterChildren.length > 0 ) {
+      experimentSettingsChildren.push( new VBox( { spacing: 8, stretch: true, children: massSkaterChildren } ) );
     }
 
     let experimentSettingsNode: Node | null = null;
@@ -112,14 +131,6 @@ export default class EnergySkateParkControlPanel extends Panel {
         accessibleHeading: EnergySkateParkFluent.a11y.controlPanel.experimentSettingsHeadingStringProperty
       } );
       children.push( experimentSettingsNode );
-    }
-
-    if ( options.showSkaterControls ) {
-      const skaterSelectionRadioButtonGroup = new SkaterRadioButtonGroup(
-        screenView.skaterNode.selectedSkaterProperty,
-        tandem.createTandem( 'skaterSelectionRadioButtonGroup' )
-      );
-      children.push( skaterSelectionRadioButtonGroup );
     }
 
     const visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), options.visibilityControlsOptions || undefined );
