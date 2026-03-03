@@ -139,8 +139,16 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
           }
         }
 
-        // Skater on/off track
-        const skaterPhrase = skaterTrack !== null ? onTrackString : offTrackString;
+        // Skater on/off track — when multiple tracks exist, specify which track by index
+        let skaterPhrase: string;
+        if ( skaterTrack !== null && trackCount > 1 ) {
+          skaterPhrase = EnergySkateParkFluent.a11y.yourSkatePark.skaterOnTrackWithIndex.format( {
+            index: model.tracks.indexOf( skaterTrack ) + 1
+          } );
+        }
+        else {
+          skaterPhrase = skaterTrack !== null ? onTrackString : offTrackString;
+        }
 
         return trackCount === 0 ? trackPhrase : EnergySkateParkFluent.a11y.yourSkatePark.trackAndSkaterParagraph.format( {
           trackPhrase: trackPhrase,

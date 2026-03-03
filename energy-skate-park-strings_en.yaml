@@ -191,6 +191,7 @@ a11y:
     playgroundTrackPhraseNone:     No track yet.
     trackAndSkaterParagraph:       '{ $trackPhrase } { $skaterPhrase }'
     skaterOnTrack:                 Skater is on track.
+    skaterOnTrackWithIndex:        'Skater is on track { $index }.'
     skaterOffTrack:                Skater is off track.
   trackNode:
     accessibleHeadingWithIndex: 'Track { $index }'

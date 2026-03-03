@@ -413,6 +413,9 @@
       "skaterOnTrack": {
         "value": "Skater is on track."
       },
+      "skaterOnTrackWithIndex": {
+        "value": "Skater is on track { $index }."
+      },
       "skaterOffTrack": {
         "value": "Skater is off track."
       }

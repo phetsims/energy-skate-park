@@ -136,6 +136,7 @@ addToMapIfDefined( 'a11y_yourSkatePark_playgroundTrackPhraseSingle', 'a11y.yourS
 addToMapIfDefined( 'a11y_yourSkatePark_playgroundTrackPhraseNone', 'a11y.yourSkatePark.playgroundTrackPhraseNoneStringProperty' );
 addToMapIfDefined( 'a11y_yourSkatePark_trackAndSkaterParagraph', 'a11y.yourSkatePark.trackAndSkaterParagraphStringProperty' );
 addToMapIfDefined( 'a11y_yourSkatePark_skaterOnTrack', 'a11y.yourSkatePark.skaterOnTrackStringProperty' );
+addToMapIfDefined( 'a11y_yourSkatePark_skaterOnTrackWithIndex', 'a11y.yourSkatePark.skaterOnTrackWithIndexStringProperty' );
 addToMapIfDefined( 'a11y_yourSkatePark_skaterOffTrack', 'a11y.yourSkatePark.skaterOffTrackStringProperty' );
 addToMapIfDefined( 'a11y_trackNode_accessibleHeadingWithIndex', 'a11y.trackNode.accessibleHeadingWithIndexStringProperty' );
 addToMapIfDefined( 'a11y_trackNode_accessibleHeading', 'a11y.trackNode.accessibleHeadingStringProperty' );
@@ -464,6 +465,7 @@ const EnergySkateParkFluent = {
       playgroundTrackPhraseNoneStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_yourSkatePark_playgroundTrackPhraseNone', _.get( EnergySkateParkStrings, 'a11y.yourSkatePark.playgroundTrackPhraseNoneStringProperty' ) ),
       trackAndSkaterParagraph: new FluentPattern<{ skaterPhrase: FluentVariable, trackPhrase: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_yourSkatePark_trackAndSkaterParagraph', _.get( EnergySkateParkStrings, 'a11y.yourSkatePark.trackAndSkaterParagraphStringProperty' ), [{"name":"skaterPhrase"},{"name":"trackPhrase"}] ),
       skaterOnTrackStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_yourSkatePark_skaterOnTrack', _.get( EnergySkateParkStrings, 'a11y.yourSkatePark.skaterOnTrackStringProperty' ) ),
+      skaterOnTrackWithIndex: new FluentPattern<{ index: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_yourSkatePark_skaterOnTrackWithIndex', _.get( EnergySkateParkStrings, 'a11y.yourSkatePark.skaterOnTrackWithIndexStringProperty' ), [{"name":"index"}] ),
       skaterOffTrackStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_yourSkatePark_skaterOffTrack', _.get( EnergySkateParkStrings, 'a11y.yourSkatePark.skaterOffTrackStringProperty' ) )
     },
     trackNode: {

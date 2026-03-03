@@ -202,6 +202,7 @@ type StringsType = {
       'playgroundTrackPhraseNoneStringProperty': LocalizedStringProperty;
       'trackAndSkaterParagraphStringProperty': LocalizedStringProperty;
       'skaterOnTrackStringProperty': LocalizedStringProperty;
+      'skaterOnTrackWithIndexStringProperty': LocalizedStringProperty;
       'skaterOffTrackStringProperty': LocalizedStringProperty;
     };
     'trackNode': {
