@@ -217,7 +217,9 @@ a11y:
   energySensorNode:
     accessibleHeading:    Energy Sensor
     accessibleName:       Energy Sensor Probe
-    accessibleHelpText:   Move probe along skater's path to measure speed, height, and energy.
+    accessibleHelpText:   >-
+                          Move probe along skater's path to measure speed, height, and energy. 
+                          Path fades away when skater turns around. Pause to analyze values. 
     nothingToMeasure:     Nothing to measure yet.
     movedOffSamples:      Sensor moved off of sample points.
     sampleReadoutPattern: >-
@@ -386,8 +388,8 @@ a11y:
     accessibleContextResponseUnchecked: Grid lines hidden.
   referenceHeightCheckbox:
     accessibleHelpText:                 Experiment with or without an adjustable reference height.
-    accessibleContextResponseChecked:   Adjustable reference height added to Play Area.
-    accessibleContextResponseUnchecked: Adjustable reference height hidden.
+    accessibleContextResponseChecked:   Reference Height added to Play Area.
+    accessibleContextResponseUnchecked: Reference Height hidden.
   restartSkaterButton:
     accessibleHelpText: Return skater to most recent starting position and repeat experiment.
   returnSkaterToPreviousStartingPositionButton:
