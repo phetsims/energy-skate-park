@@ -91,7 +91,7 @@ export default class EnergySkateParkControlPanel extends Panel {
     }
 
     if ( options.showGravityControls ) {
-      experimentSettingsChildren.push( new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, userControlledPropertySet.gravityControlledProperty, model.preferencesModel.accelerationUnitsProperty, model.resetEmitter, screenView, tandem.createTandem( 'energySkateParkGravityControls' ), options.gravityControlsOptions || undefined ) );
+      experimentSettingsChildren.push( new EnergySkateParkGravityControls( model.skater.gravityMagnitudeProperty, userControlledPropertySet.gravityControlledProperty, model.preferencesModel.accelerationUnitsProperty, model.resetEmitter, screenView, tandem.createTandem( 'gravityControls' ), options.gravityControlsOptions || undefined ) );
     }
 
     // one separator after friction and/or gravity controls (preserving original visual layout)
