@@ -286,9 +286,8 @@ export default class EnergyBarGraph extends Node {
   /**
    * Create an icon of the bar graph, to be used in visibility or other controls.
    */
-  public static createBarGraphIcon( tandem: Tandem ): Node {
+  public static createBarGraphIcon(): Node {
     return new Node( {
-      tandem: tandem,
       children: [
         new Rectangle( 0, 0, 20, 20, { fill: 'white', stroke: 'black', lineWidth: 0.5 } ),
         new Rectangle( 3, 14, 5, 6, {

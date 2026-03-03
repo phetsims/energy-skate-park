@@ -35,7 +35,7 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
 
     // create an icon that represents the content, it is invisible when expanded
     const graphLabel = EnergyBarGraph.createLabel();
-    const graphIcon = EnergyBarGraph.createBarGraphIcon( tandem.createTandem( 'barGraphIcon' ) );
+    const graphIcon = EnergyBarGraph.createBarGraphIcon();
 
     const titleContainer = new HBox( {
       children: [ graphLabel, graphIcon ],
