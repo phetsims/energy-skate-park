@@ -21,11 +21,11 @@ import RectangularRadioButtonGroup, { RectangularRadioButtonGroupOptions } from 
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
 import PremadeTracks, { TrackType } from '../model/PremadeTracks.js';
 import BackgroundNode from './BackgroundNode.js';
-import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import TrackNode from './TrackNode.js';
 
@@ -118,7 +118,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
 
       const track = createIconTrack( model.trackTypes[ index ] );
 
-      const trackNode = new TrackNode( track, view.modelViewTransform, new Property( Bounds2.EVERYTHING ), tandem.createTandem( `trackNode${index}` ), {
+      const trackNode = new TrackNode( track, view.modelViewTransform, new Property( Bounds2.EVERYTHING ), Tandem.OPT_OUT, {
         isIcon: true
       } );
 
@@ -130,7 +130,6 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
       iconNode.pickable = false;
 
       return new Node( {
-        tandem: tandem.createTandem( `contentNode${index}` ),
         children: children
       } );
     };

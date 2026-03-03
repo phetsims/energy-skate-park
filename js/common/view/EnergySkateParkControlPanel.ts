@@ -77,10 +77,10 @@ export default class EnergySkateParkControlPanel extends Panel {
     // all contents of the control panel will be added to this array
     const children: Node[] = [];
 
-    let trackRadioButtons = null;
+    let trackSelectionRadioButtonGroup = null;
     if ( options.showTrackButtons && model instanceof EnergySkateParkTrackSetModel ) {
-      trackRadioButtons = new SceneSelectionRadioButtonGroup( model, screenView, tandem.createTandem( 'sceneSelectionRadioButtonGroup' ) );
-      children.push( trackRadioButtons );
+      trackSelectionRadioButtonGroup = new SceneSelectionRadioButtonGroup( model, screenView, tandem.createTandem( 'trackSelectionRadioButtonGroup' ) );
+      children.push( trackSelectionRadioButtonGroup );
     }
 
     // Collect friction, gravity, and mass controls to group under an "Experiment Settings" heading for a11y
@@ -129,7 +129,7 @@ export default class EnergySkateParkControlPanel extends Panel {
     children.splice( children.indexOf( visibilityControls ) + 1, 0, new HSeparator() );
 
     // one separator after scene selection buttons
-    trackRadioButtons && children.splice( children.indexOf( trackRadioButtons ) + 1, 0, new HSeparator() );
+    trackSelectionRadioButtonGroup && children.splice( children.indexOf( trackSelectionRadioButtonGroup ) + 1, 0, new HSeparator() );
 
     const content = new VBox( { spacing: 8, stretch: true, children: children } );
 
