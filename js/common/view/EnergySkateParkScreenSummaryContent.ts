@@ -4,7 +4,7 @@
  * Screen summary content for Energy Skate Park screens. Describes the play area, control area,
  * current state details, and interaction hints for screen reader accessibility.
  *
- * @author GitHub Copilot
+ * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
