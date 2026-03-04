@@ -32,9 +32,6 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
   // for layout in subtypes
   private readonly trackToolbox: TrackToolboxPanel;
 
-  // for layout in subtypes
-  private readonly clearButton: EraserButton;
-
   public constructor( model: EnergySkateParkPlaygroundModel, tandem: Tandem, options?: EnergySkateParkScreenViewOptions ) {
 
     options = combineOptions<EnergySkateParkScreenViewOptions>( {
@@ -64,33 +61,33 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
 
     model.tracks.addItemAddedListener( this.addTrackNode.bind( this ) );
 
-    this.clearButton = new EraserButton( {
+    const eraseTracksButton = new EraserButton( {
       iconWidth: 30,
       baseColor: new Color( 221, 210, 32 ),
       rightCenter: this.trackToolbox.leftCenter.minusXY( 10, 0 ),
-      tandem: tandem.createTandem( 'clearButton' ),
+      tandem: tandem.createTandem( 'eraseTracksButton' ),
       accessibleName: EnergySkateParkFluent.a11y.eraseTracksButton.accessibleNameStringProperty
     } );
-    model.clearButtonEnabledProperty.linkAttribute( this.clearButton, 'enabled' );
-    this.clearButton.addListener( () => {
+    model.clearButtonEnabledProperty.linkAttribute( eraseTracksButton, 'enabled' );
+    eraseTracksButton.addListener( () => {
       model.clearTracks();
-      this.clearButton.addAccessibleContextResponse(
+      eraseTracksButton.addAccessibleContextResponse(
         EnergySkateParkFluent.a11y.eraseTracksButton.accessibleContextResponseStringProperty
       );
     } );
-    this.addChild( this.clearButton );
+    this.addChild( eraseTracksButton );
 
     // add any other TrackNodes eagerly in case model has some initial Tracks, like when we are debugging
     model.tracks.map( this.addTrackNode.bind( this ) );
 
     this.timeControlNode.left = this.modelViewTransform.modelToViewX( 0.5 );
     this.trackToolbox.right = this.modelViewTransform.modelToViewX( -0.5 );
-    this.clearButton.right = this.trackToolbox.left - 10;
+    eraseTracksButton.right = this.trackToolbox.left - 10;
 
     // Add track toolbox and clear button into the "Your Skate Park" heading PDOM order (before skaterNode)
     const headingOrder = this.yourSkateParkHeadingNode.pdomOrder!;
     const skaterIndex = headingOrder.indexOf( this.skaterNode );
-    headingOrder.splice( skaterIndex, 0, this.trackToolbox, this.clearButton );
+    headingOrder.splice( skaterIndex, 0, this.trackToolbox, eraseTracksButton );
     this.yourSkateParkHeadingNode.pdomOrder = headingOrder;
 
     // Set the playground-specific helpText on the "Your Skate Park" heading, before content so it reads
