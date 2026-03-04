@@ -494,6 +494,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       baseColor: EnergySkateParkColors.kineticEnergyColorProperty,
       listener: model.returnSkater.bind( model ),
       tandem: tandem.createTandem( 'returnSkaterToPreviousStartingPositionButton' ),
+      visiblePropertyOptions: { phetioReadOnly: true },
       accessibleName: EnergySkateParkFluent.a11y.returnSkaterToPreviousStartingPositionButton.accessibleNameStringProperty,
       accessibleHelpText: EnergySkateParkFluent.a11y.returnSkaterToPreviousStartingPositionButton.accessibleHelpTextStringProperty
     } );
@@ -513,6 +514,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
         model.skater.resetPosition();
         model.userControlledPropertySet.skaterControlledProperty.set( false );
       },
+      visiblePropertyOptions: { phetioReadOnly: true },
       tandem: tandem.createTandem( 'returnSkaterToGroundButton' )
     } );
 

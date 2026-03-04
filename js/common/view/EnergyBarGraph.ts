@@ -93,6 +93,7 @@ export default class EnergyBarGraph extends Node {
       tandem: tandem.createTandem( 'clearThermalButton' ),
       listener: skater.clearThermal.bind( skater ),
       scale: 0.86,
+      enabledPropertyOptions: { phetioReadOnly: true },
       soundPlayer: sharedSoundPlayers.get( 'erase' ),
       accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleNameStringProperty,
       accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleHelpTextStringProperty,
@@ -206,6 +207,7 @@ export default class EnergyBarGraph extends Node {
         },
         touchAreaXShift: -ZOOM_BUTTON_TOUCH_DILATION,
         tandem: tandem.createTandem( 'zoomOutButton' ),
+        enabledPropertyOptions: { phetioReadOnly: true },
         accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomOut.accessibleNameStringProperty,
         accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomOut.accessibleHelpTextStringProperty
       }, zoomButtonOptions ) );
@@ -222,6 +224,7 @@ export default class EnergyBarGraph extends Node {
         },
         touchAreaXShift: ZOOM_BUTTON_TOUCH_DILATION,
         tandem: tandem.createTandem( 'zoomInButton' ),
+        enabledPropertyOptions: { phetioReadOnly: true },
         accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomIn.accessibleNameStringProperty,
         accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomIn.accessibleHelpTextStringProperty
       }, zoomButtonOptions ) );

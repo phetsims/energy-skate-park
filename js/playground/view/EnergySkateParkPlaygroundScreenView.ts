@@ -66,6 +66,7 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
       baseColor: new Color( 221, 210, 32 ),
       rightCenter: this.trackToolbox.leftCenter.minusXY( 10, 0 ),
       tandem: tandem.createTandem( 'eraseTracksButton' ),
+      enabledPropertyOptions: { phetioReadOnly: true },
       accessibleName: EnergySkateParkFluent.a11y.eraseTracksButton.accessibleNameStringProperty
     } );
     model.clearButtonEnabledProperty.linkAttribute( eraseTracksButton, 'enabled' );
