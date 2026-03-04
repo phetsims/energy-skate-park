@@ -61,9 +61,8 @@ export default class PieChartLegend extends Panel {
     }, providedOptions );
 
     // The x-coordinate of a bar chart bar
-    const createLabel = ( index: number, title: string | TReadOnlyProperty<string>, tandemName: string ) => {
+    const createLabel = ( index: number, title: string | TReadOnlyProperty<string> ) => {
       return new Text( title, {
-        tandem: tandem.createTandem( tandemName ),
         font: EnergySkateParkConstants.CONTROL_LABEL_FONT,
         pickable: false,
         maxWidth: 97 // selected by choosing the length of widest English string in ?stringTest=double
@@ -83,10 +82,10 @@ export default class PieChartLegend extends Panel {
     const thermalBar = createBar( 2, EnergySkateParkColors.thermalEnergyColorProperty );
     const totalBar = createBar( 3, EnergySkateParkColors.totalEnergyColorProperty );
 
-    const kineticLabel = createLabel( 0, energyKineticStringProperty, 'kineticEnergyLabelText' );
-    const potentialLabel = createLabel( 1, energyPotentialStringProperty, 'potentialEnergyLabelText' );
-    const thermalLabel = createLabel( 2, energyThermalStringProperty, 'thermalEnergyLabelText' );
-    const totalLabel = createLabel( 3, energyTotalStringProperty, 'totalEnergyLabelText' );
+    const kineticLabel = createLabel( 0, energyKineticStringProperty );
+    const potentialLabel = createLabel( 1, energyPotentialStringProperty );
+    const thermalLabel = createLabel( 2, energyThermalStringProperty );
+    const totalLabel = createLabel( 3, energyTotalStringProperty );
 
     const clearThermalButton = new MoveToTrashLegendButton( {
       arrowColor: EnergySkateParkColors.thermalEnergyColorProperty,
@@ -127,7 +126,6 @@ export default class PieChartLegend extends Panel {
     const contentNode = new VBox( { spacing: 6, align: 'left', children: children } );
 
     const titleText = new Text( energyEnergyStringProperty, {
-      tandem: tandem.createTandem( 'titleText' ),
       fill: 'black',
       font: new PhetFont( 17 ),
       pickable: false,

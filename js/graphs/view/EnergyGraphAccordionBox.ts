@@ -11,7 +11,6 @@ import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Dimension2 from '../../../../dot/js/Dimension2.js';
-import merge from '../../../../phet-core/js/merge.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
@@ -179,12 +178,8 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       maxWidth: 100
     };
     const variableSwitchTandem = tandem.createTandem( 'variableSwitch' );
-    const positionLabelText = new Text( positionSwitchLabelStringProperty, merge( {
-      tandem: variableSwitchTandem.createTandem( 'positionLabelText' )
-    }, switchLabelOptions ) );
-    const timeLabelText = new Text( timeSwitchLabelStringProperty, merge( {
-      tandem: variableSwitchTandem.createTandem( 'timeLabelText' )
-    }, switchLabelOptions ) );
+    const positionLabelText = new Text( positionSwitchLabelStringProperty, switchLabelOptions );
+    const timeLabelText = new Text( timeSwitchLabelStringProperty, switchLabelOptions );
 
     const variableSwitch = new ABSwitch( model.independentVariableProperty, 'position', positionLabelText, 'time', timeLabelText, {
       toggleSwitchOptions: { size: SWITCH_SIZE },
