@@ -19,7 +19,6 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import GridNode from '../../../../griddle/js/GridNode.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
-import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import TextPanel from './TextPanel.js';
@@ -44,12 +43,10 @@ export default class EnergySkateParkGridNode extends Node {
    * @param referenceHeightProperty - Property in meters for height of zero potential energy
    * @param visibleBoundsProperty - visible bounds, in view coordinates
    * @param modelViewTransform the main model-view transform
-   * @param tandem
    */
-  public constructor( gridVisibleProperty: PhetioProperty<boolean>, referenceHeightProperty: NumberProperty, visibleBoundsProperty: TProperty<Bounds2>, modelViewTransform: ModelViewTransform2, tandem: Tandem ) {
+  public constructor( gridVisibleProperty: PhetioProperty<boolean>, referenceHeightProperty: NumberProperty, visibleBoundsProperty: TProperty<Bounds2>, modelViewTransform: ModelViewTransform2 ) {
     super( {
-      pickable: false,
-      tandem: tandem
+      pickable: false
     } );
 
     const visibleBounds = visibleBoundsProperty.get();

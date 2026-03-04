@@ -249,7 +249,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.backgroundNode = new BackgroundNode( this.layoutBounds, this.visibleBoundsProperty );
     this.bottomLayer.addChild( this.backgroundNode );
 
-    this.gridNode = new EnergySkateParkGridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, this.visibleBoundsProperty, modelViewTransform, tandem.createTandem( 'energySkateParkGridNode' ) );
+    this.gridNode = new EnergySkateParkGridNode( model.gridVisibleProperty, model.skater.referenceHeightProperty, this.visibleBoundsProperty, modelViewTransform );
     this.bottomLayer.addChild( this.gridNode );
 
     this.controlPanel = new EnergySkateParkControlPanel( model, this, tandem.createTandem( 'controlPanel' ), options.controlPanelOptions || undefined );
