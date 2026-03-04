@@ -463,7 +463,7 @@
         "value": "Energy Sensor Probe"
       },
       "accessibleHelpText": {
-        "value": "Move probe along skater's path to measure speed, height, and energy."
+        "value": "Move probe along skater's path to measure speed, height, and energy.  Path fades away when skater turns around. Pause to analyze values. "
       },
       "nothingToMeasure": {
         "value": "Nothing to measure yet."
@@ -853,10 +853,10 @@
         "value": "Experiment with or without an adjustable reference height."
       },
       "accessibleContextResponseChecked": {
-        "value": "Adjustable reference height added to Play Area."
+        "value": "Reference Height added to Play Area."
       },
       "accessibleContextResponseUnchecked": {
-        "value": "Adjustable reference height hidden."
+        "value": "Reference Height hidden."
       }
     },
     "restartSkaterButton": {
