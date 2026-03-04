@@ -329,7 +329,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
       updateWhenInvisible: false,
       pickable: false,
       radius: gaugeRadius,
-      tandem: tandem.createTandem( 'speedometerNode' ),
       accessibleHeading: EnergySkateParkFluent.a11y.speedometer.accessibleHeadingStringProperty,
       accessibleParagraph: EnergySkateParkFluent.a11y.speedometer.accessibleParagraph.createProperty( {
         speed: formattedSpeedProperty
@@ -344,9 +343,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.speedometerNode.top = this.layoutBounds.minY + 5;
     this.bottomLayer.addChild( this.speedometerNode );
 
-    this.trackLayer = new Node( {
-      tandem: tandem.createTandem( 'trackLayer' )
-    } );
+    this.trackLayer = new Node();
 
     // tracks on top of panels and non-interactive visualizations
     this.topLayer.addChild( this.trackLayer );
@@ -480,7 +477,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     // skaterNode is above most things as it is the primary draggable object
     this.topLayer.addChild( this.skaterNode );
 
-    const pieChartNode = new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, tandem.createTandem( 'pieChartNode' ) );
+    const pieChartNode = new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform );
     this.topLayer.addChild( pieChartNode );
 
     // relative to the control panel, but this will not float with the layout

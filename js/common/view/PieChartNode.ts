@@ -17,10 +17,9 @@ import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path, { PathOptions } from '../../../../scenery/js/nodes/Path.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
-import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
-import Skater from '../model/Skater.js';
 import EnergySkateParkColors from '../EnergySkateParkColors.js';
+import Skater from '../model/Skater.js';
 
 type SelfOptions = {
 
@@ -35,7 +34,7 @@ export default class PieChartNode extends Node {
 
   private readonly showNegativeEnergy: boolean;
 
-  public constructor( skater: Skater, pieChartVisibleProperty: TReadOnlyProperty<boolean>, modelViewTransform: ModelViewTransform2, tandem: Tandem, providedOptions?: PieChartNodeOptions ) {
+  public constructor( skater: Skater, pieChartVisibleProperty: TReadOnlyProperty<boolean>, modelViewTransform: ModelViewTransform2, providedOptions?: PieChartNodeOptions ) {
 
     const options = optionize<PieChartNodeOptions, SelfOptions, NodeOptions>()( {
       showNegativeEnergy: true
@@ -78,7 +77,6 @@ export default class PieChartNode extends Node {
     } );
 
     super( {
-      tandem: tandem,
       children: [ thermalEnergySlice, potentialEnergySlice, kineticEnergySlice, totalEnergyCircle ],
       pickable: false
     } );
