@@ -93,50 +93,50 @@ a11y:
   noDataParagraph:      No data to display. Grab skater to get started.
   screenSummary:
     playArea:
-      intro: >-
-        At your skate park, a skater can move along a track.
-        You can explore graphical representations of energy and measure speed.
-      measure: >-
-        At your skate park, a skater can move along an adjustable track.
-        You can explore graphical representations of energy and measure speed.
-        Additionally, the Energy Sensor measures energy, speed, and height along the skater's path.
-      graphs: >-
-        At your skate park, a skater can move along an adjustable track.
-        You can explore graphical representations of energy and measure speed.
-        Additionally, the Energy Graph plots energy as a function of position or time.
-      friction: >-
-        At your skate park, a skater can move along a track with an adjustable amount of friction.
-        You can explore graphical representations of energy and measure speed.
+      intro:      >-
+                  At your skate park, a skater can move along a track.
+                  You can explore graphical representations of energy and measure speed.
+      measure:    >-
+                  At your skate park, a skater can move along an adjustable track.
+                  You can explore graphical representations of energy and measure speed.
+                  Additionally, the Energy Sensor measures energy, speed, and height along the skater's path.
+      graphs:     >-
+                  At your skate park, a skater can move along an adjustable track.
+                  You can explore graphical representations of energy and measure speed.
+                  Additionally, the Energy Graph plots energy as a function of position or time.
+      friction:   >-
+                  At your skate park, a skater can move along a track with an adjustable amount of friction.
+                  You can explore graphical representations of energy and measure speed.
       playground: >-
-        At your skate park, a skater can move along a custom-built track.
-        You can explore graphical representations of energy and measure speed.
+                  At your skate park, a skater can move along a custom-built track.
+                  You can explore graphical representations of energy and measure speed.
     controlArea:
-      withTrackSelection: >-
-        You can choose your track shape, adjust experiment settings, and enable measurement tools.
-        There is a button to pause the sim for closer analysis of energy and speed.
-        Reset sim to start over.
+      withTrackSelection:    >-
+                             You can choose your track shape, adjust experiment settings, and enable measurement tools.
+                             There is a button to pause the sim for closer analysis of energy and speed.
+                             Reset sim to start over.
       withoutTrackSelection: >-
-        You can adjust experiment settings and enable measurement tools.
-        There is a button to pause the sim for closer analysis of energy and speed.
-        Reset sim to start over.
+                             You can adjust experiment settings and enable measurement tools.
+                             There is a button to pause the sim for closer analysis of energy and speed.
+                             Reset sim to start over.
     currentDetails:
-      skaterPhrase: >-
-        Currently, skater is { $onTrack ->
-          [on] on
-          *[off] off
-        } the track and { $motion ->
-          [inMotion] in motion
-          *[atRest] at rest
-        }.
+      skaterPhrase:   >-
+                      Currently, skater is { $onTrack ->
+                        [on] on
+                        *[off] off
+                      } the track and { $motion ->
+                        [inMotion] in motion
+                        *[atRest] at rest
+                      }.
       frictionPhrase: >-
-        Track surface { $hasFriction ->
-          [true] has friction
-          *[false] is frictionless
-        }.
-      noTrackBuilt: Currently, no track built.
+                      Track surface { $hasFriction ->
+                        [true] has friction
+                        *[false] is frictionless
+                      }.
+      noTrackBuilt:   Currently, no track built.
     interactionHint:
       hasTrack: Place skater on the track to begin exploring.
-      noTrack: Add tracks to start building your own skate park.
+      noTrack:  Add tracks to start building your own skate park.
   controlPanel:
     experimentSettingsHeading: Experiment Settings
   keyboardHelpDialog:
@@ -173,21 +173,21 @@ a11y:
                                    Add track pieces as needed. Then, use connection options to connect tracks.
                                    Everything is movable with the Arrow keys. Check out Keyboard Shortcuts for more handy shortcuts.
     trackPhraseFixed:              'Track shape is { $trackShape }.'
-    trackPhraseAdjustable: |-
-      Track shape is { $trackShape } with { $numberControlPoints ->
-        [one] { $numberControlPoints } adjustable control point
-       *[other] { $numberControlPoints } adjustable control points
-      }.
+    trackPhraseAdjustable:         |-
+                                   Track shape is { $trackShape } with { $numberControlPoints ->
+                                     [one] { $numberControlPoints } adjustable control point
+                                    *[other] { $numberControlPoints } adjustable control points
+                                   }.
     playgroundTrackPhraseMultiple: |-
-      Your custom-built track has { $numberTracks } tracks and { $numberControlPoints ->
-        [one] { $numberControlPoints } adjustable control point
-       *[other] { $numberControlPoints } adjustable control points
-      }.
-    playgroundTrackPhraseSingle: |-
-      Your custom-built track has 1 track and { $numberControlPoints ->
-        [one] { $numberControlPoints } adjustable control point
-       *[other] { $numberControlPoints } adjustable control points
-      }.
+                                   Your custom-built track has { $numberTracks } tracks and { $numberControlPoints ->
+                                     [one] { $numberControlPoints } adjustable control point
+                                    *[other] { $numberControlPoints } adjustable control points
+                                   }.
+    playgroundTrackPhraseSingle:   |-
+                                   Your custom-built track has 1 track and { $numberControlPoints ->
+                                     [one] { $numberControlPoints } adjustable control point
+                                    *[other] { $numberControlPoints } adjustable control points
+                                   }.
     playgroundTrackPhraseNone:     No track yet.
     trackAndSkaterParagraph:       '{ $trackPhrase } { $skaterPhrase }'
     skaterOnTrack:                 Skater is on track.
@@ -358,7 +358,8 @@ a11y:
   massSlider:
     accessibleHelpText: Set skater mass, ranging from small to large.
   massControl:
-    accessibleHelpText: Set skater mass.
+    accessibleHelpText:     Set skater mass.
+    accessibleValuePattern: '{$value} kilograms'
   
   # Key names likely need fixing. I copied the phetioIDs from the Intro screen. For animal skaters, list animal type. For example: Skater 7, Goat
   skaterSetOneControls:

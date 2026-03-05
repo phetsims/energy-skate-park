@@ -379,6 +379,7 @@ type StringsType = {
     };
     'massControl': {
       'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'accessibleValuePatternStringProperty': LocalizedStringProperty;
     };
     'skaterSetOneControls': {
       'accessibleNameStringProperty': LocalizedStringProperty;

@@ -235,6 +235,7 @@ addToMapIfDefined( 'a11y_gravityComboBox_accessibleHelpText', 'a11y.gravityCombo
 addToMapIfDefined( 'a11y_gravityComboBox_accessibleContextResponse', 'a11y.gravityComboBox.accessibleContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_massSlider_accessibleHelpText', 'a11y.massSlider.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_massControl_accessibleHelpText', 'a11y.massControl.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_massControl_accessibleValuePattern', 'a11y.massControl.accessibleValuePatternStringProperty' );
 addToMapIfDefined( 'a11y_skaterSetOneControls_accessibleName', 'a11y.skaterSetOneControls.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_skaterSetOneControls_accessibleHelpText', 'a11y.skaterSetOneControls.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_skaterSetOneControls_skater1RadioButton_accessibleName', 'a11y.skaterSetOneControls.skater1RadioButton.accessibleNameStringProperty' );
@@ -648,7 +649,8 @@ const EnergySkateParkFluent = {
       accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_massSlider_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.massSlider.accessibleHelpTextStringProperty' ) )
     },
     massControl: {
-      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_massControl_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.massControl.accessibleHelpTextStringProperty' ) )
+      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_massControl_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.massControl.accessibleHelpTextStringProperty' ) ),
+      accessibleValuePattern: new FluentPattern<{ value: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_massControl_accessibleValuePattern', _.get( EnergySkateParkStrings, 'a11y.massControl.accessibleValuePatternStringProperty' ), [{"name":"value"}] )
     },
     _comment_3: new FluentComment( {"comment":"Key names likely need fixing. I copied the phetioIDs from the Intro screen. For animal skaters, list animal type. For example: Skater 7, Goat","associatedKey":"skaterSetOneControls"} ),
     skaterSetOneControls: {

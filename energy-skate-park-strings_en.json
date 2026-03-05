@@ -787,6 +787,9 @@
     "massControl": {
       "accessibleHelpText": {
         "value": "Set skater mass."
+      },
+      "accessibleValuePattern": {
+        "value": "{$value} kilograms"
       }
     },
     "skaterSetOneControls": {
