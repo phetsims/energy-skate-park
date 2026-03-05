@@ -31,7 +31,7 @@ export default class ToolboxPanel extends Panel {
   public readonly stopwatchToolNode: Node;
   public readonly measuringTapeToolNode: Node;
 
-  public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem, providedOptions?: PanelOptions ) {
+  public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem ) {
     const options = combineOptions<PanelOptions>( {
       align: 'center',
 
@@ -41,7 +41,7 @@ export default class ToolboxPanel extends Panel {
       xMargin: 25,
 
       accessibleHeading: EnergySkateParkFluent.a11y.toolboxPanel.accessibleHeadingStringProperty
-    }, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
+    }, EnergySkateParkConstants.PANEL_OPTIONS );
 
     // create the icons
     const measuringTapeIcon = MeasuringTapeNode.createIcon( {
@@ -62,7 +62,7 @@ export default class ToolboxPanel extends Panel {
     } ), {
       resolution: 5,
       nodeOptions: {
-        tandem: tandem.createTandem( 'timerIcon' )
+        tandem: tandem.createTandem( 'stopwatchIcon' )
       }
     } );
     stopwatchIcon.setScaleMagnitude( 0.4 );
