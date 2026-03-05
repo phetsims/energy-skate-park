@@ -35,7 +35,9 @@ export default class ToolboxPanel extends Panel {
 
     // create the icons
     const measuringTapeIcon = MeasuringTapeNode.createIcon( {
-      crosshairColor: 'black'
+      crosshairColor: 'black',
+      tandem: tandem.createTandem( 'measuringTapeIcon' ),
+      visiblePropertyOptions: { phetioFeatured: true }
     } );
     measuringTapeIcon.setScaleMagnitude( 0.7 );
 
