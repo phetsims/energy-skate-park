@@ -54,7 +54,8 @@ export default class ToolboxPanel extends Panel {
     } ), {
       resolution: 5,
       nodeOptions: {
-        tandem: tandem.createTandem( 'stopwatchIcon' )
+        tandem: tandem.createTandem( 'stopwatchIcon' ),
+        visiblePropertyOptions: { phetioFeatured: true }
       }
     } );
     stopwatchIcon.setScaleMagnitude( 0.4 );
@@ -92,6 +93,7 @@ export default class ToolboxPanel extends Panel {
         xMargin: 25,
 
         tandem: tandem,
+        visiblePropertyOptions: { phetioFeatured: true },
         accessibleHeading: EnergySkateParkFluent.a11y.toolboxPanel.accessibleHeadingStringProperty
       },
       EnergySkateParkConstants.PANEL_OPTIONS,
