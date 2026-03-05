@@ -32,16 +32,6 @@ export default class ToolboxPanel extends Panel {
   public readonly measuringTapeToolNode: Node;
 
   public constructor( model: EnergySkateParkModel, view: EnergySkateParkScreenView, tandem: Tandem ) {
-    const options = combineOptions<PanelOptions>( {
-      align: 'center',
-
-      // smaller y margin to save space when used with very tall ControlPanels (like in the intro screen)
-      yMargin: 2,
-
-      xMargin: 25,
-
-      accessibleHeading: EnergySkateParkFluent.a11y.toolboxPanel.accessibleHeadingStringProperty
-    }, EnergySkateParkConstants.PANEL_OPTIONS );
 
     // create the icons
     const measuringTapeIcon = MeasuringTapeNode.createIcon( {
@@ -91,7 +81,19 @@ export default class ToolboxPanel extends Panel {
       excludeInvisibleChildrenFromBounds: false
     } );
 
-    super( icons, options );
+    super( icons, combineOptions<PanelOptions>( {
+        align: 'center',
+
+        // smaller y margin to save space when used with very tall ControlPanels (like in the intro screen)
+        yMargin: 2,
+
+        xMargin: 25,
+
+        tandem: tandem,
+        accessibleHeading: EnergySkateParkFluent.a11y.toolboxPanel.accessibleHeadingStringProperty
+      },
+      EnergySkateParkConstants.PANEL_OPTIONS,
+      {} ) );
 
     // create a forwarding listener for the MeasuringTapeNode DragListener
     measuringTapeIconWrapper.addInputListener( DragListener.createForwardingListener( event => {
