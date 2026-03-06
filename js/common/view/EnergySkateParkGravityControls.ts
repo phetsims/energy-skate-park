@@ -86,13 +86,27 @@ export default class EnergySkateParkGravityControls extends VBox {
         affirm( !options.gravityNumberControlOptions.numberDisplayOptions.valuePattern,
           'valuePattern of the gravity number control is set by EnergySkateParkGravityControls' );
       }
-      const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInMetersPerSecondSquaredControl' ), options.gravityNumberControlOptions || undefined );
+      const unitsStringProperty = new DerivedProperty( [ accelerationUnitsProperty ],
+        units => units === AccelerationUnits.METERS_PER_SECOND_SQUARED ? 'metersPerSecondSquared' : 'newtonsPerKilogram'
+      );
+      const createAriaValueText = () => EnergySkateParkFluent.a11y.gravityControl.accessibleValuePattern.format( {
+        value: gravityMagnitudeProperty.value,
+        units: unitsStringProperty.value
+      } );
+
+      const gravityControlInMetersPerSecondSquared = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInMetersPerSecondSquaredControl' ), merge( {}, options.gravityNumberControlOptions, {
+        sliderOptions: { createAriaValueText: createAriaValueText }
+      } ) );
       const gravityControlInNewtonsPerKilogram = new GravityNumberControl( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityInNewtonsPerKilogramControl' ), merge( {}, options.gravityNumberControlOptions, {
           numberDisplayOptions: {
             valuePattern: EnergySkateParkFluent.physicalControls.gravityControls.gravityNewtonsPerKilogramPatternStringProperty
-          }
+          },
+          sliderOptions: { createAriaValueText: createAriaValueText }
         } )
       );
+
+      gravityControlInMetersPerSecondSquared.slider.descriptionDependencies = [ accelerationUnitsProperty ];
+      gravityControlInNewtonsPerKilogram.slider.descriptionDependencies = [ accelerationUnitsProperty ];
 
       gravityControlInMetersPerSecondSquared.accessibleHelpText = EnergySkateParkFluent.a11y.gravityControl.accessibleHelpTextStringProperty;
       gravityControlInNewtonsPerKilogram.accessibleHelpText = EnergySkateParkFluent.a11y.gravityControl.accessibleHelpTextStringProperty;
@@ -111,6 +125,16 @@ export default class EnergySkateParkGravityControls extends VBox {
     if ( options.includeGravitySlider ) {
       const gravitySlider = new GravitySlider( gravityMagnitudeProperty, userControlledProperty, tandem.createTandem( 'gravityControl' ) );
       gravitySlider.accessibleHelpText = EnergySkateParkFluent.a11y.gravitySlider.accessibleHelpTextStringProperty;
+
+      const sliderUnitsStringProperty = new DerivedProperty( [ accelerationUnitsProperty ],
+        units => units === AccelerationUnits.METERS_PER_SECOND_SQUARED ? 'metersPerSecondSquared' : 'newtonsPerKilogram'
+      );
+      gravitySlider.slider.createAriaValueText = () => EnergySkateParkFluent.a11y.gravityControl.accessibleValuePattern.format( {
+        value: gravityMagnitudeProperty.value,
+        units: sliderUnitsStringProperty.value
+      } );
+      gravitySlider.slider.descriptionDependencies = [ accelerationUnitsProperty ];
+
       children.push( gravitySlider );
     }
 

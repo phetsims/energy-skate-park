@@ -348,6 +348,11 @@ a11y:
     accessibleHelpText: Set acceleration due to gravity, ranging from tiny to lots.
   gravityControl:
     accessibleHelpText: Set acceleration due to gravity.
+    accessibleValuePattern: >-
+      {$value} { $units ->
+        [metersPerSecondSquared] meters per second squared
+        *[newtonsPerKilogram] newtons per kilogram
+      }
   gravityComboBox:
     accessibleName:            Gravity Benchmark
     accessibleHelpText:        Set acceleration due to gravity to match the chosen benchmark.

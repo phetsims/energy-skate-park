@@ -766,6 +766,9 @@
     "gravityControl": {
       "accessibleHelpText": {
         "value": "Set acceleration due to gravity."
+      },
+      "accessibleValuePattern": {
+        "value": "{$value} { $units ->\n  [metersPerSecondSquared] meters per second squared\n  *[newtonsPerKilogram] newtons per kilogram\n}"
       }
     },
     "gravityComboBox": {

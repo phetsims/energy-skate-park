@@ -368,6 +368,7 @@ type StringsType = {
     };
     'gravityControl': {
       'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'accessibleValuePatternStringProperty': LocalizedStringProperty;
     };
     'gravityComboBox': {
       'accessibleNameStringProperty': LocalizedStringProperty;

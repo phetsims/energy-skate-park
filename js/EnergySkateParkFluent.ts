@@ -230,6 +230,7 @@ addToMapIfDefined( 'a11y_sceneSelectionRadioButtonGroup_loopRadioButton_accessib
 addToMapIfDefined( 'a11y_frictionSlider_accessibleHelpText', 'a11y.frictionSlider.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_gravitySlider_accessibleHelpText', 'a11y.gravitySlider.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_gravityControl_accessibleHelpText', 'a11y.gravityControl.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_gravityControl_accessibleValuePattern', 'a11y.gravityControl.accessibleValuePatternStringProperty' );
 addToMapIfDefined( 'a11y_gravityComboBox_accessibleName', 'a11y.gravityComboBox.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_gravityComboBox_accessibleHelpText', 'a11y.gravityComboBox.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_gravityComboBox_accessibleContextResponse', 'a11y.gravityComboBox.accessibleContextResponseStringProperty' );
@@ -637,7 +638,8 @@ const EnergySkateParkFluent = {
       accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_gravitySlider_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.gravitySlider.accessibleHelpTextStringProperty' ) )
     },
     gravityControl: {
-      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_gravityControl_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.gravityControl.accessibleHelpTextStringProperty' ) )
+      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_gravityControl_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.gravityControl.accessibleHelpTextStringProperty' ) ),
+      accessibleValuePattern: new FluentPattern<{ units: 'metersPerSecondSquared' | 'newtonsPerKilogram' | TReadOnlyProperty<'metersPerSecondSquared' | 'newtonsPerKilogram'>, value: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_gravityControl_accessibleValuePattern', _.get( EnergySkateParkStrings, 'a11y.gravityControl.accessibleValuePatternStringProperty' ), [{"name":"units","variants":["metersPerSecondSquared","newtonsPerKilogram"]},{"name":"value"}] )
     },
     gravityComboBox: {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_gravityComboBox_accessibleName', _.get( EnergySkateParkStrings, 'a11y.gravityComboBox.accessibleNameStringProperty' ) ),
