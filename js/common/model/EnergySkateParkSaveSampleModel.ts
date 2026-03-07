@@ -35,6 +35,9 @@ type SelfOptions = {
 
   // the maximum number of EnergySkateParkDataSamples saved by this model, to prevent from saving too many if we run without encountering a case that clears old samples
   maxNumberOfSamples?: number;
+
+  // tandem for sampleTimeProperty, allows subtypes to place it under a different tandem group
+  sampleTimePropertyTandem?: Tandem | null;
 };
 
 export type EnergySkateParkSaveSampleModelOptions = SelfOptions & EnergySkateParkModelOptions;
@@ -76,7 +79,8 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
       defaultSaveSamples: true,
       saveSampleInterval: 0.1,
       sampleFadeDecay: 0.95,
-      maxNumberOfSamples: 50
+      maxNumberOfSamples: 50,
+      sampleTimePropertyTandem: null
     }, providedOptions );
 
     super( preferencesModel, tandem, options );
@@ -90,7 +94,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
     this.saveSamplesProperty = new BooleanProperty( options.defaultSaveSamples, { tandem: tandem.createTandem( 'saveSamplesProperty' ) } );
     this.preventSampleSave = false;
     this.sampleTimeProperty = new NumberProperty( 0, {
-      tandem: tandem.createTandem( 'sampleTimeProperty' )
+      tandem: ( options.sampleTimePropertyTandem || tandem ).createTandem( 'sampleTimeProperty' )
     } );
     this.dataSamples = createObservableArray( {
       tandem: tandem.createTandem( 'dataSamples' ),

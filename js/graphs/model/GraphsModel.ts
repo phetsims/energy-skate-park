@@ -36,8 +36,8 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
   // sets the independent variable for the graph display
   public readonly independentVariableProperty: StringUnionProperty<'position' | 'time'>;
 
-  // or not the energy plot is visible
-  public readonly energyPlotVisibleProperty: BooleanProperty;
+  // Whether the energy graph accordion box is expanded
+  public readonly energyGraphExpandedProperty: BooleanProperty;
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem ) {
 
@@ -47,6 +47,8 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // all tracks in graphs screen are bound by these dimensions (in meters)
     const trackHeight = GraphsConstants.TRACK_HEIGHT;
     const trackWidth = GraphsConstants.TRACK_WIDTH;
+
+    const graphTandem = tandem.createTandem( 'graph' );
 
     // track set model with no friction
     super( preferencesModel, tandem.createTandem( 'graphsModel' ), {
@@ -112,35 +114,37 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
       sampleFadeDecay: 0.5,
 
       // to prevent a memory leak if we run for a long time without clearing
-      maxNumberOfSamples: 1000
+      maxNumberOfSamples: 1000,
+
+      sampleTimePropertyTandem: graphTandem
     } );
 
     this.kineticEnergyDataVisibleProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'kineticEnergyDataVisibleProperty' )
+      tandem: graphTandem.createTandem( 'kineticEnergyDataVisibleProperty' )
     } );
     this.potentialEnergyDataVisibleProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'potentialEnergyDataVisibleProperty' )
+      tandem: graphTandem.createTandem( 'potentialEnergyDataVisibleProperty' )
     } );
     this.thermalEnergyDataVisibleProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'thermalEnergyDataVisibleProperty' )
+      tandem: graphTandem.createTandem( 'thermalEnergyDataVisibleProperty' )
     } );
     this.totalEnergyDataVisibleProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'totalEnergyDataVisibleProperty' )
+      tandem: graphTandem.createTandem( 'totalEnergyDataVisibleProperty' )
     } );
 
     this.energyPlotScaleIndexProperty = new NumberProperty( 11, {
       range: new Range( 0, GraphsConstants.PLOT_RANGES.length - 1 ),
-      tandem: tandem.createTandem( 'energyPlotScaleIndexProperty' )
+      tandem: graphTandem.createTandem( 'energyPlotScaleIndexProperty' )
     } );
 
     this.independentVariableProperty = new StringUnionProperty( 'position', {
       validValues: [ 'position', 'time' ],
-      tandem: tandem.createTandem( 'independentVariableProperty' ),
+      tandem: graphTandem.createTandem( 'independentVariableProperty' ),
       phetioDocumentation: 'The independent variable in the energy graph.'
     } );
 
-    this.energyPlotVisibleProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'energyPlotVisibleProperty' )
+    this.energyGraphExpandedProperty = new BooleanProperty( true, {
+      tandem: graphTandem.createTandem( 'energyGraphExpandedProperty' )
     } );
 
     // existing data fades away before removal when the skater direction changes
@@ -245,7 +249,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
   public override reset(): void {
     super.reset();
 
-    this.energyPlotVisibleProperty.reset();
+    this.energyGraphExpandedProperty.reset();
 
     this.kineticEnergyDataVisibleProperty.reset();
     this.potentialEnergyDataVisibleProperty.reset();

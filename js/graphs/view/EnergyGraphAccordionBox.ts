@@ -284,7 +284,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
         touchAreaYDilation: 6
       },
 
-      expandedProperty: model.energyPlotVisibleProperty,
+      expandedProperty: model.energyGraphExpandedProperty,
       tandem: tandem
     }, EnergySkateParkConstants.PANEL_OPTIONS ) );
 
