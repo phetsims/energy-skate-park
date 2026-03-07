@@ -88,7 +88,8 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
       // prevent fitted blocks for the Skater to improve performance, see #213
       preventFit: true,
-      tandem: tandem
+      tandem: tandem,
+      phetioVisiblePropertyInstrumented: false
     } );
 
     // Store references for track attachment hotkey
@@ -106,12 +107,10 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
     // left and right Images for the skater
     const leftSkaterImageNode = new Image( this.skaterImageSetProperty.value.leftImageProperty, {
-      cursor: 'pointer',
-      tandem: tandem.createTandem( 'leftSkaterImageNode' )
+      cursor: 'pointer'
     } );
     const rightSkaterImageNode = new Image( this.skaterImageSetProperty.value.rightImageProperty, {
-      cursor: 'pointer',
-      tandem: tandem.createTandem( 'rightSkaterImageNode' )
+      cursor: 'pointer'
     } );
     this.children = [ leftSkaterImageNode, rightSkaterImageNode ];
 
