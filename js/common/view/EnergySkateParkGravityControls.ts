@@ -19,6 +19,7 @@ import { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
 import { SliderOptions } from '../../../../sun/js/Slider.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import Utils from '../../../../dot/js/Utils.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -90,7 +91,7 @@ export default class EnergySkateParkGravityControls extends VBox {
         units => units === AccelerationUnits.METERS_PER_SECOND_SQUARED ? 'metersPerSecondSquared' : 'newtonsPerKilogram'
       );
       const createAriaValueText = () => EnergySkateParkFluent.a11y.gravityControl.accessibleValuePattern.format( {
-        value: gravityMagnitudeProperty.value,
+        value: toFixed( gravityMagnitudeProperty.value, 1 ),
         units: unitsStringProperty.value
       } );
 
@@ -130,7 +131,7 @@ export default class EnergySkateParkGravityControls extends VBox {
         units => units === AccelerationUnits.METERS_PER_SECOND_SQUARED ? 'metersPerSecondSquared' : 'newtonsPerKilogram'
       );
       gravitySlider.slider.createAriaValueText = () => EnergySkateParkFluent.a11y.gravityControl.accessibleValuePattern.format( {
-        value: gravityMagnitudeProperty.value,
+        value: toFixed( gravityMagnitudeProperty.value, 1 ),
         units: sliderUnitsStringProperty.value
       } );
       gravitySlider.slider.descriptionDependencies = [ accelerationUnitsProperty ];
