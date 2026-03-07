@@ -54,8 +54,9 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
 
     this.trackNodes = [];
 
-    this.trackToolbox = new TrackToolboxPanel( model, this, tandem.createTandem( 'trackToolbox' ), {
-      rightCenter: this.timeControlNode.leftCenter.minusXY( 15, 0 )
+    this.trackToolbox = new TrackToolboxPanel( model, this, {
+      rightCenter: this.timeControlNode.leftCenter.minusXY( 15, 0 ),
+      tandem: tandem.createTandem( 'trackToolbox' )
     } );
     this.bottomLayer.addChild( this.trackToolbox );
 
