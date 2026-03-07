@@ -8,6 +8,7 @@
  */
 
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import Multilink from '../../../../axon/js/Multilink.js';
 import Property from '../../../../axon/js/Property.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Dimension2 from '../../../../dot/js/Dimension2.js';
@@ -284,7 +285,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       },
 
       expandedProperty: model.energyPlotVisibleProperty,
-      tandem: tandem.createTandem( 'accordionBox' )
+      tandem: tandem
     }, EnergySkateParkConstants.PANEL_OPTIONS ) );
 
     this.variableSwitch = variableSwitch;
@@ -301,10 +302,10 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
     } );
 
     // The variable switch and eraser button are part of the title layout but should only be visible when
-    // expanded
-    this.expandedProperty.link( expanded => {
-      variableSwitch.visible = expanded;
-      eraserButton.visible = expanded;
+    // expanded and when the accordion box itself is visible
+    Multilink.multilink( [ this.expandedProperty, this.visibleProperty ], ( expanded, visible ) => {
+      variableSwitch.visible = expanded && visible;
+      eraserButton.visible = expanded && visible;
     } );
 
     this.energyPlot = energyPlot;
