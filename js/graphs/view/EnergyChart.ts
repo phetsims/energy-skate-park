@@ -165,6 +165,7 @@ export default class EnergyChart extends XYCursorChartNode {
     this.chartCursor.ariaRole = 'application';
     this.chartCursor.accessibleName = EnergySkateParkFluent.a11y.energyGraph.graphCursor.accessibleNameStringProperty;
     this.chartCursor.accessibleHelpText = EnergySkateParkFluent.a11y.energyGraph.graphCursor.accessibleHelpTextStringProperty;
+    this.chartCursor.accessibleRoleDescription = SceneryPhetFluent.a11y.grabDrag.movableStringProperty;
 
     // Space/Enter toggles pause
     this.chartCursor.addInputListener( new KeyboardListener( {

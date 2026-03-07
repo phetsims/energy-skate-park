@@ -257,7 +257,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
     checkboxGroup.rightCenter = yLabel.leftCenter.minusXY( 10, 0 );
 
     // PDOM ordering within the accordion box content
-    contentNode.pdomOrder = [ graphDescriptionNode, checkboxHelpNode, checkboxGroup, energyPlot, yLabel ];
+    contentNode.pdomOrder = [ graphDescriptionNode, checkboxHelpNode, checkboxGroup, yLabel, energyPlot ];
 
     const buttonYMargin = 5;
     const contentYMargin = 3;
