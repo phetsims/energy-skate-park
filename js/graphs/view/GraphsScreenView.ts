@@ -18,7 +18,7 @@ import EnergyGraphAccordionBox from './EnergyGraphAccordionBox.js';
 export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView {
 
   // For layout
-  private readonly graphAccordionBox: EnergyGraphAccordionBox;
+  private readonly energyGraphAccordionBox: EnergyGraphAccordionBox;
 
   public constructor( model: GraphsModel, tandem: Tandem ) {
 
@@ -44,15 +44,15 @@ export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView 
 
     this.addChild( comboBoxParent );
 
-    this.graphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'graphAccordionBox' ), this );
-    this.addToBottomLayer( this.graphAccordionBox );
+    this.energyGraphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'energyGraphAccordionBox' ), this );
+    this.addToBottomLayer( this.energyGraphAccordionBox );
 
     // Put graph accordion box before speedometer, see https://github.com/phetsims/energy-skate-park/issues/447
     this.pdomPlayAreaNode.pdomOrder = [
       ...( this.pdomPlayAreaNode.pdomOrder! ).filter( node => node !== this.speedometerNode ),
-      this.graphAccordionBox,
-      this.graphAccordionBox.variableSwitch,
-      this.graphAccordionBox.eraserButton,
+      this.energyGraphAccordionBox,
+      this.energyGraphAccordionBox.variableSwitch,
+      this.energyGraphAccordionBox.eraserButton,
       this.speedometerNode
     ];
   }
@@ -65,11 +65,11 @@ export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView 
 
     // the graph within the accordion box needs to line up with the right edge of the track and grid lines so that
     // skater positions on track align perfectly with positions along the graph
-    this.graphAccordionBox.right = this.modelViewTransform.modelToViewX( 5 ) + this.graphAccordionBox.getContentRight();
-    this.graphAccordionBox.top = this.controlPanel.top;
+    this.energyGraphAccordionBox.right = this.modelViewTransform.modelToViewX( 5 ) + this.energyGraphAccordionBox.getContentRight();
+    this.energyGraphAccordionBox.top = this.controlPanel.top;
 
     // special layout for the speedometer in this screen
-    this.speedometerNode.left = this.graphAccordionBox.left;
+    this.speedometerNode.left = this.energyGraphAccordionBox.left;
     this.speedometerNode.top = this.modelViewTransform.modelToViewY( GraphsConstants.TRACK_HEIGHT );
   }
 }
