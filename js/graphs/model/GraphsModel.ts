@@ -135,7 +135,8 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
 
     this.independentVariableProperty = new StringUnionProperty( 'position', {
       validValues: [ 'position', 'time' ],
-      tandem: tandem.createTandem( 'independentVariableProperty' )
+      tandem: tandem.createTandem( 'independentVariableProperty' ),
+      phetioDocumentation: 'The independent variable in the energy graph.'
     } );
 
     this.energyPlotVisibleProperty = new BooleanProperty( true, {
