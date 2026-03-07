@@ -10,6 +10,7 @@ import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import { roundToInterval } from '../../../../dot/js/util/roundToInterval.js';
+import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -28,7 +29,11 @@ export default class GravitySlider extends PhysicalSlider {
       tandem, {
         minLabelProperty: EnergySkateParkFluent.physicalControls.tinyStringProperty,
         sliderOptions: {
-          constrainValue: value => roundToInterval( value, 1 )
+          constrainValue: value => roundToInterval( value, 1 ),
+          createAriaValueText: ( value: number ) => EnergySkateParkFluent.a11y.gravityControl.accessibleValuePattern.format( {
+            value: toFixed( value, 1 ),
+            units: 'metersPerSecondSquared'
+          } )
         }
       } );
 
