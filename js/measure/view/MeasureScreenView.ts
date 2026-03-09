@@ -47,7 +47,8 @@ export default class MeasureScreenView extends EnergySkateParkTrackSetScreenView
     this.topLayer.addChild( inspectedSampleHaloNode );
 
     const pathSensorNode = new SkaterPathSensorNode( model.dataSamples, model.sensorProbePositionProperty, model.sensorBodyPositionProperty, model.availableModelBoundsProperty, this.modelViewTransform, this.controlPanel, {
-      tandem: tandem.createTandem( 'pathSensorNode' )
+      tandem: tandem.createTandem( 'pathSensorNode' ),
+      phetioVisiblePropertyInstrumented: false
     } );
 
     this.topLayer.addChild( pathSensorNode );
