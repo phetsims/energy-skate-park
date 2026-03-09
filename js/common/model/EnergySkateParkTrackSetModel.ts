@@ -6,7 +6,7 @@
  */
 
 import Multilink from '../../../../axon/js/Multilink.js';
-import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import StringUnionProperty from '../../../../axon/js/StringUnionProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import optionize, { combineOptions } from '../../../../phet-core/js/optionize.js';
 import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
@@ -39,8 +39,8 @@ export type EnergySkateParkTrackSetModelOptions = SelfOptions & EnergySkateParkS
 
 export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSampleModel {
 
-  // Indicates the currently selected scene. There can be any number of scenes, do we need to pass this in as a param
-  public readonly sceneProperty: NumberProperty;
+  // Indicates the currently selected scene by track type name (e.g. 'PARABOLA', 'DOUBLE_WELL').
+  public readonly sceneProperty: StringUnionProperty<TrackType>;
   public readonly trackTypes: ReadonlyArray<TrackType>;
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions: EnergySkateParkTrackSetModelOptions ) {
@@ -59,15 +59,17 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
     super( preferencesModel, tandem, options );
 
-    this.sceneProperty = new NumberProperty( 0, {
+    this.trackTypes = options.trackTypes;
+
+    this.sceneProperty = new StringUnionProperty( options.trackTypes[ 0 ], {
       tandem: tandem.createTandem( 'sceneProperty' ),
-      validValues: [ 0, 1, 2, 3 ]
+      validValues: [ ...options.trackTypes ],
+      phetioFeatured: true,
+      phetioDocumentation: 'The currently selected premade track scene'
     } );
 
     // When the scene changes, also change the tracks.
     this.sceneProperty.link( this.updateActiveTrack.bind( this ) );
-
-    this.trackTypes = options.trackTypes;
 
     // initialize and add the desired tracks for this EnergySkateParkTrackSetModel
     this.initializePremadeTracks( tandem, options.initializePremadeTracksOptions );
@@ -77,9 +79,10 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
    * When the scene changes or tracks are added to the track set, update which track is visible and physically
    * interactive.
    *
-   * @param sceneIndex - index identifying the scene
+   * @param trackType - the TrackType identifying the scene
    */
-  private updateActiveTrack( sceneIndex: number ): void {
+  private updateActiveTrack( trackType: TrackType ): void {
+    const sceneIndex = this.trackTypes.indexOf( trackType );
     for ( let i = 0; i < this.tracks.length; i++ ) {
       const track = this.tracks.get( i );
       track.physicalProperty.value = ( i === sceneIndex );

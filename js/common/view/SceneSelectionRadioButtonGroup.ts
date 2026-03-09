@@ -36,7 +36,7 @@ type SelfOptions = {
 
 type SceneSelectionRadioButtonGroupOptions = SelfOptions & RectangularRadioButtonGroupOptions;
 
-export default class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup<number> {
+export default class SceneSelectionRadioButtonGroup extends RectangularRadioButtonGroup<TrackType> {
 
   /**
    * Construct a SceneSelectionRadioButtonGroup.  Pass the entire model since it is used to create TrackNode
@@ -154,7 +154,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
       LOOP: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.loopRadioButton.accessibleNameStringProperty
     };
 
-    const radioButtonContent: { value: number; createNode: () => Node; tandemName: string; options?: object }[] = [];
+    const radioButtonContent: { value: TrackType; createNode: () => Node; tandemName: string; options?: object }[] = [];
     _.forEach( contents, ( node, i ) => {
 
       // scalar chosen so that buttons are appropriately sized in the control panel
@@ -179,7 +179,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
       const trackType = model.trackTypes[ i ];
 
       radioButtonContent.push( {
-        value: i,
+        value: trackType,
         createNode: () => alignedNode,
         tandemName: trackType === 'PARABOLA' ? 'parabolaRadioButton' :
                     trackType === 'RAMP' ? 'rampRadioButton' :

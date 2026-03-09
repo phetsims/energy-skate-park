@@ -8,8 +8,8 @@
  */
 
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
-import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import ScreenSummaryContent from '../../../../joist/js/ScreenSummaryContent.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -45,8 +45,8 @@ export default class EnergySkateParkScreenSummaryContent extends ScreenSummaryCo
 
     // Select controlArea content - playground has no track selection
     const controlAreaContent = screenType === 'playground'
-      ? EnergySkateParkFluent.a11y.screenSummary.controlArea.withoutTrackSelectionStringProperty
-      : EnergySkateParkFluent.a11y.screenSummary.controlArea.withTrackSelectionStringProperty;
+                               ? EnergySkateParkFluent.a11y.screenSummary.controlArea.withoutTrackSelectionStringProperty
+                               : EnergySkateParkFluent.a11y.screenSummary.controlArea.withTrackSelectionStringProperty;
 
     // Derived properties for skater state
     const onTrackProperty = new DerivedProperty( [ model.skater.trackProperty ],
@@ -113,10 +113,9 @@ export default class EnergySkateParkScreenSummaryContent extends ScreenSummaryCo
       // For track set screens, derive the track phrase from the scene selection
       const trackSetModel = model as EnergySkateParkTrackSetModel;
       trackPhraseProperty = new DerivedProperty(
-        [ trackSetModel.sceneProperty ],
-        ( sceneIndex: number ) => {
-          const trackType = trackSetModel.trackTypes[ sceneIndex ];
-          const trackShapeName = trackTypeToNameProperty[ trackType ].value;
+        [ trackSetModel.sceneProperty ], scene => {
+          const sceneIndex = trackSetModel.trackTypes.indexOf( scene );
+          const trackShapeName = trackTypeToNameProperty[ scene ].value;
           const track = trackSetModel.tracks.get( sceneIndex );
           const visibleControlPointCount = track.controlPoints.filter( cp => cp.visible ).length;
 
