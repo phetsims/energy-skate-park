@@ -13,6 +13,7 @@ import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
 import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
+import Node from '../../../../scenery/js/nodes/Node.js';
 import Color from '../../../../scenery/js/util/Color.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import Track from '../../common/model/Track.js';
@@ -95,8 +96,7 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     // Set the playground-specific helpText on the "Your Skate Park" heading, before content so it reads
     // right after the heading rather than after all children.
     this.yourSkateParkHeadingNode.accessibleHelpTextBehavior = ParallelDOM.HELP_TEXT_BEFORE_CONTENT;
-    this.yourSkateParkHeadingNode.accessibleHelpText =
-      EnergySkateParkFluent.a11y.yourSkatePark.accessibleHelpTextStringProperty;
+    this.yourSkateParkHeadingNode.accessibleHelpText = EnergySkateParkFluent.a11y.yourSkatePark.accessibleHelpTextStringProperty;
 
     // Use a counter that increments on trackChangedEmitter to capture join/split changes
     // that don't affect the tracks array length
@@ -156,7 +156,14 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
       }
     );
 
-    this.yourSkateParkHeadingNode.accessibleParagraph = paragraphProperty;
+    // Use a child Node for the paragraph so it appears after the help text (which uses HELP_TEXT_BEFORE_CONTENT)
+    const trackStatusNode = new Node( { accessibleParagraph: paragraphProperty } );
+    this.addChild( trackStatusNode );
+
+    // Insert at the beginning of the heading's pdomOrder so it reads right after the help text
+    const currentOrder = this.yourSkateParkHeadingNode.pdomOrder;
+    currentOrder.unshift( trackStatusNode );
+    this.yourSkateParkHeadingNode.pdomOrder = currentOrder;
 
     // Some model elements are spuriously created when creating the track panel -- clear those out now so that the PhET-iO
     // changed state starts clear, see https://github.com/phetsims/energy-skate-park/issues/49
