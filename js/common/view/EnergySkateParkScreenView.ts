@@ -149,7 +149,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
   // the bar chart showing energy distribution
   private readonly energyBarGraphAccordionBox?: EnergyBarGraphAccordionBox;
   private readonly resetAllButton: ResetAllButton;
-  private readonly returnSkaterButton: RectangularPushButton;
 
   // for layout or repositioning in subtypes
   protected readonly speedometerNode: ValueGaugeNode;
@@ -286,7 +285,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.bottomLayer.addChild( this.resetAllButton );
 
     // The button to return the skater
-    this.returnSkaterButton = new RectangularPushButton( {
+    const restartSkaterButton = new RectangularPushButton( {
       content: new Text( controlsRestartSkaterStringProperty, {
         maxWidth: 90,
         font: EnergySkateParkConstants.CONTROL_LABEL_FONT
@@ -294,13 +293,13 @@ export default class EnergySkateParkScreenView extends ScreenView {
       listener: model.returnSkater.bind( model ),
       centerY: this.resetAllButton.centerY,
       // X updated in layoutBounds since the reset all button can move horizontally
-      tandem: tandem.createTandem( 'returnSkaterButton' ),
+      tandem: tandem.createTandem( 'restartSkaterButton' ),
       accessibleHelpText: EnergySkateParkFluent.a11y.restartSkaterButton.accessibleHelpTextStringProperty
     } );
 
     // Disable the return skater button when the skater is already at his initial coordinates
-    model.skater.movedProperty.linkAttribute( this.returnSkaterButton, 'enabled' );
-    this.bottomLayer.addChild( this.returnSkaterButton );
+    model.skater.movedProperty.linkAttribute( restartSkaterButton, 'enabled' );
+    this.bottomLayer.addChild( restartSkaterButton );
 
     // Global hotkey to restart the skater, same behavior as the returnSkaterButton
     KeyboardListener.createGlobal( this, {
@@ -459,7 +458,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       }
     } );
 
-    ManualConstraint.create( this, [ this.resetAllButton, this.returnSkaterButton ], ( resetAllButtonProxy, returnSkaterButtonProxy ) => {
+    ManualConstraint.create( this, [ this.resetAllButton, restartSkaterButton ], ( resetAllButtonProxy, returnSkaterButtonProxy ) => {
       returnSkaterButtonProxy.right = resetAllButtonProxy.left - 10;
       returnSkaterButtonProxy.centerY = resetAllButtonProxy.centerY;
     } );
@@ -664,7 +663,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       this.controlPanelVBox,
       ...this.visibilityControlsPanel ? [ this.visibilityControlsPanel ] : [],
       this.timeControlNode,
-      this.returnSkaterButton,
+      restartSkaterButton,
       this.resetAllButton
     ];
   }
