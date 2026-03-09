@@ -46,6 +46,7 @@ import Stopwatch from '../../../../scenery-phet/js/Stopwatch.js';
 import TimeSpeed from '../../../../scenery-phet/js/TimeSpeed.js';
 import PhetioGroup from '../../../../tandem/js/PhetioGroup.js';
 import { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
+import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -272,9 +273,7 @@ export default class EnergySkateParkModel {
     this.editButtonEnabledProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'editButtonEnabledProperty' )
     } );
-    this.clearButtonEnabledProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'clearButtonEnabledProperty' )
-    } );
+    this.clearButtonEnabledProperty = new BooleanProperty( false );
 
     this.pausedProperty = new BooleanProperty( false, {
       tandem: tandem.createTandem( 'pausedProperty' )
@@ -358,6 +357,7 @@ export default class EnergySkateParkModel {
     };
     this.tracks.addItemAddedListener( updateTrackEditingButtonProperties );
     this.tracks.addItemRemovedListener( updateTrackEditingButtonProperties );
+    phetioStateSetEmitter.addListener( updateTrackEditingButtonProperties );
 
     this.updateEmitter = new Emitter();
     this.trackChangedEmitter.addListener( updateTrackEditingButtonProperties );
