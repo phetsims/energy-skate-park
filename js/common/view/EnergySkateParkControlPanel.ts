@@ -103,7 +103,7 @@ export default class EnergySkateParkControlPanel extends Panel {
     // Group mass controls and skater radio buttons into another VBox
     const massSkaterChildren: Node[] = [];
     if ( options.showMassControls ) {
-      massSkaterChildren.push( new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, tandem.createTandem( 'energySkateParkMassControls' ), options.massControlsOptions || undefined ) );
+      massSkaterChildren.push( new EnergySkateParkMassControls( model.skater.massProperty, userControlledPropertySet.massControlledProperty, model.skater.massRange, tandem, options.massControlsOptions || undefined ) );
     }
 
     if ( options.showSkaterControls ) {
