@@ -97,6 +97,9 @@ type SelfOptions = {
   // on the speedometer
   defaultSpeedValueVisible?: boolean;
 
+  // whether this screen has a bar graph - if false, barGraphScaleProperty is uninstrumented
+  showBarGraph?: boolean;
+
   // options passed to Skater
   skaterOptions?: SkaterOptions | null;
 };
@@ -201,6 +204,7 @@ export default class EnergySkateParkModel {
       tracksDraggable: false,
       tracksConfigurable: false,
       defaultSpeedValueVisible: true,
+      showBarGraph: true,
       skaterOptions: null
     }, providedOptions );
 
@@ -267,7 +271,7 @@ export default class EnergySkateParkModel {
     } );
 
     this.barGraphScaleProperty = new NumberProperty( 1 / 30, {
-      tandem: tandem.createTandem( 'barGraphScaleProperty' )
+      tandem: options.showBarGraph ? tandem.createTandem( 'barGraphScaleProperty' ) : Tandem.OPT_OUT
     } );
 
     this.editButtonEnabledProperty = new BooleanProperty( false, {

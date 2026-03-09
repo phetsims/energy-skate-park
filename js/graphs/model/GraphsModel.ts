@@ -106,6 +106,9 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
       // premade tracks can be modified
       tracksConfigurable: tracksConfigurable,
 
+      // the Graphs screen uses an energy plot instead of a bar graph
+      showBarGraph: false,
+
       // interval at which we save skater samples
       saveSampleInterval: 0.01,
 
