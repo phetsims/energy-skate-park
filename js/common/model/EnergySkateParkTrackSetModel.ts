@@ -127,9 +127,10 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
       if ( trackType === 'PARABOLA' ) {
         const parabolaTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'parabolaTrack' );
         const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, parabolaTrackTandem, options.parabolaControlPointOptions ?? {} );
-        const parabolaTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, parabolaControlPoints, combineOptions<TrackOptions>( {
-          tandem: parabolaTrackTandem
-        }, options.parabolaTrackOptions ) );
+        const parabolaTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, parabolaControlPoints, combineOptions<TrackOptions>( {},
+          options.parabolaTrackOptions, {
+            tandem: parabolaTrackTandem
+          } ) );
 
         tracks.push( parabolaTrack );
       }
@@ -140,26 +141,28 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
           // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
           // see #164
-          slopeToGround: true,
+          slopeToGround: true
+        }, options.slopeTrackOptions, {
           tandem: rampTrackTandem
-        }, options.slopeTrackOptions ) );
+        } ) );
         tracks.push( rampTrack );
       }
       else if ( trackType === 'DOUBLE_WELL' ) {
         const doubleWellTandem = tandem.createTandem( 'tracks' ).createTandem( 'doubleWellTrack' );
         const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( this, doubleWellTandem, options.doubleWellControlPointOptions ?? {} );
-        const doubleWellTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, doubleWellControlPoints, combineOptions<TrackOptions>( {
+        const doubleWellTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, doubleWellControlPoints, combineOptions<TrackOptions>( {}, options.doubleWellTrackOptions, {
           tandem: doubleWellTandem
-        }, options.doubleWellTrackOptions ) );
+        } ) );
         tracks.push( doubleWellTrack );
       }
       else if ( trackType === 'LOOP' ) {
         const loopTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'loopTrack' );
         const loopControlPoints = PremadeTracks.createLoopControlPoints( this, loopTrackTandem, options.loopControlPointOptions ?? {} );
         const loopTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, loopControlPoints, combineOptions<TrackOptions>( {
-          draggable: this.tracksDraggable,
+          draggable: this.tracksDraggable
+        }, options.loopTrackOptions, {
           tandem: loopTrackTandem
-        }, options.loopTrackOptions ) );
+        } ) );
         tracks.push( loopTrack );
       }
     } );
