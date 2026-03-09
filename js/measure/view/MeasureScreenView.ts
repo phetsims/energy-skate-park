@@ -19,7 +19,6 @@ import SkaterPathSensorNode from './SkaterPathSensorNode.js';
 export default class MeasureScreenView extends EnergySkateParkTrackSetScreenView {
 
   // For layout
-  private readonly pathSensor: SkaterPathSensorNode;
   private readonly measureModel: MeasureModel;
 
   public constructor( model: MeasureModel, tandem: Tandem ) {
@@ -47,16 +46,16 @@ export default class MeasureScreenView extends EnergySkateParkTrackSetScreenView
     const inspectedSampleHaloNode = new InspectedSampleHaloNode( model.dataSamples, this.modelViewTransform );
     this.topLayer.addChild( inspectedSampleHaloNode );
 
-    this.pathSensor = new SkaterPathSensorNode( model.dataSamples, model.sensorProbePositionProperty, model.sensorBodyPositionProperty, model.availableModelBoundsProperty, this.modelViewTransform, this.controlPanel, {
-      tandem: tandem.createTandem( 'pathSensor' )
+    const pathSensorNode = new SkaterPathSensorNode( model.dataSamples, model.sensorProbePositionProperty, model.sensorBodyPositionProperty, model.availableModelBoundsProperty, this.modelViewTransform, this.controlPanel, {
+      tandem: tandem.createTandem( 'pathSensorNode' )
     } );
 
-    this.topLayer.addChild( this.pathSensor );
+    this.topLayer.addChild( pathSensorNode );
 
     // Insert the path sensor probe into pdomOrder between control points (trackLayer) and referenceHeightLine
     const playAreaOrder = this.pdomPlayAreaNode.pdomOrder!;
     const referenceHeightIndex = playAreaOrder.indexOf( this.referenceHeightLine );
-    playAreaOrder.splice( referenceHeightIndex, 0, this.pathSensor );
+    playAreaOrder.splice( referenceHeightIndex, 0, pathSensorNode );
     this.pdomPlayAreaNode.pdomOrder = playAreaOrder;
   }
 
