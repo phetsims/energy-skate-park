@@ -134,16 +134,16 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
         tracks.push( parabolaTrack );
       }
       else if ( trackType === 'RAMP' ) {
-        const slopeTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'slopeTrack' );
-        const slopeControlPoints = PremadeTracks.createSlopeControlPoints( this, slopeTrackTandem, options.slopeControlPointOptions ?? {} );
-        const slopeTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, slopeControlPoints, combineOptions<TrackOptions>( {
+        const rampTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'rampTrack' );
+        const rampControlPoints = PremadeTracks.createSlopeControlPoints( this, rampTrackTandem, options.slopeControlPointOptions ?? {} );
+        const rampTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, rampControlPoints, combineOptions<TrackOptions>( {
 
           // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
           // see #164
           slopeToGround: true,
-          tandem: slopeTrackTandem
+          tandem: rampTrackTandem
         }, options.slopeTrackOptions ) );
-        tracks.push( slopeTrack );
+        tracks.push( rampTrack );
       }
       else if ( trackType === 'DOUBLE_WELL' ) {
         const doubleWellTandem = tandem.createTandem( 'tracks' ).createTandem( 'doubleWellTrack' );
