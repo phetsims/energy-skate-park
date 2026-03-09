@@ -224,7 +224,7 @@ export default class EnergySkateParkModel {
       assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
       return new ControlPoint( x, y, merge( {}, options, { tandem: tandem, phetioDynamicElement: true } ) );
     }, [ 0, 0, {} ], {
-      tandem: tandem.createTandem( 'controlPointGroup' ),
+      tandem: options.tracksDraggable ? tandem.createTandem( 'controlPointGroup' ) : Tandem.OPT_OUT,
       phetioType: PhetioGroup.PhetioGroupIO( ControlPoint.ControlPointIO ),
       phetioDynamicElementName: 'controlPoint'
     } );
