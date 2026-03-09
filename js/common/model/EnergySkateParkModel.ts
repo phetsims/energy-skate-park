@@ -167,7 +167,7 @@ export default class EnergySkateParkModel {
   public readonly measuringTapeTipPositionProperty: Vector2Property;
 
   // Whether the skater should stick to the track like a roller coaster, or be able to fly off like a street
-  public readonly stickingToTrackProperty: BooleanProperty;
+  public readonly isStickingToTrackProperty: BooleanProperty;
 
   // collection of Properties that indicate that a user is
   // modifying some variable that will change physical system and modify all saved energy data
@@ -306,8 +306,8 @@ export default class EnergySkateParkModel {
       units: 'm'
     } );
 
-    this.stickingToTrackProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'stickingToTrackProperty' )
+    this.isStickingToTrackProperty = new BooleanProperty( true, {
+      tandem: tandem.createTandem( 'isStickingToTrackProperty' )
     } );
 
     this.userControlledPropertySet = new UserControlledPropertySet();
@@ -387,7 +387,7 @@ export default class EnergySkateParkModel {
     this.barGraphScaleProperty.reset();
     this.isPlayingProperty.reset();
     this.frictionProperty.reset();
-    this.stickingToTrackProperty.reset();
+    this.isStickingToTrackProperty.reset();
     this.availableModelBoundsProperty.reset();
     this.stopwatch.reset();
     this.availableModelBoundsProperty.value = availableModelBounds;
@@ -1093,7 +1093,7 @@ export default class EnergySkateParkModel {
 
     const leaveTrack = ( netForceRadial < centripetalForce && outsideCircle ) || ( netForceRadial > centripetalForce && !outsideCircle );
 
-    if ( leaveTrack && !this.stickingToTrackProperty.value ) {
+    if ( leaveTrack && !this.isStickingToTrackProperty.value ) {
 
       // Leave the track.  Make sure the velocity is pointing away from the track or keep track of frames away from the
       // track so it doesn't immediately recollide.  Or project a ray and see if a collision is imminent?

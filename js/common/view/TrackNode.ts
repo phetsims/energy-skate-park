@@ -174,7 +174,7 @@ export default class TrackNode extends Node {
     const stickingToTrackListener = ( sticking: boolean ) => {
       this.centerLine.lineDash = sticking ? [ 11, 8 ] : [];
     };
-    model.stickingToTrackProperty.link( stickingToTrackListener );
+    model.isStickingToTrackProperty.link( stickingToTrackListener );
 
     this.xArray = new Float64Array( track.controlPoints.length );
     this.yArray = new Float64Array( track.controlPoints.length );
@@ -295,7 +295,7 @@ export default class TrackNode extends Node {
     phetioStateSetEmitter.addListener( stateListener );
 
     this.disposeTrackNode = () => {
-      model.stickingToTrackProperty.unlink( stickingToTrackListener );
+      model.isStickingToTrackProperty.unlink( stickingToTrackListener );
       phetioStateSetEmitter.removeListener( stateListener );
       for ( let i = 0; i < this.children.length; i++ ) {
         const child = this.children[ i ];

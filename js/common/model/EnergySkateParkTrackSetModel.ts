@@ -200,7 +200,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
         this.clearEnergyData();
       }
     };
-    Multilink.multilink( [ this.saveSamplesProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
+    Multilink.multilink( [ this.pathVisibleProperty, this.skater.draggingProperty, this.sceneProperty ], boundClearSamples );
     this.skater.returnedEmitter.addListener( boundClearSamples );
     this.trackChangedEmitter.addListener( boundClearSamples );
   }

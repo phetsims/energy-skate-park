@@ -56,7 +56,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
   protected limitNumberOfSamples: boolean;
 
   // controls whether samples are saved as the model steps through time
-  public readonly saveSamplesProperty: BooleanProperty;
+  public readonly pathVisibleProperty: BooleanProperty;
 
   // set to true to prevent the model from saving any more samples, even if
   // saveSamplesProperty is true - this can be used instead of (or in combination with) maxNumberOfSamples\
@@ -91,7 +91,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
 
     this.timeSinceSampleSave = 0;
     this.limitNumberOfSamples = true;
-    this.saveSamplesProperty = new BooleanProperty( options.defaultSaveSamples, { tandem: tandem.createTandem( 'saveSamplesProperty' ) } );
+    this.pathVisibleProperty = new BooleanProperty( options.defaultSaveSamples, { tandem: tandem.createTandem( 'pathVisibleProperty' ) } );
     this.preventSampleSave = false;
     this.sampleTimeProperty = new NumberProperty( 0, {
       tandem: ( options.sampleTimePropertyTandem || tandem ).createTandem( 'sampleTimeProperty' )
@@ -113,9 +113,9 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
   public setFromSample( dataSample: EnergySkateParkDataSample ): void {
     dataSample.skaterState.setToSkater( this.skater );
 
-    // restore friction and stickingToTrackProperty (not set on Skater by setToSkater)
+    // restore friction and isStickingToTrackProperty (not set on Skater by setToSkater)
     this.frictionProperty.set( dataSample.friction );
-    this.stickingToTrackProperty.set( dataSample.stickingToTrack );
+    this.isStickingToTrackProperty.set( dataSample.stickingToTrack );
 
     if ( dataSample.track ) {
 
@@ -168,11 +168,11 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
   protected override stepModel( dt: number, skaterState: SkaterState ): SkaterState {
     const updatedState = super.stepModel( dt, skaterState );
 
-    if ( this.saveSamplesProperty.get() ) {
+    if ( this.pathVisibleProperty.get() ) {
       this.timeSinceSampleSave = this.timeSinceSampleSave + dt;
 
       if ( !this.preventSampleSave && this.timeSinceSampleSave > this.saveSampleInterval ) {
-        const newSample = new EnergySkateParkDataSample( updatedState, this.frictionProperty.get(), this.sampleTimeProperty.get(), this.stickingToTrackProperty.get(), this.sampleFadeDecay );
+        const newSample = new EnergySkateParkDataSample( updatedState, this.frictionProperty.get(), this.sampleTimeProperty.get(), this.isStickingToTrackProperty.get(), this.sampleFadeDecay );
         this.dataSamples.add( newSample );
         this.timeSinceSampleSave = 0;
         this.sampleTimeProperty.set( this.sampleTimeProperty.get() + dt );
@@ -215,7 +215,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
     this.clearEnergyData();
 
     this.sampleTimeProperty.reset();
-    this.saveSamplesProperty.reset();
+    this.pathVisibleProperty.reset();
   }
 }
 

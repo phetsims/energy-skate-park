@@ -130,7 +130,7 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
     if ( options.showSkaterPathCheckbox ) {
       affirm( model instanceof EnergySkateParkSaveSampleModel, 'Skater path checkbox requires EnergySkateParkSaveSampleModel' );
       items.push( {
-        property: ( model ).saveSamplesProperty,
+        property: model.pathVisibleProperty,
         createNode: () => createCheckboxContent( controlsPathStringProperty, EnergySkateParkCheckboxItem.createSamplesIcon( Tandem.OPT_OUT ), iconAlignGroup ),
         tandemName: 'pathCheckbox',
         options: {
@@ -157,9 +157,9 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
     if ( options.showStickToTrackCheckbox ) {
 
       items.push( {
-        property: model.stickingToTrackProperty,
+        property: model.isStickingToTrackProperty,
         createNode: () => createCheckboxContent( controlsStickToTrackStringProperty, EnergySkateParkCheckboxItem.createStickingToTrackIcon(), iconAlignGroup ),
-        tandemName: 'stickingCheckbox',
+        tandemName: 'stickToTrackCheckbox',
         options: {
           accessibleContextResponseChecked: EnergySkateParkFluent.a11y.stickToTrackCheckbox.accessibleContextResponseCheckedStringProperty,
           accessibleContextResponseUnchecked: EnergySkateParkFluent.a11y.stickToTrackCheckbox.accessibleContextResponseUncheckedStringProperty
@@ -170,7 +170,7 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
     super( items, options );
 
     this.children.forEach( child => {
-      if ( child instanceof Checkbox && child.property === model.stickingToTrackProperty ) {
+      if ( child instanceof Checkbox && child.property === model.isStickingToTrackProperty ) {
 
         const userControlledProperty = model.userControlledPropertySet.stickingToTrackControlledProperty;
         child.addInputListener( new PressListener( {
