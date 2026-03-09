@@ -34,7 +34,8 @@ export default class MeasureModel extends EnergySkateParkFullTrackSetModel {
     } );
 
     this.sensorBodyPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'sensorBodyPositionProperty' )
+      tandem: tandem.createTandem( 'sensorBodyPositionProperty' ),
+      phetioReadOnly: true
     } );
 
     // the speed value is visible on the speedometer for the MeasureModel

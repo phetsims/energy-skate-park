@@ -27,9 +27,9 @@ import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import Skater from '../model/Skater.js';
-import EnergySkateParkColors from '../EnergySkateParkColors.js';
 
 const energyEnergyStringProperty = EnergySkateParkFluent.energies.energyStringProperty;
 const energyKineticStringProperty = EnergySkateParkFluent.energies.kineticStringProperty;
@@ -204,7 +204,11 @@ export default class PieChartLegend extends Panel {
 
       // The list describing energies is placed after the focusable panel children.
       appendAccessibleTemplate: true
-    }, EnergySkateParkConstants.GRAPH_PANEL_OPTIONS ) );
+    }, EnergySkateParkConstants.GRAPH_PANEL_OPTIONS, {
+      visiblePropertyOptions: {
+        phetioReadOnly: true
+      }
+    } ) );
 
     const strutGlobal = clearThermalButtonStrut.parentToGlobalPoint( clearThermalButtonStrut.center );
     const buttonLocal = clearThermalButton.globalToParentPoint( strutGlobal );

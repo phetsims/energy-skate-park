@@ -212,7 +212,8 @@ export default class EnergySkateParkModel {
 
     this.availableModelBoundsProperty = new Property( new Bounds2( 0, 0, 0, 0 ), {
       tandem: tandem.createTandem( 'availableModelBoundsProperty' ),
-      phetioValueType: Bounds2.Bounds2IO
+      phetioValueType: Bounds2.Bounds2IO,
+      phetioReadOnly: true
     } );
 
     this.controlPointGroup = new PhetioGroup<ControlPoint, [ number, number, ControlPointOptions ]>( ( tandem, x, y, options ) => {
