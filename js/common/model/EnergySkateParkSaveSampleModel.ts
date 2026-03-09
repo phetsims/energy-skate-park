@@ -36,7 +36,10 @@ type SelfOptions = {
   // the maximum number of EnergySkateParkDataSamples saved by this model, to prevent from saving too many if we run without encountering a case that clears old samples
   maxNumberOfSamples?: number;
 
-  // tandem for sampleTimeProperty, defaults to Tandem.OPT_OUT since only the Graphs screen uses it
+  // whether the path is displayable on this screen - if true, pathVisibleProperty is instrumented
+  isShowPathSupported?: boolean;
+
+  // tandem for sampleTimeProperty, defaults to Tandem.OPT_OUT since only the Graphs screen needs it under a custom parent
   sampleTimePropertyTandem?: Tandem;
 };
 
@@ -80,6 +83,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
       saveSampleInterval: 0.1,
       sampleFadeDecay: 0.95,
       maxNumberOfSamples: 50,
+      isShowPathSupported: false,
       sampleTimePropertyTandem: Tandem.OPT_OUT
     }, providedOptions );
 
@@ -91,7 +95,9 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
 
     this.timeSinceSampleSave = 0;
     this.limitNumberOfSamples = true;
-    this.pathVisibleProperty = new BooleanProperty( options.defaultSaveSamples, { tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'pathVisibleProperty' ) } );
+    this.pathVisibleProperty = new BooleanProperty( options.defaultSaveSamples, {
+      tandem: options.isShowPathSupported ? tandem.createTandem( 'visibleProperties' ).createTandem( 'pathVisibleProperty' ) : Tandem.OPT_OUT
+    } );
     this.preventSampleSave = false;
     this.sampleTimeProperty = new NumberProperty( 0, {
       tandem: options.sampleTimePropertyTandem
