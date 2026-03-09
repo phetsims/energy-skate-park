@@ -194,6 +194,8 @@ export default class EnergyBarGraph extends Node {
 
       const maxLevel = roundSymmetric( ( EnergySkateParkConstants.MAX_ZOOM_FACTOR - EnergySkateParkConstants.MIN_ZOOM_FACTOR ) / EnergySkateParkConstants.ZOOM_FACTOR_DELTA ) + 1;
 
+      const zoomButtonGroupTandem = tandem.createTandem( 'zoomButtonGroup' );
+
       const zoomOutButton = new ZoomButton( merge( {
         in: false,
         listener: () => {
@@ -206,7 +208,7 @@ export default class EnergyBarGraph extends Node {
           );
         },
         touchAreaXShift: -ZOOM_BUTTON_TOUCH_DILATION,
-        tandem: tandem.createTandem( 'zoomOutButton' ),
+        tandem: zoomButtonGroupTandem.createTandem( 'zoomOutButton' ),
         enabledPropertyOptions: { phetioReadOnly: true },
         accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomOut.accessibleNameStringProperty,
         accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomOut.accessibleHelpTextStringProperty
@@ -223,7 +225,7 @@ export default class EnergyBarGraph extends Node {
           );
         },
         touchAreaXShift: ZOOM_BUTTON_TOUCH_DILATION,
-        tandem: tandem.createTandem( 'zoomInButton' ),
+        tandem: zoomButtonGroupTandem.createTandem( 'zoomInButton' ),
         enabledPropertyOptions: { phetioReadOnly: true },
         accessibleName: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomIn.accessibleNameStringProperty,
         accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomIn.accessibleHelpTextStringProperty
