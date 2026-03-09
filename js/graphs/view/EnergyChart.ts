@@ -64,7 +64,7 @@ export default class EnergyChart extends XYCursorChartNode {
     // sim play when dragging ends
     let pausedOnDragStart = false;
 
-    const plotRange = GraphsConstants.PLOT_RANGES[ model.energyPlotScaleIndexProperty.get() ];
+    const plotRange = GraphsConstants.PLOT_RANGES[ model.energyGraphZoomIndexProperty.get() ];
 
     const modelViewTransformProperty = new Property( ModelViewTransform2.createRectangleInvertedYMapping(
       new Bounds2( 0, plotRange.min, TIME_MAX_X, plotRange.max ),
@@ -273,7 +273,7 @@ export default class EnergyChart extends XYCursorChartNode {
 
     // update the transform for the plot so that recorded data is visible
     const updateModelViewTransformProperty = () => {
-      const newRange = GraphsConstants.PLOT_RANGES[ model.energyPlotScaleIndexProperty.get() ];
+      const newRange = GraphsConstants.PLOT_RANGES[ model.energyGraphZoomIndexProperty.get() ];
       const newMaxY = newRange.max;
       const newMinY = newRange.min;
 
@@ -325,7 +325,7 @@ export default class EnergyChart extends XYCursorChartNode {
     } );
 
     // calculate new range of plot when zooming in or out
-    model.energyPlotScaleIndexProperty.link( scaleIndex => {
+    model.energyGraphZoomIndexProperty.link( scaleIndex => {
       const newRange = GraphsConstants.PLOT_RANGES[ scaleIndex ];
       const newMaxY = newRange.max;
       const newMinY = newRange.min;
@@ -343,7 +343,7 @@ export default class EnergyChart extends XYCursorChartNode {
     // update range, domain, and plot style of plot when the independent variable changes - cursor is invisible for
     // plots against position
     model.independentVariableProperty.link( independentVariable => {
-      const newRange = GraphsConstants.PLOT_RANGES[ model.energyPlotScaleIndexProperty.get() ];
+      const newRange = GraphsConstants.PLOT_RANGES[ model.energyGraphZoomIndexProperty.get() ];
       const newMaxY = newRange.max;
       const newMinY = newRange.min;
       const horizontalLineSpacing = ( newMaxY - newMinY ) / 4;

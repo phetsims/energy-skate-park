@@ -188,10 +188,10 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       tandem: variableSwitchTandem
     } );
 
-    const rangeMinProperty = new DerivedProperty( [ model.energyPlotScaleIndexProperty ],
+    const rangeMinProperty = new DerivedProperty( [ model.energyGraphZoomIndexProperty ],
       index => GraphsConstants.PLOT_RANGES[ index ].min
     );
-    const rangeMaxProperty = new DerivedProperty( [ model.energyPlotScaleIndexProperty ],
+    const rangeMaxProperty = new DerivedProperty( [ model.energyGraphZoomIndexProperty ],
       index => GraphsConstants.PLOT_RANGES[ index ].max
     );
     const zoomLevelResponseProperty = EnergySkateParkFluent.a11y.energyGraph.zoomButtonGroup.zoomLevelResponse.createProperty( {
@@ -199,7 +199,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       max: rangeMaxProperty
     } );
 
-    const zoomButtonGroup = new MagnifyingGlassZoomButtonGroup( model.energyPlotScaleIndexProperty, {
+    const zoomButtonGroup = new MagnifyingGlassZoomButtonGroup( model.energyGraphZoomIndexProperty, {
       magnifyingGlassNodeOptions: {
         glassRadius: 6
       },

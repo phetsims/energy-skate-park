@@ -31,7 +31,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
   public readonly totalEnergyDataVisibleProperty: BooleanProperty;
 
   // index pointing to the range plotted on the energy plot, see GraphsConstants.PLOT_RANGES
-  public readonly energyPlotScaleIndexProperty: NumberProperty;
+  public readonly energyGraphZoomIndexProperty: NumberProperty;
 
   // sets the independent variable for the graph display
   public readonly independentVariableProperty: StringUnionProperty<'position' | 'time'>;
@@ -132,9 +132,9 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
       tandem: graphTandem.createTandem( 'totalEnergyDataVisibleProperty' )
     } );
 
-    this.energyPlotScaleIndexProperty = new NumberProperty( 11, {
+    this.energyGraphZoomIndexProperty = new NumberProperty( 11, {
       range: new Range( 0, GraphsConstants.PLOT_RANGES.length - 1 ),
-      tandem: graphTandem.createTandem( 'energyPlotScaleIndexProperty' )
+      tandem: graphTandem.createTandem( 'energyGraphZoomIndexProperty' )
     } );
 
     this.independentVariableProperty = new StringUnionProperty( 'position', {
@@ -256,7 +256,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     this.thermalEnergyDataVisibleProperty.reset();
     this.totalEnergyDataVisibleProperty.reset();
 
-    this.energyPlotScaleIndexProperty.reset();
+    this.energyGraphZoomIndexProperty.reset();
     this.independentVariableProperty.reset();
 
     this.clearEnergyData();
