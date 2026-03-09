@@ -258,7 +258,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       model.skater,
       model.clearThermal.bind( model ),
       model.pieChartVisibleProperty,
-      tandem.createTandem( 'pieChartLegend' ),
+      tandem.createTandem( 'pieChartLegendNode' ),
       options.pieChartLegendOptions || undefined
     );
     this.bottomLayer.addChild( this.pieChartLegend );
