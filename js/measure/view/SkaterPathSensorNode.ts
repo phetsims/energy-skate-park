@@ -9,6 +9,7 @@
 
 import { ObservableArray } from '../../../../axon/js/createObservableArray.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import StringProperty from '../../../../axon/js/StringProperty.js';
 import TProperty from '../../../../axon/js/TProperty.js';
@@ -25,11 +26,11 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import ProbeNode from '../../../../scenery-phet/js/ProbeNode.js';
-import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import SceneryPhetFluent from '../../../../scenery-phet/js/SceneryPhetFluent.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
-import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
 import WireNode from '../../../../scenery-phet/js/WireNode.js';
+import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
+import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import AlignGroup from '../../../../scenery/js/layout/constraints/AlignGroup.js';
 import AlignBox from '../../../../scenery/js/layout/nodes/AlignBox.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
@@ -39,10 +40,10 @@ import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import SunConstants from '../../../../sun/js/SunConstants.js';
+import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
-import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import EnergySkateParkControlPanel from '../../common/view/EnergySkateParkControlPanel.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -112,6 +113,9 @@ export default class SkaterPathSensorNode extends Node {
   private isKeyboardAction = false;
   private isDragging = false;
   private readonly currentReadingProperty: StringProperty;
+
+  // For PhET-iO output only, indicate which data point is being observed, or -1 if none.
+  private displayedSampleProperty: NumberProperty;
 
   /**
    * @param samples
@@ -382,6 +386,13 @@ export default class SkaterPathSensorNode extends Node {
     } );
     this.probeNode.addInputListener( keyboardListener );
     this.addDisposable( keyboardListener );
+
+    this.displayedSampleProperty = new NumberProperty( -1, {
+      tandem: options.tandem!.createTandem( 'displayedSampleProperty' ),
+      phetioReadOnly: true,
+      phetioFeatured: true,
+      phetioDocumentation: 'The index of the currently displayed sample, or -1 if no sample is displayed'
+    } );
   }
 
   /**
@@ -411,9 +422,13 @@ export default class SkaterPathSensorNode extends Node {
       // update the display whenever sample energies update, listener removed in clearDisplay
       this.updateDisplayListener = this.displayState.bind( this, sampleToDisplay );
       sampleToDisplay.updatedEmitter.addListener( this.updateDisplayListener );
+
+      this.displayedSampleProperty.value = this.samples.indexOf( sampleToDisplay );
     }
     else if ( this.inspectedSample ) {
       this.clearDisplay( this.inspectedSample );
+
+      this.displayedSampleProperty.value = -1;
     }
   }
 
@@ -515,6 +530,8 @@ export default class SkaterPathSensorNode extends Node {
     this.heightSpeedRectangle.visible = false;
 
     this.currentReadingProperty.value = '';
+
+    this.displayedSampleProperty.value = -1;
   }
 
   /**
