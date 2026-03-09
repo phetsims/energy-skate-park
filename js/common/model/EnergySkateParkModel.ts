@@ -150,7 +150,7 @@ export default class EnergySkateParkModel {
   public readonly clearButtonEnabledProperty: BooleanProperty;
 
   // Whether the sim is paused or running
-  public readonly pausedProperty: BooleanProperty;
+  public readonly isPlayingProperty: BooleanProperty;
 
   // model element for the stop watch in this sim
   public readonly stopwatch: Stopwatch;
@@ -255,7 +255,6 @@ export default class EnergySkateParkModel {
 
     this.preferencesModel = preferencesModel;
 
-
     // whether the speed value is visible on the speedometer
     this.speedValueVisibleProperty = new BooleanProperty( options.defaultSpeedValueVisible, {
       tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'speedValueVisibleProperty' )
@@ -276,8 +275,8 @@ export default class EnergySkateParkModel {
     } );
     this.clearButtonEnabledProperty = new BooleanProperty( false );
 
-    this.pausedProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'pausedProperty' )
+    this.isPlayingProperty = new BooleanProperty( true, {
+      tandem: tandem.createTandem( 'isPlayingProperty' )
     } );
 
     this.stopwatch = new Stopwatch( {
@@ -331,7 +330,7 @@ export default class EnergySkateParkModel {
 
     // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
     this.skater.massProperty.link( () => {
-      if ( this.pausedProperty.value ) {
+      if ( !this.isPlayingProperty.value ) {
         this.skater.updatedEmitter.emit();
       }
     } );
@@ -386,7 +385,7 @@ export default class EnergySkateParkModel {
     this.editButtonEnabledProperty.reset();
     this.clearButtonEnabledProperty.reset();
     this.barGraphScaleProperty.reset();
-    this.pausedProperty.reset();
+    this.isPlayingProperty.reset();
     this.frictionProperty.reset();
     this.stickingToTrackProperty.reset();
     this.availableModelBoundsProperty.reset();
@@ -422,7 +421,7 @@ export default class EnergySkateParkModel {
 
     // If the delay makes dt too high, then truncate it.  This helps e.g. when clicking in the address bar on iPad,
     // which gives a huge dt and problems for integration
-    if ( !this.pausedProperty.value && !this.skater.draggingProperty.value ) {
+    if ( this.isPlayingProperty.value && !this.skater.draggingProperty.value ) {
 
       const initialThermalEnergy = this.skater.thermalEnergyProperty.value;
 
@@ -1761,7 +1760,7 @@ export default class EnergySkateParkModel {
    * it wouldn't be handled in the update loop.
    */
   public trackModified( track: Track ): void {
-    if ( this.pausedProperty.value && this.skater.trackProperty.value === track ) {
+    if ( !this.isPlayingProperty.value && this.skater.trackProperty.value === track ) {
       this.skater.updateEnergy();
     }
 

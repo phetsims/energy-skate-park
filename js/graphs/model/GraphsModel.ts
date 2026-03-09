@@ -183,7 +183,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
         // if plotting against time, it is still useful to see changing data as potential energy changes, but prevent
         // sample saving while paused and dragging so that we don't add data while paused, but still save data
         // while manually stepping
-        this.preventSampleSave = isDragging && this.pausedProperty.get();
+        this.preventSampleSave = isDragging && !this.isPlayingProperty.get();
       }
     } );
 
@@ -269,7 +269,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     super.step( dt );
 
     // for the "Graphs" screen we want to update energies while dragging so that they are recorded on the graph
-    if ( this.skater.draggingProperty.get() && !this.pausedProperty.get() ) {
+    if ( this.skater.draggingProperty.get() && this.isPlayingProperty.get() ) {
       const initialStateCopy = new SkaterState( this.skater );
       this.stepModel( dt, initialStateCopy );
     }

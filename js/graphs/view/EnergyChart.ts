@@ -29,9 +29,9 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
+import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -60,9 +60,9 @@ export default class EnergyChart extends XYCursorChartNode {
     const dragStartedEmitter = new Emitter();
     const cursorBoundarySoundPlayer = new BoundaryReachedSoundPlayer();
 
-    // whether the sim was paused when dragging started, if not paused on drag start we will resume
+    // whether the sim was playing when dragging started, if playing on drag start we will resume
     // sim play when dragging ends
-    let pausedOnDragStart = false;
+    let wasPlayingOnDragStart = true;
 
     const plotRange = GraphsConstants.PLOT_RANGES[ model.energyGraphZoomIndexProperty.get() ];
 
@@ -109,10 +109,10 @@ export default class EnergyChart extends XYCursorChartNode {
         includeDragCue: true,
 
         startDrag: () => {
-          pausedOnDragStart = model.pausedProperty.get();
+          wasPlayingOnDragStart = model.isPlayingProperty.get();
 
-          if ( !pausedOnDragStart ) {
-            model.pausedProperty.set( true );
+          if ( wasPlayingOnDragStart ) {
+            model.isPlayingProperty.set( false );
           }
 
           dragStartedEmitter.emit();
@@ -140,8 +140,8 @@ export default class EnergyChart extends XYCursorChartNode {
         },
         endDrag: () => {
 
-          if ( !pausedOnDragStart ) {
-            model.pausedProperty.set( false );
+          if ( wasPlayingOnDragStart ) {
+            model.isPlayingProperty.set( true );
           }
 
           dragEndedEmitter.emit();
@@ -171,11 +171,11 @@ export default class EnergyChart extends XYCursorChartNode {
     this.chartCursor.addInputListener( new KeyboardListener( {
       keyStringProperties: GraphCursorControlsKeyboardHelpSection.TOGGLE_PAUSE_HOTKEY_DATA.keyStringProperties,
       fire: () => {
-        model.pausedProperty.toggle();
+        model.isPlayingProperty.toggle();
         this.chartCursor.addAccessibleContextResponse(
-          model.pausedProperty.value
-            ? SceneryPhetFluent.a11y.playPauseButton.pausedAccessibleContextResponseStringProperty
-            : SceneryPhetFluent.a11y.playPauseButton.playingAccessibleContextResponseStringProperty
+          model.isPlayingProperty.value
+          ? SceneryPhetFluent.a11y.playPauseButton.playingAccessibleContextResponseStringProperty
+          : SceneryPhetFluent.a11y.playPauseButton.pausedAccessibleContextResponseStringProperty
         );
       }
     } ) );
@@ -187,10 +187,10 @@ export default class EnergyChart extends XYCursorChartNode {
       keyboardDragDirection: 'leftRight',
       transform: modelViewTransformProperty,
       start: () => {
-        pausedOnDragStart = model.pausedProperty.get();
+        wasPlayingOnDragStart = model.isPlayingProperty.get();
 
-        if ( !pausedOnDragStart ) {
-          model.pausedProperty.set( true );
+        if ( wasPlayingOnDragStart ) {
+          model.isPlayingProperty.set( false );
         }
 
         dragStartedEmitter.emit();
@@ -213,8 +213,8 @@ export default class EnergyChart extends XYCursorChartNode {
         model.skater.updatedEmitter.emit();
       },
       end: () => {
-        if ( !pausedOnDragStart ) {
-          model.pausedProperty.set( false );
+        if ( wasPlayingOnDragStart ) {
+          model.isPlayingProperty.set( true );
         }
 
         dragEndedEmitter.emit();

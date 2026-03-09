@@ -7,7 +7,6 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
@@ -523,7 +522,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     } );
 
     // the "return skater" buttons are in the top layer so that they can be on top of the track and easily visible
-    // when the skater goes off screen
+    // when the skater goes offscreen
     this.topLayer.addChild( returnSkaterToPreviousStartingPositionButton );
     this.topLayer.addChild( returnSkaterToGroundButton );
 
@@ -533,17 +532,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     } );
     this.addChild( this.yourSkateParkHeadingNode );
 
-    const playingProperty = new BooleanProperty( !model.pausedProperty.value, {
-      tandem: tandem.createTandem( 'playingProperty' )
-    } );
-    model.pausedProperty.link( paused => {
-      playingProperty.set( !paused );
-    } );
-    playingProperty.link( playing => {
-      model.pausedProperty.set( !playing );
-    } );
-
-    this.timeControlNode = new TimeControlNode( playingProperty, {
+    this.timeControlNode = new TimeControlNode( model.isPlayingProperty, {
       tandem: tandem.createTandem( 'timeControlNode' ),
       timeSpeedProperty: model.timeSpeedProperty,
       flowBoxSpacing: 23.3, // extra spacing avoids pointer area overlap when play pause button size increases
