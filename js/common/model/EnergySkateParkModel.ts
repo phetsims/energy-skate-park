@@ -239,7 +239,7 @@ export default class EnergySkateParkModel {
       draggable: true,
       configurable: true
     } ], {
-      tandem: tandem.createTandem( 'trackGroup' ),
+      tandem: options.tracksDraggable ? tandem.createTandem( 'trackGroup' ) : Tandem.OPT_OUT,
       phetioType: PhetioGroup.PhetioGroupIO( Track.TrackIO ),
       phetioDynamicElementName: 'track'
     } );
