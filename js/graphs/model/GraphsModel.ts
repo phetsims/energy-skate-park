@@ -51,7 +51,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     const graphTandem = tandem.createTandem( 'graph' );
 
     // track set model with no friction
-    super( preferencesModel, tandem.createTandem( 'graphsModel' ), {
+    super( preferencesModel, tandem, {
 
       // the Graphs screen contains a parabola and double well premade track
       trackTypes: [
