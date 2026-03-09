@@ -28,7 +28,8 @@ export default class MeasureModel extends EnergySkateParkFullTrackSetModel {
     super( preferencesModel, tandem, {
       tracksConfigurable: true,
       showBarGraph: false,
-      isShowPathSupported: true
+      isShowPathSupported: true,
+      instrumentDataSamples: true
     } );
 
     this.sensorProbePositionProperty = new Vector2Property( new Vector2( -4, 1.5 ), {

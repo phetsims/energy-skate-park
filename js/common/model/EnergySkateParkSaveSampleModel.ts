@@ -39,6 +39,9 @@ type SelfOptions = {
   // whether the path is displayable on this screen - if true, pathVisibleProperty is instrumented
   isShowPathSupported?: boolean;
 
+  // whether dataSamples should be instrumented - true for screens that display path dots or energy plots
+  instrumentDataSamples?: boolean;
+
   // tandem for sampleTimeProperty, defaults to Tandem.OPT_OUT since only the Graphs screen needs it under a custom parent
   sampleTimePropertyTandem?: Tandem;
 };
@@ -84,6 +87,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
       sampleFadeDecay: 0.95,
       maxNumberOfSamples: 50,
       isShowPathSupported: false,
+      instrumentDataSamples: false,
       sampleTimePropertyTandem: Tandem.OPT_OUT
     }, providedOptions );
 
@@ -103,7 +107,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
       tandem: options.sampleTimePropertyTandem
     } );
     this.dataSamples = createObservableArray( {
-      tandem: tandem.createTandem( 'dataSamples' ),
+      tandem: options.instrumentDataSamples ? tandem.createTandem( 'dataSamples' ) : Tandem.OPT_OUT,
       phetioType: createObservableArray.ObservableArrayIO( EnergySkateParkDataSample.EnergySkateParkDataSampleIO )
     } );
     this.batchRemoveSamplesEmitter = new Emitter( {

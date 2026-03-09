@@ -119,6 +119,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
       // to prevent a memory leak if we run for a long time without clearing
       maxNumberOfSamples: 1000,
 
+      instrumentDataSamples: true,
       sampleTimePropertyTandem: graphTandem.createTandem( 'sampleTimeProperty' )
     } );
 

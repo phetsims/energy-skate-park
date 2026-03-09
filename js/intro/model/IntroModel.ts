@@ -16,7 +16,8 @@ export default class IntroModel extends EnergySkateParkFullTrackSetModel {
 
       // by default the Intro screen does not save samples
       defaultSaveSamples: false,
-      isShowPathSupported: true
+      isShowPathSupported: true,
+      instrumentDataSamples: true
     } );
 
     // attach listeners that clear skater path when Properties like direction and dragging change
