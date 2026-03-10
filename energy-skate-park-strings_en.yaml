@@ -146,11 +146,11 @@ a11y:
       selectOption:       Select option
       cancel:             Cancel
   skaterNode:
-    accessibleName:                    Skater
-    onTrackHelpText:                   Use left and right arrow keys or A and D to move along track. Press up arrow or W to detach.
-    offTrackHelpText:                  Use arrow keys or W, A, S, D to move the skater.
-    snapToTrackContextResponse:        Skater on track.
-    detachFromTrackContextResponse:    Skater off track.
+    accessibleName:                 Skater
+    onTrackHelpText:                Use left and right arrow keys or A and D to move along track. Press up arrow or W to detach.
+    offTrackHelpText:               Use arrow keys or W, A, S, D to move the skater.
+    snapToTrackContextResponse:     Skater on track.
+    detachFromTrackContextResponse: Skater off track.
   referenceHeightLine:
     accessibleHeading:  Reference Height
     accessibleName:     Reference Height Line
@@ -349,12 +349,12 @@ a11y:
   gravitySlider:
     accessibleHelpText: Set acceleration due to gravity, ranging from tiny to lots.
   gravityControl:
-    accessibleHelpText: Set acceleration due to gravity.
+    accessibleHelpText:     Set acceleration due to gravity.
     accessibleValuePattern: >-
-      {$value} { $units ->
-        [metersPerSecondSquared] meters per second squared
-        *[newtonsPerKilogram] newtons per kilogram
-      }
+                            {$value} { $units ->
+                              [metersPerSecondSquared] meters per second squared
+                              *[newtonsPerKilogram] newtons per kilogram
+                            }
   gravityComboBox:
     accessibleName:            Gravity Benchmark
     accessibleHelpText:        Set acceleration due to gravity to match the chosen benchmark.
@@ -401,10 +401,12 @@ a11y:
   restartSkaterButton:
     accessibleHelpText: Return skater to most recent starting position and repeat experiment.
   returnSkaterToPreviousStartingPositionButton:
-    accessibleName:     Return Skater to Starting Position
-    accessibleHelpText: Return skater to most recent starting position and repeat experiment.
+    accessibleName:            Return Skater to Starting Position
+    accessibleHelpText:        Return skater to most recent starting position and repeat experiment.
+    accessibleContextResponse: Skater returned to starting position.
   returnSkaterToGroundButton:
-    accessibleName: Return Skater to Ground
+    accessibleName:            Return Skater to Ground
+    accessibleContextResponse: Skater on ground.
   
   # ESP and ESPB both have Intro & Playground screens. Help text applies to both sims
   screenButtons:

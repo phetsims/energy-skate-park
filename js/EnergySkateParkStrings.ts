@@ -428,9 +428,11 @@ type StringsType = {
     'returnSkaterToPreviousStartingPositionButton': {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseStringProperty': LocalizedStringProperty;
     };
     'returnSkaterToGroundButton': {
       'accessibleNameStringProperty': LocalizedStringProperty;
+      'accessibleContextResponseStringProperty': LocalizedStringProperty;
     };
     'screenButtons': {
       'intro': {

@@ -490,11 +490,17 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
       // green means "go" since the skater will likely start moving at this point
       baseColor: EnergySkateParkColors.kineticEnergyColorProperty,
-      listener: model.returnSkater.bind( model ),
+      listener: () => {
+        model.returnSkater();
+      },
       tandem: tandem.createTandem( 'returnSkaterToPreviousStartingPositionButton' ),
       visiblePropertyOptions: { phetioReadOnly: true },
       accessibleName: EnergySkateParkFluent.a11y.returnSkaterToPreviousStartingPositionButton.accessibleNameStringProperty,
-      accessibleHelpText: EnergySkateParkFluent.a11y.returnSkaterToPreviousStartingPositionButton.accessibleHelpTextStringProperty
+      accessibleHelpText: EnergySkateParkFluent.a11y.returnSkaterToPreviousStartingPositionButton.accessibleHelpTextStringProperty,
+      accessibleContextResponse: EnergySkateParkFluent.a11y.returnSkaterToPreviousStartingPositionButton.accessibleContextResponseStringProperty,
+
+      // The button becomes invisible after firing (skater returns in-bounds), so alert even when not displayed.
+      accessibleContextResponseOptions: { alertWhenNotDisplayed: true }
     } );
 
     const skaterIconImage2 = new Image( this.skaterNode.skaterImageSetProperty.value.leftImageProperty, {
@@ -513,7 +519,11 @@ export default class EnergySkateParkScreenView extends ScreenView {
         model.userControlledPropertySet.skaterControlledProperty.set( false );
       },
       visiblePropertyOptions: { phetioReadOnly: true },
-      tandem: tandem.createTandem( 'returnSkaterToGroundButton' )
+      tandem: tandem.createTandem( 'returnSkaterToGroundButton' ),
+      accessibleContextResponse: EnergySkateParkFluent.a11y.returnSkaterToGroundButton.accessibleContextResponseStringProperty,
+
+      // The button becomes invisible after firing (skater returns in-bounds), so alert even when not displayed.
+      accessibleContextResponseOptions: { alertWhenNotDisplayed: true }
     } );
 
     this.skaterNode.skaterImageSetProperty.link( skaterImageSet => {

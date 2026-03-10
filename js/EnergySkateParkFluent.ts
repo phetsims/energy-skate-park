@@ -258,7 +258,9 @@ addToMapIfDefined( 'a11y_referenceHeightCheckbox_accessibleContextResponseUnchec
 addToMapIfDefined( 'a11y_restartSkaterButton_accessibleHelpText', 'a11y.restartSkaterButton.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_returnSkaterToPreviousStartingPositionButton_accessibleName', 'a11y.returnSkaterToPreviousStartingPositionButton.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_returnSkaterToPreviousStartingPositionButton_accessibleHelpText', 'a11y.returnSkaterToPreviousStartingPositionButton.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_returnSkaterToPreviousStartingPositionButton_accessibleContextResponse', 'a11y.returnSkaterToPreviousStartingPositionButton.accessibleContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_returnSkaterToGroundButton_accessibleName', 'a11y.returnSkaterToGroundButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_returnSkaterToGroundButton_accessibleContextResponse', 'a11y.returnSkaterToGroundButton.accessibleContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_screenButtons_intro_accessibleHelpText', 'a11y.screenButtons.intro.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_screenButtons_measure_accessibleHelpText', 'a11y.screenButtons.measure.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_screenButtons_graphs_accessibleHelpText', 'a11y.screenButtons.graphs.accessibleHelpTextStringProperty' );
@@ -702,10 +704,14 @@ const EnergySkateParkFluent = {
     },
     returnSkaterToPreviousStartingPositionButton: {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_returnSkaterToPreviousStartingPositionButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.returnSkaterToPreviousStartingPositionButton.accessibleNameStringProperty' ) ),
-      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_returnSkaterToPreviousStartingPositionButton_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.returnSkaterToPreviousStartingPositionButton.accessibleHelpTextStringProperty' ) )
+      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_returnSkaterToPreviousStartingPositionButton_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.returnSkaterToPreviousStartingPositionButton.accessibleHelpTextStringProperty' ) ),
+      _comment_0: new FluentComment( {"comment":"Context response stating g value when user interacts with ComboBox. Example for Earth: Gravity now 9.8 meters per second squared.","associatedKey":"accessibleContextResponse"} ),
+      accessibleContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_returnSkaterToPreviousStartingPositionButton_accessibleContextResponse', _.get( EnergySkateParkStrings, 'a11y.returnSkaterToPreviousStartingPositionButton.accessibleContextResponseStringProperty' ) )
     },
     returnSkaterToGroundButton: {
-      accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_returnSkaterToGroundButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.returnSkaterToGroundButton.accessibleNameStringProperty' ) )
+      accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_returnSkaterToGroundButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.returnSkaterToGroundButton.accessibleNameStringProperty' ) ),
+      _comment_0: new FluentComment( {"comment":"Context response stating g value when user interacts with ComboBox. Example for Earth: Gravity now 9.8 meters per second squared.","associatedKey":"accessibleContextResponse"} ),
+      accessibleContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_returnSkaterToGroundButton_accessibleContextResponse', _.get( EnergySkateParkStrings, 'a11y.returnSkaterToGroundButton.accessibleContextResponseStringProperty' ) )
     },
     _comment_4: new FluentComment( {"comment":"ESP and ESPB both have Intro & Playground screens. Help text applies to both sims","associatedKey":"screenButtons"} ),
     screenButtons: {

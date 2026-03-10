@@ -882,11 +882,17 @@
       },
       "accessibleHelpText": {
         "value": "Return skater to most recent starting position and repeat experiment."
+      },
+      "accessibleContextResponse": {
+        "value": "Skater returned to starting position."
       }
     },
     "returnSkaterToGroundButton": {
       "accessibleName": {
         "value": "Return Skater to Ground"
+      },
+      "accessibleContextResponse": {
+        "value": "Skater on ground."
       }
     },
     "screenButtons": {
