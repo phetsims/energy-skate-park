@@ -196,6 +196,9 @@ export default class EnergySkateParkModel {
   // Emits when the skater attaches to a track during a physics step (not user interaction).
   public readonly skaterAttachedToTrackEmitter: Emitter;
 
+  // Emits when the skater detaches from a track during a physics step (not user interaction).
+  public readonly skaterDetachedFromTrackEmitter: Emitter;
+
   // Updates the model with constant event intervals even if there is a drop in the framerate
   // so that simulation performance has no impact on physical behavior.
   private readonly eventTimer: EventTimer;
@@ -333,6 +336,7 @@ export default class EnergySkateParkModel {
 
     this.resetEmitter = new Emitter();
     this.skaterAttachedToTrackEmitter = new Emitter();
+    this.skaterDetachedFromTrackEmitter = new Emitter();
 
     // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
     this.skater.massProperty.link( () => {
@@ -417,6 +421,9 @@ export default class EnergySkateParkModel {
     if ( oldTrack === null && this.skater.trackProperty.value !== null ) {
       this.skaterAttachedToTrackEmitter.emit();
     }
+    else if ( oldTrack !== null && this.skater.trackProperty.value === null ) {
+      this.skaterDetachedFromTrackEmitter.emit();
+    }
   }
 
   /**
@@ -456,9 +463,12 @@ export default class EnergySkateParkModel {
         updatedState.setToSkater( this.skater );
         this.skater.updatedEmitter.emit();
 
-        // Detect if the skater attached to a track during this physics step.
+        // Detect if the skater attached to or detached from a track during this physics step.
         if ( oldTrack === null && this.skater.trackProperty.value !== null ) {
           this.skaterAttachedToTrackEmitter.emit();
+        }
+        else if ( oldTrack !== null && this.skater.trackProperty.value === null ) {
+          this.skaterDetachedFromTrackEmitter.emit();
         }
 
         if ( debug ) {
