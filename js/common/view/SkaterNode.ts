@@ -257,7 +257,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       tandem: tandem.createTandem( 'dragListener' ),
       start: event => {
         userControlledProperty.set( true );
-        skater.draggingProperty.value = true;
+        skater.userControlledProperty.value = true;
 
         // Clear thermal energy whenever skater is grabbed, see #32
         skater.thermalEnergyProperty.value = 0;
@@ -298,7 +298,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       onGrab: inputType => {
         if ( inputType === 'pointer' ) { return; } // SoundDragListener handles pointer grabs
         userControlledProperty.set( true );
-        skater.draggingProperty.value = true;
+        skater.userControlledProperty.value = true;
 
         // Clear thermal energy whenever skater is grabbed
         skater.thermalEnergyProperty.value = 0;

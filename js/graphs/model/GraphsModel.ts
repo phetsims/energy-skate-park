@@ -172,7 +172,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
       this.clearEnergyData();
     } );
 
-    this.skater.draggingProperty.link( isDragging => {
+    this.skater.userControlledProperty.link( userControlled => {
       if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'position' ) {
@@ -180,14 +180,14 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
         // if plotting against position don't save any skater samples while dragging, but if plotting against time
         // it is still useful to see data as potential energy changes
         this.clearEnergyData();
-        this.preventSampleSave = isDragging;
+        this.preventSampleSave = userControlled;
       }
       else {
 
         // if plotting against time, it is still useful to see changing data as potential energy changes, but prevent
         // sample saving while paused and dragging so that we don't add data while paused, but still save data
         // while manually stepping
-        this.preventSampleSave = isDragging && !this.isPlayingProperty.get();
+        this.preventSampleSave = userControlled && !this.isPlayingProperty.get();
       }
     } );
 
@@ -273,7 +273,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     super.step( dt );
 
     // for the "Graphs" screen we want to update energies while dragging so that they are recorded on the graph
-    if ( this.skater.draggingProperty.get() && this.isPlayingProperty.get() ) {
+    if ( this.skater.userControlledProperty.get() && this.isPlayingProperty.get() ) {
       const initialStateCopy = new SkaterState( this.skater );
       this.stepModel( dt, initialStateCopy );
     }

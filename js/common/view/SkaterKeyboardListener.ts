@@ -135,7 +135,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
     // Check if new position is in bounds
     if ( track.isParameterInBounds( newU ) ) {
       // Set the skater to be dragging to pause physics simulation
-      this.skater.draggingProperty.value = true;
+      this.skater.userControlledProperty.value = true;
 
       this.skater.parametricPositionProperty.value = newU;
       this.skater.positionProperty.value = track.getPoint( newU );
@@ -153,7 +153,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
       this.skater.updatedEmitter.emit();
 
       // Re-enable physics
-      this.skater.draggingProperty.value = false;
+      this.skater.userControlledProperty.value = false;
 
       // Save the starting position for "return skater"
       this.skater.released( track, newU );
@@ -169,9 +169,9 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
    * Resets orientation to upside-up at the target position.
    */
   private jumpToTrackEndpoint( track: Skater[ 'trackProperty' ][ 'value' ] & object, targetU: number ): void {
-    this.skater.draggingProperty.value = true;
+    this.skater.userControlledProperty.value = true;
     this.skater.placeOnTrackAt( track, targetU );
-    this.skater.draggingProperty.value = false;
+    this.skater.userControlledProperty.value = false;
     this.skater.released( track, targetU );
   }
 
@@ -227,7 +227,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
 
     if ( dx !== 0 || dy !== 0 ) {
       // Set dragging to pause physics
-      this.skater.draggingProperty.value = true;
+      this.skater.userControlledProperty.value = true;
 
       const currentPosition = this.skater.positionProperty.value;
       const newPosition = currentPosition.plusXY( dx, dy );
@@ -244,7 +244,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
       this.skater.updatedEmitter.emit();
 
       // Re-enable physics
-      this.skater.draggingProperty.value = false;
+      this.skater.userControlledProperty.value = false;
 
       // Save the starting position for "return skater"
       this.skater.released( null, 0 );

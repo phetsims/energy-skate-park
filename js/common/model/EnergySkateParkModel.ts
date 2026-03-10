@@ -423,7 +423,7 @@ export default class EnergySkateParkModel {
 
     // If the delay makes dt too high, then truncate it.  This helps e.g. when clicking in the address bar on iPad,
     // which gives a huge dt and problems for integration
-    if ( this.isPlayingProperty.value && !this.skater.draggingProperty.value ) {
+    if ( this.isPlayingProperty.value && !this.skater.userControlledProperty.value ) {
 
       const initialThermalEnergy = this.skater.thermalEnergyProperty.value;
 

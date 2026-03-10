@@ -89,7 +89,7 @@ export default class Skater {
   public readonly velocityProperty: Vector2Property;
 
   //  - True if the user is dragging the skater with a pointer
-  public readonly draggingProperty: BooleanProperty;
+  public readonly userControlledProperty: BooleanProperty;
 
   //  - Energies are in Joules
   public readonly kineticEnergyProperty: NumberProperty;
@@ -214,8 +214,8 @@ export default class Skater {
       phetioReadOnly: true
     } );
 
-    this.draggingProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'draggingProperty' ),
+    this.userControlledProperty = new BooleanProperty( false, {
+      tandem: tandem.createTandem( 'userControlledProperty' ),
       phetioReadOnly: true
     } );
 
@@ -292,8 +292,8 @@ export default class Skater {
     } );
 
     // Derived - Zero the kinetic energy when draggingDerived, see #22
-    this.draggingProperty.link( dragging => {
-      if ( dragging ) {
+    this.userControlledProperty.link( userControlled => {
+      if ( userControlled ) {
         this.velocityProperty.value = new Vector2( 0, 0 );
       }
     } );
@@ -315,7 +315,7 @@ export default class Skater {
       }
     } );
 
-    this.movedProperty = new DerivedProperty( [ this.positionProperty, this.startingPositionProperty, this.draggingProperty ],
+    this.movedProperty = new DerivedProperty( [ this.positionProperty, this.startingPositionProperty, this.userControlledProperty ],
       ( x, x0, dragging ) => {
         return !dragging && ( x.x !== x0.x || x.y !== x0.y );
       }, {
@@ -400,7 +400,7 @@ export default class Skater {
     this.positionProperty.reset();
     this.directionProperty.reset();
     this.velocityProperty.reset();
-    this.draggingProperty.reset();
+    this.userControlledProperty.reset();
     this.kineticEnergyProperty.reset();
     this.potentialEnergyProperty.reset();
     this.thermalEnergyProperty.reset();
@@ -495,7 +495,7 @@ export default class Skater {
    * @param targetU - The parametric position along the track to start on (if any)
    */
   public released( targetTrack: Track | null, targetU: number ): void {
-    this.draggingProperty.value = false;
+    this.userControlledProperty.value = false;
     this.velocityProperty.value = new Vector2( 0, 0 );
     this.parametricSpeedProperty.value = 0;
     this.trackProperty.value = targetTrack;
