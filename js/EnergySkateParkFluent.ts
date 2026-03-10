@@ -118,6 +118,7 @@ addToMapIfDefined( 'a11y_skaterNode_onTrackHelpText', 'a11y.skaterNode.onTrackHe
 addToMapIfDefined( 'a11y_skaterNode_offTrackHelpText', 'a11y.skaterNode.offTrackHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_snapToTrackContextResponse', 'a11y.skaterNode.snapToTrackContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_detachFromTrackContextResponse', 'a11y.skaterNode.detachFromTrackContextResponseStringProperty' );
+addToMapIfDefined( 'a11y_skaterNode_turnsAroundContextResponse', 'a11y.skaterNode.turnsAroundContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_referenceHeightLine_accessibleHeading', 'a11y.referenceHeightLine.accessibleHeadingStringProperty' );
 addToMapIfDefined( 'a11y_referenceHeightLine_accessibleName', 'a11y.referenceHeightLine.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_referenceHeightLine_accessibleHelpText', 'a11y.referenceHeightLine.accessibleHelpTextStringProperty' );
@@ -436,7 +437,8 @@ const EnergySkateParkFluent = {
       onTrackHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_onTrackHelpText', _.get( EnergySkateParkStrings, 'a11y.skaterNode.onTrackHelpTextStringProperty' ) ),
       offTrackHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_offTrackHelpText', _.get( EnergySkateParkStrings, 'a11y.skaterNode.offTrackHelpTextStringProperty' ) ),
       snapToTrackContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_snapToTrackContextResponse', _.get( EnergySkateParkStrings, 'a11y.skaterNode.snapToTrackContextResponseStringProperty' ) ),
-      detachFromTrackContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_detachFromTrackContextResponse', _.get( EnergySkateParkStrings, 'a11y.skaterNode.detachFromTrackContextResponseStringProperty' ) )
+      detachFromTrackContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_detachFromTrackContextResponse', _.get( EnergySkateParkStrings, 'a11y.skaterNode.detachFromTrackContextResponseStringProperty' ) ),
+      turnsAroundContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_turnsAroundContextResponse', _.get( EnergySkateParkStrings, 'a11y.skaterNode.turnsAroundContextResponseStringProperty' ) )
     },
     referenceHeightLine: {
       accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_referenceHeightLine_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.referenceHeightLine.accessibleHeadingStringProperty' ) ),

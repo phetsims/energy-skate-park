@@ -342,6 +342,9 @@
       },
       "detachFromTrackContextResponse": {
         "value": "Skater off track."
+      },
+      "turnsAroundContextResponse": {
+        "value": "Skater turns around."
       }
     },
     "referenceHeightLine": {
