@@ -508,6 +508,8 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
     // Update keyboard target for release
     this.keyboardTargetTrack = null;
     this.keyboardTargetU = null;
+
+    this.addAccessibleContextResponse( EnergySkateParkFluent.a11y.skaterNode.detachFromTrackContextResponseStringProperty );
   }
 
   /**

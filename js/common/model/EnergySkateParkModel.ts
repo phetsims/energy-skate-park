@@ -835,11 +835,11 @@ export default class EnergySkateParkModel {
       affirm( newThermalEnergy >= 0 );
 
       let parametricSpeed = ( dot > 0 ? +1 : -1 ) * newSpeed;
-      const onTopSideOfTrack = beforeVector.dot( normal ) > 0;
+      const isOnTopSideOfTrack = beforeVector.dot( normal ) > 0;
 
       debug && debug( `attach to track, ${parametricPosition}, ${track.maxPoint}` );
 
-      // Double check the velocities and invert parametricSpeed if incorrect, see #172
+      // Double-check the velocities and invert parametricSpeed if incorrect, see #172
       // Compute the new velocities same as in stepTrack
       const unitParallelVector = track.getUnitParallelVector( parametricPosition );
       const newVelocityX = unitParallelVector.x * parametricSpeed;
@@ -852,7 +852,7 @@ export default class EnergySkateParkModel {
         parametricSpeed = parametricSpeed * -1;
       }
 
-      const attachedSkater = skaterState.attachToTrack( newThermalEnergy, track, onTopSideOfTrack, parametricPosition, parametricSpeed, newVelocity.x, newVelocity.y, newPosition.x, newPosition.y );
+      const attachedSkater = skaterState.attachToTrack( newThermalEnergy, track, isOnTopSideOfTrack, parametricPosition, parametricSpeed, newVelocity.x, newVelocity.y, newPosition.x, newPosition.y );
       affirm( equalsEpsilon( attachedSkater.getTotalEnergy(), skaterState.getTotalEnergy(), 1E-8 ), 'large energy change after attaching to track' );
       return attachedSkater;
     }
@@ -1077,8 +1077,8 @@ export default class EnergySkateParkModel {
     const track = skaterState.track!;
 
     const unitNormalVector = track.getUnitNormalVector( skaterState.parametricPosition );
-    const sideVectorX = skaterState.onTopSideOfTrack ? unitNormalVector.x : unitNormalVector.x * -1;
-    const sideVectorY = skaterState.onTopSideOfTrack ? unitNormalVector.y : unitNormalVector.y * -1;
+    const sideVectorX = skaterState.isOnTopSideOfTrack ? unitNormalVector.x : unitNormalVector.x * -1;
+    const sideVectorY = skaterState.isOnTopSideOfTrack ? unitNormalVector.y : unitNormalVector.y * -1;
 
     // Dot product written out component-wise to avoid allocations, see #50
     const outsideCircle = sideVectorX * curvatureDirectionX + sideVectorY * curvatureDirectionY < 0;

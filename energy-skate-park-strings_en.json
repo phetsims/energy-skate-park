@@ -339,6 +339,9 @@
       },
       "snapToTrackContextResponse": {
         "value": "Skater on track."
+      },
+      "detachFromTrackContextResponse": {
+        "value": "Skater off track."
       }
     },
     "referenceHeightLine": {

@@ -150,6 +150,7 @@ a11y:
     onTrackHelpText:                   Use left and right arrow keys or A and D to move along track. Press up arrow or W to detach.
     offTrackHelpText:                  Use arrow keys or W, A, S, D to move the skater.
     snapToTrackContextResponse:        Skater on track.
+    detachFromTrackContextResponse:    Skater off track.
   referenceHeightLine:
     accessibleHeading:  Reference Height
     accessibleName:     Reference Height Line

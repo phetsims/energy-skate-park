@@ -167,6 +167,7 @@ type StringsType = {
       'onTrackHelpTextStringProperty': LocalizedStringProperty;
       'offTrackHelpTextStringProperty': LocalizedStringProperty;
       'snapToTrackContextResponseStringProperty': LocalizedStringProperty;
+      'detachFromTrackContextResponseStringProperty': LocalizedStringProperty;
     };
     'referenceHeightLine': {
       'accessibleHeadingStringProperty': LocalizedStringProperty;

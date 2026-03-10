@@ -52,7 +52,7 @@ type EnergySkateParkDataSampleStateObject = {
     velocityX: number; velocityY: number;
     gravity: number; referenceHeight: number; mass: number;
     track: ReferenceIOState | null; angle: number;
-    onTopSideOfTrack: boolean; parametricPosition: number;
+    isOnTopSideOfTrack: boolean; parametricPosition: number;
     parametricSpeed: number; dragging: boolean; thermalEnergy: number;
   };
 };
@@ -230,9 +230,12 @@ export default class EnergySkateParkDataSample {
             gravity: skaterStateObject.gravity, referenceHeight: skaterStateObject.referenceHeight,
             mass: skaterStateObject.mass,
             track: skaterStateObject.track ? ReferenceIO( Track.TrackIO ).toStateObject( skaterStateObject.track ) : null,
-            angle: skaterStateObject.getAngle(), onTopSideOfTrack: skaterStateObject.onTopSideOfTrack,
-            parametricPosition: skaterStateObject.parametricPosition, parametricSpeed: skaterStateObject.parametricSpeed,
-            dragging: skaterStateObject.dragging, thermalEnergy: skaterStateObject.thermalEnergy
+            angle: skaterStateObject.getAngle(),
+            isOnTopSideOfTrack: skaterStateObject.isOnTopSideOfTrack,
+            parametricPosition: skaterStateObject.parametricPosition,
+            parametricSpeed: skaterStateObject.parametricSpeed,
+            dragging: skaterStateObject.dragging,
+            thermalEnergy: skaterStateObject.thermalEnergy
           }
         };
       },
@@ -241,7 +244,7 @@ export default class EnergySkateParkDataSample {
         // Resolve track references for the skater state
         const skateStateObject = stateObject._skaterState;
         const skaterTrack = skateStateObject.track === null ? null :
-          ReferenceIO( Track.TrackIO ).fromStateObject( skateStateObject.track ) as Track;
+                            ReferenceIO( Track.TrackIO ).fromStateObject( skateStateObject.track ) as Track;
         const skaterState = SkaterState.fromPlainObject( {
           positionX: skateStateObject.positionX,
           positionY: skateStateObject.positionY,
@@ -252,7 +255,7 @@ export default class EnergySkateParkDataSample {
           mass: skateStateObject.mass,
           track: skaterTrack,
           angle: skateStateObject.angle,
-          onTopSideOfTrack: skateStateObject.onTopSideOfTrack,
+          isOnTopSideOfTrack: skateStateObject.isOnTopSideOfTrack,
           parametricPosition: skateStateObject.parametricPosition,
           parametricSpeed: skateStateObject.parametricSpeed,
           dragging: skateStateObject.dragging,
