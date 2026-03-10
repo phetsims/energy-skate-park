@@ -297,14 +297,14 @@ export default class EnergySkateParkScreenView extends ScreenView {
     } );
 
     // Disable the return skater button when the skater is already at his initial coordinates
-    model.skater.movedProperty.linkAttribute( restartSkaterButton, 'enabled' );
+    model.skater.hasMovedProperty.linkAttribute( restartSkaterButton, 'enabled' );
     this.bottomLayer.addChild( restartSkaterButton );
 
     // Global hotkey to restart the skater, same behavior as the returnSkaterButton
     KeyboardListener.createGlobal( this, {
       keyStringProperties: EnergySkateParkScreenView.RESTART_SKATER_HOTKEY_DATA.keyStringProperties,
       fire: () => {
-        if ( model.skater.movedProperty.value ) {
+        if ( model.skater.hasMovedProperty.value ) {
           model.returnSkater();
         }
       }

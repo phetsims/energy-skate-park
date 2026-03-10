@@ -136,7 +136,7 @@ export default class Skater {
   // Boolean flag that indicates whether the skater has moved from his initial position, and hence can be 'returned',
   // For making the 'return skater' button enabled/disabled
   // If this is a performance concern, perhaps it could just be dropped as a feature
-  public readonly movedProperty: TReadOnlyProperty<boolean>;
+  public readonly hasMovedProperty: TReadOnlyProperty<boolean>;
   private readonly startingAngleProperty: NumberProperty;
   private startingTrackControlPointSources?: Vector2[];
 
@@ -315,11 +315,11 @@ export default class Skater {
       }
     } );
 
-    this.movedProperty = new DerivedProperty( [ this.positionProperty, this.startingPositionProperty, this.userControlledProperty ],
+    this.hasMovedProperty = new DerivedProperty( [ this.positionProperty, this.startingPositionProperty, this.userControlledProperty ],
       ( x, x0, dragging ) => {
         return !dragging && ( x.x !== x0.x || x.y !== x0.y );
       }, {
-        tandem: tandem.createTandem( 'movedProperty' ),
+        tandem: tandem.createTandem( 'hasMovedProperty' ),
         phetioValueType: BooleanIO
       } );
 
