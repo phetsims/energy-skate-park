@@ -5,6 +5,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import Emitter from '../../../../axon/js/Emitter.js';
 import Multilink from '../../../../axon/js/Multilink.js';
 import StringUnionProperty from '../../../../axon/js/StringUnionProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
@@ -43,6 +44,9 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
   public readonly sceneProperty: StringUnionProperty<TrackType>;
   public readonly trackTypes: ReadonlyArray<TrackType>;
 
+  // Emits when a scene change causes the skater to be returned to the ground (only when skater was actually displaced).
+  public readonly skaterReturnedToGroundBySceneChangeEmitter: Emitter;
+
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions: EnergySkateParkTrackSetModelOptions ) {
     const options = optionize<EnergySkateParkSaveSampleModelOptions, SelfOptions, EnergySkateParkSaveSampleModelOptions>()( {
 
@@ -68,6 +72,8 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
       phetioDocumentation: 'The currently selected premade track scene'
     } );
 
+    this.skaterReturnedToGroundBySceneChangeEmitter = new Emitter();
+
     // When the scene changes, also change the tracks.
     this.sceneProperty.link( this.updateActiveTrack.bind( this ) );
 
@@ -82,6 +88,10 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
    * @param trackType - the TrackType identifying the scene
    */
   private updateActiveTrack( trackType: TrackType ): void {
+
+    // Check if the skater is displaced from starting position before resetting, so we can announce the return to ground.
+    const skaterWasDisplaced = this.skater.hasMovedProperty.value || this.skater.trackProperty.value !== null;
+
     const sceneIndex = this.trackTypes.indexOf( trackType );
     for ( let i = 0; i < this.tracks.length; i++ ) {
       const track = this.tracks.get( i );
@@ -113,6 +123,10 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
     // The skater should detach from track when the scene changes.  Code elsewhere also resets the position of the skater.
     this.skater.trackProperty.value = null;
+
+    if ( skaterWasDisplaced ) {
+      this.skaterReturnedToGroundBySceneChangeEmitter.emit();
+    }
   }
 
   /**

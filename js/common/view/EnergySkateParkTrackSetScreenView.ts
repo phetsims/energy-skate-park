@@ -51,6 +51,13 @@ export default class EnergySkateParkTrackSetScreenView extends EnergySkateParkSa
       this.skaterNode.interruptDrag();
     } );
 
+    // When a scene change causes the skater to be returned to the ground (only if displaced), announce it.
+    model.skaterReturnedToGroundBySceneChangeEmitter.addListener( () => {
+      this.skaterNode.addAccessibleContextResponse(
+        EnergySkateParkFluent.a11y.returnSkaterToGroundButton.accessibleContextResponseStringProperty
+      );
+    } );
+
     // Derive the track shape name from the scene TrackType
     const trackShapeNameProperty = new DerivedProperty(
       [ model.sceneProperty ],
