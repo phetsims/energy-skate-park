@@ -336,6 +336,9 @@
       },
       "offTrackHelpText": {
         "value": "Use arrow keys or W, A, S, D to move the skater."
+      },
+      "snapToTrackContextResponse": {
+        "value": "Skater on track."
       }
     },
     "referenceHeightLine": {

@@ -166,6 +166,7 @@ type StringsType = {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'onTrackHelpTextStringProperty': LocalizedStringProperty;
       'offTrackHelpTextStringProperty': LocalizedStringProperty;
+      'snapToTrackContextResponseStringProperty': LocalizedStringProperty;
     };
     'referenceHeightLine': {
       'accessibleHeadingStringProperty': LocalizedStringProperty;

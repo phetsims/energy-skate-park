@@ -368,6 +368,8 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
       this.keyboardTargetTrack = track;
       this.keyboardTargetU = u;
+
+      this.addAccessibleContextResponse( EnergySkateParkFluent.a11y.skaterNode.snapToTrackContextResponseStringProperty );
     }
   }
 
