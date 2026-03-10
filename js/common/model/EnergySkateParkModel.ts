@@ -193,6 +193,9 @@ export default class EnergySkateParkModel {
   // Required for PhET-iO state wrapper
   public readonly updateEmitter: Emitter;
 
+  // Emits when the skater attaches to a track during a physics step (not user interaction).
+  public readonly skaterAttachedToTrackEmitter: Emitter;
+
   // Updates the model with constant event intervals even if there is a drop in the framerate
   // so that simulation performance has no impact on physical behavior.
   private readonly eventTimer: EventTimer;
@@ -329,6 +332,7 @@ export default class EnergySkateParkModel {
     } );
 
     this.resetEmitter = new Emitter();
+    this.skaterAttachedToTrackEmitter = new Emitter();
 
     // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
     this.skater.massProperty.link( () => {
@@ -403,11 +407,16 @@ export default class EnergySkateParkModel {
    * Step one frame, assuming 60 fps.
    */
   public manualStep(): void {
+    const oldTrack = this.skater.trackProperty.value;
     const skaterState = new SkaterState( this.skater );
     const dt = 1.0 / FRAME_RATE;
     const result = this.stepModel( dt, skaterState );
     result.setToSkater( this.skater );
     this.skater.updatedEmitter.emit();
+
+    if ( oldTrack === null && this.skater.trackProperty.value !== null ) {
+      this.skaterAttachedToTrackEmitter.emit();
+    }
   }
 
   /**
@@ -426,6 +435,7 @@ export default class EnergySkateParkModel {
     if ( this.isPlayingProperty.value && !this.skater.userControlledProperty.value ) {
 
       const initialThermalEnergy = this.skater.thermalEnergyProperty.value;
+      const oldTrack = this.skater.trackProperty.value;
 
       const skaterState = new SkaterState( this.skater );
       if ( debug ) {
@@ -445,6 +455,11 @@ export default class EnergySkateParkModel {
       if ( updatedState ) {
         updatedState.setToSkater( this.skater );
         this.skater.updatedEmitter.emit();
+
+        // Detect if the skater attached to a track during this physics step.
+        if ( oldTrack === null && this.skater.trackProperty.value !== null ) {
+          this.skaterAttachedToTrackEmitter.emit();
+        }
 
         if ( debug ) {
           if ( Math.abs( updatedState.getTotalEnergy() - initialEnergy! ) > 1E-6 ) {

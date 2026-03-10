@@ -474,6 +474,11 @@ export default class EnergySkateParkScreenView extends ScreenView {
     // skaterNode is above most things as it is the primary draggable object
     this.topLayer.addChild( this.skaterNode );
 
+    // When the skater attaches to a track during a physics step, announce it to screen readers.
+    model.skaterAttachedToTrackEmitter.addListener( () => {
+      this.skaterNode.addAccessibleContextResponse( EnergySkateParkFluent.a11y.skaterNode.snapToTrackContextResponseStringProperty );
+    } );
+
     const pieChartNode = new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform );
     this.topLayer.addChild( pieChartNode );
 
