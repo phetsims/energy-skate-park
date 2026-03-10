@@ -596,6 +596,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       returnSkaterToPreviousStartingPositionButton.visible = buttonsVisible;
 
       if ( buttonsVisible ) {
+        this.skaterNode.addAccessibleContextResponse( EnergySkateParkFluent.a11y.skaterNode.offScreenContextResponseStringProperty );
 
         // Put the button where the skater will appear.  Nudge it up a bit so the mouse can hit it from the drop site,
         // without being moved at all (to simplify repeat runs).

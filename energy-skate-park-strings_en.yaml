@@ -152,6 +152,7 @@ a11y:
     snapToTrackContextResponse:        Skater on track.
     detachFromTrackContextResponse:    Skater off track.
     turnsAroundContextResponse:        Skater turns around.
+    offScreenContextResponse:          Skater off screen. Return skater.
   referenceHeightLine:
     accessibleHeading:  Reference Height
     accessibleName:     Reference Height Line

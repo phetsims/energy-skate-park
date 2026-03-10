@@ -345,6 +345,9 @@
       },
       "turnsAroundContextResponse": {
         "value": "Skater turns around."
+      },
+      "offScreenContextResponse": {
+        "value": "Skater off screen. Return skater."
       }
     },
     "referenceHeightLine": {
