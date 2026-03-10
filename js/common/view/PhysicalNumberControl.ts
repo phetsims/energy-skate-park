@@ -141,9 +141,12 @@ export default class PhysicalNumberControl extends NumberControl {
     } );
 
     // When sliderOnly, the arrow buttons and number display are hidden, so uninstrument them.
+    // Also, uninstrument the slider's visibleProperty since clients should hide the entire
+    // NumberControl rather than the slider independently.
     if ( options.sliderOnly ) {
       options.arrowButtonOptions.tandem = Tandem.OPT_OUT;
       options.numberDisplayOptions.tandem = Tandem.OPT_OUT;
+      options.sliderOptions.phetioVisiblePropertyInstrumented = false;
     }
 
     super( titleString, property, valueRange, options );
