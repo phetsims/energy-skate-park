@@ -267,10 +267,7 @@ export default class Skater {
       phetioValueType: NullableIO( ReferenceIO( Track.TrackIO ) )
     } );
 
-    this.headPositionProperty = new Vector2Property( this.getHeadPosition(), {
-      tandem: tandem.createTandem( 'headPositionProperty' ),
-      phetioReadOnly: true
-    } );
+    this.headPositionProperty = new Vector2Property( this.getHeadPosition() );
 
     this.updatedEmitter = new Emitter();
     this.energyChangedEmitter = new Emitter();
@@ -322,9 +319,8 @@ export default class Skater {
 
     this.updateEnergy();
 
-    this.updatedEmitter.addListener( () => {
-      this.updateHeadPosition();
-    } );
+    this.updatedEmitter.addListener( () => this.updateHeadPosition() );
+    phetioStateSetEmitter.addListener( () => this.updateHeadPosition() );
 
     this.allowClearingThermalEnergyProperty = this.thermalEnergyProperty.derived( thermalEnergy => thermalEnergy > 1E-2 );
 
