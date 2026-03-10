@@ -255,31 +255,33 @@ export default class Skater {
       phetioReadOnly: true
     } );
 
+    const restartTandem = tandem.createTandem( 'restart' );
+
     this.startingPositionProperty = new Vector2Property( new Vector2( 3.5, 0 ), {
-      tandem: tandem.createTandem( 'startingPositionProperty' ),
+      tandem: restartTandem.createTandem( 'startingPositionProperty' ),
       phetioReadOnly: true
     } );
 
     this.startingUProperty = new Property( 0, {
-      tandem: tandem.createTandem( 'startingUProperty' ),
+      tandem: restartTandem.createTandem( 'startingUProperty' ),
       phetioValueType: NullableIO( NumberIO ),
       phetioReadOnly: true
     } );
 
     this.startingUpProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'startingUpProperty' ),
+      tandem: restartTandem.createTandem( 'startingUpProperty' ),
       phetioReadOnly: true
     } );
 
     this.startingAngleProperty = new NumberProperty( 0, {
-      tandem: tandem.createTandem( 'startingAngleProperty' ),
+      tandem: restartTandem.createTandem( 'startingAngleProperty' ),
       units: 'radians',
       phetioReadOnly: true
     } );
 
     this.startingTrackProperty = new Property<Track | null>( null, {
       valueType: [ null, Track ],
-      tandem: tandem.createTandem( 'startingTrackProperty' ),
+      tandem: restartTandem.createTandem( 'startingTrackProperty' ),
       phetioValueType: NullableIO( ReferenceIO( Track.TrackIO ) ),
       phetioReadOnly: true
     } );
