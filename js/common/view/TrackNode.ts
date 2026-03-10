@@ -381,7 +381,7 @@ export default class TrackNode extends Node {
     // Update the skater if the track is moved while the sim is paused, see #84
     if ( model.skater.trackProperty.value === track && !model.isPlayingProperty.value ) {
       model.skater.positionProperty.value = track.getPoint( model.skater.parametricPositionProperty.value );
-      model.skater.angleProperty.value = model.skater.trackProperty.value.getViewAngleAt( model.skater.parametricPositionProperty.value ) + ( model.skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+      model.skater.angleProperty.value = model.skater.trackProperty.value.getViewAngleAt( model.skater.parametricPositionProperty.value ) + ( model.skater.isOnTopSideOfTrackProperty.value ? 0 : Math.PI );
       model.skater.updatedEmitter.emit();
     }
   }

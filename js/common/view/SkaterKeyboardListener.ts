@@ -100,8 +100,8 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
     const stepSize = shiftKey ? PARAMETRIC_STEP * SLOW_MULTIPLIER : PARAMETRIC_STEP;
 
     // Determine the direction of movement along the track
-    // The direction depends on onTopSideOfTrackProperty to handle inverted track sections correctly
-    const onTop = this.skater.onTopSideOfTrackProperty.value;
+    // The direction depends on isOnTopSideOfTrackProperty to handle inverted track sections correctly
+    const onTop = this.skater.isOnTopSideOfTrackProperty.value;
 
     if ( keysPressed === 'arrowLeft' || keysPressed === 'a' ) {
       // Move left along track
@@ -140,7 +140,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
       this.skater.parametricPositionProperty.value = newU;
       this.skater.positionProperty.value = track.getPoint( newU );
       this.skater.angleProperty.value = track.getViewAngleAt( newU ) +
-                                        ( this.skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+                                        ( this.skater.isOnTopSideOfTrackProperty.value ? 0 : Math.PI );
 
       // Clear velocity when moving with keyboard
       this.skater.velocityProperty.value = this.skater.velocityProperty.value.timesScalar( 0 );
@@ -187,7 +187,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
     // Get the normal vector to launch in the direction away from track
     const u = this.skater.parametricPositionProperty.value;
     const normal = track.getUnitNormalVector( u );
-    const launchDirection = this.skater.onTopSideOfTrackProperty.value ? normal : normal.negated();
+    const launchDirection = this.skater.isOnTopSideOfTrackProperty.value ? normal : normal.negated();
 
     // Detach from track
     this.skater.trackProperty.value = null;
@@ -234,7 +234,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
 
       this.skater.positionProperty.value = newPosition;
       this.skater.angleProperty.value = 0;
-      this.skater.onTopSideOfTrackProperty.value = true;
+      this.skater.isOnTopSideOfTrackProperty.value = true;
 
       // Clear velocity and thermal energy
       this.skater.velocityProperty.value = this.skater.velocityProperty.value.timesScalar( 0 );

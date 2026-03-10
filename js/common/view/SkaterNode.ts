@@ -226,9 +226,9 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
           // Choose the right side of the track, i.e. the side of the track that would have the skater upside up
           const normal = targetTrack.getUnitNormalVector( targetU );
-          skater.onTopSideOfTrackProperty.value = normal.y > 0;
+          skater.isOnTopSideOfTrackProperty.value = normal.y > 0;
 
-          skater.angleProperty.value = targetTrack.getViewAngleAt( targetU ) + ( skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+          skater.angleProperty.value = targetTrack.getViewAngleAt( targetU ) + ( skater.isOnTopSideOfTrackProperty.value ? 0 : Math.PI );
 
           closeEnough = true;
         }
@@ -239,7 +239,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
         // make skater upright if not near the track
         skater.angleProperty.value = 0;
-        skater.onTopSideOfTrackProperty.value = true;
+        skater.isOnTopSideOfTrackProperty.value = true;
 
         skater.positionProperty.value = position;
       }
@@ -434,7 +434,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
     const delta = shiftPressed ? PARAMETRIC_DELTA_SHIFT : PARAMETRIC_DELTA;
 
     // Determine direction based on which side of track we're on
-    const onTop = skater.onTopSideOfTrackProperty.value;
+    const onTop = skater.isOnTopSideOfTrackProperty.value;
 
     if ( leftPressed && !rightPressed ) {
       const direction = onTop ? -1 : 1;
@@ -463,7 +463,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       skater.parametricPositionProperty.value = newU;
       skater.positionProperty.value = track.getPoint( newU );
       skater.angleProperty.value = track.getViewAngleAt( newU ) +
-                                   ( skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+                                   ( skater.isOnTopSideOfTrackProperty.value ? 0 : Math.PI );
 
       // Clear velocity when moving with keyboard
       skater.velocityProperty.value = new Vector2( 0, 0 );
@@ -490,7 +490,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
   private detachFromTrack( skater: Skater, track: Track ): void {
     const u = skater.parametricPositionProperty.value;
     const normal = track.getUnitNormalVector( u );
-    const launchDirection = skater.onTopSideOfTrackProperty.value ? normal : normal.negated();
+    const launchDirection = skater.isOnTopSideOfTrackProperty.value ? normal : normal.negated();
 
     // Detach from track
     skater.trackProperty.value = null;
@@ -551,7 +551,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       // Update position (no track snapping during keyboard drag)
       skater.positionProperty.value = newPosition;
       skater.angleProperty.value = 0;
-      skater.onTopSideOfTrackProperty.value = true;
+      skater.isOnTopSideOfTrackProperty.value = true;
 
       // Clear velocity
       skater.velocityProperty.value = new Vector2( 0, 0 );

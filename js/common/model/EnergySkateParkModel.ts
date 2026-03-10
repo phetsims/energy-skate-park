@@ -1731,7 +1731,7 @@ export default class EnergySkateParkModel {
       const x2 = newTrack.getX( p.parametricPosition );
       const y2 = newTrack.getY( p.parametricPosition );
       this.skater.positionProperty.value = new Vector2( x2, y2 );
-      this.skater.angleProperty.value = newTrack.getViewAngleAt( p.parametricPosition ) + ( this.skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+      this.skater.angleProperty.value = newTrack.getViewAngleAt( p.parametricPosition ) + ( this.skater.isOnTopSideOfTrackProperty.value ? 0 : Math.PI );
 
       // Trigger an initial update now so we can get the right up vector, see #150
       this.skater.updatedEmitter.emit();
@@ -1739,8 +1739,8 @@ export default class EnergySkateParkModel {
 
       // If the skater flipped upside down because the track directionality is different, toggle his 'up' flag
       if ( originalNormal.dot( newNormal ) < 0 ) {
-        this.skater.onTopSideOfTrackProperty.value = !this.skater.onTopSideOfTrackProperty.value;
-        this.skater.angleProperty.value = newTrack.getViewAngleAt( p.parametricPosition ) + ( this.skater.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+        this.skater.isOnTopSideOfTrackProperty.value = !this.skater.isOnTopSideOfTrackProperty.value;
+        this.skater.angleProperty.value = newTrack.getViewAngleAt( p.parametricPosition ) + ( this.skater.isOnTopSideOfTrackProperty.value ? 0 : Math.PI );
         this.skater.updatedEmitter.emit();
       }
 

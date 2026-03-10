@@ -142,7 +142,7 @@ export default class SkaterState {
     skater.parametricPositionProperty.value = this.parametricPosition;
     skater.parametricSpeedProperty.value = this.parametricSpeed;
     skater.thermalEnergyProperty.value = this.thermalEnergy;
-    skater.onTopSideOfTrackProperty.value = this.onTopSideOfTrack;
+    skater.isOnTopSideOfTrackProperty.value = this.onTopSideOfTrack;
 
     skater.massProperty.value = this.mass;
     skater.gravityMagnitudeProperty.value = Math.abs( this.gravity );

@@ -59,11 +59,11 @@ export default class Skater {
 
   // Speed along the parametric spline dimension, formally 'u dot', indicating speed and direction
   // (+/-) along the track spline in meters per second.  Not technically the derivative of 'u' since it is the
-  // euclidean speed.
+  // Euclidean speed.
   public readonly parametricSpeedProperty: NumberProperty;
 
   // True if the skater is pointing up on the track, false if attached to underside of track
-  public readonly onTopSideOfTrackProperty: BooleanProperty;
+  public readonly isOnTopSideOfTrackProperty: BooleanProperty;
 
   // Gravity magnitude, without direction, which is easier to set with controls (like sliders) because
   // conceptual minimum value is less than maximum value.
@@ -168,8 +168,8 @@ export default class Skater {
       phetioReadOnly: true
     } );
 
-    this.onTopSideOfTrackProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'onTopSideOfTrackProperty' )
+    this.isOnTopSideOfTrackProperty = new BooleanProperty( true, {
+      tandem: tandem.createTandem( 'isOnTopSideOfTrackProperty' )
     } );
 
     this.gravityMagnitudeProperty = new NumberProperty( 9.8, {
@@ -305,10 +305,10 @@ export default class Skater {
       const speedThreshold = 0.01;
 
       if ( parametricSpeed > speedThreshold ) {
-        this.directionProperty.value = this.onTopSideOfTrackProperty.value ? 'right' : 'left';
+        this.directionProperty.value = this.isOnTopSideOfTrackProperty.value ? 'right' : 'left';
       }
       else if ( parametricSpeed < -speedThreshold ) {
-        this.directionProperty.value = this.onTopSideOfTrackProperty.value ? 'left' : 'right';
+        this.directionProperty.value = this.isOnTopSideOfTrackProperty.value ? 'left' : 'right';
       }
       else {
         // Keep the same direction
@@ -396,7 +396,7 @@ export default class Skater {
     this.trackProperty.reset();
     this.parametricPositionProperty.reset();
     this.parametricSpeedProperty.reset();
-    this.onTopSideOfTrackProperty.reset();
+    this.isOnTopSideOfTrackProperty.reset();
     this.positionProperty.reset();
     this.directionProperty.reset();
     this.velocityProperty.reset();
@@ -428,7 +428,7 @@ export default class Skater {
     ) {
       this.parametricPositionProperty.value = this.startingUProperty.value;
       this.angleProperty.value = this.startingAngleProperty.value;
-      this.onTopSideOfTrackProperty.value = this.startingUpProperty.value;
+      this.isOnTopSideOfTrackProperty.value = this.startingUpProperty.value;
       this.parametricSpeedProperty.value = 0;
     }
     else {
@@ -505,7 +505,7 @@ export default class Skater {
     }
     this.startingPositionProperty.value = this.positionProperty.value.copy();
     this.startingUProperty.value = targetU;
-    this.startingUpProperty.value = this.onTopSideOfTrackProperty.value;
+    this.startingUpProperty.value = this.isOnTopSideOfTrackProperty.value;
     this.startingTrackProperty.value = targetTrack;
 
     // Record the starting track control points to make sure the track hasn't changed during return this.
@@ -526,8 +526,8 @@ export default class Skater {
     this.positionProperty.value = track.getPoint( u );
 
     const normal = track.getUnitNormalVector( u );
-    this.onTopSideOfTrackProperty.value = normal.y > 0;
-    this.angleProperty.value = track.getViewAngleAt( u ) + ( this.onTopSideOfTrackProperty.value ? 0 : Math.PI );
+    this.isOnTopSideOfTrackProperty.value = normal.y > 0;
+    this.angleProperty.value = track.getViewAngleAt( u ) + ( this.isOnTopSideOfTrackProperty.value ? 0 : Math.PI );
 
     this.velocityProperty.value = new Vector2( 0, 0 );
     this.parametricSpeedProperty.value = 0;
