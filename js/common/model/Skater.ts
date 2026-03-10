@@ -153,12 +153,14 @@ export default class Skater {
 
     this.trackProperty = new Property<Track | null>( null, {
       tandem: tandem.createTandem( 'trackProperty' ),
-      phetioValueType: NullableIO( ReferenceIO( Track.TrackIO ) )
+      phetioValueType: NullableIO( ReferenceIO( Track.TrackIO ) ),
+      phetioReadOnly: true
     } );
 
     this.parametricPositionProperty = new Property( 0, {
       tandem: tandem.createTandem( 'parametricPositionProperty' ),
-      phetioValueType: NullableIO( NumberIO )
+      phetioValueType: NullableIO( NumberIO ),
+      phetioReadOnly: true
     } );
 
     this.parametricSpeedProperty = new NumberProperty( 0, {
@@ -203,20 +205,24 @@ export default class Skater {
     // we add other states later like 'forward'
     this.directionProperty = new StringUnionProperty<'left' | 'right'>( 'left', {
       validValues: [ 'left', 'right' ],
-      tandem: tandem.createTandem( 'directionProperty' )
+      tandem: tandem.createTandem( 'directionProperty' ),
+      phetioReadOnly: true
     } );
 
     this.velocityProperty = new Vector2Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'velocityProperty' )
+      tandem: tandem.createTandem( 'velocityProperty' ),
+      phetioReadOnly: true
     } );
 
     this.draggingProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'draggingProperty' )
+      tandem: tandem.createTandem( 'draggingProperty' ),
+      phetioReadOnly: true
     } );
 
     this.kineticEnergyProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'kineticEnergyProperty' ),
-      units: 'J'
+      units: 'J',
+      phetioReadOnly: true
     } );
 
     this.potentialEnergyProperty = new NumberProperty( 0, {
@@ -244,27 +250,32 @@ export default class Skater {
     } );
 
     this.startingPositionProperty = new Vector2Property( new Vector2( 3.5, 0 ), {
-      tandem: tandem.createTandem( 'startingPositionProperty' )
+      tandem: tandem.createTandem( 'startingPositionProperty' ),
+      phetioReadOnly: true
     } );
 
     this.startingUProperty = new Property( 0, {
       tandem: tandem.createTandem( 'startingUProperty' ),
-      phetioValueType: NullableIO( NumberIO )
+      phetioValueType: NullableIO( NumberIO ),
+      phetioReadOnly: true
     } );
 
     this.startingUpProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'startingUpProperty' )
+      tandem: tandem.createTandem( 'startingUpProperty' ),
+      phetioReadOnly: true
     } );
 
     this.startingAngleProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'startingAngleProperty' ),
-      units: 'radians'
+      units: 'radians',
+      phetioReadOnly: true
     } );
 
     this.startingTrackProperty = new Property<Track | null>( null, {
       valueType: [ null, Track ],
       tandem: tandem.createTandem( 'startingTrackProperty' ),
-      phetioValueType: NullableIO( ReferenceIO( Track.TrackIO ) )
+      phetioValueType: NullableIO( ReferenceIO( Track.TrackIO ) ),
+      phetioReadOnly: true
     } );
 
     this.headPositionProperty = new Vector2Property( this.getHeadPosition() );
