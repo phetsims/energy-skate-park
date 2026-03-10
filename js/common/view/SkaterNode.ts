@@ -308,6 +308,13 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
         this.keyboardTargetU = skater.parametricPositionProperty.value;
 
         sharedSoundPlayers.get( 'grab' ).play();
+
+        // On the first keyboard grab, provide a context response with hints about track attachment and release.
+        if ( this.grabDragInteraction.grabDragUsageTracker.numberOfKeyboardGrabs === 1 ) {
+          this.addAccessibleContextResponse(
+            EnergySkateParkFluent.a11y.skaterNode.firstGrabContextResponseStringProperty
+          );
+        }
       },
 
       onRelease: inputType => {
@@ -567,6 +574,13 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       this.keyboardTargetTrack = null;
       this.keyboardTargetU = null;
     }
+  }
+
+  /**
+   * Reset the GrabDragInteraction so the first-grab context response plays again.
+   */
+  public reset(): void {
+    this.grabDragInteraction.reset();
   }
 
   /**

@@ -166,6 +166,7 @@ type StringsType = {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'onTrackHelpTextStringProperty': LocalizedStringProperty;
       'offTrackHelpTextStringProperty': LocalizedStringProperty;
+      'firstGrabContextResponseStringProperty': LocalizedStringProperty;
       'snapToTrackContextResponseStringProperty': LocalizedStringProperty;
       'detachFromTrackContextResponseStringProperty': LocalizedStringProperty;
       'turnsAroundContextResponseStringProperty': LocalizedStringProperty;

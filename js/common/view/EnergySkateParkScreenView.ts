@@ -616,9 +616,10 @@ export default class EnergySkateParkScreenView extends ScreenView {
       }
     } );
 
-    // When the model resets, go back to the default image set for the skater.
+    // When the model resets, go back to the default image set for the skater and reset grab interaction state.
     this.model.resetEmitter.addListener( () => {
       this.skaterNode.selectedSkaterProperty.reset();
+      this.skaterNode.reset();
     } );
 
     // For debugging the visible bounds
