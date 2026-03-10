@@ -279,9 +279,7 @@ export default class EnergySkateParkModel {
       tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'measuringTapeVisibleProperty' )
     } );
 
-    this.barGraphScaleProperty = new NumberProperty( 1 / 30, {
-      tandem: options.showBarGraph ? tandem.createTandem( 'barGraphScaleProperty' ) : Tandem.OPT_OUT
-    } );
+    this.barGraphScaleProperty = new NumberProperty( 1 / 30 );
 
     this.editButtonEnabledProperty = new BooleanProperty( false );
     this.clearButtonEnabledProperty = new BooleanProperty( false );
