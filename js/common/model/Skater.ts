@@ -223,26 +223,28 @@ export default class Skater {
       phetioReadOnly: true
     } );
 
+    const energyTandem = tandem.createTandem( 'energy' );
+
     this.kineticEnergyProperty = new NumberProperty( 0, {
-      tandem: tandem.createTandem( 'kineticEnergyProperty' ),
+      tandem: energyTandem.createTandem( 'kineticEnergyProperty' ),
       units: 'J',
       phetioReadOnly: true
     } );
 
     this.potentialEnergyProperty = new NumberProperty( 0, {
-      tandem: tandem.createTandem( 'potentialEnergyProperty' ),
+      tandem: energyTandem.createTandem( 'potentialEnergyProperty' ),
       units: 'J',
       phetioReadOnly: true
     } );
 
     this.thermalEnergyProperty = new NumberProperty( 0, {
-      tandem: tandem.createTandem( 'thermalEnergyProperty' ),
+      tandem: energyTandem.createTandem( 'thermalEnergyProperty' ),
       units: 'J',
       phetioReadOnly: true
     } );
 
     this.totalEnergyProperty = new NumberProperty( 0, {
-      tandem: tandem.createTandem( 'totalEnergyProperty' ),
+      tandem: energyTandem.createTandem( 'totalEnergyProperty' ),
       units: 'J',
       phetioReadOnly: true
     } );
