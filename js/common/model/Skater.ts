@@ -197,7 +197,8 @@ export default class Skater {
     } );
 
     this.positionProperty = new Vector2Property( new Vector2( 3.5, 0 ), {
-      tandem: tandem.createTandem( 'positionProperty' )
+      tandem: tandem.createTandem( 'positionProperty' ),
+      phetioReadOnly: true
     } );
 
     this.massProperty = new NumberProperty( options.defaultMass, {
