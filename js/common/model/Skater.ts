@@ -173,7 +173,9 @@ export default class Skater {
     } );
 
     this.gravityMagnitudeProperty = new NumberProperty( 9.8, {
-      tandem: tandem.createTandem( 'gravityMagnitudeProperty' ),
+
+      // It is convenient to define the gravity magnitude here in the skater, however in the tandem tree it should appear as above.
+      tandem: tandem.parentTandem!.createTandem( 'gravityMagnitudeProperty' ),
       units: 'm/s/s',
       range: new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) )
     } );
@@ -187,7 +189,9 @@ export default class Skater {
     } );
 
     this.referenceHeightProperty = new NumberProperty( 0, {
-      tandem: tandem.createTandem( 'referenceHeightProperty' ),
+
+      // It is convenient to define the reference height here in the skater, however in the tandem tree it should appear as above.
+      tandem: tandem.parentTandem!.createTandem( 'referenceHeightProperty' ),
       units: 'm',
       range: options.referenceHeightRange
     } );
