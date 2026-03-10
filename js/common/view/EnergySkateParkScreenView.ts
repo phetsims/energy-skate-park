@@ -293,7 +293,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
       centerY: this.resetAllButton.centerY,
       // X updated in layoutBounds since the reset all button can move horizontally
       tandem: tandem.createTandem( 'restartSkaterButton' ),
-      accessibleHelpText: EnergySkateParkFluent.a11y.restartSkaterButton.accessibleHelpTextStringProperty
+      accessibleHelpText: EnergySkateParkFluent.a11y.restartSkaterButton.accessibleHelpTextStringProperty,
+      accessibleContextResponse: EnergySkateParkFluent.a11y.returnSkaterToPreviousStartingPositionButton.accessibleContextResponseStringProperty
     } );
 
     // Disable the return skater button when the skater is already at his initial coordinates
