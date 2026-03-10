@@ -140,6 +140,12 @@ export default class PhysicalNumberControl extends NumberControl {
       tandem: tandem
     } );
 
+    // When sliderOnly, the arrow buttons and number display are hidden, so uninstrument them.
+    if ( options.sliderOnly ) {
+      options.arrowButtonOptions.tandem = Tandem.OPT_OUT;
+      options.numberDisplayOptions.tandem = Tandem.OPT_OUT;
+    }
+
     super( titleString, property, valueRange, options );
   }
 }
