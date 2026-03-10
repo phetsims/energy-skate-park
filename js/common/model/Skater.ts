@@ -326,13 +326,7 @@ export default class Skater {
       this.updateHeadPosition();
     } );
 
-    this.allowClearingThermalEnergyProperty = new DerivedProperty( [ this.thermalEnergyProperty ],
-      thermalEnergy => {
-        return thermalEnergy > 1E-2;
-      }, {
-        tandem: tandem.createTandem( 'allowClearingThermalEnergyProperty' ),
-        phetioValueType: BooleanIO
-      } );
+    this.allowClearingThermalEnergyProperty = this.thermalEnergyProperty.derived( thermalEnergy => thermalEnergy > 1E-2 );
 
     // In the state wrapper, when the state changes, we must update the skater node
     phetioStateSetEmitter.addListener( () => {
