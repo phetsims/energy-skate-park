@@ -152,7 +152,6 @@ a11y:
     firstGrabContextResponse:          Press J key plus T key to attach skater to nearest track. Space to release.
     snapToTrackContextResponse:        Skater on track.
     detachFromTrackContextResponse:    Skater off track.
-    turnsAroundContextResponse:        Skater turns around.
     offScreenContextResponse:          Skater off screen. Return skater.
   referenceHeightLine:
     accessibleHeading:  Reference Height

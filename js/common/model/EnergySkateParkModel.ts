@@ -199,9 +199,6 @@ export default class EnergySkateParkModel {
   // Emits when the skater detaches from a track during a physics step (not user interaction).
   public readonly skaterDetachedFromTrackEmitter: Emitter;
 
-  // Emits when the skater's direction changes during a physics step.
-  public readonly skaterTurnsAroundEmitter: Emitter;
-
   // Updates the model with constant event intervals even if there is a drop in the framerate
   // so that simulation performance has no impact on physical behavior.
   private readonly eventTimer: EventTimer;
@@ -338,7 +335,6 @@ export default class EnergySkateParkModel {
     this.resetEmitter = new Emitter();
     this.skaterAttachedToTrackEmitter = new Emitter();
     this.skaterDetachedFromTrackEmitter = new Emitter();
-    this.skaterTurnsAroundEmitter = new Emitter();
 
     // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
     this.skater.massProperty.link( () => {
@@ -414,7 +410,6 @@ export default class EnergySkateParkModel {
    */
   public manualStep(): void {
     const oldTrack = this.skater.trackProperty.value;
-    const oldDirection = this.skater.directionProperty.value;
     const skaterState = new SkaterState( this.skater );
     const dt = 1.0 / FRAME_RATE;
     const result = this.stepModel( dt, skaterState );
@@ -426,9 +421,6 @@ export default class EnergySkateParkModel {
     }
     else if ( oldTrack !== null && this.skater.trackProperty.value === null ) {
       this.skaterDetachedFromTrackEmitter.emit();
-    }
-    if ( this.skater.directionProperty.value !== oldDirection ) {
-      this.skaterTurnsAroundEmitter.emit();
     }
   }
 
@@ -442,7 +434,6 @@ export default class EnergySkateParkModel {
     const dt = 1.0 / FRAME_RATE;
 
     let initialEnergy: number | null = null;
-    const oldDirection = this.skater.directionProperty.value;
 
     // If the delay makes dt too high, then truncate it.  This helps e.g. when clicking in the address bar on iPad,
     // which gives a huge dt and problems for integration
@@ -509,10 +500,6 @@ export default class EnergySkateParkModel {
       else {
         // skater wasn't moving, so don't change directions
       }
-    }
-
-    if ( this.skater.directionProperty.value !== oldDirection ) {
-      this.skaterTurnsAroundEmitter.emit();
     }
   }
 

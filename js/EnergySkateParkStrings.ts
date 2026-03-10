@@ -169,7 +169,6 @@ type StringsType = {
       'firstGrabContextResponseStringProperty': LocalizedStringProperty;
       'snapToTrackContextResponseStringProperty': LocalizedStringProperty;
       'detachFromTrackContextResponseStringProperty': LocalizedStringProperty;
-      'turnsAroundContextResponseStringProperty': LocalizedStringProperty;
       'offScreenContextResponseStringProperty': LocalizedStringProperty;
     };
     'referenceHeightLine': {

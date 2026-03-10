@@ -481,9 +481,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
     model.skaterDetachedFromTrackEmitter.addListener( () => {
       this.skaterNode.addAccessibleContextResponse( EnergySkateParkFluent.a11y.skaterNode.detachFromTrackContextResponseStringProperty );
     } );
-    model.skaterTurnsAroundEmitter.addListener( () => {
-      this.skaterNode.addAccessibleContextResponse( EnergySkateParkFluent.a11y.skaterNode.turnsAroundContextResponseStringProperty );
-    } );
 
     const pieChartNode = new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform );
     this.topLayer.addChild( pieChartNode );

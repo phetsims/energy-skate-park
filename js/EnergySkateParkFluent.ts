@@ -119,7 +119,6 @@ addToMapIfDefined( 'a11y_skaterNode_offTrackHelpText', 'a11y.skaterNode.offTrack
 addToMapIfDefined( 'a11y_skaterNode_firstGrabContextResponse', 'a11y.skaterNode.firstGrabContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_snapToTrackContextResponse', 'a11y.skaterNode.snapToTrackContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_detachFromTrackContextResponse', 'a11y.skaterNode.detachFromTrackContextResponseStringProperty' );
-addToMapIfDefined( 'a11y_skaterNode_turnsAroundContextResponse', 'a11y.skaterNode.turnsAroundContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_offScreenContextResponse', 'a11y.skaterNode.offScreenContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_referenceHeightLine_accessibleHeading', 'a11y.referenceHeightLine.accessibleHeadingStringProperty' );
 addToMapIfDefined( 'a11y_referenceHeightLine_accessibleName', 'a11y.referenceHeightLine.accessibleNameStringProperty' );
@@ -441,7 +440,6 @@ const EnergySkateParkFluent = {
       firstGrabContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_firstGrabContextResponse', _.get( EnergySkateParkStrings, 'a11y.skaterNode.firstGrabContextResponseStringProperty' ) ),
       snapToTrackContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_snapToTrackContextResponse', _.get( EnergySkateParkStrings, 'a11y.skaterNode.snapToTrackContextResponseStringProperty' ) ),
       detachFromTrackContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_detachFromTrackContextResponse', _.get( EnergySkateParkStrings, 'a11y.skaterNode.detachFromTrackContextResponseStringProperty' ) ),
-      turnsAroundContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_turnsAroundContextResponse', _.get( EnergySkateParkStrings, 'a11y.skaterNode.turnsAroundContextResponseStringProperty' ) ),
       offScreenContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterNode_offScreenContextResponse', _.get( EnergySkateParkStrings, 'a11y.skaterNode.offScreenContextResponseStringProperty' ) )
     },
     referenceHeightLine: {
