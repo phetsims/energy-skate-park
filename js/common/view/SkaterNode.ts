@@ -98,7 +98,8 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
     this.selectedSkaterProperty = new NumberProperty( 0, {
       tandem: tandem.createTandem( 'selectedSkaterProperty' ),
-      validValues: SkaterImageSet.SKATER_IMAGE_SETS.map( ( value, index ) => index )
+      validValues: SkaterImageSet.SKATER_IMAGE_SETS.map( ( value, index ) => index ),
+      phetioFeatured: true
     } );
 
     this.skaterImageSetProperty = new DerivedProperty( [ this.selectedSkaterProperty ], selectedSkater => {

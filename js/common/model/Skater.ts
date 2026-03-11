@@ -177,7 +177,8 @@ export default class Skater {
       // It is convenient to define the gravity magnitude here in the skater, however in the tandem tree it should appear as above.
       tandem: tandem.parentTandem!.createTandem( 'gravityMagnitudeProperty' ),
       units: 'm/s/s',
-      range: new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) )
+      range: new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) ),
+      phetioFeatured: true
     } );
 
     this.gravityProperty = new DerivedProperty( [ this.gravityMagnitudeProperty ], gravity => {
@@ -193,7 +194,8 @@ export default class Skater {
       // It is convenient to define the reference height here in the skater, however in the tandem tree it should appear as above.
       tandem: tandem.parentTandem!.createTandem( 'referenceHeightProperty' ),
       units: 'm',
-      range: options.referenceHeightRange
+      range: options.referenceHeightRange,
+      phetioFeatured: true
     } );
 
     this.positionProperty = new Vector2Property( new Vector2( 3.5, 0 ), {
@@ -204,7 +206,8 @@ export default class Skater {
     this.massProperty = new NumberProperty( options.defaultMass, {
       range: options.massRange,
       tandem: tandem.createTandem( 'massProperty' ),
-      units: 'kg'
+      units: 'kg',
+      phetioFeatured: true
     } );
 
     // we add other states later like 'forward'
@@ -229,25 +232,29 @@ export default class Skater {
     this.kineticEnergyProperty = new NumberProperty( 0, {
       tandem: energyTandem.createTandem( 'kineticEnergyProperty' ),
       units: 'J',
-      phetioReadOnly: true
+      phetioReadOnly: true,
+      phetioFeatured: true
     } );
 
     this.potentialEnergyProperty = new NumberProperty( 0, {
       tandem: energyTandem.createTandem( 'potentialEnergyProperty' ),
       units: 'J',
-      phetioReadOnly: true
+      phetioReadOnly: true,
+      phetioFeatured: true
     } );
 
     this.thermalEnergyProperty = new NumberProperty( 0, {
       tandem: energyTandem.createTandem( 'thermalEnergyProperty' ),
       units: 'J',
-      phetioReadOnly: true
+      phetioReadOnly: true,
+      phetioFeatured: true
     } );
 
     this.totalEnergyProperty = new NumberProperty( 0, {
       tandem: energyTandem.createTandem( 'totalEnergyProperty' ),
       units: 'J',
-      phetioReadOnly: true
+      phetioReadOnly: true,
+      phetioFeatured: true
     } );
 
     this.angleProperty = new NumberProperty( 0, {
@@ -297,7 +304,8 @@ export default class Skater {
     this.speedProperty = new DerivedProperty( [ this.velocityProperty ], velocity => velocity.magnitude, {
       tandem: tandem.createTandem( 'speedProperty' ),
       units: 'm/s',
-      phetioValueType: NumberIO
+      phetioValueType: NumberIO,
+      phetioFeatured: true
     } );
 
     // Derived - Zero the kinetic energy when draggingDerived, see #22

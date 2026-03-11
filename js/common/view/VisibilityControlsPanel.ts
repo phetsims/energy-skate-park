@@ -18,7 +18,7 @@ import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityContro
 export default class VisibilityControlsPanel extends Panel {
 
   public constructor( model: EnergySkateParkModel, tandem: Tandem, providedOptions?: PanelOptions ) {
-    const options = combineOptions<PanelOptions>( {}, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
+    const options = combineOptions<PanelOptions>( { visiblePropertyOptions: { phetioFeatured: true } }, EnergySkateParkConstants.PANEL_OPTIONS, providedOptions );
 
     const content = new EnergySkateParkVisibilityControls( model, tandem, {
       showPieChartCheckbox: false,

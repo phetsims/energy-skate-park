@@ -83,7 +83,8 @@ export default class ControlPoint extends PhetioObject {
 
     this.sourcePositionProperty = new Vector2Property( new Vector2( x, y ), {
       tandem: tandem.createTandem( 'sourcePositionProperty' ),
-      phetioReadOnly: true
+      phetioReadOnly: true,
+      phetioFeatured: true
     } );
 
     this.snapTargetProperty = new Property<ControlPoint | null>( null );

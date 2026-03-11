@@ -372,7 +372,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
           }
         },
         tandem: tandem.createTandem( 'measuringTapeNode' ),
-        crosshairColor: 'black'
+        crosshairColor: 'black',
+        phetioFeaturedMeasuredDistanceProperty: true
       } );
 
       this.stopwatchNode = new StopwatchNode( model.stopwatch, {

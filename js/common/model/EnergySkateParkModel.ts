@@ -282,7 +282,8 @@ export default class EnergySkateParkModel {
     this.clearButtonEnabledProperty = new BooleanProperty( false );
 
     this.isPlayingProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'isPlayingProperty' )
+      tandem: tandem.createTandem( 'isPlayingProperty' ),
+      phetioFeatured: true
     } );
 
     this.stopwatch = new Stopwatch( {
@@ -294,12 +295,14 @@ export default class EnergySkateParkModel {
 
     this.timeSpeedProperty = new EnumerationProperty( TimeSpeed.NORMAL, {
       validValues: [ TimeSpeed.NORMAL, TimeSpeed.SLOW ],
-      tandem: tandem.createTandem( 'timeSpeedProperty' )
+      tandem: tandem.createTandem( 'timeSpeedProperty' ),
+      phetioFeatured: true
     } );
 
     this.frictionProperty = new NumberProperty( this.defaultFriction, {
       range: new Range( EnergySkateParkConstants.MIN_FRICTION, EnergySkateParkConstants.MAX_FRICTION ),
-      tandem: tandem.createTandem( 'frictionProperty' )
+      tandem: tandem.createTandem( 'frictionProperty' ),
+      phetioFeatured: true
     } );
 
     this.measuringTapeBasePositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
@@ -313,7 +316,8 @@ export default class EnergySkateParkModel {
     } );
 
     this.isStickingToTrackProperty = new BooleanProperty( true, {
-      tandem: tandem.createTandem( 'isStickingToTrackProperty' )
+      tandem: tandem.createTandem( 'isStickingToTrackProperty' ),
+      phetioFeatured: true
     } );
 
     this.userControlledPropertySet = new UserControlledPropertySet();
@@ -345,7 +349,8 @@ export default class EnergySkateParkModel {
 
     this.tracks = createObservableArray( {
       phetioType: createObservableArray.ObservableArrayIO( ReferenceIO( Track.TrackIO ) ),
-      tandem: tandem.createTandem( 'tracks' )
+      tandem: tandem.createTandem( 'tracks' ),
+      phetioFeatured: true
     } );
 
     // Determine when to show/hide the track edit buttons (cut track or delete control point)

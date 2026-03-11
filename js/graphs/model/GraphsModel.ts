@@ -124,31 +124,38 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     } );
 
     this.kineticEnergyDataVisibleProperty = new BooleanProperty( true, {
-      tandem: graphTandem.createTandem( 'kineticEnergyDataVisibleProperty' )
+      tandem: graphTandem.createTandem( 'kineticEnergyDataVisibleProperty' ),
+      phetioFeatured: true
     } );
     this.potentialEnergyDataVisibleProperty = new BooleanProperty( true, {
-      tandem: graphTandem.createTandem( 'potentialEnergyDataVisibleProperty' )
+      tandem: graphTandem.createTandem( 'potentialEnergyDataVisibleProperty' ),
+      phetioFeatured: true
     } );
     this.thermalEnergyDataVisibleProperty = new BooleanProperty( true, {
-      tandem: graphTandem.createTandem( 'thermalEnergyDataVisibleProperty' )
+      tandem: graphTandem.createTandem( 'thermalEnergyDataVisibleProperty' ),
+      phetioFeatured: true
     } );
     this.totalEnergyDataVisibleProperty = new BooleanProperty( true, {
-      tandem: graphTandem.createTandem( 'totalEnergyDataVisibleProperty' )
+      tandem: graphTandem.createTandem( 'totalEnergyDataVisibleProperty' ),
+      phetioFeatured: true
     } );
 
     this.energyGraphZoomIndexProperty = new NumberProperty( 11, {
       range: new Range( 0, GraphsConstants.PLOT_RANGES.length - 1 ),
-      tandem: graphTandem.createTandem( 'energyGraphZoomIndexProperty' )
+      tandem: graphTandem.createTandem( 'energyGraphZoomIndexProperty' ),
+      phetioFeatured: true
     } );
 
     this.independentVariableProperty = new StringUnionProperty( 'position', {
       validValues: [ 'position', 'time' ],
       tandem: graphTandem.createTandem( 'independentVariableProperty' ),
-      phetioDocumentation: 'The independent variable in the energy graph.'
+      phetioDocumentation: 'The independent variable in the energy graph.',
+      phetioFeatured: true
     } );
 
     this.energyGraphExpandedProperty = new BooleanProperty( true, {
-      tandem: graphTandem.createTandem( 'energyGraphExpandedProperty' )
+      tandem: graphTandem.createTandem( 'energyGraphExpandedProperty' ),
+      phetioFeatured: true
     } );
 
     // existing data fades away before removal when the skater direction changes

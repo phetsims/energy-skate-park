@@ -8,7 +8,7 @@
  */
 
 import merge from '../../../../phet-core/js/merge.js';
-import optionize from '../../../../phet-core/js/optionize.js';
+import optionize, { combineOptions } from '../../../../phet-core/js/optionize.js';
 
 import HSeparator from '../../../../scenery/js/layout/nodes/HSeparator.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
@@ -133,7 +133,9 @@ export default class EnergySkateParkControlPanel extends Panel {
       children.push( experimentSettingsNode );
     }
 
-    const visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), options.visibilityControlsOptions || undefined );
+    const visibilityControls = new EnergySkateParkVisibilityControls( model, tandem.createTandem( 'visibilityControls' ), combineOptions<EnergySkateParkVisibilityControlsOptions>( {
+      visiblePropertyOptions: { phetioFeatured: true }
+    }, options.visibilityControlsOptions || {} ) );
     children.unshift( visibilityControls );
 
     // one separator after visibility controls
@@ -147,7 +149,8 @@ export default class EnergySkateParkControlPanel extends Panel {
     super( content, merge( {
       xMargin: 5,
       yMargin: 5,
-      tandem: tandem
+      tandem: tandem,
+      visiblePropertyOptions: { phetioFeatured: true }
     }, EnergySkateParkConstants.PANEL_OPTIONS ) );
   }
 }

@@ -104,11 +104,13 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
     } );
     this.preventSampleSave = false;
     this.sampleTimeProperty = new NumberProperty( 0, {
-      tandem: options.sampleTimePropertyTandem
+      tandem: options.sampleTimePropertyTandem,
+      phetioFeatured: true
     } );
     this.dataSamples = createObservableArray( {
       tandem: options.instrumentDataSamples ? tandem.createTandem( 'dataSamples' ) : Tandem.OPT_OUT,
-      phetioType: createObservableArray.ObservableArrayIO( EnergySkateParkDataSample.EnergySkateParkDataSampleIO )
+      phetioType: createObservableArray.ObservableArrayIO( EnergySkateParkDataSample.EnergySkateParkDataSampleIO ),
+      phetioFeatured: true
     } );
     this.batchRemoveSamplesEmitter = new Emitter( {
       parameters: [ {

@@ -183,7 +183,8 @@ export default class EnergyBarGraph extends Node {
       const zoomProperty = new NumberProperty( DEFAULT_ZOOM_LEVEL, {
         range: new Range( 0, NUM_ZOOM_LEVELS - 1 ),
         tandem: tandem.createTandem( 'zoomProperty' ),
-        phetioDocumentation: 'Zoom level for the y-axis of the bar graph, where 0 is the most zoomed out, and 9 is the most zoomed in'
+        phetioDocumentation: 'Zoom level for the y-axis of the bar graph, where 0 is the most zoomed out, and 9 is the most zoomed in',
+        phetioFeatured: true
       } );
 
       // Keep barGraphScaleProperty in sync with the discrete zoom level.
@@ -219,7 +220,8 @@ export default class EnergyBarGraph extends Node {
           accessibleHelpText: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomOut.accessibleHelpTextStringProperty,
           accessibleContextResponse: zoomLevelResponseProperty
         },
-        tandem: tandem.createTandem( 'zoomButtonGroup' )
+        tandem: tandem.createTandem( 'zoomButtonGroup' ),
+        visiblePropertyOptions: { phetioFeatured: true }
       } );
 
       content = new VBox( {

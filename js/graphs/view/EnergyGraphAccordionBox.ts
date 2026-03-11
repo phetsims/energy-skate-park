@@ -224,7 +224,8 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
 
       spacing: 7,
       orientation: 'vertical',
-      tandem: tandem.createTandem( 'zoomButtonGroup' )
+      tandem: tandem.createTandem( 'zoomButtonGroup' ),
+      visiblePropertyOptions: { phetioFeatured: true }
     } );
 
     // graph labels - y-axis includes zoom buttons as part of the label
