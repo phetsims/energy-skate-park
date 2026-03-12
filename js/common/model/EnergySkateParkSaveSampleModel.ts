@@ -110,7 +110,8 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
     this.dataSamples = createObservableArray( {
       tandem: options.instrumentDataSamples ? tandem.createTandem( 'dataSamples' ) : Tandem.OPT_OUT,
       phetioType: createObservableArray.ObservableArrayIO( EnergySkateParkDataSample.EnergySkateParkDataSampleIO ),
-      phetioFeatured: true
+      phetioFeatured: true,
+      lengthPropertyOptions: { phetioFeatured: true }
     } );
     this.batchRemoveSamplesEmitter = new Emitter( {
       parameters: [ {

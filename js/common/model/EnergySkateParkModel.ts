@@ -350,7 +350,8 @@ export default class EnergySkateParkModel {
     this.tracks = createObservableArray( {
       phetioType: createObservableArray.ObservableArrayIO( ReferenceIO( Track.TrackIO ) ),
       tandem: tandem.createTandem( 'tracks' ),
-      phetioFeatured: true
+      phetioFeatured: true,
+      lengthPropertyOptions: { phetioFeatured: true }
     } );
 
     // Determine when to show/hide the track edit buttons (cut track or delete control point)
