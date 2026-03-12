@@ -83,11 +83,6 @@
     }
   },
   "plots": {
-    "barGraph": {
-      "label": {
-        "value": "Bar Graph"
-      }
-    },
     "energyGraph": {
       "label": {
         "value": "Energy Graph"
@@ -129,12 +124,6 @@
     }
   },
   "skaterControls": {
-    "label": {
-      "value": "Skater"
-    },
-    "skater1MassPattern": {
-      "value": "Skater 1 ({{value}} kg)"
-    },
     "restartSkater": {
       "value": "Restart Skater"
     }
@@ -330,12 +319,6 @@
     "skaterNode": {
       "accessibleName": {
         "value": "Skater"
-      },
-      "onTrackHelpText": {
-        "value": "Use left and right arrow keys or A and D to move along track. Press up arrow or W to detach."
-      },
-      "offTrackHelpText": {
-        "value": "Use arrow keys or W, A, S, D to move the skater."
       },
       "firstGrabContextResponse": {
         "value": "Press J key plus T key to attach skater to nearest track. Space to release."
@@ -651,14 +634,6 @@
         }
       }
     },
-    "controlPointAttachment": {
-      "left": {
-        "value": "Left"
-      },
-      "right": {
-        "value": "Right"
-      }
-    },
     "energyBarGraphAccordionBox": {
       "accessibleName": {
         "value": "Energy Bar Graph"
@@ -920,11 +895,6 @@
       "playground": {
         "accessibleHelpText": {
           "value": "Build your own custom tracks, ramps, and jumps for the skater.."
-        }
-      },
-      "friction": {
-        "accessibleHelpText": {
-          "value": "Experiment with adding friction to the tracks."
         }
       }
     },
