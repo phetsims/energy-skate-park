@@ -91,7 +91,7 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
     if ( options.showPieChartCheckbox ) {
       items.push( {
         property: model.pieChartVisibleProperty,
-        createNode: () => createCheckboxContent( pieChartStringProperty, EnergySkateParkCheckboxItem.createPieChartIcon( Tandem.OPT_OUT ), iconAlignGroup ),
+        createNode: () => createCheckboxContent( pieChartStringProperty, EnergySkateParkCheckboxItem.createPieChartIcon( model.preferencesModel.showPatternsProperty ), iconAlignGroup ),
         tandemName: 'pieChartCheckbox',
         options: {
           accessibleHelpText: EnergySkateParkFluent.a11y.pieChartCheckbox.accessibleHelpTextStringProperty,

@@ -95,6 +95,8 @@ type StringsType = {
     'accelerationUnitsDescriptionStringProperty': LocalizedStringProperty;
     'metersPerSecondSquaredStringProperty': LocalizedStringProperty;
     'newtonsPerKilogramStringProperty': LocalizedStringProperty;
+    'patternsStringProperty': LocalizedStringProperty;
+    'patternsDescriptionStringProperty': LocalizedStringProperty;
   };
   'keyboardHelpDialog': {
     'skaterControlsStringProperty': LocalizedStringProperty;

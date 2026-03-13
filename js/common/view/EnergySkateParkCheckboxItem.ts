@@ -8,8 +8,10 @@
  */
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
+import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
 import Property from '../../../../axon/js/Property.js';
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Shape from '../../../../kite/js/Shape.js';
@@ -21,6 +23,7 @@ import Line from '../../../../scenery/js/nodes/Line.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
+import TPaint from '../../../../scenery/js/util/TPaint.js';
 import Checkbox, { CheckboxOptions } from '../../../../sun/js/Checkbox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -62,17 +65,24 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
     }
   }
 
-  public static createPieChartIcon( tandem: Tandem ): Node {
+  public static createPieChartIcon( showPatternsProperty: TReadOnlyProperty<boolean> ): Node {
     const radius = 10;
     const arc = new Shape().moveTo( 0, 0 ).ellipticalArc( 0, 0, radius, radius, 0, -Math.PI / 2, 0, false ).lineTo( 0, 0 );
+
+    // TODO: Move this strategy to the color file, see https://github.com/phetsims/energy-skate-park/issues/465
+    const fillProperty = new DerivedProperty( [ showPatternsProperty, EnergySkateParkColors.kineticEnergyColorProperty ], ( showPatterns, prop ) => {
+      return showPatterns ? EnergySkateParkColors.kineticEnergyPattern : prop;
+    } );
+    const kineticEnergyArc = new Path( arc, {
+      fill: fillProperty as TPaint,
+      lineWidth: 0.5,
+      stroke: 'black'
+    } );
+
     return new Node( {
-      tandem: tandem,
       children: [
         new Circle( radius, { fill: EnergySkateParkColors.potentialEnergyColorProperty, lineWidth: 0.5, stroke: 'black' } ),
-        new Path( arc, {
-          tandem: tandem.createTandem( 'kineticEnergyArc' ),
-          fill: EnergySkateParkColors.kineticEnergyColorProperty, lineWidth: 0.5, stroke: 'black'
-        } )
+        kineticEnergyArc
       ]
     } );
   }
@@ -111,7 +121,7 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
   /**
    * An icon for the reference height control.
    */
-  public static createReferenceHeightIcon( ): Node {
+  public static createReferenceHeightIcon(): Node {
 
     // a dashed, stroked line will be drawn with overlapping rectangles, the background rectangle is slightly taller
     // to mimic stroke

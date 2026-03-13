@@ -256,13 +256,14 @@ export default class EnergySkateParkScreenView extends ScreenView {
       model.skater,
       model.clearThermal.bind( model ),
       model.pieChartVisibleProperty,
+      model.preferencesModel.showPatternsProperty,
       tandem.createTandem( 'pieChartLegendNode' ),
-      options.pieChartLegendOptions || undefined
+      options.pieChartLegendOptions || undefined // TODO: Is || undefined needed here? https://github.com/phetsims/energy-skate-park/issues/465
     );
     this.bottomLayer.addChild( this.pieChartLegend );
 
     if ( this.showBarGraph ) {
-      this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, tandem.createTandem( 'energyBarGraphAccordionBox' ), {
+      this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, model.preferencesModel.showPatternsProperty, tandem.createTandem( 'energyBarGraphAccordionBox' ), {
         barGraphOptions: {
           showBarGraphZoomButtons: options.showBarGraphZoomButtons
         }
@@ -484,7 +485,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       this.skaterNode.addAccessibleContextResponse( EnergySkateParkFluent.a11y.skaterNode.detachFromTrackContextResponseStringProperty );
     } );
 
-    const pieChartNode = new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform );
+    const pieChartNode = new PieChartNode( model.skater, model.pieChartVisibleProperty, modelViewTransform, model.preferencesModel.showPatternsProperty );
     this.topLayer.addChild( pieChartNode );
 
     // relative to the control panel, but this will not float with the layout

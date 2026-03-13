@@ -25,6 +25,9 @@ const EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
   // a user. So this is definitely public. - see https://github.com/phetsims/energy-skate-park/issues/293 for request issue
   altAccelerationUnits: { type: 'flag', public: true },
 
+  // Adds patterns to the bar graph and pie chart to increase contrast between energy types
+  patterns: { type: 'flag', public: true },
+
   // This indicates the index (1-based) of the track to show, and enables some other track debugging
   testTrackIndex: {
     type: 'number',

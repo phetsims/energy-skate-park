@@ -7,7 +7,12 @@
  */
 
 import PhetColorScheme from '../../../scenery-phet/js/PhetColorScheme.js';
+import Circle from '../../../scenery/js/nodes/Circle.js';
+import Line from '../../../scenery/js/nodes/Line.js';
+import Node from '../../../scenery/js/nodes/Node.js';
+import Rectangle from '../../../scenery/js/nodes/Rectangle.js';
 import Color from '../../../scenery/js/util/Color.js';
+import NodePattern from '../../../scenery/js/util/NodePattern.js';
 import ProfileColorProperty from '../../../scenery/js/util/ProfileColorProperty.js';
 import energySkatePark from '../energySkatePark.js';
 
@@ -32,6 +37,35 @@ export default class EnergySkateParkColors {
   public static readonly totalEnergyColorProperty = new ProfileColorProperty( energySkatePark, 'totalEnergyColor', {
     default: PhetColorScheme.TOTAL_ENERGY
   } );
+
+  // Diagonal stripe pattern for thermal energy: red background with thin white lines going down-right
+  public static readonly thermalEnergyPattern = new NodePattern(
+    new Node( {
+      children: [
+        new Rectangle( 0, 0, 8, 8, { fill: PhetColorScheme.HEAT_THERMAL_ENERGY } ),
+
+        // Diagonal white line from top-left to bottom-right, with wrapped copies for seamless tiling
+        new Line( 0, 0, 8, 8, { stroke: 'white', lineWidth: 1 } ),
+        new Line( -8, 0, 0, 8, { stroke: 'white', lineWidth: 1 } ),
+        new Line( 8, 0, 16, 8, { stroke: 'white', lineWidth: 1 } )
+      ]
+    } ),
+    2, 0, 0, 8, 8
+  );
+
+  // Dotted pattern for kinetic energy: green background with white polka dots
+  public static readonly kineticEnergyPattern = new NodePattern(
+    new Node( {
+      children: [
+        new Rectangle( 0, 0, 8, 8, { fill: PhetColorScheme.KINETIC_ENERGY } ),
+        new Circle( 1.5, { centerX: 4, centerY: 4, fill: 'white' } )
+      ]
+    } ),
+    2, 0, 0, 8, 8
+  );
+
+  // Dashed line dash array for total energy border
+  public static readonly TOTAL_ENERGY_LINE_DASH = [ 3, 2 ];
 
   // fill of circles that show the skater path
   public static readonly pathFillProperty = new ProfileColorProperty( energySkatePark, 'pathFill', {

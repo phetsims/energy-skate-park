@@ -71,6 +71,8 @@ addToMapIfDefined( 'preferences_accelerationUnits', 'preferences.accelerationUni
 addToMapIfDefined( 'preferences_accelerationUnitsDescription', 'preferences.accelerationUnitsDescriptionStringProperty' );
 addToMapIfDefined( 'preferences_metersPerSecondSquared', 'preferences.metersPerSecondSquaredStringProperty' );
 addToMapIfDefined( 'preferences_newtonsPerKilogram', 'preferences.newtonsPerKilogramStringProperty' );
+addToMapIfDefined( 'preferences_patterns', 'preferences.patternsStringProperty' );
+addToMapIfDefined( 'preferences_patternsDescription', 'preferences.patternsDescriptionStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_skaterControls', 'keyboardHelpDialog.skaterControlsStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_fromAnywhereInScreen', 'keyboardHelpDialog.fromAnywhereInScreenStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_grabOrRelease', 'keyboardHelpDialog.grabOrReleaseStringProperty' );
@@ -358,7 +360,9 @@ const EnergySkateParkFluent = {
     accelerationUnitsStringProperty: _.get( EnergySkateParkStrings, 'preferences.accelerationUnitsStringProperty' ),
     accelerationUnitsDescriptionStringProperty: _.get( EnergySkateParkStrings, 'preferences.accelerationUnitsDescriptionStringProperty' ),
     metersPerSecondSquaredStringProperty: _.get( EnergySkateParkStrings, 'preferences.metersPerSecondSquaredStringProperty' ),
-    newtonsPerKilogramStringProperty: _.get( EnergySkateParkStrings, 'preferences.newtonsPerKilogramStringProperty' )
+    newtonsPerKilogramStringProperty: _.get( EnergySkateParkStrings, 'preferences.newtonsPerKilogramStringProperty' ),
+    patternsStringProperty: _.get( EnergySkateParkStrings, 'preferences.patternsStringProperty' ),
+    patternsDescriptionStringProperty: _.get( EnergySkateParkStrings, 'preferences.patternsDescriptionStringProperty' )
   },
   keyboardHelpDialog: {
     skaterControlsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.skaterControlsStringProperty' ),

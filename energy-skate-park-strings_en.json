@@ -173,6 +173,12 @@
     },
     "newtonsPerKilogram": {
       "value": "N/kg"
+    },
+    "patterns": {
+      "value": "Patterns"
+    },
+    "patternsDescription": {
+      "value": "Adds patterns to the bar graph and pie chart to increase contrast between energy types."
     }
   },
   "keyboardHelpDialog": {

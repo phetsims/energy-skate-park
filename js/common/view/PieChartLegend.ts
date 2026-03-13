@@ -51,10 +51,11 @@ export default class PieChartLegend extends Panel {
    * @param skater the model for the skater
    * @param clearThermal function to be called when the user presses the clear thermal button
    * @param pieChartVisibleProperty axon Property indicating whether the pie chart is visible
+   * @param showPatternsProperty axon Property indicating whether energy patterns are shown
    * @param tandem
    * @param [providedOptions]
    */
-  public constructor( skater: Skater, clearThermal: () => void, pieChartVisibleProperty: TReadOnlyProperty<boolean>, tandem: Tandem, providedOptions?: PieChartLegendOptions ) {
+  public constructor( skater: Skater, clearThermal: () => void, pieChartVisibleProperty: TReadOnlyProperty<boolean>, showPatternsProperty: TReadOnlyProperty<boolean>, tandem: Tandem, providedOptions?: PieChartLegendOptions ) {
 
     const options = optionize<PieChartLegendOptions, SelfOptions, PanelOptions>()( {
       includeTotal: true
@@ -69,7 +70,7 @@ export default class PieChartLegend extends Panel {
       } );
     };
 
-    const createBar = ( index: number, color: TPaint ) => {
+    const createBar = ( color: TPaint ) => {
       return new Rectangle( 0, 0, 20.26, 20.26, {
         fill: color,
         stroke: 'black',
@@ -77,10 +78,18 @@ export default class PieChartLegend extends Panel {
       } );
     };
 
-    const kineticBar = createBar( 0, EnergySkateParkColors.kineticEnergyColorProperty );
-    const potentialBar = createBar( 1, EnergySkateParkColors.potentialEnergyColorProperty );
-    const thermalBar = createBar( 2, EnergySkateParkColors.thermalEnergyColorProperty );
-    const totalBar = createBar( 3, EnergySkateParkColors.totalEnergyColorProperty );
+    const kineticBar = createBar( EnergySkateParkColors.kineticEnergyColorProperty );
+    const potentialBar = createBar( EnergySkateParkColors.potentialEnergyColorProperty );
+    const thermalBar = createBar( EnergySkateParkColors.thermalEnergyColorProperty );
+    const totalBar = createBar( EnergySkateParkColors.totalEnergyColorProperty );
+
+    // TODO: Move declarations to color file, see https://github.com/phetsims/energy-skate-park/issues/465
+    // Swap fills between solid colors and patterns based on showPatternsProperty
+    showPatternsProperty.link( patterns => {
+      kineticBar.fill = patterns ? EnergySkateParkColors.kineticEnergyPattern : EnergySkateParkColors.kineticEnergyColorProperty;
+      thermalBar.fill = patterns ? EnergySkateParkColors.thermalEnergyPattern : EnergySkateParkColors.thermalEnergyColorProperty;
+      totalBar.lineDash = patterns ? EnergySkateParkColors.TOTAL_ENERGY_LINE_DASH : [];
+    } );
 
     const kineticLabel = createLabel( 0, energyKineticStringProperty );
     const potentialLabel = createLabel( 1, energyPotentialStringProperty );

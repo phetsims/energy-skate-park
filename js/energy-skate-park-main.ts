@@ -12,6 +12,7 @@ import PreferencesModel from './../../joist/js/preferences/PreferencesModel.js';
 import EnergySkateParkSim from './common/EnergySkateParkSim.js';
 import EnergySkateParkPreferencesModel from './common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkPreferencesNode from './common/view/EnergySkateParkPreferencesNode.js';
+import EnergySkateParkVisualPreferencesNode from './common/view/EnergySkateParkVisualPreferencesNode.js';
 import EnergySkateParkFluent from './EnergySkateParkFluent.js';
 import GraphsScreen from './graphs/GraphsScreen.js';
 import IntroScreen from './intro/IntroScreen.js';
@@ -24,6 +25,11 @@ const preferencesModel = new PreferencesModel( {
   simulationOptions: {
     customPreferences: [ {
       createContent: tandem => new EnergySkateParkPreferencesNode( energySkateParkPreferencesModel, tandem.createTandem( 'simPreferences' ) )
+    } ]
+  },
+  visualOptions: {
+    customPreferences: [ {
+      createContent: tandem => new EnergySkateParkVisualPreferencesNode( energySkateParkPreferencesModel, tandem.createTandem( 'visualPreferences' ) )
     } ]
   }
 } );

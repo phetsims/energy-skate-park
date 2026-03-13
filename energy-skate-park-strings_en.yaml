@@ -61,6 +61,8 @@ preferences:
   accelerationUnitsDescription: Choose the units displayed in the Gravity Control.
   metersPerSecondSquared:       m/s<sup>2</sup>
   newtonsPerKilogram:           N/kg
+  patterns:                     Patterns
+  patternsDescription:          Adds patterns to the bar graph and pie chart to increase contrast between energy types.
 keyboardHelpDialog:
   skaterControls:                    Move or Jump Grabbed Skater
   fromAnywhereInScreen:              From Anywhere in Screen

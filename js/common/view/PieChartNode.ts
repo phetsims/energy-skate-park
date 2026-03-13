@@ -34,7 +34,7 @@ export default class PieChartNode extends Node {
 
   private readonly showNegativeEnergy: boolean;
 
-  public constructor( skater: Skater, pieChartVisibleProperty: TReadOnlyProperty<boolean>, modelViewTransform: ModelViewTransform2, providedOptions?: PieChartNodeOptions ) {
+  public constructor( skater: Skater, pieChartVisibleProperty: TReadOnlyProperty<boolean>, modelViewTransform: ModelViewTransform2, showPatternsProperty: TReadOnlyProperty<boolean>, providedOptions?: PieChartNodeOptions ) {
 
     const options = optionize<PieChartNodeOptions, SelfOptions, NodeOptions>()( {
       showNegativeEnergy: true
@@ -84,6 +84,12 @@ export default class PieChartNode extends Node {
     // whether negative potential energy will be represented by the pie chart or it should
     // be invisible in this case
     this.showNegativeEnergy = options.showNegativeEnergy;
+
+    // Swap fills between solid colors and patterns based on showPatternsProperty
+    showPatternsProperty.link( patterns => {
+      kineticEnergySlice.fill = patterns ? EnergySkateParkColors.kineticEnergyPattern : EnergySkateParkColors.kineticEnergyColorProperty;
+      thermalEnergySlice.fill = patterns ? EnergySkateParkColors.thermalEnergyPattern : EnergySkateParkColors.thermalEnergyColorProperty;
+    } );
 
     const updatePieChartPosition = () => {
 

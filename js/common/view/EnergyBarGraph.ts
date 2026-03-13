@@ -22,6 +22,7 @@ import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
+import TPaint from '../../../../scenery/js/util/TPaint.js';
 import ColorConstants from '../../../../sun/js/ColorConstants.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
@@ -46,7 +47,7 @@ export type EnergyBarGraphOptions = SelfOptions & NodeOptions;
 export default class EnergyBarGraph extends Node {
   private readonly barChartNode: BarChartNode;
 
-  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, tandem: Tandem, providedOptions: EnergyBarGraphOptions ) {
+  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, showPatternsProperty: TReadOnlyProperty<boolean>, tandem: Tandem, providedOptions: EnergyBarGraphOptions ) {
 
     const options = optionize<SelfOptions, SelfOptions, NodeOptions>()( {
       showBarGraphZoomButtons: true,
@@ -133,7 +134,8 @@ export default class EnergyBarGraph extends Node {
 
     const kineticEntry = {
       property: createHideSmallValuesProperty( skater.kineticEnergyProperty ),
-      color: EnergySkateParkColors.kineticEnergyColorProperty
+      // TODO: Use a Property that already incorporates the pattern or solid, see https://github.com/phetsims/energy-skate-park/issues/465
+      color: EnergySkateParkColors.kineticEnergyColorProperty as TPaint
     };
     const potentialEntry = {
       property: createHideSmallValuesProperty( skater.potentialEnergyProperty ),
@@ -141,7 +143,7 @@ export default class EnergyBarGraph extends Node {
     };
     const thermalEntry = {
       property: createShowSmallValuesProperty( skater.thermalEnergyProperty ),
-      color: EnergySkateParkColors.thermalEnergyColorProperty
+      color: EnergySkateParkColors.thermalEnergyColorProperty as TPaint
     };
     const totalEntry = {
       property: createShowSmallValuesProperty( skater.totalEnergyProperty ),
@@ -243,6 +245,27 @@ export default class EnergyBarGraph extends Node {
     // attach listeners - bar chart exists for life of sim, no need to dispose
     skater.energyChangedEmitter.addListener( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
     barGraphVisibleProperty.link( this.updateWhenVisible.bind( this ) );
+
+    // Access the total bar's border rectangle to apply dashed border when patterns are enabled.
+    // The total bar is the 4th entry (index 3) in the BarChartNode.
+    // BarNode uses a filled borderRectangle (slightly wider than the bar) to simulate a solid border.
+    // For dashed mode, we swap its fill to transparent and add a dashed stroke instead.
+    // TODO: https://github.com/phetsims/energy-skate-park/issues/465 pass color to barNode
+    // TODO: https://github.com/phetsims/energy-skate-park/issues/465 move the pattern to the left a little bit
+    const totalBorderRectangle = this.barChartNode.barNodes[ 3 ].borderRectangle;
+
+    // Swap bar entry colors between solid and pattern fills, then re-render
+    showPatternsProperty.link( patterns => {
+      kineticEntry.color = patterns ? EnergySkateParkColors.kineticEnergyPattern : EnergySkateParkColors.kineticEnergyColorProperty;
+      thermalEntry.color = patterns ? EnergySkateParkColors.thermalEnergyPattern : EnergySkateParkColors.thermalEnergyColorProperty;
+
+      // Swap the total bar border between a solid fill and a dashed stroke
+      totalBorderRectangle.fill = patterns ? null : 'black';
+      totalBorderRectangle.stroke = patterns ? 'black' : null;
+      totalBorderRectangle.lineDash = patterns ? EnergySkateParkColors.TOTAL_ENERGY_LINE_DASH : [];
+
+      this.updateWhenVisible( barGraphVisibleProperty.value );
+    } );
 
     skater.allowClearingThermalEnergyProperty.link( allowClearingThermalEnergy => {
       clearThermalButton.enabled = allowClearingThermalEnergy;

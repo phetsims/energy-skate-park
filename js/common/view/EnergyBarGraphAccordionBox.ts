@@ -8,6 +8,7 @@
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import { optionize4 } from '../../../../phet-core/js/optionize.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import AccordionBox, { AccordionBoxOptions } from '../../../../sun/js/AccordionBox.js';
@@ -31,7 +32,7 @@ const PANEL_MARGIN = 5;
 
 export default class EnergyBarGraphAccordionBox extends AccordionBox {
 
-  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, tandem: Tandem, providedOptions: EnergyBarGraphAccordionBoxOptions ) {
+  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, showPatternsProperty: TReadOnlyProperty<boolean>, tandem: Tandem, providedOptions: EnergyBarGraphAccordionBoxOptions ) {
 
     // create an icon that represents the content, it is invisible when expanded
     const graphLabel = EnergyBarGraph.createLabel();
@@ -65,7 +66,7 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
       tandem: tandem
     }, EnergySkateParkConstants.GRAPH_PANEL_OPTIONS, providedOptions );
 
-    const energyBarGraph = new EnergyBarGraph( skater, barGraphScaleProperty, barGraphVisibleProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
+    const energyBarGraph = new EnergyBarGraph( skater, barGraphScaleProperty, barGraphVisibleProperty, showPatternsProperty, tandem.createTandem( 'energyBarGraph' ), options.barGraphOptions );
 
     super( energyBarGraph, options );
 
