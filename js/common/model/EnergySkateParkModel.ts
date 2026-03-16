@@ -1465,7 +1465,7 @@ export default class EnergySkateParkModel {
     // increment running time - done in stepModel because dt reflects timeSpeedProperty here
     this.stopwatch.step( dt );
 
-    if ( skaterState.dragging ) {
+    if ( skaterState.dragging || this.skater.userControlledProperty.value ) {
 
       // User is dragging the skater, nothing to update here
       return skaterState;
