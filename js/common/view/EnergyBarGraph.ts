@@ -46,6 +46,8 @@ export type EnergyBarGraphOptions = SelfOptions & NodeOptions;
 
 export default class EnergyBarGraph extends Node {
   private readonly barChartNode: BarChartNode;
+  private readonly dashedBorder: Rectangle;
+  private readonly totalBorderRectangle: Rectangle;
 
   public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, showPatternsProperty: TReadOnlyProperty<boolean>, tandem: Tandem, providedOptions: EnergyBarGraphOptions ) {
 
@@ -245,21 +247,29 @@ export default class EnergyBarGraph extends Node {
     skater.energyChangedEmitter.addListener( () => { this.updateWhenVisible( barGraphVisibleProperty.value ); } );
     barGraphVisibleProperty.link( this.updateWhenVisible.bind( this ) );
 
-    // Access the total bar's border rectangle to apply dashed border when patterns are enabled.
-    // The total bar is the 4th entry (index 3) in the BarChartNode.
-    // BarNode uses a filled borderRectangle (slightly wider than the bar) to simulate a solid border.
-    // For dashed mode, we swap its fill to transparent and add a dashed stroke instead.
-    const totalBorderRectangle = this.barChartNode.barNodes[ 3 ].borderRectangle;
+    // The total energy bar uses a dashed border when patterns are enabled. BarNode renders its border
+    // as a filled rectangle slightly wider than the bar (not a stroke), so we can't just add lineDash
+    // to it. Instead, we hide the filled border and show a separate dashed Rectangle overlay.
+    const totalBarNode = this.barChartNode.barNodes[ 3 ];
+    this.totalBorderRectangle = totalBarNode.borderRectangle;
+    const barWidth = 18.5; // matches barOptions.barWidth above
+    this.dashedBorder = new Rectangle( 0, 0, barWidth, 0, {
+      stroke: 'black',
+      lineWidth: 1,
+      lineDash: EnergySkateParkColors.TOTAL_ENERGY_LINE_DASH,
+      centerX: 0,
+      visible: false
+    } );
+    totalBarNode.addChild( this.dashedBorder );
 
     // Swap bar entry colors between solid and pattern fills, then re-render
     showPatternsProperty.link( patterns => {
       kineticEntry.color = patterns ? EnergySkateParkColors.kineticEnergyPattern : EnergySkateParkColors.kineticEnergyColorProperty;
       thermalEntry.color = patterns ? EnergySkateParkColors.thermalEnergyPattern : EnergySkateParkColors.thermalEnergyColorProperty;
 
-      // Swap the total bar border between a solid fill and a dashed stroke
-      totalBorderRectangle.fill = patterns ? null : 'black';
-      totalBorderRectangle.stroke = patterns ? 'black' : null;
-      totalBorderRectangle.lineDash = patterns ? EnergySkateParkColors.TOTAL_ENERGY_LINE_DASH : [];
+      // Toggle between the filled border (solid mode) and dashed overlay (pattern mode)
+      this.totalBorderRectangle.visible = !patterns;
+      this.dashedBorder.visible = patterns;
 
       this.updateWhenVisible( barGraphVisibleProperty.value );
     } );
@@ -278,6 +288,22 @@ export default class EnergyBarGraph extends Node {
   private updateWhenVisible( visible: boolean ): void {
     if ( visible ) {
       this.barChartNode.update();
+
+      // BarNode.update() resets borderRectangle.visible based on bar height, so we must re-hide it and sync the dashed
+      // overlay after every update.
+      if ( this.dashedBorder.visible ) {
+        this.totalBorderRectangle.visible = false;
+        const borderRectangle = this.totalBorderRectangle;
+        const borderWidth = 1;
+        if ( borderRectangle.rectHeight > 0 ) {
+          const barIsPositive = borderRectangle.rectY === 0;
+          this.dashedBorder.rectY = barIsPositive ? 0 : borderRectangle.rectY + borderWidth;
+          this.dashedBorder.rectHeight = borderRectangle.rectHeight - borderWidth;
+        }
+        else {
+          this.dashedBorder.rectHeight = 0;
+        }
+      }
     }
   }
 
