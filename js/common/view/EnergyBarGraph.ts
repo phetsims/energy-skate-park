@@ -134,7 +134,6 @@ export default class EnergyBarGraph extends Node {
 
     const kineticEntry = {
       property: createHideSmallValuesProperty( skater.kineticEnergyProperty ),
-      // TODO: Use a Property that already incorporates the pattern or solid, see https://github.com/phetsims/energy-skate-park/issues/465
       color: EnergySkateParkColors.kineticEnergyColorProperty as TPaint
     };
     const potentialEntry = {
@@ -250,7 +249,6 @@ export default class EnergyBarGraph extends Node {
     // The total bar is the 4th entry (index 3) in the BarChartNode.
     // BarNode uses a filled borderRectangle (slightly wider than the bar) to simulate a solid border.
     // For dashed mode, we swap its fill to transparent and add a dashed stroke instead.
-    // TODO: https://github.com/phetsims/energy-skate-park/issues/465 pass color to barNode
     // TODO: https://github.com/phetsims/energy-skate-park/issues/465 move the pattern to the left a little bit
     const totalBorderRectangle = this.barChartNode.barNodes[ 3 ].borderRectangle;
 

@@ -86,7 +86,6 @@ export default class PieChartNode extends Node {
     this.showNegativeEnergy = options.showNegativeEnergy;
 
     // Swap fills between solid colors and patterns based on showPatternsProperty
-    // TODO: Use a single Property, see https://github.com/phetsims/energy-skate-park/issues/465
     showPatternsProperty.link( patterns => {
       kineticEnergySlice.fill = patterns ? EnergySkateParkColors.kineticEnergyPattern : EnergySkateParkColors.kineticEnergyColorProperty;
       thermalEnergySlice.fill = patterns ? EnergySkateParkColors.thermalEnergyPattern : EnergySkateParkColors.thermalEnergyColorProperty;

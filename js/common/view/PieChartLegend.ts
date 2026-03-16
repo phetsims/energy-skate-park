@@ -83,7 +83,6 @@ export default class PieChartLegend extends Panel {
     const thermalBar = createBar( EnergySkateParkColors.thermalEnergyColorProperty );
     const totalBar = createBar( EnergySkateParkColors.totalEnergyColorProperty );
 
-    // TODO: Move declarations to color file, see https://github.com/phetsims/energy-skate-park/issues/465
     // Swap fills between solid colors and patterns based on showPatternsProperty
     showPatternsProperty.link( patterns => {
       kineticBar.fill = patterns ? EnergySkateParkColors.kineticEnergyPattern : EnergySkateParkColors.kineticEnergyColorProperty;

@@ -258,7 +258,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       model.pieChartVisibleProperty,
       model.preferencesModel.showPatternsProperty,
       tandem.createTandem( 'pieChartLegendNode' ),
-      options.pieChartLegendOptions || undefined // TODO: Is || undefined needed here? https://github.com/phetsims/energy-skate-park/issues/465
+      options.pieChartLegendOptions || undefined
     );
     this.bottomLayer.addChild( this.pieChartLegend );
 
