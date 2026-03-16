@@ -249,7 +249,6 @@ export default class EnergyBarGraph extends Node {
     // The total bar is the 4th entry (index 3) in the BarChartNode.
     // BarNode uses a filled borderRectangle (slightly wider than the bar) to simulate a solid border.
     // For dashed mode, we swap its fill to transparent and add a dashed stroke instead.
-    // TODO: https://github.com/phetsims/energy-skate-park/issues/465 move the pattern to the left a little bit
     const totalBorderRectangle = this.barChartNode.barNodes[ 3 ].borderRectangle;
 
     // Swap bar entry colors between solid and pattern fills, then re-render
