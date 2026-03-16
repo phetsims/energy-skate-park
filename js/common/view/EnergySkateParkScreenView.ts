@@ -218,7 +218,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     // Mimic the PhetioGroup API until we implement the full instrumentation
     this.trackNodeGroup = {
       createNextElement( track, modelViewTransform, availableBoundsProperty, options ) {
-        assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
+        options && affirm( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
         return new TrackNode( track, modelViewTransform, availableBoundsProperty, Tandem.OPT_OUT, options );
       }
     };

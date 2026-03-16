@@ -37,7 +37,7 @@ import { equalsEpsilon } from '../../../../dot/js/util/equalsEpsilon.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
+import affirm, { isAffirmEnabled } from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import EventTimer, { ConstantEventModel } from '../../../../phet-core/js/EventTimer.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
@@ -227,7 +227,7 @@ export default class EnergySkateParkModel {
     } );
 
     this.controlPointGroup = new PhetioGroup<ControlPoint, [ number, number, ControlPointOptions ]>( ( tandem, x, y, options ) => {
-      assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
+      options && affirm( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
       return new ControlPoint( x, y, merge( {}, options, { tandem: tandem, phetioDynamicElement: true } ) );
     }, [ 0, 0, {} ], {
       tandem: options.tracksDraggable ? tandem.createTandem( 'controlPointGroup' ) : Tandem.OPT_OUT,
@@ -236,7 +236,7 @@ export default class EnergySkateParkModel {
     } );
 
     this.trackGroup = new PhetioGroup<Track, [ ControlPoint[], TrackOptions ]>( ( tandem, controlPoints, options ) => {
-      assert && options && assert( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
+      options && affirm( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
       return new Track( this, controlPoints, merge( {}, options, {
         tandem: tandem,
         phetioDynamicElement: true
@@ -652,7 +652,7 @@ export default class EnergySkateParkModel {
     correctedState = correctedState.updatePosition( proposedPosition.x, proposedPosition.y );
     correctedState = correctedState.updateUDVelocity( correctedState.parametricSpeed, newVelocity.x, newVelocity.y );
 
-    if ( assert ) {
+    if ( isAffirmEnabled() ) {
       const skaterTotalEnergy = skaterState.getTotalEnergy();
       const correctedTotalEnergy = correctedState.getTotalEnergy();
       affirm( equalsEpsilon( correctedTotalEnergy, skaterTotalEnergy, 1E-8 ),

@@ -10,6 +10,7 @@
 import Emitter from '../../../../axon/js/Emitter.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Shape from '../../../../kite/js/Shape.js';
+import affirm, { isAffirmEnabled } from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
@@ -197,9 +198,8 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
 
           boundaryReachedSoundPlayer!.setOnBoundary( pt.x !== proposedX || pt.y !== proposedY );
 
-          if ( assert && availableBoundsProperty.value ) {
-            assert( availableBoundsProperty.value.containsPoint( pt ),
-              'point should be in sim bounds, are your limiting bounds correct?' );
+          if ( isAffirmEnabled() && availableBoundsProperty.value ) {
+            affirm( availableBoundsProperty.value.containsPoint( pt ), 'point should be in sim bounds, are your limiting bounds correct?' );
           }
 
           controlPoint.sourcePositionProperty.value = pt;
