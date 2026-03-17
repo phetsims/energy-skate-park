@@ -264,7 +264,7 @@ export default class EnergyBarGraph extends Node {
 
     // Swap bar entry colors between solid and pattern fills, then re-render
     showPatternsProperty.link( patterns => {
-      kineticEntry.color = patterns ? EnergySkateParkColors.kineticEnergyPattern : EnergySkateParkColors.kineticEnergyColorProperty;
+      kineticEntry.color = patterns ? EnergySkateParkColors.kineticEnergyPatternBarChart : EnergySkateParkColors.kineticEnergyColorProperty;
       thermalEntry.color = patterns ? EnergySkateParkColors.thermalEnergyPattern : EnergySkateParkColors.thermalEnergyColorProperty;
 
       // Toggle between the filled border (solid mode) and dashed overlay (pattern mode)

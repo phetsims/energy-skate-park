@@ -6,6 +6,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import Matrix3 from '../../../dot/js/Matrix3.js';
 import PhetColorScheme from '../../../scenery-phet/js/PhetColorScheme.js';
 import Circle from '../../../scenery/js/nodes/Circle.js';
 import Line from '../../../scenery/js/nodes/Line.js';
@@ -54,15 +55,22 @@ export default class EnergySkateParkColors {
   );
 
   // Dotted pattern for kinetic energy: green background with white polka dots
-  public static readonly kineticEnergyPattern = new NodePattern(
-    new Node( {
-      children: [
-        new Rectangle( 0, 0, 8, 8, { fill: PhetColorScheme.KINETIC_ENERGY } ),
-        new Circle( 1.5, { centerX: 4, centerY: 4, fill: 'white' } )
-      ]
-    } ),
-    2, 0, 0, 8, 8
-  );
+  private static createKineticEnergyPattern( offsetX: number ): NodePattern {
+    return new NodePattern(
+      new Node( {
+        children: [
+          new Rectangle( 0, 0, 8, 8, { fill: PhetColorScheme.KINETIC_ENERGY } ),
+          new Circle( 1.5, { centerX: 4, centerY: 4, fill: 'white' } )
+        ]
+      } ),
+      2, 0, 0, 8, 8,
+      Matrix3.translation( offsetX, 0 )
+    );
+  }
+
+  public static readonly kineticEnergyPattern = EnergySkateParkColors.createKineticEnergyPattern( 0 );
+
+  public static readonly kineticEnergyPatternBarChart = EnergySkateParkColors.createKineticEnergyPattern( 1 );
 
   // Dashed line dash array for total energy border
   public static readonly TOTAL_ENERGY_LINE_DASH = [ 3, 2 ];
