@@ -225,9 +225,12 @@ export default class EnergySkateParkDataSample {
           _fadeDecay: sample.fadeDecay,
           _opacity: sample.opacityProperty.value,
           _skaterState: {
-            positionX: skaterStateObject.positionX, positionY: skaterStateObject.positionY,
-            velocityX: skaterStateObject.velocityX, velocityY: skaterStateObject.velocityY,
-            gravity: skaterStateObject.gravity, referenceHeight: skaterStateObject.referenceHeight,
+            positionX: skaterStateObject.positionX,
+            positionY: skaterStateObject.positionY,
+            velocityX: skaterStateObject.velocityX,
+            velocityY: skaterStateObject.velocityY,
+            gravity: skaterStateObject.gravity,
+            referenceHeight: skaterStateObject.referenceHeight,
             mass: skaterStateObject.mass,
             track: skaterStateObject.track ? ReferenceIO( Track.TrackIO ).toStateObject( skaterStateObject.track ) : null,
             angle: skaterStateObject.getAngle(),
@@ -263,8 +266,11 @@ export default class EnergySkateParkDataSample {
         } );
 
         const sample = new EnergySkateParkDataSample(
-          skaterState, stateObject.friction, stateObject.time,
-          stateObject.stickingToTrack, stateObject._fadeDecay
+          skaterState,
+          stateObject.friction,
+          stateObject.time,
+          stateObject.stickingToTrack,
+          stateObject._fadeDecay
         );
 
         // Override mutable fields that may differ from constructor-derived values
