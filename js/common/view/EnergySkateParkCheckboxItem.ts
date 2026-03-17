@@ -10,7 +10,6 @@
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
 import Property from '../../../../axon/js/Property.js';
-import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Shape from '../../../../kite/js/Shape.js';
@@ -63,7 +62,7 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
     }
   }
 
-  public static createPieChartIcon( showPatternsProperty: TReadOnlyProperty<boolean> ): Node {
+  public static createPieChartIcon(): Node {
     const radius = 10;
     const arc = new Shape().moveTo( 0, 0 ).ellipticalArc( 0, 0, radius, radius, 0, -Math.PI / 2, 0, false ).lineTo( 0, 0 );
 
@@ -71,11 +70,6 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
       fill: EnergySkateParkColors.kineticEnergyColorProperty,
       lineWidth: 0.5,
       stroke: 'black'
-    } );
-
-    // Swap fill between solid color and pattern, matching the approach in PieChartNode
-    showPatternsProperty.link( showPatterns => {
-      kineticEnergyArc.fill = showPatterns ? EnergySkateParkColors.kineticEnergyPattern : EnergySkateParkColors.kineticEnergyColorProperty;
     } );
 
     return new Node( {
