@@ -27,10 +27,12 @@ export default class EnergySkateParkVisualPreferencesNode extends Node {
 
     const descriptionText = new RichText( EnergySkateParkFluent.preferences.patternsDescriptionStringProperty, PreferencesDialogConstants.CONTROL_DESCRIPTION_OPTIONS );
 
-    const patternsToggleSwitch = new ToggleSwitch( preferencesModel.showPatternsProperty, false, true, combineOptions<ToggleSwitchOptions>( {
-      tandem: tandem.createTandem( 'patternsToggleSwitch' ),
+    const preferencesControlTandem = tandem.createTandem( 'patternsControl' );
+
+    const patternsToggleSwitch = new ToggleSwitch( preferencesModel.showPatternsProperty, false, true, combineOptions<ToggleSwitchOptions>( {}, PreferencesDialogConstants.TOGGLE_SWITCH_OPTIONS, {
+      tandem: preferencesControlTandem.createTandem( 'patternsToggleSwitch' ),
       phetioVisiblePropertyInstrumented: false
-    }, PreferencesDialogConstants.TOGGLE_SWITCH_OPTIONS ) );
+    } ) );
 
     const patternsControl = new PreferencesControl( {
       labelNode: labelText,
@@ -38,7 +40,8 @@ export default class EnergySkateParkVisualPreferencesNode extends Node {
       descriptionNode: descriptionText,
       labelSpacing: 20,
       phetioFeatured: true,
-      phetioVisiblePropertyInstrumented: false
+      phetioVisiblePropertyInstrumented: true,
+      tandem: preferencesControlTandem
     } );
 
     this.addChild( patternsControl );
