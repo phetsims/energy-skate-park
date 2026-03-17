@@ -89,6 +89,8 @@ export default class Skater {
   public readonly velocityProperty: Vector2Property;
 
   //  - True if the user is dragging the skater with a pointer
+  // REVIEW: This is still called "dragging" in SkaterState. Is there a point when a skater
+  // can be dragging but isn't user controlled? That seems counterintuitive. Why rename one but not the other?
   public readonly userControlledProperty: BooleanProperty;
 
   //  - Energies are in Joules
@@ -538,6 +540,7 @@ export default class Skater {
    * Place the skater at a specific parametric position on a track, setting position, orientation, and clearing
    * velocity/thermalEnergy. Used by keyboard interactions that jump or snap the skater to a track location.
    */
+  // REVIEW: What is the parameter `u` defining? Maybe provide a more descriptive name or documentation to clarify
   public placeOnTrackAt( track: Track, u: number ): void {
     this.parametricPositionProperty.value = u;
     this.positionProperty.value = track.getPoint( u );

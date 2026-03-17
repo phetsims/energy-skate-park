@@ -186,6 +186,7 @@ const PremadeTracks = {
    * a but since the interpolation moves it down by that much and we don't want the skater to go below ground
    * while on the track. Numbers determined by trial and error.
    */
+  //REVIEW: model appears to be unused here.
   createDoubleWellControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: DoubleWellOptions ): ControlPoint[] => {
 
     options = combineOptions<DoubleWellOptions>( {
@@ -258,6 +259,7 @@ const PremadeTracks = {
   /**
    * Create a set of control points that will form a track that takes the shape of a loop.
    */
+  //REVIEW: model appears to be unused here.
   createLoopControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: LoopOptions ): ControlPoint[] => {
 
     options = combineOptions<LoopOptions>( {

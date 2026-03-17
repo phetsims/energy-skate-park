@@ -503,6 +503,7 @@ export default class Track extends PhetioObject {
   /**
    * Track information as a string for debugging purposes.
    */
+  //REVIEW: Is this unused?
   private override toString(): string {
     let string = '';
     for ( let i = 0; i < this.controlPoints.length; i++ ) {
@@ -797,6 +798,7 @@ export default class Track extends PhetioObject {
       }
     }
 
+    // REVIEW: Can this commented out affirm be removed?
     // affirm( this.getLowestY() >= 0, 'track should be above ground' );
     this.updateEmitter.emit();
   }

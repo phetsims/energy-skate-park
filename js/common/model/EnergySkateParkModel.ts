@@ -371,6 +371,8 @@ export default class EnergySkateParkModel {
     };
     this.tracks.addItemAddedListener( updateTrackEditingButtonProperties );
     this.tracks.addItemRemovedListener( updateTrackEditingButtonProperties );
+
+    // REVIEW: Can you add more documentation about why we need to link to the phetioStateSetEmitter here?
     phetioStateSetEmitter.addListener( updateTrackEditingButtonProperties );
 
     this.updateEmitter = new Emitter();
@@ -761,7 +763,7 @@ export default class EnergySkateParkModel {
    */
   private crossedTrack(
     closestTrackAndPositionAndParameter: { track: Track; parametricPosition: number; point: Vector2 },
-    physicalTracks: Track[],
+    physicalTracks: Track[], //REVIEW: This seems to be unsed. Can you delete?
     beforeX: number,
     beforeY: number,
     afterX: number,
@@ -782,6 +784,8 @@ export default class EnergySkateParkModel {
       const unitParallelVector = track.getUnitParallelVector( parametricPosition );
       const a = trackPoint.plus( unitParallelVector.times( 100 ) );
       const b = trackPoint.plus( unitParallelVector.times( -100 ) );
+
+      // REVIEW: Utils is deprecated. Update.
       const intersection = Utils.lineSegmentIntersection( a.x, a.y, b.x, b.y, beforeX, beforeY, afterX, afterY );
       return intersection !== null;
     }
@@ -1465,6 +1469,7 @@ export default class EnergySkateParkModel {
     // increment running time - done in stepModel because dt reflects timeSpeedProperty here
     this.stopwatch.step( dt );
 
+    // REVIEW: What is the difference between these two?
     if ( skaterState.dragging || this.skater.userControlledProperty.value ) {
 
       // User is dragging the skater, nothing to update here

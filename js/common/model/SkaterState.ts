@@ -386,6 +386,7 @@ export default class SkaterState {
   }
 }
 
+// REVIEW Can you document why IntentionalAny is needed here?
 const getValue = ( key: string, source: Record<string, IntentionalAny> ): IntentionalAny => {
   return typeof source[ `${key}Property` ] === 'object' ? source[ `${key}Property` ].value :
          source[ key ];

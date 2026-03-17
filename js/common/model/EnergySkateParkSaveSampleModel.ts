@@ -62,6 +62,8 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
   protected limitNumberOfSamples: boolean;
 
   // controls whether samples are saved as the model steps through time
+  //REVIEW: Why this rename? The documentation seems to indicate that the name
+  // `saveSamplesProperty` makes more sense...
   public readonly pathVisibleProperty: BooleanProperty;
 
   // set to true to prevent the model from saving any more samples, even if
@@ -133,6 +135,10 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
     if ( dataSample.track ) {
 
       dataSample.trackControlPointPositions.forEach( ( position, i ) => {
+        // REVIEW: Why Are you grabbing the `sourcePositionProperty` from dataSample instead
+        // of from skate.trackProperty? Was there a shift in the ground truth here? Perhaps that
+        // shift should be documented somewhere. Is there a chance those are out of sync? Do we
+        // need to make sure they are kept in sync?
         dataSample.track!.controlPoints[ i ].sourcePositionProperty.set( position );
       } );
 

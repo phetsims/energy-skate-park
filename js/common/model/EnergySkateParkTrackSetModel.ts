@@ -45,6 +45,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
   public readonly trackTypes: ReadonlyArray<TrackType>;
 
   // Emits when a scene change causes the skater to be returned to the ground (only when skater was actually displaced).
+  // REVIEW: Can you add documentation about why this was added? I'm guessing something to do with PhET-iO?
   public readonly skaterReturnedToGroundBySceneChangeEmitter: Emitter;
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions: EnergySkateParkTrackSetModelOptions ) {
@@ -87,6 +88,10 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
    *
    * @param trackType - the TrackType identifying the scene
    */
+  // REVIEW: It's a little confusing at first to understand the connection between the trackType
+  // and the scene. I wonder if a rename would help here? `sceneTrackType` `sceneType`, or something of the sort?
+  // Would be helpful to unify the language. My understanding from the below is that we can garauntee
+  // that each scene has it's unique trackType that does not change?
   private updateActiveTrack( trackType: TrackType ): void {
 
     // Check if the skater is displaced from starting position before resetting, so we can announce the return to ground.
@@ -150,6 +155,9 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
       }
       else if ( trackType === 'RAMP' ) {
         const rampTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'rampTrack' );
+
+        // REVIEW: If this trackType was renamed to "RAMP" shouldn't all references be updated as well?
+        // ie. createSlopeControlPoints, slopeControlPointOptions, slopeTrackOptions, etc.
         const rampControlPoints = PremadeTracks.createSlopeControlPoints( this, rampTrackTandem, options.slopeControlPointOptions ?? {} );
         const rampTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, rampControlPoints, combineOptions<TrackOptions>( {
 
@@ -204,6 +212,9 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
     // existing data fades away before removal when the skater direction changes
     this.skater.directionProperty.link( direction => {
+      // REVIEW you're using two style of checking the `isSettingPhetioStateProperty`.
+      // Recommend to be consistent. the one below looks more familiar with other code I've seen.
+      // Also, maybe explain why you need to check wether state is being set.
       if ( isSettingPhetioStateProperty.value ) { return; }
       this.initiateSampleRemoval();
     } );
