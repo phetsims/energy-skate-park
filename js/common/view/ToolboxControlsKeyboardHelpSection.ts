@@ -40,5 +40,3 @@ export default class ToolboxControlsKeyboardHelpSection extends KeyboardHelpSect
     } );
   }
 }
-
-energySkatePark.register( 'ToolboxControlsKeyboardHelpSection', ToolboxControlsKeyboardHelpSection );

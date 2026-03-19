@@ -13,7 +13,6 @@
 
 import Vector2 from '../../../../dot/js/Vector2.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
-import energySkatePark from '../../energySkatePark.js';
 import Skater from './Skater.js';
 import Track, { Curvature } from './Track.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
@@ -391,5 +390,3 @@ const getValue = ( key: string, source: Record<string, IntentionalAny> ): Intent
   return typeof source[ `${key}Property` ] === 'object' ? source[ `${key}Property` ].value :
          source[ key ];
 };
-
-energySkatePark.register( 'SkaterState', SkaterState );

@@ -15,7 +15,6 @@ import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
@@ -154,5 +153,3 @@ export default class EnergySkateParkControlPanel extends Panel {
     }, EnergySkateParkConstants.PANEL_OPTIONS ) );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkControlPanel', EnergySkateParkControlPanel );

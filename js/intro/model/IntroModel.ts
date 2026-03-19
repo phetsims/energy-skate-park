@@ -7,7 +7,6 @@
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkFullTrackSetModel from '../../common/model/EnergySkateParkFullTrackSetModel.js';
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
-import energySkatePark from '../../energySkatePark.js';
 
 export default class IntroModel extends EnergySkateParkFullTrackSetModel {
 
@@ -24,5 +23,3 @@ export default class IntroModel extends EnergySkateParkFullTrackSetModel {
     this.attachPathRemovalListeners();
   }
 }
-
-energySkatePark.register( 'IntroModel', IntroModel );

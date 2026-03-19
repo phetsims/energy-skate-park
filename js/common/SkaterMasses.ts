@@ -8,7 +8,6 @@
  */
 
 import Range from '../../../dot/js/Range.js';
-import energySkatePark from '../energySkatePark.js';
 
 // constants
 const MIN_MASS = 5;
@@ -24,7 +23,5 @@ const SkaterMasses = {
   MAX_MASS: MAX_MASS,
   MASS_RANGE: new Range( MIN_MASS, MAX_MASS )
 };
-
-energySkatePark.register( 'SkaterMasses', SkaterMasses );
 
 export default SkaterMasses;

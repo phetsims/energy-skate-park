@@ -40,5 +40,3 @@ export default class GraphCursorControlsKeyboardHelpSection extends KeyboardHelp
     } );
   }
 }
-
-energySkatePark.register( 'GraphCursorControlsKeyboardHelpSection', GraphCursorControlsKeyboardHelpSection );

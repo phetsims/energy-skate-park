@@ -14,7 +14,6 @@ import RichText from '../../../../scenery/js/nodes/RichText.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import ToggleSwitch, { type ToggleSwitchOptions } from '../../../../sun/js/ToggleSwitch.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
 
@@ -47,5 +46,3 @@ export default class EnergySkateParkVisualPreferencesNode extends Node {
     this.addChild( patternsControl );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkVisualPreferencesNode', EnergySkateParkVisualPreferencesNode );

@@ -17,7 +17,6 @@ import RichText from '../../../../scenery/js/nodes/RichText.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import AquaRadioButtonGroup, { type AquaRadioButtonGroupItem } from '../../../../sun/js/AquaRadioButtonGroup.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import { AccelerationUnits } from '../model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkPreferencesModel from '../model/EnergySkateParkPreferencesModel.js';
@@ -91,5 +90,3 @@ class AccelerationUnitsRadioButtonGroup extends AquaRadioButtonGroup<Acceleratio
     } );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkPreferencesNode', EnergySkateParkPreferencesNode );

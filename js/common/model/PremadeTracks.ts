@@ -15,7 +15,6 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 import Track, { TrackOptions } from './Track.js';
@@ -334,7 +333,5 @@ const PremadeTracks = {
     return new Track( model, controlPoints, options );
   }
 };
-
-energySkatePark.register( 'PremadeTracks', PremadeTracks );
 
 export default PremadeTracks;

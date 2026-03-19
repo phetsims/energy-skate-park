@@ -23,7 +23,6 @@ import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
 import ObjectLiteralIO from '../../../../tandem/js/types/ObjectLiteralIO.js';
 import ReferenceIO, { ReferenceIOState } from '../../../../tandem/js/types/ReferenceIO.js';
-import energySkatePark from '../../energySkatePark.js';
 import SkaterState from './SkaterState.js';
 import Track from './Track.js';
 
@@ -302,5 +301,3 @@ export default class EnergySkateParkDataSample {
     }
   );
 }
-
-energySkatePark.register( 'EnergySkateParkDataSample', EnergySkateParkDataSample );

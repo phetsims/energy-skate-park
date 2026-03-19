@@ -49,7 +49,6 @@ import { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import ReferenceIO from '../../../../tandem/js/types/ReferenceIO.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPoint, { ControlPointOptions } from './ControlPoint.js';
@@ -1858,5 +1857,3 @@ export default class EnergySkateParkModel {
 const containsAbove = ( bounds: Bounds2, x: number, y: number ): boolean => {
   return bounds.minX <= x && x <= bounds.maxX && y <= bounds.maxY;
 };
-
-energySkatePark.register( 'EnergySkateParkModel', EnergySkateParkModel );

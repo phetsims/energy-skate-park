@@ -12,7 +12,6 @@ import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkFullTrackSetModel from '../../common/model/EnergySkateParkFullTrackSetModel.js';
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
-import energySkatePark from '../../energySkatePark.js';
 
 export default class MeasureModel extends EnergySkateParkFullTrackSetModel {
 
@@ -70,5 +69,3 @@ export default class MeasureModel extends EnergySkateParkFullTrackSetModel {
     this.sensorProbePositionProperty.reset();
   }
 }
-
-energySkatePark.register( 'MeasureModel', MeasureModel );

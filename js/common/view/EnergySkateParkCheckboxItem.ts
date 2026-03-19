@@ -23,7 +23,6 @@ import Path from '../../../../scenery/js/nodes/Path.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Checkbox, { CheckboxOptions } from '../../../../sun/js/Checkbox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkColors from '../EnergySkateParkColors.js';
 
@@ -199,5 +198,3 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
     return new Node( { children: [ trackRectangle, trackDashes, centerOfMassCircle ] } );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkCheckboxItem', EnergySkateParkCheckboxItem );

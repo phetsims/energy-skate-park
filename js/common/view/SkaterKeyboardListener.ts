@@ -251,5 +251,3 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
     }
   }
 }
-
-energySkatePark.register( 'SkaterKeyboardListener', SkaterKeyboardListener );

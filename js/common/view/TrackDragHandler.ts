@@ -13,7 +13,6 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
@@ -269,5 +268,3 @@ export default class TrackDragHandler extends SoundDragListener {
     this.startOffset = pt.minus( startingPosition );
   }
 }
-
-energySkatePark.register( 'TrackDragHandler', TrackDragHandler );

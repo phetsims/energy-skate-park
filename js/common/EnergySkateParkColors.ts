@@ -143,5 +143,3 @@ export default class EnergySkateParkColors {
     default: new Color( 255, 255, 255, 0.5 )
   } );
 }
-
-energySkatePark.register( 'EnergySkateParkColors', EnergySkateParkColors );

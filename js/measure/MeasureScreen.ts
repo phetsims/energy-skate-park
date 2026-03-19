@@ -13,7 +13,6 @@ import Tandem from '../../../tandem/js/Tandem.js';
 import measureScreenIcon_png from '../../images/measureScreenIcon_png.js';
 import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkKeyboardHelpContent from '../common/view/EnergySkateParkKeyboardHelpContent.js';
-import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkFluent from '../EnergySkateParkFluent.js';
 import MeasureModel from './model/MeasureModel.js';
 import MeasureScreenView from './view/MeasureScreenView.js';
@@ -42,5 +41,3 @@ export default class MeasureScreen extends Screen<MeasureModel, MeasureScreenVie
 
   }
 }
-
-energySkatePark.register( 'MeasureScreen', MeasureScreen );

@@ -10,7 +10,6 @@
 import { EmptySelfOptions, optionize4 } from '../../../../phet-core/js/optionize.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import EnergySkateParkVisibilityControls from './EnergySkateParkVisibilityControls.js';
@@ -44,5 +43,3 @@ export default class VisibilityControlsPanel extends Panel {
     super( content, options );
   }
 }
-
-energySkatePark.register( 'VisibilityControlsPanel', VisibilityControlsPanel );

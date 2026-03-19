@@ -754,5 +754,3 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.bottomLayer.addChild( node );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkScreenView', EnergySkateParkScreenView );

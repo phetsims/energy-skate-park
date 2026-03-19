@@ -7,8 +7,6 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import energySkatePark from '../energySkatePark.js';
-
 // https://github.com/sloisel/numeric/blob/master/src/numeric.js#L2423
 export type Spline = {
   x: number[];
@@ -68,7 +66,5 @@ const atArray = ( spline: Spline, x0: number[] ): Float64Array => {
 };
 
 const SplineEvaluation = { atNumber: atNumber, atArray: atArray };
-
-energySkatePark.register( 'SplineEvaluation', SplineEvaluation );
 
 export default SplineEvaluation;

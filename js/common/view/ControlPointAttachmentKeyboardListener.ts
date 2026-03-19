@@ -18,7 +18,6 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import ComboBox from '../../../../sun/js/ComboBox.js';
 import ComboBoxListItemNode from '../../../../sun/js/ComboBoxListItemNode.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import ControlPoint from '../model/ControlPoint.js';
 import AttachmentHighlightNode from './AttachmentHighlightNode.js';
 import ControlPointNode from './ControlPointNode.js';
@@ -248,5 +247,3 @@ export default class ControlPointAttachmentKeyboardListener extends KeyboardList
     } );
   }
 }
-
-energySkatePark.register( 'ControlPointAttachmentKeyboardListener', ControlPointAttachmentKeyboardListener );

@@ -8,7 +8,6 @@
  */
 
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
 import EnergySkateParkTrackSetModel, { EnergySkateParkTrackSetModelOptions } from './EnergySkateParkTrackSetModel.js';
 
@@ -17,5 +16,3 @@ export default class EnergySkateParkFullTrackSetModel extends EnergySkateParkTra
     super( preferencesModel, tandem, options );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkFullTrackSetModel', EnergySkateParkFullTrackSetModel );

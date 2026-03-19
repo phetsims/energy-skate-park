@@ -12,7 +12,6 @@ import EnumerationProperty from '../../../../axon/js/EnumerationProperty.js';
 import Enumeration from '../../../../phet-core/js/Enumeration.js';
 import EnumerationValue from '../../../../phet-core/js/EnumerationValue.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 
 // Possible representations of units for acceleration in this sim, can be set by query parameter or in preferences.
@@ -48,5 +47,3 @@ export default class EnergySkateParkPreferencesModel {
 
   public static readonly AccelerationUnits = AccelerationUnits;
 }
-
-energySkatePark.register( 'EnergySkateParkPreferencesModel', EnergySkateParkPreferencesModel );

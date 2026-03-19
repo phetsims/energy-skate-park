@@ -11,7 +11,6 @@
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkTrackSetModel from '../model/EnergySkateParkTrackSetModel.js';
 import { TrackType } from '../model/PremadeTracks.js';
@@ -105,5 +104,3 @@ export default class EnergySkateParkTrackSetScreenView extends EnergySkateParkSa
     this.yourSkateParkHeadingNode.accessibleParagraph = paragraphProperty;
   }
 }
-
-energySkatePark.register( 'EnergySkateParkTrackSetScreenView', EnergySkateParkTrackSetScreenView );

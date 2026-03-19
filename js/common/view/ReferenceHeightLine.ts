@@ -26,7 +26,6 @@ import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicin
 import Line from '../../../../scenery/js/nodes/Line.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import EnergySkateParkColors from '../EnergySkateParkColors.js';
@@ -179,5 +178,3 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
     this.addInputListener( keyboardDragListener );
   }
 }
-
-energySkatePark.register( 'ReferenceHeightLine', ReferenceHeightLine );

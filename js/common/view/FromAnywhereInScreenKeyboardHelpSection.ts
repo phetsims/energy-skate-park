@@ -9,7 +9,6 @@
 import PlayControlButton from '../../../../scenery-phet/js/buttons/PlayControlButton.js';
 import KeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSection.js';
 import KeyboardHelpSectionRow from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSectionRow.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 
@@ -24,5 +23,3 @@ export default class FromAnywhereInScreenKeyboardHelpSection extends KeyboardHel
     } );
   }
 }
-
-energySkatePark.register( 'FromAnywhereInScreenKeyboardHelpSection', FromAnywhereInScreenKeyboardHelpSection );

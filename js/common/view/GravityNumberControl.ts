@@ -12,7 +12,6 @@ import Range from '../../../../dot/js/Range.js';
 import { roundToInterval } from '../../../../dot/js/util/roundToInterval.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl, { PhysicalNumberControlOptions } from './PhysicalNumberControl.js';
@@ -35,5 +34,3 @@ export default class GravityNumberControl extends PhysicalNumberControl {
     super( EnergySkateParkFluent.physicalControls.gravityControls.gravityStringProperty, property, new Range( Math.abs( EnergySkateParkConstants.MIN_GRAVITY ), Math.abs( EnergySkateParkConstants.MAX_GRAVITY ) ), userControlledProperty, tandem, options );
   }
 }
-
-energySkatePark.register( 'GravityNumberControl', GravityNumberControl );

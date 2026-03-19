@@ -593,5 +593,3 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
     }
   }
 }
-
-energySkatePark.register( 'SkaterNode', SkaterNode );

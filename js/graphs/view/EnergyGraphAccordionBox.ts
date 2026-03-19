@@ -35,7 +35,6 @@ import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioS
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
@@ -382,5 +381,3 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
     };
   }
 }
-
-energySkatePark.register( 'EnergyGraphAccordionBox', EnergyGraphAccordionBox );

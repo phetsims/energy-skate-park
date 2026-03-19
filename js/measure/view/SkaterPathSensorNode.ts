@@ -45,7 +45,6 @@ import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
 import EnergySkateParkControlPanel from '../../common/view/EnergySkateParkControlPanel.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 
 const energyEnergyStringProperty = EnergySkateParkFluent.energies.energyStringProperty;
@@ -572,5 +571,3 @@ export default class SkaterPathSensorNode extends Node {
     return alignGroup.createBox( numberDisplay, { xAlign: 'right' } );
   }
 }
-
-energySkatePark.register( 'SkaterPathSensorNode', SkaterPathSensorNode );

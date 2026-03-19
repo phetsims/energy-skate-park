@@ -49,5 +49,3 @@ export default class SkaterKeyboardHelpSection extends KeyboardHelpSection {
     } );
   }
 }
-
-energySkatePark.register( 'SkaterKeyboardHelpSection', SkaterKeyboardHelpSection );

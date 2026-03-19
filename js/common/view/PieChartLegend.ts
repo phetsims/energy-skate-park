@@ -25,7 +25,6 @@ import TPaint from '../../../../scenery/js/util/TPaint.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
@@ -228,5 +227,3 @@ export default class PieChartLegend extends Panel {
     clearThermalButton.touchArea = clearThermalButton.localBounds.dilated( 10 );
   }
 }
-
-energySkatePark.register( 'PieChartLegend', PieChartLegend );

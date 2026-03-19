@@ -9,7 +9,6 @@
 
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import { ImageableImage } from '../../../../scenery/js/nodes/Imageable.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkImages from '../../EnergySkateParkImages.js';
 
 export default class SkaterImageSet {
@@ -70,5 +69,3 @@ export default class SkaterImageSet {
     )
   ];
 }
-
-energySkatePark.register( 'SkaterImageSet', SkaterImageSet );

@@ -19,7 +19,6 @@ import type Node from '../../../../scenery/js/nodes/Node.js';
 import { rasterizeNode } from '../../../../scenery/js/util/rasterizeNode.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
@@ -178,5 +177,3 @@ export default class ToolboxPanel extends Panel {
     this.measuringTapeToolNode = measuringTapeIconWrapper;
   }
 }
-
-energySkatePark.register( 'ToolboxPanel', ToolboxPanel );

@@ -12,7 +12,6 @@ import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalComboBox, { PhysicalComboBoxOptions } from './PhysicalComboBox.js';
@@ -38,5 +37,3 @@ export default class GravityComboBox extends PhysicalComboBox {
     super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, combineOptions<PhysicalComboBoxOptions>( { yMargin: 4 }, providedOptions ) );
   }
 }
-
-energySkatePark.register( 'GravityComboBox', GravityComboBox );

@@ -7,7 +7,6 @@
 import optionize from '../../../../phet-core/js/optionize.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import { PhetioObjectOptions } from '../../../../tandem/js/PhetioObject.js';
-import energySkatePark from '../../energySkatePark.js';
 import SamplesCanvasNode from '../../measure/view/SamplesCanvasNode.js';
 import EnergySkateParkSaveSampleModel from '../model/EnergySkateParkSaveSampleModel.js';
 import EnergySkateParkScreenView, { EnergySkateParkScreenViewOptions } from './EnergySkateParkScreenView.js';
@@ -47,5 +46,3 @@ export default class EnergySkateParkSaveSampleScreenView extends EnergySkatePark
     }
   }
 }
-
-energySkatePark.register( 'EnergySkateParkSaveSampleScreenView', EnergySkateParkSaveSampleScreenView );

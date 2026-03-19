@@ -10,7 +10,6 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkFullTrackSetModel from '../../common/model/EnergySkateParkFullTrackSetModel.js';
 import EnergySkateParkScreenSummaryContent from '../../common/view/EnergySkateParkScreenSummaryContent.js';
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
-import energySkatePark from '../../energySkatePark.js';
 
 export default class IntroScreenView extends EnergySkateParkTrackSetScreenView {
 
@@ -31,5 +30,3 @@ export default class IntroScreenView extends EnergySkateParkTrackSetScreenView {
     } );
   }
 }
-
-energySkatePark.register( 'IntroScreenView', IntroScreenView );

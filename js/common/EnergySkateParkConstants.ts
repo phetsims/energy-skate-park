@@ -12,7 +12,6 @@ import Range from '../../../dot/js/Range.js';
 import merge from '../../../phet-core/js/merge.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import { PanelOptions } from '../../../sun/js/Panel.js';
-import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkColors from './EnergySkateParkColors.js';
 
 // for zoom buttons for bar graphs, pressing button will increase/decrease scale by this much
@@ -106,5 +105,3 @@ export default class EnergySkateParkConstants {
   // coordinate frame where x=0 is at the left edge of the track, 5 meters left of the model origin.
   public static readonly POSITION_PLOT_OFFSET = 5;
 }
-
-energySkatePark.register( 'EnergySkateParkConstants', EnergySkateParkConstants );

@@ -8,12 +8,9 @@
  */
 
 import Circle from '../../../../scenery/js/nodes/Circle.js';
-import energySkatePark from '../../energySkatePark.js';
 
 export default class AttachmentHighlightNode extends Circle {
   public constructor() {
     super( 30, { stroke: 'red', lineWidth: 3, lineDash: [ 6, 4 ], visible: false } );
   }
 }
-
-energySkatePark.register( 'AttachmentHighlightNode', AttachmentHighlightNode );

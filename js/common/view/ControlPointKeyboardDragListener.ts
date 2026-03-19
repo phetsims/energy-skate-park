@@ -12,7 +12,6 @@ import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
@@ -169,5 +168,3 @@ export default class ControlPointKeyboardDragListener extends SoundKeyboardDragL
     } );
   }
 }
-
-energySkatePark.register( 'ControlPointKeyboardDragListener', ControlPointKeyboardDragListener );

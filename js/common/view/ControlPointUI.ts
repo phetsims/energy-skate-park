@@ -16,7 +16,6 @@ import scissorsShape from '../../../../sherpa/js/fontawesome-4/scissorsShape.js'
 import timesCircleSolidShape from '../../../../sherpa/js/fontawesome-5/timesCircleSolidShape.js';
 import RoundPushButton from '../../../../sun/js/buttons/RoundPushButton.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
 
@@ -138,5 +137,3 @@ export default class ControlPointUI extends Node {
     return this;
   }
 }
-
-energySkatePark.register( 'ControlPointUI', ControlPointUI );

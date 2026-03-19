@@ -7,7 +7,6 @@
  */
 
 import Range from '../../../dot/js/Range.js';
-import energySkatePark from '../energySkatePark.js';
 
 // constants
 const TIME_PER_SAMPLE = 1 / 60; // in seconds (assuming 60 fps, one sample per frame)
@@ -54,5 +53,4 @@ const GraphsConstants = {
   TRACK_HEIGHT: 4
 };
 
-energySkatePark.register( 'GraphsConstants', GraphsConstants );
 export default GraphsConstants;

@@ -12,7 +12,6 @@ import Range from '../../../../dot/js/Range.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import { toFixed } from '../../../../dot/js/util/toFixed.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
@@ -38,5 +37,3 @@ export default class MassSlider extends PhysicalSlider {
 
   }
 }
-
-energySkatePark.register( 'MassSlider', MassSlider );

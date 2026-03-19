@@ -14,7 +14,6 @@ import { ControlPointOptions } from '../../common/model/ControlPoint.js';
 import EnergySkateParkModel, { EnergySkateParkModelOptions } from '../../common/model/EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
 import Track, { TrackOptions } from '../../common/model/Track.js';
-import energySkatePark from '../../energySkatePark.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
@@ -74,5 +73,3 @@ export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel
     this.clearTracks();
   }
 }
-
-energySkatePark.register( 'EnergySkateParkPlaygroundModel', EnergySkateParkPlaygroundModel );

@@ -11,7 +11,6 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import CanvasNode from '../../../../scenery/js/nodes/CanvasNode.js';
 import EnergySkateParkSaveSampleModel from '../../common/model/EnergySkateParkSaveSampleModel.js';
 import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
-import energySkatePark from '../../energySkatePark.js';
 
 // constants
 const SAMPLE_RADIUS = 3.5;
@@ -60,5 +59,3 @@ export default class SamplesCanvasNode extends CanvasNode {
     this.invalidatePaint();
   }
 }
-
-energySkatePark.register( 'SamplesCanvasNode', SamplesCanvasNode );

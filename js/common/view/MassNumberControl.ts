@@ -11,7 +11,6 @@ import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Range from '../../../../dot/js/Range.js';
 import { roundToInterval } from '../../../../dot/js/util/roundToInterval.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import PhysicalNumberControl from './PhysicalNumberControl.js';
 
@@ -33,5 +32,3 @@ export default class MassNumberControl extends PhysicalNumberControl {
     } );
   }
 }
-
-energySkatePark.register( 'MassNumberControl', MassNumberControl );

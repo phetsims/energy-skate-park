@@ -13,7 +13,6 @@ import Tandem from '../../../tandem/js/Tandem.js';
 import graphsScreenIcon_png from '../../images/graphsScreenIcon_png.js';
 import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkKeyboardHelpContent from '../common/view/EnergySkateParkKeyboardHelpContent.js';
-import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkFluent from '../EnergySkateParkFluent.js';
 import GraphsModel from './model/GraphsModel.js';
 import GraphsScreenView from './view/GraphsScreenView.js';
@@ -40,5 +39,3 @@ export default class GraphsScreen extends Screen<GraphsModel, GraphsScreenView> 
     );
   }
 }
-
-energySkatePark.register( 'GraphsScreen', GraphsScreen );

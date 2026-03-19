@@ -17,7 +17,6 @@ import Emitter from '../../../../axon/js/Emitter.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import optionize from '../../../../phet-core/js/optionize.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkDataSample from './EnergySkateParkDataSample.js';
 import EnergySkateParkModel, { EnergySkateParkModelOptions } from './EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
@@ -237,5 +236,3 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
     this.pathVisibleProperty.reset();
   }
 }
-
-energySkatePark.register( 'EnergySkateParkSaveSampleModel', EnergySkateParkSaveSampleModel );

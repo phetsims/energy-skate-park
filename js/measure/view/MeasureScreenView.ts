@@ -11,7 +11,6 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkScreenSummaryContent from '../../common/view/EnergySkateParkScreenSummaryContent.js';
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
-import energySkatePark from '../../energySkatePark.js';
 import MeasureModel from '../model/MeasureModel.js';
 import InspectedSampleHaloNode from './InspectedSampleHaloNode.js';
 import SkaterPathSensorNode from './SkaterPathSensorNode.js';
@@ -73,5 +72,3 @@ export default class MeasureScreenView extends EnergySkateParkTrackSetScreenView
     this.measureModel.sensorBodyPositionProperty.set( this.modelViewTransform.viewToModelXY( this.fixedLeft!, this.pieChartLegend.bottom + 10 ) );
   }
 }
-
-energySkatePark.register( 'MeasureScreenView', MeasureScreenView );

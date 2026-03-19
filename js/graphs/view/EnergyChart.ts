@@ -33,7 +33,6 @@ import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
@@ -479,5 +478,3 @@ const calculateDomain = ( independentVariable: 'position' | 'time' ) => {
   const maxX = independentVariable === 'position' ? POSITION_MAX_X : TIME_MAX_X;
   return new Range( 0, maxX );
 };
-
-energySkatePark.register( 'EnergyChart', EnergyChart );

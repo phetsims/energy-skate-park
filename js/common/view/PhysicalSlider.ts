@@ -18,7 +18,6 @@ import optionize from '../../../../phet-core/js/optionize.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import { SliderOptions } from '../../../../sun/js/Slider.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalNumberControl, { PhysicalNumberControlOptions } from './PhysicalNumberControl.js';
@@ -73,5 +72,3 @@ const createTickEntry = ( value: number, label: TReadOnlyProperty<string> ): { v
     label: new Text( label, EnergySkateParkConstants.CONTROL_TICK_LABEL_OPTIONS )
   };
 };
-
-energySkatePark.register( 'PhysicalSlider', PhysicalSlider );

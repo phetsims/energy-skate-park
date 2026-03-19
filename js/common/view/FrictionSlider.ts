@@ -12,7 +12,6 @@ import Range from '../../../../dot/js/Range.js';
 import { roundToInterval } from '../../../../dot/js/util/roundToInterval.js';
 import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalSlider from './PhysicalSlider.js';
@@ -46,5 +45,3 @@ export default class FrictionSlider extends PhysicalSlider {
     this.slider.addMinorTick( 4 * range.getLength() / 5 + range.min );
   }
 }
-
-energySkatePark.register( 'FrictionSlider', FrictionSlider );

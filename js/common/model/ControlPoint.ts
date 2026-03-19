@@ -22,7 +22,6 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 
 type SelfOptions = {
@@ -137,5 +136,3 @@ export default class ControlPoint extends PhetioObject {
     }
   } );
 }
-
-energySkatePark.register( 'ControlPoint', ControlPoint );

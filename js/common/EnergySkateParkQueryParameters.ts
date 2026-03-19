@@ -7,7 +7,6 @@
  */
 
 import { QueryStringMachine } from '../../../query-string-machine/js/QueryStringMachineModule.js';
-import energySkatePark from '../energySkatePark.js';
 
 const EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
 
@@ -34,7 +33,5 @@ const EnergySkateParkQueryParameters = QueryStringMachine.getAll( {
     defaultValue: 0
   }
 } );
-
-energySkatePark.register( 'EnergySkateParkQueryParameters', EnergySkateParkQueryParameters );
 
 export default EnergySkateParkQueryParameters;

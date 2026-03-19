@@ -21,7 +21,6 @@ import EnergySkateParkScreenSummaryContent from '../../common/view/EnergySkatePa
 import EnergySkateParkScreenView, { EnergySkateParkScreenViewOptions } from '../../common/view/EnergySkateParkScreenView.js';
 import TrackNode from '../../common/view/TrackNode.js';
 import TrackToolboxPanel from '../../common/view/TrackToolboxPanel.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkPlaygroundModel from '../model/EnergySkateParkPlaygroundModel.js';
 
@@ -214,5 +213,3 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkPlaygroundScreenView', EnergySkateParkPlaygroundScreenView );

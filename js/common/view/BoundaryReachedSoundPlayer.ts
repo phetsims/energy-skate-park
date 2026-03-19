@@ -12,7 +12,6 @@ import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import SoundClip from '../../../../tambo/js/sound-generators/SoundClip.js';
 import soundManager from '../../../../tambo/js/soundManager.js';
 import boundaryReached_mp3 from '../../../../tambo/sounds/boundaryReached_mp3.js';
-import energySkatePark from '../../energySkatePark.js';
 
 const boundaryReachedSoundClip = new SoundClip( boundaryReached_mp3 );
 soundManager.addSoundGenerator( boundaryReachedSoundClip );
@@ -38,5 +37,3 @@ export default class BoundaryReachedSoundPlayer {
     this.isOnBoundaryProperty.value = onBoundary;
   }
 }
-
-energySkatePark.register( 'BoundaryReachedSoundPlayer', BoundaryReachedSoundPlayer );

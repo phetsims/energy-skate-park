@@ -80,5 +80,3 @@ export default class ConnectTrackEndpointsKeyboardHelpSection extends KeyboardHe
     );
   }
 }
-
-energySkatePark.register( 'ConnectTrackEndpointsKeyboardHelpSection', ConnectTrackEndpointsKeyboardHelpSection );

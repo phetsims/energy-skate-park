@@ -7,7 +7,6 @@
  */
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
-import energySkatePark from '../../energySkatePark.js';
 
 export default class UserControlledPropertySet {
 
@@ -43,5 +42,3 @@ export default class UserControlledPropertySet {
     ];
   }
 }
-
-energySkatePark.register( 'UserControlledPropertySet', UserControlledPropertySet );

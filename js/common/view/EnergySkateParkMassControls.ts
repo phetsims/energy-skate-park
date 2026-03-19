@@ -14,7 +14,6 @@ import { NumberControlOptions } from '../../../../scenery-phet/js/NumberControl.
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import MassNumberControl from './MassNumberControl.js';
 import MassSlider from './MassSlider.js';
@@ -69,5 +68,3 @@ export default class EnergySkateParkMassControls extends VBox {
     super( { spacing: 8, children: children } );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkMassControls', EnergySkateParkMassControls );

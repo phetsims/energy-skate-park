@@ -10,7 +10,6 @@
 
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import TrackDragHandler from './TrackDragHandler.js';
 import TrackNode from './TrackNode.js';
@@ -57,5 +56,3 @@ export default class TrackKeyboardDragListener extends SoundKeyboardDragListener
     } );
   }
 }
-
-energySkatePark.register( 'TrackKeyboardDragListener', TrackKeyboardDragListener );

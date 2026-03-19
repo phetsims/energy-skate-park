@@ -10,7 +10,6 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkScreenSummaryContent from '../../common/view/EnergySkateParkScreenSummaryContent.js';
 import EnergySkateParkTrackSetScreenView from '../../common/view/EnergySkateParkTrackSetScreenView.js';
-import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
 import EnergyGraphAccordionBox from './EnergyGraphAccordionBox.js';
@@ -73,5 +72,3 @@ export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView 
     this.speedometerNode.top = this.modelViewTransform.modelToViewY( GraphsConstants.TRACK_HEIGHT );
   }
 }
-
-energySkatePark.register( 'GraphsScreenView', GraphsScreenView );

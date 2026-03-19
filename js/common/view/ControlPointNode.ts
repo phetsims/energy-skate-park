@@ -402,5 +402,3 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
     this.touchArea = Shape.circle( 0, 0, 25 );
   }
 }
-
-energySkatePark.register( 'ControlPointNode', ControlPointNode );

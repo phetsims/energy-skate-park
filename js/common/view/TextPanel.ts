@@ -13,7 +13,6 @@ import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import Font from '../../../../scenery/js/util/Font.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkColors from '../EnergySkateParkColors.js';
 
 type SelfOptions = {
@@ -52,5 +51,3 @@ export default class TextPanel extends Panel {
     super( text, options );
   }
 }
-
-energySkatePark.register( 'TextPanel', TextPanel );

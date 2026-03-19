@@ -49,5 +49,3 @@ export default class TrackControlsKeyboardHelpSection extends KeyboardHelpSectio
     } );
   }
 }
-
-energySkatePark.register( 'TrackControlsKeyboardHelpSection', TrackControlsKeyboardHelpSection );

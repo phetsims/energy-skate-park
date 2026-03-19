@@ -12,7 +12,6 @@ import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import introScreenIcon_png from '../../../images/introScreenIcon_png.js';
 import SkaterImageSet from '../../common/view/SkaterImageSet.js';
-import energySkatePark from '../../energySkatePark.js';
 
 export default class IntroScreenIcon extends ScreenIcon {
 
@@ -42,5 +41,3 @@ export default class IntroScreenIcon extends ScreenIcon {
     } );
   }
 }
-
-energySkatePark.register( 'IntroScreenIcon', IntroScreenIcon );

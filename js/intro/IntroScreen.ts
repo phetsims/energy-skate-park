@@ -10,7 +10,6 @@ import Screen from '../../../joist/js/Screen.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import EnergySkateParkKeyboardHelpContent from '../common/view/EnergySkateParkKeyboardHelpContent.js';
 import EnergySkateParkPreferencesModel from '../common/model/EnergySkateParkPreferencesModel.js';
-import energySkatePark from '../energySkatePark.js';
 import EnergySkateParkFluent from '../EnergySkateParkFluent.js';
 import IntroModel from './model/IntroModel.js';
 import IntroScreenIcon from './view/IntroScreenIcon.js';
@@ -37,5 +36,3 @@ export default class IntroScreen extends Screen<IntroModel, IntroScreenView> {
 
   }
 }
-
-energySkatePark.register( 'IntroScreen', IntroScreen );

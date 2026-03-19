@@ -19,7 +19,6 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import GridNode from '../../../../griddle/js/GridNode.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import TextPanel from './TextPanel.js';
 
@@ -156,5 +155,3 @@ export default class EnergySkateParkGridNode extends Node {
     }
   }
 }
-
-energySkatePark.register( 'EnergySkateParkGridNode', EnergySkateParkGridNode );

@@ -10,7 +10,6 @@
 import { TReadOnlyProperty } from '../../../axon/js/TReadOnlyProperty.js';
 import { AnyScreen } from '../../../joist/js/Screen.js';
 import Sim, { SimOptions } from '../../../joist/js/Sim.js';
-import energySkatePark from '../energySkatePark.js';
 
 export default class EnergySkateParkSim extends Sim {
 
@@ -18,5 +17,3 @@ export default class EnergySkateParkSim extends Sim {
     super( titleString, screens, options );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkSim', EnergySkateParkSim );

@@ -21,7 +21,6 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import ArrowButton from '../../../../sun/js/buttons/ArrowButton.js';
 import Slider from '../../../../sun/js/Slider.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
@@ -152,5 +151,3 @@ export default class PhysicalNumberControl extends NumberControl {
     super( titleString, property, valueRange, options );
   }
 }
-
-energySkatePark.register( 'PhysicalNumberControl', PhysicalNumberControl );

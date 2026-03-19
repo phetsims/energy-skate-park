@@ -12,7 +12,6 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
-import energySkatePark from '../../energySkatePark.js';
 
 // constants
 const HALO_RADIUS = 9;
@@ -63,5 +62,3 @@ export default class InspectedSampleHaloNode extends Circle {
     dataSamples.addItemAddedListener( sampleAddedListener );
   }
 }
-
-energySkatePark.register( 'InspectedSampleHaloNode', InspectedSampleHaloNode );

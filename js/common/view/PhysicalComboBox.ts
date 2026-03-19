@@ -19,7 +19,6 @@ import ComboBox, { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
@@ -135,5 +134,3 @@ export default class PhysicalComboBox extends ComboBox<number | null> {
     super( adapterProperty, itemList, listParent, options );
   }
 }
-
-energySkatePark.register( 'PhysicalComboBox', PhysicalComboBox );

@@ -13,7 +13,6 @@ import { optionize4 } from '../../../../phet-core/js/optionize.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import AccordionBox, { AccordionBoxOptions } from '../../../../sun/js/AccordionBox.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import Skater from '../model/Skater.js';
@@ -78,5 +77,3 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
     } );
   }
 }
-
-energySkatePark.register( 'EnergyBarGraphAccordionBox', EnergyBarGraphAccordionBox );

@@ -15,7 +15,6 @@ import LinearGradient from '../../../../scenery/js/util/LinearGradient.js';
 import Pattern from '../../../../scenery/js/util/Pattern.js';
 import cementTextureDark_jpg from '../../../images/cementTextureDark_jpg.js';
 import mountains_png from '../../../images/mountains_png.js';
-import energySkatePark from '../../energySkatePark.js';
 
 // constants
 const earthHeight = 86;
@@ -78,5 +77,3 @@ export default class BackgroundNode extends Node {
 
   public static readonly earthHeight = earthHeight;
 }
-
-energySkatePark.register( 'BackgroundNode', BackgroundNode );

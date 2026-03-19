@@ -11,7 +11,6 @@ import KeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/Keybo
 import MoveDraggableItemsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/MoveDraggableItemsKeyboardHelpSection.js';
 import SliderControlsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/SliderControlsKeyboardHelpSection.js';
 import TwoColumnKeyboardHelpContent from '../../../../scenery-phet/js/keyboard/help/TwoColumnKeyboardHelpContent.js';
-import energySkatePark from '../../energySkatePark.js';
 import GraphCursorControlsKeyboardHelpSection from '../../graphs/view/GraphCursorControlsKeyboardHelpSection.js';
 import ConnectTrackEndpointsKeyboardHelpSection from './ConnectTrackEndpointsKeyboardHelpSection.js';
 import FromAnywhereInScreenKeyboardHelpSection from './FromAnywhereInScreenKeyboardHelpSection.js';
@@ -65,5 +64,3 @@ export default class EnergySkateParkKeyboardHelpContent extends TwoColumnKeyboar
     } );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkKeyboardHelpContent', EnergySkateParkKeyboardHelpContent );

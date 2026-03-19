@@ -12,7 +12,6 @@ import Bounds2 from '../../../../dot/js/Bounds2.js';
 import optionize, { combineOptions } from '../../../../phet-core/js/optionize.js';
 import isSettingPhetioStateProperty from '../../../../tandem/js/isSettingPhetioStateProperty.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
@@ -255,5 +254,3 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
     return PremadeTracks.createTrack( model, controlPoints, options );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkTrackSetModel', EnergySkateParkTrackSetModel );

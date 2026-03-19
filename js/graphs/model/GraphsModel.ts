@@ -19,7 +19,6 @@ import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSam
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkTrackSetModel from '../../common/model/EnergySkateParkTrackSetModel.js';
 import SkaterState from '../../common/model/SkaterState.js';
-import energySkatePark from '../../energySkatePark.js';
 import GraphsConstants from '../GraphsConstants.js';
 
 export default class GraphsModel extends EnergySkateParkTrackSetModel {
@@ -332,5 +331,3 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     return this.dataSamples.get( nearestIndex );
   }
 }
-
-energySkatePark.register( 'GraphsModel', GraphsModel );

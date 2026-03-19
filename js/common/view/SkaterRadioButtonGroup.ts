@@ -15,7 +15,6 @@ import RectangularRadioButtonGroup, { type RectangularRadioButtonGroupItem } fro
 import multiSelectionSoundPlayerFactory from '../../../../tambo/js/multiSelectionSoundPlayerFactory.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkColors from '../EnergySkateParkColors.js';
@@ -93,5 +92,3 @@ export default class SkaterRadioButtonGroup extends RectangularRadioButtonGroup<
     this.preferredWidth = actualButtonWidth * BUTTONS_PER_ROW + BUTTON_SPACING * ( BUTTONS_PER_ROW - 1 );
   }
 }
-
-energySkatePark.register( 'SkaterRadioButtonGroup', SkaterRadioButtonGroup );

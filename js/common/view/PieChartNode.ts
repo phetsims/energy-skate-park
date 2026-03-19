@@ -17,7 +17,6 @@ import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path, { PathOptions } from '../../../../scenery/js/nodes/Path.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import Skater from '../model/Skater.js';
 
@@ -208,5 +207,3 @@ export default class PieChartNode extends Node {
     } );
   }
 }
-
-energySkatePark.register( 'PieChartNode', PieChartNode );

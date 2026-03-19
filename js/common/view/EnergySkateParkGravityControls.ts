@@ -21,7 +21,6 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
 import { SliderOptions } from '../../../../sun/js/Slider.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import { AccelerationUnits } from '../model/EnergySkateParkPreferencesModel.js';
 import GravityComboBox from './GravityComboBox.js';
@@ -157,5 +156,3 @@ export default class EnergySkateParkGravityControls extends VBox {
     super( { spacing: 8, children: children } );
   }
 }
-
-energySkatePark.register( 'EnergySkateParkGravityControls', EnergySkateParkGravityControls );

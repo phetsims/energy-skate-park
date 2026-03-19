@@ -25,7 +25,6 @@ import ArrayIO from '../../../../tandem/js/types/ArrayIO.js';
 import BooleanIO from '../../../../tandem/js/types/BooleanIO.js';
 import IOType from '../../../../tandem/js/types/IOType.js';
 import ReferenceIO, { ReferenceIOState } from '../../../../tandem/js/types/ReferenceIO.js';
-import energySkatePark from '../../energySkatePark.js';
 import SplineEvaluation, { Spline } from '../SplineEvaluation.js';
 import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
@@ -1044,5 +1043,3 @@ export default class Track extends PhetioObject {
     }
   } );
 }
-
-energySkatePark.register( 'Track', Track );
