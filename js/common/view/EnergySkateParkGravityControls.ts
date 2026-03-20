@@ -139,6 +139,8 @@ export default class EnergySkateParkGravityControls extends VBox {
     }
 
     if ( options.includeGravityComboBox ) {
+
+      // REVIEW: Does this not need to be in the strings file for translation?
       const gValueStringProperty = gravityMagnitudeProperty.derived( g => `${toFixed( g, 1 )} meters per second squared` );
       const gravityContextResponseProperty = EnergySkateParkFluent.a11y.gravityComboBox.accessibleContextResponse.createProperty( {
         gravityValue: gValueStringProperty

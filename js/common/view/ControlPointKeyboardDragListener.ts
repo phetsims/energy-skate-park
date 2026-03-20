@@ -68,6 +68,7 @@ export default class ControlPointKeyboardDragListener extends SoundKeyboardDragL
 
         controlPoint.sourcePositionProperty.value = pt;
 
+        // REVIEW: This seems to be duplicated from ControlPointNode. I would advise consolidating.
         // Snap detection for endpoints
         if ( isEndPoint ) {
           const tracks = model.getPhysicalTracks();
@@ -120,6 +121,8 @@ export default class ControlPointKeyboardDragListener extends SoundKeyboardDragL
           // After join, original tracks are disposed and a new merged track is created with copied
           // control points. Focus the closest focusable node at the join position.
           if ( trackLayer ) {
+
+            // REVIEW: This also looks very similar to code I saw in `ControlPointAttachmentKeyboardListener`.
             const targetViewPosition = modelViewTransform.modelToViewPosition( snapTargetPosition );
             let bestNode: Node | null = null;
             let bestDist = Number.POSITIVE_INFINITY;

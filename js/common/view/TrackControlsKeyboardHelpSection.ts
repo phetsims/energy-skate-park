@@ -15,6 +15,7 @@ import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import ControlPointNode from './ControlPointNode.js';
 
 // HotkeyData for keyboard help dialog rows
+// REVIEW: You have this same hotkey data created in ToolboxControlsKeyboardHelpSection
 const REMOVE_FROM_TOOLBOX_HOTKEY_DATA = new HotkeyData( {
   keys: [ 'space', 'enter' ],
   repoName: energySkatePark.name,

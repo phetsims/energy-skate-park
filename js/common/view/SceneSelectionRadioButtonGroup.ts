@@ -49,6 +49,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
     affirm( model.hasOwnProperty( 'sceneProperty' ), 'model does not support a scene' );
 
     const options = optionize<SceneSelectionRadioButtonGroupOptions, SelfOptions, RectangularRadioButtonGroupOptions>()( {
+
       // specific and passed to RectangularRadioButtonGroup
       orientation: 'horizontal',
       radioButtonOptions: {
@@ -85,6 +86,8 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, parabolaControlPoints );
       }
       else if ( trackType === 'RAMP' ) {
+
+        // REVIEW: Update createSlope to createRamp
         const rampControlPoints = PremadeTracks.createSlopeControlPoints( model, Tandem.OPT_OUT, controlPointOptions );
         track = EnergySkateParkTrackSetModel.createPremadeTrack( model, rampControlPoints );
       }

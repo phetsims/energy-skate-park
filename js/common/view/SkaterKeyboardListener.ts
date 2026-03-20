@@ -37,6 +37,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
     keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveAlongTrackStringProperty
   } );
 
+  // REVIEW: This is being flagged as unused.
   public static readonly DETACH_FROM_TRACK_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'arrowUp', 'w' ],
     repoName: energySkatePark.name,
@@ -56,6 +57,8 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
   } );
 
   private readonly skater: Skater;
+
+  // REVIEW: This is being flagged as unused.
   private readonly skaterNode: SkaterNode;
 
   public constructor( skater: Skater, skaterNode: SkaterNode ) {

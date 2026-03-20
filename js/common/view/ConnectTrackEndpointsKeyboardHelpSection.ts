@@ -28,6 +28,8 @@ export default class ConnectTrackEndpointsKeyboardHelpSection extends KeyboardHe
       accessibleLabelStringProperty: TReadOnlyProperty<string>
     ) => {
 
+      // REVIEW: If the combo box provides all the hotkey data options why can you use those? None of these rows seem to
+      // be for a combo box, so I'm even more confused. Why isn't this hotkey data documented where the interaction is created?
       // Synthesize dynamic/lazy HotkeyData here since the combo box interaction provides all the actions -- but we still must document them.
       const hotkeyData = new HotkeyData( {
         keys: keys,

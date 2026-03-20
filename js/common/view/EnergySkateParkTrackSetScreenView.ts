@@ -73,6 +73,9 @@ export default class EnergySkateParkTrackSetScreenView extends EnergySkateParkSa
         EnergySkateParkFluent.a11y.yourSkatePark.skaterOffTrackStringProperty
       ],
       ( scene, trackShapeName, skaterTrack, onTrackString, offTrackString ) => {
+
+        // REVIEW: I'm still very confused about this scene to track relationship. Many things assume
+        // it's a one to one relationship but the architecture seems like it's set up for something more complex...
         const sceneIndex = model.trackTypes.indexOf( scene );
         const track = model.tracks.get( sceneIndex );
         const visibleControlPointCount = track.controlPoints.filter( cp => cp.visible ).length;

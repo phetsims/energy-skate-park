@@ -168,6 +168,7 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
 
     super( items, options );
 
+    // REVIEW: This feels odd. Is there not a way to add an input listener to the proper checkbox at creation?
     this.children.forEach( child => {
       if ( child instanceof Checkbox && child.property === model.isStickingToTrackProperty ) {
 

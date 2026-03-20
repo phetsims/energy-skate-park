@@ -14,6 +14,7 @@ import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 
 // HotkeyData for keyboard help dialog rows
+// REVIEW: Can this hotkey data not be created and used at the keyboard listener implementation?
 const REMOVE_FROM_TOOLBOX_HOTKEY_DATA = new HotkeyData( {
   keys: [ 'space', 'enter' ],
   repoName: energySkatePark.name,

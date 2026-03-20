@@ -193,6 +193,7 @@ export default class TrackNode extends Node {
       this.addInputListener( trackKeyboardDragListener, { disposer: this } );
 
       // Delete/backspace removes the entire track when focused
+      // REVIEW: This is probably where the hotkey data for removing a track can be created.
       if ( track.splittable ) {
         this.addInputListener( new KeyboardListener( {
           keys: [ 'delete', 'backspace' ] as const,

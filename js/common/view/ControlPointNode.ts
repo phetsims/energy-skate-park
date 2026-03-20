@@ -47,6 +47,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
    * @param isEndPoint
    * @param tandem
    */
+  //REVIEW: Can you add more documentation about omitA11y?
   public constructor( trackNode: TrackNode, trackDragHandler: TrackDragHandler | null, i: number, isEndPoint: boolean, tandem: Tandem, omitA11y: boolean ) {
     const track = trackNode.track;
     const model = trackNode.model;
@@ -330,6 +331,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
         disposer: this
       } );
 
+      // REVIEW: Do you need to skip most of the below this if `omitA11y === true`?
       const controlPointKeyboardDragListener = new ControlPointKeyboardDragListener( trackNode, i, isEndPoint, boundaryReachedSoundPlayer, this );
       this.addInputListener( controlPointKeyboardDragListener, { disposer: this } );
 
@@ -341,6 +343,10 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
 
       // Delete/backspace removes the control point, same as the "x" button in ControlPointUI
       if ( track.splittable ) {
+
+        // REVIEW: This is a pretty big listener. May be good to separate it out same as you did `ControlPointKeyboardDragListener`
+        // and `ControlPointAttachmentKeyboardListener`. I think it would be cleaner if all the control point keyboard
+        // listeners were defined separately.
         this.addInputListener( new KeyboardListener( {
           keys: [ 'delete', 'backspace' ] as const,
           fire: () => {

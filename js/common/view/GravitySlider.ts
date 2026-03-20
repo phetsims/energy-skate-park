@@ -36,6 +36,7 @@ export default class GravitySlider extends PhysicalSlider {
         }
       } );
 
+    // REVIEW: I saw this in FrictionSlider too. Should this just be a loop? Update... also in MassSlider.
     this.slider.addMinorTick( range.getLength() / 5 + range.min );
     this.slider.addMinorTick( 2 * range.getLength() / 5 + range.min );
     this.slider.addMinorTick( 3 * range.getLength() / 5 + range.min );
