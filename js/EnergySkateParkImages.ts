@@ -304,4 +304,6 @@ const EnergySkateParkImages = {
   } )
 };
 
+energySkatePark.register( 'EnergySkateParkImages', EnergySkateParkImages );
+
 export default EnergySkateParkImages;

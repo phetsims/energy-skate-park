@@ -725,3 +725,5 @@ const EnergySkateParkFluent = {
 };
 
 export default EnergySkateParkFluent;
+
+energySkatePark.register('EnergySkateParkFluent', EnergySkateParkFluent);

@@ -450,4 +450,6 @@ type StringsType = {
 
 const EnergySkateParkStrings = getStringModule( 'ENERGY_SKATE_PARK' ) as StringsType;
 
+energySkatePark.register( 'EnergySkateParkStrings', EnergySkateParkStrings );
+
 export default EnergySkateParkStrings;
