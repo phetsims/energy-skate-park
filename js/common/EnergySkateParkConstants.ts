@@ -9,6 +9,7 @@
 
 import Dimension2 from '../../../dot/js/Dimension2.js';
 import Range from '../../../dot/js/Range.js';
+import { CreditsData } from '../../../joist/js/CreditsNode.js';
 import merge from '../../../phet-core/js/merge.js';
 import PhetFont from '../../../scenery-phet/js/PhetFont.js';
 import { PanelOptions } from '../../../sun/js/Panel.js';
@@ -36,6 +37,20 @@ const PANEL_OPTIONS: PanelOptions = {
 };
 
 export default class EnergySkateParkConstants {
+
+  //----------------------------------------------------------------------------------------
+  // Credits are shared by energy-skate-park and energy-skate-park-basics.
+
+  public static readonly CREDITS: CreditsData = {
+    leadDesign: 'Ariel Paul, Noah Podolefsky, Sam Reid, Amy Rouinfar',
+    softwareDevelopment: 'Sam Reid, Jesse Greenberg, Marla Schulz, Agust\u00EDn Vallejo, Luisa Vargas',
+    team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Diana L\u00f3pez Tavares, Emily B. Moore, Kathy Perkins',
+    graphicArts: 'Mariah Hermsmeyer, Megan Lai, Amanda McGarry, Sharon Siman-Tov',
+    qualityAssurance: 'Jaspe Arias, Catherine Carter, Steele Dalton, Jaron Droder, Megan Lai, Brooklyn Lash, ' +
+                      'Emily Miller, Oliver Orejola, Arnab Purkayastha, Devon Quispe, Sam Reid, Nancy Salpepi, ' +
+                      'Kathryn Woessner, Bryan Yoelin'
+  };
+
   public static readonly SLIDER_OPTIONS = {
     thumbSize: new Dimension2( 12, 23 ),
     trackSize: new Dimension2( 95, 3 ),

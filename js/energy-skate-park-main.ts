@@ -9,6 +9,7 @@
 import simLauncher from '../../joist/js/simLauncher.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import PreferencesModel from './../../joist/js/preferences/PreferencesModel.js';
+import EnergySkateParkConstants from './common/EnergySkateParkConstants.js';
 import EnergySkateParkSim from './common/EnergySkateParkSim.js';
 import EnergySkateParkPreferencesModel from './common/model/EnergySkateParkPreferencesModel.js';
 import EnergySkateParkPreferencesNode from './common/view/EnergySkateParkPreferencesNode.js';
@@ -48,12 +49,6 @@ simLauncher.launch( () => {
 
   new EnergySkateParkSim( energySkateParkTitleStringProperty, screens, {
     preferencesModel: preferencesModel,
-    credits: {
-      leadDesign: 'Noah Podolefsky, Sam Reid, Amy Rouinfar',
-      softwareDevelopment: 'Sam Reid, Jesse Greenberg, Marla Schulz, Agustín Vallejo, Luisa Vargas',
-      team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Diana López Tavares, Emily B. Moore, Ariel Paul, Kathy Perkins',
-      graphicArts: 'Mariah Hermsmeyer, Megan Lai, Amanda McGarry, Sharon Siman-Tov',
-      qualityAssurance: 'Jaspe Arias, Catherine Carter, Steele Dalton, Jaron Droder, Megan Lai, Brooklyn Lash, Emily Miller, Oliver Orejola, Arnab Purkayastha, Devon Quispe, Sam Reid, Nancy Salpepi, Kathryn Woessner, Bryan Yoelin'
-    }
+    credits: EnergySkateParkConstants.CREDITS
   } ).start();
 } );
