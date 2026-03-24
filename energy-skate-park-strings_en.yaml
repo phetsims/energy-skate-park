@@ -240,7 +240,7 @@ a11y:
     legendKinetic:           'Kinetic: Green'
     legendPotential:         'Potential: Blue'
     legendThermal:           'Thermal: Red'
-    legendTotal:             'Total: Gold'
+    legendTotal:             'Total: Purple'
   speedometer:
     accessibleHeading:   Speedometer
     accessibleParagraph: "Skater's speed is { $speed } meters per second."
