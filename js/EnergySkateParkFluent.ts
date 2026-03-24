@@ -80,6 +80,7 @@ addToMapIfDefined( 'keyboardHelpDialog_moveAlongTrack', 'keyboardHelpDialog.move
 addToMapIfDefined( 'keyboardHelpDialog_attachToTrack', 'keyboardHelpDialog.attachToTrackStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_moveToStartOfTrack', 'keyboardHelpDialog.moveToStartOfTrackStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_moveToEndOfTrack', 'keyboardHelpDialog.moveToEndOfTrackStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_jumpToSkater', 'keyboardHelpDialog.jumpToSkaterStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_restartSkater', 'keyboardHelpDialog.restartSkaterStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_togglePause', 'keyboardHelpDialog.togglePauseStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_scrubThroughData', 'keyboardHelpDialog.scrubThroughDataStringProperty' );
@@ -372,6 +373,7 @@ const EnergySkateParkFluent = {
     attachToTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.attachToTrackStringProperty' ),
     moveToStartOfTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.moveToStartOfTrackStringProperty' ),
     moveToEndOfTrackStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.moveToEndOfTrackStringProperty' ),
+    jumpToSkaterStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.jumpToSkaterStringProperty' ),
     restartSkaterStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.restartSkaterStringProperty' ),
     togglePauseStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.togglePauseStringProperty' ),
     scrubThroughDataStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.scrubThroughDataStringProperty' ),

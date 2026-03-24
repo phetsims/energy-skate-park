@@ -111,6 +111,13 @@ export type EnergySkateParkScreenViewOptions = SelfOptions & ScreenViewOptions;
 
 export default class EnergySkateParkScreenView extends ScreenView {
 
+  public static readonly JUMP_TO_SKATER_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'j+s' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.jumpToSkaterStringProperty,
+    global: true
+  } );
+
   public static readonly RESTART_SKATER_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'alt+shift+r' ],
     repoName: energySkatePark.name,
@@ -309,6 +316,14 @@ export default class EnergySkateParkScreenView extends ScreenView {
         if ( model.skater.hasMovedProperty.value ) {
           model.returnSkater();
         }
+      }
+    } );
+
+    // Global hotkey to move focus to the skater
+    KeyboardListener.createGlobal( this, {
+      keyStringProperties: EnergySkateParkScreenView.JUMP_TO_SKATER_HOTKEY_DATA.keyStringProperties,
+      fire: () => {
+        this.skaterNode.focus();
       }
     } );
 

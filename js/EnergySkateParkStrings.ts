@@ -106,6 +106,7 @@ type StringsType = {
     'attachToTrackStringProperty': LocalizedStringProperty;
     'moveToStartOfTrackStringProperty': LocalizedStringProperty;
     'moveToEndOfTrackStringProperty': LocalizedStringProperty;
+    'jumpToSkaterStringProperty': LocalizedStringProperty;
     'restartSkaterStringProperty': LocalizedStringProperty;
     'togglePauseStringProperty': LocalizedStringProperty;
     'scrubThroughDataStringProperty': LocalizedStringProperty;

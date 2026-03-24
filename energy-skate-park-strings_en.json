@@ -203,6 +203,9 @@
     "moveToEndOfTrack": {
       "value": "Jump to track end"
     },
+    "jumpToSkater": {
+      "value": "Jump to Skater"
+    },
     "restartSkater": {
       "value": "Restart skater"
     },

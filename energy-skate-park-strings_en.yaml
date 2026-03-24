@@ -71,6 +71,7 @@ keyboardHelpDialog:
   attachToTrack:                     Attach to nearest track
   moveToStartOfTrack:                Jump to track start
   moveToEndOfTrack:                  Jump to track end
+  jumpToSkater:                      Jump to Skater
   restartSkater:                     Restart skater
   togglePause:                       Pause or play
   scrubThroughData:                  Scrub through data

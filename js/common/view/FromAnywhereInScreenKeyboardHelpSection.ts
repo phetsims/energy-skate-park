@@ -16,6 +16,7 @@ export default class FromAnywhereInScreenKeyboardHelpSection extends KeyboardHel
 
   public constructor() {
     super( EnergySkateParkFluent.keyboardHelpDialog.fromAnywhereInScreenStringProperty, [
+      KeyboardHelpSectionRow.fromHotkeyData( EnergySkateParkScreenView.JUMP_TO_SKATER_HOTKEY_DATA ),
       KeyboardHelpSectionRow.fromHotkeyData( EnergySkateParkScreenView.RESTART_SKATER_HOTKEY_DATA ),
       KeyboardHelpSectionRow.fromHotkeyData( PlayControlButton.TOGGLE_PLAY_HOTKEY_DATA )
     ], {
