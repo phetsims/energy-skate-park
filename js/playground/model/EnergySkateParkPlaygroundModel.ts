@@ -36,6 +36,7 @@ export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel
    * Create a new fully interactive Track which can be used to create custom Tracks. Generally  used when
    * user drags a new Track from  the toolbox.
    *
+   * // REVIEW: Update documentation
    * @param options - options passed along to the Track
    */
   public createDraggableTrack( controlPointOptions: ControlPointOptions = {}, trackOptions: TrackOptions = {} ): Track {

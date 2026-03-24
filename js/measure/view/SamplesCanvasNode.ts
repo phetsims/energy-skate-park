@@ -44,6 +44,8 @@ export default class SamplesCanvasNode extends CanvasNode {
 
       const alpha = sample.opacityProperty.get();
 
+      // REVIEW: Does it matter that we're not listening to this color Property? Probably not
+      // but maybe document?
       context.fillStyle = EnergySkateParkColors.pathFillProperty.value.withAlpha( alpha ).toCSS();
       context.strokeStyle = EnergySkateParkColors.pathStrokeProperty.value.withAlpha( alpha ).toCSS();
 

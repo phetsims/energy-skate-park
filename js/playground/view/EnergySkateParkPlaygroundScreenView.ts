@@ -86,6 +86,9 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     this.trackToolbox.right = this.modelViewTransform.modelToViewX( -0.5 );
     eraseTracksButton.right = this.trackToolbox.left - 10;
 
+
+    // REVIEW: This is a lot of logic for description that I think might benefit from being in it's own file
+    // for readability.
     // Add track toolbox and clear button into the "Your Skate Park" heading PDOM order (before skaterNode)
     const headingOrder = this.yourSkateParkHeadingNode.pdomOrder!;
     const skaterIndex = headingOrder.indexOf( this.skaterNode );
@@ -120,6 +123,8 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
         else {
           // Count total visible control points across all tracks
           let totalControlPoints = 0;
+
+          // REVIEW: Why not use model.tracks.sumBy?
           for ( let j = 0; j < model.tracks.length; j++ ) {
             totalControlPoints += model.tracks.get( j ).controlPoints.filter( controlPoint => controlPoint.visible ).length;
           }
@@ -148,6 +153,8 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
           skaterPhrase = skaterTrack !== null ? onTrackString : offTrackString;
         }
 
+        // REVIEW: Can't you just return the noneString here if trackCount === 0 rather than also
+        // have an if clause above to handle it?
         return trackCount === 0 ? trackPhrase : EnergySkateParkFluent.a11y.yourSkatePark.trackAndSkaterParagraph.format( {
           trackPhrase: trackPhrase,
           skaterPhrase: skaterPhrase
@@ -159,7 +166,7 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     const trackStatusNode = new Node( { accessibleParagraph: paragraphProperty } );
     this.addChild( trackStatusNode );
 
-    // Insert at the beginning of the heading's pdomOrder so it reads right after the help text
+    // REVIEW: This is another spot where the pdom order sims unnecessarily obfuscated.
     const currentOrder = this.yourSkateParkHeadingNode.pdomOrder;
     currentOrder.unshift( trackStatusNode );
     this.yourSkateParkHeadingNode.pdomOrder = currentOrder;
@@ -207,6 +214,8 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
    * Update trackLayer.pdomOrder to match model.tracks order, so that moveToFront() for visual
    * z-ordering does not affect the screen reader navigation order.
    */
+  // REVIEW: This pdom order strategy seems much easier to follow. It's clearly being set in one spot that is
+  // easy to navigate to. This might be a good example of how to update pdom order setting elsewhere.
   private updateTrackLayerPdomOrder(): void {
     this.trackLayer.pdomOrder = this.model.tracks.map( track =>
       this.trackNodes.find( trackNode => trackNode.track === track )!

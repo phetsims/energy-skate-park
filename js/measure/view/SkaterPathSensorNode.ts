@@ -80,6 +80,8 @@ const SENSOR_COLOR = 'rgb( 103, 80, 113 )';
 // max distance between sample and probe center for the sample to be displayed, in view coordinates
 const PROBE_THRESHOLD_DISTANCE = 10;
 
+// REVIEW: If this should explicitly match a value in MeasureModel, then have them read from the same variable.
+// If not this documentation seems confusing.
 // Home position for the probe, matching the default value in MeasureModel
 const PROBE_HOME_POSITION = new Vector2( -4, 1.5 );
 
@@ -131,6 +133,7 @@ export default class SkaterPathSensorNode extends Node {
     sensorBodyPositionProperty: Vector2Property, modelBoundsProperty: TProperty<Bounds2>,
     modelViewTransform: ModelViewTransform2, controlPanel: EnergySkateParkControlPanel, providedOptions?: NodeOptions ) {
 
+   // REVIEW: Should we be using optionize here?
     const options = combineOptions<NodeOptions>( {
 
       // prevent block fitting so that things don't jiggle as the probe moves, see
@@ -295,12 +298,17 @@ export default class SkaterPathSensorNode extends Node {
 
     // add a drag listener to the probe body
     const probeBoundarySoundPlayer = new BoundaryReachedSoundPlayer();
+
+    // REVIEW: Should SoundRichDragListener be used here to combine SoundDragListener & KeyboardListener?
+    // maybe it can't because you're using KeyboardListener and not KeyboardDragListener below...
     this.probeNode.addInputListener( new SoundDragListener( {
       transform: modelViewTransform,
       positionProperty: sensorProbePositionProperty,
       dragBoundsProperty: modelBoundsProperty,
       start: () => { this.isDragging = true; },
       drag: () => {
+
+        // REVIEW: I think part of our dev conventions is to spell variables out fully?
         const pos = sensorProbePositionProperty.value;
         const bounds = modelBoundsProperty.value;
         if ( bounds ) {
@@ -310,6 +318,8 @@ export default class SkaterPathSensorNode extends Node {
         }
       },
       end: () => { this.isDragging = false; },
+
+      // REVIEW: Should tandem be required in options so you don't have to use a bang here?
       tandem: options.tandem!.createTandem( 'dragListener' )
     } ) );
 
@@ -338,6 +348,8 @@ export default class SkaterPathSensorNode extends Node {
         let currentIndex = -1;
         let minDistance = Number.POSITIVE_INFINITY;
 
+        // REVIEW: waypoints.forEach seems easier to read/use than a for loop in this scenario... actually you
+        // may be able to use waypoints.reduce in this case too...
         for ( let i = 0; i < waypoints.length; i++ ) {
           const waypointView = modelViewTransform.modelToViewPosition( waypoints[ i ] );
           const distance = currentViewPosition.distance( waypointView );
@@ -359,6 +371,8 @@ export default class SkaterPathSensorNode extends Node {
           // Not on any waypoint (mouse-dragged or sample disappeared): snap to nearest sample spatially
           let nearestDistance = Number.POSITIVE_INFINITY;
           targetPosition = waypoints[ 0 ]; // fallback to home
+
+          // REVIEW: same as above waypoints.forEach is probably easier to read.
           for ( let i = 0; i < waypoints.length; i++ ) {
             const waypointView = modelViewTransform.modelToViewPosition( waypoints[ i ] );
             const distance = currentViewPosition.distance( waypointView );
