@@ -762,7 +762,7 @@ export default class EnergySkateParkModel {
    */
   private crossedTrack(
     closestTrackAndPositionAndParameter: { track: Track; parametricPosition: number; point: Vector2 },
-    physicalTracks: Track[], //REVIEW: This seems to be unsed. Can you delete?
+    physicalTracks: Track[], // REVIEW: This seems to be unsed. Can you delete?
     beforeX: number,
     beforeY: number,
     afterX: number,

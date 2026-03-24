@@ -145,7 +145,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       if ( thermal ) { names.push( thermalName ); }
       if ( total ) { names.push( totalName ); }
 
-      // Review: Some simple documentation here will help make this DerivedProperty easier to parse.
+      // REVIEW: Some simple documentation here will help make this DerivedProperty easier to parse.
       if ( names.length === 0 ) { return noneName; }
       if ( names.length === 1 ) { return names[ 0 ]; }
       if ( names.length === 2 ) { return `${names[ 0 ]} and ${names[ 1 ]}`; }
@@ -336,7 +336,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       xLabelText.centerX = xLabelText.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.center ) ).x;
     } );
 
-    // Review: Both of the following links are doing the same thing. Should they be a multilink?
+    // REVIEW: Both of the following links are doing the same thing. Should they be a multilink?
     // also, add documentation about the interaction with PhET-iO state.
     // listeners - when the independent variable changes, clear all data and update labels
     model.independentVariableProperty.link( independentVariable => {

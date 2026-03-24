@@ -160,7 +160,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // existing data fades away before removal when the skater direction changes
     this.skater.directionProperty.link( direction => {
 
-      // Review: Can you add documentation for why this needs to be skipped during state setting?
+      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
       if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'position' ) {
@@ -177,14 +177,14 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // clear all data when the track changes
     this.sceneProperty.link( scene => {
 
-      // Review: Can you add documentation for why this needs to be skipped during state setting?
+      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
       if ( isSettingPhetioStateProperty.value ) { return; }
       this.clearEnergyData();
     } );
 
     this.skater.userControlledProperty.link( userControlled => {
 
-      // Review: Can you add documentation for why this needs to be skipped during state setting?
+      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
       if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'position' ) {
@@ -206,7 +206,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // clear old samples if we are plotting for longer than the range
     this.sampleTimeProperty.link( time => {
 
-      // Review: Can you add documentation for why this needs to be skipped during state setting?
+      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
       // And/or how it's handled for state management if it's not managed here?
       if ( isSettingPhetioStateProperty.value ) { return; }
 
@@ -235,7 +235,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // physical system and changes everything in saved EnergySkateParkDataSamples
     Multilink.lazyMultilinkAny( this.userControlledPropertySet.properties, () => {
 
-      // Review: Can you add documentation for why this needs to be skipped during state setting?
+      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
       // And/or how it's handled for state management if it's not managed here?
       if ( isSettingPhetioStateProperty.value ) { return; }
 
@@ -258,7 +258,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // see previous data when plotting against time so don't clear in that case
     this.skater.returnedEmitter.addListener( () => {
 
-      // Review: Can you add documentation for why this needs to be skipped during state setting?
+      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
       if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'position' ) {

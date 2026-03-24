@@ -61,7 +61,7 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
   protected limitNumberOfSamples: boolean;
 
   // controls whether samples are saved as the model steps through time
-  //REVIEW: Why this rename? The documentation seems to indicate that the name
+  // REVIEW: Why this rename? The documentation seems to indicate that the name
   // `saveSamplesProperty` makes more sense...
   public readonly pathVisibleProperty: BooleanProperty;
 

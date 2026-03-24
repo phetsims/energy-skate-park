@@ -169,7 +169,7 @@ export default class EnergyChart extends XYCursorChartNode {
     // Space/Enter toggles pause
     this.chartCursor.addInputListener( new KeyboardListener( {
 
-      // Review: It seems odd to reach into the keyboard help section for the hotkey data...
+      // REVIEW: It seems odd to reach into the keyboard help section for the hotkey data...
       keyStringProperties: GraphCursorControlsKeyboardHelpSection.TOGGLE_PAUSE_HOTKEY_DATA.keyStringProperties,
       fire: () => {
         model.isPlayingProperty.toggle();
@@ -199,7 +199,7 @@ export default class EnergyChart extends XYCursorChartNode {
       drag: ( event, listener ) => {
         const proposedValue = this.getCursorValue() + listener.modelDelta.x;
 
-        // Review: Utils.clamp is deprecated
+        // REVIEW: Utils.clamp is deprecated
         const newValue = Utils.clamp(
           proposedValue,
           this.minRecordedXValue,
@@ -231,7 +231,7 @@ export default class EnergyChart extends XYCursorChartNode {
         this.chartCursor.addAccessibleContextResponse(
           EnergySkateParkFluent.a11y.energyGraph.graphCursor.movementResponse.format( {
 
-            // Review: Utils.toFixed is deprecated
+            // REVIEW: Utils.toFixed is deprecated
             sampleTime: Utils.toFixed( this.getCursorValue(), 1 )
           } )
         );
@@ -241,7 +241,7 @@ export default class EnergyChart extends XYCursorChartNode {
 
     const seriesOptions = { lineWidth: 2 };
 
-    // Review: DynamicSeries is deprecated. I would hope the updated item in Bamboo allows you to pass in full
+    // REVIEW: DynamicSeries is deprecated. I would hope the updated item in Bamboo allows you to pass in full
     // ColorProperty rather than just the value.
     this.kineticEnergyDataSeries = new DynamicSeries( merge( {
       color: EnergySkateParkColors.kineticEnergyColorProperty.value,
@@ -383,7 +383,7 @@ export default class EnergyChart extends XYCursorChartNode {
     // add data points when a EnergySkateParkDataSample is added to the model
     model.dataSamples.addItemAddedListener( addedSample => {
 
-      // Review: Can you add documentation as to why this listener needs to be skipped when
+      // REVIEW: Can you add documentation as to why this listener needs to be skipped when
       // setting state?
       if ( isSettingPhetioStateProperty.value ) { return; }
 
@@ -430,7 +430,7 @@ export default class EnergyChart extends XYCursorChartNode {
     } );
 
     // After PhET-iO state is set, rebuild the data series from the current dataSamples
-    // Review: Im assuming the logic in a lot of listeners was skipped for this. I would add information about
+    // REVIEW: Im assuming the logic in a lot of listeners was skipped for this. I would add information about
     // why that was needed in the implementation-notes.md if there is not a more appropriate place in the code to do so.
     if ( Tandem.PHET_IO_ENABLED ) {
       phetioStateSetEmitter.addListener( () => {

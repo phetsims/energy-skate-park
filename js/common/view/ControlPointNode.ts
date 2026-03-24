@@ -47,7 +47,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
    * @param isEndPoint
    * @param tandem
    */
-  //REVIEW: Can you add more documentation about omitA11y?
+  // REVIEW: Can you add more documentation about omitA11y?
   public constructor( trackNode: TrackNode, trackDragHandler: TrackDragHandler | null, i: number, isEndPoint: boolean, tandem: Tandem, omitA11y: boolean ) {
     const track = trackNode.track;
     const model = trackNode.model;
