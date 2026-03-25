@@ -21,6 +21,8 @@ import EnergySkateParkPlaygroundScreenView from '../../playground/view/EnergySka
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import TrackNode from './TrackNode.js';
 
+const NUMBER_CONTROL_POINTS_PER_TRACK_IN_TOOLBOX = 3;
+
 export default class TrackToolboxPanel extends Panel {
 
   public constructor( model: EnergySkateParkPlaygroundModel, view: EnergySkateParkPlaygroundScreenView, providedOptions?: PanelOptions ) {
@@ -73,8 +75,8 @@ export default class TrackToolboxPanel extends Panel {
     iconNode.addInputListener( new KeyboardListener( {
       fireOnClick: true,
       fire: () => {
-        // REVIEW: Should 3 be a constant? I'm guessing that's the default amount of control points each new track gets?
-        const hasRoom = model.getNumberOfControlPoints() <= EnergySkateParkConstants.MAX_NUMBER_CONTROL_POINTS - 3;
+
+        const hasRoom = model.getNumberOfControlPoints() <= EnergySkateParkConstants.MAX_NUMBER_CONTROL_POINTS - NUMBER_CONTROL_POINTS_PER_TRACK_IN_TOOLBOX;
         if ( !hasRoom ) {
           return;
         }
@@ -117,8 +119,7 @@ export default class TrackToolboxPanel extends Panel {
 
     const updateIconAvailability = () => {
 
-      // REVIEW: I see 3 being used again here for the same reason as above. I would recommend to consolidate.
-      const hasRoom = model.getNumberOfControlPoints() <= EnergySkateParkConstants.MAX_NUMBER_CONTROL_POINTS - 3;
+      const hasRoom = model.getNumberOfControlPoints() <= EnergySkateParkConstants.MAX_NUMBER_CONTROL_POINTS - NUMBER_CONTROL_POINTS_PER_TRACK_IN_TOOLBOX;
       iconNode.setOpacity( hasRoom ? 1 : 0.4 );
       iconNode.inputEnabled = hasRoom;
       iconNode.focusable = hasRoom;
