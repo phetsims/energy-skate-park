@@ -146,6 +146,7 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       if ( total ) { names.push( totalName ); }
 
       // REVIEW: Some simple documentation here will help make this DerivedProperty easier to parse.
+      // REVIEW: Move this code to the yaml file
       if ( names.length === 0 ) { return noneName; }
       if ( names.length === 1 ) { return names[ 0 ]; }
       if ( names.length === 2 ) { return `${names[ 0 ]} and ${names[ 1 ]}`; }

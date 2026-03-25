@@ -429,7 +429,7 @@ export default class EnergyChart extends XYCursorChartNode {
     } );
 
     // After PhET-iO state is set, rebuild the data series from the current dataSamples
-    // REVIEW: Im assuming the logic in a lot of listeners was skipped for this. I would add information about
+    // REVIEW: I'm assuming the logic in a lot of listeners was skipped for this. I would add information about
     // why that was needed in the implementation-notes.md if there is not a more appropriate place in the code to do so.
     if ( Tandem.PHET_IO_ENABLED ) {
       phetioStateSetEmitter.addListener( () => {
