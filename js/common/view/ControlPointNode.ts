@@ -46,7 +46,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
    * @param i
    * @param isEndPoint
    * @param tandem
-   * @param omitA11y - whether to omit accessibility features, for use in non-interactive contexts like the track toolbox icon.
+   * @param omitA11y - whether to omit the description from the track inside the toolbox
    */
   public constructor( trackNode: TrackNode, trackDragHandler: TrackDragHandler | null, i: number, isEndPoint: boolean, tandem: Tandem, omitA11y: boolean ) {
     const track = trackNode.track;
@@ -331,7 +331,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
         disposer: this
       } );
 
-      // REVIEW: Do you need to skip most of the below this if `omitA11y === true`?
+      // Even when omitA11y is true, the track is still draggable out of the toolbox, so it still needs its listeners.
       const controlPointKeyboardDragListener = new ControlPointKeyboardDragListener( trackNode, i, isEndPoint, boundaryReachedSoundPlayer, this );
       this.addInputListener( controlPointKeyboardDragListener, { disposer: this } );
 
