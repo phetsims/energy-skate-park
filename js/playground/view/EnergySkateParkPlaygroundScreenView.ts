@@ -121,13 +121,11 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
           trackPhrase = noneString;
         }
         else {
-          // Count total visible control points across all tracks
-          let totalControlPoints = 0;
 
-          // REVIEW: Why not use model.tracks.sumBy?
-          for ( let j = 0; j < model.tracks.length; j++ ) {
-            totalControlPoints += model.tracks.get( j ).controlPoints.filter( controlPoint => controlPoint.visible ).length;
-          }
+          // Count total visible control points across all tracks
+          const totalControlPoints = _.sumBy( model.tracks, track =>
+            track.controlPoints.filter( controlPoint => controlPoint.visible ).length
+          );
 
           if ( trackCount === 1 ) {
             trackPhrase = EnergySkateParkFluent.a11y.yourSkatePark.playgroundTrackPhraseSingle.format( {
