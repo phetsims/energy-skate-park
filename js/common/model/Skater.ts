@@ -87,7 +87,7 @@ export default class Skater {
   //
   public readonly velocityProperty: Vector2Property;
 
-  //  - True if the user is dragging the skater with a pointer
+  // True if the user is dragging the skater with a pointer or "grabbed" via keyboard interaction
   // REVIEW: This is still called "dragging" in SkaterState. Is there a point when a skater
   // can be dragging but isn't user controlled? That seems counterintuitive. Why rename one but not the other?
   public readonly userControlledProperty: BooleanProperty;

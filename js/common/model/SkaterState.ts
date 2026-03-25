@@ -11,11 +11,12 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import { isTReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import IntentionalAny from '../../../../phet-core/js/types/IntentionalAny.js';
 import Skater from './Skater.js';
 import Track, { Curvature } from './Track.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 export default class SkaterState {
 
@@ -385,8 +386,8 @@ export default class SkaterState {
   }
 }
 
-// REVIEW Can you document why IntentionalAny is needed here?
-const getValue = ( key: string, source: Record<string, IntentionalAny> ): IntentionalAny => {
-  return typeof source[ `${key}Property` ] === 'object' ? source[ `${key}Property` ].value :
-         source[ key ];
+// Take the value, handling whether it is a TReadOnlyProperty or a direct value.
+const getValue = <T>( key: string, source: Record<string, T> ): T => {
+  const sourceElement = source[ `${key}Property` ];
+  return isTReadOnlyProperty<T>( sourceElement ) ? sourceElement.value : source[ key ];
 };

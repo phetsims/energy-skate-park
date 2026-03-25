@@ -156,7 +156,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
         const rampTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'rampTrack' );
 
         // REVIEW: If this trackType was renamed to "RAMP" shouldn't all references be updated as well?
-        // ie. createRampControlPoints, slopeControlPointOptions, slopeTrackOptions, etc.
+        // i.e. createRampControlPoints, slopeControlPointOptions, slopeTrackOptions, etc.
         const rampControlPoints = PremadeTracks.createRampControlPoints( rampTrackTandem, options.slopeControlPointOptions ?? {} );
         const rampTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, rampControlPoints, combineOptions<TrackOptions>( {
 
