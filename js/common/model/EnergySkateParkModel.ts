@@ -34,6 +34,7 @@ import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
 import { equalsEpsilon } from '../../../../dot/js/util/equalsEpsilon.js';
+import { lineSegmentIntersection } from '../../../../dot/js/util/lineSegmentIntersection.js';
 import Utils from '../../../../dot/js/Utils.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
@@ -782,8 +783,7 @@ export default class EnergySkateParkModel {
       const a = trackPoint.plus( unitParallelVector.times( 100 ) );
       const b = trackPoint.plus( unitParallelVector.times( -100 ) );
 
-      // REVIEW: Utils is deprecated. Update.
-      const intersection = Utils.lineSegmentIntersection( a.x, a.y, b.x, b.y, beforeX, beforeY, afterX, afterY );
+      const intersection = lineSegmentIntersection( a.x, a.y, b.x, b.y, beforeX, beforeY, afterX, afterY );
       return intersection !== null;
     }
   }

@@ -12,7 +12,8 @@ import Emitter from '../../../../axon/js/Emitter.js';
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Range from '../../../../dot/js/Range.js';
-import Utils from '../../../../dot/js/Utils.js';
+import { clamp } from '../../../../dot/js/util/clamp.js';
+import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import DynamicSeries from '../../../../griddle/js/DynamicSeries.js';
 import DynamicSeriesNode from '../../../../griddle/js/DynamicSeriesNode.js';
 import PointStyle from '../../../../griddle/js/PointStyle.js';
@@ -199,8 +200,7 @@ export default class EnergyChart extends XYCursorChartNode {
       drag: ( event, listener ) => {
         const proposedValue = this.getCursorValue() + listener.modelDelta.x;
 
-        // REVIEW: Utils.clamp is deprecated
-        const newValue = Utils.clamp(
+        const newValue = clamp(
           proposedValue,
           this.minRecordedXValue,
           this.maxRecordedXValue
@@ -231,8 +231,7 @@ export default class EnergyChart extends XYCursorChartNode {
         this.chartCursor.addAccessibleContextResponse(
           EnergySkateParkFluent.a11y.energyGraph.graphCursor.movementResponse.format( {
 
-            // REVIEW: Utils.toFixed is deprecated
-            sampleTime: Utils.toFixed( this.getCursorValue(), 1 )
+            sampleTime: toFixed( this.getCursorValue(), 1 )
           } )
         );
       }
