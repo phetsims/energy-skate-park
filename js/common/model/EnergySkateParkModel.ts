@@ -753,7 +753,6 @@ export default class EnergySkateParkModel {
    * Check to see if the points crossed the track.
    *
    * @param closestTrackAndPositionAndParameter - the object returned by getClosestTrackAndPositionAndParameter()
-   * @param physicalTracks - all tracks that the skater can physically interact with
    * @param beforeX
    * @param beforeY
    * @param afterX
@@ -762,7 +761,6 @@ export default class EnergySkateParkModel {
    */
   private crossedTrack(
     closestTrackAndPositionAndParameter: { track: Track; parametricPosition: number; point: Vector2 },
-    physicalTracks: Track[], // REVIEW: This seems to be unsed. Can you delete?
     beforeX: number,
     beforeY: number,
     afterX: number,
@@ -824,7 +822,7 @@ export default class EnergySkateParkModel {
 
     debugAttachDetach && debugAttachDetach( 'minDistance', distances.indexOf( minDistance! ) );
 
-    const crossed = this.crossedTrack( closestTrackAndPositionAndParameter, physicalTracks,
+    const crossed = this.crossedTrack( closestTrackAndPositionAndParameter,
       skaterState.positionX, skaterState.positionY, proposedPosition.x, proposedPosition.y );
 
     const track = closestTrackAndPositionAndParameter.track;
