@@ -500,19 +500,6 @@ export default class Track extends PhetioObject {
   }
 
   /**
-   * Track information as a string for debugging purposes.
-   */
-  // REVIEW: Is this unused?
-  private override toString(): string {
-    let string = '';
-    for ( let i = 0; i < this.controlPoints.length; i++ ) {
-      const point = this.controlPoints[ i ];
-      string = `${string}(${point.positionProperty.value.x},${point.positionProperty.value.y})`;
-    }
-    return string;
-  }
-
-  /**
    * Get the snap target for a control point, if one is specified.
    */
   public getSnapTarget(): null | ControlPoint {
