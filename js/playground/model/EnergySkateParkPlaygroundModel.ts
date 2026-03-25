@@ -8,13 +8,13 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import { ControlPointOptions } from '../../common/model/ControlPoint.js';
 import EnergySkateParkModel, { EnergySkateParkModelOptions } from '../../common/model/EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
 import Track, { TrackOptions } from '../../common/model/Track.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 
 export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel {
 
@@ -36,8 +36,9 @@ export default class EnergySkateParkPlaygroundModel extends EnergySkateParkModel
    * Create a new fully interactive Track which can be used to create custom Tracks. Generally  used when
    * user drags a new Track from  the toolbox.
    *
-   * // REVIEW: Update documentation
-   * @param options - options passed along to the Track
+   * @param controlPointOptions - options for the control points of the track
+   * @param trackOptions - options for the track itself
+   * @returns a new Track with 3 control points that is fully interactive
    */
   public createDraggableTrack( controlPointOptions: ControlPointOptions = {}, trackOptions: TrackOptions = {} ): Track {
 

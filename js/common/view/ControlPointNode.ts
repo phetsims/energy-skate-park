@@ -46,8 +46,8 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
    * @param i
    * @param isEndPoint
    * @param tandem
+   * @param omitA11y - whether to omit accessibility features, for use in non-interactive contexts like the track toolbox icon.
    */
-  // REVIEW: Can you add more documentation about omitA11y?
   public constructor( trackNode: TrackNode, trackDragHandler: TrackDragHandler | null, i: number, isEndPoint: boolean, tandem: Tandem, omitA11y: boolean ) {
     const track = trackNode.track;
     const model = trackNode.model;

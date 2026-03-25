@@ -147,7 +147,7 @@ const PremadeTracks = {
   /**
    * Create a set of control points which create a slope shaped track, touching the ground on the right side.
    */
-  createSlopeControlPoints: ( tandem: Tandem, options: SlopeOptions ): ControlPoint[] => {
+  createRampControlPoints: ( tandem: Tandem, options: SlopeOptions ): ControlPoint[] => {
 
     options = combineOptions<SlopeOptions>( {
       trackWidth: 6,

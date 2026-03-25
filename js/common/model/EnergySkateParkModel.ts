@@ -1459,7 +1459,7 @@ export default class EnergySkateParkModel {
   }
 
   /**
-   * Update the skater based on which state.
+   * Update the skater based on its current state.
    */
   protected stepModel( dt: number, skaterState: SkaterState ): SkaterState {
 

@@ -133,7 +133,7 @@ export default class SkaterPathSensorNode extends Node {
     sensorBodyPositionProperty: Vector2Property, modelBoundsProperty: TProperty<Bounds2>,
     modelViewTransform: ModelViewTransform2, controlPanel: EnergySkateParkControlPanel, providedOptions?: NodeOptions ) {
 
-   // REVIEW: Should we be using optionize here?
+    // REVIEW: Should we be using optionize here?
     const options = combineOptions<NodeOptions>( {
 
       // prevent block fitting so that things don't jiggle as the probe moves, see
@@ -308,12 +308,11 @@ export default class SkaterPathSensorNode extends Node {
       start: () => { this.isDragging = true; },
       drag: () => {
 
-        // REVIEW: I think part of our dev conventions is to spell variables out fully?
-        const pos = sensorProbePositionProperty.value;
+        const sensorProbePosition = sensorProbePositionProperty.value;
         const bounds = modelBoundsProperty.value;
         if ( bounds ) {
-          const onBoundary = pos.x === bounds.minX || pos.x === bounds.maxX ||
-                             pos.y === bounds.minY || pos.y === bounds.maxY;
+          const onBoundary = sensorProbePosition.x === bounds.minX || sensorProbePosition.x === bounds.maxX ||
+                             sensorProbePosition.y === bounds.minY || sensorProbePosition.y === bounds.maxY;
           probeBoundarySoundPlayer.setOnBoundary( onBoundary );
         }
       },

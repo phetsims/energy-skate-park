@@ -44,8 +44,7 @@ export default class SamplesCanvasNode extends CanvasNode {
 
       const alpha = sample.opacityProperty.get();
 
-      // REVIEW: Does it matter that we're not listening to this color Property? Probably not
-      // but maybe document?
+      // This is re-rendered every frame, so does not need to subscribe to the pathFillProperty or pathStrokeProperty
       context.fillStyle = EnergySkateParkColors.pathFillProperty.value.withAlpha( alpha ).toCSS();
       context.strokeStyle = EnergySkateParkColors.pathStrokeProperty.value.withAlpha( alpha ).toCSS();
 

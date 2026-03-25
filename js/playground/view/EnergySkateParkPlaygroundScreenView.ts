@@ -87,7 +87,7 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     eraseTracksButton.right = this.trackToolbox.left - 10;
 
 
-    // REVIEW: This is a lot of logic for description that I think might benefit from being in it's own file
+    // REVIEW: This is a lot of logic for description that I think might benefit from being in its own file
     // for readability.
     // Add track toolbox and clear button into the "Your Skate Park" heading PDOM order (before skaterNode)
     const headingOrder = this.yourSkateParkHeadingNode.pdomOrder!;

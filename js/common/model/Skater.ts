@@ -539,14 +539,13 @@ export default class Skater {
    * Place the skater at a specific parametric position on a track, setting position, orientation, and clearing
    * velocity/thermalEnergy. Used by keyboard interactions that jump or snap the skater to a track location.
    */
-  // REVIEW: What is the parameter `u` defining? Maybe provide a more descriptive name or documentation to clarify
-  public placeOnTrackAt( track: Track, u: number ): void {
-    this.parametricPositionProperty.value = u;
-    this.positionProperty.value = track.getPoint( u );
+  public placeOnTrackAt( track: Track, parametricPosition: number ): void {
+    this.parametricPositionProperty.value = parametricPosition;
+    this.positionProperty.value = track.getPoint( parametricPosition );
 
-    const normal = track.getUnitNormalVector( u );
+    const normal = track.getUnitNormalVector( parametricPosition );
     this.isOnTopSideOfTrackProperty.value = normal.y > 0;
-    this.angleProperty.value = track.getViewAngleAt( u ) + ( this.isOnTopSideOfTrackProperty.value ? 0 : Math.PI );
+    this.angleProperty.value = track.getViewAngleAt( parametricPosition ) + ( this.isOnTopSideOfTrackProperty.value ? 0 : Math.PI );
 
     this.velocityProperty.value = new Vector2( 0, 0 );
     this.parametricSpeedProperty.value = 0;
