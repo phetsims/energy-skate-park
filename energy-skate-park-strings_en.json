@@ -724,7 +724,7 @@
         "value": "Stick to Track mode off."
       }
     },
-    "sceneSelectionRadioButtonGroup": {
+    "trackSelectionRadioButtonGroup": {
       "accessibleName": {
         "value": "Track Selection"
       },
@@ -791,7 +791,7 @@
         "value": "{$value} kilograms"
       }
     },
-    "skaterSetOneControls": {
+    "skaterSelectionControls": {
       "accessibleName": {
         "value": "Skater Selection"
       },

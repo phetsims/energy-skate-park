@@ -28,14 +28,14 @@ export default class SkaterRadioButtonGroup extends RectangularRadioButtonGroup<
   public constructor( skaterImageSetProperty: Property<number>, tandem: Tandem ) {
 
     const skaterAccessibleNames: TReadOnlyProperty<string>[] = [
-      EnergySkateParkFluent.a11y.skaterSetOneControls.skater1RadioButton.accessibleNameStringProperty,
-      EnergySkateParkFluent.a11y.skaterSetOneControls.skater2RadioButton.accessibleNameStringProperty,
-      EnergySkateParkFluent.a11y.skaterSetOneControls.skater3RadioButton.accessibleNameStringProperty,
-      EnergySkateParkFluent.a11y.skaterSetOneControls.skater4RadioButton.accessibleNameStringProperty,
-      EnergySkateParkFluent.a11y.skaterSetOneControls.skater5RadioButton.accessibleNameStringProperty,
-      EnergySkateParkFluent.a11y.skaterSetOneControls.skater6RadioButton.accessibleNameStringProperty,
-      EnergySkateParkFluent.a11y.skaterSetOneControls.animal1RadioButton.accessibleNameStringProperty,
-      EnergySkateParkFluent.a11y.skaterSetOneControls.animal2RadioButton.accessibleNameStringProperty
+      EnergySkateParkFluent.a11y.skaterSelectionControls.skater1RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSelectionControls.skater2RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSelectionControls.skater3RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSelectionControls.skater4RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSelectionControls.skater5RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSelectionControls.skater6RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSelectionControls.animal1RadioButton.accessibleNameStringProperty,
+      EnergySkateParkFluent.a11y.skaterSelectionControls.animal2RadioButton.accessibleNameStringProperty
     ];
 
     // Build the items array for RectangularRadioButtonGroup
@@ -72,8 +72,8 @@ export default class SkaterRadioButtonGroup extends RectangularRadioButtonGroup<
       lineSpacing: BUTTON_SPACING,
       justify: 'left',
       stretch: false,
-      accessibleName: EnergySkateParkFluent.a11y.skaterSetOneControls.accessibleNameStringProperty,
-      accessibleHelpText: EnergySkateParkFluent.a11y.skaterSetOneControls.accessibleHelpTextStringProperty,
+      accessibleName: EnergySkateParkFluent.a11y.skaterSelectionControls.accessibleNameStringProperty,
+      accessibleHelpText: EnergySkateParkFluent.a11y.skaterSelectionControls.accessibleHelpTextStringProperty,
       radioButtonOptions: {
         xMargin: 1,
         yMargin: 1,

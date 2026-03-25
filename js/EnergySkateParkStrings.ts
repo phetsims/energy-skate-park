@@ -341,7 +341,7 @@ type StringsType = {
       'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;
       'accessibleContextResponseUncheckedStringProperty': LocalizedStringProperty;
     };
-    'sceneSelectionRadioButtonGroup': {
+    'trackSelectionRadioButtonGroup': {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'parabolaRadioButton': {
         'accessibleNameStringProperty': LocalizedStringProperty;
@@ -378,7 +378,7 @@ type StringsType = {
       'accessibleHelpTextStringProperty': LocalizedStringProperty;
       'accessibleValuePatternStringProperty': LocalizedStringProperty;
     };
-    'skaterSetOneControls': {
+    'skaterSelectionControls': {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'accessibleHelpTextStringProperty': LocalizedStringProperty;
       'skater1RadioButton': {

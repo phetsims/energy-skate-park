@@ -18,10 +18,10 @@ import EnergySkateParkSaveSampleScreenView, { EnergySkateParkSaveSampleScreenVie
 
 // Map from TrackType to the corresponding radio button accessible name StringProperty
 const trackTypeToNameProperty: Record<TrackType, TReadOnlyProperty<string>> = {
-  PARABOLA: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.parabolaRadioButton.accessibleNameStringProperty,
-  RAMP: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.rampRadioButton.accessibleNameStringProperty,
-  DOUBLE_WELL: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.doubleWellRadioButton.accessibleNameStringProperty,
-  LOOP: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.loopRadioButton.accessibleNameStringProperty
+  PARABOLA: EnergySkateParkFluent.a11y.trackSelectionRadioButtonGroup.parabolaRadioButton.accessibleNameStringProperty,
+  RAMP: EnergySkateParkFluent.a11y.trackSelectionRadioButtonGroup.rampRadioButton.accessibleNameStringProperty,
+  DOUBLE_WELL: EnergySkateParkFluent.a11y.trackSelectionRadioButtonGroup.doubleWellRadioButton.accessibleNameStringProperty,
+  LOOP: EnergySkateParkFluent.a11y.trackSelectionRadioButtonGroup.loopRadioButton.accessibleNameStringProperty
 };
 
 export default class EnergySkateParkTrackSetScreenView extends EnergySkateParkSaveSampleScreenView {

@@ -61,7 +61,7 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
           selectedStroke: EnergySkateParkColors.radioButtonSelectedStrokeProperty
         }
       },
-      accessibleName: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.accessibleNameStringProperty,
+      accessibleName: EnergySkateParkFluent.a11y.trackSelectionRadioButtonGroup.accessibleNameStringProperty,
       tandem: tandem,
       includeBackground: false,
       layoutOptions: { stretch: false },
@@ -150,10 +150,10 @@ export default class SceneSelectionRadioButtonGroup extends RectangularRadioButt
 
     // Keep accessible names tied to track identity, not index order, so subsets of track types remain correct.
     const sceneAccessibleNameMap: Record<TrackType, TReadOnlyProperty<string>> = {
-      PARABOLA: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.parabolaRadioButton.accessibleNameStringProperty,
-      RAMP: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.rampRadioButton.accessibleNameStringProperty,
-      DOUBLE_WELL: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.doubleWellRadioButton.accessibleNameStringProperty,
-      LOOP: EnergySkateParkFluent.a11y.sceneSelectionRadioButtonGroup.loopRadioButton.accessibleNameStringProperty
+      PARABOLA: EnergySkateParkFluent.a11y.trackSelectionRadioButtonGroup.parabolaRadioButton.accessibleNameStringProperty,
+      RAMP: EnergySkateParkFluent.a11y.trackSelectionRadioButtonGroup.rampRadioButton.accessibleNameStringProperty,
+      DOUBLE_WELL: EnergySkateParkFluent.a11y.trackSelectionRadioButtonGroup.doubleWellRadioButton.accessibleNameStringProperty,
+      LOOP: EnergySkateParkFluent.a11y.trackSelectionRadioButtonGroup.loopRadioButton.accessibleNameStringProperty
     };
 
     const radioButtonContent: { value: TrackType; createNode: () => Node; tandemName: string; options?: object }[] = [];

@@ -223,11 +223,11 @@ addToMapIfDefined( 'a11y_pathCheckbox_accessibleContextResponseChecked', 'a11y.p
 addToMapIfDefined( 'a11y_pathCheckbox_accessibleContextResponseUnchecked', 'a11y.pathCheckbox.accessibleContextResponseUncheckedStringProperty' );
 addToMapIfDefined( 'a11y_stickToTrackCheckbox_accessibleContextResponseChecked', 'a11y.stickToTrackCheckbox.accessibleContextResponseCheckedStringProperty' );
 addToMapIfDefined( 'a11y_stickToTrackCheckbox_accessibleContextResponseUnchecked', 'a11y.stickToTrackCheckbox.accessibleContextResponseUncheckedStringProperty' );
-addToMapIfDefined( 'a11y_sceneSelectionRadioButtonGroup_accessibleName', 'a11y.sceneSelectionRadioButtonGroup.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_sceneSelectionRadioButtonGroup_parabolaRadioButton_accessibleName', 'a11y.sceneSelectionRadioButtonGroup.parabolaRadioButton.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_sceneSelectionRadioButtonGroup_rampRadioButton_accessibleName', 'a11y.sceneSelectionRadioButtonGroup.rampRadioButton.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_sceneSelectionRadioButtonGroup_doubleWellRadioButton_accessibleName', 'a11y.sceneSelectionRadioButtonGroup.doubleWellRadioButton.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_sceneSelectionRadioButtonGroup_loopRadioButton_accessibleName', 'a11y.sceneSelectionRadioButtonGroup.loopRadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_trackSelectionRadioButtonGroup_accessibleName', 'a11y.trackSelectionRadioButtonGroup.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_trackSelectionRadioButtonGroup_parabolaRadioButton_accessibleName', 'a11y.trackSelectionRadioButtonGroup.parabolaRadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_trackSelectionRadioButtonGroup_rampRadioButton_accessibleName', 'a11y.trackSelectionRadioButtonGroup.rampRadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_trackSelectionRadioButtonGroup_doubleWellRadioButton_accessibleName', 'a11y.trackSelectionRadioButtonGroup.doubleWellRadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_trackSelectionRadioButtonGroup_loopRadioButton_accessibleName', 'a11y.trackSelectionRadioButtonGroup.loopRadioButton.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_frictionSlider_accessibleHelpText', 'a11y.frictionSlider.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_gravitySlider_accessibleHelpText', 'a11y.gravitySlider.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_gravityControl_accessibleHelpText', 'a11y.gravityControl.accessibleHelpTextStringProperty' );
@@ -238,16 +238,16 @@ addToMapIfDefined( 'a11y_gravityComboBox_accessibleContextResponse', 'a11y.gravi
 addToMapIfDefined( 'a11y_massSlider_accessibleHelpText', 'a11y.massSlider.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_massControl_accessibleHelpText', 'a11y.massControl.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_massControl_accessibleValuePattern', 'a11y.massControl.accessibleValuePatternStringProperty' );
-addToMapIfDefined( 'a11y_skaterSetOneControls_accessibleName', 'a11y.skaterSetOneControls.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_skaterSetOneControls_accessibleHelpText', 'a11y.skaterSetOneControls.accessibleHelpTextStringProperty' );
-addToMapIfDefined( 'a11y_skaterSetOneControls_skater1RadioButton_accessibleName', 'a11y.skaterSetOneControls.skater1RadioButton.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_skaterSetOneControls_skater2RadioButton_accessibleName', 'a11y.skaterSetOneControls.skater2RadioButton.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_skaterSetOneControls_skater3RadioButton_accessibleName', 'a11y.skaterSetOneControls.skater3RadioButton.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_skaterSetOneControls_skater4RadioButton_accessibleName', 'a11y.skaterSetOneControls.skater4RadioButton.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_skaterSetOneControls_skater5RadioButton_accessibleName', 'a11y.skaterSetOneControls.skater5RadioButton.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_skaterSetOneControls_skater6RadioButton_accessibleName', 'a11y.skaterSetOneControls.skater6RadioButton.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_skaterSetOneControls_animal1RadioButton_accessibleName', 'a11y.skaterSetOneControls.animal1RadioButton.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_skaterSetOneControls_animal2RadioButton_accessibleName', 'a11y.skaterSetOneControls.animal2RadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_skaterSelectionControls_accessibleName', 'a11y.skaterSelectionControls.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_skaterSelectionControls_accessibleHelpText', 'a11y.skaterSelectionControls.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_skaterSelectionControls_skater1RadioButton_accessibleName', 'a11y.skaterSelectionControls.skater1RadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_skaterSelectionControls_skater2RadioButton_accessibleName', 'a11y.skaterSelectionControls.skater2RadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_skaterSelectionControls_skater3RadioButton_accessibleName', 'a11y.skaterSelectionControls.skater3RadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_skaterSelectionControls_skater4RadioButton_accessibleName', 'a11y.skaterSelectionControls.skater4RadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_skaterSelectionControls_skater5RadioButton_accessibleName', 'a11y.skaterSelectionControls.skater5RadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_skaterSelectionControls_skater6RadioButton_accessibleName', 'a11y.skaterSelectionControls.skater6RadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_skaterSelectionControls_animal1RadioButton_accessibleName', 'a11y.skaterSelectionControls.animal1RadioButton.accessibleNameStringProperty' );
+addToMapIfDefined( 'a11y_skaterSelectionControls_animal2RadioButton_accessibleName', 'a11y.skaterSelectionControls.animal2RadioButton.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_gridCheckbox_accessibleHelpText', 'a11y.gridCheckbox.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_gridCheckbox_accessibleContextResponseChecked', 'a11y.gridCheckbox.accessibleContextResponseCheckedStringProperty' );
 addToMapIfDefined( 'a11y_gridCheckbox_accessibleContextResponseUnchecked', 'a11y.gridCheckbox.accessibleContextResponseUncheckedStringProperty' );
@@ -592,7 +592,6 @@ const EnergySkateParkFluent = {
         zoomLevelResponse: new FluentPattern<{ level: FluentVariable, max: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energyBarGraphAccordionBox_zoomButtonGroup_zoomLevelResponse', _.get( EnergySkateParkStrings, 'a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomLevelResponseStringProperty' ), [{"name":"level"},{"name":"max"}] )
       }
     },
-    _comment_0: new FluentComment( {"comment":"Control Panel controls, in visual order, not sure if extra nesting is needed.","associatedKey":"pieChartCheckbox"} ),
     pieChartCheckbox: {
       accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChartCheckbox_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.pieChartCheckbox.accessibleHelpTextStringProperty' ) ),
       accessibleContextResponseCheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChartCheckbox_accessibleContextResponseChecked', _.get( EnergySkateParkStrings, 'a11y.pieChartCheckbox.accessibleContextResponseCheckedStringProperty' ) ),
@@ -612,26 +611,25 @@ const EnergySkateParkFluent = {
       accessibleContextResponseCheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_stickToTrackCheckbox_accessibleContextResponseChecked', _.get( EnergySkateParkStrings, 'a11y.stickToTrackCheckbox.accessibleContextResponseCheckedStringProperty' ) ),
       accessibleContextResponseUncheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_stickToTrackCheckbox_accessibleContextResponseUnchecked', _.get( EnergySkateParkStrings, 'a11y.stickToTrackCheckbox.accessibleContextResponseUncheckedStringProperty' ) )
     },
-    _comment_1: new FluentComment( {"comment":"Key names likely need fixing. I copied the phetioIDs from the Intro screen, but index is not consistent across screens.","associatedKey":"sceneSelectionRadioButtonGroup"} ),
-    sceneSelectionRadioButtonGroup: {
-      accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_sceneSelectionRadioButtonGroup_accessibleName', _.get( EnergySkateParkStrings, 'a11y.sceneSelectionRadioButtonGroup.accessibleNameStringProperty' ) ),
+    trackSelectionRadioButtonGroup: {
+      accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_trackSelectionRadioButtonGroup_accessibleName', _.get( EnergySkateParkStrings, 'a11y.trackSelectionRadioButtonGroup.accessibleNameStringProperty' ) ),
       parabolaRadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_sceneSelectionRadioButtonGroup_parabolaRadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.sceneSelectionRadioButtonGroup.parabolaRadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_trackSelectionRadioButtonGroup_parabolaRadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.trackSelectionRadioButtonGroup.parabolaRadioButton.accessibleNameStringProperty' ) )
       },
       rampRadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_sceneSelectionRadioButtonGroup_rampRadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.sceneSelectionRadioButtonGroup.rampRadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_trackSelectionRadioButtonGroup_rampRadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.trackSelectionRadioButtonGroup.rampRadioButton.accessibleNameStringProperty' ) )
       },
       doubleWellRadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_sceneSelectionRadioButtonGroup_doubleWellRadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.sceneSelectionRadioButtonGroup.doubleWellRadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_trackSelectionRadioButtonGroup_doubleWellRadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.trackSelectionRadioButtonGroup.doubleWellRadioButton.accessibleNameStringProperty' ) )
       },
       loopRadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_sceneSelectionRadioButtonGroup_loopRadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.sceneSelectionRadioButtonGroup.loopRadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_trackSelectionRadioButtonGroup_loopRadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.trackSelectionRadioButtonGroup.loopRadioButton.accessibleNameStringProperty' ) )
       }
     },
     frictionSlider: {
       accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_frictionSlider_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.frictionSlider.accessibleHelpTextStringProperty' ) )
     },
-    _comment_2: new FluentComment( {"comment":"Gravity and Mass controls are either a Slider or a NumberControl. Help text depends on which type of control.","associatedKey":"gravitySlider"} ),
+    _comment_0: new FluentComment( {"comment":"Gravity and Mass controls are either a Slider or a NumberControl. Help text depends on which type of control.","associatedKey":"gravitySlider"} ),
     gravitySlider: {
       accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_gravitySlider_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.gravitySlider.accessibleHelpTextStringProperty' ) )
     },
@@ -652,33 +650,32 @@ const EnergySkateParkFluent = {
       accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_massControl_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.massControl.accessibleHelpTextStringProperty' ) ),
       accessibleValuePattern: new FluentPattern<{ value: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_massControl_accessibleValuePattern', _.get( EnergySkateParkStrings, 'a11y.massControl.accessibleValuePatternStringProperty' ), [{"name":"value"}] )
     },
-    _comment_3: new FluentComment( {"comment":"Key names likely need fixing. I copied the phetioIDs from the Intro screen. For animal skaters, list animal type. For example: Skater 7, Goat","associatedKey":"skaterSetOneControls"} ),
-    skaterSetOneControls: {
-      accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.accessibleNameStringProperty' ) ),
-      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.accessibleHelpTextStringProperty' ) ),
+    skaterSelectionControls: {
+      accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSelectionControls_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSelectionControls.accessibleNameStringProperty' ) ),
+      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSelectionControls_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.skaterSelectionControls.accessibleHelpTextStringProperty' ) ),
       skater1RadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_skater1RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.skater1RadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSelectionControls_skater1RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSelectionControls.skater1RadioButton.accessibleNameStringProperty' ) )
       },
       skater2RadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_skater2RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.skater2RadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSelectionControls_skater2RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSelectionControls.skater2RadioButton.accessibleNameStringProperty' ) )
       },
       skater3RadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_skater3RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.skater3RadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSelectionControls_skater3RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSelectionControls.skater3RadioButton.accessibleNameStringProperty' ) )
       },
       skater4RadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_skater4RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.skater4RadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSelectionControls_skater4RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSelectionControls.skater4RadioButton.accessibleNameStringProperty' ) )
       },
       skater5RadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_skater5RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.skater5RadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSelectionControls_skater5RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSelectionControls.skater5RadioButton.accessibleNameStringProperty' ) )
       },
       skater6RadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_skater6RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.skater6RadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSelectionControls_skater6RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSelectionControls.skater6RadioButton.accessibleNameStringProperty' ) )
       },
       animal1RadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_animal1RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.animal1RadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSelectionControls_animal1RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSelectionControls.animal1RadioButton.accessibleNameStringProperty' ) )
       },
       animal2RadioButton: {
-        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSetOneControls_animal2RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSetOneControls.animal2RadioButton.accessibleNameStringProperty' ) )
+        accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_skaterSelectionControls_animal2RadioButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.skaterSelectionControls.animal2RadioButton.accessibleNameStringProperty' ) )
       }
     },
     gridCheckbox: {

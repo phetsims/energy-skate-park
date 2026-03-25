@@ -43,7 +43,7 @@ visibilityControls:
   path:            Path
   speed:           Speed
 skaterControls:
-  restartSkater:      Restart Skater
+  restartSkater: Restart Skater
 trackControls.stickToTrack: Stick to Track
 heightLabels:
   zeroM:            0 m
@@ -146,10 +146,10 @@ a11y:
       cancel:             Cancel
   skaterNode:
     accessibleName:                 Skater
-    firstGrabContextResponse:          Press J key plus T key to attach skater to nearest track. Space to release.
-    snapToTrackContextResponse:        Skater on track.
-    detachFromTrackContextResponse:    Skater off track.
-    offScreenContextResponse:          Skater off screen. Return skater.
+    firstGrabContextResponse:       Press J key plus T key to attach skater to nearest track. Space to release.
+    snapToTrackContextResponse:     Skater on track.
+    detachFromTrackContextResponse: Skater off track.
+    offScreenContextResponse:       Skater off screen. Return skater.
   referenceHeightLine:
     accessibleHeading:  Reference Height
     accessibleName:     Reference Height Line
@@ -309,8 +309,6 @@ a11y:
 
       zoomLevelResponse: 'Zoom level { $level } of { $max }.'
 
-  # REVIEW: Is this documentation outdated?
-  # Control Panel controls, in visual order, not sure if extra nesting is needed.
   pieChartCheckbox:
     accessibleHelpText:                 Show or hide pie chart representation of skater's energy.
     accessibleContextResponseChecked:   Pie chart added to Play Area.
@@ -327,9 +325,7 @@ a11y:
     accessibleContextResponseChecked:   Stick to Track mode enabled.
     accessibleContextResponseUnchecked: Stick to Track mode off.
   
-  # REVIEW: This documentation seems outdated?
-  # Key names likely need fixing. I copied the phetioIDs from the Intro screen, but index is not consistent across screens.
-  sceneSelectionRadioButtonGroup:
+  trackSelectionRadioButtonGroup:
     accessibleName: Track Selection
     parabolaRadioButton:
       accessibleName: Parabola
@@ -366,9 +362,7 @@ a11y:
     accessibleHelpText:     Set skater mass.
     accessibleValuePattern: '{$value} kilograms'
   
-  # REVIEW: Documentation seems outdated?
-  # Key names likely need fixing. I copied the phetioIDs from the Intro screen. For animal skaters, list animal type. For example: Skater 7, Goat
-  skaterSetOneControls:
+  skaterSelectionControls:
     accessibleName:     Skater Selection
     accessibleHelpText: Select skater portrayal.
     skater1RadioButton:
