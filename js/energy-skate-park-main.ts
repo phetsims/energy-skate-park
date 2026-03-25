@@ -36,7 +36,6 @@ const preferencesModel = new PreferencesModel( {
 } );
 const energySkateParkPreferencesModel = new EnergySkateParkPreferencesModel();
 
-// constants
 const rootTandem = Tandem.ROOT;
 
 simLauncher.launch( () => {
