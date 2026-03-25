@@ -707,7 +707,7 @@
     },
     "pathCheckbox": {
       "accessibleHelpText": {
-        "value": "Explore with or without dots drawn along the skaters path in equal time intervals."
+        "value": "Explore with or without dots drawn along the skater's path in equal time intervals."
       },
       "accessibleContextResponseChecked": {
         "value": "Path dots drawn in equal time intervals."
@@ -903,7 +903,7 @@
       },
       "playground": {
         "accessibleHelpText": {
-          "value": "Build your own custom tracks, ramps, and jumps for the skater.."
+          "value": "Build your own custom tracks, ramps, and jumps for the skater."
         }
       }
     },

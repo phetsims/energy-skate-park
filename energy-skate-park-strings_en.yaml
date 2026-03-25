@@ -318,7 +318,7 @@ a11y:
     accessibleContextResponseChecked:   Speedometer added to Play Area.
     accessibleContextResponseUnchecked: Speedometer hidden.
   pathCheckbox:
-    accessibleHelpText:                 Explore with or without dots drawn along the skaters path in equal time intervals.
+    accessibleHelpText:                 Explore with or without dots drawn along the skater's path in equal time intervals.
     accessibleContextResponseChecked:   Path dots drawn in equal time intervals.
     accessibleContextResponseUnchecked: Path dots hidden.
   stickToTrackCheckbox:
@@ -409,7 +409,7 @@ a11y:
     graphs:
       accessibleHelpText: Analyze the skater's energy as a function of position or time.
     playground:
-      accessibleHelpText: Build your own custom tracks, ramps, and jumps for the skater..
+      accessibleHelpText: Build your own custom tracks, ramps, and jumps for the skater.
   preferences:
     metersPerSecondSquaredRadioButton: meters per second squared
     newtonsPerKilogramRadioButton:     newtons per kilogram
