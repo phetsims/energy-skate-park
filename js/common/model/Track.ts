@@ -784,8 +784,6 @@ export default class Track extends PhetioObject {
       }
     }
 
-    // REVIEW: Can this commented out affirm be removed?
-    // affirm( this.getLowestY() >= 0, 'track should be above ground' );
     this.updateEmitter.emit();
   }
 
