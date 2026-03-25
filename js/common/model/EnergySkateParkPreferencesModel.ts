@@ -19,7 +19,8 @@ export class AccelerationUnits extends EnumerationValue {
   public static readonly METERS_PER_SECOND_SQUARED = new AccelerationUnits();
   public static readonly NEWTONS_PER_KILOGRAM = new AccelerationUnits();
 
-  // REVIEW: This seems to be unused?
+  // Despite being marked as unused, the legacy enumeration pattern requires an enumeration attribute. Try commenting
+  // out to see what would go wrong without it.
   private static readonly enumeration = new Enumeration( AccelerationUnits );
 }
 

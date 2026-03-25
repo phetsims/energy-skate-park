@@ -372,7 +372,7 @@ export default class EnergySkateParkModel {
     this.tracks.addItemAddedListener( updateTrackEditingButtonProperties );
     this.tracks.addItemRemovedListener( updateTrackEditingButtonProperties );
 
-    // REVIEW: Can you add more documentation about why we need to link to the phetioStateSetEmitter here?
+    // Update after state set, since the update depends on the number of tracks and the number of control points in each track.
     phetioStateSetEmitter.addListener( updateTrackEditingButtonProperties );
 
     this.updateEmitter = new Emitter();
