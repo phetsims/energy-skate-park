@@ -145,8 +145,9 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       if ( thermal ) { names.push( thermalName ); }
       if ( total ) { names.push( totalName ); }
 
-      // REVIEW: Some simple documentation here will help make this DerivedProperty easier to parse.
-      // REVIEW: Move this code to the yaml file
+      // Produces a human-readable comma-separated list of checked energy types for screen reader descriptions.
+      // e.g. "kinetic", "kinetic and potential", "kinetic, potential, and thermal"
+      // TODO: Move this list formatting logic to the Fluent yaml file for proper i18n, https://github.com/phetsims/energy-skate-park/issues/405
       if ( names.length === 0 ) { return noneName; }
       if ( names.length === 1 ) { return names[ 0 ]; }
       if ( names.length === 2 ) { return `${names[ 0 ]} and ${names[ 1 ]}`; }

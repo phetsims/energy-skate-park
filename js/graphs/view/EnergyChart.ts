@@ -382,8 +382,9 @@ export default class EnergyChart extends XYCursorChartNode {
     // add data points when a EnergySkateParkDataSample is added to the model
     model.dataSamples.addItemAddedListener( addedSample => {
 
-      // REVIEW: Can you add documentation as to why this listener needs to be skipped when
-      // setting state?
+      // Skip during state restoration - the phetioStateSetEmitter handler below rebuilds all data
+      // series from the restored dataSamples after state is fully applied. Processing individual
+      // additions here would create duplicates.
       if ( isSettingPhetioStateProperty.value ) { return; }
 
       const plotTime = model.independentVariableProperty.get() === 'time';
@@ -428,9 +429,11 @@ export default class EnergyChart extends XYCursorChartNode {
       } );
     } );
 
-    // After PhET-iO state is set, rebuild the data series from the current dataSamples
-    // REVIEW: I'm assuming the logic in a lot of listeners was skipped for this. I would add information about
-    // why that was needed in the implementation-notes.md if there is not a more appropriate place in the code to do so.
+    // After PhET-iO state is set, rebuild the data series from the current dataSamples.
+    // During state restoration, individual listeners on model Properties (e.g. dataSamples.addItemAddedListener,
+    // GraphsModel listeners that clear/prune data) are skipped via isSettingPhetioStateProperty guards. This
+    // prevents side effects from corrupting the restored state. Instead, this single handler runs after the
+    // full state is applied, rebuilding the view-layer data series to match the restored model dataSamples.
     if ( Tandem.PHET_IO_ENABLED ) {
       phetioStateSetEmitter.addListener( () => {
 

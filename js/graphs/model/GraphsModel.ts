@@ -160,7 +160,9 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // existing data fades away before removal when the skater direction changes
     this.skater.directionProperty.link( direction => {
 
-      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
+      // During PhET-iO state restoration, Property values are set directly by the state engine. Skipping this
+      // listener prevents side effects (like initiating sample removal) from corrupting the restored data.
+      // The state engine restores dataSamples independently, so they don't need to be derived from listener logic.
       if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'position' ) {
@@ -177,14 +179,17 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // clear all data when the track changes
     this.sceneProperty.link( scene => {
 
-      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
+      // Skip during state restoration - the state engine restores dataSamples directly, so clearing
+      // them in response to the scene Property being set would destroy the restored data.
       if ( isSettingPhetioStateProperty.value ) { return; }
       this.clearEnergyData();
     } );
 
     this.skater.userControlledProperty.link( userControlled => {
 
-      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
+      // Skip during state restoration - the state engine sets userControlledProperty and preventSampleSave
+      // to their correct values. Reacting here would incorrectly clear energy data or change preventSampleSave
+      // during the intermediate steps of state restoration.
       if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'position' ) {
@@ -206,8 +211,9 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // clear old samples if we are plotting for longer than the range
     this.sampleTimeProperty.link( time => {
 
-      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
-      // And/or how it's handled for state management if it's not managed here?
+      // Skip during state restoration - the state engine restores both sampleTimeProperty and dataSamples
+      // to their saved values. Pruning old samples here would destroy data that the state engine is about
+      // to (or has already) restored.
       if ( isSettingPhetioStateProperty.value ) { return; }
 
       const plottingTime = this.independentVariableProperty.get() === 'time';
@@ -235,8 +241,9 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // physical system and changes everything in saved EnergySkateParkDataSamples
     Multilink.lazyMultilinkAny( this.userControlledPropertySet.properties, () => {
 
-      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
-      // And/or how it's handled for state management if it's not managed here?
+      // Skip during state restoration - userControlledPropertySet Properties are restored individually by the
+      // state engine. Reacting here would prune future samples based on intermediate cursor positions before
+      // the full state has been applied. The restored dataSamples already reflect the correct set.
       if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'time' ) {
@@ -258,7 +265,8 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     // see previous data when plotting against time so don't clear in that case
     this.skater.returnedEmitter.addListener( () => {
 
-      // REVIEW: Can you add documentation for why this needs to be skipped during state setting?
+      // Skip during state restoration - the return emitter may fire as part of restoring skater state,
+      // but the dataSamples are restored independently and should not be cleared.
       if ( isSettingPhetioStateProperty.value ) { return; }
 
       if ( this.independentVariableProperty.get() === 'position' ) {

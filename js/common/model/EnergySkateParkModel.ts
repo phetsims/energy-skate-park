@@ -1466,7 +1466,10 @@ export default class EnergySkateParkModel {
     // increment running time - done in stepModel because dt reflects timeSpeedProperty here
     this.stopwatch.step( dt );
 
-    // REVIEW: What is the difference between these two?
+    // skaterState.dragging is a snapshot captured when the SkaterState was created (immutable physics state),
+    // while userControlledProperty is the live model Property. Both are checked because the snapshot may not
+    // yet reflect a very recent user interaction, or the live Property may have changed since the snapshot was
+    // taken. See https://github.com/phetsims/energy-skate-park/issues/405 for potential unification.
     if ( skaterState.dragging || this.skater.userControlledProperty.value ) {
 
       // User is dragging the skater, nothing to update here

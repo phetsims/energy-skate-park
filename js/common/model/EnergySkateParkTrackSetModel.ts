@@ -44,7 +44,8 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
   public readonly trackTypes: ReadonlyArray<TrackType>;
 
   // Emits when a scene change causes the skater to be returned to the ground (only when skater was actually displaced).
-  // REVIEW: Can you add documentation about why this was added? I'm guessing something to do with PhET-iO?
+  // Used by EnergySkateParkTrackSetScreenView to announce to screen readers that the skater was returned to the
+  // ground as a result of changing scenes (accessibility context response).
   public readonly skaterReturnedToGroundBySceneChangeEmitter: Emitter;
 
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions: EnergySkateParkTrackSetModelOptions ) {
