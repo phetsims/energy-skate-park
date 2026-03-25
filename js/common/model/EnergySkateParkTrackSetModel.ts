@@ -144,7 +144,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
     this.trackTypes.forEach( trackType => {
       if ( trackType === 'PARABOLA' ) {
         const parabolaTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'parabolaTrack' );
-        const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( this, parabolaTrackTandem, options.parabolaControlPointOptions ?? {} );
+        const parabolaControlPoints = PremadeTracks.createParabolaControlPoints( parabolaTrackTandem, options.parabolaControlPointOptions ?? {} );
         const parabolaTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, parabolaControlPoints, combineOptions<TrackOptions>( {},
           options.parabolaTrackOptions, {
             tandem: parabolaTrackTandem
@@ -157,7 +157,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
         // REVIEW: If this trackType was renamed to "RAMP" shouldn't all references be updated as well?
         // ie. createSlopeControlPoints, slopeControlPointOptions, slopeTrackOptions, etc.
-        const rampControlPoints = PremadeTracks.createSlopeControlPoints( this, rampTrackTandem, options.slopeControlPointOptions ?? {} );
+        const rampControlPoints = PremadeTracks.createSlopeControlPoints( rampTrackTandem, options.slopeControlPointOptions ?? {} );
         const rampTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, rampControlPoints, combineOptions<TrackOptions>( {
 
           // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
@@ -170,7 +170,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
       }
       else if ( trackType === 'DOUBLE_WELL' ) {
         const doubleWellTandem = tandem.createTandem( 'tracks' ).createTandem( 'doubleWellTrack' );
-        const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( this, doubleWellTandem, options.doubleWellControlPointOptions ?? {} );
+        const doubleWellControlPoints = PremadeTracks.createDoubleWellControlPoints( doubleWellTandem, options.doubleWellControlPointOptions ?? {} );
         const doubleWellTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, doubleWellControlPoints, combineOptions<TrackOptions>( {}, options.doubleWellTrackOptions, {
           tandem: doubleWellTandem
         } ) );
@@ -178,7 +178,7 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
       }
       else if ( trackType === 'LOOP' ) {
         const loopTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'loopTrack' );
-        const loopControlPoints = PremadeTracks.createLoopControlPoints( this, loopTrackTandem, options.loopControlPointOptions ?? {} );
+        const loopControlPoints = PremadeTracks.createLoopControlPoints( loopTrackTandem, options.loopControlPointOptions ?? {} );
         const loopTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, loopControlPoints, combineOptions<TrackOptions>( {
           draggable: this.tracksDraggable
         }, options.loopTrackOptions, {

@@ -2,7 +2,7 @@
 
 /**
  * A collection of tracks used in the EnergySkateParkTrackSet models of energy-skate-park and energy-skate-park-basics.
- * Premade tracks are not draggable but they can sometimes be "configurable", meaning that control points can be moved.
+ * Premade tracks are not draggable, but they can sometimes be "configurable", meaning that control points can be moved.
  * For configurable premade tracks, the control points can only be dragged within a smaller set of bounds. These
  * bounds are specified for all premade tracks, but will only apply to the track if the model tracks are "configurable".
  *
@@ -106,7 +106,7 @@ const PremadeTracks = {
   /**
    * Create a set of control points that create a parabola shaped track.
    */
-  createParabolaControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: ParabolaOptions ): ControlPoint[] => {
+  createParabolaControlPoints: ( tandem: Tandem, options: ParabolaOptions ): ControlPoint[] => {
     options = combineOptions<ParabolaOptions>( {
       trackHeight: 6, // largest height for the parabola
       trackWidth: 8, // width from the left most control point to the right most control point
@@ -147,7 +147,7 @@ const PremadeTracks = {
   /**
    * Create a set of control points which create a slope shaped track, touching the ground on the right side.
    */
-  createSlopeControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: SlopeOptions ): ControlPoint[] => {
+  createSlopeControlPoints: ( tandem: Tandem, options: SlopeOptions ): ControlPoint[] => {
 
     options = combineOptions<SlopeOptions>( {
       trackWidth: 6,
@@ -182,11 +182,10 @@ const PremadeTracks = {
 
   /**
    * Create a set of control points that will create a double well track. For the double well, move the left well up
-   * a but since the interpolation moves it down by that much and we don't want the skater to go below ground
+   * a bit since the interpolation moves it down by that much, and we don't want the skater to go below ground
    * while on the track. Numbers determined by trial and error.
    */
-  // REVIEW: model appears to be unused here.
-  createDoubleWellControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: DoubleWellOptions ): ControlPoint[] => {
+  createDoubleWellControlPoints: ( tandem: Tandem, options: DoubleWellOptions ): ControlPoint[] => {
 
     options = combineOptions<DoubleWellOptions>( {
       trackHeight: 5, // largest height for the well
@@ -258,8 +257,7 @@ const PremadeTracks = {
   /**
    * Create a set of control points that will form a track that takes the shape of a loop.
    */
-  // REVIEW: model appears to be unused here.
-  createLoopControlPoints: ( model: EnergySkateParkModel, tandem: Tandem, options: LoopOptions ): ControlPoint[] => {
+  createLoopControlPoints: ( tandem: Tandem, options: LoopOptions ): ControlPoint[] => {
 
     options = combineOptions<LoopOptions>( {
       trackWidth: 9,
