@@ -57,6 +57,11 @@ export default class PhysicalSlider extends PhysicalNumberControl {
     ];
 
     super( titleString, property, valueRange, userControlledProperty, tandem, options );
+
+    // Add 4 evenly-spaced minor ticks at 20% intervals (shared by all PhysicalSlider subclasses)
+    for ( let i = 1; i <= 4; i++ ) {
+      this.slider.addMinorTick( i * valueRange.getLength() / 5 + valueRange.min );
+    }
   }
 }
 

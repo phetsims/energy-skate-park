@@ -30,10 +30,5 @@ export default class MassSlider extends PhysicalSlider {
       }
     } );
 
-    this.slider.addMinorTick( massRange.getLength() / 5 + massRange.min );
-    this.slider.addMinorTick( 2 * massRange.getLength() / 5 + massRange.min );
-    this.slider.addMinorTick( 3 * massRange.getLength() / 5 + massRange.min );
-    this.slider.addMinorTick( 4 * massRange.getLength() / 5 + massRange.min );
-
   }
 }

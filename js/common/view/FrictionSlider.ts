@@ -39,9 +39,5 @@ export default class FrictionSlider extends PhysicalSlider {
       accessibleHelpText: EnergySkateParkFluent.a11y.frictionSlider.accessibleHelpTextStringProperty
     } );
 
-    this.slider.addMinorTick( range.getLength() / 5 + range.min );
-    this.slider.addMinorTick( 2 * range.getLength() / 5 + range.min );
-    this.slider.addMinorTick( 3 * range.getLength() / 5 + range.min );
-    this.slider.addMinorTick( 4 * range.getLength() / 5 + range.min );
   }
 }
