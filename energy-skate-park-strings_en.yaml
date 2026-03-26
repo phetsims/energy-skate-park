@@ -352,7 +352,10 @@ a11y:
   gravityComboBox:
     accessibleName:            Gravity Benchmark
     accessibleHelpText:        Set acceleration due to gravity to match the chosen benchmark.
-    
+
+    # Gravity value with units for screen reader context responses. Example: "9.8 meters per second squared"
+    gravityValuePattern:       '{$value} meters per second squared'
+
     # Context response stating g value when user interacts with ComboBox. Example for Earth: Gravity now 9.8 meters per second squared.
     accessibleContextResponse: Gravity now {$gravityValue}.
   

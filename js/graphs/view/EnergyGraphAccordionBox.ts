@@ -338,19 +338,17 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       xLabelText.centerX = xLabelText.globalToParentPoint( energyPlot.parentToGlobalPoint( energyPlot.center ) ).x;
     } );
 
-    // REVIEW: Both of the following links are doing the same thing. Should they be a multilink?
-    // also, add documentation about the interaction with PhET-iO state.
-    // listeners - when the independent variable changes, clear all data and update labels
-    model.independentVariableProperty.link( independentVariable => {
-      if ( isSettingPhetioStateProperty.value ) { return; }
-      this.clearEnergyData();
-    } );
-
-    // listeners - when the reference height is changed, clear all data (otherwise the graph will be incorrect, not inertial)
-    model.skater.referenceHeightProperty.link( referenceHeight => {
-      if ( isSettingPhetioStateProperty.value ) { return; }
-      this.clearEnergyData();
-    } );
+    // Clear all energy data when the independent variable or reference height changes — both invalidate
+    // the existing graph data. Skip during PhET-iO state restoration because dataSamples are restored
+    // independently via the phetioStateSetEmitter handler in EnergyChart.
+    Multilink.lazyMultilink(
+      [ model.independentVariableProperty, model.skater.referenceHeightProperty ],
+      () => {
+        if ( !isSettingPhetioStateProperty.value ) {
+          this.clearEnergyData();
+        }
+      }
+    );
   }
 
   /**

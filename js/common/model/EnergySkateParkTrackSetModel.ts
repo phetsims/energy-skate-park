@@ -212,11 +212,12 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
     // existing data fades away before removal when the skater direction changes
     this.skater.directionProperty.link( direction => {
-      // REVIEW you're using two style of checking the `isSettingPhetioStateProperty`.
-      // Recommend to be consistent. the one below looks more familiar with other code I've seen.
-      // Also, maybe explain why you need to check wether state is being set.
-      if ( isSettingPhetioStateProperty.value ) { return; }
-      this.initiateSampleRemoval();
+
+      // Skip during state restoration — the state engine restores dataSamples directly, so side effects
+      // like initiating sample removal would corrupt the restored data.
+      if ( !isSettingPhetioStateProperty.value ) {
+        this.initiateSampleRemoval();
+      }
     } );
 
     // existing data is removed immediately when any of these Properties change

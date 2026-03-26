@@ -774,6 +774,9 @@
       "accessibleHelpText": {
         "value": "Set acceleration due to gravity to match the chosen benchmark."
       },
+      "gravityValuePattern": {
+        "value": "{$value} meters per second squared"
+      },
       "accessibleContextResponse": {
         "value": "Gravity now {$gravityValue}."
       }

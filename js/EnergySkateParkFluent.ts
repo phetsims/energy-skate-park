@@ -234,6 +234,7 @@ addToMapIfDefined( 'a11y_gravityControl_accessibleHelpText', 'a11y.gravityContro
 addToMapIfDefined( 'a11y_gravityControl_accessibleValuePattern', 'a11y.gravityControl.accessibleValuePatternStringProperty' );
 addToMapIfDefined( 'a11y_gravityComboBox_accessibleName', 'a11y.gravityComboBox.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_gravityComboBox_accessibleHelpText', 'a11y.gravityComboBox.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_gravityComboBox_gravityValuePattern', 'a11y.gravityComboBox.gravityValuePatternStringProperty' );
 addToMapIfDefined( 'a11y_gravityComboBox_accessibleContextResponse', 'a11y.gravityComboBox.accessibleContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_massSlider_accessibleHelpText', 'a11y.massSlider.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_massControl_accessibleHelpText', 'a11y.massControl.accessibleHelpTextStringProperty' );
@@ -640,7 +641,9 @@ const EnergySkateParkFluent = {
     gravityComboBox: {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_gravityComboBox_accessibleName', _.get( EnergySkateParkStrings, 'a11y.gravityComboBox.accessibleNameStringProperty' ) ),
       accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_gravityComboBox_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.gravityComboBox.accessibleHelpTextStringProperty' ) ),
-      _comment_0: new FluentComment( {"comment":"Context response stating g value when user interacts with ComboBox. Example for Earth: Gravity now 9.8 meters per second squared.","associatedKey":"accessibleContextResponse"} ),
+      _comment_0: new FluentComment( {"comment":"Gravity value with units for screen reader context responses. Example: \"9.8 meters per second squared\"","associatedKey":"gravityValuePattern"} ),
+      gravityValuePattern: new FluentPattern<{ value: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_gravityComboBox_gravityValuePattern', _.get( EnergySkateParkStrings, 'a11y.gravityComboBox.gravityValuePatternStringProperty' ), [{"name":"value"}] ),
+      _comment_1: new FluentComment( {"comment":"Context response stating g value when user interacts with ComboBox. Example for Earth: Gravity now 9.8 meters per second squared.","associatedKey":"accessibleContextResponse"} ),
       accessibleContextResponse: new FluentPattern<{ gravityValue: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_gravityComboBox_accessibleContextResponse', _.get( EnergySkateParkStrings, 'a11y.gravityComboBox.accessibleContextResponseStringProperty' ), [{"name":"gravityValue"}] )
     },
     massSlider: {
