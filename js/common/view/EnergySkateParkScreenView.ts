@@ -125,6 +125,13 @@ export default class EnergySkateParkScreenView extends ScreenView {
     global: true
   } );
 
+  // HotkeyData for returning a tool (stopwatch/measuring tape) to the toolbox
+  public static readonly RETURN_TO_TOOLBOX_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'delete', 'backspace' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.returnToToolboxStringProperty
+  } );
+
   public readonly modelViewTransform: ModelViewTransform2;
   protected readonly availableModelBoundsProperty: Property<Bounds2>;
   protected readonly trackNodeGroup: { createNextElement( track: Track, modelViewTransform: ModelViewTransform2, availableBoundsProperty: Property<Bounds2>, options?: TrackNodeOptions ): TrackNode };

@@ -19,11 +19,13 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
 import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
+import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
@@ -45,6 +47,13 @@ const InteractiveHighlightingPath = InteractiveHighlighting( Path );
 
 // constants
 export default class TrackNode extends Node {
+
+  // HotkeyData for removing an entire track from the play area
+  public static readonly REMOVE_TRACK_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'delete', 'backspace' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.returnToToolboxStringProperty
+  } );
   private readonly isIcon: boolean;
   public readonly model: EnergySkateParkModel;
   private readonly road: InstanceType<typeof InteractiveHighlightingPath>;
@@ -193,10 +202,9 @@ export default class TrackNode extends Node {
       this.addInputListener( trackKeyboardDragListener, { disposer: this } );
 
       // Delete/backspace removes the entire track when focused
-      // REVIEW: This is probably where the hotkey data for removing a track can be created.
       if ( track.splittable ) {
         this.addInputListener( new KeyboardListener( {
-          keys: [ 'delete', 'backspace' ] as const,
+          keyStringProperties: TrackNode.REMOVE_TRACK_HOTKEY_DATA.keyStringProperties,
           fire: () => {
             if ( track.physicalProperty.value && !track.isDisposed ) {
 

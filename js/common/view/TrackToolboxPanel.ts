@@ -11,10 +11,12 @@
 import Vector2 from '../../../../dot/js/Vector2.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import InteractiveHighlightingNode from '../../../../scenery/js/accessibility/voicing/nodes/InteractiveHighlightingNode.js';
+import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import DragListener from '../../../../scenery/js/listeners/DragListener.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Panel, { PanelOptions } from '../../../../sun/js/Panel.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
+import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkPlaygroundModel from '../../playground/model/EnergySkateParkPlaygroundModel.js';
 import EnergySkateParkPlaygroundScreenView from '../../playground/view/EnergySkateParkPlaygroundScreenView.js';
@@ -24,6 +26,13 @@ import TrackNode from './TrackNode.js';
 const NUMBER_CONTROL_POINTS_PER_TRACK_IN_TOOLBOX = 3;
 
 export default class TrackToolboxPanel extends Panel {
+
+  // HotkeyData for removing a tool from the toolbox (space/enter activates the toolbox icon)
+  public static readonly REMOVE_FROM_TOOLBOX_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'space', 'enter' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.removeFromToolboxStringProperty
+  } );
 
   public constructor( model: EnergySkateParkPlaygroundModel, view: EnergySkateParkPlaygroundScreenView, providedOptions?: PanelOptions ) {
 

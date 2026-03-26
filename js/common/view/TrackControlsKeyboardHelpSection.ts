@@ -7,42 +7,22 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import KeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSection.js';
 import KeyboardHelpSectionRow from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSectionRow.js';
-import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import ControlPointNode from './ControlPointNode.js';
-
-// HotkeyData for keyboard help dialog rows
-// REVIEW: You have this same hotkey data created in ToolboxControlsKeyboardHelpSection
-const REMOVE_FROM_TOOLBOX_HOTKEY_DATA = new HotkeyData( {
-  keys: [ 'space', 'enter' ],
-  repoName: energySkatePark.name,
-  keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.removeFromToolboxStringProperty
-} );
-
-const RETURN_TO_TOOLBOX_HOTKEY_DATA = new HotkeyData( {
-  keys: [ 'delete', 'backspace' ],
-  repoName: energySkatePark.name,
-  keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.returnToToolboxStringProperty
-} );
-
-const DELETE_CONTROL_POINT_HOTKEY_DATA = new HotkeyData( {
-  keys: [ 'delete', 'backspace' ],
-  repoName: energySkatePark.name,
-  keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.deleteControlPointStringProperty
-} );
+import TrackToolboxPanel from './TrackToolboxPanel.js';
+import TrackNode from './TrackNode.js';
 
 export default class TrackControlsKeyboardHelpSection extends KeyboardHelpSection {
 
   public constructor() {
 
     const rows = [
-      KeyboardHelpSectionRow.fromHotkeyData( REMOVE_FROM_TOOLBOX_HOTKEY_DATA ),
-      KeyboardHelpSectionRow.fromHotkeyData( RETURN_TO_TOOLBOX_HOTKEY_DATA ),
+      KeyboardHelpSectionRow.fromHotkeyData( TrackToolboxPanel.REMOVE_FROM_TOOLBOX_HOTKEY_DATA ),
+      KeyboardHelpSectionRow.fromHotkeyData( TrackNode.REMOVE_TRACK_HOTKEY_DATA ),
       KeyboardHelpSectionRow.fromHotkeyData( ControlPointNode.SPLIT_VERTEX_HOTKEY_DATA ),
-      KeyboardHelpSectionRow.fromHotkeyData( DELETE_CONTROL_POINT_HOTKEY_DATA )
+      KeyboardHelpSectionRow.fromHotkeyData( ControlPointNode.DELETE_CONTROL_POINT_HOTKEY_DATA )
     ];
 
     super( EnergySkateParkFluent.keyboardHelpDialog.trackControlsStringProperty, rows, {

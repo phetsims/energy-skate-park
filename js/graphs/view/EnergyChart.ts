@@ -24,6 +24,7 @@ import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransfo
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
 import SceneryPhetFluent from '../../../../scenery-phet/js/SceneryPhetFluent.js';
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
+import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
@@ -34,10 +35,10 @@ import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
 import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
+import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import GraphsConstants from '../GraphsConstants.js';
 import GraphsModel from '../model/GraphsModel.js';
-import GraphCursorControlsKeyboardHelpSection from './GraphCursorControlsKeyboardHelpSection.js';
 
 // constants
 // determines properties of the chart that may depend on the independent variable
@@ -49,6 +50,21 @@ const POSITION_STEP_X = 1; // in meters
 const POSITION_PLOT_OFFSET = EnergySkateParkConstants.POSITION_PLOT_OFFSET;
 
 export default class EnergyChart extends XYCursorChartNode {
+
+  // HotkeyData for toggling pause on the graph cursor (space/enter)
+  public static readonly TOGGLE_PAUSE_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'space', 'enter' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.togglePauseStringProperty
+  } );
+
+  // HotkeyData for scrubbing through recorded data with arrow keys
+  public static readonly SCRUB_DATA_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'arrowLeft', 'arrowRight' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.scrubThroughDataStringProperty
+  } );
+
   private readonly kineticEnergyDataSeries: DynamicSeries;
   private readonly potentialEnergyDataSeries: DynamicSeries;
   private readonly thermalEnergyDataSeries: DynamicSeries;
@@ -169,9 +185,7 @@ export default class EnergyChart extends XYCursorChartNode {
 
     // Space/Enter toggles pause
     this.chartCursor.addInputListener( new KeyboardListener( {
-
-      // REVIEW: It seems odd to reach into the keyboard help section for the hotkey data...
-      keyStringProperties: GraphCursorControlsKeyboardHelpSection.TOGGLE_PAUSE_HOTKEY_DATA.keyStringProperties,
+      keyStringProperties: EnergyChart.TOGGLE_PAUSE_HOTKEY_DATA.keyStringProperties,
       fire: () => {
         model.isPlayingProperty.toggle();
         this.chartCursor.addAccessibleContextResponse(

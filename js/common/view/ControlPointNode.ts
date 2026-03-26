@@ -38,6 +38,13 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
     keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.cutTrackAtControlPointStringProperty
   } );
 
+  // HotkeyData for deleting a control point from a track
+  public static readonly DELETE_CONTROL_POINT_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'delete', 'backspace' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.deleteControlPointStringProperty
+  } );
+
   public readonly boundsRectangle: Rectangle | null;
 
   /**
@@ -348,7 +355,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
         // and `ControlPointAttachmentKeyboardListener`. I think it would be cleaner if all the control point keyboard
         // listeners were defined separately.
         this.addInputListener( new KeyboardListener( {
-          keys: [ 'delete', 'backspace' ] as const,
+          keyStringProperties: ControlPointNode.DELETE_CONTROL_POINT_HOTKEY_DATA.keyStringProperties,
           fire: () => {
             if ( track.physicalProperty.value && !track.isDisposed ) {
 
