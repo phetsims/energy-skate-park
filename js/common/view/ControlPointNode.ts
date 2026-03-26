@@ -21,6 +21,7 @@ import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.
 import Circle, { CircleOptions } from '../../../../scenery/js/nodes/Circle.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
+import BoundaryReachedSoundPlayer from '../../../../tambo/js/BoundaryReachedSoundPlayer.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -28,7 +29,6 @@ import ControlPoint from '../model/ControlPoint.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
-import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import ControlPointAttachmentKeyboardListener from './ControlPointAttachmentKeyboardListener.js';
 import ControlPointDeleteKeyboardListener from './ControlPointDeleteKeyboardListener.js';
 import ControlPointKeyboardDragListener from './ControlPointKeyboardDragListener.js';

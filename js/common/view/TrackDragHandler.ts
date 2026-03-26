@@ -12,11 +12,11 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
+import BoundaryReachedSoundPlayer from '../../../../tambo/js/BoundaryReachedSoundPlayer.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
-import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import TrackNode from './TrackNode.js';
 
 export default class TrackDragHandler extends SoundDragListener {

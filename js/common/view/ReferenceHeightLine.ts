@@ -25,9 +25,9 @@ import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboard
 import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import Line from '../../../../scenery/js/nodes/Line.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
+import BoundaryReachedSoundPlayer from '../../../../tambo/js/BoundaryReachedSoundPlayer.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
-import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import TextPanel from './TextPanel.js';
 

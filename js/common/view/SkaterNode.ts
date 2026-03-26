@@ -26,13 +26,13 @@ import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
+import BoundaryReachedSoundPlayer from '../../../../tambo/js/BoundaryReachedSoundPlayer.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import Skater from '../model/Skater.js';
 import Track from '../model/Track.js';
-import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import EnergySkateParkScreenView from './EnergySkateParkScreenView.js';
 import SkaterImageSet from './SkaterImageSet.js';
 
@@ -188,7 +188,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       // Inverting the scale of the red circle so it always stays the same size
       circle.setRadius( 3.5 / scale );
 
-      // Think of it as a multiplying the Vector2 to the right, so this step happens first actually.  Use it to center
+      // Think of it as a multiplying the Vector2 to the right, so this step happens first, actually.  Use it to center
       // the registration point
       const translation = Matrix3.translation( -imageWidth / 2, -imageHeight );
       matrix.multiplyMatrix( translation );

@@ -10,10 +10,10 @@
 
 import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
+import BoundaryReachedSoundPlayer from '../../../../tambo/js/BoundaryReachedSoundPlayer.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
-import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import ControlPointNode from './ControlPointNode.js';
 import TrackNode from './TrackNode.js';
 
