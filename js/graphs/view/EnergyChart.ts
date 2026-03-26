@@ -254,8 +254,8 @@ export default class EnergyChart extends XYCursorChartNode {
 
     const seriesOptions = { lineWidth: 2 };
 
-    // REVIEW: DynamicSeries is deprecated. I would hope the updated item in Bamboo allows you to pass in full
-    // ColorProperty rather than just the value.
+    // DynamicSeries is deprecated. I would hope the updated item in Bamboo allows you to pass in full
+    // ColorProperty rather than just the value. TODO https://github.com/phetsims/energy-skate-park/issues/417
     this.kineticEnergyDataSeries = new DynamicSeries( merge( {
       color: EnergySkateParkColors.kineticEnergyColorProperty.value,
       visibleProperty: model.kineticEnergyDataVisibleProperty
