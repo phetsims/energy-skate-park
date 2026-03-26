@@ -30,7 +30,7 @@ export default class SkaterState {
   public isOnTopSideOfTrack!: boolean;
   public parametricPosition!: number;
   public parametricSpeed!: number;
-  public dragging!: boolean;
+  public userControlled!: boolean;
   public thermalEnergy!: number;
   public positionX!: number;
   public positionY!: number;
@@ -78,7 +78,7 @@ export default class SkaterState {
     this.isOnTopSideOfTrack = getValue( 'isOnTopSideOfTrack', anySource );
     this.parametricPosition = getValue( 'parametricPosition', anySource );
     this.parametricSpeed = getValue( 'parametricSpeed', anySource );
-    this.dragging = getValue( 'dragging', anySource );
+    this.userControlled = getValue( 'userControlled', anySource );
     this.thermalEnergy = getValue( 'thermalEnergy', anySource );
 
     // Some sanity tests
@@ -149,8 +149,8 @@ export default class SkaterState {
 
     skater.referenceHeightProperty.value = this.referenceHeight;
 
-    // only an angle to restore if skater is attached to a track and skater is not being dragged
-    skater.angleProperty.value = ( skater.trackProperty.value && !this.dragging ) ? skater.trackProperty.value.getViewAngleAt( this.parametricPosition ) + ( this.isOnTopSideOfTrack ? 0 : Math.PI ) : this.angle;
+    // only an angle to restore if skater is attached to a track and skater is not being user controlled
+    skater.angleProperty.value = ( skater.trackProperty.value && !this.userControlled ) ? skater.trackProperty.value.getViewAngleAt( this.parametricPosition ) + ( this.isOnTopSideOfTrack ? 0 : Math.PI ) : this.angle;
     skater.updateEnergy();
   }
 
@@ -350,7 +350,7 @@ export default class SkaterState {
     positionX: number; positionY: number; velocityX: number; velocityY: number;
     gravity: number; referenceHeight: number; mass: number; track: Track | null;
     angle: number; isOnTopSideOfTrack: boolean; parametricPosition: number;
-    parametricSpeed: number; dragging: boolean; thermalEnergy: number;
+    parametricSpeed: number; userControlled: boolean; thermalEnergy: number;
   } ): SkaterState {
     const source = Object.create( SkaterState.prototype ) as SkaterState;
     Object.assign( source, data );

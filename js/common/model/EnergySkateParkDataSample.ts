@@ -52,7 +52,7 @@ type EnergySkateParkDataSampleStateObject = {
     gravity: number; referenceHeight: number; mass: number;
     track: ReferenceIOState | null; angle: number;
     isOnTopSideOfTrack: boolean; parametricPosition: number;
-    parametricSpeed: number; dragging: boolean; thermalEnergy: number;
+    parametricSpeed: number; userControlled: boolean; thermalEnergy: number;
   };
 };
 
@@ -236,7 +236,7 @@ export default class EnergySkateParkDataSample {
             isOnTopSideOfTrack: skaterStateObject.isOnTopSideOfTrack,
             parametricPosition: skaterStateObject.parametricPosition,
             parametricSpeed: skaterStateObject.parametricSpeed,
-            dragging: skaterStateObject.dragging,
+            userControlled: skaterStateObject.userControlled,
             thermalEnergy: skaterStateObject.thermalEnergy
           }
         };
@@ -260,7 +260,7 @@ export default class EnergySkateParkDataSample {
           isOnTopSideOfTrack: skateStateObject.isOnTopSideOfTrack,
           parametricPosition: skateStateObject.parametricPosition,
           parametricSpeed: skateStateObject.parametricSpeed,
-          dragging: skateStateObject.dragging,
+          userControlled: skateStateObject.userControlled,
           thermalEnergy: skateStateObject.thermalEnergy
         } );
 
