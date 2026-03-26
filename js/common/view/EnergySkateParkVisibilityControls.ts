@@ -168,7 +168,11 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
 
     super( items, options );
 
-    // REVIEW: This feels odd. Is there not a way to add an input listener to the proper checkbox at creation?
+    // Add a PressListener to the stick-to-track checkbox to signal that the user is actively changing
+    // this setting (via userControlledPropertySet). This is done after super() because VerticalCheckboxGroup
+    // creates the Checkbox instances internally — we can't pass this listener via inputListeners in the
+    // item options because a PressListener there consumes the press event before the Checkbox's own
+    // FireListener can toggle the Property.
     this.children.forEach( child => {
       if ( child instanceof Checkbox && child.property === model.isStickingToTrackProperty ) {
 
