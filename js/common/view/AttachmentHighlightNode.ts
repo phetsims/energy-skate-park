@@ -12,7 +12,9 @@ import Circle from '../../../../scenery/js/nodes/Circle.js';
 export default class AttachmentHighlightNode extends Circle {
   public constructor() {
 
-    // REVIEW: Isn't there a specified highlight ColorProperty in common code already?
+    // This is an attachment-target indicator (red dashed circle), not a focus highlight.
+    // The common code HighlightPath colors (pink/magenta) are for keyboard focus rings, which
+    // serve a different purpose.
     super( 30, { stroke: 'red', lineWidth: 3, lineDash: [ 6, 4 ], visible: false } );
   }
 }

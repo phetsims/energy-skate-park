@@ -74,8 +74,10 @@ export default class EnergySkateParkTrackSetScreenView extends EnergySkateParkSa
       ],
       ( scene, trackShapeName, skaterTrack, onTrackString, offTrackString ) => {
 
-        // REVIEW: I'm still very confused about this scene to track relationship. Many things assume
-        // it's a one to one relationship but the architecture seems like it's set up for something more complex...
+        // Scenes and tracks have a 1:1 relationship — each scene corresponds to exactly one premade
+        // track, identified by its TrackType. The sceneProperty value IS a TrackType, and the tracks
+        // array is ordered to match trackTypes, so we can index directly.
+        // NOTE that it is not exactly a "scene" since it doesn't store other data such as skater position, etc.
         const sceneIndex = model.trackTypes.indexOf( scene );
         const track = model.tracks.get( sceneIndex );
         const visibleControlPointCount = track.controlPoints.filter( cp => cp.visible ).length;

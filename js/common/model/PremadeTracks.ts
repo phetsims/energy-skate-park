@@ -73,7 +73,7 @@ export type ParabolaOptions = {
   p3Visible?: boolean;
 };
 
-export type SlopeOptions = {
+export type RampOptions = {
   trackWidth?: number;
   trackHeight?: number;
 };
@@ -147,9 +147,9 @@ const PremadeTracks = {
   /**
    * Create a set of control points which create a slope shaped track, touching the ground on the right side.
    */
-  createRampControlPoints: ( tandem: Tandem, options: SlopeOptions ): ControlPoint[] => {
+  createRampControlPoints: ( tandem: Tandem, options: RampOptions ): ControlPoint[] => {
 
-    options = combineOptions<SlopeOptions>( {
+    options = combineOptions<RampOptions>( {
       trackWidth: 6,
       trackHeight: 6
     }, options );

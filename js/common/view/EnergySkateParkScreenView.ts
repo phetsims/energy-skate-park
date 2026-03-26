@@ -483,8 +483,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
     // Keep the VBox right-pinned when its width changes due to dynamic strings.
     // fixedRight is computed in layout() on window resize; this constraint handles
     // the in-between case when panel content resizes from i18n changes.
-    // REVIEW: Will AlignBox with the screen view bounds as the alignBounds not work for this? It's probably fine
-    // but I was curious.
+    // AlignBox wouldn't work here because fixedRight is computed dynamically in layout() based on
+    // the visible bounds with padding, and we need the VBox to float to the right edge specifically.
     ManualConstraint.create( this, [ this.controlPanelVBox ], proxy => {
       if ( this.fixedRight !== null ) {
         proxy.right = this.fixedRight;

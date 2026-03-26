@@ -60,9 +60,9 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
   // can be done if you are ok with saving limitless samples, options.maxNumberOfSamples has no impact
   protected limitNumberOfSamples: boolean;
 
-  // controls whether samples are saved as the model steps through time
-  // REVIEW: Why this rename? The documentation seems to indicate that the name
-  // `saveSamplesProperty` makes more sense...
+  // Whether the skater path dots are visible. When false, sample saving is also disabled in stepModel
+  // since there's nothing to display. Named pathVisibleProperty (not saveSamplesProperty) because
+  // from the user's perspective this is the "Path" checkbox in the visibility controls.
   public readonly pathVisibleProperty: BooleanProperty;
 
   // set to true to prevent the model from saving any more samples, even if
@@ -134,10 +134,11 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
     if ( dataSample.track ) {
 
       dataSample.trackControlPointPositions.forEach( ( position, i ) => {
-        // REVIEW: Why Are you grabbing the `sourcePositionProperty` from dataSample instead
-        // of from skate.trackProperty? Was there a shift in the ground truth here? Perhaps that
-        // shift should be documented somewhere. Is there a chance those are out of sync? Do we
-        // need to make sure they are kept in sync?
+
+        // We set sourcePositionProperty (not positionProperty) because positionProperty is a
+        // DerivedProperty that accounts for snap targets and is read-only. sourcePositionProperty
+        // is the underlying writable Property that drives the control point's actual position.
+        // We are setting the data from the provided EnergySkateParkDataSample
         dataSample.track!.controlPoints[ i ].sourcePositionProperty.set( position );
       } );
 

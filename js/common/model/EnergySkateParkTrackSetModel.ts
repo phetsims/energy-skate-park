@@ -16,14 +16,14 @@ import ControlPoint from './ControlPoint.js';
 import EnergySkateParkModel from './EnergySkateParkModel.js';
 import EnergySkateParkPreferencesModel from './EnergySkateParkPreferencesModel.js';
 import EnergySkateParkSaveSampleModel, { EnergySkateParkSaveSampleModelOptions } from './EnergySkateParkSaveSampleModel.js';
-import PremadeTracks, { DoubleWellOptions, LoopOptions, ParabolaOptions, SlopeOptions, TrackType, TrackTypes } from './PremadeTracks.js';
+import PremadeTracks, { DoubleWellOptions, LoopOptions, ParabolaOptions, RampOptions, TrackType, TrackTypes } from './PremadeTracks.js';
 import Track, { TrackOptions } from './Track.js';
 
 type InitializePremadeTracksOptions = {
   parabolaControlPointOptions?: ParabolaOptions;
   parabolaTrackOptions?: TrackOptions;
-  slopeControlPointOptions?: SlopeOptions;
-  slopeTrackOptions?: TrackOptions;
+  rampControlPointOptions?: RampOptions;
+  rampTrackOptions?: TrackOptions;
   doubleWellControlPointOptions?: DoubleWellOptions;
   doubleWellTrackOptions?: TrackOptions;
   loopControlPointOptions?: LoopOptions;
@@ -84,14 +84,9 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
 
   /**
    * When the scene changes or tracks are added to the track set, update which track is visible and physically
-   * interactive.
-   *
-   * @param trackType - the TrackType identifying the scene
+   * interactive. There is a 1:1 relationship between scenes and TrackTypes — each scene has exactly one premade
+   * track identified by its TrackType (e.g. 'PARABOLA', 'DOUBLE_WELL'). The sceneProperty value IS a TrackType.
    */
-  // REVIEW: It's a little confusing at first to understand the connection between the trackType
-  // and the scene. I wonder if a rename would help here? `sceneTrackType` `sceneType`, or something of the sort?
-  // Would be helpful to unify the language. My understanding from the below is that we can garauntee
-  // that each scene has it's unique trackType that does not change?
   private updateActiveTrack( trackType: TrackType ): void {
 
     // Check if the skater is displaced from starting position before resetting, so we can announce the return to ground.
@@ -156,15 +151,13 @@ export default class EnergySkateParkTrackSetModel extends EnergySkateParkSaveSam
       else if ( trackType === 'RAMP' ) {
         const rampTrackTandem = tandem.createTandem( 'tracks' ).createTandem( 'rampTrack' );
 
-        // REVIEW: If this trackType was renamed to "RAMP" shouldn't all references be updated as well?
-        // i.e. createRampControlPoints, slopeControlPointOptions, slopeTrackOptions, etc.
-        const rampControlPoints = PremadeTracks.createRampControlPoints( rampTrackTandem, options.slopeControlPointOptions ?? {} );
+        const rampControlPoints = PremadeTracks.createRampControlPoints( rampTrackTandem, options.rampControlPointOptions ?? {} );
         const rampTrack = EnergySkateParkTrackSetModel.createPremadeTrack( this, rampControlPoints, combineOptions<TrackOptions>( {
 
           // Flag to indicate whether the skater transitions from the right edge of this track directly to the ground
           // see #164
           slopeToGround: true
-        }, options.slopeTrackOptions, {
+        }, options.rampTrackOptions, {
           tandem: rampTrackTandem
         } ) );
         tracks.push( rampTrack );
