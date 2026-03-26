@@ -188,6 +188,13 @@ export default class EnergySkateParkScreenView extends ScreenView {
   // Heading node that groups tracks, skater, and related buttons in the PDOM
   protected readonly yourSkateParkHeadingNode: Node;
 
+  // Placeholder Nodes for subclass-specific play area content. Subclasses populate these via pdomOrder
+  // so the parent's pdomOrder doesn't need to be spliced.
+  // Content after the heading but before reference height (e.g., energy sensor in Measure screen)
+  protected readonly playAreaUpperExtraContent: Node;
+  // Content after the pie chart legend but before the speedometer (e.g., energy graph in Graphs screen)
+  protected readonly playAreaLowerExtraContent: Node;
+
   private readonly viewBoundsPath?: Path;
   public availableModelBounds?: Bounds2;
 
@@ -577,6 +584,13 @@ export default class EnergySkateParkScreenView extends ScreenView {
     } );
     this.addChild( this.yourSkateParkHeadingNode );
 
+    // Placeholder Nodes for subclass-specific play area content. Subclasses set pdomOrder on these
+    // to insert screen-specific content at the right position without splicing the parent's pdomOrder.
+    this.playAreaUpperExtraContent = new Node();
+    this.playAreaLowerExtraContent = new Node();
+    this.addChild( this.playAreaUpperExtraContent );
+    this.addChild( this.playAreaLowerExtraContent );
+
     this.timeControlNode = new TimeControlNode( model.isPlayingProperty, {
       tandem: tandem.createTandem( 'timeControlNode' ),
       timeSpeedProperty: model.timeSpeedProperty,
@@ -683,14 +697,17 @@ export default class EnergySkateParkScreenView extends ScreenView {
       returnSkaterToGroundButton
     ];
 
-    // Play Area elements
+    // Play Area elements — placeholders (playAreaUpperExtraContent, playAreaLowerExtraContent) allow
+    // subclasses to insert screen-specific content without splicing this array.
     this.pdomPlayAreaNode.pdomOrder = [
       this.yourSkateParkHeadingNode,
+      this.playAreaUpperExtraContent,
       this.referenceHeightLine,
       ...stopwatchHeadingNode ? [ stopwatchHeadingNode ] : [],
       ...measuringTapeHeadingNode ? [ measuringTapeHeadingNode ] : [],
       ...this.energyBarGraphAccordionBox ? [ this.energyBarGraphAccordionBox ] : [],
       this.pieChartLegend,
+      this.playAreaLowerExtraContent,
       this.speedometerNode
     ];
 

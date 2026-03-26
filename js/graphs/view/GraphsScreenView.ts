@@ -46,16 +46,12 @@ export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView 
     this.energyGraphAccordionBox = new EnergyGraphAccordionBox( model, this.modelViewTransform, tandem.createTandem( 'energyGraphAccordionBox' ), this );
     this.addToBottomLayer( this.energyGraphAccordionBox );
 
-    // Put graph accordion box before speedometer, see https://github.com/phetsims/energy-skate-park/issues/447
-    this.pdomPlayAreaNode.pdomOrder = [
-
-      // REVIEW: This seems unconventional... I feel like there's a better way to define the pdom order
-      // when it differs from the parent class.
-      ...( this.pdomPlayAreaNode.pdomOrder! ).filter( node => node !== this.speedometerNode ),
+    // Place the energy graph accordion box and its controls before the speedometer,
+    // see https://github.com/phetsims/energy-skate-park/issues/447
+    this.playAreaLowerExtraContent.pdomOrder = [
       this.energyGraphAccordionBox,
       this.energyGraphAccordionBox.variableSwitch,
-      this.energyGraphAccordionBox.eraserButton,
-      this.speedometerNode
+      this.energyGraphAccordionBox.eraserButton
     ];
   }
 

@@ -52,12 +52,8 @@ export default class MeasureScreenView extends EnergySkateParkTrackSetScreenView
 
     this.topLayer.addChild( pathSensorNode );
 
-    // Insert the path sensor probe into pdomOrder between control points (trackLayer) and referenceHeightLine
-    // REVIEW: I have a similar feeling about the pdom order definition here that I do in GraphsScreenView.
-    const playAreaOrder = this.pdomPlayAreaNode.pdomOrder!;
-    const referenceHeightIndex = playAreaOrder.indexOf( this.referenceHeightLine );
-    playAreaOrder.splice( referenceHeightIndex, 0, pathSensorNode );
-    this.pdomPlayAreaNode.pdomOrder = playAreaOrder;
+    // Place the path sensor in the play area, after the heading but before the reference height line
+    this.playAreaUpperExtraContent.pdomOrder = [ pathSensorNode ];
   }
 
   /**

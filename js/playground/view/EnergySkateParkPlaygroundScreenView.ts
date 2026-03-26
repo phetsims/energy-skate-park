@@ -86,14 +86,12 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     this.trackToolbox.right = this.modelViewTransform.modelToViewX( -0.5 );
     eraseTracksButton.right = this.trackToolbox.left - 10;
 
-
     // REVIEW: This is a lot of logic for description that I think might benefit from being in its own file
     // for readability.
-    // Add track toolbox and clear button into the "Your Skate Park" heading PDOM order (before skaterNode)
+    // Add track toolbox and erase button into the "Your Skate Park" heading PDOM order (before skaterNode)
     const headingOrder = this.yourSkateParkHeadingNode.pdomOrder!;
     const skaterIndex = headingOrder.indexOf( this.skaterNode );
     headingOrder.splice( skaterIndex, 0, this.trackToolbox, eraseTracksButton );
-    this.yourSkateParkHeadingNode.pdomOrder = headingOrder;
 
     // Set the playground-specific helpText on the "Your Skate Park" heading, before content so it reads
     // right after the heading rather than after all children.
@@ -116,44 +114,34 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
         EnergySkateParkFluent.a11y.yourSkatePark.skaterOffTrackStringProperty
       ] as const,
       ( trackCount, _changeCount, skaterTrack, noneString, onTrackString, offTrackString ) => {
-        let trackPhrase: string;
+
+        // When there are no tracks, just return the "no tracks" string — no skater phrase needed
         if ( trackCount === 0 ) {
-          trackPhrase = noneString;
+          return noneString;
         }
-        else {
 
-          // Count total visible control points across all tracks
-          const totalControlPoints = _.sumBy( model.tracks, track =>
-            track.controlPoints.filter( controlPoint => controlPoint.visible ).length
-          );
+        // Count total visible control points across all tracks
+        const totalControlPoints = _.sumBy( model.tracks, track =>
+          track.controlPoints.filter( controlPoint => controlPoint.visible ).length
+        );
 
-          if ( trackCount === 1 ) {
-            trackPhrase = EnergySkateParkFluent.a11y.yourSkatePark.playgroundTrackPhraseSingle.format( {
-              numberControlPoints: totalControlPoints
-            } );
-          }
-          else {
-            trackPhrase = EnergySkateParkFluent.a11y.yourSkatePark.playgroundTrackPhraseMultiple.format( {
-              numberTracks: trackCount,
-              numberControlPoints: totalControlPoints
-            } );
-          }
-        }
+        const trackPhrase = trackCount === 1
+          ? EnergySkateParkFluent.a11y.yourSkatePark.playgroundTrackPhraseSingle.format( {
+            numberControlPoints: totalControlPoints
+          } )
+          : EnergySkateParkFluent.a11y.yourSkatePark.playgroundTrackPhraseMultiple.format( {
+            numberTracks: trackCount,
+            numberControlPoints: totalControlPoints
+          } );
 
         // Skater on/off track — when multiple tracks exist, specify which track by index
-        let skaterPhrase: string;
-        if ( skaterTrack !== null && trackCount > 1 ) {
-          skaterPhrase = EnergySkateParkFluent.a11y.yourSkatePark.skaterOnTrackWithIndex.format( {
+        const skaterPhrase = ( skaterTrack !== null && trackCount > 1 )
+          ? EnergySkateParkFluent.a11y.yourSkatePark.skaterOnTrackWithIndex.format( {
             index: model.tracks.indexOf( skaterTrack ) + 1
-          } );
-        }
-        else {
-          skaterPhrase = skaterTrack !== null ? onTrackString : offTrackString;
-        }
+          } )
+          : ( skaterTrack !== null ? onTrackString : offTrackString );
 
-        // REVIEW: Can't you just return the noneString here if trackCount === 0 rather than also
-        // have an if clause above to handle it?
-        return trackCount === 0 ? trackPhrase : EnergySkateParkFluent.a11y.yourSkatePark.trackAndSkaterParagraph.format( {
+        return EnergySkateParkFluent.a11y.yourSkatePark.trackAndSkaterParagraph.format( {
           trackPhrase: trackPhrase,
           skaterPhrase: skaterPhrase
         } );
@@ -164,10 +152,9 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     const trackStatusNode = new Node( { accessibleParagraph: paragraphProperty } );
     this.addChild( trackStatusNode );
 
-    // REVIEW: This is another spot where the pdom order sims unnecessarily obfuscated.
-    const currentOrder = this.yourSkateParkHeadingNode.pdomOrder;
-    currentOrder.unshift( trackStatusNode );
-    this.yourSkateParkHeadingNode.pdomOrder = currentOrder;
+    // Add track status paragraph at the start of the heading order, then commit all heading pdomOrder changes
+    headingOrder.unshift( trackStatusNode );
+    this.yourSkateParkHeadingNode.pdomOrder = headingOrder;
 
     // Some model elements are spuriously created when creating the track panel -- clear those out now so that the PhET-iO
     // changed state starts clear, see https://github.com/phetsims/energy-skate-park/issues/49
@@ -212,8 +199,6 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
    * Update trackLayer.pdomOrder to match model.tracks order, so that moveToFront() for visual
    * z-ordering does not affect the screen reader navigation order.
    */
-  // REVIEW: This pdom order strategy seems much easier to follow. It's clearly being set in one spot that is
-  // easy to navigate to. This might be a good example of how to update pdom order setting elsewhere.
   private updateTrackLayerPdomOrder(): void {
     this.trackLayer.pdomOrder = this.model.tracks.map( track =>
       this.trackNodes.find( trackNode => trackNode.track === track )!
