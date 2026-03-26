@@ -260,6 +260,10 @@ type StringsType = {
       'energyThermalStringProperty': LocalizedStringProperty;
       'energyTotalStringProperty': LocalizedStringProperty;
       'energyNoneStringProperty': LocalizedStringProperty;
+      'checkedEnergiesListOneStringProperty': LocalizedStringProperty;
+      'checkedEnergiesListTwoStringProperty': LocalizedStringProperty;
+      'checkedEnergiesListThreeStringProperty': LocalizedStringProperty;
+      'checkedEnergiesListFourStringProperty': LocalizedStringProperty;
       'checkboxGroupParagraphStringProperty': LocalizedStringProperty;
       'kineticCheckbox': {
         'accessibleContextResponseCheckedStringProperty': LocalizedStringProperty;

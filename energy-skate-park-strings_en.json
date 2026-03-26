@@ -559,6 +559,18 @@
       "energyNone": {
         "value": "no"
       },
+      "checkedEnergiesListOne": {
+        "value": "{$item1}"
+      },
+      "checkedEnergiesListTwo": {
+        "value": "{$item1} and {$item2}"
+      },
+      "checkedEnergiesListThree": {
+        "value": "{$item1}, {$item2}, and {$item3}"
+      },
+      "checkedEnergiesListFour": {
+        "value": "{$item1}, {$item2}, {$item3}, and {$item4}"
+      },
       "checkboxGroupParagraph": {
         "value": "Choose which energy types to display in Energy Graph."
       },

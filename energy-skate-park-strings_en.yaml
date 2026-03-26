@@ -259,6 +259,13 @@ a11y:
     energyThermal:               Thermal
     energyTotal:                 Total
     energyNone:                  'no'
+
+    # Translatable list formatting for checked energy types (max 4 items).
+    # Each language can define its own conjunction and comma patterns.
+    checkedEnergiesListOne:      '{$item1}'
+    checkedEnergiesListTwo:      '{$item1} and {$item2}'
+    checkedEnergiesListThree:    '{$item1}, {$item2}, and {$item3}'
+    checkedEnergiesListFour:     '{$item1}, {$item2}, {$item3}, and {$item4}'
     checkboxGroupParagraph:      Choose which energy types to display in Energy Graph.
     kineticCheckbox:
       accessibleContextResponseChecked:   Kinetic energy data displayed in Energy Graph.

@@ -145,13 +145,12 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
       if ( thermal ) { names.push( thermalName ); }
       if ( total ) { names.push( totalName ); }
 
-      // Produces a human-readable comma-separated list of checked energy types for screen reader descriptions.
-      // e.g. "kinetic", "kinetic and potential", "kinetic, potential, and thermal"
-      // TODO: Move this list formatting logic to the Fluent yaml file for proper i18n, https://github.com/phetsims/energy-skate-park/issues/405
+      // Use translatable list formatting patterns from the Fluent yaml file
       if ( names.length === 0 ) { return noneName; }
-      if ( names.length === 1 ) { return names[ 0 ]; }
-      if ( names.length === 2 ) { return `${names[ 0 ]} and ${names[ 1 ]}`; }
-      return `${names.slice( 0, -1 ).join( ', ' )}, and ${names[ names.length - 1 ]}`;
+      if ( names.length === 1 ) { return EnergySkateParkFluent.a11y.energyGraph.checkedEnergiesListOne.format( { item1: names[ 0 ] } ); }
+      if ( names.length === 2 ) { return EnergySkateParkFluent.a11y.energyGraph.checkedEnergiesListTwo.format( { item1: names[ 0 ], item2: names[ 1 ] } ); }
+      if ( names.length === 3 ) { return EnergySkateParkFluent.a11y.energyGraph.checkedEnergiesListThree.format( { item1: names[ 0 ], item2: names[ 1 ], item3: names[ 2 ] } ); }
+      return EnergySkateParkFluent.a11y.energyGraph.checkedEnergiesListFour.format( { item1: names[ 0 ], item2: names[ 1 ], item3: names[ 2 ], item4: names[ 3 ] } );
     } );
 
     const graphDescriptionProperty = EnergySkateParkFluent.a11y.energyGraph.graphDescriptionParagraph.createProperty( {

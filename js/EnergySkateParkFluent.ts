@@ -181,6 +181,10 @@ addToMapIfDefined( 'a11y_energyGraph_energyPotential', 'a11y.energyGraph.energyP
 addToMapIfDefined( 'a11y_energyGraph_energyThermal', 'a11y.energyGraph.energyThermalStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_energyTotal', 'a11y.energyGraph.energyTotalStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_energyNone', 'a11y.energyGraph.energyNoneStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_checkedEnergiesListOne', 'a11y.energyGraph.checkedEnergiesListOneStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_checkedEnergiesListTwo', 'a11y.energyGraph.checkedEnergiesListTwoStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_checkedEnergiesListThree', 'a11y.energyGraph.checkedEnergiesListThreeStringProperty' );
+addToMapIfDefined( 'a11y_energyGraph_checkedEnergiesListFour', 'a11y.energyGraph.checkedEnergiesListFourStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_checkboxGroupParagraph', 'a11y.energyGraph.checkboxGroupParagraphStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_kineticCheckbox_accessibleContextResponseChecked', 'a11y.energyGraph.kineticCheckbox.accessibleContextResponseCheckedStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_kineticCheckbox_accessibleContextResponseUnchecked', 'a11y.energyGraph.kineticCheckbox.accessibleContextResponseUncheckedStringProperty' );
@@ -529,6 +533,12 @@ const EnergySkateParkFluent = {
       energyThermalStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_energyThermal', _.get( EnergySkateParkStrings, 'a11y.energyGraph.energyThermalStringProperty' ) ),
       energyTotalStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_energyTotal', _.get( EnergySkateParkStrings, 'a11y.energyGraph.energyTotalStringProperty' ) ),
       energyNoneStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_energyNone', _.get( EnergySkateParkStrings, 'a11y.energyGraph.energyNoneStringProperty' ) ),
+      _comment_0: new FluentComment( {"comment":"Translatable list formatting for checked energy types (max 4 items).","associatedKey":"checkedEnergiesListOne"} ),
+      _comment_1: new FluentComment( {"comment":"Each language can define its own conjunction and comma patterns.","associatedKey":"checkedEnergiesListOne"} ),
+      checkedEnergiesListOne: new FluentPattern<{ item1: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energyGraph_checkedEnergiesListOne', _.get( EnergySkateParkStrings, 'a11y.energyGraph.checkedEnergiesListOneStringProperty' ), [{"name":"item1"}] ),
+      checkedEnergiesListTwo: new FluentPattern<{ item1: FluentVariable, item2: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energyGraph_checkedEnergiesListTwo', _.get( EnergySkateParkStrings, 'a11y.energyGraph.checkedEnergiesListTwoStringProperty' ), [{"name":"item1"},{"name":"item2"}] ),
+      checkedEnergiesListThree: new FluentPattern<{ item1: FluentVariable, item2: FluentVariable, item3: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energyGraph_checkedEnergiesListThree', _.get( EnergySkateParkStrings, 'a11y.energyGraph.checkedEnergiesListThreeStringProperty' ), [{"name":"item1"},{"name":"item2"},{"name":"item3"}] ),
+      checkedEnergiesListFour: new FluentPattern<{ item1: FluentVariable, item2: FluentVariable, item3: FluentVariable, item4: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_energyGraph_checkedEnergiesListFour', _.get( EnergySkateParkStrings, 'a11y.energyGraph.checkedEnergiesListFourStringProperty' ), [{"name":"item1"},{"name":"item2"},{"name":"item3"},{"name":"item4"}] ),
       checkboxGroupParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_checkboxGroupParagraph', _.get( EnergySkateParkStrings, 'a11y.energyGraph.checkboxGroupParagraphStringProperty' ) ),
       kineticCheckbox: {
         accessibleContextResponseCheckedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyGraph_kineticCheckbox_accessibleContextResponseChecked', _.get( EnergySkateParkStrings, 'a11y.energyGraph.kineticCheckbox.accessibleContextResponseCheckedStringProperty' ) ),
