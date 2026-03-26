@@ -13,6 +13,10 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkFullTrackSetModel from '../../common/model/EnergySkateParkFullTrackSetModel.js';
 import EnergySkateParkPreferencesModel from '../../common/model/EnergySkateParkPreferencesModel.js';
 
+// Default home position for the sensor probe, in model coordinates (meters).
+// Shared with SkaterPathSensorNode for keyboard navigation waypoints.
+export const SENSOR_PROBE_HOME_POSITION = new Vector2( -4, 1.5 );
+
 export default class MeasureModel extends EnergySkateParkFullTrackSetModel {
 
   // the position of the sensor, in model coordinates (meters)
@@ -31,7 +35,7 @@ export default class MeasureModel extends EnergySkateParkFullTrackSetModel {
       instrumentDataSamples: true
     } );
 
-    this.sensorProbePositionProperty = new Vector2Property( new Vector2( -4, 1.5 ), {
+    this.sensorProbePositionProperty = new Vector2Property( SENSOR_PROBE_HOME_POSITION.copy(), {
       tandem: tandem.createTandem( 'sensorProbePositionProperty' )
     } );
 

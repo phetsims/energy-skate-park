@@ -20,7 +20,8 @@ import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
-import { combineOptions } from '../../../../phet-core/js/optionize.js';
+import optionize, { EmptySelfOptions } from '../../../../phet-core/js/optionize.js';
+import PickRequired from '../../../../phet-core/js/types/PickRequired.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
@@ -46,6 +47,7 @@ import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSam
 import BoundaryReachedSoundPlayer from '../../common/view/BoundaryReachedSoundPlayer.js';
 import EnergySkateParkControlPanel from '../../common/view/EnergySkateParkControlPanel.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
+import { SENSOR_PROBE_HOME_POSITION } from '../model/MeasureModel.js';
 
 const energyEnergyStringProperty = EnergySkateParkFluent.energies.energyStringProperty;
 const energyJoulesPatternStringProperty = EnergySkateParkFluent.pathSensor.energyJoulesPatternStringProperty;
@@ -80,10 +82,11 @@ const SENSOR_COLOR = 'rgb( 103, 80, 113 )';
 // max distance between sample and probe center for the sample to be displayed, in view coordinates
 const PROBE_THRESHOLD_DISTANCE = 10;
 
-// REVIEW: If this should explicitly match a value in MeasureModel, then have them read from the same variable.
-// If not this documentation seems confusing.
-// Home position for the probe, matching the default value in MeasureModel
-const PROBE_HOME_POSITION = new Vector2( -4, 1.5 );
+type SelfOptions = EmptySelfOptions;
+type SkaterPathSensorNodeOptions = SelfOptions & NodeOptions & PickRequired<NodeOptions, 'tandem'>;
+
+// Home position for the probe
+const PROBE_HOME_POSITION = SENSOR_PROBE_HOME_POSITION.copy();
 
 export default class SkaterPathSensorNode extends Node {
 
@@ -131,10 +134,9 @@ export default class SkaterPathSensorNode extends Node {
     samples: ObservableArray<EnergySkateParkDataSample>,
     sensorProbePositionProperty: Vector2Property,
     sensorBodyPositionProperty: Vector2Property, modelBoundsProperty: TProperty<Bounds2>,
-    modelViewTransform: ModelViewTransform2, controlPanel: EnergySkateParkControlPanel, providedOptions?: NodeOptions ) {
+    modelViewTransform: ModelViewTransform2, controlPanel: EnergySkateParkControlPanel, providedOptions: SkaterPathSensorNodeOptions ) {
 
-    // REVIEW: Should we be using optionize here?
-    const options = combineOptions<NodeOptions>( {
+    const options = optionize<SkaterPathSensorNodeOptions, SelfOptions, NodeOptions>()( {
 
       // prevent block fitting so that things don't jiggle as the probe moves, see
       preventFit: true,
@@ -299,8 +301,8 @@ export default class SkaterPathSensorNode extends Node {
     // add a drag listener to the probe body
     const probeBoundarySoundPlayer = new BoundaryReachedSoundPlayer();
 
-    // REVIEW: Should SoundRichDragListener be used here to combine SoundDragListener & KeyboardListener?
-    // maybe it can't because you're using KeyboardListener and not KeyboardDragListener below...
+    // SoundRichDragListener can't be used here because the keyboard interaction below cycles through
+    // discrete waypoints (home + sample positions) rather than using standard KeyboardDragListener movement.
     this.probeNode.addInputListener( new SoundDragListener( {
       transform: modelViewTransform,
       positionProperty: sensorProbePositionProperty,
@@ -318,8 +320,7 @@ export default class SkaterPathSensorNode extends Node {
       },
       end: () => { this.isDragging = false; },
 
-      // REVIEW: Should tandem be required in options so you don't have to use a bang here?
-      tandem: options.tandem!.createTandem( 'dragListener' )
+      tandem: options.tandem.createTandem( 'dragListener' )
     } ) );
 
     // Keyboard listener that cycles the probe through data samples in temporal order, with a home waypoint.
@@ -347,16 +348,14 @@ export default class SkaterPathSensorNode extends Node {
         let currentIndex = -1;
         let minDistance = Number.POSITIVE_INFINITY;
 
-        // REVIEW: waypoints.forEach seems easier to read/use than a for loop in this scenario... actually you
-        // may be able to use waypoints.reduce in this case too...
-        for ( let i = 0; i < waypoints.length; i++ ) {
-          const waypointView = modelViewTransform.modelToViewPosition( waypoints[ i ] );
+        waypoints.forEach( ( waypoint, i ) => {
+          const waypointView = modelViewTransform.modelToViewPosition( waypoint );
           const distance = currentViewPosition.distance( waypointView );
           if ( distance < PROBE_THRESHOLD_DISTANCE && distance < minDistance ) {
             currentIndex = i;
             minDistance = distance;
           }
-        }
+        } );
 
         let targetPosition: Vector2;
         if ( currentIndex >= 0 ) {
@@ -371,15 +370,14 @@ export default class SkaterPathSensorNode extends Node {
           let nearestDistance = Number.POSITIVE_INFINITY;
           targetPosition = waypoints[ 0 ]; // fallback to home
 
-          // REVIEW: same as above waypoints.forEach is probably easier to read.
-          for ( let i = 0; i < waypoints.length; i++ ) {
-            const waypointView = modelViewTransform.modelToViewPosition( waypoints[ i ] );
+          waypoints.forEach( waypoint => {
+            const waypointView = modelViewTransform.modelToViewPosition( waypoint );
             const distance = currentViewPosition.distance( waypointView );
             if ( distance < nearestDistance ) {
               nearestDistance = distance;
-              targetPosition = waypoints[ i ];
+              targetPosition = waypoint;
             }
-          }
+          } );
         }
 
         const previousSample = this.inspectedSample;
@@ -400,7 +398,7 @@ export default class SkaterPathSensorNode extends Node {
     this.addDisposable( keyboardListener );
 
     this.displayedSampleProperty = new NumberProperty( -1, {
-      tandem: options.tandem!.createTandem( 'displayedSampleProperty' ),
+      tandem: options.tandem.createTandem( 'displayedSampleProperty' ),
       phetioReadOnly: true,
       phetioFeatured: true,
       phetioDocumentation: 'The index of the currently displayed sample, or -1 if no sample is displayed'
