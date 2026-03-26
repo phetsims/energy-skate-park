@@ -8,12 +8,9 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
-import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
-import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
 import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
-import Node from '../../../../scenery/js/nodes/Node.js';
 import Color from '../../../../scenery/js/util/Color.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import Track from '../../common/model/Track.js';
@@ -23,6 +20,7 @@ import TrackNode from '../../common/view/TrackNode.js';
 import TrackToolboxPanel from '../../common/view/TrackToolboxPanel.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkPlaygroundModel from '../model/EnergySkateParkPlaygroundModel.js';
+import PlaygroundTrackStatusNode from './PlaygroundTrackStatusNode.js';
 
 export default class EnergySkateParkPlaygroundScreenView extends EnergySkateParkScreenView {
 
@@ -86,8 +84,6 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     this.trackToolbox.right = this.modelViewTransform.modelToViewX( -0.5 );
     eraseTracksButton.right = this.trackToolbox.left - 10;
 
-    // REVIEW: This is a lot of logic for description that I think might benefit from being in its own file
-    // for readability.
     // Add track toolbox and erase button into the "Your Skate Park" heading PDOM order (before skaterNode)
     const headingOrder = this.yourSkateParkHeadingNode.pdomOrder!;
     const skaterIndex = headingOrder.indexOf( this.skaterNode );
@@ -98,58 +94,8 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     this.yourSkateParkHeadingNode.accessibleHelpTextBehavior = ParallelDOM.HELP_TEXT_BEFORE_CONTENT;
     this.yourSkateParkHeadingNode.accessibleHelpText = EnergySkateParkFluent.a11y.yourSkatePark.accessibleHelpTextStringProperty;
 
-    // Use a counter that increments on trackChangedEmitter to capture join/split changes
-    // that don't affect the tracks array length
-    const trackChangeCountProperty = new NumberProperty( 0 );
-    model.trackChangedEmitter.addListener( () => trackChangeCountProperty.value++ );
-
-    // Dynamic paragraph describing the number of tracks and skater status
-    const paragraphProperty = new DerivedProperty(
-      [
-        model.tracks.lengthProperty,
-        trackChangeCountProperty,
-        model.skater.trackProperty,
-        EnergySkateParkFluent.a11y.yourSkatePark.playgroundTrackPhraseNoneStringProperty,
-        EnergySkateParkFluent.a11y.yourSkatePark.skaterOnTrackStringProperty,
-        EnergySkateParkFluent.a11y.yourSkatePark.skaterOffTrackStringProperty
-      ] as const,
-      ( trackCount, _changeCount, skaterTrack, noneString, onTrackString, offTrackString ) => {
-
-        // When there are no tracks, just return the "no tracks" string — no skater phrase needed
-        if ( trackCount === 0 ) {
-          return noneString;
-        }
-
-        // Count total visible control points across all tracks
-        const totalControlPoints = _.sumBy( model.tracks, track =>
-          track.controlPoints.filter( controlPoint => controlPoint.visible ).length
-        );
-
-        const trackPhrase = trackCount === 1
-          ? EnergySkateParkFluent.a11y.yourSkatePark.playgroundTrackPhraseSingle.format( {
-            numberControlPoints: totalControlPoints
-          } )
-          : EnergySkateParkFluent.a11y.yourSkatePark.playgroundTrackPhraseMultiple.format( {
-            numberTracks: trackCount,
-            numberControlPoints: totalControlPoints
-          } );
-
-        // Skater on/off track — when multiple tracks exist, specify which track by index
-        const skaterPhrase = ( skaterTrack !== null && trackCount > 1 )
-          ? EnergySkateParkFluent.a11y.yourSkatePark.skaterOnTrackWithIndex.format( {
-            index: model.tracks.indexOf( skaterTrack ) + 1
-          } )
-          : ( skaterTrack !== null ? onTrackString : offTrackString );
-
-        return EnergySkateParkFluent.a11y.yourSkatePark.trackAndSkaterParagraph.format( {
-          trackPhrase: trackPhrase,
-          skaterPhrase: skaterPhrase
-        } );
-      }
-    );
-
-    // Use a child Node for the paragraph so it appears after the help text (which uses HELP_TEXT_BEFORE_CONTENT)
-    const trackStatusNode = new Node( { accessibleParagraph: paragraphProperty } );
+    // Dynamic paragraph describing the number of tracks and skater status for screen readers
+    const trackStatusNode = new PlaygroundTrackStatusNode( model );
     this.addChild( trackStatusNode );
 
     // Add track status paragraph at the start of the heading order, then commit all heading pdomOrder changes
