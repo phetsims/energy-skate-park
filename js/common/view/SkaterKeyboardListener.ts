@@ -15,7 +15,6 @@ import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import Skater from '../model/Skater.js';
-import SkaterNode from './SkaterNode.js';
 
 // Movement step sizes in model coordinates
 const POSITION_STEP = 0.1; // meters for off-track movement
@@ -37,13 +36,6 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
     keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveAlongTrackStringProperty
   } );
 
-  // REVIEW: This is being flagged as unused.
-  public static readonly DETACH_FROM_TRACK_HOTKEY_DATA = new HotkeyData( {
-    keys: [ 'arrowUp', 'w' ],
-    repoName: energySkatePark.name,
-    binderName: 'Detach from track'
-  } );
-
   public static readonly MOVE_TO_START_OF_TRACK_HOTKEY_DATA = new HotkeyData( {
     keys: [ 'home' ],
     repoName: energySkatePark.name,
@@ -58,10 +50,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
 
   private readonly skater: Skater;
 
-  // REVIEW: This is being flagged as unused.
-  private readonly skaterNode: SkaterNode;
-
-  public constructor( skater: Skater, skaterNode: SkaterNode ) {
+  public constructor( skater: Skater ) {
     super( {
       keyStringProperties: HotkeyData.combineKeyStringProperties( [
         SkaterKeyboardListener.MOVE_SKATER_HOTKEY_DATA,
@@ -77,7 +66,6 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
     } );
 
     this.skater = skater;
-    this.skaterNode = skaterNode;
   }
 
   /**
