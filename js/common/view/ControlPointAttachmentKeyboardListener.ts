@@ -170,24 +170,7 @@ export default class ControlPointAttachmentKeyboardListener extends KeyboardList
               cleanComboBoxDispose();
 
               const targetViewPosition = modelViewTransform.modelToViewPosition( targetPosition );
-              let bestNode: ControlPointNode | null = null;
-              let bestDist = Number.POSITIVE_INFINITY;
-              for ( const child of listParent.children ) {
-                if ( child instanceof TrackNode && !child.isDisposed ) {
-                  for ( const grandchild of child.children ) {
-                    if ( grandchild instanceof ControlPointNode && grandchild.focusable ) {
-                      const dist = grandchild.translation.distance( targetViewPosition );
-                      if ( dist < bestDist ) {
-                        bestDist = dist;
-                        bestNode = grandchild;
-                      }
-                    }
-                  }
-                }
-              }
-              if ( bestNode ) {
-                bestNode.focus();
-              }
+              ControlPointNode.focusNearestControlPoint( listParent, targetViewPosition );
             } );
           }
         } );

@@ -9,6 +9,7 @@
 
 import Emitter from '../../../../axon/js/Emitter.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
+import Vector2 from '../../../../dot/js/Vector2.js';
 import Shape from '../../../../kite/js/Shape.js';
 import affirm, { isAffirmEnabled } from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
@@ -18,13 +19,18 @@ import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicin
 import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Circle, { CircleOptions } from '../../../../scenery/js/nodes/Circle.js';
+import Node from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
+import ControlPoint from '../model/ControlPoint.js';
+import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
+import Track from '../model/Track.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import BoundaryReachedSoundPlayer from './BoundaryReachedSoundPlayer.js';
 import ControlPointAttachmentKeyboardListener from './ControlPointAttachmentKeyboardListener.js';
+import ControlPointDeleteKeyboardListener from './ControlPointDeleteKeyboardListener.js';
 import ControlPointKeyboardDragListener from './ControlPointKeyboardDragListener.js';
 import ControlPointUI from './ControlPointUI.js';
 import TrackDragHandler from './TrackDragHandler.js';
@@ -213,32 +219,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
           controlPoint.sourcePositionProperty.value = pt;
 
           if ( isEndPoint ) {
-            // If one of the control points is close enough to link to another track, do so
-            const tracks = model.getPhysicalTracks();
-
-            let bestDistance = Number.POSITIVE_INFINITY;
-            let bestMatch = null;
-
-            for ( let i = 0; i < tracks.length; i++ ) {
-              const t = tracks[ i ];
-              if ( t !== track ) {
-
-                // don't match inner points
-                const otherPoints = [ t.controlPoints[ 0 ], t.controlPoints[ t.controlPoints.length - 1 ] ];
-
-                for ( let k = 0; k < otherPoints.length; k++ ) {
-                  const otherPoint = otherPoints[ k ];
-                  const distance = controlPoint.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
-
-                  if ( distance < bestDistance ) {
-                    bestDistance = distance;
-                    bestMatch = otherPoint;
-                  }
-                }
-              }
-            }
-
-            controlPoint.snapTargetProperty.value = ( bestDistance !== null && bestDistance < 1 ) ? bestMatch : null;
+            controlPoint.snapTargetProperty.value = ControlPointNode.findSnapTarget( controlPoint, track, model );
           }
 
           // When one control point dragged, update the track and the node shape
@@ -350,50 +331,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
 
       // Delete/backspace removes the control point, same as the "x" button in ControlPointUI
       if ( track.splittable ) {
-
-        // REVIEW: This is a pretty big listener. May be good to separate it out same as you did `ControlPointKeyboardDragListener`
-        // and `ControlPointAttachmentKeyboardListener`. I think it would be cleaner if all the control point keyboard
-        // listeners were defined separately.
-        this.addInputListener( new KeyboardListener( {
-          keyStringProperties: ControlPointNode.DELETE_CONTROL_POINT_HOTKEY_DATA.keyStringProperties,
-          fire: () => {
-            if ( track.physicalProperty.value && !track.isDisposed ) {
-
-              // Capture the trackLayer before deletion disposes this trackNode
-              const trackLayer = trackNode.parents[ 0 ];
-
-              model.deleteControlPoint( track, i );
-
-              // Move focus to another control point in the play area
-              for ( const child of trackLayer.children ) {
-                if ( !child.isDisposed ) {
-                  for ( const grandchild of child.children ) {
-                    if ( grandchild instanceof ControlPointNode && grandchild.focusable ) {
-                      grandchild.focus();
-                      return;
-                    }
-                  }
-                }
-              }
-
-              // No control points remain, focus the track toolbox icon by searching the scene graph
-              let root = trackLayer;
-              while ( root.parents.length > 0 ) {
-                root = root.parents[ 0 ];
-              }
-              const toolboxName = EnergySkateParkFluent.a11y.trackToolboxPanel.accessibleNameStringProperty.value;
-              const queue = [ ...root.children ];
-              while ( queue.length > 0 ) {
-                const node = queue.shift()!;
-                if ( node.focusable && node.accessibleName === toolboxName ) {
-                  node.focus();
-                  return;
-                }
-                queue.push( ...node.children );
-              }
-            }
-          }
-        } ), { disposer: this } );
+        this.addInputListener( new ControlPointDeleteKeyboardListener( trackNode, i ), { disposer: this } );
 
         // Alt+X splits the vertex, same as the scissors button in ControlPointUI.
         // Only available for interior control points when there is room for more tracks.
@@ -413,5 +351,62 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
     }
 
     this.touchArea = Shape.circle( 0, 0, 25 );
+  }
+
+  /**
+   * Find the nearest snap target for an endpoint control point by checking endpoints of all other physical tracks.
+   * Returns null if no target is within the snap threshold distance of 1 model unit.
+   */
+  public static findSnapTarget( controlPoint: ControlPoint, track: Track, model: EnergySkateParkModel ): ControlPoint | null {
+    const tracks = model.getPhysicalTracks();
+
+    let bestDistance = Number.POSITIVE_INFINITY;
+    let bestMatch: ControlPoint | null = null;
+
+    for ( let i = 0; i < tracks.length; i++ ) {
+      const t = tracks[ i ];
+      if ( t !== track ) {
+
+        // Only match endpoints, not inner points
+        const otherPoints = [ t.controlPoints[ 0 ], t.controlPoints[ t.controlPoints.length - 1 ] ];
+
+        for ( let k = 0; k < otherPoints.length; k++ ) {
+          const otherPoint = otherPoints[ k ];
+          const distance = controlPoint.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
+
+          if ( distance < bestDistance ) {
+            bestDistance = distance;
+            bestMatch = otherPoint;
+          }
+        }
+      }
+    }
+
+    return ( bestDistance < 1 ) ? bestMatch : null;
+  }
+
+  /**
+   * After a track join, focus the ControlPointNode closest to the given view position. Used by both
+   * ControlPointKeyboardDragListener and ControlPointAttachmentKeyboardListener after joining tracks.
+   */
+  public static focusNearestControlPoint( trackLayer: Node, targetViewPosition: Vector2 ): void {
+    let bestNode: Node | null = null;
+    let bestDist = Number.POSITIVE_INFINITY;
+    for ( const child of trackLayer.children ) {
+      if ( child instanceof TrackNode && !child.isDisposed ) {
+        for ( const grandchild of child.children ) {
+          if ( grandchild instanceof ControlPointNode && grandchild.focusable ) {
+            const dist = grandchild.translation.distance( targetViewPosition );
+            if ( dist < bestDist ) {
+              bestDist = dist;
+              bestNode = grandchild;
+            }
+          }
+        }
+      }
+    }
+    if ( bestNode ) {
+      bestNode.focus();
+    }
   }
 }

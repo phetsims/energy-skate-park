@@ -10,7 +10,6 @@
 
 import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
-import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -68,34 +67,9 @@ export default class ControlPointKeyboardDragListener extends SoundKeyboardDragL
 
         controlPoint.sourcePositionProperty.value = pt;
 
-        // REVIEW: This seems to be duplicated from ControlPointNode. I would advise consolidating.
         // Snap detection for endpoints
         if ( isEndPoint ) {
-          const tracks = model.getPhysicalTracks();
-
-          let bestDistance = Number.POSITIVE_INFINITY;
-          let bestMatch = null;
-
-          for ( let i = 0; i < tracks.length; i++ ) {
-            const t = tracks[ i ];
-            if ( t !== track ) {
-
-              // don't match inner points
-              const otherPoints = [ t.controlPoints[ 0 ], t.controlPoints[ t.controlPoints.length - 1 ] ];
-
-              for ( let k = 0; k < otherPoints.length; k++ ) {
-                const otherPoint = otherPoints[ k ];
-                const distance = controlPoint.sourcePositionProperty.value.distance( otherPoint.positionProperty.value );
-
-                if ( distance < bestDistance ) {
-                  bestDistance = distance;
-                  bestMatch = otherPoint;
-                }
-              }
-            }
-          }
-
-          controlPoint.snapTargetProperty.value = ( bestDistance !== null && bestDistance < 1 ) ? bestMatch : null;
+          controlPoint.snapTargetProperty.value = ControlPointNode.findSnapTarget( controlPoint, track, model );
         }
 
         // When one control point dragged, update the track and the node shape
@@ -121,27 +95,8 @@ export default class ControlPointKeyboardDragListener extends SoundKeyboardDragL
           // After join, original tracks are disposed and a new merged track is created with copied
           // control points. Focus the closest focusable node at the join position.
           if ( trackLayer ) {
-
-            // REVIEW: This also looks very similar to code I saw in `ControlPointAttachmentKeyboardListener`.
             const targetViewPosition = modelViewTransform.modelToViewPosition( snapTargetPosition );
-            let bestNode: Node | null = null;
-            let bestDist = Number.POSITIVE_INFINITY;
-            for ( const child of trackLayer.children ) {
-              if ( child instanceof TrackNode && !child.isDisposed ) {
-                for ( const grandchild of child.children ) {
-                  if ( grandchild.focusable ) {
-                    const dist = grandchild.translation.distance( targetViewPosition );
-                    if ( dist < bestDist ) {
-                      bestDist = dist;
-                      bestNode = grandchild;
-                    }
-                  }
-                }
-              }
-            }
-            if ( bestNode ) {
-              bestNode.focus();
-            }
+            ControlPointNode.focusNearestControlPoint( trackLayer, targetViewPosition );
           }
         }
         else {
