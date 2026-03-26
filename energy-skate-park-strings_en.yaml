@@ -119,19 +119,20 @@ a11y:
                              There is a button to pause the sim for closer analysis of energy and speed.
                              Reset sim to start over.
     currentDetails:
-      skaterPhrase:   >-
-                      Currently, skater is { $onTrack ->
-                        [on] on
-                        *[off] off
-                      } the track and { $motion ->
-                        [inMotion] in motion
-                        *[atRest] at rest
-                      }.
-      frictionPhrase: >-
-                      Track surface { $hasFriction ->
-                        [true] has friction
-                        *[false] is frictionless
-                      }.
+      skaterPhrase:
+        select_onTrack:
+          on:
+            select_motion:
+              inMotion: Currently, skater is on the track and in motion.
+              atRest:   Currently, skater is on the track and at rest.
+          off:
+            select_motion:
+              inMotion: Currently, skater is off the track and in motion.
+              atRest:   Currently, skater is off the track and at rest.
+      frictionPhrase:
+        select_hasFriction:
+          true:  Track surface has friction.
+          false: Track surface is frictionless.
       noTrackBuilt:   Currently, no track built.
     interactionHint:
       hasTrack: Place skater on the track to begin exploring.
@@ -351,11 +352,10 @@ a11y:
     accessibleHelpText: Set acceleration due to gravity, ranging from tiny to lots.
   gravityControl:
     accessibleHelpText:     Set acceleration due to gravity.
-    accessibleValuePattern: >-
-                            {$value} { $units ->
-                              [metersPerSecondSquared] meters per second squared
-                              *[newtonsPerKilogram] newtons per kilogram
-                            }
+    accessibleValuePattern:
+      select_units:
+        metersPerSecondSquared: '{$value} meters per second squared'
+        newtonsPerKilogram:     '{$value} newtons per kilogram'
   gravityComboBox:
     accessibleName:            Gravity Benchmark
     accessibleHelpText:        Set acceleration due to gravity to match the chosen benchmark.

@@ -286,10 +286,10 @@
       },
       "currentDetails": {
         "skaterPhrase": {
-          "value": "Currently, skater is { $onTrack ->\n  [on] on\n  *[off] off\n} the track and { $motion ->\n  [inMotion] in motion\n  *[atRest] at rest\n}."
+          "value": "{ $onTrack ->\n  [on] { $motion ->\n         [inMotion] Currently, skater is on the track and in motion.\n         *[atRest] Currently, skater is on the track and at rest.\n       }\n  *[off] { $motion ->\n           [inMotion] Currently, skater is off the track and in motion.\n           *[atRest] Currently, skater is off the track and at rest.\n         }\n}"
         },
         "frictionPhrase": {
-          "value": "Track surface { $hasFriction ->\n  [true] has friction\n  *[false] is frictionless\n}."
+          "value": "{ $hasFriction ->\n  [true] Track surface has friction.\n  *[false] Track surface is frictionless.\n}"
         },
         "noTrackBuilt": {
           "value": "Currently, no track built."
@@ -776,7 +776,7 @@
         "value": "Set acceleration due to gravity."
       },
       "accessibleValuePattern": {
-        "value": "{$value} { $units ->\n  [metersPerSecondSquared] meters per second squared\n  *[newtonsPerKilogram] newtons per kilogram\n}"
+        "value": "{ $units ->\n  [metersPerSecondSquared] {$value} meters per second squared\n  *[newtonsPerKilogram] {$value} newtons per kilogram\n}"
       }
     },
     "gravityComboBox": {
