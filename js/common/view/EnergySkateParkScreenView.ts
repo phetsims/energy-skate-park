@@ -74,9 +74,6 @@ type SelfOptions = {
   // options for the bar graph, see composite type options below
   barGraphOptions?: EnergyBarGraphOptions | null;
 
-  // whether this ScreenView should have a bar graph
-  showBarGraph?: boolean;
-
   // whether to show buttons that select premade tracks
   showTrackButtons?: boolean;
 
@@ -138,7 +135,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
   protected readonly model: EnergySkateParkModel;
 
   // visibility of various view components
-  private readonly showBarGraph: boolean;
   private readonly showSeparateVisibilityControlsPanel: boolean;
 
   // defines the min and max edges horizontally for floating layout, null until first
@@ -201,7 +197,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
   public constructor( model: EnergySkateParkModel, tandem: Tandem, providedOptions?: EnergySkateParkScreenViewOptions ) {
     const options = optionize<EnergySkateParkScreenViewOptions, SelfOptions, ScreenViewOptions>()( {
       barGraphOptions: null,
-      showBarGraph: true,
       showTrackButtons: true,
       showSkaterPath: false,
       showBarGraphZoomButtons: true,
@@ -245,7 +240,6 @@ export default class EnergySkateParkScreenView extends ScreenView {
     };
 
     this.model = model;
-    this.showBarGraph = options.showBarGraph;
     this.showSeparateVisibilityControlsPanel = options.showSeparateVisibilityControlsPanel;
     this.fixedRight = null;
     this.fixedLeft = null;
@@ -283,7 +277,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     );
     this.bottomLayer.addChild( this.pieChartLegend );
 
-    if ( this.showBarGraph ) {
+    if ( model.showBarGraph ) {
       this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, model.preferencesModel.showPatternsProperty, tandem.createTandem( 'energyBarGraphAccordionBox' ), {
         barGraphOptions: {
           showBarGraphZoomButtons: options.showBarGraphZoomButtons
@@ -768,7 +762,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
     // pie chart legend position is dependent on whether the screen includes an energy bar graph
     let pieChartLegendLeftTop;
-    if ( this.showBarGraph ) {
+    if ( this.model.showBarGraph ) {
       this.energyBarGraphAccordionBox!.x = this.fixedLeft;
       pieChartLegendLeftTop = new Vector2( this.energyBarGraphAccordionBox!.right + 45, this.energyBarGraphAccordionBox!.top );
     }

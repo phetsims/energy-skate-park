@@ -27,7 +27,6 @@ export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView 
     super( model, tandem, {
       screenSummaryContent: new EnergySkateParkScreenSummaryContent( model, 'graphs' ),
       drawSkaterPath: false,
-      showBarGraph: false,
       controlPanelOptions: {
         visibilityControlsOptions: {
           showPieChartCheckbox: false,

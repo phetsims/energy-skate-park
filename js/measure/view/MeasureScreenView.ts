@@ -22,12 +22,11 @@ export default class MeasureScreenView extends EnergySkateParkTrackSetScreenView
 
   public constructor( model: MeasureModel, tandem: Tandem ) {
 
-    // parent layer for ComboBox, would use this but it is not available until after super
+    // parent layer for ComboBox, would use this, but it is not available until after super
     const comboBoxParent = new Node();
 
     super( model, tandem, {
       screenSummaryContent: new EnergySkateParkScreenSummaryContent( model, 'measure' ),
-      showBarGraph: false,
       showSkaterPath: true,
       controlPanelOptions: {
         visibilityControlsOptions: {

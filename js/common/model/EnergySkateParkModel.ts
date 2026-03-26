@@ -203,6 +203,9 @@ export default class EnergySkateParkModel {
   // so that simulation performance has no impact on physical behavior.
   private readonly eventTimer: EventTimer;
 
+  // True if this model has a bar graph
+  public readonly showBarGraph: boolean;
+
   public constructor( preferencesModel: EnergySkateParkPreferencesModel, tandem: Tandem, providedOptions?: EnergySkateParkModelOptions ) {
 
     const options = optionize<EnergySkateParkModelOptions, SelfOptions, PhetioObjectOptions>()( {
@@ -215,6 +218,7 @@ export default class EnergySkateParkModel {
     }, providedOptions );
 
     this.trackChangedEmitter = new Emitter();
+    this.showBarGraph = options.showBarGraph;
 
     this.tracksDraggable = options.tracksDraggable;
     this.tracksConfigurable = options.tracksConfigurable;
