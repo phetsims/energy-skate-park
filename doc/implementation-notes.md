@@ -87,3 +87,29 @@ create more space when possible. EnergySkateParkScreenView has many shared UI co
 screen. They can be added or removed from the screen with options. Subtypes of EnergySkateParkScreenView typically
 specify which UI components they require and override the `layout` function for any custom UI positioning.
 
+## PhET-iO Instrumentation
+
+Tracks and ControlPoints are dynamically created and destroyed at runtime (split, join, drag from toolbox), so they use
+`PhetioGroup` for dynamic element management. `EnergySkateParkModel` defines `controlPointGroup` and `trackGroup`, both
+opted out via `Tandem.OPT_OUT` on screens where tracks are not draggable.
+
+Two instrumented `createObservableArray` instances hold references to dynamic elements:
+
+* `EnergySkateParkModel.tracks` — `ObservableArrayIO( ReferenceIO( TrackIO ) )` for the active tracks in the sim.
+* `EnergySkateParkSaveSampleModel.dataSamples` — `ObservableArrayIO( EnergySkateParkDataSampleIO )` for energy graph
+  data points (data type, not references).
+
+Three custom IOTypes handle serialization:
+
+* **ControlPointIO** and **TrackIO** — Dynamic element serialization via `stateObjectToCreateElementArguments`. TrackIO
+  references its control points as `ArrayIO( ReferenceIO( ControlPointIO ) )`, so ControlPoints are restored first.
+* **EnergySkateParkDataSampleIO** — Data type serialization via `fromStateObject`. Each sample embeds a full
+  `_skaterState` sub-object (typed as `ObjectLiteralIO`) containing the skater's physics state at capture time.
+  `fromStateObject` resolves any `ReferenceIO( TrackIO )` track references within `_skaterState`, reconstructs a
+  `SkaterState` via `SkaterState.fromPlainObject`, then constructs a new sample. Mutable fields that can diverge from
+  constructor-derived values (`potentialEnergy`, `totalEnergy`, `referenceHeight`, opacity) are patched after
+  construction.
+
+Other references to Tracks (e.g., `Skater.trackProperty`) use
+`NullableIO( ReferenceIO( TrackIO ) )` for reference type serialization.
+
