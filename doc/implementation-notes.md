@@ -113,3 +113,21 @@ Three custom IOTypes handle serialization:
 Other references to Tracks (e.g., `Skater.trackProperty`) use
 `NullableIO( ReferenceIO( TrackIO ) )` for reference type serialization.
 
+## Keyboard Accessibility — Track Connection
+
+The Playground screen allows connecting track endpoints via keyboard using the **Transient ComboBox Pattern**
+(see `AttachmentKeyboardListener` in scenery-phet). When a user focuses an endpoint control point and presses
+Space/Enter, a ComboBox is created listing all available attachment targets from other tracks. The ComboBox is
+positioned offscreen so only its PDOM list box is accessible to screen readers and keyboard navigation; a dashed
+red circle highlight (`AttachmentHighlightNode`) visually indicates the currently focused target for sighted
+keyboard users. In `?dev` mode, the ComboBox is shown on-screen for debugging.
+
+This pattern originated in Circuit Construction Kit (for vertex and probe attachment) and was generalized into
+scenery-phet's `AttachmentKeyboardListener`. The sim-specific subclass `ControlPointAttachmentKeyboardListener`
+supplies the track-specific logic: collecting available endpoints, applying the snap/join operation, and restoring
+focus to the nearest control point on the newly merged track (since the original tracks are disposed during join).
+
+The keyboard help dialog section (`ConnectTrackEndpointsKeyboardHelpSection`) describes the ComboBox workflow
+with HotkeyData created in-place, since the key bindings are handled internally by ComboBox common code rather
+than by sim-level listeners.
+

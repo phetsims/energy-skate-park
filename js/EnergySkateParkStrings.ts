@@ -126,6 +126,9 @@ type StringsType = {
     }
   };
   'a11y': {
+    'controlPointAttachment': {
+      'noConnectionsAvailableStringProperty': LocalizedStringProperty;
+    };
     'noDataParagraphStringProperty': LocalizedStringProperty;
     'screenSummary': {
       'playArea': {

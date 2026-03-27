@@ -96,6 +96,7 @@ addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_showOptions', 'keyb
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_moveThroughOptions', 'keyboardHelpDialog.connectTrackEndpoints.moveThroughOptionsStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_selectOption', 'keyboardHelpDialog.connectTrackEndpoints.selectOptionStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_cancel', 'keyboardHelpDialog.connectTrackEndpoints.cancelStringProperty' );
+addToMapIfDefined( 'a11y_controlPointAttachment_noConnectionsAvailable', 'a11y.controlPointAttachment.noConnectionsAvailableStringProperty' );
 addToMapIfDefined( 'a11y_noDataParagraph', 'a11y.noDataParagraphStringProperty' );
 addToMapIfDefined( 'a11y_screenSummary_playArea_intro', 'a11y.screenSummary.playArea.introStringProperty' );
 addToMapIfDefined( 'a11y_screenSummary_playArea_measure', 'a11y.screenSummary.playArea.measureStringProperty' );
@@ -398,6 +399,9 @@ const EnergySkateParkFluent = {
     }
   },
   a11y: {
+    controlPointAttachment: {
+      noConnectionsAvailableStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_controlPointAttachment_noConnectionsAvailable', _.get( EnergySkateParkStrings, 'a11y.controlPointAttachment.noConnectionsAvailableStringProperty' ) )
+    },
     noDataParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_noDataParagraph', _.get( EnergySkateParkStrings, 'a11y.noDataParagraphStringProperty' ) ),
     screenSummary: {
       playArea: {

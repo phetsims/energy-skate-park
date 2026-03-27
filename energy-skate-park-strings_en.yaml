@@ -89,6 +89,8 @@ keyboardHelpDialog:
     selectOption:       '3. Select option'
     cancel:             '4. Cancel'
 a11y:
+  controlPointAttachment:
+    noConnectionsAvailable: No other track endpoints available.
   noDataParagraph:      No data to display. Grab skater to get started.
   screenSummary:
     playArea:

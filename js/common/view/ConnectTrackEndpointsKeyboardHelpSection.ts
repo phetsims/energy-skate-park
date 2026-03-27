@@ -1,9 +1,16 @@
 // Copyright 2026, University of Colorado Boulder
 
 /**
- * ConnectTrackEndpointsKeyboardHelpSection is the keyboard-help section that describes the workflow
- * for connecting track endpoints in the Playground screen of Energy Skate Park. Uses a numbered list
- * pattern modeled after ChooseJunctionConnectionKeyboardHelpSection in CCK.
+ * Keyboard help section for connecting track endpoints in the Playground screen.
+ *
+ * This documents the "Transient ComboBox Pattern" (see AttachmentKeyboardListener in scenery-phet).
+ * The key bindings shown here (Space/Enter, Arrow Up/Down, Enter, Escape) are handled internally
+ * by the ComboBox/ListBox common code — there are no sim-level KeyboardListeners for these actions.
+ * Therefore, the HotkeyData instances below are created solely for keyboard help dialog display,
+ * not pulled from any runtime listener. This is inherent to the pattern: the ComboBox provides
+ * the keyboard interaction for free, but the help dialog must describe it explicitly.
+ *
+ * Uses a numbered list pattern modeled after ChooseJunctionConnectionKeyboardHelpSection in CCK.
  *
  * @author Sam Reid (PhET Interactive Simulations)
  */
@@ -21,16 +28,17 @@ export default class ConnectTrackEndpointsKeyboardHelpSection extends KeyboardHe
 
   public constructor() {
 
-    // Helper to create a section row with separate visual and accessible labels
+    // Helper to create a section row with separate visual and accessible labels.
+    // NOTE: The HotkeyData instances created here are for display only. The actual key bindings
+    // (arrow navigation, Enter to select, Escape to cancel) are handled internally by the ComboBox
+    // component in common code, not by any sim-level KeyboardListener. There is no runtime listener
+    // to pull HotkeyData from — this is inherent to the Transient ComboBox Pattern used by
+    // ControlPointAttachmentKeyboardListener (see AttachmentKeyboardListener in scenery-phet).
     const createSectionRow = (
       keys: OneKeyStroke[],
       visualLabelStringProperty: TReadOnlyProperty<string>,
       accessibleLabelStringProperty: TReadOnlyProperty<string>
     ) => {
-
-      // These key bindings are handled internally by ComboBox (from common code), not by sim-specific
-      // KeyboardListeners, so there's no sim-level listener to co-locate HotkeyData with. We create
-      // HotkeyData here solely for the keyboard help dialog display.
       const hotkeyData = new HotkeyData( {
         keys: keys,
         repoName: energySkatePark.name,

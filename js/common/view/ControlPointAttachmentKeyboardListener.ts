@@ -1,32 +1,32 @@
 // Copyright 2026, University of Colorado Boulder
 
 /**
- * Keyboard listener for endpoint control points that presents a ComboBox listing all available snap targets,
- * allowing the user to connect two tracks via keyboard. Adapted from CCK's AttachmentKeyboardListener pattern
- * but self-contained for Energy Skate Park.
+ * Keyboard listener for endpoint control points that presents a transient ComboBox listing all available
+ * snap targets, allowing the user to connect two tracks via keyboard.
+ *
+ * This is the Energy Skate Park implementation of the Transient ComboBox Pattern
+ * (see AttachmentKeyboardListener in scenery-phet for full pattern documentation).
+ *
+ * When a user focuses a track endpoint and presses Space/Enter, a ComboBox lists available endpoints
+ * from other tracks. Arrow keys browse targets with a dashed-circle highlight on the current target.
+ * Enter confirms the join; Escape cancels. After a successful join, focus is restored to the nearest
+ * control point on the newly merged track (since the original tracks are disposed during join).
  *
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
 import animationFrameTimer from '../../../../axon/js/animationFrameTimer.js';
-import Property from '../../../../axon/js/Property.js';
-import Vector2 from '../../../../dot/js/Vector2.js';
-import { pdomFocusProperty } from '../../../../scenery/js/accessibility/pdomFocusProperty.js';
-import { OneKeyStroke } from '../../../../scenery/js/input/KeyDescriptor.js';
-import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
+import Bounds2 from '../../../../dot/js/Bounds2.js';
+import Node from '../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
-import ComboBox from '../../../../sun/js/ComboBox.js';
-import ComboBoxListItemNode from '../../../../sun/js/ComboBoxListItemNode.js';
-import Tandem from '../../../../tandem/js/Tandem.js';
+import AttachmentKeyboardListener from '../../../../scenery-phet/js/input/AttachmentKeyboardListener.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import ControlPoint from '../model/ControlPoint.js';
 import AttachmentHighlightNode from './AttachmentHighlightNode.js';
 import ControlPointNode from './ControlPointNode.js';
 import TrackNode from './TrackNode.js';
 
-export default class ControlPointAttachmentKeyboardListener extends KeyboardListener<OneKeyStroke[]> {
-
-  // Store the last successful connection highlight position for matching on next open
-  private lastConnectionHighlightPosition: Vector2 | null = null;
+export default class ControlPointAttachmentKeyboardListener extends AttachmentKeyboardListener<ControlPoint> {
 
   public constructor( controlPointNode: ControlPointNode, trackNode: TrackNode, controlPointIndex: number ) {
 
@@ -35,17 +35,49 @@ export default class ControlPointAttachmentKeyboardListener extends KeyboardList
     const modelViewTransform = trackNode.modelViewTransform;
     const controlPoint = track.controlPoints[ controlPointIndex ];
 
+    // Resolve the track layer (listParent) lazily since the TrackNode may not be in the scene graph
+    // at construction time (e.g., when dragged from the toolbox).
+    const getListParent = () => trackNode.parents[ 0 ];
+
+    // Dashed-circle highlight that visually indicates the currently focused attachment target.
+    // Created lazily on first use since listParent is not available at construction time.
+    let highlightNode: AttachmentHighlightNode | null = null;
+
+    const ensureHighlightNode = () => {
+      if ( !highlightNode ) {
+        highlightNode = new AttachmentHighlightNode();
+        getListParent().addChild( highlightNode );
+      }
+      return highlightNode;
+    };
+
+    // Captured in applySelection (before joinTracks disposes the original trackNode) and used
+    // in onSelectionApplied for focus restoration on the newly merged track.
+    let trackLayerForFocusRestore: Node | null = null;
+
     super( {
-      keys: [ 'space', 'enter' ],
+      triggerNode: controlPointNode,
+      listParent: getListParent,
 
-      fire: () => {
+      // Approximate layout bounds, only used for centering the offscreen ComboBox
+      layoutBounds: new Bounds2( 0, 0, 800, 600 ),
 
-        // Only proceed if this track is still in the model
-        if ( !model.containsTrack( track ) ) { return; }
+      showHighlight: position => {
+        const node = ensureHighlightNode();
+        node.center = position;
+        node.visible = true;
+      },
+      hideHighlight: () => {
+        if ( highlightNode ) {
+          highlightNode.visible = false;
+        }
+      },
+
+      getItems: () => {
 
         // Collect available endpoint targets from other physical, attachable tracks
-        const items: { value: ControlPoint; label: string }[] = [];
         const physicalTracks = model.getPhysicalTracks();
+        const items = [];
 
         for ( let t = 0; t < physicalTracks.length; t++ ) {
           const otherTrack = physicalTracks[ t ];
@@ -58,175 +90,66 @@ export default class ControlPointAttachmentKeyboardListener extends KeyboardList
           const lastCP = otherTrack.controlPoints[ otherTrack.controlPoints.length - 1 ];
 
           items.push( {
-            value: firstCP,
-            label: `Track ${trackNumber} Left`
+            value: firstCP as ControlPoint | null,
+            createNode: () => new Text( `Track ${trackNumber} Left` )
           } );
           items.push( {
-            value: lastCP,
-            label: `Track ${trackNumber} Right`
+            value: lastCP as ControlPoint | null,
+            createNode: () => new Text( `Track ${trackNumber} Right` )
           } );
         }
 
-        if ( items.length === 0 ) {
-          return;
+        return items;
+      },
+
+      getInitialPosition: () => modelViewTransform.modelToViewPosition( controlPoint.positionProperty.value ),
+
+      getHighlightPosition: selectedTarget => selectedTarget
+                                              ? modelViewTransform.modelToViewPosition( selectedTarget.positionProperty.value )
+                                              : modelViewTransform.modelToViewPosition( controlPoint.positionProperty.value ),
+
+      applySelection: ( selectedTarget, _targetPosition ) => {
+        if ( selectedTarget ) {
+
+          // Capture the track layer before joinTracks disposes the original trackNode and
+          // removes it from its parent. We need this reference for focus restoration.
+          trackLayerForFocusRestore = getListParent();
+
+          // Set snap target and dragging flags, update splines, then join tracks
+          controlPoint.snapTargetProperty.value = selectedTarget;
+          controlPoint.draggingProperty.value = true;
+          track.draggingProperty.value = true;
+          track.updateSplines();
+          trackNode.updateTrackShape();
+          model.joinTracks( track );
         }
+      },
 
-        // Determine initial selection — prefer last highlight position match, otherwise first item
-        let initialSelection = items[ 0 ].value;
-        if ( this.lastConnectionHighlightPosition ) {
-          for ( const item of items ) {
-            const itemViewPos = modelViewTransform.modelToViewPosition( item.value.positionProperty.value );
-            if ( this.lastConnectionHighlightPosition.equalsEpsilon( itemViewPos, 1 ) ) {
-              initialSelection = item.value;
-              break;
-            }
-          }
-        }
+      // After join, the original tracks are disposed and a new merged track is created with copied
+      // control points. Focus the ControlPointNode closest to the join position on the new track.
+      restoreFocus: () => {
 
-        const selectionProperty = new Property<ControlPoint>( initialSelection );
+        // No-op here — focus restoration is handled in onSelectionApplied via runOnNextTick,
+        // because joinTracks disposes the triggerNode and we need to wait for the new track to appear.
+      },
 
-        // Build ComboBox items
-        const comboBoxItems = items.map( item => ( {
-          value: item.value,
-          createNode: () => new Text( item.label ),
-          accessibleName: item.label
-        } ) );
+      onSelectionApplied: selectedTarget => {
+        if ( selectedTarget && trackLayerForFocusRestore ) {
+          const targetViewPosition = modelViewTransform.modelToViewPosition(
+            selectedTarget.positionProperty.value
+          );
 
-        // Use the trackNode's parent (the track layer) as the listParent for the ComboBox
-        const listParent = trackNode.parents[ 0 ];
-        if ( !listParent ) { return; }
-
-        const comboBox = new ComboBox( selectionProperty, comboBoxItems, listParent, {
-          opacity: 0.8,
-          tandem: Tandem.OPT_OUT
-        } );
-
-        // Make button non-focusable to avoid re-entrant focus issues (CCK pattern)
-        comboBox.button.focusable = false;
-
-        // Clear out ariaLabelledby associations to avoid duplicate reading
-        comboBox.listBox.ariaLabelledbyAssociations = [];
-
-        // Create highlight node
-        const highlightNode = new AttachmentHighlightNode();
-        listParent.addChild( highlightNode );
-
-        const showHighlight = ( target: ControlPoint ) => {
-          const viewPos = modelViewTransform.modelToViewPosition( target.positionProperty.value );
-          highlightNode.center = viewPos;
-          highlightNode.visible = true;
-        };
-
-        const hideHighlight = () => {
-          highlightNode.visible = false;
-        };
-
-        // Safe dispose helper
-        const cleanComboBoxDispose = () => {
-          if ( !comboBox.isDisposed ) {
-            comboBox.dispose();
-          }
-        };
-
-        const cleanUp = () => {
-          hideHighlight();
-          if ( highlightNode.parents.length > 0 ) {
-            listParent.removeChild( highlightNode );
-          }
-        };
-
-        let cancelled = false;
-
-        // When the list box closes (selection confirmed)
-        comboBox.listBox.visibleProperty.lazyLink( visible => {
-          if ( cancelled ) {
-            return;
-          }
-
-          if ( !visible ) {
-            const selectedTarget = selectionProperty.value;
-
-            // Store highlight position for next time
-            this.lastConnectionHighlightPosition = modelViewTransform.modelToViewPosition(
-              selectedTarget.positionProperty.value
-            ).copy();
-
-            // Save snap target position before joinTracks disposes the original control points
-            const targetPosition = selectedTarget.positionProperty.value.copy();
-
-            // Apply the connection: set snap target, dragging flags, update splines, join tracks
-            controlPoint.snapTargetProperty.value = selectedTarget;
-            controlPoint.draggingProperty.value = true;
-            track.draggingProperty.value = true;
-            track.updateSplines();
-            trackNode.updateTrackShape();
-            model.joinTracks( track );
-
-            cleanUp();
-
-            // Focus restoration: after join, original tracks are disposed and a new merged track is
-            // created with copied control points. Focus the ControlPointNode closest to the join position.
-            animationFrameTimer.runOnNextTick( () => {
-              cleanComboBoxDispose();
-
-              const targetViewPosition = modelViewTransform.modelToViewPosition( targetPosition );
-              ControlPointNode.focusNearestControlPoint( listParent, targetViewPosition );
-            } );
-          }
-        } );
-
-        // Show highlight when selection changes
-        selectionProperty.link( selection => {
-          showHighlight( selection );
-        } );
-
-        // Position ComboBox offscreen (or on-screen in ?dev mode)
-        comboBox.centerX = 400; // approximate center
-        comboBox.top = phet.chipper.queryParameters.dev ? 5 : 4005;
-
-        listParent.addChild( comboBox );
-
-        comboBox.showListBox();
-        comboBox.focusListItemNode( initialSelection );
-
-        // Handle cancel (Escape or clicking away)
-        comboBox.cancelEmitter.addListener( () => {
-          cancelled = true;
-          cleanUp();
-
+          // Wait one frame for the new merged track's ControlPointNodes to be created
+          const trackLayer = trackLayerForFocusRestore;
+          trackLayerForFocusRestore = null;
           animationFrameTimer.runOnNextTick( () => {
-            cleanComboBoxDispose();
-            controlPointNode.focus();
+            ControlPointNode.focusNearestControlPoint( trackLayer, targetViewPosition );
           } );
-        } );
+        }
+      },
 
-        // If the track is disposed while the combo box is open, cancel
-        const disposeListener = () => {
-          cancelled = true;
-          cleanUp();
-
-          animationFrameTimer.runOnNextTick( () => {
-            cleanComboBoxDispose();
-          } );
-        };
-        track.removeEmitter.addListener( disposeListener );
-        comboBox.disposeEmitter.addListener( () => {
-          if ( track.removeEmitter.hasListener( disposeListener ) ) {
-            track.removeEmitter.removeListener( disposeListener );
-          }
-        } );
-
-        // Track focus changes in PDOM to update selection and highlight
-        pdomFocusProperty.link( focus => {
-          const node = focus?.trail?.lastNode();
-          if ( node && node instanceof ComboBoxListItemNode ) {
-            const value = node.item.value as ControlPoint;
-            selectionProperty.value = value;
-          }
-        }, {
-          disposer: comboBox
-        } );
-      }
+      targetDisposeEmitter: track.removeEmitter,
+      noItemsContextResponse: EnergySkateParkFluent.a11y.controlPointAttachment.noConnectionsAvailableStringProperty
     } );
   }
 }
