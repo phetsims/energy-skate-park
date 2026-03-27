@@ -69,6 +69,7 @@ keyboardHelpDialog:
   grabOrRelease:                     Grab or release
   moveAlongTrack:                    Move along track
   attachToTrack:                     Attach to nearest track
+  detachFromTrack:                   Detach from track
   moveToStartOfTrack:                Jump to track start
   moveToEndOfTrack:                  Jump to track end
   jumpToSkater:                      Jump to skater

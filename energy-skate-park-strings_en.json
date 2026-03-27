@@ -197,6 +197,9 @@
     "attachToTrack": {
       "value": "Attach to nearest track"
     },
+    "detachFromTrack": {
+      "value": "Detach from track"
+    },
     "moveToStartOfTrack": {
       "value": "Jump to track start"
     },

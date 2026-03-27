@@ -2,7 +2,7 @@
 
 /**
  * SkaterKeyboardListener provides keyboard control for the skater with dual-mode behavior:
- * - On-track: Left/Right (A/D) move along parametric position, Up (W) detaches skater
+ * - On-track: Left/Right (A/D) move along parametric position, Up/Down (W/S) detaches skater
  * - Off-track: Standard 2D arrow key movement
  *
  * @author Sam Reid (PhET Interactive Simulations)
@@ -46,6 +46,12 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
     keys: [ 'end' ],
     repoName: energySkatePark.name,
     keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.moveToEndOfTrackStringProperty
+  } );
+
+  public static readonly DETACH_FROM_TRACK_HOTKEY_DATA = new HotkeyData( {
+    keys: [ 'arrowUp', 'arrowDown', 'w', 's' ],
+    repoName: energySkatePark.name,
+    keyboardHelpDialogLabelStringProperty: EnergySkateParkFluent.keyboardHelpDialog.detachFromTrackStringProperty
   } );
 
   private readonly skater: Skater;
@@ -104,7 +110,7 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
       const direction = onTop ? 1 : -1;
       this.moveAlongTrack( track, currentU, stepSize * direction );
     }
-    else if ( keysPressed === 'arrowUp' || keysPressed === 'w' ) {
+    else if ( keysPressed === 'arrowUp' || keysPressed === 'w' || keysPressed === 'arrowDown' || keysPressed === 's' ) {
       // Detach from track
       this.detachFromTrack();
     }
@@ -114,7 +120,6 @@ export default class SkaterKeyboardListener extends KeyboardListener<OneKeyStrok
     else if ( keysPressed === 'end' ) {
       this.jumpToTrackEndpoint( track, track.maxPoint - 1E-6 );
     }
-    // Down arrow (arrowDown, s) does nothing when on track
   }
 
   /**

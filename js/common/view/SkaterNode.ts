@@ -445,7 +445,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
 
     if ( track ) {
       // On-track movement: use parametric position
-      this.handleOnTrackKeyboardDrag( skater, track, leftPressed, rightPressed, upPressed, shiftPressed );
+      this.handleOnTrackKeyboardDrag( skater, track, leftPressed, rightPressed, upPressed, downPressed, shiftPressed );
     }
     else {
       // Off-track movement: use 2D position
@@ -462,6 +462,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
     leftPressed: boolean,
     rightPressed: boolean,
     upPressed: boolean,
+    downPressed: boolean,
     shiftPressed: boolean
   ): void {
     const currentU = skater.parametricPositionProperty.value;
@@ -478,11 +479,10 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       const direction = onTop ? 1 : -1;
       this.moveAlongTrack( skater, track, currentU, delta * direction );
     }
-    else if ( upPressed ) {
+    else if ( upPressed || downPressed ) {
       // Detach from track
       this.detachFromTrack( skater, track );
     }
-    // Down does nothing when on track
   }
 
   /**

@@ -104,6 +104,7 @@ type StringsType = {
     'grabOrReleaseStringProperty': LocalizedStringProperty;
     'moveAlongTrackStringProperty': LocalizedStringProperty;
     'attachToTrackStringProperty': LocalizedStringProperty;
+    'detachFromTrackStringProperty': LocalizedStringProperty;
     'moveToStartOfTrackStringProperty': LocalizedStringProperty;
     'moveToEndOfTrackStringProperty': LocalizedStringProperty;
     'jumpToSkaterStringProperty': LocalizedStringProperty;

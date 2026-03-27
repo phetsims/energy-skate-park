@@ -36,6 +36,9 @@ export default class SkaterKeyboardHelpSection extends KeyboardHelpSection {
       // Move along track
       KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.MOVE_ALONG_TRACK_HOTKEY_DATA ),
 
+      // Detach from track
+      KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.DETACH_FROM_TRACK_HOTKEY_DATA ),
+
       // Jump to track start
       KeyboardHelpSectionRow.fromHotkeyData( SkaterKeyboardListener.MOVE_TO_START_OF_TRACK_HOTKEY_DATA ),
 
