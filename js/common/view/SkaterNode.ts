@@ -5,6 +5,25 @@
  *
  * Converted to composition instead of inheritance for SkaterNode to work around updateSVGFragment problem, see #123
  *
+ *  ---------------------------------------------------------------------------------------------------------------
+ *  Listener Architecture
+ *
+ *  The skater supports both pointer (mouse/touch) and keyboard input for discrete and continuous interaction. These use
+ *  three coordinated listeners following the standard PhET GrabDragInteraction dual-input pattern (see also MassView.ts
+ *  in density-buoyancy-common):
+ *
+ *  1. SoundDragListener - Handles all pointer dragging. Always attached to the node. The public interruptDrag() method
+ *     allows external code (e.g., reset, screen changes) to cancel an in-progress pointer drag.
+ *
+ *  2. GrabDragInteraction + KeyboardDragListener - Handles keyboard input using the accessible grab/release paradigm.
+ *     GrabDragInteraction has an internal pressReleaseListener that fires onGrab/onRelease for pointer events too, but
+ *     those callbacks return early because SoundDragListener already handles pointer drag behavior. This
+ *     early-return-for-pointer pattern is the standard convention when pairing GrabDragInteraction with a separate
+ *     pointer drag listener.
+ *
+ *  3. KeyboardListener (J+T, Home, End) - Handles discrete hotkey commands that don't fit into KeyboardDragListener's
+ *     continuous-movement model. Only fires when the skater is keyboard-grabbed.
+ *
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
@@ -253,7 +272,7 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       skater.updatedEmitter.emit();
     };
 
-    // for interruption, see interruptDrag
+    // Pointer drag listener - handles mouse/touch dragging independently of GrabDragInteraction.
     this.dragListener = new SoundDragListener( {
       tandem: tandem.createTandem( 'dragListener' ),
       start: event => {
@@ -297,7 +316,10 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       tandem: tandem.createTandem( 'grabDragInteraction' ),
 
       onGrab: inputType => {
-        if ( inputType === 'pointer' ) { return; } // SoundDragListener handles pointer grabs
+
+        // GrabDragInteraction fires onGrab for pointer events too (via its internal pressReleaseListener),
+        // but SoundDragListener already handles pointer drag behavior, so return early to avoid duplicate logic.
+        if ( inputType === 'pointer' ) { return; }
         userControlledProperty.set( true );
         skater.userControlledProperty.value = true;
 
@@ -319,7 +341,9 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       },
 
       onRelease: inputType => {
-        if ( inputType === 'pointer' ) { return; } // SoundDragListener handles pointer releases
+
+        // Same early-return pattern as onGrab - SoundDragListener handles pointer release.
+        if ( inputType === 'pointer' ) { return; }
         // Record the state of the skater for "return skater"
         skater.released( this.keyboardTargetTrack, this.keyboardTargetU ?? 0 );
 
@@ -331,8 +355,8 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
       }
     } );
 
-    // Add keyboard listener for track attachment (j+t) and endpoint jumping (Home/End).
-    // Only active when the skater is keyboard-grabbed (not in the idle/button state).
+    // Discrete hotkey listener for commands that don't fit KeyboardDragListener's continuous-movement model.
+    // Only responds when the skater is keyboard-grabbed (not in the idle/button state).
     this.addInputListener( new KeyboardListener( {
       keys: [ attachToTrackKeys, 'home', 'end' ] as const,
       fire: ( event, keysPressed ) => {
