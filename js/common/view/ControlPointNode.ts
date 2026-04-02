@@ -80,6 +80,10 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
     const opacity = 0.7;
     const highlightedOpacity = 0.85;
 
+    const accessibleNameProperty = omitA11y ? null : EnergySkateParkFluent.a11y.controlPointNode.accessibleName.createProperty( {
+      index: visibleIndex
+    } );
+
     super( 17, combineOptions<CircleOptions>( {}, {
       pickable: true,
       opacity: opacity,
@@ -90,10 +94,12 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
       translation: modelViewTransform.modelToViewPosition( controlPoint.positionProperty.value ),
       tandem: tandem,
       visiblePropertyOptions: { phetioState: false },
-      accessibleName: omitA11y ? undefined : EnergySkateParkFluent.a11y.controlPointNode.accessibleName.createProperty( {
-        index: visibleIndex
-      } )
+      accessibleName: accessibleNameProperty ?? undefined
     }, omitA11y ? undefined : AccessibleDraggableOptions ) );
+
+    if ( accessibleNameProperty ) {
+      this.addDisposable( accessibleNameProperty );
+    }
 
     // Disable interactive highlighting for non-interactive control points or toolbox icons
     if ( omitA11y || !controlPoint.interactive ) {
@@ -128,11 +134,14 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
         this.boundsRectangle!.visible = EnergySkateParkQueryParameters.showPointBounds || dragging;
       };
       controlPoint.draggingProperty.link( boundsVisibilityListener );
+      this.addDisposable( { dispose: () => controlPoint.draggingProperty.unlink( boundsVisibilityListener ) } );
     }
 
-    controlPoint.positionProperty.link( position => {
+    const positionListener = ( position: Vector2 ) => {
       this.translation = modelViewTransform.modelToViewPosition( position );
-    } );
+    };
+    controlPoint.positionProperty.link( positionListener );
+    this.addDisposable( { dispose: () => controlPoint.positionProperty.unlink( positionListener ) } );
 
     // if the ControlPoint is 'interactive' it supports dragging and potentially track splitting
     let dragListener: SoundDragListener | null = null; // potential reference for disposal
@@ -141,6 +150,17 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
       boundaryReachedSoundPlayer = new BoundaryReachedSoundPlayer();
       let dragEvents = 0;
       let lastControlPointUI: ControlPointUI | null = null;
+      let lastRemovalListener: ( () => void ) | null = null;
+
+      // Detach the current removalListener from both emitters. Called before replacing the UI,
+      // inside removalListener itself after it fires, and on ControlPointNode disposal.
+      const detachRemovalListener = () => {
+        if ( lastRemovalListener ) {
+          track.removeEmitter.removeListener( lastRemovalListener );
+          track.translatedEmitter.removeListener( lastRemovalListener );
+          lastRemovalListener = null;
+        }
+      };
       dragListener = new SoundDragListener( {
         tandem: tandem.createTandem( 'dragListener' ),
         allowTouchSnag: true,
@@ -266,6 +286,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
             if ( dragEvents <= 3 && trackNode.parents.length > 0 ) {
               controlPointUIShownEmitter.emit();
 
+              detachRemovalListener();
               lastControlPointUI && lastControlPointUI.dispose();
 
               lastControlPointUI = new ControlPointUI(
@@ -277,11 +298,13 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
                 tandem.createTandem( 'controlPointUI' )
               );
 
-              // If the track was removed, get rid of the buttons
+              // If the track was removed or translated, dispose the buttons and self-detach.
               const removalListener = () => {
                 lastControlPointUI && lastControlPointUI.dispose();
                 lastControlPointUI = null;
+                detachRemovalListener();
               };
+              lastRemovalListener = removalListener;
               track.removeEmitter.addListener( removalListener );
 
               // If the track has translated, hide the buttons, see #272
@@ -315,28 +338,31 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
         }
       };
 
-      this.addInputListener( overOutListener, {
-        disposer: this
-      } );
+      this.addInputListener( overOutListener );
+      this.addDisposable( { dispose: () => this.removeInputListener( overOutListener ) } );
 
       // Even when omitA11y is true, the track is still draggable out of the toolbox, so it still needs its listeners.
       const controlPointKeyboardDragListener = new ControlPointKeyboardDragListener( trackNode, i, isEndPoint, boundaryReachedSoundPlayer, this );
-      this.addInputListener( controlPointKeyboardDragListener, { disposer: this } );
+      this.addInputListener( controlPointKeyboardDragListener );
+      this.addDisposable( controlPointKeyboardDragListener );
 
       // Add discrete attachment listener for endpoint control points on attachable tracks
       if ( isEndPoint && track.attachable ) {
         const attachmentListener = new ControlPointAttachmentKeyboardListener( this, trackNode, i );
-        this.addInputListener( attachmentListener, { disposer: this } );
+        this.addInputListener( attachmentListener );
+        this.addDisposable( attachmentListener );
       }
 
       // Delete/backspace removes the control point, same as the "x" button in ControlPointUI
       if ( track.splittable ) {
-        this.addInputListener( new ControlPointDeleteKeyboardListener( trackNode, i ), { disposer: this } );
+        const deleteListener = new ControlPointDeleteKeyboardListener( trackNode, i );
+        this.addInputListener( deleteListener );
+        this.addDisposable( deleteListener );
 
         // Alt+X splits the vertex, same as the scissors button in ControlPointUI.
         // Only available for interior control points when there is room for more tracks.
         if ( !isEndPoint ) {
-          this.addInputListener( new KeyboardListener( {
+          const splitListener = new KeyboardListener( {
             keyStringProperties: ControlPointNode.SPLIT_VERTEX_HOTKEY_DATA.keyStringProperties,
             fire: () => {
               if ( track.physicalProperty.value && !track.isDisposed && model.canCutTrackControlPoint() ) {
@@ -345,9 +371,22 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
                 model.splitControlPoint( track, i, modelAngle );
               }
             }
-          } ), { disposer: this } );
+          } );
+          this.addInputListener( splitListener );
+          this.addDisposable( splitListener );
         }
       }
+
+      // When this ControlPointNode is disposed, clean up any open ControlPointUI and its emitter listeners
+      this.addDisposable( {
+        dispose: () => {
+          detachRemovalListener();
+          if ( lastControlPointUI ) {
+            lastControlPointUI.dispose();
+            lastControlPointUI = null;
+          }
+        }
+      } );
     }
 
     this.touchArea = Shape.circle( 0, 0, 25 );

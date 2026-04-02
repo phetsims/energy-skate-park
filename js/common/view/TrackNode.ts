@@ -21,6 +21,7 @@ import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.j
 import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
+import { PressListenerEvent } from '../../../../scenery/js/listeners/PressListener.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
@@ -199,11 +200,12 @@ export default class TrackNode extends Node {
       this.road.addInputListener( this.trackDragHandler );
 
       const trackKeyboardDragListener = new TrackKeyboardDragListener( this, this.trackDragHandler, tandem.createTandem( 'trackKeyboardDragListener' ) );
-      this.addInputListener( trackKeyboardDragListener, { disposer: this } );
+      this.addInputListener( trackKeyboardDragListener );
+      this.addDisposable( trackKeyboardDragListener );
 
       // Delete/backspace removes the entire track when focused
       if ( track.splittable ) {
-        this.addInputListener( new KeyboardListener( {
+        const removeTrackListener = new KeyboardListener( {
           keyStringProperties: TrackNode.REMOVE_TRACK_HOTKEY_DATA.keyStringProperties,
           fire: () => {
             if ( track.physicalProperty.value && !track.isDisposed ) {
@@ -247,7 +249,9 @@ export default class TrackNode extends Node {
               }
             }
           }
-        } ), { disposer: this } );
+        } );
+        this.addInputListener( removeTrackListener );
+        this.addDisposable( removeTrackListener );
       }
     }
 
@@ -279,22 +283,25 @@ export default class TrackNode extends Node {
     // Update the track shape when the whole track is translated
     // Just observing the control points individually would lead to N expensive callbacks (instead of 1) for each of the N points
     // So we use this broadcast mechanism instead
-    track.translatedEmitter.addListener( this.updateTrackShape.bind( this ) );
+    const updateTrackShapeBound = this.updateTrackShape.bind( this );
+    track.translatedEmitter.addListener( updateTrackShapeBound );
 
-    track.draggingProperty.link( dragging => {
+    const draggingListener = ( dragging: boolean ) => {
       if ( !dragging ) {
         this.updateTrackShape();
       }
-    } );
+    };
+    track.draggingProperty.link( draggingListener );
 
-    track.resetEmitter.addListener( this.updateTrackShape.bind( this ) );
-    track.smoothedEmitter.addListener( this.updateTrackShape.bind( this ) );
-    track.updateEmitter.addListener( this.updateTrackShape.bind( this ) );
+    track.resetEmitter.addListener( updateTrackShapeBound );
+    track.smoothedEmitter.addListener( updateTrackShapeBound );
+    track.updateEmitter.addListener( updateTrackShapeBound );
 
     // track was pulled from the tool box, start drag event to the drag listener
-    track.forwardingDragStartEmitter.addListener( event => {
+    const forwardingDragStartListener = ( event: PressListenerEvent ) => {
       this.trackDragHandler!.press( event );
-    } );
+    };
+    track.forwardingDragStartEmitter.addListener( forwardingDragStartListener );
 
     // In the state wrapper, when the state changes, we must update the skater node
     const stateListener = () => {
@@ -305,6 +312,14 @@ export default class TrackNode extends Node {
     this.disposeTrackNode = () => {
       model.isStickingToTrackProperty.unlink( stickingToTrackListener );
       phetioStateSetEmitter.removeListener( stateListener );
+
+      track.translatedEmitter.removeListener( updateTrackShapeBound );
+      track.draggingProperty.unlink( draggingListener );
+      track.resetEmitter.removeListener( updateTrackShapeBound );
+      track.smoothedEmitter.removeListener( updateTrackShapeBound );
+      track.updateEmitter.removeListener( updateTrackShapeBound );
+      track.forwardingDragStartEmitter.removeListener( forwardingDragStartListener );
+
       for ( let i = 0; i < this.children.length; i++ ) {
         const child = this.children[ i ];
         if ( child instanceof ControlPointNode ) {
