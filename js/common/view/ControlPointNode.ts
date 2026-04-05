@@ -25,10 +25,10 @@ import BoundaryReachedSoundPlayer from '../../../../tambo/js/BoundaryReachedSoun
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
+import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPoint from '../model/ControlPoint.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
-import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPointAttachmentKeyboardListener from './ControlPointAttachmentKeyboardListener.js';
 import ControlPointDeleteKeyboardListener from './ControlPointDeleteKeyboardListener.js';
 import ControlPointKeyboardDragListener from './ControlPointKeyboardDragListener.js';
@@ -430,14 +430,14 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
    */
   public static focusNearestControlPoint( trackLayer: Node, targetViewPosition: Vector2 ): void {
     let bestNode: Node | null = null;
-    let bestDist = Number.POSITIVE_INFINITY;
+    let bestDistance = Number.POSITIVE_INFINITY;
     for ( const child of trackLayer.children ) {
       if ( child instanceof TrackNode && !child.isDisposed ) {
         for ( const grandchild of child.children ) {
           if ( grandchild instanceof ControlPointNode && grandchild.focusable ) {
-            const dist = grandchild.translation.distance( targetViewPosition );
-            if ( dist < bestDist ) {
-              bestDist = dist;
+            const distance = grandchild.translation.distance( targetViewPosition );
+            if ( distance < bestDistance ) {
+              bestDistance = distance;
               bestNode = grandchild;
             }
           }
