@@ -47,7 +47,7 @@ export default class EnergySkateParkScreenSummaryContent extends ScreenSummaryCo
         const sceneIndex = model.trackTypes.indexOf( scene );
         const trackShapeName = trackTypeToNameProperty[ scene ].value;
         const track = model.tracks.get( sceneIndex );
-        const visibleControlPointCount = track.controlPoints.filter( cp => cp.visible ).length;
+        const visibleControlPointCount = track.controlPoints.filter( controlPoint => controlPoint.visible ).length;
 
         if ( model.tracksConfigurable ) {
           return EnergySkateParkFluent.a11y.yourSkatePark.trackPhraseAdjustable.format( {

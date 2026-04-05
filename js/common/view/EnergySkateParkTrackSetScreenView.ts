@@ -80,7 +80,7 @@ export default class EnergySkateParkTrackSetScreenView extends EnergySkateParkSa
         // NOTE that it is not exactly a "scene" since it doesn't store other data such as skater position, etc.
         const sceneIndex = model.trackTypes.indexOf( scene );
         const track = model.tracks.get( sceneIndex );
-        const visibleControlPointCount = track.controlPoints.filter( cp => cp.visible ).length;
+        const visibleControlPointCount = track.controlPoints.filter( controlPoint => controlPoint.visible ).length;
 
         // Choose fixed vs adjustable phrase
         let trackPhrase: string;
