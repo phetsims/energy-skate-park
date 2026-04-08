@@ -39,6 +39,7 @@ For an exemplar, see https://github.com/phetsims/balancing-chemical-equations/bl
 * Basic Sounds
 * Core Description
 * PhET-iO support for PhET Studio
+* Patterns Preference: see _Preferences > Visual_
 
 ### Other Changes
 * Now versioned with Energy Skate Park: Basics (shares the same SHAs).
