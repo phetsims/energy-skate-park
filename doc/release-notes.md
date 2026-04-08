@@ -29,11 +29,32 @@ For an exemplar, see https://github.com/phetsims/balancing-chemical-equations/bl
 *
 -->
 
-## 1.5 ({{PUBLICATION_DATE}})
+## 1.5 (2026-MM-DD)
 
 ### New Features
+* TypeScript implementation
+* Dynamic Locale: see _Preferences > Localization > Languages_ 
 * Alternative Input
 * Interactive Highlights: see _Preferences > Visual > Interactive Highlights_
-* Basic Sound
+* Basic Sounds
 * Core Description
+* PhET-iO support for PhET Studio
+
+### Other Changes
+* Now versioned with Energy Skate Park: Basics (shares the same SHAs).
+* Improved color contrast.
+
+## 1.3 (2024-01-10)
+### New Features
+* Region and Culture: added Asia, Latin America, and Oceania
+
+## 1.2 (2023-01-18)
+### New Features
+* Region and Culture: see _Preferences > Localization > Region and Culture_
+
+## 1.1 (2020-12-14)
+
+## 1.0 (2020-08-27)
+Publicly-available prototype.
+
 
