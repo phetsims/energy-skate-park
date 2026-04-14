@@ -164,6 +164,7 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       transform: modelViewTransform,
       positionProperty: dragPositionProperty,
       dragBoundsProperty: dragBoundsProperty,
+      keyboardDragDirection: 'upDown',
       dragSpeed: 200, // View coordinates per second - provides continuous smooth motion
       shiftDragSpeed: 50, // Slower speed when shift is held for fine control
       start: () => {
