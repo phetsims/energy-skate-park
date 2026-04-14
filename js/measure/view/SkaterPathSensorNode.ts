@@ -126,7 +126,7 @@ export default class SkaterPathSensorNode extends Node {
    * @param sensorProbePositionProperty
    * @param sensorBodyPositionProperty
    * @param modelBoundsProperty
-   * @param  modelViewTransform
+   * @param modelViewTransform
    * @param controlPanel - so the readout doesn't occlude control panel bounds
    * @param [providedOptions]
    */
@@ -328,18 +328,10 @@ export default class SkaterPathSensorNode extends Node {
       keys: [ 'arrowRight', 'arrowUp', 'd', 'w', 'arrowLeft', 'arrowDown', 'a', 's' ] as const,
       fireOnHold: true,
       fire: ( event, keysPressed ) => {
-        if ( samples.length === 0 ) {
-          this.probeNode.addAccessibleContextResponse(
-            EnergySkateParkFluent.a11y.energySensorNode.nothingToMeasureStringProperty,
-            { interruptible: true }
-          );
-          return;
-        }
-
         const increment = keysPressed === 'arrowRight' || keysPressed === 'arrowUp' || keysPressed === 'd' || keysPressed === 'w';
         const direction = increment ? 1 : -1;
 
-        // Build waypoints: home position followed by sample positions in temporal order
+        // Always include the home waypoint so the probe remains keyboard-reachable after reset clears all samples.
         const waypoints = [ PROBE_HOME_POSITION, ...samples.map( sample => sample.position ) ];
 
         // Find which waypoint the probe is currently on (within threshold distance in view coords)
@@ -388,6 +380,12 @@ export default class SkaterPathSensorNode extends Node {
         if ( previousSample !== null && this.inspectedSample === null ) {
           this.probeNode.addAccessibleContextResponse(
             EnergySkateParkFluent.a11y.energySensorNode.movedOffSamplesStringProperty,
+            { interruptible: true }
+          );
+        }
+        else if ( samples.length === 0 ) {
+          this.probeNode.addAccessibleContextResponse(
+            EnergySkateParkFluent.a11y.energySensorNode.nothingToMeasureStringProperty,
             { interruptible: true }
           );
         }
