@@ -22,6 +22,7 @@ import Circle, { CircleOptions } from '../../../../scenery/js/nodes/Circle.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import BoundaryReachedSoundPlayer from '../../../../tambo/js/BoundaryReachedSoundPlayer.js';
+import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -366,6 +367,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
             keyStringProperties: ControlPointNode.SPLIT_VERTEX_HOTKEY_DATA.keyStringProperties,
             fire: () => {
               if ( track.physicalProperty.value && !track.isDisposed && model.canCutTrackControlPoint() ) {
+                sharedSoundPlayers.get( 'erase' ).play();
                 const alpha = new LinearFunction( 0, track.controlPoints.length - 1, track.minPoint, track.maxPoint ).evaluate( i );
                 const modelAngle = track.getModelAngleAt( alpha );
                 model.splitControlPoint( track, i, modelAngle );

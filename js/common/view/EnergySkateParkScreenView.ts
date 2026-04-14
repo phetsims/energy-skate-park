@@ -36,6 +36,7 @@ import Node from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import RectangularPushButton from '../../../../sun/js/buttons/RectangularPushButton.js';
+import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
@@ -450,12 +451,14 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
           // Return stopwatch to toolbox when delete/backspace is pressed while it or a descendant is focused
           if ( focusedNode && this.stopwatchNode!.getSubtreeNodes().includes( focusedNode ) ) {
+            sharedSoundPlayers.get( 'erase' ).play();
             model.stopwatch.isVisibleProperty.value = false;
             this.toolboxPanel!.stopwatchToolNode.focus();
           }
 
           // Return measuring tape to toolbox when delete/backspace is pressed while it or a descendant is focused
           else if ( focusedNode && this.measuringTapeNode!.getSubtreeNodes().includes( focusedNode ) ) {
+            sharedSoundPlayers.get( 'erase' ).play();
             model.measuringTapeVisibleProperty.set( false );
             this.toolboxPanel!.measuringTapeToolNode.focus();
           }

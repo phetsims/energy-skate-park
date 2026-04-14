@@ -15,6 +15,7 @@ import Color from '../../../../scenery/js/util/Color.js';
 import scissorsShape from '../../../../sherpa/js/fontawesome-4/scissorsShape.js';
 import timesCircleSolidShape from '../../../../sherpa/js/fontawesome-5/timesCircleSolidShape.js';
 import RoundPushButton from '../../../../sun/js/buttons/RoundPushButton.js';
+import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
@@ -91,7 +92,8 @@ export default class ControlPointUI extends Node {
         yMargin: 8,
 
         // yellow color scheme
-        baseColor: new Color( '#fefd53' )
+        baseColor: new Color( '#fefd53' ),
+        soundPlayer: sharedSoundPlayers.get( 'erase' )
       } );
       cutButton.addInputListener( disableDismissAction );
       this.addChild( cutButton );
@@ -118,7 +120,8 @@ export default class ControlPointUI extends Node {
       xContentOffset: -0.5,
 
       // yellow color scheme
-      baseColor: new Color( '#fefd53' )
+      baseColor: new Color( '#fefd53' ),
+      soundPlayer: sharedSoundPlayers.get( 'erase' )
     } );
     deleteButton.addInputListener( disableDismissAction );
     this.addChild( deleteButton );

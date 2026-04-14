@@ -9,6 +9,7 @@
 
 import { OneKeyStroke } from '../../../../scenery/js/input/KeyDescriptor.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
+import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import ControlPointNode from './ControlPointNode.js';
 import TrackNode from './TrackNode.js';
@@ -24,6 +25,7 @@ export default class ControlPointDeleteKeyboardListener extends KeyboardListener
       keyStringProperties: ControlPointNode.DELETE_CONTROL_POINT_HOTKEY_DATA.keyStringProperties,
       fire: () => {
         if ( track.physicalProperty.value && !track.isDisposed ) {
+          sharedSoundPlayers.get( 'erase' ).play();
 
           // Capture the trackLayer before deletion disposes this trackNode
           const trackLayer = trackNode.parents[ 0 ];

@@ -24,6 +24,7 @@ import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.
 import { PressListenerEvent } from '../../../../scenery/js/listeners/PressListener.js';
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path from '../../../../scenery/js/nodes/Path.js';
+import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
@@ -209,6 +210,7 @@ export default class TrackNode extends Node {
           keyStringProperties: TrackNode.REMOVE_TRACK_HOTKEY_DATA.keyStringProperties,
           fire: () => {
             if ( track.physicalProperty.value && !track.isDisposed ) {
+              sharedSoundPlayers.get( 'erase' ).play();
 
               // Capture the trackLayer before disposal removes this TrackNode
               const trackLayer = this.parents[ 0 ];
