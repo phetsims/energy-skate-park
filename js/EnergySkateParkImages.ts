@@ -34,6 +34,7 @@ import africaSkater6Right_png from '../images/africa/africaSkater6Right_png.js';
 import africaModestSkater6Headshot_png from '../images/africaModest/africaModestSkater6Headshot_png.js';
 import africaModestSkater6Left_png from '../images/africaModest/africaModestSkater6Left_png.js';
 import africaModestSkater6Right_png from '../images/africaModest/africaModestSkater6Right_png.js';
+import asiaSkater1Headshot_png from '../images/asia/asiaSkater1Headshot_png.js';
 import asiaSkater1Left_png from '../images/asia/asiaSkater1Left_png.js';
 import asiaSkater1Right_png from '../images/asia/asiaSkater1Right_png.js';
 import asiaSkater2Headshot_png from '../images/asia/asiaSkater2Headshot_png.js';
@@ -161,7 +162,7 @@ const EnergySkateParkImages = {
   skater1HeadshotImageProperty: new LocalizedImageProperty( 'skater1Headshot', {
     africa: africaSkater1Headshot_png,
     africaModest: africaSkater1Headshot_png,
-    asia: africaSkater1Headshot_png,
+    asia: asiaSkater1Headshot_png,
     latinAmerica: latinAmericaSkater1Headshot_png,
     oceania: oceaniaSkater1Headshot_png,
     usa: usaSkater1Headshot_png
