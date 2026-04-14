@@ -255,29 +255,36 @@ export default class EnergySkateParkModel {
     } );
 
     this.pieChartVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'pieChartVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'pieChartVisibleProperty' ),
+      phetioFeatured: true
     } );
     this.barGraphVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'barGraphVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'barGraphVisibleProperty' ),
+      phetioFeatured: true
     } );
     this.gridVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'gridVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'gridVisibleProperty' ),
+      phetioFeatured: true
     } );
     this.speedometerVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'speedometerVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'speedometerVisibleProperty' ),
+      phetioFeatured: true
     } );
 
     this.preferencesModel = preferencesModel;
 
     // whether the speed value is visible on the speedometer
     this.speedValueVisibleProperty = new BooleanProperty( options.defaultSpeedValueVisible, {
-      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'speedValueVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'speedValueVisibleProperty' ),
+      phetioFeatured: true
     } );
     this.referenceHeightVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'referenceHeightVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'referenceHeightVisibleProperty' ),
+      phetioFeatured: true
     } );
     this.measuringTapeVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'measuringTapeVisibleProperty' )
+      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'measuringTapeVisibleProperty' ),
+      phetioFeatured: true
     } );
 
     this.barGraphScaleProperty = new NumberProperty( 1 / 30 );

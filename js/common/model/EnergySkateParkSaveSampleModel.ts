@@ -101,7 +101,8 @@ export default class EnergySkateParkSaveSampleModel extends EnergySkateParkModel
     this.timeSinceSampleSave = 0;
     this.limitNumberOfSamples = true;
     this.pathVisibleProperty = new BooleanProperty( options.defaultSaveSamples, {
-      tandem: options.isShowPathSupported ? tandem.createTandem( 'visibleProperties' ).createTandem( 'pathVisibleProperty' ) : Tandem.OPT_OUT
+      tandem: options.isShowPathSupported ? tandem.createTandem( 'visibleProperties' ).createTandem( 'pathVisibleProperty' ) : Tandem.OPT_OUT,
+      phetioFeatured: true
     } );
     this.preventSampleSave = false;
     this.sampleTimeProperty = new NumberProperty( 0, {
