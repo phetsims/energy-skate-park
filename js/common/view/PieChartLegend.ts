@@ -14,6 +14,7 @@ import optionize from '../../../../phet-core/js/optionize.js';
 import AccessibleList from '../../../../scenery-phet/js/accessibility/AccessibleList.js';
 import MoveToTrashLegendButton from '../../../../scenery-phet/js/buttons/MoveToTrashLegendButton.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
+import ManualConstraint from '../../../../scenery/js/layout/constraints/ManualConstraint.js';
 import HBox from '../../../../scenery/js/layout/nodes/HBox.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
 import HStrut from '../../../../scenery/js/nodes/HStrut.js';
@@ -217,9 +218,9 @@ export default class PieChartLegend extends Panel {
       }
     } ) );
 
-    const strutGlobal = clearThermalButtonStrut.parentToGlobalPoint( clearThermalButtonStrut.center );
-    const buttonLocal = clearThermalButton.globalToParentPoint( strutGlobal );
-    clearThermalButton.center = buttonLocal;
+    ManualConstraint.create( panelContent, [ clearThermalButtonStrut, clearThermalButton ], ( clearThermalButtonStrutProxy, clearThermalButtonProxy ) => {
+      clearThermalButtonProxy.center = clearThermalButtonStrutProxy.center;
+    } );
 
     pieChartVisibleProperty.linkAttribute( this, 'visible' );
 
