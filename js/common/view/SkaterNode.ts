@@ -101,8 +101,14 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
    */
   public constructor(
     private readonly skater: Skater,
-    view: EnergySkateParkScreenView, userControlledProperty: BooleanProperty, modelViewTransform: ModelViewTransform2,
-    getClosestTrackAndPositionAndParameter: ( v: Vector2, t: Track[] ) => { track: Track; parametricPosition: number; point: Vector2 } | null, getPhysicalTracks: () => Track[], tandem: Tandem ) {
+    view: EnergySkateParkScreenView,
+    userControlledProperty: BooleanProperty,
+    modelViewTransform: ModelViewTransform2,
+    getClosestTrackAndPositionAndParameter: ( v: Vector2, t: Track[] ) => { track: Track; parametricPosition: number; point: Vector2 } | null,
+    getPhysicalTracks: () => Track[],
+    tandem: Tandem
+  ) {
+
     super( {
 
       // prevent fitted blocks for the Skater to improve performance, see #213
