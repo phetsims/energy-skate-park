@@ -125,6 +125,14 @@ export default class ControlPointAttachmentKeyboardListener extends AttachmentKe
         }
       },
 
+      onOpen: () => {
+        controlPointNode.setKeyboardAttachmentSelected( true );
+      },
+
+      onCancel: () => {
+        controlPointNode.setKeyboardAttachmentSelected( false );
+      },
+
       // After join, the original tracks are disposed and a new merged track is created with copied
       // control points. Focus the ControlPointNode closest to the join position on the new track.
       restoreFocus: () => {

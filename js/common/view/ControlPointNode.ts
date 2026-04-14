@@ -26,6 +26,7 @@ import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
+import EnergySkateParkColors from '../EnergySkateParkColors.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPoint from '../model/ControlPoint.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
@@ -53,6 +54,10 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
   } );
 
   public readonly boundsRectangle: Rectangle | null;
+  private pointerOver = false;
+  private keyboardAttachmentSelected = false;
+  private readonly keyboardAttachmentSelectionRing: Circle;
+  private readonly updateAppearance: () => void;
 
   /**
    * @param trackNode
@@ -102,6 +107,23 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
       this.addDisposable( accessibleNameProperty );
     }
 
+    this.keyboardAttachmentSelectionRing = new Circle( 30, {
+      stroke: EnergySkateParkColors.highlightStrokeProperty,
+      lineWidth: 5,
+      pickable: false,
+      visible: false
+    } );
+    if ( !omitA11y ) {
+      this.addChild( this.keyboardAttachmentSelectionRing );
+    }
+
+    this.updateAppearance = () => {
+      const highlighted = this.pointerOver && track.physicalProperty.value && !track.draggingProperty.value;
+      this.opacity = highlighted ? highlightedOpacity : opacity;
+      this.fill = highlighted ? highlightedFill : fill;
+      this.keyboardAttachmentSelectionRing.visible = this.keyboardAttachmentSelected;
+    };
+
     // Disable interactive highlighting for non-interactive control points or toolbox icons
     if ( omitA11y || !controlPoint.interactive ) {
       this.interactiveHighlightEnabled = false;
@@ -112,6 +134,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
     const physicalListener = ( isPhysical: boolean ) => {
       this.focusable = isPhysical;
       this.interactiveHighlightEnabled = isPhysical && !omitA11y && controlPoint.interactive;
+      this.updateAppearance();
     };
     track.physicalProperty.link( physicalListener );
     this.addDisposable( { dispose: () => track.physicalProperty.unlink( physicalListener ) } );
@@ -327,15 +350,13 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
 
       const overOutListener = {
         over: () => {
-          if ( track.physicalProperty.value && !track.draggingProperty.value ) {
-            this.opacity = highlightedOpacity;
-            this.fill = highlightedFill;
-          }
+          this.pointerOver = true;
+          this.updateAppearance();
         },
 
         out: () => {
-          this.opacity = opacity;
-          this.fill = fill;
+          this.pointerOver = false;
+          this.updateAppearance();
         }
       };
 
@@ -449,5 +470,10 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
     if ( bestNode ) {
       bestNode.focus();
     }
+  }
+
+  public setKeyboardAttachmentSelected( keyboardAttachmentSelected: boolean ): void {
+    this.keyboardAttachmentSelected = keyboardAttachmentSelected;
+    this.updateAppearance();
   }
 }

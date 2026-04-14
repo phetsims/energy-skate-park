@@ -142,4 +142,9 @@ export default class EnergySkateParkColors {
   public static readonly transparentPanelFillProperty = new ProfileColorProperty( energySkatePark, 'transparentPanelFill', {
     default: new Color( 255, 255, 255, 0.5 )
   } );
+
+  // Color for selected objects (CircuitElement and Vertex)
+  public static readonly highlightStrokeProperty = new ProfileColorProperty( energySkatePark, 'highlightStroke', {
+    default: '#000070'
+  } );
 }
