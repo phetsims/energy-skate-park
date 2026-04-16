@@ -203,8 +203,8 @@ export default class PieChartLegend extends Panel {
 
       // pdom
       accessibleHeading: EnergySkateParkFluent.a11y.pieChart.accessibleHeadingStringProperty,
-      accessibleParagraph: EnergySkateParkFluent.a11y.pieChart.accessibleHelpTextStringProperty,
-      accessibleHelpText: energyDescriptionProperty,
+      accessibleParagraph: energyDescriptionProperty,
+      accessibleHelpText: EnergySkateParkFluent.a11y.pieChart.accessibleHelpTextStringProperty,
       accessibleTemplate: AccessibleList.createTemplateProperty( {
         leadingParagraphStringProperty: EnergySkateParkFluent.a11y.pieChart.legendHeadingStringProperty,
         listItems: legendItems
