@@ -47,8 +47,8 @@ export default class EnergySkateParkConstants {
     team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Diana L\u00f3pez Tavares, Emily B. Moore, Kathy Perkins',
     graphicArts: 'Mariah Hermsmeyer, Megan Lai, Amanda McGarry, Sharon Siman-Tov',
     qualityAssurance: 'Jaspe Arias, Catherine Carter, Steele Dalton, Jaron Droder, Megan Lai, Brooklyn Lash, ' +
-                      'Emily Miller, Oliver Orejola, Arnab Purkayastha, Devon Quispe, Sam Reid, Nancy Salpepi, ' +
-                      'Kathryn Woessner, Bryan Yoelin'
+                      'Emily Miller, Matthew Moore, Oliver Orejola, Valentina Pérez, Arnab Purkayastha, Devon Quispe, ' +
+                      'Sam Reid, Nancy Salpepi, Kathryn Woessner, Bryan Yoelin'
   };
 
   public static readonly SLIDER_OPTIONS = {
