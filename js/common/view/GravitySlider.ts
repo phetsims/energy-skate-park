@@ -16,6 +16,12 @@ import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import PhysicalSlider from './PhysicalSlider.js';
 
+// Gravity is constrained to this interval (m/s^2) for arrow keys, mouse, and touch.
+const GRAVITY_INTERVAL = 1;
+
+// Finer interval (m/s^2) used for shift+arrow key presses.
+const GRAVITY_SHIFT_INTERVAL = 0.1;
+
 export default class GravitySlider extends PhysicalSlider {
 
   public constructor( property: NumberProperty, userControlledProperty: BooleanProperty, tandem: Tandem ) {
@@ -28,11 +34,20 @@ export default class GravitySlider extends PhysicalSlider {
       tandem, {
         minLabelProperty: EnergySkateParkFluent.physicalControls.tinyStringProperty,
         sliderOptions: {
-          constrainValue: value => roundToInterval( value, 1 ),
+          keyboardStep: GRAVITY_INTERVAL,
+          shiftKeyboardStep: GRAVITY_SHIFT_INTERVAL,
+          pageKeyboardStep: GRAVITY_INTERVAL * 5,
+
+          // Use a finer interval when shift is held so that shift+arrow can change the value rather than
+          // being rounded back to the previous value. See https://github.com/phetsims/sun/issues/698.
+          constrainValue: value => roundToInterval( value, this.slider.shiftKeyDown ? GRAVITY_SHIFT_INTERVAL : GRAVITY_INTERVAL ),
           createAriaValueText: ( value: number ) => EnergySkateParkFluent.a11y.gravityControl.accessibleValuePattern.format( {
             value: toFixed( value, 1 ),
             units: 'metersPerSecondSquared'
           } )
+        },
+        valueChangeSoundGeneratorOptions: {
+          numberOfMiddleThresholds: ( range.getLength() / GRAVITY_INTERVAL ) - 1
         }
       } );
 

@@ -26,6 +26,7 @@ const controlsValueLotsStringProperty = EnergySkateParkFluent.physicalControls.l
 const controlsValueNoneStringProperty = EnergySkateParkFluent.physicalControls.noneStringProperty;
 
 type SelfOptions = {
+
   // labels for the min and max values of this control
   maxLabelProperty?: TReadOnlyProperty<string>;
   minLabelProperty?: TReadOnlyProperty<string>;
