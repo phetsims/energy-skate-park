@@ -140,6 +140,7 @@ export default class GraphsModel extends EnergySkateParkTrackSetModel {
     } );
 
     this.energyGraphZoomIndexProperty = new NumberProperty( 11, {
+      numberType: 'Integer',
       range: new Range( 0, GraphsConstants.PLOT_RANGES.length - 1 ),
       tandem: graphTandem.createTandem( 'energyGraphZoomIndexProperty' ),
       phetioFeatured: true
