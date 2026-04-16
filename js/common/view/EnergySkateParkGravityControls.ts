@@ -140,9 +140,14 @@ export default class EnergySkateParkGravityControls extends VBox {
 
     if ( options.includeGravityComboBox ) {
 
-      const gValueStringProperty = gravityMagnitudeProperty.derived( g =>
-        EnergySkateParkFluent.a11y.gravityComboBox.gravityValuePattern.format( { value: toFixed( g, 1 ) } )
+      const unitsProperty = accelerationUnitsProperty.derived(
+        units => units === AccelerationUnits.METERS_PER_SECOND_SQUARED ? 'metersPerSecondSquared' : 'newtonsPerKilogram'
       );
+      const gravityValueNumberStringProperty = gravityMagnitudeProperty.derived( g => toFixed( g, 1 ) );
+      const gValueStringProperty = EnergySkateParkFluent.a11y.gravityComboBox.gravityValuePattern.createProperty( {
+        value: gravityValueNumberStringProperty,
+        units: unitsProperty
+      } );
       const gravityContextResponseProperty = EnergySkateParkFluent.a11y.gravityComboBox.accessibleContextResponse.createProperty( {
         gravityValue: gValueStringProperty
       } );

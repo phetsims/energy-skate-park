@@ -795,7 +795,7 @@
         "value": "Set acceleration due to gravity to match the chosen benchmark."
       },
       "gravityValuePattern": {
-        "value": "{$value} meters per second squared"
+        "value": "{ $units ->\n  [metersPerSecondSquared] {$value} meters per second squared\n  *[newtonsPerKilogram] {$value} newtons per kilogram\n}"
       },
       "accessibleContextResponse": {
         "value": "Gravity now {$gravityValue}."
