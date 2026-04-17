@@ -99,7 +99,12 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       [ referenceHeightProperty, aboveGroundProperty, EnergySkateParkFluent.a11y.referenceHeightLine.atGroundLevelStringProperty ],
       ( height, aboveGround, atGround ) => toFixedNumber( height, 1 ) === 0 ? atGround : aboveGround
     );
-    ariaValueTextProperty.link( ariaValueText => this.setPDOMAttribute( 'aria-valuetext', ariaValueText ) );
+
+    // Debounce aria-valuetext writes so NVDA announces only the settled value instead of each intermediate value
+    // during continuous keyboard drag. Matches the pattern in sun AccessibleValueHandler, see
+    // https://github.com/phetsims/energy-skate-park/issues/561 and https://github.com/phetsims/sun/issues/971.
+    const debouncedSetAriaValueText = _.debounce( ariaValueText => this.setPDOMAttribute( 'aria-valuetext', ariaValueText ), 300 );
+    ariaValueTextProperty.link( ariaValueText => debouncedSetAriaValueText( ariaValueText ) );
 
     // listeners, no need to dispose as the ReferenceHeightLine is never destroyed
     referenceHeightProperty.link( height => {
@@ -173,6 +178,9 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       drag: checkBoundary,
       end: () => {
         userControlledProperty.set( false );
+
+        // Flush so the settled value is announced immediately rather than after the debounce delay.
+        debouncedSetAriaValueText.flush();
       },
       tandem: tandem.createTandem( 'keyboardDragListener' )
     } );
