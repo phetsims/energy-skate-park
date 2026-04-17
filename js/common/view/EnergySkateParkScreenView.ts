@@ -447,6 +447,12 @@ export default class EnergySkateParkScreenView extends ScreenView {
       KeyboardListener.createGlobal( this, {
         keys: [ 'delete', 'backspace' ],
         fire: () => {
+
+          // Don't return tools to the toolbox when the toolbox is hidden (e.g., via PhET-iO Studio).
+          if ( !this.toolboxPanel!.visible ) {
+            return;
+          }
+
           const focusedNode = getPDOMFocusedNode();
 
           // Return stopwatch to toolbox when delete/backspace is pressed while it or a descendant is focused
