@@ -448,7 +448,7 @@
         "value": "Control Point { $index }"
       },
       "accessibleObjectResponse": {
-        "value": "at { $xCoordinate } { $yCoordinate } meters"
+        "value": "at x equals { $xCoordinate } and y equals { $yCoordinate } meters"
       }
     },
     "eraseTracksButton": {

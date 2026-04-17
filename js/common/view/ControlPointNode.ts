@@ -9,6 +9,7 @@
 
 import Emitter from '../../../../axon/js/Emitter.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
+import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Shape from '../../../../kite/js/Shape.js';
 import affirm, { isAffirmEnabled } from '../../../../perennial-alias/js/browser-and-node/affirm.js';
@@ -27,6 +28,7 @@ import Tandem from '../../../../tandem/js/Tandem.js';
 import energySkatePark from '../../energySkatePark.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkColors from '../EnergySkateParkColors.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkQueryParameters from '../EnergySkateParkQueryParameters.js';
 import ControlPoint from '../model/ControlPoint.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
@@ -58,6 +60,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
   private keyboardAttachmentSelected = false;
   private readonly keyboardAttachmentSelectionRing: Circle;
   private readonly updateAppearance: () => void;
+  private readonly controlPoint: ControlPoint;
 
   /**
    * @param trackNode
@@ -105,6 +108,18 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
 
     if ( accessibleNameProperty ) {
       this.addDisposable( accessibleNameProperty );
+    }
+
+    this.controlPoint = controlPoint;
+
+    // Announce the current position as an object response whenever the node receives focus, so users know where the
+    // control point is before moving it. Same pattern as calculus-grapher's CurveManipulatorNode.focusedProperty listener.
+    if ( !omitA11y ) {
+      this.focusedProperty.lazyLink( focused => {
+        if ( focused ) {
+          this.addAccessiblePositionResponse();
+        }
+      } );
     }
 
     this.keyboardAttachmentSelectionRing = new Circle( 30, {
@@ -475,5 +490,18 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
   public setKeyboardAttachmentSelected( keyboardAttachmentSelected: boolean ): void {
     this.keyboardAttachmentSelected = keyboardAttachmentSelected;
     this.updateAppearance();
+  }
+
+  /**
+   * Announce the control point's current position as an accessible object response. Called on focus and after
+   * keyboard drag. Shifts x so that x=0 aligns with the left edge of the E(x) graph.
+   */
+  public addAccessiblePositionResponse(): void {
+    this.addAccessibleObjectResponse(
+      EnergySkateParkFluent.a11y.controlPointNode.accessibleObjectResponse.format( {
+        xCoordinate: toFixedNumber( this.controlPoint.positionProperty.value.x + EnergySkateParkConstants.POSITION_PLOT_OFFSET, 1 ),
+        yCoordinate: toFixedNumber( this.controlPoint.positionProperty.value.y, 1 )
+      } )
+    );
   }
 }

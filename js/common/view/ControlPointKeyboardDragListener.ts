@@ -8,12 +8,9 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
-import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
 import BoundaryReachedSoundPlayer from '../../../../tambo/js/BoundaryReachedSoundPlayer.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
-import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
-import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import ControlPointNode from './ControlPointNode.js';
 import TrackNode from './TrackNode.js';
 
@@ -111,14 +108,7 @@ export default class ControlPointKeyboardDragListener extends SoundKeyboardDragL
         controlPoint.draggingProperty.value = false;
         track.draggingProperty.value = false;
 
-        // Announce the control point's new position as an object response.
-        // Shift x so that x=0 aligns with the left edge of the E(x) graph.
-        controlPointNode.addAccessibleObjectResponse(
-          EnergySkateParkFluent.a11y.controlPointNode.accessibleObjectResponse.format( {
-            xCoordinate: toFixedNumber( controlPoint.positionProperty.value.x + EnergySkateParkConstants.POSITION_PLOT_OFFSET, 1 ),
-            yCoordinate: toFixedNumber( controlPoint.positionProperty.value.y, 1 )
-          } )
-        );
+        controlPointNode.addAccessiblePositionResponse();
       },
       dragSpeed: 300,
       shiftDragSpeed: 75,
