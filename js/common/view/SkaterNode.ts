@@ -37,10 +37,10 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import GrabDragInteraction from '../../../../scenery-phet/js/accessibility/grab-drag/GrabDragInteraction.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
+import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
 import InteractiveHighlighting from '../../../../scenery/js/accessibility/voicing/InteractiveHighlighting.js';
 import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import SceneryEvent from '../../../../scenery/js/input/SceneryEvent.js';
-import KeyboardDragListener from '../../../../scenery/js/listeners/KeyboardDragListener.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import Circle from '../../../../scenery/js/nodes/Circle.js';
 import Image from '../../../../scenery/js/nodes/Image.js';
@@ -304,8 +304,9 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
     } );
     this.addInputListener( this.dragListener );
 
-    // Create a KeyboardDragListener for keyboard-based movement while grabbed
-    const keyboardDragListener = new KeyboardDragListener( {
+    // Create a SoundKeyboardDragListener for keyboard-based movement while grabbed. Plays grab/release sounds
+    // when arrow/WASD motion starts and stops, matching ReferenceHeightLine and MeasuringTapeNode.
+    const keyboardDragListener = new SoundKeyboardDragListener( {
       tandem: Tandem.OPT_OUT, // GrabDragInteraction will handle instrumentation
       dragSpeed: 300, // View coordinates per second - provides continuous smooth motion
       shiftDragSpeed: 75, // Slower speed when shift is held for fine control
