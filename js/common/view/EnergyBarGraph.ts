@@ -141,20 +141,32 @@ export default class EnergyBarGraph extends Node {
       } );
     };
 
+    const kineticBarProperty = createHideSmallValuesProperty( skater.kineticEnergyProperty );
+    const potentialBarProperty = createHideSmallValuesProperty( skater.potentialEnergyProperty );
+    const thermalBarProperty = createShowSmallValuesProperty( skater.thermalEnergyProperty, EnergySkateParkConstants.THERMAL_ENERGY_CLEAR_THRESHOLD );
+
+    // If kinetic, potential, and thermal are all rendered as 0 (below their individual thresholds), hide the total
+    // too. Otherwise, summing sub-threshold components can produce a visible total bar with all three component bars
+    // at 0, which is confusing.
+    const visibleTotalEnergyProperty = new DerivedProperty(
+      [ kineticBarProperty, potentialBarProperty, thermalBarProperty, skater.totalEnergyProperty ],
+      ( kinetic, potential, thermal, total ) => ( kinetic === 0 && potential === 0 && thermal === 0 ) ? 0 : total
+    );
+
     const kineticEntry = {
-      property: createHideSmallValuesProperty( skater.kineticEnergyProperty ),
+      property: kineticBarProperty,
       color: EnergySkateParkColors.kineticEnergyColorProperty as TPaint
     };
     const potentialEntry = {
-      property: createHideSmallValuesProperty( skater.potentialEnergyProperty ),
+      property: potentialBarProperty,
       color: EnergySkateParkColors.potentialEnergyColorProperty
     };
     const thermalEntry = {
-      property: createShowSmallValuesProperty( skater.thermalEnergyProperty, EnergySkateParkConstants.THERMAL_ENERGY_CLEAR_THRESHOLD ),
+      property: thermalBarProperty,
       color: EnergySkateParkColors.thermalEnergyColorProperty as TPaint
     };
     const totalEntry = {
-      property: createShowSmallValuesProperty( skater.totalEnergyProperty ),
+      property: createShowSmallValuesProperty( visibleTotalEnergyProperty ),
       color: EnergySkateParkColors.totalEnergyColorProperty
     };
 
