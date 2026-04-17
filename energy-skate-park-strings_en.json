@@ -181,6 +181,11 @@
       "value": "Adds patterns to the bar graph and pie chart to increase contrast between energy types."
     }
   },
+  "keyboardCues": {
+    "toChooseConnection": {
+      "value": "to <b>Choose Connection</b>"
+    }
+  },
   "keyboardHelpDialog": {
     "skaterControls": {
       "value": "Move or Jump Grabbed Skater"

@@ -98,6 +98,9 @@ type StringsType = {
     'patternsStringProperty': LocalizedStringProperty;
     'patternsDescriptionStringProperty': LocalizedStringProperty;
   };
+  'keyboardCues': {
+    'toChooseConnectionStringProperty': LocalizedStringProperty;
+  };
   'keyboardHelpDialog': {
     'skaterControlsStringProperty': LocalizedStringProperty;
     'fromAnywhereInScreenStringProperty': LocalizedStringProperty;

@@ -7,6 +7,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
@@ -17,8 +18,9 @@ import Vector2 from '../../../../dot/js/Vector2.js';
 import ScreenView, { ScreenViewOptions } from '../../../../joist/js/ScreenView.js';
 import Shape from '../../../../kite/js/Shape.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
-import optionize from '../../../../phet-core/js/optionize.js';
+import optionize, { combineOptions } from '../../../../phet-core/js/optionize.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
+import GrabReleaseCueNode from '../../../../scenery-phet/js/accessibility/nodes/GrabReleaseCueNode.js';
 import ResetAllButton from '../../../../scenery-phet/js/buttons/ResetAllButton.js';
 import MeasuringTapeNode from '../../../../scenery-phet/js/MeasuringTapeNode.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
@@ -26,7 +28,8 @@ import StopwatchNode from '../../../../scenery-phet/js/StopwatchNode.js';
 import TimeControlNode from '../../../../scenery-phet/js/TimeControlNode.js';
 import { metersUnit } from '../../../../scenery-phet/js/units/metersUnit.js';
 import ValueGaugeNode from '../../../../scenery-phet/js/ValueGaugeNode.js';
-import { getPDOMFocusedNode } from '../../../../scenery/js/accessibility/pdomFocusProperty.js';
+import type Focus from '../../../../scenery/js/accessibility/Focus.js';
+import { getPDOMFocusedNode, pdomFocusProperty } from '../../../../scenery/js/accessibility/pdomFocusProperty.js';
 import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
 import ManualConstraint from '../../../../scenery/js/layout/constraints/ManualConstraint.js';
 import VBox from '../../../../scenery/js/layout/nodes/VBox.js';
@@ -45,6 +48,7 @@ import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import EnergySkateParkModel from '../model/EnergySkateParkModel.js';
 import Track from '../model/Track.js';
 import BackgroundNode from './BackgroundNode.js';
+import ControlPointNode from './ControlPointNode.js';
 import { EnergyBarGraphOptions } from './EnergyBarGraph.js';
 import EnergyBarGraphAccordionBox from './EnergyBarGraphAccordionBox.js';
 import EnergySkateParkControlPanel, { EnergySkateParkControlPanelOptions } from './EnergySkateParkControlPanel.js';
@@ -166,6 +170,15 @@ export default class EnergySkateParkScreenView extends ScreenView {
   // Layer which will contain all tracks
   public readonly trackLayer: Node;
 
+  // Set to true once the user completes any keyboard-driven track-endpoint connection. Used to hide the
+  // "Space to Choose Connection" cue permanently for the session (matches CCK's anyVertexActivated behavior).
+  // Reset to false on ResetAll.
+  public readonly anyControlPointAttachedProperty: Property<boolean>;
+
+  // "Space to Choose Connection" cue shown near a focused endpoint control point until the user makes
+  // their first keyboard-driven connection.
+  private readonly chooseConnectionCueNode: GrabReleaseCueNode;
+
   public readonly measuringTapeNode?: MeasuringTapeNode;
   public readonly stopwatchNode?: StopwatchNode;
 
@@ -232,11 +245,16 @@ export default class EnergySkateParkScreenView extends ScreenView {
       model.availableModelBoundsProperty.set( bounds );
     } );
 
+    this.anyControlPointAttachedProperty = new BooleanProperty( false );
+
     // Mimic the PhetioGroup API until we implement the full instrumentation
+    const anyControlPointAttachedProperty = this.anyControlPointAttachedProperty;
     this.trackNodeGroup = {
       createNextElement( track, modelViewTransform, availableBoundsProperty, options ) {
         options && affirm( !options.hasOwnProperty( 'tandem' ), 'tandem is managed by the PhetioGroup' );
-        return new TrackNode( track, modelViewTransform, availableBoundsProperty, Tandem.OPT_OUT, options );
+        return new TrackNode( track, modelViewTransform, availableBoundsProperty, Tandem.OPT_OUT, combineOptions<TrackNodeOptions>( {
+          anyControlPointAttachedProperty: anyControlPointAttachedProperty
+        }, options ) );
       }
     };
 
@@ -370,6 +388,31 @@ export default class EnergySkateParkScreenView extends ScreenView {
 
     // tracks on top of panels and non-interactive visualizations
     this.topLayer.addChild( this.trackLayer );
+
+    // Cue shown near a focused endpoint control point that has not yet completed a keyboard connection.
+    // Added above the trackLayer so it renders over tracks. Not pickable so it never intercepts input.
+    this.chooseConnectionCueNode = new GrabReleaseCueNode( {
+      visible: false,
+      pickable: false,
+      stringProperty: EnergySkateParkFluent.keyboardCues.toChooseConnectionStringProperty
+    } );
+    this.topLayer.addChild( this.chooseConnectionCueNode );
+
+    const updateChooseConnectionCue = ( focus: Focus | null ) => {
+      this.chooseConnectionCueNode.visible = false;
+
+      if ( focus && !this.anyControlPointAttachedProperty.value ) {
+        const focusedNode = focus.trail.lastNode();
+        if ( focusedNode instanceof ControlPointNode && focusedNode.isAttachableEndpoint &&
+             model.getPhysicalTracks().some( t => t !== focusedNode.track && t.attachable ) ) {
+          const localBounds = this.topLayer.globalToLocalBounds( focusedNode.globalBounds );
+          this.chooseConnectionCueNode.centerTop = localBounds.centerBottom.plusXY( 0, 4 );
+          this.chooseConnectionCueNode.visible = true;
+        }
+      }
+    };
+    pdomFocusProperty.link( updateChooseConnectionCue );
+    this.anyControlPointAttachedProperty.link( () => updateChooseConnectionCue( pdomFocusProperty.value ) );
 
     // Heading Nodes to group tool PDOM elements under navigable headings in the Play Area
     let stopwatchHeadingNode: Node | undefined;
@@ -661,6 +704,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.model.resetEmitter.addListener( () => {
       this.skaterNode.selectedSkaterProperty.reset();
       this.skaterNode.reset();
+      this.anyControlPointAttachedProperty.reset();
     } );
 
     // For debugging the visible bounds

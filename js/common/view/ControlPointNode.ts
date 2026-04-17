@@ -61,6 +61,11 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
   private readonly keyboardAttachmentSelectionRing: Circle;
   private readonly updateAppearance: () => void;
   private readonly controlPoint: ControlPoint;
+  public readonly track: Track;
+
+  // True for an endpoint control point on an attachable, interactive track — i.e., one that can participate
+  // in a keyboard-driven connection. Read by the ScreenView to decide when to show the Space-to-Choose-Connection cue.
+  public readonly isAttachableEndpoint: boolean;
 
   /**
    * @param trackNode
@@ -111,6 +116,8 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
     }
 
     this.controlPoint = controlPoint;
+    this.track = track;
+    this.isAttachableEndpoint = isEndPoint && track.attachable && controlPoint.interactive && !omitA11y;
 
     // Announce the current position as an object response whenever the node receives focus, so users know where the
     // control point is before moving it. Same pattern as calculus-grapher's CurveManipulatorNode.focusedProperty listener.

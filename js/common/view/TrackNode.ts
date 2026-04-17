@@ -9,6 +9,7 @@
  */
 
 import Property from '../../../../axon/js/Property.js';
+import TProperty from '../../../../axon/js/TProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Shape from '../../../../kite/js/Shape.js';
@@ -42,6 +43,10 @@ type SelfOptions = {
   // Whether this TrackNode is used for the toolbox button icon. This disables nested control-point a11y
   // options so the button does not expose unwanted substructure in the PDOM.
   trackToolboxIcon?: boolean;
+
+  // Screen-level flag set to true after the first successful keyboard connection, used by the ScreenView to
+  // hide the "Space to Choose Connection" cue once the user has learned the pattern. Reset on ResetAll.
+  anyControlPointAttachedProperty?: TProperty<boolean> | null;
 };
 export type TrackNodeOptions = SelfOptions & NodeOptions;
 
@@ -58,6 +63,7 @@ export default class TrackNode extends Node {
   } );
   private readonly isIcon: boolean;
   public readonly model: EnergySkateParkModel;
+  public readonly anyControlPointAttachedProperty: TProperty<boolean> | null;
   private readonly road: InstanceType<typeof InteractiveHighlightingPath>;
   private readonly centerLine: Path;
 
@@ -101,6 +107,8 @@ export default class TrackNode extends Node {
       // {boolean} - whether this TrackNode is specifically for the track toolbox icon button. When true,
       // control points omit a11y metadata/listeners so the parent button has clean PDOM output.
       trackToolboxIcon: false,
+
+      anyControlPointAttachedProperty: null,
 
       tandem: tandem,
       visiblePropertyOptions: { phetioState: false }
@@ -158,6 +166,7 @@ export default class TrackNode extends Node {
 
     this.model = model;
     this.isIcon = !!options.isIcon;
+    this.anyControlPointAttachedProperty = options.anyControlPointAttachedProperty;
 
     this.road = new InteractiveHighlightingPath( null, {
       fill: 'gray',

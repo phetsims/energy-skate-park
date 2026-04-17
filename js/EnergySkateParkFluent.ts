@@ -73,6 +73,7 @@ addToMapIfDefined( 'preferences_metersPerSecondSquared', 'preferences.metersPerS
 addToMapIfDefined( 'preferences_newtonsPerKilogram', 'preferences.newtonsPerKilogramStringProperty' );
 addToMapIfDefined( 'preferences_patterns', 'preferences.patternsStringProperty' );
 addToMapIfDefined( 'preferences_patternsDescription', 'preferences.patternsDescriptionStringProperty' );
+addToMapIfDefined( 'keyboardCues_toChooseConnection', 'keyboardCues.toChooseConnectionStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_skaterControls', 'keyboardHelpDialog.skaterControlsStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_fromAnywhereInScreen', 'keyboardHelpDialog.fromAnywhereInScreenStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_grabOrRelease', 'keyboardHelpDialog.grabOrReleaseStringProperty' );
@@ -372,6 +373,10 @@ const EnergySkateParkFluent = {
     newtonsPerKilogramStringProperty: _.get( EnergySkateParkStrings, 'preferences.newtonsPerKilogramStringProperty' ),
     patternsStringProperty: _.get( EnergySkateParkStrings, 'preferences.patternsStringProperty' ),
     patternsDescriptionStringProperty: _.get( EnergySkateParkStrings, 'preferences.patternsDescriptionStringProperty' )
+  },
+  _comment_0: new FluentComment( {"comment":"Visible keyboard cues shown on control points during interaction","associatedKey":"keyboardCues"} ),
+  keyboardCues: {
+    toChooseConnectionStringProperty: _.get( EnergySkateParkStrings, 'keyboardCues.toChooseConnectionStringProperty' )
   },
   keyboardHelpDialog: {
     skaterControlsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.skaterControlsStringProperty' ),

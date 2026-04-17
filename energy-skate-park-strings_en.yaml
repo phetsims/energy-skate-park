@@ -63,6 +63,9 @@ preferences:
   newtonsPerKilogram:           N/kg
   patterns:                     Patterns
   patternsDescription:          Adds patterns to the bar graph and pie chart to increase contrast between energy types.
+# Visible keyboard cues shown on control points during interaction
+keyboardCues:
+  toChooseConnection: to <b>Choose Connection</b>
 keyboardHelpDialog:
   skaterControls:                    Move or Jump Grabbed Skater
   fromAnywhereInScreen:              From Anywhere in Screen

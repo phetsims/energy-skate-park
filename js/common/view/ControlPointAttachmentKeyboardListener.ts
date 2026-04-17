@@ -122,6 +122,12 @@ export default class ControlPointAttachmentKeyboardListener extends AttachmentKe
           track.updateSplines();
           trackNode.updateTrackShape();
           model.joinTracks( track );
+
+          // The user completed a keyboard-driven connection, so the "Space to Choose Connection" cue
+          // has served its purpose and can be permanently dismissed until ResetAll.
+          if ( trackNode.anyControlPointAttachedProperty ) {
+            trackNode.anyControlPointAttachedProperty.value = true;
+          }
         }
       },
 
