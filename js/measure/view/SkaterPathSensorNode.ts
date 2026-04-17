@@ -42,6 +42,7 @@ import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
 import SunConstants from '../../../../sun/js/SunConstants.js';
 import BoundaryReachedSoundPlayer from '../../../../tambo/js/BoundaryReachedSoundPlayer.js';
+import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
 import EnergySkateParkColors from '../../common/EnergySkateParkColors.js';
 import EnergySkateParkConstants from '../../common/EnergySkateParkConstants.js';
 import EnergySkateParkDataSample from '../../common/model/EnergySkateParkDataSample.js';
@@ -375,6 +376,9 @@ export default class SkaterPathSensorNode extends Node {
         const previousSample = this.inspectedSample;
         this.isKeyboardAction = true;
         sensorProbePositionProperty.value = targetPosition;
+
+        // Play a discrete sound for each keyboard-driven waypoint advance.
+        sharedSoundPlayers.get( 'grab' ).play();
 
         // Keyboard moved off all sample points
         if ( previousSample !== null && this.inspectedSample === null ) {
