@@ -151,8 +151,13 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
    * z-ordering does not affect the screen reader navigation order.
    */
   private updateTrackLayerPdomOrder(): void {
-    this.trackLayer.pdomOrder = this.model.tracks.map( track =>
-      this.trackNodes.find( trackNode => trackNode.track === track )!
-    );
+
+    // Filter out undefined values so intermediate states during PhET-iO state restoration (when model.tracks has
+    // already been fully populated but this.trackNodes is being filled in one-by-one via deferred emits)
+    // don't produce an array with undefined entries, which would crash scenery in Trail.addDescendant.
+    // Same defensive pattern as sun/js/Dialog.ts and density-buoyancy-common/js/buoyancy/view/shapes/BuoyancyShapesScreenView.ts.
+    this.trackLayer.pdomOrder = this.model.tracks
+      .map( track => this.trackNodes.find( trackNode => trackNode.track === track ) )
+      .filter( ( trackNode ): trackNode is TrackNode => trackNode !== undefined );
   }
 }
