@@ -208,6 +208,8 @@ a11y:
   eraseTracksButton:
     accessibleName:            Erase Tracks
     accessibleContextResponse: All tracks removed from your skate park.
+  tracksJoined:
+    accessibleContextResponse: Connected.
   grabSkaterButton:
     accessibleHelpText: >-
                         Look for skater to grab. Once grabbed, use Keyboard Shortcuts to attach to track or move along track.

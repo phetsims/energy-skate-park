@@ -459,6 +459,11 @@
         "value": "All tracks removed from your skate park."
       }
     },
+    "tracksJoined": {
+      "accessibleContextResponse": {
+        "value": "Connected."
+      }
+    },
     "grabSkaterButton": {
       "accessibleHelpText": {
         "value": "Look for skater to grab. Once grabbed, use Keyboard Shortcuts to attach to track or move along track."

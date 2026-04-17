@@ -199,6 +199,9 @@ export default class EnergySkateParkModel {
   // Emits when the skater detaches from a track during a physics step (not user interaction).
   public readonly skaterDetachedFromTrackEmitter: Emitter;
 
+  // Emits after two tracks have been successfully joined into a single track.
+  public readonly tracksJoinedEmitter: Emitter;
+
   // Updates the model with constant event intervals even if there is a drop in the framerate
   // so that simulation performance has no impact on physical behavior.
   private readonly eventTimer: EventTimer;
@@ -350,6 +353,7 @@ export default class EnergySkateParkModel {
     this.resetEmitter = new Emitter();
     this.skaterAttachedToTrackEmitter = new Emitter();
     this.skaterDetachedFromTrackEmitter = new Emitter();
+    this.tracksJoinedEmitter = new Emitter();
 
     // If the mass changes while the sim is paused, trigger an update so the skater image size will update, see #115
     this.skater.massProperty.link( () => {
@@ -1572,6 +1576,8 @@ export default class EnergySkateParkModel {
     affirm( otherTrack.attachable, 'trying to join tracks, but other track is not attachable' );
 
     this.joinTrackToTrack( track, otherTrack );
+
+    this.tracksJoinedEmitter.emit();
   }
 
   /**

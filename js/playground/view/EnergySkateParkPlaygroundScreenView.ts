@@ -94,6 +94,11 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
     this.yourSkateParkHeadingNode.accessibleHelpTextBehavior = ParallelDOM.HELP_TEXT_BEFORE_CONTENT;
     this.yourSkateParkHeadingNode.accessibleHelpText = EnergySkateParkFluent.a11y.yourSkatePark.accessibleHelpTextStringProperty;
 
+    // Announce "Connected." after two tracks are successfully joined.
+    model.tracksJoinedEmitter.addListener( () => {
+      this.addAccessibleContextResponse( EnergySkateParkFluent.a11y.tracksJoined.accessibleContextResponseStringProperty );
+    } );
+
     // Dynamic paragraph describing the number of tracks and skater status for screen readers
     const trackStatusNode = new PlaygroundTrackStatusNode( model );
     this.addChild( trackStatusNode );

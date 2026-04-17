@@ -222,6 +222,9 @@ type StringsType = {
       'accessibleNameStringProperty': LocalizedStringProperty;
       'accessibleContextResponseStringProperty': LocalizedStringProperty;
     };
+    'tracksJoined': {
+      'accessibleContextResponseStringProperty': LocalizedStringProperty;
+    };
     'grabSkaterButton': {
       'accessibleHelpTextStringProperty': LocalizedStringProperty;
     };

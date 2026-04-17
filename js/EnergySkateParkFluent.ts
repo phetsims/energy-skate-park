@@ -150,6 +150,7 @@ addToMapIfDefined( 'a11y_controlPointNode_accessibleName', 'a11y.controlPointNod
 addToMapIfDefined( 'a11y_controlPointNode_accessibleObjectResponse', 'a11y.controlPointNode.accessibleObjectResponseStringProperty' );
 addToMapIfDefined( 'a11y_eraseTracksButton_accessibleName', 'a11y.eraseTracksButton.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_eraseTracksButton_accessibleContextResponse', 'a11y.eraseTracksButton.accessibleContextResponseStringProperty' );
+addToMapIfDefined( 'a11y_tracksJoined_accessibleContextResponse', 'a11y.tracksJoined.accessibleContextResponseStringProperty' );
 addToMapIfDefined( 'a11y_grabSkaterButton_accessibleHelpText', 'a11y.grabSkaterButton.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_energyReadoutPattern', 'a11y.energyReadoutPatternStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_accessibleHeading', 'a11y.energySensorNode.accessibleHeadingStringProperty' );
@@ -496,6 +497,10 @@ const EnergySkateParkFluent = {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_eraseTracksButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.eraseTracksButton.accessibleNameStringProperty' ) ),
       _comment_0: new FluentComment( {"comment":"Context response stating g value when user interacts with ComboBox. Example for Earth: Gravity now 9.8 meters per second squared.","associatedKey":"accessibleContextResponse"} ),
       accessibleContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_eraseTracksButton_accessibleContextResponse', _.get( EnergySkateParkStrings, 'a11y.eraseTracksButton.accessibleContextResponseStringProperty' ) )
+    },
+    tracksJoined: {
+      _comment_0: new FluentComment( {"comment":"Context response stating g value when user interacts with ComboBox. Example for Earth: Gravity now 9.8 meters per second squared.","associatedKey":"accessibleContextResponse"} ),
+      accessibleContextResponseStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_tracksJoined_accessibleContextResponse', _.get( EnergySkateParkStrings, 'a11y.tracksJoined.accessibleContextResponseStringProperty' ) )
     },
     grabSkaterButton: {
       accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_grabSkaterButton_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.grabSkaterButton.accessibleHelpTextStringProperty' ) )
