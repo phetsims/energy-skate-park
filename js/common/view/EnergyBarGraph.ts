@@ -120,8 +120,12 @@ export default class EnergyBarGraph extends Node {
     };
 
     // For thermal and total energy, make sure they are big enough to be visible, see #307
-    const createShowSmallValuesProperty = ( energyProperty: TReadOnlyProperty<number> ) => {
+    const createShowSmallValuesProperty = ( energyProperty: TReadOnlyProperty<number>, minimumVisibleEnergy = 0 ) => {
       return new DerivedProperty( [ energyProperty ], energy => {
+        if ( Math.abs( energy ) < minimumVisibleEnergy ) {
+          return 0;
+        }
+
         let resultantEnergy = energy;
         const scale = barGraphScaleProperty.get();
 
@@ -146,7 +150,7 @@ export default class EnergyBarGraph extends Node {
       color: EnergySkateParkColors.potentialEnergyColorProperty
     };
     const thermalEntry = {
-      property: createShowSmallValuesProperty( skater.thermalEnergyProperty ),
+      property: createShowSmallValuesProperty( skater.thermalEnergyProperty, EnergySkateParkConstants.THERMAL_ENERGY_CLEAR_THRESHOLD ),
       color: EnergySkateParkColors.thermalEnergyColorProperty as TPaint
     };
     const totalEntry = {

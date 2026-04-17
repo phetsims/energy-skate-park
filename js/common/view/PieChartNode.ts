@@ -18,6 +18,7 @@ import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Path, { PathOptions } from '../../../../scenery/js/nodes/Path.js';
 import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import EnergySkateParkColors from '../EnergySkateParkColors.js';
+import EnergySkateParkConstants from '../EnergySkateParkConstants.js';
 import Skater from '../model/Skater.js';
 
 type SelfOptions = {
@@ -117,11 +118,12 @@ export default class PieChartNode extends Node {
 
       // If any value is too low, then don't show it, see #136
       const THRESHOLD = 1E-4;
+      const THERMAL_THRESHOLD = EnergySkateParkConstants.THERMAL_ENERGY_CLEAR_THRESHOLD;
 
       // if only one component of pie chart, then show as a circle so there are no seams
       const numberComponents = ( skater.potentialEnergyProperty.value > THRESHOLD ? 1 : 0 ) +
                                ( skater.kineticEnergyProperty.value > THRESHOLD ? 1 : 0 ) +
-                               ( skater.thermalEnergyProperty.value > THRESHOLD ? 1 : 0 );
+                               ( skater.thermalEnergyProperty.value > THERMAL_THRESHOLD ? 1 : 0 );
 
       // Don't show the pie chart if energies are zero, or if potential energy is negative (underground skater), see #189
       const energyNegative = skater.potentialEnergyProperty.value < 0;

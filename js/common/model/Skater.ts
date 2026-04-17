@@ -350,7 +350,10 @@ export default class Skater {
     this.updatedEmitter.addListener( () => this.updateHeadPosition() );
     phetioStateSetEmitter.addListener( () => this.updateHeadPosition() );
 
-    this.allowClearingThermalEnergyProperty = this.thermalEnergyProperty.derived( thermalEnergy => thermalEnergy > 1E-2 );
+    this.thermalEnergyProperty.debug( 'thermalEnergyProperty' );
+    this.allowClearingThermalEnergyProperty = this.thermalEnergyProperty.derived(
+      thermalEnergy => thermalEnergy > EnergySkateParkConstants.THERMAL_ENERGY_CLEAR_THRESHOLD
+    );
 
     // In the state wrapper, when the state changes, we must update the skater node
     phetioStateSetEmitter.addListener( () => {

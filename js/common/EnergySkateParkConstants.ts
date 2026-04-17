@@ -116,6 +116,10 @@ export default class EnergySkateParkConstants {
   // Threshold below which energy values are considered zero for accessibility descriptions
   public static readonly ENERGY_THRESHOLD = 1E-4;
 
+  // Threshold below which residual thermal energy is treated as visually negligible. This matches the clear-thermal
+  // button cutoff so we don't show an un-clearable sliver after the skater has effectively come to rest.
+  public static readonly THERMAL_ENERGY_CLEAR_THRESHOLD = 1E-2;
+
   // The model origin is at center-screen, but the E(x) graph and accessibility descriptions use a
   // coordinate frame where x=0 is at the left edge of the track, 5 meters left of the model origin.
   public static readonly POSITION_PLOT_OFFSET = 5;

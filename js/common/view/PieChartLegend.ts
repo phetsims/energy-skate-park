@@ -152,6 +152,7 @@ export default class PieChartLegend extends Panel {
 
     // Accessibility: dynamic energy description paragraph
     const ENERGY_THRESHOLD = EnergySkateParkConstants.ENERGY_THRESHOLD;
+    const THERMAL_THRESHOLD = EnergySkateParkConstants.THERMAL_ENERGY_CLEAR_THRESHOLD;
     const energyDescriptionProperty = new DerivedProperty( [
       skater.kineticEnergyProperty,
       skater.potentialEnergyProperty,
@@ -173,7 +174,7 @@ export default class PieChartLegend extends Panel {
       if ( potential > ENERGY_THRESHOLD ) {
         parts.push( EnergySkateParkFluent.a11y.pieChart.potentialPercentPattern.format( { percent: Utils.roundSymmetric( potential / total * 100 ) } ) );
       }
-      if ( thermal > ENERGY_THRESHOLD ) {
+      if ( thermal > THERMAL_THRESHOLD ) {
         parts.push( EnergySkateParkFluent.a11y.pieChart.thermalPercentPattern.format( { percent: Utils.roundSymmetric( thermal / total * 100 ) } ) );
       }
 
