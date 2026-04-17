@@ -22,6 +22,7 @@ import XYCursorChartNode from '../../../../griddle/js/XYCursorChartNode.js';
 import merge from '../../../../phet-core/js/merge.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
+import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import SceneryPhetFluent from '../../../../scenery-phet/js/SceneryPhetFluent.js';
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
 import HotkeyData from '../../../../scenery/js/input/HotkeyData.js';
@@ -175,13 +176,11 @@ export default class EnergyChart extends XYCursorChartNode {
       pickable: false
     } ) );
 
-    // Make the chart cursor keyboard accessible
-    this.chartCursor.tagName = 'div';
-    this.chartCursor.focusable = true;
-    this.chartCursor.ariaRole = 'application';
+    // Make the chart cursor keyboard accessible. AccessibleDraggableOptions sets tagName/focusable/ariaRole and
+    // accessibleRoleDescription ('movable') so the screen reader routes arrow keys to this Node.
+    this.chartCursor.mutate( AccessibleDraggableOptions );
     this.chartCursor.accessibleName = EnergySkateParkFluent.a11y.energyGraph.graphCursor.accessibleNameStringProperty;
     this.chartCursor.accessibleHelpText = EnergySkateParkFluent.a11y.energyGraph.graphCursor.accessibleHelpTextStringProperty;
-    this.chartCursor.accessibleRoleDescription = SceneryPhetFluent.a11y.grabDrag.movableStringProperty;
 
     // Space/Enter toggles pause
     this.chartCursor.addInputListener( new KeyboardListener( {
