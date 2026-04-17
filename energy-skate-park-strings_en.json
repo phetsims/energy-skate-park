@@ -667,7 +667,7 @@
       "accessibleName": {
         "value": "Energy Bar Graph"
       },
-      "accessibleHelpTextExpanded": {
+      "accessibleParagraph": {
         "value": "Bar Graph displays skater's energy in real time. Pause to analyze values."
       },
       "clearThermalButton": {

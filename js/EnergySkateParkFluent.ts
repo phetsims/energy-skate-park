@@ -209,7 +209,7 @@ addToMapIfDefined( 'a11y_energyGraph_eraserButton_accessibleName', 'a11y.energyG
 addToMapIfDefined( 'a11y_energyGraph_eraserButton_positionResponse', 'a11y.energyGraph.eraserButton.positionResponseStringProperty' );
 addToMapIfDefined( 'a11y_energyGraph_eraserButton_timeResponse', 'a11y.energyGraph.eraserButton.timeResponseStringProperty' );
 addToMapIfDefined( 'a11y_energyBarGraphAccordionBox_accessibleName', 'a11y.energyBarGraphAccordionBox.accessibleNameStringProperty' );
-addToMapIfDefined( 'a11y_energyBarGraphAccordionBox_accessibleHelpTextExpanded', 'a11y.energyBarGraphAccordionBox.accessibleHelpTextExpandedStringProperty' );
+addToMapIfDefined( 'a11y_energyBarGraphAccordionBox_accessibleParagraph', 'a11y.energyBarGraphAccordionBox.accessibleParagraphStringProperty' );
 addToMapIfDefined( 'a11y_energyBarGraphAccordionBox_clearThermalButton_accessibleName', 'a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_energyBarGraphAccordionBox_clearThermalButton_accessibleHelpText', 'a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleHelpTextStringProperty' );
 addToMapIfDefined( 'a11y_energyBarGraphAccordionBox_clearThermalButton_accessibleContextResponse', 'a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleContextResponseStringProperty' );
@@ -589,7 +589,7 @@ const EnergySkateParkFluent = {
     },
     energyBarGraphAccordionBox: {
       accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyBarGraphAccordionBox_accessibleName', _.get( EnergySkateParkStrings, 'a11y.energyBarGraphAccordionBox.accessibleNameStringProperty' ) ),
-      accessibleHelpTextExpandedStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyBarGraphAccordionBox_accessibleHelpTextExpanded', _.get( EnergySkateParkStrings, 'a11y.energyBarGraphAccordionBox.accessibleHelpTextExpandedStringProperty' ) ),
+      accessibleParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyBarGraphAccordionBox_accessibleParagraph', _.get( EnergySkateParkStrings, 'a11y.energyBarGraphAccordionBox.accessibleParagraphStringProperty' ) ),
       _comment_0: new FluentComment( {"comment":"This button also appears in the Pie Chart Legend.","associatedKey":"clearThermalButton"} ),
       clearThermalButton: {
         accessibleNameStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_energyBarGraphAccordionBox_clearThermalButton_accessibleName', _.get( EnergySkateParkStrings, 'a11y.energyBarGraphAccordionBox.clearThermalButton.accessibleNameStringProperty' ) ),

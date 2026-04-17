@@ -302,8 +302,8 @@ a11y:
       positionResponse: Data cleared from the Energy Graph.
       timeResponse:     Data cleared from the Energy Graph. Time reset to 0 seconds.
   energyBarGraphAccordionBox:
-    accessibleName:             Energy Bar Graph
-    accessibleHelpTextExpanded: Bar Graph displays skater's energy in real time. Pause to analyze values.
+    accessibleName:       Energy Bar Graph
+    accessibleParagraph:  Bar Graph displays skater's energy in real time. Pause to analyze values.
 
     # This button also appears in the Pie Chart Legend.
     clearThermalButton:

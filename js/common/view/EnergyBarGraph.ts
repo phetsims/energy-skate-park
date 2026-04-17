@@ -57,6 +57,10 @@ export default class EnergyBarGraph extends Node {
 
     super( options );
 
+    this.addChild( new Node( {
+      accessibleParagraph: EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.accessibleParagraphStringProperty
+    } ) );
+
     // PDOM-only node for the energy readout, placed first in pdomOrder so it appears
     // right after the AccordionBox's help text and before the interactive controls.
     const energyReadoutProperty = EnergySkateParkFluent.a11y.energyReadoutPattern.createProperty( {

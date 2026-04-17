@@ -312,7 +312,7 @@ type StringsType = {
     };
     'energyBarGraphAccordionBox': {
       'accessibleNameStringProperty': LocalizedStringProperty;
-      'accessibleHelpTextExpandedStringProperty': LocalizedStringProperty;
+      'accessibleParagraphStringProperty': LocalizedStringProperty;
       'clearThermalButton': {
         'accessibleNameStringProperty': LocalizedStringProperty;
         'accessibleHelpTextStringProperty': LocalizedStringProperty;

@@ -71,9 +71,6 @@ export default class EnergyBarGraphAccordionBox extends AccordionBox {
 
     barGraphVisibleProperty.link( visible => {
       graphIcon.visible = !visible;
-
-      // Show help text only when the accordion box is expanded (AccordionBox only supports collapsed help text natively)
-      this.accessibleHelpText = visible ? EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.accessibleHelpTextExpandedStringProperty : null;
     } );
   }
 }
