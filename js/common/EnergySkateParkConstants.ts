@@ -44,7 +44,7 @@ export default class EnergySkateParkConstants {
   public static readonly CREDITS: CreditsData = {
     leadDesign: 'Ariel Paul, Noah Podolefsky, Sam Reid, Amy Rouinfar',
     softwareDevelopment: 'Sam Reid, Jesse Greenberg, Marla Schulz, Agust\u00EDn Vallejo, Luisa Vargas',
-    team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Diana L\u00f3pez Tavares, Emily B. Moore, Kathy Perkins',
+    team: 'Michael Dubson, Bryce Gruneich, Trish Loeblein, Diana López Tavares, Emily B. Moore, Kathy Perkins',
     graphicArts: 'Mariah Hermsmeyer, Megan Lai, Amanda McGarry, Sharon Siman-Tov',
     qualityAssurance: 'Jaspe Arias, Catherine Carter, Steele Dalton, Jaron Droder, Megan Lai, Brooklyn Lash, ' +
                       'Emily Miller, Matthew Moore, Oliver Orejola, Valentina Pérez, Arnab Purkayastha, Devon Quispe, ' +
