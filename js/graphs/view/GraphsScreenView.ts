@@ -6,6 +6,7 @@
  */
 
 import Bounds2 from '../../../../dot/js/Bounds2.js';
+import ManualConstraint from '../../../../scenery/js/layout/constraints/ManualConstraint.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkScreenSummaryContent from '../../common/view/EnergySkateParkScreenSummaryContent.js';
@@ -52,6 +53,13 @@ export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView 
       this.energyGraphAccordionBox.variableSwitch,
       this.energyGraphAccordionBox.eraserButton
     ];
+
+    // Keep the energy graph accordion box top-aligned with the right-side control panel. Done via ManualConstraint
+    // because controlPanel lives inside a VBox, so controlPanel.top in its parent frame (≈0) does not match the
+    // ScreenView frame where energyGraphAccordionBox is positioned.
+    ManualConstraint.create( this, [ this.energyGraphAccordionBox, this.controlPanel ], ( accordionBoxProxy, controlPanelProxy ) => {
+      accordionBoxProxy.top = controlPanelProxy.top;
+    } );
   }
 
   /**
@@ -63,7 +71,6 @@ export default class GraphsScreenView extends EnergySkateParkTrackSetScreenView 
     // the graph within the accordion box needs to line up with the right edge of the track and grid lines so that
     // skater positions on track align perfectly with positions along the graph
     this.energyGraphAccordionBox.right = this.modelViewTransform.modelToViewX( 5 ) + this.energyGraphAccordionBox.getContentRight();
-    this.energyGraphAccordionBox.top = this.controlPanel.top;
 
     // special layout for the speedometer in this screen
     this.speedometerNode.left = this.energyGraphAccordionBox.left;
