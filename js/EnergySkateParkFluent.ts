@@ -94,9 +94,8 @@ addToMapIfDefined( 'keyboardHelpDialog_trackControls', 'keyboardHelpDialog.track
 addToMapIfDefined( 'keyboardHelpDialog_cutTrackAtControlPoint', 'keyboardHelpDialog.cutTrackAtControlPointStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_deleteControlPoint', 'keyboardHelpDialog.deleteControlPointStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_label', 'keyboardHelpDialog.connectTrackEndpoints.labelStringProperty' );
-addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_showOptions', 'keyboardHelpDialog.connectTrackEndpoints.showOptionsStringProperty' );
-addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_moveThroughOptions', 'keyboardHelpDialog.connectTrackEndpoints.moveThroughOptionsStringProperty' );
-addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_selectOption', 'keyboardHelpDialog.connectTrackEndpoints.selectOptionStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_thingSingular', 'keyboardHelpDialog.connectTrackEndpoints.thingSingularStringProperty' );
+addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_thingPlural', 'keyboardHelpDialog.connectTrackEndpoints.thingPluralStringProperty' );
 addToMapIfDefined( 'keyboardHelpDialog_connectTrackEndpoints_cancel', 'keyboardHelpDialog.connectTrackEndpoints.cancelStringProperty' );
 addToMapIfDefined( 'a11y_controlPointAttachment_noConnectionsAvailable', 'a11y.controlPointAttachment.noConnectionsAvailableStringProperty' );
 addToMapIfDefined( 'a11y_noDataParagraph', 'a11y.noDataParagraphStringProperty' );
@@ -113,9 +112,6 @@ addToMapIfDefined( 'a11y_screenSummary_currentDetails_noTrackBuilt', 'a11y.scree
 addToMapIfDefined( 'a11y_screenSummary_interactionHint_hasTrack', 'a11y.screenSummary.interactionHint.hasTrackStringProperty' );
 addToMapIfDefined( 'a11y_screenSummary_interactionHint_noTrack', 'a11y.screenSummary.interactionHint.noTrackStringProperty' );
 addToMapIfDefined( 'a11y_controlPanel_experimentSettingsHeading', 'a11y.controlPanel.experimentSettingsHeadingStringProperty' );
-addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_showOptions', 'a11y.keyboardHelpDialog.connectTrackEndpoints.showOptionsStringProperty' );
-addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_moveThroughOptions', 'a11y.keyboardHelpDialog.connectTrackEndpoints.moveThroughOptionsStringProperty' );
-addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_selectOption', 'a11y.keyboardHelpDialog.connectTrackEndpoints.selectOptionStringProperty' );
 addToMapIfDefined( 'a11y_keyboardHelpDialog_connectTrackEndpoints_cancel', 'a11y.keyboardHelpDialog.connectTrackEndpoints.cancelStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_accessibleName', 'a11y.skaterNode.accessibleNameStringProperty' );
 addToMapIfDefined( 'a11y_skaterNode_firstGrabContextResponse', 'a11y.skaterNode.firstGrabContextResponseStringProperty' );
@@ -400,9 +396,8 @@ const EnergySkateParkFluent = {
     deleteControlPointStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.deleteControlPointStringProperty' ),
     connectTrackEndpoints: {
       labelStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.connectTrackEndpoints.labelStringProperty' ),
-      showOptionsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.connectTrackEndpoints.showOptionsStringProperty' ),
-      moveThroughOptionsStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.connectTrackEndpoints.moveThroughOptionsStringProperty' ),
-      selectOptionStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.connectTrackEndpoints.selectOptionStringProperty' ),
+      thingSingularStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.connectTrackEndpoints.thingSingularStringProperty' ),
+      thingPluralStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.connectTrackEndpoints.thingPluralStringProperty' ),
       cancelStringProperty: _.get( EnergySkateParkStrings, 'keyboardHelpDialog.connectTrackEndpoints.cancelStringProperty' )
     }
   },
@@ -438,9 +433,6 @@ const EnergySkateParkFluent = {
     },
     keyboardHelpDialog: {
       connectTrackEndpoints: {
-        showOptionsStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_connectTrackEndpoints_showOptions', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.connectTrackEndpoints.showOptionsStringProperty' ) ),
-        moveThroughOptionsStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_connectTrackEndpoints_moveThroughOptions', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.connectTrackEndpoints.moveThroughOptionsStringProperty' ) ),
-        selectOptionStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_connectTrackEndpoints_selectOption', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.connectTrackEndpoints.selectOptionStringProperty' ) ),
         cancelStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_keyboardHelpDialog_connectTrackEndpoints_cancel', _.get( EnergySkateParkStrings, 'a11y.keyboardHelpDialog.connectTrackEndpoints.cancelStringProperty' ) )
       }
     },

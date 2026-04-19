@@ -127,7 +127,6 @@ scenery-phet's `AttachmentKeyboardListener`. The sim-specific subclass `ControlP
 supplies the track-specific logic: collecting available endpoints, applying the snap/join operation, and restoring
 focus to the nearest control point on the newly merged track (since the original tracks are disposed during join).
 
-The keyboard help dialog section (`ConnectTrackEndpointsKeyboardHelpSection`) describes the ComboBox workflow
-with HotkeyData created in-place, since the key bindings are handled internally by ComboBox common code rather
-than by sim-level listeners.
+The keyboard help dialog uses `ComboBoxKeyboardHelpSection` with custom close-row text,
+since the key bindings are handled internally by ComboBox common code rather than by sim-level listeners.
 

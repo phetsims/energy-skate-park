@@ -123,9 +123,8 @@ type StringsType = {
     'deleteControlPointStringProperty': LocalizedStringProperty;
     'connectTrackEndpoints': {
       'labelStringProperty': LocalizedStringProperty;
-      'showOptionsStringProperty': LocalizedStringProperty;
-      'moveThroughOptionsStringProperty': LocalizedStringProperty;
-      'selectOptionStringProperty': LocalizedStringProperty;
+      'thingSingularStringProperty': LocalizedStringProperty;
+      'thingPluralStringProperty': LocalizedStringProperty;
       'cancelStringProperty': LocalizedStringProperty;
     }
   };
@@ -161,9 +160,6 @@ type StringsType = {
     };
     'keyboardHelpDialog': {
       'connectTrackEndpoints': {
-        'showOptionsStringProperty': LocalizedStringProperty;
-        'moveThroughOptionsStringProperty': LocalizedStringProperty;
-        'selectOptionStringProperty': LocalizedStringProperty;
         'cancelStringProperty': LocalizedStringProperty;
       }
     };

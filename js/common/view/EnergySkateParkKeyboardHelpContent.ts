@@ -7,12 +7,13 @@
  */
 
 import BasicActionsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/BasicActionsKeyboardHelpSection.js';
+import ComboBoxKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/ComboBoxKeyboardHelpSection.js';
 import KeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/KeyboardHelpSection.js';
 import MoveDraggableItemsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/MoveDraggableItemsKeyboardHelpSection.js';
 import SliderControlsKeyboardHelpSection from '../../../../scenery-phet/js/keyboard/help/SliderControlsKeyboardHelpSection.js';
 import TwoColumnKeyboardHelpContent from '../../../../scenery-phet/js/keyboard/help/TwoColumnKeyboardHelpContent.js';
+import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import GraphCursorControlsKeyboardHelpSection from '../../graphs/view/GraphCursorControlsKeyboardHelpSection.js';
-import ConnectTrackEndpointsKeyboardHelpSection from './ConnectTrackEndpointsKeyboardHelpSection.js';
 import FromAnywhereInScreenKeyboardHelpSection from './FromAnywhereInScreenKeyboardHelpSection.js';
 import SkaterKeyboardHelpSection from './SkaterKeyboardHelpSection.js';
 import ToolboxControlsKeyboardHelpSection from './ToolboxControlsKeyboardHelpSection.js';
@@ -47,7 +48,13 @@ export default class EnergySkateParkKeyboardHelpContent extends TwoColumnKeyboar
       leftSections.push( new TrackControlsKeyboardHelpSection() );
     }
     if ( options.includeConnectTrackEndpoints ) {
-      leftSections.push( new ConnectTrackEndpointsKeyboardHelpSection() );
+      leftSections.push( new ComboBoxKeyboardHelpSection( {
+        headingString: EnergySkateParkFluent.keyboardHelpDialog.connectTrackEndpoints.labelStringProperty,
+        thingAsLowerCaseSingular: EnergySkateParkFluent.keyboardHelpDialog.connectTrackEndpoints.thingSingularStringProperty,
+        thingAsLowerCasePlural: EnergySkateParkFluent.keyboardHelpDialog.connectTrackEndpoints.thingPluralStringProperty,
+        closeVisualStringProperty: EnergySkateParkFluent.keyboardHelpDialog.connectTrackEndpoints.cancelStringProperty,
+        closeAccessibleStringProperty: EnergySkateParkFluent.a11y.keyboardHelpDialog.connectTrackEndpoints.cancelStringProperty
+      } ) );
     }
 
     // Right column sections (always the same)

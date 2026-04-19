@@ -87,11 +87,10 @@ keyboardHelpDialog:
   cutTrackAtControlPoint:            Cut track at control point
   deleteControlPoint:                Delete control point
   connectTrackEndpoints:
-    label:              Connect Track Endpoints
-    showOptions:        '1. Show options'
-    moveThroughOptions: '2. Move through options'
-    selectOption:       '3. Select option'
-    cancel:             '4. Cancel'
+    label:         Connect Track Endpoints
+    thingSingular: option
+    thingPlural:   options
+    cancel:        '4. Cancel'
 a11y:
   controlPointAttachment:
     noConnectionsAvailable: No other track endpoints available.
@@ -147,10 +146,7 @@ a11y:
     experimentSettingsHeading: Experiment Settings
   keyboardHelpDialog:
     connectTrackEndpoints:
-      showOptions:        Show options
-      moveThroughOptions: Move through options
-      selectOption:       Select option
-      cancel:             Cancel
+      cancel: Cancel
   skaterNode:
     accessibleName:                 Skater
     firstGrabContextResponse:       Press J key plus T key to attach skater to nearest track. Space to release.

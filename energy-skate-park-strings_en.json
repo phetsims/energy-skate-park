@@ -248,14 +248,11 @@
       "label": {
         "value": "Connect Track Endpoints"
       },
-      "showOptions": {
-        "value": "1. Show options"
+      "thingSingular": {
+        "value": "option"
       },
-      "moveThroughOptions": {
-        "value": "2. Move through options"
-      },
-      "selectOption": {
-        "value": "3. Select option"
+      "thingPlural": {
+        "value": "options"
       },
       "cancel": {
         "value": "4. Cancel"
@@ -324,15 +321,6 @@
     },
     "keyboardHelpDialog": {
       "connectTrackEndpoints": {
-        "showOptions": {
-          "value": "Show options"
-        },
-        "moveThroughOptions": {
-          "value": "Move through options"
-        },
-        "selectOption": {
-          "value": "Select option"
-        },
         "cancel": {
           "value": "Cancel"
         }
