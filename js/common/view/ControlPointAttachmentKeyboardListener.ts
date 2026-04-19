@@ -140,9 +140,9 @@ export default class ControlPointAttachmentKeyboardListener extends AttachmentKe
       // After join, the original tracks are disposed and a new merged track is created with copied
       // control points. Focus the ControlPointNode closest to the join position on the new track.
       restoreFocus: () => {
-
-        // No-op here — focus restoration is handled in onSelectionApplied via runOnNextTick,
-        // because joinTracks disposes the triggerNode and we need to wait for the new track to appear.
+        if ( !controlPointNode.isDisposed ) {
+          controlPointNode.focus();
+        }
       },
 
       onSelectionApplied: selectedTarget => {
