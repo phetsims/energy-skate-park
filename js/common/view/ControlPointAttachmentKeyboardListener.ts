@@ -162,7 +162,7 @@ export default class ControlPointAttachmentKeyboardListener extends AttachmentKe
         }
       },
 
-      targetDisposeEmitter: track.removeEmitter,
+      cancelEmitter: track.removeEmitter,
       noItemsContextResponse: EnergySkateParkFluent.a11y.controlPointAttachment.noConnectionsAvailableStringProperty
     } );
   }
