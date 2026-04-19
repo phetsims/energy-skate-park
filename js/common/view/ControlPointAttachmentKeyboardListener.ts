@@ -102,8 +102,6 @@ export default class ControlPointAttachmentKeyboardListener extends AttachmentKe
         return items;
       },
 
-      getInitialPosition: () => modelViewTransform.modelToViewPosition( controlPoint.positionProperty.value ),
-
       getHighlightPosition: selectedTarget => selectedTarget
                                               ? modelViewTransform.modelToViewPosition( selectedTarget.positionProperty.value )
                                               : modelViewTransform.modelToViewPosition( controlPoint.positionProperty.value ),
