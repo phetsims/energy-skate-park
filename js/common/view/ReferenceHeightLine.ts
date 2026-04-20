@@ -166,7 +166,6 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
 
     // Keyboard drag listener for alternative input
     const keyboardDragListener = new SoundKeyboardDragListener( {
-      tandem: Tandem.OPT_OUT,
       transform: modelViewTransform,
       positionProperty: dragPositionProperty,
       dragBoundsProperty: dragBoundsProperty,
