@@ -24,7 +24,7 @@
     ],
     "simulation": true,
     "phet-io": {
-      "validation": false
+      "compareDesignedAPIChanges": true
     },
     "simFeatures": {
       "supportsDynamicLocale": true,
