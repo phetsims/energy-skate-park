@@ -23,7 +23,7 @@
   window.phet.chipper.packageObject =
     {
       "name": "energy-skate-park",
-      "version": "1.5.0-dev.3",
+      "version": "1.6.0-dev.0",
       "license": "GPL-3.0",
       "repository": {
         "type": "git",
@@ -35,7 +35,8 @@
       "phet": {
         "requirejsNamespace": "ENERGY_SKATE_PARK",
         "phetLibs": [
-          "griddle"
+          "griddle",
+          "bamboo"
         ],
         "preload": [
           "../sherpa/lib/numeric-1.2.6.js"
@@ -43,12 +44,11 @@
         "runnable": true,
         "supportedBrands": [
           "phet",
-          "phet-io",
-          "adapted-from-phet"
+          "phet-io"
         ],
         "simulation": true,
         "phet-io": {
-          "validation": false
+          "compareDesignedAPIChanges": true
         },
         "simFeatures": {
           "supportsDynamicLocale": true,
@@ -76,6 +76,10 @@
     };
   window.phet.chipper.stringRepos =
     [
+      {
+        "repo": "bamboo",
+        "requirejsNamespace": "BAMBOO"
+      },
       {
         "repo": "energy-skate-park",
         "requirejsNamespace": "ENERGY_SKATE_PARK"
