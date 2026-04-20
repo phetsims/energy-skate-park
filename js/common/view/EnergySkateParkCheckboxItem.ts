@@ -54,7 +54,6 @@ export default class EnergySkateParkCheckboxItem extends Checkbox {
 
       // add a listener to the Checkbox that resets the data upon user interaction
       const userControlledListener = new PressListener( {
-        tandem: Tandem.OPT_OUT,
         press: () => options.userControlledProperty!.set( true ),
         release: () => options.userControlledProperty!.set( false )
       } );

@@ -197,7 +197,6 @@ export default class EnergyChart extends XYCursorChartNode {
 
     // Arrow keys scrub through recorded data
     const keyboardDragListener = new SoundKeyboardDragListener( {
-      tandem: Tandem.OPT_OUT,
       dragSpeed: 100,
       shiftDragSpeed: 25,
       keyboardDragDirection: 'leftRight',

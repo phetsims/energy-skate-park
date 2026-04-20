@@ -141,7 +141,7 @@ export default class Track extends PhetioObject {
       splittable: false,
       attachable: false,
       slopeToGround: false,
-      tandem: Tandem.OPTIONAL,
+      tandem: Tandem.REQUIRED,
       phetioType: Track.TrackIO,
       phetioState: PhetioObject.DEFAULT_OPTIONS.phetioState
     }, providedOptions );

@@ -178,7 +178,6 @@ export default class EnergySkateParkVisibilityControls extends VerticalCheckboxG
 
         const userControlledProperty = model.userControlledPropertySet.stickingToTrackControlledProperty;
         child.addInputListener( new PressListener( {
-          tandem: Tandem.OPT_OUT,
           press: () => userControlledProperty.set( true ),
           release: () => userControlledProperty.set( false )
         } ) );
