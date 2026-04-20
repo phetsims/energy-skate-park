@@ -1,6 +1,6 @@
 {
   "name": "energy-skate-park",
-  "version": "1.5.0-dev.3",
+  "version": "1.5.0-rc.0",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
@@ -20,8 +20,7 @@
     "runnable": true,
     "supportedBrands": [
       "phet",
-      "phet-io",
-      "adapted-from-phet"
+      "phet-io"
     ],
     "simulation": true,
     "phet-io": {
