@@ -235,7 +235,7 @@ a11y:
 
   pieChart:
     accessibleHeading:       Pie Chart
-    accessibleHelpText:      Pie Chart displays skater's energy in real time. Pause to analyze values.
+    accessibleParagraph:     Pie Chart displays skater's energy in real time. Pause to analyze values.
     positiveEnergyParagraph: 'In Pie Chart: {$energiesList}.'
     negativeEnergyParagraph: 'In Pie Chart: Total Energy 100%.'
     energiesListSeparator:   ', '

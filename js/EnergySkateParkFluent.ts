@@ -157,7 +157,7 @@ addToMapIfDefined( 'a11y_energySensorNode_nothingToMeasure', 'a11y.energySensorN
 addToMapIfDefined( 'a11y_energySensorNode_movedOffSamples', 'a11y.energySensorNode.movedOffSamplesStringProperty' );
 addToMapIfDefined( 'a11y_energySensorNode_sampleReadoutPattern', 'a11y.energySensorNode.sampleReadoutPatternStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_accessibleHeading', 'a11y.pieChart.accessibleHeadingStringProperty' );
-addToMapIfDefined( 'a11y_pieChart_accessibleHelpText', 'a11y.pieChart.accessibleHelpTextStringProperty' );
+addToMapIfDefined( 'a11y_pieChart_accessibleParagraph', 'a11y.pieChart.accessibleParagraphStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_positiveEnergyParagraph', 'a11y.pieChart.positiveEnergyParagraphStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_negativeEnergyParagraph', 'a11y.pieChart.negativeEnergyParagraphStringProperty' );
 addToMapIfDefined( 'a11y_pieChart_energiesListSeparator', 'a11y.pieChart.energiesListSeparatorStringProperty' );
@@ -514,7 +514,7 @@ const EnergySkateParkFluent = {
     },
     pieChart: {
       accessibleHeadingStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_accessibleHeading', _.get( EnergySkateParkStrings, 'a11y.pieChart.accessibleHeadingStringProperty' ) ),
-      accessibleHelpTextStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_accessibleHelpText', _.get( EnergySkateParkStrings, 'a11y.pieChart.accessibleHelpTextStringProperty' ) ),
+      accessibleParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_accessibleParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.accessibleParagraphStringProperty' ) ),
       positiveEnergyParagraph: new FluentPattern<{ energiesList: FluentVariable }>( fluentSupport.bundleProperty, 'a11y_pieChart_positiveEnergyParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.positiveEnergyParagraphStringProperty' ), [{"name":"energiesList"}] ),
       negativeEnergyParagraphStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_negativeEnergyParagraph', _.get( EnergySkateParkStrings, 'a11y.pieChart.negativeEnergyParagraphStringProperty' ) ),
       energiesListSeparatorStringProperty: new FluentConstant( fluentSupport.bundleProperty, 'a11y_pieChart_energiesListSeparator', _.get( EnergySkateParkStrings, 'a11y.pieChart.energiesListSeparatorStringProperty' ) ),

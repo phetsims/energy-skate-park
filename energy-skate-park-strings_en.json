@@ -489,7 +489,7 @@
       "accessibleHeading": {
         "value": "Pie Chart"
       },
-      "accessibleHelpText": {
+      "accessibleParagraph": {
         "value": "Pie Chart displays skater's energy in real time. Pause to analyze values."
       },
       "positiveEnergyParagraph": {
