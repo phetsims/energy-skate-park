@@ -100,6 +100,12 @@ type SelfOptions = {
   // whether this screen has a bar graph - if false, barGraphScaleProperty is uninstrumented
   showBarGraph?: boolean;
 
+  // Whether to instrument model elements associated with the toolbox tools, which are not available in Basics.
+  instrumentToolProperties?: boolean;
+
+  // Whether to instrument reference-height model elements, which are not user-controlled in Basics.
+  instrumentReferenceHeightProperties?: boolean;
+
   // options passed to Skater
   skaterOptions?: SkaterOptions | null;
 };
@@ -217,6 +223,8 @@ export default class EnergySkateParkModel {
       tracksConfigurable: false,
       defaultSpeedValueVisible: true,
       showBarGraph: true,
+      instrumentToolProperties: true,
+      instrumentReferenceHeightProperties: true,
       skaterOptions: null
     }, providedOptions );
 
@@ -282,11 +290,11 @@ export default class EnergySkateParkModel {
       phetioFeatured: true
     } );
     this.referenceHeightVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'referenceHeightVisibleProperty' ),
+      tandem: options.instrumentReferenceHeightProperties ? tandem.createTandem( 'visibleProperties' ).createTandem( 'referenceHeightVisibleProperty' ) : Tandem.OPT_OUT,
       phetioFeatured: true
     } );
     this.measuringTapeVisibleProperty = new BooleanProperty( false, {
-      tandem: tandem.createTandem( 'visibleProperties' ).createTandem( 'measuringTapeVisibleProperty' ),
+      tandem: options.instrumentToolProperties ? tandem.createTandem( 'visibleProperties' ).createTandem( 'measuringTapeVisibleProperty' ) : Tandem.OPT_OUT,
       phetioFeatured: true
     } );
 
@@ -304,7 +312,7 @@ export default class EnergySkateParkModel {
       timePropertyOptions: {
         range: Stopwatch.ZERO_TO_ALMOST_SIXTY
       },
-      tandem: tandem.createTandem( 'stopwatch' )
+      tandem: options.instrumentToolProperties ? tandem.createTandem( 'stopwatch' ) : Tandem.OPT_OUT
     } );
 
     this.timeSpeedProperty = new EnumerationProperty( TimeSpeed.NORMAL, {
@@ -320,12 +328,12 @@ export default class EnergySkateParkModel {
     } );
 
     this.measuringTapeBasePositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'measuringTape' ).createTandem( 'basePositionProperty' ),
+      tandem: options.instrumentToolProperties ? tandem.createTandem( 'measuringTape' ).createTandem( 'basePositionProperty' ) : Tandem.OPT_OUT,
       units: 'm'
     } );
 
     this.measuringTapeTipPositionProperty = new Vector2Property( new Vector2( 0, 0 ), {
-      tandem: tandem.createTandem( 'measuringTape' ).createTandem( 'tipPositionProperty' ),
+      tandem: options.instrumentToolProperties ? tandem.createTandem( 'measuringTape' ).createTandem( 'tipPositionProperty' ) : Tandem.OPT_OUT,
       units: 'm'
     } );
 
@@ -340,7 +348,9 @@ export default class EnergySkateParkModel {
       this.frictionProperty.debug( 'friction' );
     }
 
-    this.skater = new Skater( tandem.createTandem( 'skater' ), options.skaterOptions! );
+    this.skater = new Skater( tandem.createTandem( 'skater' ), merge( {}, options.skaterOptions || {}, {
+      instrumentReferenceHeightProperty: options.instrumentReferenceHeightProperties
+    } ) );
 
     this.skaterInBoundsProperty = new DerivedProperty( [ this.skater.positionProperty ], position => {
       const availableModelBounds = this.availableModelBoundsProperty.get();

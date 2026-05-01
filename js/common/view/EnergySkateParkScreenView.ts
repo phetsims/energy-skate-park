@@ -548,7 +548,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
       model.skater.referenceHeightProperty,
       model.referenceHeightVisibleProperty,
       model.userControlledPropertySet.referenceHeightControlledProperty,
-      tandem.createTandem( 'referenceHeightLineNode' )
+      options.showReferenceHeight ? tandem.createTandem( 'referenceHeightLineNode' ) : Tandem.OPT_OUT
     );
     this.topLayer.addChild( this.referenceHeightLine );
 

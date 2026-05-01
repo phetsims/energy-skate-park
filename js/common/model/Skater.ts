@@ -42,6 +42,9 @@ type SelfOptions = {
 
   // Range for the reference height, in meters
   referenceHeightRange?: Range;
+
+  // Whether to instrument referenceHeightProperty, which only applies in screens with a reference height control.
+  instrumentReferenceHeightProperty?: boolean;
 };
 
 export type SkaterOptions = SelfOptions;
@@ -144,7 +147,8 @@ export default class Skater {
     const options = optionize<SkaterOptions, SelfOptions>()( {
       defaultMass: SkaterMasses.SKATER_1_MASS,
       massRange: SkaterMasses.MASS_RANGE,
-      referenceHeightRange: EnergySkateParkConstants.REFERENCE_HEIGHT_RANGE
+      referenceHeightRange: EnergySkateParkConstants.REFERENCE_HEIGHT_RANGE,
+      instrumentReferenceHeightProperty: true
     }, providedOptions );
 
     affirm( options.referenceHeightRange.min === 0, 'reference height range needs to start from ground' );
@@ -192,7 +196,7 @@ export default class Skater {
     this.referenceHeightProperty = new NumberProperty( 0, {
 
       // It is convenient to define the reference height here in the skater, however in the tandem tree it should appear as above.
-      tandem: tandem.parentTandem!.createTandem( 'referenceHeightProperty' ),
+      tandem: options.instrumentReferenceHeightProperty ? tandem.parentTandem!.createTandem( 'referenceHeightProperty' ) : Tandem.OPT_OUT,
       units: 'm',
       range: options.referenceHeightRange,
       phetioFeatured: true
