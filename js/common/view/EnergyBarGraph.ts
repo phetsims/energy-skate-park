@@ -26,6 +26,7 @@ import Text from '../../../../scenery/js/nodes/Text.js';
 import TPaint from '../../../../scenery/js/util/TPaint.js';
 import ColorConstants from '../../../../sun/js/ColorConstants.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
+import phetioStateSetEmitter from '../../../../tandem/js/phetioStateSetEmitter.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import EnergySkateParkFluent from '../../EnergySkateParkFluent.js';
 import EnergySkateParkColors from '../EnergySkateParkColors.js';
@@ -299,6 +300,14 @@ export default class EnergyBarGraph extends Node {
 
       this.updateWhenVisible( barGraphVisibleProperty.value );
     } );
+
+    // BarNode also updates after PhET-iO state set. Run after that listener so the Energy Skate Park-specific dashed
+    // total-energy border is re-synchronized with BarNode's updated border rectangle.
+    if ( Tandem.PHET_IO_ENABLED ) {
+      const stateSetListener = () => this.updateWhenVisible( barGraphVisibleProperty.value );
+      phetioStateSetEmitter.addListener( stateSetListener );
+      this.disposeEmitter.addListener( () => phetioStateSetEmitter.removeListener( stateSetListener ) );
+    }
 
     skater.allowClearingThermalEnergyProperty.link( allowClearingThermalEnergy => {
       clearThermalButton.enabled = allowClearingThermalEnergy;
