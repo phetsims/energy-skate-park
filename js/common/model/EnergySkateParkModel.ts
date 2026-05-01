@@ -1638,14 +1638,16 @@ export default class EnergySkateParkModel {
    * The user has pressed the "delete" button for the specified track's specified control point, and it should be
    * deleted. It should be an inner point of a track (not an endpoint).
    */
-  public splitControlPoint( track: Track, controlPointIndex: number, modelAngle: number ): void {
+  public splitControlPoint( track: Track, controlPointIndex: number, modelAngle: number, autofocusReplacementControlPoint = false ): void {
     affirm( track.splittable, 'trying to split a track that is not splittable!' );
     const controlPointToSplit = track.controlPoints[ controlPointIndex ];
 
     const vector = Vector2.createPolar( 0.5, modelAngle );
     const newPoint1 = this.controlPointGroup.createNextElement(
       track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.x - vector.x,
-      track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.y - vector.y, {}
+      track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.y - vector.y, {
+        autofocus: autofocusReplacementControlPoint
+      }
     );
     const newPoint2 = this.controlPointGroup.createNextElement(
       track.controlPoints[ controlPointIndex ].sourcePositionProperty.value.x + vector.x,
