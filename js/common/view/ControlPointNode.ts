@@ -120,14 +120,8 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
     this.track = track;
     this.isAttachableEndpoint = isEndPoint && track.attachable && controlPoint.interactive && !omitA11y;
 
-    // Announce the current position as an object response whenever the node receives focus, so users know where the
-    // control point is before moving it. Same pattern as calculus-grapher's CurveManipulatorNode.focusedProperty listener.
     if ( !omitA11y ) {
-      this.focusedProperty.lazyLink( focused => {
-        if ( focused ) {
-          this.addAccessiblePositionResponse();
-        }
-      } );
+      this.accessibleFocusObjectResponse = () => this.getAccessiblePositionResponse();
     }
 
     this.keyboardAttachmentSelectionRing = new Circle( 30, {
@@ -514,11 +508,13 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
    * keyboard drag. Shifts x so that x=0 aligns with the left edge of the E(x) graph.
    */
   public addAccessiblePositionResponse(): void {
-    this.addAccessibleObjectResponse(
-      EnergySkateParkFluent.a11y.controlPointNode.accessibleObjectResponse.format( {
-        xCoordinate: toFixedNumber( this.controlPoint.positionProperty.value.x + EnergySkateParkConstants.POSITION_PLOT_OFFSET, 1 ),
-        yCoordinate: toFixedNumber( this.controlPoint.positionProperty.value.y, 1 )
-      } )
-    );
+    this.addAccessibleObjectResponse( this.getAccessiblePositionResponse() );
+  }
+
+  private getAccessiblePositionResponse(): string {
+    return EnergySkateParkFluent.a11y.controlPointNode.accessibleObjectResponse.format( {
+      xCoordinate: toFixedNumber( this.controlPoint.positionProperty.value.x + EnergySkateParkConstants.POSITION_PLOT_OFFSET, 1 ),
+      yCoordinate: toFixedNumber( this.controlPoint.positionProperty.value.y, 1 )
+    } );
   }
 }
