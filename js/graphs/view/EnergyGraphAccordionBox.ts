@@ -8,6 +8,7 @@
  */
 
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import GatedVisibleProperty from '../../../../axon/js/GatedVisibleProperty.js';
 import Multilink from '../../../../axon/js/Multilink.js';
 import Property from '../../../../axon/js/Property.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
@@ -202,10 +203,16 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
     const variableSwitchTandem = tandem.createTandem( 'variableSwitch' );
     const positionLabelText = new Text( positionSwitchLabelStringProperty, switchLabelOptions );
     const timeLabelText = new Text( timeSwitchLabelStringProperty, switchLabelOptions );
+    const accordionBoxVisibleProperty = new Property( true );
+    const variableSwitchSimControlledVisibleProperty = new DerivedProperty(
+      [ model.energyGraphExpandedProperty, accordionBoxVisibleProperty ],
+      ( expanded, visible ) => expanded && visible
+    );
 
     const variableSwitch = new ABSwitch( model.independentVariableProperty, 'position', positionLabelText, 'time', timeLabelText, {
       toggleSwitchOptions: { size: SWITCH_SIZE },
       accessibleHelpText: EnergySkateParkFluent.a11y.energyGraph.variableSwitch.accessibleHelpTextStringProperty,
+      visibleProperty: new GatedVisibleProperty( variableSwitchSimControlledVisibleProperty, variableSwitchTandem ),
       tandem: variableSwitchTandem
     } );
 
@@ -325,8 +332,10 @@ export default class EnergyGraphAccordionBox extends AccordionBox {
 
     // The variable switch and eraser button are part of the title layout but should only be visible when
     // expanded and when the accordion box itself is visible
+    this.visibleProperty.link( visible => {
+      accordionBoxVisibleProperty.value = visible;
+    } );
     Multilink.multilink( [ this.expandedProperty, this.visibleProperty ], ( expanded, visible ) => {
-      variableSwitch.visible = expanded && visible;
       eraserButton.visible = expanded && visible;
     } );
 
