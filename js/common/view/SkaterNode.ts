@@ -384,24 +384,15 @@ export default class SkaterNode extends InteractiveHighlighting( Node ) {
   }
 
   /**
-   * Attach the skater to the nearest track.
+   * Attach the skater to the start of the nearest track, or move to the start of the current track.
    */
   private attachToNearestTrack(): void {
 
-    // Only attach if skater is not already on a track
-    if ( this.skater.trackProperty.value !== null ) {
-      return;
-    }
+    const track = this.skater.trackProperty.value ||
+                  this.getClosestTrackAndPositionAndParameter( this.skater.positionProperty.value, this.getPhysicalTracks() )?.track;
 
-    const position = this.skater.positionProperty.value;
-    const closestTrackInfo = this.getClosestTrackAndPositionAndParameter( position, this.getPhysicalTracks() );
-
-    if ( closestTrackInfo && closestTrackInfo.track ) {
-      const track = closestTrackInfo.track;
-
-      // Clamp to valid track range since getClosestPositionAndParameter searches slightly beyond track edges (±1E-6)
-      const u = Math.max( track.minPoint, Math.min( track.maxPoint, closestTrackInfo.parametricPosition ) );
-
+    if ( track ) {
+      const u = track.minPoint + 1E-6;
       this.skater.trackProperty.value = track;
       this.skater.placeOnTrackAt( track, u );
 
