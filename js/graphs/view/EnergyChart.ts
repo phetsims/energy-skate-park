@@ -476,6 +476,9 @@ export default class EnergyChart extends XYCursorChartNode {
           };
           model.dataSamples.addItemRemovedListener( removalListener );
         } );
+
+        updateModelViewTransformProperty();
+        this.setCursorValue( model.sampleTimeProperty.value );
       } );
     }
 
