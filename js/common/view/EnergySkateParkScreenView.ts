@@ -435,7 +435,8 @@ export default class EnergySkateParkScreenView extends ScreenView {
         textColor: 'black',
         textFont: new PhetFont( { size: 14.7 } ),
         baseDragEnded: () => {
-          if ( this.toolboxPanel!.visible && this.measuringTapeNode!.globalBounds.intersectsBounds( this.toolboxPanel!.globalBounds ) ) {
+          const globalMeasuringTapeBodyBounds = this.measuringTapeNode!.localToGlobalBounds( this.measuringTapeNode!.getLocalBaseBounds() );
+          if ( this.toolboxPanel!.visible && globalMeasuringTapeBodyBounds.intersectsBounds( this.toolboxPanel!.globalBounds ) ) {
             model.measuringTapeVisibleProperty.set( false );
           }
         },
