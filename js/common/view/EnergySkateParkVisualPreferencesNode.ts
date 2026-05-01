@@ -40,6 +40,7 @@ export default class EnergySkateParkVisualPreferencesNode extends Node {
       labelSpacing: 20,
       phetioFeatured: true,
       phetioVisiblePropertyInstrumented: true,
+      visiblePropertyOptions: { phetioFeatured: true },
       tandem: preferencesControlTandem
     } );
 
