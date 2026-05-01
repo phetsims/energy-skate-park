@@ -297,7 +297,7 @@ export default class EnergySkateParkScreenView extends ScreenView {
     this.bottomLayer.addChild( this.pieChartLegend );
 
     if ( model.showBarGraph ) {
-      this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, model.preferencesModel.showPatternsProperty, tandem.createTandem( 'energyBarGraphAccordionBox' ), {
+      this.energyBarGraphAccordionBox = new EnergyBarGraphAccordionBox( model.skater, model.barGraphScaleProperty, model.barGraphVisibleProperty, model.resetEmitter, model.preferencesModel.showPatternsProperty, tandem.createTandem( 'energyBarGraphAccordionBox' ), {
         barGraphOptions: {
           showBarGraphZoomButtons: options.showBarGraphZoomButtons
         }
