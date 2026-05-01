@@ -158,10 +158,12 @@ export default class PieChartLegend extends Panel {
       skater.potentialEnergyProperty,
       skater.thermalEnergyProperty,
       skater.totalEnergyProperty,
-      EnergySkateParkFluent.a11y.noDataParagraphStringProperty
-    ], ( kinetic, potential, thermal, total, noDataText ) => {
+      EnergySkateParkFluent.a11y.noDataParagraphStringProperty,
+      EnergySkateParkFluent.a11y.pieChart.negativeEnergyParagraphStringProperty,
+      EnergySkateParkFluent.a11y.pieChart.energiesListSeparatorStringProperty
+    ], ( kinetic, potential, thermal, total, noDataText, negativeEnergyText, energiesListSeparator ) => {
       if ( potential < 0 ) {
-        return EnergySkateParkFluent.a11y.pieChart.negativeEnergyParagraphStringProperty.value;
+        return negativeEnergyText;
       }
       if ( Math.abs( total ) <= ENERGY_THRESHOLD ) {
         return noDataText;
@@ -181,7 +183,7 @@ export default class PieChartLegend extends Panel {
       if ( parts.length === 0 ) { return ''; }
 
       return EnergySkateParkFluent.a11y.pieChart.positiveEnergyParagraph.format( {
-        energiesList: parts.join( ', ' )
+        energiesList: parts.join( energiesListSeparator )
       } );
     } );
 
