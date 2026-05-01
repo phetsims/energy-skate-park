@@ -91,7 +91,8 @@ export default class PhysicalComboBox extends ComboBox<number | null> {
       reentrant: true,
       phetioValueType: NullableIO( NumberIO ),
       tandem: tandem.createTandem( 'adapterProperty' ),
-      phetioFeatured: true
+      phetioFeatured: true,
+      phetioReadOnly: true
     } );
 
     // {boolean} - if true, we will prevent the userControlProperty from being set when the adapterProperty changes.
