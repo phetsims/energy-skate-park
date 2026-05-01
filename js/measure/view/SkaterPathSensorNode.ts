@@ -20,14 +20,14 @@ import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
-import optionize, { EmptySelfOptions } from '../../../../phet-core/js/optionize.js';
+import optionize, { combineOptions, EmptySelfOptions } from '../../../../phet-core/js/optionize.js';
 import PickRequired from '../../../../phet-core/js/types/PickRequired.js';
 import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
+import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
 import PhetFont from '../../../../scenery-phet/js/PhetFont.js';
-import ProbeNode from '../../../../scenery-phet/js/ProbeNode.js';
-import SceneryPhetFluent from '../../../../scenery-phet/js/SceneryPhetFluent.js';
+import ProbeNode, { ProbeNodeOptions } from '../../../../scenery-phet/js/ProbeNode.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import WireNode from '../../../../scenery-phet/js/WireNode.js';
 import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
@@ -234,7 +234,7 @@ export default class SkaterPathSensorNode extends Node {
     } );
 
     // the probe
-    this.probeNode = new InteractiveProbeNode( {
+    this.probeNode = new InteractiveProbeNode( combineOptions<ProbeNodeOptions>( {
       scale: 0.5,
       rotation: Math.PI / 2,
       color: SENSOR_COLOR,
@@ -243,12 +243,8 @@ export default class SkaterPathSensorNode extends Node {
       cursor: 'pointer',
 
       // pdom - make the probe focusable for keyboard interaction
-      tagName: 'div',
-      focusable: true,
-      ariaRole: 'application',
-      accessibleName: EnergySkateParkFluent.a11y.energySensorNode.accessibleNameStringProperty,
-      accessibleRoleDescription: SceneryPhetFluent.a11y.grabDrag.movableStringProperty
-    } );
+      accessibleName: EnergySkateParkFluent.a11y.energySensorNode.accessibleNameStringProperty
+    }, AccessibleDraggableOptions ) );
 
     this.currentReadingProperty = new StringProperty( '' );
     this.probeNode.accessibleParagraph = this.currentReadingProperty;
