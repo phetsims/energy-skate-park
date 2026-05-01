@@ -8,6 +8,7 @@
  */
 
 import Emitter from '../../../../axon/js/Emitter.js';
+import animationFrameTimer from '../../../../axon/js/animationFrameTimer.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
@@ -160,6 +161,15 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
     };
     track.physicalProperty.link( physicalListener );
     this.addDisposable( { dispose: () => track.physicalProperty.unlink( physicalListener ) } );
+
+    if ( controlPoint.autofocus && !omitA11y ) {
+      controlPoint.autofocus = false;
+      animationFrameTimer.runOnNextTick( () => {
+        if ( !this.isDisposed && this.focusable ) {
+          this.focus();
+        }
+      } );
+    }
 
     // Show a dotted line for the exterior track points, which can be connected to other track
     if ( track.attachable ) {
@@ -413,7 +423,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
                 sharedSoundPlayers.get( 'erase' ).play();
                 const alpha = new LinearFunction( 0, track.controlPoints.length - 1, track.minPoint, track.maxPoint ).evaluate( i );
                 const modelAngle = track.getModelAngleAt( alpha );
-                model.splitControlPoint( track, i, modelAngle );
+                model.splitControlPoint( track, i, modelAngle, true );
               }
             }
           } );
