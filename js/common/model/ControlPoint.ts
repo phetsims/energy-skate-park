@@ -36,6 +36,10 @@ type SelfOptions = {
   // {Bounds2|null} - if specified, the ControlPoint will also be constrained to these bounds during dragging, or
   // when the track is bumped above ground, in model coordinates
   limitBounds?: Bounds2 | null;
+
+  // {boolean} - if true, focus the ControlPointNode created for this ControlPoint. This is a transient view
+  // coordination flag, not PhET-iO state.
+  autofocus?: boolean;
 };
 
 export type ControlPointOptions = SelfOptions & StrictOmit<PhetioObjectOptions, 'phetioState'>;
@@ -46,6 +50,7 @@ export default class ControlPoint extends PhetioObject {
 
   public readonly limitBounds: Bounds2 | null;
   public readonly interactive: boolean;
+  public autofocus: boolean;
 
   // true if the ControlPoint is intended to be displayed visually
   public readonly visible: boolean;
@@ -68,6 +73,7 @@ export default class ControlPoint extends PhetioObject {
       visible: true,
       interactive: true,
       limitBounds: null,
+      autofocus: false,
 
       tandem: Tandem.REQUIRED,
       phetioType: ControlPoint.ControlPointIO
@@ -78,6 +84,7 @@ export default class ControlPoint extends PhetioObject {
 
     this.limitBounds = options.limitBounds;
     this.interactive = options.interactive;
+    this.autofocus = options.autofocus;
     this.visible = options.visible;
 
     this.sourcePositionProperty = new Vector2Property( new Vector2( x, y ), {
