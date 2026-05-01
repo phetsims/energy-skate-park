@@ -498,6 +498,9 @@
       "negativeEnergyParagraph": {
         "value": "In Pie Chart: Total Energy 100%."
       },
+      "energiesListSeparator": {
+        "value": ", "
+      },
       "kineticPercentPattern": {
         "value": "Kinetic Energy {$percent}%"
       },
