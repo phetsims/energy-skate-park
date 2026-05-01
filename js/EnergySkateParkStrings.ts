@@ -238,7 +238,7 @@ type StringsType = {
     };
     'pieChart': {
       'accessibleHeadingStringProperty': LocalizedStringProperty;
-      'accessibleHelpTextStringProperty': LocalizedStringProperty;
+      'accessibleParagraphStringProperty': LocalizedStringProperty;
       'positiveEnergyParagraphStringProperty': LocalizedStringProperty;
       'negativeEnergyParagraphStringProperty': LocalizedStringProperty;
       'energiesListSeparatorStringProperty': LocalizedStringProperty;

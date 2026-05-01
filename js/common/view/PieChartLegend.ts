@@ -147,9 +147,6 @@ export default class PieChartLegend extends Panel {
       ]
     } );
 
-    const panelContent = new Node();
-    panelContent.children = [ contentWithTitle, clearThermalButton ];
-
     // Accessibility: dynamic energy description paragraph
     const ENERGY_THRESHOLD = EnergySkateParkConstants.ENERGY_THRESHOLD;
     const THERMAL_THRESHOLD = EnergySkateParkConstants.THERMAL_ENERGY_CLEAR_THRESHOLD;
@@ -187,6 +184,19 @@ export default class PieChartLegend extends Panel {
       } );
     } );
 
+    const pieChartDescriptionNode = new Node( {
+      accessibleParagraph: EnergySkateParkFluent.a11y.pieChart.accessibleParagraphStringProperty
+    } );
+
+    const energyDescriptionNode = new Node( {
+      accessibleParagraph: energyDescriptionProperty
+    } );
+
+    const panelContent = new Node( {
+      children: [ contentWithTitle, clearThermalButton, pieChartDescriptionNode, energyDescriptionNode ],
+      pdomOrder: [ pieChartDescriptionNode, energyDescriptionNode, clearThermalButton ]
+    } );
+
     // Accessibility: legend list
     const legendItems: TReadOnlyProperty<string>[] = [
       EnergySkateParkFluent.a11y.pieChart.legendKineticStringProperty,
@@ -206,8 +216,6 @@ export default class PieChartLegend extends Panel {
 
       // pdom
       accessibleHeading: EnergySkateParkFluent.a11y.pieChart.accessibleHeadingStringProperty,
-      accessibleParagraph: energyDescriptionProperty,
-      accessibleHelpText: EnergySkateParkFluent.a11y.pieChart.accessibleHelpTextStringProperty,
       accessibleTemplate: AccessibleList.createTemplateProperty( {
         leadingParagraphStringProperty: EnergySkateParkFluent.a11y.pieChart.legendHeadingStringProperty,
         listItems: legendItems
