@@ -19,6 +19,7 @@ import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
+import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import ArrowNode from '../../../../scenery-phet/js/ArrowNode.js';
 import SoundDragListener from '../../../../scenery-phet/js/SoundDragListener.js';
 import SoundKeyboardDragListener from '../../../../scenery-phet/js/SoundKeyboardDragListener.js';
@@ -87,7 +88,8 @@ export default class ReferenceHeightLine extends InteractiveHighlighting( Node )
       ariaRole: 'slider',
       accessibleName: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleNameStringProperty,
       accessibleHeading: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleHeadingStringProperty,
-      accessibleHelpText: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleHelpTextStringProperty
+      accessibleHelpText: EnergySkateParkFluent.a11y.referenceHeightLine.accessibleHelpTextStringProperty,
+      accessibleNameBehavior: AccessibleDraggableOptions.accessibleNameBehavior
     } );
 
     // Dynamic aria-valuetext for screen readers
