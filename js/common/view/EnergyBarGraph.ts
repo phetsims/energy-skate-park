@@ -8,6 +8,7 @@
 
 import BooleanProperty from '../../../../axon/js/BooleanProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import Emitter from '../../../../axon/js/Emitter.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
@@ -48,7 +49,7 @@ export default class EnergyBarGraph extends Node {
   private readonly dashedBorder: Rectangle;
   private readonly totalBorderRectangle: Rectangle;
 
-  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, showPatternsProperty: TReadOnlyProperty<boolean>, tandem: Tandem, providedOptions: EnergyBarGraphOptions ) {
+  public constructor( skater: Skater, barGraphScaleProperty: NumberProperty, barGraphVisibleProperty: BooleanProperty, resetEmitter: Emitter, showPatternsProperty: TReadOnlyProperty<boolean>, tandem: Tandem, providedOptions: EnergyBarGraphOptions ) {
 
     const options = optionize<SelfOptions, SelfOptions, NodeOptions>()( {
       showBarGraphZoomButtons: true,
@@ -212,6 +213,12 @@ export default class EnergyBarGraph extends Node {
       // Keep barGraphScaleProperty in sync with the discrete zoom level.
       zoomProperty.link( level => {
         barGraphScaleProperty.value = levelToScale( level );
+      } );
+
+      // ResetAllButton resets the model scale Property, but the zoom buttons also keep their own discrete
+      // zoom level Property. Reset it too so the button enabled state and next zoom step match the default scale.
+      resetEmitter.addListener( () => {
+        zoomProperty.reset();
       } );
 
       const zoomLevelResponseProperty = EnergySkateParkFluent.a11y.energyBarGraphAccordionBox.zoomButtonGroup.zoomLevelResponse.createProperty( {
