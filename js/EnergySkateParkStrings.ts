@@ -241,6 +241,7 @@ type StringsType = {
       'accessibleHelpTextStringProperty': LocalizedStringProperty;
       'positiveEnergyParagraphStringProperty': LocalizedStringProperty;
       'negativeEnergyParagraphStringProperty': LocalizedStringProperty;
+      'energiesListSeparatorStringProperty': LocalizedStringProperty;
       'kineticPercentPatternStringProperty': LocalizedStringProperty;
       'potentialPercentPatternStringProperty': LocalizedStringProperty;
       'thermalPercentPatternStringProperty': LocalizedStringProperty;
