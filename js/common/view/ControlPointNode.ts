@@ -504,11 +504,13 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
   }
 
   /**
-   * Announce the control point's current position as an accessible object response. Called on focus and after
+   * Announce the control point's current position as an accessible object response. Called after
    * keyboard drag. Shifts x so that x=0 aligns with the left edge of the E(x) graph.
    */
   public addAccessiblePositionResponse(): void {
-    this.addAccessibleObjectResponse( this.getAccessiblePositionResponse() );
+    this.addAccessibleObjectResponse( this.getAccessiblePositionResponse(), {
+      responseGroup: 'controlPointPosition'
+    } );
   }
 
   private getAccessiblePositionResponse(): string {
