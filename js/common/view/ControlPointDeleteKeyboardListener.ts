@@ -7,6 +7,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import { OneKeyStroke } from '../../../../scenery/js/input/KeyDescriptor.js';
 import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
@@ -16,15 +17,17 @@ import TrackNode from './TrackNode.js';
 
 export default class ControlPointDeleteKeyboardListener extends KeyboardListener<OneKeyStroke[]> {
 
-  public constructor( trackNode: TrackNode, controlPointIndex: number ) {
+  public constructor( trackNode: TrackNode, controlPointIndex: number, trackRemovalEnabledProperty: TReadOnlyProperty<boolean> | null = null ) {
 
     const track = trackNode.track;
     const model = trackNode.model;
+    const deletingControlPointWouldRemoveTrack = track.controlPoints.length <= 2;
 
     super( {
       keyStringProperties: ControlPointNode.DELETE_CONTROL_POINT_HOTKEY_DATA.keyStringProperties,
       fire: () => {
-        if ( track.physicalProperty.value && !track.isDisposed ) {
+        if ( track.physicalProperty.value && !track.isDisposed &&
+             ( !deletingControlPointWouldRemoveTrack || !trackRemovalEnabledProperty || trackRemovalEnabledProperty.value ) ) {
           sharedSoundPlayers.get( 'erase' ).play();
 
           // Capture the trackLayer before deletion disposes this trackNode
