@@ -83,6 +83,8 @@ const SENSOR_COLOR = 'rgb( 103, 80, 113 )';
 // max distance between sample and probe center for the sample to be displayed, in view coordinates
 const PROBE_THRESHOLD_DISTANCE = 10;
 
+const ENERGY_SENSOR_PROBE_READING_RESPONSE_GROUP = 'energySensorProbeReading';
+
 type SelfOptions = EmptySelfOptions;
 type SkaterPathSensorNodeOptions = SelfOptions & NodeOptions & PickRequired<NodeOptions, 'tandem'>;
 
@@ -380,13 +382,13 @@ export default class SkaterPathSensorNode extends Node {
         if ( previousSample !== null && this.inspectedSample === null ) {
           this.probeNode.addAccessibleContextResponse(
             EnergySkateParkFluent.a11y.energySensorNode.movedOffSamplesStringProperty,
-            { interruptible: true }
+            { responseGroup: ENERGY_SENSOR_PROBE_READING_RESPONSE_GROUP }
           );
         }
         else if ( samples.length === 0 ) {
           this.probeNode.addAccessibleContextResponse(
             EnergySkateParkFluent.a11y.energySensorNode.nothingToMeasureStringProperty,
-            { interruptible: true }
+            { responseGroup: ENERGY_SENSOR_PROBE_READING_RESPONSE_GROUP }
           );
         }
         this.isKeyboardAction = false;
@@ -484,7 +486,9 @@ export default class SkaterPathSensorNode extends Node {
 
     // Announce only when landing on a new sample via user-initiated action
     if ( sampleChanged && ( this.isKeyboardAction || this.isDragging ) ) {
-      this.probeNode.addAccessibleContextResponse( readingText, { interruptible: true } );
+      this.probeNode.addAccessibleContextResponse( readingText, {
+        responseGroup: ENERGY_SENSOR_PROBE_READING_RESPONSE_GROUP
+      } );
     }
   }
 
