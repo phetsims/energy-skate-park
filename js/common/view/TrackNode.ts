@@ -11,6 +11,7 @@
 import Property from '../../../../axon/js/Property.js';
 import TProperty from '../../../../axon/js/TProperty.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import Bounds2 from '../../../../dot/js/Bounds2.js';
 import Shape from '../../../../kite/js/Shape.js';
 import LineStyles from '../../../../kite/js/util/LineStyles.js';
@@ -47,6 +48,9 @@ type SelfOptions = {
   // Screen-level flag set to true after the first successful keyboard connection, used by the ScreenView to
   // hide the "Space to Choose Connection" cue once the user has learned the pattern. Reset on ResetAll.
   anyControlPointAttachedProperty?: TProperty<boolean> | null;
+
+  // Whether user input may remove this entire track from the play area.
+  trackRemovalEnabledProperty?: TReadOnlyProperty<boolean> | null;
 };
 export type TrackNodeOptions = SelfOptions & NodeOptions;
 
@@ -109,6 +113,7 @@ export default class TrackNode extends Node {
       trackToolboxIcon: false,
 
       anyControlPointAttachedProperty: null,
+      trackRemovalEnabledProperty: null,
 
       tandem: tandem,
       visiblePropertyOptions: { phetioState: false }
@@ -167,6 +172,7 @@ export default class TrackNode extends Node {
     this.model = model;
     this.isIcon = !!options.isIcon;
     this.anyControlPointAttachedProperty = options.anyControlPointAttachedProperty;
+    const isTrackRemovalEnabled = () => !options.trackRemovalEnabledProperty || options.trackRemovalEnabledProperty.value;
 
     this.road = new InteractiveHighlightingPath( null, {
       fill: 'gray',
@@ -218,7 +224,7 @@ export default class TrackNode extends Node {
         const removeTrackListener = new KeyboardListener( {
           keyStringProperties: TrackNode.REMOVE_TRACK_HOTKEY_DATA.keyStringProperties,
           fire: () => {
-            if ( track.physicalProperty.value && !track.isDisposed ) {
+            if ( track.physicalProperty.value && !track.isDisposed && isTrackRemovalEnabled() ) {
               sharedSoundPlayers.get( 'erase' ).play();
 
               // Capture the trackLayer before disposal removes this TrackNode
@@ -277,7 +283,7 @@ export default class TrackNode extends Node {
           const controlPointNode = new ControlPointNode( this, this.trackDragHandler, i, isEndPoint, tandem.createTandem( `controlPointNode${i}` ),
 
             // omit a11y features for the control points in the track toolbox, to prevent an awkward button with substructure, see https://github.com/phetsims/energy-skate-park/issues/438
-            options.trackToolboxIcon );
+            options.trackToolboxIcon, options.trackRemovalEnabledProperty );
           this.addChild( controlPointNode );
 
           if ( controlPoint.limitBounds ) {

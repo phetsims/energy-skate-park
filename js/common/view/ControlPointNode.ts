@@ -8,6 +8,7 @@
  */
 
 import Emitter from '../../../../axon/js/Emitter.js';
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import animationFrameTimer from '../../../../axon/js/animationFrameTimer.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import { toFixedNumber } from '../../../../dot/js/util/toFixedNumber.js';
@@ -75,8 +76,9 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
    * @param isEndPoint
    * @param tandem
    * @param omitA11y - whether to omit the description from the track inside the toolbox
+   * @param trackRemovalEnabledProperty - whether user input may remove the entire track
    */
-  public constructor( trackNode: TrackNode, trackDragHandler: TrackDragHandler | null, i: number, isEndPoint: boolean, tandem: Tandem, omitA11y: boolean ) {
+  public constructor( trackNode: TrackNode, trackDragHandler: TrackDragHandler | null, i: number, isEndPoint: boolean, tandem: Tandem, omitA11y: boolean, trackRemovalEnabledProperty: TReadOnlyProperty<boolean> | null = null ) {
     const track = trackNode.track;
     const model = trackNode.model;
     const modelViewTransform = trackNode.modelViewTransform;
@@ -345,7 +347,8 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
                 i,
                 modelViewTransform,
                 trackNode.parents[ 0 ],
-                tandem.createTandem( 'controlPointUI' )
+                tandem.createTandem( 'controlPointUI' ),
+                trackRemovalEnabledProperty
               );
 
               // If the track was removed or translated, dispose the buttons and self-detach.
@@ -403,7 +406,7 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
 
       // Delete/backspace removes the control point, same as the "x" button in ControlPointUI
       if ( track.splittable ) {
-        const deleteListener = new ControlPointDeleteKeyboardListener( trackNode, i );
+        const deleteListener = new ControlPointDeleteKeyboardListener( trackNode, i, trackRemovalEnabledProperty );
         this.addInputListener( deleteListener );
         this.addDisposable( deleteListener );
 
