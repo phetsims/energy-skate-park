@@ -8,6 +8,7 @@
  * @author Jesse Greenberg (PhET Interactive Simulations)
  */
 
+import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import { combineOptions } from '../../../../phet-core/js/optionize.js';
 import EraserButton from '../../../../scenery-phet/js/buttons/EraserButton.js';
 import ParallelDOM from '../../../../scenery/js/accessibility/pdom/ParallelDOM.js';
@@ -60,6 +61,12 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
 
     model.tracks.addItemAddedListener( this.addTrackNode.bind( this ) );
 
+    const trackRemovalEnabledProperty = this.trackToolbox.visibleProperty;
+    const eraseTracksButtonEnabledProperty = new DerivedProperty(
+      [ model.clearButtonEnabledProperty, trackRemovalEnabledProperty ],
+      ( clearButtonEnabled, trackRemovalEnabled ) => clearButtonEnabled && trackRemovalEnabled
+    );
+
     const eraseTracksButton = new EraserButton( {
       iconWidth: 30,
       baseColor: new Color( 221, 210, 32 ),
@@ -68,12 +75,15 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
       enabledPropertyOptions: { phetioReadOnly: true },
       accessibleName: EnergySkateParkFluent.a11y.eraseTracksButton.accessibleNameStringProperty
     } );
-    model.clearButtonEnabledProperty.linkAttribute( eraseTracksButton, 'enabled' );
+    eraseTracksButtonEnabledProperty.linkAttribute( eraseTracksButton, 'enabled' );
+    this.addDisposable( eraseTracksButtonEnabledProperty );
     eraseTracksButton.addListener( () => {
-      model.clearTracks();
-      eraseTracksButton.addAccessibleContextResponse(
-        EnergySkateParkFluent.a11y.eraseTracksButton.accessibleContextResponseStringProperty
-      );
+      if ( trackRemovalEnabledProperty.value ) {
+        model.clearTracks();
+        eraseTracksButton.addAccessibleContextResponse(
+          EnergySkateParkFluent.a11y.eraseTracksButton.accessibleContextResponseStringProperty
+        );
+      }
     } );
     this.addChild( eraseTracksButton );
 
@@ -117,7 +127,9 @@ export default class EnergySkateParkPlaygroundScreenView extends EnergySkatePark
    * handle disposal.
    */
   private addTrackNode( track: Track ): TrackNode {
-    const trackNode = this.trackNodeGroup.createNextElement( track, this.modelViewTransform, this.availableModelBoundsProperty );
+    const trackNode = this.trackNodeGroup.createNextElement( track, this.modelViewTransform, this.availableModelBoundsProperty, {
+      trackRemovalEnabledProperty: this.trackToolbox.visibleProperty
+    } );
     this.trackNodes.push( trackNode );
 
     this.trackLayer.addChild( trackNode );

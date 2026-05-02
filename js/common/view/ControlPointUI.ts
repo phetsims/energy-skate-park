@@ -6,6 +6,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 
+import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
 import LinearFunction from '../../../../dot/js/LinearFunction.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
@@ -31,8 +32,9 @@ export default class ControlPointUI extends Node {
    * @param modelViewTransform the main model-view transform
    * @param parentNode
    * @param tandem
+   * @param trackRemovalEnabledProperty - whether user input may remove the entire track
    */
-  public constructor( model: EnergySkateParkModel, track: Track, controlPointIndex: number, modelViewTransform: ModelViewTransform2, parentNode: Node, tandem: Tandem ) {
+  public constructor( model: EnergySkateParkModel, track: Track, controlPointIndex: number, modelViewTransform: ModelViewTransform2, parentNode: Node, tandem: Tandem, trackRemovalEnabledProperty: TReadOnlyProperty<boolean> | null = null ) {
     super( {
       tandem: tandem,
       phetioState: false,
@@ -66,6 +68,10 @@ export default class ControlPointUI extends Node {
     const position = track.getPoint( alpha );
     const angle = track.getViewAngleAt( alpha );
     const modelAngle = track.getModelAngleAt( alpha );
+    const deletingControlPointWouldRemoveTrack = track.controlPoints.length <= 2;
+    const isControlPointDeletionEnabled = () => {
+      return !deletingControlPointWouldRemoveTrack || !trackRemovalEnabledProperty || trackRemovalEnabledProperty.value;
+    };
 
     const disableDismissAction = { down: () => { enableClickToDismissListener = false; } };
 
@@ -107,9 +113,12 @@ export default class ControlPointUI extends Node {
       tandem: tandem.createTandem( 'deleteButton' ),
       phetioState: false,
       visiblePropertyOptions: { phetioState: false },
+      enabledProperty: deletingControlPointWouldRemoveTrack ? trackRemovalEnabledProperty : undefined,
 
       listener: () => {
-        model.deleteControlPoint( track, controlPointIndex );
+        if ( isControlPointDeletionEnabled() ) {
+          model.deleteControlPoint( track, controlPointIndex );
+        }
       },
       content: deleteNode,
       center: modelViewTransform.modelToViewPosition( position ).plus( Vector2.createPolar( 50, angle - Math.PI / 2 ) ),
