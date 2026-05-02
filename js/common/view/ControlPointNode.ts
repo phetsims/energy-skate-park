@@ -510,15 +510,19 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
   }
 
   /**
-   * Announce the control point's current position as an accessible object response. Called on focus and after
+   * Announce the control point's current position as an accessible object response. Called after
    * keyboard drag. Shifts x so that x=0 aligns with the left edge of the E(x) graph.
    */
   public addAccessiblePositionResponse(): void {
-    this.addAccessibleObjectResponse(
-      EnergySkateParkFluent.a11y.controlPointNode.accessibleObjectResponse.format( {
-        xCoordinate: toFixedNumber( this.controlPoint.positionProperty.value.x + EnergySkateParkConstants.POSITION_PLOT_OFFSET, 1 ),
-        yCoordinate: toFixedNumber( this.controlPoint.positionProperty.value.y, 1 )
-      } )
-    );
+    this.addAccessibleObjectResponse( this.getAccessiblePositionResponse(), {
+      responseGroup: 'controlPointPosition'
+    } );
+  }
+
+  private getAccessiblePositionResponse(): string {
+    return EnergySkateParkFluent.a11y.controlPointNode.accessibleObjectResponse.format( {
+      xCoordinate: toFixedNumber( this.controlPoint.positionProperty.value.x + EnergySkateParkConstants.POSITION_PLOT_OFFSET, 1 ),
+      yCoordinate: toFixedNumber( this.controlPoint.positionProperty.value.y, 1 )
+    } );
   }
 }
