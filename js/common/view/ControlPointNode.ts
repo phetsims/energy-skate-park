@@ -122,8 +122,14 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
     this.track = track;
     this.isAttachableEndpoint = isEndPoint && track.attachable && controlPoint.interactive && !omitA11y;
 
+    // Announce the current position as an object response whenever the node receives focus, so users know where the
+    // control point is before moving it. Same pattern as calculus-grapher's CurveManipulatorNode.focusedProperty listener.
     if ( !omitA11y ) {
-      this.accessibleFocusObjectResponse = () => this.getAccessiblePositionResponse();
+      this.focusedProperty.lazyLink( focused => {
+        if ( focused ) {
+          this.addAccessiblePositionResponse();
+        }
+      } );
     }
 
     this.keyboardAttachmentSelectionRing = new Circle( 30, {
