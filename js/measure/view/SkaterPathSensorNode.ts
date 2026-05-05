@@ -83,7 +83,13 @@ const SENSOR_COLOR = 'rgb( 103, 80, 113 )';
 // max distance between sample and probe center for the sample to be displayed, in view coordinates
 const PROBE_THRESHOLD_DISTANCE = 10;
 
-const ENERGY_SENSOR_PROBE_READING_RESPONSE_GROUP = 'energySensorProbeReading';
+// Response group options prevent a pile-up of related information. The alert delay waits for the
+// user to stop interacting before speaking the latest value.
+// See https://github.com/phetsims/energy-skate-park/issues/581
+const ENERGY_SENSOR_PROBE_READING_RESPONSE_OPTIONS = {
+  responseGroup: 'energySensorProbeReading',
+  alertDelay: 1000
+};
 
 type SelfOptions = EmptySelfOptions;
 type SkaterPathSensorNodeOptions = SelfOptions & NodeOptions & PickRequired<NodeOptions, 'tandem'>;
@@ -382,13 +388,13 @@ export default class SkaterPathSensorNode extends Node {
         if ( previousSample !== null && this.inspectedSample === null ) {
           this.probeNode.addAccessibleContextResponse(
             EnergySkateParkFluent.a11y.energySensorNode.movedOffSamplesStringProperty,
-            { responseGroup: ENERGY_SENSOR_PROBE_READING_RESPONSE_GROUP }
+            ENERGY_SENSOR_PROBE_READING_RESPONSE_OPTIONS
           );
         }
         else if ( samples.length === 0 ) {
           this.probeNode.addAccessibleContextResponse(
             EnergySkateParkFluent.a11y.energySensorNode.nothingToMeasureStringProperty,
-            { responseGroup: ENERGY_SENSOR_PROBE_READING_RESPONSE_GROUP }
+            ENERGY_SENSOR_PROBE_READING_RESPONSE_OPTIONS
           );
         }
         this.isKeyboardAction = false;
@@ -486,9 +492,7 @@ export default class SkaterPathSensorNode extends Node {
 
     // Announce only when landing on a new sample via user-initiated action
     if ( sampleChanged && ( this.isKeyboardAction || this.isDragging ) ) {
-      this.probeNode.addAccessibleContextResponse( readingText, {
-        responseGroup: ENERGY_SENSOR_PROBE_READING_RESPONSE_GROUP
-      } );
+      this.probeNode.addAccessibleContextResponse( readingText, ENERGY_SENSOR_PROBE_READING_RESPONSE_OPTIONS );
     }
   }
 

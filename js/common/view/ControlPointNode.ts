@@ -512,7 +512,8 @@ export default class ControlPointNode extends InteractiveHighlighting( Circle ) 
    */
   public addAccessiblePositionResponse(): void {
     this.addAccessibleObjectResponse( this.getAccessiblePositionResponse(), {
-      responseGroup: 'controlPointPosition'
+      responseGroup: 'controlPointPosition',
+      alertDelay: 1000
     } );
   }
 
