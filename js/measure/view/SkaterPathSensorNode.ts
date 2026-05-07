@@ -10,6 +10,7 @@
 import { ObservableArray } from '../../../../axon/js/createObservableArray.js';
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import NumberProperty from '../../../../axon/js/NumberProperty.js';
+import PatternStringProperty from '../../../../axon/js/PatternStringProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import StringProperty from '../../../../axon/js/StringProperty.js';
 import TProperty from '../../../../axon/js/TProperty.js';
@@ -22,7 +23,6 @@ import Vector2Property from '../../../../dot/js/Vector2Property.js';
 import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize, { combineOptions, EmptySelfOptions } from '../../../../phet-core/js/optionize.js';
 import PickRequired from '../../../../phet-core/js/types/PickRequired.js';
-import StringUtils from '../../../../phetcommon/js/util/StringUtils.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
 import AccessibleDraggableOptions from '../../../../scenery-phet/js/accessibility/grab-drag/AccessibleDraggableOptions.js';
 import NumberDisplay from '../../../../scenery-phet/js/NumberDisplay.js';
@@ -103,6 +103,8 @@ export default class SkaterPathSensorNode extends Node {
   private readonly potentialValueProperty: Property<number | null>;
   private readonly thermalValueProperty: Property<number | null>;
   private readonly totalValueProperty: Property<number | null>;
+  private readonly heightValueStringProperty: StringProperty;
+  private readonly speedValueStringProperty: StringProperty;
 
   // NumberDisplays for the body of the sensor, wrapped in an AlignBox
   private readonly kineticRectangleBox: AlignBox;
@@ -156,6 +158,7 @@ export default class SkaterPathSensorNode extends Node {
     this.modelViewTransform = modelViewTransform;
 
     this.samples = samples;
+    this.inspectedSample = null;
 
     // labels and value rectangles are in the same align group so that all entries have same width and height for
     // layout
@@ -178,6 +181,8 @@ export default class SkaterPathSensorNode extends Node {
     this.potentialValueProperty = new Property<number | null>( null, validationOptions );
     this.thermalValueProperty = new Property<number | null>( null, validationOptions );
     this.totalValueProperty = new Property<number | null>( null, validationOptions );
+    this.heightValueStringProperty = new StringProperty( '' );
+    this.speedValueStringProperty = new StringProperty( '' );
 
     this.kineticRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup, this.kineticValueProperty );
     this.potentialRectangleBox = SkaterPathSensorNode.createReadoutBox( alignGroup, this.potentialValueProperty );
@@ -186,8 +191,24 @@ export default class SkaterPathSensorNode extends Node {
 
     // Height and speed are read to the right of the probe in a transparent panel for enhanced
     // visibility. We want the panel to resize as the text changes for different skater samples
-    this.heightReadout = new Text( '', { font: LABEL_FONT } );
-    this.speedReadout = new Text( '', { font: LABEL_FONT } );
+    const heightReadoutStringProperty = new PatternStringProperty( heightMetersPatternStringProperty, {
+      value: this.heightValueStringProperty
+    } );
+    const speedReadoutStringProperty = new PatternStringProperty( speedMetersPerSecondPatternStringProperty, {
+      value: this.speedValueStringProperty
+    } );
+    this.addDisposable( heightReadoutStringProperty, speedReadoutStringProperty );
+
+    const updateHeightSpeedRectangleBounds = () => {
+      if ( this.inspectedSample ) {
+        this.positionReadouts( this.inspectedSample );
+      }
+    };
+    heightReadoutStringProperty.lazyLink( updateHeightSpeedRectangleBounds, { disposer: this } );
+    speedReadoutStringProperty.lazyLink( updateHeightSpeedRectangleBounds, { disposer: this } );
+
+    this.heightReadout = new Text( heightReadoutStringProperty, { font: LABEL_FONT } );
+    this.speedReadout = new Text( speedReadoutStringProperty, { font: LABEL_FONT } );
     this.heightSpeedVBox = new VBox( {
       children: [ this.heightReadout, this.speedReadout ],
       align: 'left'
@@ -196,6 +217,7 @@ export default class SkaterPathSensorNode extends Node {
     this.heightSpeedRectangle = new Rectangle( this.heightSpeedVBox.bounds, {
       fill: EnergySkateParkColors.transparentPanelFillProperty
     } );
+    this.heightSpeedRectangle.visible = false;
     this.heightSpeedRectangle.addChild( this.heightSpeedVBox );
 
     // layout - labels horizontally aligned with readouts in a VBox
@@ -284,10 +306,6 @@ export default class SkaterPathSensorNode extends Node {
     this.addChild( body );
     this.addChild( this.probeNode );
     this.addChild( this.heightSpeedRectangle );
-
-    // the skater sample currently being inspected, reference so we can un-inspect
-    // without looping through all samples
-    this.inspectedSample = null;
 
     this.boundUpdateSensorDisplay = this.updateSensorDisplay.bind( this );
 
@@ -462,12 +480,8 @@ export default class SkaterPathSensorNode extends Node {
     this.totalValueProperty.value = dataSample.totalEnergy;
 
     // set values for height and speed readout
-    this.heightReadout.string = StringUtils.fillIn( heightMetersPatternStringProperty, {
-      value: this.formatValue( dataSample.position.y - dataSample.referenceHeight )
-    } );
-    this.speedReadout.string = StringUtils.fillIn( speedMetersPerSecondPatternStringProperty, {
-      value: this.formatValue( dataSample.speed )
-    } );
+    this.heightValueStringProperty.value = this.formatValue( dataSample.position.y - dataSample.referenceHeight );
+    this.speedValueStringProperty.value = this.formatValue( dataSample.speed );
 
     this.heightSpeedRectangle.visible = true;
     this.positionReadouts( dataSample );
@@ -539,6 +553,8 @@ export default class SkaterPathSensorNode extends Node {
     this.updateDisplayListener = null;
 
     dataSample.inspectedProperty.set( false );
+    this.heightValueStringProperty.value = '';
+    this.speedValueStringProperty.value = '';
     this.heightSpeedRectangle.visible = false;
 
     this.currentReadingProperty.value = '';
