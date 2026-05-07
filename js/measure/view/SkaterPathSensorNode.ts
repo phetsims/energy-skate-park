@@ -68,6 +68,7 @@ const TEXT_COLOR = 'white';
 const TITLE_FONT = new PhetFont( 16 );
 const LABEL_FONT = new PhetFont( 15.5 );
 const ENTRY_MAX_WIDTH = 60;
+const PROBE_READOUT_MAX_WIDTH = 175;
 
 // arbitrary range for energies, but required so that this can use NumberDisplay. With this value, the width of the
 // NumberDisplay looks good and if released from within dev bounds, the energy will never get this large.
@@ -213,8 +214,14 @@ export default class SkaterPathSensorNode extends Node {
     heightReadoutStringProperty.lazyLink( updateHeightSpeedRectangleBounds, { disposer: this } );
     speedReadoutStringProperty.lazyLink( updateHeightSpeedRectangleBounds, { disposer: this } );
 
-    this.heightReadout = new Text( heightReadoutStringProperty, { font: LABEL_FONT } );
-    this.speedReadout = new Text( speedReadoutStringProperty, { font: LABEL_FONT } );
+    this.heightReadout = new Text( heightReadoutStringProperty, {
+      font: LABEL_FONT,
+      maxWidth: PROBE_READOUT_MAX_WIDTH
+    } );
+    this.speedReadout = new Text( speedReadoutStringProperty, {
+      font: LABEL_FONT,
+      maxWidth: PROBE_READOUT_MAX_WIDTH
+    } );
     this.heightSpeedVBox = new VBox( {
       children: [ this.heightReadout, this.speedReadout ],
       align: 'left'
