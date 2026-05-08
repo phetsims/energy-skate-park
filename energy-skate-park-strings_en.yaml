@@ -71,7 +71,7 @@ keyboardHelpDialog:
   fromAnywhereInScreen:              From Anywhere in Screen
   grabOrRelease:                     Grab or release
   moveAlongTrack:                    Move along track
-  attachToTrack:                     Attach to nearest track
+  attachToTrack:                     Attach to nearest track start
   detachFromTrack:                   Detach from track
   moveToStartOfTrack:                Jump to track start
   moveToEndOfTrack:                  Jump to track end
@@ -149,7 +149,7 @@ a11y:
       cancel: Cancel
   skaterNode:
     accessibleName:                 Skater
-    firstGrabContextResponse:       Press J key plus T key to attach skater to nearest track. Space to release.
+    firstGrabContextResponse:       Press J key plus T key to attach skater to track start. Space to release.
     snapToTrackContextResponse:     Skater on track.
     detachFromTrackContextResponse: Skater off track.
     offScreenContextResponse:       Skater off screen. Return skater.
