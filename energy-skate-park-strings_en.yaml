@@ -224,8 +224,8 @@ a11y:
     accessibleHeading:    Energy Sensor
     accessibleName:       Energy Sensor Probe
     accessibleHelpText:   >-
-                          Move probe along skater's path to measure speed, height, and energy. 
-                          Path fades away when skater turns around. Pause to analyze values. 
+                          Move probe along skater's path to measure speed, height, and energy.
+                          Path fades away when skater turns around. Pause to analyze values.
     nothingToMeasure:     Nothing to measure yet.
     movedOffSamples:      Sensor moved off of sample points.
     sampleReadoutPattern: >-
@@ -238,7 +238,7 @@ a11y:
     accessibleParagraph:     Pie Chart displays skater's energy in real time. Pause to analyze values.
     positiveEnergyParagraph: 'In Pie Chart: {$energiesList}.'
     negativeEnergyParagraph: 'In Pie Chart: Total Energy 100%.'
-    energiesListSeparator:   ', '
+    energiesListPattern:     '{ $first }, { $second }'
     kineticPercentPattern:   'Kinetic Energy {$percent}%'
     potentialPercentPattern: 'Potential Energy {$percent}%'
     thermalPercentPattern:   'Thermal Energy {$percent}%'
