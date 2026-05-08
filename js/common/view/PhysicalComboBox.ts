@@ -12,10 +12,11 @@ import Emitter from '../../../../axon/js/Emitter.js';
 import PhetioProperty from '../../../../axon/js/PhetioProperty.js';
 import Property from '../../../../axon/js/Property.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
-import optionize from '../../../../phet-core/js/optionize.js';
+import optionize, { combineOptions } from '../../../../phet-core/js/optionize.js';
 import Node from '../../../../scenery/js/nodes/Node.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
-import ComboBox, { ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
+import ComboBox, { ComboBoxItem, ComboBoxOptions } from '../../../../sun/js/ComboBox.js';
+import { type ComboBoxListItemNodeOptions } from '../../../../sun/js/ComboBoxListItemNode.js';
 import Tandem from '../../../../tandem/js/Tandem.js';
 import NullableIO from '../../../../tandem/js/types/NullableIO.js';
 import NumberIO from '../../../../tandem/js/types/NumberIO.js';
@@ -27,9 +28,19 @@ type SelfOptions = {
   // whether the physicalProperty can be set to something other than the entries defined
   // in labelValueList
   supportCustom?: boolean;
+
+  // Options passed to every ComboBoxListItemNode.
+  comboBoxListItemNodeOptions?: ComboBoxListItemNodeOptions;
 };
 
 export type PhysicalComboBoxOptions = SelfOptions & ComboBoxOptions;
+
+type LabelValueListItem = {
+  labelProperty: TReadOnlyProperty<string>;
+  value: number;
+  tandemName: string;
+  comboBoxListItemNodeOptions?: ComboBoxListItemNodeOptions;
+};
 
 // constants
 const controlsGravityCustomStringProperty = EnergySkateParkFluent.physicalControls.customStringProperty;
@@ -39,17 +50,18 @@ export default class PhysicalComboBox extends ComboBox<number | null> {
   /**
    * @param physicalProperty
    * @param userControlledProperty
-   * @param labelValueList - entries like {label:{string}, value:{number}}
+   * @param labelValueList - entries like {labelProperty:{string}, value:{number}}
    * @param resetEmitter
    * @param listParent - parent for the ComboBoxListBox
    * @param tandem
    * @param [options]
    */
-  public constructor( physicalProperty: PhetioProperty<number>, userControlledProperty: Property<boolean>, labelValueList: Array<{ label: TReadOnlyProperty<string>; value: number; tandemName: string }>, resetEmitter: Emitter, listParent: Node, tandem: Tandem, providedOptions?: PhysicalComboBoxOptions ) {
+  public constructor( physicalProperty: PhetioProperty<number>, userControlledProperty: Property<boolean>, labelValueList: LabelValueListItem[], resetEmitter: Emitter, listParent: Node, tandem: Tandem, providedOptions?: PhysicalComboBoxOptions ) {
     affirm( _.find( labelValueList, entry => entry.value === null ) === undefined, 'PhysicalComboBox adds "Custom" item' );
 
     const options = optionize<PhysicalComboBoxOptions, SelfOptions, ComboBoxOptions>()( {
       supportCustom: true,
+      comboBoxListItemNodeOptions: {},
       tandem: tandem,
 
       // Duplicated with EnergySkateParkConstants.COMBO_BOX_OPTIONS
@@ -58,19 +70,19 @@ export default class PhysicalComboBox extends ComboBox<number | null> {
       cornerRadius: EnergySkateParkConstants.PANEL_CORNER_RADIUS
     }, providedOptions );
 
-    // {[].ComboBoxItem}
-    const itemList = [];
-    labelValueList.forEach( ( entry, i ) => {
+    const itemList: ComboBoxItem<number | null>[] = [];
+    labelValueList.forEach( entry => {
       itemList.push( {
         value: entry.value,
-        createNode: () => new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ),
-        tandemName: entry.tandemName
+        createNode: () => new Text( entry.labelProperty, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ),
+        tandemName: entry.tandemName,
+        comboBoxListItemNodeOptions: combineOptions<ComboBoxListItemNodeOptions>( {}, options.comboBoxListItemNodeOptions, entry.comboBoxListItemNodeOptions )
       } );
     } );
 
     // Redundant "scrap" nodes to check on i18n dimensions, this was needed when converting to the "createNode" pattern
     // of ComboBox items, see https://github.com/phetsims/sun/issues/797
-    const tempNodes = labelValueList.map( entry => new Text( entry.label, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ) );
+    const tempNodes = labelValueList.map( entry => new Text( entry.labelProperty, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ) );
 
     // i18n - if the text gets scaled way down, make sure that the button corner radii aren't larger than content height
     const maxItemHeight = _.maxBy( tempNodes, node => node.height )!.height;
@@ -81,7 +93,8 @@ export default class PhysicalComboBox extends ComboBox<number | null> {
       itemList.push( {
         value: null,
         createNode: () => new Text( controlsGravityCustomStringProperty, EnergySkateParkConstants.COMBO_BOX_ITEM_OPTIONS ),
-        tandemName: 'customItem'
+        tandemName: 'customItem',
+        comboBoxListItemNodeOptions: options.comboBoxListItemNodeOptions
       } );
     }
 

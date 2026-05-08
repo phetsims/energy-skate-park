@@ -29,11 +29,28 @@ export default class GravityComboBox extends PhysicalComboBox {
   public constructor( gravityProperty: PhetioProperty<number>, userControlledProperty: BooleanProperty, resetEmitter: Emitter, listParent: Node, tandem: Tandem, providedOptions?: PhysicalComboBoxOptions ) {
 
     const labelValueList = [
-      { label: EnergySkateParkFluent.physicalControls.gravityControls.moonStringProperty, value: EnergySkateParkConstants.MOON_GRAVITY, tandemName: 'moonItem' },
-      { label: EnergySkateParkFluent.physicalControls.gravityControls.earthStringProperty, value: EnergySkateParkConstants.EARTH_GRAVITY, tandemName: 'earthItem' },
-      { label: EnergySkateParkFluent.physicalControls.gravityControls.jupiterStringProperty, value: EnergySkateParkConstants.JUPITER_GRAVITY, tandemName: 'jupiterItem' }
+      {
+        labelProperty: EnergySkateParkFluent.physicalControls.gravityControls.moonStringProperty,
+        value: EnergySkateParkConstants.MOON_GRAVITY,
+        tandemName: 'moonItem'
+      },
+      {
+        labelProperty: EnergySkateParkFluent.physicalControls.gravityControls.earthStringProperty,
+        value: EnergySkateParkConstants.EARTH_GRAVITY,
+        tandemName: 'earthItem'
+      },
+      {
+        labelProperty: EnergySkateParkFluent.physicalControls.gravityControls.jupiterStringProperty,
+        value: EnergySkateParkConstants.JUPITER_GRAVITY,
+        tandemName: 'jupiterItem'
+      }
     ];
 
-    super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, combineOptions<PhysicalComboBoxOptions>( { yMargin: 4 }, providedOptions ) );
+    super( gravityProperty, userControlledProperty, labelValueList, resetEmitter, listParent, tandem, combineOptions<PhysicalComboBoxOptions>( {
+      yMargin: 4,
+      comboBoxListItemNodeOptions: {
+        visiblePropertyOptions: { phetioReadOnly: true }
+      }
+    }, providedOptions ) );
   }
 }
