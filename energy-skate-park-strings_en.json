@@ -200,7 +200,7 @@
       "value": "Move along track"
     },
     "attachToTrack": {
-      "value": "Attach to nearest track"
+      "value": "Attach to nearest track start"
     },
     "detachFromTrack": {
       "value": "Detach from track"
@@ -331,7 +331,7 @@
         "value": "Skater"
       },
       "firstGrabContextResponse": {
-        "value": "Press J key plus T key to attach skater to nearest track. Space to release."
+        "value": "Press J key plus T key to attach skater to track start. Space to release."
       },
       "snapToTrackContextResponse": {
         "value": "Skater on track."
