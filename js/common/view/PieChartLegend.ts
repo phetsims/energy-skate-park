@@ -8,6 +8,7 @@
 
 import DerivedProperty from '../../../../axon/js/DerivedProperty.js';
 import { TReadOnlyProperty } from '../../../../axon/js/TReadOnlyProperty.js';
+import FluentUtils from '../../../../chipper/js/browser/FluentUtils.js';
 import Utils from '../../../../dot/js/Utils.js';
 import merge from '../../../../phet-core/js/merge.js';
 import optionize from '../../../../phet-core/js/optionize.js';
@@ -150,15 +151,24 @@ export default class PieChartLegend extends Panel {
     // Accessibility: dynamic energy description paragraph
     const ENERGY_THRESHOLD = EnergySkateParkConstants.ENERGY_THRESHOLD;
     const THERMAL_THRESHOLD = EnergySkateParkConstants.THERMAL_ENERGY_CLEAR_THRESHOLD;
-    const energyDescriptionProperty = new DerivedProperty( [
+    const energyDescriptionDependencies: TReadOnlyProperty<unknown>[] = [
       skater.kineticEnergyProperty,
       skater.potentialEnergyProperty,
       skater.thermalEnergyProperty,
       skater.totalEnergyProperty,
       EnergySkateParkFluent.a11y.noDataParagraphStringProperty,
       EnergySkateParkFluent.a11y.pieChart.negativeEnergyParagraphStringProperty,
-      EnergySkateParkFluent.a11y.pieChart.energiesListSeparatorStringProperty
-    ], ( kinetic, potential, thermal, total, noDataText, negativeEnergyText, energiesListSeparator ) => {
+      ...EnergySkateParkFluent.a11y.pieChart.energiesListPattern.getDependentProperties()
+    ];
+
+    const energyDescriptionProperty = DerivedProperty.deriveAny( energyDescriptionDependencies, () => {
+      const kinetic = skater.kineticEnergyProperty.value;
+      const potential = skater.potentialEnergyProperty.value;
+      const thermal = skater.thermalEnergyProperty.value;
+      const total = skater.totalEnergyProperty.value;
+      const noDataText = EnergySkateParkFluent.a11y.noDataParagraphStringProperty.value;
+      const negativeEnergyText = EnergySkateParkFluent.a11y.pieChart.negativeEnergyParagraphStringProperty.value;
+
       if ( potential < 0 ) {
         return negativeEnergyText;
       }
@@ -180,7 +190,7 @@ export default class PieChartLegend extends Panel {
       if ( parts.length === 0 ) { return ''; }
 
       return EnergySkateParkFluent.a11y.pieChart.positiveEnergyParagraph.format( {
-        energiesList: parts.join( energiesListSeparator )
+        energiesList: FluentUtils.joinFirstAndSecond( EnergySkateParkFluent.a11y.pieChart.energiesListPattern, parts )
       } );
     } );
 

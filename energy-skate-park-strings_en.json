@@ -473,7 +473,7 @@
         "value": "Energy Sensor Probe"
       },
       "accessibleHelpText": {
-        "value": "Move probe along skater's path to measure speed, height, and energy.  Path fades away when skater turns around. Pause to analyze values. "
+        "value": "Move probe along skater's path to measure speed, height, and energy. Path fades away when skater turns around. Pause to analyze values."
       },
       "nothingToMeasure": {
         "value": "Nothing to measure yet."
@@ -498,8 +498,8 @@
       "negativeEnergyParagraph": {
         "value": "In Pie Chart: Total Energy 100%."
       },
-      "energiesListSeparator": {
-        "value": ", "
+      "energiesListPattern": {
+        "value": "{ $first }, { $second }"
       },
       "kineticPercentPattern": {
         "value": "Kinetic Energy {$percent}%"
