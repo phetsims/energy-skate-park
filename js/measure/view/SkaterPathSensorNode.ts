@@ -20,7 +20,6 @@ import Range from '../../../../dot/js/Range.js';
 import { toFixed } from '../../../../dot/js/util/toFixed.js';
 import Vector2 from '../../../../dot/js/Vector2.js';
 import Vector2Property from '../../../../dot/js/Vector2Property.js';
-import affirm from '../../../../perennial-alias/js/browser-and-node/affirm.js';
 import optionize, { combineOptions, EmptySelfOptions } from '../../../../phet-core/js/optionize.js';
 import PickRequired from '../../../../phet-core/js/types/PickRequired.js';
 import ModelViewTransform2 from '../../../../phetcommon/js/view/ModelViewTransform2.js';
@@ -126,6 +125,7 @@ export default class SkaterPathSensorNode extends Node {
   private inspectedSample: EnergySkateParkDataSample | null;
   private readonly boundUpdateSensorDisplay: () => void;
   private updateDisplayListener: ( () => void ) | null = null;
+  private updateDisplayListenerSample: EnergySkateParkDataSample | null = null;
   private isKeyboardAction = false;
   private isDragging = false;
   private readonly currentReadingProperty: StringProperty;
@@ -458,11 +458,12 @@ export default class SkaterPathSensorNode extends Node {
     }
 
     if ( sampleToDisplay ) {
-      this.displayState( sampleToDisplay );
+      if ( sampleToDisplay !== this.updateDisplayListenerSample ) {
+        this.detachUpdateDisplayListener();
+      }
 
-      // update the display whenever sample energies update, listener removed in clearDisplay
-      this.updateDisplayListener = this.displayState.bind( this, sampleToDisplay );
-      sampleToDisplay.updatedEmitter.addListener( this.updateDisplayListener );
+      this.displayState( sampleToDisplay );
+      this.attachUpdateDisplayListener( sampleToDisplay );
 
       this.displayedSampleProperty.value = this.samples.indexOf( sampleToDisplay );
     }
@@ -470,6 +471,27 @@ export default class SkaterPathSensorNode extends Node {
       this.clearDisplay( this.inspectedSample );
 
       this.displayedSampleProperty.value = -1;
+    }
+  }
+
+  /**
+   * Update the display whenever sample energies update, and keep exactly one sample listener attached.
+   */
+  private attachUpdateDisplayListener( dataSample: EnergySkateParkDataSample ): void {
+    if ( !this.updateDisplayListener ) {
+      this.updateDisplayListener = this.displayState.bind( this, dataSample );
+      dataSample.updatedEmitter.addListener( this.updateDisplayListener );
+      this.updateDisplayListenerSample = dataSample;
+    }
+  }
+
+  private detachUpdateDisplayListener(): void {
+    if ( this.updateDisplayListener && this.updateDisplayListenerSample ) {
+      if ( this.updateDisplayListenerSample.updatedEmitter.hasListener( this.updateDisplayListener ) ) {
+        this.updateDisplayListenerSample.updatedEmitter.removeListener( this.updateDisplayListener );
+      }
+      this.updateDisplayListener = null;
+      this.updateDisplayListenerSample = null;
     }
   }
 
@@ -553,15 +575,9 @@ export default class SkaterPathSensorNode extends Node {
     this.thermalValueProperty.value = null;
     this.totalValueProperty.value = null;
 
-    affirm( this.updateDisplayListener,
-      `listener not attached to dataSample emitter,
-       this.inspectedSample:`, this.inspectedSample,
-      `update listenerL:  ${this.updateDisplayListener}`
-    );
-    this.inspectedSample!.updatedEmitter.removeListener( this.updateDisplayListener );
+    this.detachUpdateDisplayListener();
 
     this.inspectedSample = null;
-    this.updateDisplayListener = null;
 
     dataSample.inspectedProperty.set( false );
     this.heightValueStringProperty.value = '';
