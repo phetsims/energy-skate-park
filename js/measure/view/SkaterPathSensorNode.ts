@@ -39,6 +39,7 @@ import KeyboardListener from '../../../../scenery/js/listeners/KeyboardListener.
 import Node, { NodeOptions } from '../../../../scenery/js/nodes/Node.js';
 import Rectangle from '../../../../scenery/js/nodes/Rectangle.js';
 import Text from '../../../../scenery/js/nodes/Text.js';
+import Panel from '../../../../sun/js/Panel.js';
 import SunConstants from '../../../../sun/js/SunConstants.js';
 import BoundaryReachedSoundPlayer from '../../../../tambo/js/BoundaryReachedSoundPlayer.js';
 import sharedSoundPlayers from '../../../../tambo/js/sharedSoundPlayers.js';
@@ -120,7 +121,7 @@ export default class SkaterPathSensorNode extends Node {
   private readonly heightReadout: Text;
   private readonly speedReadout: Text;
   private readonly heightSpeedVBox: VBox;
-  private readonly heightSpeedRectangle: Rectangle;
+  private readonly heightSpeedPanel: Panel;
   private readonly probeNode: InteractiveProbeNode;
   private inspectedSample: EnergySkateParkDataSample | null;
   private readonly boundUpdateSensorDisplay: () => void;
@@ -206,14 +207,6 @@ export default class SkaterPathSensorNode extends Node {
     } );
     this.addDisposable( heightReadoutStringProperty, speedReadoutStringProperty );
 
-    const updateHeightSpeedRectangleBounds = () => {
-      if ( this.inspectedSample ) {
-        this.positionReadouts( this.inspectedSample );
-      }
-    };
-    heightReadoutStringProperty.lazyLink( updateHeightSpeedRectangleBounds, { disposer: this } );
-    speedReadoutStringProperty.lazyLink( updateHeightSpeedRectangleBounds, { disposer: this } );
-
     this.heightReadout = new Text( heightReadoutStringProperty, {
       font: LABEL_FONT,
       maxWidth: PROBE_READOUT_MAX_WIDTH
@@ -227,11 +220,23 @@ export default class SkaterPathSensorNode extends Node {
       align: 'left'
     } );
 
-    this.heightSpeedRectangle = new Rectangle( this.heightSpeedVBox.bounds, {
-      fill: EnergySkateParkColors.transparentPanelFillProperty
+    this.heightSpeedPanel = new Panel( this.heightSpeedVBox, {
+      fill: EnergySkateParkColors.transparentPanelFillProperty,
+      stroke: null,
+      lineWidth: 0,
+      cornerRadius: 0,
+      xMargin: 0,
+      yMargin: 0
     } );
-    this.heightSpeedRectangle.visible = false;
-    this.heightSpeedRectangle.addChild( this.heightSpeedVBox );
+    this.heightSpeedPanel.visible = false;
+
+    const positionHeightSpeedPanel = () => {
+      if ( this.inspectedSample ) {
+        this.positionReadouts( this.inspectedSample );
+      }
+    };
+    heightReadoutStringProperty.lazyLink( positionHeightSpeedPanel, { disposer: this } );
+    speedReadoutStringProperty.lazyLink( positionHeightSpeedPanel, { disposer: this } );
 
     // layout - labels horizontally aligned with readouts in a VBox
     const content = new VBox( {
@@ -318,7 +323,7 @@ export default class SkaterPathSensorNode extends Node {
     this.addChild( wireNode );
     this.addChild( body );
     this.addChild( this.probeNode );
-    this.addChild( this.heightSpeedRectangle );
+    this.addChild( this.heightSpeedPanel );
 
     this.boundUpdateSensorDisplay = this.updateSensorDisplay.bind( this );
 
@@ -518,7 +523,7 @@ export default class SkaterPathSensorNode extends Node {
     this.heightValueStringProperty.value = this.formatValue( dataSample.position.y - dataSample.referenceHeight );
     this.speedValueStringProperty.value = this.formatValue( dataSample.speed );
 
-    this.heightSpeedRectangle.visible = true;
+    this.heightSpeedPanel.visible = true;
     this.positionReadouts( dataSample );
 
     const readingText = EnergySkateParkFluent.a11y.energySensorNode.sampleReadoutPattern.format( {
@@ -544,15 +549,14 @@ export default class SkaterPathSensorNode extends Node {
    * occlude the screen view control panel
    */
   private positionReadouts( dataSample: EnergySkateParkDataSample ): void {
-    this.heightSpeedRectangle.setRectBounds( this.heightSpeedVBox.bounds );
-    this.heightSpeedRectangle.leftCenter = this.probeNode.rightCenter.plusXY( PROBE_READOUT_SPACING, 0 );
+    this.heightSpeedPanel.leftCenter = this.probeNode.rightCenter.plusXY( PROBE_READOUT_SPACING, 0 );
 
     // determine occlusion case from position of the sample point rather than the probe position so that
     // the display doesn't move around when measuring a single point
-    const spacing = this.heightSpeedRectangle.width + this.probeNode.width / 2;
+    const spacing = this.heightSpeedPanel.width + this.probeNode.width / 2;
     const sampleViewPoint = this.modelViewTransform.modelToViewPosition( dataSample.position );
     if ( Math.abs( sampleViewPoint.x - this.screenViewControlPanel.left ) < spacing ) {
-      this.heightSpeedRectangle.leftTop = this.probeNode.leftBottom.plusXY( 0, PROBE_READOUT_SPACING );
+      this.heightSpeedPanel.leftTop = this.probeNode.leftBottom.plusXY( 0, PROBE_READOUT_SPACING );
     }
   }
 
@@ -582,7 +586,7 @@ export default class SkaterPathSensorNode extends Node {
     dataSample.inspectedProperty.set( false );
     this.heightValueStringProperty.value = '';
     this.speedValueStringProperty.value = '';
-    this.heightSpeedRectangle.visible = false;
+    this.heightSpeedPanel.visible = false;
 
     this.currentReadingProperty.value = '';
 
