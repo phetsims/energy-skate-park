@@ -42,6 +42,11 @@ where:
 - &#956; is the coefficient due to friction
 - N is the normal force, perpendicular to the surface
 
+Friction should only slow the skater down. At very low speeds, it could instead push the skater in the opposite
+direction, so friction is ignored when the skater's speed is below 0.01 m/s. As a result, a skater coming to rest in
+a valley may continue to rock with a very small, imperceptible speed. The speedometer and energy representations will
+show the skater as stopped.
+
 ## Energy
 
 The following fundamental energy equations are used heavily throughout the simulation

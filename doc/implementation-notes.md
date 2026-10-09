@@ -26,7 +26,7 @@ See https://github.com/phetsims/energy-skate-park/issues/6 for additional detail
 ## Model
 
 Much of the model runs by the physical equations described
-in https://github.com/phetsims/energy-skate-park/blob/main/doc/model.md. Start by reviewing those.
+in [model.md](model.md). Start by reviewing those.
 
 There are three fundamental types for the Energy Skate Park model. EnergySkateParkModel.js is the fundamental model and
 assembles most of the simulation. Skater.js provides observable Properties and state related to the skater. Track.js is

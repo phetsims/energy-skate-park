@@ -9,7 +9,7 @@ Instructions:
 * Developer and designer should collaborate on what to include for any release beyond 1.0. 
 * For each new version, add a section to the top of these release notes - reverse chronological order, with the most-recent version at the top.
 
-For an exemplar, see https://github.com/phetsims/balancing-chemical-equations/blob/main/doc/release-notes.md
+For an exemplar, see [release-notes.md](../../balancing-chemical-equations/doc/release-notes.md)
 -->
 
 <!-- 
@@ -28,6 +28,12 @@ For an exemplar, see https://github.com/phetsims/balancing-chemical-equations/bl
 * ⚠️ Use this icon for a change that is breaking, removes a feature, etc. 
 *
 -->
+
+## 1.6 (2026-10-02)
+
+### Other Changes
+* ⚠️ The `patterns` query parameter has been renamed to `patternsInitiallyEnabled`, as part of factoring the Patterns preference out into common code shared across sims.
+* Skater keyboard shortcuts changed to avoid conflicting with screen readers: J+S → Alt/Opt+S (jump to skater, global) and J+T → Alt/Opt+T (attach to track).
 
 ## 1.5 (2026-05-14)
 
